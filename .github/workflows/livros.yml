@@ -1,6 +1,6 @@
 # Gera os livros para baixar e publica na página Releases (release "livros", sempre a última versão):
 #   - EPUB da Bíblia completa, do Antigo e do Novo Testamento e de cada um dos 66 livros
-#   - PDF (A4) de cada um dos 66 livros
+#   - PDF (A4) da Bíblia completa, do AT e do NT (com marcadores por livro e capítulo) e de cada um dos 66 livros
 # Roda quando dados/ ou os scripts mudam na main (por exemplo, depois de um pull request de correções) e manualmente.
 # Refaz o corpus a partir das fontes abertas; as glosas saem iguais às do repositório porque o alinhamento fica
 # salvo em dados/alinhamento (só é refeito se o texto de alguma fonte mudar).
@@ -31,10 +31,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install eflomal
+      - run: pip install eflomal pypdf
       - run: npm ci
-      - name: Chromium para os PDFs
-        run: npx playwright install --with-deps chromium
+      - name: Chromium, qpdf e pdftotext para os PDFs
+        run: |
+          npx playwright install --with-deps chromium
+          sudo apt-get install -y qpdf poppler-utils
       - name: Fontes abertas
         run: scripts/baixar_fontes.sh
       - name: Corpus e glosas
@@ -45,7 +47,7 @@ jobs:
           python3 scripts/exportar.py
       - name: EPUB (Bíblia completa, AT, NT e 66 livros)
         run: python3 scripts/build_epub.py
-      - name: PDF (66 livros)
+      - name: PDF (Bíblia completa, AT, NT e 66 livros)
         run: python3 scripts/build_pdf.py
       - name: Publicar na página Releases (livros)
         env:
@@ -59,7 +61,9 @@ jobs:
           - 00-Biblia-Interlinear-AT.epub e 00-Biblia-Interlinear-NT.epub — por testamento (abrem mais rápido)
           - um EPUB por livro (01-GEN-Genesis.epub … 66-REV-Apocalipse.epub)
 
-          **PDF** (A4): um por livro, com os cartões das palavras e a BLIVRE abaixo de cada versículo.
+          **PDF** (A4, com os cartões das palavras e a BLIVRE abaixo de cada versículo; marcadores por livro e capítulo):
+          - 00-Biblia-Interlinear-completa.pdf, 00-Biblia-Interlinear-AT.pdf e 00-Biblia-Interlinear-NT.pdf
+          - um PDF por livro (01-GEN-Genesis.pdf … 66-REV-Apocalipse.pdf)
 
           No Kindle: envie o EPUB pelo Send to Kindle (até 200 MB pelo app ou site; por e-mail, até 50 MB)."
           if gh release view livros >/dev/null 2>&1; then
