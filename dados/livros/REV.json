@@ -1,0 +1,236 @@
+{
+  "title_orig": "Ἀποκάλυψις Ἰωάννου",
+  "title_orig_xlit": "Apokalypsis Ioannou",
+  "summary": "O Apocalipse relata as visões que um cristão chamado João recebeu na ilha de Patmos e que ele envia a sete igrejas da província da Ásia. Começa com uma visão de Cristo ressuscitado e com sete mensagens, uma para cada igreja, que elogiam, repreendem e chamam à fidelidade. Depois, o olhar se volta para o trono de Deus no céu, onde o Cordeiro que foi morto recebe o livro selado; seguem-se séries de sete selos, sete trombetas e sete taças, intercaladas com visões da mulher e do dragão, das duas bestas e da queda da Babilônia, a grande cidade que oprime os povos. O livro termina com a derrota final do mal, o juízo e a visão de um novo céu, uma nova terra e a nova Jerusalém, onde Deus habita com o seu povo e não há mais morte nem pranto.",
+  "name": "A primeira palavra do livro em grego é apokalypsis, “revelação”, literalmente o ato de tirar o véu (1:1). Daí vem o título “Apocalipse”, ou “Revelação de João”, que nos manuscritos aparece de várias formas. Por causa do livro, a palavra passou a designar um gênero literário e, na linguagem comum, a ideia de catástrofe — sentido que o texto não tem.",
+  "facts": [
+    [
+      "Posição",
+      "27º e último livro do Novo Testamento e da Bíblia"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "apocalipse e profecia, com moldura de carta"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Prólogo e visão inicial",
+      "from": 1,
+      "to": 1,
+      "text": "Título, saudação às sete igrejas e a visão de “um semelhante ao Filho do homem” entre sete candelabros, que manda João escrever."
+    },
+    {
+      "title": "Mensagens às sete igrejas",
+      "from": 2,
+      "to": 3,
+      "text": "Éfeso, Esmirna, Pérgamo, Tiatira, Sardes, Filadélfia e Laodiceia recebem elogios, censuras e promessas “ao que vencer”."
+    },
+    {
+      "title": "O trono e o Cordeiro",
+      "from": 4,
+      "to": 5,
+      "text": "Culto celeste ao redor do trono; só o Cordeiro que foi morto é digno de abrir o livro selado com sete selos."
+    },
+    {
+      "title": "Os sete selos",
+      "from": 6,
+      "to": 8,
+      "text": "Os cavaleiros, os mártires, os sinais cósmicos; uma pausa mostra os 144 mil selados e uma multidão incontável; o sétimo selo traz silêncio no céu (6:1–8:5)."
+    },
+    {
+      "title": "As sete trombetas",
+      "from": 8,
+      "to": 11,
+      "text": "Calamidades sobre a terra, o mar e os céus; o anjo com o livrinho, as duas testemunhas e a sétima trombeta anunciando o reino de Deus (8:6–11:19)."
+    },
+    {
+      "title": "O conflito com o dragão",
+      "from": 12,
+      "to": 14,
+      "text": "A mulher, o filho e o dragão; a besta que sobe do mar e a que sobe da terra; o Cordeiro no monte Sião, os anúncios dos anjos e as colheitas da terra."
+    },
+    {
+      "title": "As sete taças",
+      "from": 15,
+      "to": 16,
+      "text": "Os vencedores cantam junto ao mar de vidro; sete anjos derramam as taças da ira; os reis se reúnem no lugar chamado Armagedom."
+    },
+    {
+      "title": "A queda da Babilônia",
+      "from": 17,
+      "to": 19,
+      "text": "A grande prostituta sentada sobre a besta, a queda da cidade, o lamento dos reis e dos mercadores e o louvor no céu (17:1–19:10)."
+    },
+    {
+      "title": "Vitória e juízo",
+      "from": 19,
+      "to": 20,
+      "text": "O cavaleiro chamado Fiel e Verdadeiro vence a besta; Satanás é preso por mil anos, solto e derrotado; os mortos são julgados diante do grande trono branco (19:11–20:15)."
+    },
+    {
+      "title": "A nova criação",
+      "from": 21,
+      "to": 22,
+      "text": "Novo céu e nova terra; a nova Jerusalém desce do céu; o rio e a árvore da vida (21:1–22:5)."
+    },
+    {
+      "title": "Epílogo",
+      "from": 22,
+      "to": 22,
+      "text": "Advertências, a promessa “Certamente logo venho” e a resposta da igreja: “Vem, Senhor Jesus” (22:6–21)."
+    }
+  ],
+  "extra": {
+    "title": "Símbolos, números e modos de ler",
+    "text": "O Apocalipse fala por imagens, muitas tiradas de Ezequiel, Daniel, Zacarias e Isaías: um Cordeiro com sete chifres e sete olhos, animais cheios de olhos, uma mulher vestida de sol, bestas com cabeças e chifres. Os números têm peso simbólico: sete (plenitude) organiza o livro; doze e seus múltiplos, como os 144 mil, lembram o povo de Deus; três anos e meio (“quarenta e dois meses”, “mil duzentos e sessenta dias”) indicam um tempo de prova limitado. O número da besta, 666 (13:18), aparece como 616 em alguns manuscritos; muitos o explicam pelo valor numérico das letras de um nome, e a proposta mais citada é “Nero César” escrito em letras hebraicas, que dá 666 ou 616 conforme a grafia. Ao longo da história, o livro foi lido de modos diferentes: como referência a acontecimentos do século I (leitura preterista), como mapa da história da Igreja (historicista), como anúncio de acontecimentos do fim dos tempos (futurista) ou como retrato simbólico da luta permanente entre o bem e o mal (idealista); muitos intérpretes combinam essas leituras."
+  },
+  "people": [
+    {
+      "name": "João",
+      "chapters": "1; 22",
+      "ch": 1,
+      "note": "servo de Jesus Cristo e irmão dos leitores, que estava em Patmos “por causa da palavra de Deus” (1:9)"
+    },
+    {
+      "name": "Jesus Cristo, o Cordeiro",
+      "chapters": "1; 5; 19",
+      "ch": 5,
+      "note": "aparece como o Filho do homem glorioso, o Cordeiro que foi morto e o cavaleiro Fiel e Verdadeiro"
+    },
+    {
+      "name": "Os anciãos e os quatro seres viventes",
+      "chapters": "4–5",
+      "ch": 4,
+      "note": "vinte e quatro anciãos e quatro “animais” que adoram diante do trono"
+    },
+    {
+      "name": "As duas testemunhas",
+      "chapters": "11",
+      "ch": 11,
+      "note": "profetizam, são mortas pela besta e se levantam depois de três dias e meio"
+    },
+    {
+      "name": "A mulher, o filho e o dragão",
+      "chapters": "12",
+      "ch": 12,
+      "note": "o dragão, “a antiga serpente”, persegue a mulher que deu à luz um filho; Miguel e seus anjos o vencem no céu"
+    },
+    {
+      "name": "As duas bestas",
+      "chapters": "13",
+      "ch": 13,
+      "note": "uma sobe do mar e recebe poder do dragão; a outra sobe da terra e leva os povos a adorá-la"
+    },
+    {
+      "name": "A grande prostituta, a Babilônia",
+      "chapters": "17–18",
+      "ch": 17,
+      "note": "cidade que domina os reis da terra e se embriaga com o sangue dos santos"
+    }
+  ],
+  "writing": {
+    "tradition": "O autor se chama João (1:1, 4, 9; 22:8) e se apresenta como profeta, sem se dizer apóstolo. Desde Justino, no século II, a tradição o identificou com o apóstolo João, filho de Zebedeu, que teria vivido em Éfeso. Quanto à data, Ireneu, por volta de 180, escreveu que a visão foi vista “no fim do reinado de Domiciano”, ou seja, c. 95, e essa foi a posição predominante na Igreja antiga; alguns escritos antigos, porém, ligam o exílio de João ao tempo de Nero. No Oriente, o livro demorou a ser aceito: Dionísio de Alexandria, no século III, observou que o grego e o estilo diferem muito do Evangelho de João e atribuiu o livro a outro João, e várias igrejas de língua grega e siríaca só o incluíram no cânon tardiamente.",
+    "academic": "Muitos estudiosos pensam que o autor é um profeta cristão chamado João, conhecido das igrejas da Ásia, distinto do autor do Evangelho, com base nas diferenças de linguagem e de pensamento; outros mantêm a ligação com o apóstolo ou com o círculo joanino. Sobre a data, há duas posições principais. Uma segue Ireneu e situa o livro no fim do reinado de Domiciano, c. 95, apontando a ênfase no culto ao imperador na Ásia e o uso de “Babilônia” para Roma, comum depois de 70. A outra o situa no fim dos anos 60, logo depois da perseguição de Nero ou durante a crise de 68–69, com base na lista de reis de 17:9–11, na menção ao templo em 11:1–2 e na possível alusão a Nero no número da besta. As duas posições têm defensores de peso, e alguns admitem que o livro tenha sido composto em etapas."
+  },
+  "events": {
+    "intro": "O Apocalipse não narra a história de modo direto, mas suas imagens dialogam com a situação das igrejas da Ásia sob o Império Romano. A linha do tempo mostra os dois períodos propostos para a escrita, sem decidir entre eles. As datas são aproximadas.",
+    "axis": [
+      50,
+      110
+    ],
+    "timeline": [
+      {
+        "label": "Reinado de Nero",
+        "from": 54,
+        "to": 68,
+        "kind": "evento",
+        "note": "imperador de 54 a 68"
+      },
+      {
+        "label": "Incêndio de Roma e perseguição aos cristãos",
+        "from": 64,
+        "to": 64,
+        "kind": "evento",
+        "note": "cristãos de Roma são mortos por ordem de Nero"
+      },
+      {
+        "label": "Guerra judaica e destruição do templo",
+        "from": 66,
+        "to": 70,
+        "kind": "evento",
+        "note": "Jerusalém e o templo são destruídos em 70"
+      },
+      {
+        "label": "Ano dos quatro imperadores",
+        "from": 68,
+        "to": 69,
+        "kind": "evento",
+        "note": "depois da morte de Nero, Galba, Otão, Vitélio e Vespasiano disputam o poder"
+      },
+      {
+        "label": "Escrita, segundo a datação mais antiga",
+        "from": 64,
+        "to": 70,
+        "kind": "escrita",
+        "note": "proposta que liga o livro ao tempo de Nero ou logo depois"
+      },
+      {
+        "label": "Reinado de Domiciano",
+        "from": 81,
+        "to": 96,
+        "kind": "evento",
+        "note": "imperador de 81 a 96"
+      },
+      {
+        "label": "Escrita, segundo Ireneu",
+        "from": 90,
+        "to": 96,
+        "kind": "escrita",
+        "note": "“no fim do reinado de Domiciano”, c. 95"
+      }
+    ]
+  },
+  "context": "As sete igrejas ficavam em cidades da província romana da Ásia, no oeste da atual Turquia, ligadas por estradas: Éfeso, Esmirna, Pérgamo, Tiatira, Sardes, Filadélfia e Laodiceia. Eram cidades prósperas, com templos dedicados a Roma e aos imperadores, associações de ofício com banquetes religiosos e comunidades judaicas antigas. As mensagens às igrejas mostram problemas variados: pressão para comer carne oferecida aos ídolos, conflitos com sinagogas locais, um mártir chamado Antipas em Pérgamo (2:13), mas também acomodação e riqueza, como em Laodiceia. Patmos, onde João estava, é uma pequena ilha do mar Egeu, a sudoeste de Éfeso. A crítica à Babilônia, sentada sobre sete montes (17:9) e enriquecida pelo comércio dos povos (18), é em geral entendida como crítica a Roma.",
+  "places": [
+    "Patmos",
+    "Éfeso, Esmirna, Pérgamo, Tiatira, Sardes, Filadélfia e Laodiceia",
+    "o monte Sião",
+    "o rio Eufrates",
+    "Armagedom",
+    "“Babilônia”",
+    "a nova Jerusalém"
+  ],
+  "themes": [
+    "a soberania de Deus",
+    "o Cordeiro vencedor",
+    "fidelidade e testemunho",
+    "o juízo sobre o mal",
+    "o poder do império",
+    "culto e adoração",
+    "nova criação"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:9",
+      "text": "Eu, João, (que também sou vosso irmão, e companheiro na aflição, e no Reino, e na paciência de Jesus Cristo), estava na ilha chamada Patmos, por causa da palavra de Deus, e por causa do testemunho de Jesus Cristo."
+    },
+    {
+      "ref": "11:15",
+      "text": "E o sétimo anjo tocou a trombeta, e houve grandes vozes no céu, dizendo: Os reinos do mundo se tornaram do nosso Senhor, e do seu Cristo, e ele reinará para todo o sempre."
+    },
+    {
+      "ref": "21:3–4",
+      "text": "E eu ouvi uma grande voz do céu, dizendo: Eis que o tabernáculo de Deus está com os homens, e com eles habitará, e eles serão seu povo, e o próprio Deus estará com eles, e será seu Deus. E Deus limpará toda lágrima dos olhos deles; e não haverá mais morte, nem pranto, nem clamor, nem mais haverá dor; porque as primeiras coisas já passaram."
+    },
+    {
+      "ref": "22:20",
+      "text": "Aquele que dá testemunho destas coisas diz: Certamente logo venho. Amém! Sim, vem, Senhor Jesus!"
+    }
+  ],
+  "note": "A data do Apocalipse (tempo de Nero ou de Domiciano) e a identidade do autor continuam em discussão; as duas posições são apresentadas sem tomar partido, e as datas são aproximadas. O versículo 12:18 (“E eu fiquei parado sobre a areia do mar”) é numerado em algumas Bíblias como parte de 13:1. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

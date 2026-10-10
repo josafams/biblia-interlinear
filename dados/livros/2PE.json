@@ -1,0 +1,153 @@
+{
+  "title_orig": "Πέτρου Βʹ",
+  "title_orig_xlit": "Petrou B",
+  "summary": "2 Pedro tem a forma de um testamento: o apóstolo, sabendo que a morte está próxima (1:14), deixa uma última lembrança aos fiéis. Pede que cresçam numa cadeia de virtudes que vai da fé ao amor, lembra que a mensagem sobre Cristo não se baseia em mitos, mas no testemunho de quem viu a sua glória no monte, e na palavra dos profetas. Denuncia com dureza falsos mestres que exploram a comunidade e vivem sem freio, e responde aos que zombavam da demora da vinda do Senhor: para Deus, mil anos são como um dia, e a demora é paciência para dar tempo ao arrependimento.",
+  "name": "O título “Segunda de Pedro” (Petrou B) a distingue de 1 Pedro, à qual a própria carta se refere: “esta segunda carta” (3:1).",
+  "facts": [
+    [
+      "Posição",
+      "22º livro do Novo Testamento; 3ª das cartas gerais (ou católicas)"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "carta em forma de testamento"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Crescer e lembrar",
+      "from": 1,
+      "to": 1,
+      "text": "Deus deu tudo para uma vida de devoção; a fé deve ser acompanhada de virtude, conhecimento, domínio próprio, perseverança, devoção, fraternidade e amor; Pedro lembra a transfiguração e a origem divina da profecia."
+    },
+    {
+      "title": "Os falsos mestres",
+      "from": 2,
+      "to": 2,
+      "text": "Como houve falsos profetas, haverá falsos mestres; os exemplos dos anjos que pecaram, do dilúvio e de Sodoma mostram que Deus julga os ímpios e livra os justos, como Noé e Ló."
+    },
+    {
+      "title": "A promessa da vinda",
+      "from": 3,
+      "to": 3,
+      "text": "Os escarnecedores perguntam pela vinda prometida; Deus não é lento, mas paciente; o dia do Senhor virá como ladrão, e se esperam novos céus e nova terra; as cartas de Paulo são citadas como difíceis de entender."
+    }
+  ],
+  "extra": {
+    "title": "Parentesco com Judas",
+    "text": "Boa parte do capítulo 2 corresponde de perto à carta de Judas: os anjos que pecaram, Sodoma e Gomorra, Balaão, as nuvens sem água e as trevas reservadas aos ímpios. As semelhanças são grandes demais para serem acaso. A maioria dos estudiosos pensa que 2 Pedro usou Judas, omitindo as referências a livros fora do cânon hebraico, como 1 Enoque; outros propõem o contrário ou uma fonte comum."
+  },
+  "people": [
+    {
+      "name": "Simão Pedro",
+      "chapters": "1; 3",
+      "ch": 1,
+      "note": "fala como quem está para morrer e como testemunha ocular da transfiguração (1:14–18)"
+    },
+    {
+      "name": "Noé",
+      "chapters": "2",
+      "ch": 2,
+      "note": "“anunciador da justiça”, preservado no dilúvio (2:5)"
+    },
+    {
+      "name": "Ló",
+      "chapters": "2",
+      "ch": 2,
+      "note": "justo que se afligia com o que via em Sodoma e foi livrado (2:7–8)"
+    },
+    {
+      "name": "Balaão",
+      "chapters": "2",
+      "ch": 2,
+      "note": "profeta que amou o lucro da injustiça e foi repreendido por uma jumenta (2:15–16)"
+    },
+    {
+      "name": "Paulo",
+      "chapters": "3",
+      "ch": 3,
+      "note": "chamado de “nosso irmão”; suas cartas são lembradas ao lado das “outras Escrituras” (3:15–16)"
+    }
+  ],
+  "writing": {
+    "tradition": "A carta se apresenta como de Simão Pedro, escrita pouco antes de sua morte, que a tradição situa em Roma entre 64 e 68. Sua aceitação, porém, foi a mais lenta entre os livros do Novo Testamento: Orígenes, no século III, menciona que alguns duvidavam dela, e Eusébio, no século IV, a coloca entre os livros contestados, embora lidos por muitos. Jerônimo registra que muitos duvidavam por causa da diferença de estilo em relação a 1 Pedro e explica essa diferença pelo uso de secretários diferentes. Desde o fim do século IV, a carta faz parte das listas do cânon no Oriente e no Ocidente.",
+    "academic": "A maioria dos estudiosos considera 2 Pedro um escrito em nome de Pedro, no gênero de testamento, comum na época, e o situa entre c. 80 e 125, o que a tornaria um dos últimos livros do Novo Testamento. Os argumentos são o grego bem diferente de 1 Pedro, o uso provável de Judas, a referência às cartas de Paulo já reunidas e lidas como Escrituras (3:15–16) e a menção à morte dos “pais” (3:4) como coisa do passado. Uma minoria defende que a carta é de Pedro, talvez com outro secretário, escrita nos anos 60, e explica as diferenças de estilo pelo assunto e pelos colaboradores."
+  },
+  "events": {
+    "intro": "A carta se refere a acontecimentos da vida de Pedro e à expectativa da vinda de Cristo. As datas são aproximadas; a da escrita varia bastante conforme a posição sobre a autoria.",
+    "axis": [
+      25,
+      130
+    ],
+    "timeline": [
+      {
+        "label": "Transfiguração de Jesus",
+        "from": 29,
+        "to": 33,
+        "kind": "evento",
+        "note": "data aproximada; lembrada em 1:16–18"
+      },
+      {
+        "label": "Cartas de Paulo",
+        "from": 50,
+        "to": 62,
+        "kind": "escrita",
+        "note": "c. 50–62 para as cartas mais aceitas; mais tarde passam a circular reunidas"
+      },
+      {
+        "label": "Morte de Pedro em Roma",
+        "from": 64,
+        "to": 68,
+        "kind": "evento",
+        "note": "segundo a tradição, na perseguição de Nero"
+      },
+      {
+        "label": "Escrita, se de Pedro",
+        "from": 64,
+        "to": 68,
+        "kind": "escrita",
+        "note": "posição tradicional e de uma minoria dos estudiosos"
+      },
+      {
+        "label": "Escrita, se em nome de Pedro",
+        "from": 80,
+        "to": 125,
+        "kind": "escrita",
+        "note": "posição da maioria dos estudiosos"
+      }
+    ]
+  },
+  "context": "A carta não indica destinatários nem lugar. Pela menção a uma carta anterior (3:1), pensa-se nas mesmas comunidades de 1 Pedro, na Ásia Menor, mas isso não é certo. O problema é interno: mestres que prometem liberdade, vivem de modo dissoluto, buscam lucro e zombam da espera pela vinda do Senhor, já que “os pais dormiram” e tudo continua como antes (3:4). A resposta usa recursos do mundo grego — fala em virtude e em tornar-se “participante da natureza divina” (1:4) — e da tradição judaica sobre o juízo e a destruição do mundo pelo fogo.",
+  "places": [
+    "o santo monte da transfiguração",
+    "Sodoma e Gomorra"
+  ],
+  "themes": [
+    "crescimento nas virtudes",
+    "testemunho apostólico",
+    "profecia e Escritura",
+    "falsos mestres",
+    "o dia do Senhor",
+    "paciência de Deus",
+    "novos céus e nova terra"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:16",
+      "text": "Porque nós não vos anunciamos o poder e vinda de nosso Senhor Jesus Cristo seguindo mitos criados pela inteligência humana, mas sim como testemunhas oculares de sua grandiosidade."
+    },
+    {
+      "ref": "1:20–21",
+      "text": "Sabendo primeiramente isto: que nenhuma profecia da Escritura é de interpretação particular. Porque a profecia jamais foi produzida pela vontade humana, mas homens falaram da parte de Deus conduzidos pelo Espírito Santo."
+    },
+    {
+      "ref": "3:8–9",
+      "text": "Mas amados, desta uma coisa não ignoreis: que um dia para o Senhor é como mil anos, e mil anos como um dia. O Senhor não é tardio em sua promessa (como alguns a consideram tardia); mas ele é paciente para conosco, não querendo que alguns pereçam, mas sim que todos venham ao arrependimento."
+    }
+  ],
+  "note": "Autoria e data são discutidas; as datas da linha do tempo são aproximadas. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

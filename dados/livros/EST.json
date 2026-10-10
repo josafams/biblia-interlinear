@@ -1,0 +1,189 @@
+{
+  "title_orig": "אֶסְתֵּר",
+  "title_orig_xlit": "Ester",
+  "summary": "Na corte do rei persa Assuero, em Susã, a jovem judia Ester se torna rainha sem revelar a sua origem. Quando Hamã, o oficial mais poderoso do reino, obtém um decreto para exterminar os judeus do império, Mardoqueu, primo e tutor de Ester, a convence a arriscar a vida e interceder junto ao rei. Numa sequência de banquetes e reviravoltas, Hamã é desmascarado e executado, e um novo decreto permite aos judeus se defender. O livro termina explicando a origem da festa de Purim.",
+  "name": "O livro leva o nome da sua protagonista. Ester era o nome pelo qual ela era conhecida na corte; o nome hebraico, Hadassa (2:7), quer dizer “murta”. Ester costuma ser explicado a partir do persa (“estrela”) ou ligado ao nome da deusa babilônica Ishtar. Na tradição judaica, o livro é chamado de Meguilat Ester, “o rolo de Ester”, lido publicamente na festa de Purim.",
+  "facts": [
+    [
+      "Posição",
+      "17º livro da Bíblia, entre os livros históricos; na Bíblia hebraica, um dos cinco Rolos (Meguilot), entre os Escritos (Ketuvim)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "narrativa"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Ester chega ao trono",
+      "from": 1,
+      "to": 2,
+      "text": "A rainha Vasti é deposta, Ester é escolhida, e Mardoqueu descobre uma conspiração contra o rei."
+    },
+    {
+      "title": "A ameaça",
+      "from": 3,
+      "to": 4,
+      "text": "Mardoqueu não se prostra diante de Hamã, que obtém um decreto contra todos os judeus; Ester decide ir ao rei."
+    },
+    {
+      "title": "A reviravolta",
+      "from": 5,
+      "to": 7,
+      "text": "Os banquetes de Ester, a noite de insônia do rei, a honra de Mardoqueu e a queda de Hamã."
+    },
+    {
+      "title": "Libertação e Purim",
+      "from": 8,
+      "to": 10,
+      "text": "O contradecreto, a defesa dos judeus, a instituição da festa e a grandeza de Mardoqueu."
+    }
+  ],
+  "extra": {
+    "title": "Um livro em que Deus não é nomeado",
+    "text": "O texto hebraico de Ester não menciona Deus nenhuma vez, nem fala explicitamente de oração, embora haja jejum (4:16) e muitos leitores vejam a ação divina por trás das coincidências da história, como na pergunta de Mardoqueu em 4:14. A tradução grega (Septuaginta) tem seis acréscimos, com cerca de cem versículos, que incluem orações de Mardoqueu e de Ester e mencionam Deus; eles fazem parte das Bíblias católicas e ortodoxas como texto deuterocanônico. A BLIVRE traduz o texto hebraico. O nome da festa vem de pur, “sorte”, que Hamã lança para escolher a data do massacre (3:7; 9:24–26)."
+  },
+  "people": [
+    {
+      "name": "Assuero",
+      "chapters": "1–10",
+      "ch": 1,
+      "note": "o rei persa, em geral identificado com Xerxes I"
+    },
+    {
+      "name": "Vasti",
+      "chapters": "1",
+      "ch": 1,
+      "note": "a rainha que se recusa a comparecer ao banquete e é deposta"
+    },
+    {
+      "name": "Ester (Hadassa)",
+      "chapters": "2–9",
+      "ch": 2,
+      "note": "jovem judia que se torna rainha e intercede pelo seu povo"
+    },
+    {
+      "name": "Mardoqueu",
+      "chapters": "2–10",
+      "ch": 2,
+      "note": "primo e tutor de Ester, da tribo de Benjamim"
+    },
+    {
+      "name": "Bigtã e Teres",
+      "chapters": "2; 6",
+      "ch": 2,
+      "note": "eunucos cuja conspiração Mardoqueu denuncia"
+    },
+    {
+      "name": "Hamã",
+      "chapters": "3–9",
+      "ch": 3,
+      "note": "o agagita, alto oficial que planeja destruir os judeus"
+    },
+    {
+      "name": "Hatá",
+      "chapters": "4",
+      "ch": 4,
+      "note": "eunuco que leva as mensagens entre Ester e Mardoqueu"
+    },
+    {
+      "name": "Zeres",
+      "chapters": "5–6",
+      "ch": 5,
+      "note": "mulher de Hamã, que sugere a forca para Mardoqueu"
+    }
+  ],
+  "writing": {
+    "tradition": "O Talmude babilônico (Bava Batra 15a) atribui a escrita de Ester aos “homens da Grande Assembleia”, o conselho que a tradição situa depois do exílio. Outros autores judeus, com base em 9:20 (“Mardoqueu escreveu estas coisas”), atribuem o livro a Mardoqueu. Nessa leitura, ele teria sido escrito no período persa, pouco depois dos acontecimentos, no século V a.C.",
+    "academic": "O autor é anônimo. O livro conhece bem a corte persa e a cidade de Susã, e não mostra influência grega evidente, o que leva muitos a datá-lo do fim do período persa; outros preferem o começo do período helenístico. As propostas mais comuns ficam entre c. 400 e 200 a.C. O caráter histórico é discutido: a rainha de Xerxes conhecida pelos historiadores gregos se chamava Amestris, e certos detalhes, como as cento e vinte e sete províncias, não coincidem com o que se sabe da administração persa; por isso muitos classificam o livro como narrativa histórica romanceada, enquanto outros defendem que preserva um núcleo de fatos. Um documento cuneiforme do tempo de Xerxes menciona um funcionário chamado Marduka em Susã, mas não se sabe se é o mesmo Mardoqueu. Ester é o único livro da Bíblia hebraica do qual não se encontrou cópia entre os manuscritos do mar Morto."
+  },
+  "events": {
+    "intro": "Se Assuero é Xerxes I (486–465 a.C.), como pensa a maioria dos estudiosos, as datas do próprio livro permitem situar os acontecimentos: o banquete do terceiro ano (1:3) em 483 a.C., a chegada de Ester ao rei no sétimo ano (2:16) em 479/478 a.C., e o sorteio de Hamã no décimo segundo ano (3:7) em 474 a.C., com o dia marcado para o décimo terceiro dia de Adar do ano seguinte. Entre o terceiro e o sétimo ano, Xerxes fez a sua campanha contra a Grécia (480–479 a.C.). A Septuaginta e o historiador Josefo identificam o rei com Artaxerxes.",
+    "axis": [
+      -520,
+      -150
+    ],
+    "band": {
+      "label": "Reinado de Xerxes I",
+      "from": -486,
+      "to": -465
+    },
+    "timeline": [
+      {
+        "label": "Banquete de Assuero",
+        "from": -483,
+        "to": -483,
+        "kind": "evento",
+        "note": "terceiro ano do reinado (1:3)"
+      },
+      {
+        "label": "Campanha de Xerxes contra a Grécia",
+        "from": -480,
+        "to": -479,
+        "kind": "evento",
+        "note": "batalhas de Termópilas, Salamina e Plateias"
+      },
+      {
+        "label": "Ester se torna rainha",
+        "from": -479,
+        "to": -478,
+        "kind": "pessoa",
+        "note": "no mês de Tebete do sétimo ano (2:16)"
+      },
+      {
+        "label": "Decreto de Hamã e libertação",
+        "from": -474,
+        "to": -473,
+        "kind": "evento",
+        "note": "sorteio no décimo segundo ano (3:7); o dia 13 de Adar (9:1)"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -470,
+        "to": -400,
+        "kind": "escrita",
+        "note": "Mardoqueu ou os homens da Grande Assembleia"
+      },
+      {
+        "label": "Escrita, segundo a pesquisa",
+        "from": -400,
+        "to": -200,
+        "kind": "escrita",
+        "note": "fim do período persa ou começo do helenístico"
+      }
+    ]
+  },
+  "context": "A história se passa na diáspora, entre os judeus que não voltaram a Judá e viviam espalhados pelo Império Persa, o maior da época, que ia da Índia à Etiópia (Cuxe, 1:1). Susã, no sudoeste do atual Irã, era uma das capitais dos reis persas, e escavações ali revelaram o grande palácio construído por Dario I e usado por Xerxes. O livro retrata uma corte de banquetes, decretos escritos em todas as línguas do império e mensageiros reais, e mostra a vulnerabilidade de uma minoria que depende do favor do rei.",
+  "places": [
+    "Susã: a fortaleza e a cidade",
+    "o palácio e o jardim do rei",
+    "as províncias do império, da Índia até Cuxe"
+  ],
+  "themes": [
+    "providência oculta",
+    "coragem",
+    "identidade judaica na diáspora",
+    "inversão de destinos",
+    "jejum e solidariedade",
+    "a festa de Purim"
+  ],
+  "key_verses": [
+    {
+      "ref": "4:14",
+      "text": "Porque se te calares agora, haverá alívio e libertação para os judeus de outra parte; porém tu e a casa de teu pai perecereis. E quem sabe se foi para tempo como este que chegaste a ser rainha?"
+    },
+    {
+      "ref": "4:16",
+      "text": "Vai, e junta a todos os judeus que se acham em Susã, e jejuai por mim, e não comais nem bebais durante três dias, nem de noite nem de dia; eu e minhas virgens também assim jejuaremos; e assim virei ao rei, ainda que não seja segundo à lei; e se eu perecer, perecerei."
+    },
+    {
+      "ref": "9:22",
+      "text": "Como os dias em que os judeus tiveram repouso de seus inimigos; e o mês que tornou para eles de tristeza em alegria, e de luto em dia de festejo; para que os fizessem dias de banquetes e de alegria, e de mandarem presentes uns aos outros, e de doações aos pobres."
+    }
+  ],
+  "note": "As datas são aproximadas e dependem da identificação de Assuero com Xerxes I. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

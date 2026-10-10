@@ -1,0 +1,11 @@
+{
+  "appId": "liberta.bibliainterlinear",
+  "appName": "Bíblia Interlinear",
+  "webDir": "saida/web",
+  "android": {
+    "allowMixedContent": false
+  },
+  "ios": {
+    "contentInset": "never"
+  }
+}

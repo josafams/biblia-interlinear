@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Bíblia Interlinear</string>
+    <string name="title_activity_main">Bíblia Interlinear</string>
+    <string name="package_name">liberta.bibliainterlinear</string>
+    <string name="custom_url_scheme">liberta.bibliainterlinear</string>
+</resources>

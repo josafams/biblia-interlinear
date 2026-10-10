@@ -1,0 +1,191 @@
+{
+  "title_orig": "Πρὸς Γαλάτας",
+  "title_orig_xlit": "Pros Galatas",
+  "summary": "Gálatas é uma carta escrita sob tensão. Depois de Paulo passar pela região, chegaram às igrejas da Galácia mestres que exigiam dos cristãos não judeus a circuncisão e a observância da Lei de Moisés, e Paulo reage sem os agradecimentos com que costuma abrir as cartas: admira-se de que os gálatas tenham passado tão depressa a “outro evangelho” (1:6). Nos dois primeiros capítulos ele conta a própria trajetória para mostrar que o seu evangelho não veio de homens, incluindo o acordo com os líderes de Jerusalém e o confronto com Cefas em Antioquia. Nos capítulos 3 e 4 argumenta com a história de Abraão e com as Escrituras que a justiça vem pela fé, e que a Lei teve um papel provisório. A parte final fala da liberdade em Cristo, que não deve virar pretexto para a carne, e da vida guiada pelo Espírito.",
+  "name": "O título Pros Galatas, “Aos gálatas”, vem da saudação: a carta é dirigida “para as igrejas da Galácia” (1:2), e não a uma única cidade. O nome da região lembra os gálatas, povos celtas — os mesmos que os romanos chamavam de gauleses — que se instalaram no centro da Ásia Menor no século III a.C.",
+  "facts": [
+    [
+      "Posição",
+      "9º livro do Novo Testamento; 4ª das cartas de Paulo, na ordem do cânon"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "carta circular a várias igrejas, de tom polêmico"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Abertura e repreensão",
+      "from": 1,
+      "to": 1,
+      "text": "Paulo afirma que é apóstolo não por escolha humana e, em vez de agradecer, censura os gálatas por darem ouvidos a quem perverte o evangelho (1:1–10)."
+    },
+    {
+      "title": "A trajetória de Paulo",
+      "from": 1,
+      "to": 2,
+      "text": "O antigo perseguidor recebe a revelação de Cristo, só vai a Jerusalém anos depois, obtém dos líderes de lá o reconhecimento da sua missão entre os gentios e enfrenta Cefas em Antioquia por causa da mesa comum com os não judeus (1:11–2:21)."
+    },
+    {
+      "title": "Fé, Abraão e a Lei",
+      "from": 3,
+      "to": 4,
+      "text": "Os gálatas receberam o Espírito pela fé; Abraão creu e foi considerado justo; a Lei veio depois, como guardiã até Cristo; agora todos são filhos e herdeiros, e não escravos. A comparação entre Agar e Sara fecha o argumento."
+    },
+    {
+      "title": "Liberdade e vida no Espírito",
+      "from": 5,
+      "to": 6,
+      "text": "Quem se deixa circuncidar para ser justificado volta ao jugo; a liberdade se vive no amor, e as obras da carne são contrastadas com o fruto do Espírito. Conselhos práticos e um fecho escrito de próprio punho (6:11–18)."
+    }
+  ],
+  "extra": {
+    "title": "Uma carta sem agradecimento",
+    "text": "Quase todas as cartas de Paulo começam com uma ação de graças pelos destinatários. Gálatas passa direto da saudação à repreensão, sinal do clima em que foi escrita. O mesmo tom aparece na interpelação “Ó insensatos gálatas” (3:1) e no final, quando Paulo toma a pena do secretário e chama a atenção para o tamanho das letras que escreve com a própria mão (6:11)."
+  },
+  "people": [
+    {
+      "name": "Paulo",
+      "chapters": "1–2; 4–6",
+      "ch": 1,
+      "note": "defende a origem divina do seu chamado e o evangelho que pregou aos gálatas; lembra que chegou à região doente (4:13)"
+    },
+    {
+      "name": "Cefas (Pedro)",
+      "chapters": "1–2",
+      "ch": 2,
+      "note": "Paulo o visita quinze dias em Jerusalém; mais tarde o repreende em Antioquia por se afastar da mesa dos gentios"
+    },
+    {
+      "name": "Tiago, irmão do Senhor",
+      "chapters": "1–2",
+      "ch": 2,
+      "note": "um dos três considerados “colunas” da igreja de Jerusalém, ao lado de Cefas e João (2:9)"
+    },
+    {
+      "name": "Barnabé",
+      "chapters": "2",
+      "ch": 2,
+      "note": "companheiro de Paulo na ida a Jerusalém; em Antioquia, acompanha Pedro na atitude criticada"
+    },
+    {
+      "name": "Tito",
+      "chapters": "2",
+      "ch": 2,
+      "note": "cristão grego levado a Jerusalém, onde não foi obrigado a se circuncidar"
+    },
+    {
+      "name": "Abraão",
+      "chapters": "3–4",
+      "ch": 3,
+      "note": "o que creu e foi considerado justo; os que têm fé são chamados seus filhos"
+    },
+    {
+      "name": "Agar e Sara",
+      "chapters": "4",
+      "ch": 4,
+      "note": "a escrava e a livre, lidas como figuras de duas alianças (4:21–31)"
+    }
+  ],
+  "writing": {
+    "tradition": "A autoria de Paulo nunca foi posta em dúvida pela Igreja antiga. A carta não diz de onde foi escrita, e a tradição apontou lugares diversos; uma antiga nota de copistas menciona Roma, mas a maioria dos intérpretes a liga ao período de Éfeso, na terceira viagem.",
+    "academic": "Gálatas está entre as sete cartas que praticamente todos os estudiosos atribuem a Paulo, ao lado de Romanos, 1 e 2 Coríntios, Filipenses, 1 Tessalonicenses e Filemom. O debate é sobre os destinatários e a data. Pela hipótese da “Galácia do Norte”, a carta vai às regiões dos antigos gálatas, em torno de Ancira (hoje Ancara), que Paulo teria visitado na segunda viagem (Atos 16:6), e seria de c. 53–56. Pela hipótese da “Galácia do Sul”, vai às igrejas da província romana fundadas na primeira viagem — Antioquia da Pisídia, Icônio, Listra e Derbe (Atos 13–14) — e pode ser mais antiga, c. 48–51; alguns a colocam até antes da reunião de Jerusalém de Atos 15, o que faria dela uma das primeiras cartas de Paulo. Também se discute se a visita de 2:1–10 corresponde a Atos 15 ou a Atos 11:30."
+  },
+  "events": {
+    "intro": "Paulo dá na carta algumas indicações de tempo — três anos depois da conversão, uma visita a Jerusalém; catorze anos depois, outra (1:18; 2:1) — que costumam ser combinadas com o relato de Atos. As datas são aproximadas e variam conforme a hipótese adotada sobre os destinatários.",
+    "axis": [
+      30,
+      60
+    ],
+    "band": {
+      "label": "Reinado de Cláudio",
+      "from": 41,
+      "to": 54
+    },
+    "timeline": [
+      {
+        "label": "Conversão de Paulo",
+        "from": 33,
+        "to": 36,
+        "kind": "evento",
+        "note": "data aproximada (1:15–16; Atos 9)"
+      },
+      {
+        "label": "Primeira visita a Jerusalém",
+        "from": 35,
+        "to": 38,
+        "kind": "evento",
+        "note": "quinze dias com Cefas, três anos depois (1:18)"
+      },
+      {
+        "label": "Primeira viagem missionária",
+        "from": 46,
+        "to": 48,
+        "kind": "evento",
+        "note": "igrejas no sul da província da Galácia (Atos 13–14)"
+      },
+      {
+        "label": "Acordo em Jerusalém",
+        "from": 48,
+        "to": 49,
+        "kind": "evento",
+        "note": "catorze anos depois (2:1–10); muitos o identificam com Atos 15"
+      },
+      {
+        "label": "Conflito em Antioquia",
+        "from": 49,
+        "to": 50,
+        "kind": "evento",
+        "note": "Paulo repreende Cefas (2:11–14); data aproximada"
+      },
+      {
+        "label": "Escrita da carta",
+        "from": 48,
+        "to": 56,
+        "kind": "escrita",
+        "note": "faixa ampla: c. 48–51 na hipótese do sul; c. 53–56 na do norte"
+      }
+    ]
+  },
+  "context": "A Galácia ficava no planalto central da Ásia Menor, na atual Turquia. Para lá foram, a partir de c. 278–277 a.C., grupos celtas vindos da Europa, que deram nome à região. Em 25 a.C., com a morte do rei Amintas, o território passou a ser uma província romana, ampliada para o sul até incluir cidades como Antioquia da Pisídia, Icônio, Listra e Derbe; por isso “Galácia” podia indicar tanto a terra dos antigos gálatas quanto a província inteira. Nas igrejas, formadas em boa parte por não judeus, a questão era se, para fazer parte do povo de Deus, precisariam adotar a circuncisão, o calendário e as regras da Lei — tema que dividiu os primeiros cristãos e que aparece também em Atos 15.",
+  "places": [
+    "Galácia",
+    "Jerusalém",
+    "Antioquia da Síria",
+    "Arábia",
+    "Damasco",
+    "Síria e Cilícia"
+  ],
+  "themes": [
+    "o evangelho e a autoridade de Paulo",
+    "justificação pela fé",
+    "a Lei e a circuncisão",
+    "Abraão e a promessa",
+    "filhos e herdeiros",
+    "liberdade",
+    "carne e Espírito"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:20",
+      "text": "Já estou crucificado com Cristo. Estou vivendo não mais eu, mas Cristo vive em mim; e vivo a minha vida na carne por meio da fé no Filho de Deus, que me amou, e entregou a si mesmo por mim."
+    },
+    {
+      "ref": "3:28",
+      "text": "Assim, não há judeu nem grego; não há servo nem livre; não há macho nem fêmea. Pois todos vós sois um em Cristo Jesus."
+    },
+    {
+      "ref": "5:1",
+      "text": "Para a liberdade Cristo nos libertou; portanto, estai firmes, e não volteis a vos prender com o jugo da escravidão."
+    },
+    {
+      "ref": "5:22–23",
+      "text": "Mas o fruto do Espírito é: amor, alegria, paz, paciência, benignidade, bondade, fidelidade, mansidão, domínio próprio. Contra essas coisas não há lei."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte e a hipótese sobre os destinatários. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

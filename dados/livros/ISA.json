@@ -1,0 +1,258 @@
+{
+  "title_orig": "יְשַׁעְיָהוּ",
+  "title_orig_xlit": "Yeshayahu",
+  "summary": "Isaías reúne oráculos ligados ao profeta Isaías, filho de Amoz, que atuou em Jerusalém na segunda metade do século VIII a.C., quando a Assíria dominava a região. Os capítulos 1 a 39 denunciam a injustiça social e o culto vazio de Judá, advertem os reis contra alianças com potências estrangeiras, anunciam juízo sobre as nações vizinhas e terminam com relatos sobre o rei Ezequias e a invasão de Senaqueribe. A partir do capítulo 40, o cenário é o exílio na Babilônia e o retorno: Deus consola Jerusalém, chama Ciro, rei da Pérsia, de seu ungido e apresenta um “servo” cujo sofrimento traz restauração a outros. Os capítulos finais falam de uma comunidade reconstruída, aberta a estrangeiros, e terminam com a visão de novos céus e nova terra. Ao longo do livro, Deus é chamado com frequência de “o Santo de Israel”.",
+  "name": "O nome hebraico Yeshayahu significa “o SENHOR salva” ou “salvação do SENHOR”. Pela forma grega Esaias, usada na Septuaginta, e pela latina Isaias, chegou ao português como Isaías.",
+  "facts": [
+    [
+      "Posição",
+      "1º dos Profetas Maiores; na Bíblia hebraica, entre os Profetas Posteriores (Neviim)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "profecia (oráculos em poesia, com trechos narrativos)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Judá e Jerusalém diante de Deus",
+      "from": 1,
+      "to": 12,
+      "text": "Denúncias e promessas sobre Jerusalém, a visão do chamado (cap. 6) e os oráculos da época do rei Acaz, com os sinais de Emanuel e do ramo de Jessé."
+    },
+    {
+      "title": "Oráculos sobre as nações",
+      "from": 13,
+      "to": 23,
+      "text": "Mensagens sobre Babilônia, Assíria, Filístia, Moabe, Damasco, Cuxe, Egito, Edom, Arábia, Tiro e a própria Jerusalém."
+    },
+    {
+      "title": "Juízo e festa para toda a terra",
+      "from": 24,
+      "to": 27,
+      "text": "Poemas de alcance universal: a terra devastada, o banquete preparado no monte e a derrota do Leviatã."
+    },
+    {
+      "title": "Ais e promessas",
+      "from": 28,
+      "to": 35,
+      "text": "Críticas aos líderes de Efraim e de Judá e à busca de ajuda no Egito, seguidas de promessas de um rei justo e do deserto que floresce."
+    },
+    {
+      "title": "Narrativas sobre Ezequias",
+      "from": 36,
+      "to": 39,
+      "text": "O cerco assírio de Jerusalém, a doença e a cura do rei e a visita dos mensageiros da Babilônia; o trecho tem paralelo próximo em 2 Reis 18–20."
+    },
+    {
+      "title": "Consolo e libertação",
+      "from": 40,
+      "to": 55,
+      "text": "Anúncio do fim do exílio, polêmica contra os ídolos, a missão de Ciro e os poemas sobre o servo do SENHOR."
+    },
+    {
+      "title": "Sião restaurada",
+      "from": 56,
+      "to": 66,
+      "text": "Exortações a uma comunidade que voltou à terra, críticas ao culto e à injustiça, a glória futura de Jerusalém e a promessa de novos céus e nova terra."
+    }
+  ],
+  "extra": {
+    "title": "Os poemas do servo",
+    "text": "Em 1892, o estudioso alemão Bernhard Duhm destacou quatro trechos de Isaías 40–55 que falam de um “servo” do SENHOR: 42:1–4, 49:1–6, 50:4–9 e 52:13–53:12. Os limites exatos variam entre os autores. A identidade do servo é debatida desde a Antiguidade: o próprio texto o chama de Israel em 49:3, e muitos intérpretes judeus o entendem como o povo ou um grupo fiel dentro dele; outros pensam no próprio profeta ou num personagem histórico; a tradição cristã, já no Novo Testamento (Atos 8:32–35), lê esses poemas como referência a Jesus."
+  },
+  "people": [
+    {
+      "name": "Isaías",
+      "chapters": "1–39",
+      "ch": 6,
+      "note": "filho de Amoz; profeta em Jerusalém, conselheiro dos reis de Judá"
+    },
+    {
+      "name": "Os filhos de Isaías",
+      "chapters": "7–8",
+      "ch": 8,
+      "note": "Sear-Jasube e Maer-Salal-Has-Baz, cujos nomes funcionam como sinais"
+    },
+    {
+      "name": "Acaz",
+      "chapters": "7",
+      "ch": 7,
+      "note": "rei de Judá que, ameaçado por Síria e Efraim, recusa pedir um sinal"
+    },
+    {
+      "name": "Ezequias",
+      "chapters": "36–39",
+      "ch": 37,
+      "note": "rei de Judá durante a invasão assíria de 701 a.C."
+    },
+    {
+      "name": "Senaqueribe e o Rabsaqué",
+      "chapters": "36–37",
+      "ch": 36,
+      "note": "o rei da Assíria e o alto oficial que discursa diante dos muros de Jerusalém"
+    },
+    {
+      "name": "Sebna e Eliaquim",
+      "chapters": "22; 36–37",
+      "ch": 22,
+      "note": "administradores do palácio real"
+    },
+    {
+      "name": "Merodaque-Baladã",
+      "chapters": "39",
+      "ch": 39,
+      "note": "rei da Babilônia que envia mensageiros a Ezequias"
+    },
+    {
+      "name": "Ciro",
+      "chapters": "44–45",
+      "ch": 45,
+      "note": "rei persa chamado de pastor e ungido do SENHOR"
+    },
+    {
+      "name": "O servo do SENHOR",
+      "chapters": "42–53",
+      "ch": 53,
+      "note": "figura dos poemas do servo; sua identidade é discutida"
+    }
+  ],
+  "writing": {
+    "tradition": "A tradição judaica e a cristã atribuem o livro inteiro a Isaías, filho de Amoz, ativo de cerca de 740 a 700 a.C. ou um pouco depois. Nessa leitura, os capítulos 40 a 66 são profecias sobre um futuro distante, e a menção a Ciro (44:28; 45:1), cerca de um século e meio antes dele, é entendida como predição. O Talmude (Bava Batra 15a) diz que Ezequias e seus companheiros “escreveram” Isaías, o que costuma ser entendido como reunião e edição dos oráculos. Ben Sira, por volta de 180 a.C., já relaciona a Isaías o consolo a Sião (Eclesiástico 48:24), e o Novo Testamento cita trechos das duas metades do livro com o nome do profeta. Quem defende a unidade também aponta o vocabulário comum às duas partes, como o título “o Santo de Israel”.",
+    "academic": "Desde o fim do século XVIII, boa parte dos estudiosos entende que os capítulos 40 a 66 não vêm do profeta do século VIII a.C. O argumento principal é o cenário: esses capítulos falam a pessoas que já vivem o exílio, tratam a destruição de Jerusalém como passado e citam Ciro pelo nome. Daí a hipótese de um profeta anônimo, chamado por convenção de “Segundo Isaías” (Dêutero-Isaías), autor dos capítulos 40–55, por volta de 550–539 a.C., e, a partir de Duhm (1892), a atribuição dos capítulos 56–66 a um ou mais autores do período depois da volta (“Terceiro Isaías”), entre cerca de 538 e 450 a.C. Pesquisas mais recentes insistem tanto nas diferenças quanto nos elos entre as partes e tendem a ver o livro como obra de uma tradição que reuniu, ampliou e editou a mensagem de Isaías ao longo de séculos; trechos dos capítulos 1–39, como 13–14 e 24–27, também costumam ser datados depois do século VIII. Estudiosos conservadores continuam a defender a autoria de Isaías para todo o livro."
+  },
+  "events": {
+    "intro": "Os capítulos 1 a 39 se situam nos reinados de Uzias, Jotão, Acaz e Ezequias, quando a Assíria se expandia rumo ao Mediterrâneo; os capítulos 40 a 66 têm como pano de fundo o exílio na Babilônia, a vitória de Ciro e a volta a Jerusalém. A linha do tempo mostra esses dois cenários e as datas propostas para a escrita, segundo a tradição e segundo a pesquisa. As datas são aproximadas.",
+    "axis": [
+      -760,
+      -420
+    ],
+    "band": {
+      "label": "Exílio na Babilônia",
+      "from": -586,
+      "to": -538
+    },
+    "timeline": [
+      {
+        "label": "Atividade de Isaías",
+        "from": -740,
+        "to": -700,
+        "kind": "pessoa",
+        "note": "do ano da morte de Uzias (6:1), c. 740 a.C., até depois de 701 a.C."
+      },
+      {
+        "label": "Guerra de Síria e Efraim contra Judá",
+        "from": -734,
+        "to": -732,
+        "kind": "evento",
+        "note": "Acaz pede ajuda à Assíria (cap. 7–8)"
+      },
+      {
+        "label": "Queda de Samaria",
+        "from": -722,
+        "to": -720,
+        "kind": "evento",
+        "note": "fim do reino de Israel, c. 722/721 a.C."
+      },
+      {
+        "label": "Assíria toma Asdode",
+        "from": -711,
+        "to": -711,
+        "kind": "evento",
+        "note": "campanha de Sargão II (cap. 20)"
+      },
+      {
+        "label": "Campanha de Senaqueribe",
+        "from": -701,
+        "to": -701,
+        "kind": "evento",
+        "note": "cidades de Judá tomadas e Jerusalém cercada (cap. 36–37)"
+      },
+      {
+        "label": "Destruição de Jerusalém",
+        "from": -587,
+        "to": -586,
+        "kind": "evento",
+        "note": "pelos babilônios de Nabucodonosor"
+      },
+      {
+        "label": "Ciro toma a Babilônia",
+        "from": -539,
+        "to": -539,
+        "kind": "evento",
+        "note": "logo depois, os exilados podem voltar (cap. 44–45)"
+      },
+      {
+        "label": "Reconstrução do templo",
+        "from": -520,
+        "to": -515,
+        "kind": "evento",
+        "note": "no reinado do persa Dario I"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -740,
+        "to": -686,
+        "kind": "escrita",
+        "note": "Isaías, com a reunião dos oráculos no tempo de Ezequias"
+      },
+      {
+        "label": "Cap. 40–55, segundo muitos estudiosos",
+        "from": -550,
+        "to": -539,
+        "kind": "escrita",
+        "note": "fim do exílio na Babilônia"
+      },
+      {
+        "label": "Cap. 56–66, segundo muitos estudiosos",
+        "from": -538,
+        "to": -450,
+        "kind": "escrita",
+        "note": "período persa; datas discutidas"
+      }
+    ]
+  },
+  "context": "O livro atravessa três impérios. No século VIII a.C., a Assíria de Tiglate-Pileser III, Sargão II e Senaqueribe submeteu os reinos da Síria e da Palestina: Damasco caiu em 732, Samaria por volta de 722, e em 701 Judá foi devastado e Jerusalém cercada. Os anais de Senaqueribe dizem que ele prendeu Ezequias em Jerusalém “como um pássaro numa gaiola”, mas não afirmam ter tomado a cidade, e os relevos de seu palácio em Nínive mostram a conquista de Laquis. No século VI a.C., a Babilônia de Nabucodonosor destruiu Jerusalém e deportou parte da população; os capítulos 40 a 55 falam a esses exilados, ironizam os deuses babilônios Bel e Nebo e anunciam a chegada de Ciro, da Pérsia, que tomou a Babilônia em 539 a.C. e permitiu a volta dos povos deportados, política lembrada no chamado Cilindro de Ciro. Os últimos capítulos refletem a vida da comunidade sob o domínio persa, entre a reconstrução e as decepções. O Grande Rolo de Isaías, achado em Qumran (1QIsaᵃ) e copiado por volta de 150–100 a.C., traz os 66 capítulos e é um dos manuscritos bíblicos completos mais antigos que se conhecem.",
+  "places": [
+    "Jerusalém (Sião)",
+    "Judá e Efraim (Israel do norte)",
+    "Damasco e a Síria",
+    "Assíria: Nínive",
+    "Babilônia",
+    "Egito e Cuxe",
+    "Moabe, Edom, Tiro e Sidom"
+  ],
+  "themes": [
+    "santidade de Deus",
+    "justiça social",
+    "confiança em Deus diante dos impérios",
+    "remanescente",
+    "consolo e retorno do exílio",
+    "o servo do SENHOR",
+    "Deus único e crítica aos ídolos",
+    "salvação para as nações"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:4",
+      "text": "E ele julgará entre as nações, e repreenderá a muitos povos; e trocarão suas espadas em enxadas, e suas lanças em foices; não se levantará mais espada nação contra nação, nem aprenderão mais a fazer guerra."
+    },
+    {
+      "ref": "6:3",
+      "text": "E clamavam uns aos outros, dizendo: Santo! Santo! Santo é o SENHOR dos exércitos! Toda a terra está cheia de sua glória!"
+    },
+    {
+      "ref": "40:31",
+      "text": "Mas os que confiam no SENHOR renovarão as forças, subirão com asas como águias; correrão, e não se cansarão; caminharão, e não se fatigarão."
+    },
+    {
+      "ref": "53:5",
+      "text": "Porém ele foi ferido por nossas transgressões, e esmagado por nossas perversidades; o castigo que nos traz a paz estava sobre ele, e por suas feridas fomos curados."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. Em dois pontos a numeração das Bíblias em português difere da hebraica: 9:1 corresponde a 8:23 no texto hebraico, e 64:1 à segunda metade de 63:19, de modo que os versículos seguintes desses capítulos ficam deslocados em um número. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

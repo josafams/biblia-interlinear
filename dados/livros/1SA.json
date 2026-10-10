@@ -1,0 +1,205 @@
+{
+  "title_orig": "שְׁמוּאֵל א",
+  "title_orig_xlit": "Shemuel Alef",
+  "summary": "1 Samuel narra a passagem de Israel do tempo dos juízes para a monarquia. O livro começa com o nascimento de Samuel, filho de Ana, e com a queda da casa do sacerdote Eli, quando a arca de Deus é tomada pelos filisteus e depois devolvida. Samuel lidera o povo como juiz e profeta até que os anciãos pedem um rei; Saul é ungido, vence os primeiros combates, mas desobedece e é rejeitado. A segunda metade acompanha Davi: ungido em segredo, ele entra na corte de Saul, vence Golias, torna-se amigo de Jônatas e alvo do ciúme do rei, e passa anos como fugitivo. O livro termina com a morte de Saul e de seus filhos no monte Gilboa.",
+  "name": "Na Bíblia hebraica, 1 e 2 Samuel formam um só livro, chamado Shemuel, nome do profeta que unge os dois primeiros reis, embora ele morra antes do fim da primeira parte. A divisão em dois vem da Septuaginta, que juntava Samuel e Reis em quatro “Livros dos Reinos”; a Vulgata latina os chamou de 1 a 4 Reis, e por isso algumas Bíblias católicas antigas em português dão a 1 Samuel o nome de 1 Reis. A divisão em dois livros só passou às Bíblias hebraicas impressas no século XVI.",
+  "facts": [
+    [
+      "Posição",
+      "9º livro da Bíblia, entre os livros históricos; na Bíblia hebraica, primeira parte de Samuel, o terceiro dos Profetas Anteriores (Nevi’im Rishonim)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "narrativa histórica, com poemas (2:1–10)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Samuel e o fim da casa de Eli",
+      "from": 1,
+      "to": 7,
+      "text": "Nascimento e chamado de Samuel, a perda e a devolução da arca, e a vitória em Mispá."
+    },
+    {
+      "title": "O pedido de um rei e o reinado de Saul",
+      "from": 8,
+      "to": 15,
+      "text": "O povo pede um rei, Saul é escolhido e consolida o poder, mas acaba rejeitado depois de Gilgal e de Amaleque."
+    },
+    {
+      "title": "Davi na corte de Saul",
+      "from": 16,
+      "to": 20,
+      "text": "A unção de Davi, a vitória sobre Golias, a amizade com Jônatas e as tentativas de Saul de matá-lo."
+    },
+    {
+      "title": "Davi foragido e o fim de Saul",
+      "from": 21,
+      "to": 31,
+      "text": "Davi vive no deserto e entre os filisteus, poupa a vida de Saul duas vezes; Saul morre em Gilboa."
+    }
+  ],
+  "extra": {
+    "title": "Dois cânticos que emolduram Samuel",
+    "text": "A obra de Samuel, lida como um único livro, é aberta e fechada por poemas. No começo, o cântico de Ana (1 Samuel 2:1–10) celebra um Deus que abate os fortes e levanta os fracos e termina falando do “rei” e do “ungido”, antes mesmo de existir monarquia em Israel. No fim, o cântico de Davi e as suas últimas palavras (2 Samuel 22:1–23:7) retomam o mesmo vocabulário de livramento e de realeza."
+  },
+  "people": [
+    {
+      "name": "Ana e Elcana",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "pais de Samuel; Ana pede um filho em Siló e o consagra ao SENHOR"
+    },
+    {
+      "name": "Eli",
+      "chapters": "1–4",
+      "ch": 2,
+      "note": "sacerdote em Siló; seus filhos Hofni e Fineias morrem na batalha em que a arca é tomada"
+    },
+    {
+      "name": "Samuel",
+      "chapters": "1–16; 19; 25; 28",
+      "ch": 3,
+      "note": "profeta e último dos juízes; unge Saul e depois Davi"
+    },
+    {
+      "name": "Saul",
+      "chapters": "9–31",
+      "ch": 9,
+      "note": "da tribo de Benjamim; primeiro rei de Israel"
+    },
+    {
+      "name": "Jônatas",
+      "chapters": "13–31",
+      "ch": 14,
+      "note": "filho de Saul, guerreiro e amigo fiel de Davi"
+    },
+    {
+      "name": "Davi",
+      "chapters": "16–31",
+      "ch": 16,
+      "note": "o filho mais novo de Jessé, de Belém; ungido para suceder Saul"
+    },
+    {
+      "name": "Golias",
+      "chapters": "17",
+      "ch": 17,
+      "note": "o guerreiro filisteu de Gate derrotado por Davi"
+    },
+    {
+      "name": "Mical",
+      "chapters": "18–19; 25",
+      "ch": 18,
+      "note": "filha de Saul e esposa de Davi; ajuda-o a fugir"
+    },
+    {
+      "name": "Abigail",
+      "chapters": "25",
+      "ch": 25,
+      "note": "esposa de Nabal, evita que Davi se vingue e depois se casa com ele"
+    },
+    {
+      "name": "Aquis",
+      "chapters": "21; 27–29",
+      "ch": 27,
+      "note": "rei filisteu de Gate, que dá a Davi a cidade de Ziclague"
+    }
+  ],
+  "writing": {
+    "tradition": "O Talmude babilônico (Bava Batra 14b–15a) atribui a Samuel a escrita do livro que leva o seu nome. Como a morte de Samuel é narrada ainda no primeiro livro (1 Samuel 25:1), a mesma tradição diz que a obra foi completada pelos profetas Gade e Natã, apoiando-se em 1 Crônicas 29:29, que menciona registros de Samuel, de Natã e de Gade sobre Davi. Nessa leitura, o livro teria sido escrito entre o fim do século XI e o século X a.C., por volta de 1020–970 a.C.",
+    "academic": "A maioria dos pesquisadores entende que Samuel reúne blocos narrativos mais antigos: uma história da arca (1 Samuel 4–6; 2 Samuel 6), uma história da ascensão de Davi (1 Samuel 16 a 2 Samuel 5) e o relato da corte de Davi (2 Samuel 9–20 e 1 Reis 1–2). Esses blocos foram incorporados à chamada História Deuteronomista (Josué a Reis), redigida entre o fim do século VII e o exílio, c. 620–550 a.C. A data dos blocos antigos é discutida: alguns os situam perto dos fatos, no século X a.C., outros bem depois. O texto hebraico tradicional de Samuel teve perdas na cópia; os fragmentos achados em Qumrã e a Septuaginta preservam leituras diferentes, e em alguns trechos, como a história de Golias, a Septuaginta é bem mais curta."
+  },
+  "events": {
+    "intro": "1 Samuel cobre o fim do período dos juízes e o reinado de Saul, até a sua morte, por volta de 1010 a.C. A duração do reinado de Saul é incerta: em 13:1 o texto hebraico tem lacunas nos números, Atos 13:21 fala em quarenta anos, e muitos historiadores propõem um reinado bem mais curto. A pesquisa situa esses acontecimentos na passagem da Idade do Ferro I para a Idade do Ferro II, quando os filisteus dominavam a planície costeira e as tribos viviam em aldeias na região montanhosa. Há debate sobre o tamanho e a organização desses primeiros reinos. As cronologias dos reis variam entre autores: os números do texto hebraico nem sempre se encaixam, e cada reconstrução resolve as diferenças de um jeito, com co-regências e formas diversas de contar o primeiro ano de reinado. As datas desta linha do tempo são aproximadas e seguem uma das reconstruções mais usadas.",
+    "axis": [
+      -1200,
+      -500
+    ],
+    "band": {
+      "label": "Idade do Ferro I",
+      "from": -1200,
+      "to": -1000
+    },
+    "timeline": [
+      {
+        "label": "Samuel, juiz e profeta",
+        "from": -1070,
+        "to": -1015,
+        "kind": "pessoa",
+        "note": "período muito aproximado; o texto não dá datas para Samuel"
+      },
+      {
+        "label": "Saul, rei de Israel",
+        "from": -1050,
+        "to": -1010,
+        "kind": "pessoa",
+        "note": "segundo a contagem tradicional de 40 anos (Atos 13:21); muitos propõem um reinado mais curto"
+      },
+      {
+        "label": "Davi, do nascimento à unção em Hebrom",
+        "from": -1040,
+        "to": -1010,
+        "kind": "pessoa",
+        "note": "tinha 30 anos ao começar a reinar (2 Samuel 5:4)"
+      },
+      {
+        "label": "Batalha de Gilboa",
+        "from": -1010,
+        "to": -1010,
+        "kind": "evento",
+        "note": "morte de Saul e de três de seus filhos (cap. 31)"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -1020,
+        "to": -970,
+        "kind": "escrita",
+        "note": "Samuel, completado por Gade e Natã"
+      },
+      {
+        "label": "Redação, segundo a pesquisa",
+        "from": -620,
+        "to": -550,
+        "kind": "escrita",
+        "note": "História Deuteronomista, sobre fontes mais antigas"
+      }
+    ]
+  },
+  "context": "Os acontecimentos se passam sobretudo na região montanhosa central de Canaã, no território de Benjamim e de Efraim: Siló, onde ficava a arca; Ramá, cidade de Samuel; e Gibeá, a base de Saul. Na planície do litoral estavam os filisteus, organizados em cinco cidades (Gaza, Asdode, Asquelom, Gate e Ecrom, 6:17), que segundo 13:19–22 controlavam o trabalho com metal. A fuga de Davi o leva para o sul, às terras de Judá, ao deserto de Zife e a En-Gedi, perto do mar Morto, e depois a Ziclague, sob a proteção de Gate. Escavações no vale de Elá, como as de Khirbet Qeiyafa, uma cidade fortificada de c. 1000 a.C., alimentam o debate sobre quem governava a região nessa época.",
+  "places": [
+    "Siló e Ramá",
+    "Mispá, Gilgal e Gibeá",
+    "Belém",
+    "Vale de Elá",
+    "Nobe, Adulão, En-Gedi e o deserto de Zife",
+    "Cidades filisteias: Asdode, Gate, Ecrom; Ziclague",
+    "Monte Gilboa e Bete-Seã"
+  ],
+  "themes": [
+    "monarquia e seus riscos",
+    "escolha e rejeição",
+    "obediência",
+    "a arca de Deus",
+    "profeta e rei",
+    "amizade e lealdade"
+  ],
+  "key_verses": [
+    {
+      "ref": "3:10",
+      "text": "E veio o SENHOR, e ficou ali, e chamou como das outras vezes: Samuel, Samuel! Então Samuel disse: Fala, que o teu servo está ouvindo."
+    },
+    {
+      "ref": "8:7",
+      "text": "E disse o SENHOR a Samuel: Ouve a voz do povo em tudo o que te disserem: porque não rejeitaram a ti, mas sim a mim me rejeitaram, para que eu não reine sobre eles."
+    },
+    {
+      "ref": "16:7",
+      "text": "E o SENHOR respondeu a Samuel: Não olhes à sua aparência, nem à sua grande estatura, porque eu o rejeito; porque o SENHOR olha não o que o homem olha; pois que o homem olha o que está diante de seus olhos, mas o SENHOR olha o coração."
+    }
+  ],
+  "note": "As datas são aproximadas e as cronologias dos reis variam entre autores. Em 13:1, o texto hebraico tradicional não traz a idade de Saul ao começar a reinar e dá um número curto demais para o seu reinado; as traduções preenchem a lacuna de modos diferentes. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

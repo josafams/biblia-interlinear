@@ -1,0 +1,222 @@
+{
+  "title_orig": "שְׁמוּאֵל ב",
+  "title_orig_xlit": "Shemuel Bet",
+  "summary": "2 Samuel é a história do reinado de Davi. Depois de lamentar Saul e Jônatas, Davi reina sobre Judá em Hebrom, enquanto Is-Bosete, filho de Saul, governa as outras tribos; após uma guerra entre as duas casas, Davi é reconhecido rei de todo Israel, conquista Jerusalém e leva para lá a arca. Pelo profeta Natã, recebe a promessa de uma dinastia duradoura. O adultério com Bate-Seba e a morte de Urias marcam uma virada: seguem-se crises na própria família, como a violência de Amnom contra Tamar e a revolta de Absalão, que obriga Davi a fugir de Jerusalém. Os últimos capítulos reúnem episódios, listas e poemas de várias épocas do reinado.",
+  "name": "Na Bíblia hebraica, 1 e 2 Samuel formam um só livro, Shemuel, que leva o nome do profeta que ungiu Saul e Davi, embora Samuel já tenha morrido quando esta segunda parte começa. A divisão em dois vem da Septuaginta, que chamava este livro de 2 Reinos; na Vulgata latina ele é 2 Reis, nome usado também em algumas Bíblias católicas antigas em português.",
+  "facts": [
+    [
+      "Posição",
+      "10º livro da Bíblia, entre os livros históricos; na Bíblia hebraica, segunda parte de Samuel, o terceiro dos Profetas Anteriores (Nevi’im Rishonim)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "narrativa histórica, com poemas (1:19–27; 22; 23:1–7)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Davi rei em Hebrom",
+      "from": 1,
+      "to": 4,
+      "text": "O lamento por Saul e Jônatas, o reinado sobre Judá e a guerra com a casa de Saul."
+    },
+    {
+      "title": "Davi em Jerusalém",
+      "from": 5,
+      "to": 10,
+      "text": "Rei de todo Israel, Davi toma Jerusalém, leva a arca, recebe a promessa de Natã e vence os vizinhos."
+    },
+    {
+      "title": "Bate-Seba e as crises do reinado",
+      "from": 11,
+      "to": 20,
+      "text": "O pecado de Davi, a repreensão de Natã, a tragédia de Amnom e Tamar e as revoltas de Absalão e de Seba."
+    },
+    {
+      "title": "Apêndices",
+      "from": 21,
+      "to": 24,
+      "text": "Episódios, listas de guerreiros e dois poemas de Davi, fora da ordem cronológica."
+    }
+  ],
+  "extra": {
+    "title": "Os apêndices em forma de espelho",
+    "text": "Os capítulos 21 a 24 interrompem a narrativa, que continua em 1 Reis 1, e se organizam em pares: dois relatos de calamidade nacional e de como ela termina (21:1–14 e 24), duas listas de guerreiros e de suas façanhas (21:15–22 e 23:8–39) e, no centro, dois poemas atribuídos a Davi (22 e 23:1–7). O poema do capítulo 22 aparece também, com pequenas diferenças, como o Salmo 18."
+  },
+  "people": [
+    {
+      "name": "Davi",
+      "chapters": "1–24",
+      "ch": 2,
+      "note": "rei de Judá em Hebrom e depois de todo Israel, em Jerusalém"
+    },
+    {
+      "name": "Joabe",
+      "chapters": "2–24",
+      "ch": 2,
+      "note": "sobrinho de Davi e comandante do exército; mata Abner e Absalão"
+    },
+    {
+      "name": "Abner",
+      "chapters": "2–3",
+      "ch": 3,
+      "note": "general de Saul que sustenta Is-Bosete e depois negocia com Davi"
+    },
+    {
+      "name": "Is-Bosete",
+      "chapters": "2–4",
+      "ch": 4,
+      "note": "filho de Saul, rei sobre as tribos do norte por dois anos"
+    },
+    {
+      "name": "Mical",
+      "chapters": "3; 6",
+      "ch": 6,
+      "note": "filha de Saul, devolvida a Davi; critica a sua dança diante da arca"
+    },
+    {
+      "name": "Natã",
+      "chapters": "7; 12",
+      "ch": 7,
+      "note": "profeta que anuncia a dinastia de Davi e depois o confronta"
+    },
+    {
+      "name": "Mefibosete",
+      "chapters": "4; 9; 16; 19",
+      "ch": 9,
+      "note": "filho de Jônatas, acolhido à mesa do rei"
+    },
+    {
+      "name": "Bate-Seba e Urias",
+      "chapters": "11–12",
+      "ch": 11,
+      "note": "a mulher de Urias, o heteu; Davi a toma e manda matar o marido"
+    },
+    {
+      "name": "Amnom e Tamar",
+      "chapters": "13",
+      "ch": 13,
+      "note": "filhos de Davi; Amnom violenta a meia-irmã e é morto por Absalão"
+    },
+    {
+      "name": "Absalão",
+      "chapters": "13–19",
+      "ch": 15,
+      "note": "filho de Davi que se revolta e se faz aclamar rei em Hebrom"
+    },
+    {
+      "name": "Aitofel e Husai",
+      "chapters": "15–17",
+      "ch": 17,
+      "note": "conselheiros que disputam a orientação de Absalão"
+    },
+    {
+      "name": "Simei",
+      "chapters": "16; 19",
+      "ch": 16,
+      "note": "benjamita da casa de Saul que amaldiçoa Davi na fuga"
+    }
+  ],
+  "writing": {
+    "tradition": "O Talmude babilônico (Bava Batra 14b–15a) atribui a Samuel a escrita do livro que leva o seu nome. Como a morte de Samuel é narrada ainda no primeiro livro (1 Samuel 25:1), a mesma tradição diz que a obra foi completada pelos profetas Gade e Natã, apoiando-se em 1 Crônicas 29:29, que menciona registros de Samuel, de Natã e de Gade sobre Davi. Nessa leitura, esta segunda parte teria sido concluída no tempo de Davi ou logo depois, no século X a.C., por volta de 1000–930 a.C.",
+    "academic": "Para a maioria dos pesquisadores, 2 Samuel combina o fim da história da ascensão de Davi (caps. 1–5), outras tradições sobre o reinado e o relato da corte de Davi (caps. 9–20, que continua em 1 Reis 1–2), muitas vezes chamado de “narrativa da sucessão” por girar em torno de quem herdará o trono. Esse relato é admirado pelo realismo e pela ausência de milagres; alguns o datam do tempo de Salomão, outros de séculos depois. Os apêndices (caps. 21–24) reúnem material de origens diversas. O conjunto foi integrado à História Deuteronomista, redigida entre o fim do século VII e o exílio, c. 620–550 a.C."
+  },
+  "events": {
+    "intro": "Segundo 2 Samuel 5:4–5, Davi reinou quarenta anos: sete e meio em Hebrom e trinta e três em Jerusalém. As cronologias mais usadas situam esse reinado por volta de 1010–970 a.C., contando para trás a partir de datas mais firmes do período dos reis. Fora da Bíblia, a referência mais antiga à dinastia é a estela de Tel Dã, do século IX a.C., que menciona a “casa de Davi”. Os pesquisadores discutem o tamanho e a riqueza do reino de Davi: alguns pensam num estado organizado, outros numa chefia regional mais modesta, com Jerusalém ainda pequena. As cronologias dos reis variam entre autores: os números do texto hebraico nem sempre se encaixam, e cada reconstrução resolve as diferenças de um jeito, com co-regências e formas diversas de contar o primeiro ano de reinado. As datas desta linha do tempo são aproximadas e seguem uma das reconstruções mais usadas.",
+    "axis": [
+      -1050,
+      -500
+    ],
+    "timeline": [
+      {
+        "label": "Davi",
+        "from": -1040,
+        "to": -970,
+        "kind": "pessoa",
+        "note": "vive 70 anos: começa a reinar aos 30 e reina 40 (5:4)"
+      },
+      {
+        "label": "Davi rei de Judá, em Hebrom",
+        "from": -1010,
+        "to": -1003,
+        "kind": "evento",
+        "note": "sete anos e seis meses (2:11; 5:5)"
+      },
+      {
+        "label": "Is-Bosete, rei sobre Israel",
+        "from": -1010,
+        "to": -1008,
+        "kind": "pessoa",
+        "note": "reina dois anos a partir de Maanaim (2:8–10)"
+      },
+      {
+        "label": "Davi rei de todo Israel, em Jerusalém",
+        "from": -1003,
+        "to": -970,
+        "kind": "evento",
+        "note": "trinta e três anos (5:5)"
+      },
+      {
+        "label": "Estela de Tel Dã",
+        "from": -850,
+        "to": -800,
+        "kind": "evento",
+        "note": "inscrição aramaica que menciona a “casa de Davi”"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -1000,
+        "to": -930,
+        "kind": "escrita",
+        "note": "obra completada pelos profetas Gade e Natã"
+      },
+      {
+        "label": "Redação, segundo a pesquisa",
+        "from": -620,
+        "to": -550,
+        "kind": "escrita",
+        "note": "História Deuteronomista, sobre fontes mais antigas"
+      }
+    ]
+  },
+  "context": "Davi começa em Hebrom, principal cidade de Judá, no sul da região montanhosa. Jerusalém, até então uma cidade dos jebuseus entre Judá e Benjamim, torna-se a capital: por não pertencer a nenhuma tribo, servia de ponto de união entre o sul e o norte. As campanhas do capítulo 8 e dos capítulos 10 a 12 envolvem os povos vizinhos: filisteus a oeste; moabitas, amonitas e edomitas a leste e ao sul do Jordão e do mar Morto; e os reinos arameus (a “Síria” da tradução) ao norte. Na fuga diante de Absalão, Davi atravessa o Jordão e se abriga em Maanaim, em Gileade.",
+  "places": [
+    "Hebrom",
+    "Jerusalém (Sião, a cidade de Davi)",
+    "Maanaim, em Gileade",
+    "Rabá, capital dos amonitas",
+    "Monte das Oliveiras e o vale do Jordão",
+    "A eira de Araúna"
+  ],
+  "themes": [
+    "aliança com Davi",
+    "poder e responsabilidade",
+    "pecado e consequência",
+    "família e sucessão",
+    "Jerusalém e a arca",
+    "lealdade e traição"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:27",
+      "text": "Como caíram os valentes, E pereceram as armas de guerra!"
+    },
+    {
+      "ref": "5:4",
+      "text": "Era Davi de trinta anos quando começou a reinar, e reinou quarenta anos."
+    },
+    {
+      "ref": "7:16",
+      "text": "E será firmada tua casa e teu reino para sempre diante de teu rosto; e teu trono será estável eternamente."
+    },
+    {
+      "ref": "22:2",
+      "text": "E disse: O SENHOR é minha rocha, e minha fortaleza, e meu libertador;"
+    }
+  ],
+  "note": "As datas são aproximadas e as cronologias dos reis variam entre autores. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

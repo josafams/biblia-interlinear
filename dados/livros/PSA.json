@@ -1,0 +1,211 @@
+{
+  "title_orig": "תְּהִלִּים",
+  "title_orig_xlit": "Tehillim",
+  "summary": "Salmos é a grande coleção de poemas de oração e de canto de Israel: 150 textos que falam a Deus e falam de Deus. Há hinos que celebram o Criador e o Rei de toda a terra, lamentos de pessoas e do povo em perigo, ações de graças por livramentos, salmos sobre o rei de Israel e sobre Sião, meditações sobre a Lei e reflexões de sabedoria. Muitas vozes se cruzam: o queixume de quem se sente abandonado, a confissão de culpa, a confiança, a alegria da festa e até o pedido de vingança contra os opressores. A coleção se divide em cinco livros e caminha, no conjunto, do lamento ao louvor, terminando numa série de salmos que começam e terminam com “Aleluia”.",
+  "name": "Em hebraico o livro se chama Tehillim, “louvores”, palavra da mesma raiz de “aleluia” (“louvai a Yah”). O nome em português vem do grego Psalmoi, título usado na Septuaginta: um psalmos era um canto acompanhado de instrumento de cordas. Outra forma grega, Psaltērion, nome de um instrumento de cordas, deu origem a “Saltério”, nome tradicional da coleção.",
+  "facts": [
+    [
+      "Posição",
+      "entre os livros poéticos e sapienciais, depois de Jó; na Bíblia hebraica, entre os Escritos (Ketuvim), que costuma abrir"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "poesia: hinos, lamentos, ações de graças, orações e salmos de sabedoria"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Livro I",
+      "from": 1,
+      "to": 41,
+      "text": "Abre com dois salmos de introdução, sobre os dois caminhos (1) e sobre o rei ungido (2). Quase todos os demais trazem o nome de Davi no título, e predominam as súplicas individuais. Termina com uma bênção (41:13)."
+    },
+    {
+      "title": "Livro II",
+      "from": 42,
+      "to": 72,
+      "text": "Começa com salmos dos filhos de Coré (42–49), segue com um de Asafe (50) e outro grupo atribuído a Davi (51–71). Termina com um salmo pelo rei, uma bênção e a nota “aqui terminam as orações de Davi” (72:18–20)."
+    },
+    {
+      "title": "Livro III",
+      "from": 73,
+      "to": 89,
+      "text": "Reúne salmos de Asafe (73–83) e dos filhos de Coré (84–88), com muitos lamentos pela destruição do santuário e pela crise do povo. Termina com o salmo 89, que pergunta pela aliança com Davi, e uma bênção (89:52)."
+    },
+    {
+      "title": "Livro IV",
+      "from": 90,
+      "to": 106,
+      "text": "Abre com a oração atribuída a Moisés (90) e reúne os salmos que proclamam que o SENHOR reina (93–99). Os salmos 105 e 106 recontam a história de Israel; a bênção final está em 106:48."
+    },
+    {
+      "title": "Livro V",
+      "from": 107,
+      "to": 150,
+      "text": "Inclui o longo salmo da Lei (119), os Cânticos dos degraus (120–134), um último grupo atribuído a Davi (138–145) e os cinco salmos de “Aleluia” que fecham a coleção (146–150)."
+    }
+  ],
+  "extra": {
+    "title": "Paralelismo e acrósticos",
+    "text": "A poesia dos Salmos não se apoia em rima, mas no paralelismo: um verso é seguido por outro que repete a ideia com outras palavras (“Deus é nosso refúgio e força; socorro oportuno nas angústias”, 46:1), faz contraste com ela ou a desenvolve. Vários salmos são acrósticos, em que linhas ou estrofes começam com as letras do alfabeto hebraico na ordem: 9–10 (de forma incompleta), 25, 34, 37, 111, 112, 119 e 145. O caso mais elaborado é o salmo 119, o mais longo da Bíblia: são 22 estrofes, uma para cada letra, e os oito versículos de cada estrofe começam todos com a mesma letra, o que soma 176 versículos; a BLIVRE indica o nome da letra no início de cada estrofe (Álefe, Bete…). Outros recursos são os refrões (42–43; 46; 107; 136) e a palavra Selá, de sentido incerto, talvez uma indicação musical."
+  },
+  "people": [
+    {
+      "name": "Davi",
+      "chapters": "3–41; 51–70; 138–145 e outros",
+      "ch": 3,
+      "note": "rei de Israel, nomeado no título de 73 salmos no texto hebraico; vários títulos ligam o salmo a episódios da sua vida (3; 18; 34; 51; 52; 54; 56; 57; 59; 60; 63; 142)"
+    },
+    {
+      "name": "Asafe",
+      "chapters": "50; 73–83",
+      "ch": 73,
+      "note": "músico levita do tempo de Davi, segundo Crônicas; seu nome está no título de 12 salmos, talvez indicando uma família ou grupo de cantores"
+    },
+    {
+      "name": "Os filhos de Coré",
+      "chapters": "42–49; 84–85; 87–88",
+      "ch": 42,
+      "note": "grupo de cantores levitas, descendentes de Coré; 11 salmos levam o seu nome"
+    },
+    {
+      "name": "Salomão",
+      "chapters": "72; 127",
+      "ch": 72,
+      "note": "filho e sucessor de Davi; a expressão do título pode significar “de Salomão” ou “para Salomão”"
+    },
+    {
+      "name": "Moisés",
+      "chapters": "90",
+      "ch": 90,
+      "note": "chamado “homem de Deus” no título do único salmo atribuído a ele"
+    },
+    {
+      "name": "Hemã e Etã, os ezraítas",
+      "chapters": "88–89",
+      "ch": 88,
+      "note": "sábios e músicos citados também em 1 Reis 4:31 e em Crônicas; cada um dá nome a um salmo"
+    },
+    {
+      "name": "Jedutum",
+      "chapters": "39; 62; 77",
+      "ch": 39,
+      "note": "músico levita, segundo Crônicas; nos títulos, a expressão “conforme Jedutum” pode indicar o autor, um estilo ou um grupo de cantores"
+    }
+  ],
+  "writing": {
+    "tradition": "Pelos títulos, as tradições judaica e cristã atribuem a maior parte dos Salmos a Davi, lembrado como “o suave em cânticos de Israel” (2 Samuel 23:1) e organizador da música do culto (1 Crônicas 16; 25). O próprio livro reconhece outros autores: Asafe, os filhos de Coré, Salomão, Moisés, Hemã e Etã. Segundo o Talmude, Davi compôs o livro com a contribuição de dez autores mais antigos, entre eles Adão, Melquisedeque, Abraão e Moisés. O Novo Testamento cita salmos como palavras de Davi, por exemplo os salmos 2, 16 e 110. Nessa leitura, a coleção começou a ser composta por volta de 1000 a.C. e foi completada com salmos posteriores, como os do exílio.",
+    "academic": "Os estudiosos veem os Salmos como uma coleção formada ao longo de muitos séculos, a partir de coleções menores: as de Davi, de Asafe, dos filhos de Coré, os Cânticos dos degraus e os salmos de “Aleluia”. Muitos consideram os títulos acréscimos posteriores aos poemas, e a expressão hebraica traduzida por “de Davi” pode indicar autoria, dedicação ou ligação com uma coleção real. Alguns salmos podem vir do tempo da monarquia, como os salmos sobre o rei, e o salmo 29 tem paralelos com a poesia cananeia de Ugarit; outros pressupõem o exílio (137) ou a volta a Sião (126). Nos salmos 42 a 83 predomina o nome “Deus” (Elohim) em lugar de “SENHOR”, sinal de uma edição própria desse bloco. A forma final costuma ser situada entre os séculos V e II a.C.; manuscritos de Qumran mostram que a ordem dos livros IV e V ainda variava em alguns lugares no século I."
+  },
+  "events": {
+    "intro": "Os Salmos não contam uma história, mas vários títulos remetem a episódios da vida de Davi, e alguns poemas aludem a acontecimentos do povo, como a destruição de Jerusalém e o exílio (74; 79; 137) e a volta a Sião (126). A linha do tempo mostra os reis citados nos títulos, pela cronologia mais usada, esses acontecimentos, as propostas para a composição da coleção e os manuscritos de Qumran. As datas são aproximadas.",
+    "axis": [
+      -1100,
+      100
+    ],
+    "band": {
+      "label": "Primeiro templo",
+      "from": -960,
+      "to": -586
+    },
+    "timeline": [
+      {
+        "label": "Davi",
+        "from": -1010,
+        "to": -970,
+        "kind": "pessoa",
+        "note": "reinado; 73 salmos levam o seu nome"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -1010,
+        "to": -931,
+        "kind": "escrita",
+        "note": "Davi compõe a maior parte; outros salmos são atribuídos a Moisés, Salomão, Asafe e aos filhos de Coré"
+      },
+      {
+        "label": "Salomão",
+        "from": -970,
+        "to": -931,
+        "kind": "pessoa",
+        "note": "reinado; constrói o templo de Jerusalém (Sl 72; 127)"
+      },
+      {
+        "label": "Composição dos salmos, segundo a pesquisa",
+        "from": -1000,
+        "to": -300,
+        "kind": "escrita",
+        "note": "poemas de épocas diversas, da monarquia ao período persa"
+      },
+      {
+        "label": "Destruição de Jerusalém e exílio",
+        "from": -586,
+        "to": -539,
+        "kind": "evento",
+        "note": "pano de fundo de salmos como o 74, o 79 e o 137"
+      },
+      {
+        "label": "Volta do exílio e segundo templo",
+        "from": -538,
+        "to": -515,
+        "kind": "evento",
+        "note": "época a que se costuma ligar o salmo 126"
+      },
+      {
+        "label": "Forma final, segundo a pesquisa",
+        "from": -400,
+        "to": -150,
+        "kind": "escrita",
+        "note": "reunião em cinco livros; a ordem final do último terço ainda variava"
+      },
+      {
+        "label": "Manuscritos de Qumran",
+        "from": -150,
+        "to": 68,
+        "kind": "evento",
+        "note": "dezenas de cópias de salmos, algumas com ordem diferente nos livros IV e V"
+      }
+    ]
+  },
+  "context": "Boa parte dos Salmos nasceu e foi usada no culto do templo de Jerusalém, onde, segundo Crônicas, levitas cantores e músicos acompanhavam os sacrifícios e as festas. Os títulos guardam vestígios desse uso: menções ao “regente”, a instrumentos de cordas e de sopro, a melodias conhecidas (“a cerva da manhã”, “os lírios”) e a ocasiões como a dedicação da casa (30) e o sábado (92). Os Cânticos dos degraus (120–134) costumam ser ligados às peregrinações a Jerusalém, e os salmos 113 a 118, o Hallel, eram cantados nas grandes festas. A poesia dos Salmos compartilha formas e imagens com os hinos e orações do Antigo Oriente Próximo, como os textos de Ugarit e os hinos egípcios ao sol, comparados com o salmo 104. Depois do exílio, a coleção passou a servir também à oração pessoal e ao estudo, e tornou-se o livro de orações da sinagoga e da igreja.",
+  "places": [
+    "Jerusalém e o monte Sião",
+    "o templo e seus átrios",
+    "o deserto de Judá (63)",
+    "o Jordão e o monte Hermom (42:6; 133:3)",
+    "o Egito e o mar Vermelho (78; 106; 114)",
+    "os rios da Babilônia (137)"
+  ],
+  "themes": [
+    "louvor",
+    "lamento e súplica",
+    "confiança",
+    "o reinado de Deus",
+    "o rei e Sião",
+    "a Lei",
+    "o justo e o perverso"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:1–2",
+      "text": "Bem-aventurado o homem que não anda no conselho dos maus, nem fica parado no caminho dos pecadores, nem se senta junto dos escarnecedores. Mas sim, que tem seu prazer na Lei do SENHOR; e medita em sua Lei de dia e de noite."
+    },
+    {
+      "ref": "23:1",
+      "text": "Salmo de Davi: O SENHOR é meu pastor, nada me faltará."
+    },
+    {
+      "ref": "46:1",
+      "text": "Deus é nosso refúgio e força; socorro oportuno nas angústias."
+    },
+    {
+      "ref": "150:6",
+      "text": "Tudo quanto tem fôlego, louve ao SENHOR! Aleluia!"
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. Na BLIVRE, o título de muitos salmos aparece como versículo 0, separado do poema; em outros, o título vem no início do versículo 1. A Bíblia hebraica conta o título como versículo 1 (às vezes 1–2), por isso a numeração dos versículos pode ficar uma ou duas unidades acima. A Septuaginta e a Vulgata juntam os salmos 9 e 10 e os salmos 114 e 115 e dividem os salmos 116 e 147; por isso, entre os salmos 10 e 147, sua numeração costuma ficar um número abaixo, e a Septuaginta tem ainda um salmo 151. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

@@ -1,0 +1,158 @@
+{
+  "title_orig": "הוֹשֵׁעַ",
+  "title_orig_xlit": "Hoshea",
+  "summary": "Oseias profetizou no Reino do Norte, Israel, nas últimas décadas antes da sua queda diante da Assíria. Os capítulos 1 a 3 usam o próprio casamento do profeta com uma mulher infiel como imagem da relação entre Deus e Israel, que se volta para Baal e outros deuses. Os capítulos 4 a 14 reúnem oráculos contra a idolatria, a corrupção de sacerdotes e reis e as alianças com o Egito e a Assíria. Apesar das acusações, o livro insiste no amor persistente de Deus, que chama o povo de volta e promete curá-lo.",
+  "name": "O livro leva o nome do profeta. Hoshea vem da raiz hebraica que significa “salvar” e pode ser entendido como “salvação”; é o mesmo nome que Josué tinha antes de Moisés mudá-lo (Números 13:16) e o do último rei de Israel.",
+  "facts": [
+    [
+      "Posição",
+      "1º dos Doze Profetas Menores"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "profecia (oráculos em poesia, com narrativa nos capítulos 1 e 3)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "O casamento do profeta",
+      "from": 1,
+      "to": 3,
+      "text": "Oseias se casa com Gômer, dá aos filhos nomes que anunciam juízo e depois resgata a mulher, numa imagem da infidelidade de Israel e da fidelidade de Deus."
+    },
+    {
+      "title": "A acusação contra Israel",
+      "from": 4,
+      "to": 10,
+      "text": "Falta de conhecimento de Deus, idolatria, reis feitos sem consulta a Deus e alianças com potências estrangeiras."
+    },
+    {
+      "title": "O amor que não desiste",
+      "from": 11,
+      "to": 14,
+      "text": "Deus lembra o cuidado com Israel desde o Egito, anuncia a queda da Samaria e termina com um chamado à conversão e uma promessa de cura."
+    }
+  ],
+  "people": [
+    {
+      "name": "Oseias",
+      "chapters": "1–14",
+      "ch": 1,
+      "note": "profeta, filho de Beeri"
+    },
+    {
+      "name": "Gômer",
+      "chapters": "1; 3",
+      "ch": 1,
+      "note": "esposa do profeta, filha de Diblaim"
+    },
+    {
+      "name": "Jezreel, Não-Amada e Não-Meu-Povo",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "os filhos, cujos nomes simbólicos são revertidos em 2:23"
+    },
+    {
+      "name": "Efraim",
+      "chapters": "4–14",
+      "ch": 5,
+      "note": "nome da tribo principal, usado para o Reino do Norte"
+    }
+  ],
+  "writing": {
+    "tradition": "A tradição atribui o livro ao profeta Oseias, filho de Beeri, que atuou nos dias de Jeroboão II, rei de Israel, e dos reis de Judá Uzias, Jotão, Acaz e Ezequias (1:1), aproximadamente entre 755 e 725 a.C.",
+    "academic": "Os estudiosos em geral consideram que a maior parte dos oráculos vem de Oseias e reflete a crise do Reino do Norte antes de 722 a.C. Depois da queda da Samaria, o material teria sido levado a Judá e editado ali: as menções a Judá e algumas promessas de restauração são, para muitos, acréscimos dessa fase, embora outros as atribuam ao próprio profeta. O hebraico do livro é difícil e o texto tem várias passagens obscuras."
+  },
+  "events": {
+    "intro": "O título situa o profeta nos reinados de Jeroboão II em Israel e de Uzias a Ezequias em Judá. Os anos de reinado deste período são reconstruídos de modo um pouco diferente pelos historiadores; as datas abaixo são aproximadas.",
+    "axis": [
+      -800,
+      -690
+    ],
+    "timeline": [
+      {
+        "label": "Jeroboão II",
+        "from": -786,
+        "to": -746,
+        "kind": "pessoa",
+        "note": "rei de Israel; período de prosperidade (datas aproximadas)"
+      },
+      {
+        "label": "Oseias, o profeta",
+        "from": -755,
+        "to": -725,
+        "kind": "pessoa",
+        "note": "atuação no Reino do Norte, aproximada"
+      },
+      {
+        "label": "Tiglate-Pileser III",
+        "from": -745,
+        "to": -727,
+        "kind": "pessoa",
+        "note": "rei da Assíria; avanço sobre a Síria e Israel"
+      },
+      {
+        "label": "Guerra siro-efraimita",
+        "from": -735,
+        "to": -732,
+        "kind": "evento",
+        "note": "Israel e Damasco contra Judá; Judá pede ajuda à Assíria"
+      },
+      {
+        "label": "Queda da Samaria",
+        "from": -722,
+        "to": -720,
+        "kind": "evento",
+        "note": "fim do Reino do Norte; deportação para a Assíria"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -755,
+        "to": -720,
+        "kind": "escrita",
+        "note": "Oseias, ao longo de sua atuação"
+      },
+      {
+        "label": "Edição em Judá, segundo a pesquisa",
+        "from": -720,
+        "to": -700,
+        "kind": "escrita",
+        "note": "primeira coleção editada depois da queda do Norte; retoques posteriores possíveis"
+      }
+    ]
+  },
+  "context": "Oseias começou a atuar num período de prosperidade sob Jeroboão II, mas a maior parte de seus oráculos reflete os anos caóticos que vieram depois: reis assassinados em sequência, partidos favoráveis ao Egito ou à Assíria e a pressão crescente do império assírio, que tomou a Samaria em 722 a.C. O culto a Baal, divindade cananeia ligada à chuva e à fertilidade, e os santuários de Betel e Gilgal são alvos frequentes. O profeta recorre muito à história antiga de Israel — Jacó, o Egito, o deserto — para mostrar a infidelidade do presente.",
+  "places": [
+    "Samaria",
+    "Betel (chamada de Bete-Áven)",
+    "Gilgal",
+    "Jezreel",
+    "Egito e Assíria"
+  ],
+  "themes": [
+    "aliança como casamento",
+    "infidelidade e idolatria",
+    "conhecimento de Deus",
+    "amor persistente (hesed)",
+    "conversão e cura"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:19–20",
+      "text": "E te farei minha esposa para sempre; eu te farei minha esposa em justiça, juízo, bondade e misericórdias. E te farei minha esposa em fidelidade, e tu conhecerás ao SENHOR."
+    },
+    {
+      "ref": "6:6",
+      "text": "Pois eu quero misericórdia, e não sacrifício; e conhecimento de Deus mais do que holocaustos."
+    },
+    {
+      "ref": "11:1",
+      "text": "Quando Israel era menino, eu o amei, e do Egito chamei a meu filho."
+    }
+  ],
+  "note": "As datas são aproximadas; os versículos citados são da Bíblia Livre (BLIVRE), que segue a numeração das Bíblias em português: 1:10–11 corresponde a 2:1–2 no texto hebraico, e há diferenças semelhantes de um versículo entre os capítulos 11 e 14."
+}

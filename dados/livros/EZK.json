@@ -1,0 +1,233 @@
+{
+  "title_orig": "יְחֶזְקֵאל",
+  "title_orig_xlit": "Yechezqel",
+  "summary": "Ezequiel é o livro de um sacerdote levado para a Babilônia na deportação de 597 a.C., que recebeu o chamado profético entre os exilados, junto ao rio Quebar. Até a queda de Jerusalém, em 587/586 a.C., sua mensagem é sobretudo de juízo: em visões, gestos simbólicos e alegorias, ele mostra que a cidade e o templo serão destruídos por causa da idolatria e da violência, e que a glória de Deus deixa o santuário. Seguem-se oráculos contra nações vizinhas, especialmente Tiro e Egito. Depois que chega a notícia da queda, o tom muda para a esperança: Deus promete ser ele mesmo o pastor do povo, dar um coração novo, reanimar os ossos secos e reunir Israel e Judá. O livro termina com uma longa visão de um templo renovado, de um rio que sai dele e dá vida, e de uma nova divisão da terra.",
+  "name": "O nome hebraico Yechezqel significa “Deus fortalece” ou “Deus torna forte”. Pela forma grega Iezekiel, da Septuaginta, e pela latina Ezechiel, chegou ao português como Ezequiel.",
+  "facts": [
+    [
+      "Posição",
+      "3º dos Profetas Maiores; na Bíblia hebraica, entre os Profetas Posteriores (Neviim)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "profecia (visões, ações simbólicas, alegorias e oráculos, em boa parte em prosa)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Chamado do profeta",
+      "from": 1,
+      "to": 3,
+      "text": "A visão da glória de Deus sobre um carro de seres vivos e rodas, o rolo que o profeta come e a missão de vigia."
+    },
+    {
+      "title": "Juízo sobre Jerusalém",
+      "from": 4,
+      "to": 24,
+      "text": "Gestos que encenam o cerco, a visão das abominações no templo e da glória que se retira, alegorias da história de Israel e o anúncio do início do cerco."
+    },
+    {
+      "title": "Oráculos contra as nações",
+      "from": 25,
+      "to": 32,
+      "text": "Amom, Moabe, Edom e filisteus, e longos poemas sobre Tiro e o Egito."
+    },
+    {
+      "title": "Restauração de Israel",
+      "from": 33,
+      "to": 39,
+      "text": "Depois da notícia da queda: o vigia, o bom pastor, o coração novo, o vale dos ossos secos e a derrota de Gogue."
+    },
+    {
+      "title": "O novo templo e a nova terra",
+      "from": 40,
+      "to": 48,
+      "text": "Visão detalhada do templo, a volta da glória, normas de culto, o rio que sai do santuário e a partilha da terra entre as tribos."
+    }
+  ],
+  "extra": {
+    "title": "A glória que sai e volta",
+    "text": "Um fio liga o começo ao fim do livro. Nos capítulos 8 a 11, a glória do SENHOR deixa aos poucos o templo de Jerusalém e para sobre o monte a leste da cidade, sinal de que o santuário fica entregue à destruição. No capítulo 43, na visão do templo renovado, ela volta pelo mesmo caminho do oriente e enche a casa. O último versículo dá à cidade o nome “O SENHOR Está Ali” (48:35)."
+  },
+  "people": [
+    {
+      "name": "Ezequiel",
+      "chapters": "1–48",
+      "ch": 1,
+      "note": "sacerdote, filho de Buzi, deportado para a Babilônia; chamado de “filho do homem”"
+    },
+    {
+      "name": "Os anciãos de Judá e de Israel",
+      "chapters": "8; 14; 20",
+      "ch": 14,
+      "note": "líderes dos exilados que vão consultar o profeta"
+    },
+    {
+      "name": "Pelatias",
+      "chapters": "11",
+      "ch": 11,
+      "note": "um dos líderes de Jerusalém, que morre durante a visão"
+    },
+    {
+      "name": "Oolá e Oolibá",
+      "chapters": "23",
+      "ch": 23,
+      "note": "duas irmãs que representam Samaria e Jerusalém"
+    },
+    {
+      "name": "A esposa de Ezequiel",
+      "chapters": "24",
+      "ch": 24,
+      "note": "sua morte, sem luto público, torna-se sinal para o povo"
+    },
+    {
+      "name": "O príncipe de Tiro",
+      "chapters": "28",
+      "ch": 28,
+      "note": "rei que se julga um deus"
+    },
+    {
+      "name": "Faraó",
+      "chapters": "29–32",
+      "ch": 29,
+      "note": "o rei do Egito, comparado a um grande monstro das águas e a um cedro"
+    },
+    {
+      "name": "Gogue",
+      "chapters": "38–39",
+      "ch": 38,
+      "note": "chefe de uma coalizão vinda do norte, derrotado nos montes de Israel"
+    },
+    {
+      "name": "O príncipe",
+      "chapters": "44–48",
+      "ch": 45,
+      "note": "governante da comunidade restaurada na visão final"
+    }
+  ],
+  "writing": {
+    "tradition": "O livro fala quase sempre na primeira pessoa e traz datas contadas a partir da deportação do rei Joaquim, o que a tradição entende como sinal de que foi escrito pelo próprio Ezequiel, entre c. 593 e c. 571 a.C., na Babilônia. O Talmude (Bava Batra 15a) diz que os homens da Grande Assembleia “escreveram” Ezequiel, o que é lido como trabalho de cópia e edição. Os rabinos também discutiram a diferença entre as normas dos capítulos 40 a 48 e as da Torá; segundo o Talmude (Shabbat 13b), um sábio chamado Hananias ben Ezequias conseguiu conciliá-las, e o livro permaneceu em uso.",
+    "academic": "A maioria dos estudiosos admite que o livro conserva um núcleo amplo ligado a Ezequiel, por causa do estilo unificado, do uso das datas e do cenário coerente com o exílio. No início do século XX, alguns autores chegaram a atribuir quase tudo a escritores posteriores, posição hoje pouco seguida. Discute-se quanto vem do próprio profeta e quanto de discípulos que reuniram e ampliaram seus textos, sobretudo nos capítulos 38–39 e 40–48. O texto grego mais antigo, o Papiro 967 (c. 200 d.C.), não tem a maior parte de 36:23–38 e põe o capítulo 37 depois dos capítulos 38–39, sinal de que o livro circulou em mais de uma forma. A forma final costuma ser datada do fim do exílio e do começo do período persa, por volta de 570–500 a.C."
+  },
+  "events": {
+    "intro": "Ezequiel é o profeta que mais data as suas mensagens: cerca de treze datas, quase sempre contadas a partir da deportação do rei Joaquim, em 597 a.C. Elas vão do quinto ano (1:2), por volta de 593 a.C., ao vigésimo sétimo (29:17), por volta de 571 a.C. A conversão para o nosso calendário pode variar em um ano. Os “trinta anos” de 1:1 são entendidos por muitos como a idade do profeta, mas o sentido é discutido.",
+    "axis": [
+      -610,
+      -490
+    ],
+    "band": {
+      "label": "Exílio (contado desde 597 a.C.)",
+      "from": -597,
+      "to": -538
+    },
+    "timeline": [
+      {
+        "label": "Atividade de Ezequiel",
+        "from": -593,
+        "to": -571,
+        "kind": "pessoa",
+        "note": "da primeira visão (1:2) ao oráculo datado mais tardio (29:17)"
+      },
+      {
+        "label": "Deportação de Joaquim",
+        "from": -597,
+        "to": -597,
+        "kind": "evento",
+        "note": "Ezequiel vai para a Babilônia com o rei e parte da elite"
+      },
+      {
+        "label": "Início do cerco de Jerusalém",
+        "from": -588,
+        "to": -587,
+        "kind": "evento",
+        "note": "data anotada pelo profeta (24:1–2)"
+      },
+      {
+        "label": "Queda de Jerusalém",
+        "from": -587,
+        "to": -586,
+        "kind": "evento",
+        "note": "o templo é destruído pelos babilônios"
+      },
+      {
+        "label": "A notícia chega aos exilados",
+        "from": -586,
+        "to": -585,
+        "kind": "evento",
+        "note": "um fugitivo anuncia: “A cidade já foi ferida” (33:21)"
+      },
+      {
+        "label": "Cerco de Tiro por Nabucodonosor",
+        "from": -586,
+        "to": -573,
+        "kind": "evento",
+        "note": "cerca de treze anos, segundo Flávio Josefo; ver 29:18"
+      },
+      {
+        "label": "Visão do novo templo",
+        "from": -573,
+        "to": -573,
+        "kind": "evento",
+        "note": "no 25º ano do cativeiro (40:1)"
+      },
+      {
+        "label": "Ciro toma a Babilônia",
+        "from": -539,
+        "to": -539,
+        "kind": "evento",
+        "note": "fim do domínio babilônico"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -593,
+        "to": -571,
+        "kind": "escrita",
+        "note": "o próprio Ezequiel, na Babilônia"
+      },
+      {
+        "label": "Forma final, segundo a pesquisa",
+        "from": -570,
+        "to": -500,
+        "kind": "escrita",
+        "note": "fim do exílio e começo do período persa"
+      }
+    ]
+  },
+  "context": "Ezequiel viveu entre os deportados de Judá instalados no sul da Mesopotâmia, em Tel-Abibe, junto ao rio (ou canal) Quebar, provavelmente perto de Nipur. Os exilados podiam morar em casas, reunir-se e manter seus anciãos, e tabletes da época mostram judeus vivendo em povoados da região. Enquanto isso, em Jerusalém, o rei Zedequias oscilava entre a lealdade à Babilônia e a esperança de ajuda do Egito, o que levou ao cerco e à destruição da cidade. Os oráculos contra Tiro e o Egito refletem as campanhas de Nabucodonosor no oeste. A visão do templo, as normas para sacerdotes e levitas e o interesse por pureza mostram a formação sacerdotal do profeta e influenciaram as esperanças da comunidade que, já sob o domínio persa, voltou a Jerusalém e reconstruiu o templo.",
+  "places": [
+    "Rio Quebar e Tel-Abibe, na Babilônia",
+    "Jerusalém e o templo",
+    "Os montes de Israel",
+    "Tiro e Sidom",
+    "Egito",
+    "Amom, Moabe, Edom (monte Seir) e Filístia"
+  ],
+  "themes": [
+    "glória e santidade de Deus",
+    "juízo e responsabilidade pessoal",
+    "o profeta como vigia",
+    "Deus como pastor do povo",
+    "coração novo e novo espírito",
+    "templo e pureza",
+    "restauração após o exílio"
+  ],
+  "key_verses": [
+    {
+      "ref": "18:20",
+      "text": "A alma que pecar, essa morrerá; o filho não será punido pela maldade do pai, nem o pai será punido pela maldade do filho; a justiça do justo será sobre ele, e a perversidade do perverso será sobre ele."
+    },
+    {
+      "ref": "36:26",
+      "text": "E vos darei um novo coração, e porei um novo espírito dentro de vós; e tirarei de vossa carne o coração de pedra, e vos darei um coração de carne."
+    },
+    {
+      "ref": "37:4–5",
+      "text": "Então disse-me: Profetiza sobre estes ossos, e dize-lhes: Ossos secos, ouvi a palavra do SENHOR. Assim diz o Senhor DEUS a estes ossos: Eis que eu farei entrar espírito em vós, e vivereis."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte; a queda de Jerusalém é datada em 587 ou 586 a.C. Na numeração das Bíblias em português, 20:45–49 corresponde a 21:1–5 no texto hebraico, e o capítulo 21 vai de 21:6 a 21:37 no hebraico. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

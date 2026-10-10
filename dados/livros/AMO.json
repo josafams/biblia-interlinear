@@ -1,0 +1,149 @@
+{
+  "title_orig": "עָמוֹס",
+  "title_orig_xlit": "Amos",
+  "summary": "Amós, um criador de gado de Judá, foi enviado ao Reino do Norte num tempo de prosperidade. O livro começa com oráculos contra os povos vizinhos e termina apontando para Israel, acusado de explorar os pobres, corromper os tribunais e manter um culto farto e vazio. Uma série de visões anuncia o fim do reino, e o confronto com o sacerdote de Betel mostra a resistência à mensagem. Os versículos finais prometem a restauração da “tenda de Davi”.",
+  "name": "O livro leva o nome do profeta. O significado de Amós é incerto; costuma ser ligado ao verbo hebraico que quer dizer “carregar”, talvez no sentido de “carregado” ou “sustentado” por Deus.",
+  "facts": [
+    [
+      "Posição",
+      "3º dos Doze Profetas Menores"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "profecia (oráculos em poesia, visões e um relato)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Oráculos contra as nações",
+      "from": 1,
+      "to": 2,
+      "text": "Damasco, Gaza, Tiro, Edom, Amom, Moabe e Judá são julgados, e o círculo se fecha sobre Israel."
+    },
+    {
+      "title": "Palavras contra Israel",
+      "from": 3,
+      "to": 6,
+      "text": "A escolha traz responsabilidade; o luxo da Samaria, a opressão dos pobres e o culto sem justiça são denunciados."
+    },
+    {
+      "title": "Visões e restauração",
+      "from": 7,
+      "to": 9,
+      "text": "Gafanhotos, fogo, prumo, cesto de frutos e o Senhor junto ao altar; o confronto com Amazias e a promessa final."
+    }
+  ],
+  "extra": {
+    "title": "“Por três transgressões, e pela quarta”",
+    "text": "Os oráculos dos capítulos 1 e 2 seguem a mesma fórmula numérica, repetida para cada povo. O ouvinte de Israel podia concordar com a condenação dos vizinhos, até que a fórmula chega a Judá e, por fim, ao próprio Israel, que recebe a acusação mais longa."
+  },
+  "people": [
+    {
+      "name": "Amós",
+      "chapters": "1–9",
+      "ch": 1,
+      "note": "pastor e criador de gado de Tecoa, em Judá"
+    },
+    {
+      "name": "Jeroboão II",
+      "chapters": "1; 7",
+      "ch": 7,
+      "note": "rei de Israel"
+    },
+    {
+      "name": "Amazias",
+      "chapters": "7",
+      "ch": 7,
+      "note": "sacerdote de Betel, que manda Amós sair do reino"
+    }
+  ],
+  "writing": {
+    "tradition": "A tradição atribui o livro a Amós, que atuou “dois anos antes do terremoto” nos dias de Uzias, rei de Judá, e de Jeroboão II, rei de Israel (1:1), por volta de 760–750 a.C. É considerado um dos primeiros profetas cujas palavras foram reunidas num livro.",
+    "academic": "Os estudiosos em geral aceitam que a maior parte dos oráculos remonta a Amós em meados do século VIII a.C. Muitos consideram acréscimos posteriores o oráculo contra Judá (2:4–5), os trechos hínicos (4:13; 5:8–9; 9:5–6) e a promessa final (9:11–15), que pressupõe a queda da dinastia de Davi; outros os atribuem ao profeta. O livro teria sido editado em Judá, depois de 722 a.C. e novamente no exílio."
+  },
+  "events": {
+    "intro": "O livro se situa no auge do reinado de Jeroboão II. O “terremoto” de 1:1 parece ter sido marcante, pois é lembrado em Zacarias 14:5, e vestígios arqueológicos de um forte abalo em meados do século VIII a.C. foram identificados em vários sítios. As datas são aproximadas.",
+    "axis": [
+      -800,
+      -540
+    ],
+    "timeline": [
+      {
+        "label": "Uzias, rei de Judá",
+        "from": -783,
+        "to": -742,
+        "kind": "pessoa",
+        "note": "reinado, datas aproximadas"
+      },
+      {
+        "label": "Jeroboão II",
+        "from": -786,
+        "to": -746,
+        "kind": "pessoa",
+        "note": "rei de Israel; expansão e prosperidade"
+      },
+      {
+        "label": "Atuação de Amós",
+        "from": -760,
+        "to": -750,
+        "kind": "pessoa",
+        "note": "em Betel e na Samaria; data aproximada"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -760,
+        "to": -750,
+        "kind": "escrita",
+        "note": "palavras de Amós reunidas"
+      },
+      {
+        "label": "Queda da Samaria",
+        "from": -722,
+        "to": -720,
+        "kind": "evento",
+        "note": "cumprimento das ameaças contra o Reino do Norte"
+      },
+      {
+        "label": "Edição final, segundo a pesquisa",
+        "from": -720,
+        "to": -550,
+        "kind": "escrita",
+        "note": "edições em Judá, até o período do exílio"
+      }
+    ]
+  },
+  "context": "Sob Jeroboão II, Israel recuperou territórios e viveu uma fase de comércio e riqueza, enquanto a Assíria passava por uma fase de fraqueza. As escavações na Samaria revelaram placas de marfim que lembram as “casas de marfim” de 3:15. A riqueza, porém, se concentrava numa elite, e Amós denuncia a venda de pobres por dívidas, os pesos falsos e a corrupção nas portas da cidade, onde se faziam os julgamentos. Poucas décadas depois, a Assíria voltou a se expandir e destruiu o reino.",
+  "places": [
+    "Tecoa",
+    "Betel",
+    "Samaria",
+    "Gilgal e Berseba",
+    "Damasco, Gaza, Tiro, Edom, Amom e Moabe"
+  ],
+  "themes": [
+    "justiça social",
+    "culto e ética",
+    "eleição e responsabilidade",
+    "dia do SENHOR",
+    "restauração"
+  ],
+  "key_verses": [
+    {
+      "ref": "5:24",
+      "text": "Em vez disso, corra o juízo como as águas, e a justiça como um ribeiro impetuoso."
+    },
+    {
+      "ref": "7:14–15",
+      "text": "Então Amós respondeu a Amazias: Eu não era profeta, nem filho de profeta; mas eu era criador de gado, e colhedor de frutos de sicômoros. Porém o SENHOR me tomou do trabalho com o gado, e o SENHOR me disse: Vai, e profetiza a meu povo Israel."
+    },
+    {
+      "ref": "8:11",
+      "text": "Eis que vêm dias,diz o Senhor DEUS, nos quais enviarei fome à terra; fome não de pão, nem sede de água, mas sim de ouvir as palavras do SENHOR."
+    }
+  ],
+  "note": "As datas variam conforme a fonte; os versículos citados são da Bíblia Livre (BLIVRE)."
+}

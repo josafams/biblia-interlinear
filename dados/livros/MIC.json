@@ -1,0 +1,148 @@
+{
+  "title_orig": "מִיכָה",
+  "title_orig_xlit": "Mikhah",
+  "summary": "Miqueias, um profeta do interior de Judá, anuncia juízo sobre Samaria e Jerusalém por causa da cobiça dos poderosos, que tomam terras e casas, e da corrupção de líderes, sacerdotes e profetas pagos. Alternando ameaças e promessas, o livro anuncia a ruína de Sião, mas também um tempo em que as nações subirão ao monte do SENHOR e não aprenderão mais a guerra, e um governante que sairá de Belém. O livro resume o que Deus pede: praticar a justiça, amar a bondade e andar humildemente com Deus (6:8).",
+  "name": "O livro leva o nome do profeta. Miqueias é forma abreviada de um nome que pergunta “Quem é como o SENHOR?”, pergunta que ecoa em 7:18.",
+  "facts": [
+    [
+      "Posição",
+      "6º dos Doze Profetas Menores"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "profecia (poesia)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Juízo sobre os dois reinos",
+      "from": 1,
+      "to": 3,
+      "text": "Samaria e Jerusalém são condenadas; denúncia de quem rouba terras e de líderes, profetas e sacerdotes que agem por dinheiro."
+    },
+    {
+      "title": "Esperança para Sião",
+      "from": 4,
+      "to": 5,
+      "text": "O monte do SENHOR acima dos outros, a paz entre as nações, o resto reunido e o governante vindo de Belém."
+    },
+    {
+      "title": "O processo e a confiança",
+      "from": 6,
+      "to": 7,
+      "text": "Deus leva seu povo a juízo e lembra o que é bom; o livro termina com lamento, confiança e louvor ao Deus que perdoa."
+    }
+  ],
+  "people": [
+    {
+      "name": "Miqueias",
+      "chapters": "1–7",
+      "ch": 1,
+      "note": "profeta de Moresete, no interior de Judá"
+    },
+    {
+      "name": "Líderes de Jacó",
+      "chapters": "3",
+      "ch": 3,
+      "note": "governantes, juízes, sacerdotes e profetas acusados de corrupção"
+    }
+  ],
+  "writing": {
+    "tradition": "A tradição atribui o livro a Miqueias de Moresete, que profetizou nos dias de Jotão, Acaz e Ezequias, reis de Judá (1:1), aproximadamente entre 740 e 700 a.C. Jeremias 26:18 cita Miqueias 3:12 e o situa no reinado de Ezequias.",
+    "academic": "Muitos estudiosos atribuem ao profeta sobretudo os capítulos 1 a 3, com suas denúncias, e consideram que boa parte dos capítulos 4 a 7 foi acrescentada no exílio ou depois dele, pois menciona a Babilônia (4:10) e a volta dos dispersos. Outros veem o livro como substancialmente do século VIII a.C. O oráculo de 4:1–3 aparece quase igual em Isaías 2:2–4, e se discute qual texto depende do outro ou se ambos usam uma fonte comum."
+  },
+  "events": {
+    "intro": "Miqueias atuou no tempo em que a Assíria destruiu o Reino do Norte e invadiu Judá. As datas são aproximadas.",
+    "axis": [
+      -760,
+      -490
+    ],
+    "band": {
+      "label": "Exílio na Babilônia",
+      "from": -586,
+      "to": -538
+    },
+    "timeline": [
+      {
+        "label": "Jotão, Acaz e Ezequias",
+        "from": -750,
+        "to": -686,
+        "kind": "pessoa",
+        "note": "reis de Judá citados em 1:1 (datas aproximadas)"
+      },
+      {
+        "label": "Miqueias",
+        "from": -740,
+        "to": -700,
+        "kind": "pessoa",
+        "note": "atuação aproximada"
+      },
+      {
+        "label": "Queda da Samaria",
+        "from": -722,
+        "to": -720,
+        "kind": "evento",
+        "note": "anunciada em 1:6–7"
+      },
+      {
+        "label": "Campanha de Senaqueribe",
+        "from": -701,
+        "to": -701,
+        "kind": "evento",
+        "note": "cidades da Sefelá, como Laquis, são tomadas; Jerusalém é cercada"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -740,
+        "to": -700,
+        "kind": "escrita",
+        "note": "Miqueias de Moresete"
+      },
+      {
+        "label": "Acréscimos, segundo a pesquisa",
+        "from": -586,
+        "to": -500,
+        "kind": "escrita",
+        "note": "parte dos capítulos 4–7, no exílio ou logo depois"
+      }
+    ]
+  },
+  "context": "Moresete-Gate ficava na Sefelá, as colinas entre a planície costeira e as montanhas de Judá, região agrícola e fronteiriça. Miqueias fala do ponto de vista dos pequenos proprietários do campo, ameaçados por credores e por famílias poderosas da capital. As cidades citadas no capítulo 1, como Laquis, estavam no caminho do exército assírio, que em 701 a.C. devastou a região, como registram os anais de Senaqueribe e os relevos de Laquis em Nínive.",
+  "places": [
+    "Moresete-Gate e as cidades da Sefelá",
+    "Laquis",
+    "Samaria",
+    "Jerusalém e Sião",
+    "Belém Efrata"
+  ],
+  "themes": [
+    "justiça social",
+    "corrupção dos líderes",
+    "paz entre as nações",
+    "governante de Belém",
+    "perdão de Deus"
+  ],
+  "key_verses": [
+    {
+      "ref": "4:3",
+      "text": "E ele julgará entre muitos povos, e corrigirá poderosas nações até muito longe; e adaptarão suas espadas para enxadas, e suas lanças para foices; nação não erguerá espada contra nação, nem mais aprenderão a fazer guerra."
+    },
+    {
+      "ref": "5:2",
+      "text": "Porém tu, Belém Efrata, ainda que sejas pequena entre as famílias de Judá, de ti me sairá o que será governador em Israel; e suas saídas são desde o princípio, desde os dias antigos."
+    },
+    {
+      "ref": "6:8",
+      "text": "Ele já declarou a ti, ó ser humano, o que é bom; e que mais o SENHOR pede de ti, a não ser fazer o que é justo, amar a bondade, e andar humildemente com teu Deus?"
+    },
+    {
+      "ref": "7:18",
+      "text": "Quem é Deus como tu, que perdoa a maldade, e ignora a transgressão do restante de sua herança? Ele não retém para sempre sua ira, porque ele tem prazer na bondade."
+    }
+  ],
+  "note": "As datas são aproximadas; os versículos citados são da Bíblia Livre (BLIVRE), que segue a numeração das Bíblias em português: 5:1 corresponde a 4:14 no texto hebraico, e 5:2 a 5:1, e assim por diante até o fim do capítulo."
+}

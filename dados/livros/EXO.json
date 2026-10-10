@@ -1,0 +1,241 @@
+{
+  "title_orig": "שְׁמוֹת",
+  "title_orig_xlit": "Shemot",
+  "summary": "Êxodo conta como os descendentes de Jacó, já numerosos no Egito, passam da escravidão à liberdade e se tornam um povo ligado a Deus por um pacto. Os capítulos 1 a 15 narram a opressão sob o faraó, o chamado de Moisés junto à sarça que ardia sem se consumir, as pragas sobre o Egito, a primeira Páscoa e a travessia do mar. Depois de uma marcha pelo deserto, o povo chega ao monte Sinai, onde ouve os dez mandamentos, recebe um conjunto de leis e se compromete com o pacto (caps. 19–24). A última parte gira em torno do tabernáculo, o santuário portátil que marcaria a presença de Deus no meio de Israel: as instruções para fazê-lo, a crise do bezerro de ouro e a execução da obra, que termina com a glória do SENHOR enchendo a tenda.",
+  "name": "Em hebraico o livro se chama Shemot, “Nomes”, palavra tirada da frase de abertura: “Estes são os nomes dos filhos de Israel” (1:1). O título “Êxodo” vem da Septuaginta, em que Exodos quer dizer “saída”, e passou ao latim da Vulgata; ele resume o acontecimento central do livro, a saída do Egito.",
+  "facts": [
+    [
+      "Posição",
+      "2º livro da Torá (Pentateuco)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "narrativa e leis"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Opressão e chamado",
+      "from": 1,
+      "to": 4,
+      "text": "Israel cresce e é escravizado; Moisés nasce, é criado na corte, foge para Midiã e é chamado por Deus no monte Horebe."
+    },
+    {
+      "title": "O confronto com o faraó",
+      "from": 5,
+      "to": 11,
+      "text": "Moisés e Arão pedem a libertação do povo; diante das recusas do faraó, nove pragas atingem o Egito e a décima é anunciada."
+    },
+    {
+      "title": "Páscoa e libertação",
+      "from": 12,
+      "to": 15,
+      "text": "A primeira Páscoa, a morte dos primogênitos do Egito, a partida, a travessia do mar e o cântico de vitória (15:1–21)."
+    },
+    {
+      "title": "Rumo ao Sinai",
+      "from": 15,
+      "to": 18,
+      "text": "Sede, fome e conflitos no deserto: as águas de Mara, o maná, a água da rocha, a batalha contra Amaleque e a visita de Jetro."
+    },
+    {
+      "title": "O pacto no Sinai",
+      "from": 19,
+      "to": 24,
+      "text": "Deus se manifesta no monte, dá os dez mandamentos e as leis do chamado livro da aliança (20:22–23:33), e o pacto é confirmado com sangue (24:8)."
+    },
+    {
+      "title": "Instruções para o tabernáculo",
+      "from": 25,
+      "to": 31,
+      "text": "No monte, Moisés recebe o modelo do santuário, dos utensílios e das vestes sacerdotais, além das regras para consagrar os sacerdotes."
+    },
+    {
+      "title": "O bezerro de ouro e o pacto renovado",
+      "from": 32,
+      "to": 34,
+      "text": "Enquanto Moisés está no monte, o povo adora um bezerro de ouro; Moisés intercede, sobe de novo com tábuas novas e o pacto é renovado."
+    },
+    {
+      "title": "A construção do tabernáculo",
+      "from": 35,
+      "to": 40,
+      "text": "As ofertas do povo, o trabalho de Bezalel e Aoliabe e a montagem do santuário, sobre o qual desce a nuvem."
+    }
+  ],
+  "extra": {
+    "title": "Ordem dada, ordem cumprida",
+    "text": "As instruções para o tabernáculo (caps. 25–31) voltam quase palavra por palavra nos capítulos 35 a 40, agora como relato do que foi feito. A frase “como o SENHOR havia mandado a Moisés”, com pequenas variações, se repete ao longo dos capítulos 39 e 40 — sete vezes só no último — e sublinha que a obra seguiu o modelo mostrado no monte (25:40). Alguns estudiosos veem aí ecos do relato da criação em Gênesis: a obra avança por etapas, Moisés a examina e abençoa (39:43), e o sábado aparece entre as instruções e a execução (31:12–17; 35:1–3)."
+  },
+  "people": [
+    {
+      "name": "Moisés",
+      "chapters": "2–40",
+      "ch": 3,
+      "note": "levita criado na corte egípcia; conduz o povo para fora do Egito e é o mediador do pacto no Sinai"
+    },
+    {
+      "name": "Arão",
+      "chapters": "4–40",
+      "ch": 4,
+      "note": "irmão mais velho de Moisés e seu porta-voz; escolhido para o sacerdócio, cede ao povo e faz o bezerro de ouro"
+    },
+    {
+      "name": "Faraó",
+      "chapters": "1–14",
+      "ch": 5,
+      "note": "o rei do Egito, nunca chamado pelo nome; resiste à ordem de deixar o povo partir"
+    },
+    {
+      "name": "Sifrá e Puá",
+      "chapters": "1",
+      "ch": 1,
+      "note": "parteiras das hebreias que se recusam a matar os meninos recém-nascidos"
+    },
+    {
+      "name": "Miriã",
+      "chapters": "2; 15",
+      "ch": 15,
+      "note": "irmã de Arão, chamada profetisa; conduz as mulheres no canto depois da travessia do mar"
+    },
+    {
+      "name": "Jetro",
+      "chapters": "2–4; 18",
+      "ch": 18,
+      "note": "sacerdote de Midiã e sogro de Moisés, também chamado Reuel (2:18); aconselha a divisão do trabalho de julgar"
+    },
+    {
+      "name": "Zípora",
+      "chapters": "2; 4; 18",
+      "ch": 4,
+      "note": "esposa de Moisés; circuncida o filho durante a viagem ao Egito (4:24–26)"
+    },
+    {
+      "name": "Josué",
+      "chapters": "17; 24; 32–33",
+      "ch": 17,
+      "note": "auxiliar de Moisés; comanda a batalha contra Amaleque"
+    },
+    {
+      "name": "Bezalel e Aoliabe",
+      "chapters": "31; 35–38",
+      "ch": 31,
+      "note": "artífices de Judá e de Dã encarregados da construção do tabernáculo"
+    }
+  ],
+  "writing": {
+    "tradition": "As tradições judaica e cristã atribuem o Êxodo, como toda a Torá, a Moisés; o próprio livro diz que ele escreveu certas partes (17:14; 24:4; 34:27). Nessa leitura, o texto teria sido composto durante a peregrinação no deserto, por volta de 1446–1406 a.C. para quem segue a data mais antiga do Êxodo, ou no século XIII a.C. para quem adota a data mais tardia.",
+    "academic": "Para a maioria dos estudiosos, o Êxodo reúne tradições de origens e épocas diferentes, editadas ao longo de séculos. É comum distinguir um material de tipo sacerdotal, muito presente nas leis do culto e na descrição do tabernáculo (caps. 25–31; 35–40), de narrativas de outras procedências; o livro da aliança (20:22–23:33) costuma ser visto como uma das coleções de leis mais antigas da Bíblia. A forma final é geralmente datada dos períodos do exílio e persa, por volta de 550–400 a.C. Há também pesquisadores que defendem um núcleo antigo, ligado à lembrança de grupos semitas que deixaram o Egito."
+  },
+  "events": {
+    "intro": "O livro não dá o nome do faraó, e nenhum documento egípcio conhecido registra a saída de Israel; por isso, a data do Êxodo é discutida. Uma posição parte de 1 Reis 6:1, que põe 480 anos entre a saída do Egito e o quarto ano de Salomão, e chega a cerca de 1446 a.C., durante a 18ª dinastia egípcia. Outra, apoiada no nome da cidade de Ramessés (1:11) e em dados arqueológicos de Canaã, prefere o século XIII a.C., no reinado de Ramsés II, e lê o número 480 como uma soma simbólica de gerações. Há ainda historiadores que veem no relato a memória de grupos menores, ampliada pela tradição, ou que o consideram impossível de datar. A linha do tempo mostra as duas propostas mais citadas; os períodos de Israel no Egito e da vida de Moisés seguem a cronologia tradicional.",
+    "axis": [
+      -1900,
+      -350
+    ],
+    "band": {
+      "label": "Novo Império egípcio",
+      "from": -1550,
+      "to": -1070
+    },
+    "timeline": [
+      {
+        "label": "Israel no Egito",
+        "from": -1876,
+        "to": -1446,
+        "kind": "evento",
+        "note": "430 anos (12:40), na cronologia tradicional"
+      },
+      {
+        "label": "Moisés",
+        "from": -1526,
+        "to": -1406,
+        "kind": "pessoa",
+        "note": "80 anos ao falar com o faraó (7:7) e 120 ao morrer (Deuteronômio 34:7), na cronologia tradicional"
+      },
+      {
+        "label": "Saída do Egito, data antiga",
+        "from": -1446,
+        "to": -1445,
+        "kind": "evento",
+        "note": "pela conta de 1 Reis 6:1; o tabernáculo é erguido no segundo ano (40:17)"
+      },
+      {
+        "label": "Ramsés II",
+        "from": -1279,
+        "to": -1213,
+        "kind": "pessoa",
+        "note": "faraó associado à cidade de Ramessés (1:11); não é nomeado na Bíblia"
+      },
+      {
+        "label": "Saída do Egito, data tardia",
+        "from": -1270,
+        "to": -1250,
+        "kind": "evento",
+        "note": "faixa aproximada proposta por quem prefere o século XIII a.C."
+      },
+      {
+        "label": "Estela de Merneptá",
+        "from": -1208,
+        "to": -1208,
+        "kind": "evento",
+        "note": "inscrição egípcia com a mais antiga menção conhecida a “Israel”, já em Canaã (data aproximada)"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -1446,
+        "to": -1406,
+        "kind": "escrita",
+        "note": "Moisés, durante a peregrinação no deserto (no século XIII a.C., na data tardia)"
+      },
+      {
+        "label": "Forma final, segundo a pesquisa",
+        "from": -550,
+        "to": -400,
+        "kind": "escrita",
+        "note": "exílio na Babilônia e período persa"
+      }
+    ]
+  },
+  "context": "A primeira parte do livro se passa no delta do Nilo, no nordeste do Egito, onde ficava a região de Gósen e onde os israelitas são forçados a construir as cidades-armazém de Pitom e Ramessés (1:11). Documentos egípcios do Novo Império registram semitas vivendo e trabalhando no delta e pastores vindos de Canaã em busca de água e pasto; o nome Moisés lembra nomes egípcios formados com o elemento ms, “nascido de”, como Ramsés. O percurso da saída é incerto. O “mar Vermelho” do texto, em hebraico yam suf (talvez “mar dos juncos”), pode ser um dos lagos do istmo de Suez ou um braço do próprio mar Vermelho. A localização do monte Sinai, também chamado Horebe, é igualmente discutida: a tradição o identifica com o Jebel Musa, no sul da península do Sinai, mas há propostas no norte da península e no noroeste da Arábia, perto de Midiã, a terra de Jetro.",
+  "places": [
+    "Egito: Gósen, Pitom e Ramessés (1:11)",
+    "Midiã",
+    "Horebe, o monte de Deus (3:1)",
+    "o mar Vermelho (yam suf)",
+    "Mara e Elim (15:23–27)",
+    "deserto de Sim e Refidim",
+    "monte Sinai"
+  ],
+  "themes": [
+    "libertação",
+    "o nome de Deus",
+    "pacto (aliança)",
+    "lei",
+    "presença de Deus no meio do povo",
+    "culto e santidade"
+  ],
+  "key_verses": [
+    {
+      "ref": "3:14",
+      "text": "Deus respondeu a Moisés: EU SOU O QUE SOU. E disse: Assim dirás aos filhos de Israel: EU SOU me enviou a vós."
+    },
+    {
+      "ref": "19:5–6",
+      "text": "Agora pois, se deres ouvido à minha voz, e guardardes meu pacto, vós sereis meu especial tesouro sobre todos os povos; porque minha é toda a terra. E vós sereis meu reino de sacerdotes, e gente santa. Estas são as palavras que dirás aos filhos de Israel."
+    },
+    {
+      "ref": "20:2–3",
+      "text": "Eu sou o SENHOR teu Deus, que te tirei da terra do Egito, de casa de servos. Não terás deuses alheios diante de mim."
+    },
+    {
+      "ref": "34:6–7",
+      "text": "E passando o SENHOR por diante dele, proclamou: SENHOR, SENHOR, forte, misericordioso, e piedoso; tardio para a ira, e grande em benignidade e verdade; Que guarda a misericórdia em milhares, que perdoa a iniquidade, a rebelião, e o pecado, e que de nenhum modo justificará ao malvado; que visita a iniquidade dos pais sobre os filhos e sobre os filhos dos filhos, sobre os de terceira, e quarta gerações."
+    }
+  ],
+  "note": "As datas são aproximadas e dependem da posição adotada sobre o Êxodo. A numeração segue a das Bíblias em português; no texto hebraico, 8:1–4 aparece como 7:26–29 e 22:1 como 21:37, o que desloca os versículos seguintes desses capítulos. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

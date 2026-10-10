@@ -1,0 +1,248 @@
+{
+  "title_orig": "שֹׁפְטִים",
+  "title_orig_xlit": "Shofetim",
+  "summary": "Juízes narra a vida das tribos de Israel em Canaã entre a morte de Josué e o surgimento da monarquia. O livro começa mostrando que a conquista ficou incompleta e apresenta um ciclo que se repete: o povo se volta para outros deuses, cai nas mãos de um opressor, clama ao SENHOR e recebe um libertador, até que tudo recomeça. Nesse esquema entram as histórias de Otniel, Eúde, Débora e Baraque, Gideão, Jefté e Sansão, além de juízes citados em poucas linhas. A cada volta a situação piora, e os capítulos finais, marcados pela frase “não havia rei em Israel”, contam episódios de idolatria, violência e uma guerra entre as próprias tribos.",
+  "name": "O título hebraico, Shofetim, vem dos líderes que o livro chama de juízes (2:16–19). O verbo shafat abrange julgar, mas também governar e fazer justiça em favor de alguém; por isso, a maior parte desses juízes aparece como chefes militares e libertadores levantados em tempos de crise, e só Débora é mostrada decidindo causas (4:4–5). O nome em português vem do latim da Vulgata, Liber Iudicum, que segue o grego Kritai, da Septuaginta.",
+  "facts": [
+    [
+      "Posição",
+      "7º livro da Bíblia, entre os livros históricos; na Bíblia hebraica, o segundo dos Profetas Anteriores (Nevi’im Rishonim)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "narrativa histórica, com histórias de heróis e um poema antigo (cap. 5)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Uma conquista inacabada",
+      "from": 1,
+      "to": 3,
+      "text": "As tribos avançam, mas muitos cananeus permanecem (1:1–2:5); depois da morte de Josué, uma nova geração se afasta do SENHOR, e o texto apresenta o ciclo que vai se repetir (2:6–3:6)."
+    },
+    {
+      "title": "Os primeiros libertadores",
+      "from": 3,
+      "to": 5,
+      "text": "Otniel, Eúde e Sangar; Débora e Baraque derrotam o exército de Sísera, e um cântico celebra a vitória."
+    },
+    {
+      "title": "Gideão e Abimeleque",
+      "from": 6,
+      "to": 9,
+      "text": "Gideão vence os midianitas com trezentos homens e recusa a coroa; seu filho Abimeleque se faz rei em Siquém e termina destruído junto com a cidade."
+    },
+    {
+      "title": "Jefté e outros juízes",
+      "from": 10,
+      "to": 12,
+      "text": "Tolá e Jair, a opressão dos amonitas, a vitória e o voto de Jefté, o conflito com Efraim e os juízes Ibsã, Elom e Abdom."
+    },
+    {
+      "title": "Sansão",
+      "from": 13,
+      "to": 16,
+      "text": "O nazireu da tribo de Dã enfrenta sozinho os filisteus até ser entregue por Dalila e morrer derrubando o templo de Dagom, em Gaza."
+    },
+    {
+      "title": "Quando não havia rei",
+      "from": 17,
+      "to": 21,
+      "text": "Dois episódios finais: o santuário de Mica e a migração da tribo de Dã; o crime de Gibeá e a guerra que quase extingue a tribo de Benjamim."
+    }
+  ],
+  "extra": {
+    "title": "O ciclo e o refrão",
+    "text": "A moldura do livro (2:11–19) descreve um movimento circular: Israel abandona o SENHOR, é entregue a um opressor, clama, e Deus levanta um libertador; quando o libertador morre, tudo recomeça, e cada vez pior. Os episódios se abrem quase sempre com a observação de que os filhos de Israel fizeram o mal aos olhos do SENHOR (3:7; 3:12; 4:1; 6:1; 10:6; 13:1). Nos capítulos finais o ciclo dá lugar a um refrão: “não havia rei em Israel” (17:6; 18:1; 19:1; 21:25), completado duas vezes com a observação de que cada um agia segundo o próprio juízo. Os juízes maiores vêm de tribos diferentes, e os episódios são contados com humor e ironia, como no assassinato de Eglom (cap. 3) ou na senha “Chibolete”, que os efraimitas não conseguiam pronunciar (12:6)."
+  },
+  "people": [
+    {
+      "name": "Otniel",
+      "chapters": "1; 3",
+      "ch": 3,
+      "note": "da família de Calebe; o primeiro libertador, contra Cusã-Risataim"
+    },
+    {
+      "name": "Eúde",
+      "chapters": "3",
+      "ch": 3,
+      "note": "benjamita canhoto que mata Eglom, rei de Moabe"
+    },
+    {
+      "name": "Débora",
+      "chapters": "4–5",
+      "ch": 4,
+      "note": "profetisa que julga Israel debaixo de uma palmeira; convoca Baraque e canta a vitória"
+    },
+    {
+      "name": "Baraque",
+      "chapters": "4–5",
+      "ch": 4,
+      "note": "de Quedes de Naftali; comanda a batalha contra o exército de Sísera"
+    },
+    {
+      "name": "Sísera e Jael",
+      "chapters": "4–5",
+      "ch": 4,
+      "note": "o chefe do exército de Jabim e a mulher de Héber, o queneu, que o mata em sua tenda"
+    },
+    {
+      "name": "Gideão (Jerubaal)",
+      "chapters": "6–8",
+      "ch": 6,
+      "note": "de Manassés; vence os midianitas e recusa ser rei (8:23)"
+    },
+    {
+      "name": "Abimeleque",
+      "chapters": "9",
+      "ch": 9,
+      "note": "filho de Gideão; mata os irmãos e reina três anos em Siquém"
+    },
+    {
+      "name": "Jotão",
+      "chapters": "9",
+      "ch": 9,
+      "note": "o filho mais novo de Gideão, único a escapar; conta a fábula das árvores que buscam um rei"
+    },
+    {
+      "name": "Jefté",
+      "chapters": "11–12",
+      "ch": 11,
+      "note": "gileadita expulso pelos irmãos; vence os amonitas e cumpre um voto que atinge a própria filha"
+    },
+    {
+      "name": "Sansão",
+      "chapters": "13–16",
+      "ch": 13,
+      "note": "nazireu da tribo de Dã, de força extraordinária, que luta sozinho contra os filisteus"
+    },
+    {
+      "name": "Dalila",
+      "chapters": "16",
+      "ch": 16,
+      "note": "mulher do vale de Soreque que descobre o segredo de Sansão e o entrega aos filisteus"
+    },
+    {
+      "name": "Mica",
+      "chapters": "17–18",
+      "ch": 17,
+      "note": "efraimita que monta um santuário com imagens e contrata um levita como sacerdote"
+    },
+    {
+      "name": "O levita e sua concubina",
+      "chapters": "19–20",
+      "ch": 19,
+      "note": "a violência sofrida por ela em Gibeá desencadeia a guerra contra Benjamim"
+    }
+  ],
+  "writing": {
+    "tradition": "O Talmude babilônico (Bava Batra 14b) atribui a Samuel a escrita de Juízes, de Rute e do livro que leva o seu nome. Para essa leitura, a frase “não havia rei em Israel” (17:6; 21:25) mostra que o autor já vivia sob a monarquia, e a nota de que os jebuseus continuavam em Jerusalém “até hoje” (1:21) indicaria uma data anterior à conquista da cidade por Davi. O livro teria sido escrito, então, no tempo de Saul ou no início do reinado de Davi, por volta de 1050–1000 a.C.",
+    "academic": "A maioria dos pesquisadores vê em Juízes um conjunto de histórias de heróis tribais, em boa parte de origem do norte de Israel, transmitidas oralmente e depois reunidas e emolduradas pelo esquema de infidelidade, opressão, clamor e libertação (2:11–19). Essa moldura costuma ser atribuída à História Deuteronomista, redigida entre o fim do século VII e o exílio, c. 620–550 a.C.; alguns propõem que antes dela tenha existido uma coletânea de relatos de libertadores no Reino do Norte. O cântico de Débora (cap. 5) é considerado por muitos um dos poemas mais antigos da Bíblia. Os capítulos 17 a 21, que defendem a monarquia e retratam mal Gibeá, a cidade de Saul, são muitas vezes vistos como acréscimos, e a menção ao “cativeiro desta terra” (18:30) é geralmente ligada às deportações assírias do século VIII a.C."
+  },
+  "events": {
+    "intro": "Juízes cobre o período entre a morte de Josué e o início da monarquia. Os anos de opressão, de descanso e de governo indicados no livro somam cerca de 390, mais do que cabe nos 480 anos de 1 Reis 6:1 junto com o deserto, a época de Samuel e os reinados de Saul e de Davi; por isso, as cronologias tradicionais supõem que alguns juízes atuaram ao mesmo tempo, em regiões diferentes, e situam o período por volta de 1380–1050 a.C. Jefté, por sua vez, fala de trezentos anos de presença israelita a leste do Jordão (11:26). A pesquisa costuma situar o ambiente do livro na Idade do Ferro I (c. 1200–1000 a.C.), época de pequenas aldeias nas montanhas e da instalação dos filisteus na costa.",
+    "axis": [
+      -1450,
+      -500
+    ],
+    "band": {
+      "label": "Idade do Ferro I",
+      "from": -1200,
+      "to": -1000
+    },
+    "timeline": [
+      {
+        "label": "Período dos juízes, cronologia tradicional",
+        "from": -1380,
+        "to": -1050,
+        "kind": "evento",
+        "note": "da morte de Josué ao início do reinado de Saul, com juízes em parte contemporâneos"
+      },
+      {
+        "label": "Período dos juízes, segundo a pesquisa",
+        "from": -1200,
+        "to": -1025,
+        "kind": "evento",
+        "note": "aldeias tribais na região montanhosa, antes da monarquia"
+      },
+      {
+        "label": "Ramessés III enfrenta os Povos do Mar",
+        "from": -1180,
+        "to": -1175,
+        "kind": "evento",
+        "note": "depois do confronto, os filisteus se fixam na costa sul de Canaã"
+      },
+      {
+        "label": "Cântico de Débora",
+        "from": -1150,
+        "to": -1000,
+        "kind": "escrita",
+        "note": "data proposta por muitos estudiosos para o poema do cap. 5"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -1050,
+        "to": -1000,
+        "kind": "escrita",
+        "note": "Samuel, já no início da monarquia"
+      },
+      {
+        "label": "Deportações do Reino do Norte",
+        "from": -732,
+        "to": -722,
+        "kind": "evento",
+        "note": "a Assíria leva parte da população de Israel; talvez o “cativeiro desta terra” de 18:30"
+      },
+      {
+        "label": "Redação, segundo a pesquisa",
+        "from": -620,
+        "to": -550,
+        "kind": "escrita",
+        "note": "moldura deuteronomista, sobre tradições mais antigas"
+      }
+    ]
+  },
+  "context": "No período retratado, as tribos de Israel não tinham governo central nem exército permanente: cada uma vivia em seu território, e as alianças se formavam diante de ameaças comuns, nem sempre sem atritos, como mostram as queixas de Efraim (8:1; 12:1). Os vizinhos mudam de um episódio a outro: reis de Moabe e de Amom a leste do Jordão, nômades midianitas que chegam com camelos na época da colheita (6:3–5), cidades cananeias nos vales, com carros de ferro (4:3), e, no sudoeste, os filisteus, um dos Povos do Mar que se instalaram na costa no início do século XII a.C. A geografia vai do vale de Jezreel e do monte Tabor, no norte, à região montanhosa de Efraim, a Gileade, a leste do Jordão, e à faixa entre Zorá e Gaza, onde se passa a história de Sansão. O santuário de Siló aparece como centro religioso das tribos (18:31; 21:19).",
+  "places": [
+    "Boquim",
+    "o monte Tabor e o ribeiro de Quisom",
+    "Ofra e o vale de Jezreel",
+    "Siquém",
+    "Mispá de Gileade",
+    "Zorá, Timna e Gaza",
+    "Laís, depois chamada Dã",
+    "Gibeá de Benjamim",
+    "Siló"
+  ],
+  "themes": [
+    "infidelidade e arrependimento",
+    "libertadores levantados por Deus",
+    "o espírito do SENHOR",
+    "liderança e monarquia",
+    "decadência moral e religiosa",
+    "unidade e conflito entre as tribos"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:10",
+      "text": "E toda aquela geração foi também recolhida com seus pais. E levantou-se depois dela outra geração, que não conhecia o SENHOR, nem a obra que ele havia feito por Israel."
+    },
+    {
+      "ref": "2:16",
+      "text": "Mas o SENHOR suscitou juízes que os livrassem da mão dos que os despojavam."
+    },
+    {
+      "ref": "8:23",
+      "text": "Mas Gideão respondeu: Não serei senhor sobre vós, nem meu filho vos dominará: o SENHOR será vosso Senhor."
+    },
+    {
+      "ref": "21:25",
+      "text": "Nestes dias não havia rei em Israel; cada um fazia o que era correto diante de seus olhos."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. Em 18:30, o texto hebraico tradicional escreve o nome do avô do sacerdote Jônatas com uma letra suspensa, que transforma Moisés em Manassés; muitos estudiosos entendem que a forma original era Moisés. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

@@ -1,0 +1,253 @@
+{
+  "title_orig": "Κατὰ Ἰωάννην",
+  "title_orig_xlit": "Kata Ioannen",
+  "summary": "João conta a história de Jesus de um modo bem diferente dos outros três evangelhos. Abre com um prólogo poético sobre a Palavra (em grego, Logos), que estava junto de Deus desde o princípio e “se fez carne” (1:14). A primeira metade do livro se organiza em torno de sinais, como a água transformada em vinho em Caná e a volta de Lázaro à vida, seguidos de longos diálogos e discursos em que Jesus fala de si com imagens introduzidas por “Eu sou”. A segunda metade se concentra na última noite com os discípulos, com o lava-pés e os discursos de despedida (caps. 13–17), e depois na paixão e na ressurreição. O próprio livro declara seu propósito: que os leitores creiam que Jesus é o Cristo, o Filho de Deus, e tenham vida em seu nome (20:31).",
+  "name": "O título “Segundo João” (Kata Ioannen) foi dado ao livro quando os evangelhos passaram a circular juntos e já aparece, na forma “Evangelho segundo João”, num papiro de por volta do ano 200 (P66). O texto não diz o nome do autor, mas o último capítulo o liga ao “discípulo a quem Jesus amava”, que “testemunha destas coisas, e estas coisas escreveu” (21:20, 24). A tradição identificou esse discípulo com João, filho de Zebedeu, um dos doze.",
+  "facts": [
+    [
+      "Posição",
+      "4º livro do Novo Testamento e o último dos quatro Evangelhos"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "evangelho: narrativa de sinais e discursos de Jesus, com forte reflexão teológica"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Prólogo e primeiros discípulos",
+      "from": 1,
+      "to": 1,
+      "text": "O hino à Palavra (1:1–18), o testemunho de João Batista, que aponta Jesus como o Cordeiro de Deus, e o chamado de André, Pedro, Filipe e Natanael."
+    },
+    {
+      "title": "Sinais e discursos",
+      "from": 2,
+      "to": 12,
+      "text": "Sinais e diálogos em Caná, Jerusalém, Samaria e Galileia, ao longo de várias festas judaicas; a oposição cresce até a ressurreição de Lázaro e a decisão de matar Jesus, e a parte termina com o anúncio: “Chegada é a hora” (12:23)."
+    },
+    {
+      "title": "A despedida",
+      "from": 13,
+      "to": 17,
+      "text": "Na última ceia, Jesus lava os pés dos discípulos, anuncia a traição e a negação, dá o mandamento do amor, promete o Consolador e ora pelos seus (cap. 17)."
+    },
+    {
+      "title": "Paixão e morte",
+      "from": 18,
+      "to": 19,
+      "text": "A prisão no jardim além do Cedrom, os interrogatórios diante de Anás e de Pilatos, a crucificação e o sepultamento por José de Arimateia e Nicodemos."
+    },
+    {
+      "title": "Ressurreição",
+      "from": 20,
+      "to": 20,
+      "text": "Maria Madalena no túmulo, as aparições aos discípulos e a Tomé e a primeira conclusão do livro (20:30–31)."
+    },
+    {
+      "title": "Epílogo",
+      "from": 21,
+      "to": 21,
+      "text": "A aparição junto ao mar de Tibérias, o diálogo de Jesus com Pedro e a nota final sobre o discípulo amado e o seu testemunho."
+    }
+  ],
+  "extra": {
+    "title": "João e os sinóticos",
+    "text": "Mateus, Marcos e Lucas são chamados sinóticos porque, lidos lado a lado, mostram a mesma visão de conjunto; João segue outro caminho, e a maior parte do seu conteúdo não tem paralelo nos outros três. Nele, Jesus sobe várias vezes a Jerusalém e passa por ao menos três Páscoas (2:13; 6:4; 11:55); a purificação do templo vem no começo (cap. 2), e não na última semana; não há expulsões de demônios nem parábolas no estilo dos sinóticos; e, no lugar dos ditos curtos, há longos discursos. Jesus fala de si com sete imagens introduzidas por “Eu sou”: o pão da vida (6:35), a luz do mundo (8:12), a porta (10:9), o bom Pastor (10:11), a ressurreição e a vida (11:25), o caminho, a verdade e a vida (14:6) e a videira verdadeira (15:1)."
+  },
+  "people": [
+    {
+      "name": "Jesus",
+      "chapters": "1–21",
+      "ch": 1,
+      "note": "a Palavra que se fez carne; chamado Cordeiro de Deus, Filho de Deus, Rei de Israel e, por Tomé, “Senhor meu, e Deus meu” (20:28)"
+    },
+    {
+      "name": "João Batista",
+      "chapters": "1; 3; 5; 10",
+      "ch": 1,
+      "note": "testemunha que aponta Jesus como o Cordeiro de Deus (1:29) e diz que Jesus deve crescer e ele, diminuir (3:30)"
+    },
+    {
+      "name": "Simão Pedro",
+      "chapters": "1; 6; 13; 18; 20–21",
+      "ch": 21,
+      "note": "nega Jesus três vezes e, junto ao mar de Tibérias, é interrogado três vezes sobre o seu amor"
+    },
+    {
+      "name": "A mãe de Jesus",
+      "chapters": "2; 19",
+      "ch": 2,
+      "note": "nunca chamada pelo nome em João; está no casamento em Caná e junto à cruz"
+    },
+    {
+      "name": "Nicodemos",
+      "chapters": "3; 7; 19",
+      "ch": 3,
+      "note": "fariseu e chefe dos judeus que procura Jesus de noite e depois ajuda a sepultá-lo"
+    },
+    {
+      "name": "A mulher samaritana",
+      "chapters": "4",
+      "ch": 4,
+      "note": "conversa com Jesus junto ao poço de Jacó e leva o seu povo a conhecê-lo"
+    },
+    {
+      "name": "Marta, Maria e Lázaro",
+      "chapters": "11–12",
+      "ch": 11,
+      "note": "irmãos de Betânia, amigos de Jesus; Lázaro é chamado para fora do túmulo"
+    },
+    {
+      "name": "O discípulo amado",
+      "chapters": "13; 19–21",
+      "ch": 13,
+      "note": "discípulo sem nome, próximo de Jesus na ceia, junto à cruz e no túmulo; o livro o apresenta como sua testemunha"
+    },
+    {
+      "name": "Tomé",
+      "chapters": "11; 14; 20–21",
+      "ch": 20,
+      "note": "chamado Dídimo; duvida da ressurreição até ver Jesus"
+    },
+    {
+      "name": "Judas Iscariotes",
+      "chapters": "6; 12–13; 18",
+      "ch": 13,
+      "note": "um dos doze; sai da ceia para entregar Jesus"
+    },
+    {
+      "name": "Anás e Caifás",
+      "chapters": "11; 18",
+      "ch": 18,
+      "note": "o antigo sumo sacerdote e seu genro, sumo sacerdote “daquele ano”"
+    },
+    {
+      "name": "Pilatos",
+      "chapters": "18–19",
+      "ch": 18,
+      "note": "governador romano; dialoga com Jesus sobre reino e verdade e o entrega para ser crucificado"
+    },
+    {
+      "name": "Maria Madalena",
+      "chapters": "19–20",
+      "ch": 20,
+      "note": "está junto à cruz e é a primeira a ver o Ressuscitado, no jardim"
+    }
+  ],
+  "writing": {
+    "tradition": "O livro se apresenta como testemunho do “discípulo a quem Jesus amava” (21:20–24). A partir do fim do século II, com Ireneu, a tradição identifica esse discípulo com o apóstolo João, filho de Zebedeu, e afirma que ele escreveu o evangelho em Éfeso, já idoso, depois dos outros três; Ireneu diz ter ouvido de Policarpo, discípulo de João, lembranças sobre ele. Clemente de Alexandria o chamou de “evangelho espiritual”, escrito para completar os demais. Nessa leitura, a obra é datada no fim do século I, por volta de 90–100; alguns defensores da autoria apostólica propõem datas anteriores a 70.",
+    "academic": "A autoria joanina é uma questão muito debatida. O grego do livro é simples, mas com vocabulário teológico próprio, e muitos estudiosos veem sinais de mais de uma etapa de redação: em 14:31, Jesus diz “vamos embora daqui”, mas o discurso continua até o capítulo 17, e o capítulo 21 parece acrescentado depois da conclusão de 20:30–31. Uma hipótese frequente é que o livro tenha nascido da tradição ligada ao discípulo amado e tenha sido escrito e revisto no círculo de seus seguidores, a chamada comunidade joanina. O discípulo amado é identificado por uns com João, filho de Zebedeu; por outros, com o “presbítero João” citado por Papias ou com outro discípulo de Jerusalém. A data mais aceita é c. 90–100, e o papiro P52, com versículos do capítulo 18, costuma ser datado da primeira metade do século II, embora haja quem proponha datas mais tardias. Discute-se ainda se o autor conhecia os sinóticos ou usava tradições independentes."
+  },
+  "events": {
+    "intro": "João não indica anos, mas menciona várias festas judaicas, entre elas três Páscoas (2:13; 6:4; 11:55), o que sugere um ministério de dois a três anos. A observação de que o templo estava em construção havia quarenta e seis anos (2:20) aponta para c. 27/28, já que a reforma de Herodes começou por volta de 20/19 a.C. João situa a crucificação no dia da preparação da Páscoa (19:14), o que, combinado com cálculos astronômicos do calendário judaico, favorece as datas de 30 ou 33. Todas as datas são aproximadas.",
+    "axis": [
+      -25,
+      150
+    ],
+    "band": {
+      "label": "Templo reconstruído por Herodes",
+      "from": -20,
+      "to": 70
+    },
+    "timeline": [
+      {
+        "label": "Caifás",
+        "from": 18,
+        "to": 36,
+        "kind": "pessoa",
+        "note": "sumo sacerdote; seu sogro Anás o fora antes (18:13)"
+      },
+      {
+        "label": "Pilatos",
+        "from": 26,
+        "to": 36,
+        "kind": "pessoa",
+        "note": "governador romano da Judeia (18–19)"
+      },
+      {
+        "label": "Ministério de Jesus",
+        "from": 27,
+        "to": 33,
+        "kind": "evento",
+        "note": "c. 27/28 a 30/33; em João, ao menos três Páscoas"
+      },
+      {
+        "label": "Crucificação",
+        "from": 30,
+        "to": 33,
+        "kind": "evento",
+        "note": "na preparação da Páscoa (19:14); as datas mais defendidas são 30 e 33"
+      },
+      {
+        "label": "Destruição de Jerusalém",
+        "from": 70,
+        "to": 70,
+        "kind": "evento",
+        "note": "o exército romano incendeia o templo"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": 90,
+        "to": 100,
+        "kind": "escrita",
+        "note": "o apóstolo João, em Éfeso, no fim da vida"
+      },
+      {
+        "label": "Forma final, segundo a maioria dos pesquisadores",
+        "from": 90,
+        "to": 110,
+        "kind": "escrita",
+        "note": "talvez depois de mais de uma etapa de redação"
+      },
+      {
+        "label": "Papiro P52",
+        "from": 100,
+        "to": 150,
+        "kind": "evento",
+        "note": "fragmento com 18:31–33, 37–38; data paleográfica discutida"
+      }
+    ]
+  },
+  "context": "Boa parte da narrativa se passa na Judeia e em Jerusalém, em torno do templo e das festas judaicas: a Páscoa, a festa dos tabernáculos (cap. 7) e a festa da Dedicação, no inverno (10:22). O autor conhece de perto a cidade e menciona lugares como o tanque de Betesda, com seus cinco pórticos (5:2), cujos restos foram encontrados por arqueólogos, e o tanque de Siloé (9:7). O livro chama muitas vezes os adversários de Jesus de “os judeus” e fala do risco de ser expulso da sinagoga (9:22; 16:2); muitos estudiosos leem nisso o reflexo de conflitos entre a comunidade do autor e lideranças judaicas no fim do século I, e não uma referência ao povo judeu como um todo, ao qual pertencem o próprio Jesus e seus discípulos. A tradição liga o evangelho a Éfeso, cidade grega da Ásia Menor onde circulavam ideias filosóficas sobre o Logos, termo que o prólogo emprega com sentido próprio e que ecoa também as primeiras palavras de Gênesis.",
+  "places": [
+    "Betábara, além do Jordão (em outros manuscritos, Betânia)",
+    "Caná da Galileia",
+    "Samaria: Sicar e o poço de Jacó",
+    "Cafarnaum e o mar de Tibérias",
+    "Betânia, a aldeia de Lázaro",
+    "Jerusalém: o templo, os tanques de Betesda e de Siloé, o jardim além do Cedrom, Gabatá e o Gólgota"
+  ],
+  "themes": [
+    "a Palavra que se fez carne",
+    "crer e ter vida",
+    "sinais e glória",
+    "luz e trevas",
+    "verdade e testemunho",
+    "amor uns pelos outros",
+    "o Espírito Consolador"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:1",
+      "text": "No princípio era a Palavra, e a Palavra estava junto de Deus, e a Palavra era Deus."
+    },
+    {
+      "ref": "1:14",
+      "text": "E aquela Palavra se fez carne, e habitou entre nós; (e vimos sua glória, como glória do unigênito do Pai) cheio de graça e de verdade."
+    },
+    {
+      "ref": "3:16",
+      "text": "Porque Deus amou ao mundo de tal maneira, que deu o seu Filho unigênito; para que todo aquele que nele crê não pereça, mas tenha a vida eterna."
+    },
+    {
+      "ref": "20:31",
+      "text": "Porém estes estão escritos, para que creiais que Jesus é o Cristo, o Filho de Deus; e para que crendo, tenhais vida em seu nome."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. O trecho da mulher acusada de adultério (7:53–8:11) não está nos manuscritos mais antigos conhecidos, e em manuscritos posteriores aparece em lugares diferentes, às vezes depois de Lucas 21:38; a maioria dos estudiosos o considera um acréscimo ao texto de João, embora muitos vejam nele uma tradição antiga sobre Jesus. A BLIVRE o traz entre « », e o SBLGNT não o inclui, de modo que esses versículos ficam sem o original grego. O mesmo acontece com o final de 5:3 e com 5:4, sobre o anjo que agitava a água do tanque. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

@@ -1,0 +1,197 @@
+{
+  "title_orig": "Πρὸς Κορινθίους Βʹ",
+  "title_orig_xlit": "Pros Korinthious B",
+  "summary": "2 Coríntios é a mais pessoal das cartas de Paulo. Depois de 1 Coríntios, a relação com a igreja se deteriorou: houve uma visita dolorosa, uma ofensa contra Paulo e uma carta escrita “com muitas lágrimas” (2:4). Nos capítulos 1 a 7, aliviado pelas boas notícias trazidas por Tito, Paulo explica as mudanças nos seus planos e reflete sobre o ministério da nova aliança, carregado por pessoas frágeis — “tesouro em vasos de barro” (4:7) — e dedicado à reconciliação com Deus. Os capítulos 8 e 9 pedem que os coríntios completem a coleta para os pobres de Jerusalém. Nos capítulos 10 a 13, o tom muda: Paulo enfrenta pregadores rivais, que ele chama com ironia de “superapóstolos” (12:11), e se defende falando não de êxitos, mas de sofrimentos e fraquezas.",
+  "name": "O título “Segunda aos coríntios” (Pros Korinthious B) distingue esta da outra carta à mesma igreja e foi dado quando as cartas de Paulo foram reunidas. Apesar do número, o texto mostra que Paulo escreveu aos coríntios pelo menos quatro vezes: uma carta anterior a 1 Coríntios (1 Coríntios 5:9), a própria 1 Coríntios, a carta “com muitas lágrimas” (2:4; 7:8) e esta.",
+  "facts": [
+    [
+      "Posição",
+      "8º livro do Novo Testamento; 3ª das cartas de Paulo, na ordem do cânon"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "carta, com forte tom pessoal e de defesa"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Consolo e mudança de planos",
+      "from": 1,
+      "to": 2,
+      "text": "Paulo agradece o consolo de Deus no perigo que viveu na Ásia, explica por que não voltou a Corinto como prometera e pede perdão para quem o ofendeu."
+    },
+    {
+      "title": "O ministério de Paulo",
+      "from": 2,
+      "to": 7,
+      "text": "A nova aliança, do Espírito, comparada à de Moisés; a mensagem levada em corpos frágeis; a esperança diante da morte; o apelo à reconciliação; e a alegria com as notícias de Tito (2:14–7:16)."
+    },
+    {
+      "title": "A coleta para Jerusalém",
+      "from": 8,
+      "to": 9,
+      "text": "O exemplo das igrejas pobres da Macedônia, a ida de Tito e de outros irmãos a Corinto e o convite a dar com generosidade e alegria."
+    },
+    {
+      "title": "Defesa diante dos rivais",
+      "from": 10,
+      "to": 13,
+      "text": "Paulo responde a quem o achava forte nas cartas e fraco em pessoa, fala “como tolo” das próprias credenciais e sofrimentos e anuncia a terceira visita."
+    }
+  ],
+  "extra": {
+    "title": "O discurso do “tolo”",
+    "text": "Em 11:1–12:13, Paulo entra no jogo dos adversários, que se gabavam de credenciais, e se diz forçado a falar “como tolo”. Mas a lista de méritos vira uma lista de sofrimentos: açoites, prisões, três naufrágios, perigos de toda sorte e a fuga de Damasco descido num cesto pela muralha (11:23–33). Ao falar de uma experiência extraordinária, a de um homem levado “até o terceiro céu” catorze anos antes, fala de si na terceira pessoa (12:2–4) e logo passa ao “espinho na carne” e à resposta que recebeu: “Minha graça te basta” (12:7–9)."
+  },
+  "people": [
+    {
+      "name": "Paulo",
+      "chapters": "1–2; 10–13",
+      "ch": 11,
+      "note": "defende o seu modo de agir e o seu apostolado diante de uma igreja dividida em relação a ele"
+    },
+    {
+      "name": "Tito",
+      "chapters": "2; 7–8; 12",
+      "ch": 7,
+      "note": "colaborador de Paulo; leva e traz notícias de Corinto e é enviado para concluir a coleta"
+    },
+    {
+      "name": "Timóteo",
+      "chapters": "1",
+      "ch": 1,
+      "note": "aparece com Paulo como remetente (1:1) e pregou em Corinto com ele e com Silvano (1:19)"
+    },
+    {
+      "name": "Silvano",
+      "chapters": "1",
+      "ch": 1,
+      "note": "o Silas de Atos, companheiro de Paulo na fundação da igreja (1:19)"
+    },
+    {
+      "name": "O ofensor",
+      "chapters": "2; 7",
+      "ch": 2,
+      "note": "membro da igreja, não identificado, que causou tristeza a Paulo; depois de repreendido, deve ser perdoado (2:5–11)"
+    },
+    {
+      "name": "Os “superapóstolos”",
+      "chapters": "10–12",
+      "ch": 11,
+      "note": "pregadores de origem judaica (11:22) que buscavam a adesão da igreja e desqualificavam Paulo"
+    },
+    {
+      "name": "Aretas",
+      "chapters": "11",
+      "ch": 11,
+      "note": "Aretas IV, rei dos nabateus; um governador subordinado a ele quis prender Paulo em Damasco (11:32)"
+    }
+  ],
+  "writing": {
+    "tradition": "A tradição sempre atribuiu a carta a Paulo, escrita com Timóteo (1:1). Pelo próprio texto, Paulo está na Macedônia, depois de deixar Éfeso e passar por Trôade (2:12–13; 7:5), e se prepara para ir a Corinto pela terceira vez (12:14; 13:1). Isso leva a c. 55–56, pouco antes do inverno passado na Grécia, quando escreveria Romanos.",
+    "academic": "A autoria de Paulo é aceita por praticamente todos os estudiosos; a discussão é sobre a unidade do texto. A mudança brusca de tom no capítulo 10 leva muitos a ver nos capítulos 10–13 uma carta à parte: para alguns, parte da carta “com muitas lágrimas”, anterior aos capítulos 1–9; para outros, uma carta posterior, escrita quando a crise voltou. Também se discute se os capítulos 8 e 9, ambos sobre a coleta, foram bilhetes separados, e se 6:14–7:1, que interrompe o fio do texto, veio de outro contexto. Outros estudiosos defendem que a carta sempre foi uma só e explicam as mudanças por notícias novas ou por estratégia retórica. As datas propostas ficam em geral entre 55 e 57."
+  },
+  "events": {
+    "intro": "A carta permite reconstruir parte das relações de Paulo com Corinto entre a fundação da igreja e a sua última visita, embora a ordem de alguns fatos seja discutida. Dois dados ajudam a situar a vida de Paulo: a fuga de Damasco no tempo do rei nabateu Aretas IV, que morreu por volta do ano 40 (11:32–33), e a visão que ele situa “catorze anos atrás” (12:2). A cronologia é a mesma usada em Atos; as datas são aproximadas.",
+    "axis": [
+      30,
+      60
+    ],
+    "band": {
+      "label": "Paulo em Éfeso",
+      "from": 53,
+      "to": 56
+    },
+    "timeline": [
+      {
+        "label": "Fuga de Damasco",
+        "from": 36,
+        "to": 37,
+        "kind": "evento",
+        "note": "sob um governador do rei Aretas IV (11:32–33; Atos 9:23–25)"
+      },
+      {
+        "label": "A visão do “terceiro céu”",
+        "from": 41,
+        "to": 42,
+        "kind": "evento",
+        "note": "data calculada a partir dos “catorze anos” de 12:2"
+      },
+      {
+        "label": "Fundação da igreja em Corinto",
+        "from": 50,
+        "to": 52,
+        "kind": "evento",
+        "note": "Paulo, Silvano e Timóteo (1:19; Atos 18)"
+      },
+      {
+        "label": "Escrita de 1 Coríntios",
+        "from": 54,
+        "to": 55,
+        "kind": "escrita",
+        "note": "em Éfeso"
+      },
+      {
+        "label": "Visita dolorosa e carta “com lágrimas”",
+        "from": 55,
+        "to": 55,
+        "kind": "evento",
+        "note": "deduzidas de 2:1–4 e 13:2; datas e ordem discutidas"
+      },
+      {
+        "label": "Escrita de 2 Coríntios",
+        "from": 55,
+        "to": 56,
+        "kind": "escrita",
+        "note": "na Macedônia, depois do encontro com Tito (7:5–7)"
+      },
+      {
+        "label": "Terceira visita a Corinto",
+        "from": 56,
+        "to": 57,
+        "kind": "evento",
+        "note": "três meses na Grécia (Atos 20:2–3)"
+      }
+    ]
+  },
+  "context": "Corinto, colônia romana e capital da Acaia, valorizava a boa oratória, a aparência e o patrocínio de pessoas influentes. É nesse ambiente que se entendem as críticas a Paulo: diziam que as suas cartas eram “graves e fortes”, mas a presença física era fraca e a fala “desprezível” (10:10). Os rivais chegavam com cartas de recomendação (3:1), aceitavam o sustento da igreja e se apresentavam como “hebreus” e “servidores de Cristo” (11:22–23); Paulo, ao contrário, recusara ser sustentado pelos coríntios e vivera da ajuda das igrejas da Macedônia (11:7–9). A coleta para os cristãos pobres de Jerusalém, que ocupa os capítulos 8 e 9, era para Paulo um sinal concreto da unidade entre as igrejas de origem gentia e a comunidade judaica de onde o movimento saíra.",
+  "places": [
+    "Corinto e a Acaia",
+    "Éfeso e a província da Ásia",
+    "Trôade",
+    "Macedônia",
+    "Jerusalém e a Judeia",
+    "Damasco"
+  ],
+  "themes": [
+    "consolo no sofrimento",
+    "força na fraqueza",
+    "a nova aliança",
+    "reconciliação",
+    "generosidade",
+    "o verdadeiro apostolado"
+  ],
+  "key_verses": [
+    {
+      "ref": "4:7",
+      "text": "Porém temos este tesouro em vasos de barro, para que a excelência do poder seja de Deus, e não de nós."
+    },
+    {
+      "ref": "5:17",
+      "text": "Portanto, se alguém está em Cristo, uma nova criatura é; as coisas velhas já passaram, eis que tudo se fez novo."
+    },
+    {
+      "ref": "9:7",
+      "text": "Cada qual faça como propõe em seu coração, não com tristeza, ou por obrigação; porque Deus ama ao que dá com alegria."
+    },
+    {
+      "ref": "12:9",
+      "text": "Mas ele me disse: “Minha graça te basta, porque meu poder se aperfeiçoa na fraqueza”. Por isso, com muito prazer, eu me orgulharei nas minhas fraquezas, para que o poder de Cristo habite em mim."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. A BLIVRE divide o fim do capítulo 13 em três versículos (13:12–14), e o texto grego, em dois (13:12–13); o app faz a correspondência. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

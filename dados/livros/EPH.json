@@ -1,0 +1,160 @@
+{
+  "title_orig": "Πρὸς Ἐφεσίους",
+  "title_orig_xlit": "Pros Ephesious",
+  "summary": "Efésios é menos uma resposta a problemas concretos do que uma reflexão ampla sobre o que Deus fez em Cristo e sobre a Igreja. A primeira metade, em tom de louvor e oração, fala do plano de Deus de reunir todas as coisas em Cristo, da salvação “pela graça […] por meio da fé” (2:8) e da união de judeus e gentios num só povo, sem o “muro da separação” (2:14). A segunda metade tira as consequências: unidade do corpo de Cristo, diversidade de dons, abandono da vida antiga, relações dentro da casa e a imagem da “armadura de Deus” para enfrentar as forças espirituais. Muitas expressões e temas coincidem com os de Colossenses.",
+  "name": "O título Pros Ephesious, “Aos efésios”, foi dado quando as cartas de Paulo passaram a circular reunidas, e se apoia na saudação a “os santos que estão em Éfeso” (1:1). Mas as palavras “em Éfeso” faltam em alguns dos manuscritos mais antigos, e por volta de 140 Marcião conhecia a carta como dirigida aos laodicenses; por isso muitos pensam que ela foi, desde o início, uma carta circular para várias igrejas da Ásia.",
+  "facts": [
+    [
+      "Posição",
+      "10º livro do Novo Testamento; 5ª das cartas paulinas, na ordem do cânon"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "carta, de caráter geral, em tom de louvor e exortação"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Saudação e louvor",
+      "from": 1,
+      "to": 1,
+      "text": "Um longo bendito — no grego, uma só frase (1:3–14) — celebra a escolha, a redenção e o selo do Espírito, seguido de uma oração para que os leitores compreendam o poder de Deus mostrado em Cristo."
+    },
+    {
+      "title": "De mortos a um só povo",
+      "from": 2,
+      "to": 2,
+      "text": "Os que estavam mortos nos pecados recebem vida pela graça; gentios antes afastados são aproximados, e judeus e gentios formam uma só humanidade nova."
+    },
+    {
+      "title": "O mistério e a missão de Paulo",
+      "from": 3,
+      "to": 3,
+      "text": "Paulo, prisioneiro, apresenta-se como servidor do “mistério”: os gentios são coerdeiros. Termina com uma oração e uma doxologia."
+    },
+    {
+      "title": "Unidade e vida nova",
+      "from": 4,
+      "to": 5,
+      "text": "Um só corpo e um só Espírito, dons dados para edificar a Igreja; deixar o “velho ser humano”, andar em amor e como filhos da luz (4:1–5:20)."
+    },
+    {
+      "title": "A casa e o combate",
+      "from": 5,
+      "to": 6,
+      "text": "Deveres de esposas e maridos, filhos e pais, servos e senhores, com o casamento comparado à união de Cristo e da Igreja; a armadura de Deus; Tíquico levará notícias (5:21–6:24)."
+    }
+  ],
+  "extra": {
+    "title": "Frases longas e linguagem de louvor",
+    "text": "O estilo de Efésios chama a atenção mesmo em tradução: períodos muito longos, acúmulo de sinônimos e cadeias de expressões como “em Cristo” e “nos lugares celestiais”. Várias passagens soam como oração ou hino (1:3–14; 3:14–21), e alguns estudiosos veem traços de linguagem usada no batismo ou no culto. Esse estilo, diferente do das cartas mais polêmicas de Paulo, é um dos pontos centrais no debate sobre a autoria."
+  },
+  "people": [
+    {
+      "name": "Paulo",
+      "chapters": "1; 3–4; 6",
+      "ch": 3,
+      "note": "escreve como “prisioneiro de Cristo Jesus” em favor dos gentios (3:1; 4:1) e pede orações para anunciar o evangelho com ousadia (6:19–20)"
+    },
+    {
+      "name": "Tíquico",
+      "chapters": "6",
+      "ch": 6,
+      "note": "“irmão amado, e fiel servidor”, encarregado de levar a carta e dar notícias de Paulo (6:21–22); aparece com palavras quase iguais em Colossenses 4:7"
+    }
+  ],
+  "writing": {
+    "tradition": "A tradição sempre leu Efésios como carta de Paulo, e autores do século II, como Ireneu, a citam com o seu nome. Por ser uma das “cartas da prisão”, junto com Filipenses, Colossenses e Filemom, foi associada aos dois anos de Paulo preso em Roma (Atos 28:30), c. 60–62, e teria sido levada por Tíquico junto com Colossenses.",
+    "academic": "Efésios fica fora do grupo das sete cartas que praticamente todos os estudiosos atribuem a Paulo — Romanos, 1 e 2 Coríntios, Gálatas, Filipenses, 1 Tessalonicenses e Filemom. As demais, entre elas Efésios, são chamadas por muitos de “deuteropaulinas” ou “discutidas”. Uma parte grande da pesquisa considera Efésios obra de um discípulo que escreveu em nome de Paulo, c. 80–100, apoiando-se no vocabulário e no estilo diferentes, na visão da Igreja como realidade universal, na ênfase numa salvação já presente (2:5–6) e na dependência de Colossenses, cuja estrutura e frases ela parece retomar. Outros estudiosos defendem a autoria de Paulo, explicando as diferenças pelo caráter geral e litúrgico da carta, pelo uso de um secretário ou por uma fase mais tardia do seu pensamento; nesse caso, a data seria c. 60–62, e há quem proponha outra prisão, em Cesareia ou em Éfeso. Escrever em nome de um mestre era prática conhecida na Antiguidade, e a forma de avaliá-la também é objeto de debate."
+  },
+  "events": {
+    "intro": "A carta não menciona fatos datáveis além da prisão de Paulo. A linha do tempo mostra as duas posições: a tradicional, que a situa na prisão em Roma, e a de muitos estudiosos, que a colocam algumas décadas depois. As datas são aproximadas.",
+    "axis": [
+      45,
+      100
+    ],
+    "band": {
+      "label": "Reinado de Nero",
+      "from": 54,
+      "to": 68
+    },
+    "timeline": [
+      {
+        "label": "Paulo em Éfeso",
+        "from": 53,
+        "to": 56,
+        "kind": "evento",
+        "note": "cerca de três anos de trabalho na cidade (Atos 19; 20:31)"
+      },
+      {
+        "label": "Paulo prisioneiro em Roma",
+        "from": 60,
+        "to": 62,
+        "kind": "evento",
+        "note": "dois anos numa casa alugada (Atos 28:30)"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": 60,
+        "to": 62,
+        "kind": "escrita",
+        "note": "em Roma, enviada por Tíquico junto com Colossenses"
+      },
+      {
+        "label": "Morte de Paulo, segundo a tradição",
+        "from": 64,
+        "to": 67,
+        "kind": "pessoa",
+        "note": "em Roma, sob Nero; data incerta"
+      },
+      {
+        "label": "Escrita, segundo muitos estudiosos",
+        "from": 80,
+        "to": 100,
+        "kind": "escrita",
+        "note": "por um discípulo de Paulo, provavelmente na Ásia Menor"
+      }
+    ]
+  },
+  "context": "Éfeso era a principal cidade da província romana da Ásia, um grande porto no litoral da atual Turquia, com população estimada em mais de cem mil habitantes. Era famosa pelo templo de Ártemis, uma das maravilhas do mundo antigo, e tinha uma comunidade judaica estabelecida. Segundo Atos, Paulo passou ali cerca de três anos, e a partir da cidade o evangelho chegou a outras localidades da região, como Colossos, Laodiceia e Hierápolis. A carta, porém, quase não traz informações locais: não cita nomes de pessoas da igreja, fala aos leitores como quem apenas “ouviu” falar da sua fé (1:15) e trata de temas gerais, o que reforça a ideia de um texto destinado a várias comunidades, em boa parte formadas por não judeus.",
+  "places": [
+    "Éfeso",
+    "a província da Ásia",
+    "Laodiceia",
+    "Colossos",
+    "Roma"
+  ],
+  "themes": [
+    "o plano de Deus em Cristo",
+    "graça e fé",
+    "judeus e gentios num só povo",
+    "a Igreja como corpo de Cristo",
+    "unidade e dons",
+    "a vida nova",
+    "as relações na casa",
+    "o combate espiritual"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:8–10",
+      "text": "Porque pela graça sois salvos, por meio da fé; e isto não vem de vós; é dom de Deus; não por obras, para que ninguém tenha orgulho de si mesmo. Pois nós fomos feitos por ele, criados em Cristo Jesus para as boas obras, que Deus preparou para que nelas andássemos."
+    },
+    {
+      "ref": "2:14",
+      "text": "pois ele é a nossa paz. Dos dois povos ele fez um, e derrubou do meio o muro da separação."
+    },
+    {
+      "ref": "4:4–6",
+      "text": "Há um só corpo, e um só Espírito, como também fostes chamados em uma só esperança do vosso chamado. Um só Senhor, uma só fé, um só batismo; um só Deus, e Pai de todos, que é acima de todos, por meio de todos, e em todos."
+    },
+    {
+      "ref": "6:11",
+      "text": "Revesti-vos de toda a armadura de Deus, para que possais estar firmes contra as ciladas do diabo."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. Em 1:1, as palavras “em Éfeso” faltam em alguns manuscritos antigos; o SBLGNT, texto grego usado no app, as imprime entre colchetes, indicando dúvida. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

@@ -1,0 +1,227 @@
+{
+  "title_orig": "יְהוֹשֻׁעַ",
+  "title_orig_xlit": "Yehoshua",
+  "summary": "Josué conta como Israel, depois da morte de Moisés, atravessa o rio Jordão e se estabelece em Canaã, a terra prometida aos patriarcas. A primeira metade do livro narra a travessia, a tomada de Jericó e de Ai, o tratado com os gibeonitas e duas grandes campanhas militares, uma no sul e outra no norte da região. A segunda metade descreve a partilha da terra entre as tribos, com listas de fronteiras e de cidades, e separa as cidades de refúgio e as cidades destinadas aos levitas. O livro termina com os discursos de despedida de Josué e com a renovação da aliança em Siquém, onde o povo se compromete a servir somente ao SENHOR.",
+  "name": "O livro leva o nome do seu personagem principal, Josué, filho de Num. Em hebraico, Yehoshua quer dizer “o SENHOR salva” ou “o SENHOR é salvação”; segundo Números 13:16, foi Moisés quem lhe deu esse nome, no lugar de Oseias. Na Septuaginta o nome aparece como Iēsous, a mesma forma grega que o Novo Testamento usa para Jesus.",
+  "facts": [
+    [
+      "Posição",
+      "6º livro da Bíblia, o primeiro dos livros históricos; na Bíblia hebraica, abre os Profetas Anteriores (Nevi’im Rishonim)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "narrativa histórica, com listas de fronteiras e de cidades"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "A entrada na terra",
+      "from": 1,
+      "to": 5,
+      "text": "Josué assume o comando, os espias são acolhidos por Raabe em Jericó, o povo atravessa o Jordão a pé enxuto e, acampado em Gilgal, pratica a circuncisão e celebra a Páscoa."
+    },
+    {
+      "title": "As conquistas",
+      "from": 6,
+      "to": 12,
+      "text": "A queda de Jericó, o fracasso e depois a vitória em Ai, o tratado com Gibeão, as campanhas no sul e no norte e a lista dos 31 reis derrotados."
+    },
+    {
+      "title": "A partilha da terra",
+      "from": 13,
+      "to": 21,
+      "text": "As porções das tribos a leste e a oeste do Jordão, a herança de Calebe, a assembleia em Siló, as seis cidades de refúgio e as 48 cidades dos levitas."
+    },
+    {
+      "title": "Despedidas e aliança",
+      "from": 22,
+      "to": 24,
+      "text": "As tribos do leste voltam para casa e erguem um altar que quase provoca uma guerra; Josué se despede dos líderes e renova a aliança em Siquém antes de morrer."
+    }
+  ],
+  "extra": {
+    "title": "Um novo Moisés e as notas “até hoje”",
+    "text": "O livro desenha Josué em paralelo com Moisés: o SENHOR promete estar com ele “como fui com Moisés” (3:7), as águas do Jordão se abrem como as do mar Vermelho (4:23), e o príncipe do exército do SENHOR lhe manda tirar os sapatos, como na cena da sarça ardente (5:15; Êxodo 3:5). Outro traço frequente são as notas que ligam um monumento ou um nome de lugar aos fatos narrados com a expressão “até hoje”: as pedras no leito do Jordão (4:9), o nome Gilgal (5:9), os montes de pedras do vale de Acor e de Ai (7:26; 8:29) e os gibeonitas a serviço do altar (9:27)."
+  },
+  "people": [
+    {
+      "name": "Josué",
+      "chapters": "1–24",
+      "ch": 1,
+      "note": "filho de Num, da tribo de Efraim; auxiliar de Moisés e seu sucessor à frente do povo"
+    },
+    {
+      "name": "Raabe",
+      "chapters": "2; 6",
+      "ch": 2,
+      "note": "moradora de Jericó que esconde os dois espias; ela e a família são poupadas"
+    },
+    {
+      "name": "Acã",
+      "chapters": "7",
+      "ch": 7,
+      "note": "da tribo de Judá; fica com objetos consagrados ao anátema e é executado no vale de Acor"
+    },
+    {
+      "name": "Os gibeonitas",
+      "chapters": "9–10",
+      "ch": 9,
+      "note": "moradores de Gibeão que obtêm um tratado com Israel fingindo vir de uma terra distante"
+    },
+    {
+      "name": "Adoni-Zedeque",
+      "chapters": "10",
+      "ch": 10,
+      "note": "rei de Jerusalém; lidera a coalizão de cinco reis amorreus contra Gibeão"
+    },
+    {
+      "name": "Jabim",
+      "chapters": "11",
+      "ch": 11,
+      "note": "rei de Hazor, à frente da aliança dos reis do norte"
+    },
+    {
+      "name": "Calebe",
+      "chapters": "14–15",
+      "ch": 14,
+      "note": "um dos doze espias enviados por Moisés; aos 85 anos, pede e recebe Hebrom"
+    },
+    {
+      "name": "Eleazar",
+      "chapters": "14–24",
+      "ch": 14,
+      "note": "sacerdote, filho de Arão; preside a partilha da terra ao lado de Josué"
+    },
+    {
+      "name": "As filhas de Zelofeade",
+      "chapters": "17",
+      "ch": 17,
+      "note": "Maalá, Noa, Hogla, Milca e Tirza, que recebem herança porque o pai não teve filhos homens"
+    },
+    {
+      "name": "Fineias",
+      "chapters": "22",
+      "ch": 22,
+      "note": "filho de Eleazar; chefia a comitiva enviada às tribos do leste por causa do altar junto ao Jordão"
+    }
+  ],
+  "writing": {
+    "tradition": "Segundo o Talmude babilônico (Bava Batra 14b–15a), Josué escreveu o livro que leva o seu nome e também os últimos versículos de Deuteronômio; o relato da sua morte teria sido completado por Eleazar, e o da morte de Eleazar, por Fineias. O próprio texto diz que Josué registrou as palavras da aliança de Siquém “no livro da lei de Deus” (24:26). Nessa leitura, o livro foi escrito pouco depois dos acontecimentos, por volta de 1400–1370 a.C., ou no fim do século XIII a.C. para quem adota uma data mais tardia para o Êxodo.",
+    "academic": "Desde os estudos de Martin Noth (1943), muitos pesquisadores leem Josué como parte de uma obra maior, a chamada História Deuteronomista, que iria de Deuteronômio a 2 Reis e interpretaria a história de Israel à luz da lei de Deuteronômio. Uma proposta bastante difundida fala de uma primeira edição no reinado de Josias, por volta de 640–609 a.C., e de uma revisão durante o exílio na Babilônia, depois de 562 a.C. Há também quem prefira ligar Josué ao Pentateuco, como conclusão de um Hexateuco, e quem duvide da existência de uma obra deuteronomista única. É comum a ideia de que o livro aproveita fontes mais antigas, como tradições locais, listas de fronteiras e de cidades e a poesia citada do “livro de Jasar” (10:13)."
+  },
+  "events": {
+    "intro": "O livro não traz datas. Uma cronologia tradicional parte de 1 Reis 6:1, que põe a saída do Egito 480 anos antes do início da construção do templo de Salomão, e chega à entrada em Canaã por volta de 1406 a.C.; quem situa o Êxodo no século XIII a.C. coloca a entrada por volta de 1250–1200 a.C. A arqueologia torna o quadro mais complexo: Hazor tem uma camada de destruição do século XIII a.C., mas Jericó e Ai (et-Tell) mostram pouca ou nenhuma ocupação nesse período, e a leitura dos dados mais antigos é debatida. Muitos historiadores relacionam as origens de Israel ao surgimento gradual de aldeias na região montanhosa a partir de c. 1200 a.C. A mais antiga menção a “Israel” fora da Bíblia está numa estela do faraó Merneptá, de c. 1208 a.C.",
+    "axis": [
+      -1550,
+      -500
+    ],
+    "band": {
+      "label": "Idade do Bronze Recente",
+      "from": -1550,
+      "to": -1200
+    },
+    "timeline": [
+      {
+        "label": "Entrada em Canaã, cronologia tradicional",
+        "from": -1406,
+        "to": -1399,
+        "kind": "evento",
+        "note": "40 anos depois do Êxodo datado em c. 1446 a.C.; cerca de sete anos de campanhas (14:7–10)"
+      },
+      {
+        "label": "Josué à frente de Israel",
+        "from": -1406,
+        "to": -1380,
+        "kind": "pessoa",
+        "note": "pela cronologia tradicional; morre com 110 anos (24:29), em data apenas estimada"
+      },
+      {
+        "label": "Cartas de Amarna",
+        "from": -1360,
+        "to": -1330,
+        "kind": "evento",
+        "note": "correspondência de reis de Canaã com o faraó; queixas contra grupos chamados habiru"
+      },
+      {
+        "label": "Entrada em Canaã, datação no século XIII",
+        "from": -1250,
+        "to": -1200,
+        "kind": "evento",
+        "note": "para quem situa o Êxodo no tempo de Ramessés II"
+      },
+      {
+        "label": "Destruição de Hazor",
+        "from": -1300,
+        "to": -1200,
+        "kind": "evento",
+        "note": "incêndio da cidade cananeia (cf. 11:10–13); quem o causou é debatido"
+      },
+      {
+        "label": "Estela de Merneptá",
+        "from": -1210,
+        "to": -1205,
+        "kind": "evento",
+        "note": "inscrição egípcia que cita “Israel” como um povo em Canaã"
+      },
+      {
+        "label": "Aldeias na região montanhosa",
+        "from": -1200,
+        "to": -1000,
+        "kind": "evento",
+        "note": "surgem centenas de pequenos povoados, ligados por muitos estudiosos às origens de Israel"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -1400,
+        "to": -1370,
+        "kind": "escrita",
+        "note": "Josué, com o final completado por Eleazar e Fineias"
+      },
+      {
+        "label": "Redação, segundo a pesquisa",
+        "from": -640,
+        "to": -550,
+        "kind": "escrita",
+        "note": "obra deuteronomista: reinado de Josias e exílio na Babilônia"
+      }
+    ]
+  },
+  "context": "Na Idade do Bronze Recente (c. 1550–1200 a.C.), Canaã era formada por cidades-estado governadas por reis locais, em geral sob o domínio do Egito; as cartas de Amarna, do século XIV a.C., registram pedidos de ajuda desses reis ao faraó. O roteiro do livro acompanha a geografia: o povo parte de Sitim, nas planícies de Moabe, atravessa o Jordão diante de Jericó, sobe para a região montanhosa central, onde ficam Ai, Betel e Gibeão, persegue os inimigos pela ladeira de Bete-Horom em direção ao sul e, depois, enfrenta os reis do norte junto às águas de Merom. O próprio texto admite que muitas áreas continuaram fora do controle das tribos, como a costa dos filisteus e Jerusalém (13:2–3; 15:63), quadro que reaparece no início de Juízes. A prática do anátema (herem), a destruição completa de uma cidade consagrada à divindade, aparece também na estela do rei Mesa de Moabe, do século IX a.C., e está entre os pontos do livro mais discutidos por leitores judeus e cristãos.",
+  "places": [
+    "Sitim, nas planícies de Moabe",
+    "o rio Jordão e Gilgal",
+    "Jericó e Ai",
+    "Gibeão e o vale de Aijalom",
+    "Hazor e as águas de Merom",
+    "Siló",
+    "Siquém, entre os montes Ebal e Gerizim",
+    "Hebrom"
+  ],
+  "themes": [
+    "a terra como dom e herança",
+    "fidelidade à lei de Moisés",
+    "o SENHOR luta por Israel",
+    "o anátema (herem)",
+    "aliança e escolha",
+    "liderança e sucessão"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:8–9",
+      "text": "O livro desta lei nunca se apartará de tua boca: antes de dia e de noite meditarás nele, para que guardes e faças conforme tudo o que nele está escrito: porque então farás prosperar teu caminho, e tudo te sairá bem. Olha que te mando que te esforces e sejas valente: não temas nem desmaies, porque o SENHOR teu Deus será contigo onde quer que fores."
+    },
+    {
+      "ref": "21:45",
+      "text": "Não faltou palavra de todas as boas coisas que o SENHOR falou à casa de Israel; tudo se cumpriu."
+    },
+    {
+      "ref": "24:14",
+      "text": "Agora, pois, temei ao SENHOR, e servi-o com integridade e em verdade; e tirai do meio os deuses aos quais serviram vossos pais da outra parte do rio, e em Egito; e servi ao SENHOR."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. O texto grego da Septuaginta difere do hebraico em vários trechos; nele, o episódio do altar no monte Ebal (8:30–35) vem depois de 9:2, e num manuscrito de Qumran (4QJosa) aparece logo após a travessia do Jordão. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

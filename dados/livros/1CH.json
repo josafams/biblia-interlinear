@@ -1,0 +1,210 @@
+{
+  "title_orig": "דִּבְרֵי הַיָּמִים",
+  "title_orig_xlit": "Divrei ha-Yamim",
+  "summary": "1 Crônicas reconta a história de Israel a partir de Jerusalém e do templo. Os capítulos 1 a 9 são genealogias que vão de Adão até a comunidade que voltou do exílio, com destaque para a tribo de Judá, a família de Davi e a tribo de Levi. Depois de um breve relato da morte de Saul (cap. 10), o livro se concentra em Davi: a aclamação como rei, a conquista de Jerusalém, a chegada da arca à cidade e a promessa de uma dinastia duradoura. A parte final trata dos preparativos para o templo e da organização de sacerdotes, levitas, cantores e porteiros, que Davi deixa prontos para Salomão antes de morrer.",
+  "name": "O título hebraico, Divrei ha-Yamim, quer dizer “os acontecimentos dos dias” (literalmente, “as palavras dos dias”), expressão usada para anais e registros oficiais. A Septuaginta chamou o livro de Paraleipomena, “coisas deixadas de lado”, por entendê-lo como complemento de Samuel e Reis. O nome “Crônicas” vem de Jerônimo, que sugeriu chamá-lo de “crônica de toda a história sagrada”. Na tradição hebraica era um só livro; a divisão em dois vem da Septuaginta e passou mais tarde às edições hebraicas impressas.",
+  "facts": [
+    [
+      "Posição",
+      "13º livro da Bíblia, entre os livros históricos; na Bíblia hebraica, 1 e 2 Crônicas formam um só livro, que em geral fecha os Escritos (Ketuvim)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "narrativa histórica, com longas genealogias e listas"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Genealogias",
+      "from": 1,
+      "to": 9,
+      "text": "De Adão às doze tribos, com destaque para Judá, a casa de Davi e Levi, até os moradores de Jerusalém depois do exílio."
+    },
+    {
+      "title": "Davi se torna rei",
+      "from": 10,
+      "to": 12,
+      "text": "A morte de Saul, a unção de Davi em Hebrom, a conquista de Jerusalém e os guerreiros que o apoiaram."
+    },
+    {
+      "title": "A arca em Jerusalém",
+      "from": 13,
+      "to": 16,
+      "text": "A primeira tentativa frustrada, a transferência feita pelos levitas e o culto de louvor diante da arca."
+    },
+    {
+      "title": "A promessa e as guerras",
+      "from": 17,
+      "to": 21,
+      "text": "A promessa de uma dinastia, as vitórias sobre os povos vizinhos e o recenseamento que leva à escolha do lugar do templo."
+    },
+    {
+      "title": "Preparativos para o templo",
+      "from": 22,
+      "to": 29,
+      "text": "Materiais, turnos de sacerdotes e levitas, músicos, porteiros e oficiais; as últimas palavras de Davi e a sucessão de Salomão."
+    }
+  ],
+  "extra": {
+    "title": "Uma nova leitura de Samuel e Reis",
+    "text": "Boa parte da narrativa retoma, às vezes palavra por palavra, trechos de 2 Samuel e 1 Reis, mas com escolhas próprias: o livro não conta o caso de Davi com Bate-Seba nem a revolta de Absalão, e acrescenta longas listas sobre o culto. Em alguns pontos a diferença é teológica: em 2 Samuel 24:1 é a ira do SENHOR que move Davi a contar o povo, enquanto em 1 Crônicas 21:1 quem o incita é Satanás. O autor cita também fontes que não chegaram até nós, como as crônicas de Samuel, de Natã e de Gade (29:29)."
+  },
+  "people": [
+    {
+      "name": "Jabez",
+      "chapters": "4",
+      "ch": 4,
+      "note": "personagem das genealogias de Judá lembrado pela oração em 4:9–10"
+    },
+    {
+      "name": "Saul",
+      "chapters": "8–10",
+      "ch": 10,
+      "note": "o primeiro rei; sua morte no monte Gilboa abre a narrativa"
+    },
+    {
+      "name": "Davi",
+      "chapters": "2–3; 10–29",
+      "ch": 11,
+      "note": "rei em Hebrom e em Jerusalém, figura central do livro"
+    },
+    {
+      "name": "Joabe",
+      "chapters": "11–21; 27",
+      "ch": 11,
+      "note": "comandante do exército de Davi"
+    },
+    {
+      "name": "Mical",
+      "chapters": "15",
+      "ch": 15,
+      "note": "filha de Saul; despreza Davi quando ele dança diante da arca"
+    },
+    {
+      "name": "Asafe, Hemã e Jedutum",
+      "chapters": "6; 15–16; 25",
+      "ch": 25,
+      "note": "chefes dos cantores e músicos levitas"
+    },
+    {
+      "name": "Natã",
+      "chapters": "17; 29",
+      "ch": 17,
+      "note": "profeta que anuncia a Davi a promessa de uma casa"
+    },
+    {
+      "name": "Gade",
+      "chapters": "21; 29",
+      "ch": 21,
+      "note": "vidente que leva a Davi a mensagem depois do recenseamento"
+    },
+    {
+      "name": "Ornã, o jebuseu",
+      "chapters": "21",
+      "ch": 21,
+      "note": "dono da eira onde Davi levanta um altar"
+    },
+    {
+      "name": "Salomão",
+      "chapters": "3; 22–29",
+      "ch": 22,
+      "note": "filho de Davi, escolhido para construir o templo"
+    }
+  ],
+  "writing": {
+    "tradition": "O Talmude babilônico (Bava Batra 15a) atribui a Esdras a escrita das genealogias de Crônicas “até ele mesmo” e diz que a obra foi completada por Neemias. Nessa leitura, o livro teria sido escrito em Jerusalém no século V a.C., por volta de 450–400 a.C.",
+    "academic": "O autor é anônimo e costuma ser chamado de “o Cronista”; o interesse pelos levitas, pelos cantores e pelos porteiros sugere que pertencia ou era próximo dos círculos do templo. A genealogia de 3:17–24 segue a família de Davi por várias gerações depois de Zorobabel, e as “moedas” de 29:7 (em hebraico, adarkonim) são em geral entendidas como dáricos persas; por isso a maioria dos estudiosos data o livro do fim do período persa ou do começo do período helenístico, entre c. 400 e 250 a.C., muitos por volta de 350–300 a.C. Durante muito tempo se pensou que o mesmo autor escreveu Esdras e Neemias, já que o fim de 2 Crônicas e o começo de Esdras coincidem; hoje muitos pesquisadores tratam as duas obras como independentes, e a questão continua em debate."
+  },
+  "events": {
+    "intro": "Os capítulos 1 a 9 cobrem de Adão até depois do exílio, sem datas. A narrativa vai da morte de Saul à morte de Davi, que reinou quarenta anos, sete em Hebrom e trinta e três em Jerusalém (29:27). A cronologia mais usada situa o reinado de Davi por volta de 1010–970 a.C., com variações de alguns anos conforme o sistema adotado. A extensão e a organização do reino de Davi são discutidas pelos historiadores; uma inscrição aramaica do século IX a.C. encontrada em Tel Dã menciona a “casa de Davi”. O livro, porém, foi escrito séculos depois, para a comunidade de Judá sob o domínio persa.",
+    "axis": [
+      -1100,
+      -200
+    ],
+    "band": {
+      "label": "Período persa",
+      "from": -539,
+      "to": -332
+    },
+    "timeline": [
+      {
+        "label": "Morte de Saul",
+        "from": -1010,
+        "to": -1010,
+        "kind": "evento",
+        "note": "batalha do monte Gilboa (cap. 10); data aproximada"
+      },
+      {
+        "label": "Davi",
+        "from": -1010,
+        "to": -970,
+        "kind": "pessoa",
+        "note": "reina sete anos em Hebrom e trinta e três em Jerusalém (29:27)"
+      },
+      {
+        "label": "Salomão começa a reinar",
+        "from": -970,
+        "to": -970,
+        "kind": "evento",
+        "note": "ungido ainda em vida de Davi (29:22)"
+      },
+      {
+        "label": "Queda de Jerusalém e exílio",
+        "from": -586,
+        "to": -538,
+        "kind": "evento",
+        "note": "pano de fundo das genealogias do cap. 9"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -450,
+        "to": -400,
+        "kind": "escrita",
+        "note": "Esdras, completado por Neemias"
+      },
+      {
+        "label": "Escrita, segundo a pesquisa",
+        "from": -400,
+        "to": -250,
+        "kind": "escrita",
+        "note": "o Cronista, no fim do período persa ou começo do helenístico"
+      }
+    ]
+  },
+  "context": "O livro foi escrito para a pequena província de Judá (Yehud) sob o Império Persa, uma comunidade que tinha voltado do exílio, reconstruído o templo e vivia sem rei próprio. Ao recontar o passado, o Cronista põe no centro o que dava identidade a esse grupo: a ligação com as tribos de Israel, a promessa feita a Davi e, sobretudo, o templo de Jerusalém e o seu culto. As genealogias funcionam como um mapa do povo, e a expressão “todo Israel” aparece com frequência para lembrar a unidade das tribos.",
+  "places": [
+    "Jerusalém (cidade de Davi)",
+    "Hebrom",
+    "monte Gilboa",
+    "Quriate-Jearim",
+    "a eira de Ornã",
+    "Rabá dos amonitas"
+  ],
+  "themes": [
+    "genealogia e identidade",
+    "Davi e sua dinastia",
+    "o templo e o culto",
+    "levitas e música",
+    "todo Israel",
+    "buscar a Deus"
+  ],
+  "key_verses": [
+    {
+      "ref": "17:11–14",
+      "text": "E será que, quando teus dias forem cumpridos para ir-te com teus pais, levantarei a tua descendência depois de ti, a qual será de teus filhos, e afirmarei seu reino. Ele me edificará casa, e eu confirmarei seu trono eternamente. Eu lhe serei por pai, e ele me será por filho: e não tirarei dele minha misericórdia, como a tirei daquele que foi antes de ti; Mas eu o confirmarei em minha casa e em meu reino eternamente; e seu trono será firme para sempre."
+    },
+    {
+      "ref": "28:9",
+      "text": "E tu, Salomão, meu filho, conhece o Deus de teu pai, e serve-o com coração completo e ânimo voluntário; porque o SENHOR examina os corações de todos, e entende todas as intenções dos pensamentos. Se tu o buscares, o acharás; mas se o deixares, ele te rejeitará para sempre."
+    },
+    {
+      "ref": "29:14",
+      "text": "Porque quem sou eu, e quem é meu povo, para que pudéssemos oferecer de nossa vontade coisas semelhantes? Porque tudo é teu, e o que recebemos de tua mão te damos."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. A BLIVRE segue a numeração das Bíblias em português: no texto hebraico, 6:1–15 corresponde a 5:27–41, e o restante do capítulo 6 tem a numeração deslocada. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

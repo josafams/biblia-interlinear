@@ -1,0 +1,168 @@
+{
+  "title_orig": "קֹהֶלֶת",
+  "title_orig_xlit": "Qohelet",
+  "summary": "Eclesiastes registra a reflexão de um sábio chamado Qohelet, o Pregador, que se apresenta como “filho de Davi, rei em Jerusalém” e investiga que proveito o ser humano tira de todo o seu trabalho “abaixo do sol”. Ele põe à prova a sabedoria, o prazer, as grandes obras e a riqueza, observa a injustiça e a morte, que alcança igualmente o sábio e o tolo, e conclui repetidas vezes que tudo é “futilidade”. Ao mesmo tempo, recomenda desfrutar com alegria o pão, o vinho, o trabalho e a vida com a pessoa amada, como dons de Deus. O livro termina com um epílogo que resume o ensino: temer a Deus e guardar os seus mandamentos (12:13).",
+  "name": "Em hebraico, o livro se chama Qohelet, nome ou título de quem fala; a palavra vem de uma raiz que significa “reunir” e indica alguém que convoca uma assembleia ou se dirige a ela. A Septuaginta traduziu o termo por Ekklesiastes, de ekklesia, “assembleia”, forma que passou ao latim e ao português. A Bíblia Livre o traduz por “Pregador”.",
+  "facts": [
+    [
+      "Posição",
+      "entre os livros poéticos e sapienciais, depois de Provérbios; na Bíblia hebraica, um dos cinco Rolos (Meguilot)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "sabedoria: reflexão em prosa e poesia"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Abertura",
+      "from": 1,
+      "to": 1,
+      "text": "O título, o lema “tudo é fútil” e um poema sobre o ciclo sem fim da natureza e das gerações (1:1–11)."
+    },
+    {
+      "title": "A experiência do rei",
+      "from": 1,
+      "to": 2,
+      "text": "No papel de um rei, o Pregador põe à prova a sabedoria, o prazer, as construções e a riqueza, e esbarra na morte (1:12–2:26)."
+    },
+    {
+      "title": "Tempo, injustiça e trabalho",
+      "from": 3,
+      "to": 6,
+      "text": "O tempo de cada coisa, a opressão, a solidão, os votos, o dinheiro e os bens que não trazem satisfação (3:1–6:9)."
+    },
+    {
+      "title": "O que não se pode saber",
+      "from": 6,
+      "to": 11,
+      "text": "Conselhos e reflexões sobre os limites da sabedoria: ninguém sabe ao certo o que é bom nem o que virá, mas a vida deve ser vivida com alegria (6:10–11:6)."
+    },
+    {
+      "title": "Juventude, velhice e conclusão",
+      "from": 11,
+      "to": 12,
+      "text": "Um poema sobre aproveitar a juventude antes da velhice e da morte, a volta do lema e o epílogo (11:7–12:14)."
+    }
+  ],
+  "extra": {
+    "title": "“Futilidade” e “abaixo do sol”",
+    "text": "A palavra hebraica hevel, que a BLIVRE traduz por “futilidade”, significa literalmente “vapor” ou “sopro” e aparece 38 vezes no livro: aponta para o que é passageiro e não se deixa segurar nem entender por completo. A expressão “abaixo do sol” aparece 29 vezes e delimita o campo da investigação: a vida que se pode observar neste mundo. O lema “futilidade das futilidades” abre e fecha as palavras do Pregador (1:2; 12:8), e em 1:1–2, 7:27 e 12:8–14 outra voz fala dele na terceira pessoa, como uma moldura. Eclesiastes chama Deus sempre de Elohim, “Deus”, e nunca usa o nome YHWH, que a BLIVRE traduz por “o SENHOR”."
+  },
+  "people": [
+    {
+      "name": "Qohelet, o Pregador",
+      "chapters": "1–12",
+      "ch": 1,
+      "note": "a voz principal do livro, que relata em primeira pessoa o que viu e concluiu"
+    },
+    {
+      "name": "O rei filho de Davi",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "papel que o Pregador assume; o nome não é dito, mas as riquezas e obras de 2:4–9 lembram Salomão"
+    },
+    {
+      "name": "O narrador do epílogo",
+      "chapters": "1; 7; 12",
+      "ch": 12,
+      "note": "fala do Pregador na terceira pessoa (1:1–2; 7:27; 12:8–14) e resume o seu ensino"
+    },
+    {
+      "name": "O sábio pobre",
+      "chapters": "9",
+      "ch": 9,
+      "note": "livra com sua sabedoria uma pequena cidade sitiada e depois é esquecido (9:13–16)"
+    },
+    {
+      "name": "O jovem",
+      "chapters": "11–12",
+      "ch": 11,
+      "note": "destinatário dos conselhos finais (“alegra-te, rapaz”, 11:9; “filho meu”, 12:12)"
+    }
+  ],
+  "writing": {
+    "tradition": "Com base em 1:1 e 1:12, as tradições judaica e cristã atribuíram o livro a Salomão, que reinou por volta de 970–931 a.C. Uma tradição rabínica diz que ele escreveu o Cântico dos Cânticos na juventude, Provérbios na idade madura e Eclesiastes na velhice. O Talmude atribui a forma escrita do livro a Ezequias e seus companheiros.",
+    "academic": "A maioria dos estudiosos entende que o autor usa a figura de Salomão como recurso literário e situa a obra entre os períodos persa e helenístico, por volta de 450–200 a.C.; muitos preferem o século III a.C. Os argumentos são a língua, próxima do hebraico tardio da Mishná e com influência do aramaico, palavras de origem persa (como pardes, “pomar”, em 2:5) e o ambiente social de comércio, dinheiro e administração. Fragmentos achados em Qumran, de meados do século II a.C., marcam um limite para a data. Uma minoria defende datas mais antigas, com base em outra análise da língua."
+  },
+  "events": {
+    "intro": "Eclesiastes não narra acontecimentos datáveis: suas observações valem para a vida em qualquer época. A linha do tempo mostra o reinado de Salomão, a quem o livro alude, as duas propostas principais para a época da composição e os manuscritos mais antigos conhecidos.",
+    "axis": [
+      -1000,
+      -50
+    ],
+    "band": {
+      "label": "Período helenístico",
+      "from": -332,
+      "to": -63
+    },
+    "timeline": [
+      {
+        "label": "Salomão",
+        "from": -970,
+        "to": -931,
+        "kind": "pessoa",
+        "note": "reinado; o “filho de Davi, rei em Jerusalém” (1:1)"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -950,
+        "to": -931,
+        "kind": "escrita",
+        "note": "Salomão, na velhice, segundo uma tradição rabínica"
+      },
+      {
+        "label": "Escrita, segundo a pesquisa",
+        "from": -450,
+        "to": -200,
+        "kind": "escrita",
+        "note": "períodos persa ou helenístico; muitos preferem o século III a.C."
+      },
+      {
+        "label": "Fragmentos de Qumran",
+        "from": -175,
+        "to": -150,
+        "kind": "evento",
+        "note": "as cópias mais antigas conhecidas do livro, de data aproximada"
+      }
+    ]
+  },
+  "context": "Se a data proposta pela maioria dos estudiosos estiver certa, Eclesiastes foi escrito quando Judá era uma pequena província de impérios estrangeiros: primeiro o persa, depois o dos reis helenísticos do Egito, os Ptolomeus. O livro fala de dinheiro, lucro, herança e de uma cadeia de funcionários que vigiam uns aos outros (5:8–9). A brevidade da vida e o conselho de aproveitar o presente aparecem também em outras literaturas antigas: na Epopeia de Gilgamesh, a taberneira Siduri aconselha o herói a comer, alegrar-se, vestir roupas limpas e fazer feliz a esposa, em termos parecidos com 9:7–9. No judaísmo, houve um debate antigo sobre o lugar do livro nas Escrituras, registrado na Mishná; em muitas comunidades, ele é lido na festa das Tendas (Sucot).",
+  "places": [
+    "Jerusalém (1:1, 12, 16)",
+    "a casa de Deus (5:1)",
+    "jardins, pomares e tanques do rei (2:4–6)",
+    "uma pequena cidade sitiada (9:14)"
+  ],
+  "themes": [
+    "futilidade (hevel)",
+    "trabalho e proveito",
+    "tempo e morte",
+    "limites da sabedoria",
+    "alegria como dom de Deus",
+    "temor a Deus"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:2",
+      "text": "Futilidade das futilidades! - diz o Pregador - futilidade das futilidades! Tudo é fútil!"
+    },
+    {
+      "ref": "3:1",
+      "text": "Para todas as coisas há um tempo determinado, e todo propósito abaixo do céu tem seu tempo."
+    },
+    {
+      "ref": "9:7",
+      "text": "Vai, come com alegria teu pão, e bebe com bom coração o teu vinho; pois Deus se agrada de tuas obras."
+    },
+    {
+      "ref": "12:13",
+      "text": "De tudo o que foi ouvido, a conclusão é: teme a Deus, e guarda os mandamentos dele; porque isto é o dever de todo homem."
+    }
+  ],
+  "note": "As datas são aproximadas. Na numeração hebraica, o primeiro versículo do capítulo 5 da BLIVRE é contado como o último do capítulo 4, e os demais versículos do capítulo 5 ficam um número abaixo. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

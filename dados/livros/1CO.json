@@ -1,0 +1,214 @@
+{
+  "title_orig": "Πρὸς Κορινθίους Αʹ",
+  "title_orig_xlit": "Pros Korinthious A",
+  "summary": "Em 1 Coríntios, Paulo responde de Éfeso a uma igreja que ele mesmo fundara e que vivia muitos problemas ao mesmo tempo. Uns se diziam “de Paulo”, outros “de Apolo” ou “de Cefas” (1:12); havia um caso de união incestuosa, processos entre irmãos nos tribunais, dúvidas sobre casamento e sobre comer carne oferecida aos ídolos, desordem na ceia do Senhor e disputas em torno dos dons espirituais. Paulo trata cada questão a partir da cruz de Cristo, que contraria a sabedoria e o prestígio valorizados pela cidade, e do amor, que põe o bem do outro acima da própria liberdade. O capítulo 13, sobre o amor, está entre os textos mais conhecidos de Paulo, e o capítulo 15 é a sua exposição mais longa sobre a ressurreição de Jesus e dos mortos.",
+  "name": "O título “Primeira aos coríntios” (Pros Korinthious A) foi dado quando as cartas de Paulo foram reunidas, para distinguir esta da outra carta à mesma igreja, que no cânon vem logo depois. O número indica a ordem na coleção, que coincide com a ordem em que as duas foram escritas. A própria carta mostra que houve ao menos uma carta anterior de Paulo aos coríntios, hoje perdida (5:9).",
+  "facts": [
+    [
+      "Posição",
+      "7º livro do Novo Testamento; 2ª das cartas de Paulo, na ordem do cânon"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "carta, com respostas a problemas e perguntas de uma igreja"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Divisões e a sabedoria da cruz",
+      "from": 1,
+      "to": 4,
+      "text": "Paulo combate os partidos formados em torno de líderes: a cruz é “loucura” para o mundo e poder de Deus para os que creem, e os apóstolos são apenas servidores."
+    },
+    {
+      "title": "Problemas de conduta",
+      "from": 5,
+      "to": 6,
+      "text": "Um homem que vive com a mulher do pai, irmãos que se processam em tribunais pagãos e o uso do corpo com prostitutas."
+    },
+    {
+      "title": "Casamento e celibato",
+      "from": 7,
+      "to": 7,
+      "text": "Respostas às perguntas da carta dos coríntios sobre a vida conjugal, a separação, as virgens e as viúvas."
+    },
+    {
+      "title": "Carne oferecida aos ídolos",
+      "from": 8,
+      "to": 10,
+      "text": "O conhecimento de que os ídolos nada são não autoriza ferir a consciência do irmão; Paulo dá o próprio exemplo de quem renuncia a direitos e lembra a história de Israel no deserto."
+    },
+    {
+      "title": "O culto da comunidade",
+      "from": 11,
+      "to": 14,
+      "text": "A cabeça coberta ao orar e profetizar, a ceia do Senhor, os dons do Espírito, o amor como caminho superior e a ordem entre profecia e línguas."
+    },
+    {
+      "title": "A ressurreição",
+      "from": 15,
+      "to": 15,
+      "text": "A tradição recebida sobre a morte e as aparições de Cristo e a resposta aos que negavam a ressurreição dos mortos."
+    },
+    {
+      "title": "Coleta e despedida",
+      "from": 16,
+      "to": 16,
+      "text": "A coleta para os cristãos de Jerusalém, os planos de viagem, recomendações e saudações."
+    }
+  ],
+  "extra": {
+    "title": "“Quanto a…”: as perguntas da igreja",
+    "text": "Os coríntios tinham escrito a Paulo (7:1), e a carta responde ponto por ponto. Cada novo assunto começa com a mesma fórmula grega, peri de, “e quanto a…”: as coisas que escrevestes (7:1), as virgens (7:25), a carne sacrificada aos ídolos (8:1), os dons espirituais (12:1), a coleta (16:1) e Apolo (16:12). Outros temas, como as divisões e a ceia, Paulo conhecia por notícias que lhe chegaram (1:11; 11:18). No fim, ele escreve a saudação de próprio punho (16:21) e conserva uma invocação aramaica das primeiras comunidades, marana tha, que a BLIVRE traduz por “Vem, Senhor” (16:22)."
+  },
+  "people": [
+    {
+      "name": "Paulo",
+      "chapters": "1–4; 9; 15–16",
+      "ch": 9,
+      "note": "fundador da igreja; defende o seu modo de exercer o apostolado, trabalhando com as próprias mãos"
+    },
+    {
+      "name": "Sóstenes",
+      "chapters": "1",
+      "ch": 1,
+      "note": "“o irmão” que aparece com Paulo como remetente (1:1)"
+    },
+    {
+      "name": "Apolo",
+      "chapters": "1; 3–4; 16",
+      "ch": 3,
+      "note": "pregador que atuou em Corinto depois de Paulo: “Eu plantei; Apolo regou” (3:6)"
+    },
+    {
+      "name": "Cefas (Pedro)",
+      "chapters": "1; 3; 9; 15",
+      "ch": 15,
+      "note": "um dos nomes usados pelos partidos; o primeiro na lista das aparições do Ressuscitado (15:5)"
+    },
+    {
+      "name": "Cloé",
+      "chapters": "1",
+      "ch": 1,
+      "note": "pessoas da sua casa contam a Paulo as brigas na igreja (1:11)"
+    },
+    {
+      "name": "Timóteo",
+      "chapters": "4; 16",
+      "ch": 4,
+      "note": "enviado por Paulo para lembrar aos coríntios os seus ensinos (4:17; 16:10)"
+    },
+    {
+      "name": "Estéfanas, Fortunato e Acaico",
+      "chapters": "1; 16",
+      "ch": 16,
+      "note": "membros da igreja de Corinto que visitam Paulo em Éfeso; a casa de Estéfanas foi a primeira a crer na Acaia"
+    },
+    {
+      "name": "Áquila e Priscila",
+      "chapters": "16",
+      "ch": 16,
+      "note": "o casal que trabalhara com Paulo em Corinto; agora em Éfeso, manda saudações com a igreja da sua casa"
+    }
+  ],
+  "writing": {
+    "tradition": "A autoria de Paulo é afirmada desde muito cedo: por volta de 96, Clemente de Roma, escrevendo justamente aos coríntios, lembra-lhes a carta que “o bem-aventurado Paulo” lhes enviara a respeito dos partidos. Paulo escreve de Éfeso, onde pretende ficar até o Pentecostes (16:8), perto do fim da longa estada na cidade descrita em Atos 19, o que leva a c. 54–55.",
+    "academic": "1 Coríntios é uma das sete cartas que praticamente todos os estudiosos atribuem a Paulo, e a datação mais comum fica entre 53 e 56, em Éfeso. A maioria lê o texto como uma só carta, embora alguns pesquisadores tenham proposto que ele junte duas ou mais cartas menores. Um trecho discutido é 14:34–35, sobre o silêncio das mulheres na igreja: em alguns manuscritos ele aparece depois de 14:40, e uma parte dos estudiosos o considera um acréscimo antigo, enquanto outros o mantêm como de Paulo e o leem à luz da situação local. A correspondência com Corinto foi maior do que as duas cartas conservadas: além da carta anterior mencionada em 5:9, 2 Coríntios fala de uma carta escrita “com muitas lágrimas” (2 Coríntios 2:4)."
+  },
+  "events": {
+    "intro": "Paulo chegou a Corinto na segunda viagem e ficou ali um ano e meio (Atos 18:11), parte desse tempo durante o governo do procônsul Gálio, datado de c. 51–52 por uma inscrição de Delfos. Alguns anos depois, já em Éfeso, recebe notícias e uma carta da igreja e responde com 1 Coríntios. A cronologia é a mesma usada em Atos, com variação de alguns anos entre os autores.",
+    "axis": [
+      45,
+      60
+    ],
+    "band": {
+      "label": "Paulo em Éfeso",
+      "from": 53,
+      "to": 56
+    },
+    "timeline": [
+      {
+        "label": "Fundação da igreja em Corinto",
+        "from": 50,
+        "to": 52,
+        "kind": "evento",
+        "note": "um ano e meio de trabalho de Paulo, com Áquila, Priscila, Silas e Timóteo (Atos 18)"
+      },
+      {
+        "label": "Gálio, procônsul da Acaia",
+        "from": 51,
+        "to": 52,
+        "kind": "pessoa",
+        "note": "diante dele Paulo é acusado pelos judeus da cidade (Atos 18:12)"
+      },
+      {
+        "label": "Apolo em Corinto",
+        "from": 52,
+        "to": 53,
+        "kind": "pessoa",
+        "note": "chega da Acaia depois da partida de Paulo (Atos 18:27–19:1); data aproximada"
+      },
+      {
+        "label": "Carta anterior, hoje perdida",
+        "from": 53,
+        "to": 54,
+        "kind": "escrita",
+        "note": "mencionada em 5:9; data incerta"
+      },
+      {
+        "label": "Escrita de 1 Coríntios",
+        "from": 54,
+        "to": 55,
+        "kind": "escrita",
+        "note": "em Éfeso, antes do Pentecostes (16:8)"
+      },
+      {
+        "label": "Paulo na Macedônia e na Grécia",
+        "from": 56,
+        "to": 57,
+        "kind": "evento",
+        "note": "três meses na Grécia, provavelmente em Corinto (Atos 20:1–3)"
+      }
+    ]
+  },
+  "context": "Corinto ficava no istmo que liga o Peloponeso ao resto da Grécia, entre dois portos: Lequeu, voltado para o oeste, e Cencreia, para o leste. A antiga cidade grega fora destruída pelos romanos em 146 a.C. e refundada por Júlio César em 44 a.C. como colônia romana, povoada por libertos, veteranos e comerciantes; no tempo de Paulo era a capital da província da Acaia, rica, cosmopolita e muito atenta a posição social. Ali se realizavam os Jogos Ístmicos, que talvez estejam por trás das imagens da corrida e da coroa em 9:24–27. A igreja reunia gente de níveis sociais diferentes — “não há muitos sábios segundo a carne, nem muitos poderosos” (1:26), mas havia donos de casas capazes de hospedar a comunidade —, e essa mistura ajuda a entender conflitos como o da ceia, em que “um fica com fome, e outro fica bêbado” (11:21).",
+  "places": [
+    "Corinto",
+    "Éfeso",
+    "Acaia e Macedônia",
+    "Galácia",
+    "Jerusalém"
+  ],
+  "themes": [
+    "unidade da igreja",
+    "a cruz e a sabedoria",
+    "o corpo e a ética sexual",
+    "liberdade e consciência",
+    "a ceia do Senhor",
+    "dons do Espírito e amor",
+    "a ressurreição"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:18",
+      "text": "Porque a palavra da cruz é loucura para os que perecem; mas para os que se salvam é poder de Deus."
+    },
+    {
+      "ref": "12:27",
+      "text": "E vós sois o corpo de Cristo, e membros em particular."
+    },
+    {
+      "ref": "13:4–7",
+      "text": "O amor é paciente, é bondoso; o amor não é invejoso; o amor não é orgulhoso, não é arrogante. O amor não trata mal; não busca os próprios interesses, não se ira, não é rancoroso. Não se alegra com a injustiça, mas se alegra com a verdade. Tudo aguenta, tudo crê, tudo espera, tudo suporta."
+    },
+    {
+      "ref": "15:3–4",
+      "text": "Porque primeiramente vos entreguei o que também recebi, que Cristo morreu por nossos pecados, segundo as Escrituras; E que foi sepultado, e que ressuscitou ao terceiro dia, segundo as Escrituras;"
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. No fim de 16:24, a BLIVRE reproduz uma antiga nota de copistas segundo a qual a carta teria sido escrita em Filipos; essa nota não faz parte do texto grego, e a própria carta aponta Éfeso (16:8). Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

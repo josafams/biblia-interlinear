@@ -1,0 +1,256 @@
+{
+  "title_orig": "דִּבְרֵי הַיָּמִים",
+  "title_orig_xlit": "Divrei ha-Yamim",
+  "summary": "2 Crônicas continua a história iniciada em 1 Crônicas. Os capítulos 1 a 9 tratam do reinado de Salomão, quase todo dedicado à construção e à dedicação do templo. Depois da divisão do reino, o livro acompanha só os reis de Judá, de Roboão até a destruição de Jerusalém pelos babilônios, e avalia cada um pela fidelidade a Deus e pelo cuidado com o templo. Reis reformadores, como Asa, Josafá, Ezequias e Josias, recebem bastante espaço. O livro termina com o exílio e com o decreto de Ciro, que autoriza a volta a Jerusalém.",
+  "name": "O título hebraico, Divrei ha-Yamim, quer dizer “os acontecimentos dos dias”, ou seja, os anais. A Septuaginta usou o nome Paraleipomena, “coisas deixadas de lado”, e o nome “Crônicas” vem de uma sugestão de Jerônimo. Na tradição hebraica, 1 e 2 Crônicas formam um só livro; a divisão vem da Septuaginta.",
+  "facts": [
+    [
+      "Posição",
+      "14º livro da Bíblia, entre os livros históricos; na Bíblia hebraica, segunda metade do livro de Crônicas, que em geral fecha os Escritos (Ketuvim)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "narrativa histórica"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Salomão e o templo",
+      "from": 1,
+      "to": 9,
+      "text": "A sabedoria pedida em Gibeão, a construção e a dedicação do templo, as riquezas do reino e a visita da rainha de Sabá."
+    },
+    {
+      "title": "A divisão e os primeiros reis de Judá",
+      "from": 10,
+      "to": 16,
+      "text": "Roboão, a separação das tribos do norte, Abias e o longo reinado de Asa."
+    },
+    {
+      "title": "Josafá",
+      "from": 17,
+      "to": 20,
+      "text": "Ensino da lei, aliança com Acabe, organização da justiça e a vitória sobre Moabe e Amom."
+    },
+    {
+      "title": "De Jeorão a Acaz",
+      "from": 21,
+      "to": 28,
+      "text": "Um período de crises: a usurpação de Atalia, os reinados ambíguos de Joás, Amazias e Uzias, e a idolatria de Acaz."
+    },
+    {
+      "title": "Ezequias",
+      "from": 29,
+      "to": 32,
+      "text": "A purificação do templo, a grande Páscoa e a libertação de Jerusalém diante de Senaqueribe."
+    },
+    {
+      "title": "De Manassés ao exílio",
+      "from": 33,
+      "to": 36,
+      "text": "Manassés e seu arrependimento, a reforma de Josias, os últimos reis, a destruição de Jerusalém e o decreto de Ciro."
+    }
+  ],
+  "extra": {
+    "title": "Conduta e consequência",
+    "text": "Mais do que em Reis, o Cronista liga o destino de cada rei à sua conduta na mesma geração: a fidelidade traz paz e vitória, e o abandono de Deus traz derrota ou doença, como na lepra de Uzias (26:16–21). Ao mesmo tempo, o livro insiste na possibilidade de voltar atrás: só ele conta que Manassés, levado preso, se humilhou e foi restaurado (33:12–13). Palavras como “buscar”, “humilhar-se” e “abandonar” aparecem com frequência e ajudam a ler essas histórias."
+  },
+  "people": [
+    {
+      "name": "Salomão",
+      "chapters": "1–9",
+      "ch": 1,
+      "note": "constrói e dedica o templo"
+    },
+    {
+      "name": "Hirão, rei de Tiro",
+      "chapters": "2; 8–9",
+      "ch": 2,
+      "note": "fornece madeira e artífices para a obra"
+    },
+    {
+      "name": "A rainha de Sabá",
+      "chapters": "9",
+      "ch": 9,
+      "note": "visita Salomão para conhecer sua sabedoria"
+    },
+    {
+      "name": "Roboão e Jeroboão",
+      "chapters": "10–13",
+      "ch": 10,
+      "note": "o filho de Salomão e o líder das tribos do norte, na divisão do reino"
+    },
+    {
+      "name": "Asa",
+      "chapters": "14–16",
+      "ch": 14,
+      "note": "rei reformador que, no fim, busca apoio na Síria"
+    },
+    {
+      "name": "Josafá",
+      "chapters": "17–20",
+      "ch": 17,
+      "note": "promove o ensino da lei e organiza os juízes"
+    },
+    {
+      "name": "Micaías",
+      "chapters": "18",
+      "ch": 18,
+      "note": "profeta que anuncia a derrota de Acabe em Ramote de Gileade"
+    },
+    {
+      "name": "Atalia e Joiada",
+      "chapters": "22–24",
+      "ch": 23,
+      "note": "a rainha que usurpa o trono e o sacerdote que protege e coroa Joás"
+    },
+    {
+      "name": "Uzias",
+      "chapters": "26",
+      "ch": 26,
+      "note": "rei próspero que fica leproso depois de queimar incenso no templo"
+    },
+    {
+      "name": "Ezequias",
+      "chapters": "29–32",
+      "ch": 29,
+      "note": "restaura o culto e resiste ao cerco assírio"
+    },
+    {
+      "name": "Manassés",
+      "chapters": "33",
+      "ch": 33,
+      "note": "o rei mais idólatra, que se arrepende no cativeiro"
+    },
+    {
+      "name": "Josias e Hulda",
+      "chapters": "34–35",
+      "ch": 34,
+      "note": "o rei da grande reforma e a profetisa consultada sobre o livro da lei"
+    },
+    {
+      "name": "Ciro",
+      "chapters": "36",
+      "ch": 36,
+      "note": "rei persa cujo decreto encerra o livro"
+    }
+  ],
+  "writing": {
+    "tradition": "Para o Talmude babilônico (Bava Batra 15a), Esdras escreveu as genealogias de Crônicas e Neemias completou a obra. Nessa leitura, o livro teria sido escrito em Jerusalém no século V a.C., por volta de 450–400 a.C.",
+    "academic": "1 e 2 Crônicas são obra de um mesmo autor anônimo, chamado “o Cronista”, ligado aos círculos do templo de Jerusalém. O livro usa Samuel e Reis como fonte principal e cita outros registros, como os de profetas e videntes (por exemplo, 9:29; 33:19). A maioria dos estudiosos o data do fim do período persa ou do começo do período helenístico, entre c. 400 e 250 a.C. O fim do livro (36:22–23) repete o começo de Esdras; isso foi lido por muito tempo como sinal de um autor comum, hipótese que hoje muitos questionam."
+  },
+  "events": {
+    "intro": "O livro cobre cerca de quatro séculos, do início do reinado de Salomão, por volta de 970 a.C., até o decreto de Ciro, em 538 a.C. As datas dos reis de Judá vêm de cálculos a partir dos números do próprio texto e de sincronismos com registros assírios e babilônicos; diferentes sistemas divergem em alguns anos, sobretudo antes do século VIII a.C. Alguns episódios têm confirmação externa: a campanha do faraó Sisaque (Sheshonq I) aparece numa lista de cidades em Karnak, e o cerco de Senaqueribe é narrado nos anais assírios.",
+    "axis": [
+      -1000,
+      -200
+    ],
+    "band": {
+      "label": "Reino de Judá após a divisão",
+      "from": -931,
+      "to": -586
+    },
+    "timeline": [
+      {
+        "label": "Salomão",
+        "from": -970,
+        "to": -931,
+        "kind": "pessoa",
+        "note": "quarenta anos de reinado (9:30)"
+      },
+      {
+        "label": "Divisão do reino",
+        "from": -931,
+        "to": -931,
+        "kind": "evento",
+        "note": "Roboão em Judá, Jeroboão no norte (cap. 10); data aproximada"
+      },
+      {
+        "label": "Campanha de Sisaque",
+        "from": -926,
+        "to": -925,
+        "kind": "evento",
+        "note": "no quinto ano de Roboão (12:2)"
+      },
+      {
+        "label": "Ezequias",
+        "from": -715,
+        "to": -686,
+        "kind": "pessoa",
+        "note": "há quem prefira começar o reinado c. 727 a.C."
+      },
+      {
+        "label": "Cerco de Senaqueribe",
+        "from": -701,
+        "to": -701,
+        "kind": "evento",
+        "note": "campanha assíria contra Judá (cap. 32)"
+      },
+      {
+        "label": "Josias",
+        "from": -640,
+        "to": -609,
+        "kind": "pessoa",
+        "note": "morre em Megido diante do faraó Neco (35:20–24)"
+      },
+      {
+        "label": "Destruição de Jerusalém",
+        "from": -587,
+        "to": -586,
+        "kind": "evento",
+        "note": "o templo é queimado pelos babilônios (36:19)"
+      },
+      {
+        "label": "Decreto de Ciro",
+        "from": -538,
+        "to": -538,
+        "kind": "evento",
+        "note": "autoriza a volta e a reconstrução do templo (36:22–23)"
+      },
+      {
+        "label": "Escrita, segundo a pesquisa",
+        "from": -400,
+        "to": -250,
+        "kind": "escrita",
+        "note": "o Cronista; a tradição prefere c. 450–400 a.C., com Esdras"
+      }
+    ]
+  },
+  "context": "Judá era um reino pequeno, com capital em Jerusalém, cercado por potências maiores: o Egito ao sul, os reinos arameus e o Reino do Norte (Israel), depois a Assíria e, por fim, a Babilônia, que destruiu a cidade em 587/586 a.C. O autor, porém, escreve para a comunidade que voltou do exílio e vive sob os persas, já com o templo reconstruído. Por isso lê a história dos reis a partir do templo e do culto e termina o livro não com a ruína, mas com o anúncio de Ciro, que abre caminho para o retorno.",
+  "places": [
+    "Jerusalém e o templo",
+    "Gibeão",
+    "Siquém",
+    "Samaria",
+    "Ramote de Gileade",
+    "Megido",
+    "Babilônia"
+  ],
+  "themes": [
+    "o templo",
+    "a dinastia de Davi",
+    "fidelidade e abandono",
+    "reformas religiosas",
+    "humilhação e arrependimento",
+    "exílio e retorno"
+  ],
+  "key_verses": [
+    {
+      "ref": "6:18",
+      "text": "Mas é verdade que Deus habitará com o homem na terra? Eis aqui, os céus e os céus dos céus não podem conter-te: quanto menos esta casa que edifiquei?"
+    },
+    {
+      "ref": "16:9",
+      "text": "Porque os olhos do SENHOR contemplam toda a terra, para corroborar aos que têm coração íntegro com ele. Loucamente fizeste nisso; porque de agora em diante haverá guerra contra ti."
+    },
+    {
+      "ref": "36:22–23",
+      "text": "Mas ao primeiro ano de Ciro rei dos persas, para que se cumprisse a palavra do SENHOR por boca de Jeremias, o SENHOR induziu o espírito de Ciro rei dos persas, o qual fez apregoar por todo seu reino, e também por escrito, dizendo: Assim diz Ciro rei dos persas: o SENHOR, o Deus dos céus, me deu todos os reinos da terra; e ele me encarregou que lhe edifique casa em Jerusalém, que é em Judá. Quem houver de vós de todo seu povo, o SENHOR seu Deus seja com o tal, e suba."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. A BLIVRE segue a numeração das Bíblias em português: no texto hebraico, 2:1 corresponde a 1:18 e 2:2–18 a 2:1–17; 14:1 corresponde a 13:23 e 14:2–15 a 14:1–14. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

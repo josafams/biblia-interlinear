@@ -1,0 +1,121 @@
+{
+  "title_orig": "נַחוּם",
+  "title_orig_xlit": "Nachum",
+  "summary": "Naum anuncia a queda de Nínive, capital da Assíria, o império que dominou o Oriente Próximo por mais de um século e oprimiu Israel e Judá. O livro começa com um poema sobre o SENHOR, lento para se irar, mas que não deixa o culpado impune, e descreve depois, com imagens vivas, o ataque à cidade e sua ruína. Para Judá, a notícia é anunciada como boa nova de paz.",
+  "name": "O livro leva o nome do profeta. Naum, em hebraico Nachum, significa “consolo” ou “conforto”. Ele é chamado “o elcosita” (1:1), de uma localidade chamada Elcos cuja posição é desconhecida.",
+  "facts": [
+    [
+      "Posição",
+      "7º dos Doze Profetas Menores"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "profecia (oráculo contra uma nação, em poesia)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "O Deus que julga",
+      "from": 1,
+      "to": 1,
+      "text": "Um poema sobre o poder do SENHOR, seguido do anúncio de libertação para Judá."
+    },
+    {
+      "title": "A queda de Nínive",
+      "from": 2,
+      "to": 3,
+      "text": "O ataque, o saque e a ruína da cidade; a comparação com Nô-Amom e o lamento final sem cura."
+    }
+  ],
+  "extra": {
+    "title": "Um acróstico incompleto",
+    "text": "O poema de 1:2–8 parece seguir parcialmente a ordem do alfabeto hebraico, com versos que começam por letras sucessivas, da primeira até mais ou menos a metade do alfabeto. A forma se perde na tradução."
+  },
+  "people": [
+    {
+      "name": "Naum",
+      "chapters": "1–3",
+      "ch": 1,
+      "note": "profeta, chamado “o elcosita”"
+    },
+    {
+      "name": "O rei da Assíria",
+      "chapters": "3",
+      "ch": 3,
+      "note": "a quem se dirigem as palavras finais"
+    }
+  ],
+  "writing": {
+    "tradition": "O livro é atribuído ao profeta Naum. Como ele fala da tomada de Nô-Amom (Tebas, no Egito) como fato passado (3:8–10) e da queda de Nínive como futura, a tradição e muitos intérpretes situam a profecia entre 663 e 612 a.C.",
+    "academic": "Os estudiosos aceitam em geral o mesmo intervalo, entre a destruição de Tebas pelos assírios em 663 a.C. e a queda de Nínive em 612 a.C., muitas vezes perto do final dele, quando o declínio da Assíria era visível. Alguns pensam que o livro, ou partes dele, foi composto ou reeditado logo depois da queda, como celebração. O poema inicial é às vezes visto como acréscimo de um editor."
+  },
+  "events": {
+    "intro": "As duas datas que delimitam o livro são conhecidas por fontes assírias e babilônicas: a tomada de Tebas e a queda de Nínive.",
+    "axis": [
+      -700,
+      -600
+    ],
+    "timeline": [
+      {
+        "label": "Assurbanipal",
+        "from": -668,
+        "to": -631,
+        "kind": "pessoa",
+        "note": "rei da Assíria; reinado de datas aproximadas"
+      },
+      {
+        "label": "Tomada de Tebas (Nô-Amom)",
+        "from": -663,
+        "to": -663,
+        "kind": "evento",
+        "note": "os assírios saqueiam a cidade egípcia (3:8–10)"
+      },
+      {
+        "label": "Escrita, segundo a tradição e a pesquisa",
+        "from": -663,
+        "to": -612,
+        "kind": "escrita",
+        "note": "intervalo aceito; muitos preferem perto de 615 a.C."
+      },
+      {
+        "label": "Queda de Nínive",
+        "from": -612,
+        "to": -612,
+        "kind": "evento",
+        "note": "babilônios e medos tomam e destroem a cidade"
+      }
+    ]
+  },
+  "context": "A Assíria dominou a região desde o século IX a.C., destruiu a Samaria em 722 a.C., invadiu Judá em 701 a.C. e cobrou tributo dos reis de Jerusalém por décadas. Seus próprios relevos e anais exaltam deportações e punições cruéis aos rebeldes. Depois da morte de Assurbanipal, o império enfraqueceu rapidamente, e em 612 a.C. uma coalizão de babilônios e medos tomou Nínive. Para os povos submetidos, a notícia foi de alívio, e o livro expressa essa reação.",
+  "places": [
+    "Nínive",
+    "Nô-Amom (Tebas, no Egito)",
+    "Judá",
+    "Basã, Carmelo e Líbano"
+  ],
+  "themes": [
+    "justiça de Deus",
+    "queda do opressor",
+    "ira e bondade de Deus",
+    "boas novas de paz"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:3",
+      "text": "O SENHOR é tardio para se irar, porém grande em poder; e não terá ao culpado por inocente. O SENHOR caminha entre a tempestade e o turbilhão, e as nuvens são o pó de seus pés."
+    },
+    {
+      "ref": "1:7",
+      "text": "O SENHOR é bom, é fortaleza no dia da angústia; ele conhece os que nele confiam."
+    },
+    {
+      "ref": "1:15",
+      "text": "Eis que sobre os montes estão os pés daquele que anuncia boas novas, do que faz ouvir a paz. Celebra tuas festas, Judá; cumpre os teus votos, porque nunca mais o maligno passará por ti; ele foi exterminado por completo."
+    }
+  ],
+  "note": "A Bíblia Livre segue a numeração das Bíblias em português: 1:15 corresponde a 2:1 no texto hebraico, e 2:1 a 2:2, e assim por diante até o fim do capítulo 2."
+}

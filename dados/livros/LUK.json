@@ -1,0 +1,281 @@
+{
+  "title_orig": "Κατὰ Λουκᾶν",
+  "title_orig_xlit": "Kata Loukan",
+  "summary": "Lucas é a primeira parte de uma obra em dois volumes que continua em Atos dos Apóstolos, ambos dedicados a um certo Teófilo. O autor diz ter investigado tudo com cuidado para escrever um relato ordenado (1:1–4) e situa a história de Jesus no quadro do Império Romano, com menções a imperadores, governadores e sumos sacerdotes. O livro conta lado a lado os nascimentos de João Batista e de Jesus, segue o ministério na Galileia e dedica uma longa seção à viagem para Jerusalém (9:51–19:27), onde se concentram parábolas que só ele registra, como a do samaritano e a do filho pródigo. Ganham relevo os pobres, as mulheres, os estrangeiros e os considerados pecadores, assim como a oração, a alegria e a ação do Espírito Santo. O evangelho começa e termina no templo de Jerusalém, depois das aparições do Ressuscitado e da despedida em Betânia.",
+  "name": "O título “Segundo Lucas” (Kata Loukan) foi dado à obra quando os evangelhos passaram a circular juntos e já aparece nos papiros mais antigos que conservam títulos. O autor não diz seu nome, mas dirige o livro ao “caríssimo Teófilo” (1:3). Lucas (Loukas) é a forma grega de um nome latino; Paulo menciona um Lucas entre seus colaboradores e o chama de “o médico amado” (Colossenses 4:14; ver também Filemom 24 e 2 Timóteo 4:11).",
+  "facts": [
+    [
+      "Posição",
+      "3º livro do Novo Testamento e o terceiro dos quatro Evangelhos; primeira parte da obra Lucas–Atos"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "evangelho: relato ordenado da vida e dos ensinos de Jesus, aberto com um prólogo à maneira dos historiadores gregos"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Prólogo e infância",
+      "from": 1,
+      "to": 2,
+      "text": "A dedicatória a Teófilo (1:1–4); os anúncios e os nascimentos de João e de Jesus, narrados em paralelo, os cânticos de Maria, de Zacarias e de Simeão, e Jesus aos doze anos no templo."
+    },
+    {
+      "title": "Preparação",
+      "from": 3,
+      "to": 4,
+      "text": "A pregação de João, o batismo, a genealogia de Jesus até Adão, a tentação e a leitura de Isaías na sinagoga de Nazaré (4:16–30), que anuncia o programa do ministério."
+    },
+    {
+      "title": "Ministério na Galileia",
+      "from": 4,
+      "to": 9,
+      "text": "Curas e chamados, o sermão na planície (6:20–49), a mulher perdoada, as mulheres que acompanham Jesus, a missão dos doze, a confissão de Pedro e a transfiguração (até 9:50)."
+    },
+    {
+      "title": "A viagem a Jerusalém",
+      "from": 9,
+      "to": 19,
+      "text": "A partir de 9:51, Jesus decide subir a Jerusalém; nessa longa seção estão a maioria das parábolas próprias de Lucas, ensinos sobre oração, riqueza e discipulado e encontros como o de Zaqueu (até 19:27)."
+    },
+    {
+      "title": "Em Jerusalém",
+      "from": 19,
+      "to": 21,
+      "text": "A entrada na cidade, o choro sobre Jerusalém, a purificação do templo, os debates com os líderes e o discurso sobre a destruição da cidade e a vinda do Filho do homem."
+    },
+    {
+      "title": "A paixão",
+      "from": 22,
+      "to": 23,
+      "text": "A última ceia, a oração no monte das Oliveiras, a prisão, os interrogatórios diante do conselho, de Pilatos e de Herodes, a crucificação e o sepultamento."
+    },
+    {
+      "title": "Ressurreição e despedida",
+      "from": 24,
+      "to": 24,
+      "text": "O túmulo vazio, o encontro no caminho de Emaús, a aparição aos onze em Jerusalém e a despedida em Betânia, que prepara o começo de Atos."
+    }
+  ],
+  "extra": {
+    "title": "O que só Lucas conta",
+    "text": "Uma parte considerável do evangelho não tem paralelo em Mateus nem em Marcos. Só Lucas narra, por exemplo, o nascimento de João Batista, a visita dos pastores, Jesus menino no templo, o filho da viúva de Naim (7:11–17), o encontro com Zaqueu (19:1–10) e o caminho de Emaús (24:13–35), e só ele traz parábolas como a do samaritano (10:25–37), a do filho pródigo (15:11–32) e a do rico e Lázaro (16:19–31). Os dois primeiros capítulos guardam ainda três cânticos que entraram na oração cristã com nomes latinos: o Magnificat de Maria (1:46–55), o Benedictus de Zacarias (1:68–79) e o Nunc dimittis de Simeão (2:29–32)."
+  },
+  "people": [
+    {
+      "name": "Teófilo",
+      "chapters": "1",
+      "ch": 1,
+      "note": "destinatário da obra; talvez um patrono de posição elevada, talvez um nome simbólico, pois significa “amigo de Deus”"
+    },
+    {
+      "name": "Zacarias e Isabel",
+      "chapters": "1",
+      "ch": 1,
+      "note": "casal idoso de família sacerdotal; pais de João Batista"
+    },
+    {
+      "name": "Maria",
+      "chapters": "1–2; 8",
+      "ch": 1,
+      "note": "recebe o anúncio do anjo Gabriel, visita Isabel e guarda no coração o que acontece com o filho (2:19, 51)"
+    },
+    {
+      "name": "José",
+      "chapters": "1–2",
+      "ch": 2,
+      "note": "da casa de Davi; vai com Maria de Nazaré a Belém por causa do recenseamento"
+    },
+    {
+      "name": "Simeão e Ana",
+      "chapters": "2",
+      "ch": 2,
+      "note": "um homem justo e uma profetisa idosa que reconhecem o menino no templo"
+    },
+    {
+      "name": "João Batista",
+      "chapters": "1; 3; 7",
+      "ch": 3,
+      "note": "filho de Zacarias; prega o arrependimento no Jordão e batiza Jesus"
+    },
+    {
+      "name": "Jesus",
+      "chapters": "1–24",
+      "ch": 2,
+      "note": "nascido em Belém e criado em Nazaré; apresentado como Salvador, Cristo e Senhor (2:11)"
+    },
+    {
+      "name": "Simão Pedro",
+      "chapters": "4–24",
+      "ch": 5,
+      "note": "pescador chamado depois da grande pesca; nega Jesus no pátio do sumo sacerdote e recebe uma aparição do Ressuscitado (24:34)"
+    },
+    {
+      "name": "Maria Madalena, Joana e Susana",
+      "chapters": "8; 23–24",
+      "ch": 8,
+      "note": "mulheres que seguem Jesus e o sustentam com seus bens; estão no túmulo na manhã da ressurreição"
+    },
+    {
+      "name": "Marta e Maria",
+      "chapters": "10",
+      "ch": 10,
+      "note": "irmãs que recebem Jesus em casa"
+    },
+    {
+      "name": "Zaqueu",
+      "chapters": "19",
+      "ch": 19,
+      "note": "chefe dos cobradores de impostos de Jericó, que recebe Jesus e reparte seus bens"
+    },
+    {
+      "name": "Herodes Antipas",
+      "chapters": "3; 9; 13; 23",
+      "ch": 23,
+      "note": "tetrarca da Galileia; quer ver Jesus e o interroga durante o processo"
+    },
+    {
+      "name": "Pilatos",
+      "chapters": "3; 13; 23",
+      "ch": 23,
+      "note": "governador romano da Judeia; declara não achar culpa em Jesus, mas o entrega à crucificação"
+    },
+    {
+      "name": "Cleofas",
+      "chapters": "24",
+      "ch": 24,
+      "note": "um dos dois discípulos que encontram o Ressuscitado no caminho de Emaús"
+    }
+  ],
+  "writing": {
+    "tradition": "A partir do fim do século II, com Ireneu e o chamado Cânon Muratoriano, a tradição atribui o terceiro evangelho e Atos a Lucas, médico e companheiro de viagem de Paulo. Ele seria um cristão de origem gentia, já que Colossenses 4:10–14 o cita à parte dos colaboradores judeus de Paulo, e um prólogo antigo o diz natural de Antioquia da Síria. Nos trechos de Atos narrados na primeira pessoa do plural (“nós”), a tradição vê o próprio autor ao lado do apóstolo. Quem segue essa leitura costuma datar o evangelho pouco antes de Atos, que termina com Paulo preso em Roma por volta de 62, ou seja, no início dos anos 60.",
+    "academic": "Há amplo consenso de que o mesmo autor escreveu Lucas e Atos, pelo estilo, pela dedicatória comum a Teófilo e pela menção de Atos 1:1 ao “primeiro livro”. É um escritor culto, que transita por vários registros do grego. Na questão sinótica, a hipótese mais aceita é que ele usou Marcos e a coleção de ditos Q, além de material próprio; outros pensam que conheceu também Mateus. Quanto ao autor, parte dos pesquisadores aceita Lucas, o companheiro de Paulo, e parte vê nele um cristão de geração posterior, apontando diferenças entre o Paulo de Atos e o das cartas. A data mais citada é c. 80–90, porque o texto parece pressupor o cerco e a destruição de Jerusalém (19:43–44; 21:20–24); há quem defenda os anos 60, e uma minoria situa Lucas–Atos já no início do século II."
+  },
+  "events": {
+    "intro": "Lucas é o evangelista que mais liga a narrativa a datas da história romana. Ele põe o anúncio a Zacarias “nos dias de Herodes, rei da Judeia” (1:5), associa o nascimento de Jesus a um recenseamento ordenado por César Augusto quando Quirino governava a Síria (2:1–2) e data o início da pregação de João “no ano quinze do império de Tibério César” (3:1), por volta de 28/29. O censo de Quirino registrado pelo historiador Flávio Josefo é de 6 d.C., cerca de dez anos depois da morte de Herodes; a diferença é explicada de várias formas, como um registro anterior, outra tradução de 2:2 ou uma imprecisão do autor. O ministério de Jesus costuma ser situado entre c. 27/28 e 30/33, e a crucificação em 30 ou 33.",
+    "axis": [
+      -40,
+      100
+    ],
+    "band": {
+      "label": "Reinado de Tibério",
+      "from": 14,
+      "to": 37
+    },
+    "timeline": [
+      {
+        "label": "Herodes, o Grande",
+        "from": -37,
+        "to": -4,
+        "kind": "pessoa",
+        "note": "rei da Judeia quando nascem João e Jesus (1:5)"
+      },
+      {
+        "label": "César Augusto",
+        "from": -27,
+        "to": 14,
+        "kind": "pessoa",
+        "note": "imperador que ordena o recenseamento (2:1)"
+      },
+      {
+        "label": "Nascimento de Jesus",
+        "from": -6,
+        "to": -4,
+        "kind": "evento",
+        "note": "em Belém; data aproximada, ainda sob Herodes"
+      },
+      {
+        "label": "Censo de Quirino",
+        "from": 6,
+        "to": 6,
+        "kind": "evento",
+        "note": "recenseamento da Judeia relatado por Josefo; comparar com 2:2"
+      },
+      {
+        "label": "Pregação de João Batista",
+        "from": 28,
+        "to": 29,
+        "kind": "evento",
+        "note": "“no ano quinze do império de Tibério” (3:1)"
+      },
+      {
+        "label": "Ministério de Jesus",
+        "from": 27,
+        "to": 33,
+        "kind": "evento",
+        "note": "c. 27/28 a 30/33, conforme a cronologia adotada"
+      },
+      {
+        "label": "Crucificação",
+        "from": 30,
+        "to": 33,
+        "kind": "evento",
+        "note": "em Jerusalém, sob Pilatos; as datas mais defendidas são 30 e 33"
+      },
+      {
+        "label": "Destruição de Jerusalém",
+        "from": 70,
+        "to": 70,
+        "kind": "evento",
+        "note": "o exército romano cerca e toma a cidade (cf. 21:20)"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": 59,
+        "to": 63,
+        "kind": "escrita",
+        "note": "Lucas, companheiro de Paulo, pouco antes de Atos"
+      },
+      {
+        "label": "Escrita, segundo a maioria dos pesquisadores",
+        "from": 80,
+        "to": 90,
+        "kind": "escrita",
+        "note": "depois de Marcos e da destruição de Jerusalém"
+      }
+    ]
+  },
+  "context": "Lucas escreve para leitores do mundo greco-romano e apresenta a história de Jesus como parte da história do Império: cita Augusto e Tibério, os governadores Quirino e Pilatos, os tetrarcas da família de Herodes e os sumos sacerdotes Anás e Caifás (2:1–2; 3:1–2). O prólogo (1:1–4) segue as convenções de historiadores e autores técnicos gregos, e a dedicatória a Teófilo lembra o costume de oferecer uma obra a um patrono. O autor conhece bem a Septuaginta, e os dois primeiros capítulos imitam o estilo das narrativas da Bíblia hebraica. A ação vai da Galileia a Jerusalém, onde o livro começa e termina, e prepara a expansão narrada em Atos, com a mensagem levada “em todas as nações, começando de Jerusalém” (24:47).",
+  "places": [
+    "Jerusalém e o templo",
+    "Nazaré",
+    "Belém",
+    "Galileia: Cafarnaum, Naim e o lago de Genesaré",
+    "Samaria",
+    "Jericó",
+    "Emaús",
+    "Betânia"
+  ],
+  "themes": [
+    "salvação para todos",
+    "pobres e ricos",
+    "misericórdia e perdão",
+    "oração",
+    "o Espírito Santo",
+    "alegria e louvor",
+    "mulheres no seguimento de Jesus"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:10–11",
+      "text": "E o anjo lhes disse: Não temais; pois eis que vos dou notícias de grande alegria, que será para todo o povo: que hoje na cidade de Davi vos nasceu o Salvador, que é Cristo, o Senhor."
+    },
+    {
+      "ref": "4:18–19",
+      "text": "O Espírito do Senhor está sobre mim, porque ele me ungiu para evangelizar os pobres, me enviou para proclamar liberdade aos cativos e dar vista aos cegos, para enviar livres os oprimidos, para proclamar o ano agradável do Senhor."
+    },
+    {
+      "ref": "15:7",
+      "text": "Digo-vos, que assim haverá mais alegria no céu por um pecador que se arrepende, do que por noventa e nove justos que não precisam de arrependimento."
+    },
+    {
+      "ref": "19:10",
+      "text": "Porque o Filho do homem veio para buscar, e para salvar o que tinha se perdido."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. Os versículos 17:36 e 23:17 aparecem em manuscritos posteriores, mas não nos mais antigos nem no texto grego SBLGNT usado no app, e por isso ficam sem o original grego. Faltam também em alguns manuscritos antigos importantes os versículos 22:43–44 (o anjo e o suor como gotas de sangue) e as palavras “Pai, perdoa-lhes” em 23:34; o SBLGNT os mantém, assinalando a dúvida. Em 10:1 e 10:17, a BLIVRE fala em “setenta” enviados, e o SBLGNT, seguindo outros manuscritos, em setenta e dois. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

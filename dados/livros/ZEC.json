@@ -1,0 +1,158 @@
+{
+  "title_orig": "זְכַרְיָה",
+  "title_orig_xlit": "Zekharyah",
+  "summary": "Zacarias atuou junto com Ageu, quando os judeus que voltaram do exílio reconstruíam o templo. Os capítulos 1 a 8 trazem oito visões noturnas, cheias de símbolos — cavaleiros, chifres, um candelabro, um rolo que voa —, que anunciam a purificação do povo e o retorno da presença de Deus a Jerusalém, além de respostas sobre o jejum e promessas de restauração. Os capítulos 9 a 14, sem datas, falam de um rei humilde que vem montado num jumentinho, de pastores fiéis e infiéis e do dia em que o SENHOR será rei sobre toda a terra.",
+  "name": "O livro leva o nome do profeta. Zacarias, em hebraico Zekharyah, significa “o SENHOR se lembrou”. Foi um dos nomes mais comuns do Antigo Testamento.",
+  "facts": [
+    [
+      "Posição",
+      "11º dos Doze Profetas Menores"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "profecia, com visões de tom apocalíptico"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Visões noturnas",
+      "from": 1,
+      "to": 6,
+      "text": "Chamado à conversão e oito visões sobre o juízo das nações, a purificação de Jerusalém e seus líderes; a coroa do sumo sacerdote Josué."
+    },
+    {
+      "title": "O jejum e as promessas",
+      "from": 7,
+      "to": 8,
+      "text": "Uma pergunta sobre os jejuns leva a lembrar a justiça exigida e a anunciar dias de alegria para Jerusalém."
+    },
+    {
+      "title": "Primeiro oráculo",
+      "from": 9,
+      "to": 11,
+      "text": "O rei que vem, o povo reunido e a parábola das duas varas e dos maus pastores."
+    },
+    {
+      "title": "Segundo oráculo",
+      "from": 12,
+      "to": 14,
+      "text": "Jerusalém atacada e defendida, o pranto pelo traspassado, a fonte de purificação e o dia do SENHOR."
+    }
+  ],
+  "people": [
+    {
+      "name": "Zacarias",
+      "chapters": "1–14",
+      "ch": 1,
+      "note": "profeta, filho de Berequias, filho de Ido"
+    },
+    {
+      "name": "Josué",
+      "chapters": "3; 6",
+      "ch": 3,
+      "note": "sumo sacerdote, purificado na visão e coroado em sinal"
+    },
+    {
+      "name": "Zorobabel",
+      "chapters": "4",
+      "ch": 4,
+      "note": "governador de Judá, que concluirá a construção do templo"
+    },
+    {
+      "name": "O anjo que falava comigo",
+      "chapters": "1–6",
+      "ch": 1,
+      "note": "intérprete das visões"
+    }
+  ],
+  "writing": {
+    "tradition": "A tradição atribui todo o livro a Zacarias, filho de Berequias, profeta contemporâneo de Ageu (Esdras 5:1; 6:14). As visões e mensagens datadas vão de 520 a 518 a.C.; os capítulos 9 a 14 seriam do mesmo profeta, talvez de uma fase posterior de sua vida.",
+    "academic": "Os estudiosos em geral atribuem os capítulos 1 a 8 a Zacarias, entre 520 e 518 a.C. Os capítulos 9 a 14 têm estilo e assuntos diferentes, não trazem datas nem o nome do profeta e começam por títulos próprios (9:1; 12:1); muitos os atribuem a um ou mais autores posteriores, chamados de “Segundo Zacarias”, e os datam entre o fim do período persa e o início do helenístico (séculos V a IV a.C.), em parte pela menção à Grécia (9:13). Há quem defenda uma data mais antiga para esses capítulos, e outros mantêm a unidade do livro."
+  },
+  "events": {
+    "intro": "As datas dos capítulos 1 a 8 seguem o reinado de Dario I; os capítulos 9 a 14 não são datados. As datas são aproximadas.",
+    "axis": [
+      -545,
+      -300
+    ],
+    "timeline": [
+      {
+        "label": "Decreto de Ciro e primeiro retorno",
+        "from": -539,
+        "to": -538,
+        "kind": "evento",
+        "note": "os exilados recebem permissão para voltar"
+      },
+      {
+        "label": "Dario I, rei da Pérsia",
+        "from": -522,
+        "to": -486,
+        "kind": "pessoa",
+        "note": "reinado"
+      },
+      {
+        "label": "Mensagens de Zacarias 1–8",
+        "from": -520,
+        "to": -518,
+        "kind": "escrita",
+        "note": "do 8º mês do 2º ano ao 9º mês do 4º ano de Dario (1:1; 7:1)"
+      },
+      {
+        "label": "Reconstrução do templo",
+        "from": -520,
+        "to": -515,
+        "kind": "evento",
+        "note": "conclusão em 515 a.C."
+      },
+      {
+        "label": "Capítulos 9–14, segundo a pesquisa",
+        "from": -480,
+        "to": -330,
+        "kind": "escrita",
+        "note": "“Segundo Zacarias”, em datas muito discutidas"
+      },
+      {
+        "label": "Alexandre, o Grande",
+        "from": -336,
+        "to": -323,
+        "kind": "pessoa",
+        "note": "conquista o império persa"
+      }
+    ]
+  },
+  "context": "Zacarias atuou na pequena província persa de Judá, onde uma comunidade que voltara do exílio tentava reconstruir o templo e reorganizar a vida religiosa, dividindo a liderança entre o governador Zorobabel, da linhagem de Davi, e o sumo sacerdote Josué. As visões usam imagens que antecipam a literatura apocalíptica, com anjos intérpretes e símbolos numéricos. Os capítulos 9 a 14 foram muito usados no Novo Testamento, sobretudo nos relatos da entrada de Jesus em Jerusalém e da paixão.",
+  "places": [
+    "Jerusalém e Sião",
+    "o templo",
+    "Babilônia (a terra de Sinar e a terra do norte)",
+    "monte das Oliveiras",
+    "Hadraque, Damasco, Tiro e Sidom"
+  ],
+  "themes": [
+    "reconstrução e retorno",
+    "purificação",
+    "liderança: rei e sacerdote",
+    "pastores fiéis e infiéis",
+    "dia do SENHOR",
+    "reinado universal de Deus"
+  ],
+  "key_verses": [
+    {
+      "ref": "8:23",
+      "text": "Assim diz o SENHOR dos exércitos: Naqueles dias será que dez homens de todas as línguas das nações, pegarão na orla da veste de um judeu, dizendo: Iremos convosco, porque temos ouvido que Deus está convosco."
+    },
+    {
+      "ref": "9:9",
+      "text": "Alegra-te muito, ó filha de Sião; dá vozes de júbilo, ó filha de Jerusalém; eis que teu rei virá a ti, justo e salvador, humilde, e montado sobre um asno, sobre um jumentinho, filho de jumenta."
+    },
+    {
+      "ref": "14:9",
+      "text": "E o SENHOR será rei sobre toda a terra. Naquele dia o SENHOR será um, e seu nome um."
+    }
+  ],
+  "note": "As datas são aproximadas; os versículos citados são da Bíblia Livre (BLIVRE), que segue a numeração das Bíblias em português: 1:18–21 corresponde a 2:1–4 no texto hebraico, e 2:1 a 2:5, e assim por diante até o fim do capítulo 2."
+}

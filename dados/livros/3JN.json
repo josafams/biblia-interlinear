@@ -1,0 +1,129 @@
+{
+  "title_orig": "Ἰωάννου Γʹ",
+  "title_orig_xlit": "Ioannou G",
+  "summary": "3 João é um bilhete pessoal do “ancião” ao amado Gaio, elogiado por acolher irmãos que viajavam para anunciar o evangelho. O ancião critica Diótrefes, que quer mandar na igreja, não recebe os enviados e expulsa quem os acolhe, e recomenda Demétrio. É o livro mais curto da Bíblia em número de palavras no original grego.",
+  "name": "O título “Terceira de João” (Ioannou G; a letra gama vale 3) segue a atribuição tradicional ao apóstolo João; no texto, o autor se identifica apenas como “o ancião” (1:1).",
+  "facts": [
+    [
+      "Posição",
+      "25º livro do Novo Testamento; 6ª das cartas gerais (ou católicas)"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "carta pessoal breve"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Saudação",
+      "from": 1,
+      "to": 1,
+      "text": "Votos de saúde e alegria por saber que Gaio anda na verdade (1:1–4)."
+    },
+    {
+      "title": "A hospitalidade de Gaio",
+      "from": 1,
+      "to": 1,
+      "text": "Gaio acolhe os irmãos viajantes; apoiá-los é ser cooperador da verdade (1:5–8)."
+    },
+    {
+      "title": "Diótrefes e Demétrio",
+      "from": 1,
+      "to": 1,
+      "text": "Diótrefes rejeita o ancião e os enviados; Demétrio tem bom testemunho de todos (1:9–12)."
+    },
+    {
+      "title": "Despedida",
+      "from": 1,
+      "to": 1,
+      "text": "O ancião espera ver Gaio em breve e envia saudações dos amigos (1:13–14)."
+    }
+  ],
+  "people": [
+    {
+      "name": "O ancião",
+      "chapters": "1",
+      "ch": 1,
+      "note": "autor que se apresenta pelo título, como em 2 João"
+    },
+    {
+      "name": "Gaio",
+      "chapters": "1",
+      "ch": 1,
+      "note": "destinatário, conhecido por acolher os missionários; nome muito comum, sem ligação segura com outros Gaios do Novo Testamento"
+    },
+    {
+      "name": "Diótrefes",
+      "chapters": "1",
+      "ch": 1,
+      "note": "líder local que “busca ser o comandante” e não recebe o ancião nem os enviados (1:9–10)"
+    },
+    {
+      "name": "Demétrio",
+      "chapters": "1",
+      "ch": 1,
+      "note": "recomendado pelo ancião; talvez o portador da carta (1:12)"
+    }
+  ],
+  "writing": {
+    "tradition": "A tradição atribui a carta ao apóstolo João, o “ancião”, que escreveria de Éfeso no fim do século I. Como 2 João, foi aceita mais lentamente que 1 João, e Eusébio a menciona entre os livros contestados por alguns.",
+    "academic": "Os estudiosos em geral atribuem 2 e 3 João ao mesmo autor, chamado “o ancião”, ligado ao ambiente de 1 João e do Evangelho de João. Discute-se se é o apóstolo, “João, o Ancião” (mencionado por Papias) ou outro líder. A data mais proposta é c. 90–110. O conflito com Diótrefes é lido de vários modos: disputa de autoridade, divergência de doutrina ou tensão entre uma liderança local que se firmava e a autoridade de um ancião de fora."
+  },
+  "events": {
+    "intro": "As três cartas de João vêm de um mesmo período e ambiente. As datas são aproximadas.",
+    "axis": [
+      60,
+      130
+    ],
+    "timeline": [
+      {
+        "label": "Evangelho de João",
+        "from": 85,
+        "to": 100,
+        "kind": "escrita",
+        "note": "data aproximada"
+      },
+      {
+        "label": "Escrita das cartas de João",
+        "from": 90,
+        "to": 110,
+        "kind": "escrita",
+        "note": "data aproximada"
+      },
+      {
+        "label": "Papias escreve sobre os anciãos",
+        "from": 110,
+        "to": 130,
+        "kind": "escrita",
+        "note": "data discutida; menciona um “João, o Ancião”"
+      }
+    ]
+  },
+  "context": "No século I, os missionários viajavam de cidade em cidade e dependiam de famílias cristãs que os hospedassem e os ajudassem a seguir viagem, “sem nada aceitar dos gentios” (1:7). A carta mostra uma rede de igrejas em contato por cartas e enviados, e um momento em que a autoridade de um líder de fora podia ser recusada por um líder local.",
+  "places": [
+    "a igreja de Gaio (não identificada)",
+    "Éfeso e a província da Ásia (pela tradição)"
+  ],
+  "themes": [
+    "verdade",
+    "hospitalidade",
+    "apoio aos missionários",
+    "autoridade na igreja",
+    "imitar o bem"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:4",
+      "text": "Não tenho maior alegria do que esta: a de ouvir que meus filhos andam na verdade."
+    },
+    {
+      "ref": "1:11",
+      "text": "Amado, não imites o mal, mas sim o bem. Quem faz o bem é de Deus, mas quem faz o mal nunca viu Deus."
+    }
+  ],
+  "note": "Datas aproximadas. Algumas edições dividem o último versículo em dois (14 e 15); a BLIVRE tem 14 versículos. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

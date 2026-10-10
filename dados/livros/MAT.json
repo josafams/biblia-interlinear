@@ -1,0 +1,274 @@
+{
+  "title_orig": "Κατὰ Ματθαῖον",
+  "title_orig_xlit": "Kata Matthaion",
+  "summary": "Mateus narra a vida de Jesus de Nazaré, da genealogia e do nascimento em Belém até a morte em Jerusalém, a ressurreição e o envio dos discípulos a todas as nações. O livro insiste em que Jesus é o Messias esperado por Israel, “filho de Davi, filho de Abraão” (1:1), e mostra repetidas vezes que suas ações cumprem o que os profetas haviam dito. Grande parte do evangelho é ocupada por ensinamentos, reunidos em cinco longos discursos, o primeiro dos quais é o Sermão do Monte (caps. 5–7). Ganham destaque o anúncio do “Reino dos céus”, os debates com fariseus e escribas sobre a interpretação da Lei e a vida da comunidade dos discípulos, que só este evangelho chama de “igreja” (16:18; 18:17).",
+  "name": "“Evangelho” vem do grego euangelion, “boa notícia”, palavra que os cristãos passaram a usar para o anúncio sobre Jesus e, depois, para os livros que contam a sua história. O título “Segundo Mateus” (Kata Matthaion) não faz parte do texto: foi dado quando os quatro evangelhos começaram a circular juntos e já era conhecido no fim do século II. Ele liga a obra a Mateus, o cobrador de impostos chamado por Jesus (9:9; 10:3); no texto grego usado no app, o nome aparece com a grafia Maththaios (Μαθθαῖος).",
+  "facts": [
+    [
+      "Posição",
+      "1º livro do Novo Testamento e o primeiro dos quatro Evangelhos"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "evangelho: relato da vida, dos ensinos, da morte e da ressurreição de Jesus, próximo das biografias antigas"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Origem e infância de Jesus",
+      "from": 1,
+      "to": 2,
+      "text": "A genealogia de Abraão a Jesus, o nascimento em Belém, a visita dos magos, a fuga para o Egito e a mudança para Nazaré."
+    },
+    {
+      "title": "Preparação",
+      "from": 3,
+      "to": 4,
+      "text": "A pregação de João Batista, o batismo de Jesus, a tentação no deserto e o chamado dos primeiros discípulos junto ao mar da Galileia."
+    },
+    {
+      "title": "O Sermão do Monte",
+      "from": 5,
+      "to": 7,
+      "text": "Primeiro discurso: as bem-aventuranças, Jesus e a Lei, a esmola, a oração e o jejum feitos em segredo, e a comparação entre quem constrói sobre a rocha e quem constrói sobre a areia."
+    },
+    {
+      "title": "Milagres e missão",
+      "from": 8,
+      "to": 10,
+      "text": "Uma sequência de curas e outros milagres, o chamado de Mateus e o segundo discurso, com as instruções aos doze enviados pelas cidades de Israel."
+    },
+    {
+      "title": "Oposição e parábolas",
+      "from": 11,
+      "to": 13,
+      "text": "A pergunta de João Batista, as discussões sobre o sábado e a acusação de que Jesus agia pelo poder de Belzebu; no terceiro discurso, as parábolas do Reino."
+    },
+    {
+      "title": "Jesus forma os discípulos",
+      "from": 14,
+      "to": 18,
+      "text": "As multiplicações dos pães, a confissão de Pedro, os primeiros anúncios da paixão, a transfiguração e o quarto discurso, sobre a convivência na comunidade."
+    },
+    {
+      "title": "Rumo a Jerusalém e debates no templo",
+      "from": 19,
+      "to": 23,
+      "text": "Ensinos a caminho da Judeia, a entrada em Jerusalém, a purificação do templo, parábolas de juízo e as controvérsias com os líderes, que terminam nos ais contra escribas e fariseus."
+    },
+    {
+      "title": "O discurso sobre o fim",
+      "from": 24,
+      "to": 25,
+      "text": "Quinto discurso, no monte das Oliveiras: a destruição do templo, a vinda do Filho do homem e parábolas sobre vigiar e prestar contas."
+    },
+    {
+      "title": "Paixão e ressurreição",
+      "from": 26,
+      "to": 28,
+      "text": "A unção em Betânia, a última ceia, a prisão no Getsêmani, os julgamentos, a crucificação, o túmulo vazio e o envio final dos discípulos."
+    }
+  ],
+  "extra": {
+    "title": "Cinco discursos e o cumprimento das Escrituras",
+    "text": "Mateus reúne os ensinos de Jesus em cinco grandes blocos (caps. 5–7, 10, 13, 18 e 24–25), e cada um termina com uma fórmula parecida: “quando Jesus terminou estas palavras…” (7:28; 11:1; 13:53; 19:1; 26:1). Alguns estudiosos relacionam o número com os cinco livros de Moisés; outros veem aí apenas um recurso de organização. Outro traço marcante são as citações introduzidas por “para que se cumprisse o que foi dito pelo profeta”, cerca de dez, que ligam episódios da vida de Jesus a textos das Escrituras de Israel. O livro também se abre e se fecha com a mesma ideia: o menino será chamado Emanuel, “Deus conosco” (1:23), e o Ressuscitado promete estar com os discípulos “todos os dias” (28:20)."
+  },
+  "people": [
+    {
+      "name": "Jesus",
+      "chapters": "1–28",
+      "ch": 1,
+      "note": "nascido em Belém e criado em Nazaré; o livro o apresenta como Messias, filho de Davi e Filho de Deus"
+    },
+    {
+      "name": "José e Maria",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "José, da descendência de Davi, recebe em sonhos as orientações sobre o menino; Maria é a mãe de Jesus"
+    },
+    {
+      "name": "Herodes, o Grande",
+      "chapters": "2",
+      "ch": 2,
+      "note": "rei da Judeia; ao saber do nascimento, manda matar os meninos de Belém"
+    },
+    {
+      "name": "João Batista",
+      "chapters": "3; 11; 14",
+      "ch": 3,
+      "note": "profeta que prega no deserto da Judeia e batiza Jesus; é executado por ordem de Herodes Antipas"
+    },
+    {
+      "name": "Simão Pedro",
+      "chapters": "4–26",
+      "ch": 16,
+      "note": "pescador da Galileia e porta-voz dos doze; reconhece Jesus como o Cristo e depois o nega três vezes"
+    },
+    {
+      "name": "Mateus",
+      "chapters": "9–10",
+      "ch": 9,
+      "note": "cobrador de impostos chamado por Jesus; a tradição o tem como autor do livro"
+    },
+    {
+      "name": "Os doze",
+      "chapters": "10; 26–28",
+      "ch": 10,
+      "note": "os discípulos escolhidos e enviados em missão; ao fim, os onze recebem o envio a todas as nações"
+    },
+    {
+      "name": "Herodes Antipas",
+      "chapters": "14",
+      "ch": 14,
+      "note": "tetrarca da Galileia, filho de Herodes, o Grande; manda decapitar João"
+    },
+    {
+      "name": "Fariseus, saduceus e escribas",
+      "chapters": "9–23",
+      "ch": 23,
+      "note": "grupos e mestres judaicos com quem Jesus debate sobre a Lei, o sábado, a pureza e a ressurreição"
+    },
+    {
+      "name": "Judas Iscariotes",
+      "chapters": "10; 26–27",
+      "ch": 26,
+      "note": "um dos doze; entrega Jesus aos chefes dos sacerdotes por trinta moedas de prata"
+    },
+    {
+      "name": "Caifás",
+      "chapters": "26",
+      "ch": 26,
+      "note": "sumo sacerdote em cuja casa Jesus é interrogado"
+    },
+    {
+      "name": "Pilatos",
+      "chapters": "27",
+      "ch": 27,
+      "note": "governador romano da Judeia, que entrega Jesus para ser crucificado"
+    },
+    {
+      "name": "Maria Madalena",
+      "chapters": "27–28",
+      "ch": 28,
+      "note": "acompanha a crucificação e o sepultamento e está entre as primeiras a encontrar o túmulo vazio"
+    }
+  ],
+  "writing": {
+    "tradition": "Desde o século II, a tradição cristã atribui este evangelho ao apóstolo Mateus, o cobrador de impostos de 9:9. Papias de Hierápolis, citado por Eusébio, conta que Mateus reuniu os ditos (logia) de Jesus “em dialeto hebraico” e que cada um os traduziu como pôde; Ireneu, por volta de 180, acrescenta que Mateus escreveu entre os hebreus, na língua deles, quando Pedro e Paulo pregavam em Roma. Por isso a Igreja antiga o considerava o primeiro evangelho a ser escrito, e é esse o lugar que ele ocupa no Novo Testamento. Quem segue essa leitura costuma datá-lo antes da destruição de Jerusalém, em 70, entre as décadas de 50 e 60.",
+    "academic": "O texto que chegou até nós foi escrito em grego e não tem as marcas de uma tradução; a expressão de Papias pode referir-se a outra obra, a uma versão em hebraico ou aramaico, ou a um estilo judaico de escrever. Para explicar as semelhanças entre Mateus, Marcos e Lucas — a chamada questão sinótica —, a maioria dos estudiosos adota a hipótese de que Marcos veio primeiro e foi usado por Mateus e Lucas, que teriam usado também uma coleção de ditos de Jesus hoje perdida, chamada Q. Nessa visão, o autor seria um cristão de origem judaica, profundo conhecedor das Escrituras, e muitos o consideram anônimo; a data mais citada é c. 80–90, depois da destruição do templo, à qual alguns veem uma alusão em 22:7, e Antioquia da Síria é o lugar de origem mais sugerido. Há também quem dispense a fonte Q, quem defenda que Mateus foi o primeiro evangelho e quem mantenha a autoria apostólica, com data anterior a 70."
+  },
+  "events": {
+    "intro": "Os evangelhos não indicam anos, e as datas da vida de Jesus são calculadas a partir de referências históricas. Mateus situa o nascimento “nos dias do rei Herodes” (2:1), que morreu por volta de 4 a.C.; daí a data aproximada de 6 a 4 a.C. O ministério público costuma ser situado entre c. 27/28 e 30/33 d.C., e a crucificação, sob o governo de Pilatos, em 30 ou 33. A linha do tempo mostra também a destruição do templo, em 70, ponto de referência para datar o livro, e as duas propostas principais para a sua escrita.",
+    "axis": [
+      -40,
+      100
+    ],
+    "band": {
+      "label": "Governo de Pilatos na Judeia",
+      "from": 26,
+      "to": 36
+    },
+    "timeline": [
+      {
+        "label": "Herodes, o Grande",
+        "from": -37,
+        "to": -4,
+        "kind": "pessoa",
+        "note": "reinado sobre a Judeia; Jesus nasce nos seus últimos anos (2:1)"
+      },
+      {
+        "label": "Nascimento de Jesus",
+        "from": -6,
+        "to": -4,
+        "kind": "evento",
+        "note": "em Belém da Judeia; data aproximada"
+      },
+      {
+        "label": "Arquelau",
+        "from": -4,
+        "to": 6,
+        "kind": "pessoa",
+        "note": "governa a Judeia; por isso José leva a família para a Galileia (2:22)"
+      },
+      {
+        "label": "Herodes Antipas",
+        "from": -4,
+        "to": 39,
+        "kind": "pessoa",
+        "note": "tetrarca da Galileia; manda matar João Batista (14:1–12)"
+      },
+      {
+        "label": "Ministério de Jesus",
+        "from": 27,
+        "to": 33,
+        "kind": "evento",
+        "note": "c. 27/28 a 30/33, conforme a cronologia adotada"
+      },
+      {
+        "label": "Crucificação",
+        "from": 30,
+        "to": 33,
+        "kind": "evento",
+        "note": "em Jerusalém, sob Pilatos; as datas mais defendidas são 30 e 33"
+      },
+      {
+        "label": "Destruição de Jerusalém",
+        "from": 70,
+        "to": 70,
+        "kind": "evento",
+        "note": "o exército romano toma a cidade e incendeia o templo"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": 50,
+        "to": 66,
+        "kind": "escrita",
+        "note": "o apóstolo Mateus, antes da guerra contra Roma"
+      },
+      {
+        "label": "Escrita, segundo a maioria dos pesquisadores",
+        "from": 80,
+        "to": 90,
+        "kind": "escrita",
+        "note": "depois de Marcos e da destruição do templo"
+      }
+    ]
+  },
+  "context": "A história se passa na terra de Israel no início do século I, sob domínio romano. A Galileia era governada por Herodes Antipas, e a Judeia, desde o ano 6, por prefeitos romanos como Pilatos, que deixavam aos sumos sacerdotes a administração do templo de Jerusalém. No judaísmo dessa época conviviam grupos com leituras diferentes da Lei, como fariseus e saduceus, e eram vivas as esperanças de um Messias da linhagem de Davi. Para a maioria dos estudiosos, o evangelho foi escrito depois de 70 para comunidades de cristãos em boa parte de origem judaica, num momento em que o judaísmo, sem o templo, se reorganizava em torno das sinagogas e dos mestres da Lei; isso ajudaria a explicar a dureza dos debates com os fariseus e expressões como “suas sinagogas” (4:23; 10:17), ao lado da abertura final a todos os povos (28:19).",
+  "places": [
+    "Belém da Judeia",
+    "Egito",
+    "Nazaré",
+    "Galileia: Cafarnaum e o mar da Galileia",
+    "Cesareia de Filipe",
+    "Jericó",
+    "Jerusalém: o templo, o monte das Oliveiras, o Getsêmani e o Gólgota"
+  ],
+  "themes": [
+    "Reino dos céus",
+    "cumprimento das Escrituras",
+    "Jesus, Messias e filho de Davi",
+    "a Lei e a justiça",
+    "discipulado e igreja",
+    "missão a todas as nações"
+  ],
+  "key_verses": [
+    {
+      "ref": "5:17",
+      "text": "Não penseis que vim para revogar a Lei ou os Profetas; não vim para revogar, mas sim para cumprir."
+    },
+    {
+      "ref": "16:15–16",
+      "text": "Ele lhes disse: E vós, quem dizeis que eu sou? E Simão Pedro respondeu: Tu és o Cristo, o Filho do Deus vivo!"
+    },
+    {
+      "ref": "28:18–20",
+      "text": "Jesus se aproximou deles, e lhes falou: Todo o poder me é dado no céu e na terra. Portanto ide, fazei discípulos a todas as nações, batizando-os em nome do Pai, do Filho, e do Espírito Santo, ensinando-lhes a guardar todas as coisas que eu vos tenho mandado. E eis que eu estou convosco todos os dias, até o fim dos tempos."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. A contagem dos anos a partir do nascimento de Cristo foi calculada no século VI com um pequeno desvio; por isso o nascimento de Jesus cai alguns anos “antes de Cristo”. Os versículos 17:21, 18:11 e 23:14 aparecem em muitos manuscritos posteriores, mas não nos mais antigos nem no texto grego SBLGNT usado no app, e por isso ficam sem o original grego. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

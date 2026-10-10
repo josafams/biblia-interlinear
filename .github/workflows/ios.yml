@@ -1,0 +1,28 @@
+# Verifica se o projeto iOS compila (simulador, sem assinatura). Roda só manualmente,
+# porque usa máquina macOS. Para publicar na App Store é preciso uma conta Apple
+# Developer e assinar pelo Xcode ou com as chaves cadastradas aqui.
+name: iOS (verificação)
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Site já gerado (ramo gh-pages) como conteúdo do app
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: saida/web
+      - run: rm -rf saida/web/.git
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx cap sync ios
+      - name: Compilar para o simulador
+        run: xcodebuild -project ios/App/App.xcodeproj -scheme App -sdk iphonesimulator -configuration Debug CODE_SIGNING_ALLOWED=NO build

@@ -1,0 +1,189 @@
+{
+  "title_orig": "וַיִּקְרָא",
+  "title_orig_xlit": "Vayikra",
+  "summary": "Levítico reúne as instruções que Moisés recebe no tabernáculo recém-erguido sobre como Israel pode viver perto de um Deus santo. Os capítulos 1 a 7 descrevem os sacrifícios e ofertas; os capítulos 8 a 10 contam a ordenação de Arão e seus filhos e a morte de Nadabe e Abiú. Seguem-se as leis sobre o puro e o impuro — alimentos, parto, lepra, fluxos do corpo — e o ritual anual do dia da expiação (cap. 16). Os capítulos 17 a 26 estendem a exigência de santidade à vida diária: família, sexualidade, trabalho, comércio, calendário de festas e posse da terra, com o ano sabático e o jubileu. Quase não há narrativa, e todo o livro se passa ao pé do monte Sinai.",
+  "name": "Em hebraico o livro se chama Vayikra, “E chamou”, sua primeira palavra (1:1); na tradição rabínica também é conhecido como Torat Kohanim, “instrução dos sacerdotes”. O nome “Levítico” vem do grego Leuitikon, da Septuaginta, por meio do latim Leviticus, e quer dizer “relativo aos levitas”, isto é, à tribo de Levi, da qual saíam os sacerdotes.",
+  "facts": [
+    [
+      "Posição",
+      "3º livro da Torá (Pentateuco)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "leis rituais e éticas, com breves narrativas"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Sacrifícios e ofertas",
+      "from": 1,
+      "to": 7,
+      "text": "Os principais tipos de oferta — holocausto, oferta de cereais (na BLIVRE, “oferta de alimentos”), sacrifício pacífico, oferta pelo pecado e oferta pela culpa — e as instruções aos sacerdotes sobre cada um."
+    },
+    {
+      "title": "O início do sacerdócio",
+      "from": 8,
+      "to": 10,
+      "text": "Moisés consagra Arão e seus filhos; Arão oferece os primeiros sacrifícios, e Nadabe e Abiú morrem ao apresentar fogo estranho."
+    },
+    {
+      "title": "O puro e o impuro",
+      "from": 11,
+      "to": 15,
+      "text": "Animais que podem ou não ser comidos, a purificação depois do parto, a lepra na pele, nas roupas e nas casas, e os fluxos do corpo."
+    },
+    {
+      "title": "O dia da expiação",
+      "from": 16,
+      "to": 16,
+      "text": "O rito anual em que Arão entra além do véu, diante da arca, e um bode é enviado ao deserto levando as faltas do povo."
+    },
+    {
+      "title": "Leis de santidade",
+      "from": 17,
+      "to": 26,
+      "text": "O sangue e o lugar do sacrifício, as relações proibidas, a ética do dia a dia, as regras para os sacerdotes, as festas, o ano sabático e o jubileu, e as bênçãos e castigos ligados ao pacto."
+    },
+    {
+      "title": "Votos e consagrações",
+      "from": 27,
+      "to": 27,
+      "text": "Um apêndice sobre o valor de pessoas, animais e terras prometidos ao SENHOR e sobre o resgate dos dízimos."
+    }
+  ],
+  "extra": {
+    "title": "O refrão “Eu sou o SENHOR”",
+    "text": "Nos capítulos 18 a 26, muitas leis terminam com a frase “Eu sou o SENHOR” ou “Eu sou o SENHOR vosso Deus”, que aparece mais de quarenta vezes nesse trecho e quinze só no capítulo 19. O refrão funciona como uma assinatura: apoia cada norma na autoridade de Deus e ecoa o pedido que abre o capítulo 19, “Santos sereis, porque santo sou eu o SENHOR vosso Deus” (19:2). Pela ênfase na santidade, os estudiosos deram a essa parte, no fim do século XIX, o nome de “Código de Santidade”."
+  },
+  "people": [
+    {
+      "name": "Moisés",
+      "chapters": "1–27",
+      "ch": 8,
+      "note": "recebe as leis no tabernáculo e as transmite; conduz a consagração dos sacerdotes"
+    },
+    {
+      "name": "Arão",
+      "chapters": "8–10; 16",
+      "ch": 8,
+      "note": "irmão de Moisés e primeiro sumo sacerdote; oficia o ritual do dia da expiação"
+    },
+    {
+      "name": "Nadabe e Abiú",
+      "chapters": "10",
+      "ch": 10,
+      "note": "filhos mais velhos de Arão, mortos ao oferecer fogo que não havia sido ordenado"
+    },
+    {
+      "name": "Eleazar e Itamar",
+      "chapters": "10",
+      "ch": 10,
+      "note": "os outros filhos de Arão, que continuam o serviço sacerdotal"
+    },
+    {
+      "name": "O filho de Selomite",
+      "chapters": "24",
+      "ch": 24,
+      "note": "filho de mãe israelita e pai egípcio; apedrejado por blasfemar o Nome"
+    }
+  ],
+  "writing": {
+    "tradition": "Como o restante da Torá, Levítico é atribuído a Moisés pelas tradições judaica e cristã. O próprio livro apresenta suas leis como palavras do SENHOR a Moisés, ditas no tabernáculo e no monte Sinai (1:1; 7:38; 26:46; 27:34). Nessa leitura, ele teria sido escrito durante a peregrinação no deserto, por volta de 1446–1406 a.C., ou no século XIII a.C. para quem adota a data mais tardia do Êxodo.",
+    "academic": "Para a maioria dos estudiosos, Levítico pertence quase inteiro à camada sacerdotal do Pentateuco, ligada a círculos de sacerdotes de Jerusalém. Os capítulos 17 a 26 costumam ser tratados como uma coleção própria, o Código de Santidade, que muitos consideram obra de uma escola posterior que revisou o material sacerdotal. As datas propostas vão do fim da monarquia em Judá ao período persa, e a forma final é geralmente situada por volta de 550–400 a.C. Outros pesquisadores, apoiados em paralelos com rituais do Oriente Próximo do segundo milênio a.C., defendem que boa parte dessas práticas e textos remonta ao tempo do primeiro templo ou antes."
+  },
+  "events": {
+    "intro": "Levítico quase não narra acontecimentos: suas leis são dadas no espaço de cerca de um mês, entre a montagem do tabernáculo, no primeiro dia do primeiro mês do segundo ano (Êxodo 40:17), e o censo do primeiro dia do segundo mês (Números 1:1). A data desse período depende da posição adotada sobre o Êxodo: c. 1445 a.C. na cronologia tradicional, ou algum momento do século XIII a.C. para quem prefere a data tardia. A linha do tempo mostra as duas possibilidades, as vidas de Moisés e de Arão pela cronologia tradicional e as propostas para a escrita.",
+    "axis": [
+      -1600,
+      -350
+    ],
+    "band": {
+      "label": "Primeiro templo de Jerusalém",
+      "from": -960,
+      "to": -586
+    },
+    "timeline": [
+      {
+        "label": "Moisés",
+        "from": -1526,
+        "to": -1406,
+        "kind": "pessoa",
+        "note": "80 anos diante do faraó (Êxodo 7:7) e 120 ao morrer (Deuteronômio 34:7), na cronologia tradicional"
+      },
+      {
+        "label": "Arão",
+        "from": -1529,
+        "to": -1406,
+        "kind": "pessoa",
+        "note": "83 anos diante do faraó (Êxodo 7:7) e 123 ao morrer (Números 33:39), na cronologia tradicional"
+      },
+      {
+        "label": "No Sinai, data antiga",
+        "from": -1445,
+        "to": -1445,
+        "kind": "evento",
+        "note": "cerca de um mês entre Êxodo 40:17 e Números 1:1"
+      },
+      {
+        "label": "No Sinai, data tardia",
+        "from": -1270,
+        "to": -1250,
+        "kind": "evento",
+        "note": "faixa aproximada, para quem situa o Êxodo no século XIII a.C."
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -1446,
+        "to": -1406,
+        "kind": "escrita",
+        "note": "Moisés, durante a peregrinação no deserto"
+      },
+      {
+        "label": "Composição, segundo a pesquisa",
+        "from": -700,
+        "to": -400,
+        "kind": "escrita",
+        "note": "do fim da monarquia em Judá ao período persa; a forma final costuma ser situada c. 550–400 a.C."
+      }
+    ]
+  },
+  "context": "Levítico supõe o acampamento de Israel no deserto, com o tabernáculo no centro, e descreve ritos que mais tarde seriam praticados no templo de Jerusalém. Sacrifícios de animais, regras de pureza e calendários de festas eram comuns no Antigo Oriente Próximo: textos de Ugarit, na costa da Síria, e documentos hititas e mesopotâmicos descrevem ofertas e purificações com paralelos de vocabulário e de procedimento, incluindo ritos em que um animal é mandado embora levando consigo o mal, comparáveis ao bode do capítulo 16. Ao lado dessas semelhanças, o livro liga o culto e a pureza a um único Deus e a uma ética social que inclui o pobre, o estrangeiro, o surdo, o cego e o trabalhador diarista (19:9–18, 33–34).",
+  "places": [
+    "o deserto do Sinai, ao pé do monte (7:38; 25:1)",
+    "o tabernáculo do testemunho e seu átrio",
+    "o acampamento e o espaço “fora do acampamento”",
+    "o deserto para onde vai o bode (16:21–22)",
+    "Egito e Canaã, como costumes a evitar (18:3)"
+  ],
+  "themes": [
+    "santidade",
+    "sacrifício e expiação",
+    "puro e impuro",
+    "sacerdócio",
+    "calendário sagrado",
+    "justiça social e jubileu"
+  ],
+  "key_verses": [
+    {
+      "ref": "16:30",
+      "text": "Porque neste dia se vos reconciliará para limpar-vos; e sereis limpos de todos vossos pecados diante do SENHOR."
+    },
+    {
+      "ref": "17:11",
+      "text": "Porque a vida da carne no sangue está: e eu vos a dei para expiar vossas pessoas sobre o altar: pelo qual o mesmo sangue expiará a pessoa."
+    },
+    {
+      "ref": "19:2",
+      "text": "Fala a toda a congregação dos filhos de Israel, e dize-lhes: Santos sereis, porque santo sou eu o SENHOR vosso Deus."
+    },
+    {
+      "ref": "19:18",
+      "text": "Não te vingarás, nem guardarás rancor aos filhos de teu povo: mas amarás a teu próximo como a ti mesmo: Eu sou o SENHOR."
+    }
+  ],
+  "note": "As datas são aproximadas e dependem da posição adotada sobre o Êxodo. A numeração segue a das Bíblias em português; no texto hebraico, 6:1–7 aparece como 5:20–26 e 6:8–30 como 6:1–23. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

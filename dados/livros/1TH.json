@@ -1,0 +1,149 @@
+{
+  "title_orig": "Πρὸς Θεσσαλονικεῖς Αʹ",
+  "title_orig_xlit": "Pros Thessalonikeis A",
+  "summary": "1 Tessalonicenses é provavelmente a carta mais antiga de Paulo que se conservou e, por isso, um dos primeiros escritos cristãos. Paulo, Silvano e Timóteo tinham sido obrigados a deixar Tessalônica pouco depois de fundar ali uma igreja formada sobretudo por pessoas que haviam abandonado os ídolos (1:9). Ao receber de Timóteo boas notícias sobre a firmeza deles, Paulo escreve aliviado, relembra o tempo que passou na cidade e reforça o ensino recebido sobre a vida santa e o trabalho. Responde também a uma dúvida que os entristecia: o que acontece com os irmãos que morrem antes da vinda do Senhor (4:13–18).",
+  "name": "O título Pros Thessalonikeis A, “Primeira aos tessalonicenses”, vem da saudação “à igreja dos tessalonicenses” (1:1); o número a distingue da segunda carta à mesma igreja. A cidade recebeu o nome de Tessalonice, irmã de Alexandre, o Grande, e esposa de Cassandro, que a fundou por volta de 316 a.C.",
+  "facts": [
+    [
+      "Posição",
+      "13º livro do Novo Testamento; 8ª das cartas de Paulo, na ordem do cânon"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "carta pastoral de encorajamento"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Gratidão pela igreja",
+      "from": 1,
+      "to": 1,
+      "text": "A fé, o amor e a esperança dos tessalonicenses se tornaram conhecidos na Macedônia e na Acaia."
+    },
+    {
+      "title": "Memórias da missão",
+      "from": 2,
+      "to": 3,
+      "text": "Paulo recorda como trabalhou com as próprias mãos para não pesar a ninguém, o sofrimento da igreja, a separação forçada, o envio de Timóteo a partir de Atenas e a alegria com as notícias que ele trouxe."
+    },
+    {
+      "title": "Instruções",
+      "from": 4,
+      "to": 5,
+      "text": "Santidade no corpo, amor fraterno e trabalho; a esperança sobre os que morreram; o dia do Senhor, que virá de surpresa; e uma série de conselhos breves para a vida da igreja."
+    }
+  ],
+  "extra": {
+    "title": "A carta mais antiga de Paulo",
+    "text": "Se a datação mais comum estiver certa, esta carta foi escrita uns vinte anos depois da morte de Jesus, antes de qualquer evangelho. Nela já aparecem a fé, o amor e a esperança juntos (1:3; 5:8), a expectativa da vinda do Senhor e a ordem para que a carta “seja lida a todos os irmãos” (5:27), indício de que as cartas eram lidas em voz alta nas reuniões."
+  },
+  "people": [
+    {
+      "name": "Paulo",
+      "chapters": "1–5",
+      "ch": 2,
+      "note": "fundador da igreja; tentou voltar mais de uma vez, mas foi impedido (2:17–18)"
+    },
+    {
+      "name": "Silvano",
+      "chapters": "1",
+      "ch": 1,
+      "note": "coautor da saudação; é o Silas de Atos, companheiro de Paulo na segunda viagem"
+    },
+    {
+      "name": "Timóteo",
+      "chapters": "1; 3",
+      "ch": 3,
+      "note": "enviado de Atenas para fortalecer a igreja, volta com boas notícias (3:1–6)"
+    }
+  ],
+  "writing": {
+    "tradition": "A autoria de Paulo foi aceita sem contestação na Igreja antiga. Como Timóteo voltou a se encontrar com Paulo depois da passagem por Atenas, a carta foi situada em Corinto, durante o ano e meio que Paulo passou ali (Atos 18:5, 11).",
+    "academic": "1 Tessalonicenses está entre as sete cartas que praticamente todos os estudiosos atribuem a Paulo, ao lado de Romanos, 1 e 2 Coríntios, Gálatas, Filipenses e Filemom, e é geralmente datada de c. 50–51, em Corinto. A estada de Paulo nessa cidade é datada com relativa segurança por uma inscrição de Delfos que menciona o procônsul Gálio (Atos 18:12). Um ponto debatido é 2:14–16, que fala com dureza dos judeus que mataram o Senhor e perseguiram os profetas: alguns estudiosos o consideram um acréscimo posterior, talvez depois da destruição de Jerusalém em 70, mas a maioria o mantém como parte da carta, lido no contexto de conflitos locais. Também se discute se a carta é uma só ou a junção de duas, hipótese minoritária."
+  },
+  "events": {
+    "intro": "A fundação da igreja e a carta cabem em poucos meses da segunda viagem de Paulo, segundo o roteiro de Atos 17–18. As datas são aproximadas.",
+    "axis": [
+      45,
+      55
+    ],
+    "band": {
+      "label": "Segunda viagem de Paulo",
+      "from": 49,
+      "to": 52
+    },
+    "timeline": [
+      {
+        "label": "Paulo em Filipos",
+        "from": 49,
+        "to": 50,
+        "kind": "evento",
+        "note": "onde sofreu maus-tratos antes de chegar a Tessalônica (2:2)"
+      },
+      {
+        "label": "Fundação da igreja em Tessalônica",
+        "from": 50,
+        "to": 50,
+        "kind": "evento",
+        "note": "Paulo prega na sinagoga e precisa sair às pressas (Atos 17:1–10)"
+      },
+      {
+        "label": "Bereia e Atenas",
+        "from": 50,
+        "to": 50,
+        "kind": "evento",
+        "note": "de Atenas, Timóteo é enviado de volta a Tessalônica (3:1–2)"
+      },
+      {
+        "label": "Escrita da carta",
+        "from": 50,
+        "to": 51,
+        "kind": "escrita",
+        "note": "em Corinto, depois da volta de Timóteo"
+      },
+      {
+        "label": "Gálio, procônsul da Acaia",
+        "from": 51,
+        "to": 52,
+        "kind": "pessoa",
+        "note": "data conhecida por uma inscrição de Delfos (Atos 18:12)"
+      }
+    ]
+  },
+  "context": "Tessalônica (a atual Salônica, na Grécia) era a capital da província romana da Macedônia, um porto no golfo Termaico atravessado pela Via Egnácia. Era uma cidade livre, com magistrados próprios — os “politarcas” de Atos 17:6, título confirmado por inscrições — e tinha templos de vários deuses, um culto local a Cabiro e honras prestadas a Roma e aos imperadores. Segundo Atos, Paulo pregou na sinagoga por três sábados e atraiu alguns judeus e muitos gregos devotos, mas a oposição levou a um tumulto e à sua saída de noite. A carta indica que os convertidos continuavam sofrendo hostilidade dos próprios conterrâneos (2:14).",
+  "places": [
+    "Tessalônica",
+    "Macedônia e Acaia",
+    "Filipos",
+    "Atenas",
+    "Judeia"
+  ],
+  "themes": [
+    "fé, amor e esperança",
+    "o exemplo dos missionários",
+    "sofrimento e firmeza",
+    "santidade",
+    "trabalho",
+    "os mortos em Cristo",
+    "a vinda do Senhor"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:9–10",
+      "text": "Pois eles mesmos anunciam como fomos recebidos por vós, e como vos convertestes, deixando os ídolos, para servir ao Deus vivo e verdadeiro; e para esperar dos céus o seu Filho, a quem ele ressuscitou dos mortos: Jesus, que nos livra da ira futura."
+    },
+    {
+      "ref": "4:16–17",
+      "text": "Pois o mesmo Senhor descerá do céu com grande aclamação, com voz de arcanjo, e com trombeta de Deus; e os que morreram em Cristo ressuscitarão primeiro; Em seguida nós, os que ficarmos vivos, seremos arrebatados juntamente com eles nas nuvens, para encontrar o Senhor no ar, e assim estaremos com o Senhor para sempre."
+    },
+    {
+      "ref": "5:16–18",
+      "text": "Alegrai-vos sempre. Orai sem cessar. Agradecei em tudo, pois essa é a vontade de Deus em Cristo Jesus para vós mesmos."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

@@ -1,0 +1,131 @@
+{
+  "title_orig": "מַלְאָכִי",
+  "title_orig_xlit": "Malakhi",
+  "summary": "Malaquias se dirige à comunidade de Judá algumas décadas depois da reconstrução do templo, quando o entusiasmo havia esfriado. O livro é organizado em diálogos: Deus afirma algo, o povo responde com uma pergunta (“Em que…?”) e Deus explica. As acusações tratam de sacrifícios de animais defeituosos, sacerdotes negligentes, casamentos desfeitos, injustiça e dízimos retidos. O livro anuncia um mensageiro que preparará o caminho e termina com a promessa do envio do profeta Elias antes do dia do SENHOR.",
+  "name": "Malaquias, em hebraico Malakhi, significa “meu mensageiro”. Por causa de 3:1 (“eis que eu enviarei o meu mensageiro”), alguns entendem a palavra de 1:1 como título e não como nome próprio; a Septuaginta a traduz por “seu mensageiro”.",
+  "facts": [
+    [
+      "Posição",
+      "12º dos Doze Profetas Menores; último livro do Antigo Testamento nas Bíblias cristãs"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "profecia em forma de diálogos (disputas)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "O amor de Deus e o culto desprezado",
+      "from": 1,
+      "to": 2,
+      "text": "Deus afirma seu amor; sacerdotes e povo oferecem o pior; aliança com Levi e fidelidade no casamento."
+    },
+    {
+      "title": "O dia que vem",
+      "from": 2,
+      "to": 4,
+      "text": "A queixa de que Deus não faz justiça, o mensageiro do pacto, os dízimos, o livro de memória e a promessa de Elias."
+    }
+  ],
+  "extra": {
+    "title": "Seis disputas",
+    "text": "O livro se organiza em cerca de seis disputas que seguem um mesmo esquema: uma afirmação de Deus, uma objeção do povo introduzida por “E dizeis…” ou “Em que…?” e uma resposta. O formato lembra um debate e dá ao texto um tom direto."
+  },
+  "people": [
+    {
+      "name": "Malaquias",
+      "chapters": "1–4",
+      "ch": 1,
+      "note": "profeta, ou “meu mensageiro”"
+    },
+    {
+      "name": "Os sacerdotes",
+      "chapters": "1–2",
+      "ch": 2,
+      "note": "acusados de desprezar o altar e de ensinar mal"
+    },
+    {
+      "name": "Elias",
+      "chapters": "4",
+      "ch": 4,
+      "note": "profeta antigo cuja volta é anunciada antes do dia do SENHOR"
+    }
+  ],
+  "writing": {
+    "tradition": "A tradição o considera o último dos profetas do Antigo Testamento. Uma tradição judaica registrada no Targum e no Talmude identifica Malaquias com Esdras, o escriba. Em geral, ele é situado no tempo de Esdras e Neemias, no século V a.C.",
+    "academic": "Os estudiosos datam o livro do período persa, depois da reconstrução do templo (515 a.C.), pois o culto funciona e a província tem um governador (1:8). As faltas denunciadas, como casamentos mistos e dízimos não entregues, lembram as que Esdras e Neemias combatem, e a data mais citada é c. 500–450 a.C. Muitos consideram os versículos finais (4:4–6) um acréscimo que encerra o conjunto dos profetas."
+  },
+  "events": {
+    "intro": "Malaquias não traz datas. As referências ao templo em funcionamento e ao governador situam o livro no período persa; as datas são aproximadas.",
+    "axis": [
+      -530,
+      -420
+    ],
+    "timeline": [
+      {
+        "label": "Reconstrução do templo",
+        "from": -520,
+        "to": -515,
+        "kind": "evento",
+        "note": "o segundo templo é concluído"
+      },
+      {
+        "label": "Escrita, segundo a pesquisa",
+        "from": -500,
+        "to": -450,
+        "kind": "escrita",
+        "note": "período persa, antes ou perto da época de Esdras e Neemias"
+      },
+      {
+        "label": "Esdras",
+        "from": -458,
+        "to": -440,
+        "kind": "pessoa",
+        "note": "chegada a Jerusalém c. 458 a.C. segundo a datação mais comum, que é debatida"
+      },
+      {
+        "label": "Neemias",
+        "from": -445,
+        "to": -430,
+        "kind": "pessoa",
+        "note": "governador de Judá; reconstrução dos muros"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -445,
+        "to": -430,
+        "kind": "escrita",
+        "note": "no tempo de Esdras e Neemias"
+      }
+    ]
+  },
+  "context": "Judá era então uma pequena província do império persa, com um templo reconstruído mas modesto e uma população que enfrentava secas, pragas e pobreza. As promessas de Ageu e Zacarias pareciam tardar, e o livro dá voz a esse desânimo: muitos se perguntavam se valia a pena servir a Deus. Nas Bíblias cristãs, Malaquias fecha o Antigo Testamento, e a figura do mensageiro e de Elias é retomada nos evangelhos em relação a João Batista; na Bíblia hebraica, o livro encerra os Profetas.",
+  "places": [
+    "Jerusalém e o templo",
+    "Judá",
+    "Edom"
+  ],
+  "themes": [
+    "amor de Deus",
+    "culto sincero",
+    "aliança e sacerdócio",
+    "fidelidade conjugal",
+    "justiça de Deus",
+    "dia do SENHOR"
+  ],
+  "key_verses": [
+    {
+      "ref": "3:6",
+      "text": "Porque eu o SENHOR, não me mudo; por isso que vós, filhos de Jacó, não sois consumidos."
+    },
+    {
+      "ref": "4:5–6",
+      "text": "Eis que eu vos envio o profeta Elias, antes que venha o grande e temível dia do SENHOR. Ele converterá o coração dos pais aos filhos, e o coração dos filhos aos pais; para que não seja que eu venha e fira a terra com maldição."
+    }
+  ],
+  "note": "A Bíblia Livre segue a numeração das Bíblias em português, com quatro capítulos. No texto hebraico o livro tem três: o capítulo 4 corresponde a 3:19–24. As datas são aproximadas."
+}

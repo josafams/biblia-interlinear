@@ -1,0 +1,188 @@
+{
+  "title_orig": "Πρὸς Κολοσσαεῖς",
+  "title_orig_xlit": "Pros Kolossaeis",
+  "summary": "Colossenses se dirige a uma igreja que Paulo não fundou nem visitou, formada a partir do trabalho de Epafras. O centro da carta é a pessoa de Cristo, apresentado num texto de tom hínico como “imagem do Deus invisível”, por meio de quem tudo foi criado e reconciliado (1:15–20). Daí vem o alerta contra um ensino que os leitores estavam ouvindo, feito de “filosofias”, regras sobre comida e dias santos, “culto aos anjos” e visões (2:8–23): para o autor, nada disso acrescenta ao que já se tem em Cristo. A segunda parte fala da vida nova, das relações dentro da casa e termina com uma longa lista de notícias e saudações.",
+  "name": "O título Pros Kolossaeis, “Aos colossenses”, vem da saudação aos santos “que estão em Colossos” (1:2). Colossos era uma pequena cidade da Frígia, na Ásia Menor.",
+  "facts": [
+    [
+      "Posição",
+      "12º livro do Novo Testamento; 7ª das cartas paulinas, na ordem do cânon"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "carta, com exposição sobre Cristo e advertência contra um ensino rival"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Gratidão e oração",
+      "from": 1,
+      "to": 1,
+      "text": "Agradecimento pela fé dos colossenses, que aprenderam o evangelho com Epafras, e oração para que cresçam no conhecimento da vontade de Deus (1:1–14)."
+    },
+    {
+      "title": "Cristo e a missão de Paulo",
+      "from": 1,
+      "to": 2,
+      "text": "Cristo, primogênito da criação e dos mortos, reconcilia todas as coisas; Paulo se alegra em sofrer pela Igreja e luta pelos que não o conhecem pessoalmente (1:15–2:5)."
+    },
+    {
+      "title": "Contra o ensino rival",
+      "from": 2,
+      "to": 2,
+      "text": "Em Cristo habita toda a plenitude; os leitores foram circuncidados nele e sepultados com ele no batismo; regras de comer, festas e culto aos anjos são “sombra das coisas futuras” (2:6–23)."
+    },
+    {
+      "title": "A vida nova",
+      "from": 3,
+      "to": 4,
+      "text": "Buscar as coisas de cima, deixar a vida antiga e revestir-se de compaixão e amor; deveres de esposas e maridos, filhos e pais, escravos e senhores; perseverar na oração (3:1–4:6)."
+    },
+    {
+      "title": "Notícias e saudações",
+      "from": 4,
+      "to": 4,
+      "text": "Tíquico e Onésimo levarão notícias; saudações de Aristarco, Marcos, Epafras, Lucas e Demas; troca de cartas com Laodiceia e uma assinatura de próprio punho (4:7–18)."
+    }
+  ],
+  "extra": {
+    "title": "A carta a Laodiceia",
+    "text": "Em 4:16, os colossenses são orientados a fazer ler a carta também em Laodiceia e a ler “a de Laodiceia”. Essa outra carta não foi conservada, ou não se sabe qual é: alguns a identificam com Efésios, que teria sido uma carta circular. Um texto curto chamado “Epístola aos Laodicenses”, em latim, circulou na Idade Média, mas é geralmente considerado uma composição posterior, feita de frases tiradas de outras cartas de Paulo."
+  },
+  "people": [
+    {
+      "name": "Paulo e Timóteo",
+      "chapters": "1; 4",
+      "ch": 1,
+      "note": "os remetentes; Paulo escreve preso e assina a saudação final com a própria mão (4:18)"
+    },
+    {
+      "name": "Epafras",
+      "chapters": "1; 4",
+      "ch": 1,
+      "note": "colossense que anunciou o evangelho na cidade e trabalhou também em Laodiceia e Hierápolis (1:7; 4:12–13)"
+    },
+    {
+      "name": "Tíquico",
+      "chapters": "4",
+      "ch": 4,
+      "note": "portador da carta, encarregado de dar notícias de Paulo (4:7–8)"
+    },
+    {
+      "name": "Onésimo",
+      "chapters": "4",
+      "ch": 4,
+      "note": "“um de vós” (4:9); o mesmo nome do escravo por quem Paulo intercede em Filemom"
+    },
+    {
+      "name": "Aristarco, Marcos e Jesus Justo",
+      "chapters": "4",
+      "ch": 4,
+      "note": "cooperadores de origem judaica; Aristarco está preso com Paulo e Marcos é primo de Barnabé (4:10–11)"
+    },
+    {
+      "name": "Lucas e Demas",
+      "chapters": "4",
+      "ch": 4,
+      "note": "Lucas é chamado “o médico amado” (4:14); os dois aparecem também em Filemom 24"
+    },
+    {
+      "name": "Ninfa e Arquipo",
+      "chapters": "4",
+      "ch": 4,
+      "note": "uma igreja se reúne na casa de Ninfa; Arquipo deve cumprir o serviço que recebeu (4:15–17)"
+    }
+  ],
+  "writing": {
+    "tradition": "A tradição sempre recebeu Colossenses como carta de Paulo, e ela é citada com o seu nome por autores do século II, como Ireneu. Escrita na prisão e com quase os mesmos nomes de Filemom, foi situada junto com Efésios e Filemom nos dois anos de Paulo preso em Roma, c. 60–62.",
+    "academic": "Colossenses não está entre as sete cartas que praticamente todos os estudiosos atribuem a Paulo (Romanos, 1 e 2 Coríntios, Gálatas, Filipenses, 1 Tessalonicenses e Filemom), e a pesquisa está dividida. Muitos a consideram escrita por um discípulo de Paulo, talvez pouco depois da sua morte, c. 70–90, com base no estilo, mais carregado que o das cartas indiscutidas, e em ideias como a Igreja entendida como corpo cuja cabeça é Cristo e a ressurreição com Cristo descrita como já acontecida (2:12; 3:1). Outros, em número considerável, mantêm a autoria de Paulo, apontando a ligação estreita com Filemom e as notícias pessoais do capítulo 4; nesse caso, a carta viria da prisão em Roma (c. 60–62) ou em Éfeso (c. 54–55). Há ainda quem proponha que Timóteo, citado como coautor, tenha redigido o texto em vida de Paulo. A relação com Efésios também é estudada: muitos pensam que Efésios usou Colossenses."
+  },
+  "events": {
+    "intro": "A carta não traz datas. A linha do tempo mostra a posição tradicional e a de muitos estudiosos, além do terremoto que, segundo o historiador Tácito, atingiu Laodiceia por volta de 60. As datas são aproximadas.",
+    "axis": [
+      45,
+      95
+    ],
+    "band": {
+      "label": "Reinado de Nero",
+      "from": 54,
+      "to": 68
+    },
+    "timeline": [
+      {
+        "label": "Paulo em Éfeso",
+        "from": 53,
+        "to": 56,
+        "kind": "evento",
+        "note": "nessa época, Epafras teria levado o evangelho ao vale do Lico"
+      },
+      {
+        "label": "Escrita, se em Éfeso",
+        "from": 54,
+        "to": 55,
+        "kind": "escrita",
+        "note": "proposta de parte dos que defendem a autoria de Paulo"
+      },
+      {
+        "label": "Terremoto em Laodiceia",
+        "from": 60,
+        "to": 61,
+        "kind": "evento",
+        "note": "segundo Tácito; Colossos, vizinha, provavelmente também foi atingida"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": 60,
+        "to": 62,
+        "kind": "escrita",
+        "note": "na prisão em Roma, junto com Filemom e Efésios"
+      },
+      {
+        "label": "Escrita, segundo muitos estudiosos",
+        "from": 70,
+        "to": 90,
+        "kind": "escrita",
+        "note": "por um discípulo de Paulo"
+      }
+    ]
+  },
+  "context": "Colossos ficava no vale do rio Lico, na Frígia, cerca de 200 km a leste de Éfeso, a poucos quilômetros de Laodiceia e de Hierápolis, cidades maiores e mais prósperas. Tinha sido um centro de comércio de lã, mas no século I já perdera importância. A região tinha população judaica desde que, por volta de 200 a.C., segundo o historiador Josefo, o rei selêucida Antíoco III instalou famílias judias na Lídia e na Frígia. O ensino combatido na carta é difícil de reconstruir: mistura elementos judaicos, como sábados, luas novas e regras alimentares, com práticas ascéticas, visões e veneração de anjos, e os estudiosos propõem desde formas de misticismo judaico até influências de religiões locais ou da filosofia popular.",
+  "places": [
+    "Colossos",
+    "Laodiceia",
+    "Hierápolis",
+    "vale do Lico, na Frígia"
+  ],
+  "themes": [
+    "a supremacia de Cristo",
+    "a plenitude em Cristo",
+    "reconciliação",
+    "contra regras e visões",
+    "batismo e vida nova",
+    "as relações na casa",
+    "oração"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:15–17",
+      "text": "Ele é a imagem do Deus invisível, o primogênito de toda a criação; porque nele foram criadas todas as coisas que há nos céus e na terra, visíveis e invisíveis, sejam tronos, sejam domínios, sejam governos, sejam autoridades; todas as coisas foram criadas por ele e para ele. Ele existe antes de todas as coisas, e nele todas as coisas se mantêm."
+    },
+    {
+      "ref": "2:9",
+      "text": "Pois nele habita corporalmente toda a plenitude da divindade."
+    },
+    {
+      "ref": "3:1–2",
+      "text": "Portanto, se fostes ressuscitados com Cristo, buscai as coisas de cima, onde Cristo está sentado à direita de Deus. Pensai nas coisas de cima, não nas que estão na terra."
+    },
+    {
+      "ref": "3:17",
+      "text": "E tudo quanto fizerdes, por palavras ou por obras, fazei tudo no nome do Senhor Jesus, dando por meio dele graças ao Deus e Pai."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

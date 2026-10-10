@@ -1,0 +1,201 @@
+{
+  "title_orig": "מִשְׁלֵי",
+  "title_orig_xlit": "Mishlei",
+  "summary": "Provérbios é uma coletânea de ensinamentos sobre como viver com sabedoria no dia a dia: na família, no trabalho, no uso das palavras, no trato com o dinheiro, com os amigos e com as autoridades. Os capítulos 1 a 9 reúnem discursos mais longos, em que um pai instrui o filho e a própria Sabedoria, retratada como uma mulher, chama as pessoas nas ruas e nas praças. Do capítulo 10 em diante predominam ditos curtos, quase sempre de dois versos, que contrapõem o sábio e o tolo, o justo e o perverso, o trabalhador e o preguiçoso. O que une o conjunto é a ideia de que o temor ao SENHOR é o ponto de partida do conhecimento e da sabedoria (1:7; 9:10). O livro termina com as palavras de Agur e de Lemuel e com um poema em louvor da mulher virtuosa.",
+  "name": "O título hebraico, Mishlei, vem das primeiras palavras do livro: “Provérbios de Salomão” (1:1). A palavra mashal, traduzida por “provérbio”, é mais ampla do que um ditado popular e abrange comparações, sentenças e ensinamentos em forma poética. O nome em português vem do latim da Vulgata, Liber Proverbiorum, “Livro dos Provérbios”; na Septuaginta, o título é Paroimiai.",
+  "facts": [
+    [
+      "Posição",
+      "entre os livros poéticos e sapienciais, depois de Salmos; na Bíblia hebraica, entre os Escritos (Ketuvim)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "sabedoria: instruções e ditos em poesia"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Prólogo e instruções ao filho",
+      "from": 1,
+      "to": 9,
+      "text": "O propósito do livro (1:1–7), conselhos de pai para filho e os discursos da Sabedoria personificada. A parte termina com dois convites rivais: o da Sabedoria e o da mulher Insensata (cap. 9)."
+    },
+    {
+      "title": "Provérbios de Salomão",
+      "from": 10,
+      "to": 22,
+      "text": "A primeira grande coleção (10:1–22:16), com 375 versículos, quase todos ditos independentes de dois versos."
+    },
+    {
+      "title": "Palavras dos sábios",
+      "from": 22,
+      "to": 24,
+      "text": "Duas coleções menores (22:17–24:22 e 24:23–34), com conselhos mais longos, em parte semelhantes a uma obra egípcia de sabedoria."
+    },
+    {
+      "title": "Coleção dos homens de Ezequias",
+      "from": 25,
+      "to": 29,
+      "text": "Provérbios de Salomão “copiados pelos homens de Ezequias, rei de Judá” (25:1), com muitas comparações tiradas da natureza e da vida diária."
+    },
+    {
+      "title": "Palavras de Agur",
+      "from": 30,
+      "to": 30,
+      "text": "Reflexões sobre os limites do conhecimento humano, uma breve oração e ditos numéricos do tipo “três coisas… e quatro”."
+    },
+    {
+      "title": "Lemuel e a mulher virtuosa",
+      "from": 31,
+      "to": 31,
+      "text": "Os conselhos que a mãe do rei Lemuel lhe ensinou (31:1–9) e o poema alfabético da mulher virtuosa (31:10–31)."
+    }
+  ],
+  "extra": {
+    "title": "Ditos em dois versos",
+    "text": "A maior parte do livro é escrita em paralelismo, o recurso típico da poesia hebraica: o segundo verso repete o primeiro com outras palavras, faz contraste com ele ou o completa. Nos capítulos 10 a 15 predomina o contraste, quase sempre marcado por “mas”, como em 10:1. O livro se fecha com um acróstico: cada um dos 22 versículos de 31:10–31 começa com uma letra do alfabeto hebraico, na ordem. Alguns estudiosos observaram ainda que a coleção de 10:1–22:16 tem 375 versículos, o mesmo número que resulta da soma do valor das letras do nome Salomão (Shelomoh) em hebraico."
+  },
+  "people": [
+    {
+      "name": "Salomão",
+      "chapters": "1; 10; 25",
+      "ch": 1,
+      "note": "rei de Israel, a quem os títulos atribuem as principais coleções"
+    },
+    {
+      "name": "O pai e o filho",
+      "chapters": "1–7; 23–24",
+      "ch": 1,
+      "note": "o mestre que instrui (“filho meu”) e o jovem que deve escolher entre dois caminhos; a mãe também ensina (1:8; 6:20)"
+    },
+    {
+      "name": "A Sabedoria",
+      "chapters": "1; 8–9",
+      "ch": 8,
+      "note": "personificada como mulher que clama nas praças e que estava com Deus na criação (8:22–31)"
+    },
+    {
+      "name": "A mulher estranha e a Insensatez",
+      "chapters": "2; 5–7; 9",
+      "ch": 7,
+      "note": "figuras da sedução que leva à morte, em contraste com a Sabedoria"
+    },
+    {
+      "name": "Ezequias",
+      "chapters": "25",
+      "ch": 25,
+      "note": "rei de Judá; seus homens copiaram uma coleção de provérbios de Salomão"
+    },
+    {
+      "name": "Agur",
+      "chapters": "30",
+      "ch": 30,
+      "note": "filho de Jaque, autor de ditos sobre os limites do saber humano; não é conhecido de outras fontes"
+    },
+    {
+      "name": "Lemuel e sua mãe",
+      "chapters": "31",
+      "ch": 31,
+      "note": "rei mencionado só aqui; registra os conselhos da mãe sobre mulheres, vinho e justiça para os pobres"
+    },
+    {
+      "name": "A mulher virtuosa",
+      "chapters": "31",
+      "ch": 31,
+      "note": "em hebraico, eshet chayil, “mulher de valor”: cuida da casa e dos negócios e é louvada por temer ao SENHOR"
+    }
+  ],
+  "writing": {
+    "tradition": "Pelos títulos do próprio livro (1:1; 10:1; 25:1), as tradições judaica e cristã atribuem a maior parte de Provérbios a Salomão, que reinou por volta de 970–931 a.C. e de quem se diz que “propôs três mil parábolas” (1 Reis 4:32). O livro reconhece também outras vozes: os “sábios” (22:17; 24:23), Agur e Lemuel. Segundo o Talmude, Ezequias e seus companheiros deram forma escrita ao livro, em linha com 25:1; algumas leituras rabínicas identificaram Agur e Lemuel com o próprio Salomão.",
+    "academic": "Os estudiosos veem Provérbios como uma antologia formada ao longo de séculos. Parte dos ditos pode vir do tempo da monarquia, e muitos consideram plausível a nota sobre os homens de Ezequias (25:1), por volta de 700 a.C., como sinal de atividade de escribas na corte de Judá. O trecho de 22:17–24:22 tem paralelos próximos com a Instrução de Amenemope, obra egípcia mais antiga. Os capítulos 1 a 9 costumam ser considerados a parte mais recente, e a forma final do livro é geralmente situada nos períodos persa ou helenístico inicial, por volta de 500–300 a.C., embora haja quem proponha datas mais antigas."
+  },
+  "events": {
+    "intro": "Provérbios não narra acontecimentos: seus ditos falam da vida de todo dia e quase nunca podem ser datados. A linha do tempo mostra os reis citados nos títulos, pela cronologia mais usada (os autores variam em alguns anos), a obra egípcia comparada com 22:17–24:22 e as duas propostas principais para a composição do livro.",
+    "axis": [
+      -1350,
+      -250
+    ],
+    "band": {
+      "label": "Monarquia em Israel e Judá",
+      "from": -1030,
+      "to": -586
+    },
+    "timeline": [
+      {
+        "label": "Instrução de Amenemope",
+        "from": -1300,
+        "to": -1075,
+        "kind": "evento",
+        "note": "obra egípcia de sabedoria, de data aproximada; paralelos em 22:17–24:22"
+      },
+      {
+        "label": "Salomão",
+        "from": -970,
+        "to": -931,
+        "kind": "pessoa",
+        "note": "reinado (1:1; 10:1; 25:1)"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -970,
+        "to": -686,
+        "kind": "escrita",
+        "note": "Salomão compõe a maior parte; a compilação se completa no tempo de Ezequias"
+      },
+      {
+        "label": "Ezequias",
+        "from": -715,
+        "to": -686,
+        "kind": "pessoa",
+        "note": "reinado; seus homens copiam provérbios de Salomão (25:1)"
+      },
+      {
+        "label": "Forma final, segundo a pesquisa",
+        "from": -500,
+        "to": -300,
+        "kind": "escrita",
+        "note": "períodos persa e helenístico inicial"
+      }
+    ]
+  },
+  "context": "Provérbios faz parte de uma tradição de sabedoria comum a todo o Antigo Oriente Próximo. No Egito, escribas e funcionários aprendiam com “instruções” atribuídas a reis e altos oficiais, como as de Ptahhotep e de Amenemope; na Mesopotâmia circulavam coleções de provérbios e, em aramaico, as palavras do sábio Ahiqar. O próprio relato bíblico compara a sabedoria de Salomão à “dos orientais” e “dos egípcios” (1 Reis 4:30). Os cenários do livro são a casa, o campo, o mercado, a porta da cidade, onde se julgavam as causas, e a corte do rei. A palavra hebraica massá, nos títulos de 30:1 e 31:1, pode ser lida como “sentença” ou “oráculo”, ou como o nome de uma tribo do norte da Arábia (Gênesis 25:14); nesse caso, Agur e Lemuel seriam sábios estrangeiros.",
+  "places": [
+    "Israel e Judá (1:1; 25:1)",
+    "a corte do rei",
+    "a porta da cidade",
+    "praças, ruas e encruzilhadas",
+    "a casa e o campo",
+    "Massá, talvez a terra de Agur e Lemuel"
+  ],
+  "themes": [
+    "temor ao SENHOR",
+    "sabedoria e insensatez",
+    "o poder das palavras",
+    "trabalho e preguiça",
+    "riqueza, pobreza e justiça",
+    "família e educação"
+  ],
+  "key_verses": [
+    {
+      "ref": "4:23",
+      "text": "Acima de tudo o que se deve guardar, guarda o teu coração; porque dele procedem as saídas da vida."
+    },
+    {
+      "ref": "9:10",
+      "text": "O temor ao SENHOR é o princípio da sabedoria; e o conhecimento dos santos é a prudência."
+    },
+    {
+      "ref": "16:9",
+      "text": "O coração do homem planeja seu caminho, mas é o SENHOR que dirige seus passos."
+    },
+    {
+      "ref": "31:30",
+      "text": "A beleza é enganosa, e a formosura é passageira; mas a mulher que teme ao SENHOR, essa será louvada."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. Na Septuaginta, as coleções dos capítulos 24 a 31 aparecem em outra ordem, e há ditos que não estão no texto hebraico. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

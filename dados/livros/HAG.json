@@ -1,0 +1,119 @@
+{
+  "title_orig": "חַגַּי",
+  "title_orig_xlit": "Chaggai",
+  "summary": "Ageu reúne quatro mensagens, todas datadas do segundo ano do rei persa Dario, em 520 a.C. Os judeus que voltaram do exílio tinham construído suas casas, mas deixado o templo em ruínas. O profeta liga as colheitas fracas a esse descaso, e o governador Zorobabel, o sumo sacerdote Josué e o povo retomam a obra. Ageu anuncia que a glória do novo templo será maior que a do primeiro e termina com uma promessa a Zorobabel.",
+  "name": "O livro leva o nome do profeta. Ageu, em hebraico Chaggai, vem da palavra para “festa” e pode significar “festivo”, talvez porque nasceu num dia de festa.",
+  "facts": [
+    [
+      "Posição",
+      "10º dos Doze Profetas Menores"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "profecia (mensagens datadas, em prosa)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Chamado à reconstrução",
+      "from": 1,
+      "to": 1,
+      "text": "A casa de Deus está deserta; os líderes e o povo ouvem e começam o trabalho."
+    },
+    {
+      "title": "Promessas para o novo templo",
+      "from": 2,
+      "to": 2,
+      "text": "A glória futura do templo, uma lição sobre pureza e impureza e a promessa a Zorobabel, chamado de anel de selar."
+    }
+  ],
+  "people": [
+    {
+      "name": "Ageu",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "profeta; citado também em Esdras 5:1 e 6:14"
+    },
+    {
+      "name": "Zorobabel",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "filho de Sealtiel, governador de Judá, descendente de Davi"
+    },
+    {
+      "name": "Josué",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "filho de Jeozadaque, sumo sacerdote"
+    }
+  ],
+  "writing": {
+    "tradition": "O livro é atribuído ao profeta Ageu, e as mensagens são datadas com precisão entre o sexto e o nono mês do segundo ano de Dario, de agosto a dezembro de 520 a.C., segundo o calendário moderno.",
+    "academic": "Os estudiosos aceitam em geral as datas do livro. Muitos notam que o profeta é mencionado na terceira pessoa e que as datas formam uma moldura editorial, o que sugere que as mensagens foram reunidas por um discípulo ou editor pouco depois, talvez antes da conclusão do templo, em 515 a.C., junto com Zacarias 1–8."
+  },
+  "events": {
+    "intro": "Ageu é um dos livros proféticos mais precisamente datados. As mensagens cobrem cerca de quatro meses de 520 a.C.",
+    "axis": [
+      -545,
+      -480
+    ],
+    "timeline": [
+      {
+        "label": "Decreto de Ciro e primeiro retorno",
+        "from": -539,
+        "to": -538,
+        "kind": "evento",
+        "note": "os exilados recebem permissão para voltar a Judá"
+      },
+      {
+        "label": "Dario I, rei da Pérsia",
+        "from": -522,
+        "to": -486,
+        "kind": "pessoa",
+        "note": "reinado"
+      },
+      {
+        "label": "Mensagens de Ageu",
+        "from": -520,
+        "to": -520,
+        "kind": "escrita",
+        "note": "do 6º ao 9º mês do segundo ano de Dario"
+      },
+      {
+        "label": "Reconstrução do templo",
+        "from": -520,
+        "to": -515,
+        "kind": "evento",
+        "note": "o segundo templo é concluído no sexto ano de Dario (Esdras 6:15)"
+      }
+    ]
+  },
+  "context": "Ciro permitiu o retorno dos exilados depois de 539 a.C., mas a reconstrução do templo parou diante da pobreza, das colheitas fracas e da oposição dos vizinhos (Esdras 4). Quando Dario I assumiu o trono, em 522 a.C., houve revoltas em várias partes do império, o que pode explicar a expectativa de 2:6–7 e 2:21–22 de que Deus abalaria os reinos. Judá era então uma pequena província persa em torno de Jerusalém.",
+  "places": [
+    "Jerusalém",
+    "o templo (a casa do SENHOR)",
+    "Judá, província persa"
+  ],
+  "themes": [
+    "reconstrução do templo",
+    "prioridades",
+    "presença de Deus",
+    "pureza",
+    "esperança messiânica"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:4",
+      "text": "Por acaso é para vós tempo de morar em vossas casas com telhado, e esta casa ficar deserta?"
+    },
+    {
+      "ref": "2:9",
+      "text": "A glória desta última casa será maior que a da primeira, diz o SENHOR dos exércitos; e neste lugar darei paz, diz o SENHOR dos exércitos."
+    }
+  ],
+  "note": "As datas do livro seguem o calendário babilônico usado pelos judeus; a conversão para meses modernos é aproximada. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

@@ -1,0 +1,205 @@
+{
+  "title_orig": "אֵיכָה",
+  "title_orig_xlit": "Eikhah",
+  "summary": "Lamentações reúne cinco poemas de luto pela destruição de Jerusalém e do templo pelos babilônios, em 587 ou 586 a.C. Os poemas descrevem o cerco, a fome, a morte de crianças, a humilhação diante dos inimigos e o exílio, e dão voz à própria cidade, retratada como uma viúva que chora sem ter quem a console. A catástrofe é entendida como consequência dos pecados do povo e de seus líderes, mas o texto não esconde a dor nem as perguntas dirigidas a Deus. No centro do livro (3:21–33), a queixa se abre em esperança na bondade e na fidelidade do SENHOR, e o último poema termina com uma oração pela restauração.",
+  "name": "Em hebraico, o livro é chamado pela primeira palavra, Eikhah, “Como!”, o grito de lamento que abre os capítulos 1, 2 e 4. A tradição rabínica também o chama de Qinot, “lamentações”, sentido que passou ao grego (Threnoi) e ao latim (Lamentationes), de onde vem o nome em português.",
+  "facts": [
+    [
+      "Posição",
+      "depois de Jeremias, entre os livros proféticos; na Bíblia hebraica, um dos cinco Rolos (Meguilot)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "poesia de lamento"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "A cidade viúva",
+      "from": 1,
+      "to": 1,
+      "text": "O poeta descreve Jerusalém abandonada, e a própria cidade toma a palavra para pedir que o SENHOR veja a sua dor."
+    },
+    {
+      "title": "A ira do Senhor",
+      "from": 2,
+      "to": 2,
+      "text": "Deus é descrito agindo como inimigo: derruba muros, palácios e o santuário, enquanto crianças desfalecem de fome nas ruas."
+    },
+    {
+      "title": "O homem que viu a aflição",
+      "from": 3,
+      "to": 3,
+      "text": "Um sofredor fala em primeira pessoa; da queixa passa à esperança nas misericórdias do SENHOR e a um apelo à conversão."
+    },
+    {
+      "title": "Antes e depois do cerco",
+      "from": 4,
+      "to": 4,
+      "text": "O contraste entre a glória passada e a miséria presente, a culpa de profetas e sacerdotes, a captura do rei e o anúncio de castigo a Edom."
+    },
+    {
+      "title": "Oração da comunidade",
+      "from": 5,
+      "to": 5,
+      "text": "O povo, na primeira pessoa do plural, descreve a sua humilhação e pede que o SENHOR o faça voltar e renove os seus dias."
+    }
+  ],
+  "extra": {
+    "title": "Poemas em ordem alfabética",
+    "text": "Os capítulos 1, 2 e 4 são acrósticos: cada um tem 22 versículos, e cada versículo começa com uma letra do alfabeto hebraico, na ordem. O capítulo 3 é um acróstico triplo, com 66 versículos: cada letra abre três versículos seguidos. Nos capítulos 2 a 4, as letras pe e ayin aparecem em ordem invertida em relação ao alfabeto usual. O capítulo 5 não é acróstico, mas também tem 22 versículos. Os quatro primeiros poemas usam com frequência o ritmo de lamento (qiná), em que a segunda metade do verso é mais curta que a primeira, como uma voz que se interrompe."
+  },
+  "people": [
+    {
+      "name": "Jerusalém, a filha de Sião",
+      "chapters": "1–2; 4",
+      "ch": 1,
+      "note": "a cidade personificada como viúva e mãe enlutada; toma a palavra na segunda metade do capítulo 1"
+    },
+    {
+      "name": "O poeta",
+      "chapters": "1–2; 4",
+      "ch": 2,
+      "note": "o narrador que descreve a ruína e chora com a cidade (2:11)"
+    },
+    {
+      "name": "O homem que viu a aflição",
+      "chapters": "3",
+      "ch": 3,
+      "note": "o sofredor do capítulo 3 (em hebraico, gever), que passa da queixa à esperança"
+    },
+    {
+      "name": "Profetas e sacerdotes",
+      "chapters": "2; 4",
+      "ch": 4,
+      "note": "acusados de não denunciar o pecado do povo e de derramar sangue de justos (2:14; 4:13)"
+    },
+    {
+      "name": "O ungido do SENHOR",
+      "chapters": "4",
+      "ch": 4,
+      "note": "o rei de Judá preso pelos inimigos (4:20), em geral identificado com Zedequias"
+    },
+    {
+      "name": "A filha de Edom",
+      "chapters": "4",
+      "ch": 4,
+      "note": "o povo vizinho que se alegrou com a queda de Jerusalém e recebe anúncio de castigo (4:21–22)"
+    },
+    {
+      "name": "O povo sobrevivente",
+      "chapters": "5",
+      "ch": 5,
+      "note": "o “nós” do último poema, que relata a vida sob domínio estrangeiro e suplica por restauração"
+    }
+  ],
+  "writing": {
+    "tradition": "O texto hebraico não traz o nome do autor. As tradições judaica e cristã atribuíram o livro a Jeremias, o profeta que viveu a queda de Jerusalém: a Septuaginta o abre com uma frase que apresenta Jeremias chorando sobre a cidade, e o Talmude o inclui entre os escritos do profeta. Nessa leitura, os poemas foram compostos logo depois da destruição, por volta de 586 a.C. A ligação também se apoia em 2 Crônicas 35:25, que menciona lamentações de Jeremias, ali pela morte do rei Josias.",
+    "academic": "Muitos estudiosos duvidam da autoria de Jeremias, por diferenças de estilo e de ponto de vista: a espera pelo socorro de outra nação (4:17) e a estima pelo rei (4:20), por exemplo, contrastam com a pregação do profeta. Os poemas costumam ser datados do período do exílio, entre a destruição de 587/586 a.C. e a reconstrução do templo, em 520–515 a.C. A vivacidade das descrições sugere testemunhas próximas dos fatos, e há quem atribua os cinco poemas a mais de um autor."
+  },
+  "events": {
+    "intro": "Os poemas reagem a fatos narrados também em 2 Reis 24–25 e Jeremias 39 e 52; a primeira tomada de Jerusalém, em 597 a.C., é registrada ainda numa crônica babilônica. A queda da cidade é datada em 587 ou 586 a.C., conforme a forma de contar os anos de reinado, e a linha do tempo usa faixas que cobrem as duas possibilidades.",
+    "axis": [
+      -600,
+      -510
+    ],
+    "band": {
+      "label": "Exílio na Babilônia",
+      "from": -586,
+      "to": -538
+    },
+    "timeline": [
+      {
+        "label": "Primeira tomada de Jerusalém",
+        "from": -598,
+        "to": -597,
+        "kind": "evento",
+        "note": "Nabucodonosor leva para a Babilônia o rei Joaquim e parte da elite de Judá"
+      },
+      {
+        "label": "Zedequias",
+        "from": -597,
+        "to": -586,
+        "kind": "pessoa",
+        "note": "reinado; último rei de Judá, capturado ao fugir da cidade (2 Reis 25:4–7)"
+      },
+      {
+        "label": "Cerco de Jerusalém",
+        "from": -588,
+        "to": -586,
+        "kind": "evento",
+        "note": "cerca de um ano e meio de cerco e fome (2 Reis 25:1–3)"
+      },
+      {
+        "label": "Queda de Jerusalém",
+        "from": -587,
+        "to": -586,
+        "kind": "evento",
+        "note": "destruição da cidade e do templo pelos babilônios"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -587,
+        "to": -580,
+        "kind": "escrita",
+        "note": "Jeremias, nos anos seguintes à destruição"
+      },
+      {
+        "label": "Escrita, segundo a pesquisa",
+        "from": -587,
+        "to": -520,
+        "kind": "escrita",
+        "note": "durante o exílio, antes da reconstrução do templo; talvez por mais de um autor"
+      },
+      {
+        "label": "Fim do exílio",
+        "from": -539,
+        "to": -538,
+        "kind": "evento",
+        "note": "Ciro, rei da Pérsia, toma a Babilônia e permite o retorno dos judeus"
+      },
+      {
+        "label": "Reconstrução do templo",
+        "from": -520,
+        "to": -515,
+        "kind": "evento",
+        "note": "o segundo templo é concluído em Jerusalém"
+      }
+    ]
+  },
+  "context": "No fim do século VII a.C., Judá passou do domínio egípcio ao babilônico. Depois de uma revolta do rei Jeoaquim, Nabucodonosor II tomou Jerusalém em 597 a.C. e deportou o seu filho e sucessor, Joaquim; o rei seguinte, Zedequias, voltou a se rebelar, confiando no apoio do Egito. Vieram então o cerco, a fome, a abertura de uma brecha nos muros e, cerca de um mês depois, o incêndio do templo, do palácio e das casas da cidade (2 Reis 25:8–10), seguido de nova deportação. Edom, vizinho de Judá, é lembrado em outros textos bíblicos por ter se alegrado com a queda (Obadias 1:11–14; Salmos 137:7). Lamentos pela destruição de cidades eram um gênero antigo na Mesopotâmia, como a Lamentação sobre a destruição de Ur, do início do segundo milênio a.C. No judaísmo, Lamentações é lido no jejum de 9 de Av, que recorda a destruição do primeiro e do segundo templos.",
+  "places": [
+    "Jerusalém (Sião)",
+    "o templo",
+    "as cidades de Judá",
+    "Edom e a terra de Uz (4:21)",
+    "Egito e Assíria (5:6)"
+  ],
+  "themes": [
+    "luto e lamento",
+    "juízo e culpa",
+    "a ira de Deus",
+    "fidelidade e misericórdia do SENHOR",
+    "esperança",
+    "oração"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:1",
+      "text": "Como se senta solitária a cidade que era tão populosa! A grande entre as nações tornou-se como viúva, a senhora de províncias passou a ser escrava."
+    },
+    {
+      "ref": "3:22–23",
+      "text": "É pelas bondades do SENHOR que não somos consumidos, porque suas misericórdias não têm fim. Elas são novas a cada manhã; grande é a tua fidelidade."
+    },
+    {
+      "ref": "5:19",
+      "text": "Tu, SENHOR, permanecerás para sempre; e teu trono de geração após geração."
+    }
+  ],
+  "note": "As datas são aproximadas; para a queda de Jerusalém, os historiadores se dividem entre 587 e 586 a.C. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

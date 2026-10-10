@@ -1,0 +1,125 @@
+{
+  "title_orig": "יוֹאֵל",
+  "title_orig_xlit": "Yoel",
+  "summary": "Joel parte de uma calamidade concreta, uma praga de gafanhotos acompanhada de seca, e chama sacerdotes e povo ao jejum e ao lamento. A catástrofe se torna sinal do “dia do SENHOR”, descrito como invasão de um exército. Diante da conversão do povo, Deus promete restaurar as colheitas, derramar seu Espírito sobre todos e julgar as nações que maltrataram Judá.",
+  "name": "O livro leva o nome do profeta, Joel, filho de Petuel (1:1). Em hebraico Yoel junta duas formas do nome divino e significa “o SENHOR é Deus”.",
+  "facts": [
+    [
+      "Posição",
+      "2º dos Doze Profetas Menores"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "profecia (poesia)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "A praga e o lamento",
+      "from": 1,
+      "to": 1,
+      "text": "Gafanhotos e seca devastam a terra; o profeta convoca todos ao jejum e à oração."
+    },
+    {
+      "title": "O dia do SENHOR e a resposta de Deus",
+      "from": 2,
+      "to": 2,
+      "text": "O alarme em Sião, o chamado a voltar de todo o coração, a promessa de restaurar a terra e de derramar o Espírito."
+    },
+    {
+      "title": "O julgamento das nações",
+      "from": 3,
+      "to": 3,
+      "text": "As nações são reunidas no vale de Josafá, e Judá e Jerusalém são restaurados."
+    }
+  ],
+  "people": [
+    {
+      "name": "Joel",
+      "chapters": "1–3",
+      "ch": 1,
+      "note": "profeta, filho de Petuel; nada mais se sabe dele"
+    },
+    {
+      "name": "Sacerdotes",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "ministros do altar, chamados a liderar o jejum e o choro"
+    }
+  ],
+  "writing": {
+    "tradition": "O livro é atribuído ao profeta Joel, mas o título não menciona reis nem datas. Sua posição entre Oseias e Amós levou muitos intérpretes tradicionais a situá-lo no período pré-exílico; uma proposta antiga o coloca no século IX a.C., durante a menoridade do rei Joás de Judá, já que o livro não cita nenhum rei.",
+    "academic": "Hoje muitos estudiosos preferem uma data depois do exílio, entre c. 500 e 350 a.C.: o templo funciona, não há rei e os líderes são anciãos e sacerdotes, a menção aos gregos como compradores de escravos (3:6) cabe nesse período e o livro parece citar outros profetas. Outros defendem uma data pré-exílica. A unidade entre a primeira parte (a praga) e a segunda (o dia do SENHOR) também é discutida, mas muitos leem o livro como composição coesa."
+  },
+  "events": {
+    "intro": "Joel não traz dados que permitam datá-lo com segurança, e as propostas vão do século IX ao IV a.C. A linha do tempo mostra as duas posições mais citadas.",
+    "axis": [
+      -850,
+      -330
+    ],
+    "timeline": [
+      {
+        "label": "Joás, rei de Judá",
+        "from": -835,
+        "to": -796,
+        "kind": "pessoa",
+        "note": "reinado; proposta tradicional antiga para o livro (datas aproximadas)"
+      },
+      {
+        "label": "Escrita, segundo uma proposta tradicional",
+        "from": -835,
+        "to": -800,
+        "kind": "escrita",
+        "note": "período do sacerdote Joiada, quando Joás ainda era jovem"
+      },
+      {
+        "label": "Reconstrução do templo",
+        "from": -520,
+        "to": -515,
+        "kind": "evento",
+        "note": "o segundo templo volta a funcionar em Jerusalém"
+      },
+      {
+        "label": "Escrita, segundo a pesquisa",
+        "from": -500,
+        "to": -350,
+        "kind": "escrita",
+        "note": "período persa; data preferida por muitos estudiosos"
+      }
+    ]
+  },
+  "context": "Pragas de gafanhotos eram uma ameaça real no Oriente Próximo: enxames podiam destruir em poucos dias trigo, cevada, vinhas e figueiras, e com eles as ofertas do templo. Joel lê essa crise com a linguagem do “dia do SENHOR”, tema que aparece também em Amós, Sofonias e outros profetas. A passagem sobre o Espírito derramado (2:28–32) é citada no discurso de Pedro em Pentecostes, em Atos 2.",
+  "places": [
+    "Jerusalém e o monte Sião",
+    "Judá",
+    "vale de Josafá",
+    "Tiro, Sidom e Filístia",
+    "Egito e Edom"
+  ],
+  "themes": [
+    "dia do SENHOR",
+    "jejum e conversão",
+    "restauração da terra",
+    "derramamento do Espírito",
+    "juízo das nações"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:12",
+      "text": "Por isso agora o SENHOR diz: Convertei-vos a mim com todo o vosso coração, com jejum, choro e pranto."
+    },
+    {
+      "ref": "2:28–29",
+      "text": "E será depois que derramarei meu Espírito sobre toda carne; e vossos filhos e vossas filhas profetizarão; vossos velhos terão sonhos, e vossos jovens terão visões. E também sobre os servos e sobre as servas, naqueles dias derramarei o meu Espírito."
+    },
+    {
+      "ref": "2:32",
+      "text": "E será que todo aquele que invocar o nome do SENHOR será salvo; porque no monte de Sião e em Jerusalém haverá livramento, assim como o SENHOR disse, entre os que restarem, aos quais o SENHOR chamar."
+    }
+  ],
+  "note": "A Bíblia Livre segue a numeração das Bíblias em português, com três capítulos. No texto hebraico o livro tem quatro: 2:28–32 corresponde a 3:1–5, e o capítulo 3 corresponde ao capítulo 4."
+}
