@@ -1,0 +1,35 @@
+{
+  "name": "Bíblia Interlinear",
+  "short_name": "Interlinear",
+  "description": "A Bíblia inteira em hebraico, aramaico e grego, com transliteração, pronúncia, glosa em português, verbetes, áudio e o texto da Bíblia Livre.",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#eceeea",
+  "theme_color": "#1d5b74",
+  "categories": [
+    "books",
+    "education"
+  ],
+  "icons": [
+    {
+      "src": "icones/icone-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icones/icone-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icones/icone-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
