@@ -28,7 +28,7 @@ Hebraico — pron_hebraico(pron_strong)
 -------------------------------------
 Parte da pronúncia do dicionário Strong, escrita em convenção inglesa
 ("aw-mar'", "el-o-heem'"), com o apóstrofo marcando a sílaba tônica.
-É um porte fiel de pron_pt/pron_syllable/PRON_OVERRIDES de scripts/build.rb:
+É um porte fiel de pron_pt/pron_syllable/PRON_OVERRIDES do antigo scripts/build.rb (protótipo de Gênesis 1):
   aw → a, ay → ê, ee → i, oo → u, "e" mudo do inglês (ale → êl, bene → bin,
   ore → or), eh → é no fim da palavra ou na sílaba tônica (e no meio), sh → ch,
   kh → rr, th → t, ph → f, y → i, e ressilabação à portuguesa

@@ -2,10 +2,12 @@
   "name": "liberta-bibliainterlinear",
   "version": "0.1.0",
   "private": true,
-  "description": "Bíblia interlinear hebraico–português (BLIVRE): web, Android e EPUB",
+  "description": "Bíblia interlinear hebraico/aramaico/grego–português (BLIVRE): site, app Android/iOS, EPUB e PDF",
   "scripts": {
     "build": "scripts/build.sh",
-    "icons": "node scripts/icones.mjs",
+    "verificar": "python3 scripts/verificar_dados.py",
+    "publicar-web": "scripts/publicar_web.sh",
+    "icons": "node scripts/icones_nativos.mjs",
     "android:sync": "npx cap sync android",
     "android:open": "npx cap open android"
   },
