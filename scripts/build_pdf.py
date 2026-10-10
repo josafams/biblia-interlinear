@@ -5,10 +5,13 @@ Cada versículo: cartões com a palavra no original, transliteração, Strong e 
 No começo, a introdução do livro; no fim, o léxico dos verbetes usados no livro.
 O HTML de impressão é montado aqui e o Chromium (Playwright) gera o PDF (scripts/imprimir_pdf.mjs).
 
-Uso: python3 scripts/build_pdf.py [COD ...]      → saida/pdf/<nn>-<COD>-<Nome>.pdf
+Uso: python3 scripts/build_pdf.py              → os 66 livros + Bíblia completa + AT + NT (saida/pdf)
+     python3 scripts/build_pdf.py volumes      → só junta os PDFs já gerados na Bíblia completa e nos volumes
+     python3 scripts/build_pdf.py GEN JHN      → só esses livros
 """
 import json
 import os
+import shutil
 import subprocess
 import sys
 import unicodedata
@@ -129,17 +132,120 @@ def main(argv):
     quais = {a.upper() for a in argv}
     os.makedirs(TMP, exist_ok=True)
     os.makedirs(OUT, exist_ok=True)
-    jobs = []
+    jobs, alvo = [], []
     for i, B in enumerate(livros, 1):
         if quais and B["cod"] not in quais:
+            continue
+        if quais == {"VOLUMES"}:
             continue
         nome = unicodedata.normalize("NFD", B["nome"]).encode("ascii", "ignore").decode().replace(" ", "")
         src = os.path.join(TMP, f"{B['cod']}.html")
         open(src, "w", encoding="utf8").write(html_livro(B, LEX, i))
         jobs.append([src, os.path.join(OUT, f"{i:02d}-{B['cod']}-{nome}.pdf"), f"{B['nome']} · Bíblia Interlinear"])
-    lista = os.path.join(TMP, "jobs.json")
-    json.dump(jobs, open(lista, "w", encoding="utf8"))
-    subprocess.run(["node", os.path.join(ROOT, "scripts", "imprimir_pdf.mjs"), lista], check=True)
+        alvo.append(B)
+    if jobs:
+        lista = os.path.join(TMP, "jobs.json")
+        json.dump(jobs, open(lista, "w", encoding="utf8"))
+        subprocess.run(["node", os.path.join(ROOT, "scripts", "imprimir_pdf.mjs"), lista], check=True)
+        for (_, out, _), B in zip(jobs, alvo):
+            marcadores(out, B)
+            otimizar(out)
+    if not quais or "VOLUMES" in quais:
+        volumes(livros)
+
+
+def marcadores(arq, B):
+    """Marcadores do PDF (introdução, cada capítulo, léxico, créditos), achando a página de cada título pelo texto."""
+    if not shutil.which("pdftotext"):
+        return
+    from pypdf import PdfReader, PdfWriter
+    txt = subprocess.run(["pdftotext", "-enc", "UTF-8", arq, "-"], capture_output=True, text=True).stdout
+    paginas = [{l.strip() for l in p.splitlines() if l.strip()} for p in txt.split("\f")]
+    nome = B["nome"]
+    alvos = [("Sobre o livro", lambda ls: any(l.startswith(f"Sobre {nome}") for l in ls))]
+    alvos += [(f"{nome} {c['n']}" + (f" — {c['t']}" if c.get("t") else ""), (lambda t: lambda ls: t in ls)(f"{nome} {c['n']}"))
+              for c in B["caps"]]
+    alvos += [("Léxico", lambda ls: f"Léxico de {nome}" in ls), ("Fontes e licenças", lambda ls: "Fontes e licenças" in ls)]
+    w = PdfWriter(clone_from=PdfReader(arq))
+    pg = 0
+    for titulo, achou in alvos:
+        for k in range(pg, len(paginas)):
+            if achou(paginas[k]):
+                w.add_outline_item(titulo, min(k, len(w.pages) - 1))
+                pg = k
+                break
+    w.page_mode = "/UseOutlines"
+    w.add_metadata({"/Title": f"{nome} · Bíblia Interlinear", "/Author": "Bíblia Interlinear (BLIVRE)"})
+    with open(arq, "wb") as f:
+        w.write(f)
+
+
+def otimizar(arq):
+    """Compacta o PDF com o qpdf (fluxos de objetos e compressão máxima). O Chromium só cria os marcadores
+    quando gera o PDF com marcação de acessibilidade, que dobra o tamanho; a compactação quase desfaz isso."""
+    if not shutil.which("qpdf"):
+        return
+    tmp = arq + ".tmp"
+    r = subprocess.run(["qpdf", "--object-streams=generate", "--compress-streams=y", "--recompress-flate",
+                        "--compression-level=9", arq, tmp])
+    if r.returncode in (0, 3) and os.path.exists(tmp):  # 3 = avisos
+        os.replace(tmp, arq)
+
+
+def volumes(livros):
+    """Junta os PDFs dos livros na Bíblia completa e nos volumes AT e NT, com marcadores por livro e capítulo."""
+    from pypdf import PdfWriter
+
+    def arq(i, B):
+        nome = unicodedata.normalize("NFD", B["nome"]).encode("ascii", "ignore").decode().replace(" ", "")
+        return os.path.join(OUT, f"{i:02d}-{B['cod']}-{nome}.pdf")
+
+    todos = [(B, arq(i, B)) for i, B in enumerate(livros, 1)]
+    faltam = [os.path.basename(a) for _, a in todos if not os.path.exists(a)]
+    if faltam:
+        print("volumes não gerados; faltam os PDFs:", ", ".join(faltam[:5]), "…" if len(faltam) > 5 else "")
+        return
+    for nome, titulo, sel in (
+            ("00-Biblia-Interlinear-completa.pdf", "Bíblia Interlinear — Bíblia completa", lambda B: True),
+            ("00-Biblia-Interlinear-AT.pdf", "Bíblia Interlinear — Antigo Testamento", lambda B: not B["nt"]),
+            ("00-Biblia-Interlinear-NT.pdf", "Bíblia Interlinear — Novo Testamento", lambda B: B["nt"])):
+        w = PdfWriter()
+        partes = {}
+        for B, a in todos:
+            if not sel(B):
+                continue
+            pai = None
+            inicio = len(w.pages)
+            w.append(a, import_outline=False)
+            if nome.endswith("completa.pdf"):
+                t = "Novo Testamento" if B["nt"] else "Antigo Testamento"
+                if t not in partes:
+                    partes[t] = w.add_outline_item(t, inicio)
+                pai = partes[t]
+            livro = w.add_outline_item(B["nome"], inicio, parent=pai)
+            # capítulos: os marcadores que o Chromium criou no PDF do livro, um nível abaixo do livro
+            from pypdf import PdfReader
+            r = PdfReader(a)
+            def copiar(itens, destino):
+                ultimo = None
+                for it in itens:
+                    if isinstance(it, list):
+                        if ultimo is not None:
+                            copiar(it, ultimo)
+                        continue
+                    try:
+                        pg = r.get_destination_page_number(it)
+                    except Exception:
+                        continue
+                    ultimo = w.add_outline_item(it.title, inicio + pg, parent=destino)
+            copiar(r.outline, livro)
+        w.add_metadata({"/Title": titulo, "/Author": "Bíblia Interlinear (BLIVRE)", "/Lang": "pt-BR"})
+        w.page_mode = "/UseOutlines"
+        destino = os.path.join(OUT, nome)
+        with open(destino, "wb") as f:
+            w.write(f)
+        otimizar(destino)
+        print(f"{nome}  {len(w.pages)} páginas  {os.path.getsize(destino) // 1048576} MB")
 
 
 if __name__ == "__main__":

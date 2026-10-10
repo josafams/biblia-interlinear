@@ -6,7 +6,7 @@ Tudo é feito com fontes abertas ou de domínio público, para poder ser distrib
 
 - **Site:** https://josafams.github.io/biblia-interlinear/ (ramo `gh-pages`)
 - **App:** `liberta.bibliainterlinear` · "Bíblia Interlinear" (Android; projeto iOS pronto)
-- **EPUB e PDF:** Bíblia completa, AT e NT em EPUB, e cada livro em EPUB e PDF — em *Releases › livros* (gerados pelo GitHub a cada mudança nos dados)
+- **EPUB e PDF:** Bíblia completa, AT, NT e cada livro, nos dois formatos — em *Releases › livros* (gerados pelo GitHub a cada mudança nos dados)
 
 ---
 
@@ -24,7 +24,7 @@ Tudo é feito com fontes abertas ou de domínio público, para poder ser distrib
 | **Revisões automáticas** | `scripts/revisar.py` roda cerca de 45 verificações do catálogo [`docs/REVISOES.md`](docs/REVISOES.md) em 20 s: hoje 109 erros (quase todos palavras gregas sem verbete no Strong), 11.764 avisos e 38.386 informativos. No app, ⚑ no versículo mostra os pontos. |
 | **Site / PWA** | Os 66 livros, com índice por livro e capítulo (tocar no capítulo já abre), "Ir para" (`Jo 3:16`, `sl 23`), introdução de cada livro, léxico do capítulo, verbetes com origem e significado, áudio pela voz do aparelho (hebraico e grego modernos), seis temas de cor, tamanho do texto e recursos de acessibilidade (leitor de tela, teclado, alto contraste, fonte de leitura fácil, sem cantilação). Os capítulos são carregados sob demanda; funciona também abrindo `saida/web/index.html` direto do disco. |
 | **EPUB** | Bíblia completa num arquivo (34 MB), volumes AT (24 MB) e NT (10 MB), e um por livro (66 arquivos), validados com o epubcheck. No volume, um léxico único no fim. Cada palavra do original é uma nota que abre ao tocar (glosa, gramática, significado e link para o verbete); cada livro traz introdução, temas e léxico próprio. Formato testado no Kindle. |
-| **PDF** | 66 arquivos A4 (216 MB): capa, introdução, cartões das palavras com a BLIVRE abaixo de cada versículo e léxico no fim. |
+| **PDF** | Bíblia completa, volumes AT e NT (com marcadores por testamento, livro e capítulo) e um por livro (66 arquivos A4): capa, introdução, cartões das palavras com a BLIVRE abaixo de cada versículo e léxico no fim. |
 | **Apps** | Projetos Capacitor de Android e iOS sincronizados com a Bíblia inteira. |
 
 ### Falta
@@ -46,7 +46,7 @@ Tudo é feito com fontes abertas ou de domínio público, para poder ser distrib
 
 ## Como gerar
 
-Requisitos: Node 22, Python 3.11+ (`pip install eflomal`), git, zip; para o PDF, o Chromium do Playwright.
+Requisitos: Node 22, Python 3.11+ (`pip install eflomal pypdf`), git, zip; para o PDF, o Chromium do Playwright.
 
 ```sh
 npm ci
