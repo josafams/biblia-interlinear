@@ -5,7 +5,8 @@
   python3 scripts/consulta.py capitulo EXO 3         # texto BLIVRE do capítulo, versículo a versículo
   python3 scripts/consulta.py versos EXO 3:14        # um versículo (exato, para citar)
   python3 scripts/consulta.py versos EXO 3:13-15     # intervalo dentro do capítulo
-  python3 scripts/consulta.py interlinear JHN 1:1    # palavra original, Strong e glosa
+  python3 scripts/consulta.py interlinear JHN 1:1    # posição, palavra original, Strong, glosa e de onde ela veio
+  python3 scripts/consulta.py verbete H430           # verbete do léxico e em que arquivo ele está
 """
 import os
 import sqlite3
@@ -22,6 +23,20 @@ def main(argv):
                                   (cod,)).fetchone()
             print(f"{cod}\t{nome}\t{test}\t{caps} capítulos\t{vs} versículos")
         return
+    if argv[0] == "verbete":
+        import csv
+        import glob
+        k = argv[1].upper()
+        e = db.execute("SELECT lema, xlit, derivacao_en, def_en FROM lexico WHERE chave=?", (k,)).fetchone()
+        print(f"{k}  {e[0]}  {e[1]}\n  inglês (Strong): {e[2]} | {e[3]}" if e else f"{k}: não existe no léxico")
+        for arq in sorted(glob.glob(os.path.join(os.path.dirname(DB), "..", "dados", "lexico_pt", "*.tsv"))):
+            with open(arq, encoding="utf8") as f:
+                for n, r in enumerate(csv.DictReader(f, delimiter="\t"), 2):
+                    if r["chave"] == k:
+                        print(f"  português: {r['origem']} | {r['significado']}\n  editar em: dados/lexico_pt/{os.path.basename(arq)}, linha {n}")
+        print("  " + "; ".join(f"{t} ({n})" for t, n in db.execute(
+            "SELECT traducao, n FROM traducoes WHERE chave=? ORDER BY n DESC LIMIT 8", (k,))))
+        return
     cmd, livro = argv[0], argv[1].upper()
     if cmd == "capitulo":
         for v, t, nota in db.execute("SELECT vers, blivre, nota FROM versos WHERE livro=? AND cap=? ORDER BY vers",
@@ -35,9 +50,10 @@ def main(argv):
                                "ORDER BY vers", (livro, int(c), a, b)):
             print(f"{c}:{v}\t{t}")
             if cmd == "interlinear":
-                for txt, st, g, f in db.execute("SELECT texto, strong, glosa, glosa_fonte FROM palavras WHERE livro=? "
-                                                "AND cap=? AND vers=? ORDER BY pos", (livro, int(c), v)):
-                    print(f"    {txt}\t{st}\t{g}\t({f})")
+                rows = db.execute("SELECT texto, strong, glosa, glosa_fonte FROM palavras WHERE livro=? "
+                                  "AND cap=? AND vers=? ORDER BY pos", (livro, int(c), v)).fetchall()
+                for i, (txt, st, g, f) in enumerate(rows, 1):
+                    print(f"  {i:>3}  {txt}\t{st}\t{g}\t({f})")
     else:
         print(__doc__)
 

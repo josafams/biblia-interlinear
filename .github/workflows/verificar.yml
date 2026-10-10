@@ -1,0 +1,19 @@
+# Confere os arquivos de dados (temas, introduções, léxico, correções) em cada pull request e envio.
+# Rápido (segundos): não baixa as fontes nem refaz as glosas.
+name: Verificar dados
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths: ["dados/**", "scripts/verificar_dados.py"]
+  workflow_dispatch:
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 scripts/verificar_dados.py

@@ -4,7 +4,7 @@ A Bíblia inteira, os 66 livros, palavra por palavra: **hebraico e aramaico** no
 
 Tudo é feito com fontes abertas ou de domínio público, para poder ser distribuído livremente (veja [`docs/LICENCAS.md`](docs/LICENCAS.md)).
 
-- **Site:** https://&lt;seu-usuário&gt;.github.io/biblia-interlinear/ (ramo `gh-pages`)
+- **Site:** https://josafams.github.io/biblia-interlinear/ (ramo `gh-pages`)
 - **App:** `liberta.bibliainterlinear` · "Bíblia Interlinear" (Android; projeto iOS pronto)
 - **EPUB e PDF:** um por livro, gerados em `saida/epub` e `saida/pdf`
 
@@ -30,7 +30,8 @@ Tudo é feito com fontes abertas ou de domínio público, para poder ser distrib
 ### Falta
 
 1. **Gerar o APK/AAB do Android e testar no celular** — Android Studio (`android/`, *Build › Build APK*) ou o workflow `.github/workflows/android.yml`.
-2. **Revisão humana** das glosas, dos verbetes e das introduções, começando pelos avisos da revisão automática nos livros mais lidos (Gênesis, Salmos, Evangelhos).
+2. **Revisão humana** das glosas, dos verbetes e das introduções, começando pelos avisos da revisão automática nos livros mais lidos (Gênesis, Salmos, Evangelhos) — como fazer: [`docs/CORRECOES.md`](docs/CORRECOES.md).
+4. **Relatar aos tradutores da BLIVRE** os 47 erros de digitação listados em `dados/correcoes/blivre.tsv`.
 3. **Publicação nas lojas** (Play Store: teste fechado com 12 testadores por 14 dias; ver [`docs/APPS.md`](docs/APPS.md)).
 
 ### Limitações conhecidas
@@ -71,7 +72,7 @@ fontes-dados/ (morphhb, sblgnt, strongs, dodson, ebible, scrollmapper)
 
 ### Publicar
 
-**Primeira vez (Windows, com o `gh` autenticado):** `powershell -ExecutionPolicy Bypass -File .\publicar.ps1` cria o repositório `biblia-interlinear`, envia o código e o site, liga o GitHub Pages e publica os EPUBs e PDFs na página Releases.
+O repositório é **github.com/josafams/biblia-interlinear**: a `main` tem o código e os dados; o ramo `gh-pages`, só o site gerado.
 
 **App Android:** a cada envio para `main` ou `gh-pages`, o workflow `.github/workflows/android.yml` compila o app com o conteúdo do `gh-pages` e publica o APK (instalável no celular) e o AAB (Play Store) na release **app-android**, em *Releases*.
 
@@ -83,12 +84,17 @@ scripts/publicar_web.sh         # copia saida/web para gh-pages, faz o commit e 
 
 (Alternativa: `.github/workflows/web.yml`, acionado à mão, refaz tudo do zero no GitHub e publica pelo GitHub Actions.)
 
+### Corrigir textos
+
+Glosas, verbetes, temas e introduções são corrigidos em `dados/`, por pull request. O passo a passo e o fluxo até o site, o app, o EPUB e o PDF estão em **[`docs/CORRECOES.md`](docs/CORRECOES.md)**.
+
 ### Consultas rápidas
 
 ```sh
 python3 scripts/consulta.py livros
 python3 scripts/consulta.py versos JHN 3:16
-python3 scripts/consulta.py interlinear GEN 1:1
+python3 scripts/consulta.py interlinear GEN 1:1   # com a posição de cada palavra
+python3 scripts/consulta.py verbete H430          # e o arquivo/linha para editar
 ```
 
 ---
@@ -105,17 +111,21 @@ python3 scripts/consulta.py interlinear GEN 1:1
 | `scripts/build_web.mjs`, `build_epub.py`, `build_pdf.py`, `imprimir_pdf.mjs` | saídas |
 | `scripts/livros.py` | os 66 livros: códigos, nomes, abreviações, arquivos de origem |
 | `scripts/consulta.py` | consulta ao banco pela linha de comando |
-| `scripts/build.rb`, `render_html.rb`, `build_epub.rb` | legado do protótipo de Gênesis 1 (não usados no build) |
+| `scripts/verificar_dados.py` | confere os arquivos de `dados/` (também roda no GitHub em cada pull request) |
+| `scripts/publicar_web.sh` | publica `saida/web` no ramo `gh-pages` |
 | `dados/temas/<LIVRO>.tsv` | tema de cada capítulo |
 | `dados/livros/<LIVRO>.json` | introdução "Sobre o livro" (esquema em [`docs/ESQUEMA_LIVRO.md`](docs/ESQUEMA_LIVRO.md)) |
-| `dados/lexico_pt/*.tsv`, `dados/lexicon_pt.tsv` | origem e significado em português de cada verbete Strong |
+| `dados/lexico_pt/*.tsv` | origem e significado em português de cada verbete Strong |
+| `dados/correcoes/glosas.tsv` | correções de glosa feitas por revisores (aplicadas por último) |
+| `dados/correcoes/blivre.tsv` | erros de digitação encontrados na BLIVRE, para relatar aos tradutores |
+| `dados/alinhamento/*.links.gz` | alinhamento salvo, para as glosas automáticas serem estáveis |
 | `dados/glosses_pt.tsv` | glosas revisadas de Gênesis 1 (prevalecem sobre as automáticas) |
 | `dados/grego_suplemento_66-Ro.txt` | grego de Rm 16:25–27 com morfologia anotada |
 | `web/template.html` | a página (HTML, CSS e JS num arquivo só) |
 | `android/`, `ios/` | projetos nativos do Capacitor |
 | `fontes-epub/` | Noto Serif Hebrew (SIL OFL) para o EPUB |
 | `.github/workflows/` | Android (APK e AAB), iOS (compilação de verificação) e web (manual) |
-| `docs/` | apps e publicação (`APPS.md`), licenças (`LICENCAS.md`), revisões (`REVISOES.md`), esquema das introduções, plano inicial (`ROADMAP.md`) |
+| `docs/` | apps e publicação (`APPS.md`), licenças (`LICENCAS.md`), revisões (`REVISOES.md`), esquema das introduções (`ESQUEMA_LIVRO.md`), **guia de correção** (`CORRECOES.md`) |
 | `saida/` | tudo que é gerado (fora do git) |
 
 ## Licenças

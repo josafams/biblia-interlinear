@@ -26,7 +26,7 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DB = os.path.join(ROOT, "saida", "biblia.sqlite")
 OUT = os.path.join(ROOT, "saida", "dados")          # JSON (lido pelo EPUB, PDF e pela página)
 WEB = os.path.join(ROOT, "saida", "web", "dados")   # .js carregados pelo site e pelo app
-FONTE_CURTA = {"alinhamento": "", "manual": "m", "lexico": "l", "regra": "r", "parcial": "p", "sem": "s"}
+FONTE_CURTA = {"alinhamento": "", "manual": "m", "revisada": "m", "lexico": "l", "regra": "r", "parcial": "p", "sem": "s"}
 GRUPOS = [  # agrupamento dos livros no índice
     ("Pentateuco", "GEN", "DEU"), ("Históricos", "JOS", "EST"), ("Poéticos e sapienciais", "JOB", "SNG"),
     ("Profetas", "ISA", "MAL"), ("Evangelhos e Atos", "MAT", "ACT"), ("Cartas de Paulo", "ROM", "PHM"),
@@ -44,9 +44,6 @@ def ler_lexico_pt():
         with open(arq, encoding="utf8") as f:
             for r in csv.DictReader(f, delimiter="\t"):
                 pt[r["chave"]] = (r["origem"], r["significado"])
-    with open(os.path.join(ROOT, "dados", "lexicon_pt.tsv"), encoding="utf8") as f:  # Gênesis 1, revisado
-        for r in csv.DictReader(f, delimiter="\t"):
-            pt["H" + r["strong"]] = (r["origem"], r["significado"])
     return pt
 
 

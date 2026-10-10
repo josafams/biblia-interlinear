@@ -15,6 +15,8 @@ Grava em saida/biblia.sqlite: palavras.glosa, palavras.glosa_fonte e a tabela tr
 Uso: python3 scripts/glosar.py
 """
 import csv
+import gzip
+import hashlib
 import difflib
 import glob
 import os
@@ -240,12 +242,38 @@ def alinhar(itens, nome):
     trg = [" ".join(norm(tk[0]) for tk in it[3]) or "_" for it in itens]
     fwd = os.path.join(TMP, f"{nome}.fwd")
     rev = os.path.join(TMP, f"{nome}.rev")
-    t0 = time.time()
-    al = eflomal.Aligner(model=3, n_samplers=2)
-    al.align(src, trg, links_filename_fwd=fwd, links_filename_rev=rev, quiet=True)
-    print(f"  eflomal {nome}: {len(src)} versículos em {time.time() - t0:.0f}s")
+    # O eflomal é aleatório: o alinhamento fica salvo em dados/alinhamento/ para as glosas serem estáveis.
+    # Só é refeito se o texto de entrada mudar ou com REALINHAR=1.
+    salvo = os.path.join(ROOT, "dados", "alinhamento", f"{nome}.links.gz")
+    assinatura = hashlib.sha256(("\n".join(src) + "\0" + "\n".join(trg)).encode()).hexdigest()
+    pares = None
+    if os.path.exists(salvo) and os.environ.get("REALINHAR") != "1":
+        with gzip.open(salvo, "rt", encoding="utf8") as f:
+            if f.readline().strip() == assinatura:
+                pares = [tuple(l.rstrip("\n").split("\t")) for l in f]
+        if pares is None:
+            print(f"  {nome}: o texto mudou desde o último alinhamento; refazendo")
+    if pares is None:
+        if os.environ.get("ADOTAR") == "1" and os.path.exists(fwd) and os.path.exists(rev):
+            print(f"  {nome}: adotando o último alinhamento de {os.path.relpath(TMP, ROOT)}")
+        else:
+            t0 = time.time()
+            al = eflomal.Aligner(model=3, n_samplers=2)
+            al.align(src, trg, links_filename_fwd=fwd, links_filename_rev=rev, quiet=True)
+            print(f"  eflomal {nome}: {len(src)} versículos em {time.time() - t0:.0f}s")
+        fw = open(fwd, encoding="utf8").read().split("\n")[:len(src)]
+        rv = open(rev, encoding="utf8").read().split("\n")[:len(src)]
+        pares = list(zip(fw, rv))
+        os.makedirs(os.path.dirname(salvo), exist_ok=True)
+        with gzip.open(salvo, "wt", encoding="utf8", compresslevel=9) as f:
+            f.write(assinatura + "\n")
+            f.writelines(f"{a}\t{b}\n" for a, b in pares)
+    else:
+        print(f"  {nome}: alinhamento salvo reaproveitado ({os.path.relpath(salvo, ROOT)})")
+    def _links(linha):
+        return {tuple(map(int, p.split("-"))) for p in linha.split()}
     links = []
-    for it, a, b in zip(itens, ler_links(fwd), ler_links(rev)):
+    for it, (a, b) in zip(itens, ((_links(x), _links(y)) for x, y in pares)):
         idx = [ui for ui, u in enumerate(it[4]) if u[1] != "fora"]  # índice no alinhamento → unidade
         links.append({(idx[i], j) for i, j in gdfa(a, b) if i < len(idx) and j < len(it[3])})
     return links
@@ -622,6 +650,52 @@ def main():
         total.update(f for _, _, f, _, _, _ in res)
     db.commit()
     print("glosas por fonte:", dict(total))
+    aplicar_correcoes(db)
+
+
+def _so_letras(t):
+    """Forma para comparar: sem cantilação, vogais, acentos, pontuação e barras."""
+    t = unicodedata.normalize("NFD", t or "")
+    return "".join(c for c in t if unicodedata.category(c)[0] == "L").lower()
+
+
+def aplicar_correcoes(db):
+    """Correções de glosa feitas por revisores (dados/correcoes/glosas.tsv), aplicadas por último.
+
+    Colunas: ref (ex.: "JHN 1:1"), pos (posição da palavra no versículo, contando de 1),
+    original (a palavra no original, para conferência; vogais e acentos são ignorados),
+    glosa (a nova glosa, palavras unidas por hífen), revisor, nota.
+    Se a palavra naquela posição não for a indicada em "original", a linha é ignorada com aviso."""
+    arq = os.path.join(ROOT, "dados", "correcoes", "glosas.tsv")
+    if not os.path.exists(arq):
+        return
+    ok = erros = 0
+    with open(arq, encoding="utf8") as f:
+        linhas = [r for r in csv.DictReader(f, delimiter="\t") if (r.get("ref") or "").strip() and not r["ref"].startswith("#")]
+    for n, r in enumerate(linhas, 2):
+        m = re.match(r"\s*([1-3A-Z]{3})\s+(\d+):(\d+)\s*$", r["ref"])
+        if not m or not (r.get("pos") or "").strip().isdigit() or not (r.get("glosa") or "").strip():
+            print(f"  correções, linha {n}: referência, posição ou glosa inválida: {r}")
+            erros += 1
+            continue
+        pals = db.execute("SELECT id, texto FROM palavras WHERE livro=? AND cap=? AND vers=? ORDER BY pos",
+                          (m[1], int(m[2]), int(m[3]))).fetchall()
+        i = int(r["pos"]) - 1
+        if not 0 <= i < len(pals):
+            print(f"  correções, linha {n}: {r['ref']} não tem palavra na posição {r['pos']} ({len(pals)} palavras)")
+            erros += 1
+            continue
+        pid, texto = pals[i]
+        if (r.get("original") or "").strip() and _so_letras(r["original"]) != _so_letras(texto):
+            print(f"  correções, linha {n}: em {r['ref']} posição {r['pos']} está {texto}, não {r['original']}; ignorada")
+            erros += 1
+            continue
+        db.execute("UPDATE palavras SET glosa = ?, glosa_fonte = 'revisada' WHERE id = ?",
+                   (r["glosa"].strip().replace(" ", "-"), pid))
+        ok += 1
+    db.commit()
+    print(f"correções de glosa (dados/correcoes/glosas.tsv): {ok} aplicadas, {erros} com problema")
+    return erros
 
 
 if __name__ == "__main__":
