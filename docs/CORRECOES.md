@@ -136,8 +136,8 @@ scripts/publicar_web.sh "Correções de Jo 1"
 
 - O `publicar_web.sh` envia o site ao ramo `gh-pages`: o **site** é atualizado em 1–2 minutos e o **app Android** é
   recompilado sozinho (Actions › Android), com o APK novo na release **app-android**.
-- **EPUB e PDF:** quando houver correções suficientes, publique uma nova release com os arquivos de `saida/epub` e
-  `saida/pdf` (`gh release create livros-AAAA-MM-DD saida/epub/*.epub saida/pdf/*.pdf`).
+- **EPUB e PDF:** o merge na `main` já dispara o workflow *Livros (EPUB e PDF)*, que gera a Bíblia completa, os
+  volumes AT e NT e os 66 livros e substitui os arquivos da release **livros** (cerca de 30–40 minutos).
 
 ## Detalhes técnicos que importam para quem corrige
 

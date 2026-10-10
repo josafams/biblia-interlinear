@@ -6,7 +6,7 @@ Tudo é feito com fontes abertas ou de domínio público, para poder ser distrib
 
 - **Site:** https://josafams.github.io/biblia-interlinear/ (ramo `gh-pages`)
 - **App:** `liberta.bibliainterlinear` · "Bíblia Interlinear" (Android; projeto iOS pronto)
-- **EPUB e PDF:** um por livro, gerados em `saida/epub` e `saida/pdf`
+- **EPUB e PDF:** Bíblia completa, AT e NT em EPUB, e cada livro em EPUB e PDF — em *Releases › livros* (gerados pelo GitHub a cada mudança nos dados)
 
 ---
 
@@ -23,7 +23,7 @@ Tudo é feito com fontes abertas ou de domínio público, para poder ser distrib
 | **Temas e introduções** | Tema de cada um dos 1.189 capítulos e introdução "Sobre o livro" dos 66 livros: resumo, origem do nome, divisão, pessoas, autoria e data (tradição e pesquisa acadêmica), linha do tempo, contexto, lugares, temas e versículos-chave citados da BLIVRE. Texto próprio do projeto. |
 | **Revisões automáticas** | `scripts/revisar.py` roda cerca de 45 verificações do catálogo [`docs/REVISOES.md`](docs/REVISOES.md) em 20 s: hoje 109 erros (quase todos palavras gregas sem verbete no Strong), 11.764 avisos e 38.386 informativos. No app, ⚑ no versículo mostra os pontos. |
 | **Site / PWA** | Os 66 livros, com índice por livro e capítulo (tocar no capítulo já abre), "Ir para" (`Jo 3:16`, `sl 23`), introdução de cada livro, léxico do capítulo, verbetes com origem e significado, áudio pela voz do aparelho (hebraico e grego modernos), seis temas de cor, tamanho do texto e recursos de acessibilidade (leitor de tela, teclado, alto contraste, fonte de leitura fácil, sem cantilação). Os capítulos são carregados sob demanda; funciona também abrindo `saida/web/index.html` direto do disco. |
-| **EPUB** | 66 arquivos (39 MB), um por livro, todos sem erro no epubcheck. Cada palavra do original é uma nota que abre ao tocar (glosa, gramática, significado e link para o verbete); cada livro traz introdução, temas e léxico próprio. Formato testado no Kindle. |
+| **EPUB** | Bíblia completa num arquivo (34 MB), volumes AT (24 MB) e NT (10 MB), e um por livro (66 arquivos), validados com o epubcheck. No volume, um léxico único no fim. Cada palavra do original é uma nota que abre ao tocar (glosa, gramática, significado e link para o verbete); cada livro traz introdução, temas e léxico próprio. Formato testado no Kindle. |
 | **PDF** | 66 arquivos A4 (216 MB): capa, introdução, cartões das palavras com a BLIVRE abaixo de cada versículo e léxico no fim. |
 | **Apps** | Projetos Capacitor de Android e iOS sincronizados com a Bíblia inteira. |
 
@@ -73,6 +73,8 @@ fontes-dados/ (morphhb, sblgnt, strongs, dodson, ebible, scrollmapper)
 ### Publicar
 
 O repositório é **github.com/josafams/biblia-interlinear**: a `main` tem o código e os dados; o ramo `gh-pages`, só o site gerado.
+
+**Livros (EPUB e PDF):** a cada mudança em `dados/` ou nos scripts da `main`, o workflow `.github/workflows/livros.yml` refaz tudo a partir das fontes e publica a Bíblia completa, os volumes e os 66 livros na release **livros**, em *Releases*.
 
 **App Android:** a cada envio para `main` ou `gh-pages`, o workflow `.github/workflows/android.yml` compila o app com o conteúdo do `gh-pages` e publica o APK (instalável no celular) e o AAB (Play Store) na release **app-android**, em *Releases*.
 
