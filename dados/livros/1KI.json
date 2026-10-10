@@ -1,0 +1,286 @@
+{
+  "title_orig": "מְלָכִים א",
+  "title_orig_xlit": "Melakhim Alef",
+  "summary": "1 Reis começa com a velhice de Davi e a disputa pela sucessão, vencida por Salomão. O reinado de Salomão é apresentado como um tempo de sabedoria, riqueza e grandes obras, com a construção e a dedicação do templo de Jerusalém, mas também de casamentos com mulheres estrangeiras e de culto a outros deuses. Depois da sua morte o reino se divide: Roboão fica com Judá, ao sul, e Jeroboão funda o reino de Israel, ao norte, com santuários em Betel e Dã. A partir daí o livro alterna os reis dos dois reinos, avaliando cada um pela fidelidade ao SENHOR. Os capítulos finais giram em torno do profeta Elias e do seu confronto com o rei Acabe e a rainha Jezabel, que promoviam o culto a Baal.",
+  "name": "Na Bíblia hebraica, 1 e 2 Reis formam um só livro, Melakhim, “Reis”, que narra a história da monarquia de Salomão até o exílio. A Septuaginta dividiu a obra em duas e a chamou de 3 e 4 Reinos, continuando a numeração de Samuel; a Vulgata latina usou 3 e 4 Reis, nomes que aparecem em algumas Bíblias católicas antigas em português. A divisão em dois livros só passou às Bíblias hebraicas impressas no século XVI.",
+  "facts": [
+    [
+      "Posição",
+      "11º livro da Bíblia, entre os livros históricos; na Bíblia hebraica, primeira parte de Reis, o último dos Profetas Anteriores (Nevi’im Rishonim)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "narrativa histórica, com relatos proféticos"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "A sucessão de Davi",
+      "from": 1,
+      "to": 2,
+      "text": "Adonias tenta assumir o trono, Salomão é ungido e Davi morre."
+    },
+    {
+      "title": "O reinado de Salomão",
+      "from": 3,
+      "to": 11,
+      "text": "A sabedoria do rei, o templo e o palácio, as riquezas e, no fim, a idolatria e os adversários."
+    },
+    {
+      "title": "A divisão e os primeiros reis",
+      "from": 12,
+      "to": 16,
+      "text": "O reino se parte em dois; reis de Judá e de Israel até Acabe."
+    },
+    {
+      "title": "Elias e Acabe",
+      "from": 17,
+      "to": 22,
+      "text": "A seca, o Carmelo, o Horebe, a vinha de Nabote e a morte de Acabe em Ramote de Gileade."
+    }
+  ],
+  "extra": {
+    "title": "As fórmulas de reinado",
+    "text": "Cada rei é apresentado com um modelo fixo: o ano em que começou a reinar, contado pelo reinado do rei do outro reino; a duração do governo; em Judá, a idade do rei e o nome da mãe; e uma avaliação, “fez o que era mau” ou “o que era correto aos olhos do SENHOR”. Ao final vem a menção às crônicas onde estariam os outros feitos, a notícia da morte e o nome do sucessor. Esses sincronismos são a base das reconstruções da cronologia dos reis."
+  },
+  "people": [
+    {
+      "name": "Davi",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "já idoso, define a sucessão e deixa instruções a Salomão"
+    },
+    {
+      "name": "Bate-Seba e Natã",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "a mãe de Salomão e o profeta, que garantem a sua unção"
+    },
+    {
+      "name": "Adonias",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "filho de Davi que tenta se fazer rei"
+    },
+    {
+      "name": "Salomão",
+      "chapters": "1–11",
+      "ch": 3,
+      "note": "filho de Davi e Bate-Seba; constrói o templo"
+    },
+    {
+      "name": "Hirão, rei de Tiro",
+      "chapters": "5; 9–10",
+      "ch": 5,
+      "note": "fornece madeira e artesãos para as obras de Salomão"
+    },
+    {
+      "name": "A rainha de Sabá",
+      "chapters": "10",
+      "ch": 10,
+      "note": "visita Salomão para pôr à prova a sua sabedoria"
+    },
+    {
+      "name": "Jeroboão",
+      "chapters": "11–14",
+      "ch": 12,
+      "note": "primeiro rei de Israel, o reino do norte"
+    },
+    {
+      "name": "Roboão",
+      "chapters": "12; 14",
+      "ch": 12,
+      "note": "filho de Salomão, rei de Judá"
+    },
+    {
+      "name": "Asa",
+      "chapters": "15",
+      "ch": 15,
+      "note": "rei de Judá, elogiado pelo texto"
+    },
+    {
+      "name": "Acabe e Jezabel",
+      "chapters": "16–22",
+      "ch": 21,
+      "note": "rei de Israel e a esposa fenícia, que promove o culto a Baal"
+    },
+    {
+      "name": "Elias",
+      "chapters": "17–21",
+      "ch": 17,
+      "note": "o profeta tisbita, de Gileade, adversário de Acabe"
+    },
+    {
+      "name": "Eliseu",
+      "chapters": "19",
+      "ch": 19,
+      "note": "chamado por Elias para segui-lo"
+    },
+    {
+      "name": "Micaías",
+      "chapters": "22",
+      "ch": 22,
+      "note": "profeta que anuncia a derrota de Acabe"
+    }
+  ],
+  "writing": {
+    "tradition": "O Talmude babilônico (Bava Batra 15a) atribui a escrita de Reis ao profeta Jeremias, que viveu a queda de Jerusalém. Nessa leitura, a obra teria sido composta no início do exílio, no século VI a.C.; o último fato narrado, a libertação do rei Joaquim na Babilônia (2 Reis 25:27), aconteceu por volta de 562 a.C.",
+    "academic": "A maioria dos pesquisadores vê 1 e 2 Reis como a parte final da chamada História Deuteronomista, que vai de Josué a Reis e avalia o passado de Israel à luz do Deuteronômio. Muitos seguem a proposta de duas edições: uma no reinado de Josias, c. 620 a.C., que culminava na sua reforma, e outra no exílio, por volta de 560 a.C., que acrescentou a queda de Jerusalém; outros pensam numa única redação no exílio. O próprio texto cita fontes hoje perdidas: o “livro dos feitos de Salomão” (1 Reis 11:41) e as crônicas dos reis de Israel e de Judá (1 Reis 14:19, 29). Os relatos sobre Elias e Eliseu parecem vir de coleções de histórias proféticas que circulavam no Reino do Norte."
+  },
+  "events": {
+    "intro": "1 Reis vai do fim do reinado de Davi, por volta de 970 a.C., ao início do reinado de Acazias em Israel, por volta de 853 a.C. Os primeiros pontos de apoio fora da Bíblia aparecem nesse período: a campanha do faraó Sisaque (Sheshonq I) em Canaã, no quinto ano de Roboão (14:25), registrada num relevo em Karnak e situada por volta de 925 a.C.; e a participação de “Acabe, o israelita” na batalha de Qarqar contra o rei assírio Salmaneser III, em 853 a.C., registrada numa inscrição assíria. A partir dessas âncoras se calculam as datas anteriores, como a divisão do reino, que a maioria situa entre 931 e 922 a.C. Segundo 6:1, o templo começou a ser construído 480 anos depois da saída do Egito, número que serve de base à data tradicional do Êxodo, c. 1446 a.C. As cronologias dos reis variam entre autores: os números de 1 e 2 Reis nem sempre se encaixam entre si, e cada reconstrução resolve as diferenças de um jeito, supondo co-regências (pai e filho reinando juntos) e formas diversas de contar o primeiro ano de reinado. Por isso uma mesma data pode aparecer com alguns anos de diferença em obras distintas. As datas desta linha do tempo são aproximadas e seguem uma das reconstruções mais usadas.",
+    "axis": [
+      -1010,
+      -530
+    ],
+    "timeline": [
+      {
+        "label": "Davi, rei",
+        "from": -1010,
+        "to": -970,
+        "kind": "pessoa",
+        "note": "os últimos dias do seu reinado abrem o livro"
+      },
+      {
+        "label": "Salomão, rei",
+        "from": -970,
+        "to": -931,
+        "kind": "pessoa",
+        "note": "reina 40 anos (11:42)"
+      },
+      {
+        "label": "Início da construção do templo",
+        "from": -966,
+        "to": -966,
+        "kind": "evento",
+        "note": "quarto ano de Salomão (6:1); a obra dura sete anos (6:38)"
+      },
+      {
+        "label": "Divisão do reino",
+        "from": -931,
+        "to": -931,
+        "kind": "evento",
+        "note": "outras reconstruções propõem c. 928 ou 922 a.C."
+      },
+      {
+        "label": "Jeroboão I, rei de Israel",
+        "from": -931,
+        "to": -910,
+        "kind": "pessoa",
+        "note": "22 anos (14:20)"
+      },
+      {
+        "label": "Roboão, rei de Judá",
+        "from": -931,
+        "to": -913,
+        "kind": "pessoa",
+        "note": "17 anos (14:21)"
+      },
+      {
+        "label": "Campanha de Sisaque",
+        "from": -925,
+        "to": -925,
+        "kind": "evento",
+        "note": "o faraó saqueia Jerusalém (14:25–26)"
+      },
+      {
+        "label": "Asa, rei de Judá",
+        "from": -911,
+        "to": -870,
+        "kind": "pessoa",
+        "note": "41 anos (15:10)"
+      },
+      {
+        "label": "Onri, rei de Israel",
+        "from": -885,
+        "to": -874,
+        "kind": "pessoa",
+        "note": "funda Samaria (16:24); a Assíria passa a chamar Israel de “casa de Onri”"
+      },
+      {
+        "label": "Acabe, rei de Israel",
+        "from": -874,
+        "to": -853,
+        "kind": "pessoa",
+        "note": "22 anos (16:29–30)"
+      },
+      {
+        "label": "Josafá, rei de Judá",
+        "from": -872,
+        "to": -848,
+        "kind": "pessoa",
+        "note": "25 anos (22:42), em parte junto com o pai, segundo muitas reconstruções"
+      },
+      {
+        "label": "Elias",
+        "from": -865,
+        "to": -850,
+        "kind": "pessoa",
+        "note": "atua nos reinados de Acabe e de Acazias; datas aproximadas"
+      },
+      {
+        "label": "Batalha de Qarqar",
+        "from": -853,
+        "to": -853,
+        "kind": "evento",
+        "note": "Acabe entre os reis que enfrentam Salmaneser III"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -586,
+        "to": -560,
+        "kind": "escrita",
+        "note": "Jeremias, no início do exílio"
+      },
+      {
+        "label": "Redação, segundo a pesquisa",
+        "from": -620,
+        "to": -550,
+        "kind": "escrita",
+        "note": "História Deuteronomista: edição de Josias e edição do exílio"
+      }
+    ]
+  },
+  "context": "No tempo de Salomão, Jerusalém ganha o templo e o palácio, e o reino aparece ligado ao comércio da região: madeira do Líbano por meio de Tiro, na Fenícia, navios saindo de Eziom-Geber, no golfo de Ácaba, e caravanas vindas da Arábia, como a da rainha de Sabá. Depois da divisão, Judá fica com Jerusalém e a dinastia de Davi; Israel, maior e mais rico, tem capitais sucessivas até que Onri funda Samaria. Jeroboão estabelece santuários em Betel e em Dã, nos extremos do seu território. No século IX a.C. Israel disputa terras com os arameus de Damasco e se aproxima da Fenícia pelo casamento de Acabe com Jezabel, filha do rei de Sidom, enquanto a Assíria começa a avançar para o oeste.",
+  "places": [
+    "Jerusalém: o templo e o palácio",
+    "Gibeão",
+    "Siquém, Betel e Dã",
+    "Samaria e Jezreel",
+    "Monte Carmelo e Horebe",
+    "Sarepta, na Fenícia",
+    "Ramote de Gileade",
+    "Tiro, Damasco e Eziom-Geber"
+  ],
+  "themes": [
+    "templo e culto",
+    "sabedoria",
+    "fidelidade e idolatria",
+    "divisão do reino",
+    "profeta e rei",
+    "Elias e Baal"
+  ],
+  "key_verses": [
+    {
+      "ref": "3:9",
+      "text": "Dá, pois, a teu servo um coração com entendimento para julgar ao teu povo, para discernir entre o bem e o mal; pois quem poderá governar este teu tão grande povo?"
+    },
+    {
+      "ref": "8:27",
+      "text": "Mas, na verdade, haveria Deus de habitar na terra? Eis que os céus, e até o céu dos céus, não te podem conter; quanto menos esta casa que eu edifiquei!"
+    },
+    {
+      "ref": "18:21",
+      "text": "E aproximando-se Elias a todo o povo, disse: Até quando hesitareis vós entre dois pensamentos? Se o SENHOR é Deus, segui-lhe; e se Baal, ide depois dele. E o povo não respondeu palavra."
+    },
+    {
+      "ref": "19:11–12",
+      "text": "E ele lhe disse: Sai fora, e põe-te no monte diante do SENHOR. E eis que o SENHOR que passava, e um grande e poderoso vento que rompia os montes, e quebrava as penhas diante do SENHOR: mas o SENHOR não estava no vento. E depois do vento um terremoto: mas o SENHOR não estava no terremoto. E depois do terremoto um fogo: mas o SENHOR não estava no fogo. E depois do fogo uma voz agradável e suave."
+    }
+  ],
+  "note": "As datas são aproximadas e as cronologias dos reis variam entre autores; as daqui seguem, em linhas gerais, a reconstrução de E. R. Thiele, muito usada, e outras obras podem diferir em alguns anos. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

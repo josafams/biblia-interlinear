@@ -1,0 +1,85 @@
+# Compila o app Android a cada envio para a main (ou manualmente) e publica na página Releases:
+#   - release "app-android" (sempre a última versão): APK de teste, instalável direto no celular, e AAB para a Play Store
+# O conteúdo do app é o site já gerado no ramo gh-pages (o mesmo publicado no GitHub Pages),
+# então o APK sai exatamente com os dados revisados, sem refazer o corpus e as glosas.
+# Para o AAB sair assinado, cadastre em Settings › Secrets and variables › Actions:
+#   ANDROID_KEYSTORE_BASE64   (arquivo .jks em base64)
+#   ANDROID_KEYSTORE_PASSWORD, ANDROID_KEY_ALIAS, ANDROID_KEY_PASSWORD
+name: Android
+on:
+  push:
+    branches: [main, gh-pages]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HAS_KEYSTORE: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
+      VERSION_CODE: ${{ github.run_number }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Site já gerado (ramo gh-pages) como conteúdo do app
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: saida/web
+      - run: rm -rf saida/web/.git
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - run: npm ci
+      - name: Copiar o site para o projeto Android
+        run: npx cap sync android
+      - name: Preparar chave de assinatura
+        if: env.HAS_KEYSTORE == 'true'
+        run: |
+          echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > "$RUNNER_TEMP/upload.jks"
+          {
+            echo "ANDROID_KEYSTORE_PATH=$RUNNER_TEMP/upload.jks"
+            echo "ANDROID_KEYSTORE_PASSWORD=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}"
+            echo "ANDROID_KEY_ALIAS=${{ secrets.ANDROID_KEY_ALIAS }}"
+            echo "ANDROID_KEY_PASSWORD=${{ secrets.ANDROID_KEY_PASSWORD }}"
+          } >> "$GITHUB_ENV"
+      - name: Compilar APK de teste e AAB
+        working-directory: android
+        run: ./gradlew --no-daemon assembleDebug bundleRelease
+      - name: Nomear os arquivos
+        run: |
+          mkdir -p dist
+          cp android/app/build/outputs/apk/debug/*.apk "dist/biblia-interlinear-${VERSION_CODE}.apk"
+          cp android/app/build/outputs/bundle/release/*.aab "dist/biblia-interlinear-${VERSION_CODE}.aab"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android
+          path: dist/*
+      - name: Publicar na página Releases (app-android)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          NOTAS="Última compilação do app (execução ${VERSION_CODE}, commit ${GITHUB_SHA::7}).
+
+          - **biblia-interlinear-${VERSION_CODE}.apk**: APK de teste. Baixe no celular Android e instale (permita a instalação de fontes desconhecidas).
+          - **biblia-interlinear-${VERSION_CODE}.aab**: pacote para a Play Store$( [ "$HAS_KEYSTORE" = true ] && echo ' (assinado)' || echo ' (sem assinatura: cadastre a chave nos Secrets)' )."
+          if gh release view app-android >/dev/null 2>&1; then
+            for a in $(gh release view app-android --json assets -q '.assets[].name'); do gh release delete-asset app-android "$a" -y; done
+            gh release edit app-android --notes "$NOTAS" --target main
+            git push --force origin "HEAD:refs/tags/app-android"
+          else
+            gh release create app-android --title "App Android (última versão)" --notes "$NOTAS" --target main --prerelease
+          fi
+          gh release upload app-android dist/* --clobber

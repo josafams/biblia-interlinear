@@ -1,0 +1,201 @@
+{
+  "title_orig": "דְּבָרִים",
+  "title_orig_xlit": "Devarim",
+  "summary": "Deuteronômio se apresenta como as palavras de Moisés a Israel nos campos de Moabe, no último ano da peregrinação, pouco antes de o povo atravessar o Jordão. Moisés recorda a viagem desde o Horebe, repete os dez mandamentos e exorta o povo a amar e servir somente ao SENHOR. No centro está um longo código de leis sobre culto, justiça, família, economia e guerra, com destaque para a exigência de um único lugar de culto. O livro termina com bênçãos e maldições, a renovação do pacto, a escolha de Josué como sucessor, o cântico e a bênção de Moisés e o relato de sua morte no monte Nebo.",
+  "name": "O nome “Deuteronômio” vem do grego e quer dizer “segunda lei”. Ele surgiu da forma como a Septuaginta traduziu a expressão de 17:18, que em hebraico fala de uma “cópia desta lei” que o rei deveria fazer para si. Em hebraico o livro se chama Devarim, “Palavras”, a partir da sua abertura: “Estas são as palavras…”.",
+  "facts": [
+    [
+      "Posição",
+      "5º livro da Torá (Pentateuco)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "discursos, leis e poemas, com moldura narrativa"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Primeiro discurso: memória da viagem",
+      "from": 1,
+      "to": 4,
+      "text": "Do Horebe aos campos de Moabe, com um apelo à fidelidade (1:1–4:43)."
+    },
+    {
+      "title": "Segundo discurso: exortação",
+      "from": 4,
+      "to": 11,
+      "text": "Os dez mandamentos, o “Ouve, Israel” e a memória do deserto e do bezerro de ouro (4:44–11:32)."
+    },
+    {
+      "title": "Segundo discurso: o código de leis",
+      "from": 12,
+      "to": 26,
+      "text": "Lugar de culto, festas, autoridades, guerra, família, justiça social e as primícias."
+    },
+    {
+      "title": "Bênçãos e maldições",
+      "from": 27,
+      "to": 28,
+      "text": "A cerimônia nos montes Ebal e Gerizim e as consequências da obediência e da desobediência."
+    },
+    {
+      "title": "Terceiro discurso: o pacto em Moabe",
+      "from": 29,
+      "to": 30,
+      "text": "A renovação do pacto e a escolha entre a vida e a morte."
+    },
+    {
+      "title": "Os últimos dias de Moisés",
+      "from": 31,
+      "to": 34,
+      "text": "Josué como sucessor, a lei escrita e lida, o cântico, a bênção das tribos e a morte de Moisés."
+    }
+  ],
+  "extra": {
+    "title": "Discursos de Moisés e tratados antigos",
+    "text": "O livro é construído como uma série de discursos em primeira pessoa, introduzidos por títulos que funcionam como cabeçalhos: “Estas são as palavras…” (1:1), “Esta, pois, é a lei…” (4:44), “Estas são as palavras do pacto…” (29:1) e “E esta é a bênção…” (33:1). Um narrador fala de Moisés na terceira pessoa apenas nessas molduras e nos capítulos finais. Desde meados do século XX, estudiosos observam que a sequência do livro lembra a forma dos tratados de vassalagem do Antigo Oriente, em que um soberano fixava as obrigações de um rei súdito: apresentação das partes, retrospecto histórico das relações (caps. 1–11), cláusulas gerais e específicas (caps. 12–26), instruções para guardar o documento e lê-lo em público (31:9–13, 24–26), testemunhas (céus e terra, 30:19; 32:1) e bênçãos e maldições (cap. 28). Há duas comparações principais. Uma aponta os tratados hititas dos séculos XIV e XIII a.C., que têm prólogo histórico e bênçãos ao lado das maldições, e é usada por alguns para defender a antiguidade do livro. Outra aponta os tratados de sucessão de Esar-Hadom, rei da Assíria (672 a.C.), cujas cláusulas exigem que o vassalo “ame” o herdeiro com todo o coração, denuncie quem incitar à revolta e tema maldições muito próximas às de Deuteronômio 28 (como o céu de bronze e a terra de ferro, 28:23); uma cópia desses tratados foi encontrada em 2009 em Tell Tayinat, na atual Turquia. Para muitos, isso indica que o livro adaptou o modelo assírio, pondo o SENHOR no lugar do imperador. Outros pensam que a forma de tratado foi conhecida em vários períodos e que o paralelo não basta para datar o texto."
+  },
+  "people": [
+    {
+      "name": "Moisés",
+      "chapters": "1–34",
+      "ch": 1,
+      "note": "fala ao povo nos campos de Moabe e morre no monte Nebo, aos 120 anos"
+    },
+    {
+      "name": "Josué",
+      "chapters": "1; 3; 31; 34",
+      "ch": 31,
+      "note": "filho de Num; recebe a missão de conduzir Israel na terra"
+    },
+    {
+      "name": "Calebe",
+      "chapters": "1",
+      "ch": 1,
+      "note": "único da geração do Êxodo, além de Josué, a quem se promete a entrada na terra (1:36)"
+    },
+    {
+      "name": "Arão",
+      "chapters": "9–10; 32",
+      "ch": 9,
+      "note": "lembrado no episódio do bezerro de ouro e na notícia de sua morte"
+    },
+    {
+      "name": "Seom e Ogue",
+      "chapters": "1–4; 29; 31",
+      "ch": 2,
+      "note": "reis amorreus de Hesbom e de Basã, vencidos antes da travessia do Jordão"
+    }
+  ],
+  "writing": {
+    "tradition": "As tradições judaica e cristã atribuem Deuteronômio a Moisés, e o próprio livro diz que ele escreveu “esta lei” e a entregou aos sacerdotes (31:9, 24). O relato de sua morte (cap. 34) costuma ser atribuído, nessa tradição, a Josué ou a um continuador; o Talmude (Bava Batra 15a) registra opiniões diferentes sobre os últimos oito versículos. Nessa leitura, o livro teria sido escrito por volta de 1406 a.C., no fim da peregrinação, ou no século XIII a.C. para quem adota a data tardia do Êxodo.",
+    "academic": "Desde o século XIX, a maioria dos estudiosos associa o núcleo do livro, em especial o código dos capítulos 12 a 26, ao “livro da lei” encontrado no templo de Jerusalém no reinado de Josias (2 Reis 22–23), por volta de 622 a.C., cuja reforma também concentrou o culto em Jerusalém. Muitos pensam que esse núcleo pode ter raízes mais antigas, talvez em tradições do Reino do Norte, e que o livro foi ampliado durante e depois do exílio, quando recebeu os discursos de abertura e de encerramento e passou a servir de introdução à chamada História Deuteronomista (Josué a Reis). A forma final costuma ser situada entre c. 620 e 450 a.C. Outros pesquisadores, apoiados sobretudo na comparação com os tratados hititas, defendem uma origem bem mais antiga."
+  },
+  "events": {
+    "intro": "Segundo o livro, os discursos de Moisés acontecem no primeiro dia do décimo primeiro mês do quadragésimo ano após a saída do Egito (1:3), poucas semanas antes da travessia do Jordão; pela cronologia tradicional, c. 1406 a.C., ou no fim do século XIII a.C. para quem adota a data tardia do Êxodo. A linha do tempo mostra também os períodos dos tratados do Antigo Oriente com os quais o livro é comparado e as propostas para a sua escrita.",
+    "axis": [
+      -1550,
+      -350
+    ],
+    "band": {
+      "label": "Império Neoassírio",
+      "from": -911,
+      "to": -609
+    },
+    "timeline": [
+      {
+        "label": "Moisés",
+        "from": -1526,
+        "to": -1406,
+        "kind": "pessoa",
+        "note": "120 anos ao morrer (34:7), na cronologia tradicional"
+      },
+      {
+        "label": "Discursos em Moabe, data antiga",
+        "from": -1406,
+        "to": -1406,
+        "kind": "evento",
+        "note": "quadragésimo ano, décimo primeiro mês (1:3)"
+      },
+      {
+        "label": "Tratados hititas de vassalagem",
+        "from": -1400,
+        "to": -1200,
+        "kind": "escrita",
+        "note": "período aproximado dos tratados com prólogo histórico, bênçãos e maldições"
+      },
+      {
+        "label": "Discursos em Moabe, data tardia",
+        "from": -1240,
+        "to": -1220,
+        "kind": "evento",
+        "note": "faixa aproximada, para quem situa o Êxodo no século XIII a.C."
+      },
+      {
+        "label": "Tratados de sucessão de Esar-Hadom",
+        "from": -672,
+        "to": -672,
+        "kind": "escrita",
+        "note": "juramento imposto aos vassalos da Assíria; cópia achada em Tell Tayinat"
+      },
+      {
+        "label": "Reforma de Josias",
+        "from": -622,
+        "to": -609,
+        "kind": "evento",
+        "note": "o “livro da lei” encontrado no templo (2 Reis 22:8)"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -1406,
+        "to": -1406,
+        "kind": "escrita",
+        "note": "Moisés, no fim da peregrinação (no século XIII a.C., na data tardia)"
+      },
+      {
+        "label": "Composição, segundo a pesquisa",
+        "from": -650,
+        "to": -450,
+        "kind": "escrita",
+        "note": "núcleo ligado à época de Josias; ampliações no exílio e depois"
+      }
+    ]
+  },
+  "context": "Todo o livro se passa num único lugar, os campos de Moabe, a leste do Jordão, diante da terra que Israel ainda não ocupou. Os discursos olham para trás, para o Egito, o Horebe e os quarenta anos no deserto, e para a frente, para a vida em Canaã, com cidades, reis, juízes, colheitas e um santuário central no “lugar que o SENHOR escolher”. Esse local não é nomeado no livro; a tradição posterior e a maioria dos estudiosos o identificam com Jerusalém, enquanto alguns lembram que os montes Ebal e Gerizim, perto de Siquém, também têm papel de destaque (11:29; 27:4–13). A linguagem de pacto, lealdade e maldição aproxima o livro dos documentos políticos dos impérios do Antigo Oriente.",
+  "places": [
+    "campos de Moabe, além do Jordão",
+    "Horebe",
+    "Cades-Barneia",
+    "Hesbom e Basã",
+    "montes Ebal e Gerizim",
+    "monte Nebo, no cume do Pisga",
+    "o lugar que o SENHOR escolher"
+  ],
+  "themes": [
+    "pacto (aliança)",
+    "amor e lealdade a um só Deus",
+    "memória e ensino às gerações",
+    "um só lugar de culto",
+    "justiça e cuidado com o órfão, a viúva e o estrangeiro",
+    "bênção e maldição"
+  ],
+  "key_verses": [
+    {
+      "ref": "6:4",
+      "text": "Ouve, Israel: o SENHOR nosso Deus, o SENHOR um é:"
+    },
+    {
+      "ref": "8:3",
+      "text": "E te afligiu, e te fez ter fome, e te sustentou com maná, comida que não conhecias tu, nem teus pais a conheciam; para fazer-te saber que o homem não viverá de só pão, mas de tudo o que sai da boca do SENHOR viverá o homem."
+    },
+    {
+      "ref": "30:19",
+      "text": "Aos céus e a terra chamo por testemunhas hoje contra vós, que pus diante de vós a vida e a morte, a bênção e a maldição: escolhe, pois, a vida, para que vivas tu e tua descendência:"
+    }
+  ],
+  "note": "As datas são aproximadas e dependem da posição adotada sobre o Êxodo e sobre a composição do livro. A numeração segue a das Bíblias em português; no texto hebraico, 12:32 aparece como 13:1, 22:30 como 23:1 e 29:1 como 28:69, com o restante desses capítulos deslocado em um versículo. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

@@ -1,0 +1,170 @@
+{
+  "title_orig": "Πρὸς Φιλιππησίους",
+  "title_orig_xlit": "Pros Philippesious",
+  "summary": "Filipenses é a carta de Paulo mais marcada pelo afeto. Preso e sem saber se será solto ou condenado, ele agradece à igreja de Filipos a ajuda que ela lhe enviou por Epafrodito e conta como a própria prisão serviu para espalhar o evangelho. Pede unidade e humildade, apresentando o exemplo de Cristo, que “esvaziou a si mesmo” e foi obediente até a morte de cruz (2:5–11). No capítulo 3 muda de tom para advertir contra os que insistem na circuncisão e relembra a própria trajetória: tudo o que tinha como vantagem passou a valer pouco diante de conhecer Cristo. A alegria, mesmo em meio à prisão, atravessa a carta inteira.",
+  "name": "O título Pros Philippesious, “Aos filipenses”, vem da saudação aos santos “que estão em Filipos” (1:1); em 4:15, Paulo chama os leitores de “filipenses”. A cidade tinha o nome de Filipe II da Macedônia, pai de Alexandre, o Grande, que a refundou no século IV a.C.",
+  "facts": [
+    [
+      "Posição",
+      "11º livro do Novo Testamento; 6ª das cartas de Paulo, na ordem do cânon"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "carta de amizade e agradecimento, escrita na prisão"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Gratidão e notícias da prisão",
+      "from": 1,
+      "to": 1,
+      "text": "Paulo agradece a parceria dos filipenses, conta que suas cadeias se tornaram conhecidas e que outros pregam com mais ousadia, e pesa entre partir para estar com Cristo e continuar com eles."
+    },
+    {
+      "title": "Unidade e o exemplo de Cristo",
+      "from": 1,
+      "to": 2,
+      "text": "Chamado a viver de modo digno do evangelho e com o mesmo modo de pensar de Cristo, que se humilhou e foi exaltado; planos de enviar Timóteo e a volta de Epafrodito, que esteve à beira da morte (1:27–2:30)."
+    },
+    {
+      "title": "Advertência e a meta",
+      "from": 3,
+      "to": 3,
+      "text": "Contra os que confiam na carne, Paulo lista as próprias credenciais e diz que as considera perda; ainda não chegou ao fim, mas avança para o alvo, como cidadão dos céus."
+    },
+    {
+      "title": "Conselhos e agradecimento",
+      "from": 4,
+      "to": 4,
+      "text": "Pedido de reconciliação entre Evódia e Síntique, convite à alegria e à oração, e um agradecimento cuidadoso pela oferta recebida, com saudações da “casa de César”."
+    }
+  ],
+  "extra": {
+    "title": "O hino de 2:6–11",
+    "text": "Os versículos 2:6–11 têm um ritmo próprio e descrevem um movimento em duas partes: Cristo desce — da forma de Deus à forma de servo e à morte de cruz — e Deus o exalta, para que todo joelho se dobre e toda língua confesse que ele é Senhor, eco de Isaías 45:23. Muitos estudiosos pensam que Paulo cita um hino ou poema já usado pelas igrejas; outros o atribuem ao próprio Paulo. Em qualquer caso, é um dos textos mais antigos sobre quem é Cristo e um dos mais discutidos do Novo Testamento."
+  },
+  "people": [
+    {
+      "name": "Paulo",
+      "chapters": "1–4",
+      "ch": 1,
+      "note": "preso, aguarda o desfecho do processo; relembra que foi fariseu e perseguidor da Igreja (3:5–6)"
+    },
+    {
+      "name": "Timóteo",
+      "chapters": "1–2",
+      "ch": 2,
+      "note": "coautor da saudação; Paulo pretende enviá-lo em breve, pois “serviu comigo no Evangelho como um filho ao pai” (2:22)"
+    },
+    {
+      "name": "Epafrodito",
+      "chapters": "2; 4",
+      "ch": 2,
+      "note": "enviado pelos filipenses com a ajuda para Paulo; adoeceu gravemente e volta para casa, provavelmente levando a carta"
+    },
+    {
+      "name": "Evódia e Síntique",
+      "chapters": "4",
+      "ch": 4,
+      "note": "duas mulheres que lutaram pelo evangelho ao lado de Paulo, a quem ele pede que se entendam (4:2–3)"
+    },
+    {
+      "name": "Clemente",
+      "chapters": "4",
+      "ch": 4,
+      "note": "cooperador citado com os demais cujos nomes “estão no livro da vida” (4:3)"
+    }
+  ],
+  "writing": {
+    "tradition": "A autoria de Paulo nunca foi questionada na Igreja antiga; por volta de 110–135, Policarpo de Esmirna, escrevendo aos próprios filipenses, lembra que Paulo lhes escrevera. A referência à guarda pretoriana (1:13) e à “casa de César” (4:22) levou a tradição a situar a carta na prisão de Paulo em Roma, c. 60–62.",
+    "academic": "Filipenses está entre as sete cartas que praticamente todos os estudiosos atribuem a Paulo, ao lado de Romanos, 1 e 2 Coríntios, Gálatas, 1 Tessalonicenses e Filemom. O local e a data da prisão são discutidos: Roma (c. 60–62) continua a ser a proposta mais comum, mas muitos preferem Éfeso (c. 54–55), cuja distância de Filipos tornaria mais simples as várias viagens supostas pela carta; Cesareia (c. 57–59) também é defendida. Pretório e “casa de César” podem indicar guardas e funcionários imperiais também nas províncias. Outra discussão é a unidade: a mudança brusca de tom em 3:1–2 levou alguns a ver na carta a junção de duas ou três cartas aos filipenses, enquanto outros a leem como um texto único."
+  },
+  "events": {
+    "intro": "A igreja de Filipos foi a primeira fundada por Paulo na Europa, na segunda viagem, e manteve com ele uma relação próxima, enviando ajuda mais de uma vez (4:15–16). A data da carta depende de onde Paulo estava preso; as datas são aproximadas.",
+    "axis": [
+      45,
+      70
+    ],
+    "band": {
+      "label": "Reinado de Nero",
+      "from": 54,
+      "to": 68
+    },
+    "timeline": [
+      {
+        "label": "Fundação da igreja em Filipos",
+        "from": 49,
+        "to": 50,
+        "kind": "evento",
+        "note": "Lídia e o carcereiro; Paulo e Silas presos e soltos (Atos 16)"
+      },
+      {
+        "label": "Ajuda enviada a Tessalônica",
+        "from": 50,
+        "to": 50,
+        "kind": "evento",
+        "note": "“por uma e duas vezes” (4:16); data aproximada"
+      },
+      {
+        "label": "Escrita, se em Éfeso",
+        "from": 54,
+        "to": 55,
+        "kind": "escrita",
+        "note": "hipótese de muitos estudiosos"
+      },
+      {
+        "label": "Prisão em Cesareia",
+        "from": 57,
+        "to": 59,
+        "kind": "evento",
+        "note": "Atos 23–26; outro lugar proposto para a carta"
+      },
+      {
+        "label": "Escrita, se em Roma",
+        "from": 60,
+        "to": 62,
+        "kind": "escrita",
+        "note": "posição tradicional, ainda bastante seguida"
+      }
+    ]
+  },
+  "context": "Filipos ficava na Macedônia oriental, junto à Via Egnácia, a estrada romana que ligava o mar Adriático a Bizâncio. Perto dela, em 42 a.C., Antônio e Otaviano venceram Bruto e Cássio, os assassinos de Júlio César, e a cidade foi transformada em colônia romana, recebendo veteranos de guerra; depois de 31 a.C. ganhou novos colonos. Seus habitantes tinham os privilégios de cidadãos romanos, e o latim era usado na administração — o que dá relevo à frase “nós somos cidadãos dos céus” (3:20). Segundo Atos 16, a comunidade judaica era pequena, reunida num lugar de oração junto ao rio, e a igreja nasceu na casa de Lídia, comerciante de púrpura vinda de Tiatira.",
+  "places": [
+    "Filipos",
+    "Macedônia",
+    "Tessalônica",
+    "o pretório e a “casa de César”"
+  ],
+  "themes": [
+    "alegria",
+    "parceria no evangelho",
+    "o exemplo de Cristo",
+    "humildade e unidade",
+    "a vida e a morte",
+    "confiança na carne",
+    "contentamento"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:21",
+      "text": "Pois, para mim, o viver é Cristo, e o morrer é lucro."
+    },
+    {
+      "ref": "2:5–8",
+      "text": "Isto seja, para que esteja em vós este modo de pensar, que também esteve em Cristo Jesus: mesmo ele sendo em forma de Deus, não considerou a igualdade a Deus como algo para se obter vantagem; Ao contrário, ele esvaziou a si mesmo, tomando a forma de servo, e se tornou semelhante aos homens; e, quando se encontrava em forma humana, ele humilhou a si mesmo, sendo obediente até a morte, e morte de cruz."
+    },
+    {
+      "ref": "3:13–14",
+      "text": "Irmãos, não considero como se já tivesse a obtido; mas uma coisa faço: esqueço as coisas que ficam para trás, e avanço para as que estão adiante, e assim persigo o alvo, rumo ao prêmio do chamado de cima, de Deus em Cristo Jesus."
+    },
+    {
+      "ref": "4:6–7",
+      "text": "Não estejais ansiosos por coisa alguma; mas em tudo, por meio de orações e súplicas com ações de gratidão, sejam os vossos pedidos conhecidos por Deus; e a paz de Deus, que excede todo entendimento, guardará os vossos corações e as vossas mentes em Cristo Jesus."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte e o lugar adotado para a prisão de Paulo. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

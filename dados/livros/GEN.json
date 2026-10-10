@@ -1,0 +1,208 @@
+{
+  "title_orig": "בְּרֵאשִׁית",
+  "title_orig_xlit": "Bereshit",
+  "summary": "Gênesis conta as origens: do mundo, da humanidade e do povo de Israel. Os capítulos 1 a 11 narram a criação, a desobediência no jardim do Éden, o dilúvio e a dispersão dos povos em Babel. A partir do capítulo 12, a história se concentra numa família: Abraão recebe de Deus a promessa de terra, descendência e bênção, e essa promessa passa a Isaque, a Jacó e aos doze filhos de Jacó. O livro termina com a família vivendo no Egito, o que prepara o cenário do Êxodo.",
+  "name": "O nome “Gênesis” vem do grego e quer dizer “origem”; é o título que o livro recebeu na Septuaginta, a tradução grega da Bíblia hebraica. Em hebraico o livro se chama Bereshit, “No princípio”, que é a sua primeira palavra.",
+  "facts": [
+    [
+      "Posição",
+      "1º livro da Torá (Pentateuco)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "narrativa"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Origens do mundo e da humanidade",
+      "from": 1,
+      "to": 11,
+      "text": "Criação, Éden, Caim e Abel, as genealogias, o dilúvio, a aliança com Noé e a torre de Babel."
+    },
+    {
+      "title": "Abraão",
+      "from": 12,
+      "to": 25,
+      "text": "O chamado, a promessa, a aliança e o nascimento de Isaque."
+    },
+    {
+      "title": "Isaque e Jacó",
+      "from": 25,
+      "to": 36,
+      "text": "Esaú e Jacó, a bênção, os anos de Jacó com Labão e o novo nome, Israel."
+    },
+    {
+      "title": "José",
+      "from": 37,
+      "to": 50,
+      "text": "Vendido pelos irmãos, José chega a governador do Egito e reencontra a família."
+    }
+  ],
+  "extra": {
+    "title": "As gerações (toledot)",
+    "text": "O livro se organiza em torno de uma fórmula que se repete cerca de dez vezes: “estas são as gerações (ou origens) de…”, em hebraico toledot. Ela abre cada nova etapa da história, de 2:4 a 37:2."
+  },
+  "people": [
+    {
+      "name": "Adão e Eva",
+      "chapters": "2–5",
+      "ch": 2,
+      "note": "o primeiro casal, posto no jardim do Éden"
+    },
+    {
+      "name": "Caim e Abel",
+      "chapters": "4",
+      "ch": 4,
+      "note": "filhos de Adão e Eva; o primeiro homicídio"
+    },
+    {
+      "name": "Noé",
+      "chapters": "5–10",
+      "ch": 6,
+      "note": "constrói a arca e recebe a aliança do arco-íris"
+    },
+    {
+      "name": "Abraão e Sara",
+      "chapters": "11–25",
+      "ch": 12,
+      "note": "deixam Harã rumo a Canaã e recebem a promessa de descendência"
+    },
+    {
+      "name": "Ló",
+      "chapters": "11–19",
+      "ch": 13,
+      "note": "sobrinho de Abraão; escapa da destruição de Sodoma"
+    },
+    {
+      "name": "Agar e Ismael",
+      "chapters": "16; 21",
+      "ch": 16,
+      "note": "a serva egípcia de Sara e o filho que ela teve com Abraão"
+    },
+    {
+      "name": "Isaque e Rebeca",
+      "chapters": "21–35",
+      "ch": 24,
+      "note": "o filho da promessa e a esposa trazida da terra dos parentes de Abraão"
+    },
+    {
+      "name": "Esaú e Jacó",
+      "chapters": "25–36",
+      "ch": 25,
+      "note": "irmãos gêmeos; Jacó recebe o nome de Israel"
+    },
+    {
+      "name": "Lia e Raquel",
+      "chapters": "29–35",
+      "ch": 29,
+      "note": "filhas de Labão e esposas de Jacó"
+    },
+    {
+      "name": "José",
+      "chapters": "30; 37–50",
+      "ch": 37,
+      "note": "vendido pelos irmãos, torna-se governador do Egito"
+    },
+    {
+      "name": "Judá",
+      "chapters": "29; 37–50",
+      "ch": 38,
+      "note": "filho de Jacó, com papel central nos capítulos 38 e 43–44"
+    }
+  ],
+  "writing": {
+    "tradition": "As tradições judaica e cristã atribuem a Torá a Moisés. Nessa leitura, Gênesis teria sido escrito durante a peregrinação no deserto, por volta de 1446–1406 a.C., ou no século XIII a.C. para quem adota uma data mais tardia para o Êxodo.",
+    "academic": "A maioria dos estudiosos entende que o livro reúne tradições orais e escritas de épocas diferentes, editadas ao longo de séculos. A forma final costuma ser datada dos períodos do exílio na Babilônia e persa, por volta de 550–400 a.C."
+  },
+  "events": {
+    "intro": "Os capítulos 1 a 11 narram as origens e não trazem datas que a história consiga situar. Para Abraão e seus descendentes, uma cronologia tradicional soma as idades e os intervalos dados no próprio texto e conta o Êxodo por volta de 1446 a.C.; é o resultado dela que aparece na linha do tempo. Não há registros fora da Bíblia que mencionem os patriarcas, e muitos historiadores consideram essas narrativas impossíveis de datar; quem as situa costuma apontar a Idade do Bronze Médio, de cerca de 2000 a 1550 a.C.",
+    "axis": [
+      -2200,
+      -350
+    ],
+    "band": {
+      "label": "Idade do Bronze Médio",
+      "from": -2000,
+      "to": -1550
+    },
+    "timeline": [
+      {
+        "label": "Abraão",
+        "from": -2166,
+        "to": -1991,
+        "kind": "pessoa",
+        "note": "vive 175 anos (25:7)"
+      },
+      {
+        "label": "Isaque",
+        "from": -2066,
+        "to": -1886,
+        "kind": "pessoa",
+        "note": "vive 180 anos (35:28)"
+      },
+      {
+        "label": "Jacó",
+        "from": -2006,
+        "to": -1859,
+        "kind": "pessoa",
+        "note": "vive 147 anos (47:28); desce ao Egito por volta de 1876 a.C."
+      },
+      {
+        "label": "José",
+        "from": -1915,
+        "to": -1805,
+        "kind": "pessoa",
+        "note": "vive 110 anos (50:26)"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -1446,
+        "to": -1406,
+        "kind": "escrita",
+        "note": "Moisés, durante a peregrinação no deserto"
+      },
+      {
+        "label": "Forma final, segundo a pesquisa",
+        "from": -550,
+        "to": -400,
+        "kind": "escrita",
+        "note": "exílio na Babilônia e período persa"
+      }
+    ]
+  },
+  "context": "As histórias de Gênesis se passam no Antigo Oriente Próximo, entre a Mesopotâmia e o Egito. Abraão parte de Ur dos caldeus, no sul da Mesopotâmia, passa por Harã e segue para Canaã; mais tarde, José leva a família para a região de Gósen, no Egito. Estudiosos comparam os primeiros capítulos com textos mesopotâmicos mais antigos, como o Enuma Elish, sobre a criação, e as epopeias de Atrahasis e de Gilgamesh, que também contam um grande dilúvio. As semelhanças e as diferenças ajudam a perceber o que o texto bíblico afirma sobre Deus e o ser humano.",
+  "places": [
+    "Éden",
+    "Ur dos caldeus",
+    "Harã",
+    "Canaã: Siquém, Betel, Hebrom, Berseba",
+    "Egito: Gósen"
+  ],
+  "themes": [
+    "criação",
+    "aliança",
+    "promessa e bênção",
+    "família e escolha",
+    "providência"
+  ],
+  "key_verses": [
+    {
+      "ref": "12:1–3",
+      "text": "O SENHOR disse a Abrão: “Sai da tua terra, e da tua parentela, e da casa de teu pai, para terra que eu te mostrarei. E farei de ti uma grande nação, e te abençoarei, e engrandecerei o teu nome, e tu serás uma bênção. E abençoarei os que te abençoarem, e amaldiçoarei os que te amaldiçoarem; e em ti todas as famílias da terra serão benditas.”"
+    },
+    {
+      "ref": "15:6",
+      "text": "E creu ao SENHOR, e contou-lhe por justiça."
+    },
+    {
+      "ref": "50:20",
+      "text": "Vós pensastes mal sobre mim, mas Deus o encaminhou para o bem, para fazer o que vemos hoje, para manter em vida muito povo."
+    }
+  ],
+  "note": "As datas variam conforme a fonte e a forma de contar; os versículos citados são da Bíblia Livre (BLIVRE)."
+}

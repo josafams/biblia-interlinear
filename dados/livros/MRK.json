@@ -1,0 +1,240 @@
+{
+  "title_orig": "Κατὰ Μᾶρκον",
+  "title_orig_xlit": "Kata Markon",
+  "summary": "Marcos é o mais curto dos evangelhos e conta a história de Jesus em ritmo rápido, marcado pela repetição de “logo” (em grego, euthys). Não narra o nascimento: começa com a pregação de João Batista e o batismo de Jesus e acompanha seu ministério na Galileia, com curas, expulsões de demônios, parábolas e conflitos com os líderes religiosos. No centro do livro, Pedro reconhece Jesus como o Cristo (8:29), e a partir daí Jesus anuncia três vezes que será entregue, morto e ressuscitado, enquanto os discípulos têm dificuldade de entender. A última semana em Jerusalém ocupa mais de um terço do texto (caps. 11–16). Nos manuscritos mais antigos, o livro termina em 16:8, com as mulheres fugindo do túmulo vazio, tomadas de medo.",
+  "name": "O título “Segundo Marcos” (Kata Markon) foi dado à obra quando os evangelhos passaram a circular juntos; o próprio texto não diz quem o escreveu. Marcos (Marcus) era um nome latino muito comum, e a tradição o identifica com João Marcos, de Jerusalém, companheiro de Barnabé e de Paulo em Atos. A palavra “evangelho” (euangelion, “boa notícia”) aparece já na primeira frase (1:1), e muitos estudiosos pensam que foi a partir desse uso que ela passou a designar livros como este.",
+  "facts": [
+    [
+      "Posição",
+      "2º livro do Novo Testamento e o segundo dos quatro Evangelhos"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "evangelho: relato breve e movimentado da atividade, da morte e da ressurreição de Jesus"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Começo na Galileia",
+      "from": 1,
+      "to": 3,
+      "text": "João Batista, o batismo e a tentação; o chamado dos primeiros discípulos, curas em Cafarnaum, os primeiros conflitos com os fariseus e a escolha dos doze."
+    },
+    {
+      "title": "Parábolas e milagres",
+      "from": 4,
+      "to": 5,
+      "text": "Parábolas sobre a semente e o Reino, a tempestade acalmada, o endemoninhado de Gerasa, a mulher que toca o manto de Jesus e a filha de Jairo."
+    },
+    {
+      "title": "Missão e incompreensão",
+      "from": 6,
+      "to": 8,
+      "text": "A rejeição em Nazaré, o envio dos doze, a morte de João Batista, duas multiplicações de pães e viagens a regiões de maioria gentia, enquanto os discípulos custam a compreender (até 8:26)."
+    },
+    {
+      "title": "No caminho",
+      "from": 8,
+      "to": 10,
+      "text": "A confissão de Pedro em Cesareia de Filipe abre a parte central: três anúncios da paixão, a transfiguração e ensinos sobre servir, até a cura do cego Bartimeu em Jericó."
+    },
+    {
+      "title": "Em Jerusalém",
+      "from": 11,
+      "to": 13,
+      "text": "A entrada na cidade, a figueira sem frutos, a purificação do templo, os debates com os líderes e o discurso sobre a destruição do templo e o fim."
+    },
+    {
+      "title": "Paixão e túmulo vazio",
+      "from": 14,
+      "to": 16,
+      "text": "A unção em Betânia, a última ceia, a prisão, os julgamentos, a crucificação, o sepultamento e o anúncio da ressurreição às mulheres; segue-se o final mais longo (16:9–20)."
+    }
+  ],
+  "extra": {
+    "title": "O final de Marcos",
+    "text": "Nos dois manuscritos completos mais antigos do Novo Testamento, o Sinaítico e o Vaticano, ambos do século IV, Marcos termina em 16:8: as mulheres encontram o túmulo vazio, ouvem que Jesus ressuscitou e fogem sem dizer nada a ninguém, “porque tinham medo”. A maior parte dos outros manuscritos traz um final mais longo (16:9–20), com aparições de Jesus, o envio dos discípulos e a ascensão; alguns trazem um final curto, de uma ou duas frases, e outros combinam os dois. O final longo já era conhecido no século II, pois Ireneu o cita, e foi lido nas igrejas ao longo dos séculos; mas a maioria dos estudiosos o considera um acréscimo posterior, pelas diferenças de vocabulário e de estilo e por resumir episódios narrados em outros evangelhos. Há quem pense que o autor quis terminar em 16:8, quem suponha que o final original se perdeu e quem defenda a autenticidade do final longo. A BLIVRE traz 16:9–20 entre « », e o texto grego SBLGNT o imprime entre colchetes duplos."
+  },
+  "people": [
+    {
+      "name": "Jesus",
+      "chapters": "1–16",
+      "ch": 1,
+      "note": "o Nazareno que anuncia a chegada do Reino de Deus; chamado de Filho pela voz do céu no batismo (1:11) e, diante da cruz, pelo centurião romano (15:39)"
+    },
+    {
+      "name": "João Batista",
+      "chapters": "1; 6",
+      "ch": 1,
+      "note": "prega no deserto um batismo de arrependimento e batiza Jesus no Jordão; é decapitado por ordem de Herodes"
+    },
+    {
+      "name": "Simão Pedro",
+      "chapters": "1–16",
+      "ch": 8,
+      "note": "pescador chamado entre os primeiros; confessa Jesus como o Cristo e depois o nega no pátio do sumo sacerdote; é lembrado pelo nome em 16:7"
+    },
+    {
+      "name": "Tiago e João",
+      "chapters": "1; 3; 9–10; 14",
+      "ch": 10,
+      "note": "filhos de Zebedeu, chamados Boanerges, “filhos do trovão”; pedem os primeiros lugares na glória (10:35–45)"
+    },
+    {
+      "name": "Os doze",
+      "chapters": "3; 6; 14",
+      "ch": 3,
+      "note": "escolhidos para estar com Jesus e ser enviados a pregar; no relato, muitas vezes não compreendem o mestre"
+    },
+    {
+      "name": "Herodes Antipas e Herodias",
+      "chapters": "6",
+      "ch": 6,
+      "note": "o governante da Galileia, chamado “rei”, e a mulher que pede a cabeça de João Batista"
+    },
+    {
+      "name": "Jairo",
+      "chapters": "5",
+      "ch": 5,
+      "note": "chefe de sinagoga que pede a Jesus pela filha à beira da morte"
+    },
+    {
+      "name": "Bartimeu",
+      "chapters": "10",
+      "ch": 10,
+      "note": "mendigo cego de Jericó; depois de curado, segue Jesus pelo caminho"
+    },
+    {
+      "name": "Judas Iscariotes",
+      "chapters": "3; 14",
+      "ch": 14,
+      "note": "um dos doze; entrega Jesus no Getsêmani com um beijo"
+    },
+    {
+      "name": "Pilatos",
+      "chapters": "15",
+      "ch": 15,
+      "note": "governador romano que interroga Jesus como “Rei dos Judeus” e o entrega à crucificação"
+    },
+    {
+      "name": "José de Arimateia",
+      "chapters": "15",
+      "ch": 15,
+      "note": "membro do conselho que pede o corpo de Jesus e o sepulta"
+    },
+    {
+      "name": "Maria Madalena, Maria e Salomé",
+      "chapters": "15–16",
+      "ch": 16,
+      "note": "acompanham a crucificação de longe, veem onde Jesus é sepultado e encontram o túmulo vazio"
+    }
+  ],
+  "writing": {
+    "tradition": "O livro não traz o nome do autor. Papias de Hierápolis, no início do século II, citado por Eusébio, registra o que ouvira de um “presbítero”: Marcos, que tinha sido intérprete de Pedro, escreveu com cuidado, embora não em ordem, o que lembrava das palavras e ações do Senhor tal como Pedro as ensinava. Ireneu, Clemente de Alexandria e outros escritores antigos repetem essa ligação com Pedro e situam a obra em Roma: para uns, ainda em vida do apóstolo; para outros, logo depois da sua morte, nos anos 60. Esse Marcos costuma ser identificado com o João Marcos de Atos (12:12, 25) e com o “Marcos” mencionado em 1 Pedro 5:13.",
+    "academic": "Desde o século XIX, a maioria dos estudiosos considera Marcos o mais antigo dos evangelhos e uma das fontes de Mateus e de Lucas, a chamada prioridade de Marcos: ele é o mais curto, tem o grego mais simples, e quase todo o seu conteúdo reaparece nos outros dois, muitas vezes com a redação polida. As datas mais defendidas giram em torno de 65–75, perto da guerra judaica contra Roma; o capítulo 13, com o aviso “quem lê, entenda” (13:14), é lido por uns como reflexo dos anos anteriores à destruição do templo e por outros como posterior a ela. Roma segue sendo o lugar mais citado, mas há quem proponha a Síria ou a Galileia. A ligação com Pedro é aceita por parte dos pesquisadores e vista por outros como um modo de dar autoridade ao texto; uma minoria, seguindo a hipótese de Griesbach, considera Marcos um resumo de Mateus e Lucas."
+  },
+  "events": {
+    "intro": "Marcos começa com Jesus já adulto e não indica anos; as datas da sua vida são calculadas a partir de outros textos e de referências históricas. O ministério público costuma ser situado entre c. 27/28 e 30/33 d.C., e a crucificação, sob Pilatos, em 30 ou 33. Como o livro é geralmente datado perto da guerra judaica contra Roma, a linha do tempo destaca esse período, junto com a perseguição de Nero e as duas propostas principais para a escrita.",
+    "axis": [
+      -10,
+      100
+    ],
+    "band": {
+      "label": "Guerra judaica contra Roma",
+      "from": 66,
+      "to": 73
+    },
+    "timeline": [
+      {
+        "label": "Herodes Antipas",
+        "from": -4,
+        "to": 39,
+        "kind": "pessoa",
+        "note": "governa a Galileia; manda decapitar João Batista (6:14–29)"
+      },
+      {
+        "label": "Ministério de Jesus",
+        "from": 27,
+        "to": 33,
+        "kind": "evento",
+        "note": "c. 27/28 a 30/33, conforme a cronologia adotada"
+      },
+      {
+        "label": "Crucificação",
+        "from": 30,
+        "to": 33,
+        "kind": "evento",
+        "note": "em Jerusalém, sob Pilatos; as datas mais defendidas são 30 e 33"
+      },
+      {
+        "label": "Perseguição de Nero em Roma",
+        "from": 64,
+        "to": 68,
+        "kind": "evento",
+        "note": "depois do incêndio de Roma, em 64; a tradição situa nesse período a morte de Pedro"
+      },
+      {
+        "label": "Destruição de Jerusalém",
+        "from": 70,
+        "to": 70,
+        "kind": "evento",
+        "note": "o exército romano toma a cidade e incendeia o templo (cf. 13:1–2)"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": 60,
+        "to": 68,
+        "kind": "escrita",
+        "note": "Marcos, intérprete de Pedro, em Roma"
+      },
+      {
+        "label": "Escrita, segundo a maioria dos pesquisadores",
+        "from": 65,
+        "to": 75,
+        "kind": "escrita",
+        "note": "o primeiro evangelho, perto da guerra e da queda do templo"
+      }
+    ]
+  },
+  "context": "Marcos parece escrever para leitores pouco familiarizados com os costumes judaicos e com o aramaico: explica as regras de pureza dos fariseus (7:3–4) e traduz expressões como “Talita cumi” (5:41), “Efatá” (7:34) e “Aba” (14:36). Também emprega várias palavras latinas transcritas em grego, ligadas ao exército, às moedas e à administração, como “legião” e “centurião”. A ação se concentra na Galileia e em volta do seu mar, com passagens por terras de maioria gentia, como a região de Tiro e Sidom e a Decápolis, antes da subida a Jerusalém. Se o livro foi escrito em Roma, como diz a tradição, seus primeiros leitores tinham viva a memória da perseguição de Nero e recebiam notícias da guerra na Judeia, o que ajudaria a entender a insistência no sofrimento e na fidelidade dos discípulos.",
+  "places": [
+    "Deserto da Judeia e rio Jordão",
+    "Galileia: Cafarnaum, Nazaré e o mar da Galileia",
+    "terra dos gerasenos e Decápolis",
+    "região de Tiro e Sidom",
+    "Cesareia de Filipe",
+    "Jericó",
+    "Jerusalém: o templo, Betânia, o Getsêmani e o Gólgota"
+  ],
+  "themes": [
+    "Reino de Deus",
+    "o segredo messiânico",
+    "o Filho do homem que sofre",
+    "fé e incompreensão dos discípulos",
+    "seguir pelo caminho da cruz",
+    "autoridade de Jesus"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:15",
+      "text": "e dizendo: O tempo se cumpriu, e o Reino de Deus está perto; arrependei-vos, e crede no Evangelho."
+    },
+    {
+      "ref": "8:29",
+      "text": "E ele lhes perguntou: E vós, quem dizeis que eu sou? Pedro lhe respondeu: Tu és o Cristo."
+    },
+    {
+      "ref": "10:45",
+      "text": "Porque também não veio o Filho do homem para ser servido, mas para servir, e dar sua vida em resgate por muitos."
+    },
+    {
+      "ref": "15:39",
+      "text": "E o centurião que estava ali diante dele, vendo que havia expirado assim, disse: Verdadeiramente este homem era Filho de Deus."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. Em 1:1, as palavras “Filho de Deus” faltam em alguns manuscritos antigos; a BLIVRE as traz entre « », e o SBLGNT as omite. Os versículos 7:16, 9:44, 9:46, 11:26 e 15:28 aparecem em manuscritos posteriores, mas não nos mais antigos nem no SBLGNT, e por isso ficam sem o original grego. Sobre 16:9–20, veja “O final de Marcos”. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

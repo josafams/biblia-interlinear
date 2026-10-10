@@ -1,0 +1,250 @@
+{
+  "title_orig": "יִרְמְיָהוּ",
+  "title_orig_xlit": "Yirmeyahu",
+  "summary": "Jeremias reúne as mensagens e a história de um profeta que atuou em Jerusalém durante as últimas quatro décadas do reino de Judá, de cerca de 627 a.C. até depois da destruição da cidade pelos babilônios, em 587/586 a.C. Ele denuncia a idolatria e a injustiça, ataca a confiança cega no templo e insiste que Judá deve se submeter à Babilônia, o que o faz ser visto como traidor, preso e ameaçado de morte. O livro guarda também orações em que o profeta se queixa a Deus do peso da missão, os relatos de suas prisões e da queda de Jerusalém, e a fuga forçada de um grupo de judeus, com Jeremias, para o Egito. Em meio aos anúncios de juízo, há promessas de volta do exílio e de uma nova aliança escrita no coração (cap. 30–33). O livro termina com oráculos contra as nações e com um apêndice histórico sobre a queda de Jerusalém.",
+  "name": "O nome hebraico Yirmeyahu é geralmente explicado como “o SENHOR exalta” ou “o SENHOR estabelece”; o sentido exato é discutido. Pela forma grega Ieremias e pela latina Ieremias (ou Hieremias), chegou ao português como Jeremias.",
+  "facts": [
+    [
+      "Posição",
+      "2º dos Profetas Maiores; na Bíblia hebraica, entre os Profetas Posteriores (Neviim)"
+    ],
+    [
+      "Língua original",
+      "hebraico; 10:11 em aramaico"
+    ],
+    [
+      "Gênero",
+      "profecia (oráculos em poesia, sermões em prosa e narrativas biográficas)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Chamado e advertências a Judá",
+      "from": 1,
+      "to": 25,
+      "text": "O chamado do profeta, denúncias contra a idolatria e a injustiça, o sermão do templo, gestos simbólicos, as queixas pessoais de Jeremias e o anúncio dos setenta anos de domínio babilônico."
+    },
+    {
+      "title": "Conflitos com sacerdotes, profetas e reis",
+      "from": 26,
+      "to": 29,
+      "text": "Jeremias é julgado, enfrenta o profeta Hananias por causa do jugo da Babilônia e escreve aos exilados."
+    },
+    {
+      "title": "Promessas de restauração",
+      "from": 30,
+      "to": 33,
+      "text": "Poemas de consolo, a nova aliança e a compra de um campo em Anatote como sinal de que a vida voltará à terra."
+    },
+    {
+      "title": "Os últimos anos de Jerusalém",
+      "from": 34,
+      "to": 45,
+      "text": "O rolo queimado pelo rei, as prisões do profeta, a queda da cidade, o assassinato do governador Gedalias e a ida ao Egito."
+    },
+    {
+      "title": "Oráculos contra as nações",
+      "from": 46,
+      "to": 51,
+      "text": "Egito, Filístia, Moabe, Amom, Edom, Damasco, Quedar, Elão e, por último e mais longamente, Babilônia."
+    },
+    {
+      "title": "Apêndice histórico",
+      "from": 52,
+      "to": 52,
+      "text": "A queda de Jerusalém e a libertação do rei Joaquim na Babilônia, em texto próximo de 2 Reis 24–25."
+    }
+  ],
+  "extra": {
+    "title": "Um versículo em aramaico",
+    "text": "Em meio a um poema em hebraico contra os ídolos, Jeremias 10:11 está em aramaico, a língua internacional da época, usada na diplomacia e no comércio do Oriente Próximo. É o único versículo assim no livro; fora dele, a Bíblia hebraica só tem trechos aramaicos em Esdras (4:8–6:18; 7:12–26), em Daniel (de 2:4 a 7:28) e duas palavras em Gênesis 31:47. A frase parece pensada para ser dita aos povos na língua deles, e o próprio texto brinca com dois termos aramaicos para “terra”. Há estudiosos que a consideram um acréscimo antigo ao poema e outros que a veem como parte original dele."
+  },
+  "people": [
+    {
+      "name": "Jeremias",
+      "chapters": "1–45",
+      "ch": 1,
+      "note": "de família sacerdotal de Anatote; profeta de Judá até depois da queda de Jerusalém"
+    },
+    {
+      "name": "Baruque",
+      "chapters": "32; 36; 43; 45",
+      "ch": 36,
+      "note": "filho de Nerias, escriba que escreve as palavras ditadas por Jeremias"
+    },
+    {
+      "name": "Josias",
+      "chapters": "1; 3; 22",
+      "ch": 1,
+      "note": "rei de Judá no início da atividade do profeta"
+    },
+    {
+      "name": "Jeoaquim",
+      "chapters": "22; 26; 36",
+      "ch": 36,
+      "note": "rei que queima o rolo das profecias"
+    },
+    {
+      "name": "Zedequias",
+      "chapters": "21; 27; 32–39",
+      "ch": 38,
+      "note": "último rei de Judá; consulta Jeremias às escondidas"
+    },
+    {
+      "name": "Hananias",
+      "chapters": "28",
+      "ch": 28,
+      "note": "profeta que anuncia o fim rápido do domínio babilônico"
+    },
+    {
+      "name": "Ebede-Meleque",
+      "chapters": "38–39",
+      "ch": 38,
+      "note": "oficial cuxita que tira Jeremias da cisterna"
+    },
+    {
+      "name": "Nabucodonosor",
+      "chapters": "21–52",
+      "ch": 39,
+      "note": "rei da Babilônia que toma Jerusalém"
+    },
+    {
+      "name": "Gedalias",
+      "chapters": "39–41",
+      "ch": 40,
+      "note": "governador de Judá nomeado pelos babilônios, assassinado por Ismael"
+    }
+  ],
+  "writing": {
+    "tradition": "A tradição atribui o livro ao próprio Jeremias, com a ajuda de Baruque. O capítulo 36 conta que o profeta ditou suas mensagens ao escriba no quarto ano de Jeoaquim (c. 605 a.C.) e que, depois de o rei queimar o rolo, ditou outro, ampliado. O Talmude (Bava Batra 15a) diz que Jeremias escreveu o seu livro, além de Reis e Lamentações. Nessa leitura, o livro foi composto entre c. 627 e c. 580 a.C., com o capítulo 52 acrescentado depois de 562 a.C., data da libertação de Joaquim.",
+    "academic": "Os estudiosos concordam que há no livro muito material ligado ao profeta, sobretudo nos poemas, mas descrevem a sua formação como longa. Distinguem os oráculos poéticos, os relatos sobre Jeremias, muitas vezes atribuídos ao círculo de Baruque, e sermões em prosa de estilo semelhante ao de Deuteronômio e de Reis, que muitos atribuem a editores do período do exílio. Um dado importante é que o livro circulou em duas formas: o texto grego da Septuaginta é cerca de um sétimo mais curto e põe os oráculos contra as nações logo depois de 25:13, em outra ordem; fragmentos achados em Qumran confirmam que as duas formas existiam em hebraico. Muitos entendem que a forma grega reflete uma edição mais antiga e que o texto hebraico tradicional, seguido pelas Bíblias em português, recebeu acréscimos até o período persa."
+  },
+  "events": {
+    "intro": "Jeremias data muitas de suas mensagens pelos anos dos reis de Judá, o que permite acompanhar a sua atividade na passagem do domínio assírio para o babilônico, até depois da destruição de Jerusalém. As datas da linha do tempo são aproximadas; quando o ano hebraico não coincide com o nosso, aparecem como faixas.",
+    "axis": [
+      -650,
+      -400
+    ],
+    "band": {
+      "label": "Império babilônico",
+      "from": -626,
+      "to": -539
+    },
+    "timeline": [
+      {
+        "label": "Atividade de Jeremias",
+        "from": -627,
+        "to": -582,
+        "kind": "pessoa",
+        "note": "do 13º ano de Josias (1:2) até a estadia no Egito; o fim de sua vida não é conhecido"
+      },
+      {
+        "label": "Reforma de Josias",
+        "from": -622,
+        "to": -622,
+        "kind": "evento",
+        "note": "achado do livro da Lei no templo (2 Reis 22–23)"
+      },
+      {
+        "label": "Queda de Nínive",
+        "from": -612,
+        "to": -612,
+        "kind": "evento",
+        "note": "babilônios e medos derrotam a Assíria"
+      },
+      {
+        "label": "Morte de Josias em Megido",
+        "from": -609,
+        "to": -609,
+        "kind": "evento",
+        "note": "Judá passa a depender do Egito"
+      },
+      {
+        "label": "Batalha de Carquemis",
+        "from": -605,
+        "to": -605,
+        "kind": "evento",
+        "note": "Nabucodonosor vence o faraó Neco (46:2)"
+      },
+      {
+        "label": "O rolo ditado a Baruque",
+        "from": -605,
+        "to": -604,
+        "kind": "escrita",
+        "note": "lido no templo e queimado pelo rei (cap. 36)"
+      },
+      {
+        "label": "Primeira deportação",
+        "from": -597,
+        "to": -597,
+        "kind": "evento",
+        "note": "o rei Joaquim e parte da elite levados à Babilônia"
+      },
+      {
+        "label": "Cerco e destruição de Jerusalém",
+        "from": -588,
+        "to": -586,
+        "kind": "evento",
+        "note": "a cidade cai em 587 ou 586 a.C. (cap. 39; 52)"
+      },
+      {
+        "label": "Assassinato de Gedalias e fuga ao Egito",
+        "from": -586,
+        "to": -582,
+        "kind": "evento",
+        "note": "o ano exato é discutido (cap. 41–43)"
+      },
+      {
+        "label": "Joaquim libertado na Babilônia",
+        "from": -562,
+        "to": -562,
+        "kind": "evento",
+        "note": "no primeiro ano de Evil-Merodaque (52:31)"
+      },
+      {
+        "label": "Forma final, segundo a pesquisa",
+        "from": -560,
+        "to": -400,
+        "kind": "escrita",
+        "note": "edições no exílio e no período persa"
+      }
+    ]
+  },
+  "context": "Jeremias viveu a passagem de um império a outro. Nos anos de Josias, a Assíria entrava em colapso; Nínive caiu em 612 a.C., e o Egito tentou ocupar o espaço, até ser derrotado pelos babilônios em Carquemis, em 605 a.C. A partir daí, Judá ficou entre a submissão à Babilônia e a esperança de ajuda egípcia, e os reis oscilaram entre os dois lados. A Crônica Babilônica registra a tomada de Jerusalém em 597 a.C., e tabletes administrativos da Babilônia mencionam rações de comida para Joaquim, “rei de Judá”. Das cartas de Laquis, escritas em óstracos pouco antes da queda final, vem um retrato da tensão militar desses meses. Depois da destruição de 587/586 a.C., parte da população ficou na terra sob o governo de Gedalias, em Mispá, e outra parte foi para o Egito, onde o livro situa as últimas palavras do profeta. O horizonte da Pérsia aparece de forma indireta, no anúncio de que o domínio babilônico teria fim.",
+  "places": [
+    "Jerusalém e o templo",
+    "Anatote, terra natal do profeta",
+    "Mispá",
+    "Egito: Tafnes, Migdol, Nofe (Mênfis)",
+    "Babilônia",
+    "Carquemis, junto ao Eufrates"
+  ],
+  "themes": [
+    "aliança e infidelidade",
+    "falsa segurança no templo",
+    "verdadeiros e falsos profetas",
+    "sofrimento do profeta",
+    "submissão à Babilônia",
+    "nova aliança",
+    "esperança além do exílio"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:5",
+      "text": "Antes que te formasse no ventre eu te conheci, e antes que saísses do útero eu te santifiquei, te dei por profeta às nações."
+    },
+    {
+      "ref": "10:11",
+      "text": "Assim lhes direis: Os deuses que não fizeram os céus nem a terra perecerão da terra e de debaixo deste céu."
+    },
+    {
+      "ref": "20:9",
+      "text": "Então eu disse: Não me lembrarei dele, nem falarei mais em seu nome; porém ela foi em meu coração como um fogo ardente contido em meus ossos; resisti até me cansar, mas não pude."
+    },
+    {
+      "ref": "29:7",
+      "text": "E buscai a paz da cidade para onde eu vos levei, e orai por ela ao SENHOR; porque na paz dela vós tereis paz."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte; a queda de Jerusalém é datada em 587 ou 586 a.C., conforme a forma de contar os anos dos reis. As Bíblias em português seguem o texto hebraico tradicional, mais longo que o da Septuaginta. Em 9:1 a numeração portuguesa corresponde a 8:23 no texto hebraico, e os versículos seguintes do capítulo 9 ficam deslocados em um número. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

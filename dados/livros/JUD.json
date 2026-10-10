@@ -1,0 +1,155 @@
+{
+  "title_orig": "Ἰούδα",
+  "title_orig_xlit": "Iouda",
+  "summary": "Judas é uma carta breve e enérgica. O autor pretendia escrever sobre a salvação comum, mas mudou de assunto para alertar contra pessoas que se infiltraram na comunidade e transformavam a graça em pretexto para a devassidão. Recorre a exemplos de juízo das Escrituras e de tradições judaicas — o povo no deserto, os anjos rebeldes, Sodoma e Gomorra, Caim, Balaão e Coré — e cita uma profecia atribuída a Enoque. Encerra com conselhos de misericórdia e com uma das doxologias mais conhecidas do Novo Testamento.",
+  "name": "O título “de Judas” (Iouda) vem do nome do autor, forma grega de Judá. O autor não tem relação com Judas Iscariotes; algumas tradições o identificam com o apóstolo Judas Tadeu, identificação que muitos não aceitam.",
+  "facts": [
+    [
+      "Posição",
+      "26º livro do Novo Testamento; 7ª e última das cartas gerais (ou católicas)"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "carta de advertência"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Saudação e motivo",
+      "from": 1,
+      "to": 1,
+      "text": "Judas saúda os chamados e explica por que escreve: é preciso batalhar pela fé, pois ímpios entraram disfarçadamente (1:1–4)."
+    },
+    {
+      "title": "Exemplos de juízo",
+      "from": 1,
+      "to": 1,
+      "text": "O povo que não creu no deserto, os anjos que deixaram sua habitação e Sodoma e Gomorra mostram que Deus julga (1:5–7)."
+    },
+    {
+      "title": "Retrato dos infiltrados",
+      "from": 1,
+      "to": 1,
+      "text": "Comparados a Caim, Balaão e Coré, a nuvens sem água e a árvores sem fruto; a profecia de Enoque anuncia o juízo sobre eles (1:8–16)."
+    },
+    {
+      "title": "Exortação e doxologia",
+      "from": 1,
+      "to": 1,
+      "text": "Lembrar as palavras dos apóstolos, edificar-se na fé, ter misericórdia dos que duvidam e louvar a Deus, que pode guardar de tropeçar (1:17–25)."
+    }
+  ],
+  "extra": {
+    "title": "Livros além do cânon hebraico",
+    "text": "Judas cita expressamente uma profecia de Enoque (1:14–15), que corresponde a um trecho de 1 Enoque, obra judaica preservada inteira em etíope e em fragmentos aramaicos encontrados em Qumran. A disputa entre o arcanjo Miguel e o diabo pelo corpo de Moisés (1:9) não está no Antigo Testamento; escritores antigos, como Orígenes, a ligaram a uma obra chamada Assunção de Moisés, hoje conhecida só em parte. Esse uso causou dúvidas sobre a carta em alguns lugares da Igreja antiga, como registram Jerônimo e Eusébio."
+  },
+  "people": [
+    {
+      "name": "Judas",
+      "chapters": "1",
+      "ch": 1,
+      "note": "apresenta-se como “servo de Jesus Cristo, e irmão de Tiago”"
+    },
+    {
+      "name": "Miguel, o arcanjo",
+      "chapters": "1",
+      "ch": 1,
+      "note": "não ousou amaldiçoar o diabo, mas disse: “O Senhor te repreenda” (1:9)"
+    },
+    {
+      "name": "Enoque",
+      "chapters": "1",
+      "ch": 1,
+      "note": "“o sétimo depois de Adão”, a quem se atribui uma profecia de juízo (1:14)"
+    },
+    {
+      "name": "Caim, Balaão e Coré",
+      "chapters": "1",
+      "ch": 1,
+      "note": "modelos de inveja, ganância e rebelião aplicados aos infiltrados (1:11)"
+    }
+  ],
+  "writing": {
+    "tradition": "O autor é identificado como Judas, irmão de Tiago e, portanto, um dos irmãos de Jesus mencionados nos Evangelhos (Marcos 6:3). Segundo Hegesipo, citado por Eusébio, netos de Judas ainda viviam na Galileia no tempo de Domiciano. A carta foi aceita cedo em várias igrejas — aparece no Cânon Muratoriano e é usada por Tertuliano e Clemente de Alexandria —, mas, por causa da citação de Enoque, foi questionada por alguns e figura entre os livros contestados na lista de Eusébio.",
+    "academic": "Os estudiosos se dividem. Muitos aceitam que a carta venha de Judas, irmão de Jesus, ou de seu círculo, num ambiente judeu-cristão da Palestina ou próximo dela, e a datam entre 50 e 90. Muitos outros a veem como escrita em nome de Judas, no fim do século I, observando a referência à fé que “de uma vez foi entregue” e às palavras ditas “pelos apóstolos” (1:3; 1:17) como algo do passado. É ampla a concordância de que 2 Pedro 2 depende de Judas."
+  },
+  "events": {
+    "intro": "A carta não se refere a acontecimentos datáveis. A linha do tempo mostra o que se sabe da família de Jesus e as faixas propostas para a escrita. As datas são aproximadas.",
+    "axis": [
+      25,
+      110
+    ],
+    "timeline": [
+      {
+        "label": "Morte e ressurreição de Jesus",
+        "from": 30,
+        "to": 33,
+        "kind": "evento",
+        "note": "data aproximada"
+      },
+      {
+        "label": "Irmãos de Jesus entre os primeiros cristãos",
+        "from": 33,
+        "to": 60,
+        "kind": "pessoa",
+        "note": "Atos 1:14; 1 Coríntios 9:5"
+      },
+      {
+        "label": "Morte de Tiago, irmão de Jesus",
+        "from": 62,
+        "to": 62,
+        "kind": "evento",
+        "note": "segundo Josefo"
+      },
+      {
+        "label": "Escrita, se de Judas",
+        "from": 50,
+        "to": 90,
+        "kind": "escrita",
+        "note": "posição tradicional e de parte dos estudiosos"
+      },
+      {
+        "label": "Escrita, se em nome de Judas",
+        "from": 80,
+        "to": 100,
+        "kind": "escrita",
+        "note": "posição de outra parte dos estudiosos"
+      },
+      {
+        "label": "Netos de Judas diante de Domiciano",
+        "from": 81,
+        "to": 96,
+        "kind": "evento",
+        "note": "relato de Hegesipo, citado por Eusébio"
+      }
+    ]
+  },
+  "context": "A carta pressupõe leitores familiarizados com as Escrituras de Israel e com tradições judaicas que circulavam fora delas, como as de 1 Enoque, o que sugere um ambiente judeu-cristão. Os infiltrados participam das refeições comunitárias de amor (os ágapes, 1:12), rejeitam autoridades, buscam vantagem e dividem a comunidade (1:19). O texto não diz onde estavam os destinatários.",
+  "places": [
+    "Egito e o deserto",
+    "Sodoma e Gomorra e as cidades vizinhas"
+  ],
+  "themes": [
+    "a fé entregue aos santos",
+    "falsos mestres",
+    "o juízo de Deus",
+    "misericórdia",
+    "perseverança",
+    "louvor a Deus"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:3",
+      "text": "Amados, procurando eu vos escrever com todo empenho sobre a nossa salvação comum, eu tive por necessário vos escrever e exortar a batalhar pela fé que de uma vez foi entregue aos santos."
+    },
+    {
+      "ref": "1:24–25",
+      "text": "E para aquele que é poderoso para vos guardar de tropeçar, e vos apresentar irrepreensíveis com alegria diante de sua glória; Ao único Deus, nosso Salvador, por meio de Jesus Cristo nosso Senhor, seja a glória e majestade, poder e autoridade, agora, e para todo o sempre, Amém!"
+    }
+  ],
+  "note": "Autoria e data são discutidas; as datas da linha do tempo são aproximadas. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

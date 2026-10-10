@@ -1,0 +1,149 @@
+{
+  "title_orig": "Πρὸς Φιλήμονα",
+  "title_orig_xlit": "Pros Philemona",
+  "summary": "Filemom é a mais curta das cartas de Paulo, um bilhete de um único capítulo. Preso, Paulo escreve a Filemom, cristão em cuja casa se reúne uma igreja, a respeito de Onésimo, escravo dele, que se tornou cristão junto de Paulo. Sem dar ordens, embora diga que poderia, Paulo pede que Filemom o receba “não mais como a um servo”, mas “como a um amado irmão” (1:16), oferece-se para pagar qualquer prejuízo e deixa entender que espera ainda mais do que pede. A carta é um exemplo vivo da arte de persuadir na Antiguidade e um texto importante nas discussões sobre a fé cristã e a escravidão.",
+  "name": "O título Pros Philemona, “A Filemom”, vem do destinatário principal, chamado “o amado, e nosso cooperador” (1:1). Apesar do tom pessoal, a saudação inclui também Ápia, Arquipo e a igreja que se reúne na casa, de modo que o pedido seria ouvido por toda a comunidade.",
+  "facts": [
+    [
+      "Posição",
+      "18º livro do Novo Testamento; 13ª e última das cartas de Paulo, na ordem do cânon"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "carta pessoal de recomendação e pedido"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Saudação e gratidão",
+      "from": 1,
+      "to": 1,
+      "text": "Paulo e Timóteo saúdam Filemom, Ápia, Arquipo e a igreja da casa; Paulo agradece o amor e a fé de Filemom, que reanimou os santos (1:1–7)."
+    },
+    {
+      "title": "O pedido por Onésimo",
+      "from": 1,
+      "to": 1,
+      "text": "Paulo apela, em vez de ordenar; Onésimo, antes “inútil”, agora é útil; que Filemom o receba como receberia o próprio Paulo, que assume qualquer dívida (1:8–21)."
+    },
+    {
+      "title": "Planos e saudações",
+      "from": 1,
+      "to": 1,
+      "text": "Paulo pede que lhe preparem hospedagem, pois espera ser solto, e manda saudações de Epafras, Marcos, Aristarco, Demas e Lucas (1:22–25)."
+    }
+  ],
+  "extra": {
+    "title": "Um jogo de palavras",
+    "text": "O nome Onésimo, comum entre escravos, significa em grego “útil” ou “proveitoso”. Paulo brinca com isso ao dizer que aquele que antes era “inútil” agora é “útil para mim e para ti” (1:11), usando as palavras gregas áchrēstos e eúchrēstos, que, segundo muitos intérpretes, também lembravam no som o título Christós. Mais adiante, ao pedir “que eu tenha algum benefício de ti” (1:20), usa um verbo da mesma raiz do nome."
+  },
+  "people": [
+    {
+      "name": "Paulo",
+      "chapters": "1",
+      "ch": 1,
+      "note": "“prisioneiro de Cristo Jesus” (1:1); escreve de próprio punho o compromisso de pagar (1:19)"
+    },
+    {
+      "name": "Filemom",
+      "chapters": "1",
+      "ch": 1,
+      "note": "cristão abastado, cooperador de Paulo, em cuja casa se reúne uma igreja; dono de Onésimo"
+    },
+    {
+      "name": "Onésimo",
+      "chapters": "1",
+      "ch": 1,
+      "note": "escravo de Filemom, a quem Paulo chama de “meu filho”, gerado nas prisões (1:10)"
+    },
+    {
+      "name": "Ápia e Arquipo",
+      "chapters": "1",
+      "ch": 1,
+      "note": "saudados com Filemom; muitos pensam que Ápia seja sua esposa e Arquipo, talvez, seu filho; Arquipo aparece também em Colossenses 4:17"
+    },
+    {
+      "name": "Epafras, Marcos, Aristarco, Demas e Lucas",
+      "chapters": "1",
+      "ch": 1,
+      "note": "companheiros de Paulo que mandam saudações; os mesmos nomes aparecem em Colossenses 4:10–14"
+    }
+  ],
+  "writing": {
+    "tradition": "A autoria de Paulo nunca foi contestada; a carta já fazia parte da coleção de Marcião, c. 140, e consta do Fragmento Muratoriano. Pela ligação com Colossenses — Onésimo, Arquipo e os mesmos companheiros — a tradição a situou na prisão de Paulo em Roma, c. 60–62, enviada junto com Colossenses.",
+    "academic": "Filemom está entre as sete cartas que praticamente todos os estudiosos atribuem a Paulo, ao lado de Romanos, 1 e 2 Coríntios, Gálatas, Filipenses e 1 Tessalonicenses. O ponto discutido é o lugar da prisão: Roma (c. 60–62) ou Éfeso (c. 54–55), esta mais próxima de Colossos, o que tornaria mais fáceis a ida de Onésimo até Paulo e o pedido de hospedagem do versículo 22; Cesareia também já foi proposta. Também se discute a situação de Onésimo: a leitura tradicional o vê como escravo fugitivo, talvez depois de causar prejuízo ao dono; outros pensam que ele procurou Paulo como amigo do senhor para interceder num desentendimento, prática conhecida no direito romano; outros ainda, que foi enviado pela própria igreja para servir Paulo. E se debate o que Paulo pede exatamente — perdão, a volta de Onésimo para ajudá-lo ou a sua libertação."
+  },
+  "events": {
+    "intro": "A carta não traz datas, e a data depende do lugar da prisão de Paulo. As datas são aproximadas.",
+    "axis": [
+      45,
+      115
+    ],
+    "band": {
+      "label": "Reinado de Nero",
+      "from": 54,
+      "to": 68
+    },
+    "timeline": [
+      {
+        "label": "Paulo em Éfeso",
+        "from": 53,
+        "to": 56,
+        "kind": "evento",
+        "note": "nessa época o evangelho chega a Colossos, por meio de Epafras"
+      },
+      {
+        "label": "Escrita, se em Éfeso",
+        "from": 54,
+        "to": 55,
+        "kind": "escrita",
+        "note": "hipótese de muitos estudiosos"
+      },
+      {
+        "label": "Escrita, se em Roma",
+        "from": 60,
+        "to": 62,
+        "kind": "escrita",
+        "note": "posição tradicional, junto com Colossenses"
+      },
+      {
+        "label": "Inácio cita um bispo Onésimo em Éfeso",
+        "from": 107,
+        "to": 110,
+        "kind": "pessoa",
+        "note": "alguns o identificam com o Onésimo da carta, hipótese sem confirmação"
+      }
+    ]
+  },
+  "context": "A escravidão era parte estrutural da sociedade romana: escravos trabalhavam em casas, oficinas e campos, podiam ter funções de confiança e às vezes conseguiam a alforria, mas pertenciam legalmente aos seus donos, que podiam punir severamente os fugitivos. As igrejas reuniam, nas mesmas casas, senhores e escravos. Pela carta a Colossenses, que menciona Onésimo como “um de vós” (Colossenses 4:9) e Arquipo, entende-se que Filemom vivia em Colossos, no vale do Lico, na Ásia Menor. Uma carta do escritor romano Plínio, o Jovem, do início do século II, intercedendo junto a um amigo por um liberto arrependido, é frequentemente lida ao lado de Filemom como exemplo do mesmo tipo de pedido.",
+  "places": [
+    "Colossos",
+    "o lugar da prisão de Paulo (Roma ou Éfeso)"
+  ],
+  "themes": [
+    "reconciliação",
+    "a fraternidade em Cristo",
+    "escravidão",
+    "persuasão e liberdade",
+    "comunhão e hospitalidade"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:8–9",
+      "text": "Por isso, ainda que em Cristo eu tenha grande confiança para te mandar aquilo que te é conveniente, Em vez disso por amor eu te peço, ainda que eu seja tal, Paulo, o velho, e também agora um prisioneiro de Jesus Cristo;"
+    },
+    {
+      "ref": "1:10–11",
+      "text": "Eu te peço por meu filho Onésimo, ao qual eu gerei durante minhas prisões. Aquele que antes te era inútil, mas agora útil para mim e para ti,"
+    },
+    {
+      "ref": "1:15–16",
+      "text": "Porque talvez por isso que ele tenha se separado de ti por algum tempo, para que tu o recebesses de volta para sempre. Não mais como a um servo, mas sim mais que um servo, como a um amado irmão, especialmente para mim, e muito mais de ti, tanto na carne como no Senhor."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte e o lugar adotado para a prisão de Paulo. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

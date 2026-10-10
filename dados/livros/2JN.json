@@ -1,0 +1,123 @@
+{
+  "title_orig": "Ἰωάννου Βʹ",
+  "title_orig_xlit": "Ioannou B",
+  "summary": "2 João é um bilhete do “ancião” a uma “senhora eleita” e a seus filhos. Ele se alegra porque alguns deles andam na verdade, lembra o mandamento antigo de amar uns aos outros e adverte contra enganadores que não reconhecem que Jesus Cristo veio em carne: esses não devem ser recebidos em casa. Termina com a esperança de uma visita.",
+  "name": "O título “Segunda de João” (Ioannou B) segue a atribuição tradicional ao apóstolo João; no texto, o autor se identifica apenas como “o ancião” (1:1).",
+  "facts": [
+    [
+      "Posição",
+      "24º livro do Novo Testamento; 5ª das cartas gerais (ou católicas)"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "carta breve"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Saudação",
+      "from": 1,
+      "to": 1,
+      "text": "O ancião saúda a senhora eleita e seus filhos, “aos quais eu amo em verdade” (1:1–3)."
+    },
+    {
+      "title": "Andar no amor",
+      "from": 1,
+      "to": 1,
+      "text": "Alegria pelos que andam na verdade e o pedido de que se amem uns aos outros, guardando os mandamentos (1:4–6)."
+    },
+    {
+      "title": "Cuidado com os enganadores",
+      "from": 1,
+      "to": 1,
+      "text": "Quem não confessa a vinda de Jesus Cristo em carne não deve ser recebido nem saudado (1:7–11)."
+    },
+    {
+      "title": "Despedida",
+      "from": 1,
+      "to": 1,
+      "text": "O ancião prefere falar “face a face” e manda saudações dos filhos da irmã eleita (1:12–13)."
+    }
+  ],
+  "people": [
+    {
+      "name": "O ancião",
+      "chapters": "1",
+      "ch": 1,
+      "note": "autor que se apresenta pelo título, como em 3 João"
+    },
+    {
+      "name": "A senhora eleita e seus filhos",
+      "chapters": "1",
+      "ch": 1,
+      "note": "provavelmente uma igreja local e seus membros, em linguagem figurada; alguns pensam numa mulher concreta"
+    },
+    {
+      "name": "A irmã eleita",
+      "chapters": "1",
+      "ch": 1,
+      "note": "provavelmente a igreja de onde o ancião escreve (1:13)"
+    }
+  ],
+  "writing": {
+    "tradition": "A tradição atribui a carta ao apóstolo João, que em idade avançada teria se identificado como “o ancião”, e a situa em Éfeso, no fim do século I. Sua aceitação foi mais lenta que a de 1 João: Eusébio, no século IV, a menciona entre os livros contestados por alguns.",
+    "academic": "Os estudiosos ligam 2 João ao mesmo ambiente de 1 João, com vocabulário e preocupações quase idênticos, e muitos a atribuem ao mesmo autor que escreveu 3 João. Discute-se se esse ancião é o apóstolo, um líder conhecido como “João, o Ancião” (mencionado por Papias) ou outra pessoa. A data mais proposta é c. 90–110."
+  },
+  "events": {
+    "intro": "As três cartas de João vêm de um mesmo período e ambiente. As datas são aproximadas.",
+    "axis": [
+      60,
+      130
+    ],
+    "timeline": [
+      {
+        "label": "Evangelho de João",
+        "from": 85,
+        "to": 100,
+        "kind": "escrita",
+        "note": "data aproximada"
+      },
+      {
+        "label": "Escrita das cartas de João",
+        "from": 90,
+        "to": 110,
+        "kind": "escrita",
+        "note": "data aproximada"
+      },
+      {
+        "label": "Papias escreve sobre os anciãos",
+        "from": 110,
+        "to": 130,
+        "kind": "escrita",
+        "note": "data discutida; menciona um “João, o Ancião”"
+      }
+    ]
+  },
+  "context": "Os pregadores itinerantes dependiam da hospitalidade das igrejas, que se reuniam em casas. Por isso, recusar-se a receber alguém era a forma prática de não apoiar sua mensagem. O ancião aplica esse recurso aos que negam que Jesus Cristo veio em carne, a mesma questão que aparece em 1 João.",
+  "places": [
+    "a comunidade da senhora eleita (não identificada)",
+    "Éfeso e a província da Ásia (pela tradição)"
+  ],
+  "themes": [
+    "verdade",
+    "amor mútuo",
+    "o mandamento desde o princípio",
+    "Jesus Cristo vindo em carne",
+    "hospitalidade e discernimento"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:5–6",
+      "text": "E agora, senhora, eu te rogo, não como te escrevendo um novo mandamento, mas o que tivemos desde o princípio: que nos amemos uns aos outros. E este é o amor: que andemos segundo seus mandamentos. E este é o mandamento, como já ouvistes desde o princípio: que nele andeis."
+    },
+    {
+      "ref": "1:7",
+      "text": "Porque muitos enganadores têm surgido no mundo que não declaram que Jesus Cristo veio em carne. Este é o enganador e o anticristo."
+    }
+  ],
+  "note": "Datas aproximadas. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

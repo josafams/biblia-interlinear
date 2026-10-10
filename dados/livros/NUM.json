@@ -1,0 +1,200 @@
+{
+  "title_orig": "בְּמִדְבַּר",
+  "title_orig_xlit": "Bemidbar",
+  "summary": "Números acompanha Israel do monte Sinai até os campos de Moabe, junto ao Jordão, diante de Jericó. Começa com o recenseamento das tribos e a organização do acampamento em torno do tabernáculo e, depois da partida do Sinai, narra uma série de queixas e revoltas no caminho. Quando o povo se recusa a entrar em Canaã após o relatório dos espias, a geração que saiu do Egito é condenada a vagar quarenta anos no deserto. A última parte se passa nos campos de Moabe: os oráculos de Balaão, um novo censo da geração seguinte, a escolha de Josué e leis para a vida na terra. Narrativas e leis se alternam ao longo de todo o livro.",
+  "name": "O nome “Números” vem do latim Numeri, que traduz o grego Arithmoi, título dado na Septuaginta por causa dos dois recenseamentos (caps. 1 e 26). Em hebraico o livro se chama Bemidbar, “No deserto”, palavra que aparece já no primeiro versículo.",
+  "facts": [
+    [
+      "Posição",
+      "4º livro da Torá (Pentateuco)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "narrativa e leis, com listas e poemas"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "No Sinai",
+      "from": 1,
+      "to": 10,
+      "text": "Censo, ordem do acampamento, funções dos levitas, leis de pureza e a consagração do tabernáculo, até a partida em 10:11."
+    },
+    {
+      "title": "A caminho, pelo deserto",
+      "from": 10,
+      "to": 21,
+      "text": "Queixas, a recusa diante de Canaã, a rebelião de Coré, as mortes de Miriã e de Arão e as primeiras vitórias a leste do Jordão."
+    },
+    {
+      "title": "Nos campos de Moabe",
+      "from": 22,
+      "to": 36,
+      "text": "Balaão, Baal-Peor, o segundo censo, Josué como sucessor, calendário de ofertas, a guerra contra Midiã e a preparação para dividir a terra."
+    }
+  ],
+  "extra": {
+    "title": "Duas gerações, dois censos",
+    "text": "Os recenseamentos dos capítulos 1 e 26 servem de moldura ao livro. O primeiro conta a geração que saiu do Egito; o segundo, feito quase quarenta anos depois, conta seus filhos, e o texto observa que, dos contados no Sinai, só restavam Calebe e Josué (26:64–65). Muitos leitores veem aí a chave do livro: a passagem de uma geração que morre no deserto para outra que está pronta para entrar na terra."
+  },
+  "people": [
+    {
+      "name": "Moisés",
+      "chapters": "1–36",
+      "ch": 1,
+      "note": "conduz o povo, intercede por ele e recebe as leis; não poderá entrar em Canaã (20:12)"
+    },
+    {
+      "name": "Arão",
+      "chapters": "1–20",
+      "ch": 17,
+      "note": "sumo sacerdote; sua vara floresce, e ele morre no monte Hor"
+    },
+    {
+      "name": "Miriã",
+      "chapters": "12; 20",
+      "ch": 12,
+      "note": "irmã de Moisés; fica leprosa por uma semana e morre em Cades"
+    },
+    {
+      "name": "Eleazar",
+      "chapters": "3–36",
+      "ch": 20,
+      "note": "filho de Arão; sucede o pai no sacerdócio"
+    },
+    {
+      "name": "Josué e Calebe",
+      "chapters": "13–14; 26–27; 32; 34",
+      "ch": 14,
+      "note": "os dois espias que defendem a entrada em Canaã; Josué é escolhido sucessor de Moisés"
+    },
+    {
+      "name": "Coré, Datã e Abirão",
+      "chapters": "16",
+      "ch": 16,
+      "note": "lideram uma revolta contra Moisés e Arão"
+    },
+    {
+      "name": "Balaão e Balaque",
+      "chapters": "22–24; 31",
+      "ch": 22,
+      "note": "o adivinho chamado pelo rei de Moabe para amaldiçoar Israel, que acaba por abençoá-lo"
+    },
+    {
+      "name": "Fineias",
+      "chapters": "25; 31",
+      "ch": 25,
+      "note": "neto de Arão; age com violência em Baal-Peor e recebe um pacto de sacerdócio"
+    },
+    {
+      "name": "As filhas de Zelofeade",
+      "chapters": "27; 36",
+      "ch": 27,
+      "note": "Maalá, Noa, Hogla, Milca e Tirza pedem a herança do pai, que não teve filhos homens"
+    }
+  ],
+  "writing": {
+    "tradition": "Como o restante da Torá, Números é atribuído a Moisés pelas tradições judaica e cristã; o próprio livro diz que Moisés registrou as etapas da viagem (33:2). Nessa leitura, ele teria sido escrito durante a peregrinação no deserto, por volta de 1446–1406 a.C., ou no século XIII a.C. para quem adota a data mais tardia do Êxodo.",
+    "academic": "Para a maioria dos estudiosos, Números combina material sacerdotal (listas, censos, leis de culto e de pureza) com narrativas não sacerdotais, como a dos espias e a de Balaão, muitas vezes com as duas camadas entrelaçadas no mesmo episódio. Há quem considere o livro uma das partes mais tardias do Pentateuco, redigida para ligar as leis do Sinai à conquista, e a forma final costuma ser situada no período persa, por volta de 500–400 a.C. Alguns trechos poéticos, como o fragmento do “livro das batalhas do SENHOR” (21:14) e os oráculos de Balaão, são considerados por muitos mais antigos que o conjunto."
+  },
+  "events": {
+    "intro": "Números diz cobrir quase quarenta anos: do segundo mês do segundo ano após a saída do Egito (1:1) ao quadragésimo ano, em que Arão morre (33:38). A maior parte desse período fica em silêncio; o livro se concentra no começo e no fim da viagem. As datas dependem da posição sobre o Êxodo: cerca de 1446–1406 a.C. na cronologia tradicional, ou o século XIII a.C. para quem prefere a data tardia. Fora da Bíblia, uma inscrição encontrada em Deir Alla, na Jordânia, menciona um vidente chamado Balaão, filho de Beor; ela é bem posterior ao cenário do livro e não confirma o relato, mas mostra que a figura era conhecida na região.",
+    "axis": [
+      -1550,
+      -350
+    ],
+    "band": {
+      "label": "Idade do Bronze Recente",
+      "from": -1550,
+      "to": -1200
+    },
+    "timeline": [
+      {
+        "label": "Moisés",
+        "from": -1526,
+        "to": -1406,
+        "kind": "pessoa",
+        "note": "120 anos ao morrer (Deuteronômio 34:7), na cronologia tradicional"
+      },
+      {
+        "label": "Peregrinação no deserto, data antiga",
+        "from": -1446,
+        "to": -1406,
+        "kind": "evento",
+        "note": "os quarenta anos (14:33–34); a partida do Sinai em 10:11 cai c. 1445 a.C."
+      },
+      {
+        "label": "Morte de Arão",
+        "from": -1407,
+        "to": -1406,
+        "kind": "evento",
+        "note": "no quadragésimo ano, aos 123 anos (33:38–39), na cronologia tradicional"
+      },
+      {
+        "label": "Peregrinação no deserto, data tardia",
+        "from": -1270,
+        "to": -1220,
+        "kind": "evento",
+        "note": "faixa aproximada, para quem situa o Êxodo no século XIII a.C."
+      },
+      {
+        "label": "Inscrição de Deir Alla",
+        "from": -840,
+        "to": -760,
+        "kind": "evento",
+        "note": "texto em reboco que fala de Balaão, filho de Beor; data aproximada"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -1446,
+        "to": -1406,
+        "kind": "escrita",
+        "note": "Moisés, durante a peregrinação no deserto"
+      },
+      {
+        "label": "Forma final, segundo a pesquisa",
+        "from": -500,
+        "to": -400,
+        "kind": "escrita",
+        "note": "período persa, sobre tradições e poemas mais antigos"
+      }
+    ]
+  },
+  "context": "O livro se move entre o Sinai, cuja localização exata é discutida, o deserto de Parã, o oásis de Cades (Cades-Barneia), no sul de Canaã, e a Transjordânia, onde Israel contorna Edom e enfrenta os reis amorreus Seom, de Hesbom, e Ogue, de Basã. Os campos de Moabe, na margem leste do Jordão em frente a Jericó, são o cenário dos capítulos finais. Os reinos de Edom, Moabe e Amom, citados no livro, são conhecidos por fontes externas sobretudo a partir da Idade do Ferro; a estela de Mesa, rei de Moabe (c. 840 a.C.), cita lugares como Nebo, Hesbom e Dibom, que também aparecem em Números.",
+  "places": [
+    "deserto do Sinai",
+    "deserto de Parã",
+    "Cades, no deserto de Zim",
+    "monte Hor",
+    "Hesbom e Basã",
+    "campos de Moabe, junto ao Jordão de Jericó",
+    "Baal-Peor e Sitim"
+  ],
+  "themes": [
+    "presença de Deus no acampamento",
+    "murmuração e rebelião",
+    "intercessão",
+    "santidade e sacerdócio",
+    "promessa da terra",
+    "nova geração"
+  ],
+  "key_verses": [
+    {
+      "ref": "6:24–26",
+      "text": "O SENHOR te abençoe, e te guarde: Faça resplandecer o SENHOR seu rosto sobre ti, e tenha de ti misericórdia: O SENHOR levante a ti seu rosto, e ponha em ti paz."
+    },
+    {
+      "ref": "21:8–9",
+      "text": "E o SENHOR disse a Moisés: Faze-te uma serpente ardente, e põe-a sobre a haste: e será que qualquer um que for mordido e olhar a ela, viverá. E Moisés fez uma serpente de bronze, e a pôs sobre a haste, e foi, que quando alguma serpente mordia a algum, olhava à serpente de bronze, e vivia."
+    },
+    {
+      "ref": "24:17",
+      "text": "Verei, mas não agora: O olharei, mas não de perto: Sairá estrela de Jacó, E se levantará cetro de Israel, E ferirá os cantos de Moabe, E destruirá a todos os filhos de Sete."
+    }
+  ],
+  "note": "As datas são aproximadas e dependem da posição adotada sobre o Êxodo. Os totais dos censos (603.550 em 1:46 e 601.730 em 26:51, só de homens adultos) são discutidos: há quem os leia literalmente, quem os entenda como números simbólicos ou ampliados, e quem proponha que a palavra hebraica traduzida por “mil” (elef) indicasse ali uma unidade militar ou um clã. A numeração segue a das Bíblias em português; no texto hebraico, 16:36–50 aparece como 17:1–15, 17:1–13 como 17:16–28 e 29:40 como 30:1. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

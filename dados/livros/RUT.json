@@ -1,0 +1,179 @@
+{
+  "title_orig": "רוּת",
+  "title_orig_xlit": "Rut",
+  "summary": "Rute é uma narrativa curta ambientada “nos dias em que governavam os juízes”. Depois de perder o marido e os dois filhos em Moabe, Noemi volta a Belém acompanhada da nora moabita Rute, que se recusa a deixá-la. Rute recolhe espigas no campo de Boaz, parente de Noemi, e, por iniciativa da sogra, pede a ele proteção como resgatador da família. Boaz resolve a questão diante dos anciãos, casa-se com Rute, e o filho do casal, Obede, aparece numa genealogia que termina em Davi.",
+  "name": "O livro leva o nome da sua protagonista, Rute, a moabita. O significado do nome é incerto; entre as propostas está a de uma ligação com a palavra hebraica para “amiga” ou “companheira”.",
+  "facts": [
+    [
+      "Posição",
+      "8º livro da Bíblia, depois de Juízes; na Bíblia hebraica, entre os Escritos (Ketuvim), um dos cinco Rolos (Meguilot)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "narrativa breve, com genealogia final"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Perda e retorno",
+      "from": 1,
+      "to": 1,
+      "text": "A família de Elimeleque em Moabe, as mortes e a volta de Noemi e Rute a Belém."
+    },
+    {
+      "title": "No campo de Boaz",
+      "from": 2,
+      "to": 2,
+      "text": "Rute colhe espigas e encontra a generosidade de Boaz."
+    },
+    {
+      "title": "Na eira",
+      "from": 3,
+      "to": 3,
+      "text": "À noite, Rute pede a Boaz que assuma o papel de resgatador."
+    },
+    {
+      "title": "Na porta da cidade",
+      "from": 4,
+      "to": 4,
+      "text": "O resgate diante dos anciãos, o casamento, o nascimento de Obede e a genealogia até Davi."
+    }
+  ],
+  "extra": {
+    "title": "O resgatador (go’el)",
+    "text": "A trama gira em torno do go’el, o parente próximo que tinha o dever de proteger a família: recuperar terras vendidas, resgatar parentes e manter vivo o nome de um morto (Levítico 25:25; Deuteronômio 25:5–10). Na BLIVRE, a palavra aparece como “parente”, “parente próximo” ou “remidor” (2:20; 3:9; 4:1). O livro combina essas práticas de modo próprio, e os estudiosos discutem como elas funcionavam na realidade. Outra palavra-chave é hesed, a lealdade bondosa que Noemi, Rute e Boaz demonstram uns aos outros (1:8; 2:20; 3:10)."
+  },
+  "people": [
+    {
+      "name": "Noemi",
+      "chapters": "1–4",
+      "ch": 1,
+      "note": "volta a Belém sem marido nem filhos e pede para ser chamada Mara, “amarga”"
+    },
+    {
+      "name": "Rute",
+      "chapters": "1–4",
+      "ch": 1,
+      "note": "moabita, viúva de Malom; acompanha a sogra e se casa com Boaz"
+    },
+    {
+      "name": "Orfa",
+      "chapters": "1",
+      "ch": 1,
+      "note": "a outra nora, que volta para o seu povo"
+    },
+    {
+      "name": "Elimeleque, Malom e Quiliom",
+      "chapters": "1; 4",
+      "ch": 1,
+      "note": "o marido e os filhos de Noemi, mortos em Moabe"
+    },
+    {
+      "name": "Boaz",
+      "chapters": "2–4",
+      "ch": 2,
+      "note": "parente rico de Elimeleque em Belém; resgata a herança e se casa com Rute"
+    },
+    {
+      "name": "Obede",
+      "chapters": "4",
+      "ch": 4,
+      "note": "filho de Rute e Boaz, avô de Davi"
+    }
+  ],
+  "writing": {
+    "tradition": "O Talmude babilônico (Bava Batra 14b) atribui a Samuel a escrita de Rute, assim como a de Juízes e do livro que leva seu nome. Nessa leitura, o livro teria sido escrito no início da monarquia, por volta de 1050–1000 a.C., ou um pouco depois, já que a genealogia final chega a Davi.",
+    "academic": "Não há consenso sobre a data. Parte dos estudiosos defende a época da monarquia (séculos X a VIII a.C.), apoiando-se no hebraico de estilo clássico e no interesse pela família de Davi. Outros preferem o período depois do exílio (séculos V e IV a.C.), citando algumas formas tardias de linguagem, a explicação de um costume já antigo (4:7) e a acolhida de uma estrangeira, que muitos leem como contraponto às medidas de Esdras e Neemias contra casamentos com mulheres estrangeiras. A genealogia de 4:18–22 é frequentemente vista como um acréscimo."
+  },
+  "events": {
+    "intro": "O livro não dá datas, apenas situa a história no tempo dos juízes (1:1). Como Boaz é bisavô de Davi (4:17, 21–22), quem calcula a partir das gerações costuma pôr os fatos no século XII ou no início do XI a.C.; o número exato de gerações, porém, é incerto, e a linha do tempo mostra só uma situação aproximada. As propostas para a escrita aparecem ao lado.",
+    "axis": [
+      -1400,
+      -300
+    ],
+    "band": {
+      "label": "Idade do Ferro I",
+      "from": -1200,
+      "to": -1000
+    },
+    "timeline": [
+      {
+        "label": "Período dos juízes, cronologia tradicional",
+        "from": -1380,
+        "to": -1050,
+        "kind": "evento",
+        "note": "da morte de Josué ao início do reinado de Saul"
+      },
+      {
+        "label": "A história de Rute, situação aproximada",
+        "from": -1150,
+        "to": -1100,
+        "kind": "evento",
+        "note": "três gerações antes de Davi, pela genealogia de 4:17–22"
+      },
+      {
+        "label": "Davi",
+        "from": -1040,
+        "to": -970,
+        "kind": "pessoa",
+        "note": "bisneto de Rute e Boaz; reina c. 1010–970 a.C."
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -1050,
+        "to": -1000,
+        "kind": "escrita",
+        "note": "Samuel, segundo o Talmude"
+      },
+      {
+        "label": "Escrita, segundo parte da pesquisa",
+        "from": -950,
+        "to": -700,
+        "kind": "escrita",
+        "note": "época da monarquia"
+      },
+      {
+        "label": "Escrita, segundo outra parte da pesquisa",
+        "from": -500,
+        "to": -350,
+        "kind": "escrita",
+        "note": "período persa"
+      }
+    ]
+  },
+  "context": "A história começa com uma fome que leva uma família de Belém de Judá às planícies de Moabe, a leste do mar Morto, e volta a Belém no início da colheita da cevada, na primavera. O livro mostra costumes da vida rural: o direito dos pobres de recolher espigas que ficavam para trás (Levítico 19:9–10; Deuteronômio 24:19), o trabalho na eira e a solução de questões legais diante dos anciãos, na porta da cidade. A relação entre Israel e Moabe era tensa em outros textos (Deuteronômio 23:3), o que torna significativo que a bisavó de Davi seja moabita. Na tradição judaica, Rute é lido na festa de Shavuot (Pentecostes), que coincide com a colheita.",
+  "places": [
+    "Belém de Judá",
+    "campos de Moabe",
+    "o campo de Boaz",
+    "a eira",
+    "a porta da cidade"
+  ],
+  "themes": [
+    "lealdade (hesed)",
+    "resgate",
+    "o estrangeiro acolhido",
+    "perda e restauração",
+    "providência discreta",
+    "a família de Davi"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:16",
+      "text": "E Rute respondeu: Não me rogues que te deixe, e que me aparte de ti: porque de onde quer que tu fores, irei eu; e de onde quer que viveres, viverei. Teu povo será meu povo, e teu Deus meu Deus."
+    },
+    {
+      "ref": "2:12",
+      "text": "O SENHOR recompense tua obra, e tua remuneração seja cheia pelo SENHOR Deus de Israel, que vieste para cobrir-te debaixo de suas asas."
+    },
+    {
+      "ref": "4:17",
+      "text": "E as vizinhas dizendo, a Noemi nasceu um filho, lhe puseram nome; e chamaram-lhe Obede. Este é pai de Jessé, pai de Davi."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

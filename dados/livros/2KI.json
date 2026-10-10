@@ -1,0 +1,373 @@
+{
+  "title_orig": "מְלָכִים ב",
+  "title_orig_xlit": "Melakhim Bet",
+  "summary": "2 Reis continua a história dos dois reinos até o fim de ambos. Elias é levado ao céu e Eliseu assume o seu lugar, com uma série de milagres e intervenções na política de Israel e da Síria. O golpe de Jeú elimina a dinastia de Acabe e o culto a Baal no norte, enquanto em Judá a rainha Atalia usurpa o trono até a coroação do menino Joás. Com o avanço da Assíria, Samaria cai e grande parte da população de Israel é deportada, o que o capítulo 17 interpreta como consequência da infidelidade do povo. Judá sobrevive ao cerco de Senaqueribe no tempo de Ezequias, passa pelo longo reinado de Manassés e pela reforma de Josias, mas acaba submetido à Babilônia: Jerusalém e o templo são destruídos e o povo vai para o exílio. O livro termina com o rei Joaquim, preso na Babilônia, sendo libertado e recebido à mesa do rei.",
+  "name": "Na Bíblia hebraica, 1 e 2 Reis formam um só livro, Melakhim, “Reis”. A Septuaginta dividiu a obra em duas e chamou esta segunda parte de 4 Reinos; a Vulgata latina a chamou de 4 Reis, nome usado também em algumas Bíblias católicas antigas em português.",
+  "facts": [
+    [
+      "Posição",
+      "12º livro da Bíblia, entre os livros históricos; na Bíblia hebraica, segunda parte de Reis, o último dos Profetas Anteriores (Nevi’im Rishonim)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "narrativa histórica, com relatos proféticos"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Eliseu e o fim da casa de Acabe",
+      "from": 1,
+      "to": 8,
+      "text": "Elias é levado ao céu; os milagres de Eliseu, as guerras com Moabe e com a Síria."
+    },
+    {
+      "title": "De Jeú à queda de Samaria",
+      "from": 9,
+      "to": 17,
+      "text": "O golpe de Jeú, Atalia e Joás, os reis dos dois reinos e o fim do reino de Israel."
+    },
+    {
+      "title": "Judá, de Ezequias a Josias",
+      "from": 18,
+      "to": 23,
+      "text": "O cerco de Senaqueribe, o reinado de Manassés e a reforma de Josias."
+    },
+    {
+      "title": "Os últimos reis e o exílio",
+      "from": 24,
+      "to": 25,
+      "text": "A Babilônia domina Judá, deporta o rei Joaquim e destrói Jerusalém e o templo."
+    }
+  ],
+  "extra": {
+    "title": "As histórias de Eliseu",
+    "text": "Os capítulos 2 a 8 e 13:14–21 reúnem um conjunto de relatos curtos sobre Eliseu, muitos deles passados entre os “filhos dos profetas”, grupos que viviam em torno de um mestre. São histórias de milagres ligados à vida comum (o azeite da viúva, a panela de comida, o machado que flutua), ao lado de intervenções em guerras e na escolha de reis, como a unção de Jeú e o anúncio de Hazael como rei da Síria."
+  },
+  "people": [
+    {
+      "name": "Elias",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "anuncia a morte de Acazias e é levado ao céu num turbilhão"
+    },
+    {
+      "name": "Eliseu",
+      "chapters": "2–9; 13",
+      "ch": 2,
+      "note": "sucessor de Elias, profeta em Israel por cerca de meio século"
+    },
+    {
+      "name": "A sunamita",
+      "chapters": "4; 8",
+      "ch": 4,
+      "note": "mulher que hospeda Eliseu e tem o filho trazido de volta à vida"
+    },
+    {
+      "name": "Naamã",
+      "chapters": "5",
+      "ch": 5,
+      "note": "general sírio curado no rio Jordão"
+    },
+    {
+      "name": "Hazael",
+      "chapters": "8–13",
+      "ch": 8,
+      "note": "toma o trono de Damasco e pressiona Israel e Judá"
+    },
+    {
+      "name": "Jeú",
+      "chapters": "9–10",
+      "ch": 9,
+      "note": "comandante ungido rei, que extermina a casa de Acabe"
+    },
+    {
+      "name": "Atalia",
+      "chapters": "8; 11",
+      "ch": 11,
+      "note": "filha da casa de Acabe; única rainha a governar Judá sozinha"
+    },
+    {
+      "name": "Joás e Joiada",
+      "chapters": "11–12",
+      "ch": 11,
+      "note": "o menino rei de Judá e o sacerdote que o protege e orienta"
+    },
+    {
+      "name": "Ezequias",
+      "chapters": "18–20",
+      "ch": 18,
+      "note": "rei de Judá que resiste à Assíria"
+    },
+    {
+      "name": "Isaías",
+      "chapters": "19–20",
+      "ch": 19,
+      "note": "profeta que aconselha Ezequias"
+    },
+    {
+      "name": "Senaqueribe",
+      "chapters": "18–19",
+      "ch": 18,
+      "note": "rei da Assíria que cerca Jerusalém"
+    },
+    {
+      "name": "Manassés",
+      "chapters": "21",
+      "ch": 21,
+      "note": "rei de Judá com o reinado mais longo e o mais criticado"
+    },
+    {
+      "name": "Josias",
+      "chapters": "22–23",
+      "ch": 22,
+      "note": "rei que reforma o culto após o achado do livro da lei"
+    },
+    {
+      "name": "Hulda",
+      "chapters": "22",
+      "ch": 22,
+      "note": "profetisa consultada sobre o livro encontrado no templo"
+    },
+    {
+      "name": "Nabucodonosor",
+      "chapters": "24–25",
+      "ch": 24,
+      "note": "rei da Babilônia que conquista Jerusalém"
+    },
+    {
+      "name": "Joaquim e Zedequias",
+      "chapters": "24–25",
+      "ch": 24,
+      "note": "os últimos reis de Judá; um é deportado, o outro vê a cidade cair"
+    }
+  ],
+  "writing": {
+    "tradition": "O Talmude babilônico (Bava Batra 15a) atribui a escrita de Reis ao profeta Jeremias, que viveu a queda de Jerusalém. Nessa leitura, a obra teria sido composta no início do exílio, no século VI a.C.; o último fato narrado, a libertação do rei Joaquim na Babilônia (2 Reis 25:27), aconteceu por volta de 562 a.C.",
+    "academic": "A maioria dos pesquisadores vê 1 e 2 Reis como a parte final da chamada História Deuteronomista, que vai de Josué a Reis e avalia o passado de Israel à luz do Deuteronômio. Muitos seguem a proposta de duas edições: uma no reinado de Josias, c. 620 a.C., que culminava na sua reforma, e outra no exílio, por volta de 560 a.C., que acrescentou a queda de Jerusalém; outros pensam numa única redação no exílio. O próprio texto cita fontes hoje perdidas: o “livro dos feitos de Salomão” (1 Reis 11:41) e as crônicas dos reis de Israel e de Judá (1 Reis 14:19, 29). Os relatos sobre Elias e Eliseu parecem vir de coleções de histórias proféticas que circulavam no Reino do Norte."
+  },
+  "events": {
+    "intro": "2 Reis cobre cerca de três séculos, do reinado de Acazias em Israel, por volta de 853 a.C., à libertação de Joaquim na Babilônia, por volta de 562 a.C. É o livro bíblico com mais pontos de contato com fontes de fora: o Obelisco Negro de Salmaneser III mostra Jeú pagando tributo (841 a.C.); a estela de Messa, rei de Moabe, fala do domínio da casa de Onri sobre Moabe; os anais assírios registram a queda de Samaria (722 a.C.) e a campanha de Senaqueribe contra Judá (701 a.C.); e a Crônica Babilônica data a primeira tomada de Jerusalém em março de 597 a.C. A destruição da cidade é situada em 587 ou 586 a.C., conforme a forma de contar os anos. As cronologias dos reis variam entre autores: os números de 1 e 2 Reis nem sempre se encaixam entre si, e cada reconstrução resolve as diferenças de um jeito, supondo co-regências (pai e filho reinando juntos) e formas diversas de contar o primeiro ano de reinado. Por isso uma mesma data pode aparecer com alguns anos de diferença em obras distintas. As datas desta linha do tempo são aproximadas e seguem uma das reconstruções mais usadas.",
+    "axis": [
+      -870,
+      -550
+    ],
+    "band": {
+      "label": "Domínio assírio no Levante",
+      "from": -740,
+      "to": -612
+    },
+    "timeline": [
+      {
+        "label": "Eliseu",
+        "from": -852,
+        "to": -795,
+        "kind": "pessoa",
+        "note": "do fim de Elias até o reinado de Joás de Israel (13:14–20); datas aproximadas"
+      },
+      {
+        "label": "Jorão, rei de Israel",
+        "from": -852,
+        "to": -841,
+        "kind": "pessoa",
+        "note": "12 anos (3:1); último rei da casa de Onri"
+      },
+      {
+        "label": "Estela de Messa",
+        "from": -840,
+        "to": -830,
+        "kind": "evento",
+        "note": "o rei de Moabe celebra a libertação do domínio de Israel (cf. 3:4–5)"
+      },
+      {
+        "label": "Jeú, rei de Israel",
+        "from": -841,
+        "to": -814,
+        "kind": "pessoa",
+        "note": "28 anos (10:36); paga tributo à Assíria em 841 a.C."
+      },
+      {
+        "label": "Atalia, rainha de Judá",
+        "from": -841,
+        "to": -835,
+        "kind": "pessoa",
+        "note": "seis anos (11:3)"
+      },
+      {
+        "label": "Joás, rei de Judá",
+        "from": -835,
+        "to": -796,
+        "kind": "pessoa",
+        "note": "40 anos (12:1)"
+      },
+      {
+        "label": "Jeroboão II, rei de Israel",
+        "from": -793,
+        "to": -753,
+        "kind": "pessoa",
+        "note": "41 anos (14:23), em parte junto com o pai; época de prosperidade no norte"
+      },
+      {
+        "label": "Azarias (Uzias), rei de Judá",
+        "from": -792,
+        "to": -740,
+        "kind": "pessoa",
+        "note": "52 anos (15:2), contando co-regências"
+      },
+      {
+        "label": "Acaz, rei de Judá",
+        "from": -735,
+        "to": -715,
+        "kind": "pessoa",
+        "note": "pede ajuda a Tiglate-Pileser III (16:7)"
+      },
+      {
+        "label": "Oseias, último rei de Israel",
+        "from": -732,
+        "to": -722,
+        "kind": "pessoa",
+        "note": "nove anos (17:1)"
+      },
+      {
+        "label": "Queda de Samaria",
+        "from": -722,
+        "to": -720,
+        "kind": "evento",
+        "note": "fim do reino de Israel e deportações para a Assíria (17:6)"
+      },
+      {
+        "label": "Ezequias, rei de Judá",
+        "from": -715,
+        "to": -686,
+        "kind": "pessoa",
+        "note": "29 anos (18:2); há propostas que começam o reinado em c. 729 a.C."
+      },
+      {
+        "label": "Campanha de Senaqueribe",
+        "from": -701,
+        "to": -701,
+        "kind": "evento",
+        "note": "cerco de Laquis e ameaça a Jerusalém (18–19)"
+      },
+      {
+        "label": "Manassés, rei de Judá",
+        "from": -697,
+        "to": -642,
+        "kind": "pessoa",
+        "note": "55 anos (21:1), em parte junto com o pai"
+      },
+      {
+        "label": "Josias, rei de Judá",
+        "from": -640,
+        "to": -609,
+        "kind": "pessoa",
+        "note": "31 anos (22:1); morre em Megido diante do faraó Neco"
+      },
+      {
+        "label": "Reforma de Josias",
+        "from": -622,
+        "to": -622,
+        "kind": "evento",
+        "note": "no 18º ano do rei, após o achado do livro da lei (22:3)"
+      },
+      {
+        "label": "Jeoaquim, rei de Judá",
+        "from": -609,
+        "to": -598,
+        "kind": "pessoa",
+        "note": "11 anos (23:36)"
+      },
+      {
+        "label": "Joaquim, rei de Judá",
+        "from": -598,
+        "to": -597,
+        "kind": "pessoa",
+        "note": "três meses (24:8); levado para a Babilônia"
+      },
+      {
+        "label": "Primeira deportação",
+        "from": -597,
+        "to": -597,
+        "kind": "evento",
+        "note": "Nabucodonosor toma Jerusalém (24:10–16)"
+      },
+      {
+        "label": "Zedequias, rei de Judá",
+        "from": -597,
+        "to": -586,
+        "kind": "pessoa",
+        "note": "11 anos (24:18)"
+      },
+      {
+        "label": "Destruição de Jerusalém e do templo",
+        "from": -587,
+        "to": -586,
+        "kind": "evento",
+        "note": "o povo é levado para o exílio (25:8–21)"
+      },
+      {
+        "label": "Libertação de Joaquim",
+        "from": -562,
+        "to": -562,
+        "kind": "evento",
+        "note": "Evil-Merodaque o tira da prisão (25:27)"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -586,
+        "to": -560,
+        "kind": "escrita",
+        "note": "Jeremias, no início do exílio"
+      },
+      {
+        "label": "Redação, segundo a pesquisa",
+        "from": -620,
+        "to": -550,
+        "kind": "escrita",
+        "note": "História Deuteronomista: edição de Josias e edição do exílio"
+      }
+    ]
+  },
+  "context": "O pano de fundo de 2 Reis é a sucessão de impérios do Antigo Oriente Próximo. No século IX a.C. Israel disputa território com os arameus de Damasco. No século VIII a.C. a Assíria, a partir de Tiglate-Pileser III, transforma os pequenos reinos do Levante em vassalos ou províncias: Damasco cai em 732 a.C. e Samaria dez anos depois, e a Assíria traz para a região povos de outras terras (17:24). Judá permanece como vassalo, resiste a Senaqueribe em 701 a.C. e, com o enfraquecimento assírio no fim do século VII a.C., vive sob Josias um período de maior autonomia. Depois que Nínive cai (612 a.C.), Egito e Babilônia disputam a região; a vitória babilônica coloca Judá sob Nabucodonosor, e as revoltas contra ele terminam com a destruição de Jerusalém.",
+  "places": [
+    "Samaria e Jezreel",
+    "O rio Jordão e Jericó",
+    "Damasco, na Síria",
+    "Moabe",
+    "Jerusalém: o templo",
+    "Laquis",
+    "Megido",
+    "Nínive e Babilônia",
+    "Ribla, em Hamate"
+  ],
+  "themes": [
+    "profecia e poder",
+    "fidelidade e idolatria",
+    "reforma do culto",
+    "Assíria e Babilônia",
+    "julgamento e exílio",
+    "a promessa a Davi"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:11",
+      "text": "E aconteceu que, indo eles falando, eis que um carro de fogo com cavalos de fogo separou os dois; e Elias subiu ao céu num turbilhão."
+    },
+    {
+      "ref": "17:6",
+      "text": "No nono ano de Oseias, o rei da Assíria tomou a Samaria, e transportou a Israel a Assíria, e os pôs em Hala, e em Habor, junto ao rio de Gozã, e nas cidades dos medos."
+    },
+    {
+      "ref": "23:25",
+      "text": "Não houve tal rei antes dele que se convertesse ao SENHOR de todo seu coração, e de toda sua alma, e de todas suas forças, conforme a toda a lei de Moisés; nem depois dele nasceu outro tal."
+    },
+    {
+      "ref": "25:21",
+      "text": "E o rei da Babilônia os feriu e matou em Ribla, em terra de Hamate. Assim foi transportado Judá de sobre sua terra."
+    }
+  ],
+  "note": "As datas são aproximadas e as cronologias dos reis variam entre autores; as daqui seguem, em linhas gerais, a reconstrução de E. R. Thiele, muito usada, e outras obras podem diferir em alguns anos, sobretudo para Ezequias e para os reis do século VIII a.C. A BLIVRE grafa Jeoaquim para o rei que reinou de 609 a 598 a.C. e Joaquim para o seu filho, deportado em 597 a.C. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

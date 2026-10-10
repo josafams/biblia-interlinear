@@ -1,0 +1,172 @@
+{
+  "title_orig": "Ἰακώβου",
+  "title_orig_xlit": "Iakobou",
+  "summary": "Tiago é um conjunto de ensinamentos práticos dirigido às “doze tribos que estão na dispersão” (1:1). Em frases curtas e imagens tiradas do dia a dia — o espelho, o freio do cavalo, o leme do navio, a flor que murcha, o lavrador que espera a chuva —, trata das provações, do controle da língua, do favoritismo com os ricos, da exploração dos trabalhadores, da arrogância nos planos e da oração. O trecho mais conhecido afirma que a fé sem obras está morta (2:14–26). Quase não há exposição doutrinária: o interesse está em uma fé que se mostra na conduta e no cuidado com os pobres.",
+  "name": "Nos manuscritos gregos, o título é simplesmente “de Tiago” (Iakobou), às vezes com “carta”. O nome Iakobos é a forma grega de Jacó; em português, “Tiago” vem de “Santo Iago”, forma antiga de Iacobus. No cânon, a carta abre o grupo das sete cartas gerais, ou católicas (de Tiago, Pedro, João e Judas), assim chamadas por não serem dirigidas a uma igreja ou pessoa determinada.",
+  "facts": [
+    [
+      "Posição",
+      "20º livro do Novo Testamento; 1ª das cartas gerais (ou católicas)"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "carta de exortação, próxima da literatura de sabedoria"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Provações e a palavra",
+      "from": 1,
+      "to": 1,
+      "text": "As provações produzem perseverança; a sabedoria se pede a Deus; a tentação nasce do próprio desejo; é preciso praticar a palavra e não apenas ouvi-la."
+    },
+    {
+      "title": "Favoritismo e fé com obras",
+      "from": 2,
+      "to": 2,
+      "text": "Honrar o rico e desprezar o pobre contraria a lei do amor; uma fé que não age, como a de quem apenas deseja o bem ao necessitado, está morta; Abraão e Raabe são os exemplos."
+    },
+    {
+      "title": "A língua e a sabedoria",
+      "from": 3,
+      "to": 4,
+      "text": "A língua, pequena como um freio ou um leme, pode incendiar tudo; a sabedoria do alto é pacífica, enquanto a inveja e a ambição geram brigas; quem quer ser amigo do mundo se opõe a Deus (3:1–4:10)."
+    },
+    {
+      "title": "Julgamentos, planos e riquezas",
+      "from": 4,
+      "to": 5,
+      "text": "Não falar mal do irmão, não fazer planos como se o amanhã estivesse garantido; denúncia dos ricos que retêm o salário dos trabalhadores (4:11–5:6)."
+    },
+    {
+      "title": "Paciência e oração",
+      "from": 5,
+      "to": 5,
+      "text": "Esperar a vinda do Senhor como o lavrador espera a colheita, não jurar, orar pelos doentes, confessar as faltas uns aos outros e trazer de volta quem se desviou (5:7–20)."
+    }
+  ],
+  "extra": {
+    "title": "Sabedoria em frases curtas",
+    "text": "Tiago tem algo como cinquenta imperativos em pouco mais de cem versículos e passa de um assunto a outro sem longas transições, à maneira dos livros de sabedoria, como Provérbios e Eclesiástico. Muitas de suas frases lembram ditos de Jesus que aparecem no Sermão do Monte em Mateus — a felicidade dos pobres, o pedir e receber, o não jurar (5:12) —, embora quase nunca em forma de citação. O nome de Jesus aparece só duas vezes (1:1; 2:1)."
+  },
+  "people": [
+    {
+      "name": "Tiago",
+      "chapters": "1",
+      "ch": 1,
+      "note": "apresenta-se apenas como “servo de Deus e do Senhor Jesus Cristo”"
+    },
+    {
+      "name": "Abraão",
+      "chapters": "2",
+      "ch": 2,
+      "note": "sua fé “cooperou com as suas obras” quando ofereceu Isaque (2:21–23)"
+    },
+    {
+      "name": "Raabe",
+      "chapters": "2",
+      "ch": 2,
+      "note": "acolheu os mensageiros de Israel em Jericó; outro exemplo de fé que age (2:25)"
+    },
+    {
+      "name": "Jó",
+      "chapters": "5",
+      "ch": 5,
+      "note": "lembrado pela paciência no sofrimento (5:11)"
+    },
+    {
+      "name": "Elias",
+      "chapters": "5",
+      "ch": 5,
+      "note": "“tão humano quanto nós”, exemplo do poder da oração (5:17–18)"
+    }
+  ],
+  "writing": {
+    "tradition": "A tradição identifica o autor com Tiago, irmão do Senhor (Marcos 6:3; Gálatas 1:19), que liderou a igreja de Jerusalém (Atos 15; 21:18) e, segundo o historiador Josefo, foi morto em 62. Nesse caso, a carta seria anterior a 62; alguns a situam nos anos 40, o que a tornaria um dos primeiros escritos cristãos, e outros perto do fim da vida de Tiago. A carta demorou a ser aceita por todas as igrejas: Eusébio, no século IV, ainda a lista entre os livros contestados por alguns, embora lidos publicamente na maioria das igrejas.",
+    "academic": "Os estudiosos estão divididos. Muitos defendem que a carta vem de Tiago, irmão de Jesus, ou de seu círculo, apontando o tom judaico, a proximidade com os ditos de Jesus e a ausência de questões de períodos posteriores. Muitos outros a consideram escrita em nome de Tiago, talvez entre 70 e 100, observando o grego bem cuidado, pouco esperado de um galileu (embora o uso de secretários e o bilinguismo da região tornem o argumento discutível), e a aparente resposta a uma leitura de Paulo sobre fé e obras. Também se discute se 2:14–26 polemiza com Paulo, com uma leitura distorcida de Paulo ou com nenhum dos dois. Na Reforma, Lutero a chamou de “carta de palha” em comparação com outros livros, mas a manteve na sua Bíblia."
+  },
+  "events": {
+    "intro": "A carta não menciona acontecimentos. A linha do tempo mostra o que se sabe de Tiago, irmão do Senhor, e as duas faixas de data mais propostas para a escrita. As datas são aproximadas.",
+    "axis": [
+      25,
+      105
+    ],
+    "timeline": [
+      {
+        "label": "Morte e ressurreição de Jesus",
+        "from": 30,
+        "to": 33,
+        "kind": "evento",
+        "note": "Tiago estaria entre as testemunhas da ressurreição (1 Coríntios 15:7)"
+      },
+      {
+        "label": "Tiago à frente da igreja de Jerusalém",
+        "from": 40,
+        "to": 62,
+        "kind": "pessoa",
+        "note": "data aproximada (Gálatas 2:9; Atos 15; 21)"
+      },
+      {
+        "label": "Encontro de Jerusalém",
+        "from": 48,
+        "to": 50,
+        "kind": "evento",
+        "note": "c. 49; Tiago fala na reunião sobre os gentios (Atos 15)"
+      },
+      {
+        "label": "Morte de Tiago",
+        "from": 62,
+        "to": 62,
+        "kind": "evento",
+        "note": "apedrejado em Jerusalém, segundo Josefo"
+      },
+      {
+        "label": "Escrita, se de Tiago",
+        "from": 45,
+        "to": 62,
+        "kind": "escrita",
+        "note": "posição tradicional e de parte dos estudiosos"
+      },
+      {
+        "label": "Escrita, se em nome de Tiago",
+        "from": 70,
+        "to": 100,
+        "kind": "escrita",
+        "note": "posição de outra parte dos estudiosos"
+      }
+    ]
+  },
+  "context": "Os destinatários são chamados de “doze tribos que estão na dispersão”, expressão que lembra os judeus espalhados fora da terra de Israel e que aqui pode designar cristãos de origem judaica ou, de modo figurado, toda a igreja. Eles se reúnem numa “congregação” (2:2; em grego, synagōgē), vivem entre comerciantes que viajam para negociar (4:13) e proprietários que deixam de pagar quem ceifa os seus campos (5:4). Os pobres são maioria e sofrem com tribunais e credores (2:6). O quadro combina com a vida agrícola e comercial do Mediterrâneo oriental no século I, sem indicar uma cidade.",
+  "places": [
+    "a dispersão (as comunidades fora da terra de Israel)",
+    "Jerusalém, onde Tiago liderava a igreja"
+  ],
+  "themes": [
+    "provação e perseverança",
+    "fé e obras",
+    "o uso da língua",
+    "ricos e pobres",
+    "sabedoria do alto",
+    "humildade",
+    "oração"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:22",
+      "text": "e sede praticantes da palavra, e não somente ouvintes, enganando a vós mesmos."
+    },
+    {
+      "ref": "1:27",
+      "text": "A religião pura e não contaminada para com Deus e Pai é esta: visitar os órfãos e as viúvas nas suas aflições, e guardar a si mesmo sem a corrupção do mundo."
+    },
+    {
+      "ref": "2:26",
+      "text": "Pois assim como o corpo sem o espírito está morto, assim também a fé sem obras está morta."
+    }
+  ],
+  "note": "Autoria e data da carta são discutidas; as datas da linha do tempo são aproximadas. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

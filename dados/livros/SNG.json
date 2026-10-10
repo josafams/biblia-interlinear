@@ -1,0 +1,178 @@
+{
+  "title_orig": "שִׁיר הַשִּׁירִים",
+  "title_orig_xlit": "Shir ha-Shirim",
+  "summary": "Cânticos é uma coleção de poemas de amor em que uma mulher e um homem falam um do outro e um com o outro, com a participação de um coro, as “filhas de Jerusalém”. Os poemas celebram o desejo, a beleza do corpo e a alegria do encontro, com imagens tiradas de jardins, vinhas, especiarias, animais e paisagens da terra de Israel. Há também momentos de ausência e de busca, como as duas cenas noturnas em que a amada procura o amado pela cidade (3:1–4; 5:2–8). A frase “Meu amado é meu, e eu sou sua” (2:16), retomada com variações em 6:3 e 7:10, resume a reciprocidade do amor, e o ponto alto do livro afirma que “o amor é forte como a morte” (8:6). Deus não é mencionado de forma explícita, mas judeus e cristãos leram o livro por séculos também como imagem do amor entre Deus e o seu povo.",
+  "name": "O título hebraico, Shir ha-Shirim, “Cântico dos Cânticos”, é uma forma de superlativo, como “Santo dos Santos”, e quer dizer “o mais belo dos cânticos”. A Septuaginta e a Vulgata mantiveram a expressão (Asma Asmaton; Canticum Canticorum). Em português, o livro também é chamado de Cantares ou Cântico de Salomão, por causa do título em 1:1.",
+  "facts": [
+    [
+      "Posição",
+      "entre os livros poéticos e sapienciais, depois de Eclesiastes; na Bíblia hebraica, um dos cinco Rolos (Meguilot)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "poesia de amor"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Desejo e primeiros encontros",
+      "from": 1,
+      "to": 2,
+      "text": "A amada deseja o amado e fala às filhas de Jerusalém; os dois trocam elogios, até o primeiro pedido para não despertar o amor antes da hora (1:1–2:7)."
+    },
+    {
+      "title": "Primavera e busca",
+      "from": 2,
+      "to": 3,
+      "text": "No fim do inverno, o amado chama a amada para sair; à noite, ela o procura pela cidade e o encontra (2:8–3:5)."
+    },
+    {
+      "title": "O cortejo e o jardim",
+      "from": 3,
+      "to": 5,
+      "text": "A liteira de Salomão no dia do casamento, a descrição da beleza da amada e a imagem dela como jardim fechado (3:6–5:1)."
+    },
+    {
+      "title": "Desencontro e reencontro",
+      "from": 5,
+      "to": 6,
+      "text": "O amado bate à porta e vai embora; ela o procura, descreve-o às filhas de Jerusalém e diz que ele desceu ao seu jardim (5:2–6:3)."
+    },
+    {
+      "title": "A beleza da Sulamita",
+      "from": 6,
+      "to": 8,
+      "text": "Novos elogios à amada, única entre todas, e o convite dela para irem juntos ao campo (6:4–8:4)."
+    },
+    {
+      "title": "Forte como a morte",
+      "from": 8,
+      "to": 8,
+      "text": "A afirmação sobre a força do amor, as palavras dos irmãos, a vinha de Salomão e o chamado final (8:5–14)."
+    }
+  ],
+  "extra": {
+    "title": "Quem está falando?",
+    "text": "O texto hebraico não indica quem fala em cada trecho; o leitor se orienta pelas formas masculinas e femininas de verbos e pronomes, que o hebraico distingue. As indicações “Ela”, “Ele”, “Moças” e outras que aparecem na BLIVRE são acréscimos da tradução: ajudam a leitura, mas refletem uma interpretação. Alguns versos voltam como refrãos e marcam o ritmo do livro: o pedido às filhas de Jerusalém para não despertar o amor antes da hora (2:7; 3:5; 8:4), a fórmula de pertença mútua (2:16; 6:3; 7:10) e a pergunta “Quem é esta…?” (3:6; 6:10; 8:5)."
+  },
+  "people": [
+    {
+      "name": "A amada",
+      "chapters": "1–8",
+      "ch": 1,
+      "note": "a voz que mais fala no livro; em 6:13 é chamada de Sulamita, nome que talvez indique a origem (Suném) ou ecoe o nome de Salomão"
+    },
+    {
+      "name": "O amado",
+      "chapters": "1–8",
+      "ch": 1,
+      "note": "apresentado ora como pastor, ora como rei; elogia a beleza da amada e é descrito por ela (5:10–16)"
+    },
+    {
+      "name": "As filhas de Jerusalém",
+      "chapters": "1–3; 5–6; 8",
+      "ch": 5,
+      "note": "o coro de mulheres com quem a amada conversa"
+    },
+    {
+      "name": "Salomão",
+      "chapters": "1; 3; 8",
+      "ch": 3,
+      "note": "citado no título, no cortejo do casamento (3:6–11) e na vinha de Baal-Hamom (8:11–12)"
+    },
+    {
+      "name": "Os irmãos da amada",
+      "chapters": "1; 8",
+      "ch": 8,
+      "note": "puseram-na para guardar as vinhas (1:6) e discutem o futuro dela (8:8–9)"
+    },
+    {
+      "name": "Os guardas da cidade",
+      "chapters": "3; 5",
+      "ch": 5,
+      "note": "encontram a amada nas buscas noturnas; na segunda vez, batem nela (5:7)"
+    }
+  ],
+  "writing": {
+    "tradition": "O título (1:1) liga o livro a Salomão, a quem 1 Reis 4:32 atribui mil e cinco cânticos, e as tradições judaica e cristã o consideraram o autor, situando a obra no século X a.C. Uma tradição rabínica diz que ele o escreveu na juventude; o Talmude atribui a forma escrita a Ezequias e seus companheiros. A expressão hebraica do título, porém, pode significar “de Salomão”, “para Salomão” ou “a respeito de Salomão”.",
+    "academic": "Muitos estudiosos veem o livro como uma antologia de poemas de amor, talvez cantados em festas de casamento, reunidos e editados num período mais tardio. A língua é um dos argumentos: a forma abreviada do pronome relativo, típica do hebraico tardio, aparece em todo o livro, menos no título, e há palavras de origem persa (pardes, “pomar”, em 4:13) e talvez grega (a “liteira” de 3:9). Por isso a forma final costuma ser datada dos períodos persa ou helenístico, entre cerca de 500 e 250 a.C. Outros pesquisadores defendem que parte dos poemas é mais antiga, lembrando, por exemplo, a menção a Tirza (6:4), capital do reino do norte no século X e no início do IX a.C."
+  },
+  "events": {
+    "intro": "O Cântico não narra fatos históricos datáveis. A linha do tempo mostra o reinado de Salomão, citado no título, o período em que Tirza, lembrada em 6:4, foi capital do reino do norte, e as duas propostas principais para a época da composição.",
+    "axis": [
+      -1000,
+      -200
+    ],
+    "band": {
+      "label": "Período persa",
+      "from": -539,
+      "to": -332
+    },
+    "timeline": [
+      {
+        "label": "Salomão",
+        "from": -970,
+        "to": -931,
+        "kind": "pessoa",
+        "note": "reinado (1:1; 3:7–11; 8:11–12)"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -970,
+        "to": -950,
+        "kind": "escrita",
+        "note": "Salomão, na juventude, segundo uma tradição rabínica"
+      },
+      {
+        "label": "Tirza, capital do reino do norte",
+        "from": -930,
+        "to": -880,
+        "kind": "evento",
+        "note": "comparada a Jerusalém em 6:4"
+      },
+      {
+        "label": "Forma final, segundo a pesquisa",
+        "from": -500,
+        "to": -250,
+        "kind": "escrita",
+        "note": "períodos persa ou helenístico; partes podem ser mais antigas"
+      }
+    ]
+  },
+  "context": "As imagens do Cântico vêm da paisagem da terra de Israel e de seus vizinhos: as vinhas de Engedi, junto ao mar Morto, a planície de Sarom, os montes de Gileade, o Carmelo, o Líbano e o Hermom, além de cidades como Jerusalém, Tirza, Hesbom e Damasco. A poesia de amor era comum no Antigo Oriente Próximo: cantos egípcios do Novo Império (c. 1300–1100 a.C.) também chamam os amantes de “irmão” e “irmã”, como em 4:9–12, e usam jardins, perfumes e flores como imagens do desejo. Durante muitos séculos predominou a leitura alegórica: o Targum e o Midrash viram no livro o amor entre Deus e Israel, e Rabi Aquiba o chamou de “santo dos santos” entre os Escritos; autores cristãos como Orígenes e Bernardo de Claraval o leram como imagem do amor entre Cristo e a Igreja ou a alma. Entre os estudiosos de hoje prevalece a leitura do livro como poesia sobre o amor humano, o que não exclui as leituras religiosas tradicionais. No judaísmo, ele é lido na Páscoa (Pessach).",
+  "places": [
+    "Jerusalém e Sião",
+    "Engedi",
+    "Sarom",
+    "Líbano, Hermom e Senir",
+    "Gileade e Carmelo",
+    "Tirza, Hesbom e Damasco"
+  ],
+  "themes": [
+    "amor e desejo",
+    "beleza",
+    "busca e encontro",
+    "pertença mútua",
+    "natureza e jardim",
+    "a força do amor"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:7",
+      "text": "Eu vos ordeno, filhas de Jerusalém: jurai pelas corças e pelas cervas do campo, que não acordeis, nem desperteis ao amor, até que ele queira."
+    },
+    {
+      "ref": "2:16",
+      "text": "Meu amado é meu, e eu sou sua; ele apascenta entre os lírios."
+    },
+    {
+      "ref": "8:6–7",
+      "text": "Põe-me como selo sobre o teu coração, como selo sobre o teu braço; porque o amor é forte como a morte, e o ciúme é severo como o Xeol; suas brasas são brasas de fogo, labaredas intensas. Muitas águas não poderiam apagar este amor, nem os rios afogá-lo; ainda que alguém desse todos os bens de sua casa por este amor, certamente o desprezariam."
+    }
+  ],
+  "note": "As datas são aproximadas. Na numeração hebraica, o último versículo do capítulo 6 da BLIVRE (6:13) abre o capítulo 7, e os versículos desse capítulo ficam um número acima. As indicações de quem fala, presentes na BLIVRE, não fazem parte do texto hebraico. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

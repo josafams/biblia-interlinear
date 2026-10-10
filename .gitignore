@@ -1,0 +1,12 @@
+# dependências e dados de terceiros (baixados por npm ci e scripts/baixar_fontes.sh)
+node_modules/
+fontes-dados/
+# tudo em saida/ é gerado por scripts/build.sh
+saida/
+# chaves de assinatura nunca vão para o repositório
+*.jks
+*.keystore
+keystore.properties
+.DS_Store
+__pycache__/
+*.pyc

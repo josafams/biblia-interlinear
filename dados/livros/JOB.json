@@ -1,0 +1,231 @@
+{
+  "title_orig": "אִיּוֹב",
+  "title_orig_xlit": "Iyyov",
+  "summary": "Jó trata do sofrimento de um homem justo e da pergunta sobre como ele se relaciona com a justiça de Deus. Um prólogo em prosa apresenta Jó, rico e íntegro, que em pouco tempo perde os bens, os filhos e a saúde, depois de uma conversa no céu em que o acusador põe em dúvida a razão da sua fidelidade. Três amigos vêm consolá-lo, e o encontro se transforma num longo debate em poesia: eles sustentam que o sofrimento é consequência do pecado, e Jó insiste na própria inocência e pede para apresentar sua causa diante de Deus. Depois dos discursos de um quarto personagem, Eliú, o próprio SENHOR fala do meio de um redemoinho, mostrando a Jó a criação e os seus mistérios. Jó se rende, os amigos são repreendidos, e um epílogo em prosa conta a restauração da sua vida.",
+  "name": "O livro leva o nome do seu personagem principal, Jó, em hebraico Iyyov. A origem do nome é discutida: há quem o ligue à raiz hebraica que significa “ser inimigo” e quem o compare a nomes semíticos antigos com o sentido de “onde está o pai?”. Na Septuaginta o nome aparece como Iōb, de onde vêm o latim Iob e o português Jó.",
+  "facts": [
+    [
+      "Posição",
+      "o primeiro dos livros poéticos e sapienciais, depois de Ester; na Bíblia hebraica, entre os Escritos (Ketuvim)"
+    ],
+    [
+      "Língua original",
+      "hebraico, com muitas palavras raras e alguns traços de aramaico"
+    ],
+    [
+      "Gênero",
+      "sabedoria: moldura narrativa em prosa e diálogos em poesia"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Prólogo",
+      "from": 1,
+      "to": 2,
+      "text": "Jó é apresentado como íntegro e próspero; em duas cenas no céu, o acusador questiona sua fidelidade, e Jó perde bens, filhos e saúde. Chegam Elifaz, Bildade e Zofar."
+    },
+    {
+      "title": "O lamento de Jó",
+      "from": 3,
+      "to": 3,
+      "text": "Depois de sete dias de silêncio, Jó amaldiçoa o dia do seu nascimento e pergunta por que a vida é dada a quem sofre."
+    },
+    {
+      "title": "Primeiro ciclo de diálogos",
+      "from": 4,
+      "to": 14,
+      "text": "Cada amigo fala e Jó responde a cada um: os amigos defendem que Deus recompensa o justo e pune o perverso; Jó recusa essa explicação para o seu caso."
+    },
+    {
+      "title": "Segundo ciclo de diálogos",
+      "from": 15,
+      "to": 21,
+      "text": "Os amigos insistem no destino reservado aos perversos; Jó se sente abandonado, mas afirma que tem uma testemunha no céu e que verá a Deus."
+    },
+    {
+      "title": "Terceiro ciclo de diálogos",
+      "from": 22,
+      "to": 27,
+      "text": "Elifaz acusa Jó de faltas concretas; Bildade fala pouco, e Zofar não volta a falar. Jó descreve a injustiça no mundo e mantém sua integridade."
+    },
+    {
+      "title": "Poema da sabedoria",
+      "from": 28,
+      "to": 28,
+      "text": "O ser humano sabe extrair metais das profundezas, mas não encontra o caminho da sabedoria, que só Deus conhece."
+    },
+    {
+      "title": "A defesa final de Jó",
+      "from": 29,
+      "to": 31,
+      "text": "Jó compara a honra de antes com a humilhação de agora e termina com um juramento de inocência, desafiando Deus a responder."
+    },
+    {
+      "title": "Os discursos de Eliú",
+      "from": 32,
+      "to": 37,
+      "text": "Um jovem, até então não mencionado, critica Jó e os amigos e apresenta o sofrimento como forma de Deus advertir e instruir."
+    },
+    {
+      "title": "Os discursos do SENHOR",
+      "from": 38,
+      "to": 42,
+      "text": "Do meio de um redemoinho, Deus interroga Jó sobre a ordem do cosmo, os animais selvagens, o beemote e o leviatã; Jó responde duas vezes, a segunda em 42:1–6."
+    },
+    {
+      "title": "Epílogo",
+      "from": 42,
+      "to": 42,
+      "text": "Deus repreende os três amigos, Jó intercede por eles e recebe em dobro o que tinha perdido (42:7–17)."
+    }
+  ],
+  "extra": {
+    "title": "Prosa, poesia e diálogo",
+    "text": "O livro tem a forma de um sanduíche: o início e o fim (1–2 e 42:7–17) são narrativa em prosa, e todo o meio é poesia, escrita em paralelismo, com um vocabulário dos mais difíceis da Bíblia hebraica. Os diálogos seguem um padrão regular, em que cada amigo fala e Jó responde, até que o terceiro ciclo se desfaz: a fala de Bildade é curta (cap. 25) e Zofar não aparece. Muitos estudiosos pensam que parte desse ciclo se desarranjou na transmissão; outros veem no desarranjo um sinal de que o debate se esgotou."
+  },
+  "people": [
+    {
+      "name": "Jó",
+      "chapters": "1–42",
+      "ch": 1,
+      "note": "homem da terra de Uz, “íntegro e correto, temente a Deus” (1:1), que perde tudo e discute com os amigos e com Deus"
+    },
+    {
+      "name": "A mulher de Jó",
+      "chapters": "2",
+      "ch": 2,
+      "note": "aparece uma só vez e diz a Jó que amaldiçoe a Deus e morra (2:9)"
+    },
+    {
+      "name": "Satanás, o acusador",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "em hebraico ha-satan, “o adversário”, com artigo; questiona diante do SENHOR o motivo da fidelidade de Jó e não volta a aparecer"
+    },
+    {
+      "name": "Elifaz",
+      "chapters": "2; 4–5; 15; 22; 42",
+      "ch": 4,
+      "note": "o temanita, o primeiro e mais longo dos amigos a falar; apela a uma visão noturna (4:12–21)"
+    },
+    {
+      "name": "Bildade",
+      "chapters": "2; 8; 18; 25",
+      "ch": 8,
+      "note": "o suíta; apoia-se na sabedoria dos antigos"
+    },
+    {
+      "name": "Zofar",
+      "chapters": "2; 11; 20",
+      "ch": 11,
+      "note": "o naamita; o mais duro dos três, fala só duas vezes"
+    },
+    {
+      "name": "Eliú",
+      "chapters": "32–37",
+      "ch": 32,
+      "note": "filho de Baraquel, buzita; jovem que intervém irritado com Jó e com os amigos"
+    },
+    {
+      "name": "Jemima, Quézia e Quéren-Hapuque",
+      "chapters": "42",
+      "ch": 42,
+      "note": "as filhas de Jó nascidas depois da restauração, que recebem herança junto com os irmãos (42:14–15)"
+    }
+  ],
+  "writing": {
+    "tradition": "O livro não diz quem o escreveu. Uma tradição registrada no Talmude atribui o livro a Moisés, e outras opiniões rabínicas situam Jó em épocas muito diferentes, dos patriarcas ao exílio; uma delas chega a dizer que Jó foi uma parábola, e não uma pessoa histórica. Muitos leitores cristãos e judeus situaram a história no tempo dos patriarcas, pelo modo de vida descrito: riqueza medida em rebanhos, o chefe da família oferecendo sacrifícios, vida muito longa. O profeta Ezequiel menciona Jó ao lado de Noé e Daniel como exemplo de justiça (Ezequiel 14:14, 20).",
+    "academic": "A maioria dos estudiosos data a composição do livro entre os séculos VI e IV a.C., por volta de 600–400 a.C., com base na língua, nos temas e no diálogo com outros textos bíblicos; há quem proponha datas um pouco anteriores ou posteriores. É comum a hipótese de que a moldura em prosa preserve uma história antiga sobre um justo provado, sobre a qual um poeta construiu os diálogos. Os discursos de Eliú, ausentes do prólogo e do epílogo, são vistos por muitos como acréscimo posterior, e o poema do capítulo 28 também é discutido. Em Qumran foram encontrados fragmentos hebraicos de Jó e uma tradução aramaica (um targum), copiada por volta do século I a.C."
+  },
+  "events": {
+    "intro": "Jó não traz datas, nomes de reis nem acontecimentos que se possam situar: a história se passa num tempo indefinido, num ambiente que lembra a época dos patriarcas. A linha do tempo mostra as duas propostas para a escrita, a menção a Jó em Ezequiel, os fragmentos de Qumran e duas obras babilônicas sobre o sofrimento do justo, com as quais o livro costuma ser comparado. Todas as datas são aproximadas.",
+    "axis": [
+      -1500,
+      0
+    ],
+    "band": {
+      "label": "Exílio e período persa",
+      "from": -586,
+      "to": -332
+    },
+    "timeline": [
+      {
+        "label": "Ludlul bel nemeqi",
+        "from": -1400,
+        "to": -1150,
+        "kind": "evento",
+        "note": "poema babilônico de um justo que sofre e é restaurado; data aproximada"
+      },
+      {
+        "label": "Escrita, segundo uma tradição",
+        "from": -1446,
+        "to": -1406,
+        "kind": "escrita",
+        "note": "Moisés, segundo o Talmude"
+      },
+      {
+        "label": "Teodiceia babilônica",
+        "from": -1000,
+        "to": -800,
+        "kind": "evento",
+        "note": "diálogo acróstico entre um sofredor e um amigo; data aproximada"
+      },
+      {
+        "label": "Jó citado por Ezequiel",
+        "from": -593,
+        "to": -571,
+        "kind": "evento",
+        "note": "ao lado de Noé e Daniel (Ezequiel 14:14, 20)"
+      },
+      {
+        "label": "Escrita, segundo a pesquisa",
+        "from": -600,
+        "to": -400,
+        "kind": "escrita",
+        "note": "faixa mais aceita; há propostas anteriores e posteriores"
+      },
+      {
+        "label": "Targum de Jó em Qumran",
+        "from": -150,
+        "to": -1,
+        "kind": "evento",
+        "note": "tradução aramaica encontrada na caverna 11; data aproximada da cópia"
+      }
+    ]
+  },
+  "context": "A história se passa fora de Israel, na “terra de Uz”, cuja localização é incerta: o livro de Lamentações liga Uz a Edom (Lamentações 4:21), e outras propostas apontam para o norte da Arábia ou para a região a leste do Jordão. Os amigos também vêm de lugares a leste e sudeste de Canaã: Temã é uma região de Edom, e Suá e Naamá são de localização discutida. Jó não é apresentado como israelita, e o nome do SENHOR aparece sobretudo no prólogo, no epílogo e nos discursos divinos; nos diálogos predominam nomes como Deus e Todo-Poderoso. O tema do justo que sofre já era conhecido no Antigo Oriente Próximo, em obras babilônicas como o Ludlul bel nemeqi e a chamada Teodiceia babilônica, e o livro dialoga com a sabedoria tradicional de Israel, que associava retidão e prosperidade.",
+  "places": [
+    "Uz, a terra de Jó",
+    "Temã, em Edom, terra de Elifaz",
+    "Suá e Naamá, terras de Bildade e Zofar",
+    "o céu, onde se reúnem os filhos de Deus (1–2)",
+    "o monturo, ou cinzas, onde Jó se senta (2:8)"
+  ],
+  "themes": [
+    "sofrimento do justo",
+    "justiça de Deus",
+    "integridade",
+    "limites da sabedoria humana",
+    "criação",
+    "amizade e consolo"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:21",
+      "text": "E disse: Nu saí do ventre de minha mãe, e nu para lá voltarei. O SENHOR deu, e o SENHOR tomou; bendito seja o nome do SENHOR."
+    },
+    {
+      "ref": "19:25",
+      "text": "Pois eu sei que meu Redentor vive, e ao fim se levantará sobre a terra;"
+    },
+    {
+      "ref": "28:28",
+      "text": "E disse ao homem: Eis que o temor ao Senhor é a sabedoria, e o desviar-se do mal é a inteligência."
+    },
+    {
+      "ref": "42:5",
+      "text": "Com os ouvidos eu ouvira falar de ti; mas agora meus olhos te veem."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. Nos capítulos 40 e 41, a BLIVRE segue a numeração das Bíblias em português: 40:1–24 corresponde a 40:1–24 do hebraico, e 41:1–34 corresponde a 40:25–41:26. A Septuaginta tem um texto de Jó bem mais curto que o hebraico e acrescenta um final sobre a origem de Jó. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

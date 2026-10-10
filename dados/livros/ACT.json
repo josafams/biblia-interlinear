@@ -1,0 +1,282 @@
+{
+  "title_orig": "Πράξεις Ἀποστόλων",
+  "title_orig_xlit": "Praxeis Apostolon",
+  "summary": "Atos dos Apóstolos continua o Evangelho de Lucas e narra cerca de trinta anos do movimento cristão, da partida de Jesus em Jerusalém até a chegada de Paulo, prisioneiro, a Roma. O roteiro aparece logo no início: os discípulos seriam testemunhas “em Jerusalém como em toda a Judeia, e Samaria, e até ao último lugar da terra” (1:8). A primeira parte acompanha a comunidade de Jerusalém, liderada por Pedro, com o Pentecostes, a morte de Estêvão e a acolhida dos primeiros não judeus, como o centurião Cornélio. A partir do capítulo 13, o foco passa a Paulo e às suas viagens pela Ásia Menor e pela Grécia, até a prisão em Jerusalém, os processos diante de autoridades romanas e a viagem por mar a Roma. Em todo o livro, o Espírito Santo impulsiona a expansão, e discursos de Pedro, Estêvão e Paulo apresentam a mensagem a públicos diferentes.",
+  "name": "O título “Atos dos Apóstolos” (Praxeis Apostolon) não faz parte do texto e já circulava no fim do século II; praxeis, “atos” ou “feitos”, era o nome de um tipo de relato antigo sobre as ações de personagens notáveis. Na prática, o livro trata sobretudo de dois apóstolos, Pedro e Paulo, e Paulo só é chamado de apóstolo em 14:4 e 14:14, junto com Barnabé. O autor se dirige outra vez a Teófilo e chama o evangelho de “o primeiro livro” (1:1).",
+  "facts": [
+    [
+      "Posição",
+      "5º livro do Novo Testamento, logo depois dos Evangelhos; segunda parte da obra Lucas–Atos"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "narrativa histórica, nos moldes da historiografia antiga, com muitos discursos"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Jerusalém",
+      "from": 1,
+      "to": 7,
+      "text": "A ascensão, a escolha de Matias, o Pentecostes e o discurso de Pedro, a vida da comunidade, os conflitos com as autoridades do templo, a escolha dos sete e a morte de Estêvão."
+    },
+    {
+      "title": "Judeia, Samaria e os primeiros gentios",
+      "from": 8,
+      "to": 12,
+      "text": "Com a dispersão, Filipe anuncia em Samaria e batiza um etíope; Saulo se converte a caminho de Damasco; Pedro batiza Cornélio; em Antioquia surge uma igreja com muitos gentios, onde os discípulos são chamados pela primeira vez de cristãos (11:26)."
+    },
+    {
+      "title": "Primeira viagem e a reunião de Jerusalém",
+      "from": 13,
+      "to": 15,
+      "text": "Barnabé e Saulo partem de Antioquia para Chipre e para o sul da Ásia Menor; de volta, a exigência de circuncidar os gentios é debatida pelos apóstolos e anciãos em Jerusalém (cap. 15)."
+    },
+    {
+      "title": "Segunda e terceira viagens",
+      "from": 15,
+      "to": 21,
+      "text": "Paulo leva a mensagem à Macedônia e à Grécia — Filipos, Tessalônica, Atenas e Corinto —, passa cerca de três anos em Éfeso, despede-se dos anciãos em Mileto e sobe a Jerusalém (15:36–21:16)."
+    },
+    {
+      "title": "Paulo prisioneiro",
+      "from": 21,
+      "to": 26,
+      "text": "Preso no templo, Paulo se defende diante do povo, do conselho, dos governadores Félix e Festo e do rei Agripa, e apela para César."
+    },
+    {
+      "title": "A viagem a Roma",
+      "from": 27,
+      "to": 28,
+      "text": "A travessia, o naufrágio em Malta e a chegada a Roma, onde Paulo passa dois anos numa casa alugada, pregando “sem impedimento algum” (28:31)."
+    }
+  ],
+  "extra": {
+    "title": "As passagens em “nós” e os discursos",
+    "text": "Em quatro trechos, a narrativa passa de repente da terceira pessoa para a primeira do plural, como em “logo procuramos partir para a Macedônia” (16:10–17; 20:5–15; 21:1–18; 27:1–28:16). A tradição vê aí o próprio autor viajando com Paulo; outros estudiosos pensam que ele aproveitou o diário de um companheiro de viagem ou usou um recurso literário próprio dos relatos de navegação. Outra marca do livro são os discursos, que ocupam perto de um terço do texto: o de Pedro no Pentecostes (2:14–40), o de Estêvão (7:2–53) e o de Paulo no areópago de Atenas (17:22–31) estão entre os mais conhecidos. À maneira dos historiadores antigos, eles resumem a mensagem dirigida a cada público, a judeus da Judeia, a judeus da Diáspora e a pagãos."
+  },
+  "people": [
+    {
+      "name": "Pedro",
+      "chapters": "1–12; 15",
+      "ch": 2,
+      "note": "porta-voz dos apóstolos em Jerusalém; prega no Pentecostes, é preso pelas autoridades e batiza Cornélio e sua casa"
+    },
+    {
+      "name": "João",
+      "chapters": "3–4; 8",
+      "ch": 3,
+      "note": "acompanha Pedro no templo, diante do conselho e em Samaria"
+    },
+    {
+      "name": "Estêvão",
+      "chapters": "6–7",
+      "ch": 7,
+      "note": "um dos sete escolhidos para servir às mesas; morto por apedrejamento depois de um longo discurso"
+    },
+    {
+      "name": "Filipe",
+      "chapters": "6; 8; 21",
+      "ch": 8,
+      "note": "outro dos sete; anuncia em Samaria, batiza o eunuco etíope e depois vive em Cesareia"
+    },
+    {
+      "name": "Saulo (Paulo)",
+      "chapters": "7–28",
+      "ch": 9,
+      "note": "fariseu de Tarso que persegue os cristãos, converte-se a caminho de Damasco e se torna o principal missionário entre os gentios"
+    },
+    {
+      "name": "Barnabé",
+      "chapters": "4; 9; 11–15",
+      "ch": 13,
+      "note": "levita de Chipre; apresenta Saulo aos apóstolos e o acompanha na primeira viagem"
+    },
+    {
+      "name": "Cornélio",
+      "chapters": "10–11",
+      "ch": 10,
+      "note": "centurião romano em Cesareia, temente a Deus; com sua casa, recebe o Espírito e o batismo"
+    },
+    {
+      "name": "Herodes Agripa I",
+      "chapters": "12",
+      "ch": 12,
+      "note": "o “rei Herodes” que manda matar Tiago, irmão de João, e prender Pedro; morre em Cesareia"
+    },
+    {
+      "name": "Tiago",
+      "chapters": "12; 15; 21",
+      "ch": 15,
+      "note": "dirigente da igreja de Jerusalém, identificado com o “irmão do Senhor” de Gálatas 1:19"
+    },
+    {
+      "name": "Silas e Timóteo",
+      "chapters": "15–20",
+      "ch": 16,
+      "note": "companheiros de Paulo na segunda viagem"
+    },
+    {
+      "name": "Lídia",
+      "chapters": "16",
+      "ch": 16,
+      "note": "comerciante de púrpura de Tiatira; acolhe Paulo em Filipos"
+    },
+    {
+      "name": "Áquila e Priscila",
+      "chapters": "18",
+      "ch": 18,
+      "note": "casal judeu expulso de Roma; trabalha com Paulo em Corinto e instrui Apolo em Éfeso"
+    },
+    {
+      "name": "Félix, Festo e Agripa",
+      "chapters": "23–26",
+      "ch": 24,
+      "note": "os governadores romanos da Judeia e o rei Agripa II, diante dos quais Paulo se defende em Cesareia"
+    }
+  ],
+  "writing": {
+    "tradition": "A partir do fim do século II, com Ireneu, o chamado Cânon Muratoriano e Clemente de Alexandria, a tradição atribui Atos a Lucas, o médico companheiro de Paulo, autor também do terceiro evangelho. Os trechos narrados em “nós” seriam lembranças do próprio autor. Como o livro termina com Paulo há dois anos em Roma, sem contar o resultado do processo nem a sua morte, muitos que seguem essa leitura datam a obra por volta de 62, quando os acontecimentos finais ainda estariam em curso.",
+    "academic": "Que Lucas e Atos têm o mesmo autor é praticamente consenso. A maioria dos estudiosos data Atos depois do evangelho, c. 80–90, e entende o final aberto como escolha literária: a mensagem chega a Roma, e o programa de 1:8 se cumpre. Parte dos pesquisadores mantém a data de c. 62, e uma minoria propõe c. 100–130, apontando possíveis contatos com as obras de Flávio Josefo. Também se discute o valor histórico do livro: muitos detalhes sobre cidades, títulos de autoridades e rotas marítimas são confirmados por inscrições e outras fontes, como o procônsul Gálio em Corinto (18:12); por outro lado, há diferenças em relação às cartas de Paulo, por exemplo no número de visitas a Jerusalém e no relato da reunião do capítulo 15 comparado com Gálatas 2. Os discursos costumam ser vistos como composições do autor, como era comum na historiografia antiga, talvez baseadas em tradições anteriores."
+  },
+  "events": {
+    "intro": "Atos não indica anos, mas cita pessoas conhecidas por outras fontes, o que permite montar uma cronologia aproximada. A peça-chave é Gálio, procônsul da Acaia, diante de quem Paulo comparece em Corinto (18:12): uma inscrição encontrada em Delfos situa o seu governo em c. 51–52. Outros pontos de apoio são a morte de Herodes Agripa I, em 44 (cap. 12), a expulsão dos judeus de Roma por Cláudio, c. 49 (18:2), e a troca de governadores da Judeia, de Félix para Festo, c. 59/60 (24:27). As datas das viagens de Paulo variam alguns anos conforme os autores.",
+    "axis": [
+      25,
+      100
+    ],
+    "band": {
+      "label": "Reinado de Cláudio",
+      "from": 41,
+      "to": 54
+    },
+    "timeline": [
+      {
+        "label": "Pentecostes e a igreja de Jerusalém",
+        "from": 30,
+        "to": 33,
+        "kind": "evento",
+        "note": "pouco depois da crucificação, em 30 ou 33 (caps. 1–5)"
+      },
+      {
+        "label": "Morte de Estêvão e conversão de Paulo",
+        "from": 33,
+        "to": 36,
+        "kind": "evento",
+        "note": "datas aproximadas (caps. 7–9)"
+      },
+      {
+        "label": "Herodes Agripa I",
+        "from": 41,
+        "to": 44,
+        "kind": "pessoa",
+        "note": "rei da Judeia; morre em Cesareia em 44 (12:20–23)"
+      },
+      {
+        "label": "Primeira viagem de Paulo",
+        "from": 46,
+        "to": 48,
+        "kind": "evento",
+        "note": "Chipre e sul da Ásia Menor (caps. 13–14)"
+      },
+      {
+        "label": "Reunião de Jerusalém",
+        "from": 48,
+        "to": 50,
+        "kind": "evento",
+        "note": "c. 48/49 (cap. 15)"
+      },
+      {
+        "label": "Segunda viagem de Paulo",
+        "from": 49,
+        "to": 52,
+        "kind": "evento",
+        "note": "Macedônia e Grécia; em Corinto, diante de Gálio (15:36–18:22)"
+      },
+      {
+        "label": "Gálio, procônsul da Acaia",
+        "from": 51,
+        "to": 52,
+        "kind": "pessoa",
+        "note": "data fixada por uma inscrição de Delfos (18:12)"
+      },
+      {
+        "label": "Terceira viagem de Paulo",
+        "from": 53,
+        "to": 57,
+        "kind": "evento",
+        "note": "cerca de três anos em Éfeso (18:23–21:16)"
+      },
+      {
+        "label": "Prisão em Jerusalém e Cesareia",
+        "from": 57,
+        "to": 59,
+        "kind": "evento",
+        "note": "dois anos sob o governador Félix (24:27)"
+      },
+      {
+        "label": "Viagem e prisão em Roma",
+        "from": 59,
+        "to": 62,
+        "kind": "evento",
+        "note": "naufrágio em Malta; dois anos numa casa alugada (28:30)"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": 62,
+        "to": 63,
+        "kind": "escrita",
+        "note": "Lucas, logo depois dos fatos finais"
+      },
+      {
+        "label": "Escrita, segundo a maioria dos pesquisadores",
+        "from": 80,
+        "to": 90,
+        "kind": "escrita",
+        "note": "depois do Evangelho de Lucas"
+      }
+    ]
+  },
+  "context": "Atos se passa no Mediterrâneo oriental sob o Império Romano, numa época de estradas vigiadas e rotas marítimas movimentadas, que tornavam possíveis viagens como as de Paulo. As comunidades judaicas espalhadas pelas cidades, com suas sinagogas e com simpatizantes não judeus, os “tementes a Deus”, foram o primeiro ponto de contato da pregação. O livro mostra os cristãos diante de instâncias muito diversas: o conselho e os sumos sacerdotes em Jerusalém, magistrados da colônia romana de Filipos, filósofos epicureus e estoicos em Atenas, a assembleia da cidade de Éfeso, governadores e reis em Cesareia. Paulo aparece como judeu de Tarso e cidadão romano de nascimento (22:25–28), o que pesa no seu processo e no apelo a César. Um motivo que se repete é que as autoridades romanas não encontram nos cristãos crime que mereça morte (18:14–15; 26:31–32).",
+  "places": [
+    "Jerusalém",
+    "Samaria",
+    "Damasco",
+    "Antioquia da Síria",
+    "Chipre e Ásia Menor: Antioquia da Pisídia, Icônio, Listra e Derbe",
+    "Macedônia: Filipos, Tessalônica e Bereia",
+    "Grécia: Atenas e Corinto",
+    "Éfeso e Mileto",
+    "Cesareia",
+    "Malta",
+    "Roma"
+  ],
+  "themes": [
+    "o Espírito Santo",
+    "testemunho até os confins da terra",
+    "judeus e gentios",
+    "a palavra que cresce",
+    "a ressurreição de Jesus",
+    "perseguição e coragem",
+    "a vida da comunidade"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:8",
+      "text": "Mas vós recebereis poder do Espírito Santo, que virá sobre vós; e vós sereis minhas testemunhas, tanto em Jerusalém como em toda a Judeia, e Samaria, e até ao último lugar da terra."
+    },
+    {
+      "ref": "2:42",
+      "text": "E eles perseveravam na doutrina dos apóstolos, na comunhão, no partir do pão, e nas orações."
+    },
+    {
+      "ref": "10:34–35",
+      "text": "E Pedro, abrindo a boca, disse: Reconheço que é verdade que Deus não faz acepção de pessoas. Mas sim, em toda nação, aquele que o teme, e pratica a justiça, este lhe é agradável."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. Os versículos 8:37, 15:34, 24:7 e 28:29 aparecem em manuscritos posteriores, mas não nos mais antigos nem no texto grego SBLGNT usado no app, e por isso ficam sem o original grego. Atos circulou também numa forma textual mais extensa, chamada “ocidental” e conhecida sobretudo pelo Códice de Beza, de por volta do ano 400, com cerca de 8 a 10% a mais de texto; o SBLGNT segue a forma mais curta. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

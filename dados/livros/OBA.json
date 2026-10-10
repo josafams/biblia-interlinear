@@ -1,0 +1,118 @@
+{
+  "title_orig": "עֹבַדְיָה",
+  "title_orig_xlit": "Ovadyah",
+  "summary": "Obadias, o livro mais curto da Bíblia hebraica, é um oráculo contra Edom, povo vizinho descendente de Esaú. Edom é acusado de orgulho e de ter se aproveitado da queda de Jerusalém, saqueando e entregando fugitivos. O profeta anuncia que o dia do SENHOR virá sobre todas as nações e que o reino pertencerá ao SENHOR.",
+  "name": "O livro leva o nome do profeta. Obadias, em hebraico Ovadyah, significa “servo do SENHOR”; era um nome comum, usado por várias pessoas no Antigo Testamento.",
+  "facts": [
+    [
+      "Posição",
+      "4º dos Doze Profetas Menores"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "profecia (oráculo contra uma nação)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "A queda de Edom",
+      "from": 1,
+      "to": 1,
+      "text": "Versículos 1–14: o orgulho de Edom, sua derrota anunciada e a acusação pelo que fez no dia da desgraça de Jerusalém."
+    },
+    {
+      "title": "O dia do SENHOR",
+      "from": 1,
+      "to": 1,
+      "text": "Versículos 15–21: o juízo sobre as nações e a restauração da casa de Jacó no monte Sião."
+    }
+  ],
+  "people": [
+    {
+      "name": "Obadias",
+      "chapters": "1",
+      "ch": 1,
+      "note": "profeta de quem nada mais se sabe"
+    },
+    {
+      "name": "Edom (Esaú)",
+      "chapters": "1",
+      "ch": 1,
+      "note": "povo descendente de Esaú, irmão de Jacó"
+    }
+  ],
+  "writing": {
+    "tradition": "O livro é atribuído ao profeta Obadias. Uma tradição registrada no Talmude o identifica com Obadias, o administrador do palácio do rei Acabe (1 Reis 18), no século IX a.C. Outros intérpretes tradicionais ligam o texto a um ataque contra Jerusalém no reinado de Jeorão de Judá, c. 848–841 a.C., quando Edom se rebelou.",
+    "academic": "A maioria dos estudiosos relaciona o livro à destruição de Jerusalém pelos babilônios em 587/586 a.C., quando, segundo outros textos bíblicos (Salmo 137:7; Lamentações 4:21–22), os edomitas se aliaram aos vencedores. O livro teria sido escrito pouco depois, no século VI a.C. Os versículos 1–9 têm forte paralelo com Jeremias 49:7–22, o que sugere uso de uma tradição comum."
+  },
+  "events": {
+    "intro": "O texto não traz data. A linha do tempo mostra a proposta tradicional mais antiga e a da maioria dos estudiosos, que a liga à queda de Jerusalém; as datas são aproximadas.",
+    "axis": [
+      -870,
+      -500
+    ],
+    "band": {
+      "label": "Exílio na Babilônia",
+      "from": -586,
+      "to": -538
+    },
+    "timeline": [
+      {
+        "label": "Jeorão, rei de Judá",
+        "from": -848,
+        "to": -841,
+        "kind": "pessoa",
+        "note": "Edom se revolta contra Judá (2 Reis 8:20–22)"
+      },
+      {
+        "label": "Escrita, segundo uma tradição",
+        "from": -848,
+        "to": -841,
+        "kind": "escrita",
+        "note": "proposta que liga o livro a esse período"
+      },
+      {
+        "label": "Queda de Jerusalém",
+        "from": -587,
+        "to": -586,
+        "kind": "evento",
+        "note": "destruição pelos babilônios; Edom se aproveita da derrota"
+      },
+      {
+        "label": "Escrita, segundo a pesquisa",
+        "from": -586,
+        "to": -550,
+        "kind": "escrita",
+        "note": "pouco depois da destruição de Jerusalém"
+      }
+    ]
+  },
+  "context": "Edom ocupava a região montanhosa a sudeste do mar Morto, com cidades em lugares altos e rochosos, o que explica a imagem do ninho entre as rochas (versículos 3–4). A Bíblia descreve os edomitas como descendentes de Esaú, irmão de Jacó, e a rivalidade entre os dois povos atravessa toda a história de Israel. No período do exílio e depois dele, grupos edomitas se instalaram no sul de Judá, na região que mais tarde se chamaria Idumeia.",
+  "places": [
+    "Edom (monte de Esaú)",
+    "Temã",
+    "Jerusalém e monte Sião",
+    "Neguebe e Sefelá"
+  ],
+  "themes": [
+    "orgulho e queda",
+    "solidariedade entre irmãos",
+    "dia do SENHOR",
+    "reino de Deus"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:15",
+      "text": "Porque perto está o dia do SENHOR sobre todas as nações; como tu fizeste, assim se fará a ti; o pagamento devido voltará sobre tua cabeça."
+    },
+    {
+      "ref": "1:21",
+      "text": "E salvadores se levantarão no monte de Sião, para julgarem ao monte de Esaú; e o reino pertencerá ao SENHOR."
+    }
+  ],
+  "note": "As datas são aproximadas; os versículos citados são da Bíblia Livre (BLIVRE)."
+}

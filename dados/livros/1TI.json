@@ -1,0 +1,169 @@
+{
+  "title_orig": "Πρὸς Τιμόθεον Αʹ",
+  "title_orig_xlit": "Pros Timotheon A",
+  "summary": "1 Timóteo é uma carta de instruções a um colaborador encarregado de cuidar da igreja de Éfeso enquanto Paulo segue para a Macedônia (1:3). Começa e termina com advertências contra mestres que ensinam “outra doutrina”, ligada a genealogias, discussões sobre a Lei, proibição do casamento e de certos alimentos. No meio, trata da organização da comunidade: a oração pública, o comportamento de homens e mulheres no culto, as qualidades exigidas de bispos e diáconos, o cuidado com as viúvas, a remuneração e a disciplina dos presbíteros, a situação dos escravos e o perigo do apego ao dinheiro. Também traz conselhos pessoais ao jovem Timóteo.",
+  "name": "O título Pros Timotheon A, “Primeira a Timóteo”, vem do destinatário, chamado “meu verdadeiro filho na fé” (1:2); o número a distingue da segunda carta a ele. Desde o século XVIII, 1 e 2 Timóteo e Tito são chamadas de “cartas pastorais”, por tratarem do cuidado das igrejas e dos seus líderes.",
+  "facts": [
+    [
+      "Posição",
+      "15º livro do Novo Testamento; 10ª das cartas paulinas, na ordem do cânon"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "carta de instruções a um colaborador (carta pastoral)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Contra a outra doutrina",
+      "from": 1,
+      "to": 1,
+      "text": "Timóteo deve conter os que se perdem em mitos e genealogias; Paulo lembra que foi blasfemo e perseguidor e recebeu misericórdia, e cita Himeneu e Alexandre como exemplos de naufrágio na fé."
+    },
+    {
+      "title": "Ordem no culto e líderes",
+      "from": 2,
+      "to": 3,
+      "text": "Orações por todos, inclusive pelos governantes; instruções a homens e mulheres; qualidades de bispos e diáconos; a igreja como “a coluna e o alicerce da verdade”, e um breve hino a Cristo (3:16)."
+    },
+    {
+      "title": "Falsos ensinos e conduta de Timóteo",
+      "from": 4,
+      "to": 4,
+      "text": "Contra os que proíbem o casamento e alimentos criados por Deus; Timóteo deve ser exemplo, dedicar-se à leitura e ao ensino e não desprezar o dom que recebeu."
+    },
+    {
+      "title": "Grupos na igreja",
+      "from": 5,
+      "to": 6,
+      "text": "Como tratar idosos e jovens, o sustento e a inscrição das viúvas, a honra e a correção dos presbíteros, o dever dos escravos (5:1–6:2)."
+    },
+    {
+      "title": "Riqueza e encargo final",
+      "from": 6,
+      "to": 6,
+      "text": "O amor ao dinheiro como raiz de males, conselhos aos ricos e o apelo final: lutar a boa luta da fé e guardar o depósito confiado (6:3–21)."
+    }
+  ],
+  "extra": {
+    "title": "“Palavra fiel”",
+    "text": "As cartas pastorais usam cinco vezes a fórmula grega pistos ho logos — na BLIVRE, quase sempre “esta palavra é fiel” — para introduzir ou confirmar uma sentença breve, que parece ter circulado nas igrejas como resumo da fé ou norma conhecida: em 1 Timóteo 1:15, 3:1 e 4:9, em 2 Timóteo 2:11 e em Tito 3:8. A fórmula não aparece nas outras cartas de Paulo."
+  },
+  "people": [
+    {
+      "name": "Paulo",
+      "chapters": "1–6",
+      "ch": 1,
+      "note": "apresenta-se como antigo perseguidor que recebeu misericórdia, “dos quais eu sou o principal” (1:15)"
+    },
+    {
+      "name": "Timóteo",
+      "chapters": "1–6",
+      "ch": 4,
+      "note": "jovem colaborador deixado em Éfeso; deve ser exemplo apesar da juventude (4:12) e cuidar da saúde (5:23)"
+    },
+    {
+      "name": "Himeneu e Alexandre",
+      "chapters": "1",
+      "ch": 1,
+      "note": "dois que “naufragaram” na fé e foram entregues a Satanás para aprenderem a não blasfemar (1:19–20)"
+    }
+  ],
+  "writing": {
+    "tradition": "A carta foi recebida como de Paulo e é citada com o seu nome por Ireneu, c. 180; Policarpo, no início do século II, já parece conhecê-la. Como a viagem de 1:3 não se encaixa bem em Atos, a tradição antiga, registrada por Eusébio no século IV, supôs que Paulo foi solto depois da primeira prisão em Roma, voltou ao Oriente — Éfeso, Macedônia, Creta — e só depois foi preso de novo e morto. Nesse quadro, 1 Timóteo seria de c. 62–64.",
+    "academic": "As três cartas pastorais são, entre as treze que levam o nome de Paulo, as mais discutidas, e a maioria dos estudiosos críticos, desde o século XIX, as considera escritas por um discípulo em nome de Paulo, em geral entre c. 90 e 120. Os argumentos são o vocabulário e o estilo, muito diferentes dos das cartas indiscutidas; uma organização das igrejas mais estável, com bispos, presbíteros, diáconos e um grupo inscrito de viúvas; a ênfase na “sã doutrina” e no “depósito” a guardar; e a dificuldade de encaixar as viagens no que se conhece da vida de Paulo. Também se nota que Marcião, c. 140, não as incluía na sua coleção, o que pode ser explicado de mais de um modo. Uma minoria importante defende a autoria de Paulo: as diferenças viriam do tipo de carta, do assunto, de uma fase tardia da vida do apóstolo ou do uso de um secretário com liberdade de redação, e a soltura depois da primeira prisão romana seria plausível. Outros propõem uma posição intermediária, com fragmentos autênticos incorporados por um autor posterior."
+  },
+  "events": {
+    "intro": "A situação descrita — Paulo indo à Macedônia e Timóteo deixado em Éfeso — não corresponde claramente a nenhum momento narrado em Atos. Por isso a datação depende da posição sobre a autoria. As datas são aproximadas.",
+    "axis": [
+      45,
+      125
+    ],
+    "band": {
+      "label": "Reinado de Nero",
+      "from": 54,
+      "to": 68
+    },
+    "timeline": [
+      {
+        "label": "Timóteo se junta a Paulo",
+        "from": 49,
+        "to": 50,
+        "kind": "pessoa",
+        "note": "em Listra, na segunda viagem (Atos 16:1–3)"
+      },
+      {
+        "label": "Paulo em Éfeso",
+        "from": 53,
+        "to": 56,
+        "kind": "evento",
+        "note": "cerca de três anos (Atos 19)"
+      },
+      {
+        "label": "Paulo prisioneiro em Roma",
+        "from": 60,
+        "to": 62,
+        "kind": "evento",
+        "note": "fim do relato de Atos"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": 62,
+        "to": 64,
+        "kind": "escrita",
+        "note": "depois de uma suposta soltura de Paulo"
+      },
+      {
+        "label": "Morte de Paulo, segundo a tradição",
+        "from": 64,
+        "to": 67,
+        "kind": "pessoa",
+        "note": "em Roma, sob Nero; data incerta"
+      },
+      {
+        "label": "Escrita, segundo muitos estudiosos",
+        "from": 90,
+        "to": 120,
+        "kind": "escrita",
+        "note": "por um discípulo de Paulo, talvez na Ásia Menor"
+      }
+    ]
+  },
+  "context": "Éfeso, capital da província da Ásia, foi um dos principais centros do cristianismo primitivo; Paulo trabalhou ali cerca de três anos, e mais tarde a cidade foi associada também à tradição de João. As igrejas se reuniam em casas, e a casa — com marido, esposa, filhos e escravos — serve de modelo para descrever a igreja como “casa de Deus” (3:15). Os ensinos combatidos não são descritos em detalhe: fala-se de “mitos” e “genealogias intermináveis” (1:4), de mestres da Lei, de proibição do casamento e de alimentos e de um “conhecimento” (em grego, gnôsis) falsamente assim chamado (6:20). Há quem veja aí formas iniciais de correntes gnósticas, outros correntes judaico-cristãs especulativas; o texto não permite uma identificação segura.",
+  "places": [
+    "Éfeso",
+    "Macedônia"
+  ],
+  "themes": [
+    "a sã doutrina",
+    "falsos mestres",
+    "oração e culto",
+    "bispos, diáconos e presbíteros",
+    "as viúvas",
+    "riqueza e contentamento",
+    "o exemplo do líder"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:15",
+      "text": "Esta é uma palavra fiel e digna de toda aceitação: que Cristo Jesus veio ao mundo para salvar os pecadores, dos quais eu sou o principal."
+    },
+    {
+      "ref": "2:5",
+      "text": "Pois há um só Deus, e um só Mediador entre Deus e os seres humanos: o humano Cristo Jesus."
+    },
+    {
+      "ref": "4:12",
+      "text": "Ninguém despreze a tua juventude, mas sê exemplo aos crentes, na palavra, no comportamento, no amor, na fé, e na pureza."
+    },
+    {
+      "ref": "6:10",
+      "text": "Pois o amor ao dinheiro é raiz de todos os tipos de males. Alguns o cobiçam, e então se desviaram da fé, e perfuraram a si mesmos com muitas dores."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte e a posição sobre a autoria. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

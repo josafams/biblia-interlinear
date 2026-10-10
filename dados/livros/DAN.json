@@ -1,0 +1,181 @@
+{
+  "title_orig": "דָּנִיֵּאל",
+  "title_orig_xlit": "Daniyyel",
+  "summary": "Daniel reúne dois tipos de texto. Os capítulos 1 a 6 contam histórias de Daniel e de três companheiros judeus levados para a Babilônia, que servem na corte de reis estrangeiros sem abandonar a fidelidade ao seu Deus: a recusa da comida do rei, a fornalha ardente, a cova dos leões. Os capítulos 7 a 12 trazem visões em que impérios sucessivos aparecem como animais e reis em guerra, até que Deus estabelece um reino que não terá fim. O livro afirma que o Deus de Israel governa sobre os reinos humanos e termina com uma das referências mais explícitas da Bíblia hebraica à ressurreição dos mortos (12:2).",
+  "name": "O livro leva o nome de seu personagem principal. Daniel, em hebraico Daniyyel, costuma ser entendido como “Deus é meu juiz” ou “Deus julgou”. Na corte babilônica ele recebe o nome de Beltessazar (1:7).",
+  "facts": [
+    [
+      "Posição",
+      "4º dos Profetas Maiores, depois de Ezequiel; na Bíblia hebraica, entre os Escritos (Ketuvim)"
+    ],
+    [
+      "Língua original",
+      "hebraico e aramaico (2:4b–7:28)"
+    ],
+    [
+      "Gênero",
+      "narrativas de corte e literatura apocalíptica"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Histórias na corte estrangeira",
+      "from": 1,
+      "to": 6,
+      "text": "Daniel e seus companheiros servem a Nabucodonosor, Belsazar e Dario e são postos à prova por manterem a fé: sonhos interpretados, a fornalha e a cova dos leões."
+    },
+    {
+      "title": "Visões dos reinos e do fim",
+      "from": 7,
+      "to": 12,
+      "text": "Os quatro animais, o carneiro e o bode, as setenta semanas e a longa revelação sobre os reis do norte e do sul, que termina com a promessa de ressurreição."
+    }
+  ],
+  "extra": {
+    "title": "Duas línguas e dois tipos de texto",
+    "text": "De 2:4b a 7:28 o livro está escrito em aramaico, a língua internacional do império; o restante está em hebraico. A divisão das línguas não coincide com a dos assuntos: o capítulo 1 é narrativa em hebraico e o capítulo 7, já uma visão, ainda está em aramaico, o que liga as duas metades. A Septuaginta traz ainda trechos em grego que não estão no texto hebraico-aramaico (a oração de Azarias e o cântico dos três jovens, a história de Susana e a de Bel e o dragão); eles fazem parte do livro nas Bíblias católicas e ortodoxas e não aparecem nesta tradução."
+  },
+  "people": [
+    {
+      "name": "Daniel (Beltessazar)",
+      "chapters": "1–12",
+      "ch": 1,
+      "note": "jovem de Judá levado à Babilônia; intérprete de sonhos e receptor das visões"
+    },
+    {
+      "name": "Ananias, Misael e Azarias",
+      "chapters": "1–3",
+      "ch": 3,
+      "note": "companheiros de Daniel, chamados Sadraque, Mesaque e Abednego; lançados na fornalha"
+    },
+    {
+      "name": "Nabucodonosor",
+      "chapters": "1–4",
+      "ch": 4,
+      "note": "rei da Babilônia; sonha com a estátua e com a grande árvore"
+    },
+    {
+      "name": "Belsazar",
+      "chapters": "5; 7–8",
+      "ch": 5,
+      "note": "governante da Babilônia na noite da escrita na parede"
+    },
+    {
+      "name": "Dario, o medo",
+      "chapters": "5:31–6; 9; 11",
+      "ch": 6,
+      "note": "rei que lança Daniel na cova dos leões"
+    },
+    {
+      "name": "Gabriel e Miguel",
+      "chapters": "8–12",
+      "ch": 9,
+      "note": "seres celestes que explicam as visões e defendem o povo"
+    }
+  ],
+  "writing": {
+    "tradition": "As tradições judaica e cristã antigas atribuem o livro ao próprio Daniel, que fala em primeira pessoa nas visões (7–12). Nessa leitura, ele foi escrito no século VI a.C., no fim do exílio, por volta de 540–530 a.C. Defensores dessa data apontam que o livro conhece bem a corte babilônica e persa, que fragmentos de Daniel aparecem entre os Manuscritos do Mar Morto pouco tempo depois da data proposta pela pesquisa crítica e que as visões se apresentam como predição.",
+    "academic": "A maior parte dos estudiosos críticos data a forma final do livro de c. 167–164 a.C., durante a perseguição de Antíoco IV Epífanes, que profanou o templo de Jerusalém. Argumenta-se que a visão do capítulo 11 descreve com grande detalhe as guerras entre selêucidas e ptolomeus até essa época e se torna vaga depois dela, e que há imprecisões sobre o período babilônico e persa (como “Dario, o medo”). As histórias dos capítulos 1 a 6 são vistas como mais antigas, talvez dos períodos persa ou helenístico inicial. A questão da data segue em debate e costuma depender também de pressupostos sobre a possibilidade de profecia preditiva."
+  },
+  "events": {
+    "intro": "As histórias se situam entre a primeira deportação de Judá, no fim do século VII a.C., e os primeiros anos do domínio persa. As visões apontam para a sucessão de impérios que culmina no período helenístico; na leitura crítica, o capítulo 11 alcança a crise sob Antíoco IV, no século II a.C. As datas são aproximadas, e a linha do tempo mostra as duas propostas de escrita.",
+    "axis": [
+      -610,
+      -160
+    ],
+    "band": {
+      "label": "Exílio na Babilônia",
+      "from": -586,
+      "to": -538
+    },
+    "timeline": [
+      {
+        "label": "Daniel levado à Babilônia",
+        "from": -605,
+        "to": -605,
+        "kind": "evento",
+        "note": "“no ano terceiro” de Jeoaquim (1:1), segundo a contagem do livro"
+      },
+      {
+        "label": "Nabucodonosor",
+        "from": -605,
+        "to": -562,
+        "kind": "pessoa",
+        "note": "reinado"
+      },
+      {
+        "label": "Daniel",
+        "from": -605,
+        "to": -536,
+        "kind": "pessoa",
+        "note": "atuação na corte, até o terceiro ano de Ciro (10:1); datas aproximadas"
+      },
+      {
+        "label": "Queda da Babilônia",
+        "from": -539,
+        "to": -539,
+        "kind": "evento",
+        "note": "Ciro, rei da Pérsia, toma a cidade; fim do reinado babilônico (5:30–31)"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -540,
+        "to": -530,
+        "kind": "escrita",
+        "note": "Daniel, no fim do exílio"
+      },
+      {
+        "label": "Alexandre e os reinos helenísticos",
+        "from": -333,
+        "to": -301,
+        "kind": "evento",
+        "note": "o “bode” e seus quatro chifres (8:21–22), segundo a explicação do próprio livro"
+      },
+      {
+        "label": "Antíoco IV Epífanes",
+        "from": -175,
+        "to": -164,
+        "kind": "pessoa",
+        "note": "rei selêucida; profana o templo em 167 a.C."
+      },
+      {
+        "label": "Forma final, segundo a pesquisa",
+        "from": -167,
+        "to": -164,
+        "kind": "escrita",
+        "note": "durante a perseguição de Antíoco IV, antes da rededicação do templo"
+      }
+    ]
+  },
+  "context": "As narrativas se passam na Babilônia de Nabucodonosor, o império que destruiu Jerusalém em 587/586 a.C., e nos primeiros anos do domínio persa, depois que Ciro tomou a cidade em 539 a.C. Fontes babilônicas mostram que o último rei, Nabonido, passou anos fora da capital e deixou o governo com o filho Belsazar, que aparece no capítulo 5. As visões usam a linguagem simbólica típica da literatura apocalíptica judaica — animais, chifres, números e anjos — para falar de impérios e do fim deles, e o livro teve grande influência nesse gênero e, mais tarde, no Novo Testamento.",
+  "places": [
+    "Jerusalém",
+    "Babilônia e a província de Babilônia",
+    "campo de Dura",
+    "Susã, junto ao rio Ulai",
+    "rio Tigre"
+  ],
+  "themes": [
+    "soberania de Deus sobre os reinos",
+    "fidelidade no exílio",
+    "sonhos e visões",
+    "sabedoria",
+    "reino eterno",
+    "ressurreição"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:44",
+      "text": "Mas nos dias destes reis, o Deus do céu levantará um reino que nunca será destruído; e este reino não será deixado para outro povo; ao contrário, esmigalhará e consumirá todos estes reinos, e tal reino permanecerá para sempre."
+    },
+    {
+      "ref": "7:13–14",
+      "text": "Eu estava vendo em minhas visões de noite, e eis que estava vindo nas nuvens do céu como um filho do homem; e ele chegou até o Ancião de dias, e o fizeram chegar diante dele. E foi lhe dado domínio, honra, e reino, de modo que todos os povos, nações e línguas lhe serviram; seu domínio é um domínio eterno, que não passará, e seu reino não será destruído."
+    },
+    {
+      "ref": "12:2–3",
+      "text": "E muitos dos que dormem no pó da terra ressuscitarão, uns para a vida eterna, e outros para a vergonha e o desprezo eterno. E os sábios brilharão como o resplendor do céu; e os que conduzem muitos à justiça brilharão como as estrelas, para todo o sempre."
+    }
+  ],
+  "note": "As datas variam conforme a fonte; os versículos citados são da Bíblia Livre (BLIVRE). Esta edição segue a numeração das Bíblias em português: 4:1–3 corresponde a 3:31–33 no texto aramaico, e 5:31 corresponde a 6:1, de modo que o capítulo 6 tem um versículo a menos ali."
+}

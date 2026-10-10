@@ -1,0 +1,128 @@
+{
+  "title_orig": "חֲבַקּוּק",
+  "title_orig_xlit": "Chavaqquq",
+  "summary": "Habacuque é um diálogo entre o profeta e Deus. O profeta se queixa da violência e da injustiça em Judá; Deus responde que levantará os caldeus (babilônios) como instrumento de juízo, o que provoca uma segunda queixa: como usar um povo ainda mais violento? A resposta inclui a afirmação de que o justo viverá por sua fé e uma série de ais contra o opressor. O livro termina com uma oração em forma de salmo, que confia em Deus mesmo quando falta tudo.",
+  "name": "O livro leva o nome do profeta. O significado de Habacuque é incerto: alguns o ligam ao verbo hebraico “abraçar”, outros a uma palavra acádia que designa uma planta.",
+  "facts": [
+    [
+      "Posição",
+      "8º dos Doze Profetas Menores"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "profecia em forma de diálogo, com um salmo (capítulo 3)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "O diálogo com Deus",
+      "from": 1,
+      "to": 2,
+      "text": "Duas queixas do profeta e duas respostas: os caldeus como instrumento de juízo e a visão que deve ser escrita; depois, cinco ais contra o opressor."
+    },
+    {
+      "title": "A oração do profeta",
+      "from": 3,
+      "to": 3,
+      "text": "Um salmo que descreve a vinda de Deus como guerreiro e termina com uma declaração de confiança."
+    }
+  ],
+  "people": [
+    {
+      "name": "Habacuque",
+      "chapters": "1–3",
+      "ch": 1,
+      "note": "profeta; nada se sabe de sua vida além do livro"
+    },
+    {
+      "name": "Os caldeus",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "os babilônios, descritos como nação rápida e violenta"
+    }
+  ],
+  "writing": {
+    "tradition": "O livro é atribuído ao profeta Habacuque. Como fala do surgimento dos caldeus como potência, costuma ser situado no fim do século VII a.C., por volta de 609–598 a.C., durante o reinado de Jeoaquim em Judá.",
+    "academic": "Os estudiosos em geral aceitam uma data no fim do século VII ou início do VI a.C., ligada à ascensão da Babilônia depois da batalha de Carquemis (605 a.C.). Discute-se se o capítulo 3, que tem título e indicações musicais próprias, foi composto junto com o resto; entre os Manuscritos do Mar Morto, o comentário de Qumran sobre Habacuque cobre só os capítulos 1 e 2, embora outros manuscritos antigos tragam o capítulo 3."
+  },
+  "events": {
+    "intro": "O livro reflete a passagem do domínio assírio ao babilônico. As datas são aproximadas.",
+    "axis": [
+      -630,
+      -580
+    ],
+    "timeline": [
+      {
+        "label": "Queda de Nínive",
+        "from": -612,
+        "to": -612,
+        "kind": "evento",
+        "note": "fim do poder assírio"
+      },
+      {
+        "label": "Jeoaquim, rei de Judá",
+        "from": -609,
+        "to": -598,
+        "kind": "pessoa",
+        "note": "reinado"
+      },
+      {
+        "label": "Batalha de Carquemis",
+        "from": -605,
+        "to": -605,
+        "kind": "evento",
+        "note": "Nabucodonosor derrota o Egito; a Babilônia passa a dominar a região"
+      },
+      {
+        "label": "Escrita, segundo a tradição e a pesquisa",
+        "from": -609,
+        "to": -598,
+        "kind": "escrita",
+        "note": "intervalo mais citado"
+      },
+      {
+        "label": "Primeira tomada de Jerusalém",
+        "from": -597,
+        "to": -597,
+        "kind": "evento",
+        "note": "os babilônios deportam o rei Joaquim e parte da elite"
+      }
+    ]
+  },
+  "context": "No fim do século VII a.C., a Assíria desmoronou e a Babilônia, sob Nabopolassar e depois Nabucodonosor, ocupou seu lugar. Judá, que vivera a reforma de Josias, voltou a enfrentar injustiça interna e dependência externa, primeiro do Egito e depois da Babilônia. A afirmação de 2:4 sobre o justo que vive pela fé foi muito comentada na tradição judaica e é citada por Paulo em Romanos 1:17 e Gálatas 3:11, e na Carta aos Hebreus.",
+  "places": [
+    "Judá e Jerusalém",
+    "Babilônia (os caldeus)",
+    "Temã e monte Parã"
+  ],
+  "themes": [
+    "o problema do mal",
+    "justiça de Deus",
+    "fé e fidelidade",
+    "juízo do opressor",
+    "confiança na adversidade"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:2",
+      "text": "Até quando, SENHOR, eu clamarei, e tu não ouvirás? Até quando gritarei a ti: Violência!, e tu não salvarás?"
+    },
+    {
+      "ref": "2:4",
+      "text": "Eis que o soberbo não tem a alma correta em si; mas o justo viverá por sua fé."
+    },
+    {
+      "ref": "2:14",
+      "text": "Porque a terra se encherá de conhecimento da glória do SENHOR, como as águas cobrem o mar."
+    },
+    {
+      "ref": "3:17–18",
+      "text": "Ainda que a figueira não floresça, nem haja fruto nas vides, e falte o produto da oliveira, os campos não produzam alimento, as ovelhas sejam arrebatadas, e não haja vacas nos currais, Mesmo assim eu me alegrarei no SENHOR, terei prazer no Deus de minha salvação."
+    }
+  ],
+  "note": "As datas são aproximadas; os versículos citados são da Bíblia Livre (BLIVRE)."
+}

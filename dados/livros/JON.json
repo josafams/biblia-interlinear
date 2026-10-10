@@ -1,0 +1,124 @@
+{
+  "title_orig": "יוֹנָה",
+  "title_orig_xlit": "Yonah",
+  "summary": "Diferente dos outros profetas, Jonas é quase todo narrativa. Enviado a pregar contra Nínive, capital assíria e inimiga de Israel, o profeta foge de navio, é lançado ao mar e engolido por um grande peixe. Depois de orar e ser devolvido à terra, ele prega na cidade, que se arrepende e é poupada. O livro termina com Jonas irritado com a misericórdia de Deus e com uma pergunta que fica sem resposta.",
+  "name": "O livro leva o nome do protagonista. Jonas, em hebraico Yonah, significa “pomba”. Ele é identificado com Jonas, filho de Amitai, profeta mencionado em 2 Reis 14:25.",
+  "facts": [
+    [
+      "Posição",
+      "5º dos Doze Profetas Menores"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "narrativa profética, com um salmo (2:2–9)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "A fuga",
+      "from": 1,
+      "to": 2,
+      "text": "Jonas foge para Társis, a tempestade o alcança, os marinheiros o lançam ao mar e ele ora do ventre do peixe."
+    },
+    {
+      "title": "A missão e a reação",
+      "from": 3,
+      "to": 4,
+      "text": "Nínive ouve a mensagem e se converte; Deus poupa a cidade, e Jonas discute com Deus por causa disso."
+    }
+  ],
+  "people": [
+    {
+      "name": "Jonas",
+      "chapters": "1–4",
+      "ch": 1,
+      "note": "profeta, filho de Amitai, de Gate-Hefer (2 Reis 14:25)"
+    },
+    {
+      "name": "Os marinheiros",
+      "chapters": "1",
+      "ch": 1,
+      "note": "estrangeiros que temem ao SENHOR e oferecem sacrifícios"
+    },
+    {
+      "name": "O rei de Nínive",
+      "chapters": "3",
+      "ch": 3,
+      "note": "decreta jejum e conversão para toda a cidade"
+    }
+  ],
+  "writing": {
+    "tradition": "A tradição judaica e cristã vê o livro como relato da missão de Jonas, filho de Amitai, que profetizou nos dias de Jeroboão II (2 Reis 14:25), no século VIII a.C., e muitos o atribuem ao próprio profeta, por volta de 780–750 a.C. Nessa leitura, o livro narra fatos históricos.",
+    "academic": "O livro fala de Jonas na terceira pessoa e não indica autor. Muitos estudiosos o datam do período persa, entre c. 500 e 300 a.C., com base em traços da língua e no modo como Nínive é descrita, como cidade do passado. O gênero é debatido: relato histórico, narrativa didática, parábola ou sátira profética. Há também discussão sobre se o salmo do capítulo 2 foi composto junto com a narrativa ou inserido depois."
+  },
+  "events": {
+    "intro": "O personagem pertence ao século VIII a.C., mas o livro não traz data própria. As datas abaixo são aproximadas e mostram o tempo de Jonas e as duas propostas para a escrita.",
+    "axis": [
+      -800,
+      -280
+    ],
+    "timeline": [
+      {
+        "label": "Jeroboão II",
+        "from": -786,
+        "to": -746,
+        "kind": "pessoa",
+        "note": "rei de Israel em cujos dias atuou Jonas, filho de Amitai"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -780,
+        "to": -750,
+        "kind": "escrita",
+        "note": "relato da missão de Jonas"
+      },
+      {
+        "label": "Nínive, capital assíria",
+        "from": -705,
+        "to": -612,
+        "kind": "evento",
+        "note": "Senaqueribe faz de Nínive a capital; a cidade cai em 612 a.C."
+      },
+      {
+        "label": "Escrita, segundo a pesquisa",
+        "from": -500,
+        "to": -300,
+        "kind": "escrita",
+        "note": "período persa ou início do helenístico"
+      }
+    ]
+  },
+  "context": "Nínive, às margens do Tigre, era uma das grandes cidades da Assíria e, a partir de Senaqueribe, por volta de 700 a.C., tornou-se a capital do império que destruiu o Reino do Norte em 722 a.C. Para leitores de Israel, a cidade simbolizava a crueldade do inimigo, como mostra o livro de Naum. Társis costuma ser situada no extremo ocidente do Mediterrâneo, talvez na Península Ibérica, o lado oposto ao de Nínive. Jope era o porto da costa de Israel.",
+  "places": [
+    "Jope",
+    "Társis",
+    "o mar",
+    "Nínive"
+  ],
+  "themes": [
+    "misericórdia de Deus",
+    "arrependimento",
+    "Deus e as nações",
+    "obediência e fuga",
+    "compaixão"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:9",
+      "text": "Mas eu porém sacrificarei a ti com voz de gratidão; pagarei o que prometi. A salvação vem do SENHOR."
+    },
+    {
+      "ref": "3:10",
+      "text": "E Deus viu a atitude deles, que se converteram de seu mau caminho; então Deus se arrependeu do mal que tinha dito que lhes faria, e não o fez."
+    },
+    {
+      "ref": "4:2",
+      "text": "E orou ao SENHOR, e disse: Ah, SENHOR, não foi isto o que eu dizia enquanto ainda estava em minha terra? Por isso me preveni fugindo a Társis; porque sabia eu que tu és Deus gracioso e misericordioso, que demoras a te irar, tens grande misericórdia, e te arrependes do mal."
+    }
+  ],
+  "note": "A Bíblia Livre segue a numeração das Bíblias em português: 1:17 corresponde a 2:1 no texto hebraico, e 2:1 a 2:2, e assim por diante até o fim do capítulo 2. As datas são aproximadas."
+}

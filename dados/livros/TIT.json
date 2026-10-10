@@ -1,0 +1,144 @@
+{
+  "title_orig": "Πρὸς Τίτον",
+  "title_orig_xlit": "Pros Titon",
+  "summary": "Tito é uma carta breve a um colaborador deixado em Creta para organizar as igrejas e nomear presbíteros “de cidade em cidade” (1:5). Descreve as qualidades exigidas desses líderes e pede firmeza contra mestres “insubordinados”, especialmente os ligados à circuncisão, interessados em mitos e em regras de pureza. Em seguida orienta o que ensinar a cada grupo — idosos, jovens, mulheres, escravos — e fundamenta esse comportamento na graça de Deus, que se manifestou e educa para uma vida sóbria e justa. Termina com a lembrança de que a salvação vem da misericórdia de Deus, não de obras, e com instruções de viagem.",
+  "name": "O título Pros Titon, “A Tito”, vem do destinatário, chamado “meu verdadeiro filho, segundo a fé em comum” (1:4). Com 1 e 2 Timóteo, forma o grupo das “cartas pastorais”.",
+  "facts": [
+    [
+      "Posição",
+      "17º livro do Novo Testamento; 12ª das cartas paulinas, na ordem do cânon"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "carta de instruções a um colaborador (carta pastoral)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Líderes e opositores",
+      "from": 1,
+      "to": 1,
+      "text": "Saudação longa; Tito deve constituir presbíteros irrepreensíveis e calar os que ensinam por ganho desonesto, com uma citação pouco lisonjeira sobre os cretenses (1:12)."
+    },
+    {
+      "title": "O ensino para cada grupo",
+      "from": 2,
+      "to": 2,
+      "text": "Conselhos a idosos, idosas, jovens e escravos, fundamentados na graça de Deus que se manifestou e na esperança da vinda de Cristo."
+    },
+    {
+      "title": "Vida pública e salvação",
+      "from": 3,
+      "to": 3,
+      "text": "Respeito às autoridades e mansidão com todos, porque Deus salvou por misericórdia, pelo “banho do novo nascimento”; evitar disputas; pedidos sobre Ártemas, Tíquico, Zenas e Apolo."
+    }
+  ],
+  "people": [
+    {
+      "name": "Paulo",
+      "chapters": "1; 3",
+      "ch": 1,
+      "note": "remetente; pretende passar o inverno em Nicópolis (3:12)"
+    },
+    {
+      "name": "Tito",
+      "chapters": "1–3",
+      "ch": 1,
+      "note": "colaborador grego de Paulo, que não foi obrigado a se circuncidar (Gálatas 2:3) e foi seu enviado a Corinto (2 Coríntios 7–8)"
+    },
+    {
+      "name": "Ártemas e Tíquico",
+      "chapters": "3",
+      "ch": 3,
+      "note": "um deles irá substituir Tito em Creta (3:12)"
+    },
+    {
+      "name": "Zenas e Apolo",
+      "chapters": "3",
+      "ch": 3,
+      "note": "Zenas é um especialista na Lei; Tito deve ajudá-los na viagem (3:13)"
+    }
+  ],
+  "writing": {
+    "tradition": "A tradição recebeu a carta como de Paulo. Como Atos só menciona Creta de passagem, na viagem de Paulo preso a Roma (Atos 27:7–13), a tradição a situa no mesmo período de 1 Timóteo: depois de uma soltura da primeira prisão romana, quando Paulo teria trabalhado em Creta e planejado passar o inverno em Nicópolis, c. 62–64.",
+    "academic": "Como 1 e 2 Timóteo, Tito é considerada pela maioria dos estudiosos críticos obra de um discípulo que escreveu em nome de Paulo, em geral entre c. 90 e 120, pelos mesmos motivos: vocabulário e estilo próprios, ênfase na “sã doutrina” e na organização dos líderes, e um roteiro de viagens que não aparece nas cartas indiscutidas nem em Atos. Os que defendem a autoria de Paulo situam a carta depois de Atos, na fase final da sua vida, e explicam as diferenças pelo assunto e pelo uso de um secretário. Nota-se que, em Tito 1:5–7, os termos presbítero e bispo (literalmente “supervisor”) parecem designar a mesma função, como em Atos 20:17, 28 — o que alguns tomam como indício de uma organização ainda pouco hierarquizada."
+  },
+  "events": {
+    "intro": "Nenhum episódio da carta pode ser datado com segurança. A linha do tempo apresenta a posição tradicional e a de muitos estudiosos; as datas são aproximadas.",
+    "axis": [
+      45,
+      125
+    ],
+    "band": {
+      "label": "Reinado de Nero",
+      "from": 54,
+      "to": 68
+    },
+    "timeline": [
+      {
+        "label": "Tito em Jerusalém com Paulo",
+        "from": 48,
+        "to": 49,
+        "kind": "pessoa",
+        "note": "Gálatas 2:1–3; data aproximada"
+      },
+      {
+        "label": "Tito enviado a Corinto",
+        "from": 55,
+        "to": 56,
+        "kind": "pessoa",
+        "note": "2 Coríntios 7–8"
+      },
+      {
+        "label": "Paulo passa por Creta, preso",
+        "from": 59,
+        "to": 60,
+        "kind": "evento",
+        "note": "a caminho de Roma (Atos 27:7–13)"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": 62,
+        "to": 64,
+        "kind": "escrita",
+        "note": "depois de uma suposta soltura de Paulo"
+      },
+      {
+        "label": "Escrita, segundo muitos estudiosos",
+        "from": 90,
+        "to": 120,
+        "kind": "escrita",
+        "note": "por um discípulo de Paulo"
+      }
+    ]
+  },
+  "context": "Creta, grande ilha ao sul do mar Egeu, foi conquistada por Roma em 67 a.C. e, mais tarde, unida numa só província à Cirenaica, no norte da África, e tinha cidades com comunidades judaicas (Atos 2:11 menciona cretenses em Jerusalém no Pentecostes). Os gregos repetiam um dito antigo segundo o qual os cretenses eram mentirosos; o verso citado em 1:12 é atribuído desde a Antiguidade a Epimênides, poeta e sábio cretense do século VI a.C. Nicópolis, onde Paulo pretende passar o inverno, é provavelmente a cidade do Épiro, na costa ocidental da Grécia, fundada por Otaviano depois da batalha de Áccio (31 a.C.).",
+  "places": [
+    "Creta",
+    "Nicópolis"
+  ],
+  "themes": [
+    "a sã doutrina",
+    "presbíteros e bispos",
+    "falsos mestres",
+    "o comportamento de cada grupo",
+    "a graça que educa",
+    "salvação por misericórdia",
+    "boas obras"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:11–13",
+      "text": "Porque a graça salvadora de Deus se manifestou a todos os homens. Ensinando-nos que, ao renunciarmos à irreverência e aos maus desejos mundanos, vivamos neste tempo presente de maneira sóbria, justa e devota. Aguardando a bem-aventurada esperança e o aparecimento da glória do grande Deus e nosso Salvador Jesus Cristo;"
+    },
+    {
+      "ref": "3:4–5",
+      "text": "Mas quando a bondade e amor de Deus nosso Salvador para a humanidade apareceu, Não pelas obras de justiça que nós tivéssemos feito, mas sim segundo sua misericórdia, ele nos salvou pelo banho do novo nascimento, e da renovação do Espírito Santo;"
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte e a posição sobre a autoria. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

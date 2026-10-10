@@ -1,0 +1,185 @@
+{
+  "title_orig": "Πρὸς Ἑβραίους",
+  "title_orig_xlit": "Pros Hebraious",
+  "summary": "Hebreus é um longo apelo a cristãos tentados a desanimar e a abandonar a fé. O autor argumenta que Deus, depois de falar de muitas maneiras pelos profetas, falou de modo definitivo por meio do Filho, superior aos anjos e a Moisés. O centro do livro apresenta Jesus como sumo sacerdote “segundo a ordem de Melquisedeque”, que entrou no santuário celeste com o próprio sangue e ofereceu um único sacrifício, inaugurando a nova aliança anunciada por Jeremias. Entre as partes da exposição vêm advertências sérias e encorajamentos, e o capítulo 11 percorre a história de Israel lembrando os que viveram pela fé. O livro termina com conselhos práticos e saudações, como uma carta.",
+  "name": "O título “Aos hebreus” (Pros Hebraious) não faz parte do texto; já aparece nos manuscritos mais antigos, do fim do século II, e reflete a impressão de que os destinatários eram cristãos de origem judaica, por causa do lugar central que o livro dá ao sacerdócio, aos sacrifícios e às Escrituras de Israel. O próprio autor chama o que escreveu de “palavra de exortação” (13:22).",
+  "facts": [
+    [
+      "Posição",
+      "19º livro do Novo Testamento; vem logo depois das cartas de Paulo e antes das cartas gerais"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "sermão escrito (exortação), com fecho de carta"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "O Filho, palavra final de Deus",
+      "from": 1,
+      "to": 4,
+      "text": "O Filho é maior que os anjos e que Moisés; quem ouviu a mensagem é chamado a não endurecer o coração, como a geração do deserto, e a entrar no descanso de Deus (1:1–4:13)."
+    },
+    {
+      "title": "O sumo sacerdote",
+      "from": 4,
+      "to": 7,
+      "text": "Jesus é o sumo sacerdote que se compadece das fraquezas humanas; depois de um apelo à maturidade, o autor o compara a Melquisedeque, sacerdote sem genealogia e para sempre (4:14–7:28)."
+    },
+    {
+      "title": "Nova aliança e sacrifício único",
+      "from": 8,
+      "to": 10,
+      "text": "O santuário terrestre era cópia e sombra; Cristo entrou no santuário celeste e, com uma única oferta, faz o que os sacrifícios repetidos não podiam fazer (8:1–10:18)."
+    },
+    {
+      "title": "Perseverar na fé",
+      "from": 10,
+      "to": 12,
+      "text": "Chamado a se aproximar de Deus com confiança, advertência contra o abandono, a galeria dos que viveram pela fé, a corrida com os olhos em Jesus e o contraste entre o Sinai e o monte Sião (10:19–12:29)."
+    },
+    {
+      "title": "Exortações finais",
+      "from": 13,
+      "to": 13,
+      "text": "Amor fraterno, hospitalidade, cuidado com os presos, fidelidade no casamento, respeito aos líderes, pedido de oração e saudações."
+    }
+  ],
+  "extra": {
+    "title": "Um sermão em forma de carta",
+    "text": "Hebreus não começa como carta: não há nome de remetente nem saudação, e só o último capítulo tem o tom pessoal das cartas. O corpo do texto alterna exposição e apelo, como um sermão, e as advertências voltam em intervalos (2:1–4; 3:7–4:13; 5:11–6:12; 10:26–31; 12:14–29). O argumento se apoia em comparações: o Filho e os anjos, Jesus e Moisés, o sacerdócio de Arão e o de Melquisedeque, a primeira e a nova aliança, e a palavra “melhor” aparece muitas vezes. O grego é o mais elaborado do Novo Testamento, e as citações seguem a tradução grega das Escrituras (a Septuaginta), com destaque para os Salmos 2, 95 e 110 e para Jeremias 31, citado por extenso em 8:8–12."
+  },
+  "people": [
+    {
+      "name": "Jesus, o Filho",
+      "chapters": "1–2; 4–10; 12",
+      "ch": 1,
+      "note": "apresentado como Filho, irmão dos seres humanos, sumo sacerdote e mediador de uma nova aliança"
+    },
+    {
+      "name": "Moisés",
+      "chapters": "3; 11",
+      "ch": 3,
+      "note": "servo fiel na casa de Deus, comparado ao Filho; lembrado também entre os exemplos de fé"
+    },
+    {
+      "name": "Melquisedeque",
+      "chapters": "5–7",
+      "ch": 7,
+      "note": "rei de Salém e sacerdote que abençoou Abraão (Gênesis 14); modelo do sacerdócio de Cristo"
+    },
+    {
+      "name": "Abraão",
+      "chapters": "6–7; 11",
+      "ch": 11,
+      "note": "recebeu a promessa com juramento, deu o dízimo a Melquisedeque e partiu sem saber para onde ia"
+    },
+    {
+      "name": "Testemunhas da fé",
+      "chapters": "11",
+      "ch": 11,
+      "note": "Abel, Enoque, Noé, Sara, Isaque, Jacó, José, Raabe, os juízes, Davi, os profetas e outros"
+    },
+    {
+      "name": "Timóteo",
+      "chapters": "13",
+      "ch": 13,
+      "note": "o autor anuncia que ele foi solto e espera visitar os destinatários com ele (13:23)"
+    }
+  ],
+  "writing": {
+    "tradition": "O livro não diz quem o escreveu, e a Igreja antiga se dividiu. No Oriente, sobretudo em Alexandria, foi recebido entre as cartas de Paulo; Clemente de Alexandria pensava que Paulo o escrevera em hebraico e Lucas o traduzira, e Orígenes, notando que o estilo não é o de Paulo, julgou que as ideias eram dele e a redação de outro, concluindo que só Deus sabe quem o escreveu. No Ocidente, a autoria paulina demorou a ser aceita; Tertuliano o atribuía a Barnabé. A partir dos séculos IV e V, prevaleceu a atribuição a Paulo, que se manteve por muito tempo.",
+    "academic": "Hoje a maioria dos estudiosos, de várias tradições, considera que Paulo não é o autor: o vocabulário, o estilo e o modo de argumentar são diferentes, e o autor diz ter recebido a mensagem dos que ouviram o Senhor (2:3). Foram propostos Barnabé, Apolo, Silas, Lucas, Priscila e outros, sem que nenhum nome se imponha. A data também é discutida. O livro é citado (ou ao menos conhecido) na carta de Clemente de Roma, de c. 96, o que dá um limite. Muitos o situam antes de 70, porque fala do culto como algo que ainda se pratica e não menciona a destruição do templo; outros observam que o autor descreve o tabernáculo do deserto, e não o templo, e preferem os anos 80 ou 90. Os destinatários são em geral vistos como cristãos de origem judaica, talvez em Roma ou na Itália (13:24), mas também isso é debatido."
+  },
+  "events": {
+    "intro": "Hebreus não narra uma história, mas foi escrito para uma comunidade que já tinha uma trajetória: recebeu a mensagem de testemunhas, passou por um tempo de perseguição, com prisões e perda de bens (10:32–34), e agora corria o risco de esmorecer. As datas são aproximadas; a da escrita é a mais discutida.",
+    "axis": [
+      25,
+      100
+    ],
+    "timeline": [
+      {
+        "label": "Morte e ressurreição de Jesus",
+        "from": 30,
+        "to": 33,
+        "kind": "evento",
+        "note": "data aproximada"
+      },
+      {
+        "label": "Expulsão de judeus de Roma por Cláudio",
+        "from": 49,
+        "to": 49,
+        "kind": "evento",
+        "note": "c. 49; alguns relacionam a 10:32–34, se os destinatários estavam em Roma"
+      },
+      {
+        "label": "Perseguição de Nero em Roma",
+        "from": 64,
+        "to": 64,
+        "kind": "evento",
+        "note": "após o incêndio da cidade"
+      },
+      {
+        "label": "Destruição do templo de Jerusalém",
+        "from": 70,
+        "to": 70,
+        "kind": "evento",
+        "note": "o livro não a menciona, o que pesa no debate sobre a data"
+      },
+      {
+        "label": "Escrita do livro",
+        "from": 60,
+        "to": 95,
+        "kind": "escrita",
+        "note": "faixa ampla: antes de 70 para uns, nos anos 80–90 para outros"
+      },
+      {
+        "label": "Carta de Clemente de Roma",
+        "from": 95,
+        "to": 97,
+        "kind": "escrita",
+        "note": "c. 96; usa expressões de Hebreus, o que indica que o livro já circulava"
+      }
+    ]
+  },
+  "context": "O autor escreve a uma comunidade que conhecia bem as Escrituras de Israel na versão grega e que já estava na fé havia algum tempo, a ponto de ter de ser mestre (5:12). Tinha sofrido insultos, prisões e confisco de bens, mas sem chegar ao martírio (12:4), e alguns deixavam de frequentar as reuniões (10:25). O argumento sobre o sacerdócio e os sacrifícios supõe leitores para quem o culto de Israel tinha grande peso, mas o livro fala sempre do tabernáculo descrito no Êxodo e no Levítico, e não do templo de Herodes. A saudação “os da Itália vos saúdam” (13:24) pode indicar que o autor estava na Itália ou que escrevia a ela, junto com italianos que viviam fora.",
+  "places": [
+    "o tabernáculo do deserto e o santuário celeste",
+    "Salém",
+    "o monte Sinai e o monte Sião",
+    "Egito e o deserto",
+    "Itália"
+  ],
+  "themes": [
+    "a superioridade do Filho",
+    "o sumo sacerdócio de Cristo",
+    "a nova aliança",
+    "sacrifício e purificação",
+    "fé e perseverança",
+    "advertência contra o abandono",
+    "o descanso de Deus"
+  ],
+  "key_verses": [
+    {
+      "ref": "4:12",
+      "text": "Porque a palavra de Deus é viva e eficaz, e mais afiada do que toda espada de dois gumes, e que penetra até a divisão da alma e do espírito, das juntas e das medulas, e é apta para julgar os pensamentos e intenções do coração."
+    },
+    {
+      "ref": "4:15–16",
+      "text": "Pois não temos um Sumo Sacerdote que não possa se compadecer das nossas fraquezas; mas sim, um que foi provado em tudo, conforme a nossa semelhança, mas sem pecado. Portanto, acheguemo-nos com confiança ao trono da graça, para que possamos receber misericórdia e encontrar graça para sermos socorridos no tempo adequado."
+    },
+    {
+      "ref": "11:1",
+      "text": "Ora, a fé é a certeza das coisas que se esperam, e a prova das coisas que não se veem."
+    },
+    {
+      "ref": "12:1–2",
+      "text": "Portanto nós também, posto que estamos rodeados por uma tão grande nuvem de testemunhas, deixemos toda sobrecarga, e o pecado envolvente, e corramos com paciência a corrida que nos está proposta, olhando para Jesus, Autor e aperfeiçoador da fé. Ele, pela alegria que lhe estava proposta, suportou a cruz, desprezando a humilhação, e se assentou à direita do trono de Deus."
+    }
+  ],
+  "note": "Autoria, data e destinatários de Hebreus são incertos; as datas da linha do tempo são aproximadas e as posições apresentadas são as mais discutidas, sem pretensão de resolver a questão. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

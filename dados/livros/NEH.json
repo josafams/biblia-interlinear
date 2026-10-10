@@ -1,0 +1,212 @@
+{
+  "title_orig": "נְחֶמְיָה",
+  "title_orig_xlit": "Nechemyah",
+  "summary": "Neemias, copeiro do rei persa Artaxerxes em Susã, recebe notícias da situação precária de Jerusalém e obtém permissão para reconstruir os muros da cidade. Apesar da oposição de Sambalate, Tobias e Gesém, a obra é concluída em cinquenta e dois dias. O livro também narra a leitura pública da lei feita por Esdras, a confissão do povo e o compromisso assinado pela comunidade, o repovoamento de Jerusalém e a dedicação dos muros. Termina com as reformas de Neemias num segundo período de governo: o sábado, os dízimos, o serviço do templo e os casamentos com estrangeiros.",
+  "name": "O livro leva o nome de Neemias, que fala em primeira pessoa em boa parte do texto; o nome quer dizer “o SENHOR consola”. Na tradição hebraica, Esdras e Neemias formavam um só livro; a Septuaginta inclui Neemias em Esdras B, e a Vulgata o chamou de 2 Esdras. A separação em dois livros, comum nas Bíblias cristãs, foi adotada mais tarde nas edições hebraicas impressas.",
+  "facts": [
+    [
+      "Posição",
+      "16º livro da Bíblia, entre os livros históricos; na Bíblia hebraica, segunda parte do livro de Esdras–Neemias, entre os Escritos (Ketuvim)"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "narrativa histórica, em boa parte memórias em primeira pessoa, com listas"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "O chamado de Neemias",
+      "from": 1,
+      "to": 2,
+      "text": "A notícia sobre Jerusalém, a oração, o pedido ao rei e a inspeção noturna dos muros."
+    },
+    {
+      "title": "A reconstrução do muro",
+      "from": 3,
+      "to": 7,
+      "text": "Os grupos de construtores, a oposição armada e as intrigas, a crise das dívidas, a conclusão do muro e a lista dos repatriados."
+    },
+    {
+      "title": "A lei e a aliança",
+      "from": 8,
+      "to": 10,
+      "text": "Esdras lê a lei diante do povo, a festa das cabanas, a grande confissão e o compromisso por escrito."
+    },
+    {
+      "title": "Jerusalém repovoada",
+      "from": 11,
+      "to": 12,
+      "text": "Os novos moradores da cidade, as listas de sacerdotes e levitas e a festa de dedicação do muro."
+    },
+    {
+      "title": "As reformas finais",
+      "from": 13,
+      "to": 13,
+      "text": "Na volta a Jerusalém, Neemias corrige abusos no templo, no sábado e nos casamentos."
+    }
+  ],
+  "extra": {
+    "title": "As memórias de Neemias",
+    "text": "Grande parte do livro (especialmente 1–7 e 12:31–13:31) está escrita na primeira pessoa e tem o tom de um relato pessoal. Nela aparecem orações curtas em que Neemias pede a Deus que se lembre dele “para o bem” (5:19; 13:14, 22, 31) ou que se lembre das obras dos adversários (4:4–5; 6:14; 13:29). Essas memórias são consideradas por muitos historiadores uma das fontes mais diretas sobre Judá no período persa."
+  },
+  "people": [
+    {
+      "name": "Neemias",
+      "chapters": "1–13",
+      "ch": 1,
+      "note": "copeiro do rei e depois governador de Judá"
+    },
+    {
+      "name": "Hanani",
+      "chapters": "1; 7",
+      "ch": 1,
+      "note": "irmão de Neemias, que traz notícias de Jerusalém"
+    },
+    {
+      "name": "Artaxerxes",
+      "chapters": "2; 5; 13",
+      "ch": 2,
+      "note": "rei persa que autoriza a obra"
+    },
+    {
+      "name": "Eliasibe",
+      "chapters": "3; 12–13",
+      "ch": 3,
+      "note": "sumo sacerdote; ligado a Tobias por parentesco (13:4)"
+    },
+    {
+      "name": "Sambalate",
+      "chapters": "2; 4; 6; 13",
+      "ch": 4,
+      "note": "líder ligado a Samaria, principal opositor da obra"
+    },
+    {
+      "name": "Tobias, o amonita",
+      "chapters": "2; 4; 6; 13",
+      "ch": 6,
+      "note": "aliado de Sambalate, com ligações na nobreza de Jerusalém"
+    },
+    {
+      "name": "Gesém, o árabe",
+      "chapters": "2; 6",
+      "ch": 6,
+      "note": "terceiro opositor"
+    },
+    {
+      "name": "Noadia",
+      "chapters": "6",
+      "ch": 6,
+      "note": "profetisa que procurava intimidar Neemias (6:14)"
+    },
+    {
+      "name": "Esdras",
+      "chapters": "8; 12",
+      "ch": 8,
+      "note": "lê a lei de Moisés diante do povo"
+    }
+  ],
+  "writing": {
+    "tradition": "Na tradição judaica, Esdras e Neemias formavam um só livro, atribuído a Esdras pelo Talmude babilônico (Bava Batra 15a); os trechos em primeira pessoa foram lidos como escritos pelo próprio Neemias. Nessa leitura, o livro seria do fim do século V a.C., por volta de 430–400 a.C.",
+    "academic": "As memórias de Neemias são, para a maioria dos estudiosos, um texto autêntico, escrito por ele por volta de 430 a.C., talvez como prestação de contas ou como inscrição votiva. Um compilador as uniu ao material sobre Esdras e a listas (a de 7:6–73 repete a de Esdras 2). A lista de 12:10–11, 22 chega ao sumo sacerdote Jadua, que o historiador Josefo situa no tempo de Alexandre, o Grande; por isso a forma final costuma ser datada de c. 400–300 a.C., embora alguns identifiquem Jadua com um sacerdote anterior. A relação cronológica entre Esdras e Neemias, que aparecem juntos em 8:9 e 12:26, 36, também é discutida."
+  },
+  "events": {
+    "intro": "Neemias recebe a notícia sobre Jerusalém no vigésimo ano de Artaxerxes (1:1; 2:1), que corresponde a 445/444 a.C., sob Artaxerxes I. O muro é concluído em cinquenta e dois dias (6:15), e Neemias governa Judá por doze anos, até o trigésimo segundo ano do rei, c. 433 a.C. (5:14); depois volta à corte e retorna a Jerusalém alguns anos mais tarde (13:6–7). Papiros aramaicos de Elefantina, no Egito, datados de 407 a.C., mencionam os filhos de Sambalate, governador de Samaria, e o sumo sacerdote Joanã, citado em 12:22.",
+    "axis": [
+      -500,
+      -300
+    ],
+    "band": {
+      "label": "Período persa",
+      "from": -539,
+      "to": -332
+    },
+    "timeline": [
+      {
+        "label": "Esdras chega a Jerusalém",
+        "from": -458,
+        "to": -458,
+        "kind": "pessoa",
+        "note": "data mais aceita (Esdras 7:7–8); outra proposta é 398 a.C."
+      },
+      {
+        "label": "Neemias, primeiro governo",
+        "from": -445,
+        "to": -433,
+        "kind": "pessoa",
+        "note": "do vigésimo ao trigésimo segundo ano de Artaxerxes (5:14)"
+      },
+      {
+        "label": "Muro reconstruído",
+        "from": -445,
+        "to": -445,
+        "kind": "evento",
+        "note": "em cinquenta e dois dias, terminado em Elul (6:15)"
+      },
+      {
+        "label": "Segunda estada de Neemias",
+        "from": -430,
+        "to": -425,
+        "kind": "evento",
+        "note": "data aproximada das reformas do cap. 13"
+      },
+      {
+        "label": "Memórias de Neemias",
+        "from": -430,
+        "to": -425,
+        "kind": "escrita",
+        "note": "segundo a maioria dos estudiosos"
+      },
+      {
+        "label": "Papiros de Elefantina",
+        "from": -407,
+        "to": -407,
+        "kind": "evento",
+        "note": "citam os filhos de Sambalate e o sumo sacerdote Joanã"
+      },
+      {
+        "label": "Forma final, segundo a pesquisa",
+        "from": -400,
+        "to": -300,
+        "kind": "escrita",
+        "note": "compilação de Esdras–Neemias"
+      }
+    ]
+  },
+  "context": "No século V a.C., Judá era uma pequena província do Império Persa, com uma Jerusalém pouco povoada e ainda sem muros completos. Susã, onde Neemias servia, era uma das capitais do império. Os opositores de Neemias representavam forças regionais: Sambalate estava ligado ao governo de Samaria, ao norte; Tobias tinha ligações com a região de Amom, a leste do Jordão; e Gesém liderava grupos árabes do sul, e uma inscrição numa taça de prata do Egito menciona um “Gesém, rei de Quedar”, talvez a mesma pessoa. A crise do capítulo 5 mostra as dificuldades econômicas da província, com dívidas, hipotecas e tributos ao rei.",
+  "places": [
+    "Susã",
+    "Jerusalém: muros e portas",
+    "a praça diante da porta das Águas",
+    "Samaria",
+    "o vale de Ono",
+    "as cidades de Judá e de Benjamim"
+  ],
+  "themes": [
+    "reconstrução",
+    "oração",
+    "oposição e perseverança",
+    "justiça social",
+    "a lei lida e explicada",
+    "aliança",
+    "sábado e pureza do culto"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:17–18",
+      "text": "Então eu lhes disse: Com certeza vedes a miséria em que estamos, que Jerusalém está arruinada, e suas portas queimadas a fogo. Vinde, e reconstruamos o muro de Jerusalém, e não sejamos mais humilhados. Então lhes declarei como a mão de meu Deus havia sido boa sobre mim, e também as palavras do rei, que ele tinha me dito. Então disseram: Levantemo-nos, e edifiquemos. Assim esforçaram suas mãos para uma boa obra."
+    },
+    {
+      "ref": "6:15–16",
+      "text": "O muro foi terminado ao dia vinte e cinco do mês de Elul, em cinquenta e dois dias. E foi que, quando todos os nossos inimigos ouviram, todas as nações ao nosso redor temeram, e abateram-se muito em seus olhos, porque reconheceram que foi nosso Deus que fizera esta obra."
+    },
+    {
+      "ref": "8:10",
+      "text": "E disse-lhes mais: Ide, comei gorduras, e bebei doçuras, e enviai porções aos que não têm preparado; porque este é um dia consagrado ao nosso Senhor; portanto não vos entristeçais, porque a alegria do SENHOR é vossa força."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. A BLIVRE segue a numeração das Bíblias em português: no texto hebraico, 4:1–6 corresponde a 3:33–38 e 4:7–23 a 4:1–17; 9:38 corresponde a 10:1, e 10:1–39 a 10:2–40. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

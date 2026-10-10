@@ -1,0 +1,171 @@
+{
+  "title_orig": "Πέτρου Αʹ",
+  "title_orig_xlit": "Petrou A",
+  "summary": "1 Pedro é uma carta de encorajamento a cristãos espalhados pelas províncias do norte e do centro da Ásia Menor, chamados de “forasteiros” (1:1). Eles sofriam desconfiança, calúnias e hostilidade por terem deixado os costumes da sociedade em que viviam. A carta lhes lembra que nasceram de novo para uma esperança viva, que formam o povo de Deus — “sacerdócio real” e “nação santa” (2:9) — e que o sofrimento injusto, suportado fazendo o bem, os une a Cristo, que também sofreu. Dá orientações para a vida em sociedade e em casa, para os anciãos que cuidam das comunidades e para a vigilância diante do adversário.",
+  "name": "O título “Primeira de Pedro” (Petrou A) foi dado quando as cartas gerais foram reunidas, para distingui-la de 2 Pedro. O nome Pedro vem do grego Petros, “pedra”, tradução do aramaico Kefa (Cefas), apelido que Jesus deu a Simão.",
+  "facts": [
+    [
+      "Posição",
+      "21º livro do Novo Testamento; 2ª das cartas gerais (ou católicas)"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "carta circular de exortação"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Um povo nascido de novo",
+      "from": 1,
+      "to": 2,
+      "text": "Louvor pela esperança viva, alegria em meio às provações, chamado à santidade e ao amor, e a imagem das pedras vivas que formam uma casa espiritual (1:1–2:10)."
+    },
+    {
+      "title": "Conduta entre os de fora",
+      "from": 2,
+      "to": 3,
+      "text": "Viver de modo que os acusadores vejam boas obras: respeito às autoridades, conselhos aos escravos domésticos, às esposas e aos maridos, e o exemplo de Cristo que sofreu sem revidar (2:11–3:12)."
+    },
+    {
+      "title": "Sofrer fazendo o bem",
+      "from": 3,
+      "to": 4,
+      "text": "Estar pronto a explicar a esperança com mansidão; Cristo sofreu pelos injustos; quem sofre “como cristão” não deve se envergonhar (3:13–4:19)."
+    },
+    {
+      "title": "Anciãos e despedida",
+      "from": 5,
+      "to": 5,
+      "text": "Os anciãos devem pastorear sem ganância nem dominação; todos devem ser humildes e vigilantes; saudações de Silvano, de Marcos e da igreja “na Babilônia”."
+    }
+  ],
+  "extra": {
+    "title": "Cristo e os espíritos em prisão",
+    "text": "Um dos trechos mais difíceis do Novo Testamento está em 3:18–20 (e talvez em 4:6): Cristo, morto na carne e vivificado no espírito, “foi pregar aos espíritos em prisão”, ligados aos dias de Noé. Há várias leituras antigas e modernas: uma proclamação aos mortos entre a morte e a ressurreição, a pregação feita por meio de Noé à sua geração, ou um anúncio de vitória a seres espirituais rebeldes, à luz de tradições judaicas sobre os anjos de Gênesis 6. A frase do Credo sobre a descida de Cristo à mansão dos mortos foi muitas vezes associada a esse texto."
+  },
+  "people": [
+    {
+      "name": "Pedro",
+      "chapters": "1; 5",
+      "ch": 1,
+      "note": "apresenta-se como apóstolo e como “ancião” e testemunha dos sofrimentos de Cristo (5:1)"
+    },
+    {
+      "name": "Silvano",
+      "chapters": "5",
+      "ch": 5,
+      "note": "por meio dele a carta foi escrita ou enviada (5:12); possivelmente o Silas companheiro de Paulo"
+    },
+    {
+      "name": "Marcos",
+      "chapters": "5",
+      "ch": 5,
+      "note": "chamado por Pedro de “meu filho” (5:13); a tradição o liga ao Evangelho de Marcos"
+    },
+    {
+      "name": "Sara",
+      "chapters": "3",
+      "ch": 3,
+      "note": "lembrada como exemplo para as esposas (3:6)"
+    },
+    {
+      "name": "Noé",
+      "chapters": "3",
+      "ch": 3,
+      "note": "nos dias dele, poucas pessoas foram salvas pela água, figura do batismo (3:20–21)"
+    }
+  ],
+  "writing": {
+    "tradition": "A carta se apresenta como de Pedro, e a Igreja antiga a aceitou sem dificuldade: parece ser conhecida por Policarpo, no início do século II, e é atribuída a Pedro por Ireneu, no fim desse século. A “Babilônia” de onde se escreve (5:13) é entendida como nome figurado de Roma, onde, segundo a tradição, Pedro viveu nos últimos anos e morreu na perseguição de Nero. Por isso a carta é situada no começo dos anos 60, antes da morte do apóstolo, c. 64–68.",
+    "academic": "Os estudiosos se dividem. Para muitos, a carta foi escrita em nome de Pedro por alguém do círculo ligado a ele em Roma, talvez entre 70 e 95: o grego é cuidado e próximo do estilo literário, as citações seguem a Septuaginta, há pontos de contato com cartas de Paulo, e o uso de “Babilônia” para Roma é mais comum depois da destruição de Jerusalém em 70. Para outros, a carta é de Pedro, que teria usado Silvano como secretário ou redator (5:12), o que explicaria a qualidade do grego, e seria anterior a 68. Há consenso maior de que os sofrimentos descritos são hostilidade social e local, não uma perseguição oficial do império em toda a região."
+  },
+  "events": {
+    "intro": "A carta não narra acontecimentos. A linha do tempo situa os destinatários e as duas posições sobre a data. As datas são aproximadas.",
+    "axis": [
+      25,
+      115
+    ],
+    "band": {
+      "label": "Reinado de Nero",
+      "from": 54,
+      "to": 68
+    },
+    "timeline": [
+      {
+        "label": "Morte e ressurreição de Jesus",
+        "from": 30,
+        "to": 33,
+        "kind": "evento",
+        "note": "data aproximada"
+      },
+      {
+        "label": "Pedro na igreja de Jerusalém e em viagens",
+        "from": 33,
+        "to": 50,
+        "kind": "pessoa",
+        "note": "Atos 1–12; 15; Gálatas 2"
+      },
+      {
+        "label": "Incêndio de Roma e perseguição de Nero",
+        "from": 64,
+        "to": 64,
+        "kind": "evento",
+        "note": "segundo a tradição, Pedro morre em Roma entre 64 e 68"
+      },
+      {
+        "label": "Escrita, se de Pedro",
+        "from": 60,
+        "to": 68,
+        "kind": "escrita",
+        "note": "posição tradicional e de parte dos estudiosos"
+      },
+      {
+        "label": "Escrita, se em nome de Pedro",
+        "from": 70,
+        "to": 95,
+        "kind": "escrita",
+        "note": "posição de outra parte dos estudiosos"
+      },
+      {
+        "label": "Plínio escreve a Trajano sobre os cristãos da Bitínia",
+        "from": 110,
+        "to": 112,
+        "kind": "evento",
+        "note": "c. 111–112; mostra cristãos sendo denunciados numa das regiões da carta"
+      }
+    ]
+  },
+  "context": "Ponto, Galácia, Capadócia, Ásia e Bitínia eram províncias romanas que cobriam boa parte da atual Turquia; a ordem em que aparecem talvez siga o roteiro de quem levou a carta. Os destinatários parecem ser, em boa parte, de origem não judaica, pois a carta lembra a vida que levavam antes, fazendo “a vontade dos pagãos” (4:3). Ao deixarem os cultos, as festas e certos hábitos da cidade, passavam a ser vistos como estranhos e suspeitos, e deles se falava mal “como de malfeitores” (2:12). A carta os chama de forasteiros e peregrinos, aplicando a eles títulos de Israel, e os orienta dentro das estruturas da casa antiga — senhores e escravos, maridos e esposas.",
+  "places": [
+    "Ponto, Galácia, Capadócia, Ásia e Bitínia",
+    "“Babilônia” (provavelmente Roma)"
+  ],
+  "themes": [
+    "esperança viva",
+    "sofrimento e glória",
+    "santidade",
+    "o povo de Deus",
+    "conduta entre os de fora",
+    "o exemplo de Cristo",
+    "humildade e vigilância"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:3",
+      "text": "Bendito seja o Deus e Pai de nosso Senhor Jesus Cristo. Segundo sua grande misericórdia, ele nos regenerou para uma esperança viva, por meio da ressurreição de Jesus Cristo dentre os mortos."
+    },
+    {
+      "ref": "2:9",
+      "text": "Mas vós sois a geração escolhida, o sacerdócio real, a nação santa, e o povo adquirido; a fim de que anuncieis as virtudes daquele que vos chamou das trevas para a sua maravilhosa luz."
+    },
+    {
+      "ref": "5:7",
+      "text": "lançando sobre ele toda a vossa ansiedade; porque ele tem cuidado de vós."
+    }
+  ],
+  "note": "Autoria e data são discutidas; as datas da linha do tempo são aproximadas. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}

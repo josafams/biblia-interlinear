@@ -1,0 +1,137 @@
+{
+  "title_orig": "צְפַנְיָה",
+  "title_orig_xlit": "Tsefanyah",
+  "summary": "Sofonias anuncia o “grande dia do SENHOR” como dia de ira sobre Judá e Jerusalém, por causa da idolatria, da violência e da indiferença de quem pensa que Deus não faz nem bem nem mal. O juízo se estende às nações vizinhas e à própria Nínive. No fim, o tom muda: Deus deixará um povo humilde e pobre que confia nele e se alegrará com Jerusalém restaurada.",
+  "name": "O livro leva o nome do profeta. Sofonias, em hebraico Tsefanyah, costuma ser entendido como “o SENHOR escondeu” ou “o SENHOR protegeu”.",
+  "facts": [
+    [
+      "Posição",
+      "9º dos Doze Profetas Menores"
+    ],
+    [
+      "Língua original",
+      "hebraico"
+    ],
+    [
+      "Gênero",
+      "profecia (poesia)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "O dia do SENHOR sobre Judá",
+      "from": 1,
+      "to": 1,
+      "text": "Juízo contra os cultos estrangeiros e a indiferença em Jerusalém; o dia de ira descrito em imagens fortes."
+    },
+    {
+      "title": "Chamado e juízo das nações",
+      "from": 2,
+      "to": 3,
+      "text": "Convite a buscar ao SENHOR e oráculos contra Filístia, Moabe, Amom, Cuxe e Assíria; depois, contra Jerusalém."
+    },
+    {
+      "title": "Restauração",
+      "from": 3,
+      "to": 3,
+      "text": "Os povos são purificados, um resto humilde permanece e Sião é chamada a cantar."
+    }
+  ],
+  "people": [
+    {
+      "name": "Sofonias",
+      "chapters": "1–3",
+      "ch": 1,
+      "note": "profeta, descendente de um Ezequias, talvez o rei"
+    },
+    {
+      "name": "Josias",
+      "chapters": "1",
+      "ch": 1,
+      "note": "rei de Judá em cujos dias o profeta atuou"
+    }
+  ],
+  "writing": {
+    "tradition": "O livro é atribuído a Sofonias, que profetizou nos dias de Josias, rei de Judá (1:1), entre 640 e 609 a.C. Sua genealogia de quatro gerações, até um certo Ezequias, é tradicionalmente lida como sinal de que ele descendia do rei Ezequias.",
+    "academic": "Muitos estudiosos situam o núcleo do livro no início do reinado de Josias, antes da reforma religiosa de 622 a.C., pois as práticas denunciadas no capítulo 1 são as que a reforma combateu. Partes do livro, sobretudo os oráculos de restauração do capítulo 3, são vistas por muitos como acréscimos do exílio ou de depois dele; outros as atribuem ao próprio profeta."
+  },
+  "events": {
+    "intro": "O título data o profeta no reinado de Josias. As datas são aproximadas.",
+    "axis": [
+      -650,
+      -500
+    ],
+    "band": {
+      "label": "Exílio na Babilônia",
+      "from": -586,
+      "to": -538
+    },
+    "timeline": [
+      {
+        "label": "Josias, rei de Judá",
+        "from": -640,
+        "to": -609,
+        "kind": "pessoa",
+        "note": "reinado"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": -640,
+        "to": -622,
+        "kind": "escrita",
+        "note": "Sofonias, antes da reforma de Josias"
+      },
+      {
+        "label": "Reforma de Josias",
+        "from": -622,
+        "to": -622,
+        "kind": "evento",
+        "note": "o livro da lei é encontrado no templo (2 Reis 22–23)"
+      },
+      {
+        "label": "Queda de Nínive",
+        "from": -612,
+        "to": -612,
+        "kind": "evento",
+        "note": "anunciada em 2:13–15"
+      },
+      {
+        "label": "Acréscimos, segundo a pesquisa",
+        "from": -586,
+        "to": -520,
+        "kind": "escrita",
+        "note": "parte dos oráculos de restauração"
+      }
+    ]
+  },
+  "context": "Josias assumiu o trono ainda criança, depois de longos reinados (Manassés e Amom) em que Judá esteve sob domínio assírio e cultos estrangeiros foram aceitos em Jerusalém, como o de Baal e o do “exército do céu”. Com o declínio da Assíria, Josias promoveu uma reforma religiosa e política. Sofonias reflete esse ambiente, e sua descrição do dia do SENHOR inspirou o hino medieval latino Dies irae.",
+  "places": [
+    "Jerusalém",
+    "Filístia: Gaza, Asquelom, Asdode e Ecrom",
+    "Moabe e Amom",
+    "Cuxe",
+    "Nínive"
+  ],
+  "themes": [
+    "dia do SENHOR",
+    "idolatria e indiferença",
+    "humildade",
+    "remanescente",
+    "alegria de Deus pelo seu povo"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:14",
+      "text": "Perto está o grande dia do SENHOR; perto está, e com muita pressa se aproxima; a voz do Dia do SENHOR; ali o guerreiro gritará amargamente."
+    },
+    {
+      "ref": "2:3",
+      "text": "Buscai ao SENHOR todos vós mansos da terra, que praticam seu juízo; buscai justiça, buscai mansidão; talvez sejais preservados no dia da ira do SENHOR."
+    },
+    {
+      "ref": "3:17",
+      "text": "O SENHOR está no meio de ti, guerreiro que salva; ele terá prazer em ti com alegria; ele te aquietará em seu amor, se encherá de alegria por causa de ti com júbilo."
+    }
+  ],
+  "note": "As datas são aproximadas; os versículos citados são da Bíblia Livre (BLIVRE)."
+}

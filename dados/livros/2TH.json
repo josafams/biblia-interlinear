@@ -1,0 +1,131 @@
+{
+  "title_orig": "Πρὸς Θεσσαλονικεῖς Βʹ",
+  "title_orig_xlit": "Pros Thessalonikeis B",
+  "summary": "2 Tessalonicenses é uma carta curta, com o mesmo cabeçalho de 1 Tessalonicenses, dirigida a uma igreja que continuava a sofrer perseguição. O primeiro capítulo a encoraja com a certeza de que Deus fará justiça quando o Senhor Jesus se manifestar. O segundo corrige uma ideia que estava assustando os leitores, a de que o dia do Senhor já tinha chegado, talvez apoiada numa carta atribuída aos próprios missionários (2:2): antes desse dia, diz o texto, virão a apostasia e o “homem da injustiça”, hoje contido por algo ou alguém que “o detém”. O último capítulo trata dos que tinham deixado de trabalhar e viviam “desordenadamente”.",
+  "name": "O título Pros Thessalonikeis B, “Segunda aos tessalonicenses”, vem da saudação “à igreja dos tessalonicenses” (1:1), igual à da primeira carta; o número indica a ordem que lhe foi dada na coleção, não necessariamente a ordem em que foi escrita.",
+  "facts": [
+    [
+      "Posição",
+      "14º livro do Novo Testamento; 9ª das cartas paulinas, na ordem do cânon"
+    ],
+    [
+      "Língua original",
+      "grego"
+    ],
+    [
+      "Gênero",
+      "carta de encorajamento e correção, com uma passagem apocalíptica"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Consolo na perseguição",
+      "from": 1,
+      "to": 1,
+      "text": "Agradecimento pela fé que cresce em meio às aflições e anúncio do julgamento justo de Deus quando o Senhor Jesus aparecer com os seus anjos."
+    },
+    {
+      "title": "O dia ainda não chegou",
+      "from": 2,
+      "to": 2,
+      "text": "Antes do dia virão a apostasia e o “homem da injustiça”, que se assenta no templo de Deus; por ora, algo o detém. Os leitores devem guardar as tradições recebidas por palavra ou por carta."
+    },
+    {
+      "title": "Trabalho e disciplina",
+      "from": 3,
+      "to": 3,
+      "text": "Pedido de oração, ordem para que os ociosos trabalhem e se afastem os que não obedecem, e uma saudação escrita de próprio punho, apresentada como sinal em toda carta (3:17)."
+    }
+  ],
+  "people": [
+    {
+      "name": "Paulo, Silvano e Timóteo",
+      "chapters": "1; 3",
+      "ch": 1,
+      "note": "os remetentes, como em 1 Tessalonicenses; a saudação final é assinada por Paulo (3:17)"
+    },
+    {
+      "name": "O homem da injustiça",
+      "chapters": "2",
+      "ch": 2,
+      "note": "figura que se opõe a tudo o que se chama Deus e será destruída pelo Senhor; também chamado “filho da perdição” (2:3–8)"
+    }
+  ],
+  "writing": {
+    "tradition": "A Igreja antiga recebeu a carta como de Paulo, e ela parece ecoar em Policarpo, no início do século II, e é citada por Ireneu, c. 180. Pela semelhança com 1 Tessalonicenses e pelos mesmos remetentes, foi situada pouco depois dela, ainda em Corinto, c. 50–51, quando a igreja seguia perseguida e as dúvidas sobre o fim continuavam.",
+    "academic": "2 Tessalonicenses está entre as cartas discutidas, fora do grupo das sete que praticamente todos os estudiosos atribuem a Paulo, e a pesquisa está bastante dividida. Os que pensam em outro autor, escrevendo em nome de Paulo talvez no fim do século I, observam que a estrutura e muitas frases seguem de perto 1 Tessalonicenses, mas o tom é mais formal; que a primeira carta diz que o dia virá “como um ladrão de noite” (1 Tessalonicenses 5:2), enquanto esta descreve sinais que o precedem; e que o alerta contra cartas falsas (2:2) e a ênfase na assinatura (3:17) fariam sentido num tempo em que já circulavam cartas em nome de Paulo. Os que defendem a autoria de Paulo respondem que a proximidade com a primeira carta se explica por terem sido escritas com pouco intervalo, à mesma igreja, e que expectativa de um fim próximo e anúncio de sinais convivem em outros textos apocalípticos judaicos e cristãos. Há ainda quem proponha que esta carta tenha sido escrita antes de 1 Tessalonicenses."
+  },
+  "events": {
+    "intro": "Se a carta for de Paulo, é das mais antigas do Novo Testamento, escrita meses depois da primeira; se for posterior, sua data mais provável fica no fim do século I. A linha do tempo mostra as duas posições; as datas são aproximadas.",
+    "axis": [
+      45,
+      100
+    ],
+    "timeline": [
+      {
+        "label": "Fundação da igreja em Tessalônica",
+        "from": 50,
+        "to": 50,
+        "kind": "evento",
+        "note": "na segunda viagem de Paulo (Atos 17:1–10)"
+      },
+      {
+        "label": "Escrita de 1 Tessalonicenses",
+        "from": 50,
+        "to": 51,
+        "kind": "escrita",
+        "note": "em Corinto"
+      },
+      {
+        "label": "Escrita, segundo a tradição",
+        "from": 51,
+        "to": 52,
+        "kind": "escrita",
+        "note": "em Corinto, pouco depois da primeira carta"
+      },
+      {
+        "label": "Destruição do templo de Jerusalém",
+        "from": 70,
+        "to": 70,
+        "kind": "evento",
+        "note": "alguns leem 2:4 à luz desse fato; outros, de crises anteriores"
+      },
+      {
+        "label": "Escrita, segundo os que a consideram posterior",
+        "from": 80,
+        "to": 100,
+        "kind": "escrita",
+        "note": "por um continuador de Paulo"
+      }
+    ]
+  },
+  "context": "O contexto é o da igreja de Tessalônica, capital da província da Macedônia, formada em boa parte por não judeus e hostilizada pelos próprios conterrâneos. A passagem sobre o “homem da injustiça” usa imagens da tradição apocalíptica judaica, como a do governante que se exalta contra Deus no livro de Daniel (Daniel 11:36), e muitos lembram também a tentativa do imperador Calígula, em 40, de colocar a sua estátua no templo de Jerusalém. O que ou quem “o detém” (2:6–7) nunca foi identificado com segurança: já na Antiguidade se pensou no Império Romano, e outras propostas incluem a pregação do evangelho, um anjo ou o próprio plano de Deus. O problema dos que não trabalhavam pode estar ligado à expectativa de um fim iminente ou simplesmente à dependência de patronos e da ajuda dos irmãos.",
+  "places": [
+    "Tessalônica",
+    "Macedônia",
+    "o templo de Deus"
+  ],
+  "themes": [
+    "perseverança na perseguição",
+    "o julgamento justo de Deus",
+    "o dia do Senhor",
+    "o homem da injustiça",
+    "as tradições recebidas",
+    "trabalho e ociosidade"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:1–3",
+      "text": "Ora irmãos, nós vos rogamos quanto à vinda de nosso Senhor Jesus Cristo, e à nossa reunião com ele, Que vós não vos abaleis facilmente em vosso entendimento, e não vos perturbeis, nem por espírito, nem por palavra, nem por carta como que escrita por nós, como se o dia de Cristo já estivesse perto. Ninguém vos engane em maneira nenhuma; porque não virá esse dia sem que primeiro venha a apostasia, e se manifeste o homem da injustiça, o filho da perdição."
+    },
+    {
+      "ref": "2:15",
+      "text": "Portanto, irmãos, ficai firmes, e retende as tradições que vos foram ensinadas, seja por palavra, seja por carta nossa."
+    },
+    {
+      "ref": "3:10",
+      "text": "Porque, quando ainda estávamos convosco, isto vos mandamos: que se alguém não quiser trabalhar, também não coma."
+    }
+  ],
+  "note": "As datas são aproximadas e variam conforme a fonte. Em 2:2, o verbo grego costuma ser entendido como “já chegou” ou “já está presente”; a BLIVRE traz “já estivesse perto”. Os versículos citados são da Bíblia Livre (BLIVRE)."
+}
