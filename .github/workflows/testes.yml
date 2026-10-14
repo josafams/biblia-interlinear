@@ -1,0 +1,60 @@
+# Testes automáticos em todo pull request e envio à main: dados (pytest), EPUB e PDF de Rute,
+# e o site no navegador (Playwright: página inicial, leitor, acessibilidade, uso offline).
+# Refaz o corpus e as glosas a partir das fontes abertas; o alinhamento salvo em dados/alinhamento
+# deixa isso em poucos minutos. Para proteger a main: Settings › Branches › regra para main ›
+# "Require status checks to pass" marcando "testes".
+name: Testes
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: testes-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install eflomal pypdf pytest
+      - run: npm ci
+      - name: Chromium, qpdf e pdftotext
+        run: |
+          npx playwright install --with-deps chromium
+          sudo apt-get install -y qpdf poppler-utils
+      - name: Fontes abertas
+        run: scripts/baixar_fontes.sh
+      - name: Corpus, glosas e site
+        run: |
+          python3 scripts/corpus.py
+          python3 scripts/glosar.py
+          python3 scripts/revisar.py > /dev/null
+          node scripts/build_web.mjs
+      - name: Testes de dados, EPUB e PDF
+        env:
+          PDF_TESTE: "1"
+        run: python3 -m pytest tests -v
+      - name: Testes no navegador
+        env:
+          CI: "1"
+        run: npx playwright test
+      - name: Relatório (quando algo falha)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-testes
+          path: |
+            saida/relatorio-testes
+            saida/testes-resultados
+          retention-days: 14
