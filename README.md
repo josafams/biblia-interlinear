@@ -22,7 +22,7 @@ Tudo é feito com fontes abertas ou de domínio público, para poder ser distrib
 | **Léxico** | 100% em português: os 8.593 verbetes hebraicos/aramaicos e 5.284 gregos usados no texto têm origem e significado traduzidos do dicionário de Strong, pronúncia em português (tônica em maiúsculas) e "como a BLIVRE traduz" (contagem do alinhamento). |
 | **Temas e introduções** | Tema de cada um dos 1.189 capítulos e introdução "Sobre o livro" dos 66 livros: resumo, origem do nome, divisão, pessoas, autoria e data (tradição e pesquisa acadêmica), linha do tempo, contexto, lugares, temas e versículos-chave citados da BLIVRE. Texto próprio do projeto. |
 | **Revisões automáticas** | `scripts/revisar.py` roda cerca de 45 verificações do catálogo [`docs/REVISOES.md`](docs/REVISOES.md) em 20 s: hoje 109 erros (quase todos palavras gregas sem verbete no Strong), 11.764 avisos e 38.386 informativos. No app, ⚑ no versículo mostra os pontos. |
-| **Site / PWA** | Os 66 livros, com índice por livro e capítulo (tocar no capítulo já abre), "Ir para" (`Jo 3:16`, `sl 23`), introdução de cada livro, léxico do capítulo, verbetes com origem e significado, áudio pela voz do aparelho (hebraico e grego modernos), seis temas de cor, tamanho do texto e recursos de acessibilidade (leitor de tela, teclado, alto contraste, fonte de leitura fácil, sem cantilação). Os capítulos são carregados sob demanda; funciona também abrindo `saida/web/index.html` direto do disco. |
+| **Site / PWA** | Os 66 livros, com índice por livro e capítulo (tocar no capítulo já abre), "Ir para" (`Jo 3:16`, `sl 23`), introdução de cada livro, léxico do capítulo, verbetes com origem e significado, áudio pela voz do aparelho (hebraico e grego modernos), seis temas de cor, tamanho do texto e recursos de acessibilidade (leitor de tela, teclado, alto contraste, fonte de leitura fácil, sem cantilação). Os capítulos são carregados sob demanda; funciona também abrindo `saida/web/ler.html` direto do disco; `index.html` é a página inicial do projeto (apps, EPUB, PDF, vídeos Como usar). |
 | **EPUB** | Bíblia completa num arquivo (34 MB), volumes AT (24 MB) e NT (10 MB), e um por livro (66 arquivos), validados com o epubcheck. No volume, um léxico único no fim. Cada palavra do original é uma nota que abre ao tocar (glosa, gramática, significado e link para o verbete); cada livro traz introdução, temas e léxico próprio. Formato testado no Kindle. |
 | **PDF** | Bíblia completa, volumes AT e NT (com marcadores por testamento, livro e capítulo) e um por livro (66 arquivos A4): capa, introdução, cartões das palavras com a BLIVRE abaixo de cada versículo e léxico no fim. |
 | **Apps** | Projetos Capacitor de Android e iOS sincronizados com a Bíblia inteira. |
@@ -85,6 +85,10 @@ scripts/publicar_web.sh         # copia saida/web para gh-pages, faz o commit e 
 ```
 
 (Alternativa: `.github/workflows/web.yml`, acionado à mão, refaz tudo do zero no GitHub e publica pelo GitHub Actions.)
+
+### Testes e vídeos
+
+Testes automáticos de dados, livros e do site rodam a cada envio; os vídeos “Como usar” da página inicial são gravados a partir de roteiros. Como rodar e manter: [`docs/TESTES.md`](docs/TESTES.md).
 
 ### Corrigir textos
 

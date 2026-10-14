@@ -49,6 +49,8 @@ jobs:
         env:
           CI: "1"
         run: npx playwright test
+      - name: Roteiros dos vídeos ainda funcionam
+        run: node scripts/videos/gravar.mjs --verificar
       - name: Relatório (quando algo falha)
         if: failure()
         uses: actions/upload-artifact@v4
