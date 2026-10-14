@@ -54,3 +54,16 @@ def test_pdf_rute_com_marcadores(livros):
     assert len(caps) == 4, titulos
     paginas = [r.get_destination_page_number(o) for o in r.outline if not isinstance(o, list)]
     assert paginas == sorted(paginas) and paginas[-1] < len(r.pages)
+
+
+def test_epub_so_biblia_livre(livros):
+    subprocess.run([sys.executable, os.path.join(ROOT, "scripts", "build_epub.py"), "blivre"], check=True, capture_output=True)
+    z = zipfile.ZipFile(os.path.join(ROOT, "saida", "epub", "00-Biblia-Livre.epub"))
+    nomes = z.namelist()
+    assert nomes[0] == "mimetype"
+    livros_xhtml = [n for n in nomes if re.match(r"OEBPS/[1-3A-Z]{3}\.xhtml$", n)]
+    assert len(livros_xhtml) == 66
+    gen = z.read("OEBPS/GEN.xhtml").decode("utf8")
+    assert "No princípio criou Deus os céus e a terra." in gen
+    assert gen.count('<h2 id="c') == 50
+    assert "epub:type=\"footnote\"" not in gen

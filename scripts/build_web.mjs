@@ -189,7 +189,8 @@ async function paginaInicial(livros) {
     __N_VERBETES__: fmt(Object.keys(lex.H).length + Object.keys(lex.G).length),
     __TAM_EPUB_COMPLETA__: tam("saida/epub/00-Biblia-Interlinear-completa.epub"), __TAM_PDF_COMPLETA__: tam("saida/pdf/00-Biblia-Interlinear-completa.pdf"),
     __TAM_EPUB_AT__: tam("saida/epub/00-Biblia-Interlinear-AT.epub"), __TAM_PDF_AT__: tam("saida/pdf/00-Biblia-Interlinear-AT.pdf"),
-    __TAM_EPUB_NT__: tam("saida/epub/00-Biblia-Interlinear-NT.epub"), __TAM_PDF_NT__: tam("saida/pdf/00-Biblia-Interlinear-NT.pdf"),
+    __TAM_EPUB_NT__: tam("saida/epub/00-Biblia-Interlinear-NT.epub"),
+    __TAM_EPUB_BLIVRE__: tam("saida/epub/00-Biblia-Livre.epub"), __TAM_PDF_BLIVRE__: tam("saida/pdf/00-Biblia-Livre.pdf"), __TAM_PDF_NT__: tam("saida/pdf/00-Biblia-Interlinear-NT.pdf"),
     __DATA__: new Date().toLocaleDateString("pt-BR"),
     __ROTEIROS__: JSON.stringify(resumo()).replace(/<\//g, "<\\/")
   };

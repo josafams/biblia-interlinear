@@ -473,6 +473,50 @@ body.grc .word .h { font-size: calc(21px * var(--k)); }
 .tl-legend i.k-escrita { background: var(--muted); }
 .tl-legend i.k-band { background: var(--accent-soft); border: 1px solid var(--line); }
 .lrow .lh.grc { font-family: var(--font-grc); }
+
+/* ---------- Modos de leitura ---------- */
+.mode-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.mcard { display: flex; flex-direction: column; gap: 3px; text-align: start; padding: 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); font: inherit; cursor: pointer; min-height: 64px; }
+.mcard b { font-size: 14px; font-weight: 600; }
+.mcard small { font-size: 12px; color: var(--muted); line-height: 1.3; }
+.mcard[aria-checked="true"] { border: 2px solid var(--accent); background: var(--accent-soft); padding: 9px; }
+.mode-note { font-size: 12.5px; color: var(--muted); margin: 8px 0 0; }
+.welcome { border: 1px solid var(--accent); background: var(--accent-soft); border-radius: 12px; padding: 14px 16px; display: grid; gap: 10px; margin-top: 16px; }
+.welcome p { margin: 0; }
+.welcome .wopts { display: flex; flex-wrap: wrap; gap: 8px; }
+.welcome .wopts button { min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--accent); background: var(--surface); color: var(--fg); font: inherit; cursor: pointer; }
+.welcome .wopts button.later { border-color: transparent; background: none; color: var(--muted); text-decoration: underline; }
+#mode-swap { font: 500 12px var(--font-mono); width: auto; padding: 0 12px; }
+@media (max-width: 380px) { #mode-swap { display: none; } }
+.ch-say { display: none; }
+body.hide-orig .ch-say { display: inline-flex; margin-top: 12px; }
+body.hide-orig header .lede, body.hide-orig header .kbd { display: none; }
+body.hide-orig .verse:not(.abrir) .words { display: none; }
+body.orig-corrido .words { gap: 0 .3em; row-gap: 4px; }
+body.orig-corrido .word { display: inline-block; min-width: 0; min-height: 0; padding: 2px 3px; background: none; border: 0; border-radius: 4px; }
+body.orig-corrido .word .x, body.orig-corrido .word .p, body.orig-corrido .word .s, body.orig-corrido .word .g, body.orig-corrido .word .m { display: none; }
+body.orig-corrido .word.active, body.orig-corrido .word.speaking { background: var(--accent-soft); }
+body.orig-corrido .word .h { font-size: calc(26px * var(--k)); }
+.word .m { display: none; font: 400 10.5px/1.2 var(--font-mono); color: var(--muted); max-width: 15ch; overflow-wrap: anywhere; }
+body.show-morf .word .m { display: block; }
+body.hide-vnum .vnum:not(:focus-within) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+body.hide-tema .ctheme { display: none; }
+body.hide-sobre #sobre { display: none; }
+body.hide-lexico #lexico { display: none; }
+body.hide-marks .marks, body.hide-marks .vnote { display: none; }
+body.blivre-par.hide-orig #verses { max-width: 68ch; font-size: calc(18px * var(--k)); line-height: 1.8; }
+body.blivre-par.hide-orig .verse:not(.abrir) { display: inline; padding: 0; border: 0; }
+body.blivre-par.hide-orig .verse:not(.abrir) .vhead { display: inline; }
+body.blivre-par.hide-orig .verse:not(.abrir) .vhead .say, body.blivre-par.hide-orig .verse:not(.abrir) .vhead .marks { display: none; }
+body.blivre-par.hide-orig .verse:not(.abrir) .vnum { display: inline-block; font-size: .6em; line-height: 1; vertical-align: super; padding: .5em .45em; margin: -.5em -.2em -.5em 0; cursor: pointer; }
+body.blivre-par.hide-orig .verse:not(.abrir) .blivre { display: inline; font-size: inherit; max-width: none; }
+body.blivre-par.hide-orig .verse:not(.abrir) .blivre .tag, body.blivre-par.hide-orig .verse:not(.abrir) .vnote { display: none; }
+body.blivre-par.hide-orig .verse.abrir { margin-block: 12px; border-block: 1px solid var(--line); }
+body.blivre-par.hide-orig .chnav { margin-top: 28px; }
+body.hide-orig .verse.speaking .blivre { background: var(--accent-soft); border-radius: 4px; }
+body.hide-orig .vnum { cursor: pointer; }
+body.blivre-par.hide-orig .verse:not(.abrir) .vcap { display: none; }
+@media (max-width: 480px) { #mode-swap .ms-t { display: none; } #mode-swap { padding: 0; width: 44px; } }
 </style>
 
 <a class="skip" href="#verses" id="skip">Pular para o texto</a>
@@ -484,6 +528,7 @@ body.grc .word .h { font-size: calc(21px * var(--k)); }
       <button id="to-light" aria-pressed="false" aria-label="Tema claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
       <button id="to-dark" aria-pressed="false" aria-label="Tema escuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg></button>
     </div>
+    <button class="ibtn" id="mode-swap" hidden></button>
     <button class="ibtn" id="open-look" aria-controls="look" aria-expanded="false" aria-haspopup="dialog" aria-label="Aparência e acessibilidade"><span aria-hidden="true" style="font-family:var(--font-body);font-size:16px">Aa</span></button>
   </nav>
 
@@ -493,6 +538,16 @@ body.grc .word .h { font-size: calc(21px * var(--k)); }
     <p class="ctheme" id="ctheme"></p>
     <p class="lede" id="lede">Lê-se da direita para a esquerda. Cada cartão traz a palavra hebraica, a transliteração do lema, o número Strong e uma glosa literal; abaixo vem o versículo na Bíblia Livre. Toque numa palavra para abrir o verbete com origem, significado, pronúncia e análise gramatical. O botão <b>Ouvir</b> de cada versículo lê o hebraico em voz alta.</p>
     <p class="kbd">No teclado: <kbd>Tab</kbd> passa de versículo em versículo; dentro dele, as setas <kbd>←</kbd> <kbd>→</kbd> andam entre as palavras no sentido da leitura, <kbd>↑</kbd> <kbd>↓</kbd> mudam de versículo, <kbd>Enter</kbd> abre o verbete e <kbd>Esc</kbd> fecha.</p>
+    <button class="say ch-say" id="ch-say" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span>Ouvir o capítulo</span></button>
+    <div class="welcome" id="welcome" hidden role="region" aria-labelledby="welcome-h">
+      <p id="welcome-h"><b>Como você quer ler?</b> Dá para mudar depois em Aa › Modo de leitura.</p>
+      <div class="wopts">
+        <button type="button" data-modo="biblia">Como Bíblia (só a Bíblia Livre)</button>
+        <button type="button" data-modo="original">Só o original</button>
+        <button type="button" data-modo="interlinear">Interlinear, palavra a palavra</button>
+        <button type="button" class="later" data-modo="">Decidir depois</button>
+      </div>
+    </div>
   </header>
 
   <details class="about" id="sobre">
@@ -559,6 +614,25 @@ body.grc .word .h { font-size: calc(21px * var(--k)); }
 
 <aside class="sheet right" id="look" role="dialog" aria-modal="true" aria-labelledby="look-h" lang="pt-BR" hidden>
   <div class="shead"><h2 id="look-h">Aparência</h2><button class="ibtn" data-close aria-label="Fechar aparência"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="sgroup" role="group" aria-labelledby="g-modo">
+    <h3 id="g-modo">Modo de leitura</h3>
+    <div class="mode-grid" id="mode-grid" role="radiogroup" aria-labelledby="g-modo"></div>
+    <p class="mode-note" id="mode-note"></p>
+  </div>
+  <div class="sgroup" role="group" aria-labelledby="g-show">
+    <h3 id="g-show">Mostrar na página</h3>
+    <div class="chks">
+      <button class="chk" role="switch" id="t-orig" data-key="t-orig" data-default="on" data-off-class="hide-orig" data-modo aria-checked="true"><span>Texto original<small>hebraico, aramaico ou grego</small></span><span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-cards" data-key="t-cards" data-default="on" data-off-class="orig-corrido" data-modo aria-checked="true"><span>Original em cartões<small>desligado: texto corrido; toque na palavra abre o verbete</small></span><span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-blivre" data-key="t-blivre" data-default="on" data-off-class="hide-blivre" data-modo aria-checked="true">Texto da Bíblia Livre<span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-par" data-key="t-par" data-default="off" data-on-class="blivre-par" data-modo aria-checked="false"><span>Bíblia Livre em parágrafos<small>quando o original está desligado</small></span><span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-vnum" data-key="t-vnum" data-default="on" data-off-class="hide-vnum" data-modo aria-checked="true">Números dos versículos<span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-tema" data-key="t-tema" data-default="on" data-off-class="hide-tema" data-modo aria-checked="true">Tema do capítulo<span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-sobre" data-key="t-sobre" data-default="on" data-off-class="hide-sobre" data-modo aria-checked="true">Sobre o livro<span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-lexico" data-key="t-lexico" data-default="on" data-off-class="hide-lexico" data-modo aria-checked="true">Léxico do capítulo<span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-marks" data-key="t-marks" data-default="on" data-off-class="hide-marks" data-modo aria-checked="true"><span>Pontos da revisão (⚑) e notas<small>revisão automática, ketiv/qere, aparato</small></span><span class="sw2" aria-hidden="true"></span></button>
+    </div>
+  </div>
   <div class="sgroup" role="group" aria-labelledby="g-tema">
     <h3 id="g-tema">Tema</h3>
     <div class="tgrid" id="tgrid">
@@ -593,11 +667,11 @@ body.grc .word .h { font-size: calc(21px * var(--k)); }
   <div class="sgroup" role="group" aria-labelledby="g-cards">
     <h3 id="g-cards">Mostrar nos cartões</h3>
     <div class="chks">
-      <button class="chk" role="switch" id="t-xlit" data-key="t-xlit" data-default="on" data-off-class="hide-xlit" aria-checked="true">Transliteração<span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-pron" data-key="pronuncia" data-default="off" data-on-class="show-pron" aria-checked="false"><span>Pronúncia em português<small>tônica em MAIÚSCULAS</small></span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-gloss" data-key="t-gloss" data-default="on" data-off-class="hide-gloss" aria-checked="true">Glosa em português<span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-strong" data-key="t-strong" data-default="on" data-off-class="hide-strong" aria-checked="true">Número Strong<span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-blivre" data-key="t-blivre" data-default="on" data-off-class="hide-blivre" aria-checked="true">Texto da BLIVRE<span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-xlit" data-modo data-key="t-xlit" data-default="on" data-off-class="hide-xlit" aria-checked="true">Transliteração<span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-pron" data-modo data-key="pronuncia" data-default="off" data-on-class="show-pron" aria-checked="false"><span>Pronúncia em português<small>tônica em MAIÚSCULAS</small></span><span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-gloss" data-modo data-key="t-gloss" data-default="on" data-off-class="hide-gloss" aria-checked="true">Glosa em português<span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-strong" data-modo data-key="t-strong" data-default="on" data-off-class="hide-strong" aria-checked="true">Número Strong<span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-morf" data-key="t-morf" data-default="off" data-on-class="show-morf" data-modo aria-checked="false"><span>Análise gramatical<small>classe, pessoa, gênero, número</small></span><span class="sw2" aria-hidden="true"></span></button>
     </div>
   </div>
 </aside>
@@ -751,7 +825,7 @@ function vLabel(v) { return v.n === 0 ? "título" : `${CUR}:${v.n}`; }
 function renderHeader() {
   const A = BOOK.about;
   document.title = `${BOOK.nome} ${CUR} · Bíblia Interlinear`;
-  document.getElementById("eyebrow").textContent = GRC ? "Interlinear grego · português" : "Interlinear hebraico · português";
+  document.getElementById("eyebrow").textContent = eyebrowText();
   document.getElementById("h1").innerHTML = `${esc(BOOK.nome)} ${CUR}${A ? ` <span class="orig" lang="${OLANG()}">${esc(A.title_orig)}</span>` : ""}`;
   const theme = BOOK.caps[CUR - 1] && BOOK.caps[CUR - 1].t;
   document.getElementById("ctheme").textContent = theme || "";
@@ -781,13 +855,14 @@ function renderVerses() {
         ${e.p ? `<span class="p" aria-hidden="true">${esc(e.p)}</span>` : ""}
         <span class="s" aria-hidden="true">${w.strong && !w.strong.startsWith("G:") ? esc(w.strong) : "—"}</span>
         <span class="g${aux}" aria-hidden="true">${glossHTML(w.gloss)}</span>
+        <span class="m" aria-hidden="true">${esc(decodeMorph(w.morph, GRC))}</span>
       </button>`;
     }).join("");
     const lbl = vLabel(v);
     return `
     <section class="verse" id="v${v.n}" data-vi="${vi}" aria-labelledby="vh${v.n}">
       <div class="vhead">
-        <h3 class="vnum" id="vh${v.n}"><span class="sr">Versículo </span>${lbl}</h3>
+        <h3 class="vnum" id="vh${v.n}"><span class="sr">Versículo </span>${lbl.includes(":") ? `<span class="vcap">${esc(lbl.split(":")[0])}:</span>${esc(lbl.split(":")[1])}` : lbl}</h3>
         ${v.words.length && !GRC ? `<button class="say vsay" data-verse="${vi}" aria-label="Ouvir ${lbl} em hebraico">${SPK}<span aria-hidden="true">Ouvir</span></button>` : ""}
         ${v.words.length && GRC ? `<button class="say vsay" data-verse="${vi}" aria-label="Ouvir ${lbl} em grego">${SPK}<span aria-hidden="true">Ouvir</span></button>` : ""}
         ${marksHTML(v)}
@@ -872,7 +947,8 @@ const TTS = !!NativeTTS || WEB_TTS;
 const NO_TTS_MSG = "Este navegador não tem leitura de voz (acontece, por exemplo, dentro de alguns apps no Android). Abra a página no Chrome, Safari ou Edge para ouvir.";
 const SYS = PLATFORM === "ios" ? "do iPhone" : "do Android";
 const VOZ = { he: { name: "hebraico", codes: ["he-IL", "iw-IL", "he"], re: /^(he|iw)([-_]|$)/i, voice: null, lang: "he-IL", ok: null },
-              el: { name: "grego", codes: ["el-GR", "el"], re: /^el([-_]|$)/i, voice: null, lang: "el-GR", ok: null } };
+              el: { name: "grego", codes: ["el-GR", "el"], re: /^el([-_]|$)/i, voice: null, lang: "el-GR", ok: null },
+              pt: { name: "português", codes: ["pt-BR", "pt"], re: /^pt([-_]|$)/i, voice: null, lang: "pt-BR", ok: null } };
 const curVoz = () => VOZ[GRC ? "el" : "he"];
 let curToken = null, curBtn = null, speakingEl = null, toastTimer = 0;
 
@@ -917,12 +993,13 @@ function toast(msg) {
   clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.hidden = true; }, 7000);
 }
 document.getElementById("toast").addEventListener("click", e => { e.currentTarget.hidden = true; });
-const spoken = t => GRC ? String(t).replace(/[^\p{L}\p{M}\s]/gu, "") : cleanHeb(t);
-function speak(texts, btn, onEach) {
+const spokenOrig = t => GRC ? String(t).replace(/[^\p{L}\p{M}\s]/gu, "") : cleanHeb(t);
+function speak(texts, btn, onEach, voz) {
   if (!TTS) return toast(NO_TTS_MSG);
   if (btn && btn === curBtn) return stopSpeech();
   stopSpeech();
-  const V = curVoz(), token = {};
+  const V = voz ? VOZ[voz] : curVoz(), token = {};
+  const spoken = voz === "pt" ? (t => String(t)) : spokenOrig;
   curToken = token; setBtn(btn);
   const finish = () => { if (curToken === token) { curToken = null; setBtn(null); markSpeaking(null); } };
   const rate = prefs.slow ? 0.6 : 0.9;
@@ -949,7 +1026,13 @@ function speak(texts, btn, onEach) {
   });
   if (!V.voice) toast(`Este aparelho pode não ter voz em ${V.name}. Veja em Aparência › Áudio.`);
 }
+// Bíblia Livre em voz alta (modo Bíblia ou com o original desligado): versículo a versículo, em português.
+function speakBlivre(from, btn, one) {
+  const vs = CH.verses.slice(from, one ? from + 1 : undefined).filter(v => v.blivre);
+  speak(vs.map(v => v.blivre), btn, i => markSpeaking(document.getElementById("v" + vs[i].n)), "pt");
+}
 function speakVerse(vi, btn) {
+  if (document.body.classList.contains("hide-orig")) return speakBlivre(vi, btn, true);
   const words = CH.verses[vi].words;
   if (!prefs.follow) return speak([words.map(w => w.heb).join(" ")], btn);
   speak(words.map(w => w.heb), btn, i => markSpeaking(wordEl(vi, i)));
@@ -1507,6 +1590,94 @@ document.querySelectorAll(".chk[data-key]").forEach(t => {
     if (ON_CHANGE[t.id]) ON_CHANGE[t.id](now);
   });
 });
+
+
+// ---------- Modos de leitura ----------
+// Cada modo é um conjunto de valores para os interruptores marcados com data-modo. Mudar um deles à mão
+// vira "Personalizado" (a partir do modo de origem). O modo vale para todos os aparelhos quando houver conta.
+const MODOS = [
+  { id: "biblia", nome: "Bíblia", desc: "só a Bíblia Livre, em parágrafos", fala: "Bíblia",
+    v: { "t-orig": 0, "t-blivre": 1, "t-par": 1, "t-vnum": 1, "t-tema": 1, "t-sobre": 0, "t-lexico": 0, "t-marks": 0 } },
+  { id: "original", nome: "Original", desc: "só hebraico ou grego, corrido", fala: "Original",
+    v: { "t-orig": 1, "t-cards": 0, "t-blivre": 0, "t-par": 0, "t-vnum": 1, "t-tema": 1, "t-sobre": 0, "t-lexico": 1, "t-marks": 0 } },
+  { id: "paralelo", nome: "Original e Bíblia Livre", desc: "os dois, versículo a versículo", fala: "Paralelo",
+    v: { "t-orig": 1, "t-cards": 0, "t-blivre": 1, "t-par": 0, "t-vnum": 1, "t-tema": 1, "t-sobre": 1, "t-lexico": 1, "t-marks": 0 } },
+  { id: "interlinear", nome: "Interlinear", desc: "cartões palavra a palavra", fala: "Interlinear",
+    v: { "t-orig": 1, "t-cards": 1, "t-blivre": 1, "t-par": 0, "t-xlit": 1, "t-pron": 0, "t-gloss": 1, "t-strong": 1, "t-morf": 0, "t-vnum": 1, "t-tema": 1, "t-sobre": 1, "t-lexico": 1, "t-marks": 1 } },
+  { id: "estudo", nome: "Estudo", desc: "tudo: pronúncia, gramática, revisão", fala: "Estudo",
+    v: { "t-orig": 1, "t-cards": 1, "t-blivre": 1, "t-par": 0, "t-xlit": 1, "t-pron": 1, "t-gloss": 1, "t-strong": 1, "t-morf": 1, "t-vnum": 1, "t-tema": 1, "t-sobre": 1, "t-lexico": 1, "t-marks": 1 } },
+  { id: "personalizado", nome: "Personalizado", desc: "escolha cada item abaixo", fala: "Personalizado", v: {} }
+];
+const modeGrid = document.getElementById("mode-grid"), modeNote = document.getElementById("mode-note"), modeSwap = document.getElementById("mode-swap");
+modeGrid.innerHTML = MODOS.map(m => `<button class="mcard" role="radio" aria-checked="false" data-modo="${m.id}"><b>${m.nome}</b><small>${m.desc}</small></button>`).join("");
+let modo = store.get("modo", "");
+let modoBase = store.get("modo-base", "interlinear");
+let modoAnterior = store.get("modo-anterior", "");
+function eyebrowText() {
+  const orig = document.body.classList.contains("hide-orig") ? null : GRC ? "grego" : "hebraico";
+  return orig ? (document.body.classList.contains("orig-corrido") ? `Texto ${orig}` : `Interlinear ${orig} · português`) : "Bíblia Livre";
+}
+function setSwitch(id, on) {
+  const t = document.getElementById(id);
+  if (!t || (t.getAttribute("aria-checked") === "true") === !!on) return;
+  applySwitch(t, !!on);
+  store.set(t.dataset.key, on ? "on" : "off");
+  if (ON_CHANGE[t.id]) ON_CHANGE[t.id](!!on);
+}
+function showModo() {
+  const atual = modo || "interlinear";
+  modeGrid.querySelectorAll(".mcard").forEach(b => b.setAttribute("aria-checked", String(b.dataset.modo === atual)));
+  const base = MODOS.find(m => m.id === modoBase);
+  modeNote.textContent = atual === "personalizado" && base ? `Personalizado a partir do modo ${base.nome}.` : "Toque longo (ou toque no número) num versículo mostra as outras camadas só dele.";
+  const outro = MODOS.find(m => m.id === modoAnterior && m.id !== atual);
+  modeSwap.hidden = !outro;
+  if (outro) { modeSwap.innerHTML = `⇄<span class="ms-t"> ${outro.fala}</span>`; modeSwap.setAttribute("aria-label", `Trocar para o modo ${outro.nome}`); }
+  if (CH) document.getElementById("eyebrow").textContent = eyebrowText();
+}
+function aplicarModo(id, manual = true) {
+  const m = MODOS.find(x => x.id === id);
+  if (!m) return;
+  if (manual && modo && modo !== id && modo !== "personalizado") { modoAnterior = modo; store.set("modo-anterior", modo); }
+  if (id !== "personalizado") {
+    for (const [k, on] of Object.entries(m.v)) setSwitch(k, on);
+    modoBase = id; store.set("modo-base", id);
+  }
+  modo = id; store.set("modo", id);
+  document.getElementById("welcome").hidden = true;
+  document.querySelectorAll(".verse.abrir").forEach(v => v.classList.remove("abrir"));
+  showModo();
+}
+modeGrid.addEventListener("click", e => { const b = e.target.closest(".mcard"); if (b) aplicarModo(b.dataset.modo); });
+modeSwap.addEventListener("click", () => { const alvo = modoAnterior; if (alvo) aplicarModo(alvo); });
+// Mudou um item à mão: vira Personalizado
+document.querySelectorAll(".chk[data-modo]").forEach(t => t.addEventListener("click", () => {
+  if (modo !== "personalizado") { if (modo) { modoBase = modo; store.set("modo-base", modo); } modo = "personalizado"; store.set("modo", modo); }
+  showModo();
+}));
+// Primeira abertura: pergunta como a pessoa quer ler (quem já usava fica no Interlinear, como antes)
+const welcome = document.getElementById("welcome");
+if (!modo && store.get("posicao", "") === "") welcome.hidden = false;
+welcome.addEventListener("click", e => {
+  const b = e.target.closest("button[data-modo]");
+  if (!b) return;
+  welcome.hidden = true;
+  if (b.dataset.modo) aplicarModo(b.dataset.modo, false); else { modo = "interlinear"; store.set("modo", modo); showModo(); }
+});
+showModo();
+// Ouvir o capítulo (Bíblia Livre) e abrir as outras camadas de um versículo
+document.getElementById("ch-say").addEventListener("click", e => speakBlivre(0, e.currentTarget));
+function abrirVerso(sec) {
+  if (!sec || !document.body.classList.contains("hide-orig")) return;
+  sec.classList.toggle("abrir");
+}
+root.addEventListener("click", e => { const n = e.target.closest(".vnum"); if (n) abrirVerso(n.closest(".verse")); });
+let pressTimer = 0;
+root.addEventListener("pointerdown", e => {
+  const sec = e.target.closest(".verse");
+  if (!sec || e.target.closest("button")) return;
+  pressTimer = setTimeout(() => { abrirVerso(sec); pressTimer = 0; }, 550);
+});
+["pointerup", "pointercancel", "pointerleave", "scroll"].forEach(ev => root.addEventListener(ev, () => clearTimeout(pressTimer), { passive: true }));
 
 // ---------- Início: endereço (#JHN.3.16), última posição ou o primeiro capítulo disponível ----------
 (function start() {

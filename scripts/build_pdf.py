@@ -9,6 +9,7 @@ Uso: python3 scripts/build_pdf.py              → os 66 livros + Bíblia comple
      python3 scripts/build_pdf.py volumes      → só junta os PDFs já gerados na Bíblia completa e nos volumes
      python3 scripts/build_pdf.py GEN JHN      → só esses livros
 """
+import html
 import json
 import os
 import shutil
@@ -130,6 +131,11 @@ def main(argv):
     for L in "HG":
         LEX.update(json.load(open(os.path.join(DADOS, "lex", f"{L}.json"), encoding="utf8")))
     quais = {a.upper() for a in argv}
+    if not quais or "BLIVRE" in quais:
+        blivre(livros)
+        quais.discard("BLIVRE")
+        if argv and not quais:
+            return
     os.makedirs(TMP, exist_ok=True)
     os.makedirs(OUT, exist_ok=True)
     jobs, alvo = [], []
@@ -152,6 +158,83 @@ def main(argv):
             otimizar(out)
     if not quais or "VOLUMES" in quais:
         volumes(livros)
+
+
+def blivre(livros):
+    """Edição só com o texto da Bíblia Livre (A4, duas colunas), com marcadores por testamento, livro e capítulo."""
+    from pypdf import PdfReader, PdfWriter
+    esc = html.escape
+    partes = ["""<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Bíblia Livre</title><style>
+@page { size: A4; }
+body { font-family: "Literata", Georgia, serif; font-size: 10.5pt; line-height: 1.45; color: #111; margin: 0; }
+.capa { height: 240mm; display: flex; flex-direction: column; justify-content: center; text-align: center; page-break-after: always; }
+.capa h1 { font-size: 34pt; margin: 0 0 8mm; } .capa p { font-size: 12pt; color: #444; max-width: 120mm; margin: 0 auto 4mm; }
+.livro { page-break-before: always; columns: 2; column-gap: 8mm; }
+.livro h1 { column-span: all; font-size: 22pt; text-align: center; margin: 0 0 6mm; }
+h2 { font-size: 12pt; margin: 4mm 0 1mm; break-after: avoid; }
+p.tema { font-style: italic; font-size: 9.5pt; color: #444; margin: 0 0 1.5mm; break-after: avoid; }
+p.tit { font-style: italic; margin: 0 0 1mm; }
+p.txt { text-align: justify; margin: 0 0 2mm; hyphens: auto; }
+sup { font-size: 6.5pt; font-weight: 700; color: #555; margin: 0 .5pt 0 2pt; }
+.creditos { page-break-before: always; font-size: 9pt; color: #333; }
+</style><link rel="stylesheet" href="../web/fonts/fonts.css"></head><body>
+<section class="capa"><h1>Bíblia Livre</h1><p>Os 66 livros, com o tema de cada capítulo.</p>
+<p>Texto da Bíblia Livre (BLIVRE). Temas: projeto Bíblia Interlinear, com fontes abertas.</p></section>"""]
+    for B in livros:
+        partes.append(f'<section class="livro"><h1>{esc(B["nome"])}</h1>')
+        for c in B["caps"]:
+            d = json.load(open(os.path.join(DADOS, "cap", B["cod"], f"{c['n']}.json"), encoding="utf8"))
+            partes.append(f'<h2>{esc(B["nome"])} {c["n"]}</h2>')
+            if c.get("t"):
+                partes.append(f'<p class="tema">{esc(c["t"])}</p>')
+            corpo = []
+            for v in d["v"]:
+                if not (v.get("b") or "").strip():
+                    continue
+                if v["n"] == 0:
+                    partes.append(f'<p class="tit">{esc(v["b"])}</p>')
+                else:
+                    corpo.append(f'<sup>{v["n"]}</sup>{esc(v["b"])}')
+            partes.append('<p class="txt">' + " ".join(corpo) + "</p>")
+        partes.append("</section>")
+    partes.append('<section class="creditos"><h1>Fontes e licenças</h1><p>Texto: Bíblia Livre (BLIVRE), de Diego Santos, '
+                  'Mario Sérgio e Marco Teles. Temas dos capítulos: projeto Bíblia Interlinear '
+                  '(github.com/josafams/biblia-interlinear).</p></section></body></html>')
+    src = os.path.join(TMP, "BLIVRE.html")
+    os.makedirs(TMP, exist_ok=True)
+    os.makedirs(OUT, exist_ok=True)
+    open(src, "w", encoding="utf8").write("\n".join(partes))
+    destino = os.path.join(OUT, "00-Biblia-Livre.pdf")
+    lista = os.path.join(TMP, "jobs-blivre.json")
+    json.dump([[src, destino, "Bíblia Livre"]], open(lista, "w", encoding="utf8"))
+    subprocess.run(["node", os.path.join(ROOT, "scripts", "imprimir_pdf.mjs"), lista], check=True)
+    if shutil.which("pdftotext"):
+        txt = subprocess.run(["pdftotext", "-enc", "UTF-8", destino, "-"], capture_output=True, text=True).stdout
+        paginas = [{l.strip() for l in p.splitlines() if l.strip()} for p in txt.split("\f")]
+        w = PdfWriter(clone_from=PdfReader(destino))
+        test = {}
+        pg = 0
+        for B in livros:
+            t = "Novo Testamento" if B["nt"] else "Antigo Testamento"
+            for k in range(pg, len(paginas)):
+                if B["nome"] in paginas[k]:
+                    pg = k
+                    break
+            if t not in test:
+                test[t] = w.add_outline_item(t, pg)
+            livro = w.add_outline_item(B["nome"], pg, parent=test[t])
+            for c in B["caps"]:
+                for k in range(pg, len(paginas)):
+                    if f"{B['nome']} {c['n']}" in paginas[k]:
+                        pg = k
+                        break
+                w.add_outline_item(f"{B['nome']} {c['n']}", pg, parent=livro)
+        w.page_mode = "/UseOutlines"
+        w.add_metadata({"/Title": "Bíblia Livre", "/Author": "Bíblia Livre (BLIVRE)", "/Lang": "pt-BR"})
+        with open(destino, "wb") as f:
+            w.write(f)
+    otimizar(destino)
+    print(f"00-Biblia-Livre.pdf  {os.path.getsize(destino) // 1048576} MB")
 
 
 def marcadores(arq, B):
