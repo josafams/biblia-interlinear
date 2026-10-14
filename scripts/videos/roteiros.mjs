@@ -52,17 +52,17 @@ export const videos = [
     id: "04", n: 4, grupo: "ler", titulo: "Como ler um cartão",
     desc: "Palavra, transliteração, Strong e glosa.", inicio: "GEN.1",
     passos: [
-      { legenda: "Cada cartão é uma palavra do original.", faz: t => t.realcar('.word[data-v="1"][data-i="0"]') },
-      { legenda: "O hebraico se lê da direita para a esquerda.", faz: t => t.realcar('.verse:nth-of-type(1) .words') },
-      { legenda: "Embaixo: transliteração, número Strong e glosa em português.", faz: t => t.realcar('.word[data-v="1"][data-i="1"]') },
-      { legenda: "Abaixo dos cartões vem o versículo na Bíblia Livre.", faz: t => t.realcar('.verse:nth-of-type(1) .blivre, .verse:nth-of-type(1) [class*="pt"]') }
+      { legenda: "Cada cartão é uma palavra do original.", faz: t => t.realcar('.word[data-v="0"][data-i="0"]') },
+      { legenda: "O hebraico se lê da direita para a esquerda.", faz: t => t.realcar('#v1 .words') },
+      { legenda: "Embaixo: transliteração, número Strong e glosa em português.", faz: t => t.realcar('.word[data-v="0"][data-i="1"]') },
+      { legenda: "Abaixo dos cartões vem o versículo na Bíblia Livre.", faz: t => t.realcar('#v1 .blivre') }
     ]
   },
   {
     id: "05", n: 5, grupo: "ler", titulo: "Abrir um verbete",
     desc: "Origem, significado e de verbete em verbete.", inicio: "GEN.1",
     passos: [
-      { legenda: "Toque numa palavra para abrir o verbete.", faz: t => t.tocar('.word[data-v="1"][data-i="1"]') },
+      { legenda: "Toque numa palavra para abrir o verbete.", faz: t => t.tocar('.word[data-v="0"][data-i="0"]') },
       { legenda: "Veja origem, significado e como a Bíblia Livre traduz.", faz: t => t.rolarPainel("#detail", 300) },
       { legenda: "Toque num número Strong para ir ao verbete ligado.", faz: t => t.tocar("#detail .ref") },
       { legenda: "Use ← para voltar e ✕ para fechar.", faz: t => t.tocar("#d-back") }

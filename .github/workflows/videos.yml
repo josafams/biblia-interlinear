@@ -1,0 +1,50 @@
+# Grava de novo os vídeos "Como usar" (scripts/videos/roteiros.mjs) a partir do site publicado
+# e publica em gh-pages/videos. Roda quando o leitor ou os roteiros mudam na main, e à mão.
+# Se um roteiro não consegue completar os passos, o workflow falha: a tela mudou e o roteiro precisa acompanhar.
+name: Vídeos
+on:
+  push:
+    branches: [main]
+    paths: ["web/**", "scripts/videos/**", ".github/workflows/videos.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: videos
+  cancel-in-progress: true
+
+jobs:
+  videos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Site publicado (gh-pages) em saida/web
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: saida/web
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Chromium e ffmpeg
+        run: |
+          npx playwright install --with-deps chromium
+          sudo apt-get install -y ffmpeg
+      - name: Gravar
+        run: node scripts/videos/gravar.mjs
+      - name: Publicar em gh-pages
+        run: |
+          rm -rf saida/web/videos
+          mkdir -p saida/web/videos
+          cp saida/videos/*.mp4 saida/videos/*.webm saida/videos/*.vtt saida/videos/*.jpg saida/videos/videos.js saida/web/videos/
+          cd saida/web
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A videos
+          git commit -m "Vídeos Como usar: gravados de novo (${GITHUB_SHA::7})" || { echo "Nada mudou."; exit 0; }
+          git push origin HEAD:gh-pages
