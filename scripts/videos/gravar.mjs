@@ -183,7 +183,13 @@ for (const v of videos) {
       ...disp, locale: "pt-BR", colorScheme: "light", reducedMotion: "no-preference"
     });
     // Começa no modo Interlinear, sem o aviso de primeira abertura (a não ser que o roteiro peça outro modo)
-    await ctx.addInitScript(m => { try { if (!localStorage.getItem("interlinear:modo")) localStorage.setItem("interlinear:modo", m); } catch (_) {} }, v.modo || "interlinear");
+    await ctx.addInitScript(m => {
+      try {
+        if (!localStorage.getItem("interlinear:modo")) localStorage.setItem("interlinear:modo", m);
+        // a sugestão "guardar no Google Drive" (depois da 1ª anotação) cobriria a tela nos vídeos
+        localStorage.setItem("interlinear:conta-sugestao", "nao");
+      } catch (_) {}
+    }, v.modo || "interlinear");
     const page = await ctx.newPage();
     const t0 = Date.now();
     const gravador = VERIFICAR ? null : await gravar(page, disp, tmp, t0);
