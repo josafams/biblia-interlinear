@@ -1,0 +1,163 @@
+// Login Google (opcional) e acesso à pasta do app no Drive — com o Google simulado (nada sai para a internet).
+import { test, expect } from "@playwright/test";
+
+// o service worker serviria o google-config.js real do cache, passando por cima da simulação
+test.use({ serviceWorkers: "block" });
+
+const DRIVE = "https://www.googleapis.com/auth/drive.appdata";
+const CORS = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "*", "Access-Control-Allow-Methods": "GET,POST,PATCH,DELETE,OPTIONS" };
+
+// Google Identity Services falso: entrega um token na hora (ou cancela / nega o Drive, conforme window.__gisModo)
+const GIS_FALSO = `window.google = { accounts: { oauth2: {
+  initTokenClient(c) { return { requestAccessToken(o) {
+    (window.__gisPedidos = window.__gisPedidos || []).push(o);
+    setTimeout(() => {
+      const m = window.__gisModo || "ok";
+      if (m === "cancelar") return c.error_callback({ type: "popup_closed" });
+      c.callback({ access_token: "tk-" + Date.now(), expires_in: 3599,
+        scope: m === "sem-drive" ? "openid email profile" : "openid email profile ${DRIVE}" });
+    }, 60);
+  } }; },
+  hasGrantedAllScopes(r, ...s) { return s.every(x => r.scope.split(" ").includes(x)); },
+  revoke(t, cb) { window.__revogado = t; cb && cb(); }
+} } };`;
+
+// Drive falso: guarda os arquivos da pasta do app em memória
+async function simularGoogle(page, { configurado = true } = {}) {
+  const arquivos = new Map();
+  let n = 0;
+  if (configurado) await page.route("**/google-config.js", r => r.fulfill({ contentType: "text/javascript", body: 'window.GOOGLE_CONFIG = { webClientId: "teste.apps.googleusercontent.com" };' }));
+  await page.route("https://accounts.google.com/gsi/client", r => r.fulfill({ contentType: "text/javascript", body: GIS_FALSO }));
+  await page.route("https://www.googleapis.com/**", async r => {
+    const req = r.request(), url = new URL(req.url()), m = req.method();
+    if (m === "OPTIONS") return r.fulfill({ status: 204, headers: CORS });
+    if (!/^Bearer tk-/.test(req.headers()["authorization"] || "")) return r.fulfill({ status: 401, headers: CORS, json: { error: { message: "sem token" } } });
+    const json = (status, body) => r.fulfill({ status, headers: CORS, contentType: "application/json", body: JSON.stringify(body) });
+    if (url.pathname === "/oauth2/v3/userinfo") return json(200, { name: "Maria Teste", email: "maria@exemplo.com", picture: "" });
+    let id = url.pathname.match(/\/files\/([^/]+)$/)?.[1];
+    if (m === "GET" && url.pathname === "/drive/v3/files") {
+      const nome = url.searchParams.get("q")?.match(/name='(.+)'/)?.[1];
+      return json(200, { files: [...arquivos.entries()].filter(([, a]) => !nome || a.name === nome).map(([id, a]) => ({ id, name: a.name })) });
+    }
+    if (m === "GET" && id) return json(200, JSON.parse(arquivos.get(id).conteudo));
+    if (m === "POST" && url.pathname === "/upload/drive/v3/files") {
+      const partes = req.postData().split(/--biblia[a-z0-9]+/).filter(p => p.includes("{"));
+      const meta = JSON.parse(partes[0].slice(partes[0].indexOf("{")).trim());
+      expect(meta.parents).toEqual(["appDataFolder"]);
+      id = "a" + (++n);
+      arquivos.set(id, { name: meta.name, conteudo: partes[1].slice(partes[1].indexOf("{")).trim() });
+      return json(200, { id, name: meta.name });
+    }
+    if (m === "PATCH" && id) { arquivos.get(id).conteudo = req.postData(); return json(200, { id }); }
+    return json(404, { error: { message: "não simulado: " + m + " " + url.pathname } });
+  });
+  return arquivos;
+}
+
+async function abrirIndice(page) {
+  await page.goto("ler.html#GEN.1");
+  await expect(page.locator(".verse").first()).toBeVisible();
+  await page.waitForFunction(() => window.Conta);
+  await page.click("#open-toc");
+}
+
+test("sem ID de cliente configurado, o login não aparece", async ({ page }) => {
+  await simularGoogle(page, { configurado: false });
+  await abrirIndice(page);
+  await expect(page.locator("#conta")).toBeHidden();
+  expect(await page.evaluate(() => window.Conta.estado())).toBe("indisponivel");
+});
+
+test("entrar com Google conecta a pasta do app no Drive e registra o aparelho", async ({ page }) => {
+  const arquivos = await simularGoogle(page);
+  await abrirIndice(page);
+  await expect(page.locator("#conta")).toContainText("Guardar no seu Google Drive");
+  await page.click("#conta-entrar");
+  await expect(page.locator("#conta .conta-nome")).toHaveText("Maria Teste");
+  await expect(page.locator("#conta .conta-email")).toHaveText("maria@exemplo.com");
+  await expect(page.locator("#conta .conta-drive")).toHaveText("Google Drive conectado · 1 aparelho");
+  const [conta] = [...arquivos.values()];
+  expect(conta.name).toBe("conta.json");
+  expect(Object.keys(JSON.parse(conta.conteudo).aparelhos)).toHaveLength(1);
+  // o token nunca vai para o armazenamento do navegador
+  const guardado = await page.evaluate(() => JSON.stringify(localStorage));
+  expect(guardado).toContain("maria@exemplo.com");
+  expect(guardado).not.toContain("tk-");
+
+  // ao voltar, a conta é lembrada e basta reconectar (sem criar outro conta.json)
+  await page.reload();
+  await page.waitForFunction(() => window.Conta);
+  await page.click("#open-toc");
+  await expect(page.locator("#conta")).toContainText("Reconectar");
+  await page.click("#conta-entrar");
+  await expect(page.locator("#conta .conta-drive")).toHaveText("Google Drive conectado · 1 aparelho");
+  expect(arquivos.size).toBe(1);
+  expect(await page.evaluate(() => window.__gisPedidos.at(-1))).toMatchObject({ login_hint: "maria@exemplo.com" });
+});
+
+test("sem a permissão do Drive, explica e continua sem conta", async ({ page }) => {
+  await simularGoogle(page);
+  await abrirIndice(page);
+  await page.evaluate(() => { window.__gisModo = "sem-drive"; });
+  await page.click("#conta-entrar");
+  await expect(page.locator("#conta .conta-erro")).toContainText("deixe marcada a permissão");
+  await expect(page.locator("#conta-entrar")).toContainText("Entrar com Google");
+  expect(await page.evaluate(() => window.Conta.estado())).toBe("fora");
+});
+
+test("fechar a janela do Google não mostra erro", async ({ page }) => {
+  await simularGoogle(page);
+  await abrirIndice(page);
+  await page.evaluate(() => { window.__gisModo = "cancelar"; });
+  await page.click("#conta-entrar");
+  await expect(page.locator("#conta-entrar")).toBeEnabled();
+  await expect(page.locator("#conta .conta-erro")).toHaveCount(0);
+});
+
+test("sair esquece a conta e mantém as anotações no aparelho", async ({ page }) => {
+  await simularGoogle(page);
+  await abrirIndice(page);
+  await page.evaluate(async () => {
+    await window.Anotacoes.gravar("favoritos", { id: crypto.randomUUID(), cap: "GEN.1", ancora: { livro: "GEN", cap: 1, ver: 1, ver_fim: 1, camada: "versiculo" } });
+  });
+  await page.click("#conta-entrar");
+  await expect(page.locator("#conta .conta-drive")).toContainText("conectado");
+  await page.click("#conta-sair");
+  await expect(page.locator("#conta-entrar")).toContainText("Entrar com Google");
+  expect(await page.evaluate(() => window.__revogado)).toMatch(/^tk-/);
+  expect(await page.evaluate(() => localStorage.getItem("interlinear:conta"))).toBeNull();
+  expect(await page.evaluate(() => window.Anotacoes.contar())).toBe(1);
+});
+
+test("depois da primeira anotação sugere guardar no Drive; “Agora não” não pergunta mais", async ({ page }) => {
+  await simularGoogle(page);
+  await page.goto("ler.html#GEN.1");
+  await expect(page.locator(".verse").first()).toBeVisible();
+  await page.waitForFunction(() => window.Conta && window.Anotacoes);
+  await expect(page.locator("#conta-sug")).toBeHidden();
+  await page.evaluate(async () => {
+    await window.Anotacoes.gravar("favoritos", { id: crypto.randomUUID(), cap: "GEN.1", ancora: { livro: "GEN", cap: 1, ver: 1, ver_fim: 1, camada: "versiculo" } });
+  });
+  await expect(page.locator("#conta-sug")).toBeVisible();
+  await page.click("#cs-nao");
+  await expect(page.locator("#conta-sug")).toBeHidden();
+  await page.reload();
+  await page.waitForFunction(() => window.Conta && window.Anotacoes);
+  await page.evaluate(async () => {
+    await window.Anotacoes.gravar("favoritos", { id: crypto.randomUUID(), cap: "GEN.1", ancora: { livro: "GEN", cap: 1, ver: 2, ver_fim: 2, camada: "versiculo" } });
+  });
+  await page.waitForTimeout(2000);
+  await expect(page.locator("#conta-sug")).toBeHidden();
+});
+
+test("foto (só com FOTOS=1)", async ({ page }, info) => {
+  test.skip(!process.env.FOTOS);
+  await simularGoogle(page);
+  await abrirIndice(page);
+  await page.screenshot({ path: `${process.env.FOTOS}/conta-fora-${info.project.name}.png` });
+  await page.click("#conta-entrar");
+  await expect(page.locator("#conta .conta-drive")).toContainText("conectado");
+  await page.screenshot({ path: `${process.env.FOTOS}/conta-ligado-${info.project.name}.png` });
+  await page.keyboard.press("Escape");
+  await page.evaluate(() => { localStorage.removeItem("interlinear:conta-sugestao"); });
+});
