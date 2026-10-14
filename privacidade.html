@@ -19,10 +19,19 @@ p, li { color: var(--fg); } .muted { color: var(--muted); font-size: 14px; } a {
 <p class="muted">Bíblia Interlinear · versão de 14 de outubro de 2026</p>
 
 <h2>Dados que coletamos</h2>
-<p>Nenhum. O app e a versão web não pedem cadastro, não usam contas, não têm anúncios nem ferramentas de análise, e não enviam informações sobre você para nenhum servidor.</p>
+<p>Nenhum. O projeto não tem servidor nem banco de dados: o app e a versão web não pedem cadastro, não têm anúncios nem ferramentas de análise, e não enviam informações sobre você para nós. O login com Google é opcional e, quando usado, liga o app diretamente à sua própria conta do Google (veja abaixo).</p>
 
 <h2>O que fica guardado no seu aparelho</h2>
-<p>Suas preferências de leitura (modo de leitura, tema, tamanho do texto, camadas visíveis, opções de áudio e se a seção "Sobre o livro" está aberta) e suas anotações (marcações com cores, notas, favoritos e etiquetas) ficam salvas apenas no próprio aparelho, no armazenamento local do navegador ou do app. Elas não saem do aparelho e são apagadas se você limpar os dados do app ou do navegador.</p>
+<p>Suas preferências de leitura (modo de leitura, tema, tamanho do texto, camadas visíveis, opções de áudio e se a seção "Sobre o livro" está aberta) e suas anotações (marcações com cores, notas, favoritos e etiquetas) ficam salvas apenas no próprio aparelho, no armazenamento local do navegador ou do app. Sem login, elas não saem do aparelho e são apagadas se você limpar os dados do app ou do navegador. A qualquer momento você pode baixar um arquivo com todas elas em Minhas anotações › Baixar meus dados.</p>
+
+<h2>Login com Google (opcional)</h2>
+<p>Se você tocar em "Entrar com Google", o Google pede sua permissão para o app:</p>
+<ul>
+<li><strong>ver seu nome, e-mail e foto de perfil</strong> (escopos <code>openid</code>, <code>email</code> e <code>profile</code>), só para mostrar com qual conta você entrou. Eles ficam guardados apenas no seu aparelho;</li>
+<li><strong>ver, criar e apagar os próprios dados de configuração no seu Google Drive</strong> (escopo <code>drive.appdata</code>): uma pasta oculta e privada do app no seu Drive, onde ficam suas anotações e a lista dos aparelhos conectados, para que valham em todos eles. O app <strong>não tem acesso a nenhum outro arquivo do seu Drive</strong>, e outros apps não veem essa pasta. Os dados ocupam a sua cota do Drive (anotações de texto ocupam muito pouco).</li>
+</ul>
+<p>O app conversa diretamente com o Google; nenhum servidor do projeto participa e nós não vemos seus dados. Sua senha do Google nunca passa pelo app. O acesso concedido pelo Google fica só na memória do app enquanto ele está aberto. No site, o script de login do Google só é carregado quando você vai tocar no botão de entrar; a partir daí vale também a <a href="https://policies.google.com/privacy?hl=pt-BR">política de privacidade do Google</a>.</p>
+<p>Para sair, toque em "Sair" no Índice: o app esquece a conta neste aparelho e suas anotações continuam nele. Para retirar a permissão de vez, acesse <a href="https://myaccount.google.com/connections">myaccount.google.com › Apps e serviços conectados</a>. O uso de dados recebidos das APIs do Google segue a <a href="https://developers.google.com/terms/api-services-user-data-policy">Política de dados do usuário dos serviços de API do Google</a>, incluindo os requisitos de uso limitado.</p>
 
 <h2>Áudio</h2>
 <p>A leitura em voz alta usa o recurso de texto para fala do próprio sistema (Android, iOS ou navegador). O texto lido é sempre uma palavra ou um versículo da Bíblia. O app não grava áudio e não usa o microfone.</p>
@@ -31,7 +40,7 @@ p, li { color: var(--fg); } .muted { color: var(--muted); font-size: 14px; } a {
 <p>Alguns verbetes têm um link para um dicionário bíblico em outro site. Ao tocar nele, a página abre no seu navegador e passa a valer a política de privacidade daquele site.</p>
 
 <h2>Permissões</h2>
-<p>O app não pede permissões especiais. Todo o conteúdo vem dentro dele e funciona sem internet.</p>
+<p>O app não pede permissões especiais do sistema. Todo o conteúdo vem dentro dele e funciona sem internet; a internet só é usada para o login opcional com Google e para guardar as anotações no seu Drive.</p>
 
 <h2>Contato</h2>
 <p>Dúvidas sobre esta política: <strong>[preencher com o e-mail de contato antes de publicar]</strong>.</p>
