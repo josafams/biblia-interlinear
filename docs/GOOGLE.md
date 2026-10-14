@@ -6,7 +6,7 @@ O login é opcional e serve só para guardar as anotações na **pasta oculta do
 - Código do Android: `android/app/src/main/java/liberta/bibliainterlinear/ContaGooglePlugin.java` (API de autorização do Google Play services).
 - Testes: `tests/web/conta.spec.mjs` (o Google é simulado; nada sai para a internet).
 
-Enquanto `webClientId` estiver vazio, o bloco de login não aparece no site. No app Android ele aparece, mas só funciona depois do cliente Android estar cadastrado (passo 4).
+O ID do cliente Web já está em `web/google-config.js` (projeto "Biblia interlinear"). Se ele ficar vazio, o bloco de login não aparece no site. No app Android ele aparece, mas só funciona depois do cliente Android estar cadastrado (passo 4).
 
 ## Configuração no Google Cloud (uma vez, grátis)
 

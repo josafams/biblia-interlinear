@@ -26,7 +26,8 @@ const GIS_FALSO = `window.google = { accounts: { oauth2: {
 async function simularGoogle(page, { configurado = true } = {}) {
   const arquivos = new Map();
   let n = 0;
-  if (configurado) await page.route("**/google-config.js", r => r.fulfill({ contentType: "text/javascript", body: 'window.GOOGLE_CONFIG = { webClientId: "teste.apps.googleusercontent.com" };' }));
+  const id = configurado ? "teste.apps.googleusercontent.com" : "";
+  await page.route("**/google-config.js", r => r.fulfill({ contentType: "text/javascript", body: `window.GOOGLE_CONFIG = { webClientId: "${id}" };` }));
   await page.route("https://accounts.google.com/gsi/client", r => r.fulfill({ contentType: "text/javascript", body: GIS_FALSO }));
   await page.route("https://www.googleapis.com/**", async r => {
     const req = r.request(), url = new URL(req.url()), m = req.method();
