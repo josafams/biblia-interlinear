@@ -551,6 +551,8 @@ body.grc .word .h { font-size: calc(21px * var(--k)); }
       <a href="#sobre" data-go>Sobre o livro <span>resumo e contexto</span></a>
       <a href="#lexico" data-go>Léxico <span id="toc-lexn"></span></a>
       <a href="#fontes" data-go>Fontes e licenças <span></span></a>
+      <a href="index.html#como-usar" class="site-link">Como usar <span>vídeos curtos</span></a>
+      <a href="index.html" class="site-link">Sobre o projeto <span>apps, EPUB e PDF</span></a>
     </div>
   </nav>
 </aside>
@@ -857,6 +859,9 @@ let active = null, navStack = [], current = null, returnTo = null;
 const CAP = window.Capacitor;
 const NATIVE = !!(CAP && typeof CAP.isNativePlatform === "function" && CAP.isNativePlatform());
 const PLATFORM = NATIVE && typeof CAP.getPlatform === "function" ? CAP.getPlatform() : "web";
+// No app, a página inicial e os vídeos ficam no site (abrem no navegador do aparelho).
+const SITE = "https://josafams.github.io/biblia-interlinear/";
+if (NATIVE) document.querySelectorAll("a.site-link").forEach(a => { a.href = SITE + a.getAttribute("href"); a.target = "_blank"; a.rel = "noopener"; });
 function capPlugin(name) {
   if (!NATIVE) return null;
   return (CAP.Plugins && CAP.Plugins[name]) || (typeof CAP.registerPlugin === "function" ? CAP.registerPlugin(name) : null);
