@@ -457,7 +457,10 @@ def nome_parecido(alvo, texto):
     cands = set(re.findall(r"\b[A-ZÀ-Ý][\wÀ-ÿ]+(?:-[A-ZÀ-Ý][\wÀ-ÿ]+)*", texto))
     if not cands or not alvo:
         return None
-    m = max(cands, key=lambda t: parecido(t, alvo))
+    # Empate (Sansão e Samuel para Sampson): desempata pela comparação no outro sentido e, por fim, pela ordem
+    # alfabética, para o resultado não depender da ordem do set (que muda a cada execução do Python).
+    m = max(sorted(cands), key=lambda t: (parecido(t, alvo),
+                                          difflib.SequenceMatcher(None, sem_acento(alvo).lower(), sem_acento(t).lower()).ratio()))
     return m if parecido(m, alvo) >= 0.75 else None
 
 
