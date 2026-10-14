@@ -16,6 +16,19 @@ export const grupos = [
 // Ações usadas pelos roteiros (t = ajudante de gravação: t.tocar, t.digitar, t.rolar, t.esperar…)
 const abrirIndice = t => t.tocar("#open-toc");
 const fecharPainel = t => t.tecla("Escape");
+// anotações de exemplo para os vídeos que mostram a lista, o PDF e o backup
+const dadosDeExemplo = async page => {
+  await page.evaluate(async () => {
+    const A = window.Anotacoes, id = () => crypto.randomUUID();
+    const anc = (livro, cap, ver, trecho) => ({ livro, cap, ver, ver_fim: ver, camada: "versiculo", trecho });
+    const et = await A.gravar("etiquetas", { id: id(), nome: "promessas" });
+    await A.gravar("notas", { id: id(), cap: "GEN.1", ancora: anc("GEN", 1, 2), titulo: "Tohu e bohu", texto: "Sem forma e vazia: rima no hebraico.", etiquetas: [] });
+    await A.gravar("marcacoes", { id: id(), cap: "GEN.1", ancora: anc("GEN", 1, 3, "E disse Deus: Haja luz; e houve luz."), cor: "amarelo", etiquetas: [] });
+    await A.gravar("marcacoes", { id: id(), cap: "PSA.23", ancora: anc("PSA", 23, 1, "Salmo de Davi: O SENHOR é meu pastor, nada me faltará."), cor: "verde", etiquetas: [et.id] });
+    await A.gravar("favoritos", { id: id(), cap: "JHN.3", ancora: anc("JHN", 3, 16), etiquetas: [] });
+    await A.gravar("notas", { id: id(), cap: "ROM.8", ancora: anc("ROM", 8, 28), titulo: "", texto: "Todas as coisas contribuem para o bem.", etiquetas: [et.id] });
+  });
+};
 
 export const videos = [
   {
@@ -212,18 +225,7 @@ export const videos = [
   },
   {
     id: "21", n: 21, grupo: "anotacoes", titulo: "Minhas anotações", desc: "Buscar e filtrar tudo.", inicio: "GEN.1",
-    preparar: async page => {
-      await page.evaluate(async () => {
-        const A = window.Anotacoes, id = () => crypto.randomUUID();
-        const anc = (livro, cap, ver, trecho) => ({ livro, cap, ver, ver_fim: ver, camada: "versiculo", trecho });
-        const et = await A.gravar("etiquetas", { id: id(), nome: "promessas" });
-        await A.gravar("notas", { id: id(), cap: "GEN.1", ancora: anc("GEN", 1, 2), titulo: "Tohu e bohu", texto: "Sem forma e vazia: rima no hebraico.", etiquetas: [] });
-        await A.gravar("marcacoes", { id: id(), cap: "GEN.1", ancora: anc("GEN", 1, 3, "E disse Deus: Haja luz; e houve luz."), cor: "amarelo", etiquetas: [] });
-        await A.gravar("marcacoes", { id: id(), cap: "PSA.23", ancora: anc("PSA", 23, 1, "Salmo de Davi: O SENHOR é meu pastor, nada me faltará."), cor: "verde", etiquetas: [et.id] });
-        await A.gravar("favoritos", { id: id(), cap: "JHN.3", ancora: anc("JHN", 3, 16), etiquetas: [] });
-        await A.gravar("notas", { id: id(), cap: "ROM.8", ancora: anc("ROM", 8, 28), titulo: "", texto: "Todas as coisas contribuem para o bem.", etiquetas: [et.id] });
-      });
-    },
+    preparar: dadosDeExemplo,
     passos: [
       { legenda: "No Índice, toque em Minhas anotações.", faz: async t => { await t.tocar("#open-toc"); await t.rolarAte("#open-minhas"); await t.tocar("#open-minhas"); } },
       { legenda: "Tudo o que você marcou e anotou, na ordem da Bíblia.", faz: t => t.esperar(800) },
@@ -232,8 +234,41 @@ export const videos = [
       { legenda: "Toque num item para ir ao versículo ou abrir a nota.", faz: t => t.tocar('.mn-item[data-tipo="notas"]') }
     ]
   },
-  { id: "22", n: 22, grupo: "anotacoes", titulo: "Exportar em PDF", desc: "O caderno de estudo, pronto para salvar.", pronto: false, passos: [] },
-  { id: "23", n: 23, grupo: "anotacoes", titulo: "Baixar e importar meus dados", desc: "Backup em arquivo.", pronto: false, passos: [] },
+  {
+    id: "22", n: 22, grupo: "anotacoes", titulo: "Exportar em PDF", desc: "O caderno de estudo, pronto para salvar.", inicio: "GEN.1",
+    preparar: dadosDeExemplo,
+    passos: [
+      { legenda: "Em Minhas anotações, toque em Exportar PDF.", faz: async t => { await t.page.evaluate(() => { window.__semImprimir = true; }); await t.tocar("#open-toc"); await t.rolarAte("#open-minhas"); await t.tocar("#open-minhas"); await t.tocar("#mn-exportar"); } },
+      { legenda: "Escolha o que entra: notas, marcações, o texto, o interlinear.", faz: async t => { await t.realcar("#exportar fieldset:nth-of-type(2)"); await t.tocar("#exp-inter"); } },
+      { legenda: "Toque em Gerar PDF.", faz: t => t.tocar("#exp-gerar") },
+      { legenda: "O caderno sai agrupado por versículo, com as cores, notas e etiquetas. Salve como PDF ou imprima.", faz: async t => {
+        await t.page.evaluate(() => {
+          const f = document.createElement("iframe"); f.id = "__previa";
+          f.style.cssText = "position:fixed;inset:0;width:100%;height:100%;border:0;z-index:2147483646;background:#fff";
+          f.srcdoc = window.__ultimoCaderno.html; document.body.appendChild(f);
+        });
+        await t.esperar(1500);
+        await t.page.evaluate(() => document.getElementById("__previa").contentWindow.scrollBy({ top: 500, behavior: "smooth" }));
+        await t.esperar(1800);
+      } }
+    ]
+  },
+  {
+    id: "23", n: 23, grupo: "anotacoes", titulo: "Baixar e importar meus dados", desc: "Backup em arquivo.", inicio: "GEN.1",
+    preparar: dadosDeExemplo,
+    passos: [
+      { legenda: "Em Minhas anotações, toque em Baixar meus dados.", faz: async t => { await t.tocar("#open-toc"); await t.rolarAte("#open-minhas"); await t.tocar("#open-minhas"); await t.tocar("#mn-baixar"); } },
+      { legenda: "Um arquivo com tudo o que você anotou fica salvo no aparelho.", faz: t => t.esperar(1500) },
+      { legenda: "Em outro aparelho, toque em Importar e escolha esse arquivo.", faz: async t => {
+        const json = await t.page.evaluate(() => JSON.stringify(window.__ultimoBackup));
+        await t.page.evaluate(async () => { const d = new Dexie("biblia-interlinear"); await d.open(); for (const tb of d.tables) await tb.clear(); d.close(); await window.Anotacoes.abrirLista(); });  // simula o aparelho novo
+        await t.esperar(600);
+        await t.realcar("#mn-importar");
+        await t.page.setInputFiles("#mn-arquivo", { name: "biblia-anotacoes.json", mimeType: "application/json", buffer: Buffer.from(json) });
+      } },
+      { legenda: "As anotações voltam. O que já existia não é duplicado.", faz: t => t.esperar(1800) }
+    ]
+  },
   { id: "24", n: 24, grupo: "conta", titulo: "Entrar com Google", desc: "E enviar o que já foi anotado.", pronto: false, passos: [] },
   { id: "25", n: 25, grupo: "conta", titulo: "Dois aparelhos", desc: "A nota feita no celular aparece no computador.", pronto: false, passos: [] },
   { id: "26", n: 26, grupo: "conta", titulo: "Sair e apagar da nuvem", desc: "Seus dados, sob seu controle.", pronto: false, passos: [] },

@@ -145,7 +145,12 @@ async function gravar(page, disp, dir, t0) {
   // Mantém pelo menos um quadro a cada 0,5 s mesmo com a tela parada
   const pulso = setInterval(() => page.evaluate(() => { document.documentElement.dataset.pulso = Date.now(); }).catch(() => {}), 500);
   return {
-    async parar() { clearInterval(pulso); await cdp.send("Page.stopScreencast").catch(() => {}); return quadros; }
+    async parar() {
+      clearInterval(pulso); await cdp.send("Page.stopScreencast").catch(() => {});
+      // tela parada (ex.: um iframe cobrindo tudo) pode não gerar quadros: o último fica até o fim
+      quadros.fim = (Date.now() - t0) / 1000;
+      return quadros;
+    }
   };
 }
 
@@ -202,7 +207,7 @@ for (const v of videos) {
       await ctx.close();
       if (VERIFICAR) { console.log(`ok  ${v.id} ${nome}  ${v.titulo}`); continue; }
       const lista = path.join(tmp, "quadros.txt");
-      fs.writeFileSync(lista, quadros.map((q, i) => `file '${q.arq}'\nduration ${((quadros[i + 1]?.t ?? (q.t + 0.5)) - q.t).toFixed(3)}`).join("\n")
+      fs.writeFileSync(lista, quadros.map((q, i) => `file '${q.arq}'\nduration ${((quadros[i + 1]?.t ?? Math.max(q.t + 0.5, quadros.fim)) - q.t).toFixed(3)}`).join("\n")
         + `\nfile '${quadros.at(-1).arq}'\n`);
       const base = path.join(OUT, `${v.id}-${nome}`);
       const escala = nome === "celular" ? "540:-2" : "1280:-2";
