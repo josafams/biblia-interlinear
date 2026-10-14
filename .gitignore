@@ -6,6 +6,7 @@ saida/
 # chaves de assinatura nunca vão para o repositório
 *.jks
 *.keystore
+!android/app/debug.keystore
 keystore.properties
 .DS_Store
 __pycache__/
