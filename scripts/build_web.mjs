@@ -6,6 +6,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import sharp from "sharp";
 import { execFileSync } from "node:child_process";
+import { pathToFileURL } from "node:url";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const OUT = path.join(ROOT, "saida/web");
@@ -92,7 +93,15 @@ ${html.slice(cut).trim()}
 </body>
 </html>
 `;
-fs.writeFileSync(path.join(OUT, "index.html"), doc);
+fs.writeFileSync(path.join(OUT, "ler.html"), doc);
+
+// ---- página inicial (index.html): números, amostra e tamanhos dos livros lidos dos dados ----
+fs.writeFileSync(path.join(OUT, "index.html"), await paginaInicial(livros));
+
+// ---- vídeos "Como usar" já gravados (scripts/videos/gravar.mjs grava em saida/videos) ----
+const VIDEOS = r("saida/videos");
+if (fs.existsSync(path.join(VIDEOS, "videos.js"))) fs.cpSync(VIDEOS, path.join(OUT, "videos"), { recursive: true });
+else { fs.mkdirSync(path.join(OUT, "videos"), { recursive: true }); fs.writeFileSync(path.join(OUT, "videos/videos.js"), "window.__videos = { arquivos: {} };\n"); }
 
 // ---- política de privacidade ----
 fs.copyFileSync(r("web/privacidade.html"), path.join(OUT, "privacidade.html"));
@@ -100,7 +109,7 @@ fs.copyFileSync(r("web/privacidade.html"), path.join(OUT, "privacidade.html"));
 // ---- manifesto ----
 fs.writeFileSync(path.join(OUT, "manifest.webmanifest"), JSON.stringify({
   name: APP.name, short_name: APP.short, description: APP.desc, lang: "pt-BR", dir: "ltr",
-  start_url: "./", scope: "./", display: "standalone", orientation: "any",
+  start_url: "./ler.html", scope: "./", display: "standalone", orientation: "any",
   background_color: APP.bg, theme_color: APP.theme, categories: ["books", "education"],
   icons: [
     { src: "icones/icone-192.png", sizes: "192x192", type: "image/png" },
@@ -121,7 +130,7 @@ const files = [];
 const hash = crypto.createHash("sha256");
 for (const f of files.sort()) hash.update(f).update(fs.readFileSync(path.join(OUT, f)));
 const version = hash.digest("hex").slice(0, 12);
-const precache = ["./", ...files.filter(f => !f.endsWith(".txt") && !f.startsWith("dados/cap/"))];
+const precache = ["./", ...files.filter(f => !f.endsWith(".txt") && !f.startsWith("dados/cap/") && !f.startsWith("videos/"))];
 fs.writeFileSync(path.join(OUT, "sw.js"), `// Gerado por scripts/build_web.mjs — não editar
 const CACHE = "interlinear-${version}";
 const FILES = ${JSON.stringify(precache)};
@@ -140,3 +149,53 @@ self.addEventListener("fetch", e => {
 });
 `);
 console.error(`Versão web gerada em saida/web (${files.length + 1} arquivos, cache ${version})`);
+
+// ---------------------------------------------------------------------------------------------
+async function paginaInicial(livros) {
+  const REPO = "https://github.com/josafams/biblia-interlinear";
+  const dados = r("saida/dados");
+  const cap = (cod, n) => JSON.parse(fs.readFileSync(path.join(dados, "cap", cod, `${n}.json`), "utf8"));
+  const lex = { H: JSON.parse(fs.readFileSync(path.join(dados, "lex/H.json"), "utf8")), G: JSON.parse(fs.readFileSync(path.join(dados, "lex/G.json"), "utf8")) };
+  let caps = 0, vers = 0, pal = 0;
+  for (const b of livros) for (const c of b.caps) {
+    caps++;
+    const f = path.join(dados, "cap", b.cod, `${c.n}.json`);
+    if (!fs.existsSync(f)) continue;
+    for (const v of JSON.parse(fs.readFileSync(f, "utf8")).v) { if (v.n > 0) vers++; pal += v.w.length; }
+  }
+  const fmt = n => n.toLocaleString("pt-BR");
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+  const limpa = w => w.replace(/\//g, "").replace(/[\u0591-\u05AF\u05BD]/g, "").replace(/[,.;·]$/, "");
+  const cartoes = (v, grego) => v.w.map(w => {
+    const e = lex[w[1][0]]?.[w[1]] || {};
+    return `<div class="wc"><span class="o${grego ? " g" : ""}" lang="${grego ? "grc" : "he"}">${esc(limpa(w[0]))}</span><span class="x">${esc(e.x || "")}</span><span class="s">${esc(w[1])}</span><span class="t">${esc(w[2])}</span></div>`;
+  }).join("");
+  const gn = cap("GEN", 1).v.find(v => v.n === 1), jo = cap("JHN", 1).v.find(v => v.n === 1);
+  const amostra = `<div class="ref"><b>Gênesis 1:1</b><span>hebraico, lê-se da direita para a esquerda</span></div>
+    <div class="cards rtl">${cartoes(gn, false)}</div>
+    <p class="blivre"><small>BLIVRE</small>${esc(gn.b)}</p>
+    <div style="height:1px;background:var(--line)"></div>
+    <div class="ref"><b>João 1:1</b><span>grego, da esquerda para a direita</span></div>
+    <div class="cards">${cartoes({ w: jo.w.slice(0, 5) }, true)}</div>
+    <p class="blivre"><small>BLIVRE</small>${esc(jo.b)}</p>`;
+  // Tamanhos dos livros para baixar (de saida/epub e saida/pdf, quando gerados nesta máquina)
+  const tam = f => { try { const b = fs.statSync(r(f)).size; return b >= 1e8 ? `${Math.round(b / 1048576)} MB` : `${(b / 1048576).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} MB`; } catch (_) { return ""; } };
+  const { resumo } = await import(pathToFileURL(r("scripts/videos/roteiros.mjs")).href);
+  const subs = {
+    __DESC__: esc(APP.desc), __REPO__: REPO, __REPO_CURTO__: "github.com/josafams/biblia-interlinear",
+    __LIVROS__: `${REPO}/releases/download/livros`,
+    __AMOSTRA__: amostra,
+    __N_LIVROS__: fmt(livros.length), __N_CAPS__: fmt(caps), __N_VERS__: fmt(vers), __N_PALAVRAS__: fmt(pal),
+    __N_VERBETES__: fmt(Object.keys(lex.H).length + Object.keys(lex.G).length),
+    __TAM_EPUB_COMPLETA__: tam("saida/epub/00-Biblia-Interlinear-completa.epub"), __TAM_PDF_COMPLETA__: tam("saida/pdf/00-Biblia-Interlinear-completa.pdf"),
+    __TAM_EPUB_AT__: tam("saida/epub/00-Biblia-Interlinear-AT.epub"), __TAM_PDF_AT__: tam("saida/pdf/00-Biblia-Interlinear-AT.pdf"),
+    __TAM_EPUB_NT__: tam("saida/epub/00-Biblia-Interlinear-NT.epub"), __TAM_PDF_NT__: tam("saida/pdf/00-Biblia-Interlinear-NT.pdf"),
+    __DATA__: new Date().toLocaleDateString("pt-BR"),
+    __ROTEIROS__: JSON.stringify(resumo()).replace(/<\//g, "<\\/")
+  };
+  let html = fs.readFileSync(r("web/inicio.html"), "utf8");
+  for (const [k, v] of Object.entries(subs)) html = html.split(k).join(v);
+  const falta = html.match(/__[A-Z_]+__/);
+  if (falta) throw new Error(`web/inicio.html: marcador sem valor ${falta[0]}`);
+  return html;
+}

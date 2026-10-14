@@ -1,0 +1,205 @@
+// Roteiros dos vídeos "Como usar". Cada vídeo é uma lista de passos: a legenda que aparece na tela
+// e a ação que o Playwright executa. scripts/videos/gravar.mjs grava; scripts/build_web.mjs lê só
+// os títulos e as legendas para montar a seção "Como usar" da página inicial.
+// `pronto: false` = a função ainda não existe; o vídeo aparece na lista como "quando a função sair".
+
+export const grupos = [
+  { id: "ler", nome: "Ler e navegar" },
+  { id: "aparencia", nome: "Aparência" },
+  { id: "modos", nome: "Modos de leitura" },
+  { id: "anotacoes", nome: "Anotações" },
+  { id: "conta", nome: "Conta" },
+  { id: "estudo", nome: "Estudo" },
+  { id: "instalar", nome: "Instalar e baixar" }
+];
+
+// Ações usadas pelos roteiros (t = ajudante de gravação: t.tocar, t.digitar, t.rolar, t.esperar…)
+const abrirIndice = t => t.tocar("#open-toc");
+const fecharPainel = t => t.tecla("Escape");
+
+export const videos = [
+  {
+    id: "01", n: 1, grupo: "ler", titulo: "Abrir um livro e um capítulo",
+    desc: "Pelo índice, com um toque no capítulo.", inicio: "GEN.1",
+    passos: [
+      { legenda: "Toque em Índice, no canto de cima.", faz: abrirIndice },
+      { legenda: "Escolha o livro: Êx é Êxodo.", faz: t => t.tocar('.bchip[data-cod="EXO"]') },
+      { legenda: "Toque no capítulo: ele abre direto.", faz: t => t.tocar('.chchip[data-ch="20"]') },
+      { legenda: "Role para ler. O topo mostra onde você está.", faz: t => t.rolar(700) }
+    ]
+  },
+  {
+    id: "02", n: 2, grupo: "ler", titulo: "Ir para qualquer versículo",
+    desc: "Jo 3:16, sl 23, 1:14 ou cap 12.", inicio: "GEN.1",
+    passos: [
+      { legenda: "Abra o Índice.", faz: abrirIndice },
+      { legenda: "Em “Ir para”, digite livro, capítulo e versículo: jo 3:16.", faz: t => t.digitar("#go-in", "jo 3:16") },
+      { legenda: "Toque em Ir: o versículo abre destacado.", faz: t => t.tocar("#go-form button[type=submit]") },
+      { legenda: "Funciona também com “sl 23”, “1:14” ou só o número do versículo.", faz: async t => { await abrirIndice(t); await t.digitar("#go-in", "sl 23"); await t.tocar("#go-form button[type=submit]"); } }
+    ]
+  },
+  {
+    id: "03", n: 3, grupo: "ler", titulo: "Capítulo anterior e próximo",
+    desc: "E a lista de versículos do capítulo.", inicio: "RUT.1",
+    passos: [
+      { legenda: "No fim do capítulo, use as setas para o anterior ou o próximo.", faz: t => t.rolarAte(".chnav") },
+      { legenda: "Toque em → para ir ao próximo capítulo.", faz: t => t.tocar(".chnav .next") },
+      { legenda: "No Índice, a lista de versículos leva direto a cada um.", faz: async t => { await abrirIndice(t); await t.rolarPainel("#toc", 600); } },
+      { legenda: "Toque num versículo para ir até ele.", faz: t => t.tocar('#toc-days .vchip[data-v="10"]') }
+    ]
+  },
+  {
+    id: "04", n: 4, grupo: "ler", titulo: "Como ler um cartão",
+    desc: "Palavra, transliteração, Strong e glosa.", inicio: "GEN.1",
+    passos: [
+      { legenda: "Cada cartão é uma palavra do original.", faz: t => t.realcar('.word[data-v="1"][data-i="0"]') },
+      { legenda: "O hebraico se lê da direita para a esquerda.", faz: t => t.realcar('.verse:nth-of-type(1) .words') },
+      { legenda: "Embaixo: transliteração, número Strong e glosa em português.", faz: t => t.realcar('.word[data-v="1"][data-i="1"]') },
+      { legenda: "Abaixo dos cartões vem o versículo na Bíblia Livre.", faz: t => t.realcar('.verse:nth-of-type(1) .blivre, .verse:nth-of-type(1) [class*="pt"]') }
+    ]
+  },
+  {
+    id: "05", n: 5, grupo: "ler", titulo: "Abrir um verbete",
+    desc: "Origem, significado e de verbete em verbete.", inicio: "GEN.1",
+    passos: [
+      { legenda: "Toque numa palavra para abrir o verbete.", faz: t => t.tocar('.word[data-v="1"][data-i="1"]') },
+      { legenda: "Veja origem, significado e como a Bíblia Livre traduz.", faz: t => t.rolarPainel("#detail", 300) },
+      { legenda: "Toque num número Strong para ir ao verbete ligado.", faz: t => t.tocar("#detail .ref") },
+      { legenda: "Use ← para voltar e ✕ para fechar.", faz: t => t.tocar("#d-back") }
+    ]
+  },
+  {
+    id: "06", n: 6, grupo: "ler", titulo: "Léxico do capítulo",
+    desc: "Todas as palavras do capítulo, com busca.", inicio: "GEN.1",
+    passos: [
+      { legenda: "No fim do capítulo fica o léxico de todas as palavras.", faz: t => t.rolarAte("#lexico") },
+      { legenda: "Busque em português, pela transliteração ou pelo número: luz.", faz: t => t.digitar("#lsearch", "luz") },
+      { legenda: "Toque numa linha para abrir o verbete.", faz: t => t.tocar("#llist .lrow") }
+    ]
+  },
+  {
+    id: "07", n: 7, grupo: "ler", titulo: "Sobre o livro",
+    desc: "Resumo, pessoas, linha do tempo e lugares.", inicio: "RUT.1",
+    passos: [
+      { legenda: "Toque em “Sobre o livro”, acima do texto.", faz: t => t.tocar("#sobre summary") },
+      { legenda: "Resumo, autoria e data, pessoas principais…", faz: t => t.rolar(500) },
+      { legenda: "…linha do tempo, contexto e lugares.", faz: t => t.rolar(700) }
+    ]
+  },
+  {
+    id: "08", n: 8, grupo: "ler", titulo: "Ouvir o versículo",
+    desc: "Realce palavra a palavra e voz mais lenta.", inicio: "GEN.1",
+    passos: [
+      { legenda: "Toque em Ouvir ao lado do número do versículo.", faz: t => t.tocar('.vsay[data-verse="0"]') },
+      { legenda: "Cada palavra é realçada enquanto é lida.", faz: t => t.esperar(2500) },
+      { legenda: "Em Aparência › Áudio dá para falar mais devagar.", faz: async t => { await t.tocar("#open-look"); await t.rolarAte("#g-audio"); } }
+    ]
+  },
+  {
+    id: "09", n: 9, grupo: "ler", titulo: "Revisão ⚑ e ketiv/qere",
+    desc: "O que a revisão automática encontrou.", inicio: "GEN.8",
+    passos: [
+      { legenda: "O sinal ⚑ mostra pontos da revisão automática no versículo.", faz: t => t.rolarAte("details.marks") },
+      { legenda: "Toque para ver a lista.", faz: t => t.tocar("details.marks summary") },
+      { legenda: "Palavras com leitura à margem (qere) mostram a forma escrita (ketiv) no verbete.", faz: t => t.tocar(".word.kt") }
+    ]
+  },
+  {
+    id: "10", n: 10, grupo: "ler", titulo: "Usar pelo teclado",
+    desc: "Tab, setas, Enter e Esc.", inicio: "GEN.1", so: "computador",
+    passos: [
+      { legenda: "Tab passa de versículo em versículo.", faz: async t => { await t.focar('.word[data-v="0"][data-i="0"]'); } },
+      { legenda: "As setas ← → andam entre as palavras no sentido da leitura.", faz: async t => { await t.tecla("ArrowLeft"); await t.tecla("ArrowLeft"); } },
+      { legenda: "Enter abre o verbete.", faz: t => t.tecla("Enter") },
+      { legenda: "Esc fecha.", faz: fecharPainel }
+    ]
+  },
+  {
+    id: "11", n: 11, grupo: "aparencia", titulo: "Claro, escuro e temas",
+    desc: "Seis temas de cor, ou seguir o aparelho.", inicio: "PSA.23",
+    passos: [
+      { legenda: "O botão da lua troca para o tema escuro.", faz: t => t.tocar("#to-dark") },
+      { legenda: "Em Aa há seis temas de cor.", faz: t => t.tocar("#open-look") },
+      { legenda: "Escolha um tema: Papel.", faz: t => t.tocar('.tcard[data-p="papel"]') },
+      { legenda: "“Automático” segue o tema do aparelho.", faz: t => t.tocar('.tcard[data-p="auto"]') }
+    ]
+  },
+  {
+    id: "12", n: 12, grupo: "aparencia", titulo: "Tamanho do texto",
+    desc: "Aumentar e diminuir.", inicio: "PSA.23",
+    passos: [
+      { legenda: "Toque em Aa.", faz: t => t.tocar("#open-look") },
+      { legenda: "Use A+ para aumentar o texto.", faz: async t => { await t.tocar("#size-up"); await t.tocar("#size-up"); } },
+      { legenda: "E A− para diminuir. A escolha fica guardada.", faz: t => t.tocar("#size-down") }
+    ]
+  },
+  {
+    id: "13", n: 13, grupo: "aparencia", titulo: "Leitura fácil e cantilação",
+    desc: "Fonte, espaçamento e sinais do hebraico.", inicio: "GEN.1",
+    passos: [
+      { legenda: "Em Aa › Leitura estão os ajustes de leitura.", faz: async t => { await t.tocar("#open-look"); await t.rolarAte("#g-read"); } },
+      { legenda: "Fonte de leitura fácil no português.", faz: t => t.tocar("#t-easy") },
+      { legenda: "Espaçamento amplo entre linhas e letras.", faz: t => t.tocar("#t-space") },
+      { legenda: "Desligue os sinais de cantilação para ver só consoantes e vogais.", faz: t => t.tocar("#t-cant") }
+    ]
+  },
+  {
+    id: "14", n: 14, grupo: "aparencia", titulo: "Camadas dos cartões",
+    desc: "Ligar e desligar o que aparece.", inicio: "GEN.1",
+    passos: [
+      { legenda: "Em Aa › Mostrar nos cartões, escolha o que aparece.", faz: async t => { await t.tocar("#open-look"); await t.rolarAte("#g-cards"); } },
+      { legenda: "Ligue a pronúncia em português (tônica em maiúsculas).", faz: t => t.tocar("#t-pron") },
+      { legenda: "Desligue o número Strong para cartões mais limpos.", faz: t => t.tocar("#t-strong") },
+      { legenda: "Feche para ver o resultado.", faz: fecharPainel }
+    ]
+  },
+  // Funções planejadas: gravadas no fim de cada fase.
+  { id: "15", n: 15, grupo: "modos", titulo: "Trocar de modo", desc: "Bíblia, Original, Interlinear, Estudo.", pronto: false, passos: [] },
+  { id: "16", n: 16, grupo: "modos", titulo: "Modo Personalizado", desc: "Escolher cada item da tela.", pronto: false, passos: [] },
+  { id: "17", n: 17, grupo: "modos", titulo: "Interlinear de um versículo", desc: "Lendo no modo Bíblia, com toque longo.", pronto: false, passos: [] },
+  { id: "18", n: 18, grupo: "anotacoes", titulo: "Marcar com cores", desc: "Versículo, trecho ou palavra do original.", pronto: false, passos: [] },
+  { id: "19", n: 19, grupo: "anotacoes", titulo: "Escrever uma nota", desc: "Ligada ao versículo; salva sozinha.", pronto: false, passos: [] },
+  { id: "20", n: 20, grupo: "anotacoes", titulo: "Favoritos e etiquetas", desc: "Organizar por assunto.", pronto: false, passos: [] },
+  { id: "21", n: 21, grupo: "anotacoes", titulo: "Minhas anotações", desc: "Buscar e filtrar tudo.", pronto: false, passos: [] },
+  { id: "22", n: 22, grupo: "anotacoes", titulo: "Exportar em PDF", desc: "O caderno de estudo, pronto para salvar.", pronto: false, passos: [] },
+  { id: "23", n: 23, grupo: "anotacoes", titulo: "Baixar e importar meus dados", desc: "Backup em arquivo.", pronto: false, passos: [] },
+  { id: "24", n: 24, grupo: "conta", titulo: "Entrar com Google", desc: "E enviar o que já foi anotado.", pronto: false, passos: [] },
+  { id: "25", n: 25, grupo: "conta", titulo: "Dois aparelhos", desc: "A nota feita no celular aparece no computador.", pronto: false, passos: [] },
+  { id: "26", n: 26, grupo: "conta", titulo: "Sair e apagar da nuvem", desc: "Seus dados, sob seu controle.", pronto: false, passos: [] },
+  { id: "27", n: 27, grupo: "estudo", titulo: "Perguntas ao texto", desc: "Ligar, responder e ver o progresso.", pronto: false, passos: [] },
+  { id: "31", n: 31, grupo: "estudo", titulo: "Meu progresso", desc: "Capítulos lidos, tempo e plano de leitura.", pronto: false, passos: [] },
+  // Gravados à mão (telas do sistema): sequências de imagens com legenda em videos/manuais/.
+  {
+    id: "28", n: 28, grupo: "instalar", titulo: "Instalar na tela inicial", desc: "Android e iPhone, sem loja.", manual: true,
+    passos: [
+      { legenda: "Android (Chrome): abra o site, toque no menu ⋮ e em “Instalar app” ou “Adicionar à tela inicial”." },
+      { legenda: "iPhone (Safari): toque em Compartilhar e em “Adicionar à Tela de Início”." },
+      { legenda: "Pronto: o ícone abre a Bíblia em tela cheia, mesmo sem internet." }
+    ]
+  },
+  {
+    id: "29", n: 29, grupo: "instalar", titulo: "Instalar o APK", desc: "O app com a Bíblia inteira dentro.", manual: true,
+    passos: [
+      { legenda: "No celular Android, abra a página Releases › app-android do repositório." },
+      { legenda: "Toque no arquivo .apk para baixar." },
+      { legenda: "Abra o arquivo baixado e permita instalar apps desta fonte quando o Android pedir." },
+      { legenda: "Toque em Instalar e depois em Abrir." }
+    ]
+  },
+  {
+    id: "30", n: 30, grupo: "instalar", titulo: "EPUB no Kindle", desc: "Pelo Send to Kindle.", manual: true,
+    passos: [
+      { legenda: "Baixe o EPUB na seção Baixar desta página (AT, NT ou um livro, se for mandar por e-mail)." },
+      { legenda: "Abra o site ou app Send to Kindle da Amazon e envie o arquivo." },
+      { legenda: "O livro aparece na biblioteca do Kindle; toque numa palavra do original para ver a nota." }
+    ]
+  }
+];
+
+// Só o que a página inicial precisa (sem as funções de ação).
+export function resumo() {
+  return {
+    grupos,
+    videos: videos.map(v => ({ id: v.id, n: v.n, grupo: v.grupo, titulo: v.titulo, desc: v.desc, pronto: v.pronto !== false, passos: v.passos.map(p => p.legenda) }))
+  };
+}
