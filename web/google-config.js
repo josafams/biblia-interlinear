@@ -3,5 +3,5 @@
 // No app Android o login usa o pacote + SHA-1 da chave de assinatura (cliente "Android" no Google Cloud),
 // por isso não precisa de ID aqui.
 window.GOOGLE_CONFIG = {
-  webClientId: ""
+  webClientId: "677022464454-rr87nr0oknsb4itj1nptcdnhdgmafj73.apps.googleusercontent.com"
 };
