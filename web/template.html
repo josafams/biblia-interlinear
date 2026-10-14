@@ -517,6 +517,69 @@ body.hide-orig .verse.speaking .blivre { background: var(--accent-soft); border-
 body.hide-orig .vnum { cursor: pointer; }
 body.blivre-par.hide-orig .verse:not(.abrir) .vcap { display: none; }
 @media (max-width: 480px) { #mode-swap .ms-t { display: none; } #mode-swap { padding: 0; width: 44px; } }
+
+/* ---------- Anotações ---------- */
+:root { --mk-amarelo: #f6e3a1; --mk-verde: #cfe6c4; --mk-azul: #bcd6e6; --mk-rosa: #f2d2dc; --mk-laranja: #f6d6b8; --mk-ink: #1b2220; }
+:root[data-palette="escuro"], :root[data-palette="noite"], :root[data-palette="grafite"] {
+  --mk-amarelo: #5c4d1c; --mk-verde: #2f4a2a; --mk-azul: #22435a; --mk-rosa: #563040; --mk-laranja: #5c3a1e; --mk-ink: #f2f4f2; }
+@media (prefers-color-scheme: dark) { :root:not([data-palette]) { --mk-amarelo: #5c4d1c; --mk-verde: #2f4a2a; --mk-azul: #22435a; --mk-rosa: #563040; --mk-laranja: #5c3a1e; --mk-ink: #f2f4f2; } }
+.mk-amarelo { --mk: var(--mk-amarelo); } .mk-verde { --mk: var(--mk-verde); } .mk-azul { --mk: var(--mk-azul); }
+.mk-rosa { --mk: var(--mk-rosa); } .mk-laranja { --mk: var(--mk-laranja); }
+.verse[class*="mk-"] .blivre { background: var(--mk); color: var(--mk-ink); border-radius: 4px; box-shadow: 0 0 0 3px var(--mk); }
+.verse[class*="mk-"] .vnum { background: var(--mk); color: var(--mk-ink); border-radius: 4px; padding-inline: 4px; }
+mark.mk { background: var(--mk); color: var(--mk-ink); border-radius: 3px; padding: 0 1px; }
+.word[class*="mk-"] { background: var(--mk); color: var(--mk-ink); }
+.word[class*="mk-"] .x, .word[class*="mk-"] .s { color: var(--mk-ink); opacity: .85; }
+.word { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+.vtags { display: inline-flex; align-items: center; gap: 4px; }
+.vfav { color: #b07a10; font-size: 16px; }
+.vnota, .vmark { display: inline-flex; align-items: center; justify-content: center; gap: 2px; min-width: 36px; min-height: 36px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--accent); cursor: pointer; font: 500 12px var(--font-mono); padding: 0 8px; }
+.vmark { color: var(--muted); border-color: transparent; background: none; }
+.vmark:hover, .vmark:focus-visible { border-color: var(--line); color: var(--accent); }
+body.blivre-par.hide-orig .verse:not(.abrir) .vtags, body.blivre-par.hide-orig .verse:not(.abrir) .vmark { display: none; }
+.mbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: var(--surface); border-top: 1px solid var(--line); border-radius: 16px 16px 0 0;
+  box-shadow: 0 -8px 24px rgba(0,0,0,.14); padding: 10px 16px calc(14px + env(safe-area-inset-bottom, 0px)); display: grid; gap: 12px; max-width: 720px; margin: 0 auto; }
+.mb-top { display: flex; align-items: baseline; gap: 10px; min-width: 0; }
+.mb-top b { font-size: 15px; white-space: nowrap; }
+.mb-top span { font-size: 13px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+.mb-x { margin-inline-start: auto; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: none; color: var(--fg); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; flex: none; }
+.mb-cores { display: flex; justify-content: space-between; gap: 8px; }
+.mb-cor { width: 44px; height: 44px; border-radius: 50%; border: 2px solid rgba(0,0,0,.12); background: var(--mk); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; color: var(--muted); }
+.mb-cor.mb-sem { background: var(--surface); border-color: var(--line); }
+.mb-cor[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--accent); }
+.mb-acoes { display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 6px; }
+.mb-acoes button { display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 60px; min-height: 52px; border: 0; background: none; color: var(--fg); font: 12.5px var(--font-body); cursor: pointer; border-radius: 10px; }
+.mb-acoes button svg { color: var(--accent); }
+.mb-acoes button[aria-pressed="true"] svg { fill: #e0b040; color: #b07a10; }
+.mb-etiquetas { display: grid; gap: 8px; border-top: 1px solid var(--line); padding-top: 8px; }
+.mb-et-lista, .mn-filtros, .nota-ets { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.mb-et-nova, .nota-et-nova { display: flex; gap: 6px; }
+.mb-et-nova input, .nota-et-nova input { flex: 1; min-width: 0; height: 40px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); padding: 0 10px; font: inherit; }
+.mb-et-nova button { min-height: 40px; padding: 0 14px; border-radius: 10px; border: 1px solid var(--accent); background: var(--accent); color: var(--surface); font: inherit; cursor: pointer; }
+.mb-vazio, .mn-vazio { font-size: 13px; color: var(--muted); }
+.chip { min-height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); font: 13.5px var(--font-body); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+body.com-mbar #page { padding-bottom: 220px; }
+.nota-sheet, .minhas-sheet { z-index: 45; }
+.nota-corpo { display: grid; gap: 10px; }
+.nota-ref { margin: 0; font-size: 13.5px; color: var(--muted); }
+.nota-corpo input[type="text"], .nota-corpo textarea { width: 100%; box-sizing: border-box; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); font: 16px/1.5 var(--font-body); padding: 10px 12px; }
+.nota-corpo textarea { min-height: 220px; resize: vertical; }
+.nota-ets-r { font-size: 13px; color: var(--muted); }
+.nota-rodape { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+.nota-apagar { border: 0; background: none; color: #a23a3a; font: inherit; cursor: pointer; min-height: 40px; }
+.mn-filtros2 { display: flex; flex-wrap: wrap; gap: 12px; font-size: 13.5px; color: var(--muted); margin-top: 8px; }
+.mn-filtros2 select { font: inherit; color: var(--fg); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; min-height: 36px; padding: 0 6px; }
+.mn-filtros { margin-top: 10px; }
+.mn-acoes { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 12px 0 4px; font-size: 13px; color: var(--muted); }
+.mn-nova { min-height: 40px; border-radius: 999px; border: 1px solid var(--accent); background: none; color: var(--accent); padding: 0 14px; font: inherit; cursor: pointer; }
+.linklike { border: 0; background: none; color: var(--accent); text-decoration: underline; font: inherit; cursor: pointer; padding: 0; }
+.mn-grupo { font: 500 11px var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 16px 0 6px; }
+.mn-item { display: grid; gap: 3px; width: 100%; text-align: start; border: 0; border-bottom: 1px solid var(--line); background: none; color: var(--fg); padding: 10px 2px; font: inherit; cursor: pointer; }
+.mn-ref { font: 500 12.5px var(--font-mono); color: var(--accent); }
+.mn-cor { background: var(--mk); color: var(--mk-ink); padding: 0 5px; border-radius: 4px; }
+.mn-tit { font-size: 15px; } .mn-txt { font-size: 14px; color: var(--fg); }
+.mn-ets { display: flex; flex-wrap: wrap; gap: 4px; } .mn-ets .chip { min-height: 24px; font-size: 11.5px; padding: 0 8px; cursor: default; }
 </style>
 
 <a class="skip" href="#verses" id="skip">Pular para o texto</a>
@@ -606,6 +669,7 @@ body.blivre-par.hide-orig .verse:not(.abrir) .vcap { display: none; }
       <a href="#sobre" data-go>Sobre o livro <span>resumo e contexto</span></a>
       <a href="#lexico" data-go>Léxico <span id="toc-lexn"></span></a>
       <a href="#fontes" data-go>Fontes e licenças <span></span></a>
+      <a href="#" id="open-minhas">Minhas anotações <span id="minhas-n">notas, marcações, favoritos</span></a>
       <a href="index.html#como-usar" class="site-link">Como usar <span>vídeos curtos</span></a>
       <a href="index.html" class="site-link">Sobre o projeto <span>apps, EPUB e PDF</span></a>
     </div>
@@ -865,6 +929,8 @@ function renderVerses() {
         <h3 class="vnum" id="vh${v.n}"><span class="sr">Versículo </span>${lbl.includes(":") ? `<span class="vcap">${esc(lbl.split(":")[0])}:</span>${esc(lbl.split(":")[1])}` : lbl}</h3>
         ${v.words.length && !GRC ? `<button class="say vsay" data-verse="${vi}" aria-label="Ouvir ${lbl} em hebraico">${SPK}<span aria-hidden="true">Ouvir</span></button>` : ""}
         ${v.words.length && GRC ? `<button class="say vsay" data-verse="${vi}" aria-label="Ouvir ${lbl} em grego">${SPK}<span aria-hidden="true">Ouvir</span></button>` : ""}
+        <span class="vtags"></span>
+        <button class="vmark" data-verse="${vi}" aria-label="Marcar ou anotar ${lbl}"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
         ${marksHTML(v)}
       </div>
       ${v.words.length ? `<div class="words" role="group" aria-label="Palavras do versículo ${lbl}${GRC ? "" : ", da direita para a esquerda"}">${words}</div>` : ""}
@@ -873,6 +939,9 @@ function renderVerses() {
     </section>`;
   }).join("") + chapterNav();
   if (io) document.querySelectorAll(".verse").forEach(sec => io.observe(sec));
+  // Anotações (anotacoes.js) desenham suas marcações quando o capítulo muda
+  window.__capituloAtual = { cod: BOOK.cod, cap: CUR, nome: BOOK.nome, abrev: BOOK.abrev, verses: CH.verses.map(v => ({ n: v.n, blivre: v.blivre, words: v.words.map(w => ({ heb: w.heb })) })) };
+  document.dispatchEvent(new CustomEvent("capitulo", { detail: window.__capituloAtual }));
 }
 function neighbor(dir) {
   const bi = BOOKS.indexOf(BOOK);
@@ -1592,6 +1661,17 @@ document.querySelectorAll(".chk[data-key]").forEach(t => {
 });
 
 
+// ---------- Anotações (anotacoes.js) ----------
+window.__livros = Object.fromEntries(BOOKS.map((b, i) => [b.cod, { nome: b.nome, abrev: b.abrev, i }]));
+document.addEventListener("anotacoes:ir", e => { const d = e.detail; openChapter(d.cod, d.cap, d.ver); });
+document.addEventListener("anotacoes:abrir-painel", () => { if (openSheet) closePanel(false); if (!detail.hidden) closeDetail(); });
+document.getElementById("open-minhas").addEventListener("click", e => {
+  e.preventDefault();
+  closePanel(false);
+  if (window.Anotacoes) window.Anotacoes.abrirLista();
+  else toast("As anotações não estão disponíveis nesta página.");
+});
+
 // ---------- Modos de leitura ----------
 // Cada modo é um conjunto de valores para os interruptores marcados com data-modo. Mudar um deles à mão
 // vira "Personalizado" (a partir do modo de origem). O modo vale para todos os aparelhos quando houver conta.
@@ -1628,7 +1708,7 @@ function showModo() {
   const atual = modo || "interlinear";
   modeGrid.querySelectorAll(".mcard").forEach(b => b.setAttribute("aria-checked", String(b.dataset.modo === atual)));
   const base = MODOS.find(m => m.id === modoBase);
-  modeNote.textContent = atual === "personalizado" && base ? `Personalizado a partir do modo ${base.nome}.` : "Toque longo (ou toque no número) num versículo mostra as outras camadas só dele.";
+  modeNote.textContent = atual === "personalizado" && base ? `Personalizado a partir do modo ${base.nome}.` : "No modo Bíblia, toque no número de um versículo para ver o interlinear só dele.";
   const outro = MODOS.find(m => m.id === modoAnterior && m.id !== atual);
   modeSwap.hidden = !outro;
   if (outro) { modeSwap.innerHTML = `⇄<span class="ms-t"> ${outro.fala}</span>`; modeSwap.setAttribute("aria-label", `Trocar para o modo ${outro.nome}`); }
@@ -1671,13 +1751,7 @@ function abrirVerso(sec) {
   sec.classList.toggle("abrir");
 }
 root.addEventListener("click", e => { const n = e.target.closest(".vnum"); if (n) abrirVerso(n.closest(".verse")); });
-let pressTimer = 0;
-root.addEventListener("pointerdown", e => {
-  const sec = e.target.closest(".verse");
-  if (!sec || e.target.closest("button")) return;
-  pressTimer = setTimeout(() => { abrirVerso(sec); pressTimer = 0; }, 550);
-});
-["pointerup", "pointercancel", "pointerleave", "scroll"].forEach(ev => root.addEventListener(ev, () => clearTimeout(pressTimer), { passive: true }));
+// Toque longo no versículo abre a barra de marcação (anotacoes.js), que tem o botão "Interlinear".
 
 // ---------- Início: endereço (#JHN.3.16), última posição ou o primeiro capítulo disponível ----------
 (function start() {
@@ -1706,3 +1780,5 @@ if ("serviceWorker" in navigator && !NATIVE && /^https?:$/.test(location.protoco
   window.addEventListener("load", () => { navigator.serviceWorker.register("sw.js").catch(() => {}); });
 }
 </script>
+<script src="vendor/dexie.min.js"></script>
+<script src="anotacoes.js"></script>

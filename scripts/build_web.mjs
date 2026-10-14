@@ -103,6 +103,12 @@ const VIDEOS = r("saida/videos");
 if (fs.existsSync(path.join(VIDEOS, "videos.js"))) fs.cpSync(VIDEOS, path.join(OUT, "videos"), { recursive: true });
 else { fs.mkdirSync(path.join(OUT, "videos"), { recursive: true }); fs.writeFileSync(path.join(OUT, "videos/videos.js"), "window.__videos = { arquivos: {} };\n"); }
 
+// ---- anotações: script próprio e Dexie (Apache-2.0) para o banco local ----
+fs.copyFileSync(r("web/anotacoes.js"), path.join(OUT, "anotacoes.js"));
+fs.mkdirSync(path.join(OUT, "vendor"), { recursive: true });
+fs.copyFileSync(r("node_modules/dexie/dist/dexie.min.js"), path.join(OUT, "vendor/dexie.min.js"));
+fs.copyFileSync(r("node_modules/dexie/LICENSE"), path.join(OUT, "vendor/LICENSE-dexie.txt"));
+
 // ---- política de privacidade ----
 fs.copyFileSync(r("web/privacidade.html"), path.join(OUT, "privacidade.html"));
 
