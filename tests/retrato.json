@@ -1,0 +1,270 @@
+{
+ "livros": {
+  "1CH": {
+   "glosas": "689708f163baf9d4",
+   "palavras": 10749
+  },
+  "1CO": {
+   "glosas": "650988552682f081",
+   "palavras": 6812
+  },
+  "1JN": {
+   "glosas": "0d1e557c46d790aa",
+   "palavras": 2137
+  },
+  "1KI": {
+   "glosas": "95cafe8b054d34b0",
+   "palavras": 13140
+  },
+  "1PE": {
+   "glosas": "9bc48527df3a388b",
+   "palavras": 1678
+  },
+  "1SA": {
+   "glosas": "ef0fdf501ed73bbb",
+   "palavras": 13262
+  },
+  "1TH": {
+   "glosas": "89993d78d31cd1c2",
+   "palavras": 1473
+  },
+  "1TI": {
+   "glosas": "eb82851071079242",
+   "palavras": 1591
+  },
+  "2CH": {
+   "glosas": "563e9bc72bbc650f",
+   "palavras": 13315
+  },
+  "2CO": {
+   "glosas": "07c9f8950063db4d",
+   "palavras": 4473
+  },
+  "2JN": {
+   "glosas": "4ba0349a8e43849e",
+   "palavras": 245
+  },
+  "2KI": {
+   "glosas": "a68d62d98cf34727",
+   "palavras": 12281
+  },
+  "2PE": {
+   "glosas": "55771b3b5ab92d4f",
+   "palavras": 1098
+  },
+  "2SA": {
+   "glosas": "4deff278438d59ed",
+   "palavras": 11040
+  },
+  "2TH": {
+   "glosas": "2ce69419d6b467ae",
+   "palavras": 820
+  },
+  "2TI": {
+   "glosas": "d4a67caa613b6b30",
+   "palavras": 1235
+  },
+  "3JN": {
+   "glosas": "9784633c96e0b22a",
+   "palavras": 219
+  },
+  "ACT": {
+   "glosas": "98fc92bfa6918cce",
+   "palavras": 18412
+  },
+  "AMO": {
+   "glosas": "d09ba69a494e8439",
+   "palavras": 2042
+  },
+  "COL": {
+   "glosas": "9b42815abda9e2a0",
+   "palavras": 1580
+  },
+  "DAN": {
+   "glosas": "4d6c0addead9a2f9",
+   "palavras": 5919
+  },
+  "DEU": {
+   "glosas": "6ea99a67b26ef999",
+   "palavras": 14295
+  },
+  "ECC": {
+   "glosas": "ce3953d83512cb7c",
+   "palavras": 2987
+  },
+  "EPH": {
+   "glosas": "2eabeeb50c5efa97",
+   "palavras": 2416
+  },
+  "EST": {
+   "glosas": "a34b0929a07d2e88",
+   "palavras": 3045
+  },
+  "EXO": {
+   "glosas": "7cf211813c853ccb",
+   "palavras": 16714
+  },
+  "EZK": {
+   "glosas": "464f19759cd8d68b",
+   "palavras": 18732
+  },
+  "EZR": {
+   "glosas": "5332bea176f4cd6f",
+   "palavras": 3754
+  },
+  "GAL": {
+   "glosas": "b65f70de9d818868",
+   "palavras": 2226
+  },
+  "GEN": {
+   "glosas": "ffc945f47ff8f17c",
+   "palavras": 20613
+  },
+  "HAB": {
+   "glosas": "d71c793648087609",
+   "palavras": 671
+  },
+  "HAG": {
+   "glosas": "d554505939f74a6b",
+   "palavras": 600
+  },
+  "HEB": {
+   "glosas": "7fa3e856d62eee42",
+   "palavras": 4935
+  },
+  "HOS": {
+   "glosas": "6b0a9c7a13449266",
+   "palavras": 2381
+  },
+  "ISA": {
+   "glosas": "d25edcc48f16ad0d",
+   "palavras": 16933
+  },
+  "JAS": {
+   "glosas": "191dc3bb4ececc54",
+   "palavras": 1739
+  },
+  "JDG": {
+   "glosas": "95df5b7fde42d12b",
+   "palavras": 9884
+  },
+  "JER": {
+   "glosas": "5c81c0f9a17e483e",
+   "palavras": 21837
+  },
+  "JHN": {
+   "glosas": "04dd3aa40c22e39f",
+   "palavras": 15438
+  },
+  "JOB": {
+   "glosas": "b8f7c47186fb6027",
+   "palavras": 8345
+  },
+  "JOL": {
+   "glosas": "ba3795e4088d89ce",
+   "palavras": 957
+  },
+  "JON": {
+   "glosas": "7043a9e81a467a15",
+   "palavras": 688
+  },
+  "JOS": {
+   "glosas": "53ddcad03efec1d4",
+   "palavras": 10051
+  },
+  "JUD": {
+   "glosas": "a2439d14f208aed4",
+   "palavras": 459
+  },
+  "LAM": {
+   "glosas": "1a0ee9729f65bcfb",
+   "palavras": 1540
+  },
+  "LEV": {
+   "glosas": "9a3405b5396d4b34",
+   "palavras": 11950
+  },
+  "LUK": {
+   "glosas": "1884351fddcbcd21",
+   "palavras": 19446
+  },
+  "MAL": {
+   "glosas": "d2ba2a68d5352099",
+   "palavras": 876
+  },
+  "MAT": {
+   "glosas": "c764cbbb689332fe",
+   "palavras": 18329
+  },
+  "MIC": {
+   "glosas": "79836868b4b372c7",
+   "palavras": 1396
+  },
+  "MRK": {
+   "glosas": "2cfa6c365651e726",
+   "palavras": 11286
+  },
+  "NAM": {
+   "glosas": "ea0f27f80a1d4f37",
+   "palavras": 558
+  },
+  "NEH": {
+   "glosas": "643f248e34c551ba",
+   "palavras": 5313
+  },
+  "NUM": {
+   "glosas": "5dc4b2b0c750a66f",
+   "palavras": 16413
+  },
+  "OBA": {
+   "glosas": "3425d66a41c1c845",
+   "palavras": 291
+  },
+  "PHM": {
+   "glosas": "81e73eaba865e5f8",
+   "palavras": 334
+  },
+  "PHP": {
+   "glosas": "1d8a8f246935b289",
+   "palavras": 1626
+  },
+  "PRO": {
+   "glosas": "76e1ffd56b4c6e16",
+   "palavras": 6915
+  },
+  "PSA": {
+   "glosas": "a75448c742f44a87",
+   "palavras": 19589
+  },
+  "REV": {
+   "glosas": "adad68b9195bd0c4",
+   "palavras": 9833
+  },
+  "ROM": {
+   "glosas": "411676074a3c5634",
+   "palavras": 7108
+  },
+  "RUT": {
+   "glosas": "26bd9ef06591e9e0",
+   "palavras": 1294
+  },
+  "SNG": {
+   "glosas": "4c322c428dcb3600",
+   "palavras": 1251
+  },
+  "TIT": {
+   "glosas": "9c588c1e96cb771c",
+   "palavras": 659
+  },
+  "ZEC": {
+   "glosas": "f0033029cb88e520",
+   "palavras": 3128
+  },
+  "ZEP": {
+   "glosas": "d4351e5b756fb428",
+   "palavras": 767
+  }
+ },
+ "palavras": 443123,
+ "versiculos": 31166
+}
