@@ -154,9 +154,34 @@ export const videos = [
     ]
   },
   // Funções planejadas: gravadas no fim de cada fase.
-  { id: "15", n: 15, grupo: "modos", titulo: "Trocar de modo", desc: "Bíblia, Original, Interlinear, Estudo.", pronto: false, passos: [] },
-  { id: "16", n: 16, grupo: "modos", titulo: "Modo Personalizado", desc: "Escolher cada item da tela.", pronto: false, passos: [] },
-  { id: "17", n: 17, grupo: "modos", titulo: "Interlinear de um versículo", desc: "Lendo no modo Bíblia, com toque longo.", pronto: false, passos: [] },
+  {
+    id: "15", n: 15, grupo: "modos", titulo: "Trocar de modo", desc: "Bíblia, Original, Interlinear, Estudo.", inicio: "GEN.1",
+    passos: [
+      { legenda: "Toque em Aa: o primeiro grupo é o modo de leitura.", faz: t => t.tocar("#open-look") },
+      { legenda: "Bíblia: só a Bíblia Livre, em parágrafos, como uma Bíblia comum.", faz: async t => { await t.tocar('.mcard[data-modo="biblia"]'); await t.tecla("Escape"); } },
+      { legenda: "Original: só o hebraico ou o grego, corrido. A palavra abre o verbete.", faz: async t => { await t.tocar("#open-look"); await t.tocar('.mcard[data-modo="original"]'); await t.tecla("Escape"); } },
+      { legenda: "Interlinear: os cartões palavra a palavra com a Bíblia Livre.", faz: async t => { await t.tocar("#open-look"); await t.tocar('.mcard[data-modo="interlinear"]'); await t.tecla("Escape"); } },
+      { legenda: "O botão ⇄ no topo volta ao modo anterior.", faz: t => t.tocar("#mode-swap") }
+    ]
+  },
+  {
+    id: "16", n: 16, grupo: "modos", titulo: "Modo Personalizado", desc: "Escolher cada item da tela.", inicio: "GEN.1",
+    passos: [
+      { legenda: "Em Aa, escolha um modo para começar: Estudo.", faz: async t => { await t.tocar("#open-look"); await t.tocar('.mcard[data-modo="estudo"]'); } },
+      { legenda: "Em “Mostrar na página”, ligue ou desligue cada item.", faz: async t => { await t.rolarAte("#g-show"); await t.tocar("#t-sobre"); } },
+      { legenda: "Ao mudar qualquer item, o modo vira Personalizado.", faz: t => t.realcar('.mcard[data-modo="personalizado"]') },
+      { legenda: "A escolha fica guardada para a próxima vez.", faz: t => t.tecla("Escape") }
+    ]
+  },
+  {
+    id: "17", n: 17, grupo: "modos", titulo: "Interlinear de um versículo", desc: "Lendo no modo Bíblia, com um toque.", inicio: "GEN.1",
+    passos: [
+      { legenda: "No modo Bíblia o texto corre em parágrafos.", faz: async t => { await t.tocar("#open-look"); await t.tocar('.mcard[data-modo="biblia"]'); await t.tecla("Escape"); } },
+      { legenda: "Toque no número de um versículo (ou toque longo no texto).", faz: t => t.tocar("#v3 .vnum") },
+      { legenda: "Aparecem os cartões do original só daquele versículo.", faz: t => t.realcar("#v3 .words") },
+      { legenda: "Toque de novo no número para fechar.", faz: t => t.tocar("#v3 .vnum") }
+    ]
+  },
   { id: "18", n: 18, grupo: "anotacoes", titulo: "Marcar com cores", desc: "Versículo, trecho ou palavra do original.", pronto: false, passos: [] },
   { id: "19", n: 19, grupo: "anotacoes", titulo: "Escrever uma nota", desc: "Ligada ao versículo; salva sozinha.", pronto: false, passos: [] },
   { id: "20", n: 20, grupo: "anotacoes", titulo: "Favoritos e etiquetas", desc: "Organizar por assunto.", pronto: false, passos: [] },

@@ -338,8 +338,8 @@ def creditos(ofl):
                 + "</div>\n</section>\n")
 
 
-def empacotar(out, files, spine, nav_items, inicio, ident, titulo, resumo, serie=None):
-    files["estilo.css"] = CSS
+def empacotar(out, files, spine, nav_items, inicio, ident, titulo, resumo, serie=None, css=None):
+    files["estilo.css"] = css or CSS
     files["nav.xhtml"] = ('<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE html>\n'
                           '<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="pt-BR" xml:lang="pt-BR">\n'
                           '<head><meta charset="UTF-8"/><title>Sumário</title></head>\n<body>\n'
@@ -450,6 +450,62 @@ def build_volume(livros, LEX, ofl, ident, titulo, arquivo, subtitulo):
                      'seguida do texto da Bíblia Livre. Sumário por livro e capítulo; versículos são títulos navegáveis. Sem imagens nem áudio.')
 
 
+CSS_BLIVRE = """body { font-family: serif; line-height: 1.6; margin: 0 4%; }
+h1 { font-size: 1.6em; margin: 1.2em 0 .2em; } h2 { font-size: 1.15em; margin: 1.4em 0 .1em; }
+p.tema { font-style: italic; margin: 0 0 .6em; color: #444; }
+p.txt { text-align: justify; margin: 0 0 .8em; text-indent: 0; }
+p.tit { font-style: italic; margin: 0 0 .4em; }
+sup.v { font-size: .6em; font-weight: bold; color: #555; margin: 0 .15em 0 .3em; }
+section.livro { page-break-before: always; }
+p.intro { margin: 0 0 1em; } ul.livros { padding-left: 1.2em; }
+"""
+
+
+def build_blivre(livros, ofl):
+    """Edição só com o texto da Bíblia Livre (como uma Bíblia comum): os 66 livros, temas dos capítulos e números
+    dos versículos. Bem mais leve que a interlinear."""
+    files, spine, nav, capa = {}, [], [], ['<section id="inicio"><h1>Bíblia Livre</h1><p class="intro">Texto da Bíblia Livre '
+                                         '(BLIVRE), com o tema de cada capítulo escrito pelo projeto Bíblia Interlinear. '
+                                         'Para ver o original palavra por palavra, use a edição interlinear.</p>']
+    grupo = None
+    for B in livros:
+        arq = f"{B['cod']}.xhtml"
+        partes = [f'<section class="livro" epub:type="chapter" id="l-{B["cod"]}"><h1>{h(B["nome"])}</h1>']
+        for c in B["caps"]:
+            d = json.load(open(os.path.join(DADOS, "cap", B["cod"], f"{c['n']}.json"), encoding="utf8"))
+            partes.append(f'<h2 id="c{c["n"]}">{h(B["nome"])} {c["n"]}</h2>')
+            if c.get("t"):
+                partes.append(f'<p class="tema">{h(c["t"])}</p>')
+            corpo = []
+            for v in d["v"]:
+                if not (v.get("b") or "").strip():
+                    continue
+                if v["n"] == 0:
+                    partes.append(f'<p class="tit">{h(v["b"])}</p>')
+                else:
+                    corpo.append(f'<sup class="v">{v["n"]}</sup>{h(v["b"])}')
+            partes.append('<p class="txt">' + " ".join(corpo) + "</p>")
+        partes.append("</section>\n")
+        files[arq] = page(B["nome"], "\n".join(partes))
+        spine.append(arq)
+        nav.append(f'<li><a href="{arq}">{h(B["nome"])}</a><ol>'
+                   + "".join(f'<li><a href="{arq}#c{c["n"]}">{h(B["nome"])} {c["n"]}</a></li>' for c in B["caps"]) + "</ol></li>")
+        if B["grupo"] != grupo:
+            if grupo is not None:
+                capa.append("</ul>")
+            grupo = B["grupo"]
+            capa.append(f'<h2>{h(grupo)}</h2><ul class="livros">')
+        capa.append(f'<li><a href="{arq}">{h(B["nome"])}</a></li>')
+    capa.append("</ul></section>\n")
+    files["inicio.xhtml"] = page("Bíblia Livre", "\n".join(capa))
+    files["creditos.xhtml"] = creditos(ofl)
+    spine = ["inicio.xhtml"] + spine + ["creditos.xhtml"]
+    nav = ['<li><a href="inicio.xhtml">Livros</a></li>'] + nav + ['<li><a href="creditos.xhtml">Fontes e licenças</a></li>']
+    return empacotar(os.path.join(OUT, "00-Biblia-Livre.epub"), files, spine, nav, f"{livros[0]['cod']}.xhtml", "BLIVRE-TEXTO",
+                     "Bíblia Livre (BLIVRE)", "Texto corrido da Bíblia Livre, os 66 livros, com números de versículo e tema de cada "
+                     "capítulo. Sumário por livro e capítulo. Sem imagens nem áudio.", css=CSS_BLIVRE)
+
+
 def main(argv):
     livros = json.load(open(os.path.join(DADOS, "livros.json"), encoding="utf8"))
     LEX = {}
@@ -457,6 +513,12 @@ def main(argv):
         LEX.update(json.load(open(os.path.join(DADOS, "lex", f"{L}.json"), encoding="utf8")))
     ofl = open(os.path.join(FONTES, "OFL.txt"), encoding="utf8").read()
     quais = set(a.upper() for a in argv)
+    if not quais or "BLIVRE" in quais:
+        out = build_blivre(livros, ofl)
+        print(f"{os.path.basename(out)}  {os.path.getsize(out) // 1024} KB")
+        quais.discard("BLIVRE")
+        if argv and not quais:
+            return
     if not quais or "VOLUMES" in quais:
         at = [B for B in livros if not B["nt"]]
         nt = [B for B in livros if B["nt"]]

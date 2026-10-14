@@ -144,6 +144,10 @@ const browser = await chromium.launch(fs.existsSync("/opt/pw-browsers/chromium")
 if (!VERIFICAR) fs.mkdirSync(OUT, { recursive: true });
 const indice = fs.existsSync(path.join(OUT, "indice.json")) ? JSON.parse(fs.readFileSync(path.join(OUT, "indice.json"), "utf8")) : {};
 let falhas = 0;
+function salvarIndice() {
+  fs.writeFileSync(path.join(OUT, "indice.json"), JSON.stringify(indice, null, 1));
+  fs.writeFileSync(path.join(OUT, "videos.js"), `// Gerado por scripts/videos/gravar.mjs\nwindow.__videos = ${JSON.stringify({ arquivos: indice })};\n`);
+}
 for (const v of videos) {
   if (v.pronto === false || v.manual || !v.passos.length) continue;
   if (quais.length && !quais.includes(v.id)) continue;
@@ -153,6 +157,8 @@ for (const v of videos) {
     const ctx = await browser.newContext({
       ...disp, locale: "pt-BR", colorScheme: "light", reducedMotion: "no-preference"
     });
+    // Começa no modo Interlinear, sem o aviso de primeira abertura (a não ser que o roteiro peça outro modo)
+    await ctx.addInitScript(m => { try { if (!localStorage.getItem("interlinear:modo")) localStorage.setItem("interlinear:modo", m); } catch (_) {} }, v.modo || "interlinear");
     const page = await ctx.newPage();
     const t0 = Date.now();
     const gravador = VERIFICAR ? null : await gravar(page, disp, tmp, t0);
@@ -188,6 +194,7 @@ for (const v of videos) {
       indice[v.id] = indice[v.id] || {};
       indice[v.id][nome] = { webm: `videos/${v.id}-${nome}.webm`, mp4: `videos/${v.id}-${nome}.mp4`, vtt: `videos/${v.id}-${nome}.vtt`, capa: `videos/${v.id}-${nome}.jpg`,
         tempos: tempos.map(x => +x.toFixed(2)), duracao: `${Math.floor(seg / 60)}:${String(seg % 60).padStart(2, "0")}` };
+      salvarIndice();
       console.log(`${v.id} ${nome}  ${seg}s  ${Math.round(fs.statSync(`${base}.mp4`).size / 1024)} KB  ${v.titulo}`);
     } catch (e) {
       falhas++;
@@ -201,8 +208,5 @@ for (const v of videos) {
 await browser.close();
 servidor.close();
 if (args.includes("--so-webm")) process.exit(0);
-if (!VERIFICAR) {
-  fs.writeFileSync(path.join(OUT, "indice.json"), JSON.stringify(indice, null, 1));
-  fs.writeFileSync(path.join(OUT, "videos.js"), `// Gerado por scripts/videos/gravar.mjs\nwindow.__videos = ${JSON.stringify({ arquivos: indice })};\n`);
-}
+if (!VERIFICAR) salvarIndice();
 if (falhas) { console.error(`${falhas} roteiro(s) falharam`); process.exit(1); }
