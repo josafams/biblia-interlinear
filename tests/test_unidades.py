@@ -32,3 +32,9 @@ def test_nome_parecido_escolhe_o_nome_do_versiculo():
 
 def test_nome_parecido_sem_candidato():
     assert glosar.nome_parecido("Thamar", "e disse a ele") is None
+
+
+def test_nome_parecido_desempate_estavel():
+    """Hb 11:32: Sampson empata com Sansão e Samuel no sentido direto; o resultado não pode depender da ordem do set."""
+    texto = "E que mais direi? Porque me faltará o tempo se eu contar de Gedeão, Baraque, Sansão, Jefté, Davi, Samuel e dos profetas"
+    assert glosar.nome_parecido(glosar.nome_de_xlit("Sampsōn"), texto) == "Sansão"
