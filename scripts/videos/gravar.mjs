@@ -78,6 +78,26 @@ function ajudante(page, rapido) {
       await pausa(500);
     },
     async tecla(k) { await page.keyboard.press(k); await pausa(700); },
+    async toqueLongo(sel) {
+      const el = await alvo(sel);
+      const box = await el.boundingBox();
+      await dedo(box, false); await pausa(350); await dedo(box, true); await pausa(700);
+      await el.dispatchEvent("contextmenu");
+      await dedo(box, false); await some(); await pausa(700);
+    },
+    async selecionar(sel, texto) {
+      const el = await alvo(sel);
+      const box = await el.boundingBox();
+      await dedo(box, true); await pausa(400);
+      await page.evaluate(([s, t]) => {
+        const bl = document.querySelector(s), n = [...bl.childNodes].find(x => x.nodeType === 3 && x.textContent.includes(t));
+        const i = n.textContent.indexOf(t), r = document.createRange();
+        r.setStart(n, i); r.setEnd(n, i + t.length);
+        getSelection().removeAllRanges(); getSelection().addRange(r);
+      }, [sel, texto]);
+      await some(); await pausa(1300);
+    },
+    async limparSelecao() { await page.evaluate(() => getSelection().removeAllRanges()); },
     async focar(sel) { await (await alvo(sel)).focus(); await pausa(600); },
     async rolar(px) {
       await page.evaluate(px => window.scrollBy({ top: px, behavior: "smooth" }), px);
@@ -168,6 +188,7 @@ for (const v of videos) {
       await page.goto(`${BASE}ler.html#${v.inicio || "GEN.1"}`);
       await page.locator(".verse").first().waitFor({ timeout: 15000 });
       await page.evaluate(() => document.fonts.ready);
+      if (v.preparar) { await page.waitForFunction(() => window.Anotacoes); await v.preparar(page); await page.reload(); await page.locator(".verse").first().waitFor(); }
       await t.pausa(900);
       const inicio = (Date.now() - t0) / 1000 - 0.3;
       for (const p of v.passos) {

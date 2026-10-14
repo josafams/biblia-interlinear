@@ -177,15 +177,61 @@ export const videos = [
     id: "17", n: 17, grupo: "modos", titulo: "Interlinear de um versículo", desc: "Lendo no modo Bíblia, com um toque.", inicio: "GEN.1",
     passos: [
       { legenda: "No modo Bíblia o texto corre em parágrafos.", faz: async t => { await t.tocar("#open-look"); await t.tocar('.mcard[data-modo="biblia"]'); await t.tecla("Escape"); } },
-      { legenda: "Toque no número de um versículo (ou toque longo no texto).", faz: t => t.tocar("#v3 .vnum") },
+      { legenda: "Toque no número de um versículo.", faz: t => t.tocar("#v3 .vnum") },
       { legenda: "Aparecem os cartões do original só daquele versículo.", faz: t => t.realcar("#v3 .words") },
       { legenda: "Toque de novo no número para fechar.", faz: t => t.tocar("#v3 .vnum") }
     ]
   },
-  { id: "18", n: 18, grupo: "anotacoes", titulo: "Marcar com cores", desc: "Versículo, trecho ou palavra do original.", pronto: false, passos: [] },
-  { id: "19", n: 19, grupo: "anotacoes", titulo: "Escrever uma nota", desc: "Ligada ao versículo; salva sozinha.", pronto: false, passos: [] },
-  { id: "20", n: 20, grupo: "anotacoes", titulo: "Favoritos e etiquetas", desc: "Organizar por assunto.", pronto: false, passos: [] },
-  { id: "21", n: 21, grupo: "anotacoes", titulo: "Minhas anotações", desc: "Buscar e filtrar tudo.", pronto: false, passos: [] },
+  {
+    id: "18", n: 18, grupo: "anotacoes", titulo: "Marcar com cores", desc: "Versículo, trecho ou palavra do original.", inicio: "GEN.1",
+    passos: [
+      { legenda: "Toque em ⋯ ao lado do versículo (ou toque longo nele).", faz: t => t.tocar("#v1 .vmark") },
+      { legenda: "Escolha uma das cinco cores.", faz: async t => { await t.tocar('#mbar .mb-cor[data-cor="azul"]'); await t.tocar("#mb-fechar"); } },
+      { legenda: "Selecione um trecho da Bíblia Livre para marcar só ele.", faz: t => t.selecionar("#v3 .blivre", "Haja luz") },
+      { legenda: "A barra aparece com o trecho: escolha a cor.", faz: async t => { await t.tocar('#mbar .mb-cor[data-cor="amarelo"]'); await t.tocar("#mb-fechar"); await t.limparSelecao(); } },
+      { legenda: "Toque longo numa palavra do original marca só a palavra.", faz: async t => { await t.toqueLongo('.word[data-v="2"][data-i="3"]'); await t.tocar('#mbar .mb-cor[data-cor="rosa"]'); await t.tocar("#mb-fechar"); } }
+    ]
+  },
+  {
+    id: "19", n: 19, grupo: "anotacoes", titulo: "Escrever uma nota", desc: "Ligada ao versículo; salva sozinha.", inicio: "GEN.1",
+    passos: [
+      { legenda: "Toque em ⋯ no versículo e depois em Nota.", faz: async t => { await t.tocar("#v2 .vmark"); await t.tocar('#mbar [data-acao="nota"]'); } },
+      { legenda: "Escreva: a nota salva sozinha enquanto você digita.", faz: t => t.digitar("#nota-texto", "Sem forma e vazia: tôhû wâbôhû rima no hebraico.") },
+      { legenda: "Dá para pôr um título e etiquetas.", faz: t => t.digitar("#nota-titulo", "Tohu e bohu") },
+      { legenda: "Feche: o ícone da nota aparece no versículo; toque nele para reabrir.", faz: async t => { await t.tocar("#nota [data-fechar]"); await t.realcar("#v2 .vnota"); } }
+    ]
+  },
+  {
+    id: "20", n: 20, grupo: "anotacoes", titulo: "Favoritos e etiquetas", desc: "Organizar por assunto.", inicio: "PSA.23",
+    passos: [
+      { legenda: "Toque em ⋯ no versículo e em Favoritar: aparece a estrela.", faz: async t => { await t.tocar("#v1 .vmark"); await t.tocar('#mbar [data-acao="fav"]'); } },
+      { legenda: "Em Etiqueta, crie uma etiqueta: promessas.", faz: async t => { await t.tocar('#mbar [data-acao="etiqueta"]'); await t.digitar("#mb-et-nome", "promessas"); await t.tocar("#mb-nova-et"); } },
+      { legenda: "A etiqueta fica disponível para outros versículos e notas.", faz: t => t.realcar('#mb-etiquetas .chip[aria-pressed="true"]') },
+      { legenda: "Feche a barra.", faz: t => t.tocar("#mb-fechar") }
+    ]
+  },
+  {
+    id: "21", n: 21, grupo: "anotacoes", titulo: "Minhas anotações", desc: "Buscar e filtrar tudo.", inicio: "GEN.1",
+    preparar: async page => {
+      await page.evaluate(async () => {
+        const A = window.Anotacoes, id = () => crypto.randomUUID();
+        const anc = (livro, cap, ver, trecho) => ({ livro, cap, ver, ver_fim: ver, camada: "versiculo", trecho });
+        const et = await A.gravar("etiquetas", { id: id(), nome: "promessas" });
+        await A.gravar("notas", { id: id(), cap: "GEN.1", ancora: anc("GEN", 1, 2), titulo: "Tohu e bohu", texto: "Sem forma e vazia: rima no hebraico.", etiquetas: [] });
+        await A.gravar("marcacoes", { id: id(), cap: "GEN.1", ancora: anc("GEN", 1, 3, "E disse Deus: Haja luz; e houve luz."), cor: "amarelo", etiquetas: [] });
+        await A.gravar("marcacoes", { id: id(), cap: "PSA.23", ancora: anc("PSA", 23, 1, "Salmo de Davi: O SENHOR é meu pastor, nada me faltará."), cor: "verde", etiquetas: [et.id] });
+        await A.gravar("favoritos", { id: id(), cap: "JHN.3", ancora: anc("JHN", 3, 16), etiquetas: [] });
+        await A.gravar("notas", { id: id(), cap: "ROM.8", ancora: anc("ROM", 8, 28), titulo: "", texto: "Todas as coisas contribuem para o bem.", etiquetas: [et.id] });
+      });
+    },
+    passos: [
+      { legenda: "No Índice, toque em Minhas anotações.", faz: async t => { await t.tocar("#open-toc"); await t.rolarAte("#open-minhas"); await t.tocar("#open-minhas"); } },
+      { legenda: "Tudo o que você marcou e anotou, na ordem da Bíblia.", faz: t => t.esperar(800) },
+      { legenda: "Busque por uma palavra: pastor.", faz: t => t.digitar("#mn-busca", "pastor") },
+      { legenda: "Ou filtre por tipo e por etiqueta.", faz: async t => { await t.digitar("#mn-busca", ""); await t.tocar('.mn-filtros .chip[data-tipo="notas"]'); } },
+      { legenda: "Toque num item para ir ao versículo ou abrir a nota.", faz: t => t.tocar('.mn-item[data-tipo="notas"]') }
+    ]
+  },
   { id: "22", n: 22, grupo: "anotacoes", titulo: "Exportar em PDF", desc: "O caderno de estudo, pronto para salvar.", pronto: false, passos: [] },
   { id: "23", n: 23, grupo: "anotacoes", titulo: "Baixar e importar meus dados", desc: "Backup em arquivo.", pronto: false, passos: [] },
   { id: "24", n: 24, grupo: "conta", titulo: "Entrar com Google", desc: "E enviar o que já foi anotado.", pronto: false, passos: [] },
