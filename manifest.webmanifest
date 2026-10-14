@@ -4,7 +4,7 @@
   "description": "A Bíblia inteira em hebraico, aramaico e grego, com transliteração, pronúncia, glosa em português, verbetes, áudio e o texto da Bíblia Livre.",
   "lang": "pt-BR",
   "dir": "ltr",
-  "start_url": "./",
+  "start_url": "./ler.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
