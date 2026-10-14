@@ -487,10 +487,20 @@
         <label>Ordem <select id="mn-ordem"><option value="biblica">bíblica</option><option value="data">por data</option></select></label>
       </div>
       <div class="mn-acoes"><button class="mn-nova" id="mn-nova">+ Nova nota livre</button><span id="mn-total" aria-live="polite"></span></div>
+      <div class="mn-acoes mn-acoes2">
+        <button class="chip" id="mn-selecionar" aria-pressed="false">Selecionar</button>
+        <button class="chip" id="mn-exportar">Exportar PDF</button>
+        <button class="chip" id="mn-baixar">Baixar meus dados</button>
+        <button class="chip" id="mn-importar">Importar</button>
+        <input type="file" id="mn-arquivo" accept=".json,application/json" hidden>
+      </div>
       <div id="mn-itens"></div>
     </div>`;
   document.body.appendChild(lista);
   let filtro = { tipo: "", cap: null, ver: null };
+  let selecionando = false;
+  const selecionados = new Set();
+  let ultimosItens = [];
   function nomeLivro(cod) { return (window.__livros || {})[cod]?.nome || cod; }
   function ordemLivro(cod) { return (window.__livros || {})[cod]?.i ?? 999; }
   async function abrirLista(f) {
@@ -536,13 +546,14 @@
     $$(".mn-filtros .chip", lista).forEach(b => b.setAttribute("aria-pressed", String(b.dataset.tipo === filtro.tipo)));
     if ($("#mn-ordem").value === "data") xs.sort((x, y) => y.data.localeCompare(x.data));
     else xs.sort((x, y) => (x.a ? ordemLivro(x.a.livro) : 1e4) - (y.a ? ordemLivro(y.a.livro) : 1e4) || (x.a?.cap || 0) - (y.a?.cap || 0) || (x.a?.ver || 0) - (y.a?.ver || 0));
+    ultimosItens = xs;
     $("#mn-total").textContent = filtro.cap ? `${xs.length} neste versículo · ` : `${xs.length} ${xs.length === 1 ? "item" : "itens"}`;
     if (filtro.cap) $("#mn-total").innerHTML += `<button class="linklike" id="mn-ver-tudo">ver tudo</button>`;
     let grupo = null, html = "";
     for (const x of xs) {
       const g = $("#mn-ordem").value === "data" ? null : (x.a ? nomeLivro(x.a.livro) : "Notas livres");
       if (g !== grupo && g) { html += `<h3 class="mn-grupo">${esc(g)}</h3>`; grupo = g; }
-      html += `<button class="mn-item" data-tipo="${x.tipo}" data-id="${x.id}">
+      html += `<button class="mn-item${selecionando ? " sel" : ""}" data-tipo="${x.tipo}" data-id="${x.id}"${selecionando ? ` role="checkbox" aria-checked="${selecionados.has(x.id)}"` : ""}>
         <span class="mn-ref">${esc(x.ref)} · ${x.cor ? `<span class="mn-cor mk-${x.cor}">${x.rot}</span>` : x.rot}</span>
         ${x.titulo ? `<b class="mn-tit">${esc(x.titulo)}</b>` : ""}
         ${x.texto ? `<span class="mn-txt">${esc(x.texto.length > 160 ? x.texto.slice(0, 158) + "…" : x.texto)}</span>` : ""}
@@ -557,7 +568,21 @@
     if (t) { filtro.tipo = t.dataset.tipo; return desenharLista(); }
     if (e.target.closest("#mn-ver-tudo")) { filtro.cap = null; filtro.ver = null; return desenharLista(); }
     if (e.target.closest("#mn-nova")) { fecharLista(); return abrirNota(null, null); }
+    if (e.target.closest("#mn-selecionar")) {
+      selecionando = !selecionando; if (!selecionando) selecionados.clear();
+      e.target.closest("#mn-selecionar").setAttribute("aria-pressed", String(selecionando));
+      return desenharLista();
+    }
+    if (e.target.closest("#mn-exportar")) return abrirExportar();
+    if (e.target.closest("#mn-baixar")) return baixarDados();
+    if (e.target.closest("#mn-importar")) return $("#mn-arquivo").click();
     const it = e.target.closest(".mn-item");
+    if (it && selecionando) {
+      selecionados.has(it.dataset.id) ? selecionados.delete(it.dataset.id) : selecionados.add(it.dataset.id);
+      it.setAttribute("aria-checked", String(selecionados.has(it.dataset.id)));
+      $("#mn-total").textContent = `${selecionados.size} selecionado${selecionados.size === 1 ? "" : "s"}`;
+      return;
+    }
     if (it) {
       if (it.dataset.tipo === "notas") { fecharLista(); return abrirNota(it.dataset.id); }
       const { lista: xs } = await itens();
@@ -571,12 +596,230 @@
   $("#mn-ordem").addEventListener("change", () => desenharLista());
   lista.addEventListener("keydown", e => { if (e.key === "Escape") { e.stopPropagation(); fecharLista(); } });
 
+
+  // ---------- Exportar em PDF (caderno) ----------
+  const exp = document.createElement("aside");
+  exp.id = "exportar"; exp.className = "sheet right minhas-sheet"; exp.hidden = true;
+  exp.setAttribute("role", "dialog"); exp.setAttribute("aria-modal", "true"); exp.setAttribute("aria-labelledby", "exp-h");
+  exp.innerHTML = `
+    <div class="shead"><h2 id="exp-h">Exportar em PDF</h2><button class="ibtn" data-fechar aria-label="Fechar">${ICONE.fechar}</button></div>
+    <div class="sgroup exp-corpo">
+      <fieldset><legend>O que entra</legend>
+        <label class="opt"><input type="radio" name="exp-o" value="lista" checked> <span>O que está na lista agora <small id="exp-n-lista"></small></span></label>
+        <label class="opt"><input type="radio" name="exp-o" value="sel"> <span>Os itens selecionados <small id="exp-n-sel"></small></span></label>
+        <label class="opt"><input type="radio" name="exp-o" value="livro"> <span>Um livro <select id="exp-livro" aria-label="Livro"></select></span></label>
+      </fieldset>
+      <fieldset><legend>Incluir</legend>
+        <label class="opt"><input type="checkbox" id="exp-notas" checked> Notas</label>
+        <label class="opt"><input type="checkbox" id="exp-marcacoes" checked> Marcações</label>
+        <label class="opt"><input type="checkbox" id="exp-favoritos" checked> Favoritos</label>
+        <label class="opt"><input type="checkbox" id="exp-texto" checked> Texto de cada versículo (Bíblia Livre)</label>
+        <label class="opt"><input type="checkbox" id="exp-inter"> Interlinear das palavras marcadas no original</label>
+      </fieldset>
+      <fieldset><legend>Ordem</legend>
+        <label class="opt"><input type="radio" name="exp-ordem" value="biblica" checked> Bíblica</label>
+        <label class="opt"><input type="radio" name="exp-ordem" value="data"> Por data</label>
+      </fieldset>
+      <button class="exp-gerar" id="exp-gerar">Gerar PDF</button>
+      <p class="exp-nota" id="exp-nota">Gerado no próprio aparelho, sem internet. Na janela de impressão, escolha “Salvar como PDF”.</p>
+    </div>`;
+  document.body.appendChild(exp);
+  async function abrirExportar() {
+    const { lista: xs } = await itens();
+    const livros = [...new Set(xs.filter(x => x.a).map(x => x.a.livro))].sort((a, b) => ordemLivro(a) - ordemLivro(b));
+    $("#exp-livro").innerHTML = livros.map(c => `<option value="${c}">${esc(nomeLivro(c))}</option>`).join("");
+    $("#exp-n-lista").textContent = `(${ultimosItens.length})`;
+    $("#exp-n-sel").textContent = `(${selecionados.size})`;
+    $('input[name="exp-o"][value="sel"]').disabled = !selecionados.size;
+    $('input[name="exp-o"][value="livro"]').disabled = !livros.length;
+    $('input[name="exp-o"][value="' + (selecionados.size ? "sel" : "lista") + '"]').checked = true;
+    lista.hidden = true; document.body.classList.remove("com-minhas");
+    exp.hidden = false;
+    $("#exp-gerar").focus();
+  }
+  function fecharExportar(voltar = true) { exp.hidden = true; if (voltar) abrirLista(filtro); }
+  exp.addEventListener("click", e => {
+    if (e.target.closest("[data-fechar]")) return fecharExportar();
+    if (e.target.closest("#exp-gerar")) return gerarCaderno();
+  });
+  exp.addEventListener("change", e => { if (e.target.id === "exp-livro") $('input[name="exp-o"][value="livro"]').checked = true; });
+  exp.addEventListener("keydown", e => { if (e.key === "Escape") { e.stopPropagation(); fecharExportar(); } });
+
+  async function capitulo(cod, n) {
+    try { return window.__carregarCapitulo ? await window.__carregarCapitulo(cod, n) : null; } catch (_) { return null; }
+  }
+  async function montarCaderno() {
+    const { lista: todosXs } = await itens();
+    const o = $('input[name="exp-o"]:checked').value;
+    let xs = o === "sel" ? todosXs.filter(x => selecionados.has(x.id))
+      : o === "livro" ? todosXs.filter(x => x.a?.livro === $("#exp-livro").value)
+      : todosXs.filter(x => ultimosItens.some(y => y.id === x.id));
+    const inc = { notas: $("#exp-notas").checked, marcacoes: $("#exp-marcacoes").checked, favoritos: $("#exp-favoritos").checked };
+    xs = xs.filter(x => inc[x.tipo]);
+    const texto = $("#exp-texto").checked, inter = $("#exp-inter").checked;
+    const porData = $('input[name="exp-ordem"]:checked').value === "data";
+    // agrupa por versículo (ou nota livre)
+    const grupos = new Map();
+    for (const x of xs) {
+      const k = x.a ? `${x.a.livro}.${x.a.cap}.${x.a.ver}` : `livre.${x.id}`;
+      if (!grupos.has(k)) grupos.set(k, { a: x.a, itens: [], data: x.data });
+      const g = grupos.get(k); g.itens.push(x); if (x.data > g.data) g.data = x.data;
+    }
+    let gs = [...grupos.values()];
+    if (porData) gs.sort((x, y) => y.data.localeCompare(x.data));
+    else gs.sort((x, y) => (x.a ? ordemLivro(x.a.livro) : 1e4) - (y.a ? ordemLivro(y.a.livro) : 1e4) || (x.a?.cap || 0) - (y.a?.cap || 0) || (x.a?.ver || 0) - (y.a?.ver || 0));
+    const caps = {};
+    for (const g of gs) if (g.a && (texto || inter)) { const k = `${g.a.livro}.${g.a.cap}`; if (!(k in caps)) caps[k] = await capitulo(g.a.livro, g.a.cap); }
+    const marcasPorVerso = {};
+    for (const m of await todos("marcacoes")) { const k = `${m.ancora.livro}.${m.ancora.cap}.${m.ancora.ver}`; (marcasPorVerso[k] = marcasPorVerso[k] || []).push(m); }
+    const corHex = { amarelo: "#f6e3a1", verde: "#cfe6c4", azul: "#bcd6e6", rosa: "#f2d2dc", laranja: "#f6d6b8" };
+    const livrosNoCaderno = [...new Set(gs.filter(g => g.a).map(g => nomeLivro(g.a.livro)))];
+    const titulo = livrosNoCaderno.length === 1 ? livrosNoCaderno[0] : "Minhas anotações";
+    let corpo = "", livroAtual = null;
+    for (const g of gs) {
+      const a = g.a;
+      if (!porData && a && nomeLivro(a.livro) !== livroAtual && livrosNoCaderno.length > 1) { livroAtual = nomeLivro(a.livro); corpo += `<h2 class="cl">${esc(livroAtual)}</h2>`; }
+      const tipos = [...new Set(g.itens.map(x => x.rot))].join(" · ").toUpperCase();
+      corpo += `<section class="en"><div class="ref">${esc(a ? `${nomeLivro(a.livro)} ${a.cap}:${a.ver}` : "NOTA LIVRE")}${tipos ? ` · ${esc(tipos)}` : ""}</div>`;
+      const raw = a && caps[`${a.livro}.${a.cap}`];
+      const v = raw && raw.v.find(y => y.n === a.ver);
+      const ms = a ? (marcasPorVerso[`${a.livro}.${a.cap}.${a.ver}`] || []).filter(m => m.cor) : [];
+      if (texto && v) {
+        let t = v.b || "";
+        const versoInteiro = ms.find(m => m.ancora.camada === "versiculo");
+        const trechos = ms.filter(m => m.ancora.camada === "blivre").map(m => {
+          let i = m.ancora.inicio, f = m.ancora.fim;
+          if (t.slice(i, f) !== m.ancora.trecho) { const k = t.indexOf(m.ancora.trecho); if (k < 0) return null; i = k; f = k + m.ancora.trecho.length; }
+          return { i, f, cor: m.cor };
+        }).filter(Boolean).sort((x, y) => x.i - y.i);
+        let html = "", pos = 0;
+        for (const m of trechos) { if (m.i < pos) continue; html += esc(t.slice(pos, m.i)) + `<mark style="background:${corHex[m.cor]}">${esc(t.slice(m.i, m.f))}</mark>`; pos = m.f; }
+        html += esc(t.slice(pos));
+        corpo += `<p class="vt"${versoInteiro ? ` style="background:${corHex[versoInteiro.cor]};padding:2px 4px;border-radius:3px"` : ""}>${html}</p>`;
+      }
+      if (inter && v) {
+        const pal = ms.filter(m => m.ancora.camada === "original");
+        for (const m of pal) {
+          const ws = v.w.slice(m.ancora.inicio, m.ancora.fim + 1);
+          if (!ws.length) continue;
+          const grego = a.livro && (window.__livros || {})[a.livro]?.i >= 39;
+          corpo += `<p class="il"><span class="o" dir="${grego ? "ltr" : "rtl"}" lang="${grego ? "grc" : "he"}">${esc(ws.map(w => w[0].replace(/\//g, "")).join(" "))}</span> <span class="ig">${esc(ws.map(w => `${w[1]} · ${w[2]}`).join("; "))}</span></p>`;
+        }
+      }
+      for (const x of g.itens) {
+        if (x.tipo === "notas") corpo += `<div class="nt">${x.titulo ? `<b>${esc(x.titulo)}</b><br>` : ""}${esc(x.texto).replace(/\n/g, "<br>")}</div>`;
+        else if (x.tipo === "marcacoes" && x.a.camada === "blivre" && !texto) corpo += `<p class="vt"><mark style="background:${corHex[x.cor] || "#eee"}">${esc(x.texto)}</mark></p>`;
+      }
+      const ets = [...new Set(g.itens.flatMap(x => x.etNomes))];
+      if (ets.length) corpo += `<div class="tg">${ets.map(n => `<span>${esc(n)}</span>`).join("")}</div>`;
+      corpo += `</section>`;
+    }
+    const data = new Date().toLocaleDateString("pt-BR");
+    return { titulo, n: xs.length, html: `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>${esc(titulo)} · Caderno de estudo</title><style>
+@page { size: A4; margin: 16mm 15mm; }
+* { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: "Literata", Georgia, "Times New Roman", serif; color: #1b2220; font-size: 11pt; line-height: 1.5; margin: 0; }
+header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid #1b2220; padding-bottom: 6px; margin-bottom: 8px; }
+header small { font: 8pt "IBM Plex Mono", monospace; letter-spacing: .14em; color: #5b6662; display: block; }
+header h1 { margin: 0; font-size: 22pt; } header span { font-size: 9pt; color: #5b6662; }
+h2.cl { font-size: 14pt; margin: 14px 0 0; border-bottom: 1px solid #d2d8d3; }
+.en { padding: 8px 0; border-bottom: 1px solid #e4e8e4; break-inside: avoid; }
+.ref { font: 600 8.5pt "IBM Plex Mono", monospace; color: #1d5b74; letter-spacing: .04em; }
+.vt { margin: 4px 0; } mark { color: inherit; padding: 0 1px; border-radius: 2px; }
+.il { margin: 2px 0; font-size: 10pt; color: #3d4744; } .il .o { font-family: "Noto Serif Hebrew", "SBL Hebrew", "Gentium Book Plus", serif; font-size: 13pt; }
+.nt { margin: 4px 0; padding-left: 10px; border-left: 2px solid #c7cfca; font-size: 10.5pt; color: #2b3330; }
+.tg span { display: inline-block; font-size: 8pt; background: #dbe8ec; color: #1d5b74; border-radius: 999px; padding: 0 7px; margin: 3px 4px 0 0; }
+footer { margin-top: 14px; font-size: 7.5pt; color: #5b6662; border-top: 1px solid #d2d8d3; padding-top: 4px; }
+</style></head><body>
+<header><div><small>CADERNO DE ESTUDO · BÍBLIA INTERLINEAR</small><h1>${esc(titulo)}</h1></div><span>${xs.length} ${xs.length === 1 ? "item" : "itens"} · ${data}</span></header>
+${corpo || "<p>Nenhum item com essas opções.</p>"}
+<footer>Texto: Bíblia Livre (BLIVRE). Original: Open Scriptures Hebrew Bible e SBLGNT (CC BY 4.0). Glosas e léxico: projeto Bíblia Interlinear.</footer>
+</body></html>` };
+  }
+  async function gerarCaderno() {
+    const btn = $("#exp-gerar");
+    btn.disabled = true; btn.textContent = "Gerando…";
+    try {
+      const c = await montarCaderno();
+      window.__ultimoCaderno = c;
+      await imprimir(c.html, `${c.titulo} - caderno`);
+    } finally { btn.disabled = false; btn.textContent = "Gerar PDF"; }
+  }
+  // Imprime um HTML: no app Android pelo serviço de impressão do sistema (plugin Impressao, que tem "Salvar como PDF");
+  // no navegador, por um iframe escondido e a janela de impressão.
+  async function imprimir(html, titulo) {
+    const Cap = window.Capacitor, nativo = Cap?.isNativePlatform?.();
+    const plug = nativo && (Cap.Plugins?.Impressao || Cap.registerPlugin?.("Impressao"));
+    if (plug && Cap.getPlatform?.() === "android") { try { await plug.imprimir({ html, titulo }); return; } catch (_) { aviso("Não foi possível abrir a impressão do Android."); return; } }
+    const fr = document.createElement("iframe");
+    fr.className = "fr-impressao"; fr.setAttribute("aria-hidden", "true"); fr.tabIndex = -1;
+    fr.style.cssText = "position:fixed;right:0;bottom:0;width:0;height:0;border:0;visibility:hidden";
+    document.body.appendChild(fr);
+    fr.srcdoc = html;
+    await new Promise(r => { fr.onload = r; setTimeout(r, 1500); });
+    if (window.__semImprimir) return;  // testes automáticos: só monta o caderno
+    try { fr.contentWindow.focus(); fr.contentWindow.print(); } catch (_) { aviso("Este navegador não permite imprimir; tente no Chrome, Edge ou Safari."); }
+    setTimeout(() => fr.remove(), 60000);
+  }
+
+  // ---------- Baixar e importar meus dados (JSON) ----------
+  async function baixarDados() {
+    await pronto;
+    const dados = { formato: "biblia-interlinear-anotacoes", versao: 1, exportado_em: new Date().toISOString(), aparelho, colecoes: {} };
+    for (const c of COLECOES) dados.colecoes[c] = db ? await db[c].toArray() : [...memoria[c].values()];
+    const json = JSON.stringify(dados, null, 1);
+    const nome = `biblia-interlinear-anotacoes-${dados.exportado_em.slice(0, 10)}.json`;
+    window.__ultimoBackup = dados;
+    const Cap = window.Capacitor;
+    if (Cap?.isNativePlatform?.() && Cap.Plugins?.Filesystem && Cap.Plugins?.Share) {
+      try {
+        const r = await Cap.Plugins.Filesystem.writeFile({ path: nome, data: json, directory: "CACHE", encoding: "utf8" });
+        await Cap.Plugins.Share.share({ title: "Minhas anotações", files: [r.uri] });
+        return;
+      } catch (_) { /* cai no download comum */ }
+    }
+    const url = URL.createObjectURL(new Blob([json], { type: "application/json" }));
+    const a = document.createElement("a");
+    a.href = url; a.download = nome; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 10000);
+    aviso("Arquivo de backup baixado.");
+  }
+  // Junta o arquivo com o que já está no aparelho: registro novo entra; registro que já existe fica com a versão mais recente.
+  async function importar(dados) {
+    if (!dados || dados.formato !== "biblia-interlinear-anotacoes" || !dados.colecoes) throw new Error("Este arquivo não é um backup de anotações da Bíblia Interlinear.");
+    await pronto;
+    let novos = 0, atualizados = 0, iguais = 0;
+    for (const c of COLECOES) {
+      for (const r of dados.colecoes[c] || []) {
+        if (!r || !r.id) continue;
+        const atual = db ? await db[c].get(r.id) : memoria[c].get(r.id);
+        if (atual && (atual.relogio || "") >= (r.relogio || "")) { iguais++; continue; }
+        if (r.relogio) relogio(r.relogio.split("-").slice(0, 2).join("-"));
+        if (db) await db.transaction("rw", db[c], db.fila, async () => { await db[c].put(r); await db.fila.add({ colecao: c, id: r.id }); });
+        else memoria[c].set(r.id, r);
+        atual ? atualizados++ : novos++;
+      }
+    }
+    avisar(); pintar();
+    return { novos, atualizados, iguais };
+  }
+  $("#mn-arquivo").addEventListener("change", async e => {
+    const f = e.target.files[0];
+    e.target.value = "";
+    if (!f) return;
+    try {
+      const r = await importar(JSON.parse(await f.text()));
+      aviso(`Importado: ${r.novos} novos, ${r.atualizados} atualizados, ${r.iguais} já estavam aqui.`);
+      desenharLista();
+    } catch (err) { aviso(err.message.startsWith("Este arquivo") ? err.message : "Não foi possível ler o arquivo."); }
+  });
+
   let avisoTimer = 0;
   function aviso(msg) {
     const t = document.getElementById("toast");
     if (!t) return;
     t.textContent = msg; t.hidden = false;
-    clearTimeout(avisoTimer); avisoTimer = setTimeout(() => { t.hidden = true; }, 3500);
+    clearTimeout(avisoTimer); avisoTimer = setTimeout(() => { t.hidden = true; }, Math.max(3500, msg.length * 70));
   }
 
   // ---------- integração com o leitor ----------
@@ -587,7 +830,7 @@
   });
   document.addEventListener("keydown", e => { if (e.key === "Escape" && !barra.hidden) fecharBarra(); });
   window.Anotacoes = {
-    abrirLista, abrirNota, fecharBarra, pintar, todos, gravar, apagar,
+    abrirLista, abrirNota, fecharBarra, pintar, todos, gravar, apagar, importar, baixarDados, montarCaderno, imprimir,
     contar: async () => (await Promise.all(["notas", "marcacoes", "favoritos"].map(todos))).reduce((s, l) => s + l.length, 0),
     aoMudar: f => ouvintes.push(f),
     exportar: async () => Object.fromEntries(await Promise.all(COLECOES.map(async c => [c, await todos(c)]))),
