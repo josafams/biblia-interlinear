@@ -592,6 +592,21 @@ body.com-mbar #page { padding-bottom: 220px; }
 .mn-cor { background: var(--mk); color: var(--mk-ink); padding: 0 5px; border-radius: 4px; }
 .mn-tit { font-size: 15px; } .mn-txt { font-size: 14px; color: var(--fg); }
 .mn-ets { display: flex; flex-wrap: wrap; gap: 4px; } .mn-ets .chip { min-height: 24px; font-size: 11.5px; padding: 0 8px; cursor: default; }
+
+.mn-acoes2 { flex-wrap: wrap; justify-content: flex-start; gap: 6px; margin-top: 0; }
+.mn-item.sel { grid-template-columns: 26px 1fr; }
+.mn-item.sel::before { content: ""; grid-row: 1 / span 4; width: 20px; height: 20px; border-radius: 5px; border: 2px solid var(--muted); margin-top: 2px; }
+.mn-item.sel[aria-checked="true"]::before { background: var(--accent); border-color: var(--accent); box-shadow: inset 0 0 0 3px var(--surface); }
+.exp-corpo { display: grid; gap: 14px; }
+.exp-corpo fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 8px 12px 10px; margin: 0; display: grid; gap: 2px; }
+.exp-corpo legend { font: 500 11px var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); padding: 0 4px; }
+.exp-corpo .opt { display: flex; align-items: center; gap: 10px; min-height: 40px; font-size: 15px; }
+.exp-corpo .opt input { width: 20px; height: 20px; accent-color: var(--accent); flex: none; }
+.exp-corpo .opt small { color: var(--muted); }
+.exp-corpo select { font: inherit; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--fg); min-height: 34px; margin-inline-start: 6px; }
+.exp-gerar { min-height: 50px; border-radius: 999px; border: 0; background: var(--accent); color: var(--surface); font: 600 16px var(--font-body); cursor: pointer; }
+.exp-gerar:disabled { opacity: .6; }
+.exp-nota { margin: 0; font-size: 13px; color: var(--muted); text-align: center; }
 </style>
 
 <a class="skip" href="#verses" id="skip">Pular para o texto</a>
@@ -1674,6 +1689,7 @@ document.querySelectorAll(".chk[data-key]").forEach(t => {
 
 
 // ---------- Anotações (anotacoes.js) ----------
+window.__carregarCapitulo = (cod, n) => fetchChapter(cod, n);
 window.__livros = Object.fromEntries(BOOKS.map((b, i) => [b.cod, { nome: b.nome, abrev: b.abrev, i }]));
 document.addEventListener("anotacoes:ir", e => { const d = e.detail; openChapter(d.cod, d.cap, d.ver); });
 document.addEventListener("anotacoes:abrir-painel", () => { if (openSheet) closePanel(false); if (!detail.hidden) closeDetail(); });
