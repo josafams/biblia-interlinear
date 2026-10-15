@@ -27,18 +27,18 @@ async function abrirComDados(page) {
       etiquetas: []
     });
     await A.save("favoritos", { id: id(), cap: "PSA.23", ancora: anc("PSA", 23, 1) });
-    window.__semImprimir = true;
+    window.__noPrint = true;
   });
   await page.click("#open-toc");
-  await page.click("#open-minhas");
+  await page.click("#open-mine");
   await expect(page.locator(".mn-item")).toHaveCount(3);
 }
 
 test("caderno em PDF com o texto dos versículos, as marcações e as notas", async ({ page }) => {
   await abrirComDados(page);
-  await page.click("#mn-exportar");
+  await page.click("#mn-export");
   await expect(page.locator("#exportar")).toBeVisible();
-  await page.click("#exp-gerar");
+  await page.click("#exp-generate");
   await page.waitForFunction(() => window.__ultimoCaderno);
   const c = await page.evaluate(() => window.__ultimoCaderno);
   expect(c.n).toBe(3);
@@ -52,13 +52,13 @@ test("caderno em PDF com o texto dos versículos, as marcações e as notas", as
 
 test("caderno só com os itens selecionados e sem o texto", async ({ page }) => {
   await abrirComDados(page);
-  await page.click("#mn-selecionar");
+  await page.click("#mn-select");
   await page.click('.mn-item[data-tipo="notas"]');
   await expect(page.locator("#mn-total")).toHaveText("1 selecionado");
-  await page.click("#mn-exportar");
-  await expect(page.locator('input[name="exp-o"][value="sel"]')).toBeChecked();
-  await page.uncheck("#exp-texto");
-  await page.click("#exp-gerar");
+  await page.click("#mn-export");
+  await expect(page.locator('input[name="exp-scope"][value="sel"]')).toBeChecked();
+  await page.uncheck("#exp-text");
+  await page.click("#exp-generate");
   await page.waitForFunction(() => window.__ultimoCaderno);
   const c = await page.evaluate(() => window.__ultimoCaderno);
   expect(c.n).toBe(1);
@@ -69,7 +69,7 @@ test("caderno só com os itens selecionados e sem o texto", async ({ page }) => 
 
 test("baixar meus dados e importar em outro aparelho", async ({ page, browser }, info) => {
   await abrirComDados(page);
-  const [dl] = await Promise.all([page.waitForEvent("download"), page.click("#mn-baixar")]);
+  const [dl] = await Promise.all([page.waitForEvent("download"), page.click("#mn-download")]);
   const file = info.outputPath("backup.json");
   await dl.saveAs(file);
   const payload = JSON.parse(fs.readFileSync(file, "utf8"));
@@ -82,13 +82,13 @@ test("baixar meus dados e importar em outro aparelho", async ({ page, browser },
   await p2.goto("ler.html#GEN.1");
   await expect(p2.locator(".verse").first()).toBeVisible();
   await p2.click("#open-toc");
-  await p2.click("#open-minhas");
-  await expect(p2.locator(".mn-vazio")).toBeVisible();
+  await p2.click("#open-mine");
+  await expect(p2.locator(".mn-empty")).toBeVisible();
   await p2.waitForFunction(() => window.Annotations);
-  await p2.setInputFiles("#mn-arquivo", file);
+  await p2.setInputFiles("#mn-file", file);
   await expect(p2.locator("#toast")).toContainText(`${total} novos`);
   await expect(p2.locator(".mn-item")).toHaveCount(3);
-  await p2.setInputFiles("#mn-arquivo", file);
+  await p2.setInputFiles("#mn-file", file);
   await expect(p2.locator("#toast")).toContainText("0 novos");
   await p2.keyboard.press("Escape");
   await expect(p2.locator("#v3 mark.mk-amarelo")).toHaveText("Haja luz; e houve luz");
@@ -100,10 +100,10 @@ test("importar um arquivo que não é backup avisa sem quebrar", async ({ page }
   await expect(page.locator(".verse").first()).toBeVisible();
   await page.waitForFunction(() => window.Annotations);
   await page.click("#open-toc");
-  await page.click("#open-minhas");
+  await page.click("#open-mine");
   await expect(page.locator("#minhas")).toBeVisible();
   // conteúdo em memória: um caminho com acento (nome do teste) chega vazio ao navegador
-  await page.setInputFiles("#mn-arquivo", {
+  await page.setInputFiles("#mn-file", {
     name: "outro.json",
     mimeType: "application/json",
     buffer: Buffer.from(JSON.stringify({ qualquer: 1 }))

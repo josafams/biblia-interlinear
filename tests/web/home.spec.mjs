@@ -31,20 +31,20 @@ test("aponta para o repositório, o APK, o projeto iOS e os livros", async ({ pa
 
 test("como usar: abas, lista de vídeos e passo a passo", async ({ page }) => {
   await page.goto("index.html#como-usar");
-  await expect(page.locator("#cu-tabs .tab")).toHaveCount(7);
-  await expect(page.locator("#cu-lista .vid")).toHaveCount(10);
-  await expect(page.locator("#cu-titulo")).toHaveText("Abrir um livro e um capítulo");
-  await expect(page.locator("#cu-passos li")).toHaveCount(4);
-  await page.click('#cu-tabs .tab[data-g="aparencia"]');
-  await expect(page.locator("#cu-lista .vid")).toHaveCount(4);
-  await page.click('#cu-lista .vid[data-id="12"]');
-  await expect(page.locator("#cu-titulo")).toHaveText("Tamanho do texto");
+  await expect(page.locator("#howto-tabs .tab")).toHaveCount(7);
+  await expect(page.locator("#howto-list .vid")).toHaveCount(10);
+  await expect(page.locator("#howto-title")).toHaveText("Abrir um livro e um capítulo");
+  await expect(page.locator("#howto-steps li")).toHaveCount(4);
+  await page.click('#howto-tabs .tab[data-g="aparencia"]');
+  await expect(page.locator("#howto-list .vid")).toHaveCount(4);
+  await page.click('#howto-list .vid[data-id="12"]');
+  await expect(page.locator("#howto-title")).toHaveText("Tamanho do texto");
 });
 
 test("link de funcionalidade abre o vídeo certo", async ({ page }) => {
   await page.goto("index.html");
   await page.click('a.como[href="#v-05"]');
-  await expect(page.locator("#cu-titulo")).toHaveText("Abrir um verbete");
+  await expect(page.locator("#howto-title")).toHaveText("Abrir um verbete");
 });
 
 test("links antigos com referência vão para o leitor", async ({ page }) => {

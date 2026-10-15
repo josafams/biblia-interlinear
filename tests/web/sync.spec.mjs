@@ -1,6 +1,6 @@
 // Sincronização das anotações pelo Drive entre vários "aparelhos" (contextos do navegador), com o Google simulado.
 import { test, expect } from "@playwright/test";
-import { simularGoogle, novaNuvem } from "./google-falso.mjs";
+import { simularGoogle, novaNuvem } from "./fake-google.mjs";
 
 test.use({ serviceWorkers: "block" });
 test.describe.configure({ timeout: 90000 });
@@ -32,9 +32,9 @@ async function aparelho(browser, nuvem, info, { atraso = 0 } = {}) {
 }
 async function signIn(page) {
   await page.click("#open-toc");
-  await page.click("#conta-entrar");
-  await expect(page.locator("#conta-sinc")).toContainText("Sincronizado");
-  await expect(page.locator(".conta-caixa")).toHaveCount(0); // nada de pergunta: sincroniza sozinho
+  await page.click("#account-signin");
+  await expect(page.locator("#account-sync")).toContainText("Sincronizado");
+  await expect(page.locator(".account-box")).toHaveCount(0); // nada de pergunta: sincroniza sozinho
   await page.keyboard.press("Escape");
 }
 const sincronizar = page => page.evaluate(() => window.Sync.currentTime());
@@ -61,7 +61,7 @@ test("anotação feita num aparelho aparece no outro, e a edição volta", async
   await sincronizar(a);
   expect((await readStorage(a, "notas"))[0].texto).toBe("Bereshit bara Elohim.");
   // apagar também sincroniza
-  await a.evaluate(() => window.Annotations.apagar("marcacoes", "m1"));
+  await a.evaluate(() => window.Annotations.removeRecord("marcacoes", "m1"));
   await sincronizar(a);
   await sincronizar(b);
   expect(await readStorage(b, "marcacoes")).toHaveLength(0);
@@ -185,18 +185,18 @@ test("sair apagando deste aparelho e apagar os dados do Google Drive", async ({ 
   await sincronizar(a);
   // apagar da nuvem: some do Drive, fica no aparelho
   await a.click("#open-toc");
-  await a.click("#conta-apagar-nuvem");
-  await a.click('.conta-caixa button[data-r="sim"]');
-  await expect(a.locator("#conta-entrar")).toContainText("Entrar com Google");
+  await a.click("#account-wipe-cloud");
+  await a.click('.account-box button[data-r="sim"]');
+  await expect(a.locator("#account-signin")).toContainText("Entrar com Google");
   expect(nuvem.arquivos.size).toBe(0);
-  expect(await a.evaluate(() => window.Annotations.contar())).toBe(1);
+  expect(await a.evaluate(() => window.Annotations.countAll())).toBe(1);
   // entrar de novo (envia de novo, sozinho) e sair apagando deste aparelho
-  await a.click("#conta-entrar");
-  await expect(a.locator("#conta-sinc")).toContainText("Sincronizado");
+  await a.click("#account-signin");
+  await expect(a.locator("#account-sync")).toContainText("Sincronizado");
   expect(nuvem.nomes("lote-")).toHaveLength(1);
-  await a.click("#conta-sair");
-  await a.click('.conta-caixa button[data-r="apagar"]');
-  await expect(a.locator("#conta-entrar")).toContainText("Entrar com Google");
-  expect(await a.evaluate(() => window.Annotations.contar())).toBe(0);
+  await a.click("#account-signout");
+  await a.click('.account-box button[data-r="apagar"]');
+  await expect(a.locator("#account-signin")).toContainText("Entrar com Google");
+  expect(await a.evaluate(() => window.Annotations.countAll())).toBe(0);
   expect(nuvem.nomes("lote-")).toHaveLength(1); // a nuvem continua com tudo
 });

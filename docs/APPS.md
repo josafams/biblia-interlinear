@@ -1,6 +1,6 @@
 # Web, Android, iOS e EPUB
 
-Um único conteúdo (`web/template.html` + dados da Bíblia inteira) gera as saídas:
+Um único conteúdo (`web/reader.html` + dados da Bíblia inteira) gera as saídas:
 
 | Saída | Onde fica | Como é gerada |
 |---|---|---|

@@ -15,4 +15,4 @@ O aparelho é a fonte do dia a dia (IndexedDB via Dexie). Com login Google opcio
 - Custo zero e nenhum dado pessoal com o projeto.
 - Sem tempo real: mudanças chegam em até ~30 s com o app aberto.
 - Sem grupos ou compartilhamento entre pessoas; se um dia vierem, o motor fala com o armazenamento por um adaptador pequeno.
-- Detalhes: `web/sincronizar.js` e [docs/GOOGLE.md](../GOOGLE.md).
+- Detalhes: `web/sync.js` e [docs/GOOGLE.md](../GOOGLE.md).

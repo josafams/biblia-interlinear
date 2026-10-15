@@ -25,37 +25,37 @@ import java.util.Arrays;
  * a conta e permitir; depois o token é renovado em silêncio. O Google reconhece o app pelo pacote
  * e pelo SHA-1 da chave de assinatura (cliente OAuth "Android" no Google Cloud) — não há segredo no app.
  */
-@CapacitorPlugin(name = "ContaGoogle")
-public class ContaGooglePlugin extends Plugin {
+@CapacitorPlugin(name = "GoogleAccount")
+public class GoogleAccountPlugin extends Plugin {
     private static final String DRIVE_APPDATA = "https://www.googleapis.com/auth/drive.appdata";
-    private ActivityResultLauncher<IntentSenderRequest> lancador;
-    private PluginCall pendente;
+    private ActivityResultLauncher<IntentSenderRequest> launcher;
+    private PluginCall pending;
 
     @Override
     public void load() {
-        lancador = getActivity().getActivityResultRegistry()
-            .register("conta-google", new ActivityResultContracts.StartIntentSenderForResult(), this::voltou);
+        launcher = getActivity().getActivityResultRegistry()
+            .register("google-account", new ActivityResultContracts.StartIntentSenderForResult(), this::onResult);
     }
 
     @PluginMethod
-    public void autorizar(PluginCall call) {
-        boolean silencioso = Boolean.TRUE.equals(call.getBoolean("silent", false));
-        AuthorizationRequest pedido = AuthorizationRequest.builder()
+    public void authorize(PluginCall call) {
+        boolean silent = Boolean.TRUE.equals(call.getBoolean("silent", false));
+        AuthorizationRequest request = AuthorizationRequest.builder()
             .setRequestedScopes(Arrays.asList(new Scope("openid"), new Scope("email"), new Scope("profile"), new Scope(DRIVE_APPDATA)))
             .build();
-        Identity.getAuthorizationClient(getActivity()).authorize(pedido)
+        Identity.getAuthorizationClient(getActivity()).authorize(request)
             .addOnSuccessListener(res -> {
                 if (res.hasResolution()) {
                     PendingIntent pi = res.getPendingIntent();
-                    if (silencioso || pi == null) { call.reject("É preciso confirmar no Google.", "interacao"); return; }
-                    if (pendente != null) pendente.reject("Outro login começou.", "cancelado");
-                    pendente = call;
-                    lancador.launch(new IntentSenderRequest.Builder(pi.getIntentSender()).build());
+                    if (silent || pi == null) { call.reject("É preciso confirmar no Google.", "interaction-required"); return; }
+                    if (pending != null) pending.reject("Outro login começou.", "cancelled");
+                    pending = call;
+                    launcher.launch(new IntentSenderRequest.Builder(pi.getIntentSender()).build());
                 } else {
-                    responder(call, res);
+                    respond(call, res);
                 }
             })
-            .addOnFailureListener(e -> call.reject(e.getMessage() != null ? e.getMessage() : "Falha no login.", "falhou", e));
+            .addOnFailureListener(e -> call.reject(e.getMessage() != null ? e.getMessage() : "Falha no login.", "failed", e));
     }
 
     @PluginMethod
@@ -64,24 +64,24 @@ public class ContaGooglePlugin extends Plugin {
         call.resolve();
     }
 
-    private void voltou(ActivityResult r) {
-        PluginCall call = pendente;
-        pendente = null;
+    private void onResult(ActivityResult r) {
+        PluginCall call = pending;
+        pending = null;
         if (call == null) return;
-        if (r.getResultCode() != Activity.RESULT_OK || r.getData() == null) { call.reject("Login cancelado.", "cancelado"); return; }
+        if (r.getResultCode() != Activity.RESULT_OK || r.getData() == null) { call.reject("Login cancelado.", "cancelled"); return; }
         try {
-            responder(call, Identity.getAuthorizationClient(getActivity()).getAuthorizationResultFromIntent(r.getData()));
+            respond(call, Identity.getAuthorizationClient(getActivity()).getAuthorizationResultFromIntent(r.getData()));
         } catch (ApiException e) {
-            call.reject(e.getMessage() != null ? e.getMessage() : "Falha no login.", "falhou", e);
+            call.reject(e.getMessage() != null ? e.getMessage() : "Falha no login.", "failed", e);
         }
     }
 
-    private void responder(PluginCall call, AuthorizationResult res) {
+    private void respond(PluginCall call, AuthorizationResult res) {
         JSObject o = new JSObject();
         o.put("accessToken", res.getAccessToken());
-        JSArray escopos = new JSArray();
-        for (String s : res.getGrantedScopes()) escopos.put(s);
-        o.put("escopos", escopos);
+        JSArray scopes = new JSArray();
+        for (String s : res.getGrantedScopes()) scopes.put(s);
+        o.put("scopes", scopes);
         call.resolve(o);
     }
 }

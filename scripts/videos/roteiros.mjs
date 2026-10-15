@@ -62,14 +62,14 @@ async function entrarNaConta(t) {
   const p = t.page;
   await p.waitForFunction(() => window.Account && window.Sync);
   await p.click("#open-toc");
-  await p.click("#conta-entrar");
-  await p.locator("#conta-sinc", { hasText: "Sincronizado" }).waitFor();
+  await p.click("#account-signin");
+  await p.locator("#account-sync", { hasText: "Sincronizado" }).waitFor();
   await p.keyboard.press("Escape");
   await p.evaluate(() => window.scrollTo(0, 0));
 }
 // leituras e tempo de exemplo para o vídeo do progresso (40 dias, Gênesis, alguns livros curtos, Mateus 1–10)
 async function progressoDeExemplo(page) {
-  await page.waitForFunction(() => window.Progress && window.__livros);
+  await page.waitForFunction(() => window.Progress && window.__books);
   await page.evaluate(async () => {
     const A = window.Annotations,
       ap = A.storage.aparelho,
@@ -93,7 +93,7 @@ async function progressoDeExemplo(page) {
     const lido = async (cod, n) =>
       A.save("leituras", { id: `${cod}.${n}`, livro: cod, n, lido: true, primeira: currentTime, ultima: currentTime, vezes: 1 });
     for (let c = 1; c <= 50; c++) await lido("GEN", c);
-    for (const l of ["RUT", "JON", "PHM", "JUD", "OBA"]) for (let c = 1; c <= window.__livros[l].ncaps; c++) await lido(l, c);
+    for (const l of ["RUT", "JON", "PHM", "JUD", "OBA"]) for (let c = 1; c <= window.__books[l].chapterCount; c++) await lido(l, c);
     for (let c = 1; c <= 10; c++) await lido("MAT", c);
     await A.save("preferencias", { id: "posicao", cod: "MAT", cap: 11, quando: currentTime });
   });
@@ -423,7 +423,7 @@ export const videos = [
         legenda: "Em “Mostrar na página”, ligue ou desligue cada item.",
         faz: async t => {
           await t.rolarAte("#g-show");
-          await t.tocar("#t-sobre");
+          await t.tocar("#t-about");
         }
       },
       { legenda: "Ao mudar qualquer item, o modo vira Personalizado.", faz: t => t.realcar('.mcard[data-modo="personalizado"]') },
@@ -463,16 +463,16 @@ export const videos = [
       {
         legenda: "Escolha uma das cinco cores.",
         faz: async t => {
-          await t.tocar('#mbar .mb-cor[data-cor="azul"]');
-          await t.tocar("#mb-fechar");
+          await t.tocar('#mbar .mb-color[data-cor="azul"]');
+          await t.tocar("#mb-close");
         }
       },
       { legenda: "Selecione um trecho da Bíblia Livre para marcar só ele.", faz: t => t.selecionar("#v3 .blivre", "Haja luz") },
       {
         legenda: "A barra aparece com o trecho: escolha a cor.",
         faz: async t => {
-          await t.tocar('#mbar .mb-cor[data-cor="amarelo"]');
-          await t.tocar("#mb-fechar");
+          await t.tocar('#mbar .mb-color[data-cor="amarelo"]');
+          await t.tocar("#mb-close");
           await t.limparSelecao();
         }
       },
@@ -480,8 +480,8 @@ export const videos = [
         legenda: "Toque longo numa palavra do original marca só a palavra.",
         faz: async t => {
           await t.toqueLongo('.word[data-v="2"][data-i="3"]');
-          await t.tocar('#mbar .mb-cor[data-cor="rosa"]');
-          await t.tocar("#mb-fechar");
+          await t.tocar('#mbar .mb-color[data-cor="rosa"]');
+          await t.tocar("#mb-close");
         }
       }
     ]
@@ -503,9 +503,9 @@ export const videos = [
       },
       {
         legenda: "Escreva: a nota salva sozinha enquanto você digita.",
-        faz: t => t.digitar("#nota-texto", "Sem forma e vazia: tôhû wâbôhû rima no hebraico.")
+        faz: t => t.digitar("#note-text", "Sem forma e vazia: tôhû wâbôhû rima no hebraico.")
       },
-      { legenda: "Dá para pôr um título e etiquetas.", faz: t => t.digitar("#nota-titulo", "Tohu e bohu") },
+      { legenda: "Dá para pôr um título e etiquetas.", faz: t => t.digitar("#note-title", "Tohu e bohu") },
       {
         legenda: "Feche: o ícone da nota aparece no versículo; toque nele para reabrir.",
         faz: async t => {
@@ -534,15 +534,15 @@ export const videos = [
         legenda: "Em Etiqueta, crie uma etiqueta: promessas.",
         faz: async t => {
           await t.tocar('#mbar [data-action="etiqueta"]');
-          await t.digitar("#mb-et-nome", "promessas");
-          await t.tocar("#mb-nova-et");
+          await t.digitar("#mb-tag-name", "promessas");
+          await t.tocar("#mb-new-tag");
         }
       },
       {
         legenda: "A etiqueta fica disponível para outros versículos e notas.",
-        faz: t => t.realcar('#mb-etiquetas .chip[aria-pressed="true"]')
+        faz: t => t.realcar('#mb-tags .chip[aria-pressed="true"]')
       },
-      { legenda: "Feche a barra.", faz: t => t.tocar("#mb-fechar") }
+      { legenda: "Feche a barra.", faz: t => t.tocar("#mb-close") }
     ]
   },
   {
@@ -558,17 +558,17 @@ export const videos = [
         legenda: "No Índice, toque em Minhas anotações.",
         faz: async t => {
           await t.tocar("#open-toc");
-          await t.rolarAte("#open-minhas");
-          await t.tocar("#open-minhas");
+          await t.rolarAte("#open-mine");
+          await t.tocar("#open-mine");
         }
       },
       { legenda: "Tudo o que você marcou e anotou, na ordem da Bíblia.", faz: t => t.esperar(800) },
-      { legenda: "Busque por uma palavra: pastor.", faz: t => t.digitar("#mn-busca", "pastor") },
+      { legenda: "Busque por uma palavra: pastor.", faz: t => t.digitar("#mn-search", "pastor") },
       {
         legenda: "Ou filtre por tipo e por etiqueta.",
         faz: async t => {
-          await t.digitar("#mn-busca", "");
-          await t.tocar('.mn-filtros .chip[data-tipo="notas"]');
+          await t.digitar("#mn-search", "");
+          await t.tocar('.mn-filters .chip[data-tipo="notas"]');
         }
       },
       { legenda: "Toque num item para ir ao versículo ou abrir a nota.", faz: t => t.tocar('.mn-item[data-tipo="notas"]') }
@@ -587,12 +587,12 @@ export const videos = [
         legenda: "Em Minhas anotações, toque em Exportar PDF.",
         faz: async t => {
           await t.page.evaluate(() => {
-            window.__semImprimir = true;
+            window.__noPrint = true;
           });
           await t.tocar("#open-toc");
-          await t.rolarAte("#open-minhas");
-          await t.tocar("#open-minhas");
-          await t.tocar("#mn-exportar");
+          await t.rolarAte("#open-mine");
+          await t.tocar("#open-mine");
+          await t.tocar("#mn-export");
         }
       },
       {
@@ -602,7 +602,7 @@ export const videos = [
           await t.tocar("#exp-inter");
         }
       },
-      { legenda: "Toque em Gerar PDF.", faz: t => t.tocar("#exp-gerar") },
+      { legenda: "Toque em Gerar PDF.", faz: t => t.tocar("#exp-generate") },
       {
         legenda: "O caderno sai agrupado por versículo, com as cores, notas e etiquetas. Salve como PDF ou imprima.",
         faz: async t => {
@@ -633,9 +633,9 @@ export const videos = [
         legenda: "Em Minhas anotações, toque em Baixar meus dados.",
         faz: async t => {
           await t.tocar("#open-toc");
-          await t.rolarAte("#open-minhas");
-          await t.tocar("#open-minhas");
-          await t.tocar("#mn-baixar");
+          await t.rolarAte("#open-mine");
+          await t.tocar("#open-mine");
+          await t.tocar("#mn-download");
         }
       },
       { legenda: "Um arquivo com tudo o que você anotou fica salvo no aparelho.", faz: t => t.esperar(1500) },
@@ -651,9 +651,9 @@ export const videos = [
             await window.Annotations.openList();
           }); // simula o aparelho novo
           await t.esperar(600);
-          await t.realcar("#mn-importar");
-          await t.page.setInputFiles("#mn-arquivo", {
-            name: "biblia-anotacoes.json",
+          await t.realcar("#mn-import");
+          await t.page.setInputFiles("#mn-file", {
+            name: "biblia-annotations.json",
             mimeType: "application/json",
             buffer: Buffer.from(json)
           });
@@ -677,18 +677,18 @@ export const videos = [
         faz: async t => {
           await t.tocar("#open-toc");
           await t.realcar("#conta");
-          await t.tocar("#conta-entrar");
+          await t.tocar("#account-signin");
         }
       },
       {
         legenda: "Escolha sua conta e permita: o app só acessa uma pasta própria e privada no seu Google Drive.",
-        faz: t => t.page.locator("#conta-sinc").waitFor()
+        faz: t => t.page.locator("#account-sync").waitFor()
       },
       {
         legenda: "O que você já tinha anotado neste aparelho é enviado sozinho para a conta.",
         faz: async t => {
-          await t.page.locator("#conta-sinc", { hasText: "Sincronizado" }).waitFor();
-          await t.realcar("#conta-sinc");
+          await t.page.locator("#account-sync", { hasText: "Sincronizado" }).waitFor();
+          await t.realcar("#account-sync");
         }
       },
       { legenda: "Daqui em diante, tudo sincroniza sozinho entre seus aparelhos.", faz: t => t.esperar(800) }
@@ -738,20 +738,20 @@ export const videos = [
       {
         legenda: "Em Sair, você escolhe manter uma cópia das anotações aqui ou apagar deste aparelho.",
         faz: async t => {
-          await t.tocar("#conta-sair");
-          await t.realcar(".conta-caixa");
-          await t.tocar('.conta-caixa button[data-r=""]');
+          await t.tocar("#account-signout");
+          await t.realcar(".account-box");
+          await t.tocar('.account-box button[data-r=""]');
         }
       },
       {
         legenda: "Para apagar tudo do seu Google Drive, toque em Apagar meus dados do Google Drive.",
-        faz: t => t.tocar("#conta-apagar-nuvem")
+        faz: t => t.tocar("#account-wipe-cloud")
       },
       {
         legenda: "Confirme. As anotações continuam neste aparelho e você sai da conta.",
         faz: async t => {
-          await t.tocar('.conta-caixa button[data-r="sim"]');
-          await t.page.locator("#conta-entrar").waitFor();
+          await t.tocar('.account-box button[data-r="sim"]');
+          await t.page.locator("#account-signin").waitFor();
         }
       }
     ]
@@ -762,7 +762,7 @@ export const videos = [
     grupo: "estudo",
     titulo: "Perguntas ao texto",
     desc: "Ligar, responder e ver o progresso.",
-    pronto: false,
+    ready: false,
     steps: []
   },
   {
@@ -780,8 +780,8 @@ export const videos = [
         legenda: "No Índice, toque em Meu progresso (com a conta Google conectada).",
         faz: async t => {
           await t.tocar("#open-toc");
-          await t.rolarAte("#open-progresso");
-          await t.tocar("#open-progresso");
+          await t.rolarAte("#open-progress");
+          await t.tocar("#open-progress");
         }
       },
       {
@@ -791,7 +791,7 @@ export const videos = [
       {
         legenda: "O gráfico mostra o tempo de leitura por dia; dá para ver o mês ou o ano.",
         faz: async t => {
-          await t.rolarAte("#progresso .pg-graf");
+          await t.rolarAte("#progresso .pg-chart");
           await t.tocar('#progresso [data-active-tab="mes"]');
         }
       },
@@ -809,11 +809,11 @@ export const videos = [
       {
         legenda: "Volte e escolha um plano de leitura: a leitura de cada dia aparece aqui.",
         faz: async t => {
-          await t.tocar("#pg-voltar");
+          await t.tocar("#pg-back");
           await t.rolarAte('#progresso [data-plano="ano"]');
           await t.tocar('#progresso [data-plano="ano"]');
-          await t.rolarAte("#progresso .pg-dia");
-          await t.realcar("#progresso .pg-dia");
+          await t.rolarAte("#progresso .pg-day");
+          await t.realcar("#progresso .pg-day");
         }
       }
     ]
@@ -862,7 +862,7 @@ export const videos = [
 ];
 
 // Só o que a página inicial precisa (sem as funções de ação).
-export function resumo() {
+export function storyboardSummary() {
   return {
     grupos,
     videos: videos.map(v => ({
@@ -871,7 +871,7 @@ export function resumo() {
       grupo: v.grupo,
       titulo: v.titulo,
       desc: v.desc,
-      pronto: v.pronto !== false,
+      ready: v.ready !== false,
       steps: v.steps.map(p => p.legenda)
     }))
   };

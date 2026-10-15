@@ -14,7 +14,7 @@ import http from "node:http";
 import { execFileSync } from "node:child_process";
 import { chromium, devices } from "playwright";
 import { videos } from "./roteiros.mjs";
-import { simularGoogle } from "../../tests/web/google-falso.mjs";
+import { simularGoogle } from "../../tests/web/fake-google.mjs";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../..");
 const WEB = path.join(ROOT, "build/web");
@@ -219,7 +219,7 @@ async function save(page, disp, dir, t0) {
     500
   );
   return {
-    async parar() {
+    async halt() {
       clearInterval(pulso);
       await cdp.send("Page.stopScreencast").catch(() => {});
       // tela parada (ex.: um iframe cobrindo tudo) pode não gerar quadros: o último fica até o fim
@@ -287,7 +287,7 @@ function salvarIndice() {
   );
 }
 for (const v of videos) {
-  if (v.pronto === false || v.manual || !v.steps.length) continue;
+  if (v.ready === false || v.manual || !v.steps.length) continue;
   if (quais.length && !quais.includes(v.id)) continue;
   for (const [nome, disp] of Object.entries(APARELHOS)) {
     if (v.os && v.os !== nome) continue;
@@ -333,7 +333,7 @@ for (const v of videos) {
       }
       const fim = (Date.now() - t0) / 1000 - inicio + 0.6;
       await t.pausa(600);
-      const quadros = gravador ? await gravador.parar() : null;
+      const quadros = gravador ? await gravador.halt() : null;
       await ctx.close();
       if (VERIFICAR) {
         console.log(`ok  ${v.id} ${nome}  ${v.titulo}`);

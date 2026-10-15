@@ -1,12 +1,12 @@
 // Meu progresso: capítulo lido, tempo ativo, soma entre aparelhos, sequência, mapa, plano de leitura — com o Google simulado.
 import { test, expect } from "@playwright/test";
-import { simularGoogle, novaNuvem } from "./google-falso.mjs";
+import { simularGoogle, novaNuvem } from "./fake-google.mjs";
 
 test.use({ serviceWorkers: "block" });
 test.describe.configure({ timeout: 90000 });
 
 // contagem acelerada: 1 "segundo" de leitura mínima, verificação a cada 200 ms, sem gesto = parado depois de 1,5 s
-const RAPIDO = { tick: 200, minLeitura: 1, gesto: 1500, gravarCada: 1000 };
+const RAPIDO = { tick: 200, minReading: 1, gesture: 1500, saveEvery: 1000 };
 
 async function aparelho(browser, info, nuvem, { config = RAPIDO, timezoneId } = {}) {
   const u = info.project.use;
@@ -22,7 +22,7 @@ async function aparelho(browser, info, nuvem, { config = RAPIDO, timezoneId } = 
     timezoneId
   });
   await ctx.addInitScript(c => {
-    window.__progressoConfig = c;
+    window.__progressConfig = c;
     try {
       localStorage.setItem("interlinear:conta-sugestao", "nao");
     } catch (_) {}
@@ -36,13 +36,13 @@ async function aparelho(browser, info, nuvem, { config = RAPIDO, timezoneId } = 
 }
 async function signIn(page) {
   await page.click("#open-toc");
-  await page.click("#conta-entrar");
-  await expect(page.locator("#conta-sinc")).toContainText("Sincronizado");
+  await page.click("#account-signin");
+  await expect(page.locator("#account-sync")).toContainText("Sincronizado");
   await page.keyboard.press("Escape");
 }
 async function abrirProgresso(page) {
   await page.click("#open-toc");
-  await page.click("#open-progresso");
+  await page.click("#open-progress");
   await expect(page.locator("#progresso")).toBeVisible();
 }
 const hojeNa = page =>
@@ -57,7 +57,7 @@ test("sem conta, Meu progresso convida a entrar e não conta nada", async ({ bro
   await page.waitForTimeout(1200);
   await abrirProgresso(page);
   await expect(page.locator("#progresso")).toContainText("Entre com sua conta Google");
-  await expect(page.locator("#progresso .js-entrar")).toBeVisible();
+  await expect(page.locator("#progresso .js-signin")).toBeVisible();
   expect(await page.evaluate(() => window.Annotations.allRecords("leituras"))).toHaveLength(0);
 });
 
@@ -73,20 +73,20 @@ test("ler até o fim do capítulo marca como lido e conta o tempo", async ({ bro
     .poll(() => page.evaluate(() => window.Annotations.allRecords("leituras").then(l => l.map(x => x.id))), { timeout: 8000 })
     .toEqual(["RUT.1"]);
   await abrirProgresso(page);
-  await expect(page.locator("#progresso .pg-grande").first()).toContainText("1 de 1.189 capítulos lidos");
-  await expect(page.locator('.pg-livro[data-livro="RUT"]')).toHaveClass(/n1/);
+  await expect(page.locator("#progresso .pg-big").first()).toContainText("1 de 1.189 capítulos lidos");
+  await expect(page.locator('.pg-book[data-livro="RUT"]')).toHaveClass(/n1/);
   const tempo = await page.evaluate(() => window.Annotations.allRecords("tempo"));
   expect(tempo).toHaveLength(1);
   expect(tempo[0].segundos).toBeGreaterThan(0);
   expect(tempo[0].livros.RUT).toBeGreaterThan(0);
   // o livro: capítulo 1 lido; marcar o 2 à mão
-  await page.click('.pg-livro[data-livro="RUT"]');
-  await expect(page.locator('.pg-cap[data-cap="1"]')).toHaveAttribute("aria-pressed", "true");
-  await page.click('.pg-cap[data-cap="2"]');
-  await expect(page.locator('.pg-cap[data-cap="2"]')).toHaveAttribute("aria-pressed", "true");
-  await expect(page.locator("#progresso .pg-grande")).toHaveText(/^2\s*de 4 capítulos lidos$/);
-  await page.click('.pg-cap[data-cap="2"]'); // e desmarcar
-  await expect(page.locator("#progresso .pg-grande")).toHaveText(/^1\s*de 4 capítulos lidos$/);
+  await page.click('.pg-book[data-livro="RUT"]');
+  await expect(page.locator('.pg-chapter[data-cap="1"]')).toHaveAttribute("aria-pressed", "true");
+  await page.click('.pg-chapter[data-cap="2"]');
+  await expect(page.locator('.pg-chapter[data-cap="2"]')).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("#progresso .pg-big")).toHaveText(/^2\s*de 4 capítulos lidos$/);
+  await page.click('.pg-chapter[data-cap="2"]'); // e desmarcar
+  await expect(page.locator("#progresso .pg-big")).toHaveText(/^1\s*de 4 capítulos lidos$/);
 });
 
 test("sem atividade (nem rolar, nem tocar), o tempo para de contar", async ({ browser }, info) => {
@@ -183,8 +183,8 @@ test("plano de leitura: leitura do dia, em dia ou atrasado, reajustar", async ({
   await abrirProgresso(page);
   await page.click('[data-plano="ano"]');
   await expect(page.locator("#progresso")).toContainText("Bíblia em 1 ano");
-  await expect(page.locator(".pg-dia button")).toHaveText(["Gn 1", "Gn 2", "Gn 3"]);
-  await expect(page.locator(".pg-estado")).toHaveText("Em dia");
+  await expect(page.locator(".pg-day button")).toHaveText(["Gn 1", "Gn 2", "Gn 3"]);
+  await expect(page.locator(".pg-status")).toHaveText("Em dia");
   // o plano começou há 10 dias e nada foi lido: atrasado
   await page.evaluate(async () => {
     const p = (await window.Annotations.allRecords("planos"))[0];
@@ -195,12 +195,12 @@ test("plano de leitura: leitura do dia, em dia ou atrasado, reajustar", async ({
     };
     await window.Annotations.save("planos", { ...p, inicio: d(-10), fim: d(354) });
   });
-  await expect(page.locator(".pg-estado")).toContainText("capítulos atrasado");
-  await page.click("#pg-reajustar");
-  await expect(page.locator(".pg-estado")).toHaveText("Em dia");
-  await expect(page.locator(".pg-dia button").first()).toHaveText("Gn 1");
+  await expect(page.locator(".pg-status")).toContainText("capítulos atrasado");
+  await page.click("#pg-readjust");
+  await expect(page.locator(".pg-status")).toHaveText("Em dia");
+  await expect(page.locator(".pg-day button").first()).toHaveText("Gn 1");
   // tocar na leitura do dia abre o capítulo
-  await page.click('.pg-dia button[data-ir="GEN.1"]');
+  await page.click('.pg-day button[data-ir="GEN.1"]');
   await expect(page.locator("#progresso")).toBeHidden();
   await expect(page).toHaveURL(/GEN\.1/);
 });
@@ -218,11 +218,11 @@ test("zerar estatísticas apaga leituras, tempo e plano, mas não as anotações
   });
   await abrirProgresso(page);
   await page.click('[data-plano="nt90"]');
-  await page.click("#pg-zerar");
-  await page.click('.conta-caixa button[data-r="sim"]');
-  await expect(page.locator("#progresso .pg-grande").first()).toContainText("0 de 1.189");
+  await page.click("#pg-reset");
+  await page.click('.account-box button[data-r="sim"]');
+  await expect(page.locator("#progresso .pg-big").first()).toContainText("0 de 1.189");
   await expect(page.locator('[data-plano="ano"]')).toBeVisible();
-  expect(await page.evaluate(() => window.Annotations.contar())).toBe(1);
+  expect(await page.evaluate(() => window.Annotations.countAll())).toBe(1);
 });
 
 test("foto (só com FOTOS=pasta)", async ({ browser }, info) => {
@@ -250,7 +250,7 @@ test("foto (só com FOTOS=pasta)", async ({ browser }, info) => {
         });
     for (let c = 1; c <= 50; c++) await window.Progress.markRead("GEN", c);
     for (const l of ["RUT", "JON", "PHM", "JUD", "OBA"]) {
-      const n = window.__livros[l].ncaps;
+      const n = window.__books[l].chapterCount;
       for (let c = 1; c <= n; c++) await window.Progress.markRead(l, c);
     }
     for (let c = 1; c <= 10; c++) await window.Progress.markRead("MAT", c);
@@ -263,8 +263,8 @@ test("foto (só com FOTOS=pasta)", async ({ browser }, info) => {
     document.getElementById("progresso").scrollTop = 0;
   });
   await page.screenshot({ path: `${process.env.FOTOS}/progresso-${info.project.name}.png`, fullPage: false });
-  await page.locator("#progresso .pg-mapa").scrollIntoViewIfNeeded();
+  await page.locator("#progresso .pg-map").scrollIntoViewIfNeeded();
   await page.screenshot({ path: `${process.env.FOTOS}/progresso2-${info.project.name}.png` });
-  await page.click('.pg-livro[data-livro="MAT"]');
+  await page.click('.pg-book[data-livro="MAT"]');
   await page.screenshot({ path: `${process.env.FOTOS}/progresso-livro-${info.project.name}.png` });
 });

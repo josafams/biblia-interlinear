@@ -468,9 +468,9 @@ body.grc .word .h { font-size: calc(21px * var(--k)); }
 .bchip { min-height: 44px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); font: 500 13px var(--font-mono); cursor: pointer; }
 .bchip[aria-pressed="true"] { border: 2px solid var(--accent); color: var(--accent); background: var(--accent-soft); }
 .tl-bar.evento { background: var(--accent); opacity: .55; }
-.tl-legend i.k-pessoa { background: var(--accent); }
-.tl-legend i.k-evento { background: var(--accent); opacity: .55; }
-.tl-legend i.k-escrita { background: var(--muted); }
+.tl-legend i.k-person { background: var(--accent); }
+.tl-legend i.k-event { background: var(--accent); opacity: .55; }
+.tl-legend i.k-writing { background: var(--muted); }
 .tl-legend i.k-band { background: var(--accent-soft); border: 1px solid var(--line); }
 .lrow .lh.grc { font-family: var(--font-grc); }
 
@@ -492,17 +492,17 @@ body.grc .word .h { font-size: calc(21px * var(--k)); }
 body.hide-orig .ch-say { display: inline-flex; margin-top: 12px; }
 body.hide-orig header .lede, body.hide-orig header .kbd { display: none; }
 body.hide-orig .verse:not(.abrir) .words { display: none; }
-body.orig-corrido .words { gap: 0 .3em; row-gap: 4px; }
-body.orig-corrido .word { display: inline-block; min-width: 0; min-height: 0; padding: 2px 3px; background: none; border: 0; border-radius: 4px; }
-body.orig-corrido .word .x, body.orig-corrido .word .p, body.orig-corrido .word .s, body.orig-corrido .word .g, body.orig-corrido .word .m { display: none; }
-body.orig-corrido .word.active, body.orig-corrido .word.speaking { background: var(--accent-soft); }
-body.orig-corrido .word .h { font-size: calc(26px * var(--k)); }
+body.orig-running .words { gap: 0 .3em; row-gap: 4px; }
+body.orig-running .word { display: inline-block; min-width: 0; min-height: 0; padding: 2px 3px; background: none; border: 0; border-radius: 4px; }
+body.orig-running .word .x, body.orig-running .word .p, body.orig-running .word .s, body.orig-running .word .g, body.orig-running .word .m { display: none; }
+body.orig-running .word.active, body.orig-running .word.speaking { background: var(--accent-soft); }
+body.orig-running .word .h { font-size: calc(26px * var(--k)); }
 .word .m { display: none; font: 400 10.5px/1.2 var(--font-mono); color: var(--muted); max-width: 15ch; overflow-wrap: anywhere; }
 body.show-morf .word .m { display: block; }
 body.hide-vnum .vnum:not(:focus-within) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-body.hide-tema .ctheme { display: none; }
-body.hide-sobre #sobre { display: none; }
-body.hide-lexico #lexico { display: none; }
+body.hide-theme .ctheme { display: none; }
+body.hide-about #sobre { display: none; }
+body.hide-lexicon #lexico { display: none; }
 body.hide-marks .marks, body.hide-marks .vnote { display: none; }
 body.blivre-par.hide-orig #verses { max-width: 68ch; font-size: calc(18px * var(--k)); line-height: 1.8; }
 body.blivre-par.hide-orig .verse:not(.abrir) { display: inline; padding: 0; border: 0; }
@@ -543,58 +543,58 @@ body.blivre-par.hide-orig .verse:not(.abrir) .vtags, body.blivre-par.hide-orig .
 .mb-top b { font-size: 15px; white-space: nowrap; }
 .mb-top span { font-size: 13px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
 .mb-x { margin-inline-start: auto; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: none; color: var(--fg); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; flex: none; }
-.mb-cores { display: flex; justify-content: space-between; gap: 8px; }
-.mb-cor { width: 44px; height: 44px; border-radius: 50%; border: 2px solid rgba(0,0,0,.12); background: var(--mk); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; color: var(--muted); }
-.mb-cor.mb-sem { background: var(--surface); border-color: var(--line); }
-.mb-cor[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--accent); }
-.mb-acoes { display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 6px; }
-.mb-acoes button { display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 60px; min-height: 52px; border: 0; background: none; color: var(--fg); font: 12.5px var(--font-body); cursor: pointer; border-radius: 10px; }
-.mb-acoes button svg { color: var(--accent); }
-.mb-acoes button[aria-pressed="true"] svg { fill: #e0b040; color: #b07a10; }
-.mb-etiquetas { display: grid; gap: 8px; border-top: 1px solid var(--line); padding-top: 8px; }
-.mb-et-lista, .mn-filtros, .nota-ets { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-.mb-et-nova, .nota-et-nova { display: flex; gap: 6px; }
-.mb-et-nova input, .nota-et-nova input { flex: 1; min-width: 0; height: 40px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); padding: 0 10px; font: inherit; }
-.mb-et-nova button { min-height: 40px; padding: 0 14px; border-radius: 10px; border: 1px solid var(--accent); background: var(--accent); color: var(--surface); font: inherit; cursor: pointer; }
-.mb-vazio, .mn-vazio { font-size: 13px; color: var(--muted); }
+.mb-colors { display: flex; justify-content: space-between; gap: 8px; }
+.mb-color { width: 44px; height: 44px; border-radius: 50%; border: 2px solid rgba(0,0,0,.12); background: var(--mk); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; color: var(--muted); }
+.mb-color.mb-none { background: var(--surface); border-color: var(--line); }
+.mb-color[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--accent); }
+.mb-actions { display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 6px; }
+.mb-actions button { display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 60px; min-height: 52px; border: 0; background: none; color: var(--fg); font: 12.5px var(--font-body); cursor: pointer; border-radius: 10px; }
+.mb-actions button svg { color: var(--accent); }
+.mb-actions button[aria-pressed="true"] svg { fill: #e0b040; color: #b07a10; }
+.mb-tags { display: grid; gap: 8px; border-top: 1px solid var(--line); padding-top: 8px; }
+.mb-tag-list, .mn-filters, .note-tags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.mb-tag-new, .note-tag-new { display: flex; gap: 6px; }
+.mb-tag-new input, .note-tag-new input { flex: 1; min-width: 0; height: 40px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); padding: 0 10px; font: inherit; }
+.mb-tag-new button { min-height: 40px; padding: 0 14px; border-radius: 10px; border: 1px solid var(--accent); background: var(--accent); color: var(--surface); font: inherit; cursor: pointer; }
+.mb-empty, .mn-empty { font-size: 13px; color: var(--muted); }
 .chip { min-height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); font: 13.5px var(--font-body); cursor: pointer; }
 .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface); }
 body.com-mbar #page { padding-bottom: 220px; }
-.nota-sheet, .minhas-sheet { z-index: 45; }
-.nota-corpo { display: grid; gap: 10px; }
-.nota-ref { margin: 0; font-size: 13.5px; color: var(--muted); }
-.nota-corpo input[type="text"], .nota-corpo textarea { width: 100%; box-sizing: border-box; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); font: 16px/1.5 var(--font-body); padding: 10px 12px; }
-.nota-corpo textarea { min-height: 220px; resize: vertical; }
-.nota-ets-r { font-size: 13px; color: var(--muted); }
-.nota-rodape { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
-.nota-apagar { border: 0; background: none; color: #a23a3a; font: inherit; cursor: pointer; min-height: 40px; }
-.mn-filtros2 { display: flex; flex-wrap: wrap; gap: 12px; font-size: 13.5px; color: var(--muted); margin-top: 8px; }
-.mn-filtros2 select { font: inherit; color: var(--fg); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; min-height: 36px; padding: 0 6px; }
-.mn-filtros { margin-top: 10px; }
-.mn-acoes { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 12px 0 4px; font-size: 13px; color: var(--muted); }
-.mn-nova { min-height: 40px; border-radius: 999px; border: 1px solid var(--accent); background: none; color: var(--accent); padding: 0 14px; font: inherit; cursor: pointer; }
+.note-sheet, .mine-sheet { z-index: 45; }
+.note-body { display: grid; gap: 10px; }
+.note-ref { margin: 0; font-size: 13.5px; color: var(--muted); }
+.note-body input[type="text"], .note-body textarea { width: 100%; box-sizing: border-box; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); font: 16px/1.5 var(--font-body); padding: 10px 12px; }
+.note-body textarea { min-height: 220px; resize: vertical; }
+.note-tags-r { font-size: 13px; color: var(--muted); }
+.note-footer { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+.note-delete { border: 0; background: none; color: #a23a3a; font: inherit; cursor: pointer; min-height: 40px; }
+.mn-filters2 { display: flex; flex-wrap: wrap; gap: 12px; font-size: 13.5px; color: var(--muted); margin-top: 8px; }
+.mn-filters2 select { font: inherit; color: var(--fg); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; min-height: 36px; padding: 0 6px; }
+.mn-filters { margin-top: 10px; }
+.mn-actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 12px 0 4px; font-size: 13px; color: var(--muted); }
+.mn-new { min-height: 40px; border-radius: 999px; border: 1px solid var(--accent); background: none; color: var(--accent); padding: 0 14px; font: inherit; cursor: pointer; }
 .linklike { border: 0; background: none; color: var(--accent); text-decoration: underline; font: inherit; cursor: pointer; padding: 0; }
-.mn-grupo { font: 500 11px var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 16px 0 6px; }
+.mn-group { font: 500 11px var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 16px 0 6px; }
 .mn-item { display: grid; gap: 3px; width: 100%; text-align: start; border: 0; border-bottom: 1px solid var(--line); background: none; color: var(--fg); padding: 10px 2px; font: inherit; cursor: pointer; }
 .mn-ref { font: 500 12.5px var(--font-mono); color: var(--accent); }
-.mn-cor { background: var(--mk); color: var(--mk-ink); padding: 0 5px; border-radius: 4px; }
-.mn-tit { font-size: 15px; } .mn-txt { font-size: 14px; color: var(--fg); }
-.mn-ets { display: flex; flex-wrap: wrap; gap: 4px; } .mn-ets .chip { min-height: 24px; font-size: 11.5px; padding: 0 8px; cursor: default; }
+.mn-color { background: var(--mk); color: var(--mk-ink); padding: 0 5px; border-radius: 4px; }
+.mn-title { font-size: 15px; } .mn-txt { font-size: 14px; color: var(--fg); }
+.mn-tags { display: flex; flex-wrap: wrap; gap: 4px; } .mn-tags .chip { min-height: 24px; font-size: 11.5px; padding: 0 8px; cursor: default; }
 
-.mn-acoes2 { flex-wrap: wrap; justify-content: flex-start; gap: 6px; margin-top: 0; }
+.mn-actions2 { flex-wrap: wrap; justify-content: flex-start; gap: 6px; margin-top: 0; }
 .mn-item.sel { grid-template-columns: 26px 1fr; }
 .mn-item.sel::before { content: ""; grid-row: 1 / span 4; width: 20px; height: 20px; border-radius: 5px; border: 2px solid var(--muted); margin-top: 2px; }
 .mn-item.sel[aria-checked="true"]::before { background: var(--accent); border-color: var(--accent); box-shadow: inset 0 0 0 3px var(--surface); }
-.exp-corpo { display: grid; gap: 14px; }
-.exp-corpo fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 8px 12px 10px; margin: 0; display: grid; gap: 2px; }
-.exp-corpo legend { font: 500 11px var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); padding: 0 4px; }
-.exp-corpo .opt { display: flex; align-items: center; gap: 10px; min-height: 40px; font-size: 15px; }
-.exp-corpo .opt input { width: 20px; height: 20px; accent-color: var(--accent); flex: none; }
-.exp-corpo .opt small { color: var(--muted); }
-.exp-corpo select { font: inherit; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--fg); min-height: 34px; margin-inline-start: 6px; }
-.exp-gerar { min-height: 50px; border-radius: 999px; border: 0; background: var(--accent); color: var(--surface); font: 600 16px var(--font-body); cursor: pointer; }
-.exp-gerar:disabled { opacity: .6; }
-.exp-nota { margin: 0; font-size: 13px; color: var(--muted); text-align: center; }
+.exp-body { display: grid; gap: 14px; }
+.exp-body fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 8px 12px 10px; margin: 0; display: grid; gap: 2px; }
+.exp-body legend { font: 500 11px var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); padding: 0 4px; }
+.exp-body .opt { display: flex; align-items: center; gap: 10px; min-height: 40px; font-size: 15px; }
+.exp-body .opt input { width: 20px; height: 20px; accent-color: var(--accent); flex: none; }
+.exp-body .opt small { color: var(--muted); }
+.exp-body select { font: inherit; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--fg); min-height: 34px; margin-inline-start: 6px; }
+.exp-generate { min-height: 50px; border-radius: 999px; border: 0; background: var(--accent); color: var(--surface); font: 600 16px var(--font-body); cursor: pointer; }
+.exp-generate:disabled { opacity: .6; }
+.exp-note { margin: 0; font-size: 13px; color: var(--muted); text-align: center; }
 </style>
 
 <a class="skip" href="#verses" id="skip">Pular para o texto</a>
@@ -630,7 +630,7 @@ body.com-mbar #page { padding-bottom: 220px; }
 
   <details class="about" id="sobre">
     <summary><span class="ab-k">Sobre o livro</span><span class="ab-t" id="ab-title"></span><span class="ab-s">Resumo, pessoas principais, datas e contexto histórico</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-    <div class="ab-body" id="sobre-body"></div>
+    <div class="ab-body" id="about-body"></div>
   </details>
 
   <main id="verses" aria-label="Texto"></main>
@@ -684,8 +684,8 @@ body.com-mbar #page { padding-bottom: 220px; }
       <a href="#sobre" data-go>Sobre o livro <span>resumo e contexto</span></a>
       <a href="#lexico" data-go>Léxico <span id="toc-lexn"></span></a>
       <a href="#fontes" data-go>Fontes e licenças <span></span></a>
-      <a href="#" id="open-minhas">Minhas anotações <span id="minhas-n">notas, marcações, favoritos</span></a>
-      <a href="#" id="open-progresso">Meu progresso <span>leitura, tempo e planos</span></a>
+      <a href="#" id="open-mine">Minhas anotações <span id="mine-n">notas, marcações, favoritos</span></a>
+      <a href="#" id="open-progress">Meu progresso <span>leitura, tempo e planos</span></a>
       <a href="index.html#como-usar" class="site-link">Como usar <span>vídeos curtos</span></a>
       <a href="index.html" class="site-link">Sobre o projeto <span>apps, EPUB e PDF</span></a>
     </div>
@@ -694,27 +694,27 @@ body.com-mbar #page { padding-bottom: 220px; }
 
 <aside class="sheet right" id="look" role="dialog" aria-modal="true" aria-labelledby="look-h" lang="pt-BR" hidden>
   <div class="shead"><h2 id="look-h">Aparência</h2><button class="ibtn" data-close aria-label="Fechar aparência"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  <div class="sgroup" role="group" aria-labelledby="g-modo">
-    <h3 id="g-modo">Modo de leitura</h3>
-    <div class="mode-grid" id="mode-grid" role="radiogroup" aria-labelledby="g-modo"></div>
+  <div class="sgroup" role="group" aria-labelledby="g-mode">
+    <h3 id="g-mode">Modo de leitura</h3>
+    <div class="mode-grid" id="mode-grid" role="radiogroup" aria-labelledby="g-mode"></div>
     <p class="mode-note" id="mode-note"></p>
   </div>
   <div class="sgroup" role="group" aria-labelledby="g-show">
     <h3 id="g-show">Mostrar na página</h3>
     <div class="chks">
       <button class="chk" role="switch" id="t-orig" data-key="t-orig" data-default="on" data-off-class="hide-orig" data-modo aria-checked="true"><span>Texto original<small>hebraico, aramaico ou grego</small></span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-cards" data-key="t-cards" data-default="on" data-off-class="orig-corrido" data-modo aria-checked="true"><span>Original em cartões<small>desligado: texto corrido; toque na palavra abre o verbete</small></span><span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-cards" data-key="t-cards" data-default="on" data-off-class="orig-running" data-modo aria-checked="true"><span>Original em cartões<small>desligado: texto corrido; toque na palavra abre o verbete</small></span><span class="sw2" aria-hidden="true"></span></button>
       <button class="chk" role="switch" id="t-blivre" data-key="t-blivre" data-default="on" data-off-class="hide-blivre" data-modo aria-checked="true">Texto da Bíblia Livre<span class="sw2" aria-hidden="true"></span></button>
       <button class="chk" role="switch" id="t-par" data-key="t-par" data-default="off" data-on-class="blivre-par" data-modo aria-checked="false"><span>Bíblia Livre em parágrafos<small>quando o original está desligado</small></span><span class="sw2" aria-hidden="true"></span></button>
       <button class="chk" role="switch" id="t-vnum" data-key="t-vnum" data-default="on" data-off-class="hide-vnum" data-modo aria-checked="true">Números dos versículos<span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-tema" data-key="t-tema" data-default="on" data-off-class="hide-tema" data-modo aria-checked="true">Tema do capítulo<span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-sobre" data-key="t-sobre" data-default="on" data-off-class="hide-sobre" data-modo aria-checked="true">Sobre o livro<span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-lexico" data-key="t-lexico" data-default="on" data-off-class="hide-lexico" data-modo aria-checked="true">Léxico do capítulo<span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-theme" data-key="t-theme" data-default="on" data-off-class="hide-theme" data-modo aria-checked="true">Tema do capítulo<span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-about" data-key="t-about" data-default="on" data-off-class="hide-about" data-modo aria-checked="true">Sobre o livro<span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-lexicon" data-key="t-lexicon" data-default="on" data-off-class="hide-lexicon" data-modo aria-checked="true">Léxico do capítulo<span class="sw2" aria-hidden="true"></span></button>
       <button class="chk" role="switch" id="t-marks" data-key="t-marks" data-default="on" data-off-class="hide-marks" data-modo aria-checked="true"><span>Pontos da revisão (⚑) e notas<small>revisão automática, ketiv/qere, aparato</small></span><span class="sw2" aria-hidden="true"></span></button>
     </div>
   </div>
-  <div class="sgroup" role="group" aria-labelledby="g-tema">
-    <h3 id="g-tema">Tema</h3>
+  <div class="sgroup" role="group" aria-labelledby="g-theme">
+    <h3 id="g-theme">Tema</h3>
     <div class="tgrid" id="tgrid">
       <button class="tcard tauto" data-p="auto" aria-pressed="false"><span class="half" aria-hidden="true"></span><span>Automático<small>segue o tema do aparelho</small></span></button>
     </div>
@@ -770,8 +770,8 @@ const DATA = __DATA__;
 </script>
 <script src="reader.js"></script>
 <script src="vendor/dexie.min.js"></script>
-<script src="anotacoes.js"></script>
+<script src="annotations.js"></script>
 <script src="google-config.js"></script>
-<script src="conta.js"></script>
-<script src="sincronizar.js"></script>
-<script src="progresso.js"></script>
+<script src="account.js"></script>
+<script src="sync.js"></script>
+<script src="progress.js"></script>

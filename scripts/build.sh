@@ -27,7 +27,7 @@ python3 - <<'PY'
 from pathlib import Path
 
 # página única: o leitor (web/reader.js) vai embutido, porque a prévia é um arquivo só
-t = Path("web/template.html").read_text(encoding="utf8")
+t = Path("web/reader.html").read_text(encoding="utf8")
 d = Path("build/preview.json").read_text(encoding="utf8").replace("</", "<\\/")
 js = Path("web/reader.js").read_text(encoding="utf8").replace("</script", "<\\/script")
 t = t.replace('<script src="reader.js"></script>', "<script>\n" + js + "</script>", 1)

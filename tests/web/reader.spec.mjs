@@ -106,7 +106,7 @@ test("tema, tamanho e camadas ficam guardados ao recarregar", async ({ page }) =
 test("sobre o livro abre com resumo", async ({ page }) => {
   await open(page, "RUT.1");
   await page.click("#sobre summary");
-  await expect(page.locator("#sobre-body")).toContainText(/Noemi/);
+  await expect(page.locator("#about-body")).toContainText(/Noemi/);
 });
 
 test("links do índice levam à página inicial e aos vídeos", async ({ page }) => {
