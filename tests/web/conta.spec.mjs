@@ -27,9 +27,9 @@ test("entrar com Google conecta a pasta do app no Drive e registra o aparelho", 
   await expect(page.locator("#conta .conta-nome")).toHaveText("Maria Teste");
   await expect(page.locator("#conta .conta-email")).toHaveText("maria@exemplo.com");
   await expect(page.locator("#conta .conta-drive")).toHaveText("Google Drive conectado · 1 aparelho");
-  const [conta] = [...arquivos.values()];
-  expect(conta.name).toBe("conta.json");
-  expect(Object.keys(JSON.parse(conta.conteudo).aparelhos)).toHaveLength(1);
+  const [account] = [...arquivos.values()];
+  expect(account.name).toBe("conta.json");
+  expect(Object.keys(JSON.parse(account.conteudo).aparelhos)).toHaveLength(1);
   // o token nunca vai para o armazenamento do navegador
   const guardado = await page.evaluate(() => JSON.stringify(localStorage));
   expect(guardado).toContain("maria@exemplo.com");
@@ -73,7 +73,7 @@ test("sair esquece a conta e mantém as anotações no aparelho", async ({ page 
   await simularGoogle(page);
   await abrirIndice(page);
   await page.evaluate(async () => {
-    await window.Anotacoes.gravar("favoritos", {
+    await window.Anotacoes.save("favoritos", {
       id: crypto.randomUUID(),
       cap: "GEN.1",
       ancora: { livro: "GEN", cap: 1, ver: 1, ver_fim: 1, camada: "versiculo" }
@@ -97,7 +97,7 @@ test("depois da primeira anotação sugere guardar no Drive; “Agora não” n�
   await page.waitForFunction(() => window.Conta && window.Anotacoes);
   await expect(page.locator("#conta-sug")).toBeHidden();
   await page.evaluate(async () => {
-    await window.Anotacoes.gravar("favoritos", {
+    await window.Anotacoes.save("favoritos", {
       id: crypto.randomUUID(),
       cap: "GEN.1",
       ancora: { livro: "GEN", cap: 1, ver: 1, ver_fim: 1, camada: "versiculo" }
@@ -109,7 +109,7 @@ test("depois da primeira anotação sugere guardar no Drive; “Agora não” n�
   await page.reload();
   await page.waitForFunction(() => window.Conta && window.Anotacoes);
   await page.evaluate(async () => {
-    await window.Anotacoes.gravar("favoritos", {
+    await window.Anotacoes.save("favoritos", {
       id: crypto.randomUUID(),
       cap: "GEN.1",
       ancora: { livro: "GEN", cap: 1, ver: 2, ver_fim: 2, camada: "versiculo" }

@@ -21,7 +21,7 @@ public class ImpressaoPlugin extends Plugin {
     private WebView webView; // mantém a referência até a impressão começar
 
     @PluginMethod
-    public void imprimir(PluginCall call) {
+    public void printHtml(PluginCall call) {
         final String html = call.getString("html");
         final String titulo = call.getString("titulo", "Caderno de estudo");
         if (html == null) {

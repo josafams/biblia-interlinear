@@ -1,16 +1,16 @@
 // Anotações no aparelho: marcações com cores, notas, favoritos, etiquetas e "Minhas anotações".
 import { test, expect } from "@playwright/test";
 
-async function abrir(page, ref = "GEN.1") {
+async function open(page, ref = "GEN.1") {
   await page.goto(`ler.html#${ref}`);
   await expect(page.locator(".verse").first()).toBeVisible();
 }
-const barra = page => page.locator("#mbar");
+const bar = page => page.locator("#mbar");
 
 test("marcar um versículo com cor fica guardado", async ({ page }) => {
-  await abrir(page);
+  await open(page);
   await page.click("#v1 .vmark");
-  await expect(barra(page)).toBeVisible();
+  await expect(bar(page)).toBeVisible();
   await expect(page.locator("#mb-ref")).toHaveText("Gênesis 1:1");
   await page.click('#mbar .mb-cor[data-cor="verde"]');
   await expect(page.locator("#v1")).toHaveClass(/mk-verde/);
@@ -22,9 +22,9 @@ test("marcar um versículo com cor fica guardado", async ({ page }) => {
 });
 
 test("nota: criar, reabrir pelo ícone, editar, achar na lista e apagar", async ({ page }) => {
-  await abrir(page);
+  await open(page);
   await page.click("#v2 .vmark");
-  await page.click('#mbar [data-acao="nota"]');
+  await page.click('#mbar [data-action="nota"]');
   await expect(page.locator("#nota")).toBeVisible();
   await page.fill("#nota-texto", "tôhû wâbôhû: rima no hebraico");
   await expect(page.locator("#nota-estado")).toHaveText("Salva.");
@@ -52,17 +52,17 @@ test("nota: criar, reabrir pelo ícone, editar, achar na lista e apagar", async 
 });
 
 test("favoritar e desfavoritar", async ({ page }) => {
-  await abrir(page, "PSA.23");
+  await open(page, "PSA.23");
   await page.click("#v1 .vmark");
-  await page.click('#mbar [data-acao="fav"]');
+  await page.click('#mbar [data-action="fav"]');
   await expect(page.locator("#v1 .vfav")).toBeVisible();
-  await expect(page.locator('#mbar [data-acao="fav"]')).toHaveAttribute("aria-pressed", "true");
-  await page.click('#mbar [data-acao="fav"]');
+  await expect(page.locator('#mbar [data-action="fav"]')).toHaveAttribute("aria-pressed", "true");
+  await page.click('#mbar [data-action="fav"]');
   await expect(page.locator("#v1 .vfav")).toHaveCount(0);
 });
 
 test("marcar um trecho selecionado da Bíblia Livre", async ({ page }) => {
-  await abrir(page);
+  await open(page);
   await page.evaluate(() => {
     const bl = document.querySelector("#v3 .blivre"),
       t = bl.lastChild,
@@ -73,7 +73,7 @@ test("marcar um trecho selecionado da Bíblia Livre", async ({ page }) => {
     getSelection().removeAllRanges();
     getSelection().addRange(r);
   });
-  await expect(barra(page)).toBeVisible();
+  await expect(bar(page)).toBeVisible();
   await expect(page.locator("#mb-trecho")).toContainText("Haja luz");
   await page.click('#mbar .mb-cor[data-cor="amarelo"]');
   await expect(page.locator("#v3 mark.mk-amarelo")).toHaveText("Haja luz");
@@ -82,7 +82,7 @@ test("marcar um trecho selecionado da Bíblia Livre", async ({ page }) => {
 });
 
 test("toque longo numa palavra do original marca só ela", async ({ page, isMobile }) => {
-  await abrir(page);
+  await open(page);
   const w = page.locator('.word[data-v="0"][data-i="1"]');
   if (isMobile)
     await w.dispatchEvent("contextmenu"); // o toque longo do celular chega como contextmenu
@@ -93,7 +93,7 @@ test("toque longo numa palavra do original marca só ela", async ({ page, isMobi
     await page.waitForTimeout(900);
     await page.mouse.up();
   }
-  await expect(barra(page)).toBeVisible();
+  await expect(bar(page)).toBeVisible();
   await expect(page.locator("#detail")).toBeHidden();
   await page.click('#mbar .mb-cor[data-cor="rosa"]');
   await expect(w).toHaveClass(/mk-rosa/);
@@ -101,9 +101,9 @@ test("toque longo numa palavra do original marca só ela", async ({ page, isMobi
 });
 
 test("etiquetas: criar, aplicar e filtrar na lista", async ({ page }) => {
-  await abrir(page, "JHN.3");
+  await open(page, "JHN.3");
   await page.click("#v16 .vmark");
-  await page.click('#mbar [data-acao="etiqueta"]');
+  await page.click('#mbar [data-action="etiqueta"]');
   await page.fill("#mb-et-nome", "promessas");
   await page.click("#mb-nova-et");
   await expect(page.locator('#mb-etiquetas .chip[aria-pressed="true"]')).toHaveText("promessas");
@@ -116,11 +116,11 @@ test("etiquetas: criar, aplicar e filtrar na lista", async ({ page }) => {
 });
 
 test("da lista, tocar numa marcação leva ao versículo", async ({ page }) => {
-  await abrir(page, "ROM.8");
+  await open(page, "ROM.8");
   await page.click("#v28 .vmark");
   await page.click('#mbar .mb-cor[data-cor="laranja"]');
   await page.click("#mb-fechar");
-  await abrir(page, "GEN.1");
+  await open(page, "GEN.1");
   await page.click("#open-toc");
   await page.click("#open-minhas");
   await page.click('.mn-item[data-tipo="marcacoes"]');
@@ -129,10 +129,10 @@ test("da lista, tocar numa marcação leva ao versículo", async ({ page }) => {
 });
 
 test("no modo Bíblia, a barra abre o interlinear do versículo", async ({ page }) => {
-  await abrir(page);
+  await open(page);
   await page.click('#welcome button[data-modo="biblia"]');
   await page.evaluate(() => document.querySelector("#v4 .vmark").click());
-  await expect(page.locator('#mbar [data-acao="camadas"]')).toBeVisible();
-  await page.click('#mbar [data-acao="camadas"]');
+  await expect(page.locator('#mbar [data-action="camadas"]')).toBeVisible();
+  await page.click('#mbar [data-action="camadas"]');
   await expect(page.locator('.word[data-v="3"][data-i="0"]')).toBeVisible();
 });

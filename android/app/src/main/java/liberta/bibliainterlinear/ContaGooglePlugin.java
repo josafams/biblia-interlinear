@@ -39,7 +39,7 @@ public class ContaGooglePlugin extends Plugin {
 
     @PluginMethod
     public void autorizar(PluginCall call) {
-        boolean silencioso = Boolean.TRUE.equals(call.getBoolean("silencioso", false));
+        boolean silencioso = Boolean.TRUE.equals(call.getBoolean("silent", false));
         AuthorizationRequest pedido = AuthorizationRequest.builder()
             .setRequestedScopes(Arrays.asList(new Scope("openid"), new Scope("email"), new Scope("profile"), new Scope(DRIVE_APPDATA)))
             .build();
@@ -59,7 +59,7 @@ public class ContaGooglePlugin extends Plugin {
     }
 
     @PluginMethod
-    public void sair(PluginCall call) {
+    public void signOut(PluginCall call) {
         // O token some da memória do app; para revogar de vez: myaccount.google.com › Segurança › Apps com acesso.
         call.resolve();
     }

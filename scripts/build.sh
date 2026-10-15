@@ -24,9 +24,14 @@ node scripts/build_web.mjs
 python3 scripts/export.py --preview build/preview.json GEN.1 GEN.2 GEN.3 GEN.12 EXO.20 RUT.1 PSA.1 PSA.23 PSA.51 \
   ISA.53 DAN.2 MAT.5 JHN.1 JHN.3 ROM.8 1CO.13 REV.21
 python3 - <<'PY'
-t = open("web/template.html", encoding="utf8").read()
-d = open("build/preview.json", encoding="utf8").read().replace("</", "<\\/")
-open("build/preview.html", "w", encoding="utf8").write(t.replace("__DATA__", d, 1))
+from pathlib import Path
+
+# página única: o leitor (web/reader.js) vai embutido, porque a prévia é um arquivo só
+t = Path("web/template.html").read_text(encoding="utf8")
+d = Path("build/preview.json").read_text(encoding="utf8").replace("</", "<\\/")
+js = Path("web/reader.js").read_text(encoding="utf8").replace("</script", "<\\/script")
+t = t.replace('<script src="reader.js"></script>', "<script>\n" + js + "</script>", 1)
+Path("build/preview.html").write_text(t.replace("__DATA__", d, 1), encoding="utf8")
 PY
 python3 scripts/build_epub.py     # build/epub: um EPUB por livro
 if [ "${PDF:-1}" = "1" ]; then python3 scripts/build_pdf.py; fi   # build/pdf: um PDF por livro (PDF=0 pula)

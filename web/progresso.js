@@ -15,33 +15,33 @@
   "use strict";
   const A = window.Anotacoes,
     C = window.Conta;
-  if (!A?.banco || !C) return;
-  const B = A.banco;
+  if (!A?.storage || !C) return;
+  const B = A.storage;
   const CFG = Object.assign({ tick: 5000, minLeitura: 60, gesto: 120000, gravarCada: 300000 }, window.__progressoConfig || {});
-  const DIA = 864e5;
+  const DAY_MS = 864e5;
   const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
   const pad = n => String(n).padStart(2, "0");
-  const diaDe = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; // dia local (fuso do aparelho)
-  const hoje = () => diaDe(new Date());
-  const somaDias = (dia, n) => {
+  const dayOf = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; // dia local (fuso do aparelho)
+  const today = () => dayOf(new Date());
+  const addDays = (dia, n) => {
     const [a, m, d] = dia.split("-").map(Number);
-    return diaDe(new Date(a, m - 1, d + n));
+    return dayOf(new Date(a, m - 1, d + n));
   };
-  const entreDias = (a, b) => {
+  const daysBetween = (a, b) => {
     const [x, y] = [a, b].map(s => {
       const [p, q, r] = s.split("-").map(Number);
       return Date.UTC(p, q - 1, r);
     });
-    return Math.round((y - x) / DIA);
+    return Math.round((y - x) / DAY_MS);
   };
-  const lerLS = k => {
+  const readLS = k => {
     try {
       return localStorage.getItem(k);
     } catch (_) {
       return null;
     }
   };
-  const gravarLS = (k, v) => {
+  const saveLS = (k, v) => {
     try {
       v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v);
     } catch (_) {}
@@ -51,281 +51,281 @@
     Object.entries(window.__livros || {})
       .sort((a, b) => a[1].i - b[1].i)
       .map(([cod, l]) => ({ cod, ...l }));
-  const totalCaps = lista => lista.reduce((s, l) => s + (l.ncaps || 0), 0);
-  const ligado = () => !!C.conta(); // conta lembrada neste aparelho (mesmo à espera de reconectar)
-  const pausado = () => lerLS("interlinear:tempo-pausado") === "sim";
+  const totalChapters = listSheet => listSheet.reduce((s, l) => s + (l.ncaps || 0), 0);
+  const signedIn = () => !!C.account(); // conta lembrada neste aparelho (mesmo à espera de reconectar)
+  const paused = () => readLS("interlinear:tempo-pausado") === "sim";
 
-  function duracao(seg) {
-    const m = Math.round(seg / 60);
-    if (m < 1) return seg > 0 ? "menos de 1 min" : "0 min";
+  function duration(sec) {
+    const m = Math.round(sec / 60);
+    if (m < 1) return sec > 0 ? "menos de 1 min" : "0 min";
     if (m < 60) return `${m} min`;
     const h = Math.floor(m / 60),
       r = m % 60;
     return r ? `${h} h ${r} min` : `${h} h`;
   }
-  const dataCurta = iso => {
+  const shortDate = iso => {
     if (!iso) return "—";
     const d = new Date(iso);
     return `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()}`;
   };
 
   // ---------- medição ----------
-  let atual = null; // capítulo na tela { cod, cap }
-  let ativoNoCap = 0,
-    marcadoNestaVisita = false,
-    fimVisto = false;
-  let ultimoGesto = Date.now();
-  let acc = { dia: hoje(), segundos: 0, livros: {}, caps: 0, verbetes: 0 };
+  let currentChapter = null; // capítulo na tela { cod, cap }
+  let activeInChapter = 0,
+    markedThisVisit = false,
+    endSeen = false;
+  let lastGesture = Date.now();
+  let acc = { dia: today(), segundos: 0, livros: {}, caps: 0, verbetes: 0 };
   ["scroll", "pointerdown", "keydown", "wheel", "touchstart"].forEach(t =>
     window.addEventListener(
       t,
       () => {
-        ultimoGesto = Date.now();
+        lastGesture = Date.now();
       },
       { passive: true, capture: true }
     )
   );
-  const ouvindo = () => {
+  const listening = () => {
     try {
       return !!window.speechSynthesis?.speaking;
     } catch (_) {
       return false;
     }
   };
-  const ativo = () => document.visibilityState === "visible" && (Date.now() - ultimoGesto < CFG.gesto || ouvindo());
+  const isActive = () => document.visibilityState === "visible" && (Date.now() - lastGesture < CFG.gesto || listening());
 
-  let observador = null;
-  function vigiarFim() {
-    fimVisto = false;
-    observador?.disconnect();
+  let observer = null;
+  function watchEnd() {
+    endSeen = false;
+    observer?.disconnect();
     const vs = document.querySelectorAll("#verses .verse");
-    const ultimo = vs[vs.length - 1];
-    if (!ultimo || !("IntersectionObserver" in window)) {
-      fimVisto = true;
+    const lastEl = vs[vs.length - 1];
+    if (!lastEl || !("IntersectionObserver" in window)) {
+      endSeen = true;
       return;
     }
-    observador = new IntersectionObserver(es => {
+    observer = new IntersectionObserver(es => {
       if (es.some(e => e.isIntersecting)) {
-        fimVisto = true;
-        checarLido();
+        endSeen = true;
+        checkRead();
       }
     });
-    observador.observe(ultimo);
+    observer.observe(lastEl);
   }
-  let posicaoTimer = 0;
+  let positionTimer = 0;
   document.addEventListener("capitulo", e => {
     const d = e.detail || {};
-    atual = d.cod ? { cod: d.cod, cap: d.cap } : null;
-    ativoNoCap = 0;
-    marcadoNestaVisita = false;
-    setTimeout(vigiarFim, 50);
-    clearTimeout(posicaoTimer);
+    currentChapter = d.cod ? { cod: d.cod, cap: d.cap } : null;
+    activeInChapter = 0;
+    markedThisVisit = false;
+    setTimeout(watchEnd, 50);
+    clearTimeout(positionTimer);
     // a posição vale em todos os aparelhos ("continuar de onde parou"); grava depois de alguns segundos no capítulo
-    if (atual && ligado())
-      posicaoTimer = setTimeout(() => {
-        if (atual && atual.cod === d.cod && atual.cap === d.cap)
-          A.gravar("preferencias", { id: "posicao", cod: d.cod, cap: d.cap, quando: new Date().toISOString() });
+    if (currentChapter && signedIn())
+      positionTimer = setTimeout(() => {
+        if (currentChapter && currentChapter.cod === d.cod && currentChapter.cap === d.cap)
+          A.save("preferencias", { id: "posicao", cod: d.cod, cap: d.cap, quando: new Date().toISOString() });
       }, 5000);
   });
   if (window.__capituloAtual) {
     const d = window.__capituloAtual;
-    atual = { cod: d.cod, cap: d.cap };
-    setTimeout(vigiarFim, 50);
+    currentChapter = { cod: d.cod, cap: d.cap };
+    setTimeout(watchEnd, 50);
   }
   document.addEventListener("verbete", () => {
-    if (ligado()) acc.verbetes++;
+    if (signedIn()) acc.verbetes++;
   });
 
   setInterval(() => {
-    if (!ligado() || !atual || !ativo()) return;
-    const seg = CFG.tick / 1000;
-    if (acc.dia !== hoje()) gravarTempo(); // virou o dia: o que foi lido antes fica no dia anterior
-    if (!pausado()) {
-      acc.segundos += seg;
-      acc.livros[atual.cod] = (acc.livros[atual.cod] || 0) + seg;
+    if (!signedIn() || !currentChapter || !isActive()) return;
+    const sec = CFG.tick / 1000;
+    if (acc.dia !== today()) saveTime(); // virou o dia: o que foi lido antes fica no dia anterior
+    if (!paused()) {
+      acc.segundos += sec;
+      acc.livros[currentChapter.cod] = (acc.livros[currentChapter.cod] || 0) + sec;
     }
-    ativoNoCap += seg;
-    checarLido();
+    activeInChapter += sec;
+    checkRead();
   }, CFG.tick);
-  setInterval(() => gravarTempo(), CFG.gravarCada);
+  setInterval(() => saveTime(), CFG.gravarCada);
   document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "hidden") gravarTempo();
+    if (document.visibilityState === "hidden") saveTime();
   });
-  window.addEventListener("pagehide", () => gravarTempo());
+  window.addEventListener("pagehide", () => saveTime());
 
-  function checarLido() {
-    if (!atual || marcadoNestaVisita || !fimVisto || ativoNoCap < CFG.minLeitura || !ligado()) return;
-    marcadoNestaVisita = true;
-    marcarLido(atual.cod, atual.cap, true);
+  function checkRead() {
+    if (!currentChapter || markedThisVisit || !endSeen || activeInChapter < CFG.minLeitura || !signedIn()) return;
+    markedThisVisit = true;
+    markRead(currentChapter.cod, currentChapter.cap, true);
   }
-  async function marcarLido(cod, n, lido = true) {
+  async function markRead(cod, n, lido = true) {
     const id = `${cod}.${n}`;
-    const r = await B.ler("leituras", id);
-    const agora = new Date().toISOString();
+    const r = await B.readStorage("leituras", id);
+    const currentTime = new Date().toISOString();
     if (lido) {
-      await A.gravar("leituras", {
+      await A.save("leituras", {
         id,
         livro: cod,
         n,
         lido: true,
-        primeira: r?.primeira || agora,
-        ultima: agora,
+        primeira: r?.primeira || currentTime,
+        ultima: currentTime,
         vezes: (r?.vezes || 0) + 1
       });
       if (!r?.lido) acc.caps++;
-    } else if (r) await A.gravar("leituras", { id, lido: false });
-    if (!painel.hidden) desenhar();
+    } else if (r) await A.save("leituras", { id, lido: false });
+    if (!panel.hidden) render();
   }
-  let gravando = Promise.resolve();
-  function gravarTempo() {
+  let writing = Promise.resolve();
+  function saveTime() {
     if (!acc.segundos && !acc.caps && !acc.verbetes) {
-      acc.dia = hoje();
-      return gravando;
+      acc.dia = today();
+      return writing;
     }
-    const parte = acc;
-    acc = { dia: hoje(), segundos: 0, livros: {}, caps: 0, verbetes: 0 };
-    gravando = gravando
+    const chunk = acc;
+    acc = { dia: today(), segundos: 0, livros: {}, caps: 0, verbetes: 0 };
+    writing = writing
       .then(async () => {
-        const id = `${B.aparelho}:${parte.dia}`;
-        const r = await B.ler("tempo", id);
+        const id = `${B.aparelho}:${chunk.dia}`;
+        const r = await B.readStorage("tempo", id);
         const base = r && !r.apagado ? r : { segundos: 0, livros: {}, caps: 0, verbetes: 0 };
-        const livrosSoma = { ...base.livros };
-        for (const [k, v] of Object.entries(parte.livros)) livrosSoma[k] = (livrosSoma[k] || 0) + v;
-        await A.gravar("tempo", {
+        const booksTotals = { ...base.livros };
+        for (const [k, v] of Object.entries(chunk.livros)) booksTotals[k] = (booksTotals[k] || 0) + v;
+        await A.save("tempo", {
           id,
           aparelho: B.aparelho,
-          dia: parte.dia,
-          segundos: (base.segundos || 0) + parte.segundos,
-          livros: livrosSoma,
-          caps: (base.caps || 0) + parte.caps,
-          verbetes: (base.verbetes || 0) + parte.verbetes,
+          dia: chunk.dia,
+          segundos: (base.segundos || 0) + chunk.segundos,
+          livros: booksTotals,
+          caps: (base.caps || 0) + chunk.caps,
+          verbetes: (base.verbetes || 0) + chunk.verbetes,
           apagado: false
         });
       })
       .catch(() => {});
-    return gravando;
+    return writing;
   }
 
   // ---------- números ----------
-  async function dados() {
-    await gravarTempo();
+  async function payload() {
+    await saveTime();
     const [leituras, tempo, planos, prefs, notas, marcacoes, favoritos] = await Promise.all(
-      ["leituras", "tempo", "planos", "preferencias", "notas", "marcacoes", "favoritos"].map(c => A.todos(c))
+      ["leituras", "tempo", "planos", "preferencias", "notas", "marcacoes", "favoritos"].map(c => A.allRecords(c))
     );
-    const lidos = new Map(leituras.filter(l => l.lido).map(l => [l.id, l]));
-    const porDia = {};
+    const readSet = new Map(leituras.filter(l => l.lido).map(l => [l.id, l]));
+    const byDay = {};
     for (const t of tempo) {
-      const d = (porDia[t.dia] = porDia[t.dia] || { segundos: 0, caps: 0, verbetes: 0, livros: {} });
+      const d = (byDay[t.dia] = byDay[t.dia] || { segundos: 0, caps: 0, verbetes: 0, livros: {} });
       d.segundos += t.segundos || 0;
       d.caps += t.caps || 0;
       d.verbetes += t.verbetes || 0;
       for (const [k, v] of Object.entries(t.livros || {})) d.livros[k] = (d.livros[k] || 0) + v;
     }
     // dias com leitura também pelas datas dos capítulos (cobre marcações feitas à mão)
-    for (const l of lidos.values()) {
-      const d = diaDe(new Date(l.ultima || l.primeira));
-      (porDia[d] = porDia[d] || { segundos: 0, caps: 0, verbetes: 0, livros: {} }).capsLidos = true;
+    for (const l of readSet.values()) {
+      const d = dayOf(new Date(l.ultima || l.primeira));
+      (byDay[d] = byDay[d] || { segundos: 0, caps: 0, verbetes: 0, livros: {} }).capsLidos = true;
     }
-    const comAnotacao = new Set([...notas, ...marcacoes, ...favoritos].map(r => r.cap).filter(Boolean));
+    const withNotes = new Set([...notas, ...marcacoes, ...favoritos].map(r => r.cap).filter(Boolean));
     return {
-      lidos,
-      porDia,
-      comAnotacao,
+      readSet,
+      byDay,
+      withNotes,
       plano: planos.find(p => p.id === "atual") || null,
       posicao: prefs.find(p => p.id === "posicao") || null,
       estudo: { notas: notas.length, marcacoes: marcacoes.length, favoritos: favoritos.length }
     };
   }
-  function sequencia(porDia) {
-    const conta = d => {
-      const x = porDia[d];
+  function streaks(byDay) {
+    const account = d => {
+      const x = byDay[d];
       return !!x && (x.caps > 0 || x.capsLidos || x.segundos >= 300);
     };
-    let atualSeq = 0,
-      d = hoje();
-    if (!conta(d)) d = somaDias(d, -1);
-    while (conta(d)) {
-      atualSeq++;
-      d = somaDias(d, -1);
+    let currentStreak = 0,
+      d = today();
+    if (!account(d)) d = addDays(d, -1);
+    while (account(d)) {
+      currentStreak++;
+      d = addDays(d, -1);
     }
-    const dias = Object.keys(porDia).filter(conta).sort();
-    let recorde = 0,
-      corrida = 0,
-      ant = null;
-    for (const x of dias) {
-      corrida = ant && entreDias(ant, x) === 1 ? corrida + 1 : 1;
-      recorde = Math.max(recorde, corrida);
-      ant = x;
+    const days = Object.keys(byDay).filter(account).sort();
+    let record = 0,
+      run = 0,
+      previous = null;
+    for (const x of days) {
+      run = previous && daysBetween(previous, x) === 1 ? run + 1 : 1;
+      record = Math.max(record, run);
+      previous = x;
     }
-    return { atual: atualSeq, recorde };
+    return { currentChapter: currentStreak, record };
   }
-  function ritmo(lidos) {
+  function ritmo(readSet) {
     // capítulos por dia nos últimos 30 dias
-    const desde = Date.now() - 30 * DIA;
+    const since = Date.now() - 30 * DAY_MS;
     let n = 0;
-    for (const l of lidos.values()) if (Date.parse(l.ultima || l.primeira) >= desde) n++;
+    for (const l of readSet.values()) if (Date.parse(l.ultima || l.primeira) >= since) n++;
     return n / 30;
   }
 
   // ---------- planos de leitura ----------
-  const PLANOS = {
+  const PLANS = {
     ano: {
       nome: "Bíblia em 1 ano",
-      dias: 365,
+      days: 365,
       caps: () => livros().flatMap(l => Array.from({ length: l.ncaps }, (_, i) => `${l.cod}.${i + 1}`))
     },
     nt90: {
       nome: "Novo Testamento em 90 dias",
-      dias: 90,
+      days: 90,
       caps: () =>
         livros()
           .filter(l => l.nt)
           .flatMap(l => Array.from({ length: l.ncaps }, (_, i) => `${l.cod}.${i + 1}`))
     }
   };
-  function situacaoPlano(p, lidos) {
+  function planStatus(p, readSet) {
     const N = p.caps.length,
-      D = entreDias(p.inicio, p.fim) + 1;
-    const d = Math.min(Math.max(entreDias(p.inicio, hoje()), 0), D - 1);
-    const doDia = p.caps.slice(Math.floor((d * N) / D), Math.floor(((d + 1) * N) / D));
-    const feitos = p.caps.filter(c => lidos.has(c)).length;
-    const antes = Math.floor((d * N) / D),
-      ateHoje = Math.floor(((d + 1) * N) / D);
+      D = daysBetween(p.inicio, p.fim) + 1;
+    const d = Math.min(Math.max(daysBetween(p.inicio, today()), 0), D - 1);
+    const todays = p.caps.slice(Math.floor((d * N) / D), Math.floor(((d + 1) * N) / D));
+    const done = p.caps.filter(c => readSet.has(c)).length;
+    const before = Math.floor((d * N) / D),
+      untilToday = Math.floor(((d + 1) * N) / D);
     let texto, tipo;
-    if (feitos >= N) {
+    if (done >= N) {
       texto = "Plano concluído!";
       tipo = "ok";
-    } else if (feitos > ateHoje) {
-      texto = `${feitos - ateHoje} ${feitos - ateHoje === 1 ? "capítulo adiantado" : "capítulos adiantado"}`;
+    } else if (done > untilToday) {
+      texto = `${done - untilToday} ${done - untilToday === 1 ? "capítulo adiantado" : "capítulos adiantado"}`;
       tipo = "ok";
-    } else if (feitos >= antes) {
+    } else if (done >= before) {
       texto = "Em dia";
       tipo = "ok";
     } else {
-      texto = `${antes - feitos} ${antes - feitos === 1 ? "capítulo atrasado" : "capítulos atrasado"}`;
+      texto = `${before - done} ${before - done === 1 ? "capítulo atrasado" : "capítulos atrasado"}`;
       tipo = "alerta";
     }
-    return { doDia, feitos, N, dia: d + 1, D, texto, tipo };
+    return { todays, done, N, dia: d + 1, D, texto, tipo };
   }
-  async function iniciarPlano(tipo) {
-    const P = PLANOS[tipo];
-    await A.gravar("planos", {
+  async function startPlan(tipo) {
+    const P = PLANS[tipo];
+    await A.save("planos", {
       id: "atual",
       tipo,
       nome: P.nome,
-      inicio: hoje(),
-      fim: somaDias(hoje(), P.dias - 1),
+      inicio: today(),
+      fim: addDays(today(), P.days - 1),
       caps: P.caps(),
       apagado: false
     });
-    desenhar();
+    render();
   }
-  async function reajustarPlano(p, lidos) {
-    const faltam = p.caps.filter(c => !lidos.has(c));
-    const ritmoOriginal = p.caps.length / (entreDias(p.inicio, p.fim) + 1) || 1;
-    const dias = Math.max(1, Math.ceil(faltam.length / ritmoOriginal));
-    await A.gravar("planos", { ...p, caps: faltam, inicio: hoje(), fim: somaDias(hoje(), dias - 1) });
-    desenhar();
+  async function reschedulePlan(p, readSet) {
+    const remaining = p.caps.filter(c => !readSet.has(c));
+    const ritmoOriginal = p.caps.length / (daysBetween(p.inicio, p.fim) + 1) || 1;
+    const days = Math.max(1, Math.ceil(remaining.length / ritmoOriginal));
+    await A.save("planos", { ...p, caps: remaining, inicio: today(), fim: addDays(today(), days - 1) });
+    render();
   }
 
   // ---------- tela ----------
@@ -378,80 +378,81 @@
 `;
   document.head.appendChild(css);
 
-  const painel = document.createElement("aside");
-  painel.id = "progresso";
-  painel.className = "sheet right progresso-sheet";
-  painel.hidden = true;
-  painel.setAttribute("role", "dialog");
-  painel.setAttribute("aria-modal", "true");
-  painel.setAttribute("aria-labelledby", "pg-h");
-  painel.setAttribute("lang", "pt-BR");
-  document.body.appendChild(painel);
-  let aba = "semana",
-    livroAberto = null,
-    voltarFoco = null;
+  const panel = document.createElement("aside");
+  panel.id = "progresso";
+  panel.className = "sheet right progresso-sheet";
+  panel.hidden = true;
+  panel.setAttribute("role", "dialog");
+  panel.setAttribute("aria-modal", "true");
+  panel.setAttribute("aria-labelledby", "pg-h");
+  panel.setAttribute("lang", "pt-BR");
+  document.body.appendChild(panel);
+  let activeTab = "semana",
+    openBook = null,
+    focusReturn = null;
 
-  function abrir() {
-    voltarFoco = document.activeElement;
+  function open() {
+    focusReturn = document.activeElement;
     document.dispatchEvent(new CustomEvent("anotacoes:abrir-painel"));
-    livroAberto = null;
-    painel.hidden = false;
-    desenhar().then(() => painel.querySelector("#pg-fechar")?.focus());
+    openBook = null;
+    panel.hidden = false;
+    render().then(() => panel.querySelector("#pg-fechar")?.focus());
   }
-  function fechar() {
-    if (painel.hidden) return;
-    painel.hidden = true;
-    if (voltarFoco?.isConnected) voltarFoco.focus({ preventScroll: true });
+  function hide() {
+    if (panel.hidden) return;
+    panel.hidden = true;
+    if (focusReturn?.isConnected) focusReturn.focus({ preventScroll: true });
   }
-  const cabecalho = titulo =>
+  const headerHtml = titulo =>
     `<div class="shead"><h2 id="pg-h">${esc(titulo)}</h2><button class="ibtn" id="pg-fechar" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>`;
 
-  async function desenhar() {
-    if (painel.hidden) return;
-    if (!ligado()) {
-      painel.innerHTML =
-        cabecalho("Meu progresso") +
+  async function render() {
+    if (panel.hidden) return;
+    if (!signedIn()) {
+      panel.innerHTML =
+        headerHtml("Meu progresso") +
         `<div class="pg-sec pg-convite">
         <p>Entre com sua conta Google para acompanhar quanto da Bíblia já leu, o tempo de leitura por dia, a sequência de dias e um plano de leitura — somados em todos os seus aparelhos.</p>
         <p class="pg-sub">Os números ficam só para você, no seu aparelho e numa pasta privada do app no seu Google Drive.</p>
-        ${C.disponivel() ? `<div><button class="gbtn js-entrar">Entrar com Google</button></div>` : `<p class="pg-sub">O login ainda não está disponível nesta versão.</p>`}</div>`;
+        ${C.available() ? `<div><button class="gbtn js-entrar">Entrar com Google</button></div>` : `<p class="pg-sub">O login ainda não está disponível nesta versão.</p>`}</div>`;
       return;
     }
-    const D = await dados();
-    painel.innerHTML =
-      cabecalho(livroAberto ? window.__livros?.[livroAberto]?.nome || livroAberto : "Meu progresso") +
-      (livroAberto ? telaLivro(D, livroAberto) : telaGeral(D));
+    const D = await payload();
+    panel.innerHTML =
+      headerHtml(openBook ? window.__livros?.[openBook]?.nome || openBook : "Meu progresso") +
+      (openBook ? bookHtml(D, openBook) : overviewHtml(D));
   }
 
-  function telaGeral(D) {
+  function overviewHtml(D) {
     const ls = livros(),
-      total = totalCaps(ls) || 1189;
+      total = totalChapters(ls) || 1189;
     const at = ls.filter(l => !l.nt),
       nt = ls.filter(l => l.nt);
-    const lidosDe = lista => lista.reduce((s, l) => s + [...Array(l.ncaps).keys()].filter(i => D.lidos.has(`${l.cod}.${i + 1}`)).length, 0);
-    const nLidos = D.lidos.size,
-      nAT = lidosDe(at),
-      nNT = lidosDe(nt);
-    const concluidos = ls.filter(l => lidosDe([l]) === l.ncaps).length;
-    const pct = Math.floor((nLidos / total) * 1000) / 10;
-    const seq = sequencia(D.porDia);
-    const semana = [...Array(7).keys()].map(i => D.porDia[somaDias(hoje(), -i)]?.segundos || 0).reduce((a, b) => a + b, 0);
-    const totalSeg = Object.values(D.porDia).reduce((s, d) => s + d.segundos, 0);
-    const verbetes = Object.values(D.porDia).reduce((s, d) => s + d.verbetes, 0);
+    const readCountOf = listSheet =>
+      listSheet.reduce((s, l) => s + [...Array(l.ncaps).keys()].filter(i => D.readSet.has(`${l.cod}.${i + 1}`)).length, 0);
+    const nRead = D.readSet.size,
+      nOT = readCountOf(at),
+      nNT = readCountOf(nt);
+    const completedBooks = ls.filter(l => readCountOf([l]) === l.ncaps).length;
+    const pct = Math.floor((nRead / total) * 1000) / 10;
+    const streak = streaks(D.byDay);
+    const week = [...Array(7).keys()].map(i => D.byDay[addDays(today(), -i)]?.segundos || 0).reduce((a, b) => a + b, 0);
+    const totalSeconds = Object.values(D.byDay).reduce((s, d) => s + d.segundos, 0);
+    const verbetes = Object.values(D.byDay).reduce((s, d) => s + d.verbetes, 0);
     const pos = D.posicao && window.__livros?.[D.posicao.cod];
-    const continuar = pos
+    const continueBtn = pos
       ? `<button class="pg-continuar" data-ir="${esc(D.posicao.cod)}.${D.posicao.cap}"><span><small>Continuar de onde parou</small><b>${esc(pos.nome)} ${D.posicao.cap}</b></span><span aria-hidden="true">→</span></button>`
       : "";
-    return `${continuar}
+    return `${continueBtn}
       <section class="pg-sec" aria-labelledby="pg-biblia"><h3 id="pg-biblia">A Bíblia inteira</h3>
-        <div class="pg-grande"><b>${pct.toLocaleString("pt-BR")}%</b><span>${nLidos.toLocaleString("pt-BR")} de ${total.toLocaleString("pt-BR")} capítulos lidos</span></div>
+        <div class="pg-grande"><b>${pct.toLocaleString("pt-BR")}%</b><span>${nRead.toLocaleString("pt-BR")} de ${total.toLocaleString("pt-BR")} capítulos lidos</span></div>
         <div class="pg-barra" role="img" aria-label="${pct.toLocaleString("pt-BR")}% lidos"><i style="width:${Math.min(100, pct)}%"></i></div>
-        <p class="pg-sub">Antigo Testamento: ${nAT} de ${totalCaps(at)} · Novo Testamento: ${nNT} de ${totalCaps(nt)} · ${concluidos} ${concluidos === 1 ? "livro concluído" : "livros concluídos"}</p>
+        <p class="pg-sub">Antigo Testamento: ${nOT} de ${totalChapters(at)} · Novo Testamento: ${nNT} de ${totalChapters(nt)} · ${completedBooks} ${completedBooks === 1 ? "livro concluído" : "livros concluídos"}</p>
       </section>
       <section class="pg-sec" aria-label="Números"><div class="pg-tiles">
-        <div class="pg-tile"><b>${seq.atual} ${seq.atual === 1 ? "dia" : "dias"}</b><span>seguidos lendo · recorde ${seq.recorde}</span></div>
-        <div class="pg-tile"><b>${duracao(semana)}</b><span>nos últimos 7 dias · média ${duracao(semana / 7)}/dia</span></div>
-        <div class="pg-tile"><b>${duracao(totalSeg)}</b><span>de leitura no total</span></div>
+        <div class="pg-tile"><b>${streak.currentChapter} ${streak.currentChapter === 1 ? "dia" : "dias"}</b><span>seguidos lendo · recorde ${streak.record}</span></div>
+        <div class="pg-tile"><b>${duration(week)}</b><span>nos últimos 7 dias · média ${duration(week / 7)}/dia</span></div>
+        <div class="pg-tile"><b>${duration(totalSeconds)}</b><span>de leitura no total</span></div>
         <div class="pg-tile"><b>${verbetes.toLocaleString("pt-BR")}</b><span>verbetes abertos</span></div>
       </div></section>
       <section class="pg-sec" aria-labelledby="pg-tempo"><h3 id="pg-tempo">Tempo de leitura por dia</h3>
@@ -460,14 +461,14 @@
           ["mes", "Mês"],
           ["ano", "Ano"]
         ]
-          .map(([k, n]) => `<button class="chip" data-aba="${k}" aria-pressed="${aba === k}">${n}</button>`)
+          .map(([k, n]) => `<button class="chip" data-active-tab="${k}" aria-pressed="${activeTab === k}">${n}</button>`)
           .join("")}</div>
-        <div class="pg-graf">${grafico(D.porDia)}</div>
+        <div class="pg-graf">${chart(D.byDay)}</div>
       </section>
       <section class="pg-sec" aria-labelledby="pg-mapa"><h3 id="pg-mapa">Os 66 livros</h3>
         <div class="pg-mapa">${ls
           .map(l => {
-            const n = lidosDe([l]),
+            const n = readCountOf([l]),
               f = n / l.ncaps;
             const nv = n === 0 ? 0 : n === l.ncaps ? 3 : f > 0.5 ? 2 : 1;
             return `<button class="pg-livro n${nv}" data-livro="${l.cod}" title="${esc(l.nome)}: ${n} de ${l.ncaps}" aria-label="${esc(l.nome)}: ${n} de ${l.ncaps} capítulos lidos">${esc(l.abrev)}</button>`;
@@ -475,180 +476,180 @@
           .join("")}</div>
         <div class="pg-legenda"><span><i></i>não começado</span><span><i style="background:color-mix(in srgb,var(--accent) 22%,var(--surface))"></i>até a metade</span><span><i style="background:color-mix(in srgb,var(--accent) 50%,var(--surface))"></i>mais da metade</span><span><i style="background:var(--accent)"></i>concluído</span></div>
       </section>
-      ${secaoPlano(D)}
+      ${planSection(D)}
       <section class="pg-sec" aria-labelledby="pg-estudo"><h3 id="pg-estudo">Estudo</h3>
         <p class="pg-sub">${D.estudo.notas} ${D.estudo.notas === 1 ? "nota" : "notas"} · ${D.estudo.marcacoes} ${D.estudo.marcacoes === 1 ? "marcação" : "marcações"} · ${D.estudo.favoritos} ${D.estudo.favoritos === 1 ? "favorito" : "favoritos"}</p>
       </section>
       <div class="pg-rodape">
-        <button id="pg-pausar">${pausado() ? "Voltar a contar o tempo de leitura" : "Pausar a contagem de tempo neste aparelho"}</button>
+        <button id="pg-pausar">${paused() ? "Voltar a contar o tempo de leitura" : "Pausar a contagem de tempo neste aparelho"}</button>
         <button id="pg-zerar">Zerar estatísticas</button>
       </div>`;
   }
 
-  function grafico(porDia) {
-    let barras = [];
-    if (aba === "ano") {
-      const agora = new Date();
+  function chart(byDay) {
+    let bars = [];
+    if (activeTab === "ano") {
+      const currentTime = new Date();
       for (let i = 11; i >= 0; i--) {
-        const d = new Date(agora.getFullYear(), agora.getMonth() - i, 1),
-          chave = `${d.getFullYear()}-${pad(d.getMonth() + 1)}`;
-        const seg = Object.entries(porDia)
-          .filter(([k]) => k.startsWith(chave))
+        const d = new Date(currentTime.getFullYear(), currentTime.getMonth() - i, 1),
+          monthKey = `${d.getFullYear()}-${pad(d.getMonth() + 1)}`;
+        const sec = Object.entries(byDay)
+          .filter(([k]) => k.startsWith(monthKey))
           .reduce((s, [, v]) => s + v.segundos, 0);
-        barras.push({ rot: ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"][d.getMonth()], seg });
+        bars.push({ rot: ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"][d.getMonth()], sec });
       }
     } else {
-      const n = aba === "mes" ? 30 : 7,
+      const n = activeTab === "mes" ? 30 : 7,
         sem = ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"];
       for (let i = n - 1; i >= 0; i--) {
-        const dia = somaDias(hoje(), -i),
+        const dia = addDays(today(), -i),
           [a, m, d] = dia.split("-").map(Number);
-        barras.push({ rot: n === 7 ? sem[new Date(a, m - 1, d).getDay()] : i % 5 === 0 ? String(d) : "", seg: porDia[dia]?.segundos || 0 });
+        bars.push({ rot: n === 7 ? sem[new Date(a, m - 1, d).getDay()] : i % 5 === 0 ? String(d) : "", sec: byDay[dia]?.segundos || 0 });
       }
     }
     const W = 520,
       H = 160,
       base = 136,
-      topo = 12,
-      max = Math.max(60, ...barras.map(b => b.seg));
-    const largura = W / barras.length,
-      media = barras.reduce((s, b) => s + b.seg, 0) / barras.length;
-    const y = s => base - (s / max) * (base - topo);
-    const desc = barras
-      .map(b => `${b.rot || ""} ${duracao(b.seg)}`)
+      topY = 12,
+      max = Math.max(60, ...bars.map(b => b.sec));
+    const largura = W / bars.length,
+      average = bars.reduce((s, b) => s + b.sec, 0) / bars.length;
+    const y = s => base - (s / max) * (base - topY);
+    const desc = bars
+      .map(b => `${b.rot || ""} ${duration(b.sec)}`)
       .filter(Boolean)
       .join(", ");
-    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Tempo de leitura: ${esc(desc)}. Média ${duracao(media)}.">
-      ${barras
+    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Tempo de leitura: ${esc(desc)}. Média ${duration(average)}.">
+      ${bars
         .map(
           (
             b,
             i
-          ) => `<rect class="bar" x="${(i * largura + largura * 0.18).toFixed(1)}" y="${y(b.seg).toFixed(1)}" width="${(largura * 0.64).toFixed(1)}" height="${(base - y(b.seg)).toFixed(1)}" rx="2"><title>${esc(b.rot)} ${duracao(b.seg)}</title></rect>
+          ) => `<rect class="bar" x="${(i * largura + largura * 0.18).toFixed(1)}" y="${y(b.sec).toFixed(1)}" width="${(largura * 0.64).toFixed(1)}" height="${(base - y(b.sec)).toFixed(1)}" rx="2"><title>${esc(b.rot)} ${duration(b.sec)}</title></rect>
         <text x="${(i * largura + largura / 2).toFixed(1)}" y="${H - 6}" text-anchor="middle">${esc(b.rot)}</text>`
         )
         .join("")}
-      <line class="media" x1="0" x2="${W}" y1="${y(media).toFixed(1)}" y2="${y(media).toFixed(1)}"/>
-      <text x="${W - 2}" y="${Math.max(10, y(media) - 4).toFixed(1)}" text-anchor="end">média ${esc(duracao(media))}</text>
+      <line class="media" x1="0" x2="${W}" y1="${y(average).toFixed(1)}" y2="${y(average).toFixed(1)}"/>
+      <text x="${W - 2}" y="${Math.max(10, y(average) - 4).toFixed(1)}" text-anchor="end">média ${esc(duration(average))}</text>
     </svg>`;
   }
 
-  function secaoPlano(D) {
+  function planSection(D) {
     const p = D.plano;
     if (!p || !p.caps?.length)
       return `<section class="pg-sec" aria-labelledby="pg-plano"><h3 id="pg-plano">Plano de leitura</h3>
       <p class="pg-sub">Opcional: um ritmo para ler a Bíblia toda ou o Novo Testamento, com a leitura de cada dia.</p>
       <div class="pg-btns"><button data-plano="ano">Bíblia em 1 ano</button><button data-plano="nt90">Novo Testamento em 90 dias</button></div></section>`;
-    const s = situacaoPlano(p, D.lidos);
-    const nomeCap = id => {
+    const s = planStatus(p, D.readSet);
+    const chapterName = id => {
       const [cod, n] = id.split(".");
       return `${window.__livros?.[cod]?.abrev || cod} ${n}`;
     };
     return `<section class="pg-sec" aria-labelledby="pg-plano"><h3 id="pg-plano">Plano de leitura · ${esc(p.nome)}</h3>
-      <p class="pg-sub">Dia ${s.dia} de ${s.D} · ${s.feitos.toLocaleString("pt-BR")} de ${s.N.toLocaleString("pt-BR")} capítulos · <span class="pg-estado ${s.tipo}">${esc(s.texto)}</span></p>
-      ${s.feitos < s.N ? `<p class="pg-sub">Leitura de hoje:</p><div class="pg-dia">${s.doDia.map(c => `<button data-ir="${c}" class="${D.lidos.has(c) ? "feito" : ""}">${esc(nomeCap(c))}</button>`).join("") || '<span class="pg-sub">nada para hoje</span>'}</div>` : ""}
+      <p class="pg-sub">Dia ${s.dia} de ${s.D} · ${s.done.toLocaleString("pt-BR")} de ${s.N.toLocaleString("pt-BR")} capítulos · <span class="pg-estado ${s.tipo}">${esc(s.texto)}</span></p>
+      ${s.done < s.N ? `<p class="pg-sub">Leitura de hoje:</p><div class="pg-dia">${s.todays.map(c => `<button data-ir="${c}" class="${D.readSet.has(c) ? "feito" : ""}">${esc(chapterName(c))}</button>`).join("") || '<span class="pg-sub">nada para hoje</span>'}</div>` : ""}
       <div class="pg-btns"><button id="pg-reajustar">Reajustar as datas a partir de hoje</button><button id="pg-encerrar">Encerrar o plano</button></div></section>`;
   }
 
-  function telaLivro(D, cod) {
+  function bookHtml(D, cod) {
     const l = livros().find(x => x.cod === cod);
     if (!l) return "";
     const caps = Array.from({ length: l.ncaps }, (_, i) => i + 1);
-    const lidosAqui = caps.filter(n => D.lidos.has(`${cod}.${n}`));
-    const regs = lidosAqui.map(n => D.lidos.get(`${cod}.${n}`));
-    const primeira = regs
+    const readHere = caps.filter(n => D.readSet.has(`${cod}.${n}`));
+    const recs = readHere.map(n => D.readSet.get(`${cod}.${n}`));
+    const primeira = recs
       .map(r => r.primeira)
       .filter(Boolean)
       .sort()[0];
-    const ultima = regs
+    const ultima = recs
       .map(r => r.ultima)
       .filter(Boolean)
       .sort()
       .at(-1);
-    const relido = regs.filter(r => (r.vezes || 0) > 1).sort((a, b) => b.vezes - a.vezes)[0];
-    const tempoLivro = Object.values(D.porDia).reduce((s, d) => s + (d.livros[cod] || 0), 0);
-    const lendo = D.posicao?.cod === cod ? D.posicao.cap : null;
-    const faltam = l.ncaps - lidosAqui.length,
-      r = ritmo(D.lidos);
-    const previsao =
-      faltam && r > 0 ? ` · no seu ritmo, cerca de ${Math.ceil(faltam / r)} ${Math.ceil(faltam / r) === 1 ? "dia" : "dias"}` : "";
-    const proximo = caps.find(n => !D.lidos.has(`${cod}.${n}`)) || 1;
+    const reread = recs.filter(r => (r.vezes || 0) > 1).sort((a, b) => b.vezes - a.vezes)[0];
+    const bookTime = Object.values(D.byDay).reduce((s, d) => s + (d.livros[cod] || 0), 0);
+    const reading = D.posicao?.cod === cod ? D.posicao.cap : null;
+    const remaining = l.ncaps - readHere.length,
+      r = ritmo(D.readSet);
+    const forecast =
+      remaining && r > 0 ? ` · no seu ritmo, cerca de ${Math.ceil(remaining / r)} ${Math.ceil(remaining / r) === 1 ? "dia" : "dias"}` : "";
+    const nextChapter = caps.find(n => !D.readSet.has(`${cod}.${n}`)) || 1;
     return `<div><button class="pg-voltar" id="pg-voltar">← Meu progresso</button></div>
       <section class="pg-sec" aria-label="Resumo do livro">
-        <div class="pg-grande"><b>${lidosAqui.length}</b><span>de ${l.ncaps} capítulos lidos</span></div>
-        <div class="pg-barra"><i style="width:${((lidosAqui.length / l.ncaps) * 100).toFixed(1)}%"></i></div>
-        <p class="pg-sub">${faltam ? `Faltam ${faltam}${previsao}` : "Livro concluído"}</p>
+        <div class="pg-grande"><b>${readHere.length}</b><span>de ${l.ncaps} capítulos lidos</span></div>
+        <div class="pg-barra"><i style="width:${((readHere.length / l.ncaps) * 100).toFixed(1)}%"></i></div>
+        <p class="pg-sub">${remaining ? `Faltam ${remaining}${forecast}` : "Livro concluído"}</p>
       </section>
       <section class="pg-sec" aria-labelledby="pg-capsh"><h3 id="pg-capsh">Capítulos</h3>
         <p class="pg-sub">Toque para marcar ou desmarcar como lido. Ponto: tem anotação; tracejado: em leitura.</p>
         <div class="pg-caps">${caps
           .map(n => {
             const id = `${cod}.${n}`;
-            return `<button class="pg-cap${D.comAnotacao.has(id) ? " anot" : ""}${lendo === n && !D.lidos.has(id) ? " lendo" : ""}" data-cap="${n}" aria-pressed="${D.lidos.has(id)}" aria-label="Capítulo ${n}${D.lidos.has(id) ? ", lido" : ""}${D.comAnotacao.has(id) ? ", com anotação" : ""}">${n}</button>`;
+            return `<button class="pg-cap${D.withNotes.has(id) ? " anot" : ""}${reading === n && !D.readSet.has(id) ? " lendo" : ""}" data-cap="${n}" aria-pressed="${D.readSet.has(id)}" aria-label="Capítulo ${n}${D.readSet.has(id) ? ", lido" : ""}${D.withNotes.has(id) ? ", com anotação" : ""}">${n}</button>`;
           })
           .join("")}</div>
       </section>
       <section class="pg-sec" aria-label="Números do livro"><div class="pg-tiles">
-        <div class="pg-tile"><b>${duracao(tempoLivro)}</b><span>de leitura neste livro</span></div>
-        <div class="pg-tile"><b>${relido ? `${l.abrev} ${relido.n}` : "—"}</b><span>${relido ? `mais relido (${relido.vezes} vezes)` : "capítulo mais relido"}</span></div>
-        <div class="pg-tile"><b>${dataCurta(primeira)}</b><span>primeira leitura</span></div>
-        <div class="pg-tile"><b>${dataCurta(ultima)}</b><span>última leitura</span></div>
+        <div class="pg-tile"><b>${duration(bookTime)}</b><span>de leitura neste livro</span></div>
+        <div class="pg-tile"><b>${reread ? `${l.abrev} ${reread.n}` : "—"}</b><span>${reread ? `mais relido (${reread.vezes} vezes)` : "capítulo mais relido"}</span></div>
+        <div class="pg-tile"><b>${shortDate(primeira)}</b><span>primeira leitura</span></div>
+        <div class="pg-tile"><b>${shortDate(ultima)}</b><span>última leitura</span></div>
       </div></section>
-      <div class="pg-btns"><button class="prim" data-ir="${cod}.${proximo}">Ler ${esc(l.abrev)} ${proximo}</button></div>`;
+      <div class="pg-btns"><button class="prim" data-ir="${cod}.${nextChapter}">Ler ${esc(l.abrev)} ${nextChapter}</button></div>`;
   }
 
-  painel.addEventListener("click", async e => {
+  panel.addEventListener("click", async e => {
     const b = e.target.closest("button");
     if (!b) return;
-    if (b.id === "pg-fechar") return fechar();
+    if (b.id === "pg-fechar") return hide();
     if (b.dataset.ir) {
       const [cod, n] = b.dataset.ir.split(".");
-      fechar();
+      hide();
       document.dispatchEvent(new CustomEvent("anotacoes:ir", { detail: { cod, cap: +n } }));
       return;
     }
-    if (b.dataset.aba) {
-      aba = b.dataset.aba;
-      return desenhar();
+    if (b.dataset.activeTab) {
+      activeTab = b.dataset.activeTab;
+      return render();
     }
     if (b.dataset.livro) {
-      livroAberto = b.dataset.livro;
-      await desenhar();
-      painel.scrollTop = 0;
-      painel.querySelector("#pg-voltar")?.focus();
+      openBook = b.dataset.livro;
+      await render();
+      panel.scrollTop = 0;
+      panel.querySelector("#pg-voltar")?.focus();
       return;
     }
     if (b.id === "pg-voltar") {
-      livroAberto = null;
-      return desenhar();
+      openBook = null;
+      return render();
     }
-    if (b.dataset.cap && livroAberto) {
-      await marcarLido(livroAberto, +b.dataset.cap, b.getAttribute("aria-pressed") !== "true");
-      painel.querySelector(`[data-cap="${b.dataset.cap}"]`)?.focus();
+    if (b.dataset.cap && openBook) {
+      await markRead(openBook, +b.dataset.cap, b.getAttribute("aria-pressed") !== "true");
+      panel.querySelector(`[data-cap="${b.dataset.cap}"]`)?.focus();
       return;
     }
-    if (b.dataset.plano) return iniciarPlano(b.dataset.plano);
+    if (b.dataset.plano) return startPlan(b.dataset.plano);
     if (b.id === "pg-reajustar") {
-      const D = await dados();
-      return reajustarPlano(D.plano, D.lidos);
+      const D = await payload();
+      return reschedulePlan(D.plano, D.readSet);
     }
     if (b.id === "pg-encerrar") {
-      const r = await C.perguntar("Encerrar o plano?", "Os capítulos lidos continuam contando no seu progresso.", [
+      const r = await C.ask("Encerrar o plano?", "Os capítulos lidos continuam contando no seu progresso.", [
         { id: "sim", texto: "Encerrar", prim: true },
         { id: "", texto: "Cancelar" }
       ]);
       if (r === "sim") {
         await A.apagar("planos", "atual");
-        desenhar();
+        render();
       }
       return;
     }
     if (b.id === "pg-pausar") {
-      gravarLS("interlinear:tempo-pausado", pausado() ? null : "sim");
-      return desenhar();
+      saveLS("interlinear:tempo-pausado", paused() ? null : "sim");
+      return render();
     }
     if (b.id === "pg-zerar") {
-      const r = await C.perguntar(
+      const r = await C.ask(
         "Zerar estatísticas?",
         "Apaga os capítulos lidos, o tempo de leitura e o plano, em todos os seus aparelhos. As anotações não são afetadas.",
         [
@@ -657,24 +658,24 @@
         ]
       );
       if (r !== "sim") return;
-      acc = { dia: hoje(), segundos: 0, livros: {}, caps: 0, verbetes: 0 };
-      for (const c of ["leituras", "tempo", "planos"]) for (const x of await A.todos(c)) await A.apagar(c, x.id);
-      return desenhar();
+      acc = { dia: today(), segundos: 0, livros: {}, caps: 0, verbetes: 0 };
+      for (const c of ["leituras", "tempo", "planos"]) for (const x of await A.allRecords(c)) await A.apagar(c, x.id);
+      return render();
     }
   });
-  painel.addEventListener("keydown", e => {
+  panel.addEventListener("keydown", e => {
     if (e.key === "Escape") {
       e.stopPropagation();
-      fechar();
+      hide();
     }
   });
   // o painel se atualiza quando chegam mudanças de outro aparelho
   A.aoMudar(() => {
-    if (!painel.hidden) desenhar();
+    if (!panel.hidden) render();
   });
   C.aoMudar(() => {
-    if (!painel.hidden) desenhar();
+    if (!panel.hidden) render();
   });
 
-  window.Progresso = { abrir, fechar, marcarLido, gravarTempo, dados: () => dados() };
+  window.Progresso = { open, hide, markRead, saveTime, payload: () => payload() };
 })();

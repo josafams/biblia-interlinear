@@ -50,29 +50,29 @@ export function novaNuvem() {
       const a = [...this.arquivos.values()].find(a => a.name === nome);
       return a && JSON.parse(a.conteudo);
     },
-    envelhecer(prefixo, dias) {
+    envelhecer(prefixo, days) {
       // simula arquivos antigos
       for (const a of this.arquivos.values())
-        if (a.name.startsWith(prefixo)) a.createdTime = new Date(Date.parse(a.createdTime) - dias * 864e5).toISOString();
+        if (a.name.startsWith(prefixo)) a.createdTime = new Date(Date.parse(a.createdTime) - days * 864e5).toISOString();
     }
   };
 }
 
 function filtrar(arquivos, q) {
-  let lista = [...arquivos.entries()].map(([id, a]) => ({ id, ...a }));
-  for (const parte of (q || "").split(/\s+and\s+/).filter(Boolean)) {
+  let listSheet = [...arquivos.entries()].map(([id, a]) => ({ id, ...a }));
+  for (const chunk of (q || "").split(/\s+and\s+/).filter(Boolean)) {
     let m;
-    if ((m = parte.match(/^name\s*=\s*'(.*)'$/))) lista = lista.filter(a => a.name === m[1]);
-    else if ((m = parte.match(/^name contains '(.*)'$/))) lista = lista.filter(a => a.name.includes(m[1]));
-    else if ((m = parte.match(/^createdTime\s*>\s*'(.*)'$/))) lista = lista.filter(a => a.createdTime > m[1]);
-    else throw new Error("consulta não simulada: " + parte);
+    if ((m = chunk.match(/^name\s*=\s*'(.*)'$/))) listSheet = listSheet.filter(a => a.name === m[1]);
+    else if ((m = chunk.match(/^name contains '(.*)'$/))) listSheet = listSheet.filter(a => a.name.includes(m[1]));
+    else if ((m = chunk.match(/^createdTime\s*>\s*'(.*)'$/))) listSheet = listSheet.filter(a => a.createdTime > m[1]);
+    else throw new Error("consulta não simulada: " + chunk);
   }
-  return lista.sort((a, b) => (a.createdTime < b.createdTime ? -1 : 1));
+  return listSheet.sort((a, b) => (a.createdTime < b.createdTime ? -1 : 1));
 }
 
-export async function simularGoogle(page, { configurado = true, nuvem = novaNuvem(), perfil = {} } = {}) {
+export async function simularGoogle(page, { configurado = true, nuvem = novaNuvem(), profile = {} } = {}) {
   const id = configurado ? "teste.apps.googleusercontent.com" : "";
-  const eu = { name: "Maria Teste", email: "maria@exemplo.com", picture: "", ...perfil };
+  const eu = { name: "Maria Teste", email: "maria@exemplo.com", picture: "", ...profile };
   await page.route("**/google-config.js", r =>
     r.fulfill({ contentType: "text/javascript", body: `window.GOOGLE_CONFIG = { webClientId: "${id}" };` })
   );
@@ -107,8 +107,8 @@ export async function simularGoogle(page, { configurado = true, nuvem = novaNuve
         .filter(p => p.includes("{"));
       const meta = JSON.parse(partes[0].slice(partes[0].indexOf("{")).trim());
       confere(JSON.stringify(meta.parents) === '["appDataFolder"]', "arquivo fora da pasta do app");
-      const novo = nuvem.criar(meta.name, partes[1].slice(partes[1].indexOf("{")).trim());
-      return json(200, { id: novo, name: meta.name, createdTime: nuvem.arquivos.get(novo).createdTime });
+      const fresh = nuvem.criar(meta.name, partes[1].slice(partes[1].indexOf("{")).trim());
+      return json(200, { id: fresh, name: meta.name, createdTime: nuvem.arquivos.get(fresh).createdTime });
     }
     if (m === "PATCH" && fid) {
       nuvem.arquivos.get(fid).conteudo = req.postData();
