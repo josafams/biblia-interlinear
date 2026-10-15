@@ -11,6 +11,7 @@ on:
 permissions:
   contents: write
   actions: write
+  pages: write
 
 concurrency:
   group: gh-pages
@@ -57,6 +58,10 @@ jobs:
           git add -A
           git commit -q -m "Site: ${GITHUB_SHA::7} ($(git -C .. log -1 --format=%s | cut -c1-60))" || { echo "Nada mudou no site."; exit 0; }
           git push origin HEAD:gh-pages
+      - name: Pedir ao GitHub Pages que publique (envios do github-actions[bot] não disparam a publicação)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" --silent || echo "::warning::Não foi possível pedir a publicação do GitHub Pages"
       - name: Disparar Android e Vídeos (usam o site publicado)
         env:
           GH_TOKEN: ${{ github.token }}

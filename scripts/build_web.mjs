@@ -193,6 +193,18 @@ self.addEventListener("fetch", e => {
     }).catch(() => caches.match(e.request, { ignoreSearch: true })));
     return;
   }
+  // Páginas (index.html, ler.html…): da rede quando há internet, para nunca mostrar uma versão antiga; o cache
+  // fica para usar sem internet
+  if (e.request.mode === "navigate") {
+    e.respondWith(fetch(e.request, { cache: "no-cache" }).then(r => {
+      if (r.ok) {
+        const copy = r.clone();
+        caches.open(CACHE).then(c => c.put(e.request, copy));
+      }
+      return r;
+    }).catch(() => caches.match(e.request, { ignoreSearch: true }).then(hit => hit || caches.match("./"))));
+    return;
+  }
   e.respondWith(caches.open(CACHE).then(c => c.match(e.request, { ignoreSearch: true }).then(hit => hit || fetch(e.request).then(r => {
     if (r.ok) c.put(e.request, r.clone());
     return r;

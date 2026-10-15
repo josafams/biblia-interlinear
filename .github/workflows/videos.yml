@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  pages: write
 
 concurrency:
   group: gh-pages-videos
@@ -45,3 +46,7 @@ jobs:
           git add -A videos
           git commit -m "Vídeos Como usar: gravados de novo (${GITHUB_SHA::7})" || { echo "Nada mudou."; exit 0; }
           git push origin HEAD:gh-pages
+      - name: Pedir ao GitHub Pages que publique (envios do github-actions[bot] não disparam a publicação)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" --silent || echo "::warning::Não foi possível pedir a publicação do GitHub Pages"
