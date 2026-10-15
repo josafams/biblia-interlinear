@@ -1739,6 +1739,7 @@ function aplicarModo(id, manual = true) {
     modoBase = id; store.set("modo-base", id);
   }
   modo = id; store.set("modo", id);
+  if (manual) document.dispatchEvent(new CustomEvent("preferencias"));
   document.getElementById("welcome").hidden = true;
   document.querySelectorAll(".verse.abrir").forEach(v => v.classList.remove("abrir"));
   showModo();
@@ -1749,7 +1750,24 @@ modeSwap.addEventListener("click", () => { const alvo = modoAnterior; if (alvo) 
 document.querySelectorAll(".chk[data-modo]").forEach(t => t.addEventListener("click", () => {
   if (modo !== "personalizado") { if (modo) { modoBase = modo; store.set("modo-base", modo); } modo = "personalizado"; store.set("modo", modo); }
   showModo();
+  document.dispatchEvent(new CustomEvent("preferencias"));
 }));
+// Preferências de leitura para a sincronização (web/sincronizar.js): o modo e os itens visíveis
+window.__preferencias = {
+  ler() {
+    const sw = {};
+    document.querySelectorAll(".chk[data-modo]").forEach(t => { sw[t.id] = t.getAttribute("aria-checked") === "true"; });
+    return { modo: modo || "interlinear", modo_base: modoBase, itens: sw };
+  },
+  aplicar(p) {
+    if (!p || !MODOS.some(m => m.id === p.modo) && p.modo !== "personalizado") return;
+    for (const [k, on] of Object.entries(p.itens || {})) setSwitch(k, !!on);
+    if (p.modo_base && MODOS.some(m => m.id === p.modo_base)) { modoBase = p.modo_base; store.set("modo-base", modoBase); }
+    modo = p.modo; store.set("modo", modo);
+    document.getElementById("welcome").hidden = true;
+    showModo();
+  }
+};
 // Primeira abertura: pergunta como a pessoa quer ler (quem já usava fica no Interlinear, como antes)
 const welcome = document.getElementById("welcome");
 if (!modo && store.get("posicao", "") === "") welcome.hidden = false;
@@ -1800,3 +1818,4 @@ if ("serviceWorker" in navigator && !NATIVE && /^https?:$/.test(location.protoco
 <script src="anotacoes.js"></script>
 <script src="google-config.js"></script>
 <script src="conta.js"></script>
+<script src="sincronizar.js"></script>

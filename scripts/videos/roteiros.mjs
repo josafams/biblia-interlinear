@@ -30,6 +30,26 @@ const dadosDeExemplo = async page => {
   });
 };
 
+// conta já ligada antes do corte do vídeo (para os vídeos que começam conectados)
+async function entrarNaConta(t) {
+  const p = t.page;
+  await p.waitForFunction(() => window.Conta && window.Sinc);
+  await p.click("#open-toc");
+  await p.click("#conta-entrar");
+  await p.locator("#conta-sinc", { hasText: "Sincronizado" }).waitFor();
+  await p.keyboard.press("Escape");
+  await p.evaluate(() => window.scrollTo(0, 0));
+}
+// simula o computador gravando uma nota na nuvem (um lote de outro aparelho)
+function notaDeOutroAparelho(t) {
+  const agora = new Date().toISOString();
+  const nota = { id: "nota-do-computador", cap: "GEN.1", ancora: { livro: "GEN", cap: 1, ver: 1, ver_fim: 1, camada: "versiculo" },
+    titulo: "No princípio", texto: "Bereshit: “no princípio”. A Bíblia começa com Deus, não com explicações.", etiquetas: [],
+    criado_em: agora, alterado_em: agora, base: null, apagado: false, relogio: `${String(Date.now()).padStart(14, "0")}-0000-computad` };
+  t.nuvem.criar(`lote-computad-${Date.now()}.json`, JSON.stringify({ formato: "biblia-interlinear-lote", versao: 1, aparelho: "computad", criado_em: agora, colecoes: { notas: [nota] } }));
+  return t.esperar(400);
+}
+
 export const videos = [
   {
     id: "01", n: 1, grupo: "ler", titulo: "Abrir um livro e um capítulo",
@@ -269,9 +289,36 @@ export const videos = [
       { legenda: "As anotações voltam. O que já existia não é duplicado.", faz: t => t.esperar(1800) }
     ]
   },
-  { id: "24", n: 24, grupo: "conta", titulo: "Entrar com Google", desc: "E enviar o que já foi anotado.", pronto: false, passos: [] },
-  { id: "25", n: 25, grupo: "conta", titulo: "Dois aparelhos", desc: "A nota feita no celular aparece no computador.", pronto: false, passos: [] },
-  { id: "26", n: 26, grupo: "conta", titulo: "Sair e apagar da nuvem", desc: "Seus dados, sob seu controle.", pronto: false, passos: [] },
+  {
+    id: "24", n: 24, grupo: "conta", titulo: "Entrar com Google", desc: "E enviar o que já foi anotado.", inicio: "GEN.1", google: true,
+    preparar: dadosDeExemplo,
+    passos: [
+      { legenda: "No Índice, toque em Entrar com Google.", faz: async t => { await t.tocar("#open-toc"); await t.realcar("#conta"); await t.tocar("#conta-entrar"); } },
+      { legenda: "Escolha sua conta e permita: o app só acessa uma pasta própria e privada no seu Google Drive.", faz: t => t.page.locator("#conta-sinc").waitFor() },
+      { legenda: "O que você já tinha anotado neste aparelho é enviado sozinho para a conta.", faz: async t => { await t.page.locator("#conta-sinc", { hasText: "Sincronizado" }).waitFor(); await t.realcar("#conta-sinc"); } },
+      { legenda: "Daqui em diante, tudo sincroniza sozinho entre seus aparelhos.", faz: t => t.esperar(800) }
+    ]
+  },
+  {
+    id: "25", n: 25, grupo: "conta", titulo: "Dois aparelhos", desc: "A nota feita no computador aparece no celular.", inicio: "GEN.1", google: true,
+    antes: entrarNaConta,
+    passos: [
+      { legenda: "Com a mesma conta no celular e no computador, as anotações valem nos dois.", faz: t => t.esperar(600) },
+      { legenda: "Uma nota escrita no outro aparelho…", faz: t => notaDeOutroAparelho(t) },
+      { legenda: "…chega aqui sozinha em poucos segundos, com o app aberto.", faz: async t => { await t.page.evaluate(() => window.Sinc.agora()); await t.page.locator("#v1 .vnota").waitFor(); await t.realcar("#v1 .vnota"); } },
+      { legenda: "Toque no ícone para ler a nota.", faz: t => t.tocar("#v1 .vnota") }
+    ]
+  },
+  {
+    id: "26", n: 26, grupo: "conta", titulo: "Sair e apagar da nuvem", desc: "Seus dados, sob seu controle.", inicio: "GEN.1", google: true,
+    preparar: dadosDeExemplo, antes: entrarNaConta,
+    passos: [
+      { legenda: "Sua conta fica no topo do Índice.", faz: async t => { await t.tocar("#open-toc"); await t.realcar("#conta"); } },
+      { legenda: "Em Sair, você escolhe manter uma cópia das anotações aqui ou apagar deste aparelho.", faz: async t => { await t.tocar("#conta-sair"); await t.realcar(".conta-caixa"); await t.tocar('.conta-caixa button[data-r=""]'); } },
+      { legenda: "Para apagar tudo do seu Google Drive, toque em Apagar meus dados do Google Drive.", faz: t => t.tocar("#conta-apagar-nuvem") },
+      { legenda: "Confirme. As anotações continuam neste aparelho e você sai da conta.", faz: async t => { await t.tocar('.conta-caixa button[data-r="sim"]'); await t.page.locator("#conta-entrar").waitFor(); } }
+    ]
+  },
   { id: "27", n: 27, grupo: "estudo", titulo: "Perguntas ao texto", desc: "Ligar, responder e ver o progresso.", pronto: false, passos: [] },
   { id: "31", n: 31, grupo: "estudo", titulo: "Meu progresso", desc: "Capítulos lidos, tempo e plano de leitura.", pronto: false, passos: [] },
   // Gravados à mão (telas do sistema): sequências de imagens com legenda em videos/manuais/.

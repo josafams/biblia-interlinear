@@ -105,7 +105,7 @@ else { fs.mkdirSync(path.join(OUT, "videos"), { recursive: true }); fs.writeFile
 
 // ---- anotações: script próprio e Dexie (Apache-2.0) para o banco local ----
 fs.copyFileSync(r("web/anotacoes.js"), path.join(OUT, "anotacoes.js"));
-for (const f of ["conta.js", "google-config.js"]) fs.copyFileSync(r("web/" + f), path.join(OUT, f));
+for (const f of ["conta.js", "google-config.js", "sincronizar.js"]) fs.copyFileSync(r("web/" + f), path.join(OUT, f));
 fs.mkdirSync(path.join(OUT, "vendor"), { recursive: true });
 fs.copyFileSync(r("node_modules/dexie/dist/dexie.min.js"), path.join(OUT, "vendor/dexie.min.js"));
 fs.copyFileSync(r("node_modules/dexie/LICENSE"), path.join(OUT, "vendor/LICENSE-dexie.txt"));
