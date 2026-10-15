@@ -178,7 +178,21 @@ self.addEventListener("activate", e => {
   e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim()));
 });
 self.addEventListener("fetch", e => {
-  if (e.request.method !== "GET" || new URL(e.request.url).origin !== location.origin) return;
+  const url = new URL(e.request.url);
+  if (e.request.method !== "GET" || url.origin !== location.origin) return;
+  // Vídeos "Como usar": são regravados à parte do site, então o índice vem sempre da rede (com cópia para
+  // usar sem internet) e os arquivos de vídeo não passam pelo cache (são grandes e chegam em partes).
+  if (url.pathname.includes("/videos/")) {
+    if (!url.pathname.endsWith("/videos.js")) return;
+    e.respondWith(fetch(e.request, { cache: "no-cache" }).then(r => {
+      if (r.ok) {
+        const copy = r.clone();
+        caches.open(CACHE).then(c => c.put(e.request, copy));
+      }
+      return r;
+    }).catch(() => caches.match(e.request, { ignoreSearch: true })));
+    return;
+  }
   e.respondWith(caches.open(CACHE).then(c => c.match(e.request, { ignoreSearch: true }).then(hit => hit || fetch(e.request).then(r => {
     if (r.ok) c.put(e.request, r.clone());
     return r;
