@@ -120,6 +120,8 @@ fs.copyFileSync(r("node_modules/dexie/LICENSE"), path.join(OUT, "vendor/LICENSE-
 
 // ---- política de privacidade ----
 fs.copyFileSync(r("web/privacidade.html"), path.join(OUT, "privacidade.html"));
+// arquivo de verificação do Google Search Console (domínio da tela de consentimento OAuth), se houver
+for (const f of fs.readdirSync(r("web")).filter(f => /^google[0-9a-f]+\.html$/.test(f))) fs.copyFileSync(r(`web/${f}`), path.join(OUT, f));
 
 // ---- manifesto ----
 fs.writeFileSync(

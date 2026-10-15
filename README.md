@@ -52,7 +52,7 @@ No GitHub, os workflows **Qualidade** (lint), **Testes** (dados, site, cobertura
 1. **Gerar o APK/AAB do Android e testar no celular** — Android Studio (`android/`, *Build › Build APK*) ou o workflow `.github/workflows/android.yml`.
 2. **Revisão humana** das glosas, dos verbetes e das introduções, começando pelos avisos da revisão automática nos livros mais lidos (Gênesis, Salmos, Evangelhos) — como fazer: [`docs/CORRECOES.md`](docs/CORRECOES.md).
 3. **Relatar aos tradutores da BLIVRE** os 47 erros de digitação listados em `data/corrections/blivre.tsv`.
-4. **Publicação nas lojas** (Play Store: teste fechado com 12 testadores por 14 dias; ver [`docs/APPS.md`](docs/APPS.md)).
+4. **Publicação nas lojas**: textos, imagens (`make store`) e passo a passo em [`docs/LOJAS.md`](docs/LOJAS.md); falta a chave de upload, a tela de consentimento do Google em produção e o teste fechado (12 testadores por 14 dias).
 
 ### Limitações conhecidas
 
