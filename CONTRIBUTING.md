@@ -16,14 +16,17 @@ A migração do código antigo (em português) para identificadores em inglês e
 
 ## Preparar o ambiente
 
-Requisitos: Node (versão em `.nvmrc`), Python (versão em `.python-version`), `qpdf` e `poppler-utils` para os testes de PDF.
+Requisito: só o Docker. Os comandos rodam num contêiner com todas as ferramentas ([docs/DOCKER.md](docs/DOCKER.md)); no Windows sem o `make`, use `biblia <comando>`.
 
 ```bash
-make setup     # npm ci, dependências de Python e ganchos do pre-commit
-make data      # baixa as fontes abertas e gera corpus, glosas e o site
-make test      # testes de dados (pytest) e do site (Playwright)
-make help      # lista todos os comandos
+make docker-build  # monta as imagens (primeira vez)
+make data          # baixa as fontes abertas e gera corpus, glosas e o site
+make test          # testes de dados (pytest) e do site (Playwright)
+make lint          # linters de todas as linguagens (o mesmo do CI)
+make help          # lista todos os comandos
 ```
+
+Sem Docker, com Node (`.nvmrc`), Python (`.python-version`), `qpdf` e `poppler-utils` instalados: `make LOCAL=1 setup` e depois `make LOCAL=1 <comando>`. Os ganchos do pre-commit (`pre-commit install`) precisam do Python no computador.
 
 ## Regras do código
 
