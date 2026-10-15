@@ -530,12 +530,20 @@
   let currentNote = null,
     saveTimer = 0,
     focusReturn = null;
-  async function openNote(id, ancora, trecho) {
+  async function openNote(id, ancora, trecho, title) {
     focusReturn = document.activeElement;
     const todasN = await allRecords("notas");
     currentNote = id
       ? todasN.find(n => n.id === id)
-      : { id: uuid(), cap: ancora ? chapterOf(ancora) : "livre", ancora: ancora || null, titulo: "", texto: "", etiquetas: [], nova: true };
+      : {
+          id: uuid(),
+          cap: ancora ? chapterOf(ancora) : "livre",
+          ancora: ancora || null,
+          titulo: title || "",
+          texto: "",
+          etiquetas: [],
+          nova: true
+        };
     if (!currentNote) return;
     const a = currentNote.ancora;
     $("#note-ref").textContent = a
@@ -1319,6 +1327,8 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
   window.Annotations = {
     openList,
     openNote,
+    // "Anotar resposta" das Perguntas ao texto: nota no versículo, com a pergunta como título
+    noteForQuestion: (book, chapter, verse, question) => openNote(null, verseAnchor(book, chapter, verse), null, question),
     closeBar,
     paint,
     allRecords,

@@ -61,6 +61,17 @@ def read_themes(cod):
         return {int(r["chapter"]): r["theme"] for r in csv.DictReader(f, delimiter="\t")}
 
 
+def read_questions():
+    """Perguntas ao texto (data/questions/<LIVRO>.tsv): {(livro, capítulo): [[tipo, pergunta, versículos, strong], ...]}."""
+    out = defaultdict(list)
+    for fname in sorted(glob.glob(os.path.join(ROOT, "data", "questions", "*.tsv"))):
+        cod = os.path.basename(fname)[:-4]
+        with open(fname, encoding="utf8") as f:
+            for r in csv.DictReader(f, delimiter="\t"):
+                out[(cod, int(r["chapter"]))].append([r["kind"], r["question"].strip(), r["verses"] or None, r["strong"] or None])
+    return out
+
+
 def read_marks():
     fname = os.path.join(ROOT, "build", "review", "marks.json")
     marks = defaultdict(list)
@@ -81,6 +92,7 @@ def main(argv):
     db.executemany("UPDATE lexicon SET def_pt = ? WHERE entry_key = ?", [(sig, k) for k, (_, sig) in lex_pt.items()])
     db.commit()
     marks = read_marks()
+    questions = read_questions()
 
     # ------------------------------------------------ livros
     books = []
@@ -141,7 +153,10 @@ def main(argv):
         for m in marks.get((b, c), []):
             pos = ids.get(m.get("word_id"))
             ms.append([m["verse"], pos[1] if pos else None, m["level"][0], m["code"], m["msg"]])
-        return {"book": b, "chapter": c, "v": vs, "m": ms}
+        d = {"book": b, "chapter": c, "v": vs, "m": ms}
+        if questions.get((b, c)):
+            d["q"] = questions[(b, c)]
+        return d
 
     # ------------------------------------------------ léxico
     translates = defaultdict(list)

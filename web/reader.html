@@ -241,6 +241,19 @@ h1 .heb { font-family: var(--font-heb); font-weight: 400; color: var(--accent); 
 /* Léxico */
 .lexsec { display: grid; gap: 12px; scroll-margin-top: calc(var(--bar-h) + 12px); }
 .lexsec h2 { margin: 0; font-size: 24px; font-weight: 600; }
+.qsec { margin: 28px 0 8px; padding: 18px 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); scroll-margin-top: calc(var(--bar-h) + 12px); }
+.qsec h2 { margin: 0 0 4px; font-size: 22px; font-weight: 600; }
+.qsec .lede { margin: 0 0 12px; font-size: 15px; color: var(--muted); }
+.qlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; counter-reset: q; }
+.q { counter-increment: q; padding-top: 12px; border-top: 1px solid var(--line); }
+.q:first-child { border-top: 0; padding-top: 0; }
+.q-k { font: 600 12px/1 var(--mono, monospace); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.q-k::before { content: counter(q) ". "; }
+.q-t { margin: 6px 0 8px; font-size: 17px; line-height: 1.5; }
+.q-acts { display: flex; flex-wrap: wrap; gap: 8px; }
+.q-acts button { min-height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 18px; background: transparent; color: var(--fg); font: inherit; font-size: 14px; cursor: pointer; }
+.q-acts button:hover { border-color: var(--accent); }
+.q-word span[lang] { font-size: 17px; }
 .lexsec .lede { font-size: 15px; }
 .lsearch {
   width: 100%; height: 48px; padding: 0 14px; border-radius: 8px; border: 1px solid var(--muted);
@@ -503,6 +516,7 @@ body.hide-vnum .vnum:not(:focus-within) { position: absolute; width: 1px; height
 body.hide-theme .ctheme { display: none; }
 body.hide-about #sobre { display: none; }
 body.hide-lexicon #lexico { display: none; }
+body.hide-questions #perguntas { display: none; }
 body.hide-marks .marks, body.hide-marks .vnote { display: none; }
 body.blivre-par.hide-orig #verses { max-width: 68ch; font-size: calc(18px * var(--k)); line-height: 1.8; }
 body.blivre-par.hide-orig .verse:not(.abrir) { display: inline; padding: 0; border: 0; }
@@ -682,6 +696,7 @@ body.com-mbar #page { padding-bottom: 220px; }
     <h3 id="toc-sh">Seções</h3>
     <div class="toc-links">
       <a href="#sobre" data-go>Sobre o livro <span>resumo e contexto</span></a>
+      <a href="#perguntas" data-go>Perguntas ao texto <span>para pensar e conversar</span></a>
       <a href="#lexico" data-go>Léxico <span id="toc-lexn"></span></a>
       <a href="#fontes" data-go>Fontes e licenças <span></span></a>
       <a href="#" id="open-mine">Minhas anotações <span id="mine-n">notas, marcações, favoritos</span></a>
@@ -711,6 +726,7 @@ body.com-mbar #page { padding-bottom: 220px; }
       <button class="chk" role="switch" id="t-theme" data-key="t-theme" data-default="on" data-off-class="hide-theme" data-modo aria-checked="true">Tema do capítulo<span class="sw2" aria-hidden="true"></span></button>
       <button class="chk" role="switch" id="t-about" data-key="t-about" data-default="on" data-off-class="hide-about" data-modo aria-checked="true">Sobre o livro<span class="sw2" aria-hidden="true"></span></button>
       <button class="chk" role="switch" id="t-lexicon" data-key="t-lexicon" data-default="on" data-off-class="hide-lexicon" data-modo aria-checked="true">Léxico do capítulo<span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-questions" data-key="t-questions" data-default="on" data-off-class="hide-questions" data-modo aria-checked="true"><span>Perguntas ao texto<small>no fim do capítulo, sem respostas</small></span><span class="sw2" aria-hidden="true"></span></button>
       <button class="chk" role="switch" id="t-marks" data-key="t-marks" data-default="on" data-off-class="hide-marks" data-modo aria-checked="true"><span>Pontos da revisão (⚑) e notas<small>revisão automática, ketiv/qere, aparato</small></span><span class="sw2" aria-hidden="true"></span></button>
     </div>
   </div>

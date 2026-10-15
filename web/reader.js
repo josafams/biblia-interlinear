@@ -360,7 +360,9 @@ function renderVerses() {
       <p class="blivre"><span class="tag">BLIVRE</span>${esc(v.blivre)}</p>
     </section>`;
       })
-      .join("") + chapterNav();
+      .join("") +
+    questionsHTML() +
+    chapterNav();
   if (io) document.querySelectorAll(".verse").forEach(sec => io.observe(sec));
   // Anotações (annotations.js) desenham suas marcações quando o capítulo muda
   window.__currentChapter = {
@@ -387,6 +389,54 @@ function neighbor(dir) {
   }
   return { b, n };
 }
+// ---------- Perguntas ao texto (data/questions): perguntas sem respostas, para pensar ou conversar ----------
+const QUESTION_KINDS = {
+  observation: "Observe",
+  interpretation: "Interprete",
+  original: "No original",
+  application: "Aplique"
+};
+function questionsHTML() {
+  if (!CH.questions.length) return "";
+  const items = CH.questions
+    .map((q, i) => {
+      const [a, b] = (q.verses || "").split("-").map(Number);
+      const label = a ? (b ? `v. ${a}–${b}` : `v. ${a}`) : "";
+      const e = q.strong ? LEX[q.strong] : null;
+      return `<li class="q q-${q.kind}">
+        <span class="q-k">${QUESTION_KINDS[q.kind] || ""}</span>
+        <p class="q-t">${esc(q.text)}</p>
+        <div class="q-acts">
+          ${a ? `<button type="button" class="q-ref" data-v="${a}" aria-label="Ir para o versículo ${a}">${label}</button>` : ""}
+          ${q.strong ? `<button type="button" class="q-word" data-strong="${esc(q.strong)}" aria-label="Abrir o verbete ${esc(q.strong)}">${e && e.l ? `<span lang="${GRC ? "grc" : "he"}">${esc(e.l)}</span> ` : ""}${esc(q.strong)}</button>` : ""}
+          <button type="button" class="q-note" data-q="${i}">Anotar resposta</button>
+        </div>
+      </li>`;
+    })
+    .join("");
+  return `<section class="qsec" id="perguntas" aria-labelledby="q-h">
+    <h2 id="q-h">Perguntas ao texto</h2>
+    <p class="lede">Para pensar sozinho ou conversar em grupo. As respostas ficam com você — se quiser, guarde a sua numa nota.</p>
+    <ol class="qlist">${items}</ol>
+  </section>`;
+}
+document.getElementById("verses").addEventListener("click", e => {
+  const ref = e.target.closest(".q-ref");
+  if (ref) return scrollToVerse(+ref.dataset.v, true);
+  const word = e.target.closest(".q-word");
+  if (word) {
+    if (active) active.classList.remove("active");
+    active = null;
+    navStack = [];
+    return show(word.dataset.strong, null, word);
+  }
+  const note = e.target.closest(".q-note");
+  if (note && window.Annotations?.noteForQuestion) {
+    const q = CH.questions[+note.dataset.q];
+    const first = +(q.verses || "").split("-")[0] || CH.verses[0]?.n || 1;
+    window.Annotations.noteForQuestion(BOOK.code, CUR, first, q.text);
+  }
+});
 function chapterNav() {
   const btn = (dir, cls, arrow) => {
     const x = neighbor(dir);
@@ -1334,7 +1384,8 @@ async function openChapter(cod, n, v) {
   CUR = n;
   GRC = isGrc(B);
   CH = {
-    verses: raw.v.map(x => ({ n: x.n, blivre: x.b, nota: x.o, words: x.w.map(toWord), marks: (raw.m || []).filter(m => m[0] === x.n) }))
+    verses: raw.v.map(x => ({ n: x.n, blivre: x.b, nota: x.o, words: x.w.map(toWord), marks: (raw.m || []).filter(m => m[0] === x.n) })),
+    questions: (raw.q || []).map(([kind, text, verses, strong]) => ({ kind, text, verses, strong }))
   };
   renderHeader();
   if (bookChanged) renderAbout();
@@ -1502,21 +1553,43 @@ const MODES = [
     nome: "Bíblia",
     desc: "só a Bíblia Livre, em parágrafos",
     fala: "Bíblia",
-    v: { "t-orig": 0, "t-blivre": 1, "t-par": 1, "t-vnum": 1, "t-theme": 1, "t-about": 0, "t-lexicon": 0, "t-marks": 0 }
+    v: { "t-orig": 0, "t-blivre": 1, "t-par": 1, "t-vnum": 1, "t-theme": 1, "t-about": 0, "t-lexicon": 0, "t-marks": 0, "t-questions": 1 }
   },
   {
     id: "original",
     nome: "Original",
     desc: "só hebraico ou grego, corrido",
     fala: "Original",
-    v: { "t-orig": 1, "t-cards": 0, "t-blivre": 0, "t-par": 0, "t-vnum": 1, "t-theme": 1, "t-about": 0, "t-lexicon": 1, "t-marks": 0 }
+    v: {
+      "t-orig": 1,
+      "t-cards": 0,
+      "t-blivre": 0,
+      "t-par": 0,
+      "t-vnum": 1,
+      "t-theme": 1,
+      "t-about": 0,
+      "t-lexicon": 1,
+      "t-marks": 0,
+      "t-questions": 0
+    }
   },
   {
     id: "paralelo",
     nome: "Original e Bíblia Livre",
     desc: "os dois, versículo a versículo",
     fala: "Paralelo",
-    v: { "t-orig": 1, "t-cards": 0, "t-blivre": 1, "t-par": 0, "t-vnum": 1, "t-theme": 1, "t-about": 1, "t-lexicon": 1, "t-marks": 0 }
+    v: {
+      "t-orig": 1,
+      "t-cards": 0,
+      "t-blivre": 1,
+      "t-par": 0,
+      "t-vnum": 1,
+      "t-theme": 1,
+      "t-about": 1,
+      "t-lexicon": 1,
+      "t-marks": 0,
+      "t-questions": 1
+    }
   },
   {
     id: "interlinear",
@@ -1537,7 +1610,8 @@ const MODES = [
       "t-theme": 1,
       "t-about": 1,
       "t-lexicon": 1,
-      "t-marks": 1
+      "t-marks": 1,
+      "t-questions": 1
     }
   },
   {
@@ -1559,7 +1633,8 @@ const MODES = [
       "t-theme": 1,
       "t-about": 1,
       "t-lexicon": 1,
-      "t-marks": 1
+      "t-marks": 1,
+      "t-questions": 1
     }
   },
   { id: "personalizado", nome: "Personalizado", desc: "escolha cada item abaixo", fala: "Personalizado", v: {} }

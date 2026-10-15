@@ -163,6 +163,41 @@ for fname in sorted(glob.glob(os.path.join(D, "lexicon_pt", "*.tsv"))):
         if not r["meaning"].strip():
             error(fname, f"linha {ln}: {k} sem significado")
 
+# perguntas ao texto (fase 8): 3 a 5 por capítulo, sem respostas
+QUESTION_KINDS = ("observation", "interpretation", "application", "original")
+VERSES = re.compile(r"^(\d+)(?:-(\d+))?$")
+questions = {}  # cod -> [(linha, registro)], conferidas contra o banco mais abaixo
+for cod, n in CAPS.items():
+    fname = os.path.join(D, "questions", f"{cod}.tsv")
+    if not os.path.exists(fname):
+        continue  # livros ainda sem perguntas (o teste test_every_chapter_has_questions cobra a Bíblia inteira)
+    lines = tsv(fname, ["chapter", "kind", "verses", "strong", "question"])
+    questions[cod] = lines
+    per_chapter = {}
+    for ln, r in lines:
+        if not r["chapter"].isdigit() or not 1 <= int(r["chapter"]) <= n:
+            error(fname, f"linha {ln}: capítulo {r['chapter']!r} fora do livro (1 a {n})")
+            continue
+        per_chapter.setdefault(int(r["chapter"]), []).append(r["kind"])
+        q = r["question"].strip()
+        if r["kind"] not in QUESTION_KINDS:
+            error(fname, f"linha {ln}: tipo {r['kind']!r} (use {', '.join(QUESTION_KINDS)})")
+        if not q.endswith("?") or len(q) > 240:
+            error(fname, f"linha {ln}: a pergunta deve terminar com ? e ter até 240 caracteres")
+        if r["verses"] and not VERSES.match(r["verses"]):
+            error(fname, f"linha {ln}: versículos {r['verses']!r} fora do formato 5 ou 5-8")
+        if r["kind"] == "original" and not re.match(r"^[HG]\d+$", r["strong"]):
+            error(fname, f"linha {ln}: pergunta sobre a língua original precisa do número Strong (ex.: H7725)")
+        if r["kind"] != "original" and r["strong"]:
+            error(fname, f"linha {ln}: só perguntas do tipo original levam número Strong")
+    for c in range(1, n + 1):
+        kinds = per_chapter.get(c, [])
+        if not 3 <= len(kinds) <= 5:
+            error(fname, f"capítulo {c}: {len(kinds)} perguntas (devem ser de 3 a 5)")
+        for k in ("observation", "interpretation", "application"):
+            if kinds and k not in kinds:
+                error(fname, f"capítulo {c}: falta uma pergunta do tipo {k}")
+
 # correções de glosa
 file_g = os.path.join(D, "corrections", "glosses.tsv")
 corrections = []
@@ -219,6 +254,22 @@ if os.path.exists(DB):
             )
             if " ".join(k.get("text", "").split()) not in " ".join(txt.split()):
                 warns.append(f"data/books/{cod}.json: versículo-chave {k['ref']} não confere com a BLIVRE")
+    for cod, lines in questions.items():
+        fname = os.path.join(D, "questions", f"{cod}.tsv")
+        for ln, r in lines:
+            if not r["chapter"].isdigit():
+                continue
+            c = int(r["chapter"])
+            last = db.execute("SELECT max(verse) FROM verses WHERE book=? AND chapter=?", (cod, c)).fetchone()[0] or 0
+            m = VERSES.match(r["verses"] or "")
+            if m and not 1 <= int(m[1]) <= int(m[2] or m[1]) <= last:
+                error(fname, f"linha {ln}: {cod} {c} tem {last} versículos; {r['verses']} não existe")
+            if r["kind"] == "original" and r["strong"]:
+                where = [v for (v,) in db.execute("SELECT DISTINCT verse FROM words WHERE book=? AND chapter=? AND strong=?", (cod, c, r["strong"]))]
+                if not where:
+                    error(fname, f"linha {ln}: {r['strong']} não aparece em {cod} {c}")
+                elif m and not any(int(m[1]) <= v <= int(m[2] or m[1]) for v in where):
+                    error(fname, f"linha {ln}: {r['strong']} não aparece nos versículos {r['verses']} (aparece em {where[:8]})")
     if os.path.exists(file_b):
         for ln, r in tsv(file_b, ["ref", "snippet", "suggestion", "status", "note"]):
             m = REF.match(r["ref"].strip())
