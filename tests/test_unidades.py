@@ -1,4 +1,5 @@
 """Testes de unidade das funções puras dos scripts."""
+
 import os
 import sys
 
@@ -8,14 +9,17 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts"))
 glosar = pytest.importorskip("glosar", reason="glosar.py precisa do eflomal (pip install eflomal)")
 
 
-@pytest.mark.parametrize("entrada, saida", [
-    ("em-o-princípio", "no-princípio"),
-    ("de-a-terra", "da-terra"),
-    ("a-os-filhos", "aos-filhos"),
-    ("em-ele", "nele"),
-    ("e-de-os-céus", "e-dos-céus"),
-    ("criou", "criou"),
-])
+@pytest.mark.parametrize(
+    "entrada, saida",
+    [
+        ("em-o-princípio", "no-princípio"),
+        ("de-a-terra", "da-terra"),
+        ("a-os-filhos", "aos-filhos"),
+        ("em-ele", "nele"),
+        ("e-de-os-céus", "e-dos-céus"),
+        ("criou", "criou"),
+    ],
+)
 def test_contracoes(entrada, saida):
     assert glosar.contrair(entrada) == saida
 

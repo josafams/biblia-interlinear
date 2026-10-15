@@ -1,0 +1,7 @@
+# Ferramentas de Python para desenvolvimento e CI (versões fixas; o Dependabot atualiza)
+eflomal==2.0.0
+pypdf==6.20.1
+pytest==9.1.1
+pytest-cov==7.1.0
+ruff==0.16.8
+pre-commit==4.7.0

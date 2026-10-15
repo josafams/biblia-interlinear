@@ -9,6 +9,7 @@ saida/web/dados/
 Formato compacto de cada palavra: [texto, chave Strong, glosa, fonte da glosa, morfologia, lema].
 Uso: python3 scripts/exportar.py [--previa ARQ.json COD.CAP ...]  (a prévia junta tudo num JSON só)
 """
+
 import csv
 import glob
 import json
@@ -24,12 +25,16 @@ from pronuncia import pron_grego, pron_hebraico  # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DB = os.path.join(ROOT, "saida", "biblia.sqlite")
-OUT = os.path.join(ROOT, "saida", "dados")          # JSON (lido pelo EPUB, PDF e pela página)
-WEB = os.path.join(ROOT, "saida", "web", "dados")   # .js carregados pelo site e pelo app
+OUT = os.path.join(ROOT, "saida", "dados")  # JSON (lido pelo EPUB, PDF e pela página)
+WEB = os.path.join(ROOT, "saida", "web", "dados")  # .js carregados pelo site e pelo app
 FONTE_CURTA = {"alinhamento": "", "manual": "m", "revisada": "m", "lexico": "l", "regra": "r", "parcial": "p", "sem": "s"}
 GRUPOS = [  # agrupamento dos livros no índice
-    ("Pentateuco", "GEN", "DEU"), ("Históricos", "JOS", "EST"), ("Poéticos e sapienciais", "JOB", "SNG"),
-    ("Profetas", "ISA", "MAL"), ("Evangelhos e Atos", "MAT", "ACT"), ("Cartas de Paulo", "ROM", "PHM"),
+    ("Pentateuco", "GEN", "DEU"),
+    ("Históricos", "JOS", "EST"),
+    ("Poéticos e sapienciais", "JOB", "SNG"),
+    ("Profetas", "ISA", "MAL"),
+    ("Evangelhos e Atos", "MAT", "ACT"),
+    ("Cartas de Paulo", "ROM", "PHM"),
     ("Outras cartas e Apocalipse", "HEB", "REV"),
 ]
 
@@ -84,7 +89,7 @@ def main(argv):
     grupo_de = {}
     ordem = [l[0] for l in LIVROS]
     for nome, a, b in GRUPOS:
-        for c in ordem[ordem.index(a):ordem.index(b) + 1]:
+        for c in ordem[ordem.index(a) : ordem.index(b) + 1]:
             grupo_de[c] = nome
     for cod, osis, _t, _s, _m, nome, abrev in LIVROS:
         temas = ler_temas(cod)
@@ -96,8 +101,7 @@ def main(argv):
             facts = [f for f in about.get("facts", []) if f[0] not in ("Capítulos", "Versículos")]
             facts[1:1] = [["Capítulos", str(len(caps))], ["Versículos", fmt_int(sum(c["v"] for c in caps))]]
             about["facts"] = facts
-        livros.append({"cod": cod, "nome": nome, "abrev": abrev, "nt": osis is None, "grupo": grupo_de[cod],
-                       "caps": caps, "about": about})
+        livros.append({"cod": cod, "nome": nome, "abrev": abrev, "nt": osis is None, "grupo": grupo_de[cod], "caps": caps, "about": about})
 
     # ------------------------------------------------ capítulos
     textos = defaultdict(dict)
@@ -106,8 +110,9 @@ def main(argv):
     palavras = defaultdict(lambda: defaultdict(list))
     uso = Counter()
     for pid, b, c, v, lingua, texto, lema, strong, morph, glosa, fonte, ketiv in db.execute(
-            "SELECT id, livro, cap, vers, lingua, texto, lema, strong, morph, glosa, glosa_fonte, ketiv FROM palavras "
-            "ORDER BY livro, cap, vers, pos"):
+        "SELECT id, livro, cap, vers, lingua, texto, lema, strong, morph, glosa, glosa_fonte, ketiv FROM palavras "
+        "ORDER BY livro, cap, vers, pos"
+    ):
         chave = strong or ("G:" + lema if lingua == "G" else None)
         uso[chave] += 1
         w = [texto, chave, glosa or "", FONTE_CURTA.get(fonte, ""), morph or ""]
@@ -142,10 +147,14 @@ def main(argv):
             traduz[ch].append(f"{t} ({n})")
     lex = {"H": {}, "G": {}}
     for chave, lingua, lema, xlit, pron_en, deriv, defi, kjv, glosa_en, def_pt in db.execute(
-            "SELECT chave, lingua, lema, xlit, pron_en, derivacao_en, def_en, kjv_en, glosa_en, def_pt FROM lexico"):
+        "SELECT chave, lingua, lema, xlit, pron_en, derivacao_en, def_en, kjv_en, glosa_en, def_pt FROM lexico"
+    ):
         pt = lex_pt.get(chave)
-        pron = pron_hebraico(pron_en) if lingua == "H" and pron_en and chave[1:].isdigit() else (
-            pron_en if lingua == "H" else pron_grego(lema or ""))
+        pron = (
+            pron_hebraico(pron_en)
+            if lingua == "H" and pron_en and chave[1:].isdigit()
+            else (pron_en if lingua == "H" else pron_grego(lema or ""))
+        )
         e = {"l": lema, "x": xlit, "p": pron, "n": uso.get(chave, 0)}
         if pt:
             e["o"], e["s"] = pt
@@ -162,8 +171,14 @@ def main(argv):
     for chave, n in uso.items():
         if chave and chave.startswith("G:"):
             lema = chave[2:]
-            lex["G"][chave] = {"l": lema, "x": "", "p": pron_grego(lema), "n": n,
-                               "se": "sem verbete no dicionário de Strong", "t": "; ".join(traduz.get(chave, []))}
+            lex["G"][chave] = {
+                "l": lema,
+                "x": "",
+                "p": pron_grego(lema),
+                "n": n,
+                "se": "sem verbete no dicionário de Strong",
+                "t": "; ".join(traduz.get(chave, [])),
+            }
 
     if previa:
         arq, quais = previa
@@ -182,26 +197,30 @@ def main(argv):
             mais.update(re.findall(r"[HG]\d+", (e.get("o") or "") + (e.get("oe") or "")))
         todas = usadas | mais
         sub = {k: e for L in lex.values() for k, e in L.items() if k in todas}
-        json.dump({"livros": livros, "caps": caps, "lex": sub, "completo": False},
-                  open(arq, "w", encoding="utf8"), ensure_ascii=False, separators=(",", ":"))
+        json.dump(
+            {"livros": livros, "caps": caps, "lex": sub, "completo": False},
+            open(arq, "w", encoding="utf8"),
+            ensure_ascii=False,
+            separators=(",", ":"),
+        )
         print(f"prévia: {len(caps)} capítulos, {len(sub)} verbetes → {arq} ({os.path.getsize(arq) // 1024} KB)")
         return
 
     import shutil
+
     shutil.rmtree(WEB, ignore_errors=True)
     os.makedirs(os.path.join(OUT, "lex"), exist_ok=True)
     os.makedirs(os.path.join(WEB, "lex"), exist_ok=True)
-    json.dump(livros, open(os.path.join(OUT, "livros.json"), "w", encoding="utf8"), ensure_ascii=False,
-              separators=(",", ":"))
+    json.dump(livros, open(os.path.join(OUT, "livros.json"), "w", encoding="utf8"), ensure_ascii=False, separators=(",", ":"))
     for L, d in lex.items():
-        json.dump(d, open(os.path.join(OUT, "lex", f"{L}.json"), "w", encoding="utf8"), ensure_ascii=False,
-                  separators=(",", ":"))
+        json.dump(d, open(os.path.join(OUT, "lex", f"{L}.json"), "w", encoding="utf8"), ensure_ascii=False, separators=(",", ":"))
     # cópias em .js (funcionam abrindo o index.html direto do disco, onde o navegador bloqueia fetch)
     for L, d in lex.items():
         open(os.path.join(WEB, "lex", f"{L}.js"), "w", encoding="utf8").write(
-            f"__lex({json.dumps(L)},{json.dumps(d, ensure_ascii=False, separators=(',', ':'))});")
+            f"__lex({json.dumps(L)},{json.dumps(d, ensure_ascii=False, separators=(',', ':'))});"
+        )
     n = 0
-    for (b, c) in sorted(textos):
+    for b, c in sorted(textos):
         os.makedirs(os.path.join(OUT, "cap", b), exist_ok=True)
         os.makedirs(os.path.join(WEB, "cap", b), exist_ok=True)
         cap = json.dumps(capitulo(b, c), ensure_ascii=False, separators=(",", ":"))

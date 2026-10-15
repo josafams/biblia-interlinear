@@ -29,7 +29,7 @@ Códigos dos livros: os de três letras usados em todo o projeto (`GEN`, `EXO`, 
 
 1. Veja a posição da palavra:
 
-   ```
+   ```text
    $ python3 scripts/consulta.py interlinear JHN 1:1
    1:1  No princípio era a Palavra, e a Palavra estava junto de Deus, e a Palavra era Deus.
       1  Ἐν      G1722  no         (alinhamento)
@@ -78,12 +78,12 @@ Em pontos disputados (autoria, datas), apresente as posições principais sem to
 
 O texto da Bíblia Livre é reproduzido **sem alterações** (é o combinado com a licença e com os autores). Erros de
 digitação encontrados são registrados em `dados/correcoes/blivre.tsv` com `status = relatar`, para serem enviados aos
-tradutores (https://sites.google.com/site/biblialivre/). Quando a correção sair numa nova edição da BLIVRE, ela entra
+tradutores (<https://sites.google.com/site/biblialivre/>). Quando a correção sair numa nova edição da BLIVRE, ela entra
 no projeto pelo `baixar_fontes.sh`, e o status passa a `corrigido-na-fonte`.
 
 ## Fluxo
 
-```
+```text
 achar o problema ──► corrigir em dados/ ──► conferir ──► pull request ──► revisão ──► merge na main ──► publicar
    (app ⚑, relatório,    (num ramo novo)     (verificar_dados,  (o GitHub roda      (outra pessoa,   (site, app,
     leitura, issue)                            build local)       a verificação)      se possível)     EPUB, PDF)

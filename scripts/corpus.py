@@ -12,6 +12,7 @@
 
 Uso: python3 scripts/corpus.py
 """
+
 import csv
 import difflib
 import json
@@ -23,7 +24,7 @@ import unicodedata
 from collections import Counter, defaultdict
 
 sys.path.insert(0, os.path.dirname(__file__))
-from livros import LIVROS, POR_CODIGO, AT  # noqa: E402
+from livros import AT, LIVROS, POR_CODIGO  # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 FD = os.path.join(ROOT, "fontes-dados")
@@ -122,13 +123,20 @@ def _cv(ref):
 
 def ler_hebraico(osis, vm):
     x = open(os.path.join(FD, f"morphhb/wlc/{osis}.xml"), encoding="utf8").read()
+
     # ketiv/qere: no texto fica a leitura (qere), com vogais; a forma escrita (ketiv) vai num atributo
     def troca(m):
         ketiv = " ".join(re.sub(r"<[^>]+>", "", k) for k in re.findall(r"<w [^>]*>[^<]*</w>", m.group(1)))
         return re.sub(r"<w ", f'<w ketiv="{ketiv}" ', m.group(2), count=1)
-    x = re.sub(r'((?:<w type="x-ketiv"[^>]*>[^<]*</w>\s*(?:<seg[^>]*>[^<]*</seg>)?\s*)+)'
-               r'(?:<note type="exegesis">(?:(?!</note>).)*</note>\s*)?<note type="variant">\s*'
-               r'<catchWord>[^<]*</catchWord>\s*<rdg type="x-qere">(.*?)</rdg>\s*</note>', troca, x, flags=re.S)
+
+    x = re.sub(
+        r'((?:<w type="x-ketiv"[^>]*>[^<]*</w>\s*(?:<seg[^>]*>[^<]*</seg>)?\s*)+)'
+        r'(?:<note type="exegesis">(?:(?!</note>).)*</note>\s*)?<note type="variant">\s*'
+        r'<catchWord>[^<]*</catchWord>\s*<rdg type="x-qere">(.*?)</rdg>\s*</note>',
+        troca,
+        x,
+        flags=re.S,
+    )
     x = re.sub(r"<note\b.*?</note>", "", x, flags=re.S)  # demais notas fora do texto
     capitulos_mapeados = defaultdict(bool)
     for wlc in list(vm) + list(DIVISOES):
@@ -141,8 +149,15 @@ def ler_hebraico(osis, vm):
         palavras = []
         for attrs, txt in re.findall(r"<w ([^>]*)>(.*?)</w>", corpo):
             a = dict(re.findall(r'(\w+)="([^"]*)"', attrs))
-            palavras.append({"txt": re.sub(r"<[^>]+>", "", txt), "lemma": a.get("lemma", ""),
-                             "morph": a.get("morph", ""), "id": a.get("id", ""), "ketiv": a.get("ketiv")})
+            palavras.append(
+                {
+                    "txt": re.sub(r"<[^>]+>", "", txt),
+                    "lemma": a.get("lemma", ""),
+                    "morph": a.get("morph", ""),
+                    "id": a.get("id", ""),
+                    "ketiv": a.get("ketiv"),
+                }
+            )
         if vid in DIVISOES:
             n, r1, r2 = DIVISOES[vid]
             yield (hc, hv), _cv(r1), palavras[:n], 0
@@ -228,14 +243,46 @@ def carregar_dodson():
 
 # Lemas do SBLGNT cuja grafia não bate com nenhum verbete de Strong/Dodson (conferidos à mão).
 G_MANUAL = {
-    "πίμπλημι": "G4130", "ἐμπίμπλημι": "G1705", "γαμίζω": "G1061", "ἔπειμι": "G1966",
-    "στεῖρα": "G4723", "λεγιών": "G3003", "Ναζαρά": "G3478", "λεμά": "G2982", "προσαίτης": "G4319",
-    "ἀνάγαιον": "G508", "ἐφοράω": "G1896", "δεκαοκτώ": "G1176", "πλοῦς": "G4144", "ὀψία": "G3798",
-    "διαρρήγνυμι": "G1284", "Ἰσκαριώθ": "G2469", "Βόες": "G1003", "κρυφαῖος": "G2927", "ψίξ": "G5589",
-    "ἔνθεν": "G1782", "ἐχθές": "G5504", "μήγε": "G3361", "Μωϋσῆς": "G3475", "Μαριάμ": "G3137",
-    "τεσσεράκοντα": "G5062", "Καφαρναούμ": "G2584", "ἀφίσταμαι": "G868", "Σαμαρίτης": "G4541",
-    "ἕλκω": "G1670", "Ἰωβήδ": "G5601", "ἀλλαχοῦ": "G237", "δύσις": "G1424", "κόπριον": "G2874",
-    "διόρθωμα": "G2735", "κημόω": "G5392", "ἐγκαυχάομαι": "G2744", "στάδιος": "G4712", "ἐγκακέω": "G1573", "ἐραυνάω": "G2045", "Μαθθαῖος": "G3156",
+    "πίμπλημι": "G4130",
+    "ἐμπίμπλημι": "G1705",
+    "γαμίζω": "G1061",
+    "ἔπειμι": "G1966",
+    "στεῖρα": "G4723",
+    "λεγιών": "G3003",
+    "Ναζαρά": "G3478",
+    "λεμά": "G2982",
+    "προσαίτης": "G4319",
+    "ἀνάγαιον": "G508",
+    "ἐφοράω": "G1896",
+    "δεκαοκτώ": "G1176",
+    "πλοῦς": "G4144",
+    "ὀψία": "G3798",
+    "διαρρήγνυμι": "G1284",
+    "Ἰσκαριώθ": "G2469",
+    "Βόες": "G1003",
+    "κρυφαῖος": "G2927",
+    "ψίξ": "G5589",
+    "ἔνθεν": "G1782",
+    "ἐχθές": "G5504",
+    "μήγε": "G3361",
+    "Μωϋσῆς": "G3475",
+    "Μαριάμ": "G3137",
+    "τεσσεράκοντα": "G5062",
+    "Καφαρναούμ": "G2584",
+    "ἀφίσταμαι": "G868",
+    "Σαμαρίτης": "G4541",
+    "ἕλκω": "G1670",
+    "Ἰωβήδ": "G5601",
+    "ἀλλαχοῦ": "G237",
+    "δύσις": "G1424",
+    "κόπριον": "G2874",
+    "διόρθωμα": "G2735",
+    "κημόω": "G5392",
+    "ἐγκαυχάομαι": "G2744",
+    "στάδιος": "G4712",
+    "ἐγκακέω": "G1573",
+    "ἐραυνάω": "G2045",
+    "Μαθθαῖος": "G3156",
 }
 
 
@@ -246,10 +293,18 @@ def variantes_gregas(lema):
     if m:
         out += [m.group(1) + m.group(2), m.group(1)]
     for b in list(out):
-        for a, c in [("άομαι", "άω"), ("έομαι", "έω"), ("όομαι", "όω"), ("ομαι", "ω"), ("υμι", "ύω"),
-                     ("άω", "έω"), ("έω", "άω"), ("μαι", "μι")]:
+        for a, c in [
+            ("άομαι", "άω"),
+            ("έομαι", "έω"),
+            ("όομαι", "όω"),
+            ("ομαι", "ω"),
+            ("υμι", "ύω"),
+            ("άω", "έω"),
+            ("έω", "άω"),
+            ("μαι", "μι"),
+        ]:
             if b.endswith(a):
-                out.append(b[:-len(a)] + c)
+                out.append(b[: -len(a)] + c)
     return out
 
 
@@ -287,7 +342,7 @@ def mapear_grego(lemas, strong_g, dodson):
 
 def carregar_strong(arq):
     js = open(os.path.join(FD, f"strongs/{arq}"), encoding="utf8").read()
-    return json.loads(js[js.index("{"):js.rindex("}") + 1])
+    return json.loads(js[js.index("{") : js.rindex("}") + 1])
 
 
 # ---------------------------------------------------------------- banco
@@ -331,8 +386,25 @@ def main():
                 for i, p in enumerate(pals, desloc + 1):
                     strong, pref = raiz_strong(p["lemma"])
                     lang = "A" if p["morph"].startswith("A") else "H"
-                    rows.append((cod, ec, ev, None, lang, p["txt"], p["lemma"], strong,
-                                 "/".join(pref), p["morph"], f"{hc}:{hv}.{i}", None, None, None, p["ketiv"]))
+                    rows.append(
+                        (
+                            cod,
+                            ec,
+                            ev,
+                            None,
+                            lang,
+                            p["txt"],
+                            p["lemma"],
+                            strong,
+                            "/".join(pref),
+                            p["morph"],
+                            f"{hc}:{hv}.{i}",
+                            None,
+                            None,
+                            None,
+                            p["ketiv"],
+                        )
+                    )
         else:
             n_g = Counter()
             for (c, v), p in ler_grego(mgnt):
@@ -344,8 +416,9 @@ def main():
                 if (cod, c, v) in DIVISOES_G:
                     n, d1, d2 = DIVISOES_G[(cod, c, v)]
                     ec, ev = d1 if i <= n else d2
-                rows.append((cod, ec, ev, None, "G", p["txt"], p["lemma"], chave, "", morph,
-                             f"{c}:{v}.{i}", None, None, como, p.get("fonte")))
+                rows.append(
+                    (cod, ec, ev, None, "G", p["txt"], p["lemma"], chave, "", morph, f"{c}:{v}.{i}", None, None, como, p.get("fonte"))
+                )
     # posição da palavra dentro do versículo de exibição (ordem de leitura)
     pos = Counter()
     final = []
@@ -353,8 +426,11 @@ def main():
         k = (r[0], r[1], r[2])
         pos[k] += 1
         final.append(r[:3] + (pos[k],) + r[4:])
-    db.executemany("""INSERT INTO palavras(livro,cap,vers,pos,lingua,texto,lema,strong,prefixos,morph,ref_orig,
-                      glosa,glosa_fonte,strong_fonte,ketiv) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""", final)
+    db.executemany(
+        """INSERT INTO palavras(livro,cap,vers,pos,lingua,texto,lema,strong,prefixos,morph,ref_orig,
+                      glosa,glosa_fonte,strong_fonte,ketiv) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+        final,
+    )
 
     # títulos dos Salmos: versículo 0 quando o hebraico os numera à parte;
     # quando o título está dentro do v. 1 hebraico, ele volta para o começo do v. 1
@@ -383,17 +459,32 @@ def main():
         db.execute("INSERT INTO versos VALUES (?,?,?,?,?,?)", (b, c, v, "", None, "sem-blivre"))
 
     for k, e in strong_h.items():
-        db.execute("INSERT INTO lexico VALUES (?,?,?,?,?,?,?,?,?,?)",
-                   (k, "H", e.get("lemma"), e.get("xlit"), e.get("pron"), e.get("derivation"),
-                    e.get("strongs_def"), e.get("kjv_def"), None, None))
+        db.execute(
+            "INSERT INTO lexico VALUES (?,?,?,?,?,?,?,?,?,?)",
+            (k, "H", e.get("lemma"), e.get("xlit"), e.get("pron"), e.get("derivation"), e.get("strongs_def"), e.get("kjv_def"), None, None),
+        )
     for letra, (heb, xlit, pt, en) in PARTICULAS_H.items():
         if letra != "m":
-            db.execute("INSERT INTO lexico VALUES (?,?,?,?,?,?,?,?,?,?)",
-                       ("H" + letra, "H", heb, xlit, xlit, "partícula inseparável (prefixo)", en, None, en, pt))
+            db.execute(
+                "INSERT INTO lexico VALUES (?,?,?,?,?,?,?,?,?,?)",
+                ("H" + letra, "H", heb, xlit, xlit, "partícula inseparável (prefixo)", en, None, en, pt),
+            )
     for k, e in strong_g.items():
-        db.execute("INSERT INTO lexico VALUES (?,?,?,?,?,?,?,?,?,?)",
-                   (k, "G", e.get("lemma"), e.get("translit"), None, e.get("derivation"),
-                    e.get("strongs_def"), e.get("kjv_def"), dodson_glosa.get(k), None))
+        db.execute(
+            "INSERT INTO lexico VALUES (?,?,?,?,?,?,?,?,?,?)",
+            (
+                k,
+                "G",
+                e.get("lemma"),
+                e.get("translit"),
+                None,
+                e.get("derivation"),
+                e.get("strongs_def"),
+                e.get("kjv_def"),
+                dodson_glosa.get(k),
+                None,
+            ),
+        )
     db.commit()
 
     n_pal = db.execute("SELECT count(*) FROM palavras").fetchone()[0]

@@ -1,0 +1,9 @@
+# gitleaks: os IDs de cliente OAuth do Google são públicos por definição (não há segredo neste fluxo)
+# e a chave de TESTE do APK (android/app/debug.keystore, senha "android") é pública de propósito.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "IDs públicos e chave de teste"
+regexes = ['''[0-9]+-[a-z0-9]+\.apps\.googleusercontent\.com''']
+paths = ['''android/app/debug\.keystore''']

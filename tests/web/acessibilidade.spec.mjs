@@ -2,7 +2,11 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
-for (const [nome, url] of [["página inicial", "index.html"], ["leitor (hebraico)", "ler.html#GEN.1"], ["leitor (grego)", "ler.html#JHN.1"]]) {
+for (const [nome, url] of [
+  ["página inicial", "index.html"],
+  ["leitor (hebraico)", "ler.html#GEN.1"],
+  ["leitor (grego)", "ler.html#JHN.1"]
+]) {
   test(`acessibilidade: ${nome}`, async ({ page }) => {
     test.setTimeout(120000);
     await page.goto(url);

@@ -1,4 +1,5 @@
 """EPUB e PDF de um livro pequeno (Rute): estrutura, validação e marcadores."""
+
 import os
 import re
 import shutil
@@ -8,7 +9,7 @@ import zipfile
 
 import pytest
 
-from conftest import ROOT, DADOS
+from conftest import ROOT
 
 EPUB = os.path.join(ROOT, "saida", "epub", "08-RUT-Rute.epub")
 PDF = os.path.join(ROOT, "saida", "pdf", "08-RUT-Rute.pdf")
@@ -66,4 +67,4 @@ def test_epub_so_biblia_livre(livros):
     gen = z.read("OEBPS/GEN.xhtml").decode("utf8")
     assert "No princípio criou Deus os céus e a terra." in gen
     assert gen.count('<h2 id="c') == 50
-    assert "epub:type=\"footnote\"" not in gen
+    assert 'epub:type="footnote"' not in gen

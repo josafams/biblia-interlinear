@@ -7,11 +7,25 @@ async function abrirComDados(page) {
   await expect(page.locator(".verse").first()).toBeVisible();
   await page.waitForFunction(() => window.Anotacoes);
   await page.evaluate(async () => {
-    const A = window.Anotacoes, id = () => crypto.randomUUID();
+    const A = window.Anotacoes,
+      id = () => crypto.randomUUID();
     const anc = (livro, cap, ver, extra = {}) => ({ livro, cap, ver, ver_fim: ver, camada: "versiculo", ...extra });
     const et = await A.gravar("etiquetas", { id: id(), nome: "estudo" });
-    await A.gravar("notas", { id: id(), cap: "GEN.1", ancora: anc("GEN", 1, 2), titulo: "Tohu e bohu", texto: "Rima no hebraico.", etiquetas: [et.id] });
-    await A.gravar("marcacoes", { id: id(), cap: "GEN.1", ancora: anc("GEN", 1, 3, { camada: "blivre", inicio: 14, fim: 35, trecho: "Haja luz; e houve luz" }), cor: "amarelo", etiquetas: [] });
+    await A.gravar("notas", {
+      id: id(),
+      cap: "GEN.1",
+      ancora: anc("GEN", 1, 2),
+      titulo: "Tohu e bohu",
+      texto: "Rima no hebraico.",
+      etiquetas: [et.id]
+    });
+    await A.gravar("marcacoes", {
+      id: id(),
+      cap: "GEN.1",
+      ancora: anc("GEN", 1, 3, { camada: "blivre", inicio: 14, fim: 35, trecho: "Haja luz; e houve luz" }),
+      cor: "amarelo",
+      etiquetas: []
+    });
     await A.gravar("favoritos", { id: id(), cap: "PSA.23", ancora: anc("PSA", 23, 1) });
     window.__semImprimir = true;
   });
@@ -89,6 +103,10 @@ test("importar um arquivo que não é backup avisa sem quebrar", async ({ page }
   await page.click("#open-minhas");
   await expect(page.locator("#minhas")).toBeVisible();
   // conteúdo em memória: um caminho com acento (nome do teste) chega vazio ao navegador
-  await page.setInputFiles("#mn-arquivo", { name: "outro.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify({ qualquer: 1 })) });
+  await page.setInputFiles("#mn-arquivo", {
+    name: "outro.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify({ qualquer: 1 }))
+  });
   await expect(page.locator("#toast")).toContainText("não é um backup");
 });

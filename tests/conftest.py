@@ -1,5 +1,6 @@
 """Testes do projeto. Rode com: python3 -m pytest tests  (depois de gerar os dados: scripts/build.sh ou
 corpus.py + glosar.py + exportar.py). Os testes que dependem de arquivos ainda não gerados são pulados."""
+
 import json
 import os
 import sqlite3
