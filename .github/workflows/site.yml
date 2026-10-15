@@ -1,0 +1,58 @@
+# Gera o site a cada envio para a main e publica no ramo gh-pages (GitHub Pages).
+# Refaz o corpus a partir das fontes abertas; as glosas saem iguais às do repositório porque o alinhamento
+# fica salvo em data/alignment. Os vídeos "Como usar" já publicados em gh-pages/videos são mantidos.
+# Quando termina, dispara o app Android e a gravação dos vídeos (workflow_run), que usam este site.
+name: Site
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gh-pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - run: npm ci
+      - name: Fontes abertas
+        run: scripts/download_sources.sh
+      - name: Corpus, glosas, revisão e site
+        run: |
+          python3 scripts/corpus.py
+          python3 scripts/make_glosses.py
+          python3 scripts/review.py > /dev/null
+          node scripts/build_web.mjs
+      - name: Ramo gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+      - name: Publicar (mantendo os vídeos)
+        run: |
+          find gh-pages -mindepth 1 -maxdepth 1 ! -name .git ! -name videos -exec rm -rf {} +
+          rm -rf build/web/videos
+          cp -r build/web/. gh-pages/
+          touch gh-pages/.nojekyll
+          cd gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Site: ${GITHUB_SHA::7} ($(git -C .. log -1 --format=%s | cut -c1-60))" || { echo "Nada mudou no site."; exit 0; }
+          git push origin HEAD:gh-pages

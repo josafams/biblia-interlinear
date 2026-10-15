@@ -97,15 +97,11 @@ O repositório é **github.com/josafams/biblia-interlinear**: a `main` tem o có
 
 **Livros (EPUB e PDF):** a cada mudança em `data/` ou nos scripts da `main`, o workflow `.github/workflows/books.yml` refaz tudo a partir das fontes e publica a Bíblia completa, os volumes e os 66 livros na release **livros**, em *Releases*.
 
-**App Android:** a cada envio para `main` ou `gh-pages`, o workflow `.github/workflows/android.yml` compila o app com o conteúdo do `gh-pages` e publica o APK (instalável no celular) e o AAB (Play Store) na release **app-android**, em *Releases*.
+**Site:** a cada envio para a `main`, o workflow `.github/workflows/site.yml` refaz o corpus e o site e publica no ramo `gh-pages` (mantendo os vídeos já gravados). Em seguida rodam o **Android** e os **Vídeos**.
 
-**Atualizar o site:** o site publicado é o ramo `gh-pages`, que contém só `build/web`. Depois de gerar:
+**App Android:** depois que o Site publica, o workflow `.github/workflows/android.yml` compila o app com o conteúdo do `gh-pages` e publica o APK (instalável no celular) e o AAB (Play Store) na release **app-android**, em *Releases*.
 
-```sh
-scripts/publish_web.sh         # copia build/web para gh-pages, faz o commit e envia
-```
-
-(Alternativa: `.github/workflows/web.yml`, acionado à mão, refaz tudo do zero no GitHub e publica pelo GitHub Actions.)
+**Publicar à mão** (só se o workflow Site não puder rodar): depois de `scripts/build.sh`, `scripts/publish_web.sh` copia `build/web` para o `gh-pages`, faz o commit e envia.
 
 ### Testes e vídeos
 

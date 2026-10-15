@@ -48,7 +48,6 @@ jobs:
         run: python3 -m pytest -v --cov --cov-append --cov-report=
       - name: Cobertura do Python
         run: |
-          python3 -m coverage combine --append
           python3 -m coverage report
           python3 -m coverage xml -o build/coverage.xml
       - name: Testes no navegador

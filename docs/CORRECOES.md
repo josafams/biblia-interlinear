@@ -126,16 +126,10 @@ verificação automática precisa estar verde.
 
 ### 4. Publicar
 
-Depois do merge, quem mantém o projeto gera e publica:
+Depois do merge, o GitHub publica tudo sozinho:
 
-```sh
-git checkout main && git pull
-scripts/build.sh                     # banco, glosas, revisões, site, EPUB e PDF
-scripts/publish_web.sh "Correções de Jo 1"
-```
-
-- O `publish_web.sh` envia o site ao ramo `gh-pages`: o **site** é atualizado em 1–2 minutos e o **app Android** é
-  recompilado sozinho (Actions › Android), com o APK novo na release **app-android**.
+- O workflow **Site** refaz o site e o envia ao ramo `gh-pages` (cerca de 10 minutos); em seguida o **app Android** é
+  recompilado (Actions › Android), com o APK novo na release **app-android**, e os vídeos são gravados de novo.
 - **EPUB e PDF:** o merge na `main` já dispara o workflow *Livros (EPUB e PDF)*, que gera a Bíblia completa, os
   volumes AT e NT e os 66 livros e substitui os arquivos da release **livros** (cerca de 30–40 minutos).
 

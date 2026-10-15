@@ -62,7 +62,7 @@ node scripts/videos/gravar.mjs 05 12         # grava só esses
 node scripts/build_web.mjs                   # copia build/videos para o site
 ```
 
-No GitHub, o workflow **Vídeos** grava de novo quando o leitor ou os roteiros mudam e publica em `gh-pages/videos`.
+No GitHub, o workflow **Vídeos** grava de novo depois de cada publicação do site (workflow **Site**) e publica em `gh-pages/videos`.
 Ao mudar a tela, ajuste o roteiro do vídeo correspondente; se um passo não funcionar mais, os testes avisam.
 
 Para um vídeo de uma função nova: acrescente os passos ao item com `pronto: false` em `roteiros.mjs` e tire o `pronto: false`.
