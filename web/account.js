@@ -2,10 +2,10 @@
  * Sem servidor do projeto: o app fala direto com a API do Drive usando o token que o Google entrega no login.
  *   - Site: Google Identity Services, modelo de token (popup). O script do Google só é carregado quando a pessoa
  *     vai tocar em "Entrar com Google".
- *   - Android: plugin nativo ContaGoogle (API de autorização do Google Play services); renovação silenciosa.
+ *   - Android: plugin nativo GoogleAccount (API de autorização do Google Play services); renovação silenciosa.
  *   - iOS: ainda não (fica oculto).
  * O token fica só na memória; no aparelho fica guardado apenas nome, e-mail e foto, para mostrar a conta.
- * Expõe window.Account (estado, entrar, sair, token, drive.*) para a sincronização (fase 5).
+ * Expõe window.Account (status, signIn, signOut, token, drive.*) para a sincronização (fase 5).
  */
 (function () {
   "use strict";
@@ -20,7 +20,7 @@
   const Cap = window.Capacitor;
   const isNative = !!Cap?.isNativePlatform?.();
   const platform = isNative ? Cap.getPlatform() : "web";
-  const plugin = isNative ? Cap.Plugins?.ContaGoogle : null;
+  const plugin = isNative ? Cap.Plugins?.GoogleAccount : null;
   const cfg = window.GOOGLE_CONFIG || {};
   const available = isNative ? platform === "android" && !!plugin : !!cfg.webClientId;
 
@@ -43,16 +43,16 @@
     account = JSON.parse(readStorage(ACCOUNT_KEY) || "null");
   } catch (_) {}
   let currentToken = null; // { valor, expira }
-  let estado = !available ? "indisponivel" : account ? "reconectar" : "fora";
+  let accountStatus = !available ? "unavailable" : account ? "reconnect" : "signed-out";
   let drive = null; // resumo de conta.json no Drive: { aparelhos }
   let errorMsg = "";
   const listeners = [];
   function setState(fresh) {
-    if (fresh) estado = fresh;
+    if (fresh) accountStatus = fresh;
     render();
     listeners.forEach(f => {
       try {
-        f(estado);
+        f(accountStatus);
       } catch (_) {}
     });
   }
@@ -81,15 +81,15 @@
         client_id: cfg.webClientId,
         scope: SCOPES,
         callback: r => {
-          if (r.error) return failure(Object.assign(new Error(r.error_description || r.error), { markCode: r.error }));
+          if (r.error) return failure(Object.assign(new Error(r.error_description || r.error), { errorCode: r.error }));
           if (!google.accounts.oauth2.hasGrantedAllScopes(r, DRIVE_SCOPE))
-            return failure(Object.assign(new Error("Sem a permissão do Drive"), { markCode: "sem-drive" }));
+            return failure(Object.assign(new Error("Sem a permissão do Drive"), { errorCode: "no-drive" }));
           ok({ valor: r.access_token, expira: Date.now() + (Number(r.expires_in) || 3600) * 1000 });
         },
         error_callback: e =>
           failure(
             Object.assign(new Error(e?.message || "Login cancelado."), {
-              markCode: e?.type === "popup_closed" ? "cancelado" : e?.type || "falhou"
+              errorCode: e?.type === "popup_closed" ? "cancelled" : e?.type || "failed"
             })
           )
       });
@@ -99,11 +99,11 @@
   async function requestNativeToken(silent) {
     let r;
     try {
-      r = await plugin.autorizar({ silent });
+      r = await plugin.authorize({ silent });
     } catch (e) {
-      throw Object.assign(new Error(e?.message || "Login cancelado."), { markCode: e?.code || "falhou" });
+      throw Object.assign(new Error(e?.message || "Login cancelado."), { errorCode: e?.code || "failed" });
     }
-    if (!(r.escopos || []).includes(DRIVE_SCOPE)) throw Object.assign(new Error("Sem a permissão do Drive"), { markCode: "sem-drive" });
+    if (!(r.scopes || []).includes(DRIVE_SCOPE)) throw Object.assign(new Error("Sem a permissão do Drive"), { errorCode: "no-drive" });
     // a API do Android não informa a validade; o Google entrega tokens de 1 hora
     return { valor: r.accessToken, expira: Date.now() + 55 * 60 * 1000 };
   }
@@ -111,18 +111,19 @@
   async function token() {
     if (currentToken && currentToken.expira - Date.now() > 60000) return currentToken.valor;
     currentToken = null;
-    if (estado === "fora" || estado === "indisponivel") throw Object.assign(new Error("Sem conta"), { markCode: "fora" });
+    if (accountStatus === "signed-out" || accountStatus === "unavailable")
+      throw Object.assign(new Error("Sem conta"), { errorCode: "signed-out" });
     if (isNative) {
       try {
         currentToken = await requestNativeToken(true);
         return currentToken.valor;
       } catch (e) {
-        setState("reconectar");
+        setState("reconnect");
         throw e;
       }
     }
-    setState("reconectar");
-    throw Object.assign(new Error("A conexão com o Google expirou."), { markCode: "reconectar" });
+    setState("reconnect");
+    throw Object.assign(new Error("A conexão com o Google expirou."), { errorCode: "reconnect" });
   }
 
   // ---------- API do Google ----------
@@ -138,20 +139,20 @@
       try {
         msg = (await r.json()).error?.message || "";
       } catch (_) {}
-      const markCode =
-        r.status === 403 && /storage|quota/i.test(msg) ? "drive-cheio" : r.status === 403 ? "sem-permissao" : "http-" + r.status;
-      throw Object.assign(new Error(msg || `Erro ${r.status} no Google Drive`), { markCode, status: r.status });
+      const errorCode =
+        r.status === 403 && /storage|quota/i.test(msg) ? "drive-full" : r.status === 403 ? "no-permission" : "http-" + r.status;
+      throw Object.assign(new Error(msg || `Erro ${r.status} no Google Drive`), { errorCode, status: r.status });
     }
     return r;
   }
   const Drive = {
-    async listar(nome) {
+    async listFiles(nome) {
       const q = nome ? `&q=${encodeURIComponent(`name='${nome.replace(/'/g, "\\'")}'`)}` : "";
       const r = await callApi(`${API}/files?spaces=appDataFolder&pageSize=1000&fields=files(id,name,modifiedTime,size)${q}`);
       return (await r.json()).files || [];
     },
     // busca na pasta do app com uma consulta do Drive (q), seguindo as páginas
-    async consultar(q) {
+    async queryDrive(q) {
       const listSheet = [];
       let pageHtml = "";
       do {
@@ -189,7 +190,7 @@
       });
       return r.json();
     },
-    async apagar(id) {
+    async removeRecord(id) {
       await callApi(`${API}/files/${id}`, { method: "DELETE" });
     }
   };
@@ -229,7 +230,7 @@
   }
   // Confere o acesso ao Drive: lê (ou cria) conta.json na pasta do app e registra este aparelho.
   async function verifyDrive() {
-    const [file] = await Drive.listar("conta.json");
+    const [file] = await Drive.listFiles("conta.json");
     const currentTime = new Date().toISOString();
     const payload = file
       ? await Drive.readStorage(file.id)
@@ -251,8 +252,8 @@
   async function signIn() {
     if (!available) return;
     errorMsg = "";
-    const before = estado;
-    setState("conectando");
+    const before = accountStatus;
+    setState("connecting");
     try {
       if (isNative) currentToken = await requestNativeToken(false);
       else {
@@ -261,7 +262,7 @@
       }
       account = await profile();
       persist(ACCOUNT_KEY, JSON.stringify(account));
-      setState("ligado");
+      setState("connected");
       try {
         await verifyDrive();
         setState();
@@ -272,16 +273,16 @@
       toastMsg(`Conectado como ${account.nome || account.email}.`);
     } catch (e) {
       currentToken = null;
-      if (e.markCode === "sem-drive")
+      if (e.errorCode === "no-drive")
         errorMsg =
           "Para guardar no Drive, deixe marcada a permissão “Ver, criar e apagar os próprios dados de configuração no Google Drive”.";
-      else if (e.markCode !== "cancelado" && e.markCode !== "popup_closed") errorMsg = message(e);
-      setState(before === "conectando" ? (account ? "reconectar" : "fora") : before);
+      else if (e.errorCode !== "cancelled" && e.errorCode !== "popup_closed") errorMsg = message(e);
+      setState(before === "connecting" ? (account ? "reconnect" : "signed-out") : before);
     }
   }
   // Sair: pergunta se mantém as anotações neste aparelho (útil em aparelho emprestado apagar)
   async function askSignOut() {
-    const n = window.Annotations ? await window.Annotations.contar() : 0;
+    const n = window.Annotations ? await window.Annotations.countAll() : 0;
     if (!n) return signOut();
     const r = await ask("Sair da conta", `As ${n} anotações continuam guardadas no seu Google Drive. Neste aparelho, você quer:`, [
       { id: "manter", texto: "Manter uma cópia aqui", prim: true },
@@ -290,8 +291,8 @@
     ]);
     if (!r) return;
     if (r === "apagar") {
-      await window.Sync?.antesDeApagar?.();
-      await window.Annotations.storage.apagarTudo();
+      await window.Sync?.beforeWipe?.();
+      await window.Annotations.storage.wipeAll();
     }
     signOut(r === "apagar" ? "Você saiu da conta e as anotações foram apagadas deste aparelho." : undefined);
   }
@@ -307,9 +308,9 @@
     );
     if (r !== "sim") return;
     try {
-      await window.Sync?.parar?.();
-      const fileList = await Drive.consultar("");
-      for (const a of fileList) await Drive.apagar(a.id);
+      await window.Sync?.halt?.();
+      const fileList = await Drive.queryDrive("");
+      for (const a of fileList) await Drive.removeRecord(a.id);
       await window.Annotations?.storage?.estado("sinc", null);
       signOut("Seus dados foram apagados do Google Drive. As anotações continuam neste aparelho.");
     } catch (e) {
@@ -330,12 +331,12 @@
       } catch (_) {}
     }
     if (isNative && plugin?.signOut) plugin.signOut().catch(() => {});
-    setState("fora");
+    setState("signed-out");
     toastMsg(msg || "Você saiu da conta. As anotações continuam neste aparelho.");
   }
   function message(e) {
-    if (e.markCode === "drive-cheio") return "Seu Google Drive está sem espaço. As anotações continuam neste aparelho.";
-    if (e.markCode === "sem-permissao") return "O Google recusou o acesso ao Drive. Tente entrar de novo.";
+    if (e.errorCode === "drive-full") return "Seu Google Drive está sem espaço. As anotações continuam neste aparelho.";
+    if (e.errorCode === "no-permission") return "O Google recusou o acesso ao Drive. Tente entrar de novo.";
     if (e instanceof TypeError) return "Sem conexão com o Google agora. As anotações continuam neste aparelho.";
     return e.message || "Algo deu errado ao falar com o Google.";
   }
@@ -357,10 +358,10 @@
   function ask(titulo, texto, buttons) {
     return new Promise(ok => {
       const backdrop = document.createElement("div");
-      backdrop.className = "conta-modal";
-      backdrop.innerHTML = `<div class="conta-caixa" role="alertdialog" aria-modal="true" aria-labelledby="cm-t" aria-describedby="cm-x">
+      backdrop.className = "account-modal";
+      backdrop.innerHTML = `<div class="account-box" role="alertdialog" aria-modal="true" aria-labelledby="cm-t" aria-describedby="cm-x">
         <h2 id="cm-t">${esc(titulo)}</h2><p id="cm-x">${esc(texto)}</p>
-        <div class="conta-acoes">${buttons.map(b => `<button data-r="${esc(b.id)}" class="${b.prim ? "prim" : ""}${b.perigo ? " perigo" : ""}">${esc(b.texto)}</button>`).join("")}</div></div>`;
+        <div class="account-actions">${buttons.map(b => `<button data-r="${esc(b.id)}" class="${b.prim ? "prim" : ""}${b.perigo ? " perigo" : ""}">${esc(b.texto)}</button>`).join("")}</div></div>`;
       const returnFocus = document.activeElement;
       const fim = r => {
         backdrop.remove();
@@ -392,48 +393,48 @@
   css.textContent = `
 .conta { border-bottom: 1px solid var(--line); }
 .conta[hidden] { display: none; }
-.conta-t { margin: 0; font-weight: 600; }
-.conta-s { margin: 4px 0 12px; color: var(--muted); font-size: 14px; line-height: 1.45; }
+.account-t { margin: 0; font-weight: 600; }
+.account-s { margin: 4px 0 12px; color: var(--muted); font-size: 14px; line-height: 1.45; }
 .gbtn { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 16px; border: 1px solid #747775; border-radius: 22px;
   background: #fff; color: #1f1f1f; font: 500 14px/1 Roboto, Arial, sans-serif; cursor: pointer; }
 .gbtn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 .gbtn[disabled] { opacity: .6; cursor: progress; }
-.conta-eu { display: flex; align-items: center; gap: 12px; }
-.conta-foto { width: 40px; height: 40px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; font-weight: 600; flex: none; overflow: hidden; }
-.conta-foto img { width: 100%; height: 100%; object-fit: cover; }
-.conta-nome { font-weight: 600; overflow-wrap: anywhere; }
-.conta-email { color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
-.conta-drive { margin: 10px 0 0; font-size: 14px; display: flex; align-items: center; gap: 8px; color: var(--muted); }
-.conta-drive::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--muted); flex: none; }
-.conta-drive.ok::before { background: #2e7d4f; }
-.conta-drive.alerta::before { background: #b26a00; }
-.conta-sinc { margin: 4px 0 0 16px; font-size: 13px; color: var(--muted); }
-.conta-sinc.alerta { color: light-dark(#8a5300, #e8b25c); }
-.conta-acoes { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-.conta-acoes button { min-height: 40px; padding: 0 14px; border-radius: 20px; border: 1px solid var(--line); background: transparent; color: var(--fg); font: inherit; font-size: 14px; cursor: pointer; }
-.conta-acoes button.prim { background: var(--accent); border-color: var(--accent); color: var(--surface); }
-.conta-erro { margin: 10px 0 0; color: light-dark(#a3361b, #f0a58f); font-size: 14px; }
-.conta-acoes button.perigo { border-color: light-dark(#a3361b, #f0a58f); color: light-dark(#a3361b, #f0a58f); }
-.conta-mais { margin-top: 10px; }
-.conta-mais button { border: 0; background: none; padding: 6px 0; color: var(--muted); font: inherit; font-size: 13px; text-decoration: underline; cursor: pointer; min-height: 32px; }
-.conta-modal { position: fixed; inset: 0; z-index: 90; background: rgba(0,0,0,.45); display: grid; place-items: center; padding: 16px; }
-.conta-caixa { background: var(--surface); color: var(--fg); border-radius: 16px; padding: 20px; width: min(420px, 100%); box-shadow: 0 12px 40px rgba(0,0,0,.3); }
-.conta-caixa h2 { margin: 0 0 8px; font-size: 19px; }
-.conta-caixa p { margin: 0 0 4px; line-height: 1.5; font-size: 15px; }
-.conta-sug { position: fixed; left: 50%; bottom: calc(16px + env(safe-area-inset-bottom)); transform: translateX(-50%); z-index: 60;
+.account-me { display: flex; align-items: center; gap: 12px; }
+.account-photo { width: 40px; height: 40px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; font-weight: 600; flex: none; overflow: hidden; }
+.account-photo img { width: 100%; height: 100%; object-fit: cover; }
+.account-name { font-weight: 600; overflow-wrap: anywhere; }
+.account-email { color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
+.account-drive { margin: 10px 0 0; font-size: 14px; display: flex; align-items: center; gap: 8px; color: var(--muted); }
+.account-drive::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--muted); flex: none; }
+.account-drive.ok::before { background: #2e7d4f; }
+.account-drive.alerta::before { background: #b26a00; }
+.account-sync { margin: 4px 0 0 16px; font-size: 13px; color: var(--muted); }
+.account-sync.alerta { color: light-dark(#8a5300, #e8b25c); }
+.account-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.account-actions button { min-height: 40px; padding: 0 14px; border-radius: 20px; border: 1px solid var(--line); background: transparent; color: var(--fg); font: inherit; font-size: 14px; cursor: pointer; }
+.account-actions button.prim { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.account-error { margin: 10px 0 0; color: light-dark(#a3361b, #f0a58f); font-size: 14px; }
+.account-actions button.perigo { border-color: light-dark(#a3361b, #f0a58f); color: light-dark(#a3361b, #f0a58f); }
+.account-more { margin-top: 10px; }
+.account-more button { border: 0; background: none; padding: 6px 0; color: var(--muted); font: inherit; font-size: 13px; text-decoration: underline; cursor: pointer; min-height: 32px; }
+.account-modal { position: fixed; inset: 0; z-index: 90; background: rgba(0,0,0,.45); display: grid; place-items: center; padding: 16px; }
+.account-box { background: var(--surface); color: var(--fg); border-radius: 16px; padding: 20px; width: min(420px, 100%); box-shadow: 0 12px 40px rgba(0,0,0,.3); }
+.account-box h2 { margin: 0 0 8px; font-size: 19px; }
+.account-box p { margin: 0 0 4px; line-height: 1.5; font-size: 15px; }
+.account-suggestion { position: fixed; left: 50%; bottom: calc(16px + env(safe-area-inset-bottom)); transform: translateX(-50%); z-index: 60;
   width: min(440px, calc(100% - 32px)); background: var(--surface); color: var(--fg); border: 1px solid var(--line); border-radius: 14px;
   box-shadow: 0 8px 28px rgba(0,0,0,.18); padding: 14px 16px; }
-.conta-sug[hidden] { display: none; }
-.conta-sug p { margin: 0 0 10px; font-size: 15px; line-height: 1.4; }
-.conta-sug .linha { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-.conta-sug .nao { min-height: 44px; padding: 0 14px; border: 0; background: transparent; color: var(--accent); font: inherit; cursor: pointer; text-decoration: underline; }
+.account-suggestion[hidden] { display: none; }
+.account-suggestion p { margin: 0 0 10px; font-size: 15px; line-height: 1.4; }
+.account-suggestion .linha { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.account-suggestion .nao { min-height: 44px; padding: 0 14px; border: 0; background: transparent; color: var(--accent); font: inherit; cursor: pointer; text-decoration: underline; }
 `;
   document.head.appendChild(css);
 
   const accountBox = document.createElement("section");
   accountBox.className = "sgroup conta";
   accountBox.id = "conta";
-  accountBox.setAttribute("aria-labelledby", "conta-h");
+  accountBox.setAttribute("aria-labelledby", "account-h");
   accountBox.setAttribute("aria-live", "polite");
   const toc = document.getElementById("toc");
   const headEl = toc?.querySelector(".shead");
@@ -448,47 +449,47 @@
       .join("");
   function meBlock() {
     const photo = account.photo ? `<img src="${esc(account.photo)}" alt="" referrerpolicy="no-referrer">` : esc(initials(account.nome));
-    return `<div class="conta-eu"><div class="conta-foto">${photo}</div><div><div class="conta-nome" id="conta-h">${esc(account.nome || account.email)}</div><div class="conta-email">${esc(account.email)}</div></div></div>`;
+    return `<div class="account-me"><div class="account-photo">${photo}</div><div><div class="account-name" id="account-h">${esc(account.nome || account.email)}</div><div class="account-email">${esc(account.email)}</div></div></div>`;
   }
   function render() {
-    accountBox.hidden = estado === "indisponivel";
+    accountBox.hidden = accountStatus === "unavailable";
     if (accountBox.hidden) return;
-    const err = errorMsg ? `<p class="conta-erro" role="alert">${esc(errorMsg)}</p>` : "";
-    if (estado === "fora" || (estado === "conectando" && !account)) {
-      accountBox.innerHTML = `<h3 class="conta-t" id="conta-h">Guardar no seu Google Drive</h3>
-        <p class="conta-s">Opcional. Suas anotações ficam numa pasta privada do app no seu Drive e passam a valer em todos os seus aparelhos. Sem conta, tudo continua neste aparelho.</p>
-        <button class="gbtn" id="conta-entrar" ${estado === "conectando" ? "disabled" : ""}>${G}<span>${estado === "conectando" ? "Conectando…" : "Entrar com Google"}</span></button>${err}`;
-    } else if (estado === "ligado") {
+    const err = errorMsg ? `<p class="account-error" role="alert">${esc(errorMsg)}</p>` : "";
+    if (accountStatus === "signed-out" || (accountStatus === "connecting" && !account)) {
+      accountBox.innerHTML = `<h3 class="account-t" id="account-h">Guardar no seu Google Drive</h3>
+        <p class="account-s">Opcional. Suas anotações ficam numa pasta privada do app no seu Drive e passam a valer em todos os seus aparelhos. Sem conta, tudo continua neste aparelho.</p>
+        <button class="gbtn" id="account-signin" ${accountStatus === "connecting" ? "disabled" : ""}>${G}<span>${accountStatus === "connecting" ? "Conectando…" : "Entrar com Google"}</span></button>${err}`;
+    } else if (accountStatus === "connected") {
       const ap = drive ? ` · ${drive.aparelhos} ${drive.aparelhos === 1 ? "aparelho" : "aparelhos"}` : "";
-      const st = window.Sync?.resumo?.();
+      const st = window.Sync?.statusSummary?.();
       const d =
         drive || st
-          ? `<p class="conta-drive ok">Google Drive conectado${ap}</p>`
+          ? `<p class="account-drive ok">Google Drive conectado${ap}</p>`
           : errorMsg
             ? ""
-            : `<p class="conta-drive">Conferindo o Google Drive…</p>`;
-      const s = st ? `<p class="conta-sinc ${esc(st.tipo)}" id="conta-sinc">${esc(st.texto)}</p>` : "";
-      accountBox.innerHTML = `${meBlock()}${d}${s}${err}<div class="conta-acoes"><button id="conta-sair">Sair</button></div>
-        <div class="conta-mais"><button id="conta-apagar-nuvem">Apagar meus dados do Google Drive</button></div>`;
+            : `<p class="account-drive">Conferindo o Google Drive…</p>`;
+      const s = st ? `<p class="account-sync ${esc(st.tipo)}" id="account-sync">${esc(st.texto)}</p>` : "";
+      accountBox.innerHTML = `${meBlock()}${d}${s}${err}<div class="account-actions"><button id="account-signout">Sair</button></div>
+        <div class="account-more"><button id="account-wipe-cloud">Apagar meus dados do Google Drive</button></div>`;
     } else {
       // reconectar ou conectando com conta lembrada
-      accountBox.innerHTML = `${meBlock()}<p class="conta-drive alerta">${estado === "conectando" ? "Conectando…" : "Toque em Reconectar para voltar a salvar no Drive."}</p>${err}
-        <div class="conta-acoes"><button class="prim" id="conta-entrar" ${estado === "conectando" ? "disabled" : ""}>Reconectar</button><button id="conta-sair">Sair</button></div>`;
+      accountBox.innerHTML = `${meBlock()}<p class="account-drive alerta">${accountStatus === "connecting" ? "Conectando…" : "Toque em Reconectar para voltar a salvar no Drive."}</p>${err}
+        <div class="account-actions"><button class="prim" id="account-signin" ${accountStatus === "connecting" ? "disabled" : ""}>Reconectar</button><button id="account-signout">Sair</button></div>`;
     }
   }
   // carrega o script do Google pouco antes do toque, para o popup abrir ainda dentro do gesto da pessoa
   const prepare = e => {
-    if (!isNative && e.target.closest?.("#conta-entrar, #cs-entrar, .js-entrar")) loadGis().catch(() => {});
+    if (!isNative && e.target.closest?.("#account-signin, #cs-signin, .js-signin")) loadGis().catch(() => {});
   };
   ["pointerover", "pointerdown", "focusin", "touchstart"].forEach(t => document.addEventListener(t, prepare, { passive: true }));
   document.addEventListener("click", e => {
-    if (e.target.closest("#conta-entrar, #cs-entrar, .js-entrar")) {
+    if (e.target.closest("#account-signin, #cs-signin, .js-signin")) {
       e.preventDefault();
       closeSuggestion();
       signIn();
-    } else if (e.target.closest("#conta-sair")) askSignOut();
-    else if (e.target.closest("#conta-apagar-nuvem")) deleteCloudData();
-    else if (e.target.closest("#cs-nao")) {
+    } else if (e.target.closest("#account-signout")) askSignOut();
+    else if (e.target.closest("#account-wipe-cloud")) deleteCloudData();
+    else if (e.target.closest("#cs-dismiss")) {
       persist(SUGGESTION_KEY, "nao");
       closeSuggestion();
     }
@@ -496,21 +497,21 @@
 
   // sugestão depois da primeira anotação (uma vez por sessão; "Agora não" não pergunta mais)
   const suggestion = document.createElement("div");
-  suggestion.className = "conta-sug";
-  suggestion.id = "conta-sug";
+  suggestion.className = "account-suggestion";
+  suggestion.id = "account-suggestion";
   suggestion.hidden = true;
   suggestion.setAttribute("role", "dialog");
   suggestion.setAttribute("aria-label", "Guardar no Google Drive");
   suggestion.innerHTML = `<p>Quer guardar suas anotações no seu Google Drive, para não perder e ver em outros aparelhos?</p>
-    <div class="linha"><button class="gbtn" id="cs-entrar">${G}<span>Entrar com Google</span></button><button class="nao" id="cs-nao">Agora não</button></div>`;
+    <div class="linha"><button class="gbtn" id="cs-signin">${G}<span>Entrar com Google</span></button><button class="nao" id="cs-dismiss">Agora não</button></div>`;
   document.body.appendChild(suggestion);
   let suggested = false;
   function closeSuggestion() {
     suggestion.hidden = true;
   }
   async function maybeSuggest() {
-    if (suggested || estado !== "fora" || readStorage(SUGGESTION_KEY) === "nao" || !window.Annotations) return;
-    if ((await window.Annotations.contar()) < 1) return;
+    if (suggested || accountStatus !== "signed-out" || readStorage(SUGGESTION_KEY) === "nao" || !window.Annotations) return;
+    if ((await window.Annotations.countAll()) < 1) return;
     suggested = true;
     const attempt = () => {
       const busy = ["mbar", "nota", "minhas", "exportar"].some(id => {
@@ -518,11 +519,11 @@
         return el && !el.hidden;
       });
       if (busy) return setTimeout(attempt, 1200);
-      if (estado === "fora") suggestion.hidden = false;
+      if (accountStatus === "signed-out") suggestion.hidden = false;
     };
     setTimeout(attempt, 1200);
   }
-  if (window.Annotations?.aoMudar) window.Annotations.aoMudar(maybeSuggest);
+  if (window.Annotations?.onChange) window.Annotations.onChange(maybeSuggest);
 
   render();
   // no app, quem já entrou volta conectado sem tela nenhuma
@@ -530,12 +531,12 @@
     requestNativeToken(true)
       .then(t => {
         currentToken = t;
-        setState("ligado");
+        setState("connected");
         return verifyDrive();
       })
       .then(() => setState())
       .catch(e => {
-        if (estado === "ligado") {
+        if (accountStatus === "connected") {
           errorMsg = message(e);
           setState();
         }
@@ -544,15 +545,15 @@
 
   window.Account = {
     available: () => available,
-    estado: () => estado,
+    status: () => accountStatus,
     account: () => account && { ...account },
     signIn,
     signOut,
     token,
     verifyDrive,
     ask,
-    redesenhar: () => render(),
+    rerender: () => render(),
     drive: Drive,
-    aoMudar: f => listeners.push(f)
+    onChange: f => listeners.push(f)
   };
 })();

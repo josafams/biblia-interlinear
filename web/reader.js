@@ -362,15 +362,15 @@ function renderVerses() {
       })
       .join("") + chapterNav();
   if (io) document.querySelectorAll(".verse").forEach(sec => io.observe(sec));
-  // Anotações (anotacoes.js) desenham suas marcações quando o capítulo muda
-  window.__capituloAtual = {
-    cod: BOOK.code,
-    cap: CUR,
-    nome: BOOK.name,
-    abrev: BOOK.abbrev,
+  // Anotações (annotations.js) desenham suas marcações quando o capítulo muda
+  window.__currentChapter = {
+    book: BOOK.code,
+    chapter: CUR,
+    bookName: BOOK.name,
+    bookAbbrev: BOOK.abbrev,
     verses: CH.verses.map(v => ({ n: v.n, blivre: v.blivre, words: v.words.map(w => ({ heb: w.heb })) }))
   };
-  document.dispatchEvent(new CustomEvent("capitulo", { detail: window.__capituloAtual }));
+  document.dispatchEvent(new CustomEvent("chapter-rendered", { detail: window.__currentChapter }));
 }
 function neighbor(dir) {
   const bi = BOOKS.indexOf(BOOK);
@@ -709,7 +709,7 @@ function entryHTML(k, word) {
     </div>`
     : "";
   if (!e) return top + back + ctx + `<div class="dsec"><p>Sem verbete no dicionário de Strong.</p>${PRON_LEGEND}</div>`;
-  const origem = e.o
+  const originHtml = e.o
     ? `<p>${linkRefs(e.o)}</p>`
     : e.oe
       ? `<p class="en" lang="en">${linkRefs(e.oe)} <em lang="pt-BR">(inglês, sem tradução)</em></p>`
@@ -725,7 +725,7 @@ function entryHTML(k, word) {
     back +
     ctx +
     `
-    ${origem ? `<div class="dsec"><h3>Origem</h3>${origem}</div>` : ""}
+    ${originHtml ? `<div class="dsec"><h3>Origem</h3>${originHtml}</div>` : ""}
     <div class="dsec"><h3>Significado</h3>${sig}</div>
     ${e.t ? `<div class="dsec"><h3>Como a BLIVRE traduz</h3><p>${esc(e.t)}</p><p class="plegend">Contagem pelo alinhamento automático com a Bíblia Livre.</p></div>` : ""}
     <div class="dsec"><h3>Uso</h3><p>${uses}${blb ? ` · <a href="${blb}" target="_blank" rel="noopener">verbete completo<span class="sr"> (abre em nova aba, em inglês)</span></a>` : ""}</p></div>
@@ -740,7 +740,7 @@ async function show(k, word, opener) {
   detail.setAttribute("aria-label", `Verbete ${k && !k.startsWith("G:") ? k : ""} ${e ? e.x : ""}`.replace(/\s+/g, " ").trim());
   dbody.innerHTML = entryHTML(k, word);
   detail.hidden = false;
-  if (k) document.dispatchEvent(new CustomEvent("verbete", { detail: { k } }));
+  if (k) document.dispatchEvent(new CustomEvent("lexicon-entry-opened", { detail: { k } }));
   detail.scrollTop = 0;
   document.getElementById("d-title").focus({ preventScroll: true });
 }
@@ -1144,7 +1144,7 @@ function niceStep(span) {
   for (const s of [5, 10, 20, 25, 50, 100, 200, 250, 500, 1000]) if (span / s <= 6) return s;
   return 2000;
 }
-const aboutBox = document.getElementById("sobre-body"),
+const aboutBox = document.getElementById("about-body"),
   aboutDet = document.getElementById("sobre");
 function renderAbout() {
   const A = BOOK.about;
@@ -1188,7 +1188,7 @@ function renderAbout() {
         <ol class="tl-rows" aria-label="Linha do tempo, datas aproximadas">${rows}</ol>
         <div class="tl-axis" aria-hidden="true"><span class="tl-unit">${mixed ? "anos" : y1 <= 0 ? "anos a.C." : "anos d.C."}</span><span class="tl-labels">${ticks.map(y => `<span style="left:${x(y)}">${tlab(y)}</span>`).join("")}</span></div>
       </div>
-      <p class="tl-legend">${kinds.has("pessoa") ? `<span><i class="k-pessoa"></i>pessoas</span>` : ""}${kinds.has("evento") ? `<span><i class="k-evento"></i>acontecimentos</span>` : ""}${kinds.has("escrita") ? `<span><i class="k-escrita"></i>escrita do livro</span>` : ""}${E.band ? `<span><i class="k-band"></i>${esc(E.band.label)} (${fmtRange(E.band.from, E.band.to)})</span>` : ""}</p>`;
+      <p class="tl-legend">${kinds.has("pessoa") ? `<span><i class="k-person"></i>pessoas</span>` : ""}${kinds.has("evento") ? `<span><i class="k-event"></i>acontecimentos</span>` : ""}${kinds.has("escrita") ? `<span><i class="k-writing"></i>escrita do livro</span>` : ""}${E.band ? `<span><i class="k-band"></i>${esc(E.band.label)} (${fmtRange(E.band.from, E.band.to)})</span>` : ""}</p>`;
   }
   aboutBox.innerHTML = `
     <p class="ab-lead">${esc(A.summary)}</p>
@@ -1468,25 +1468,25 @@ document.querySelectorAll(".chk[data-key]").forEach(t => {
   });
 });
 
-// ---------- Anotações (anotacoes.js) ----------
+// ---------- Anotações (annotations.js) ----------
 window.__carregarCapitulo = (cod, n) => fetchChapter(cod, n);
-window.__livros = Object.fromEntries(
-  BOOKS.map((b, i) => [b.code, { nome: b.name, abrev: b.abbrev, i, nt: !!b.nt, grupo: b.group, ncaps: b.chapters.length }])
+window.__books = Object.fromEntries(
+  BOOKS.map((b, i) => [b.code, { name: b.name, abbrev: b.abbrev, i, nt: !!b.nt, group: b.group, chapterCount: b.chapters.length }])
 );
-document.addEventListener("anotacoes:ir", e => {
+document.addEventListener("annotations:goto", e => {
   const d = e.detail;
-  openChapter(d.cod, d.cap, d.ver);
+  openChapter(d.book, d.chapter, d.verse);
 });
-document.addEventListener("anotacoes:abrir-painel", () => {
+document.addEventListener("annotations:open-panel", () => {
   if (openSheet) closePanel(false);
   if (!detail.hidden) closeDetail();
 });
-document.getElementById("open-progresso").addEventListener("click", e => {
+document.getElementById("open-progress").addEventListener("click", e => {
   e.preventDefault();
   closePanel(false);
   if (window.Progress) window.Progress.open();
 });
-document.getElementById("open-minhas").addEventListener("click", e => {
+document.getElementById("open-mine").addEventListener("click", e => {
   e.preventDefault();
   closePanel(false);
   if (window.Annotations) window.Annotations.openList();
@@ -1502,21 +1502,21 @@ const MODES = [
     nome: "Bíblia",
     desc: "só a Bíblia Livre, em parágrafos",
     fala: "Bíblia",
-    v: { "t-orig": 0, "t-blivre": 1, "t-par": 1, "t-vnum": 1, "t-tema": 1, "t-sobre": 0, "t-lexico": 0, "t-marks": 0 }
+    v: { "t-orig": 0, "t-blivre": 1, "t-par": 1, "t-vnum": 1, "t-theme": 1, "t-about": 0, "t-lexicon": 0, "t-marks": 0 }
   },
   {
     id: "original",
     nome: "Original",
     desc: "só hebraico ou grego, corrido",
     fala: "Original",
-    v: { "t-orig": 1, "t-cards": 0, "t-blivre": 0, "t-par": 0, "t-vnum": 1, "t-tema": 1, "t-sobre": 0, "t-lexico": 1, "t-marks": 0 }
+    v: { "t-orig": 1, "t-cards": 0, "t-blivre": 0, "t-par": 0, "t-vnum": 1, "t-theme": 1, "t-about": 0, "t-lexicon": 1, "t-marks": 0 }
   },
   {
     id: "paralelo",
     nome: "Original e Bíblia Livre",
     desc: "os dois, versículo a versículo",
     fala: "Paralelo",
-    v: { "t-orig": 1, "t-cards": 0, "t-blivre": 1, "t-par": 0, "t-vnum": 1, "t-tema": 1, "t-sobre": 1, "t-lexico": 1, "t-marks": 0 }
+    v: { "t-orig": 1, "t-cards": 0, "t-blivre": 1, "t-par": 0, "t-vnum": 1, "t-theme": 1, "t-about": 1, "t-lexicon": 1, "t-marks": 0 }
   },
   {
     id: "interlinear",
@@ -1534,9 +1534,9 @@ const MODES = [
       "t-strong": 1,
       "t-morf": 0,
       "t-vnum": 1,
-      "t-tema": 1,
-      "t-sobre": 1,
-      "t-lexico": 1,
+      "t-theme": 1,
+      "t-about": 1,
+      "t-lexicon": 1,
       "t-marks": 1
     }
   },
@@ -1556,9 +1556,9 @@ const MODES = [
       "t-strong": 1,
       "t-morf": 1,
       "t-vnum": 1,
-      "t-tema": 1,
-      "t-sobre": 1,
-      "t-lexico": 1,
+      "t-theme": 1,
+      "t-about": 1,
+      "t-lexicon": 1,
       "t-marks": 1
     }
   },
@@ -1575,7 +1575,7 @@ let baseMode = store.get("modo-base", "interlinear");
 let previousMode = store.get("modo-anterior", "");
 function eyebrowText() {
   const orig = document.body.classList.contains("hide-orig") ? null : GRC ? "grego" : "hebraico";
-  return orig ? (document.body.classList.contains("orig-corrido") ? `Texto ${orig}` : `Interlinear ${orig} · português`) : "Bíblia Livre";
+  return orig ? (document.body.classList.contains("orig-running") ? `Texto ${orig}` : `Interlinear ${orig} · português`) : "Bíblia Livre";
 }
 function setSwitch(id, on) {
   const t = document.getElementById(id);
@@ -1614,7 +1614,7 @@ function applyMode(id, manual = true) {
   }
   modo = id;
   store.set("modo", id);
-  if (manual) document.dispatchEvent(new CustomEvent("preferencias"));
+  if (manual) document.dispatchEvent(new CustomEvent("preferences-changed"));
   document.getElementById("welcome").hidden = true;
   document.querySelectorAll(".verse.abrir").forEach(v => v.classList.remove("abrir"));
   showModo();
@@ -1639,21 +1639,21 @@ document.querySelectorAll(".chk[data-modo]").forEach(t =>
       store.set("modo", modo);
     }
     showModo();
-    document.dispatchEvent(new CustomEvent("preferencias"));
+    document.dispatchEvent(new CustomEvent("preferences-changed"));
   })
 );
-// Preferências de leitura para a sincronização (web/sincronizar.js): o modo e os itens visíveis
+// Preferências de leitura para a sincronização (web/sync.js): o modo e os itens visíveis
 window.__preferencias = {
   readStorage() {
     const sw = {};
     document.querySelectorAll(".chk[data-modo]").forEach(t => {
       sw[t.id] = t.getAttribute("aria-checked") === "true";
     });
-    return { modo: modo || "interlinear", modo_base: baseMode, itens: sw };
+    return { modo: modo || "interlinear", modo_base: baseMode, listItems: sw };
   },
-  aplicar(p) {
+  applyChanges(p) {
     if (!p || (!MODES.some(m => m.id === p.modo) && p.modo !== "personalizado")) return;
-    for (const [k, on] of Object.entries(p.itens || {})) setSwitch(k, !!on);
+    for (const [k, on] of Object.entries(p.listItems || {})) setSwitch(k, !!on);
     if (p.modo_base && MODES.some(m => m.id === p.modo_base)) {
       baseMode = p.modo_base;
       store.set("modo-base", baseMode);
@@ -1689,7 +1689,7 @@ root.addEventListener("click", e => {
   const n = e.target.closest(".vnum");
   if (n) openVerse(n.closest(".verse"));
 });
-// Toque longo no versículo abre a barra de marcação (anotacoes.js), que tem o botão "Interlinear".
+// Toque longo no versículo abre a barra de marcação (annotations.js), que tem o botão "Interlinear".
 
 // ---------- Início: endereço (#JHN.3.16), última posição ou o primeiro capítulo disponível ----------
 (function start() {

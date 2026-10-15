@@ -71,7 +71,7 @@ for (const [src, out, size] of ICONS) {
 execFileSync("python3", [r("scripts/export.py")], { stdio: "inherit" });
 
 // ---- página: template + lista de livros (capítulos e léxico são lidos sob demanda de data/) ----
-const tpl = fs.readFileSync(r("web/template.html"), "utf8");
+const tpl = fs.readFileSync(r("web/reader.html"), "utf8");
 const books = JSON.parse(fs.readFileSync(r("build/data/books.json"), "utf8"));
 const data = JSON.stringify({ books, chapters: {}, lex: {}, complete: true }).replace(/<\//g, "<\\/");
 let html = tpl.replace("__DATA__", () => data);
@@ -240,7 +240,7 @@ async function paginaInicial(books) {
       return "";
     }
   };
-  const { resumo } = await import(pathToFileURL(r("scripts/videos/roteiros.mjs")).href);
+  const { storyboardSummary } = await import(pathToFileURL(r("scripts/videos/roteiros.mjs")).href);
   const subs = {
     __DESC__: esc(APP.desc),
     __REPO__: REPO,
@@ -261,11 +261,11 @@ async function paginaInicial(books) {
     __TAM_PDF_BLIVRE__: tam("build/pdf/00-Biblia-Livre.pdf"),
     __TAM_PDF_NT__: tam("build/pdf/00-Biblia-Interlinear-NT.pdf"),
     __DATA__: new Date().toLocaleDateString("pt-BR"),
-    __ROTEIROS__: JSON.stringify(resumo()).replace(/<\//g, "<\\/")
+    __ROTEIROS__: JSON.stringify(storyboardSummary()).replace(/<\//g, "<\\/")
   };
-  let html = fs.readFileSync(r("web/inicio.html"), "utf8");
+  let html = fs.readFileSync(r("web/home.html"), "utf8");
   for (const [k, v] of Object.entries(subs)) html = html.split(k).join(v);
   const falta = html.match(/__[A-Z_]+__/);
-  if (falta) throw new Error(`web/inicio.html: marcador sem valor ${falta[0]}`);
+  if (falta) throw new Error(`web/home.html: marcador sem valor ${falta[0]}`);
   return html;
 }

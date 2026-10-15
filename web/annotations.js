@@ -7,7 +7,7 @@
  *     inicio, fim,      // caracteres na Bíblia Livre, ou posições (0…) das palavras no original
  *     trecho,           // o texto marcado na época, para reencontrar se o versículo mudar
  *     edicao }          // data da edição dos dados quando foi marcado
- * O leitor (template.html) avisa com o evento "capitulo" a cada capítulo desenhado. */
+ * O leitor (reader.html) avisa com o evento "capitulo" a cada capítulo desenhado. */
 (function () {
   "use strict";
   if (window.Annotations) return;
@@ -93,19 +93,19 @@
       return false;
     }
   }
-  const pronto = openDb();
+  const dbReady = openDb();
   async function allRecords(col) {
-    await pronto;
+    await dbReady;
     const listSheet = db ? await db[col].toArray() : [...memory[col].values()];
     return listSheet.filter(r => !r.apagado);
   }
   async function ofChapter(col, cap) {
-    await pronto;
+    await dbReady;
     const listSheet = db ? await db[col].where("cap").equals(cap).toArray() : [...memory[col].values()].filter(r => r.cap === cap);
     return listSheet.filter(r => !r.apagado);
   }
   async function save(col, rec) {
-    await pronto;
+    await dbReady;
     const currentTime = new Date().toISOString();
     const oldRecord = db ? await db[col].get(rec.id) : memory[col].get(rec.id);
     const fresh = {
@@ -127,7 +127,7 @@
     notify();
     return fresh;
   }
-  const apagar = (col, id) => save(col, { id, apagado: true });
+  const removeRecord = (col, id) => save(col, { id, apagado: true });
   let listeners = [];
   function notify() {
     listeners.forEach(f => {
@@ -153,9 +153,9 @@
   // Desenha as marcações do capítulo nos versículos (cores, notas, favoritos)
   async function paint() {
     if (!currentChapter || !versesRoot()) return;
-    const cap = `${currentChapter.cod}.${currentChapter.cap}`;
+    const cap = `${currentChapter.book}.${currentChapter.chapter}`;
     const [ms, ns, fs] = await Promise.all([ofChapter("marcacoes", cap), ofChapter("notas", cap), ofChapter("favoritos", cap)]);
-    if (!currentChapter || cap !== `${currentChapter.cod}.${currentChapter.cap}`) return;
+    if (!currentChapter || cap !== `${currentChapter.book}.${currentChapter.chapter}`) return;
     $$(".verse", versesRoot()).forEach(sec => {
       sec.classList.remove(...COLORS.map(c => "mk-" + c.id));
       $$(".word", sec).forEach(w => w.classList.remove(...COLORS.map(c => "mk-" + c.id)));
@@ -238,7 +238,7 @@
     nota: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 4h14v12l-4 4H5z"/><path d="M9 9h6M9 13h4"/></svg>',
     fav: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>',
     tag: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></svg>',
-    copiar:
+    copyText:
       '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg>',
     camadas:
       '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>',
@@ -251,35 +251,35 @@
   bar.setAttribute("role", "dialog");
   bar.setAttribute("aria-label", "Marcar e anotar");
   bar.innerHTML = `
-    <div class="mb-top"><b id="mb-ref"></b><span id="mb-trecho"></span><button class="mb-x" id="mb-fechar" aria-label="Fechar">${ICONS.hide}</button></div>
-    <div class="mb-cores" role="group" aria-label="Cor da marcação">
-      ${COLORS.map(c => `<button class="mb-cor mk-${c.id}" data-cor="${c.id}" aria-pressed="false" aria-label="${c.nome}"></button>`).join("")}
-      <button class="mb-cor mb-sem" data-cor="" aria-label="Tirar a marcação">${ICONS.hide}</button>
+    <div class="mb-top"><b id="mb-ref"></b><span id="mb-snippet"></span><button class="mb-x" id="mb-close" aria-label="Fechar">${ICONS.hide}</button></div>
+    <div class="mb-colors" role="group" aria-label="Cor da marcação">
+      ${COLORS.map(c => `<button class="mb-color mk-${c.id}" data-cor="${c.id}" aria-pressed="false" aria-label="${c.nome}"></button>`).join("")}
+      <button class="mb-color mb-none" data-cor="" aria-label="Tirar a marcação">${ICONS.hide}</button>
     </div>
-    <div class="mb-acoes">
+    <div class="mb-actions">
       <button data-action="nota">${ICONS.nota}<span>Nota</span></button>
       <button data-action="fav" aria-pressed="false">${ICONS.fav}<span>Favoritar</span></button>
       <button data-action="etiqueta">${ICONS.tag}<span>Etiqueta</span></button>
-      <button data-action="copiar">${ICONS.copiar}<span>Copiar</span></button>
+      <button data-action="copiar">${ICONS.copyText}<span>Copiar</span></button>
       <button data-action="camadas" hidden>${ICONS.camadas}<span>Interlinear</span></button>
     </div>
-    <div class="mb-etiquetas" id="mb-etiquetas" hidden></div>`;
+    <div class="mb-tags" id="mb-tags" hidden></div>`;
   document.body.appendChild(bar);
 
   async function openBar(ancora, labelText, trecho) {
     selection = { ancora, labelText, trecho };
     $("#mb-ref").textContent = labelText;
-    $("#mb-trecho").textContent = trecho ? `“${trecho.length > 60 ? trecho.slice(0, 58) + "…" : trecho}”` : "";
-    $("#mb-etiquetas").hidden = true;
+    $("#mb-snippet").textContent = trecho ? `“${trecho.length > 60 ? trecho.slice(0, 58) + "…" : trecho}”` : "";
+    $("#mb-tags").hidden = true;
     const m = await highlightOf(ancora);
-    $$(".mb-cor", bar).forEach(b => b.setAttribute("aria-pressed", String(!!m && m.cor === b.dataset.cor && !!b.dataset.cor)));
+    $$(".mb-color", bar).forEach(b => b.setAttribute("aria-pressed", String(!!m && m.cor === b.dataset.cor && !!b.dataset.cor)));
     const f = await favoriteOf(ancora.livro, ancora.cap, ancora.ver);
     $('[data-action="fav"]', bar).setAttribute("aria-pressed", String(!!f));
     $('[data-action="fav"] span', bar).textContent = f ? "Favorito" : "Favoritar";
     $('[data-action="camadas"]', bar).hidden = !document.body.classList.contains("hide-orig");
     bar.hidden = false;
     document.body.classList.add("com-mbar");
-    $(".mb-cor", bar).focus({ preventScroll: true });
+    $(".mb-color", bar).focus({ preventScroll: true });
   }
   function closeBar() {
     if (bar.hidden) return;
@@ -297,19 +297,19 @@
   bar.addEventListener("click", async e => {
     if (!selection) return;
     const a = selection.ancora;
-    if (e.target.closest("#mb-fechar")) return closeBar();
-    const cor = e.target.closest(".mb-cor");
+    if (e.target.closest("#mb-close")) return closeBar();
+    const cor = e.target.closest(".mb-color");
     if (cor) {
       const m = await highlightOf(a);
       if (!cor.dataset.cor) {
         if (m) {
           if (m.etiquetas?.length) await save("marcacoes", { id: m.id, cor: null });
-          else await apagar("marcacoes", m.id);
+          else await removeRecord("marcacoes", m.id);
         }
       } else
         await save("marcacoes", { id: m?.id || uuid(), cap: chapterOf(a), ancora: a, cor: cor.dataset.cor, etiquetas: m?.etiquetas || [] });
       await paint();
-      $$(".mb-cor", bar).forEach(b => b.setAttribute("aria-pressed", String(!!cor.dataset.cor && b === cor)));
+      $$(".mb-color", bar).forEach(b => b.setAttribute("aria-pressed", String(!!cor.dataset.cor && b === cor)));
       return;
     }
     const action = e.target.closest("[data-action]")?.dataset.action;
@@ -320,7 +320,7 @@
     }
     if (action === "fav") {
       const f = await favoriteOf(a.livro, a.cap, a.ver);
-      if (f) await apagar("favoritos", f.id);
+      if (f) await removeRecord("favoritos", f.id);
       else await save("favoritos", { id: uuid(), cap: chapterOf(a), ancora: verseAnchor(a.livro, a.cap, a.ver), etiquetas: [] });
       await paint();
       return openBar(a, selection.labelText, selection.trecho);
@@ -328,7 +328,7 @@
     if (action === "etiqueta") return showTags();
     if (action === "copiar") {
       const v = currentChapter?.verses.find(x => x.n === a.ver);
-      const texto = `${selection.trecho || v?.blivre || ""} (${currentChapter?.nome || a.livro} ${a.cap}:${a.ver}, Bíblia Livre)`;
+      const texto = `${selection.trecho || v?.blivre || ""} (${currentChapter?.bookName || a.livro} ${a.cap}:${a.ver}, Bíblia Livre)`;
       try {
         await navigator.clipboard.writeText(texto);
         toastMsg("Copiado.");
@@ -343,8 +343,8 @@
     }
     const tag = e.target.closest("[data-etiqueta]");
     if (tag) return toggleTag(tag.dataset.etiqueta);
-    if (e.target.closest("#mb-nova-et")) {
-      const field = $("#mb-et-nome");
+    if (e.target.closest("#mb-new-tag")) {
+      const field = $("#mb-tag-name");
       const nome = field.value.trim();
       if (!nome) return field.focus();
       const exists = (await allRecords("etiquetas")).find(x => x.nome.toLowerCase() === nome.toLowerCase());
@@ -357,20 +357,20 @@
       e.stopPropagation();
       closeBar();
     }
-    if (e.key === "Enter" && e.target.id === "mb-et-nome") {
+    if (e.key === "Enter" && e.target.id === "mb-tag-name") {
       e.preventDefault();
-      $("#mb-nova-et").click();
+      $("#mb-new-tag").click();
     }
   });
   async function showTags() {
-    const box = $("#mb-etiquetas");
+    const box = $("#mb-tags");
     const tagList = (await allRecords("etiquetas")).sort((x, y) => x.nome.localeCompare(y.nome, "pt"));
     const m = await highlightOf(selection.ancora);
     const has = new Set(m?.etiquetas || []);
-    box.innerHTML = `<div class="mb-et-lista">${tagList.map(t => `<button class="chip" data-etiqueta="${t.id}" aria-pressed="${has.has(t.id)}">${esc(t.nome)}</button>`).join("") || '<span class="mb-vazio">Nenhuma etiqueta ainda.</span>'}</div>
-      <div class="mb-et-nova"><label class="sr" for="mb-et-nome">Nova etiqueta</label><input id="mb-et-nome" type="text" placeholder="Nova etiqueta (ex.: promessas)" autocomplete="off"><button id="mb-nova-et">Criar</button></div>`;
+    box.innerHTML = `<div class="mb-tag-list">${tagList.map(t => `<button class="chip" data-etiqueta="${t.id}" aria-pressed="${has.has(t.id)}">${esc(t.nome)}</button>`).join("") || '<span class="mb-empty">Nenhuma etiqueta ainda.</span>'}</div>
+      <div class="mb-tag-new"><label class="sr" for="mb-tag-name">Nova etiqueta</label><input id="mb-tag-name" type="text" placeholder="Nova etiqueta (ex.: promessas)" autocomplete="off"><button id="mb-new-tag">Criar</button></div>`;
     box.hidden = false;
-    (tagList.length ? $(".chip", box) : $("#mb-et-nome")).focus();
+    (tagList.length ? $(".chip", box) : $("#mb-tag-name")).focus();
   }
   async function toggleTag(id, turnOn) {
     const a = selection.ancora;
@@ -380,7 +380,7 @@
     if (on) listSheet.add(id);
     else listSheet.delete(id);
     if (m) {
-      if (!m.cor && !listSheet.size) await apagar("marcacoes", m.id);
+      if (!m.cor && !listSheet.size) await removeRecord("marcacoes", m.id);
       else await save("marcacoes", { id: m.id, etiquetas: [...listSheet] });
     } else if (listSheet.size) await save("marcacoes", { id: uuid(), cap: chapterOf(a), ancora: a, cor: null, etiquetas: [...listSheet] });
     await showTags();
@@ -407,10 +407,10 @@
     const vi = +sec.dataset.vi,
       v = currentChapter.verses[vi];
     if (!v) return;
-    const a = { ...verseAnchor(currentChapter.cod, currentChapter.cap, v.n), ...extra, camada };
+    const a = { ...verseAnchor(currentChapter.book, currentChapter.chapter, v.n), ...extra, camada };
     if (camada === "versiculo") a.trecho = (v.blivre || "").slice(0, 200);
     const trecho = camada === "versiculo" ? "" : extra.trecho;
-    openBar(a, `${currentChapter.nome} ${currentChapter.cap}:${v.n}`, trecho);
+    openBar(a, `${currentChapter.bookName} ${currentChapter.chapter}:${v.n}`, trecho);
   }
   document.addEventListener("click", e => {
     const b = e.target.closest(".vmark");
@@ -510,21 +510,21 @@
   // ---------- editor de nota ----------
   const nota = document.createElement("aside");
   nota.id = "nota";
-  nota.className = "sheet right nota-sheet";
+  nota.className = "sheet right note-sheet";
   nota.hidden = true;
   nota.setAttribute("role", "dialog");
   nota.setAttribute("aria-modal", "true");
-  nota.setAttribute("aria-labelledby", "nota-h");
+  nota.setAttribute("aria-labelledby", "note-h");
   nota.innerHTML = `
-    <div class="shead"><h2 id="nota-h">Nota</h2><button class="ibtn" data-fechar aria-label="Fechar nota">${ICONS.hide}</button></div>
-    <div class="sgroup nota-corpo">
-      <p class="nota-ref" id="nota-ref"></p>
-      <label class="sr" for="nota-titulo">Título</label>
-      <input id="nota-titulo" type="text" placeholder="Título (opcional)" autocomplete="off">
-      <label class="sr" for="nota-texto">Texto da nota</label>
-      <textarea id="nota-texto" rows="10" placeholder="Escreva aqui. Salva sozinho."></textarea>
-      <div class="nota-ets" id="nota-ets"></div>
-      <div class="nota-rodape"><span id="nota-estado" aria-live="polite"></span><button class="nota-apagar" id="nota-apagar">Apagar nota</button></div>
+    <div class="shead"><h2 id="note-h">Nota</h2><button class="ibtn" data-fechar aria-label="Fechar nota">${ICONS.hide}</button></div>
+    <div class="sgroup note-body">
+      <p class="note-ref" id="note-ref"></p>
+      <label class="sr" for="note-title">Título</label>
+      <input id="note-title" type="text" placeholder="Título (opcional)" autocomplete="off">
+      <label class="sr" for="note-text">Texto da nota</label>
+      <textarea id="note-text" rows="10" placeholder="Escreva aqui. Salva sozinho."></textarea>
+      <div class="note-tags" id="note-tags"></div>
+      <div class="note-footer"><span id="note-status" aria-live="polite"></span><button class="note-delete" id="note-delete">Apagar nota</button></div>
     </div>`;
   document.body.appendChild(nota);
   let currentNote = null,
@@ -538,43 +538,43 @@
       : { id: uuid(), cap: ancora ? chapterOf(ancora) : "livre", ancora: ancora || null, titulo: "", texto: "", etiquetas: [], nova: true };
     if (!currentNote) return;
     const a = currentNote.ancora;
-    $("#nota-ref").textContent = a
+    $("#note-ref").textContent = a
       ? `${bookName(a.livro)} ${a.cap}:${a.ver}${trecho || a.trecho ? ` · “${(trecho || a.trecho).slice(0, 80)}”` : ""}`
       : "Nota livre";
-    $("#nota-titulo").value = currentNote.titulo || "";
-    $("#nota-texto").value = currentNote.texto || "";
-    $("#nota-estado").textContent = currentNote.nova ? "" : "Salva.";
-    $("#nota-apagar").hidden = !!currentNote.nova;
+    $("#note-title").value = currentNote.titulo || "";
+    $("#note-text").value = currentNote.texto || "";
+    $("#note-status").textContent = currentNote.nova ? "" : "Salva.";
+    $("#note-delete").hidden = !!currentNote.nova;
     await renderNoteTags();
     nota.hidden = false;
     document.body.classList.add("com-nota");
-    $("#nota-texto").focus();
+    $("#note-text").focus();
   }
   async function renderNoteTags() {
     const tagList = (await allRecords("etiquetas")).sort((x, y) => x.nome.localeCompare(y.nome, "pt"));
     const has = new Set(currentNote.etiquetas || []);
-    $("#nota-ets").innerHTML =
-      `<span class="nota-ets-r">Etiquetas:</span>` +
+    $("#note-tags").innerHTML =
+      `<span class="note-tags-r">Etiquetas:</span>` +
       tagList.map(t => `<button class="chip" data-tag="${t.id}" aria-pressed="${has.has(t.id)}">${esc(t.nome)}</button>`).join("") +
-      `<span class="nota-et-nova"><label class="sr" for="nota-et-nome">Nova etiqueta</label><input id="nota-et-nome" type="text" placeholder="+ nova etiqueta" autocomplete="off"><button class="chip" data-et-nova>Criar</button></span>`;
+      `<span class="note-tag-new"><label class="sr" for="note-tag-name">Nova etiqueta</label><input id="note-tag-name" type="text" placeholder="+ nova etiqueta" autocomplete="off"><button class="chip" data-et-nova>Criar</button></span>`;
   }
   function scheduleSave() {
     clearTimeout(saveTimer);
-    $("#nota-estado").textContent = "…";
+    $("#note-status").textContent = "…";
     saveTimer = setTimeout(saveNote, 600);
   }
   async function saveNote() {
     if (!currentNote) return;
-    const titulo = $("#nota-titulo").value.trim(),
-      texto = $("#nota-texto").value;
+    const titulo = $("#note-title").value.trim(),
+      texto = $("#note-text").value;
     if (currentNote.nova && !titulo && !texto.trim()) {
-      $("#nota-estado").textContent = "";
+      $("#note-status").textContent = "";
       return;
     }
     const { nova: _nova, ...rec } = currentNote;
     currentNote = { ...(await save("notas", { ...rec, titulo, texto })) };
-    $("#nota-estado").textContent = "Salva.";
-    $("#nota-apagar").hidden = false;
+    $("#note-status").textContent = "Salva.";
+    $("#note-delete").hidden = false;
     paint();
   }
   function closeNote() {
@@ -586,13 +586,13 @@
     document.body.classList.remove("com-nota");
     if (focusReturn && focusReturn.isConnected) focusReturn.focus({ preventScroll: true });
   }
-  $("#nota-titulo").addEventListener("input", scheduleSave);
-  $("#nota-texto").addEventListener("input", scheduleSave);
+  $("#note-title").addEventListener("input", scheduleSave);
+  $("#note-text").addEventListener("input", scheduleSave);
   nota.addEventListener("click", async e => {
     if (e.target.closest("[data-fechar]")) return closeNote();
-    if (e.target.closest("#nota-apagar")) {
+    if (e.target.closest("#note-delete")) {
       if (!confirmDelete()) return;
-      await apagar("notas", currentNote.id);
+      await removeRecord("notas", currentNote.id);
       currentNote = null;
       await paint();
       return closeNote();
@@ -606,8 +606,8 @@
       return renderNoteTags();
     }
     if (e.target.closest("[data-et-nova]")) {
-      const nome = $("#nota-et-nome").value.trim();
-      if (!nome) return $("#nota-et-nome").focus();
+      const nome = $("#note-tag-name").value.trim();
+      if (!nome) return $("#note-tag-name").focus();
       const exists = (await allRecords("etiquetas")).find(x => x.nome.toLowerCase() === nome.toLowerCase());
       const t = exists || (await save("etiquetas", { id: uuid(), nome, cor: null }));
       currentNote.etiquetas = [...new Set([...(currentNote.etiquetas || []), t.id])];
@@ -620,7 +620,7 @@
       e.stopPropagation();
       closeNote();
     }
-    if (e.key === "Enter" && e.target.id === "nota-et-nome") {
+    if (e.key === "Enter" && e.target.id === "note-tag-name") {
       e.preventDefault();
       $("[data-et-nova]", nota).click();
     }
@@ -628,7 +628,7 @@
   // Confirmação simples sem diálogo do navegador (o botão vira "Confirmar")
   let confirmAction = 0;
   function confirmDelete() {
-    const b = $("#nota-apagar");
+    const b = $("#note-delete");
     if (Date.now() - confirmAction < 4000) {
       confirmAction = 0;
       b.textContent = "Apagar nota";
@@ -642,45 +642,45 @@
     return false;
   }
   async function openVerseNotes(ver) {
-    const ns = (await ofChapter("notas", `${currentChapter.cod}.${currentChapter.cap}`))
+    const ns = (await ofChapter("notas", `${currentChapter.book}.${currentChapter.chapter}`))
       .filter(n => n.ancora?.ver === ver)
       .sort((x, y) => x.criado_em.localeCompare(y.criado_em));
     if (ns.length === 1) return openNote(ns[0].id);
-    openList({ cap: `${currentChapter.cod}.${currentChapter.cap}`, ver });
+    openList({ cap: `${currentChapter.book}.${currentChapter.chapter}`, ver });
   }
 
   // ---------- Minhas anotações ----------
   const listSheet = document.createElement("aside");
   listSheet.id = "minhas";
-  listSheet.className = "sheet right minhas-sheet";
+  listSheet.className = "sheet right mine-sheet";
   listSheet.hidden = true;
   listSheet.setAttribute("role", "dialog");
   listSheet.setAttribute("aria-modal", "true");
-  listSheet.setAttribute("aria-labelledby", "minhas-h");
+  listSheet.setAttribute("aria-labelledby", "mine-h");
   listSheet.innerHTML = `
-    <div class="shead"><h2 id="minhas-h">Minhas anotações</h2><button class="ibtn" data-fechar aria-label="Fechar">${ICONS.hide}</button></div>
+    <div class="shead"><h2 id="mine-h">Minhas anotações</h2><button class="ibtn" data-fechar aria-label="Fechar">${ICONS.hide}</button></div>
     <div class="sgroup">
-      <label class="sr" for="mn-busca">Buscar nas anotações</label>
-      <input id="mn-busca" class="lsearch" type="search" placeholder="Buscar: luz, pastor, Gn 1" autocomplete="off">
-      <div class="mn-filtros" role="group" aria-label="Tipo">
+      <label class="sr" for="mn-search">Buscar nas anotações</label>
+      <input id="mn-search" class="lsearch" type="search" placeholder="Buscar: luz, pastor, Gn 1" autocomplete="off">
+      <div class="mn-filters" role="group" aria-label="Tipo">
         <button class="chip" data-tipo="" aria-pressed="true">Tudo</button>
         <button class="chip" data-tipo="notas" aria-pressed="false">Notas</button>
         <button class="chip" data-tipo="marcacoes" aria-pressed="false">Marcações</button>
         <button class="chip" data-tipo="favoritos" aria-pressed="false">Favoritos</button>
       </div>
-      <div class="mn-filtros2">
-        <label>Etiqueta <select id="mn-etiqueta"><option value="">todas</option></select></label>
-        <label>Ordem <select id="mn-ordem"><option value="biblica">bíblica</option><option value="data">por data</option></select></label>
+      <div class="mn-filters2">
+        <label>Etiqueta <select id="mn-tag"><option value="">todas</option></select></label>
+        <label>Ordem <select id="mn-order"><option value="biblica">bíblica</option><option value="data">por data</option></select></label>
       </div>
-      <div class="mn-acoes"><button class="mn-nova" id="mn-nova">+ Nova nota livre</button><span id="mn-total" aria-live="polite"></span></div>
-      <div class="mn-acoes mn-acoes2">
-        <button class="chip" id="mn-selecionar" aria-pressed="false">Selecionar</button>
-        <button class="chip" id="mn-exportar">Exportar PDF</button>
-        <button class="chip" id="mn-baixar">Baixar meus dados</button>
-        <button class="chip" id="mn-importar">Importar</button>
-        <input type="file" id="mn-arquivo" accept=".json,application/json" hidden>
+      <div class="mn-actions"><button class="mn-new" id="mn-new">+ Nova nota livre</button><span id="mn-total" aria-live="polite"></span></div>
+      <div class="mn-actions mn-actions2">
+        <button class="chip" id="mn-select" aria-pressed="false">Selecionar</button>
+        <button class="chip" id="mn-export">Exportar PDF</button>
+        <button class="chip" id="mn-download">Baixar meus dados</button>
+        <button class="chip" id="mn-import">Importar</button>
+        <input type="file" id="mn-file" accept=".json,application/json" hidden>
       </div>
-      <div id="mn-itens"></div>
+      <div id="mn-items"></div>
     </div>`;
   document.body.appendChild(listSheet);
   let listFilter = { tipo: "", cap: null, ver: null };
@@ -688,19 +688,19 @@
   const selected = new Set();
   let lastItems = [];
   function bookName(cod) {
-    return (window.__livros || {})[cod]?.nome || cod;
+    return (window.__books || {})[cod]?.name || cod;
   }
   function bookOrder(cod) {
-    return (window.__livros || {})[cod]?.i ?? 999;
+    return (window.__books || {})[cod]?.i ?? 999;
   }
   async function openList(f) {
     listFilter = { tipo: "", cap: null, ver: null, ...(f || {}) };
     focusReturn = document.activeElement;
-    document.dispatchEvent(new CustomEvent("anotacoes:abrir-painel"));
+    document.dispatchEvent(new CustomEvent("annotations:open-panel"));
     listSheet.hidden = false;
     document.body.classList.add("com-minhas");
     await renderList();
-    $("#mn-busca").focus();
+    $("#mn-search").focus();
   }
   function closeList() {
     if (listSheet.hidden) return;
@@ -708,7 +708,7 @@
     document.body.classList.remove("com-minhas");
     if (focusReturn && focusReturn.isConnected) focusReturn.focus({ preventScroll: true });
   }
-  async function itens() {
+  async function listItems() {
     const [ms, ns, fs, tagList] = await Promise.all([
       allRecords("marcacoes"),
       allRecords("notas"),
@@ -755,8 +755,8 @@
     };
   }
   async function renderList() {
-    const { tagList, listSheet: allItems } = await itens();
-    const sel = $("#mn-etiqueta"),
+    const { tagList, listSheet: allItems } = await listItems();
+    const sel = $("#mn-tag"),
       currentTag = sel.value;
     sel.innerHTML =
       `<option value="">todas</option>` +
@@ -765,7 +765,7 @@
         .map(t => `<option value="${t.id}">${esc(t.nome)}</option>`)
         .join("");
     sel.value = tagList.some(t => t.id === currentTag) ? currentTag : "";
-    const q = $("#mn-busca").value.trim().toLowerCase();
+    const q = $("#mn-search").value.trim().toLowerCase();
     let xs = allItems.filter(
       x =>
         (!listFilter.tipo || x.tipo === listFilter.tipo) &&
@@ -774,8 +774,8 @@
         (!sel.value || x.tagList.includes(sel.value)) &&
         (!q || `${x.ref} ${x.titulo || ""} ${x.texto} ${x.etNomes.join(" ")}`.toLowerCase().includes(q))
     );
-    $$(".mn-filtros .chip", listSheet).forEach(b => b.setAttribute("aria-pressed", String(b.dataset.tipo === listFilter.tipo)));
-    if ($("#mn-ordem").value === "data") xs.sort((x, y) => y.data.localeCompare(x.data));
+    $$(".mn-filters .chip", listSheet).forEach(b => b.setAttribute("aria-pressed", String(b.dataset.tipo === listFilter.tipo)));
+    if ($("#mn-order").value === "data") xs.sort((x, y) => y.data.localeCompare(x.data));
     else
       xs.sort(
         (x, y) =>
@@ -785,51 +785,51 @@
       );
     lastItems = xs;
     $("#mn-total").textContent = listFilter.cap ? `${xs.length} neste versículo · ` : `${xs.length} ${xs.length === 1 ? "item" : "itens"}`;
-    if (listFilter.cap) $("#mn-total").innerHTML += `<button class="linklike" id="mn-ver-tudo">ver tudo</button>`;
+    if (listFilter.cap) $("#mn-total").innerHTML += `<button class="linklike" id="mn-see-all">ver tudo</button>`;
     let grupo = null,
       html = "";
     for (const x of xs) {
-      const g = $("#mn-ordem").value === "data" ? null : x.a ? bookName(x.a.livro) : "Notas livres";
+      const g = $("#mn-order").value === "data" ? null : x.a ? bookName(x.a.livro) : "Notas livres";
       if (g !== grupo && g) {
-        html += `<h3 class="mn-grupo">${esc(g)}</h3>`;
+        html += `<h3 class="mn-group">${esc(g)}</h3>`;
         grupo = g;
       }
       html += `<button class="mn-item${selecting ? " sel" : ""}" data-tipo="${x.tipo}" data-id="${x.id}"${selecting ? ` role="checkbox" aria-checked="${selected.has(x.id)}"` : ""}>
-        <span class="mn-ref">${esc(x.ref)} · ${x.cor ? `<span class="mn-cor mk-${x.cor}">${x.rot}</span>` : x.rot}</span>
-        ${x.titulo ? `<b class="mn-tit">${esc(x.titulo)}</b>` : ""}
+        <span class="mn-ref">${esc(x.ref)} · ${x.cor ? `<span class="mn-color mk-${x.cor}">${x.rot}</span>` : x.rot}</span>
+        ${x.titulo ? `<b class="mn-title">${esc(x.titulo)}</b>` : ""}
         ${x.texto ? `<span class="mn-txt">${esc(x.texto.length > 160 ? x.texto.slice(0, 158) + "…" : x.texto)}</span>` : ""}
-        ${x.etNomes.length ? `<span class="mn-ets">${x.etNomes.map(n => `<span class="chip">${esc(n)}</span>`).join("")}</span>` : ""}
+        ${x.etNomes.length ? `<span class="mn-tags">${x.etNomes.map(n => `<span class="chip">${esc(n)}</span>`).join("")}</span>` : ""}
       </button>`;
     }
-    $("#mn-itens").innerHTML =
+    $("#mn-items").innerHTML =
       html ||
-      `<p class="mn-vazio">${allItems.length ? "Nada encontrado com esses filtros." : "Ainda não há anotações. Toque longo num versículo, selecione um trecho ou use o botão ⋯ ao lado do número para marcar e anotar."}</p>`;
+      `<p class="mn-empty">${allItems.length ? "Nada encontrado com esses filtros." : "Ainda não há anotações. Toque longo num versículo, selecione um trecho ou use o botão ⋯ ao lado do número para marcar e anotar."}</p>`;
   }
   listSheet.addEventListener("click", async e => {
     if (e.target.closest("[data-fechar]")) return closeList();
-    const t = e.target.closest(".mn-filtros .chip");
+    const t = e.target.closest(".mn-filters .chip");
     if (t) {
       listFilter.tipo = t.dataset.tipo;
       return renderList();
     }
-    if (e.target.closest("#mn-ver-tudo")) {
+    if (e.target.closest("#mn-see-all")) {
       listFilter.cap = null;
       listFilter.ver = null;
       return renderList();
     }
-    if (e.target.closest("#mn-nova")) {
+    if (e.target.closest("#mn-new")) {
       closeList();
       return openNote(null, null);
     }
-    if (e.target.closest("#mn-selecionar")) {
+    if (e.target.closest("#mn-select")) {
       selecting = !selecting;
       if (!selecting) selected.clear();
-      e.target.closest("#mn-selecionar").setAttribute("aria-pressed", String(selecting));
+      e.target.closest("#mn-select").setAttribute("aria-pressed", String(selecting));
       return renderList();
     }
-    if (e.target.closest("#mn-exportar")) return openExport();
-    if (e.target.closest("#mn-baixar")) return downloadData();
-    if (e.target.closest("#mn-importar")) return $("#mn-arquivo").click();
+    if (e.target.closest("#mn-export")) return openExport();
+    if (e.target.closest("#mn-download")) return downloadData();
+    if (e.target.closest("#mn-import")) return $("#mn-file").click();
     const it = e.target.closest(".mn-item");
     if (it && selecting) {
       selected.has(it.dataset.id) ? selected.delete(it.dataset.id) : selected.add(it.dataset.id);
@@ -842,15 +842,16 @@
         closeList();
         return openNote(it.dataset.id);
       }
-      const { listSheet: xs } = await itens();
+      const { listSheet: xs } = await listItems();
       const x = xs.find(y => y.id === it.dataset.id);
       closeList();
-      if (x?.a) document.dispatchEvent(new CustomEvent("anotacoes:ir", { detail: { cod: x.a.livro, cap: x.a.cap, ver: x.a.ver } }));
+      if (x?.a)
+        document.dispatchEvent(new CustomEvent("annotations:goto", { detail: { book: x.a.livro, chapter: x.a.cap, verse: x.a.ver } }));
     }
   });
-  $("#mn-busca").addEventListener("input", () => renderList());
-  $("#mn-etiqueta").addEventListener("change", () => renderList());
-  $("#mn-ordem").addEventListener("change", () => renderList());
+  $("#mn-search").addEventListener("input", () => renderList());
+  $("#mn-tag").addEventListener("change", () => renderList());
+  $("#mn-order").addEventListener("change", () => renderList());
   listSheet.addEventListener("keydown", e => {
     if (e.key === "Escape") {
       e.stopPropagation();
@@ -861,47 +862,47 @@
   // ---------- Exportar em PDF (caderno) ----------
   const exportSheet = document.createElement("aside");
   exportSheet.id = "exportar";
-  exportSheet.className = "sheet right minhas-sheet";
+  exportSheet.className = "sheet right mine-sheet";
   exportSheet.hidden = true;
   exportSheet.setAttribute("role", "dialog");
   exportSheet.setAttribute("aria-modal", "true");
   exportSheet.setAttribute("aria-labelledby", "exp-h");
   exportSheet.innerHTML = `
     <div class="shead"><h2 id="exp-h">Exportar em PDF</h2><button class="ibtn" data-fechar aria-label="Fechar">${ICONS.hide}</button></div>
-    <div class="sgroup exp-corpo">
+    <div class="sgroup exp-body">
       <fieldset><legend>O que entra</legend>
-        <label class="opt"><input type="radio" name="exp-o" value="lista" checked> <span>O que está na lista agora <small id="exp-n-lista"></small></span></label>
-        <label class="opt"><input type="radio" name="exp-o" value="sel"> <span>Os itens selecionados <small id="exp-n-sel"></small></span></label>
-        <label class="opt"><input type="radio" name="exp-o" value="livro"> <span>Um livro <select id="exp-livro" aria-label="Livro"></select></span></label>
+        <label class="opt"><input type="radio" name="exp-scope" value="lista" checked> <span>O que está na lista agora <small id="exp-n-list"></small></span></label>
+        <label class="opt"><input type="radio" name="exp-scope" value="sel"> <span>Os itens selecionados <small id="exp-n-sel"></small></span></label>
+        <label class="opt"><input type="radio" name="exp-scope" value="livro"> <span>Um livro <select id="exp-book" aria-label="Livro"></select></span></label>
       </fieldset>
       <fieldset><legend>Incluir</legend>
-        <label class="opt"><input type="checkbox" id="exp-notas" checked> Notas</label>
-        <label class="opt"><input type="checkbox" id="exp-marcacoes" checked> Marcações</label>
-        <label class="opt"><input type="checkbox" id="exp-favoritos" checked> Favoritos</label>
-        <label class="opt"><input type="checkbox" id="exp-texto" checked> Texto de cada versículo (Bíblia Livre)</label>
+        <label class="opt"><input type="checkbox" id="exp-notes" checked> Notas</label>
+        <label class="opt"><input type="checkbox" id="exp-highlights" checked> Marcações</label>
+        <label class="opt"><input type="checkbox" id="exp-favorites" checked> Favoritos</label>
+        <label class="opt"><input type="checkbox" id="exp-text" checked> Texto de cada versículo (Bíblia Livre)</label>
         <label class="opt"><input type="checkbox" id="exp-inter"> Interlinear das palavras marcadas no original</label>
       </fieldset>
       <fieldset><legend>Ordem</legend>
-        <label class="opt"><input type="radio" name="exp-ordem" value="biblica" checked> Bíblica</label>
-        <label class="opt"><input type="radio" name="exp-ordem" value="data"> Por data</label>
+        <label class="opt"><input type="radio" name="exp-order" value="biblica" checked> Bíblica</label>
+        <label class="opt"><input type="radio" name="exp-order" value="data"> Por data</label>
       </fieldset>
-      <button class="exp-gerar" id="exp-gerar">Gerar PDF</button>
-      <p class="exp-nota" id="exp-nota">Gerado no próprio aparelho, sem internet. Na janela de impressão, escolha “Salvar como PDF”.</p>
+      <button class="exp-generate" id="exp-generate">Gerar PDF</button>
+      <p class="exp-note" id="exp-note">Gerado no próprio aparelho, sem internet. Na janela de impressão, escolha “Salvar como PDF”.</p>
     </div>`;
   document.body.appendChild(exportSheet);
   async function openExport() {
-    const { listSheet: xs } = await itens();
+    const { listSheet: xs } = await listItems();
     const livros = [...new Set(xs.filter(x => x.a).map(x => x.a.livro))].sort((a, b) => bookOrder(a) - bookOrder(b));
-    $("#exp-livro").innerHTML = livros.map(c => `<option value="${c}">${esc(bookName(c))}</option>`).join("");
-    $("#exp-n-lista").textContent = `(${lastItems.length})`;
+    $("#exp-book").innerHTML = livros.map(c => `<option value="${c}">${esc(bookName(c))}</option>`).join("");
+    $("#exp-n-list").textContent = `(${lastItems.length})`;
     $("#exp-n-sel").textContent = `(${selected.size})`;
-    $('input[name="exp-o"][value="sel"]').disabled = !selected.size;
-    $('input[name="exp-o"][value="livro"]').disabled = !livros.length;
-    $('input[name="exp-o"][value="' + (selected.size ? "sel" : "lista") + '"]').checked = true;
+    $('input[name="exp-scope"][value="sel"]').disabled = !selected.size;
+    $('input[name="exp-scope"][value="livro"]').disabled = !livros.length;
+    $('input[name="exp-scope"][value="' + (selected.size ? "sel" : "lista") + '"]').checked = true;
     listSheet.hidden = true;
     document.body.classList.remove("com-minhas");
     exportSheet.hidden = false;
-    $("#exp-gerar").focus();
+    $("#exp-generate").focus();
   }
   function closeExport(goBack = true) {
     exportSheet.hidden = true;
@@ -909,10 +910,10 @@
   }
   exportSheet.addEventListener("click", e => {
     if (e.target.closest("[data-fechar]")) return closeExport();
-    if (e.target.closest("#exp-gerar")) return buildNotebook();
+    if (e.target.closest("#exp-generate")) return buildNotebook();
   });
   exportSheet.addEventListener("change", e => {
-    if (e.target.id === "exp-livro") $('input[name="exp-o"][value="livro"]').checked = true;
+    if (e.target.id === "exp-book") $('input[name="exp-scope"][value="livro"]').checked = true;
   });
   exportSheet.addEventListener("keydown", e => {
     if (e.key === "Escape") {
@@ -929,26 +930,26 @@
     }
   }
   async function assembleNotebook() {
-    const { listSheet: todosXs } = await itens();
-    const o = $('input[name="exp-o"]:checked').value;
+    const { listSheet: todosXs } = await listItems();
+    const o = $('input[name="exp-scope"]:checked').value;
     let xs =
       o === "sel"
         ? todosXs.filter(x => selected.has(x.id))
         : o === "livro"
-          ? todosXs.filter(x => x.a?.livro === $("#exp-livro").value)
+          ? todosXs.filter(x => x.a?.livro === $("#exp-book").value)
           : todosXs.filter(x => lastItems.some(y => y.id === x.id));
-    const inc = { notas: $("#exp-notas").checked, marcacoes: $("#exp-marcacoes").checked, favoritos: $("#exp-favoritos").checked };
+    const inc = { notas: $("#exp-notes").checked, marcacoes: $("#exp-highlights").checked, favoritos: $("#exp-favorites").checked };
     xs = xs.filter(x => inc[x.tipo]);
-    const texto = $("#exp-texto").checked,
+    const texto = $("#exp-text").checked,
       withInterlinear = $("#exp-inter").checked;
-    const byDate = $('input[name="exp-ordem"]:checked').value === "data";
+    const byDate = $('input[name="exp-order"]:checked').value === "data";
     // agrupa por versículo (ou nota livre)
     const grupos = new Map();
     for (const x of xs) {
       const k = x.a ? `${x.a.livro}.${x.a.cap}.${x.a.ver}` : `livre.${x.id}`;
-      if (!grupos.has(k)) grupos.set(k, { a: x.a, itens: [], data: x.data });
+      if (!grupos.has(k)) grupos.set(k, { a: x.a, listItems: [], data: x.data });
       const g = grupos.get(k);
-      g.itens.push(x);
+      g.listItems.push(x);
       if (x.data > g.data) g.data = x.data;
     }
     let gs = [...grupos.values()];
@@ -982,7 +983,7 @@
         currentBook = bookName(a.livro);
         bodyHtml += `<h2 class="cl">${esc(currentBook)}</h2>`;
       }
-      const kinds = [...new Set(g.itens.map(x => x.rot))].join(" · ").toUpperCase();
+      const kinds = [...new Set(g.listItems.map(x => x.rot))].join(" · ").toUpperCase();
       bodyHtml += `<section class="en"><div class="ref">${esc(a ? `${bookName(a.livro)} ${a.cap}:${a.ver}` : "NOTA LIVRE")}${kinds ? ` · ${esc(kinds)}` : ""}</div>`;
       const raw = a && caps[`${a.livro}.${a.cap}`];
       const v = raw && raw.v.find(y => y.n === a.ver);
@@ -1020,17 +1021,17 @@
         for (const m of originalMarks) {
           const ws = v.w.slice(m.ancora.inicio, m.ancora.fim + 1);
           if (!ws.length) continue;
-          const greek = a.livro && (window.__livros || {})[a.livro]?.i >= 39;
+          const greek = a.livro && (window.__books || {})[a.livro]?.i >= 39;
           bodyHtml += `<p class="il"><span class="o" dir="${greek ? "ltr" : "rtl"}" lang="${greek ? "grc" : "he"}">${esc(ws.map(w => w[0].replace(/\//g, "")).join(" "))}</span> <span class="ig">${esc(ws.map(w => `${w[1]} · ${w[2]}`).join("; "))}</span></p>`;
         }
       }
-      for (const x of g.itens) {
+      for (const x of g.listItems) {
         if (x.tipo === "notas")
           bodyHtml += `<div class="nt">${x.titulo ? `<b>${esc(x.titulo)}</b><br>` : ""}${esc(x.texto).replace(/\n/g, "<br>")}</div>`;
         else if (x.tipo === "marcacoes" && x.a.camada === "blivre" && !texto)
           bodyHtml += `<p class="vt"><mark style="background:${colorHex[x.cor] || "#eee"}">${esc(x.texto)}</mark></p>`;
       }
-      const tagList = [...new Set(g.itens.flatMap(x => x.etNomes))];
+      const tagList = [...new Set(g.listItems.flatMap(x => x.etNomes))];
       if (tagList.length) bodyHtml += `<div class="tg">${tagList.map(n => `<span>${esc(n)}</span>`).join("")}</div>`;
       bodyHtml += `</section>`;
     }
@@ -1061,7 +1062,7 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
     };
   }
   async function buildNotebook() {
-    const btn = $("#exp-gerar");
+    const btn = $("#exp-generate");
     btn.disabled = true;
     btn.textContent = "Gerando…";
     try {
@@ -1073,15 +1074,15 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
       btn.textContent = "Gerar PDF";
     }
   }
-  // Imprime um HTML: no app Android pelo serviço de impressão do sistema (plugin Impressao, que tem "Salvar como PDF");
+  // Imprime um HTML: no app Android pelo serviço de impressão do sistema (plugin Print, que tem "Salvar como PDF");
   // no navegador, por um iframe escondido e a janela de impressão.
   async function printHtml(html, titulo) {
     const Cap = window.Capacitor,
       isNative = Cap?.isNativePlatform?.();
-    const plug = isNative && (Cap.Plugins?.Impressao || Cap.registerPlugin?.("Impressao"));
+    const plug = isNative && (Cap.Plugins?.Print || Cap.registerPlugin?.("Print"));
     if (plug && Cap.getPlatform?.() === "android") {
       try {
-        await plug.printHtml({ html, titulo });
+        await plug.printHtml({ html, title: titulo });
         return;
       } catch (_) {
         toastMsg("Não foi possível abrir a impressão do Android.");
@@ -1099,7 +1100,7 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
       frame.onload = r;
       setTimeout(r, 1500);
     });
-    if (window.__semImprimir) return; // testes automáticos: só monta o caderno
+    if (window.__noPrint) return; // testes automáticos: só monta o caderno
     try {
       frame.contentWindow.focus();
       frame.contentWindow.print();
@@ -1111,7 +1112,7 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
 
   // ---------- Baixar e importar meus dados (JSON) ----------
   async function downloadData() {
-    await pronto;
+    await dbReady;
     const payload = { formato: "biblia-interlinear-anotacoes", versao: 1, exportado_em: new Date().toISOString(), aparelho, colecoes: {} };
     for (const c of SYNCED) payload.colecoes[c] = db ? await db[c].toArray() : [...memory[c].values()];
     const json = JSON.stringify(payload, null, 1);
@@ -1141,7 +1142,7 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
   async function importData(payload) {
     if (!payload || payload.formato !== "biblia-interlinear-anotacoes" || !payload.colecoes)
       throw new Error("Este arquivo não é um backup de anotações da Bíblia Interlinear.");
-    await pronto;
+    await dbReady;
     let added = 0,
       updated = 0,
       same = 0;
@@ -1180,7 +1181,7 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
   }
   async function merge(c, r, { fromCloud = false } = {}) {
     if (!r || !r.id || !SYNCED.includes(c)) return "ignorado";
-    await pronto;
+    await dbReady;
     const currentChapter = db ? await db[c].get(r.id) : memory[c].get(r.id);
     if (r.relogio) relogio(r.relogio.split("-").slice(0, 2).join("-"));
     if (currentChapter && (currentChapter.relogio || "") >= (r.relogio || "")) {
@@ -1202,34 +1203,34 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
     if (conflict) await conflictCopy(currentChapter);
     return currentChapter ? "atualizado" : "novo";
   }
-  // Acesso de baixo nível para a sincronização (web/sincronizar.js)
+  // Acesso de baixo nível para a sincronização (web/sync.js)
   const storage = {
     colecoes: SYNCED,
     aparelho,
     persistente: () => !!db,
     async fila() {
-      await pronto;
+      await dbReady;
       return db ? db.fila.toArray() : [];
     },
     async tirarDaFila(seqs) {
-      await pronto;
+      await dbReady;
       if (db && seqs.length) await db.fila.bulkDelete(seqs);
     },
     async readStorage(c, id) {
-      await pronto;
+      await dbReady;
       return db ? db[c].get(id) : memory[c].get(id);
     },
     async brutos(c) {
-      await pronto;
+      await dbReady;
       return db ? db[c].toArray() : [...memory[c].values()];
     },
     merge,
-    aplicado() {
+    afterApply() {
       notify();
       paint();
     },
     async estado(k, v) {
-      await pronto;
+      await dbReady;
       if (!db) {
         if (v !== undefined) memoryState[k] = v;
         return memoryState[k];
@@ -1238,14 +1239,14 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
       await db.estado.put({ chave: k, valor: v });
       return v;
     },
-    async purgar(c, ids) {
-      await pronto;
+    async purgeDeleted(c, ids) {
+      await dbReady;
       if (db) await db[c].bulkDelete(ids);
       else ids.forEach(i => memory[c].delete(i));
     },
     // "Manter só neste aparelho": o que já existe não sobe para a conta (até ser editado de novo)
     async soNesteAparelho() {
-      await pronto;
+      await dbReady;
       if (!db) return;
       await db.transaction("rw", [...SYNCED.map(c => db[c]), db.fila], async () => {
         for (const c of SYNCED)
@@ -1256,8 +1257,8 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
       });
     },
     // "Enviar para a conta": tudo o que existe aqui (menos o marcado "só neste aparelho") entra na fila
-    async enfileirarTudo() {
-      await pronto;
+    async enqueueAll() {
+      await dbReady;
       if (!db) return;
       await db.transaction("rw", [...SYNCED.map(c => db[c]), db.fila], async () => {
         for (const c of SYNCED) {
@@ -1266,8 +1267,8 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
         }
       });
     },
-    async apagarTudo() {
-      await pronto;
+    async wipeAll() {
+      await dbReady;
       if (db)
         await db.transaction("rw", [...SYNCED.map(c => db[c]), db.fila], async () => {
           for (const c of SYNCED) await db[c].clear();
@@ -1278,7 +1279,7 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
       paint();
     }
   };
-  $("#mn-arquivo").addEventListener("change", async e => {
+  $("#mn-file").addEventListener("change", async e => {
     const f = e.target.files[0];
     e.target.value = "";
     if (!f) return;
@@ -1307,7 +1308,7 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
   }
 
   // ---------- integração com o leitor ----------
-  document.addEventListener("capitulo", e => {
+  document.addEventListener("chapter-rendered", e => {
     currentChapter = e.detail;
     closeBar();
     paint();
@@ -1322,19 +1323,19 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
     paint,
     allRecords,
     save,
-    apagar,
+    removeRecord,
     importData,
     downloadData,
     assembleNotebook,
     printHtml,
-    contar: async () => (await Promise.all(["notas", "marcacoes", "favoritos"].map(allRecords))).reduce((s, l) => s + l.length, 0),
-    aoMudar: f => listeners.push(f),
-    exportar: async () => Object.fromEntries(await Promise.all(COLLECTIONS.map(async c => [c, await allRecords(c)]))),
+    countAll: async () => (await Promise.all(["notas", "marcacoes", "favoritos"].map(allRecords))).reduce((s, l) => s + l.length, 0),
+    onChange: f => listeners.push(f),
+    exportAll: async () => Object.fromEntries(await Promise.all(COLLECTIONS.map(async c => [c, await allRecords(c)]))),
     local: () => !!db,
     storage
   };
-  if (currentChapter === null && window.__capituloAtual) {
-    currentChapter = window.__capituloAtual;
+  if (currentChapter === null && window.__currentChapter) {
+    currentChapter = window.__currentChapter;
     paint();
   }
 })();

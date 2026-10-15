@@ -2,9 +2,9 @@
 
 O login é opcional e serve só para guardar as anotações na **pasta oculta do app no Google Drive da própria pessoa** (escopo `drive.appdata`). O projeto não tem servidor: o app fala direto com o Google.
 
-- Código do site: `web/conta.js` (Google Identity Services, modelo de token) e `web/google-config.js` (ID do cliente Web).
-- Código do Android: `android/app/src/main/java/liberta/bibliainterlinear/ContaGooglePlugin.java` (API de autorização do Google Play services).
-- Testes: `tests/web/conta.spec.mjs` (o Google é simulado; nada sai para a internet).
+- Código do site: `web/account.js` (Google Identity Services, modelo de token) e `web/google-config.js` (ID do cliente Web).
+- Código do Android: `android/app/src/main/java/liberta/bibliainterlinear/GoogleAccountPlugin.java` (API de autorização do Google Play services).
+- Testes: `tests/web/account.spec.mjs` (o Google é simulado; nada sai para a internet).
 
 O ID do cliente Web já está em `web/google-config.js` (projeto "Biblia interlinear"). Se ele ficar vazio, o bloco de login não aparece no site. No app Android ele aparece, mas só funciona depois do cliente Android estar cadastrado (passo 4).
 
@@ -34,5 +34,5 @@ Os IDs de cliente são públicos (não há segredo neste fluxo) e podem ficar no
 - **Site:** ao tocar em "Entrar com Google", o script `accounts.google.com/gsi/client` é carregado e abre a janela do Google. O token de acesso dura 1 hora e fica só na memória; nome, e-mail e foto ficam no aparelho para mostrar a conta. Ao voltar ao site, aparece "Reconectar" (um toque).
 - **Android:** na primeira vez aparece a janela do Google para escolher a conta e permitir; depois o app renova o token sozinho ao abrir.
 - **Drive:** na pasta do app ficam `conta.json` (aparelhos conectados), os lotes de mudanças `lote-<aparelho>-<hora>.json` e, de vez em quando, um `retrato-<hora>-<aparelho>.json` com tudo (os lotes com mais de 30 dias já incluídos nele são apagados).
-- **Sincronização** (`web/sincronizar.js`): roda sozinha alguns segundos depois de cada mudança, ao abrir, ao voltar para o app, quando a internet volta e a cada 30 s com a tela visível. Recebe os lotes novos dos outros aparelhos (vence o relógio lógico maior; nota editada nos dois lados vira duas, uma marcada "conflito"), depois envia a fila deste aparelho.
+- **Sincronização** (`web/sync.js`): roda sozinha alguns segundos depois de cada mudança, ao abrir, ao voltar para o app, quando a internet volta e a cada 30 s com a tela visível. Recebe os lotes novos dos outros aparelhos (vence o relógio lógico maior; nota editada nos dois lados vira duas, uma marcada "conflito"), depois envia a fila deste aparelho.
 - **Sair:** o app esquece a conta neste aparelho (no site também revoga o token). As anotações continuam no aparelho. Para retirar a permissão de vez: <https://myaccount.google.com/connections>.

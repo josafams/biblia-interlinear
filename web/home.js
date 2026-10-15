@@ -9,10 +9,10 @@
     VIDEOS = STORYBOARDS.videos;
   var reducedMotion = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   var phone = window.matchMedia && matchMedia("(max-width: 700px)").matches;
-  var tabs = document.getElementById("cu-tabs"),
-    listSheet = document.getElementById("cu-lista");
-  var screenEl = document.getElementById("cu-tela"),
-    steps = document.getElementById("cu-passos");
+  var tabs = document.getElementById("howto-tabs"),
+    listSheet = document.getElementById("howto-list");
+  var screenEl = document.getElementById("howto-screen"),
+    steps = document.getElementById("howto-steps");
   var currentGroup = GROUPS[0].id;
   function el(tag, attrs, html) {
     var e = document.createElement(tag);
@@ -43,14 +43,14 @@
     };
   }
   function display(v, doScroll) {
-    document.getElementById("cu-num").textContent =
+    document.getElementById("howto-num").textContent =
       "Vídeo " +
       v.n +
       " · " +
       GROUPS.filter(function (g) {
         return g.id === v.grupo;
       })[0].nome;
-    document.getElementById("cu-titulo").textContent = v.titulo;
+    document.getElementById("howto-title").textContent = v.titulo;
     steps.innerHTML = v.steps
       .map(function (p) {
         return "<li>" + esc(p) + "</li>";
@@ -100,14 +100,16 @@
         el(
           "div",
           { class: "sem" },
-          v.pronto === false ? "Este vídeo será gravado quando a função for lançada." : "Vídeo em preparação. Siga o passo a passo ao lado."
+          v.ready === false
+            ? "Este vídeo será gravado quando a função for lançada."
+            : "Vídeo em preparação. Siga o passo a passo ao lado."
         )
       );
     }
     [].forEach.call(listSheet.children, function (b) {
       b.setAttribute("aria-current", b.dataset.id === v.id ? "true" : "false");
     });
-    if (doScroll) document.getElementById("cu-player").scrollIntoView({ block: "start" });
+    if (doScroll) document.getElementById("howto-player").scrollIntoView({ block: "start" });
   }
   function grupo(id, choose) {
     currentGroup = id;
@@ -125,7 +127,7 @@
         '<span class="capa">' +
         (a && a.cover ? '<img src="' + esc(a.cover) + '" alt="" loading="lazy">' : '<span class="n">' + v.n + "</span>") +
         (a && a.duration ? '<span class="dur">' + esc(a.duration) + "</span>" : "") +
-        (v.pronto === false ? '<span class="badge soon">Quando a função sair</span>' : "") +
+        (v.ready === false ? '<span class="badge soon">Quando a função sair</span>' : "") +
         "</span>" +
         "<b>" +
         v.n +

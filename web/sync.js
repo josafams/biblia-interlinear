@@ -1,7 +1,7 @@
 /* Sincronização das anotações pelo Google Drive da pessoa (pasta oculta do app), sem servidor.
  *
- * O aparelho é a fonte do dia a dia: toda gravação vai para o banco local e para a fila (web/anotacoes.js).
- * Com a conta ligada (web/conta.js), um ciclo roda sozinho — alguns segundos depois de cada mudança, ao abrir,
+ * O aparelho é a fonte do dia a dia: toda gravação vai para o banco local e para a fila (web/annotations.js).
+ * Com a conta ligada (web/account.js), um ciclo roda sozinho — alguns segundos depois de cada mudança, ao abrir,
  * ao voltar para o app, quando a internet volta e a cada 30 s com a tela visível:
  *   1. Receber: lista os lotes novos de outros aparelhos (desde o último marcador) e aplica registro a registro —
  *      vence o relógio maior; notas editadas nos dois lados viram duas (a outra como "conflito").
@@ -36,7 +36,7 @@
   function display(tipo, texto) {
     if (status && status.tipo === tipo && status.texto === texto) return;
     status = { tipo, texto };
-    C.redesenhar();
+    C.rerender();
   }
   function schedule(ms = DELAY_MS) {
     clearTimeout(timer);
@@ -53,7 +53,7 @@
 
   // ---------- um ciclo ----------
   async function cycle() {
-    if (stopped || C.estado() !== "ligado" || !B.persistente()) return;
+    if (stopped || C.status() !== "connected" || !B.persistente()) return;
     if (running) {
       again = true;
       return running;
@@ -70,8 +70,8 @@
         const h = new Date();
         display("ok", `Sincronizado às ${String(h.getHours()).padStart(2, "0")}:${String(h.getMinutes()).padStart(2, "0")}`);
       } catch (e) {
-        if (e.markCode === "reconectar" || e.markCode === "fora" || e.markCode === "interacao") return; // a conta mostra o que fazer
-        if (e.markCode === "drive-cheio") display("alerta", "Seu Google Drive está sem espaço — as mudanças esperam neste aparelho");
+        if (e.errorCode === "reconnect" || e.errorCode === "signed-out" || e.errorCode === "interaction-required") return; // a conta mostra o que fazer
+        if (e.errorCode === "drive-full") display("alerta", "Seu Google Drive está sem espaço — as mudanças esperam neste aparelho");
         else if (e instanceof TypeError) display("alerta", "Sem internet — as mudanças esperam neste aparelho");
         else display("alerta", "Não foi possível sincronizar agora; tentando de novo em instantes");
       } finally {
@@ -87,13 +87,13 @@
 
   // Primeira vez desta conta neste aparelho: tudo o que já foi anotado aqui sobe para a conta, sem perguntar
   async function firstLogin(st) {
-    await B.enfileirarTudo();
+    await B.enqueueAll();
     st.inicial = true;
     await saveState(st);
     return true;
   }
 
-  async function aplicar(colecoes) {
+  async function applyChanges(colecoes) {
     let changed = 0;
     applying = true;
     try {
@@ -104,13 +104,13 @@
             changed++;
             if (c === "preferencias" && r.id === "leitura" && !r.apagado) {
               try {
-                window.__preferencias?.aplicar(r);
+                window.__preferencias?.applyChanges(r);
               } catch (_) {}
             }
           }
         }
       }
-      if (changed) B.aplicado();
+      if (changed) B.afterApply();
     } finally {
       applying = false;
     }
@@ -120,24 +120,24 @@
   async function receive(st) {
     const recent = st.marcador && Date.now() - Date.parse(st.marcador) < (BATCH_RETENTION_DAYS - 1) * DAY_MS;
     if (!recent) {
-      const rets = await C.drive.consultar("name contains 'retrato-'");
+      const rets = await C.drive.queryDrive("name contains 'retrato-'");
       const ret = rets[rets.length - 1];
       if (ret) {
         display("", "Recebendo suas anotações…");
         const d = await C.drive.readStorage(ret.id);
-        await aplicar(d.colecoes);
+        await applyChanges(d.colecoes);
         if (d.ate && (!st.marcador || d.ate > st.marcador)) st.marcador = d.ate;
         await saveState(st);
       }
     }
     const since = st.marcador ? new Date(Date.parse(st.marcador) - OVERLAP_MS).toISOString() : null;
-    const batches = await C.drive.consultar("name contains 'lote-'" + (since ? ` and createdTime > '${since}'` : ""));
+    const batches = await C.drive.queryDrive("name contains 'lote-'" + (since ? ` and createdTime > '${since}'` : ""));
     const mine = `lote-${B.aparelho}-`;
     for (const l of batches) {
       if (!l.name.startsWith(mine) && !st.aplicados[l.name]) {
         display("", "Recebendo mudanças…");
         const d = await C.drive.readStorage(l.id);
-        await aplicar(d.colecoes);
+        await applyChanges(d.colecoes);
         st.aplicados[l.name] = l.createdTime;
       }
       if (!st.marcador || l.createdTime > st.marcador) st.marcador = l.createdTime;
@@ -181,7 +181,7 @@
   async function compact(st, force = false) {
     if (!force && st.compactado_em && Date.now() - Date.parse(st.compactado_em) < DAY_MS) return;
     st.compactado_em = new Date().toISOString();
-    const batches = await C.drive.consultar("name contains 'lote-'");
+    const batches = await C.drive.queryDrive("name contains 'lote-'");
     if (!force && batches.length <= BATCH_LIMIT) return;
     // exclusões antigas saem de vez (aqui e no retrato)
     const oldIso = new Date(Date.now() - DELETED_RETENTION_DAYS * DAY_MS).toISOString();
@@ -189,7 +189,7 @@
     for (const c of B.colecoes) {
       const recs = await B.brutos(c);
       const remoteRec = recs.filter(r => r.apagado && (r.alterado_em || "") < oldIso).map(r => r.id);
-      if (remoteRec.length) await B.purgar(c, remoteRec);
+      if (remoteRec.length) await B.purgeDeleted(c, remoteRec);
       colecoes[c] = recs.filter(r => !r.local && !remoteRec.includes(r.id));
     }
     const currentTime = new Date();
@@ -203,17 +203,17 @@
       colecoes
     });
     const limit = new Date(Date.now() - BATCH_RETENTION_DAYS * DAY_MS).toISOString();
-    for (const l of batches) if (l.createdTime < limit && l.createdTime <= ate) await C.drive.apagar(l.id);
+    for (const l of batches) if (l.createdTime < limit && l.createdTime <= ate) await C.drive.removeRecord(l.id);
     // retratos antigos: o novo já tem tudo (se dois aparelhos compactarem juntos, os dois têm o mesmo conteúdo)
-    for (const r of await C.drive.consultar("name contains 'retrato-'")) if (r.id !== fresh.id) await C.drive.apagar(r.id);
+    for (const r of await C.drive.queryDrive("name contains 'retrato-'")) if (r.id !== fresh.id) await C.drive.removeRecord(r.id);
   }
 
   // ---------- quando rodar ----------
-  A.aoMudar(() => {
+  A.onChange(() => {
     if (!applying) schedule(DELAY_MS);
   });
-  C.aoMudar(estado => {
-    if (estado === "ligado") {
+  C.onChange(accountStatus => {
+    if (accountStatus === "connected") {
       stopped = false;
       schedule(300);
     } else {
@@ -225,27 +225,27 @@
   });
   window.addEventListener("online", () => schedule(500));
   window.addEventListener("offline", () => {
-    if (C.estado() === "ligado") display("alerta", "Sem internet — as mudanças esperam neste aparelho");
+    if (C.status() === "connected") display("alerta", "Sem internet — as mudanças esperam neste aparelho");
   });
   setInterval(() => {
     if (document.visibilityState === "visible") cycle();
   }, INTERVAL_MS);
 
   // Preferências de leitura (modo e itens visíveis) também viajam: grava quando a pessoa muda
-  document.addEventListener("preferencias", () => {
+  document.addEventListener("preferences-changed", () => {
     const p = window.__preferencias?.readStorage();
     if (p) A.save("preferencias", { id: "leitura", ...p });
   });
 
   window.Sync = {
     currentTime: () => cycle(),
-    resumo: () => (C.estado() === "ligado" ? status : null),
-    parar: async () => {
+    statusSummary: () => (C.status() === "connected" ? status : null),
+    halt: async () => {
       stopped = true;
       clearTimeout(timer);
       if (running) await running.catch(() => {});
     },
-    antesDeApagar: async () => {
+    beforeWipe: async () => {
       stopped = true;
       if (running) await running.catch(() => {});
     },
