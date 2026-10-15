@@ -8,6 +8,8 @@ const PORTA = 8790;
 export default defineConfig({
   testDir: "tests/web",
   timeout: 30000,
+  // no CI as máquinas são mais lentas: a sincronização simulada às vezes passa dos 5 s padrão
+  expect: { timeout: process.env.CI ? 15000 : 5000 },
   retries: process.env.CI ? 1 : 0,
   // no CI, o reporter "github" põe cada falha como anotação na página da execução (visível sem login)
   reporter: process.env.CI ? [["github"], ["list"], ["html", { open: "never", outputFolder: "build/test-report" }]] : "list",
