@@ -14,6 +14,10 @@ No fim de cada capítulo, o leitor mostra de 3 a 5 perguntas **sem respostas**, 
 
 Exemplo completo: [`data/questions/RUT.tsv`](../data/questions/RUT.tsv).
 
+## Cobertura (15/10/2026)
+
+3.318 perguntas em 808 capítulos. Completos: Gênesis a Cânticos (exceto Salmos), Lamentações, Daniel, os Profetas Menores, Atos e Romanos. Em parte: Salmos (1–60), Isaías (1–40), Ezequiel (1–12), Mateus (1–18) e João (1–7). Ainda sem perguntas: Jeremias, Marcos, Lucas e de 1 Coríntios a Apocalipse. Capítulo sem perguntas simplesmente não mostra a seção; para completar, siga as regras abaixo e rode `python3 scripts/check_data.py`.
+
 ## Regras
 
 - **3 a 5 perguntas por capítulo**, normalmente 4: pelo menos uma de observação, uma de interpretação e uma de aplicação; a de língua original quando houver uma palavra que valha a pena (quase sempre há).
