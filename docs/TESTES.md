@@ -25,6 +25,7 @@ npm run test:web      # só o site no navegador (Playwright)
 | `tests/web/anotacoes.spec.mjs` | marcar com cores, notas, favoritos, etiquetas, Minhas anotações |
 | `tests/web/caderno.spec.mjs` | caderno em PDF, baixar e importar meus dados |
 | `tests/web/conta.spec.mjs` | login com Google (simulado): entrar, permissão do Drive, sair, sugestão depois da 1ª anotação |
+| `tests/web/progresso.spec.mjs` | Meu progresso: capítulo lido ao chegar ao fim, tempo só com atividade, soma entre aparelhos, sequência e recorde, plano de leitura (em dia, atrasado, reajustar), zerar, convite sem conta |
 | `tests/web/sinc.spec.mjs` | sincronização entre 2 e 3 aparelhos simulados: ida e volta, exclusão, primeiro login, conflito de notas, relógio errado, compactação e aparelho novo, modo de leitura, sair e apagar da nuvem |
 
 O Google é simulado em `tests/web/google-falso.mjs` (login e uma API do Drive em memória, compartilhada entre os "aparelhos"); nada sai para a internet.

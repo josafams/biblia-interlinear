@@ -39,7 +39,8 @@
 
   // ---------- banco local ----------
   const COLECOES = ["marcacoes", "notas", "favoritos", "etiquetas"];
-  const SINC = [...COLECOES, "preferencias"];   // o que viaja para o Drive (preferências = modo de leitura)
+  // o que viaja para o Drive: anotações, preferências (modo de leitura, posição) e progresso (leituras, tempo, planos)
+  const SINC = [...COLECOES, "preferencias", "leituras", "tempo", "planos"];
   let db = null, memoria = null;
   const memoriaEstado = {};
   try {
@@ -54,6 +55,7 @@
       estado: "chave"
     });
     db.version(2).stores({ preferencias: "id" });
+    db.version(3).stores({ leituras: "id, livro", tempo: "id, dia", planos: "id" });
   } catch (_) { db = null; }
   async function aberto() {
     if (memoria) return false;
@@ -770,7 +772,7 @@ ${corpo || "<p>Nenhum item com essas opções.</p>"}
   async function baixarDados() {
     await pronto;
     const dados = { formato: "biblia-interlinear-anotacoes", versao: 1, exportado_em: new Date().toISOString(), aparelho, colecoes: {} };
-    for (const c of COLECOES) dados.colecoes[c] = db ? await db[c].toArray() : [...memoria[c].values()];
+    for (const c of SINC) dados.colecoes[c] = db ? await db[c].toArray() : [...memoria[c].values()];
     const json = JSON.stringify(dados, null, 1);
     const nome = `biblia-interlinear-anotacoes-${dados.exportado_em.slice(0, 10)}.json`;
     window.__ultimoBackup = dados;
@@ -793,7 +795,7 @@ ${corpo || "<p>Nenhum item com essas opções.</p>"}
     if (!dados || dados.formato !== "biblia-interlinear-anotacoes" || !dados.colecoes) throw new Error("Este arquivo não é um backup de anotações da Bíblia Interlinear.");
     await pronto;
     let novos = 0, atualizados = 0, iguais = 0;
-    for (const c of COLECOES) {
+    for (const c of SINC) {
       for (const r of dados.colecoes[c] || []) {
         const res = await mesclar(c, r);
         if (res === "novo") novos++; else if (res === "atualizado") atualizados++; else if (res === "igual") iguais++;
