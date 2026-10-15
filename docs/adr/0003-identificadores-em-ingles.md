@@ -4,7 +4,7 @@
 
 ## Contexto
 
-O código nasceu todo em português (`glosar.py`, `anotacoes.js`, coleções `marcacoes`, `notas`). As palavras-chave e bibliotecas são em inglês, o que gera mistura (`getUsuarioAtivo`), e dificulta usar exemplos, ferramentas e ajuda externos.
+O código nasceu todo em português (`make_glosses.py`, `anotacoes.js`, coleções `marcacoes`, `notas`). As palavras-chave e bibliotecas são em inglês, o que gera mistura (`getUsuarioAtivo`), e dificulta usar exemplos, ferramentas e ajuda externos.
 
 ## Decisão
 
@@ -17,8 +17,8 @@ O código nasceu todo em português (`glosar.py`, `anotacoes.js`, coleções `ma
 
 Por etapas, cada uma com os testes passando antes e depois e sem mudança de comportamento:
 
-1. Ferramentas de qualidade (ADR 0004).
-2. Scripts Python e pastas de dados do build.
+1. Ferramentas de qualidade (ADR 0004). **Feita.**
+2. Scripts Python, banco SQLite do build, pastas (`dados/` → `data/`, `saida/` → `build/`, `fontes-dados/` → `sources/`) e cabeçalhos dos TSV editados à mão. **Feita**: o site, as revisões e o banco saem idênticos byte a byte (conferido antes e depois).
 3. JavaScript do site e do app. Os dados já guardados (IndexedDB, `localStorage` e os arquivos no Drive) passam por **migração** na abertura do app, e o leitor dos lotes do Drive continua aceitando o formato antigo (expand/contract), para ninguém perder anotações.
 4. Plugins Android e documentação.
 

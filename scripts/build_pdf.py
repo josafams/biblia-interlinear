@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Gera um PDF por livro (66) a partir de saida/web/dados, para imprimir ou ler no computador.
+"""Gera um PDF por livro (66) a partir de build/web/dados, para imprimir ou ler no computador.
 
 Cada versículo: cartões com a palavra no original, transliteração, Strong e glosa; abaixo, a BLIVRE.
 No começo, a introdução do livro; no fim, o léxico dos verbetes usados no livro.
-O HTML de impressão é montado aqui e o Chromium (Playwright) gera o PDF (scripts/imprimir_pdf.mjs).
+O HTML de impressão é montado aqui e o Chromium (Playwright) gera o PDF (scripts/print_pdf.mjs).
 
-Uso: python3 scripts/build_pdf.py              → os 66 livros + Bíblia completa + AT + NT (saida/pdf)
+Uso: python3 scripts/build_pdf.py              → os 66 livros + Bíblia completa + AT + NT (build/pdf)
      python3 scripts/build_pdf.py volumes      → só junta os PDFs já gerados na Bíblia completa e nos volumes
      python3 scripts/build_pdf.py GEN JHN      → só esses livros
 """
@@ -17,12 +17,13 @@ import shutil
 import subprocess
 import sys
 import unicodedata
+from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(__file__))
-from build_epub import DADOS, ROOT, about_html, gloss_html, h, plain  # noqa: E402
+from build_epub import DATA, ROOT, about_html, gloss_html, h, plain  # noqa: E402
 
-TMP = os.path.join(ROOT, "saida", "pdf-build")
-OUT = os.path.join(ROOT, "saida", "pdf")
+TMP = os.path.join(ROOT, "build", "pdf-build")
+OUT = os.path.join(ROOT, "build", "pdf")
 
 CSS = """
 @page { size: A4; margin: 16mm 14mm 16mm; }
@@ -63,7 +64,7 @@ blockquote { margin: 5pt 14pt; font-style: italic; } .cite { font-style: normal;
 """
 
 
-def html_livro(B, LEX, idx):
+def book_html(B, LEX, idx):
     grc = B["nt"]
     ocls = "grc" if grc else "he"
     olang = 'lang="grc"' if grc else 'lang="he" dir="rtl"'
@@ -77,13 +78,13 @@ def html_livro(B, LEX, idx):
         f'<p class="intro">{"Leia da esquerda para a direita." if grc else "Os cartões se leem da direita para a esquerda."} '
         "Glosas em itálico cinza não vieram do alinhamento direto com a BLIVRE.</p></section>",
     ]
-    sobre = about_html(B)
-    if sobre:
-        out.append(sobre.replace('epub:type="introduction" ', ""))
-    usados = {}
+    about_section = about_html(B)
+    if about_section:
+        out.append(about_section.replace('epub:type="introduction" ', ""))
+    used = {}
     for c in B["caps"]:
         n = c["n"]
-        d = json.load(open(os.path.join(DADOS, "cap", B["cod"], f"{n}.json"), encoding="utf8"))
+        d = json.loads(Path(os.path.join(DATA, "cap", B["cod"], f"{n}.json")).read_text(encoding="utf8"))
         out.append(f'<h1 class="cap" id="c{n}">{h(B["nome"])} {n}</h1>' + (f'<p class="tema">{h(c["t"])}</p>' if c.get("t") else ""))
         for v in d["v"]:
             vn = v["n"]
@@ -92,30 +93,30 @@ def html_livro(B, LEX, idx):
                 t, k, g, f = w[0], w[1], w[2], w[3]
                 e = LEX.get(k) or {}
                 if k and e:
-                    usados[k] = e
+                    used[k] = e
                 num = "part." if k and len(k) == 2 and k[1].isalpha() else (k if k and not k.startswith("G:") else "—")
                 cards.append(
                     f'<div class="w"><span class="o {ocls}" {olang}>{h(t if grc else plain(t))}</span>'
                     + (f'<span class="x">{h(e.get("x"))}</span>' if e.get("x") else "")
                     + f'<span class="s">{h(num)}</span><span class="g{" aux" if f and f != "m" else ""}">{gloss_html(g)}</span></div>'
                 )
-            nota = ""
+            note = ""
             if v.get("o") == "sem-original":
-                nota = '<p class="vnote">Sem correspondente no texto original usado nesta edição.</p>'
+                note = '<p class="vnote">Sem correspondente no texto original usado nesta edição.</p>'
             elif v.get("o") == "aparato":
-                nota = '<p class="vnote">No SBLGNT este trecho está só no aparato crítico; leitura de Westcott-Hort, Tregelles e NA28.</p>'
+                note = '<p class="vnote">No SBLGNT este trecho está só no aparato crítico; leitura de Westcott-Hort, Tregelles e NA28.</p>'
             out.append(
                 f'<div class="verse"><div class="vn">{"Título" if vn == 0 else f"{n}:{vn}"}</div>'
                 + (f'<div class="words{"" if grc else " rtl"}">{"".join(cards)}</div>' if cards else "")
-                + f'{nota}<p class="bl"><span class="tag">BLIVRE</span>{h(v["b"])}</p></div>'
+                + f'{note}<p class="bl"><span class="tag">BLIVRE</span>{h(v["b"])}</p></div>'
             )
 
-    def ordem(k):
+    def order(k):
         return (k.startswith("G:"), int(k[1:]) if k[1:].isdigit() else 10**9, k)
 
     out.append(f'<section class="lexico"><h1>Léxico de {h(B["nome"])}</h1>')
-    for k in sorted(usados, key=ordem):
-        e = usados[k]
+    for k in sorted(used, key=order):
+        e = used[k]
         lang = 'class="l grc" lang="grc"' if k[0] == "G" else 'class="l he" lang="he" dir="rtl"'
         out.append(
             f'<div class="entry"><b>{"" if k.startswith("G:") else h(k)}</b> <span {lang}>{h(e.get("l"))}</span> '
@@ -139,46 +140,46 @@ def html_livro(B, LEX, idx):
 
 
 def main(argv):
-    livros = json.load(open(os.path.join(DADOS, "livros.json"), encoding="utf8"))
+    books = json.loads(Path(os.path.join(DATA, "livros.json")).read_text(encoding="utf8"))
     LEX = {}
     for L in "HG":
-        LEX.update(json.load(open(os.path.join(DADOS, "lex", f"{L}.json"), encoding="utf8")))
-    quais = {a.upper() for a in argv}
-    if not quais or "BLIVRE" in quais:
-        blivre(livros)
-        quais.discard("BLIVRE")
-        if argv and not quais:
+        LEX.update(json.loads(Path(os.path.join(DATA, "lex", f"{L}.json")).read_text(encoding="utf8")))
+    selected = {a.upper() for a in argv}
+    if not selected or "BLIVRE" in selected:
+        blivre(books)
+        selected.discard("BLIVRE")
+        if argv and not selected:
             return
     os.makedirs(TMP, exist_ok=True)
     os.makedirs(OUT, exist_ok=True)
-    jobs, alvo = [], []
-    for i, B in enumerate(livros, 1):
-        if quais and B["cod"] not in quais:
+    jobs, target = [], []
+    for i, B in enumerate(books, 1):
+        if selected and B["cod"] not in selected:
             continue
-        if quais == {"VOLUMES"}:
+        if selected == {"VOLUMES"}:
             continue
-        nome = unicodedata.normalize("NFD", B["nome"]).encode("ascii", "ignore").decode().replace(" ", "")
+        name = unicodedata.normalize("NFD", B["nome"]).encode("ascii", "ignore").decode().replace(" ", "")
         src = os.path.join(TMP, f"{B['cod']}.html")
-        open(src, "w", encoding="utf8").write(html_livro(B, LEX, i))
-        jobs.append([src, os.path.join(OUT, f"{i:02d}-{B['cod']}-{nome}.pdf"), f"{B['nome']} · Bíblia Interlinear"])
-        alvo.append(B)
+        Path(src).write_text(book_html(B, LEX, i), encoding="utf8")
+        jobs.append([src, os.path.join(OUT, f"{i:02d}-{B['cod']}-{name}.pdf"), f"{B['nome']} · Bíblia Interlinear"])
+        target.append(B)
     if jobs:
-        lista = os.path.join(TMP, "jobs.json")
-        json.dump(jobs, open(lista, "w", encoding="utf8"))
-        subprocess.run(["node", os.path.join(ROOT, "scripts", "imprimir_pdf.mjs"), lista], check=True)
-        for (_, out, _), B in zip(jobs, alvo):
-            marcadores(out, B)
-            otimizar(out)
-    if not quais or "VOLUMES" in quais:
-        volumes(livros)
+        lst = os.path.join(TMP, "jobs.json")
+        Path(lst).write_text(json.dumps(jobs), encoding="utf8")
+        subprocess.run(["node", os.path.join(ROOT, "scripts", "print_pdf.mjs"), lst], check=True)
+        for (_, out, _), B in zip(jobs, target, strict=False):
+            bookmarks(out, B)
+            optimize(out)
+    if not selected or "VOLUMES" in selected:
+        volumes(books)
 
 
-def blivre(livros):
+def blivre(books):
     """Edição só com o texto da Bíblia Livre (A4, duas colunas), com marcadores por testamento, livro e capítulo."""
     from pypdf import PdfReader, PdfWriter
 
     esc = html.escape
-    partes = [
+    pieces = [
         """<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Bíblia Livre</title><style>
 @page { size: A4; }
 body { font-family: "Literata", Georgia, serif; font-size: 10.5pt; line-height: 1.45; color: #111; margin: 0; }
@@ -196,24 +197,24 @@ sup { font-size: 6.5pt; font-weight: 700; color: #555; margin: 0 .5pt 0 2pt; }
 <section class="capa"><h1>Bíblia Livre</h1><p>Os 66 livros, com o tema de cada capítulo.</p>
 <p>Texto da Bíblia Livre (BLIVRE). Temas: projeto Bíblia Interlinear, com fontes abertas.</p></section>"""
     ]
-    for B in livros:
-        partes.append(f'<section class="livro"><h1>{esc(B["nome"])}</h1>')
+    for B in books:
+        pieces.append(f'<section class="livro"><h1>{esc(B["nome"])}</h1>')
         for c in B["caps"]:
-            d = json.load(open(os.path.join(DADOS, "cap", B["cod"], f"{c['n']}.json"), encoding="utf8"))
-            partes.append(f"<h2>{esc(B['nome'])} {c['n']}</h2>")
+            d = json.loads(Path(os.path.join(DATA, "cap", B["cod"], f"{c['n']}.json")).read_text(encoding="utf8"))
+            pieces.append(f"<h2>{esc(B['nome'])} {c['n']}</h2>")
             if c.get("t"):
-                partes.append(f'<p class="tema">{esc(c["t"])}</p>')
-            corpo = []
+                pieces.append(f'<p class="tema">{esc(c["t"])}</p>')
+            body_parts = []
             for v in d["v"]:
                 if not (v.get("b") or "").strip():
                     continue
                 if v["n"] == 0:
-                    partes.append(f'<p class="tit">{esc(v["b"])}</p>')
+                    pieces.append(f'<p class="tit">{esc(v["b"])}</p>')
                 else:
-                    corpo.append(f"<sup>{v['n']}</sup>{esc(v['b'])}")
-            partes.append('<p class="txt">' + " ".join(corpo) + "</p>")
-        partes.append("</section>")
-    partes.append(
+                    body_parts.append(f"<sup>{v['n']}</sup>{esc(v['b'])}")
+            pieces.append('<p class="txt">' + " ".join(body_parts) + "</p>")
+        pieces.append("</section>")
+    pieces.append(
         '<section class="creditos"><h1>Fontes e licenças</h1><p>Texto: Bíblia Livre (BLIVRE), de Diego Santos, '
         "Mario Sérgio e Marco Teles. Temas dos capítulos: projeto Bíblia Interlinear "
         "(github.com/josafams/biblia-interlinear).</p></section></body></html>"
@@ -221,139 +222,139 @@ sup { font-size: 6.5pt; font-weight: 700; color: #555; margin: 0 .5pt 0 2pt; }
     src = os.path.join(TMP, "BLIVRE.html")
     os.makedirs(TMP, exist_ok=True)
     os.makedirs(OUT, exist_ok=True)
-    open(src, "w", encoding="utf8").write("\n".join(partes))
-    destino = os.path.join(OUT, "00-Biblia-Livre.pdf")
-    lista = os.path.join(TMP, "jobs-blivre.json")
-    json.dump([[src, destino, "Bíblia Livre"]], open(lista, "w", encoding="utf8"))
-    subprocess.run(["node", os.path.join(ROOT, "scripts", "imprimir_pdf.mjs"), lista], check=True)
+    Path(src).write_text("\n".join(pieces), encoding="utf8")
+    dest = os.path.join(OUT, "00-Biblia-Livre.pdf")
+    lst = os.path.join(TMP, "jobs-blivre.json")
+    Path(lst).write_text(json.dumps([[src, dest, "Bíblia Livre"]]), encoding="utf8")
+    subprocess.run(["node", os.path.join(ROOT, "scripts", "print_pdf.mjs"), lst], check=True)
     if shutil.which("pdftotext"):
-        txt = subprocess.run(["pdftotext", "-enc", "UTF-8", destino, "-"], capture_output=True, text=True).stdout
-        paginas = [{l.strip() for l in p.splitlines() if l.strip()} for p in txt.split("\f")]
-        w = PdfWriter(clone_from=PdfReader(destino))
+        txt = subprocess.run(["pdftotext", "-enc", "UTF-8", dest, "-"], capture_output=True, text=True).stdout
+        page_list = [{ln.strip() for ln in p.splitlines() if ln.strip()} for p in txt.split("\f")]
+        w = PdfWriter(clone_from=PdfReader(dest))
         test = {}
         pg = 0
-        for B in livros:
+        for B in books:
             t = "Novo Testamento" if B["nt"] else "Antigo Testamento"
-            for k in range(pg, len(paginas)):
-                if B["nome"] in paginas[k]:
+            for k in range(pg, len(page_list)):
+                if B["nome"] in page_list[k]:
                     pg = k
                     break
             if t not in test:
                 test[t] = w.add_outline_item(t, pg)
-            livro = w.add_outline_item(B["nome"], pg, parent=test[t])
+            book = w.add_outline_item(B["nome"], pg, parent=test[t])
             for c in B["caps"]:
-                for k in range(pg, len(paginas)):
-                    if f"{B['nome']} {c['n']}" in paginas[k]:
+                for k in range(pg, len(page_list)):
+                    if f"{B['nome']} {c['n']}" in page_list[k]:
                         pg = k
                         break
-                w.add_outline_item(f"{B['nome']} {c['n']}", pg, parent=livro)
+                w.add_outline_item(f"{B['nome']} {c['n']}", pg, parent=book)
         w.page_mode = "/UseOutlines"
         w.add_metadata({"/Title": "Bíblia Livre", "/Author": "Bíblia Livre (BLIVRE)", "/Lang": "pt-BR"})
-        with open(destino, "wb") as f:
+        with open(dest, "wb") as f:
             w.write(f)
-    otimizar(destino)
-    print(f"00-Biblia-Livre.pdf  {os.path.getsize(destino) // 1048576} MB")
+    optimize(dest)
+    print(f"00-Biblia-Livre.pdf  {os.path.getsize(dest) // 1048576} MB")
 
 
-def marcadores(arq, B):
+def bookmarks(fname, B):
     """Marcadores do PDF (introdução, cada capítulo, léxico, créditos), achando a página de cada título pelo texto."""
     if not shutil.which("pdftotext"):
         return
     from pypdf import PdfReader, PdfWriter
 
-    txt = subprocess.run(["pdftotext", "-enc", "UTF-8", arq, "-"], capture_output=True, text=True).stdout
-    paginas = [{l.strip() for l in p.splitlines() if l.strip()} for p in txt.split("\f")]
-    nome = B["nome"]
-    alvos = [("Sobre o livro", lambda ls: any(l.startswith(f"Sobre {nome}") for l in ls))]
-    alvos += [
-        (f"{nome} {c['n']}" + (f" — {c['t']}" if c.get("t") else ""), (lambda t: lambda ls: t in ls)(f"{nome} {c['n']}")) for c in B["caps"]
+    txt = subprocess.run(["pdftotext", "-enc", "UTF-8", fname, "-"], capture_output=True, text=True).stdout
+    page_list = [{ln.strip() for ln in p.splitlines() if ln.strip()} for p in txt.split("\f")]
+    name = B["nome"]
+    targets = [("Sobre o livro", lambda ls: any(ln.startswith(f"Sobre {name}") for ln in ls))]
+    targets += [
+        (f"{name} {c['n']}" + (f" — {c['t']}" if c.get("t") else ""), (lambda t: lambda ls: t in ls)(f"{name} {c['n']}")) for c in B["caps"]
     ]
-    alvos += [("Léxico", lambda ls: f"Léxico de {nome}" in ls), ("Fontes e licenças", lambda ls: "Fontes e licenças" in ls)]
-    w = PdfWriter(clone_from=PdfReader(arq))
+    targets += [("Léxico", lambda ls: f"Léxico de {name}" in ls), ("Fontes e licenças", lambda ls: "Fontes e licenças" in ls)]
+    w = PdfWriter(clone_from=PdfReader(fname))
     pg = 0
-    for titulo, achou in alvos:
-        for k in range(pg, len(paginas)):
-            if achou(paginas[k]):
-                w.add_outline_item(titulo, min(k, len(w.pages) - 1))
+    for title_text, found_it in targets:
+        for k in range(pg, len(page_list)):
+            if found_it(page_list[k]):
+                w.add_outline_item(title_text, min(k, len(w.pages) - 1))
                 pg = k
                 break
     w.page_mode = "/UseOutlines"
-    w.add_metadata({"/Title": f"{nome} · Bíblia Interlinear", "/Author": "Bíblia Interlinear (BLIVRE)"})
-    with open(arq, "wb") as f:
+    w.add_metadata({"/Title": f"{name} · Bíblia Interlinear", "/Author": "Bíblia Interlinear (BLIVRE)"})
+    with open(fname, "wb") as f:
         w.write(f)
 
 
-def otimizar(arq):
+def optimize(fname):
     """Compacta o PDF com o qpdf (fluxos de objetos e compressão máxima). O Chromium só cria os marcadores
     quando gera o PDF com marcação de acessibilidade, que dobra o tamanho; a compactação quase desfaz isso."""
     if not shutil.which("qpdf"):
         return
-    tmp = arq + ".tmp"
+    tmp = fname + ".tmp"
     r = subprocess.run(
-        ["qpdf", "--object-streams=generate", "--compress-streams=y", "--recompress-flate", "--compression-level=9", arq, tmp]
+        ["qpdf", "--object-streams=generate", "--compress-streams=y", "--recompress-flate", "--compression-level=9", fname, tmp]
     )
     if r.returncode in (0, 3) and os.path.exists(tmp):  # 3 = avisos
-        os.replace(tmp, arq)
+        os.replace(tmp, fname)
 
 
-def volumes(livros):
+def volumes(books):
     """Junta os PDFs dos livros na Bíblia completa e nos volumes AT e NT, com marcadores por livro e capítulo."""
     from pypdf import PdfWriter
 
-    def arq(i, B):
-        nome = unicodedata.normalize("NFD", B["nome"]).encode("ascii", "ignore").decode().replace(" ", "")
-        return os.path.join(OUT, f"{i:02d}-{B['cod']}-{nome}.pdf")
+    def fname(i, B):
+        name = unicodedata.normalize("NFD", B["nome"]).encode("ascii", "ignore").decode().replace(" ", "")
+        return os.path.join(OUT, f"{i:02d}-{B['cod']}-{name}.pdf")
 
-    todos = [(B, arq(i, B)) for i, B in enumerate(livros, 1)]
-    faltam = [os.path.basename(a) for _, a in todos if not os.path.exists(a)]
-    if faltam:
-        print("volumes não gerados; faltam os PDFs:", ", ".join(faltam[:5]), "…" if len(faltam) > 5 else "")
+    all_books = [(B, fname(i, B)) for i, B in enumerate(books, 1)]
+    missing_files = [os.path.basename(a) for _, a in all_books if not os.path.exists(a)]
+    if missing_files:
+        print("volumes não gerados; faltam os PDFs:", ", ".join(missing_files[:5]), "…" if len(missing_files) > 5 else "")
         return
-    for nome, titulo, sel in (
+    for name, title_text, sel in (
         ("00-Biblia-Interlinear-completa.pdf", "Bíblia Interlinear — Bíblia completa", lambda B: True),
         ("00-Biblia-Interlinear-AT.pdf", "Bíblia Interlinear — Antigo Testamento", lambda B: not B["nt"]),
         ("00-Biblia-Interlinear-NT.pdf", "Bíblia Interlinear — Novo Testamento", lambda B: B["nt"]),
     ):
         w = PdfWriter()
-        partes = {}
-        for B, a in todos:
+        pieces = {}
+        for B, a in all_books:
             if not sel(B):
                 continue
-            pai = None
-            inicio = len(w.pages)
+            parent_node = None
+            begin = len(w.pages)
             w.append(a, import_outline=False)
-            if nome.endswith("completa.pdf"):
+            if name.endswith("completa.pdf"):
                 t = "Novo Testamento" if B["nt"] else "Antigo Testamento"
-                if t not in partes:
-                    partes[t] = w.add_outline_item(t, inicio)
-                pai = partes[t]
-            livro = w.add_outline_item(B["nome"], inicio, parent=pai)
+                if t not in pieces:
+                    pieces[t] = w.add_outline_item(t, begin)
+                parent_node = pieces[t]
+            book = w.add_outline_item(B["nome"], begin, parent=parent_node)
             # capítulos: os marcadores que o Chromium criou no PDF do livro, um nível abaixo do livro
             from pypdf import PdfReader
 
             r = PdfReader(a)
 
-            def copiar(itens, destino):
-                ultimo = None
-                for it in itens:
+            def copy_files(item_list, dest):
+                last_one = None
+                for it in item_list:
                     if isinstance(it, list):
-                        if ultimo is not None:
-                            copiar(it, ultimo)
+                        if last_one is not None:
+                            copy_files(it, last_one)
                         continue
                     try:
                         pg = r.get_destination_page_number(it)
-                    except Exception:
+                    except Exception:  # noqa: S112 (destino sem página: o marcador é pulado)
                         continue
-                    ultimo = w.add_outline_item(it.title, inicio + pg, parent=destino)
+                    last_one = w.add_outline_item(it.title, begin + pg, parent=dest)
 
-            copiar(r.outline, livro)
-        w.add_metadata({"/Title": titulo, "/Author": "Bíblia Interlinear (BLIVRE)", "/Lang": "pt-BR"})
+            copy_files(r.outline, book)
+        w.add_metadata({"/Title": title_text, "/Author": "Bíblia Interlinear (BLIVRE)", "/Lang": "pt-BR"})
         w.page_mode = "/UseOutlines"
-        destino = os.path.join(OUT, nome)
-        with open(destino, "wb") as f:
+        dest = os.path.join(OUT, name)
+        with open(dest, "wb") as f:
             w.write(f)
-        otimizar(destino)
-        print(f"{nome}  {len(w.pages)} páginas  {os.path.getsize(destino) // 1048576} MB")
+        optimize(dest)
+        print(f"{name}  {len(w.pages)} páginas  {os.path.getsize(dest) // 1048576} MB")
 
 
 if __name__ == "__main__":

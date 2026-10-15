@@ -1,11 +1,11 @@
 // Grava os vídeos "Como usar" a partir dos roteiros (scripts/videos/roteiros.mjs), com o Playwright.
-// Para cada vídeo e aparelho (celular 390×844, computador 1280×800) gera em saida/videos:
+// Para cada vídeo e aparelho (celular 390×844, computador 1280×800) gera em build/videos:
 //   <id>-<aparelho>.mp4   vídeo H.264 sem som (ffmpeg)
 //   <id>-<aparelho>.vtt   legendas (uma por passo, com os tempos reais)
 //   <id>-<aparelho>.jpg   capa
 //   videos.js             índice lido pela página inicial (window.__videos)
 // Uso:
-//   node scripts/videos/gravar.mjs                 grava todos (o site precisa estar gerado em saida/web)
+//   node scripts/videos/gravar.mjs                 grava todos (o site precisa estar gerado em build/web)
 //   node scripts/videos/gravar.mjs 01 05           só esses vídeos
 //   node scripts/videos/gravar.mjs --verificar     só executa os roteiros, sem gravar (rápido; usado nos testes)
 import fs from "node:fs";
@@ -17,8 +17,8 @@ import { videos } from "./roteiros.mjs";
 import { simularGoogle } from "../../tests/web/google-falso.mjs";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../..");
-const WEB = path.join(ROOT, "saida/web");
-const OUT = path.join(ROOT, "saida/videos");
+const WEB = path.join(ROOT, "build/web");
+const OUT = path.join(ROOT, "build/videos");
 const args = process.argv.slice(2);
 const VERIFICAR = args.includes("--verificar");
 const quais = args.filter(a => !a.startsWith("--"));

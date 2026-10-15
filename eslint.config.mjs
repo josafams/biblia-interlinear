@@ -4,7 +4,7 @@ import globals from "globals";
 import prettier from "eslint-config-prettier";
 
 export default [
-  { ignores: ["node_modules/", "saida/", "android/", "ios/", "fontes-dados/", "fontes-epub/", "**/*.min.js"] },
+  { ignores: ["node_modules/", "build/", "android/", "ios/", "sources/", "epub-fonts/", "**/*.min.js"] },
   js.configs.recommended,
   prettier,
   {

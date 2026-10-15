@@ -229,9 +229,9 @@ Gravidade: **E** erro · **A** aviso
 3. Revisor por IA (IA-01, IA-04) nos itens que sobrarem.
 4. Cruzamentos de paralelos e citações (CRZ-02 a CRZ-05) quando houver vários livros.
 
-## Implementação automática (scripts/revisar.py)
+## Implementação automática (scripts/review.py)
 
-`python3 scripts/revisar.py [LIVRO [CAP]]` lê `saida/biblia.sqlite` só para leitura (e, para TXT-01/02/04 e TXG-01, os arquivos originais em `fontes-dados/`, quando existem) e grava em `saida/revisao/`: `marcas.json` (uma marca por palavra ou versículo), `resumo.tsv` (erros, avisos e informativas por capítulo) e `relatorio.md` (totais por código e por livro, com 3 exemplos de cada código). Só biblioteca padrão, sem rede e sem IA; a Bíblia inteira roda em cerca de 25 s. Os níveis seguem o catálogo, com estas regras: regra que dispara em muitas palavras por motivo de estilo da BLIVRE (e não por erro da glosa) fica como `info`; erro comprovado de dados fica como `erro`, mesmo que o catálogo diga A.
+`python3 scripts/review.py [LIVRO [CAP]]` lê `build/biblia.sqlite` só para leitura (e, para TXT-01/02/04 e TXG-01, os arquivos originais em `sources/`, quando existem) e grava em `build/review/`: `marks.json` (uma marca por palavra ou versículo), `summary.tsv` (erros, avisos e informativas por capítulo) e `report.md` (totais por código e por livro, com 3 exemplos de cada código). Só biblioteca padrão, sem rede e sem IA; a Bíblia inteira roda em cerca de 25 s. Os níveis seguem o catálogo, com estas regras: regra que dispara em muitas palavras por motivo de estilo da BLIVRE (e não por erro da glosa) fica como `info`; erro comprovado de dados fica como `erro`, mesmo que o catálogo diga A.
 
 | Código | O que verifica | Nível |
 |---|---|---|

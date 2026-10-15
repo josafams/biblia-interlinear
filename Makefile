@@ -11,13 +11,13 @@ setup: ## Instala dependências de Node e Python e os ganchos do pre-commit
 	pre-commit install
 
 data: ## Baixa as fontes abertas e gera corpus, glosas, revisões e o site
-	[ -d fontes-dados ] || scripts/baixar_fontes.sh
+	[ -d sources ] || scripts/download_sources.sh
 	python3 scripts/corpus.py
-	python3 scripts/glosar.py
-	python3 scripts/revisar.py > /dev/null
+	python3 scripts/make_glosses.py
+	python3 scripts/review.py > /dev/null
 	node scripts/build_web.mjs
 
-web: ## Gera só o site (saida/web)
+web: ## Gera só o site (build/web)
 	node scripts/build_web.mjs
 
 test: test-data test-web ## Roda todos os testes
@@ -44,12 +44,12 @@ format: ## Formata o código (Prettier e Ruff)
 coverage: ## Cobertura do Python: o pipeline de dados e os testes
 	python3 -m coverage erase
 	python3 -m coverage run -p scripts/corpus.py > /dev/null
-	python3 -m coverage run -p scripts/glosar.py > /dev/null
-	python3 -m coverage run -p scripts/revisar.py > /dev/null
+	python3 -m coverage run -p scripts/make_glosses.py > /dev/null
+	python3 -m coverage run -p scripts/review.py > /dev/null
 	python3 -m pytest --cov --cov-append --cov-report=
 	python3 -m coverage combine --append
 	python3 -m coverage report
-	python3 -m coverage xml -o saida/coverage.xml
+	python3 -m coverage xml -o build/coverage.xml
 
 videos-check: ## Confere se os roteiros dos vídeos ainda funcionam (sem gravar)
 	node scripts/videos/gravar.mjs --verificar

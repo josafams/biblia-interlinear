@@ -1,4 +1,4 @@
-// Gera a versão web instalável (PWA) em saida/web — a mesma pasta que vira o app
+// Gera a versão web instalável (PWA) em build/web — a mesma pasta que vira o app
 // Android/iOS pelo Capacitor. Fontes ficam locais (funciona offline e não chama o Google).
 // Uso: node scripts/build_web.mjs
 import fs from "node:fs";
@@ -9,7 +9,7 @@ import { execFileSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
-const OUT = path.join(ROOT, "saida/web");
+const OUT = path.join(ROOT, "build/web");
 const r = p => path.join(ROOT, p);
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(path.join(OUT, "fonts"), { recursive: true });
@@ -67,12 +67,12 @@ for (const [src, out, size] of ICONS) {
     .toFile(path.join(OUT, "icones", out));
 }
 
-// ---- dados: livros, capítulos e léxico (scripts/exportar.py lê saida/biblia.sqlite) ----
-execFileSync("python3", [r("scripts/exportar.py")], { stdio: "inherit" });
+// ---- dados: livros, capítulos e léxico (scripts/export.py lê build/biblia.sqlite) ----
+execFileSync("python3", [r("scripts/export.py")], { stdio: "inherit" });
 
-// ---- página: template + lista de livros (capítulos e léxico são lidos sob demanda de dados/) ----
+// ---- página: template + lista de livros (capítulos e léxico são lidos sob demanda de data/) ----
 const tpl = fs.readFileSync(r("web/template.html"), "utf8");
-const livros = JSON.parse(fs.readFileSync(r("saida/dados/livros.json"), "utf8"));
+const livros = JSON.parse(fs.readFileSync(r("build/data/livros.json"), "utf8"));
 const data = JSON.stringify({ livros, caps: {}, lex: {}, completo: true }).replace(/<\//g, "<\\/");
 let html = tpl.replace("__DATA__", () => data);
 html = html.replace(
@@ -103,8 +103,8 @@ fs.writeFileSync(path.join(OUT, "ler.html"), doc);
 // ---- página inicial (index.html): números, amostra e tamanhos dos livros lidos dos dados ----
 fs.writeFileSync(path.join(OUT, "index.html"), await paginaInicial(livros));
 
-// ---- vídeos "Como usar" já gravados (scripts/videos/gravar.mjs grava em saida/videos) ----
-const VIDEOS = r("saida/videos");
+// ---- vídeos "Como usar" já gravados (scripts/videos/gravar.mjs grava em build/videos) ----
+const VIDEOS = r("build/videos");
 if (fs.existsSync(path.join(VIDEOS, "videos.js"))) fs.cpSync(VIDEOS, path.join(OUT, "videos"), { recursive: true });
 else {
   fs.mkdirSync(path.join(OUT, "videos"), { recursive: true });
@@ -184,12 +184,12 @@ self.addEventListener("fetch", e => {
 });
 `
 );
-console.error(`Versão web gerada em saida/web (${files.length + 1} arquivos, cache ${version})`);
+console.error(`Versão web gerada em build/web (${files.length + 1} arquivos, cache ${version})`);
 
 // ---------------------------------------------------------------------------------------------
 async function paginaInicial(livros) {
   const REPO = "https://github.com/josafams/biblia-interlinear";
-  const dados = r("saida/dados");
+  const dados = r("build/data");
   const cap = (cod, n) => JSON.parse(fs.readFileSync(path.join(dados, "cap", cod, `${n}.json`), "utf8"));
   const lex = {
     H: JSON.parse(fs.readFileSync(path.join(dados, "lex/H.json"), "utf8")),
@@ -231,7 +231,7 @@ async function paginaInicial(livros) {
     <div class="ref"><b>João 1:1</b><span>grego, da esquerda para a direita</span></div>
     <div class="cards">${cartoes({ w: jo.w.slice(0, 5) }, true)}</div>
     <p class="blivre"><small>BLIVRE</small>${esc(jo.b)}</p>`;
-  // Tamanhos dos livros para baixar (de saida/epub e saida/pdf, quando gerados nesta máquina)
+  // Tamanhos dos livros para baixar (de build/epub e build/pdf, quando gerados nesta máquina)
   const tam = f => {
     try {
       const b = fs.statSync(r(f)).size;
@@ -252,14 +252,14 @@ async function paginaInicial(livros) {
     __N_VERS__: fmt(vers),
     __N_PALAVRAS__: fmt(pal),
     __N_VERBETES__: fmt(Object.keys(lex.H).length + Object.keys(lex.G).length),
-    __TAM_EPUB_COMPLETA__: tam("saida/epub/00-Biblia-Interlinear-completa.epub"),
-    __TAM_PDF_COMPLETA__: tam("saida/pdf/00-Biblia-Interlinear-completa.pdf"),
-    __TAM_EPUB_AT__: tam("saida/epub/00-Biblia-Interlinear-AT.epub"),
-    __TAM_PDF_AT__: tam("saida/pdf/00-Biblia-Interlinear-AT.pdf"),
-    __TAM_EPUB_NT__: tam("saida/epub/00-Biblia-Interlinear-NT.epub"),
-    __TAM_EPUB_BLIVRE__: tam("saida/epub/00-Biblia-Livre.epub"),
-    __TAM_PDF_BLIVRE__: tam("saida/pdf/00-Biblia-Livre.pdf"),
-    __TAM_PDF_NT__: tam("saida/pdf/00-Biblia-Interlinear-NT.pdf"),
+    __TAM_EPUB_COMPLETA__: tam("build/epub/00-Biblia-Interlinear-completa.epub"),
+    __TAM_PDF_COMPLETA__: tam("build/pdf/00-Biblia-Interlinear-completa.pdf"),
+    __TAM_EPUB_AT__: tam("build/epub/00-Biblia-Interlinear-AT.epub"),
+    __TAM_PDF_AT__: tam("build/pdf/00-Biblia-Interlinear-AT.pdf"),
+    __TAM_EPUB_NT__: tam("build/epub/00-Biblia-Interlinear-NT.epub"),
+    __TAM_EPUB_BLIVRE__: tam("build/epub/00-Biblia-Livre.epub"),
+    __TAM_PDF_BLIVRE__: tam("build/pdf/00-Biblia-Livre.pdf"),
+    __TAM_PDF_NT__: tam("build/pdf/00-Biblia-Interlinear-NT.pdf"),
     __DATA__: new Date().toLocaleDateString("pt-BR"),
     __ROTEIROS__: JSON.stringify(resumo()).replace(/<\//g, "<\\/")
   };

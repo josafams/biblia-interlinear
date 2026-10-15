@@ -1,6 +1,6 @@
 # Reconstrói tudo do zero (fontes, corpus, glosas) e publica a versão web no GitHub Pages.
 # Só roda quando chamado à mão (Actions › Web › Run workflow) e com Settings › Pages › Source: GitHub Actions.
-# A publicação padrão é o ramo gh-pages, gerado localmente por scripts/publicar_web.sh (mesmas glosas revisadas).
+# A publicação padrão é o ramo gh-pages, gerado localmente por scripts/publish_web.sh (mesmas glosas revisadas).
 # A política de privacidade fica em <endereço do site>/privacidade.html (a Play Store pede esse link).
 name: Web
 on:
@@ -32,7 +32,7 @@ jobs:
       - run: PDF=0 scripts/build.sh
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: saida/web
+          path: build/web
   deploy:
     needs: build
     runs-on: ubuntu-latest

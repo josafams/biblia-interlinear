@@ -8,20 +8,20 @@ Tudo o que o projeto usa precisa ser aberto ou livre de direitos pagos, porque o
 |---|---|---|---|
 | Hebraico e aramaico, morfologia e mapa de versificação | Open Scriptures Hebrew Bible (morphhb), sobre o Westminster Leningrad Codex | CC BY 4.0 (WLC em domínio público) | Crédito: "Original work of the Open Scriptures Hebrew Bible available at <https://github.com/openscriptures/morphhb>" |
 | Texto grego | SBL Greek New Testament (SBLGNT), © 2010 Society of Biblical Literature e Logos Bible Software | CC BY 4.0 (desde 2023; o README antigo do MorphGNT ainda cita o EULA anterior) | Crédito e indicação de alterações. Alteração feita: tiramos do texto os sinais do aparato (⸀ ⸂ ⸃ ⟦ ⟧) |
-| Rm 16:25–27 em grego | Leitura de WH, Tregelles e NA28 registrada no **aparato** do SBLGNT (o texto principal termina em 16:24); morfologia anotada neste projeto (`dados/grego_suplemento_66-Ro.txt`) | CC BY 4.0 | O app avisa que o trecho vem do aparato |
+| Rm 16:25–27 em grego | Leitura de WH, Tregelles e NA28 registrada no **aparato** do SBLGNT (o texto principal termina em 16:24); morfologia anotada neste projeto (`data/greek_supplement_66-Ro.txt`) | CC BY 4.0 | O app avisa que o trecho vem do aparato |
 | Morfologia e lemas gregos | MorphGNT: SBLGNT Edition, J. K. Tauber | CC BY-SA 3.0 | Crédito; dados derivados (glosas gregas, contagens) sob a mesma licença |
 | Tradução corrida, AT | Bíblia Livre, revisão de fev. 2018, © Diego Santos, Mario Sérgio e Marco Teles; corpus eBible (BibleNLP) | CC BY 4.0 Brasil | Crédito com autores, link sites.google.com/site/biblialivre, versão e licença; texto reproduzido sem alterações |
 | Tradução corrida, NT (e versículos que faltam na de 2018) | Bíblia Livre, edição 2017 (módulo CrossWire PorBLivre 1.0.1), © 2017 os mesmos autores; via scrollmapper/bible_databases | CC BY 3.0 Brasil | Idem. No NT ela traduz o texto crítico (o mesmo do SBLGNT); a de 2018 segue o Textus Receptus |
-| Dicionário Strong (transliteração, pronúncia em inglês, origem, significado) | James Strong (1890/1894, domínio público), edição digital Open Scriptures | CC BY-SA | Crédito; o léxico em português (`dados/lexico_pt/`) é adaptação e vai sob CC BY-SA |
+| Dicionário Strong (transliteração, pronúncia em inglês, origem, significado) | James Strong (1890/1894, domínio público), edição digital Open Scriptures | CC BY-SA | Crédito; o léxico em português (`data/lexicon_pt/`) é adaptação e vai sob CC BY-SA |
 | Léxico grego auxiliar (lema → Strong, glosa curta) | Jeffrey Dodson, Greek Lexicon (biblicalhumanities) | Domínio público / CC0 | — |
 | Pontos de divisão de 7 versículos (hebraico × numeração das traduções) | Conferidos com o TAHOT (STEPBible) | CC BY 4.0 | Crédito "STEP Bible" (<www.STEPBible.org>). Nenhum dado do TAHOT é distribuído |
 | Glosas palavra a palavra | Alinhamento estatístico com a BLIVRE feito neste projeto com a ferramenta **eflomal** (GPL 3) | Ferramenta usada só no processamento; nada dela é distribuído | As glosas não fazem parte da BLIVRE nem têm endosso dos autores |
 | Introduções, temas, traduções do léxico, pronúncia em português, regras de glosa | Feitos para este projeto | a definir pelo autor (sugestão: CC BY-SA 4.0, compatível com o Strong e o MorphGNT) | — |
-| Fontes tipográficas | Noto Serif Hebrew, Gentium Book Plus, Literata, IBM Plex Mono, Atkinson Hyperlegible (via Fontsource) | SIL OFL 1.1 | Textos das licenças em `saida/web/fonts/` e na página de créditos do EPUB |
+| Fontes tipográficas | Noto Serif Hebrew, Gentium Book Plus, Literata, IBM Plex Mono, Atkinson Hyperlegible (via Fontsource) | SIL OFL 1.1 | Textos das licenças em `build/web/fonts/` e na página de créditos do EPUB |
 | Apps Android e iOS | Capacitor (core, android, ios, app, cli) e @capacitor-community/text-to-speech | MIT | — |
 | Áudio | Voz do aparelho de quem lê (hebraico e grego modernos) | — | Nenhum arquivo de áudio é distribuído |
 
-**Licença do conjunto de dados exportado** (`saida/web/dados/`): por conter derivados do Strong (Open Scriptures) e do MorphGNT, distribuir sob **CC BY-SA**, com os créditos acima.
+**Licença do conjunto de dados exportado** (`build/web/dados/`): por conter derivados do Strong (Open Scriptures) e do MorphGNT, distribuir sob **CC BY-SA**, com os créditos acima.
 
 ## Avaliadas e não usadas como dados (conferido em 9/10/2026)
 

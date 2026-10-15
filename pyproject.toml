@@ -8,7 +8,7 @@ requires-python = ">=3.12"
 line-length = 140
 target-version = "py312"
 src = ["scripts", "tests"]
-extend-exclude = ["node_modules", "saida", "fontes-dados", "android", "ios"]
+extend-exclude = ["node_modules", "build", "sources", "android", "ios"]
 
 [tool.ruff.lint]
 # E/F: erros básicos, I: imports, B: bugs comuns, UP: sintaxe moderna, S: segurança,
@@ -18,12 +18,12 @@ ignore = [
   "E501",   # linhas longas: o formatador cuida do que dá; tabelas de dados ficam numa linha
   "S603", "S607",   # subprocess com lista de argumentos e programas do sistema (qpdf, eflomal): uso intencional
   "SIM108", # ternário nem sempre é mais claro
-  # Pendências antigas, corrigidas na refatoração dos scripts (etapa 2 das boas práticas):
-  "B007", "B023", "B905", "C901", "E731", "E741", "PT006", "PT018", "S112", "SIM102", "SIM115", "SIM201", "UP031",
+  "SIM102", # ifs aninhados: em review.py cada nível é uma condição de uma regra do catálogo, com comentário
+  "B023",   # funções definidas dentro de laços são chamadas na mesma volta do laço (glosas, marcadores do PDF)
 ]
 
 [tool.ruff.lint.mccabe]
-max-complexity = 25   # piso atual; baixar aos poucos nas refatorações
+max-complexity = 40   # piso atual (export.main, review.check_versification); baixar aos poucos nas refatorações
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["S101"]   # assert é permitido nos testes
