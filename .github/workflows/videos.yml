@@ -1,22 +1,23 @@
 # Grava de novo os vídeos "Como usar" (scripts/videos/roteiros.mjs) a partir do site publicado
-# e publica em gh-pages/videos. Roda quando o leitor ou os roteiros mudam na main, e à mão.
+# e publica em gh-pages/videos. Roda depois que o workflow Site publica o site, e à mão.
 # Se um roteiro não consegue completar os passos, o workflow falha: a tela mudou e o roteiro precisa acompanhar.
 name: Vídeos
 on:
-  push:
-    branches: [main]
-    paths: ["web/**", "scripts/videos/**", ".github/workflows/videos.yml"]
+  workflow_run:
+    workflows: [Site]
+    types: [completed]
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: videos
+  group: gh-pages-videos
   cancel-in-progress: true
 
 jobs:
   videos:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:

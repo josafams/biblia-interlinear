@@ -1,4 +1,4 @@
-# Compila o app Android a cada envio para a main (ou manualmente) e publica na página Releases:
+# Compila o app Android depois que o workflow Site publica o site (ou manualmente) e publica na página Releases:
 #   - release "app-android" (sempre a última versão): APK de teste, instalável direto no celular, e AAB para a Play Store
 # O conteúdo do app é o site já gerado no ramo gh-pages (o mesmo publicado no GitHub Pages),
 # então o APK sai exatamente com os dados revisados, sem refazer o corpus e as glosas.
@@ -7,8 +7,9 @@
 #   ANDROID_KEYSTORE_PASSWORD, ANDROID_KEY_ALIAS, ANDROID_KEY_PASSWORD
 name: Android
 on:
-  push:
-    branches: [main, gh-pages]
+  workflow_run:
+    workflows: [Site]
+    types: [completed]
   workflow_dispatch:
 
 permissions:
@@ -20,6 +21,7 @@ concurrency:
 
 jobs:
   build:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     env:
       HAS_KEYSTORE: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
