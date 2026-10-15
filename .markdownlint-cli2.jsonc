@@ -9,5 +9,5 @@
     "MD036": false, // ênfase usada como título curto
     "MD060": false
   },
-  "ignores": ["node_modules/**", "saida/**", "fontes-dados/**", "fontes-epub/**", "android/**", "ios/**", ".pytest_cache/**"]
+  "ignores": ["node_modules/**", "build/**", "sources/**", "epub-fonts/**", "android/**", "ios/**", ".pytest_cache/**"]
 }

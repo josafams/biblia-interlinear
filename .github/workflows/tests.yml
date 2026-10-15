@@ -1,0 +1,69 @@
+# Testes automáticos em todo pull request e envio à main: dados (pytest), EPUB e PDF de Rute,
+# e o site no navegador (Playwright: página inicial, leitor, acessibilidade, uso offline).
+# Refaz o corpus e as glosas a partir das fontes abertas; o alinhamento salvo em data/alignment
+# deixa isso em poucos minutos. Para proteger a main: Settings › Branches › regra para main ›
+# "Require status checks to pass" marcando "tests".
+name: Testes
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - run: npm ci
+      - name: Chromium, qpdf e pdftotext
+        run: |
+          npx playwright install --with-deps chromium
+          sudo apt-get install -y qpdf poppler-utils
+      - name: Fontes abertas
+        run: scripts/download_sources.sh
+      - name: Corpus, glosas e site (medindo a cobertura do Python)
+        run: |
+          python3 -m coverage run -p scripts/corpus.py
+          python3 -m coverage run -p scripts/make_glosses.py
+          python3 -m coverage run -p scripts/review.py > /dev/null
+          node scripts/build_web.mjs
+      - name: Testes de dados, EPUB e PDF
+        env:
+          PDF_TESTE: "1"
+        run: python3 -m pytest -v --cov --cov-append --cov-report=
+      - name: Cobertura do Python
+        run: |
+          python3 -m coverage combine --append
+          python3 -m coverage report
+          python3 -m coverage xml -o build/coverage.xml
+      - name: Testes no navegador
+        env:
+          CI: "1"
+        run: npx playwright test
+      - name: Roteiros dos vídeos ainda funcionam
+        run: node scripts/videos/gravar.mjs --verificar
+      - name: Relatório (quando algo falha)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-testes
+          path: |
+            build/test-report
+            build/test-results
+            build/coverage.xml
+          retention-days: 14

@@ -1,8 +1,8 @@
 # dependências e dados de terceiros (baixados por npm ci e scripts/baixar_fontes.sh)
 node_modules/
-fontes-dados/
-# tudo em saida/ é gerado por scripts/build.sh
-saida/
+sources/
+# tudo em build/ é gerado por scripts/build.sh
+build/
 # chaves de assinatura nunca vão para o repositório
 *.jks
 *.keystore
@@ -11,7 +11,6 @@ keystore.properties
 .DS_Store
 __pycache__/
 *.pyc
-__pycache__/
 
 # cobertura e caches de ferramentas
 .coverage

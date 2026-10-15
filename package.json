@@ -5,14 +5,14 @@
   "description": "Bíblia interlinear hebraico/aramaico/grego–português (BLIVRE): site, app Android/iOS, EPUB e PDF",
   "scripts": {
     "build": "scripts/build.sh",
-    "verificar": "python3 scripts/verificar_dados.py",
-    "publicar-web": "scripts/publicar_web.sh",
-    "icons": "node scripts/icones_nativos.mjs",
+    "check-data": "python3 scripts/check_data.py",
+    "publish-web": "scripts/publish_web.sh",
+    "icons": "node scripts/native_icons.mjs",
     "android:sync": "npx cap sync android",
     "android:open": "npx cap open android",
     "test": "python3 -m pytest tests -q && npx playwright test",
     "test:web": "npx playwright test",
-    "test:dados": "python3 -m pytest tests -q",
+    "test:data": "python3 -m pytest tests -q",
     "lint": "prettier --check . && eslint . && markdownlint-cli2 \"**/*.md\"",
     "format": "prettier --write ."
   },

@@ -1,15 +1,15 @@
 node_modules/
-saida/
+build/
 android/
 ios/
-fontes-dados/
-fontes-epub/
-dados/
+sources/
+epub-fonts/
+data/
 package-lock.json
 *.min.js
 # HTML com JS e CSS embutidos: o JS do leitor sai do template na etapa 3 das boas práticas
 web/*.html
 .pytest_cache/
-tests/retrato.json
+tests/snapshot.json
 # Markdown: tabelas longas ficam ilegíveis alinhadas; o markdownlint confere o formato
 *.md

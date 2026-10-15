@@ -20,5 +20,5 @@
 ## Fora, por enquanto
 
 - TypeScript: o site é JavaScript sem build (ADR 0002). Checagem de tipos com JSDoc (`// @ts-check`) pode vir numa etapa futura.
-- SQL: o único banco é o SQLite do build (`saida/biblia.sqlite`), recriado do zero a cada geração; não há migrações nem banco em produção.
+- SQL: o único banco é o SQLite do build (`build/biblia.sqlite`), recriado do zero a cada geração; não há migrações nem banco em produção.
 - Kotlin/Compose e Swift/SwiftUI: os apps são Capacitor; só os plugins são nativos (Java).

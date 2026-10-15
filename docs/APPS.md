@@ -4,20 +4,20 @@ Um único conteúdo (`web/template.html` + dados da Bíblia inteira) gera as sa�
 
 | Saída | Onde fica | Como é gerada |
 |---|---|---|
-| Banco do corpus (66 livros, 443 mil palavras, glosas, léxico) | `saida/biblia.sqlite` | `scripts/corpus.py` e `scripts/glosar.py` (o `build.sh` roda se o banco não existir, ou com `REFAZER=1`) |
-| Dados em JSON | `saida/dados/` — `livros.json`, `cap/<LIVRO>/<n>.json` (1.189 capítulos), `lex/H.json` e `lex/G.json` | `scripts/exportar.py` (chamado pelo `build_web.mjs`) |
-| Dados que o site e o app carregam | `saida/web/dados/` — os mesmos dados em `.js`, que funcionam também abrindo o `index.html` direto do disco | idem |
-| Web instalável (PWA, funciona offline) | `saida/web/` | `scripts/build.sh` |
-| Página única com capítulos de amostra | `saida/previa.html` | `scripts/build.sh` |
-| App Android | `android/` (projeto Capacitor) | `npx cap sync android` copia `saida/web` para dentro do app |
+| Banco do corpus (66 livros, 443 mil palavras, glosas, léxico) | `build/biblia.sqlite` | `scripts/corpus.py` e `scripts/make_glosses.py` (o `build.sh` roda se o banco não existir, ou com `REFAZER=1`) |
+| Dados em JSON | `build/data/` — `livros.json`, `cap/<LIVRO>/<n>.json` (1.189 capítulos), `lex/H.json` e `lex/G.json` | `scripts/export.py` (chamado pelo `build_web.mjs`) |
+| Dados que o site e o app carregam | `build/web/dados/` — os mesmos dados em `.js`, que funcionam também abrindo o `index.html` direto do disco | idem |
+| Web instalável (PWA, funciona offline) | `build/web/` | `scripts/build.sh` |
+| Página única com capítulos de amostra | `build/preview.html` | `scripts/build.sh` |
+| App Android | `android/` (projeto Capacitor) | `npx cap sync android` copia `build/web` para dentro do app |
 | App iOS | `ios/` (projeto Capacitor, Swift Package Manager) | `npx cap sync ios` |
-| EPUB (um por livro, 66) | `saida/epub/` | `scripts/build_epub.py` (validados com epubcheck) |
-| PDF (um por livro, 66, A4) | `saida/pdf/` | `scripts/build_pdf.py` + `scripts/imprimir_pdf.mjs` (Chromium do Playwright); `PDF=0 scripts/build.sh` pula |
+| EPUB (um por livro, 66) | `build/epub/` | `scripts/build_epub.py` (validados com epubcheck) |
+| PDF (um por livro, 66, A4) | `build/pdf/` | `scripts/build_pdf.py` + `scripts/print_pdf.mjs` (Chromium do Playwright); `PDF=0 scripts/build.sh` pula |
 
 Sequência completa a partir do zero:
 
 ```sh
-scripts/baixar_fontes.sh      # fontes abertas (hebraico, grego, BLIVRE, Strong, Dodson)
+scripts/download_sources.sh      # fontes abertas (hebraico, grego, BLIVRE, Strong, Dodson)
 REFAZER=1 scripts/build.sh    # corpus, glosas (≈1 min), revisões, web e prévia
 ```
 
@@ -35,7 +35,7 @@ Fontes tipográficas ficam dentro do app e do site (Fontsource, SIL OFL 1.1): na
 O identificador é `liberta.bibliainterlinear` e o nome exibido é "Bíblia Interlinear". Depois da primeira publicação na Play Store ou na App Store, o identificador não pode mais mudar. Se precisar trocar antes disso:
 
 ```sh
-scripts/trocar_app_id.sh novo.identificador
+scripts/change_app_id.sh novo.identificador
 npx cap sync
 ```
 
@@ -85,7 +85,7 @@ Para gerar o AAB assinado localmente, defina as mesmas variáveis (`ANDROID_KEYS
 1. Conta de desenvolvedor no Google Play Console.
 2. Contas pessoais criadas depois de 13/11/2023: teste fechado com pelo menos 12 testadores por 14 dias seguidos antes de pedir a produção.
 3. Política de privacidade: publique a versão web (abaixo) e use o endereço `…/privacidade.html`. Preencha o e-mail de contato em `web/privacidade.html` antes.
-4. Ficha da loja: ícone 512×512 (`saida/web/icones/icone-512.png`), capturas de tela, descrição.
+4. Ficha da loja: ícone 512×512 (`build/web/icones/icone-512.png`), capturas de tela, descrição.
 5. Formulário de segurança dos dados: o app não coleta dados; preferências ficam só no aparelho.
 
 ## iOS
@@ -103,13 +103,13 @@ O workflow `.github/workflows/ios.yml` (manual) confere se o projeto compila par
 
 ## Web
 
-O workflow `.github/workflows/web.yml` publica `saida/web` no GitHub Pages a cada envio para a `main` (ative em *Settings › Pages › Source: GitHub Actions*). No celular, o navegador oferece "Instalar app" ou "Adicionar à tela inicial".
+O workflow `.github/workflows/web.yml` publica `build/web` no GitHub Pages a cada envio para a `main` (ative em *Settings › Pages › Source: GitHub Actions*). No celular, o navegador oferece "Instalar app" ou "Adicionar à tela inicial".
 
 Para testar localmente:
 
 ```sh
 scripts/build.sh
-python3 -m http.server -d saida/web 8000   # abra http://localhost:8000
+python3 -m http.server -d build/web 8000   # abra http://localhost:8000
 ```
 
 ## Ícones e telas de abertura
@@ -117,7 +117,7 @@ python3 -m http.server -d saida/web 8000   # abra http://localhost:8000
 Desenhados em `web/icones/*.svg` (a letra ב, primeira de *Bereshit*, sobre as linhas de uma interlinear). Para regenerar os arquivos do Android e do iOS:
 
 ```sh
-node scripts/icones_nativos.mjs
+node scripts/native_icons.mjs
 ```
 
 ## Dependências do app
@@ -126,4 +126,4 @@ node scripts/icones_nativos.mjs
 |---|---|
 | @capacitor/core, android, ios, app, cli | MIT |
 | @capacitor-community/text-to-speech | MIT |
-| @fontsource (Noto Serif Hebrew, Gentium Book Plus, Literata, IBM Plex Mono, Atkinson Hyperlegible) | SIL OFL 1.1 (os textos das licenças vão junto em `saida/web/fonts/`) |
+| @fontsource (Noto Serif Hebrew, Gentium Book Plus, Literata, IBM Plex Mono, Atkinson Hyperlegible) | SIL OFL 1.1 (os textos das licenças vão junto em `build/web/fonts/`) |

@@ -16,8 +16,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: gh-pages
-          path: saida/web
-      - run: rm -rf saida/web/.git
+          path: build/web
+      - run: rm -rf build/web/.git
       - uses: actions/setup-node@v4
         with:
           node-version: 22

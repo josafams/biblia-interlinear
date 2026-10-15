@@ -2,9 +2,9 @@
 
 Arquivos escritos para o projeto (texto original, licença do projeto). Nada copiado de Bíblias de estudo,
 introduções ou títulos de seção de edições com direitos autorais (NVI, ARA, NTLH, NVT, etc.).
-Citações bíblicas: só da BLIVRE, copiadas exatamente de `python3 scripts/consulta.py versos LIVRO C:V`.
+Citações bíblicas: só da BLIVRE, copiadas exatamente de `python3 scripts/query.py verses LIVRO C:V`.
 
-## `dados/temas/<COD>.tsv`
+## `data/themes/<COD>.tsv`
 
 ```text
 cap tema
@@ -13,12 +13,12 @@ cap tema
 ```
 
 Um tema por capítulo, na numeração da BLIVRE (a das Bíblias em português; confira com
-`python3 scripts/consulta.py livros`). De 2 a 8 palavras, português do Brasil, descrevendo o
+`python3 scripts/query.py books`). De 2 a 8 palavras, português do Brasil, descrevendo o
 assunto principal do capítulo. Sem ponto final.
 
-## `dados/livros/<COD>.json`
+## `data/books/<COD>.json`
 
-Modelo completo: `dados/livros/GEN.json`. Campos:
+Modelo completo: `data/books/GEN.json`. Campos:
 
 | Campo | Conteúdo |
 |---|---|
