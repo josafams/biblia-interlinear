@@ -7,6 +7,7 @@ python3 scripts/query.py verses EXO 3:14        # um versículo (exato, para cit
 python3 scripts/query.py verses EXO 3:13-15     # intervalo dentro do capítulo
 python3 scripts/query.py interlinear JHN 1:1    # posição, palavra original, Strong, glosa e de onde ela veio
 python3 scripts/query.py entry H430           # verbete do léxico e em que arquivo ele está
+python3 scripts/query.py words RUT 1           # palavras-chave do capítulo no original (substantivos, verbos, adjetivos)
 """
 
 import os
@@ -14,6 +15,42 @@ import sqlite3
 import sys
 
 DB = os.path.join(os.path.dirname(__file__), "..", "build", "biblia.sqlite")
+
+
+# verbos e partículas muito comuns, que não rendem pergunta sobre a língua original
+COMMON = {"H1961", "H559", "H3068", "H430", "H3605", "H834", "H3588", "H1697", "H6213", "H935", "H5414", "H3212", "H7200", "H8085"}
+COMMON |= {"G1510", "G3004", "G2532", "G846", "G3588", "G1096", "G2192", "G4160", "G2064", "G3956", "G2316", "G2424", "G5547"}
+
+
+def main_pos(morph):
+    """Classe da palavra principal: N (substantivo), V (verbo), A (adjetivo), p (nome próprio) ou outra."""
+    if not morph:
+        return ""
+    if morph.startswith("H") or morph.startswith("A"):  # hebraico (H) e aramaico (A) do morphhb: prefixos separados por /
+        last = morph[1:].split("/")[-1]
+        return "p" if last.startswith("Np") else last[:1]
+    return morph[:1]
+
+
+def print_key_words(db, book, chapter):
+    """Palavras do original que mais aparecem no capítulo, para perguntas sobre a língua original."""
+    found = {}
+    for verse, strong, text, gloss, morph, lemma in db.execute(
+        "SELECT verse, strong, text, gloss, morph, lemma FROM words WHERE book=? AND chapter=? ORDER BY verse, pos", (book, chapter)
+    ):
+        pos = main_pos(morph)
+        if not strong or strong in COMMON or pos not in ("N", "V", "A", "p"):
+            continue
+        k = found.setdefault(strong, {"pos": pos, "verses": [], "glosses": {}, "lemma": lemma})
+        k["verses"].append(verse)
+        k["glosses"][gloss] = k["glosses"].get(gloss, 0) + 1
+    names = {"N": "substantivo", "V": "verbo", "A": "adjetivo", "p": "nome próprio"}
+    for strong, k in sorted(found.items(), key=lambda x: -len(x[1]["verses"]))[:20]:
+        row = db.execute("SELECT lemma, xlit, def_pt FROM lexicon WHERE entry_key=?", (strong,)).fetchone() or ("", "", "")
+        vs = sorted(set(k["verses"]))
+        gl = ", ".join(g for g, _ in sorted(k["glosses"].items(), key=lambda x: -x[1])[:4])
+        meaning = (row[2] or "")[:90]
+        print(f"{strong}\t{row[0]}\t{row[1]}\t{names[k['pos']]}\t{len(k['verses'])}x\tv. {','.join(map(str, vs))}\tglosas: {gl}\t{meaning}")
 
 
 def main(argv):
@@ -46,6 +83,9 @@ def main(argv):
         )
         return
     cmd, book = argv[0], argv[1].upper()
+    if cmd == "words":
+        print_key_words(db, book, int(argv[2]))
+        return
     if cmd == "chapter":
         for v, t, note in db.execute(
             "SELECT verse, blivre, note FROM verses WHERE book=? AND chapter=? ORDER BY verse", (book, int(argv[2]))

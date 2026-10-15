@@ -100,9 +100,7 @@
         el(
           "div",
           { class: "sem" },
-          v.ready === false
-            ? "Este vídeo será gravado quando a função for lançada."
-            : "Vídeo em preparação. Siga o passo a passo ao lado."
+          v.ready === false ? "Este vídeo será gravado quando a função for lançada." : "Vídeo em preparação. Siga o passo a passo ao lado."
         )
       );
     }
