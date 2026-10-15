@@ -30,91 +30,91 @@ async function aparelho(browser, nuvem, info, { atraso = 0 } = {}) {
   await page.waitForFunction(() => window.Conta && window.Sinc && window.Anotacoes);
   return page;
 }
-async function entrar(page) {
+async function signIn(page) {
   await page.click("#open-toc");
   await page.click("#conta-entrar");
   await expect(page.locator("#conta-sinc")).toContainText("Sincronizado");
   await expect(page.locator(".conta-caixa")).toHaveCount(0); // nada de pergunta: sincroniza sozinho
   await page.keyboard.press("Escape");
 }
-const sincronizar = page => page.evaluate(() => window.Sinc.agora());
+const sincronizar = page => page.evaluate(() => window.Sinc.currentTime());
 const anc = (livro, cap, ver) => ({ livro, cap, ver, ver_fim: ver, camada: "versiculo" });
-const gravar = (page, col, reg) => page.evaluate(([c, r]) => window.Anotacoes.gravar(c, r).then(x => x.id), [col, reg]);
-const ler = (page, col) => page.evaluate(c => window.Anotacoes.todos(c), col);
+const save = (page, col, rec) => page.evaluate(([c, r]) => window.Anotacoes.save(c, r).then(x => x.id), [col, rec]);
+const readStorage = (page, col) => page.evaluate(c => window.Anotacoes.allRecords(c), col);
 
 test("anotação feita num aparelho aparece no outro, e a edição volta", async ({ browser }, info) => {
   const nuvem = novaNuvem();
   const a = await aparelho(browser, nuvem, info);
   const b = await aparelho(browser, nuvem, info);
-  await entrar(a);
-  await entrar(b);
-  const id = await gravar(a, "notas", { id: "n1", cap: "GEN.1", ancora: anc("GEN", 1, 1), titulo: "No princípio", texto: "Bereshit." });
-  await gravar(a, "marcacoes", { id: "m1", cap: "GEN.1", ancora: anc("GEN", 1, 3), cor: "amarelo", etiquetas: [] });
+  await signIn(a);
+  await signIn(b);
+  const id = await save(a, "notas", { id: "n1", cap: "GEN.1", ancora: anc("GEN", 1, 1), titulo: "No princípio", texto: "Bereshit." });
+  await save(a, "marcacoes", { id: "m1", cap: "GEN.1", ancora: anc("GEN", 1, 3), cor: "amarelo", etiquetas: [] });
   await sincronizar(a);
   expect(nuvem.nomes("lote-")).toHaveLength(1);
   await sincronizar(b);
-  expect((await ler(b, "notas")).map(n => n.titulo)).toEqual(["No princípio"]);
+  expect((await readStorage(b, "notas")).map(n => n.titulo)).toEqual(["No princípio"]);
   await expect(b.locator("#v3")).toHaveClass(/mk-amarelo/); // pintado na tela, sem recarregar
   // editar no B volta para o A
-  await gravar(b, "notas", { id, texto: "Bereshit bara Elohim." });
+  await save(b, "notas", { id, texto: "Bereshit bara Elohim." });
   await sincronizar(b);
   await sincronizar(a);
-  expect((await ler(a, "notas"))[0].texto).toBe("Bereshit bara Elohim.");
+  expect((await readStorage(a, "notas"))[0].texto).toBe("Bereshit bara Elohim.");
   // apagar também sincroniza
   await a.evaluate(() => window.Anotacoes.apagar("marcacoes", "m1"));
   await sincronizar(a);
   await sincronizar(b);
-  expect(await ler(b, "marcacoes")).toHaveLength(0);
+  expect(await readStorage(b, "marcacoes")).toHaveLength(0);
   await expect(b.locator("#v3")).not.toHaveClass(/mk-amarelo/);
 });
 
 test("a sincronização roda sozinha alguns segundos depois de anotar", async ({ browser }, info) => {
   const nuvem = novaNuvem();
   const a = await aparelho(browser, nuvem, info);
-  await entrar(a);
-  await gravar(a, "favoritos", { id: "f1", cap: "PSA.23", ancora: anc("PSA", 23, 1) });
+  await signIn(a);
+  await save(a, "favoritos", { id: "f1", cap: "PSA.23", ancora: anc("PSA", 23, 1) });
   await expect.poll(() => nuvem.nomes("lote-").length, { timeout: 10000 }).toBe(1);
 });
 
 test("primeiro login envia sozinho o que já foi anotado no aparelho", async ({ browser }, info) => {
   const nuvem = novaNuvem();
   const a = await aparelho(browser, nuvem, info);
-  await gravar(a, "favoritos", { id: "f1", cap: "JHN.3", ancora: anc("JHN", 3, 16) });
-  await gravar(a, "notas", { id: "n1", cap: "JHN.3", ancora: anc("JHN", 3, 16), titulo: "", texto: "Amou o mundo." });
-  await entrar(a);
+  await save(a, "favoritos", { id: "f1", cap: "JHN.3", ancora: anc("JHN", 3, 16) });
+  await save(a, "notas", { id: "n1", cap: "JHN.3", ancora: anc("JHN", 3, 16), titulo: "", texto: "Amou o mundo." });
+  await signIn(a);
   const lote = nuvem.json(nuvem.nomes("lote-")[0]);
   expect(lote.colecoes.favoritos.map(r => r.id)).toEqual(["f1"]);
   expect(lote.colecoes.notas.map(r => r.id)).toEqual(["n1"]);
   // e junta com o que a conta já tinha de outro aparelho
   const b = await aparelho(browser, nuvem, info);
-  await gravar(b, "favoritos", { id: "f2", cap: "JHN.1", ancora: anc("JHN", 1, 1) });
-  await entrar(b);
-  expect((await ler(b, "favoritos")).map(f => f.id).sort()).toEqual(["f1", "f2"]);
+  await save(b, "favoritos", { id: "f2", cap: "JHN.1", ancora: anc("JHN", 1, 1) });
+  await signIn(b);
+  expect((await readStorage(b, "favoritos")).map(f => f.id).sort()).toEqual(["f1", "f2"]);
   await sincronizar(a);
-  expect((await ler(a, "favoritos")).map(f => f.id).sort()).toEqual(["f1", "f2"]);
+  expect((await readStorage(a, "favoritos")).map(f => f.id).sort()).toEqual(["f1", "f2"]);
 });
 
 test("nota editada nos dois aparelhos ao mesmo tempo vira duas, sem perder texto", async ({ browser }, info) => {
   const nuvem = novaNuvem();
   const a = await aparelho(browser, nuvem, info);
   const b = await aparelho(browser, nuvem, info);
-  await entrar(a);
-  await entrar(b);
-  await gravar(a, "notas", { id: "n1", cap: "ROM.8", ancora: anc("ROM", 8, 28), titulo: "Rm 8", texto: "original" });
+  await signIn(a);
+  await signIn(b);
+  await save(a, "notas", { id: "n1", cap: "ROM.8", ancora: anc("ROM", 8, 28), titulo: "Rm 8", texto: "original" });
   await sincronizar(a);
   await sincronizar(b);
   // os dois sem internet editam a mesma nota
   await a.context().setOffline(true);
   await b.context().setOffline(true);
-  await gravar(a, "notas", { id: "n1", texto: "versão do celular" });
-  await gravar(b, "notas", { id: "n1", texto: "versão do computador" });
+  await save(a, "notas", { id: "n1", texto: "versão do celular" });
+  await save(b, "notas", { id: "n1", texto: "versão do computador" });
   await a.context().setOffline(false);
   await b.context().setOffline(false);
   await sincronizar(a);
   await sincronizar(b);
   await sincronizar(a);
   for (const p of [a, b]) {
-    const notas = await ler(p, "notas");
+    const notas = await readStorage(p, "notas");
     expect(notas.map(n => n.texto).sort()).toEqual(["versão do celular", "versão do computador"]);
     expect(notas.filter(n => /\(conflito de \d\d\/\d\d\)/.test(n.titulo))).toHaveLength(1);
   }
@@ -124,49 +124,49 @@ test("aparelho com o relógio atrasado não desfaz a edição mais nova", async 
   const nuvem = novaNuvem();
   const a = await aparelho(browser, nuvem, info);
   const b = await aparelho(browser, nuvem, info, { atraso: -3 * 864e5 }); // 3 dias atrás
-  await entrar(a);
-  await entrar(b);
-  await gravar(a, "marcacoes", { id: "m1", cap: "GEN.1", ancora: anc("GEN", 1, 1), cor: "amarelo", etiquetas: [] });
+  await signIn(a);
+  await signIn(b);
+  await save(a, "marcacoes", { id: "m1", cap: "GEN.1", ancora: anc("GEN", 1, 1), cor: "amarelo", etiquetas: [] });
   await sincronizar(a);
   await sincronizar(b);
   // depois de ver a mudança do A, o B troca a cor: vale a do B, mesmo com o relógio dele atrasado
-  await gravar(b, "marcacoes", { id: "m1", cor: "verde" });
+  await save(b, "marcacoes", { id: "m1", cor: "verde" });
   await sincronizar(b);
   await sincronizar(a);
-  expect((await ler(a, "marcacoes"))[0].cor).toBe("verde");
+  expect((await readStorage(a, "marcacoes"))[0].cor).toBe("verde");
 });
 
 test("compactação: retrato com tudo, lotes antigos apagados, aparelho novo começa pelo retrato", async ({ browser }, info) => {
   const nuvem = novaNuvem();
   const a = await aparelho(browser, nuvem, info);
-  await entrar(a);
+  await signIn(a);
   for (let i = 1; i <= 3; i++) {
-    await gravar(a, "favoritos", { id: "f" + i, cap: "PSA." + i, ancora: anc("PSA", i, 1) });
+    await save(a, "favoritos", { id: "f" + i, cap: "PSA." + i, ancora: anc("PSA", i, 1) });
     await sincronizar(a);
   }
-  await gravar(a, "favoritos", { id: "f1", apagado: true });
+  await save(a, "favoritos", { id: "f1", apagado: true });
   await sincronizar(a);
   expect(nuvem.nomes("lote-")).toHaveLength(4);
   nuvem.envelhecer("lote-", 40); // todos com mais de 30 dias
-  await gravar(a, "favoritos", { id: "f4", cap: "PSA.4", ancora: anc("PSA", 4, 1) });
+  await save(a, "favoritos", { id: "f4", cap: "PSA.4", ancora: anc("PSA", 4, 1) });
   await sincronizar(a); // um lote recente, que não pode ser apagado
-  await a.evaluate(() => window.Sinc.compactar());
+  await a.evaluate(() => window.Sinc.compact());
   expect(nuvem.nomes("retrato-")).toHaveLength(1);
   expect(nuvem.nomes("lote-")).toHaveLength(1);
   const ret = nuvem.json(nuvem.nomes("retrato-")[0]);
   expect(ret.colecoes.favoritos.map(f => f.id).sort()).toEqual(["f1", "f2", "f3", "f4"]); // f1 apagado há pouco ainda vai (como exclusão)
   // aparelho novo
   const c = await aparelho(browser, nuvem, info);
-  await entrar(c);
-  expect((await ler(c, "favoritos")).map(f => f.id).sort()).toEqual(["f2", "f3", "f4"]);
+  await signIn(c);
+  expect((await readStorage(c, "favoritos")).map(f => f.id).sort()).toEqual(["f2", "f3", "f4"]);
 });
 
 test("o modo de leitura escolhido num aparelho vale no outro", async ({ browser }, info) => {
   const nuvem = novaNuvem();
   const a = await aparelho(browser, nuvem, info);
   const b = await aparelho(browser, nuvem, info);
-  await entrar(a);
-  await entrar(b);
+  await signIn(a);
+  await signIn(b);
   await a.evaluate(() => {
     document.getElementById("open-look").click();
   });
@@ -180,8 +180,8 @@ test("o modo de leitura escolhido num aparelho vale no outro", async ({ browser 
 test("sair apagando deste aparelho e apagar os dados do Google Drive", async ({ browser }, info) => {
   const nuvem = novaNuvem();
   const a = await aparelho(browser, nuvem, info);
-  await entrar(a);
-  await gravar(a, "favoritos", { id: "f1", cap: "GEN.1", ancora: anc("GEN", 1, 1) });
+  await signIn(a);
+  await save(a, "favoritos", { id: "f1", cap: "GEN.1", ancora: anc("GEN", 1, 1) });
   await sincronizar(a);
   // apagar da nuvem: some do Drive, fica no aparelho
   await a.click("#open-toc");

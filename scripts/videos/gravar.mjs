@@ -23,7 +23,7 @@ const args = process.argv.slice(2);
 const VERIFICAR = args.includes("--verificar");
 const quais = args.filter(a => !a.startsWith("--"));
 const APARELHOS = {
-  celular: { ...devices["Pixel 7"], viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 },
+  phone: { ...devices["Pixel 7"], viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 },
   computador: { viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1 }
 };
 
@@ -78,7 +78,7 @@ function ajudante(page, rapido) {
       const d = document.getElementById("__dedo");
       if (d) d.style.opacity = "0";
     });
-  async function alvo(sel) {
+  async function targetEl(sel) {
     const el = page.locator(sel).first();
     await el.waitFor({ state: "visible", timeout: 8000 });
     await el.scrollIntoViewIfNeeded();
@@ -88,7 +88,7 @@ function ajudante(page, rapido) {
     page,
     pausa,
     async tocar(sel) {
-      const el = await alvo(sel);
+      const el = await targetEl(sel);
       const box = await el.boundingBox();
       await dedo(box, false);
       await pausa(450);
@@ -109,12 +109,12 @@ function ajudante(page, rapido) {
         .pressSequentially(texto, { delay: rapido ? 0 : 110 });
       await pausa(500);
     },
-    async tecla(k) {
+    async onKey(k) {
       await page.keyboard.press(k);
       await pausa(700);
     },
     async toqueLongo(sel) {
-      const el = await alvo(sel);
+      const el = await targetEl(sel);
       const box = await el.boundingBox();
       await dedo(box, false);
       await pausa(350);
@@ -126,7 +126,7 @@ function ajudante(page, rapido) {
       await pausa(700);
     },
     async selecionar(sel, texto) {
-      const el = await alvo(sel);
+      const el = await targetEl(sel);
       const box = await el.boundingBox();
       await dedo(box, true);
       await pausa(400);
@@ -150,10 +150,10 @@ function ajudante(page, rapido) {
       await page.evaluate(() => getSelection().removeAllRanges());
     },
     async focar(sel) {
-      await (await alvo(sel)).focus();
+      await (await targetEl(sel)).focus();
       await pausa(600);
     },
-    async rolar(px) {
+    async doScroll(px) {
       await page.evaluate(px => window.scrollBy({ top: px, behavior: "smooth" }), px);
       await pausa(1200);
     },
@@ -173,7 +173,7 @@ function ajudante(page, rapido) {
       await pausa(1200);
     },
     async realcar(sel) {
-      const el = await alvo(sel);
+      const el = await targetEl(sel);
       const box = await el.boundingBox();
       await page.evaluate(b => {
         const r = document.createElement("div");
@@ -191,14 +191,14 @@ function ajudante(page, rapido) {
 }
 
 // Grava a tela pelo screencast do Chromium (quadros JPEG com a hora de chegada), sem depender do ffmpeg do Playwright.
-async function gravar(page, disp, dir, t0) {
+async function save(page, disp, dir, t0) {
   const cdp = await page.context().newCDPSession(page);
   const quadros = [];
   let n = 0;
   cdp.on("Page.screencastFrame", async f => {
-    const arq = path.join(dir, `q${String(n++).padStart(5, "0")}.jpg`);
-    fs.writeFileSync(arq, Buffer.from(f.data, "base64"));
-    quadros.push({ arq, t: (Date.now() - t0) / 1000 });
+    const file = path.join(dir, `q${String(n++).padStart(5, "0")}.jpg`);
+    fs.writeFileSync(file, Buffer.from(f.data, "base64"));
+    quadros.push({ file, t: (Date.now() - t0) / 1000 });
     cdp.send("Page.screencastFrameAck", { sessionId: f.sessionId }).catch(() => {});
   });
   const k = disp.deviceScaleFactor || 1;
@@ -254,9 +254,9 @@ function webm(mp4) {
   ]);
 }
 
-const vtt = (ts, passos, fim) =>
+const vtt = (ts, steps, fim) =>
   "WEBVTT\n\n" +
-  passos
+  steps
     .map((p, i) => {
       const f = s => new Date(Math.max(0, s) * 1000).toISOString().slice(11, 23);
       return `${i + 1}\n${f(ts[i])} --> ${f(i + 1 < ts.length ? ts[i + 1] : fim)}\n${p.legenda}\n`;
@@ -276,10 +276,10 @@ function salvarIndice() {
   );
 }
 for (const v of videos) {
-  if (v.pronto === false || v.manual || !v.passos.length) continue;
+  if (v.pronto === false || v.manual || !v.steps.length) continue;
   if (quais.length && !quais.includes(v.id)) continue;
   for (const [nome, disp] of Object.entries(APARELHOS)) {
-    if (v.so && v.so !== nome) continue;
+    if (v.os && v.os !== nome) continue;
     const tmp = fs.mkdtempSync(path.join(OUT.replace(/videos$/, ""), "gravacao-"));
     const ctx = await browser.newContext({
       ...disp,
@@ -297,25 +297,25 @@ for (const v of videos) {
     }, v.modo || "interlinear");
     const page = await ctx.newPage();
     const t0 = Date.now();
-    const gravador = VERIFICAR ? null : await gravar(page, disp, tmp, t0);
+    const gravador = VERIFICAR ? null : await save(page, disp, tmp, t0);
     const t = ajudante(page, VERIFICAR);
     const tempos = [];
     try {
       // vídeos da conta: Google simulado, com uma conta fictícia (nada sai para a internet)
-      if (v.google) t.nuvem = await simularGoogle(page, { perfil: { name: "Maria Souza", email: "maria.souza@exemplo.com" } });
+      if (v.google) t.nuvem = await simularGoogle(page, { profile: { name: "Maria Souza", email: "maria.souza@exemplo.com" } });
       await page.goto(`${BASE}ler.html#${v.inicio || "GEN.1"}`);
       await page.locator(".verse").first().waitFor({ timeout: 15000 });
       await page.evaluate(() => document.fonts.ready);
-      if (v.preparar) {
+      if (v.prepare) {
         await page.waitForFunction(() => window.Anotacoes);
-        await v.preparar(page);
+        await v.prepare(page);
         await page.reload();
         await page.locator(".verse").first().waitFor();
       }
-      if (v.antes) await v.antes(t); // preparação que fica fora do corte do vídeo
+      if (v.before) await v.before(t); // preparação que fica fora do corte do vídeo
       await t.pausa(900);
       const inicio = (Date.now() - t0) / 1000 - 0.3;
-      for (const p of v.passos) {
+      for (const p of v.steps) {
         tempos.push((Date.now() - t0) / 1000 - inicio);
         await p.faz(t);
         await t.pausa(Math.max(1600, p.legenda.length * 45));
@@ -328,12 +328,12 @@ for (const v of videos) {
         console.log(`ok  ${v.id} ${nome}  ${v.titulo}`);
         continue;
       }
-      const lista = path.join(tmp, "quadros.txt");
+      const listSheet = path.join(tmp, "quadros.txt");
       fs.writeFileSync(
-        lista,
+        listSheet,
         quadros
-          .map((q, i) => `file '${q.arq}'\nduration ${((quadros[i + 1]?.t ?? Math.max(q.t + 0.5, quadros.fim)) - q.t).toFixed(3)}`)
-          .join("\n") + `\nfile '${quadros.at(-1).arq}'\n`
+          .map((q, i) => `file '${q.file}'\nduration ${((quadros[i + 1]?.t ?? Math.max(q.t + 0.5, quadros.fim)) - q.t).toFixed(3)}`)
+          .join("\n") + `\nfile '${quadros.at(-1).file}'\n`
       );
       const base = path.join(OUT, `${v.id}-${nome}`);
       const escala = nome === "celular" ? "540:-2" : "1280:-2";
@@ -346,7 +346,7 @@ for (const v of videos) {
         "-safe",
         "0",
         "-i",
-        lista,
+        listSheet,
         "-ss",
         inicio.toFixed(2),
         "-t",
@@ -381,8 +381,8 @@ for (const v of videos) {
         "4",
         `${base}.jpg`
       ]);
-      fs.writeFileSync(`${base}.vtt`, vtt(tempos, v.passos, fim));
-      const seg = Math.round(fim);
+      fs.writeFileSync(`${base}.vtt`, vtt(tempos, v.steps, fim));
+      const sec = Math.round(fim);
       indice[v.id] = indice[v.id] || {};
       indice[v.id][nome] = {
         webm: `videos/${v.id}-${nome}.webm`,
@@ -390,10 +390,10 @@ for (const v of videos) {
         vtt: `videos/${v.id}-${nome}.vtt`,
         capa: `videos/${v.id}-${nome}.jpg`,
         tempos: tempos.map(x => +x.toFixed(2)),
-        duracao: `${Math.floor(seg / 60)}:${String(seg % 60).padStart(2, "0")}`
+        duration: `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, "0")}`
       };
       salvarIndice();
-      console.log(`${v.id} ${nome}  ${seg}s  ${Math.round(fs.statSync(`${base}.mp4`).size / 1024)} KB  ${v.titulo}`);
+      console.log(`${v.id} ${nome}  ${sec}s  ${Math.round(fs.statSync(`${base}.mp4`).size / 1024)} KB  ${v.titulo}`);
     } catch (e) {
       falhas++;
       console.error(`FALHOU ${v.id} ${nome} (${v.titulo}), passo ${tempos.length}: ${e.message.split("\n")[0]}`);

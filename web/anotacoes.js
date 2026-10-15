@@ -14,14 +14,14 @@
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
-  const CORES = [
+  const COLORS = [
     { id: "amarelo", nome: "Amarelo" },
     { id: "verde", nome: "Verde" },
     { id: "azul", nome: "Azul" },
     { id: "rosa", nome: "Rosa" },
     { id: "laranja", nome: "Laranja" }
   ];
-  const EDICAO = (window.DATA_EDICAO || "").slice(0, 10);
+  const EDITION = (window.DATA_EDICAO || "").slice(0, 10);
 
   // ---------- identificadores, relógio e aparelho ----------
   const uuid = () =>
@@ -44,24 +44,24 @@
   // Relógio lógico híbrido: milissegundos + contador + aparelho. Ordena edições mesmo com o relógio do celular errado
   // (avança sempre que se vê uma mudança mais nova de outro aparelho — usado pela sincronização).
   let hlc = { t: 0, c: 0 };
-  function relogio(visto) {
-    const agora = Date.now();
-    if (visto) {
-      const [vt, vc] = visto.split("-").map(Number);
+  function relogio(seen) {
+    const currentTime = Date.now();
+    if (seen) {
+      const [vt, vc] = seen.split("-").map(Number);
       if (vt > hlc.t || (vt === hlc.t && vc > hlc.c)) hlc = { t: vt, c: vc };
     }
-    if (agora > hlc.t) hlc = { t: agora, c: 0 };
+    if (currentTime > hlc.t) hlc = { t: currentTime, c: 0 };
     else hlc.c++;
     return `${String(hlc.t).padStart(14, "0")}-${String(hlc.c).padStart(4, "0")}-${aparelho}`;
   }
 
   // ---------- banco local ----------
-  const COLECOES = ["marcacoes", "notas", "favoritos", "etiquetas"];
+  const COLLECTIONS = ["marcacoes", "notas", "favoritos", "etiquetas"];
   // o que viaja para o Drive: anotações, preferências (modo de leitura, posição) e progresso (leituras, tempo, planos)
-  const SINC = [...COLECOES, "preferencias", "leituras", "tempo", "planos"];
+  const SYNCED = [...COLLECTIONS, "preferencias", "leituras", "tempo", "planos"];
   let db = null,
-    memoria = null;
-  const memoriaEstado = {};
+    memory = null;
+  const memoryState = {};
   try {
     if (!window.Dexie || !window.indexedDB) throw new Error("sem IndexedDB");
     db = new Dexie("biblia-interlinear");
@@ -78,10 +78,10 @@
   } catch (_) {
     db = null;
   }
-  async function aberto() {
-    if (memoria) return false;
+  async function openDb() {
+    if (memory) return false;
     if (!db) {
-      memoria = Object.fromEntries(SINC.map(c => [c, new Map()]));
+      memory = Object.fromEntries(SYNCED.map(c => [c, new Map()]));
       return false;
     }
     try {
@@ -89,48 +89,48 @@
       return true;
     } catch (_) {
       db = null;
-      memoria = Object.fromEntries(SINC.map(c => [c, new Map()]));
+      memory = Object.fromEntries(SYNCED.map(c => [c, new Map()]));
       return false;
     }
   }
-  const pronto = aberto();
-  async function todos(col) {
+  const pronto = openDb();
+  async function allRecords(col) {
     await pronto;
-    const lista = db ? await db[col].toArray() : [...memoria[col].values()];
-    return lista.filter(r => !r.apagado);
+    const listSheet = db ? await db[col].toArray() : [...memory[col].values()];
+    return listSheet.filter(r => !r.apagado);
   }
-  async function doCapitulo(col, cap) {
+  async function ofChapter(col, cap) {
     await pronto;
-    const lista = db ? await db[col].where("cap").equals(cap).toArray() : [...memoria[col].values()].filter(r => r.cap === cap);
-    return lista.filter(r => !r.apagado);
+    const listSheet = db ? await db[col].where("cap").equals(cap).toArray() : [...memory[col].values()].filter(r => r.cap === cap);
+    return listSheet.filter(r => !r.apagado);
   }
-  async function gravar(col, reg) {
+  async function save(col, rec) {
     await pronto;
-    const agora = new Date().toISOString();
-    const antigo = db ? await db[col].get(reg.id) : memoria[col].get(reg.id);
-    const novo = {
-      ...antigo,
-      ...reg,
-      criado_em: antigo?.criado_em || agora,
-      alterado_em: agora,
-      base: antigo?.relogio || null,
+    const currentTime = new Date().toISOString();
+    const oldRecord = db ? await db[col].get(rec.id) : memory[col].get(rec.id);
+    const fresh = {
+      ...oldRecord,
+      ...rec,
+      criado_em: oldRecord?.criado_em || currentTime,
+      alterado_em: currentTime,
+      base: oldRecord?.relogio || null,
       relogio: relogio(),
-      apagado: reg.apagado || false
+      apagado: rec.apagado || false
     };
-    delete novo.local; // editar algo que estava "só neste aparelho" passa a sincronizar
+    delete fresh.local; // editar algo que estava "só neste aparelho" passa a sincronizar
     if (db)
       await db.transaction("rw", db[col], db.fila, async () => {
-        await db[col].put(novo);
-        await db.fila.add({ colecao: col, id: novo.id });
+        await db[col].put(fresh);
+        await db.fila.add({ colecao: col, id: fresh.id });
       });
-    else memoria[col].set(novo.id, novo);
-    avisar();
-    return novo;
+    else memory[col].set(fresh.id, fresh);
+    notify();
+    return fresh;
   }
-  const apagar = (col, id) => gravar(col, { id, apagado: true });
-  let ouvintes = [];
-  function avisar() {
-    ouvintes.forEach(f => {
+  const apagar = (col, id) => save(col, { id, apagado: true });
+  let listeners = [];
+  function notify() {
+    listeners.forEach(f => {
       try {
         f();
       } catch (_) {}
@@ -138,29 +138,29 @@
   }
 
   // ---------- âncoras ----------
-  const capDe = a => `${a.livro}.${a.cap}`;
-  const chave = a => `${a.livro}.${a.cap}.${a.ver}:${a.camada}:${a.camada === "versiculo" ? "" : `${a.inicio ?? ""}-${a.fim ?? ""}`}`;
-  function ancoraVersiculo(cod, cap, v) {
-    return { livro: cod, cap, ver: v, ver_fim: v, camada: "versiculo", edicao: EDICAO };
+  const chapterOf = a => `${a.livro}.${a.cap}`;
+  const anchorKey = a => `${a.livro}.${a.cap}.${a.ver}:${a.camada}:${a.camada === "versiculo" ? "" : `${a.inicio ?? ""}-${a.fim ?? ""}`}`;
+  function verseAnchor(cod, cap, v) {
+    return { livro: cod, cap, ver: v, ver_fim: v, camada: "versiculo", edicao: EDITION };
   }
 
   // ---------- estado do capítulo atual (vem do leitor) ----------
-  let atual = null; // { cod, cap, nome, verses: [{ n, blivre, words: [{ heb }] }] }
-  let selecao = null; // { ancora, rotulo, trecho }
-  const raiz = () => document.getElementById("verses");
-  const versoEl = n => document.getElementById("v" + n);
+  let currentChapter = null; // { cod, cap, nome, verses: [{ n, blivre, words: [{ heb }] }] }
+  let selection = null; // { ancora, rotulo, trecho }
+  const versesRoot = () => document.getElementById("verses");
+  const verseEl = n => document.getElementById("v" + n);
 
   // Desenha as marcações do capítulo nos versículos (cores, notas, favoritos)
-  async function pintar() {
-    if (!atual || !raiz()) return;
-    const cap = `${atual.cod}.${atual.cap}`;
-    const [ms, ns, fs] = await Promise.all([doCapitulo("marcacoes", cap), doCapitulo("notas", cap), doCapitulo("favoritos", cap)]);
-    if (!atual || cap !== `${atual.cod}.${atual.cap}`) return;
-    $$(".verse", raiz()).forEach(sec => {
-      sec.classList.remove(...CORES.map(c => "mk-" + c.id));
-      $$(".word", sec).forEach(w => w.classList.remove(...CORES.map(c => "mk-" + c.id)));
+  async function paint() {
+    if (!currentChapter || !versesRoot()) return;
+    const cap = `${currentChapter.cod}.${currentChapter.cap}`;
+    const [ms, ns, fs] = await Promise.all([ofChapter("marcacoes", cap), ofChapter("notas", cap), ofChapter("favoritos", cap)]);
+    if (!currentChapter || cap !== `${currentChapter.cod}.${currentChapter.cap}`) return;
+    $$(".verse", versesRoot()).forEach(sec => {
+      sec.classList.remove(...COLORS.map(c => "mk-" + c.id));
+      $$(".word", sec).forEach(w => w.classList.remove(...COLORS.map(c => "mk-" + c.id)));
       const vi = +sec.dataset.vi,
-        v = atual.verses[vi];
+        v = currentChapter.verses[vi];
       const bl = $(".blivre", sec);
       if (bl && v) {
         bl._marcas = [];
@@ -173,37 +173,37 @@
     for (const m of ms) {
       if (!m.cor) continue;
       const a = m.ancora,
-        sec = versoEl(a.ver);
+        sec = verseEl(a.ver);
       if (!sec) continue;
       if (a.camada === "versiculo") sec.classList.add("mk-" + m.cor);
       else if (a.camada === "original") {
         for (let i = a.inicio; i <= a.fim; i++) $(`.word[data-i="${i}"]`, sec)?.classList.add("mk-" + m.cor);
-      } else if (a.camada === "blivre") marcarTrecho(sec, a, m.cor);
+      } else if (a.camada === "blivre") markSnippet(sec, a, m.cor);
     }
-    const porVerso = {};
+    const byVerse = {};
     for (const n of ns) {
       const k = n.ancora.ver;
-      (porVerso[k] = porVerso[k] || { n: 0, f: false }).n++;
+      (byVerse[k] = byVerse[k] || { n: 0, f: false }).n++;
     }
     for (const f of fs) {
       const k = f.ancora.ver;
-      (porVerso[k] = porVerso[k] || { n: 0, f: false }).f = true;
+      (byVerse[k] = byVerse[k] || { n: 0, f: false }).f = true;
     }
-    for (const [ver, info] of Object.entries(porVerso)) {
-      const sec = versoEl(ver),
+    for (const [ver, info] of Object.entries(byVerse)) {
+      const sec = verseEl(ver),
         tags = sec && $(".vtags", sec);
       if (!tags) continue;
       tags.innerHTML =
         (info.f ? `<span class="vfav" title="Favorito" aria-label="Favorito">★</span>` : "") +
         (info.n
-          ? `<button class="vnota" data-ver="${ver}" aria-label="${info.n} ${info.n === 1 ? "nota" : "notas"} neste versículo">${ICONE.nota}<span aria-hidden="true">${info.n > 1 ? info.n : ""}</span></button>`
+          ? `<button class="vnota" data-ver="${ver}" aria-label="${info.n} ${info.n === 1 ? "nota" : "notas"} neste versículo">${ICONS.nota}<span aria-hidden="true">${info.n > 1 ? info.n : ""}</span></button>`
           : "");
     }
   }
   // Marca um trecho da Bíblia Livre; se o texto mudou, procura o trecho guardado; não achou: marca o versículo inteiro
-  function marcarTrecho(sec, a, cor) {
+  function markSnippet(sec, a, cor) {
     const vi = +sec.dataset.vi,
-      txt = atual.verses[vi]?.blivre || "";
+      txt = currentChapter.verses[vi]?.blivre || "";
     let i = a.inicio,
       f = a.fim;
     if (txt.slice(i, f) !== a.trecho) {
@@ -217,24 +217,24 @@
     }
     const bl = $(".blivre", sec);
     const html = bl.innerHTML;
-    const corpo = html.slice(html.indexOf("</span>") + 7);
+    const bodyHtml = html.slice(html.indexOf("</span>") + 7);
     // corpo já é texto escapado com possíveis <mark> anteriores: refaz a partir do texto puro com todas as marcas do verso
-    const marcas = (bl._marcas = (bl._marcas || []).concat([{ i, f, cor }]));
+    const marks = (bl._marcas = (bl._marcas || []).concat([{ i, f, cor }]));
     let out = "",
       pos = 0;
-    const ordenadas = [...marcas].sort((x, y) => x.i - y.i);
-    for (const m of ordenadas) {
+    const sorted = [...marks].sort((x, y) => x.i - y.i);
+    for (const m of sorted) {
       if (m.i < pos) continue;
       out += esc(txt.slice(pos, m.i)) + `<mark class="mk mk-${m.cor}">${esc(txt.slice(m.i, m.f))}</mark>`;
       pos = m.f;
     }
     out += esc(txt.slice(pos));
     bl.innerHTML = `<span class="tag">BLIVRE</span>${out}`;
-    void corpo;
+    void bodyHtml;
   }
 
   // ---------- barra de marcação ----------
-  const ICONE = {
+  const ICONS = {
     nota: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 4h14v12l-4 4H5z"/><path d="M9 9h6M9 13h4"/></svg>',
     fav: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>',
     tag: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></svg>',
@@ -242,153 +242,152 @@
       '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg>',
     camadas:
       '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>',
-    fechar:
-      '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>'
+    hide: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>'
   };
-  const barra = document.createElement("div");
-  barra.id = "mbar";
-  barra.className = "mbar";
-  barra.hidden = true;
-  barra.setAttribute("role", "dialog");
-  barra.setAttribute("aria-label", "Marcar e anotar");
-  barra.innerHTML = `
-    <div class="mb-top"><b id="mb-ref"></b><span id="mb-trecho"></span><button class="mb-x" id="mb-fechar" aria-label="Fechar">${ICONE.fechar}</button></div>
+  const bar = document.createElement("div");
+  bar.id = "mbar";
+  bar.className = "mbar";
+  bar.hidden = true;
+  bar.setAttribute("role", "dialog");
+  bar.setAttribute("aria-label", "Marcar e anotar");
+  bar.innerHTML = `
+    <div class="mb-top"><b id="mb-ref"></b><span id="mb-trecho"></span><button class="mb-x" id="mb-fechar" aria-label="Fechar">${ICONS.hide}</button></div>
     <div class="mb-cores" role="group" aria-label="Cor da marcação">
-      ${CORES.map(c => `<button class="mb-cor mk-${c.id}" data-cor="${c.id}" aria-pressed="false" aria-label="${c.nome}"></button>`).join("")}
-      <button class="mb-cor mb-sem" data-cor="" aria-label="Tirar a marcação">${ICONE.fechar}</button>
+      ${COLORS.map(c => `<button class="mb-cor mk-${c.id}" data-cor="${c.id}" aria-pressed="false" aria-label="${c.nome}"></button>`).join("")}
+      <button class="mb-cor mb-sem" data-cor="" aria-label="Tirar a marcação">${ICONS.hide}</button>
     </div>
     <div class="mb-acoes">
-      <button data-acao="nota">${ICONE.nota}<span>Nota</span></button>
-      <button data-acao="fav" aria-pressed="false">${ICONE.fav}<span>Favoritar</span></button>
-      <button data-acao="etiqueta">${ICONE.tag}<span>Etiqueta</span></button>
-      <button data-acao="copiar">${ICONE.copiar}<span>Copiar</span></button>
-      <button data-acao="camadas" hidden>${ICONE.camadas}<span>Interlinear</span></button>
+      <button data-action="nota">${ICONS.nota}<span>Nota</span></button>
+      <button data-action="fav" aria-pressed="false">${ICONS.fav}<span>Favoritar</span></button>
+      <button data-action="etiqueta">${ICONS.tag}<span>Etiqueta</span></button>
+      <button data-action="copiar">${ICONS.copiar}<span>Copiar</span></button>
+      <button data-action="camadas" hidden>${ICONS.camadas}<span>Interlinear</span></button>
     </div>
     <div class="mb-etiquetas" id="mb-etiquetas" hidden></div>`;
-  document.body.appendChild(barra);
+  document.body.appendChild(bar);
 
-  async function abrirBarra(ancora, rotulo, trecho) {
-    selecao = { ancora, rotulo, trecho };
-    $("#mb-ref").textContent = rotulo;
+  async function openBar(ancora, labelText, trecho) {
+    selection = { ancora, labelText, trecho };
+    $("#mb-ref").textContent = labelText;
     $("#mb-trecho").textContent = trecho ? `“${trecho.length > 60 ? trecho.slice(0, 58) + "…" : trecho}”` : "";
     $("#mb-etiquetas").hidden = true;
-    const m = await marcacaoDe(ancora);
-    $$(".mb-cor", barra).forEach(b => b.setAttribute("aria-pressed", String(!!m && m.cor === b.dataset.cor && !!b.dataset.cor)));
-    const f = await favoritoDe(ancora.livro, ancora.cap, ancora.ver);
-    $('[data-acao="fav"]', barra).setAttribute("aria-pressed", String(!!f));
-    $('[data-acao="fav"] span', barra).textContent = f ? "Favorito" : "Favoritar";
-    $('[data-acao="camadas"]', barra).hidden = !document.body.classList.contains("hide-orig");
-    barra.hidden = false;
+    const m = await highlightOf(ancora);
+    $$(".mb-cor", bar).forEach(b => b.setAttribute("aria-pressed", String(!!m && m.cor === b.dataset.cor && !!b.dataset.cor)));
+    const f = await favoriteOf(ancora.livro, ancora.cap, ancora.ver);
+    $('[data-action="fav"]', bar).setAttribute("aria-pressed", String(!!f));
+    $('[data-action="fav"] span', bar).textContent = f ? "Favorito" : "Favoritar";
+    $('[data-action="camadas"]', bar).hidden = !document.body.classList.contains("hide-orig");
+    bar.hidden = false;
     document.body.classList.add("com-mbar");
-    $(".mb-cor", barra).focus({ preventScroll: true });
+    $(".mb-cor", bar).focus({ preventScroll: true });
   }
-  function fecharBarra() {
-    if (barra.hidden) return;
-    barra.hidden = true;
-    selecao = null;
+  function closeBar() {
+    if (bar.hidden) return;
+    bar.hidden = true;
+    selection = null;
     document.body.classList.remove("com-mbar");
   }
-  async function marcacaoDe(a) {
-    const k = chave(a);
-    return (await doCapitulo("marcacoes", capDe(a))).find(m => chave(m.ancora) === k) || null;
+  async function highlightOf(a) {
+    const k = anchorKey(a);
+    return (await ofChapter("marcacoes", chapterOf(a))).find(m => anchorKey(m.ancora) === k) || null;
   }
-  async function favoritoDe(livro, cap, ver) {
-    return (await doCapitulo("favoritos", `${livro}.${cap}`)).find(f => f.ancora.ver === ver) || null;
+  async function favoriteOf(livro, cap, ver) {
+    return (await ofChapter("favoritos", `${livro}.${cap}`)).find(f => f.ancora.ver === ver) || null;
   }
-  barra.addEventListener("click", async e => {
-    if (!selecao) return;
-    const a = selecao.ancora;
-    if (e.target.closest("#mb-fechar")) return fecharBarra();
+  bar.addEventListener("click", async e => {
+    if (!selection) return;
+    const a = selection.ancora;
+    if (e.target.closest("#mb-fechar")) return closeBar();
     const cor = e.target.closest(".mb-cor");
     if (cor) {
-      const m = await marcacaoDe(a);
+      const m = await highlightOf(a);
       if (!cor.dataset.cor) {
         if (m) {
-          if (m.etiquetas?.length) await gravar("marcacoes", { id: m.id, cor: null });
+          if (m.etiquetas?.length) await save("marcacoes", { id: m.id, cor: null });
           else await apagar("marcacoes", m.id);
         }
       } else
-        await gravar("marcacoes", { id: m?.id || uuid(), cap: capDe(a), ancora: a, cor: cor.dataset.cor, etiquetas: m?.etiquetas || [] });
-      await pintar();
-      $$(".mb-cor", barra).forEach(b => b.setAttribute("aria-pressed", String(!!cor.dataset.cor && b === cor)));
+        await save("marcacoes", { id: m?.id || uuid(), cap: chapterOf(a), ancora: a, cor: cor.dataset.cor, etiquetas: m?.etiquetas || [] });
+      await paint();
+      $$(".mb-cor", bar).forEach(b => b.setAttribute("aria-pressed", String(!!cor.dataset.cor && b === cor)));
       return;
     }
-    const acao = e.target.closest("[data-acao]")?.dataset.acao;
-    if (acao === "nota") {
-      const s = selecao;
-      fecharBarra();
-      return abrirNota(null, s.ancora, s.trecho);
+    const action = e.target.closest("[data-action]")?.dataset.action;
+    if (action === "nota") {
+      const s = selection;
+      closeBar();
+      return openNote(null, s.ancora, s.trecho);
     }
-    if (acao === "fav") {
-      const f = await favoritoDe(a.livro, a.cap, a.ver);
+    if (action === "fav") {
+      const f = await favoriteOf(a.livro, a.cap, a.ver);
       if (f) await apagar("favoritos", f.id);
-      else await gravar("favoritos", { id: uuid(), cap: capDe(a), ancora: ancoraVersiculo(a.livro, a.cap, a.ver), etiquetas: [] });
-      await pintar();
-      return abrirBarra(a, selecao.rotulo, selecao.trecho);
+      else await save("favoritos", { id: uuid(), cap: chapterOf(a), ancora: verseAnchor(a.livro, a.cap, a.ver), etiquetas: [] });
+      await paint();
+      return openBar(a, selection.labelText, selection.trecho);
     }
-    if (acao === "etiqueta") return mostrarEtiquetas();
-    if (acao === "copiar") {
-      const v = atual?.verses.find(x => x.n === a.ver);
-      const texto = `${selecao.trecho || v?.blivre || ""} (${atual?.nome || a.livro} ${a.cap}:${a.ver}, Bíblia Livre)`;
+    if (action === "etiqueta") return showTags();
+    if (action === "copiar") {
+      const v = currentChapter?.verses.find(x => x.n === a.ver);
+      const texto = `${selection.trecho || v?.blivre || ""} (${currentChapter?.nome || a.livro} ${a.cap}:${a.ver}, Bíblia Livre)`;
       try {
         await navigator.clipboard.writeText(texto);
-        aviso("Copiado.");
+        toastMsg("Copiado.");
       } catch (_) {
-        aviso("Não foi possível copiar neste navegador.");
+        toastMsg("Não foi possível copiar neste navegador.");
       }
-      return fecharBarra();
+      return closeBar();
     }
-    if (acao === "camadas") {
-      versoEl(a.ver)?.classList.toggle("abrir");
-      return fecharBarra();
+    if (action === "camadas") {
+      verseEl(a.ver)?.classList.toggle("abrir");
+      return closeBar();
     }
-    const et = e.target.closest("[data-etiqueta]");
-    if (et) return alternarEtiqueta(et.dataset.etiqueta);
+    const tag = e.target.closest("[data-etiqueta]");
+    if (tag) return toggleTag(tag.dataset.etiqueta);
     if (e.target.closest("#mb-nova-et")) {
-      const campo = $("#mb-et-nome");
-      const nome = campo.value.trim();
-      if (!nome) return campo.focus();
-      const existe = (await todos("etiquetas")).find(x => x.nome.toLowerCase() === nome.toLowerCase());
-      const t = existe || (await gravar("etiquetas", { id: uuid(), nome, cor: null }));
-      await alternarEtiqueta(t.id, true);
+      const field = $("#mb-et-nome");
+      const nome = field.value.trim();
+      if (!nome) return field.focus();
+      const exists = (await allRecords("etiquetas")).find(x => x.nome.toLowerCase() === nome.toLowerCase());
+      const t = exists || (await save("etiquetas", { id: uuid(), nome, cor: null }));
+      await toggleTag(t.id, true);
     }
   });
-  barra.addEventListener("keydown", e => {
+  bar.addEventListener("keydown", e => {
     if (e.key === "Escape") {
       e.stopPropagation();
-      fecharBarra();
+      closeBar();
     }
     if (e.key === "Enter" && e.target.id === "mb-et-nome") {
       e.preventDefault();
       $("#mb-nova-et").click();
     }
   });
-  async function mostrarEtiquetas() {
+  async function showTags() {
     const box = $("#mb-etiquetas");
-    const ets = (await todos("etiquetas")).sort((x, y) => x.nome.localeCompare(y.nome, "pt"));
-    const m = await marcacaoDe(selecao.ancora);
-    const tem = new Set(m?.etiquetas || []);
-    box.innerHTML = `<div class="mb-et-lista">${ets.map(t => `<button class="chip" data-etiqueta="${t.id}" aria-pressed="${tem.has(t.id)}">${esc(t.nome)}</button>`).join("") || '<span class="mb-vazio">Nenhuma etiqueta ainda.</span>'}</div>
+    const tagList = (await allRecords("etiquetas")).sort((x, y) => x.nome.localeCompare(y.nome, "pt"));
+    const m = await highlightOf(selection.ancora);
+    const has = new Set(m?.etiquetas || []);
+    box.innerHTML = `<div class="mb-et-lista">${tagList.map(t => `<button class="chip" data-etiqueta="${t.id}" aria-pressed="${has.has(t.id)}">${esc(t.nome)}</button>`).join("") || '<span class="mb-vazio">Nenhuma etiqueta ainda.</span>'}</div>
       <div class="mb-et-nova"><label class="sr" for="mb-et-nome">Nova etiqueta</label><input id="mb-et-nome" type="text" placeholder="Nova etiqueta (ex.: promessas)" autocomplete="off"><button id="mb-nova-et">Criar</button></div>`;
     box.hidden = false;
-    (ets.length ? $(".chip", box) : $("#mb-et-nome")).focus();
+    (tagList.length ? $(".chip", box) : $("#mb-et-nome")).focus();
   }
-  async function alternarEtiqueta(id, ligar) {
-    const a = selecao.ancora;
-    const m = await marcacaoDe(a);
-    const lista = new Set(m?.etiquetas || []);
-    const on = ligar ?? !lista.has(id);
-    if (on) lista.add(id);
-    else lista.delete(id);
+  async function toggleTag(id, turnOn) {
+    const a = selection.ancora;
+    const m = await highlightOf(a);
+    const listSheet = new Set(m?.etiquetas || []);
+    const on = turnOn ?? !listSheet.has(id);
+    if (on) listSheet.add(id);
+    else listSheet.delete(id);
     if (m) {
-      if (!m.cor && !lista.size) await apagar("marcacoes", m.id);
-      else await gravar("marcacoes", { id: m.id, etiquetas: [...lista] });
-    } else if (lista.size) await gravar("marcacoes", { id: uuid(), cap: capDe(a), ancora: a, cor: null, etiquetas: [...lista] });
-    await mostrarEtiquetas();
+      if (!m.cor && !listSheet.size) await apagar("marcacoes", m.id);
+      else await save("marcacoes", { id: m.id, etiquetas: [...listSheet] });
+    } else if (listSheet.size) await save("marcacoes", { id: uuid(), cap: chapterOf(a), ancora: a, cor: null, etiquetas: [...listSheet] });
+    await showTags();
   }
 
   // ---------- gestos: botão do versículo, toque longo, seleção de texto ----------
-  function ancoraBlivre(sec) {
+  function blivreAnchor(sec) {
     const sel = window.getSelection();
     if (!sel || sel.isCollapsed || !sel.rangeCount) return null;
     const bl = $(".blivre", sec);
@@ -399,50 +398,50 @@
     pre.selectNodeContents(bl);
     pre.setEnd(r.startContainer, r.startOffset);
     const off = tag ? tag.textContent.length : 0;
-    const ini = pre.toString().length - off,
+    const startOffset = pre.toString().length - off,
       trecho = r.toString();
-    if (ini < 0 || !trecho.trim()) return null;
-    return { inicio: ini, fim: ini + trecho.length, trecho };
+    if (startOffset < 0 || !trecho.trim()) return null;
+    return { inicio: startOffset, fim: startOffset + trecho.length, trecho };
   }
-  function abrirParaVerso(sec, camada, extra) {
+  function openForVerse(sec, camada, extra) {
     const vi = +sec.dataset.vi,
-      v = atual.verses[vi];
+      v = currentChapter.verses[vi];
     if (!v) return;
-    const a = { ...ancoraVersiculo(atual.cod, atual.cap, v.n), ...extra, camada };
+    const a = { ...verseAnchor(currentChapter.cod, currentChapter.cap, v.n), ...extra, camada };
     if (camada === "versiculo") a.trecho = (v.blivre || "").slice(0, 200);
     const trecho = camada === "versiculo" ? "" : extra.trecho;
-    abrirBarra(a, `${atual.nome} ${atual.cap}:${v.n}`, trecho);
+    openBar(a, `${currentChapter.nome} ${currentChapter.cap}:${v.n}`, trecho);
   }
   document.addEventListener("click", e => {
     const b = e.target.closest(".vmark");
     if (b) {
       const sec = b.closest(".verse");
-      const s = sec && ancoraBlivre(sec);
-      return abrirParaVerso(sec, s ? "blivre" : "versiculo", s || {});
+      const s = sec && blivreAnchor(sec);
+      return openForVerse(sec, s ? "blivre" : "versiculo", s || {});
     }
     const n = e.target.closest(".vnota");
-    if (n) return abrirNotasDoVerso(+n.dataset.ver);
+    if (n) return openVerseNotes(+n.dataset.ver);
   });
   // Toque longo num cartão do original: marca a palavra. Toque longo no versículo: marca o versículo.
   let timer = 0,
-    alvo = null,
-    longo = false;
+    targetEl = null,
+    longPress = false;
   document.addEventListener(
     "pointerdown",
     e => {
       const sec = e.target.closest && e.target.closest("#verses .verse");
       if (!sec || e.button > 0 || e.target.closest(".say, .vmark, .vnota, details")) return;
-      alvo = e.target.closest(".word") || sec;
-      longo = false;
+      targetEl = e.target.closest(".word") || sec;
+      longPress = false;
       clearTimeout(timer);
       timer = setTimeout(() => {
-        longo = true;
-        if (alvo.classList.contains("word")) {
-          const i = +alvo.dataset.i;
-          const v = atual.verses[+alvo.dataset.v];
-          abrirParaVerso(alvo.closest(".verse"), "original", { inicio: i, fim: i, trecho: v?.words[i]?.heb || "" });
+        longPress = true;
+        if (targetEl.classList.contains("word")) {
+          const i = +targetEl.dataset.i;
+          const v = currentChapter.verses[+targetEl.dataset.v];
+          openForVerse(targetEl.closest(".verse"), "original", { inicio: i, fim: i, trecho: v?.words[i]?.heb || "" });
         } else if (!document.body.classList.contains("hide-orig") || !window.getSelection()?.toString()) {
-          if (!window.getSelection()?.toString()) abrirParaVerso(sec, "versiculo", {});
+          if (!window.getSelection()?.toString()) openForVerse(sec, "versiculo", {});
         }
       }, 550);
     },
@@ -462,10 +461,10 @@
   document.addEventListener(
     "click",
     e => {
-      if (longo && e.target.closest("#verses .word")) {
+      if (longPress && e.target.closest("#verses .word")) {
         e.stopPropagation();
         e.preventDefault();
-        longo = false;
+        longPress = false;
       }
     },
     true
@@ -475,22 +474,22 @@
     const sec = e.target.closest && e.target.closest("#verses .verse");
     if (!sec) return;
     clearTimeout(timer);
-    const s = ancoraBlivre(sec);
+    const s = blivreAnchor(sec);
     if (s) {
       e.preventDefault();
-      return abrirParaVerso(sec, "blivre", s);
+      return openForVerse(sec, "blivre", s);
     }
     const w = e.target.closest(".word");
     if (w) {
       e.preventDefault();
-      longo = true;
+      longPress = true;
       const i = +w.dataset.i,
-        v = atual.verses[+w.dataset.v];
-      return abrirParaVerso(sec, "original", { inicio: i, fim: i, trecho: v?.words[i]?.heb || "" });
+        v = currentChapter.verses[+w.dataset.v];
+      return openForVerse(sec, "original", { inicio: i, fim: i, trecho: v?.words[i]?.heb || "" });
     }
     if (!e.target.closest("a, input, textarea") && !window.getSelection()?.toString()) {
       e.preventDefault();
-      abrirParaVerso(sec, "versiculo", {});
+      openForVerse(sec, "versiculo", {});
     }
   });
   // Selecionar texto da Bíblia Livre mostra a barra (no celular, depois que a seleção para)
@@ -502,9 +501,9 @@
       if (!sel || sel.isCollapsed || !sel.rangeCount) return;
       const sec =
         sel.anchorNode && (sel.anchorNode.nodeType === 1 ? sel.anchorNode : sel.anchorNode.parentElement)?.closest("#verses .verse");
-      if (!sec || (!barra.hidden && selecao?.ancora.camada === "blivre")) return;
-      const s = ancoraBlivre(sec);
-      if (s) abrirParaVerso(sec, "blivre", s);
+      if (!sec || (!bar.hidden && selection?.ancora.camada === "blivre")) return;
+      const s = blivreAnchor(sec);
+      if (s) openForVerse(sec, "blivre", s);
     }, 700);
   });
 
@@ -517,7 +516,7 @@
   nota.setAttribute("aria-modal", "true");
   nota.setAttribute("aria-labelledby", "nota-h");
   nota.innerHTML = `
-    <div class="shead"><h2 id="nota-h">Nota</h2><button class="ibtn" data-fechar aria-label="Fechar nota">${ICONE.fechar}</button></div>
+    <div class="shead"><h2 id="nota-h">Nota</h2><button class="ibtn" data-fechar aria-label="Fechar nota">${ICONS.hide}</button></div>
     <div class="sgroup nota-corpo">
       <p class="nota-ref" id="nota-ref"></p>
       <label class="sr" for="nota-titulo">Título</label>
@@ -528,98 +527,98 @@
       <div class="nota-rodape"><span id="nota-estado" aria-live="polite"></span><button class="nota-apagar" id="nota-apagar">Apagar nota</button></div>
     </div>`;
   document.body.appendChild(nota);
-  let notaAtual = null,
-    salvarTimer = 0,
-    voltarFoco = null;
-  async function abrirNota(id, ancora, trecho) {
-    voltarFoco = document.activeElement;
-    const todasN = await todos("notas");
-    notaAtual = id
+  let currentNote = null,
+    saveTimer = 0,
+    focusReturn = null;
+  async function openNote(id, ancora, trecho) {
+    focusReturn = document.activeElement;
+    const todasN = await allRecords("notas");
+    currentNote = id
       ? todasN.find(n => n.id === id)
-      : { id: uuid(), cap: ancora ? capDe(ancora) : "livre", ancora: ancora || null, titulo: "", texto: "", etiquetas: [], nova: true };
-    if (!notaAtual) return;
-    const a = notaAtual.ancora;
+      : { id: uuid(), cap: ancora ? chapterOf(ancora) : "livre", ancora: ancora || null, titulo: "", texto: "", etiquetas: [], nova: true };
+    if (!currentNote) return;
+    const a = currentNote.ancora;
     $("#nota-ref").textContent = a
-      ? `${nomeLivro(a.livro)} ${a.cap}:${a.ver}${trecho || a.trecho ? ` · “${(trecho || a.trecho).slice(0, 80)}”` : ""}`
+      ? `${bookName(a.livro)} ${a.cap}:${a.ver}${trecho || a.trecho ? ` · “${(trecho || a.trecho).slice(0, 80)}”` : ""}`
       : "Nota livre";
-    $("#nota-titulo").value = notaAtual.titulo || "";
-    $("#nota-texto").value = notaAtual.texto || "";
-    $("#nota-estado").textContent = notaAtual.nova ? "" : "Salva.";
-    $("#nota-apagar").hidden = !!notaAtual.nova;
-    await desenharEtiquetasNota();
+    $("#nota-titulo").value = currentNote.titulo || "";
+    $("#nota-texto").value = currentNote.texto || "";
+    $("#nota-estado").textContent = currentNote.nova ? "" : "Salva.";
+    $("#nota-apagar").hidden = !!currentNote.nova;
+    await renderNoteTags();
     nota.hidden = false;
     document.body.classList.add("com-nota");
     $("#nota-texto").focus();
   }
-  async function desenharEtiquetasNota() {
-    const ets = (await todos("etiquetas")).sort((x, y) => x.nome.localeCompare(y.nome, "pt"));
-    const tem = new Set(notaAtual.etiquetas || []);
+  async function renderNoteTags() {
+    const tagList = (await allRecords("etiquetas")).sort((x, y) => x.nome.localeCompare(y.nome, "pt"));
+    const has = new Set(currentNote.etiquetas || []);
     $("#nota-ets").innerHTML =
       `<span class="nota-ets-r">Etiquetas:</span>` +
-      ets.map(t => `<button class="chip" data-et="${t.id}" aria-pressed="${tem.has(t.id)}">${esc(t.nome)}</button>`).join("") +
+      tagList.map(t => `<button class="chip" data-tag="${t.id}" aria-pressed="${has.has(t.id)}">${esc(t.nome)}</button>`).join("") +
       `<span class="nota-et-nova"><label class="sr" for="nota-et-nome">Nova etiqueta</label><input id="nota-et-nome" type="text" placeholder="+ nova etiqueta" autocomplete="off"><button class="chip" data-et-nova>Criar</button></span>`;
   }
-  function agendarSalvar() {
-    clearTimeout(salvarTimer);
+  function scheduleSave() {
+    clearTimeout(saveTimer);
     $("#nota-estado").textContent = "…";
-    salvarTimer = setTimeout(salvarNota, 600);
+    saveTimer = setTimeout(saveNote, 600);
   }
-  async function salvarNota() {
-    if (!notaAtual) return;
+  async function saveNote() {
+    if (!currentNote) return;
     const titulo = $("#nota-titulo").value.trim(),
       texto = $("#nota-texto").value;
-    if (notaAtual.nova && !titulo && !texto.trim()) {
+    if (currentNote.nova && !titulo && !texto.trim()) {
       $("#nota-estado").textContent = "";
       return;
     }
-    const { nova: _nova, ...reg } = notaAtual;
-    notaAtual = { ...(await gravar("notas", { ...reg, titulo, texto })) };
+    const { nova: _nova, ...rec } = currentNote;
+    currentNote = { ...(await save("notas", { ...rec, titulo, texto })) };
     $("#nota-estado").textContent = "Salva.";
     $("#nota-apagar").hidden = false;
-    pintar();
+    paint();
   }
-  function fecharNota() {
+  function closeNote() {
     if (nota.hidden) return;
-    clearTimeout(salvarTimer);
-    salvarNota();
+    clearTimeout(saveTimer);
+    saveNote();
     nota.hidden = true;
-    notaAtual = null;
+    currentNote = null;
     document.body.classList.remove("com-nota");
-    if (voltarFoco && voltarFoco.isConnected) voltarFoco.focus({ preventScroll: true });
+    if (focusReturn && focusReturn.isConnected) focusReturn.focus({ preventScroll: true });
   }
-  $("#nota-titulo").addEventListener("input", agendarSalvar);
-  $("#nota-texto").addEventListener("input", agendarSalvar);
+  $("#nota-titulo").addEventListener("input", scheduleSave);
+  $("#nota-texto").addEventListener("input", scheduleSave);
   nota.addEventListener("click", async e => {
-    if (e.target.closest("[data-fechar]")) return fecharNota();
+    if (e.target.closest("[data-fechar]")) return closeNote();
     if (e.target.closest("#nota-apagar")) {
-      if (!confirmarApagar()) return;
-      await apagar("notas", notaAtual.id);
-      notaAtual = null;
-      await pintar();
-      return fecharNota();
+      if (!confirmDelete()) return;
+      await apagar("notas", currentNote.id);
+      currentNote = null;
+      await paint();
+      return closeNote();
     }
-    const b = e.target.closest("[data-et]");
+    const b = e.target.closest("[data-tag]");
     if (b) {
-      const set = new Set(notaAtual.etiquetas || []);
-      set.has(b.dataset.et) ? set.delete(b.dataset.et) : set.add(b.dataset.et);
-      notaAtual.etiquetas = [...set];
-      await salvarNota();
-      return desenharEtiquetasNota();
+      const set = new Set(currentNote.etiquetas || []);
+      set.has(b.dataset.tag) ? set.delete(b.dataset.tag) : set.add(b.dataset.tag);
+      currentNote.etiquetas = [...set];
+      await saveNote();
+      return renderNoteTags();
     }
     if (e.target.closest("[data-et-nova]")) {
       const nome = $("#nota-et-nome").value.trim();
       if (!nome) return $("#nota-et-nome").focus();
-      const existe = (await todos("etiquetas")).find(x => x.nome.toLowerCase() === nome.toLowerCase());
-      const t = existe || (await gravar("etiquetas", { id: uuid(), nome, cor: null }));
-      notaAtual.etiquetas = [...new Set([...(notaAtual.etiquetas || []), t.id])];
-      await salvarNota();
-      return desenharEtiquetasNota();
+      const exists = (await allRecords("etiquetas")).find(x => x.nome.toLowerCase() === nome.toLowerCase());
+      const t = exists || (await save("etiquetas", { id: uuid(), nome, cor: null }));
+      currentNote.etiquetas = [...new Set([...(currentNote.etiquetas || []), t.id])];
+      await saveNote();
+      return renderNoteTags();
     }
   });
   nota.addEventListener("keydown", e => {
     if (e.key === "Escape") {
       e.stopPropagation();
-      fecharNota();
+      closeNote();
     }
     if (e.key === "Enter" && e.target.id === "nota-et-nome") {
       e.preventDefault();
@@ -627,39 +626,39 @@
     }
   });
   // Confirmação simples sem diálogo do navegador (o botão vira "Confirmar")
-  let confirmar = 0;
-  function confirmarApagar() {
+  let confirmAction = 0;
+  function confirmDelete() {
     const b = $("#nota-apagar");
-    if (Date.now() - confirmar < 4000) {
-      confirmar = 0;
+    if (Date.now() - confirmAction < 4000) {
+      confirmAction = 0;
       b.textContent = "Apagar nota";
       return true;
     }
-    confirmar = Date.now();
+    confirmAction = Date.now();
     b.textContent = "Toque de novo para apagar";
     setTimeout(() => {
       b.textContent = "Apagar nota";
     }, 4000);
     return false;
   }
-  async function abrirNotasDoVerso(ver) {
-    const ns = (await doCapitulo("notas", `${atual.cod}.${atual.cap}`))
+  async function openVerseNotes(ver) {
+    const ns = (await ofChapter("notas", `${currentChapter.cod}.${currentChapter.cap}`))
       .filter(n => n.ancora?.ver === ver)
       .sort((x, y) => x.criado_em.localeCompare(y.criado_em));
-    if (ns.length === 1) return abrirNota(ns[0].id);
-    abrirLista({ cap: `${atual.cod}.${atual.cap}`, ver });
+    if (ns.length === 1) return openNote(ns[0].id);
+    openList({ cap: `${currentChapter.cod}.${currentChapter.cap}`, ver });
   }
 
   // ---------- Minhas anotações ----------
-  const lista = document.createElement("aside");
-  lista.id = "minhas";
-  lista.className = "sheet right minhas-sheet";
-  lista.hidden = true;
-  lista.setAttribute("role", "dialog");
-  lista.setAttribute("aria-modal", "true");
-  lista.setAttribute("aria-labelledby", "minhas-h");
-  lista.innerHTML = `
-    <div class="shead"><h2 id="minhas-h">Minhas anotações</h2><button class="ibtn" data-fechar aria-label="Fechar">${ICONE.fechar}</button></div>
+  const listSheet = document.createElement("aside");
+  listSheet.id = "minhas";
+  listSheet.className = "sheet right minhas-sheet";
+  listSheet.hidden = true;
+  listSheet.setAttribute("role", "dialog");
+  listSheet.setAttribute("aria-modal", "true");
+  listSheet.setAttribute("aria-labelledby", "minhas-h");
+  listSheet.innerHTML = `
+    <div class="shead"><h2 id="minhas-h">Minhas anotações</h2><button class="ibtn" data-fechar aria-label="Fechar">${ICONS.hide}</button></div>
     <div class="sgroup">
       <label class="sr" for="mn-busca">Buscar nas anotações</label>
       <input id="mn-busca" class="lsearch" type="search" placeholder="Buscar: luz, pastor, Gn 1" autocomplete="off">
@@ -683,40 +682,45 @@
       </div>
       <div id="mn-itens"></div>
     </div>`;
-  document.body.appendChild(lista);
-  let filtro = { tipo: "", cap: null, ver: null };
-  let selecionando = false;
-  const selecionados = new Set();
-  let ultimosItens = [];
-  function nomeLivro(cod) {
+  document.body.appendChild(listSheet);
+  let listFilter = { tipo: "", cap: null, ver: null };
+  let selecting = false;
+  const selected = new Set();
+  let lastItems = [];
+  function bookName(cod) {
     return (window.__livros || {})[cod]?.nome || cod;
   }
-  function ordemLivro(cod) {
+  function bookOrder(cod) {
     return (window.__livros || {})[cod]?.i ?? 999;
   }
-  async function abrirLista(f) {
-    filtro = { tipo: "", cap: null, ver: null, ...(f || {}) };
-    voltarFoco = document.activeElement;
+  async function openList(f) {
+    listFilter = { tipo: "", cap: null, ver: null, ...(f || {}) };
+    focusReturn = document.activeElement;
     document.dispatchEvent(new CustomEvent("anotacoes:abrir-painel"));
-    lista.hidden = false;
+    listSheet.hidden = false;
     document.body.classList.add("com-minhas");
-    await desenharLista();
+    await renderList();
     $("#mn-busca").focus();
   }
-  function fecharLista() {
-    if (lista.hidden) return;
-    lista.hidden = true;
+  function closeList() {
+    if (listSheet.hidden) return;
+    listSheet.hidden = true;
     document.body.classList.remove("com-minhas");
-    if (voltarFoco && voltarFoco.isConnected) voltarFoco.focus({ preventScroll: true });
+    if (focusReturn && focusReturn.isConnected) focusReturn.focus({ preventScroll: true });
   }
   async function itens() {
-    const [ms, ns, fs, ets] = await Promise.all([todos("marcacoes"), todos("notas"), todos("favoritos"), todos("etiquetas")]);
-    const nomeEt = Object.fromEntries(ets.map(t => [t.id, t.nome]));
-    const ref = a => (a ? `${nomeLivro(a.livro)} ${a.cap}:${a.ver}` : "Nota livre");
-    const textoVerso = a => a?.trecho || "";
+    const [ms, ns, fs, tagList] = await Promise.all([
+      allRecords("marcacoes"),
+      allRecords("notas"),
+      allRecords("favoritos"),
+      allRecords("etiquetas")
+    ]);
+    const tagNames = Object.fromEntries(tagList.map(t => [t.id, t.nome]));
+    const ref = a => (a ? `${bookName(a.livro)} ${a.cap}:${a.ver}` : "Nota livre");
+    const verseText = a => a?.trecho || "";
     return {
-      ets,
-      lista: [
+      tagList,
+      listSheet: [
         ...ns.map(n => ({
           tipo: "notas",
           id: n.id,
@@ -724,8 +728,8 @@
           rot: "nota",
           titulo: n.titulo,
           texto: n.texto,
-          extra: textoVerso(n.ancora),
-          ets: n.etiquetas || [],
+          extra: verseText(n.ancora),
+          tagList: n.etiquetas || [],
           data: n.alterado_em
         })),
         ...ms.map(m => ({
@@ -735,7 +739,7 @@
           rot: m.cor ? "marcação" : "etiqueta",
           cor: m.cor,
           texto: m.ancora.trecho || "",
-          ets: m.etiquetas || [],
+          tagList: m.etiquetas || [],
           data: m.alterado_em
         })),
         ...fs.map(f => ({
@@ -744,52 +748,53 @@
           a: f.ancora,
           rot: "favorito",
           texto: "",
-          ets: f.etiquetas || [],
+          tagList: f.etiquetas || [],
           data: f.alterado_em
         }))
-      ].map(x => ({ ...x, ref: ref(x.a), etNomes: x.ets.map(i => nomeEt[i]).filter(Boolean) }))
+      ].map(x => ({ ...x, ref: ref(x.a), etNomes: x.tagList.map(i => tagNames[i]).filter(Boolean) }))
     };
   }
-  async function desenharLista() {
-    const { ets, lista: todosItens } = await itens();
+  async function renderList() {
+    const { tagList, listSheet: allItems } = await itens();
     const sel = $("#mn-etiqueta"),
-      atualEt = sel.value;
+      currentTag = sel.value;
     sel.innerHTML =
       `<option value="">todas</option>` +
-      ets
+      tagList
         .sort((x, y) => x.nome.localeCompare(y.nome, "pt"))
         .map(t => `<option value="${t.id}">${esc(t.nome)}</option>`)
         .join("");
-    sel.value = ets.some(t => t.id === atualEt) ? atualEt : "";
+    sel.value = tagList.some(t => t.id === currentTag) ? currentTag : "";
     const q = $("#mn-busca").value.trim().toLowerCase();
-    let xs = todosItens.filter(
+    let xs = allItems.filter(
       x =>
-        (!filtro.tipo || x.tipo === filtro.tipo) &&
-        (!filtro.cap || (x.a && `${x.a.livro}.${x.a.cap}` === filtro.cap && (filtro.ver == null || x.a.ver === filtro.ver))) &&
-        (!sel.value || x.ets.includes(sel.value)) &&
+        (!listFilter.tipo || x.tipo === listFilter.tipo) &&
+        (!listFilter.cap ||
+          (x.a && `${x.a.livro}.${x.a.cap}` === listFilter.cap && (listFilter.ver == null || x.a.ver === listFilter.ver))) &&
+        (!sel.value || x.tagList.includes(sel.value)) &&
         (!q || `${x.ref} ${x.titulo || ""} ${x.texto} ${x.etNomes.join(" ")}`.toLowerCase().includes(q))
     );
-    $$(".mn-filtros .chip", lista).forEach(b => b.setAttribute("aria-pressed", String(b.dataset.tipo === filtro.tipo)));
+    $$(".mn-filtros .chip", listSheet).forEach(b => b.setAttribute("aria-pressed", String(b.dataset.tipo === listFilter.tipo)));
     if ($("#mn-ordem").value === "data") xs.sort((x, y) => y.data.localeCompare(x.data));
     else
       xs.sort(
         (x, y) =>
-          (x.a ? ordemLivro(x.a.livro) : 1e4) - (y.a ? ordemLivro(y.a.livro) : 1e4) ||
+          (x.a ? bookOrder(x.a.livro) : 1e4) - (y.a ? bookOrder(y.a.livro) : 1e4) ||
           (x.a?.cap || 0) - (y.a?.cap || 0) ||
           (x.a?.ver || 0) - (y.a?.ver || 0)
       );
-    ultimosItens = xs;
-    $("#mn-total").textContent = filtro.cap ? `${xs.length} neste versículo · ` : `${xs.length} ${xs.length === 1 ? "item" : "itens"}`;
-    if (filtro.cap) $("#mn-total").innerHTML += `<button class="linklike" id="mn-ver-tudo">ver tudo</button>`;
+    lastItems = xs;
+    $("#mn-total").textContent = listFilter.cap ? `${xs.length} neste versículo · ` : `${xs.length} ${xs.length === 1 ? "item" : "itens"}`;
+    if (listFilter.cap) $("#mn-total").innerHTML += `<button class="linklike" id="mn-ver-tudo">ver tudo</button>`;
     let grupo = null,
       html = "";
     for (const x of xs) {
-      const g = $("#mn-ordem").value === "data" ? null : x.a ? nomeLivro(x.a.livro) : "Notas livres";
+      const g = $("#mn-ordem").value === "data" ? null : x.a ? bookName(x.a.livro) : "Notas livres";
       if (g !== grupo && g) {
         html += `<h3 class="mn-grupo">${esc(g)}</h3>`;
         grupo = g;
       }
-      html += `<button class="mn-item${selecionando ? " sel" : ""}" data-tipo="${x.tipo}" data-id="${x.id}"${selecionando ? ` role="checkbox" aria-checked="${selecionados.has(x.id)}"` : ""}>
+      html += `<button class="mn-item${selecting ? " sel" : ""}" data-tipo="${x.tipo}" data-id="${x.id}"${selecting ? ` role="checkbox" aria-checked="${selected.has(x.id)}"` : ""}>
         <span class="mn-ref">${esc(x.ref)} · ${x.cor ? `<span class="mn-cor mk-${x.cor}">${x.rot}</span>` : x.rot}</span>
         ${x.titulo ? `<b class="mn-tit">${esc(x.titulo)}</b>` : ""}
         ${x.texto ? `<span class="mn-txt">${esc(x.texto.length > 160 ? x.texto.slice(0, 158) + "…" : x.texto)}</span>` : ""}
@@ -798,71 +803,71 @@
     }
     $("#mn-itens").innerHTML =
       html ||
-      `<p class="mn-vazio">${todosItens.length ? "Nada encontrado com esses filtros." : "Ainda não há anotações. Toque longo num versículo, selecione um trecho ou use o botão ⋯ ao lado do número para marcar e anotar."}</p>`;
+      `<p class="mn-vazio">${allItems.length ? "Nada encontrado com esses filtros." : "Ainda não há anotações. Toque longo num versículo, selecione um trecho ou use o botão ⋯ ao lado do número para marcar e anotar."}</p>`;
   }
-  lista.addEventListener("click", async e => {
-    if (e.target.closest("[data-fechar]")) return fecharLista();
+  listSheet.addEventListener("click", async e => {
+    if (e.target.closest("[data-fechar]")) return closeList();
     const t = e.target.closest(".mn-filtros .chip");
     if (t) {
-      filtro.tipo = t.dataset.tipo;
-      return desenharLista();
+      listFilter.tipo = t.dataset.tipo;
+      return renderList();
     }
     if (e.target.closest("#mn-ver-tudo")) {
-      filtro.cap = null;
-      filtro.ver = null;
-      return desenharLista();
+      listFilter.cap = null;
+      listFilter.ver = null;
+      return renderList();
     }
     if (e.target.closest("#mn-nova")) {
-      fecharLista();
-      return abrirNota(null, null);
+      closeList();
+      return openNote(null, null);
     }
     if (e.target.closest("#mn-selecionar")) {
-      selecionando = !selecionando;
-      if (!selecionando) selecionados.clear();
-      e.target.closest("#mn-selecionar").setAttribute("aria-pressed", String(selecionando));
-      return desenharLista();
+      selecting = !selecting;
+      if (!selecting) selected.clear();
+      e.target.closest("#mn-selecionar").setAttribute("aria-pressed", String(selecting));
+      return renderList();
     }
-    if (e.target.closest("#mn-exportar")) return abrirExportar();
-    if (e.target.closest("#mn-baixar")) return baixarDados();
+    if (e.target.closest("#mn-exportar")) return openExport();
+    if (e.target.closest("#mn-baixar")) return downloadData();
     if (e.target.closest("#mn-importar")) return $("#mn-arquivo").click();
     const it = e.target.closest(".mn-item");
-    if (it && selecionando) {
-      selecionados.has(it.dataset.id) ? selecionados.delete(it.dataset.id) : selecionados.add(it.dataset.id);
-      it.setAttribute("aria-checked", String(selecionados.has(it.dataset.id)));
-      $("#mn-total").textContent = `${selecionados.size} selecionado${selecionados.size === 1 ? "" : "s"}`;
+    if (it && selecting) {
+      selected.has(it.dataset.id) ? selected.delete(it.dataset.id) : selected.add(it.dataset.id);
+      it.setAttribute("aria-checked", String(selected.has(it.dataset.id)));
+      $("#mn-total").textContent = `${selected.size} selecionado${selected.size === 1 ? "" : "s"}`;
       return;
     }
     if (it) {
       if (it.dataset.tipo === "notas") {
-        fecharLista();
-        return abrirNota(it.dataset.id);
+        closeList();
+        return openNote(it.dataset.id);
       }
-      const { lista: xs } = await itens();
+      const { listSheet: xs } = await itens();
       const x = xs.find(y => y.id === it.dataset.id);
-      fecharLista();
+      closeList();
       if (x?.a) document.dispatchEvent(new CustomEvent("anotacoes:ir", { detail: { cod: x.a.livro, cap: x.a.cap, ver: x.a.ver } }));
     }
   });
-  $("#mn-busca").addEventListener("input", () => desenharLista());
-  $("#mn-etiqueta").addEventListener("change", () => desenharLista());
-  $("#mn-ordem").addEventListener("change", () => desenharLista());
-  lista.addEventListener("keydown", e => {
+  $("#mn-busca").addEventListener("input", () => renderList());
+  $("#mn-etiqueta").addEventListener("change", () => renderList());
+  $("#mn-ordem").addEventListener("change", () => renderList());
+  listSheet.addEventListener("keydown", e => {
     if (e.key === "Escape") {
       e.stopPropagation();
-      fecharLista();
+      closeList();
     }
   });
 
   // ---------- Exportar em PDF (caderno) ----------
-  const exp = document.createElement("aside");
-  exp.id = "exportar";
-  exp.className = "sheet right minhas-sheet";
-  exp.hidden = true;
-  exp.setAttribute("role", "dialog");
-  exp.setAttribute("aria-modal", "true");
-  exp.setAttribute("aria-labelledby", "exp-h");
-  exp.innerHTML = `
-    <div class="shead"><h2 id="exp-h">Exportar em PDF</h2><button class="ibtn" data-fechar aria-label="Fechar">${ICONE.fechar}</button></div>
+  const exportSheet = document.createElement("aside");
+  exportSheet.id = "exportar";
+  exportSheet.className = "sheet right minhas-sheet";
+  exportSheet.hidden = true;
+  exportSheet.setAttribute("role", "dialog");
+  exportSheet.setAttribute("aria-modal", "true");
+  exportSheet.setAttribute("aria-labelledby", "exp-h");
+  exportSheet.innerHTML = `
+    <div class="shead"><h2 id="exp-h">Exportar em PDF</h2><button class="ibtn" data-fechar aria-label="Fechar">${ICONS.hide}</button></div>
     <div class="sgroup exp-corpo">
       <fieldset><legend>O que entra</legend>
         <label class="opt"><input type="radio" name="exp-o" value="lista" checked> <span>O que está na lista agora <small id="exp-n-lista"></small></span></label>
@@ -883,60 +888,60 @@
       <button class="exp-gerar" id="exp-gerar">Gerar PDF</button>
       <p class="exp-nota" id="exp-nota">Gerado no próprio aparelho, sem internet. Na janela de impressão, escolha “Salvar como PDF”.</p>
     </div>`;
-  document.body.appendChild(exp);
-  async function abrirExportar() {
-    const { lista: xs } = await itens();
-    const livros = [...new Set(xs.filter(x => x.a).map(x => x.a.livro))].sort((a, b) => ordemLivro(a) - ordemLivro(b));
-    $("#exp-livro").innerHTML = livros.map(c => `<option value="${c}">${esc(nomeLivro(c))}</option>`).join("");
-    $("#exp-n-lista").textContent = `(${ultimosItens.length})`;
-    $("#exp-n-sel").textContent = `(${selecionados.size})`;
-    $('input[name="exp-o"][value="sel"]').disabled = !selecionados.size;
+  document.body.appendChild(exportSheet);
+  async function openExport() {
+    const { listSheet: xs } = await itens();
+    const livros = [...new Set(xs.filter(x => x.a).map(x => x.a.livro))].sort((a, b) => bookOrder(a) - bookOrder(b));
+    $("#exp-livro").innerHTML = livros.map(c => `<option value="${c}">${esc(bookName(c))}</option>`).join("");
+    $("#exp-n-lista").textContent = `(${lastItems.length})`;
+    $("#exp-n-sel").textContent = `(${selected.size})`;
+    $('input[name="exp-o"][value="sel"]').disabled = !selected.size;
     $('input[name="exp-o"][value="livro"]').disabled = !livros.length;
-    $('input[name="exp-o"][value="' + (selecionados.size ? "sel" : "lista") + '"]').checked = true;
-    lista.hidden = true;
+    $('input[name="exp-o"][value="' + (selected.size ? "sel" : "lista") + '"]').checked = true;
+    listSheet.hidden = true;
     document.body.classList.remove("com-minhas");
-    exp.hidden = false;
+    exportSheet.hidden = false;
     $("#exp-gerar").focus();
   }
-  function fecharExportar(voltar = true) {
-    exp.hidden = true;
-    if (voltar) abrirLista(filtro);
+  function closeExport(goBack = true) {
+    exportSheet.hidden = true;
+    if (goBack) openList(listFilter);
   }
-  exp.addEventListener("click", e => {
-    if (e.target.closest("[data-fechar]")) return fecharExportar();
-    if (e.target.closest("#exp-gerar")) return gerarCaderno();
+  exportSheet.addEventListener("click", e => {
+    if (e.target.closest("[data-fechar]")) return closeExport();
+    if (e.target.closest("#exp-gerar")) return buildNotebook();
   });
-  exp.addEventListener("change", e => {
+  exportSheet.addEventListener("change", e => {
     if (e.target.id === "exp-livro") $('input[name="exp-o"][value="livro"]').checked = true;
   });
-  exp.addEventListener("keydown", e => {
+  exportSheet.addEventListener("keydown", e => {
     if (e.key === "Escape") {
       e.stopPropagation();
-      fecharExportar();
+      closeExport();
     }
   });
 
-  async function capitulo(cod, n) {
+  async function chapterInfo(cod, n) {
     try {
       return window.__carregarCapitulo ? await window.__carregarCapitulo(cod, n) : null;
     } catch (_) {
       return null;
     }
   }
-  async function montarCaderno() {
-    const { lista: todosXs } = await itens();
+  async function assembleNotebook() {
+    const { listSheet: todosXs } = await itens();
     const o = $('input[name="exp-o"]:checked').value;
     let xs =
       o === "sel"
-        ? todosXs.filter(x => selecionados.has(x.id))
+        ? todosXs.filter(x => selected.has(x.id))
         : o === "livro"
           ? todosXs.filter(x => x.a?.livro === $("#exp-livro").value)
-          : todosXs.filter(x => ultimosItens.some(y => y.id === x.id));
+          : todosXs.filter(x => lastItems.some(y => y.id === x.id));
     const inc = { notas: $("#exp-notas").checked, marcacoes: $("#exp-marcacoes").checked, favoritos: $("#exp-favoritos").checked };
     xs = xs.filter(x => inc[x.tipo]);
     const texto = $("#exp-texto").checked,
-      inter = $("#exp-inter").checked;
-    const porData = $('input[name="exp-ordem"]:checked').value === "data";
+      withInterlinear = $("#exp-inter").checked;
+    const byDate = $('input[name="exp-ordem"]:checked').value === "data";
     // agrupa por versículo (ou nota livre)
     const grupos = new Map();
     for (const x of xs) {
@@ -947,45 +952,45 @@
       if (x.data > g.data) g.data = x.data;
     }
     let gs = [...grupos.values()];
-    if (porData) gs.sort((x, y) => y.data.localeCompare(x.data));
+    if (byDate) gs.sort((x, y) => y.data.localeCompare(x.data));
     else
       gs.sort(
         (x, y) =>
-          (x.a ? ordemLivro(x.a.livro) : 1e4) - (y.a ? ordemLivro(y.a.livro) : 1e4) ||
+          (x.a ? bookOrder(x.a.livro) : 1e4) - (y.a ? bookOrder(y.a.livro) : 1e4) ||
           (x.a?.cap || 0) - (y.a?.cap || 0) ||
           (x.a?.ver || 0) - (y.a?.ver || 0)
       );
     const caps = {};
     for (const g of gs)
-      if (g.a && (texto || inter)) {
+      if (g.a && (texto || withInterlinear)) {
         const k = `${g.a.livro}.${g.a.cap}`;
-        if (!(k in caps)) caps[k] = await capitulo(g.a.livro, g.a.cap);
+        if (!(k in caps)) caps[k] = await chapterInfo(g.a.livro, g.a.cap);
       }
     const marcasPorVerso = {};
-    for (const m of await todos("marcacoes")) {
+    for (const m of await allRecords("marcacoes")) {
       const k = `${m.ancora.livro}.${m.ancora.cap}.${m.ancora.ver}`;
       (marcasPorVerso[k] = marcasPorVerso[k] || []).push(m);
     }
-    const corHex = { amarelo: "#f6e3a1", verde: "#cfe6c4", azul: "#bcd6e6", rosa: "#f2d2dc", laranja: "#f6d6b8" };
-    const livrosNoCaderno = [...new Set(gs.filter(g => g.a).map(g => nomeLivro(g.a.livro)))];
-    const titulo = livrosNoCaderno.length === 1 ? livrosNoCaderno[0] : "Minhas anotações";
-    let corpo = "",
-      livroAtual = null;
+    const colorHex = { amarelo: "#f6e3a1", verde: "#cfe6c4", azul: "#bcd6e6", rosa: "#f2d2dc", laranja: "#f6d6b8" };
+    const notebookBooks = [...new Set(gs.filter(g => g.a).map(g => bookName(g.a.livro)))];
+    const titulo = notebookBooks.length === 1 ? notebookBooks[0] : "Minhas anotações";
+    let bodyHtml = "",
+      currentBook = null;
     for (const g of gs) {
       const a = g.a;
-      if (!porData && a && nomeLivro(a.livro) !== livroAtual && livrosNoCaderno.length > 1) {
-        livroAtual = nomeLivro(a.livro);
-        corpo += `<h2 class="cl">${esc(livroAtual)}</h2>`;
+      if (!byDate && a && bookName(a.livro) !== currentBook && notebookBooks.length > 1) {
+        currentBook = bookName(a.livro);
+        bodyHtml += `<h2 class="cl">${esc(currentBook)}</h2>`;
       }
-      const tipos = [...new Set(g.itens.map(x => x.rot))].join(" · ").toUpperCase();
-      corpo += `<section class="en"><div class="ref">${esc(a ? `${nomeLivro(a.livro)} ${a.cap}:${a.ver}` : "NOTA LIVRE")}${tipos ? ` · ${esc(tipos)}` : ""}</div>`;
+      const kinds = [...new Set(g.itens.map(x => x.rot))].join(" · ").toUpperCase();
+      bodyHtml += `<section class="en"><div class="ref">${esc(a ? `${bookName(a.livro)} ${a.cap}:${a.ver}` : "NOTA LIVRE")}${kinds ? ` · ${esc(kinds)}` : ""}</div>`;
       const raw = a && caps[`${a.livro}.${a.cap}`];
       const v = raw && raw.v.find(y => y.n === a.ver);
       const ms = a ? (marcasPorVerso[`${a.livro}.${a.cap}.${a.ver}`] || []).filter(m => m.cor) : [];
       if (texto && v) {
         let t = v.b || "";
-        const versoInteiro = ms.find(m => m.ancora.camada === "versiculo");
-        const trechos = ms
+        const wholeVerse = ms.find(m => m.ancora.camada === "versiculo");
+        const snippets = ms
           .filter(m => m.ancora.camada === "blivre")
           .map(m => {
             let i = m.ancora.inicio,
@@ -1002,32 +1007,32 @@
           .sort((x, y) => x.i - y.i);
         let html = "",
           pos = 0;
-        for (const m of trechos) {
+        for (const m of snippets) {
           if (m.i < pos) continue;
-          html += esc(t.slice(pos, m.i)) + `<mark style="background:${corHex[m.cor]}">${esc(t.slice(m.i, m.f))}</mark>`;
+          html += esc(t.slice(pos, m.i)) + `<mark style="background:${colorHex[m.cor]}">${esc(t.slice(m.i, m.f))}</mark>`;
           pos = m.f;
         }
         html += esc(t.slice(pos));
-        corpo += `<p class="vt"${versoInteiro ? ` style="background:${corHex[versoInteiro.cor]};padding:2px 4px;border-radius:3px"` : ""}>${html}</p>`;
+        bodyHtml += `<p class="vt"${wholeVerse ? ` style="background:${colorHex[wholeVerse.cor]};padding:2px 4px;border-radius:3px"` : ""}>${html}</p>`;
       }
-      if (inter && v) {
-        const pal = ms.filter(m => m.ancora.camada === "original");
-        for (const m of pal) {
+      if (withInterlinear && v) {
+        const originalMarks = ms.filter(m => m.ancora.camada === "original");
+        for (const m of originalMarks) {
           const ws = v.w.slice(m.ancora.inicio, m.ancora.fim + 1);
           if (!ws.length) continue;
-          const grego = a.livro && (window.__livros || {})[a.livro]?.i >= 39;
-          corpo += `<p class="il"><span class="o" dir="${grego ? "ltr" : "rtl"}" lang="${grego ? "grc" : "he"}">${esc(ws.map(w => w[0].replace(/\//g, "")).join(" "))}</span> <span class="ig">${esc(ws.map(w => `${w[1]} · ${w[2]}`).join("; "))}</span></p>`;
+          const greek = a.livro && (window.__livros || {})[a.livro]?.i >= 39;
+          bodyHtml += `<p class="il"><span class="o" dir="${greek ? "ltr" : "rtl"}" lang="${greek ? "grc" : "he"}">${esc(ws.map(w => w[0].replace(/\//g, "")).join(" "))}</span> <span class="ig">${esc(ws.map(w => `${w[1]} · ${w[2]}`).join("; "))}</span></p>`;
         }
       }
       for (const x of g.itens) {
         if (x.tipo === "notas")
-          corpo += `<div class="nt">${x.titulo ? `<b>${esc(x.titulo)}</b><br>` : ""}${esc(x.texto).replace(/\n/g, "<br>")}</div>`;
+          bodyHtml += `<div class="nt">${x.titulo ? `<b>${esc(x.titulo)}</b><br>` : ""}${esc(x.texto).replace(/\n/g, "<br>")}</div>`;
         else if (x.tipo === "marcacoes" && x.a.camada === "blivre" && !texto)
-          corpo += `<p class="vt"><mark style="background:${corHex[x.cor] || "#eee"}">${esc(x.texto)}</mark></p>`;
+          bodyHtml += `<p class="vt"><mark style="background:${colorHex[x.cor] || "#eee"}">${esc(x.texto)}</mark></p>`;
       }
-      const ets = [...new Set(g.itens.flatMap(x => x.etNomes))];
-      if (ets.length) corpo += `<div class="tg">${ets.map(n => `<span>${esc(n)}</span>`).join("")}</div>`;
-      corpo += `</section>`;
+      const tagList = [...new Set(g.itens.flatMap(x => x.etNomes))];
+      if (tagList.length) bodyHtml += `<div class="tg">${tagList.map(n => `<span>${esc(n)}</span>`).join("")}</div>`;
+      bodyHtml += `</section>`;
     }
     const data = new Date().toLocaleDateString("pt-BR");
     return {
@@ -1050,19 +1055,19 @@ h2.cl { font-size: 14pt; margin: 14px 0 0; border-bottom: 1px solid #d2d8d3; }
 footer { margin-top: 14px; font-size: 7.5pt; color: #5b6662; border-top: 1px solid #d2d8d3; padding-top: 4px; }
 </style></head><body>
 <header><div><small>CADERNO DE ESTUDO · BÍBLIA INTERLINEAR</small><h1>${esc(titulo)}</h1></div><span>${xs.length} ${xs.length === 1 ? "item" : "itens"} · ${data}</span></header>
-${corpo || "<p>Nenhum item com essas opções.</p>"}
+${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
 <footer>Texto: Bíblia Livre (BLIVRE). Original: Open Scriptures Hebrew Bible e SBLGNT (CC BY 4.0). Glosas e léxico: projeto Bíblia Interlinear.</footer>
 </body></html>`
     };
   }
-  async function gerarCaderno() {
+  async function buildNotebook() {
     const btn = $("#exp-gerar");
     btn.disabled = true;
     btn.textContent = "Gerando…";
     try {
-      const c = await montarCaderno();
+      const c = await assembleNotebook();
       window.__ultimoCaderno = c;
-      await imprimir(c.html, `${c.titulo} - caderno`);
+      await printHtml(c.html, `${c.titulo} - caderno`);
     } finally {
       btn.disabled = false;
       btn.textContent = "Gerar PDF";
@@ -1070,48 +1075,48 @@ ${corpo || "<p>Nenhum item com essas opções.</p>"}
   }
   // Imprime um HTML: no app Android pelo serviço de impressão do sistema (plugin Impressao, que tem "Salvar como PDF");
   // no navegador, por um iframe escondido e a janela de impressão.
-  async function imprimir(html, titulo) {
+  async function printHtml(html, titulo) {
     const Cap = window.Capacitor,
-      nativo = Cap?.isNativePlatform?.();
-    const plug = nativo && (Cap.Plugins?.Impressao || Cap.registerPlugin?.("Impressao"));
+      isNative = Cap?.isNativePlatform?.();
+    const plug = isNative && (Cap.Plugins?.Impressao || Cap.registerPlugin?.("Impressao"));
     if (plug && Cap.getPlatform?.() === "android") {
       try {
-        await plug.imprimir({ html, titulo });
+        await plug.printHtml({ html, titulo });
         return;
       } catch (_) {
-        aviso("Não foi possível abrir a impressão do Android.");
+        toastMsg("Não foi possível abrir a impressão do Android.");
         return;
       }
     }
-    const fr = document.createElement("iframe");
-    fr.className = "fr-impressao";
-    fr.setAttribute("aria-hidden", "true");
-    fr.tabIndex = -1;
-    fr.style.cssText = "position:fixed;right:0;bottom:0;width:0;height:0;border:0;visibility:hidden";
-    document.body.appendChild(fr);
-    fr.srcdoc = html;
+    const frame = document.createElement("iframe");
+    frame.className = "fr-impressao";
+    frame.setAttribute("aria-hidden", "true");
+    frame.tabIndex = -1;
+    frame.style.cssText = "position:fixed;right:0;bottom:0;width:0;height:0;border:0;visibility:hidden";
+    document.body.appendChild(frame);
+    frame.srcdoc = html;
     await new Promise(r => {
-      fr.onload = r;
+      frame.onload = r;
       setTimeout(r, 1500);
     });
     if (window.__semImprimir) return; // testes automáticos: só monta o caderno
     try {
-      fr.contentWindow.focus();
-      fr.contentWindow.print();
+      frame.contentWindow.focus();
+      frame.contentWindow.print();
     } catch (_) {
-      aviso("Este navegador não permite imprimir; tente no Chrome, Edge ou Safari.");
+      toastMsg("Este navegador não permite imprimir; tente no Chrome, Edge ou Safari.");
     }
-    setTimeout(() => fr.remove(), 60000);
+    setTimeout(() => frame.remove(), 60000);
   }
 
   // ---------- Baixar e importar meus dados (JSON) ----------
-  async function baixarDados() {
+  async function downloadData() {
     await pronto;
-    const dados = { formato: "biblia-interlinear-anotacoes", versao: 1, exportado_em: new Date().toISOString(), aparelho, colecoes: {} };
-    for (const c of SINC) dados.colecoes[c] = db ? await db[c].toArray() : [...memoria[c].values()];
-    const json = JSON.stringify(dados, null, 1);
-    const nome = `biblia-interlinear-anotacoes-${dados.exportado_em.slice(0, 10)}.json`;
-    window.__ultimoBackup = dados;
+    const payload = { formato: "biblia-interlinear-anotacoes", versao: 1, exportado_em: new Date().toISOString(), aparelho, colecoes: {} };
+    for (const c of SYNCED) payload.colecoes[c] = db ? await db[c].toArray() : [...memory[c].values()];
+    const json = JSON.stringify(payload, null, 1);
+    const nome = `biblia-interlinear-anotacoes-${payload.exportado_em.slice(0, 10)}.json`;
+    window.__ultimoBackup = payload;
     const Cap = window.Capacitor;
     if (Cap?.isNativePlatform?.() && Cap.Plugins?.Filesystem && Cap.Plugins?.Share) {
       try {
@@ -1130,75 +1135,76 @@ ${corpo || "<p>Nenhum item com essas opções.</p>"}
     a.click();
     a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 10000);
-    aviso("Arquivo de backup baixado.");
+    toastMsg("Arquivo de backup baixado.");
   }
   // Junta o arquivo com o que já está no aparelho: registro novo entra; registro que já existe fica com a versão mais recente.
-  async function importar(dados) {
-    if (!dados || dados.formato !== "biblia-interlinear-anotacoes" || !dados.colecoes)
+  async function importData(payload) {
+    if (!payload || payload.formato !== "biblia-interlinear-anotacoes" || !payload.colecoes)
       throw new Error("Este arquivo não é um backup de anotações da Bíblia Interlinear.");
     await pronto;
-    let novos = 0,
-      atualizados = 0,
-      iguais = 0;
-    for (const c of SINC) {
-      for (const r of dados.colecoes[c] || []) {
-        const res = await mesclar(c, r);
-        if (res === "novo") novos++;
-        else if (res === "atualizado") atualizados++;
-        else if (res === "igual") iguais++;
+    let added = 0,
+      updated = 0,
+      same = 0;
+    for (const c of SYNCED) {
+      for (const r of payload.colecoes[c] || []) {
+        const res = await merge(c, r);
+        if (res === "novo") added++;
+        else if (res === "atualizado") updated++;
+        else if (res === "igual") same++;
       }
     }
-    avisar();
-    pintar();
-    return { novos, atualizados, iguais };
+    notify();
+    paint();
+    return { added, updated, same };
   }
 
   // ---------- mescla (backup e sincronização) ----------
   // Junta um registro vindo de fora: vence o relógio maior (a mesma versão aplicada duas vezes não muda nada).
   // Nota editada nos dois lados ao mesmo tempo — a daqui ainda não enviada e a de fora não partiu da versão daqui —
   // vira duas: a vencedora fica com o id e a outra vira uma cópia "(conflito de dd/mm)". Nenhum texto se perde.
-  const pendente = async (c, id) => (db ? (await db.fila.where("id").equals(id).count()) > 0 : false);
-  const conflitoDeNota = (aqui, fora, pend) =>
-    pend &&
-    !aqui.apagado &&
-    !fora.apagado &&
-    fora.base !== aqui.relogio &&
-    ((aqui.texto || "") !== (fora.texto || "") || (aqui.titulo || "") !== (fora.titulo || ""));
-  async function copiaDeConflito(n) {
+  const pendingCall = async (c, id) => (db ? (await db.fila.where("id").equals(id).count()) > 0 : false);
+  const isNoteConflict = (localRec, remoteRec, pendingFlag) =>
+    pendingFlag &&
+    !localRec.apagado &&
+    !remoteRec.apagado &&
+    remoteRec.base !== localRec.relogio &&
+    ((localRec.texto || "") !== (remoteRec.texto || "") || (localRec.titulo || "") !== (remoteRec.titulo || ""));
+  async function conflictCopy(n) {
     const d = new Date(Number((n.relogio || "").split("-")[0]) || Date.now());
     const quando = `${String(d.getDate()).padStart(2, "0")}/${String(d.getMonth() + 1).padStart(2, "0")}`;
-    const copia = { ...n, id: uuid(), titulo: `${n.titulo || "Nota"} (conflito de ${quando})` };
-    delete copia.relogio;
-    delete copia.base;
-    delete copia.criado_em;
-    return gravar("notas", copia);
+    const copy = { ...n, id: uuid(), titulo: `${n.titulo || "Nota"} (conflito de ${quando})` };
+    delete copy.relogio;
+    delete copy.base;
+    delete copy.criado_em;
+    return save("notas", copy);
   }
-  async function mesclar(c, r, { daNuvem = false } = {}) {
-    if (!r || !r.id || !SINC.includes(c)) return "ignorado";
+  async function merge(c, r, { fromCloud = false } = {}) {
+    if (!r || !r.id || !SYNCED.includes(c)) return "ignorado";
     await pronto;
-    const atual = db ? await db[c].get(r.id) : memoria[c].get(r.id);
+    const currentChapter = db ? await db[c].get(r.id) : memory[c].get(r.id);
     if (r.relogio) relogio(r.relogio.split("-").slice(0, 2).join("-"));
-    if (atual && (atual.relogio || "") >= (r.relogio || "")) {
-      if (c === "notas" && atual.relogio !== r.relogio && conflitoDeNota(atual, r, await pendente(c, r.id))) await copiaDeConflito(r);
+    if (currentChapter && (currentChapter.relogio || "") >= (r.relogio || "")) {
+      if (c === "notas" && currentChapter.relogio !== r.relogio && isNoteConflict(currentChapter, r, await pendingCall(c, r.id)))
+        await conflictCopy(r);
       return "igual";
     }
-    const conflito = c === "notas" && atual && conflitoDeNota(atual, r, await pendente(c, r.id));
-    const novo = { ...r };
-    delete novo.local;
+    const conflict = c === "notas" && currentChapter && isNoteConflict(currentChapter, r, await pendingCall(c, r.id));
+    const fresh = { ...r };
+    delete fresh.local;
     if (db)
       await db.transaction("rw", db[c], db.fila, async () => {
-        await db[c].put(novo);
-        if (daNuvem)
+        await db[c].put(fresh);
+        if (fromCloud)
           await db.fila.where("id").equals(r.id).delete(); // a versão daqui perdeu: não reenviar
         else await db.fila.add({ colecao: c, id: r.id });
       });
-    else memoria[c].set(r.id, novo);
-    if (conflito) await copiaDeConflito(atual);
-    return atual ? "atualizado" : "novo";
+    else memory[c].set(r.id, fresh);
+    if (conflict) await conflictCopy(currentChapter);
+    return currentChapter ? "atualizado" : "novo";
   }
   // Acesso de baixo nível para a sincronização (web/sincronizar.js)
-  const banco = {
-    colecoes: SINC,
+  const storage = {
+    colecoes: SYNCED,
     aparelho,
     persistente: () => !!db,
     async fila() {
@@ -1209,24 +1215,24 @@ ${corpo || "<p>Nenhum item com essas opções.</p>"}
       await pronto;
       if (db && seqs.length) await db.fila.bulkDelete(seqs);
     },
-    async ler(c, id) {
+    async readStorage(c, id) {
       await pronto;
-      return db ? db[c].get(id) : memoria[c].get(id);
+      return db ? db[c].get(id) : memory[c].get(id);
     },
     async brutos(c) {
       await pronto;
-      return db ? db[c].toArray() : [...memoria[c].values()];
+      return db ? db[c].toArray() : [...memory[c].values()];
     },
-    mesclar,
+    merge,
     aplicado() {
-      avisar();
-      pintar();
+      notify();
+      paint();
     },
     async estado(k, v) {
       await pronto;
       if (!db) {
-        if (v !== undefined) memoriaEstado[k] = v;
-        return memoriaEstado[k];
+        if (v !== undefined) memoryState[k] = v;
+        return memoryState[k];
       }
       if (v === undefined) return (await db.estado.get(k))?.valor;
       await db.estado.put({ chave: k, valor: v });
@@ -1235,14 +1241,14 @@ ${corpo || "<p>Nenhum item com essas opções.</p>"}
     async purgar(c, ids) {
       await pronto;
       if (db) await db[c].bulkDelete(ids);
-      else ids.forEach(i => memoria[c].delete(i));
+      else ids.forEach(i => memory[c].delete(i));
     },
     // "Manter só neste aparelho": o que já existe não sobe para a conta (até ser editado de novo)
     async soNesteAparelho() {
       await pronto;
       if (!db) return;
-      await db.transaction("rw", [...SINC.map(c => db[c]), db.fila], async () => {
-        for (const c of SINC)
+      await db.transaction("rw", [...SYNCED.map(c => db[c]), db.fila], async () => {
+        for (const c of SYNCED)
           await db[c].toCollection().modify(r => {
             r.local = true;
           });
@@ -1253,8 +1259,8 @@ ${corpo || "<p>Nenhum item com essas opções.</p>"}
     async enfileirarTudo() {
       await pronto;
       if (!db) return;
-      await db.transaction("rw", [...SINC.map(c => db[c]), db.fila], async () => {
-        for (const c of SINC) {
+      await db.transaction("rw", [...SYNCED.map(c => db[c]), db.fila], async () => {
+        for (const c of SYNCED) {
           const ids = (await db[c].toArray()).filter(r => !r.local).map(r => ({ colecao: c, id: r.id }));
           if (ids.length) await db.fila.bulkAdd(ids);
         }
@@ -1263,13 +1269,13 @@ ${corpo || "<p>Nenhum item com essas opções.</p>"}
     async apagarTudo() {
       await pronto;
       if (db)
-        await db.transaction("rw", [...SINC.map(c => db[c]), db.fila], async () => {
-          for (const c of SINC) await db[c].clear();
+        await db.transaction("rw", [...SYNCED.map(c => db[c]), db.fila], async () => {
+          for (const c of SYNCED) await db[c].clear();
           await db.fila.clear();
         });
-      else SINC.forEach(c => memoria[c].clear());
-      avisar();
-      pintar();
+      else SYNCED.forEach(c => memory[c].clear());
+      notify();
+      paint();
     }
   };
   $("#mn-arquivo").addEventListener("change", async e => {
@@ -1277,22 +1283,22 @@ ${corpo || "<p>Nenhum item com essas opções.</p>"}
     e.target.value = "";
     if (!f) return;
     try {
-      const r = await importar(JSON.parse(await f.text()));
-      aviso(`Importado: ${r.novos} novos, ${r.atualizados} atualizados, ${r.iguais} já estavam aqui.`);
-      desenharLista();
+      const r = await importData(JSON.parse(await f.text()));
+      toastMsg(`Importado: ${r.added} novos, ${r.updated} atualizados, ${r.same} já estavam aqui.`);
+      renderList();
     } catch (err) {
-      aviso(err.message.startsWith("Este arquivo") ? err.message : "Não foi possível ler o arquivo.");
+      toastMsg(err.message.startsWith("Este arquivo") ? err.message : "Não foi possível ler o arquivo.");
     }
   });
 
-  let avisoTimer = 0;
-  function aviso(msg) {
+  let toastMsgTimer = 0;
+  function toastMsg(msg) {
     const t = document.getElementById("toast");
     if (!t) return;
     t.textContent = msg;
     t.hidden = false;
-    clearTimeout(avisoTimer);
-    avisoTimer = setTimeout(
+    clearTimeout(toastMsgTimer);
+    toastMsgTimer = setTimeout(
       () => {
         t.hidden = true;
       },
@@ -1302,33 +1308,33 @@ ${corpo || "<p>Nenhum item com essas opções.</p>"}
 
   // ---------- integração com o leitor ----------
   document.addEventListener("capitulo", e => {
-    atual = e.detail;
-    fecharBarra();
-    pintar();
+    currentChapter = e.detail;
+    closeBar();
+    paint();
   });
   document.addEventListener("keydown", e => {
-    if (e.key === "Escape" && !barra.hidden) fecharBarra();
+    if (e.key === "Escape" && !bar.hidden) closeBar();
   });
   window.Anotacoes = {
-    abrirLista,
-    abrirNota,
-    fecharBarra,
-    pintar,
-    todos,
-    gravar,
+    openList,
+    openNote,
+    closeBar,
+    paint,
+    allRecords,
+    save,
     apagar,
-    importar,
-    baixarDados,
-    montarCaderno,
-    imprimir,
-    contar: async () => (await Promise.all(["notas", "marcacoes", "favoritos"].map(todos))).reduce((s, l) => s + l.length, 0),
-    aoMudar: f => ouvintes.push(f),
-    exportar: async () => Object.fromEntries(await Promise.all(COLECOES.map(async c => [c, await todos(c)]))),
+    importData,
+    downloadData,
+    assembleNotebook,
+    printHtml,
+    contar: async () => (await Promise.all(["notas", "marcacoes", "favoritos"].map(allRecords))).reduce((s, l) => s + l.length, 0),
+    aoMudar: f => listeners.push(f),
+    exportar: async () => Object.fromEntries(await Promise.all(COLLECTIONS.map(async c => [c, await allRecords(c)]))),
     local: () => !!db,
-    banco
+    storage
   };
-  if (atual === null && window.__capituloAtual) {
-    atual = window.__capituloAtual;
-    pintar();
+  if (currentChapter === null && window.__capituloAtual) {
+    currentChapter = window.__capituloAtual;
+    paint();
   }
 })();

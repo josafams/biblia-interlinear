@@ -10,23 +10,23 @@ async function abrirComDados(page) {
     const A = window.Anotacoes,
       id = () => crypto.randomUUID();
     const anc = (livro, cap, ver, extra = {}) => ({ livro, cap, ver, ver_fim: ver, camada: "versiculo", ...extra });
-    const et = await A.gravar("etiquetas", { id: id(), nome: "estudo" });
-    await A.gravar("notas", {
+    const tag = await A.save("etiquetas", { id: id(), nome: "estudo" });
+    await A.save("notas", {
       id: id(),
       cap: "GEN.1",
       ancora: anc("GEN", 1, 2),
       titulo: "Tohu e bohu",
       texto: "Rima no hebraico.",
-      etiquetas: [et.id]
+      etiquetas: [tag.id]
     });
-    await A.gravar("marcacoes", {
+    await A.save("marcacoes", {
       id: id(),
       cap: "GEN.1",
       ancora: anc("GEN", 1, 3, { camada: "blivre", inicio: 14, fim: 35, trecho: "Haja luz; e houve luz" }),
       cor: "amarelo",
       etiquetas: []
     });
-    await A.gravar("favoritos", { id: id(), cap: "PSA.23", ancora: anc("PSA", 23, 1) });
+    await A.save("favoritos", { id: id(), cap: "PSA.23", ancora: anc("PSA", 23, 1) });
     window.__semImprimir = true;
   });
   await page.click("#open-toc");
@@ -70,12 +70,12 @@ test("caderno só com os itens selecionados e sem o texto", async ({ page }) => 
 test("baixar meus dados e importar em outro aparelho", async ({ page, browser }, info) => {
   await abrirComDados(page);
   const [dl] = await Promise.all([page.waitForEvent("download"), page.click("#mn-baixar")]);
-  const arq = info.outputPath("backup.json");
-  await dl.saveAs(arq);
-  const dados = JSON.parse(fs.readFileSync(arq, "utf8"));
-  expect(dados.formato).toBe("biblia-interlinear-anotacoes");
-  expect(dados.colecoes.notas).toHaveLength(1);
-  const total = Object.values(dados.colecoes).reduce((n, l) => n + l.length, 0);
+  const file = info.outputPath("backup.json");
+  await dl.saveAs(file);
+  const payload = JSON.parse(fs.readFileSync(file, "utf8"));
+  expect(payload.formato).toBe("biblia-interlinear-anotacoes");
+  expect(payload.colecoes.notas).toHaveLength(1);
+  const total = Object.values(payload.colecoes).reduce((n, l) => n + l.length, 0);
   // "outro aparelho": contexto novo, sem nada guardado
   const ctx = await browser.newContext();
   const p2 = await ctx.newPage();
@@ -85,10 +85,10 @@ test("baixar meus dados e importar em outro aparelho", async ({ page, browser },
   await p2.click("#open-minhas");
   await expect(p2.locator(".mn-vazio")).toBeVisible();
   await p2.waitForFunction(() => window.Anotacoes);
-  await p2.setInputFiles("#mn-arquivo", arq);
+  await p2.setInputFiles("#mn-arquivo", file);
   await expect(p2.locator("#toast")).toContainText(`${total} novos`);
   await expect(p2.locator(".mn-item")).toHaveCount(3);
-  await p2.setInputFiles("#mn-arquivo", arq);
+  await p2.setInputFiles("#mn-arquivo", file);
   await expect(p2.locator("#toast")).toContainText("0 novos");
   await p2.keyboard.press("Escape");
   await expect(p2.locator("#v3 mark.mk-amarelo")).toHaveText("Haja luz; e houve luz");

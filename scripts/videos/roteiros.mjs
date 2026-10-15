@@ -15,15 +15,15 @@ export const grupos = [
 
 // Ações usadas pelos roteiros (t = ajudante de gravação: t.tocar, t.digitar, t.rolar, t.esperar…)
 const abrirIndice = t => t.tocar("#open-toc");
-const fecharPainel = t => t.tecla("Escape");
+const fecharPainel = t => t.onKey("Escape");
 // anotações de exemplo para os vídeos que mostram a lista, o PDF e o backup
 const dadosDeExemplo = async page => {
   await page.evaluate(async () => {
     const A = window.Anotacoes,
       id = () => crypto.randomUUID();
     const anc = (livro, cap, ver, trecho) => ({ livro, cap, ver, ver_fim: ver, camada: "versiculo", trecho });
-    const et = await A.gravar("etiquetas", { id: id(), nome: "promessas" });
-    await A.gravar("notas", {
+    const tag = await A.save("etiquetas", { id: id(), nome: "promessas" });
+    await A.save("notas", {
       id: id(),
       cap: "GEN.1",
       ancora: anc("GEN", 1, 2),
@@ -31,28 +31,28 @@ const dadosDeExemplo = async page => {
       texto: "Sem forma e vazia: rima no hebraico.",
       etiquetas: []
     });
-    await A.gravar("marcacoes", {
+    await A.save("marcacoes", {
       id: id(),
       cap: "GEN.1",
       ancora: anc("GEN", 1, 3, "E disse Deus: Haja luz; e houve luz."),
       cor: "amarelo",
       etiquetas: []
     });
-    await A.gravar("marcacoes", {
+    await A.save("marcacoes", {
       id: id(),
       cap: "PSA.23",
       ancora: anc("PSA", 23, 1, "Salmo de Davi: O SENHOR é meu pastor, nada me faltará."),
       cor: "verde",
-      etiquetas: [et.id]
+      etiquetas: [tag.id]
     });
-    await A.gravar("favoritos", { id: id(), cap: "JHN.3", ancora: anc("JHN", 3, 16), etiquetas: [] });
-    await A.gravar("notas", {
+    await A.save("favoritos", { id: id(), cap: "JHN.3", ancora: anc("JHN", 3, 16), etiquetas: [] });
+    await A.save("notas", {
       id: id(),
       cap: "ROM.8",
       ancora: anc("ROM", 8, 28),
       titulo: "",
       texto: "Todas as coisas contribuem para o bem.",
-      etiquetas: [et.id]
+      etiquetas: [tag.id]
     });
   });
 };
@@ -72,16 +72,16 @@ async function progressoDeExemplo(page) {
   await page.waitForFunction(() => window.Progresso && window.__livros);
   await page.evaluate(async () => {
     const A = window.Anotacoes,
-      ap = A.banco.aparelho,
+      ap = A.storage.aparelho,
       d0 = new Date(),
-      agora = new Date().toISOString();
+      currentTime = new Date().toISOString();
     const dia = n => {
       const d = new Date(d0.getFullYear(), d0.getMonth(), d0.getDate() - n);
       return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
     };
     for (let n = 0; n < 40; n++)
       if (n % 6 !== 5)
-        await A.gravar("tempo", {
+        await A.save("tempo", {
           id: `${ap}:${dia(n)}`,
           aparelho: ap,
           dia: dia(n),
@@ -91,16 +91,16 @@ async function progressoDeExemplo(page) {
           verbetes: 3
         });
     const lido = async (cod, n) =>
-      A.gravar("leituras", { id: `${cod}.${n}`, livro: cod, n, lido: true, primeira: agora, ultima: agora, vezes: 1 });
+      A.save("leituras", { id: `${cod}.${n}`, livro: cod, n, lido: true, primeira: currentTime, ultima: currentTime, vezes: 1 });
     for (let c = 1; c <= 50; c++) await lido("GEN", c);
     for (const l of ["RUT", "JON", "PHM", "JUD", "OBA"]) for (let c = 1; c <= window.__livros[l].ncaps; c++) await lido(l, c);
     for (let c = 1; c <= 10; c++) await lido("MAT", c);
-    await A.gravar("preferencias", { id: "posicao", cod: "MAT", cap: 11, quando: agora });
+    await A.save("preferencias", { id: "posicao", cod: "MAT", cap: 11, quando: currentTime });
   });
 }
 // simula o computador gravando uma nota na nuvem (um lote de outro aparelho)
 function notaDeOutroAparelho(t) {
-  const agora = new Date().toISOString();
+  const currentTime = new Date().toISOString();
   const nota = {
     id: "nota-do-computador",
     cap: "GEN.1",
@@ -108,15 +108,21 @@ function notaDeOutroAparelho(t) {
     titulo: "No princípio",
     texto: "Bereshit: “no princípio”. A Bíblia começa com Deus, não com explicações.",
     etiquetas: [],
-    criado_em: agora,
-    alterado_em: agora,
+    criado_em: currentTime,
+    alterado_em: currentTime,
     base: null,
     apagado: false,
     relogio: `${String(Date.now()).padStart(14, "0")}-0000-computad`
   };
   t.nuvem.criar(
     `lote-computad-${Date.now()}.json`,
-    JSON.stringify({ formato: "biblia-interlinear-lote", versao: 1, aparelho: "computad", criado_em: agora, colecoes: { notas: [nota] } })
+    JSON.stringify({
+      formato: "biblia-interlinear-lote",
+      versao: 1,
+      aparelho: "computad",
+      criado_em: currentTime,
+      colecoes: { notas: [nota] }
+    })
   );
   return t.esperar(400);
 }
@@ -129,11 +135,11 @@ export const videos = [
     titulo: "Abrir um livro e um capítulo",
     desc: "Pelo índice, com um toque no capítulo.",
     inicio: "GEN.1",
-    passos: [
+    steps: [
       { legenda: "Toque em Índice, no canto de cima.", faz: abrirIndice },
       { legenda: "Escolha o livro: Êx é Êxodo.", faz: t => t.tocar('.bchip[data-cod="EXO"]') },
       { legenda: "Toque no capítulo: ele abre direto.", faz: t => t.tocar('.chchip[data-ch="20"]') },
-      { legenda: "Role para ler. O topo mostra onde você está.", faz: t => t.rolar(700) }
+      { legenda: "Role para ler. O topo mostra onde você está.", faz: t => t.doScroll(700) }
     ]
   },
   {
@@ -143,7 +149,7 @@ export const videos = [
     titulo: "Ir para qualquer versículo",
     desc: "Jo 3:16, sl 23, 1:14 ou cap 12.",
     inicio: "GEN.1",
-    passos: [
+    steps: [
       { legenda: "Abra o Índice.", faz: abrirIndice },
       { legenda: "Em “Ir para”, digite livro, capítulo e versículo: jo 3:16.", faz: t => t.digitar("#go-in", "jo 3:16") },
       { legenda: "Toque em Ir: o versículo abre destacado.", faz: t => t.tocar("#go-form button[type=submit]") },
@@ -164,7 +170,7 @@ export const videos = [
     titulo: "Capítulo anterior e próximo",
     desc: "E a lista de versículos do capítulo.",
     inicio: "RUT.1",
-    passos: [
+    steps: [
       { legenda: "No fim do capítulo, use as setas para o anterior ou o próximo.", faz: t => t.rolarAte(".chnav") },
       { legenda: "Toque em → para ir ao próximo capítulo.", faz: t => t.tocar(".chnav .next") },
       {
@@ -184,7 +190,7 @@ export const videos = [
     titulo: "Como ler um cartão",
     desc: "Palavra, transliteração, Strong e glosa.",
     inicio: "GEN.1",
-    passos: [
+    steps: [
       { legenda: "Cada cartão é uma palavra do original.", faz: t => t.realcar('.word[data-v="0"][data-i="0"]') },
       { legenda: "O hebraico se lê da direita para a esquerda.", faz: t => t.realcar("#v1 .words") },
       { legenda: "Embaixo: transliteração, número Strong e glosa em português.", faz: t => t.realcar('.word[data-v="0"][data-i="1"]') },
@@ -198,7 +204,7 @@ export const videos = [
     titulo: "Abrir um verbete",
     desc: "Origem, significado e de verbete em verbete.",
     inicio: "GEN.1",
-    passos: [
+    steps: [
       { legenda: "Toque numa palavra para abrir o verbete.", faz: t => t.tocar('.word[data-v="0"][data-i="0"]') },
       { legenda: "Veja origem, significado e como a Bíblia Livre traduz.", faz: t => t.rolarPainel("#detail", 300) },
       { legenda: "Toque num número Strong para ir ao verbete ligado.", faz: t => t.tocar("#detail .ref") },
@@ -212,7 +218,7 @@ export const videos = [
     titulo: "Léxico do capítulo",
     desc: "Todas as palavras do capítulo, com busca.",
     inicio: "GEN.1",
-    passos: [
+    steps: [
       { legenda: "No fim do capítulo fica o léxico de todas as palavras.", faz: t => t.rolarAte("#lexico") },
       { legenda: "Busque em português, pela transliteração ou pelo número: luz.", faz: t => t.digitar("#lsearch", "luz") },
       { legenda: "Toque numa linha para abrir o verbete.", faz: t => t.tocar("#llist .lrow") }
@@ -225,10 +231,10 @@ export const videos = [
     titulo: "Sobre o livro",
     desc: "Resumo, pessoas, linha do tempo e lugares.",
     inicio: "RUT.1",
-    passos: [
+    steps: [
       { legenda: "Toque em “Sobre o livro”, acima do texto.", faz: t => t.tocar("#sobre summary") },
-      { legenda: "Resumo, autoria e data, pessoas principais…", faz: t => t.rolar(500) },
-      { legenda: "…linha do tempo, contexto e lugares.", faz: t => t.rolar(700) }
+      { legenda: "Resumo, autoria e data, pessoas principais…", faz: t => t.doScroll(500) },
+      { legenda: "…linha do tempo, contexto e lugares.", faz: t => t.doScroll(700) }
     ]
   },
   {
@@ -238,7 +244,7 @@ export const videos = [
     titulo: "Ouvir o versículo",
     desc: "Realce palavra a palavra e voz mais lenta.",
     inicio: "GEN.1",
-    passos: [
+    steps: [
       { legenda: "Toque em Ouvir ao lado do número do versículo.", faz: t => t.tocar('.vsay[data-verse="0"]') },
       { legenda: "Cada palavra é realçada enquanto é lida.", faz: t => t.esperar(2500) },
       {
@@ -257,7 +263,7 @@ export const videos = [
     titulo: "Revisão ⚑ e ketiv/qere",
     desc: "O que a revisão automática encontrou.",
     inicio: "GEN.8",
-    passos: [
+    steps: [
       { legenda: "O sinal ⚑ mostra pontos da revisão automática no versículo.", faz: t => t.rolarAte("details.marks") },
       { legenda: "Toque para ver a lista.", faz: t => t.tocar("details.marks summary") },
       { legenda: "Palavras com leitura à margem (qere) mostram a forma escrita (ketiv) no verbete.", faz: t => t.tocar(".word.kt") }
@@ -270,8 +276,8 @@ export const videos = [
     titulo: "Usar pelo teclado",
     desc: "Tab, setas, Enter e Esc.",
     inicio: "GEN.1",
-    so: "computador",
-    passos: [
+    os: "computador",
+    steps: [
       {
         legenda: "Tab passa de versículo em versículo.",
         faz: async t => {
@@ -281,11 +287,11 @@ export const videos = [
       {
         legenda: "As setas ← → andam entre as palavras no sentido da leitura.",
         faz: async t => {
-          await t.tecla("ArrowLeft");
-          await t.tecla("ArrowLeft");
+          await t.onKey("ArrowLeft");
+          await t.onKey("ArrowLeft");
         }
       },
-      { legenda: "Enter abre o verbete.", faz: t => t.tecla("Enter") },
+      { legenda: "Enter abre o verbete.", faz: t => t.onKey("Enter") },
       { legenda: "Esc fecha.", faz: fecharPainel }
     ]
   },
@@ -296,7 +302,7 @@ export const videos = [
     titulo: "Claro, escuro e temas",
     desc: "Seis temas de cor, ou seguir o aparelho.",
     inicio: "PSA.23",
-    passos: [
+    steps: [
       { legenda: "O botão da lua troca para o tema escuro.", faz: t => t.tocar("#to-dark") },
       { legenda: "Em Aa há seis temas de cor.", faz: t => t.tocar("#open-look") },
       { legenda: "Escolha um tema: Papel.", faz: t => t.tocar('.tcard[data-p="papel"]') },
@@ -310,7 +316,7 @@ export const videos = [
     titulo: "Tamanho do texto",
     desc: "Aumentar e diminuir.",
     inicio: "PSA.23",
-    passos: [
+    steps: [
       { legenda: "Toque em Aa.", faz: t => t.tocar("#open-look") },
       {
         legenda: "Use A+ para aumentar o texto.",
@@ -329,7 +335,7 @@ export const videos = [
     titulo: "Leitura fácil e cantilação",
     desc: "Fonte, espaçamento e sinais do hebraico.",
     inicio: "GEN.1",
-    passos: [
+    steps: [
       {
         legenda: "Em Aa › Leitura estão os ajustes de leitura.",
         faz: async t => {
@@ -349,7 +355,7 @@ export const videos = [
     titulo: "Camadas dos cartões",
     desc: "Ligar e desligar o que aparece.",
     inicio: "GEN.1",
-    passos: [
+    steps: [
       {
         legenda: "Em Aa › Mostrar nos cartões, escolha o que aparece.",
         faz: async t => {
@@ -370,13 +376,13 @@ export const videos = [
     titulo: "Trocar de modo",
     desc: "Bíblia, Original, Interlinear, Estudo.",
     inicio: "GEN.1",
-    passos: [
+    steps: [
       { legenda: "Toque em Aa: o primeiro grupo é o modo de leitura.", faz: t => t.tocar("#open-look") },
       {
         legenda: "Bíblia: só a Bíblia Livre, em parágrafos, como uma Bíblia comum.",
         faz: async t => {
           await t.tocar('.mcard[data-modo="biblia"]');
-          await t.tecla("Escape");
+          await t.onKey("Escape");
         }
       },
       {
@@ -384,7 +390,7 @@ export const videos = [
         faz: async t => {
           await t.tocar("#open-look");
           await t.tocar('.mcard[data-modo="original"]');
-          await t.tecla("Escape");
+          await t.onKey("Escape");
         }
       },
       {
@@ -392,7 +398,7 @@ export const videos = [
         faz: async t => {
           await t.tocar("#open-look");
           await t.tocar('.mcard[data-modo="interlinear"]');
-          await t.tecla("Escape");
+          await t.onKey("Escape");
         }
       },
       { legenda: "O botão ⇄ no topo volta ao modo anterior.", faz: t => t.tocar("#mode-swap") }
@@ -405,7 +411,7 @@ export const videos = [
     titulo: "Modo Personalizado",
     desc: "Escolher cada item da tela.",
     inicio: "GEN.1",
-    passos: [
+    steps: [
       {
         legenda: "Em Aa, escolha um modo para começar: Estudo.",
         faz: async t => {
@@ -421,7 +427,7 @@ export const videos = [
         }
       },
       { legenda: "Ao mudar qualquer item, o modo vira Personalizado.", faz: t => t.realcar('.mcard[data-modo="personalizado"]') },
-      { legenda: "A escolha fica guardada para a próxima vez.", faz: t => t.tecla("Escape") }
+      { legenda: "A escolha fica guardada para a próxima vez.", faz: t => t.onKey("Escape") }
     ]
   },
   {
@@ -431,13 +437,13 @@ export const videos = [
     titulo: "Interlinear de um versículo",
     desc: "Lendo no modo Bíblia, com um toque.",
     inicio: "GEN.1",
-    passos: [
+    steps: [
       {
         legenda: "No modo Bíblia o texto corre em parágrafos.",
         faz: async t => {
           await t.tocar("#open-look");
           await t.tocar('.mcard[data-modo="biblia"]');
-          await t.tecla("Escape");
+          await t.onKey("Escape");
         }
       },
       { legenda: "Toque no número de um versículo.", faz: t => t.tocar("#v3 .vnum") },
@@ -452,7 +458,7 @@ export const videos = [
     titulo: "Marcar com cores",
     desc: "Versículo, trecho ou palavra do original.",
     inicio: "GEN.1",
-    passos: [
+    steps: [
       { legenda: "Toque em ⋯ ao lado do versículo (ou toque longo nele).", faz: t => t.tocar("#v1 .vmark") },
       {
         legenda: "Escolha uma das cinco cores.",
@@ -487,12 +493,12 @@ export const videos = [
     titulo: "Escrever uma nota",
     desc: "Ligada ao versículo; salva sozinha.",
     inicio: "GEN.1",
-    passos: [
+    steps: [
       {
         legenda: "Toque em ⋯ no versículo e depois em Nota.",
         faz: async t => {
           await t.tocar("#v2 .vmark");
-          await t.tocar('#mbar [data-acao="nota"]');
+          await t.tocar('#mbar [data-action="nota"]');
         }
       },
       {
@@ -516,18 +522,18 @@ export const videos = [
     titulo: "Favoritos e etiquetas",
     desc: "Organizar por assunto.",
     inicio: "PSA.23",
-    passos: [
+    steps: [
       {
         legenda: "Toque em ⋯ no versículo e em Favoritar: aparece a estrela.",
         faz: async t => {
           await t.tocar("#v1 .vmark");
-          await t.tocar('#mbar [data-acao="fav"]');
+          await t.tocar('#mbar [data-action="fav"]');
         }
       },
       {
         legenda: "Em Etiqueta, crie uma etiqueta: promessas.",
         faz: async t => {
-          await t.tocar('#mbar [data-acao="etiqueta"]');
+          await t.tocar('#mbar [data-action="etiqueta"]');
           await t.digitar("#mb-et-nome", "promessas");
           await t.tocar("#mb-nova-et");
         }
@@ -546,8 +552,8 @@ export const videos = [
     titulo: "Minhas anotações",
     desc: "Buscar e filtrar tudo.",
     inicio: "GEN.1",
-    preparar: dadosDeExemplo,
-    passos: [
+    prepare: dadosDeExemplo,
+    steps: [
       {
         legenda: "No Índice, toque em Minhas anotações.",
         faz: async t => {
@@ -575,8 +581,8 @@ export const videos = [
     titulo: "Exportar em PDF",
     desc: "O caderno de estudo, pronto para salvar.",
     inicio: "GEN.1",
-    preparar: dadosDeExemplo,
-    passos: [
+    prepare: dadosDeExemplo,
+    steps: [
       {
         legenda: "Em Minhas anotações, toque em Exportar PDF.",
         faz: async t => {
@@ -621,8 +627,8 @@ export const videos = [
     titulo: "Baixar e importar meus dados",
     desc: "Backup em arquivo.",
     inicio: "GEN.1",
-    preparar: dadosDeExemplo,
-    passos: [
+    prepare: dadosDeExemplo,
+    steps: [
       {
         legenda: "Em Minhas anotações, toque em Baixar meus dados.",
         faz: async t => {
@@ -642,7 +648,7 @@ export const videos = [
             await d.open();
             for (const tb of d.tables) await tb.clear();
             d.close();
-            await window.Anotacoes.abrirLista();
+            await window.Anotacoes.openList();
           }); // simula o aparelho novo
           await t.esperar(600);
           await t.realcar("#mn-importar");
@@ -664,8 +670,8 @@ export const videos = [
     desc: "E enviar o que já foi anotado.",
     inicio: "GEN.1",
     google: true,
-    preparar: dadosDeExemplo,
-    passos: [
+    prepare: dadosDeExemplo,
+    steps: [
       {
         legenda: "No Índice, toque em Entrar com Google.",
         faz: async t => {
@@ -696,14 +702,14 @@ export const videos = [
     desc: "A nota feita no computador aparece no celular.",
     inicio: "GEN.1",
     google: true,
-    antes: entrarNaConta,
-    passos: [
+    before: entrarNaConta,
+    steps: [
       { legenda: "Com a mesma conta no celular e no computador, as anotações valem nos dois.", faz: t => t.esperar(600) },
       { legenda: "Uma nota escrita no outro aparelho…", faz: t => notaDeOutroAparelho(t) },
       {
         legenda: "…chega aqui sozinha em poucos segundos, com o app aberto.",
         faz: async t => {
-          await t.page.evaluate(() => window.Sinc.agora());
+          await t.page.evaluate(() => window.Sinc.currentTime());
           await t.page.locator("#v1 .vnota").waitFor();
           await t.realcar("#v1 .vnota");
         }
@@ -719,9 +725,9 @@ export const videos = [
     desc: "Seus dados, sob seu controle.",
     inicio: "GEN.1",
     google: true,
-    preparar: dadosDeExemplo,
-    antes: entrarNaConta,
-    passos: [
+    prepare: dadosDeExemplo,
+    before: entrarNaConta,
+    steps: [
       {
         legenda: "Sua conta fica no topo do Índice.",
         faz: async t => {
@@ -757,7 +763,7 @@ export const videos = [
     titulo: "Perguntas ao texto",
     desc: "Ligar, responder e ver o progresso.",
     pronto: false,
-    passos: []
+    steps: []
   },
   {
     id: "31",
@@ -767,9 +773,9 @@ export const videos = [
     desc: "Capítulos lidos, tempo e plano de leitura.",
     inicio: "MAT.11",
     google: true,
-    preparar: progressoDeExemplo,
-    antes: entrarNaConta,
-    passos: [
+    prepare: progressoDeExemplo,
+    before: entrarNaConta,
+    steps: [
       {
         legenda: "No Índice, toque em Meu progresso (com a conta Google conectada).",
         faz: async t => {
@@ -786,7 +792,7 @@ export const videos = [
         legenda: "O gráfico mostra o tempo de leitura por dia; dá para ver o mês ou o ano.",
         faz: async t => {
           await t.rolarAte("#progresso .pg-graf");
-          await t.tocar('#progresso [data-aba="mes"]');
+          await t.tocar('#progresso [data-active-tab="mes"]');
         }
       },
       {
@@ -820,7 +826,7 @@ export const videos = [
     titulo: "Instalar na tela inicial",
     desc: "Android e iPhone, sem loja.",
     manual: true,
-    passos: [
+    steps: [
       { legenda: "Android (Chrome): abra o site, toque no menu ⋮ e em “Instalar app” ou “Adicionar à tela inicial”." },
       { legenda: "iPhone (Safari): toque em Compartilhar e em “Adicionar à Tela de Início”." },
       { legenda: "Pronto: o ícone abre a Bíblia em tela cheia, mesmo sem internet." }
@@ -833,7 +839,7 @@ export const videos = [
     titulo: "Instalar o APK",
     desc: "O app com a Bíblia inteira dentro.",
     manual: true,
-    passos: [
+    steps: [
       { legenda: "No celular Android, abra a página Releases › app-android do repositório." },
       { legenda: "Toque no arquivo .apk para baixar." },
       { legenda: "Abra o arquivo baixado e permita instalar apps desta fonte quando o Android pedir." },
@@ -847,7 +853,7 @@ export const videos = [
     titulo: "EPUB no Kindle",
     desc: "Pelo Send to Kindle.",
     manual: true,
-    passos: [
+    steps: [
       { legenda: "Baixe o EPUB na seção Baixar desta página (AT, NT ou um livro, se for mandar por e-mail)." },
       { legenda: "Abra o site ou app Send to Kindle da Amazon e envie o arquivo." },
       { legenda: "O livro aparece na biblioteca do Kindle; toque numa palavra do original para ver a nota." }
@@ -866,7 +872,7 @@ export function resumo() {
       titulo: v.titulo,
       desc: v.desc,
       pronto: v.pronto !== false,
-      passos: v.passos.map(p => p.legenda)
+      steps: v.steps.map(p => p.legenda)
     }))
   };
 }

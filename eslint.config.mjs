@@ -23,7 +23,7 @@ export default [
     files: ["web/**/*.js"],
     languageOptions: {
       sourceType: "script",
-      globals: { ...globals.browser, Dexie: "readonly", google: "readonly" }
+      globals: { ...globals.browser, Dexie: "readonly", google: "readonly", DATA: "readonly" }
     }
   },
   {

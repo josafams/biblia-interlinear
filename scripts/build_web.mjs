@@ -111,9 +111,9 @@ else {
   fs.writeFileSync(path.join(OUT, "videos/videos.js"), "window.__videos = { arquivos: {} };\n");
 }
 
-// ---- anotações: script próprio e Dexie (Apache-2.0) para o banco local ----
-fs.copyFileSync(r("web/anotacoes.js"), path.join(OUT, "anotacoes.js"));
-for (const f of ["conta.js", "google-config.js", "sincronizar.js", "progresso.js"]) fs.copyFileSync(r("web/" + f), path.join(OUT, f));
+// ---- scripts do site e Dexie (Apache-2.0) para o banco local ----
+// todos os scripts do site (leitor, página inicial, anotações, conta, sincronização, progresso)
+for (const f of fs.readdirSync(r("web")).filter(f => f.endsWith(".js"))) fs.copyFileSync(r("web/" + f), path.join(OUT, f));
 fs.mkdirSync(path.join(OUT, "vendor"), { recursive: true });
 fs.copyFileSync(r("node_modules/dexie/dist/dexie.min.js"), path.join(OUT, "vendor/dexie.min.js"));
 fs.copyFileSync(r("node_modules/dexie/LICENSE"), path.join(OUT, "vendor/LICENSE-dexie.txt"));
@@ -189,23 +189,23 @@ console.error(`Versão web gerada em build/web (${files.length + 1} arquivos, ca
 // ---------------------------------------------------------------------------------------------
 async function paginaInicial(livros) {
   const REPO = "https://github.com/josafams/biblia-interlinear";
-  const dados = r("build/data");
-  const cap = (cod, n) => JSON.parse(fs.readFileSync(path.join(dados, "cap", cod, `${n}.json`), "utf8"));
+  const payload = r("build/data");
+  const cap = (cod, n) => JSON.parse(fs.readFileSync(path.join(payload, "cap", cod, `${n}.json`), "utf8"));
   const lex = {
-    H: JSON.parse(fs.readFileSync(path.join(dados, "lex/H.json"), "utf8")),
-    G: JSON.parse(fs.readFileSync(path.join(dados, "lex/G.json"), "utf8"))
+    H: JSON.parse(fs.readFileSync(path.join(payload, "lex/H.json"), "utf8")),
+    G: JSON.parse(fs.readFileSync(path.join(payload, "lex/G.json"), "utf8"))
   };
   let caps = 0,
     vers = 0,
-    pal = 0;
+    originalMarks = 0;
   for (const b of livros)
     for (const c of b.caps) {
       caps++;
-      const f = path.join(dados, "cap", b.cod, `${c.n}.json`);
+      const f = path.join(payload, "cap", b.cod, `${c.n}.json`);
       if (!fs.existsSync(f)) continue;
       for (const v of JSON.parse(fs.readFileSync(f, "utf8")).v) {
         if (v.n > 0) vers++;
-        pal += v.w.length;
+        originalMarks += v.w.length;
       }
     }
   const fmt = n => n.toLocaleString("pt-BR");
@@ -215,11 +215,11 @@ async function paginaInicial(livros) {
       .replace(/\//g, "")
       .replace(/[\u0591-\u05AF\u05BD]/g, "")
       .replace(/[,.;·]$/, "");
-  const cartoes = (v, grego) =>
+  const cartoes = (v, greek) =>
     v.w
       .map(w => {
         const e = lex[w[1][0]]?.[w[1]] || {};
-        return `<div class="wc"><span class="o${grego ? " g" : ""}" lang="${grego ? "grc" : "he"}">${esc(limpa(w[0]))}</span><span class="x">${esc(e.x || "")}</span><span class="s">${esc(w[1])}</span><span class="t">${esc(w[2])}</span></div>`;
+        return `<div class="wc"><span class="o${greek ? " g" : ""}" lang="${greek ? "grc" : "he"}">${esc(limpa(w[0]))}</span><span class="x">${esc(e.x || "")}</span><span class="s">${esc(w[1])}</span><span class="t">${esc(w[2])}</span></div>`;
       })
       .join("");
   const gn = cap("GEN", 1).v.find(v => v.n === 1),
@@ -250,7 +250,7 @@ async function paginaInicial(livros) {
     __N_LIVROS__: fmt(livros.length),
     __N_CAPS__: fmt(caps),
     __N_VERS__: fmt(vers),
-    __N_PALAVRAS__: fmt(pal),
+    __N_PALAVRAS__: fmt(originalMarks),
     __N_VERBETES__: fmt(Object.keys(lex.H).length + Object.keys(lex.G).length),
     __TAM_EPUB_COMPLETA__: tam("build/epub/00-Biblia-Interlinear-completa.epub"),
     __TAM_PDF_COMPLETA__: tam("build/pdf/00-Biblia-Interlinear-completa.pdf"),
