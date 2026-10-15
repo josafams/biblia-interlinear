@@ -1,0 +1,34 @@
+# Confere se o ambiente Docker (compose.yaml, docker/) monta e se as ferramentas funcionam dentro dele.
+name: Docker
+on:
+  push:
+    branches: [main]
+    paths: ["docker/**", "compose.yaml", "Makefile", "package-lock.json", "requirements-dev.txt", ".github/workflows/docker.yml"]
+  pull_request:
+    paths: ["docker/**", "compose.yaml", "Makefile", "package-lock.json", "requirements-dev.txt", ".github/workflows/docker.yml"]
+  workflow_dispatch:
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+      - name: Imagem de desenvolvimento
+        run: docker compose build dev
+      - name: Ferramentas dentro do contêiner
+        run: |
+          docker compose run --rm -T dev bash -c '
+            set -e
+            node --version; python3 --version; make --version | head -1
+            python3 -c "import eflomal, pypdf, pytest"
+            npx playwright --version; ffmpeg -version | head -1; qpdf --version | head -1
+            pdftotext -v 2>&1 | head -1; epubcheck --version | head -1; shellcheck --version | head -2'
+      - name: Lint e verificação dos dados (pelo Makefile, dentro do Docker)
+        run: |
+          docker compose run --rm -T dev make lint
+          docker compose run --rm -T dev make check-data
+      - name: Imagem do Android
+        run: docker compose --profile android build android
+      - name: Android SDK e JDK
+        run: docker compose --profile android run --rm -T android bash -c 'java -version && sdkmanager --list_installed'

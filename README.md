@@ -12,15 +12,21 @@ Tudo é feito com fontes abertas ou de domínio público, para poder ser distrib
 
 ## Desenvolvimento
 
-Regras do projeto (idioma, formatação, testes, commits, segurança) em [CONTRIBUTING.md](CONTRIBUTING.md); decisões de arquitetura em [docs/adr/](docs/adr/README.md). Os comandos são os mesmos para todas as linguagens:
+Regras do projeto (idioma, formatação, testes, commits, segurança) em [CONTRIBUTING.md](CONTRIBUTING.md); decisões de arquitetura em [docs/adr/](docs/adr/README.md).
+
+Só é preciso ter o **Docker** instalado: cada comando roda num contêiner com Node, Python, Chromium, ffmpeg, epubcheck e o resto ([docs/DOCKER.md](docs/DOCKER.md)). Os comandos são os mesmos para todas as linguagens:
 
 ```bash
-make setup   # dependências e ganchos do pre-commit
-make data    # fontes abertas → corpus, glosas e site
-make test    # pytest + Playwright
-make lint    # Prettier, ESLint, Ruff, markdownlint, ShellCheck
-make help    # todos os comandos
+make docker-build   # monta as imagens (só na primeira vez)
+make data           # fontes abertas → corpus, glosas e site
+make test           # pytest + Playwright
+make lint           # Prettier, ESLint, Ruff, markdownlint, ShellCheck
+make serve          # site em http://localhost:8000
+make android        # APK e AAB do app
+make help           # todos os comandos
 ```
+
+No Windows sem o `make`, use `biblia <comando>` (por exemplo `biblia test`). Com as ferramentas instaladas no computador, `make LOCAL=1 <comando>` roda sem o Docker.
 
 No GitHub, os workflows **Qualidade** (lint), **Testes** (dados, site, cobertura) e **Segurança** (gitleaks, Semgrep, CodeQL, dependências) rodam em todo pull request.
 

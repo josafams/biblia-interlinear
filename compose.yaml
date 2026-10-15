@@ -1,0 +1,55 @@
+# Ambiente do projeto em contêineres: com o Docker instalado, todos os comandos rodam sem mais nada no computador.
+#   make <comando>                          (o Makefile chama o Docker sozinho)
+#   docker compose run --rm dev make test   (sem o make instalado; no Windows: biblia test)
+#   docker compose up web                   (site em http://localhost:8000)
+#   docker compose run --rm android         (APK e AAB em android/app/build/outputs)
+# Detalhes: docs/DOCKER.md
+name: biblia-interlinear
+
+x-dev: &dev
+  image: biblia-interlinear-dev
+  build:
+    context: .
+    dockerfile: docker/Dockerfile
+  working_dir: /app
+  volumes:
+    - .:/app
+    - node_modules:/app/node_modules
+  environment:
+    - CI
+    - FOTOS
+  init: true
+  shm_size: 1gb # o Chromium precisa de memória compartilhada maior que o padrão do Docker
+
+services:
+  dev:
+    <<: *dev
+    stdin_open: true
+    tty: true
+
+  web:
+    <<: *dev
+    command: python3 -m http.server 8000 --directory build/web
+    ports:
+      - "8000:8000"
+
+  android:
+    <<: *dev
+    image: biblia-interlinear-android
+    build:
+      context: .
+      dockerfile: docker/android.Dockerfile
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+      - gradle:/root/.gradle
+    environment:
+      - ANDROID_KEYSTORE_PATH
+      - ANDROID_KEYSTORE_PASSWORD
+      - ANDROID_KEY_ALIAS
+      - ANDROID_KEY_PASSWORD
+    profiles: [android]
+
+volumes:
+  node_modules:
+  gradle:
