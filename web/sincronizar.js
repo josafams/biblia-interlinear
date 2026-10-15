@@ -14,8 +14,8 @@
  */
 (function () {
   "use strict";
-  const A = window.Anotacoes,
-    C = window.Conta;
+  const A = window.Annotations,
+    C = window.Account;
   if (!A?.storage || !C) return;
   const B = A.storage;
   const DELAY_MS = 3000,
@@ -237,7 +237,7 @@
     if (p) A.save("preferencias", { id: "leitura", ...p });
   });
 
-  window.Sinc = {
+  window.Sync = {
     currentTime: () => cycle(),
     resumo: () => (C.estado() === "ligado" ? status : null),
     parar: async () => {

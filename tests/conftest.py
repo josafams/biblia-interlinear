@@ -24,7 +24,7 @@ def db():
 
 @pytest.fixture(scope="session")
 def books():
-    fname = os.path.join(DATA, "livros.json")
+    fname = os.path.join(DATA, "books.json")
     if not os.path.exists(fname):
         pytest.skip("build/data ainda não foi gerado (scripts/export.py)")
     return json.load(open(fname, encoding="utf8"))
@@ -48,4 +48,4 @@ def chapter(cod, n):
 @pytest.fixture(scope="session")
 def chapters(books):
     """Todos os capítulos exportados: {(cod, n): dados}."""
-    return {(b["cod"], c["n"]): chapter(b["cod"], c["n"]) for b in books for c in b["caps"]}
+    return {(b["code"], c["n"]): chapter(b["code"], c["n"]) for b in books for c in b["chapters"]}

@@ -8,7 +8,7 @@ test.use({ serviceWorkers: "block" });
 async function abrirIndice(page) {
   await page.goto("ler.html#GEN.1");
   await expect(page.locator(".verse").first()).toBeVisible();
-  await page.waitForFunction(() => window.Conta);
+  await page.waitForFunction(() => window.Account);
   await page.click("#open-toc");
 }
 
@@ -16,7 +16,7 @@ test("sem ID de cliente configurado, o login não aparece", async ({ page }) => 
   await simularGoogle(page, { configurado: false });
   await abrirIndice(page);
   await expect(page.locator("#conta")).toBeHidden();
-  expect(await page.evaluate(() => window.Conta.estado())).toBe("indisponivel");
+  expect(await page.evaluate(() => window.Account.estado())).toBe("indisponivel");
 });
 
 test("entrar com Google conecta a pasta do app no Drive e registra o aparelho", async ({ page }) => {
@@ -37,7 +37,7 @@ test("entrar com Google conecta a pasta do app no Drive e registra o aparelho", 
 
   // ao voltar, a conta é lembrada e basta reconectar (sem criar outro conta.json)
   await page.reload();
-  await page.waitForFunction(() => window.Conta);
+  await page.waitForFunction(() => window.Account);
   await page.click("#open-toc");
   await expect(page.locator("#conta")).toContainText("Reconectar");
   await page.click("#conta-entrar");
@@ -55,7 +55,7 @@ test("sem a permissão do Drive, explica e continua sem conta", async ({ page })
   await page.click("#conta-entrar");
   await expect(page.locator("#conta .conta-erro")).toContainText("deixe marcada a permissão");
   await expect(page.locator("#conta-entrar")).toContainText("Entrar com Google");
-  expect(await page.evaluate(() => window.Conta.estado())).toBe("fora");
+  expect(await page.evaluate(() => window.Account.estado())).toBe("fora");
 });
 
 test("fechar a janela do Google não mostra erro", async ({ page }) => {
@@ -73,7 +73,7 @@ test("sair esquece a conta e mantém as anotações no aparelho", async ({ page 
   await simularGoogle(page);
   await abrirIndice(page);
   await page.evaluate(async () => {
-    await window.Anotacoes.save("favoritos", {
+    await window.Annotations.save("favoritos", {
       id: crypto.randomUUID(),
       cap: "GEN.1",
       ancora: { livro: "GEN", cap: 1, ver: 1, ver_fim: 1, camada: "versiculo" }
@@ -87,17 +87,17 @@ test("sair esquece a conta e mantém as anotações no aparelho", async ({ page 
   await expect(page.locator("#conta-entrar")).toContainText("Entrar com Google");
   expect(await page.evaluate(() => window.__revogado)).toMatch(/^tk-/);
   expect(await page.evaluate(() => localStorage.getItem("interlinear:conta"))).toBeNull();
-  expect(await page.evaluate(() => window.Anotacoes.contar())).toBe(1);
+  expect(await page.evaluate(() => window.Annotations.contar())).toBe(1);
 });
 
 test("depois da primeira anotação sugere guardar no Drive; “Agora não” não pergunta mais", async ({ page }) => {
   await simularGoogle(page);
   await page.goto("ler.html#GEN.1");
   await expect(page.locator(".verse").first()).toBeVisible();
-  await page.waitForFunction(() => window.Conta && window.Anotacoes);
+  await page.waitForFunction(() => window.Account && window.Annotations);
   await expect(page.locator("#conta-sug")).toBeHidden();
   await page.evaluate(async () => {
-    await window.Anotacoes.save("favoritos", {
+    await window.Annotations.save("favoritos", {
       id: crypto.randomUUID(),
       cap: "GEN.1",
       ancora: { livro: "GEN", cap: 1, ver: 1, ver_fim: 1, camada: "versiculo" }
@@ -107,9 +107,9 @@ test("depois da primeira anotação sugere guardar no Drive; “Agora não” n�
   await page.click("#cs-nao");
   await expect(page.locator("#conta-sug")).toBeHidden();
   await page.reload();
-  await page.waitForFunction(() => window.Conta && window.Anotacoes);
+  await page.waitForFunction(() => window.Account && window.Annotations);
   await page.evaluate(async () => {
-    await window.Anotacoes.save("favoritos", {
+    await window.Annotations.save("favoritos", {
       id: crypto.randomUUID(),
       cap: "GEN.1",
       ancora: { livro: "GEN", cap: 1, ver: 2, ver_fim: 2, camada: "versiculo" }

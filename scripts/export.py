@@ -2,7 +2,7 @@
 """Exporta o banco (build/biblia.sqlite) e os textos de data/ para os arquivos que o app lê.
 
 build/web/dados/
-  livros.json             os 66 livros: nome, abreviação, capítulos (versículos, tema), introdução
+  books.json             os 66 livros: nome, abreviação, capítulos (versículos, tema), introdução
   cap/<COD>/<n>.json      um capítulo: versículos, palavras, glosas e marcas da revisão automática
   lex/H.json, lex/G.json  léxico hebraico/aramaico e grego
 
@@ -66,8 +66,8 @@ def read_marks():
     marks = defaultdict(list)
     if os.path.exists(fname):
         for m in json.loads(Path(fname).read_text(encoding="utf8")):
-            if m["nivel"] in ("erro", "aviso") and not m["codigo"].startswith(("LEX", "LXG", "ARM", "FAT", "CRZ", "COB-02")):
-                marks[(m["livro"], m["cap"])].append(m)
+            if m["level"] in ("erro", "aviso") and not m["code"].startswith(("LEX", "LXG", "ARM", "FAT", "CRZ", "COB-02")):
+                marks[(m["book"], m["chapter"])].append(m)
     return marks
 
 
@@ -102,7 +102,9 @@ def main(argv):
             facts = [f for f in about.get("facts", []) if f[0] not in ("Capítulos", "Versículos")]
             facts[1:1] = [["Capítulos", str(len(caps))], ["Versículos", fmt_int(sum(c["v"] for c in caps))]]
             about["facts"] = facts
-        books.append({"cod": cod, "nome": name, "abrev": abbrev, "nt": osis is None, "grupo": group_of[cod], "caps": caps, "about": about})
+        books.append(
+            {"code": cod, "name": name, "abbrev": abbrev, "nt": osis is None, "group": group_of[cod], "chapters": caps, "about": about}
+        )
 
     # ------------------------------------------------ capítulos
     texts = defaultdict(dict)
@@ -137,9 +139,9 @@ def main(argv):
             vs.append(item)
         ms = []
         for m in marks.get((b, c), []):
-            pos = ids.get(m.get("palavra_id"))
-            ms.append([m["vers"], pos[1] if pos else None, m["nivel"][0], m["codigo"], m["msg"]])
-        return {"livro": b, "cap": c, "v": vs, "m": ms}
+            pos = ids.get(m.get("word_id"))
+            ms.append([m["verse"], pos[1] if pos else None, m["level"][0], m["code"], m["msg"]])
+        return {"book": b, "chapter": c, "v": vs, "m": ms}
 
     # ------------------------------------------------ léxico
     translates = defaultdict(list)
@@ -199,7 +201,7 @@ def main(argv):
         all_keys = used_keys | more
         sub = {k: e for L in lex.values() for k, e in L.items() if k in all_keys}
         Path(fname).write_text(
-            json.dumps({"livros": books, "caps": caps, "lex": sub, "completo": False}, ensure_ascii=False, separators=(",", ":")),
+            json.dumps({"books": books, "chapters": caps, "lex": sub, "complete": False}, ensure_ascii=False, separators=(",", ":")),
             encoding="utf8",
         )
         print(f"prévia: {len(caps)} capítulos, {len(sub)} verbetes → {fname} ({os.path.getsize(fname) // 1024} KB)")
@@ -210,7 +212,7 @@ def main(argv):
     shutil.rmtree(WEB, ignore_errors=True)
     os.makedirs(os.path.join(OUT, "lex"), exist_ok=True)
     os.makedirs(os.path.join(WEB, "lex"), exist_ok=True)
-    Path(os.path.join(OUT, "livros.json")).write_text(json.dumps(books, ensure_ascii=False, separators=(",", ":")), encoding="utf8")
+    Path(os.path.join(OUT, "books.json")).write_text(json.dumps(books, ensure_ascii=False, separators=(",", ":")), encoding="utf8")
     for L, d in lex.items():
         Path(os.path.join(OUT, "lex", f"{L}.json")).write_text(json.dumps(d, ensure_ascii=False, separators=(",", ":")), encoding="utf8")
     # cópias em .js (funcionam abrindo o index.html direto do disco, onde o navegador bloqueia fetch)

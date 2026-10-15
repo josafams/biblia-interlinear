@@ -10,7 +10,7 @@
  * O leitor (template.html) avisa com o evento "capitulo" a cada capítulo desenhado. */
 (function () {
   "use strict";
-  if (window.Anotacoes) return;
+  if (window.Annotations) return;
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
@@ -1315,7 +1315,7 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
   document.addEventListener("keydown", e => {
     if (e.key === "Escape" && !bar.hidden) closeBar();
   });
-  window.Anotacoes = {
+  window.Annotations = {
     openList,
     openNote,
     closeBar,

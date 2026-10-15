@@ -5,9 +5,9 @@ import fs from "node:fs";
 async function abrirComDados(page) {
   await page.goto("ler.html#GEN.1");
   await expect(page.locator(".verse").first()).toBeVisible();
-  await page.waitForFunction(() => window.Anotacoes);
+  await page.waitForFunction(() => window.Annotations);
   await page.evaluate(async () => {
-    const A = window.Anotacoes,
+    const A = window.Annotations,
       id = () => crypto.randomUUID();
     const anc = (livro, cap, ver, extra = {}) => ({ livro, cap, ver, ver_fim: ver, camada: "versiculo", ...extra });
     const tag = await A.save("etiquetas", { id: id(), nome: "estudo" });
@@ -84,7 +84,7 @@ test("baixar meus dados e importar em outro aparelho", async ({ page, browser },
   await p2.click("#open-toc");
   await p2.click("#open-minhas");
   await expect(p2.locator(".mn-vazio")).toBeVisible();
-  await p2.waitForFunction(() => window.Anotacoes);
+  await p2.waitForFunction(() => window.Annotations);
   await p2.setInputFiles("#mn-arquivo", file);
   await expect(p2.locator("#toast")).toContainText(`${total} novos`);
   await expect(p2.locator(".mn-item")).toHaveCount(3);
@@ -98,7 +98,7 @@ test("baixar meus dados e importar em outro aparelho", async ({ page, browser },
 test("importar um arquivo que não é backup avisa sem quebrar", async ({ page }) => {
   await page.goto("ler.html#GEN.1");
   await expect(page.locator(".verse").first()).toBeVisible();
-  await page.waitForFunction(() => window.Anotacoes);
+  await page.waitForFunction(() => window.Annotations);
   await page.click("#open-toc");
   await page.click("#open-minhas");
   await expect(page.locator("#minhas")).toBeVisible();

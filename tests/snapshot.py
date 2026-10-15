@@ -22,9 +22,9 @@ SNAPSHOT_FILE = os.path.join(os.path.dirname(__file__), "snapshot.json")
 def compute(db_path=DB):
     db = sqlite3.connect(db_path)
     r = {
-        "versiculos": db.execute("SELECT count(*) FROM verses").fetchone()[0],
-        "palavras": db.execute("SELECT count(*) FROM words").fetchone()[0],
-        "livros": {},
+        "verses": db.execute("SELECT count(*) FROM verses").fetchone()[0],
+        "words": db.execute("SELECT count(*) FROM words").fetchone()[0],
+        "books": {},
     }
     for (book,) in db.execute("SELECT DISTINCT book FROM words ORDER BY book"):
         h = hashlib.sha256()
@@ -34,7 +34,7 @@ def compute(db_path=DB):
         ):
             h.update(f"{cap}:{vers}:{pos}:{verse_text}:{gloss}\n".encode())
             n += 1
-        r["livros"][book] = {"palavras": n, "glosas": h.hexdigest()[:16]}
+        r["books"][book] = {"words": n, "glosses": h.hexdigest()[:16]}
     db.close()
     return r
 
@@ -46,5 +46,5 @@ if __name__ == "__main__":
         print(f"retrato atualizado: {SNAPSHOT_FILE}")
     else:
         ref = json.loads(Path(SNAPSHOT_FILE).read_text(encoding="utf8"))
-        diff = [bk for bk in current["livros"] if ref["livros"].get(bk) != current["livros"][bk]]
-        print("igual ao retrato" if not diff and ref["palavras"] == current["palavras"] else f"mudaram: {diff}")
+        diff = [bk for bk in current["books"] if ref["books"].get(bk) != current["books"][bk]]
+        print("igual ao retrato" if not diff and ref["words"] == current["words"] else f"mudaram: {diff}")

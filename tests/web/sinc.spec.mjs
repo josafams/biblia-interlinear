@@ -27,7 +27,7 @@ async function aparelho(browser, nuvem, info, { atraso = 0 } = {}) {
   await simularGoogle(page, { nuvem });
   await page.goto("ler.html#GEN.1");
   await expect(page.locator(".verse").first()).toBeVisible();
-  await page.waitForFunction(() => window.Conta && window.Sinc && window.Anotacoes);
+  await page.waitForFunction(() => window.Account && window.Sync && window.Annotations);
   return page;
 }
 async function signIn(page) {
@@ -37,10 +37,10 @@ async function signIn(page) {
   await expect(page.locator(".conta-caixa")).toHaveCount(0); // nada de pergunta: sincroniza sozinho
   await page.keyboard.press("Escape");
 }
-const sincronizar = page => page.evaluate(() => window.Sinc.currentTime());
+const sincronizar = page => page.evaluate(() => window.Sync.currentTime());
 const anc = (livro, cap, ver) => ({ livro, cap, ver, ver_fim: ver, camada: "versiculo" });
-const save = (page, col, rec) => page.evaluate(([c, r]) => window.Anotacoes.save(c, r).then(x => x.id), [col, rec]);
-const readStorage = (page, col) => page.evaluate(c => window.Anotacoes.allRecords(c), col);
+const save = (page, col, rec) => page.evaluate(([c, r]) => window.Annotations.save(c, r).then(x => x.id), [col, rec]);
+const readStorage = (page, col) => page.evaluate(c => window.Annotations.allRecords(c), col);
 
 test("anotação feita num aparelho aparece no outro, e a edição volta", async ({ browser }, info) => {
   const nuvem = novaNuvem();
@@ -61,7 +61,7 @@ test("anotação feita num aparelho aparece no outro, e a edição volta", async
   await sincronizar(a);
   expect((await readStorage(a, "notas"))[0].texto).toBe("Bereshit bara Elohim.");
   // apagar também sincroniza
-  await a.evaluate(() => window.Anotacoes.apagar("marcacoes", "m1"));
+  await a.evaluate(() => window.Annotations.apagar("marcacoes", "m1"));
   await sincronizar(a);
   await sincronizar(b);
   expect(await readStorage(b, "marcacoes")).toHaveLength(0);
@@ -150,7 +150,7 @@ test("compactação: retrato com tudo, lotes antigos apagados, aparelho novo com
   nuvem.envelhecer("lote-", 40); // todos com mais de 30 dias
   await save(a, "favoritos", { id: "f4", cap: "PSA.4", ancora: anc("PSA", 4, 1) });
   await sincronizar(a); // um lote recente, que não pode ser apagado
-  await a.evaluate(() => window.Sinc.compact());
+  await a.evaluate(() => window.Sync.compact());
   expect(nuvem.nomes("retrato-")).toHaveLength(1);
   expect(nuvem.nomes("lote-")).toHaveLength(1);
   const ret = nuvem.json(nuvem.nomes("retrato-")[0]);
@@ -189,7 +189,7 @@ test("sair apagando deste aparelho e apagar os dados do Google Drive", async ({ 
   await a.click('.conta-caixa button[data-r="sim"]');
   await expect(a.locator("#conta-entrar")).toContainText("Entrar com Google");
   expect(nuvem.arquivos.size).toBe(0);
-  expect(await a.evaluate(() => window.Anotacoes.contar())).toBe(1);
+  expect(await a.evaluate(() => window.Annotations.contar())).toBe(1);
   // entrar de novo (envia de novo, sozinho) e sair apagando deste aparelho
   await a.click("#conta-entrar");
   await expect(a.locator("#conta-sinc")).toContainText("Sincronizado");
@@ -197,6 +197,6 @@ test("sair apagando deste aparelho e apagar os dados do Google Drive", async ({ 
   await a.click("#conta-sair");
   await a.click('.conta-caixa button[data-r="apagar"]');
   await expect(a.locator("#conta-entrar")).toContainText("Entrar com Google");
-  expect(await a.evaluate(() => window.Anotacoes.contar())).toBe(0);
+  expect(await a.evaluate(() => window.Annotations.contar())).toBe(0);
   expect(nuvem.nomes("lote-")).toHaveLength(1); // a nuvem continua com tudo
 });

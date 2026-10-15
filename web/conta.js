@@ -5,7 +5,7 @@
  *   - Android: plugin nativo ContaGoogle (API de autorização do Google Play services); renovação silenciosa.
  *   - iOS: ainda não (fica oculto).
  * O token fica só na memória; no aparelho fica guardado apenas nome, e-mail e foto, para mostrar a conta.
- * Expõe window.Conta (estado, entrar, sair, token, drive.*) para a sincronização (fase 5).
+ * Expõe window.Account (estado, entrar, sair, token, drive.*) para a sincronização (fase 5).
  */
 (function () {
   "use strict";
@@ -281,7 +281,7 @@
   }
   // Sair: pergunta se mantém as anotações neste aparelho (útil em aparelho emprestado apagar)
   async function askSignOut() {
-    const n = window.Anotacoes ? await window.Anotacoes.contar() : 0;
+    const n = window.Annotations ? await window.Annotations.contar() : 0;
     if (!n) return signOut();
     const r = await ask("Sair da conta", `As ${n} anotações continuam guardadas no seu Google Drive. Neste aparelho, você quer:`, [
       { id: "manter", texto: "Manter uma cópia aqui", prim: true },
@@ -290,8 +290,8 @@
     ]);
     if (!r) return;
     if (r === "apagar") {
-      await window.Sinc?.antesDeApagar?.();
-      await window.Anotacoes.storage.apagarTudo();
+      await window.Sync?.antesDeApagar?.();
+      await window.Annotations.storage.apagarTudo();
     }
     signOut(r === "apagar" ? "Você saiu da conta e as anotações foram apagadas deste aparelho." : undefined);
   }
@@ -307,10 +307,10 @@
     );
     if (r !== "sim") return;
     try {
-      await window.Sinc?.parar?.();
+      await window.Sync?.parar?.();
       const fileList = await Drive.consultar("");
       for (const a of fileList) await Drive.apagar(a.id);
-      await window.Anotacoes?.storage?.estado("sinc", null);
+      await window.Annotations?.storage?.estado("sinc", null);
       signOut("Seus dados foram apagados do Google Drive. As anotações continuam neste aparelho.");
     } catch (e) {
       errorMsg = message(e);
@@ -460,7 +460,7 @@
         <button class="gbtn" id="conta-entrar" ${estado === "conectando" ? "disabled" : ""}>${G}<span>${estado === "conectando" ? "Conectando…" : "Entrar com Google"}</span></button>${err}`;
     } else if (estado === "ligado") {
       const ap = drive ? ` · ${drive.aparelhos} ${drive.aparelhos === 1 ? "aparelho" : "aparelhos"}` : "";
-      const st = window.Sinc?.resumo?.();
+      const st = window.Sync?.resumo?.();
       const d =
         drive || st
           ? `<p class="conta-drive ok">Google Drive conectado${ap}</p>`
@@ -509,8 +509,8 @@
     suggestion.hidden = true;
   }
   async function maybeSuggest() {
-    if (suggested || estado !== "fora" || readStorage(SUGGESTION_KEY) === "nao" || !window.Anotacoes) return;
-    if ((await window.Anotacoes.contar()) < 1) return;
+    if (suggested || estado !== "fora" || readStorage(SUGGESTION_KEY) === "nao" || !window.Annotations) return;
+    if ((await window.Annotations.contar()) < 1) return;
     suggested = true;
     const attempt = () => {
       const busy = ["mbar", "nota", "minhas", "exportar"].some(id => {
@@ -522,7 +522,7 @@
     };
     setTimeout(attempt, 1200);
   }
-  if (window.Anotacoes?.aoMudar) window.Anotacoes.aoMudar(maybeSuggest);
+  if (window.Annotations?.aoMudar) window.Annotations.aoMudar(maybeSuggest);
 
   render();
   // no app, quem já entrou volta conectado sem tela nenhuma
@@ -542,7 +542,7 @@
       });
   }
 
-  window.Conta = {
+  window.Account = {
     available: () => available,
     estado: () => estado,
     account: () => account && { ...account },

@@ -633,7 +633,7 @@ class Marks:
         if k in self.seen:
             return
         self.seen.add(k)
-        self.lst.append({"livro": book, "cap": cap, "vers": vers, "palavra_id": pid, "codigo": code, "nivel": level, "msg": msg})
+        self.lst.append({"book": book, "chapter": cap, "verse": vers, "word_id": pid, "code": code, "level": level, "msg": msg})
 
     def w(self, w, code, level, msg):
         self.add(w[BOOK], w[CAP], w[VER], w[ID], code, level, msg)
@@ -2050,13 +2050,13 @@ def write_out(M, d, book_scope, t0):
     order = d.order
     marks = sorted(
         M.lst,
-        key=lambda m: (order.get(m["livro"], 999), m["cap"], m["vers"] if m["vers"] is not None else 0, m["palavra_id"] or 0, m["codigo"]),
+        key=lambda m: (order.get(m["book"], 999), m["chapter"], m["verse"] if m["verse"] is not None else 0, m["word_id"] or 0, m["code"]),
     )
     with open(os.path.join(OUT, "marks.json"), "w", encoding="utf8") as f:
         f.write("[\n" + ",\n".join(json.dumps(m, ensure_ascii=False) for m in marks) + "\n]\n")
     by_chapter = defaultdict(Counter)
     for m in marks:
-        by_chapter[(m["livro"], m["cap"])][m["nivel"]] += 1
+        by_chapter[(m["book"], m["chapter"])][m["level"]] += 1
     with open(os.path.join(OUT, "summary.tsv"), "w", encoding="utf8") as f:
         f.write("livro\tcap\tn_erros\tn_avisos\tn_info\n")
         for b, c in sorted(by_chapter, key=lambda k: (order.get(k[0], 999), k[1])):
@@ -2066,17 +2066,15 @@ def write_out(M, d, book_scope, t0):
     examples = defaultdict(list)
     by_book = defaultdict(Counter)
     for m in marks:
-        by_code[m["codigo"]][m["nivel"]] += 1
-        by_book[m["livro"]][m["nivel"]] += 1
-        if len(examples[m["codigo"]]) < 3 and (
-            not examples[m["codigo"]] or examples[m["codigo"]][-1]["livro"] != m["livro"] or len(marks) < 50
-        ):
-            examples[m["codigo"]].append(m)
+        by_code[m["code"]][m["level"]] += 1
+        by_book[m["book"]][m["level"]] += 1
+        if len(examples[m["code"]]) < 3 and (not examples[m["code"]] or examples[m["code"]][-1]["book"] != m["book"] or len(marks) < 50):
+            examples[m["code"]].append(m)
     for m in marks:  # completa exemplos quando o código só aparece num livro
-        if len(examples[m["codigo"]]) < 3 and m not in examples[m["codigo"]]:
-            examples[m["codigo"]].append(m)
+        if len(examples[m["code"]]) < 3 and m not in examples[m["code"]]:
+            examples[m["code"]].append(m)
     texts = {}
-    pids = {m["palavra_id"] for es in examples.values() for m in es if m["palavra_id"]}
+    pids = {m["word_id"] for es in examples.values() for m in es if m["word_id"]}
     for w in d.words:
         if w[ID] in pids:
             texts[w[ID]] = w
@@ -2108,9 +2106,9 @@ def write_out(M, d, book_scope, t0):
         L.append(f"### {cod}")
         L.append("")
         for m in examples[cod]:
-            w = texts.get(m["palavra_id"])
+            w = texts.get(m["word_id"])
             wd = f" — `{w[TXT]}` ({w[STR]}, {w[MORPH_COL]})" if w else ""
-            L.append(f"- {abbrev.get(m['livro'], m['livro'])} {m['cap']}:{m['vers']} [{m['nivel']}]{wd}: {m['msg']}")
+            L.append(f"- {abbrev.get(m['book'], m['book'])} {m['chapter']}:{m['verse']} [{m['level']}]{wd}: {m['msg']}")
         L.append("")
     with open(os.path.join(OUT, "report.md"), "w", encoding="utf8") as f:
         f.write("\n".join(L))

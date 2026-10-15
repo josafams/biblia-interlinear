@@ -4,7 +4,7 @@
    de videos/videos.js quando já foram gravados. Sem vídeo, mostra só o passo a passo. */
 (function () {
   var STORYBOARDS = window.__ROTEIROS;
-  var RECORDED = (window.__videos && window.__videos.arquivos) || {};
+  var RECORDED = (window.__videos && (window.__videos.files || window.__videos.arquivos)) || {};
   var GROUPS = STORYBOARDS.grupos,
     VIDEOS = STORYBOARDS.videos;
   var reducedMotion = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -26,9 +26,21 @@
     });
   }
   function fileInput(v) {
-    var a = RECORDED[v.id];
+    var r = RECORDED[v.id];
+    if (!r) return null;
+    // aceita também o índice antigo (celular/computador, capa/tempos/duracao) até os vídeos serem regravados
+    var p = r.phone || r.celular,
+      d = r.desktop || r.computador;
+    var a = phone ? p || d : d || p;
     if (!a) return null;
-    return phone ? a.phone || a.computador : a.computador || a.phone;
+    return {
+      webm: a.webm,
+      mp4: a.mp4,
+      vtt: a.vtt,
+      cover: a.cover || a.capa,
+      times: a.times || a.tempos,
+      duration: a.duration || a.duracao
+    };
   }
   function display(v, doScroll) {
     document.getElementById("cu-num").textContent =
@@ -53,7 +65,7 @@
         playsinline: "",
         loop: "",
         preload: "metadata",
-        poster: a.capa || "",
+        poster: a.cover || "",
         "aria-label": v.titulo
       });
       vid.muted = true;
@@ -63,7 +75,7 @@
       vid.addEventListener("timeupdate", function () {
         var t = vid.currentTime,
           i = -1;
-        (a.tempos || []).forEach(function (s, k) {
+        (a.times || []).forEach(function (s, k) {
           if (t >= s) i = k;
         });
         [].forEach.call(steps.children, function (li, k) {
@@ -81,8 +93,8 @@
           },
           { threshold: 0.5 }
         ).observe(vid);
-    } else if (a && a.capa) {
-      screenEl.appendChild(el("img", { src: a.capa, alt: v.titulo, style: "width:100%;border-radius:12px" }));
+    } else if (a && a.cover) {
+      screenEl.appendChild(el("img", { src: a.cover, alt: v.titulo, style: "width:100%;border-radius:12px" }));
     } else {
       screenEl.appendChild(
         el(
@@ -111,7 +123,7 @@
       var b = el("button", { class: "vid", type: "button", "data-id": v.id, id: "v-" + v.id });
       b.innerHTML =
         '<span class="capa">' +
-        (a && a.capa ? '<img src="' + esc(a.capa) + '" alt="" loading="lazy">' : '<span class="n">' + v.n + "</span>") +
+        (a && a.cover ? '<img src="' + esc(a.cover) + '" alt="" loading="lazy">' : '<span class="n">' + v.n + "</span>") +
         (a && a.duration ? '<span class="dur">' + esc(a.duration) + "</span>" : "") +
         (v.pronto === false ? '<span class="badge soon">Quando a função sair</span>' : "") +
         "</span>" +
