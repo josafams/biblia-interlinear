@@ -3,10 +3,7 @@
 # Se um roteiro não consegue completar os passos, o workflow falha: a tela mudou e o roteiro precisa acompanhar.
 name: Vídeos
 on:
-  workflow_run:
-    workflows: [Site]
-    types: [completed]
-  workflow_dispatch:
+  workflow_dispatch: # disparado pelo workflow Site depois de publicar, ou à mão
 
 permissions:
   contents: write
@@ -17,7 +14,6 @@ concurrency:
 
 jobs:
   videos:
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
