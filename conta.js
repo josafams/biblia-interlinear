@@ -102,6 +102,19 @@
       const r = await chamar(`${API}/files?spaces=appDataFolder&pageSize=1000&fields=files(id,name,modifiedTime,size)${q}`);
       return (await r.json()).files || [];
     },
+    // busca na pasta do app com uma consulta do Drive (q), seguindo as páginas
+    async consultar(q) {
+      const lista = [];
+      let pagina = "";
+      do {
+        const r = await chamar(`${API}/files?spaces=appDataFolder&pageSize=1000&orderBy=createdTime&fields=nextPageToken,files(id,name,createdTime,size)`
+          + (q ? `&q=${encodeURIComponent(q)}` : "") + (pagina ? `&pageToken=${pagina}` : ""));
+        const d = await r.json();
+        lista.push(...(d.files || []));
+        pagina = d.nextPageToken || "";
+      } while (pagina);
+      return lista;
+    },
     async ler(id) { return (await chamar(`${API}/files/${id}?alt=media`)).json(); },
     async gravar(nome, dados, id) {
       const corpo = JSON.stringify(dados);
@@ -170,14 +183,38 @@
       mudar(antes === "conectando" ? (conta ? "reconectar" : "fora") : antes);
     }
   }
-  function sair() {
+  // Sair: pergunta se mantém as anotações neste aparelho (útil em aparelho emprestado apagar)
+  async function pedirSair() {
+    const n = window.Anotacoes ? await window.Anotacoes.contar() : 0;
+    if (!n) return sair();
+    const r = await perguntar("Sair da conta", `As ${n} anotações continuam guardadas no seu Google Drive. Neste aparelho, você quer:`,
+      [{ id: "manter", texto: "Manter uma cópia aqui", prim: true }, { id: "apagar", texto: "Apagar deste aparelho" }, { id: "", texto: "Cancelar" }]);
+    if (!r) return;
+    if (r === "apagar") { await window.Sinc?.antesDeApagar?.(); await window.Anotacoes.banco.apagarTudo(); }
+    sair(r === "apagar" ? "Você saiu da conta e as anotações foram apagadas deste aparelho." : undefined);
+  }
+  // Apagar da nuvem: remove tudo da pasta do app no Drive; o aparelho continua com a cópia local
+  async function apagarNuvem() {
+    const r = await perguntar("Apagar meus dados do Google Drive",
+      "Isso apaga a pasta do app no seu Drive (anotações e lista de aparelhos). As anotações deste aparelho continuam aqui, e você sai da conta. Outros aparelhos ainda conectados podem enviá-las de novo.",
+      [{ id: "sim", texto: "Apagar do Drive", perigo: true }, { id: "", texto: "Cancelar", prim: true }]);
+    if (r !== "sim") return;
+    try {
+      await window.Sinc?.parar?.();
+      const arqs = await Drive.consultar("");
+      for (const a of arqs) await Drive.apagar(a.id);
+      await window.Anotacoes?.banco?.estado("sinc", null);
+      sair("Seus dados foram apagados do Google Drive. As anotações continuam neste aparelho.");
+    } catch (e) { erro = mensagem(e); mudar(); }
+  }
+  function sair(msg) {
     const tk = tokenAtual?.valor;
     tokenAtual = null; conta = null; drive = null; erro = "";
     guardar(CHAVE, null);
     if (tk && !nativo && window.google?.accounts?.oauth2) { try { google.accounts.oauth2.revoke(tk, () => {}); } catch (_) {} }
     if (nativo && plugin?.sair) plugin.sair().catch(() => {});
     mudar("fora");
-    aviso("Você saiu da conta. As anotações continuam neste aparelho.");
+    aviso(msg || "Você saiu da conta. As anotações continuam neste aparelho.");
   }
   function mensagem(e) {
     if (e.codigo === "drive-cheio") return "Seu Google Drive está sem espaço. As anotações continuam neste aparelho.";
@@ -190,6 +227,24 @@
     if (!t) return;
     t.textContent = msg; t.hidden = false;
     clearTimeout(aviso.t); aviso.t = setTimeout(() => { t.hidden = true; }, Math.max(3500, msg.length * 70));
+  }
+
+  // Janela de pergunta simples (sem os diálogos do navegador). Resolve com o id do botão escolhido ("" = cancelar).
+  function perguntar(titulo, texto, botoes) {
+    return new Promise(ok => {
+      const fundo = document.createElement("div");
+      fundo.className = "conta-modal";
+      fundo.innerHTML = `<div class="conta-caixa" role="alertdialog" aria-modal="true" aria-labelledby="cm-t" aria-describedby="cm-x">
+        <h2 id="cm-t">${esc(titulo)}</h2><p id="cm-x">${esc(texto)}</p>
+        <div class="conta-acoes">${botoes.map(b => `<button data-r="${esc(b.id)}" class="${b.prim ? "prim" : ""}${b.perigo ? " perigo" : ""}">${esc(b.texto)}</button>`).join("")}</div></div>`;
+      const volta = document.activeElement;
+      const fim = r => { fundo.remove(); document.removeEventListener("keydown", tecla, true); volta?.focus?.(); ok(r); };
+      const tecla = e => { if (e.key === "Escape") { e.stopPropagation(); fim(""); } };
+      fundo.addEventListener("click", e => { const b = e.target.closest("button[data-r]"); if (b) fim(b.dataset.r); else if (e.target === fundo) fim(""); });
+      document.addEventListener("keydown", tecla, true);
+      document.body.appendChild(fundo);
+      (fundo.querySelector("button.prim") || fundo.querySelector("button")).focus();
+    });
   }
 
   // ---------- interface ----------
@@ -213,10 +268,19 @@
 .conta-drive::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--muted); flex: none; }
 .conta-drive.ok::before { background: #2e7d4f; }
 .conta-drive.alerta::before { background: #b26a00; }
+.conta-sinc { margin: 4px 0 0 16px; font-size: 13px; color: var(--muted); }
+.conta-sinc.alerta { color: light-dark(#8a5300, #e8b25c); }
 .conta-acoes { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .conta-acoes button { min-height: 40px; padding: 0 14px; border-radius: 20px; border: 1px solid var(--line); background: transparent; color: var(--fg); font: inherit; font-size: 14px; cursor: pointer; }
 .conta-acoes button.prim { background: var(--accent); border-color: var(--accent); color: var(--surface); }
 .conta-erro { margin: 10px 0 0; color: light-dark(#a3361b, #f0a58f); font-size: 14px; }
+.conta-acoes button.perigo { border-color: light-dark(#a3361b, #f0a58f); color: light-dark(#a3361b, #f0a58f); }
+.conta-mais { margin-top: 10px; }
+.conta-mais button { border: 0; background: none; padding: 6px 0; color: var(--muted); font: inherit; font-size: 13px; text-decoration: underline; cursor: pointer; min-height: 32px; }
+.conta-modal { position: fixed; inset: 0; z-index: 90; background: rgba(0,0,0,.45); display: grid; place-items: center; padding: 16px; }
+.conta-caixa { background: var(--surface); color: var(--fg); border-radius: 16px; padding: 20px; width: min(420px, 100%); box-shadow: 0 12px 40px rgba(0,0,0,.3); }
+.conta-caixa h2 { margin: 0 0 8px; font-size: 19px; }
+.conta-caixa p { margin: 0 0 4px; line-height: 1.5; font-size: 15px; }
 .conta-sug { position: fixed; left: 50%; bottom: calc(16px + env(safe-area-inset-bottom)); transform: translateX(-50%); z-index: 60;
   width: min(440px, calc(100% - 32px)); background: var(--surface); color: var(--fg); border: 1px solid var(--line); border-radius: 14px;
   box-shadow: 0 8px 28px rgba(0,0,0,.18); padding: 14px 16px; }
@@ -249,9 +313,13 @@
         <p class="conta-s">Opcional. Suas anotações ficam numa pasta privada do app no seu Drive e passam a valer em todos os seus aparelhos. Sem conta, tudo continua neste aparelho.</p>
         <button class="gbtn" id="conta-entrar" ${estado === "conectando" ? "disabled" : ""}>${G}<span>${estado === "conectando" ? "Conectando…" : "Entrar com Google"}</span></button>${err}`;
     } else if (estado === "ligado") {
-      const d = drive ? `<p class="conta-drive ok">Google Drive conectado · ${drive.aparelhos} ${drive.aparelhos === 1 ? "aparelho" : "aparelhos"}</p>`
+      const ap = drive ? ` · ${drive.aparelhos} ${drive.aparelhos === 1 ? "aparelho" : "aparelhos"}` : "";
+      const st = window.Sinc?.resumo?.();
+      const d = drive || st ? `<p class="conta-drive ok">Google Drive conectado${ap}</p>`
         : erro ? "" : `<p class="conta-drive">Conferindo o Google Drive…</p>`;
-      caixa.innerHTML = `${blocoEu()}${d}${err}<div class="conta-acoes"><button id="conta-sair">Sair</button></div>`;
+      const s = st ? `<p class="conta-sinc ${esc(st.tipo)}" id="conta-sinc">${esc(st.texto)}</p>` : "";
+      caixa.innerHTML = `${blocoEu()}${d}${s}${err}<div class="conta-acoes"><button id="conta-sair">Sair</button></div>
+        <div class="conta-mais"><button id="conta-apagar-nuvem">Apagar meus dados do Google Drive</button></div>`;
     } else {   // reconectar ou conectando com conta lembrada
       caixa.innerHTML = `${blocoEu()}<p class="conta-drive alerta">${estado === "conectando" ? "Conectando…" : "Toque em Reconectar para voltar a salvar no Drive."}</p>${err}
         <div class="conta-acoes"><button class="prim" id="conta-entrar" ${estado === "conectando" ? "disabled" : ""}>Reconectar</button><button id="conta-sair">Sair</button></div>`;
@@ -262,7 +330,8 @@
   ["pointerover", "pointerdown", "focusin", "touchstart"].forEach(t => document.addEventListener(t, preparar, { passive: true }));
   document.addEventListener("click", e => {
     if (e.target.closest("#conta-entrar, #cs-entrar")) { e.preventDefault(); fecharSugestao(); entrar(); }
-    else if (e.target.closest("#conta-sair")) sair();
+    else if (e.target.closest("#conta-sair")) pedirSair();
+    else if (e.target.closest("#conta-apagar-nuvem")) apagarNuvem();
     else if (e.target.closest("#cs-nao")) { guardar(CHAVE_SUG, "nao"); fecharSugestao(); }
   });
 
@@ -299,7 +368,8 @@
     disponivel: () => disponivel,
     estado: () => estado,
     conta: () => conta && { ...conta },
-    entrar, sair, token, verificarDrive,
+    entrar, sair, token, verificarDrive, perguntar,
+    redesenhar: () => desenhar(),
     drive: Drive,
     aoMudar: f => ouvintes.push(f)
   };
