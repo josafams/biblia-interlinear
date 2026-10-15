@@ -4,7 +4,7 @@ Tudo o que a Play Store pede, pronto para copiar, e os passos que só o dono da 
 
 ## Antes de enviar (checklist)
 
-- [x] E-mail de contato: devjosafa@gmail.com (na política de privacidade e na ficha da loja).
+- [x] E-mail de contato: `devjosafa@gmail.com` (na política de privacidade e na ficha da loja).
 - [ ] Chave de upload criada e cadastrada nos segredos do GitHub (ver [APPS.md](APPS.md#pelo-github-sem-instalar-nada)); o AAB da release **app-android** sai assinado.
 - [ ] Tela de consentimento OAuth do Google em **produção** (abaixo).
 - [ ] Cliente OAuth **Android** com o SHA-1 da chave de assinatura do Google Play (abaixo) — sem isso, o login com Google não funciona no app baixado da loja.
@@ -21,7 +21,7 @@ Tudo o que a Play Store pede, pronto para copiar, e os passos que só o dono da 
 | Tags | Bíblia, Estudo bíblico, Referência |
 | Site | <https://josafams.github.io/biblia-interlinear/> |
 | Política de privacidade | <https://josafams.github.io/biblia-interlinear/privacidade.html> |
-| E-mail | devjosafa@gmail.com |
+| E-mail | `devjosafa@gmail.com` |
 | Ícone | `build/store/icon-512.png` (512×512) |
 | Imagem de destaque | `build/store/feature.png` (1024×500) |
 | Capturas de celular | `build/store/phone-1.png` a `phone-6.png` (1080×1920) |

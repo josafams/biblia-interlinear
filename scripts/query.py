@@ -35,7 +35,7 @@ def main_pos(morph):
 def print_key_words(db, book, chapter):
     """Palavras do original que mais aparecem no capítulo, para perguntas sobre a língua original."""
     found = {}
-    for verse, strong, text, gloss, morph, lemma in db.execute(
+    for verse, strong, _text, gloss, morph, lemma in db.execute(
         "SELECT verse, strong, text, gloss, morph, lemma FROM words WHERE book=? AND chapter=? ORDER BY verse, pos", (book, chapter)
     ):
         pos = main_pos(morph)

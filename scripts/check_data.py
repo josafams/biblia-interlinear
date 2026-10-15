@@ -265,7 +265,12 @@ if os.path.exists(DB):
             if m and not 1 <= int(m[1]) <= int(m[2] or m[1]) <= last:
                 error(fname, f"linha {ln}: {cod} {c} tem {last} versículos; {r['verses']} não existe")
             if r["kind"] == "original" and r["strong"]:
-                where = [v for (v,) in db.execute("SELECT DISTINCT verse FROM words WHERE book=? AND chapter=? AND strong=?", (cod, c, r["strong"]))]
+                where = [
+                    v
+                    for (v,) in db.execute(
+                        "SELECT DISTINCT verse FROM words WHERE book=? AND chapter=? AND strong=?", (cod, c, r["strong"])
+                    )
+                ]
                 if not where:
                     error(fname, f"linha {ln}: {r['strong']} não aparece em {cod} {c}")
                 elif m and not any(int(m[1]) <= v <= int(m[2] or m[1]) for v in where):
