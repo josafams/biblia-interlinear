@@ -18,7 +18,7 @@ import snapshot  # noqa: E402
 def test_66_books_1189_chapters(books):
     assert len(books) == 66
     assert sum(1 for b in books if not b["nt"]) == 39
-    assert sum(len(b["caps"]) for b in books) == 1189
+    assert sum(len(b["chapters"]) for b in books) == 1189
 
 
 def test_verses_and_words(db):
@@ -38,14 +38,14 @@ def test_every_verse_has_blivre(db):
 
 def test_full_export(books, chapters):
     for b in books:
-        for c in b["caps"]:
-            d = chapters[(b["cod"], c["n"])]
-            assert d["livro"] == b["cod"]
-            assert d["cap"] == c["n"]
-            assert d["v"], f"{b['cod']} {c['n']} sem versículos"
+        for c in b["chapters"]:
+            d = chapters[(b["code"], c["n"])]
+            assert d["book"] == b["code"]
+            assert d["chapter"] == c["n"]
+            assert d["v"], f"{b['code']} {c['n']} sem versículos"
             for v in d["v"]:
                 for w in v["w"]:
-                    assert w[2].strip(), f"{b['cod']} {c['n']}:{v['n']} {w[0]} sem glosa na exportação"
+                    assert w[2].strip(), f"{b['code']} {c['n']}:{v['n']} {w[0]} sem glosa na exportação"
 
 
 # ---------- léxico, temas e introduções ----------
@@ -75,12 +75,12 @@ def test_entry_has_pronunciation_and_transliteration(lexicon):
 
 
 def test_every_chapter_has_theme(books):
-    missing_gloss = [f"{b['cod']} {c['n']}" for b in books for c in b["caps"] if not (c.get("t") or "").strip()]
+    missing_gloss = [f"{b['code']} {c['n']}" for b in books for c in b["chapters"] if not (c.get("t") or "").strip()]
     assert not missing_gloss, f"capítulos sem tema: {missing_gloss[:10]}"
 
 
 def test_every_book_has_intro(books):
-    missing_gloss = [b["cod"] for b in books if not b.get("about")]
+    missing_gloss = [b["code"] for b in books if not b.get("about")]
     assert not missing_gloss, f"livros sem introdução (Sobre o livro): {missing_gloss}"
 
 
@@ -152,10 +152,10 @@ def test_apparatus_signs_removed_from_greek(db):
 def test_snapshot(db):
     ref = json.loads(Path(snapshot.SNAPSHOT_FILE).read_text(encoding="utf8"))
     current = snapshot.compute()
-    changed_books = sorted(bk for bk in set(ref["livros"]) | set(current["livros"]) if ref["livros"].get(bk) != current["livros"].get(bk))
+    changed_books = sorted(bk for bk in set(ref["books"]) | set(current["books"]) if ref["books"].get(bk) != current["books"].get(bk))
     hint = "Se foi de propósito, rode `python3 tests/snapshot.py --update` e envie o tests/snapshot.json junto."
     assert not changed_books, f"As glosas mudaram em: {', '.join(changed_books)}. {hint}"
-    assert ref["palavras"] == current["palavras"], f"O número de palavras mudou. {hint}"
+    assert ref["words"] == current["words"], f"O número de palavras mudou. {hint}"
 
 
 # ---------- verificação dos arquivos de dados ----------

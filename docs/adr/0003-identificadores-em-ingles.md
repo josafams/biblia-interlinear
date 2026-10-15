@@ -8,7 +8,7 @@ O código nasceu todo em português (`make_glosses.py`, `anotacoes.js`, coleçõ
 
 ## Decisão
 
-- Identificadores — variáveis, funções, classes, arquivos de código, coleções e campos dos dados guardados — em **inglês**.
+- Identificadores — variáveis, funções, classes, arquivos de código e as chaves dos JSON gerados no build — em **inglês**. Os campos dos dados que a pessoa guarda (anotações, progresso, arquivos no Drive) ficam como estão: ver ADR 0005.
 - Termos sem boa tradução continuam (BLIVRE, Strong, ketiv, qere, códigos de livro como `GEN`).
 - Comentários, docstrings, documentação e textos do app em **português**; commits em português com prefixo do Conventional Commits.
 - Endereços públicos que as pessoas já usam continuam (`ler.html`, `index.html#como-usar`).
@@ -19,7 +19,7 @@ Por etapas, cada uma com os testes passando antes e depois e sem mudança de com
 
 1. Ferramentas de qualidade (ADR 0004). **Feita.**
 2. Scripts Python, banco SQLite do build, pastas (`dados/` → `data/`, `saida/` → `build/`, `fontes-dados/` → `sources/`) e cabeçalhos dos TSV editados à mão. **Feita**: o site, as revisões e o banco saem idênticos byte a byte (conferido antes e depois).
-3. JavaScript do site e do app. Os dados já guardados (IndexedDB, `localStorage` e os arquivos no Drive) passam por **migração** na abertura do app, e o leitor dos lotes do Drive continua aceitando o formato antigo (expand/contract), para ninguém perder anotações.
+3. JavaScript do site e do app: nomes internos, APIs globais (`window.Annotations`, `Account`, `Progress`, `Sync`) e as chaves do JSON exportado (`books.json`: `code`, `name`, `abbrev`, `group`, `chapters`). **Feita.** O formato dos dados guardados não muda (ADR 0005).
 4. Plugins Android e documentação.
 
 ## Consequências

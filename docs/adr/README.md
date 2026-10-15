@@ -8,3 +8,4 @@ Um arquivo curto por decisão importante: contexto, decisão e consequências. D
 | [0002](0002-site-estatico-e-capacitor.md) | Site estático no GitHub Pages; apps Android e iOS com Capacitor | aceita |
 | [0003](0003-identificadores-em-ingles.md) | Identificadores em inglês; comentários e docs em português | aceita |
 | [0004](0004-ferramentas-de-qualidade.md) | Ferramentas de qualidade: Prettier, ESLint, Ruff, pre-commit, cobertura, segurança no CI | aceita |
+| [0005](0005-formato-dos-dados-guardados.md) | O formato dos dados guardados (IndexedDB, Drive, backup) não muda de idioma | aceita |

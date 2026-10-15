@@ -264,7 +264,7 @@ def about_html(B):
         return ""
     lang = 'lang="grc" class="grc"' if B["nt"] else 'lang="he" dir="rtl" class="he"'
     o = [
-        f'<section epub:type="introduction" id="sobre">\n<h1>Sobre {h(B["nome"])} <span {lang}>{h(A.get("title_orig"))}</span></h1>',
+        f'<section epub:type="introduction" id="sobre">\n<h1>Sobre {h(B["name"])} <span {lang}>{h(A.get("title_orig"))}</span></h1>',
         f'<p class="lead">{h(A.get("summary"))}</p>',
         '<ul class="facts">' + "".join(f"<li><b>{h(k)}:</b> {h(v)}</li>" for k, v in A.get("facts", [])) + "</ul>",
     ]
@@ -315,7 +315,7 @@ def about_html(B):
         o.append(
             "<h2>Versículos-chave</h2>"
             + "".join(
-                f'<blockquote><p>{h(k["text"])}</p><p class="cite">{h(B["nome"])} {h(k["ref"])} · BLIVRE</p></blockquote>'
+                f'<blockquote><p>{h(k["text"])}</p><p class="cite">{h(B["name"])} {h(k["ref"])} · BLIVRE</p></blockquote>'
                 for k in A["key_verses"]
             )
         )
@@ -340,17 +340,17 @@ def link_refs(text, LEX, used):
 def gen_chapters(B, LEX, pre=""):
     """XHTML dos capítulos e das notas de um livro. pre = prefixo dos arquivos (no volume com vários livros)."""
     grc = B["nt"]
-    cod = B["cod"]
+    cod = B["code"]
     olang = 'lang="grc"' if grc else 'lang="he" dir="rtl"'
     ocls = "grc" if grc else "he"
     files, used, caps = {}, set(), []
-    for c in B["caps"]:
+    for c in B["chapters"]:
         n = c["n"]
         d = json.loads(Path(os.path.join(DATA, "cap", cod, f"{n}.json")).read_text(encoding="utf8"))
-        body = [f'<section epub:type="chapter" id="c{n}">\n<h1>{h(B["nome"])} {n}</h1>']
+        body = [f'<section epub:type="chapter" id="c{n}">\n<h1>{h(B["name"])} {n}</h1>']
         if c.get("t"):
             body.append(f'<p class="tema">{h(c["t"])}</p>')
-        notes = [f'<section epub:type="endnotes" id="notas{n}">\n<h1>Notas · {h(B["nome"])} {n}</h1>']
+        notes = [f'<section epub:type="endnotes" id="notas{n}">\n<h1>Notas · {h(B["name"])} {n}</h1>']
         for v in d["v"]:
             vn = v["n"]
             label = "Título" if vn == 0 else f"{n}:{vn}"
@@ -406,16 +406,16 @@ def gen_chapters(B, LEX, pre=""):
             body.append(f'<p class="bl"><span class="tag">BLIVRE</span> {h(v["b"])}</p>')
         body.append("</section>\n")
         notes.append("</section>\n")
-        files[f"{pre}c{n}.xhtml"] = page(f"{B['nome']} {n}", "\n".join(body))
-        files[f"{pre}notas{n}.xhtml"] = page(f"Notas · {B['nome']} {n}", "\n".join(notes))
+        files[f"{pre}c{n}.xhtml"] = page(f"{B['name']} {n}", "\n".join(body))
+        files[f"{pre}notas{n}.xhtml"] = page(f"Notas · {B['name']} {n}", "\n".join(notes))
         caps.append((n, c.get("t", "")))
     about_section = about_html(B)
     if about_section:
-        files[f"{pre}sobre.xhtml"] = page(f"Sobre {B['nome']}", about_section)
+        files[f"{pre}sobre.xhtml"] = page(f"Sobre {B['name']}", about_section)
     files[f"{pre}capitulos.xhtml"] = page(
-        B["nome"],
+        B["name"],
         (
-            f'<section id="capitulos"><h1>{h(B["nome"])}</h1><p class="intro">Toque na palavra no original para abrir a nota '
+            f'<section id="capitulos"><h1>{h(B["name"])}</h1><p class="intro">Toque na palavra no original para abrir a nota '
             f"com glosa, gramática e significado. {'Leia da esquerda para a direita.' if grc else 'Leia da direita para a esquerda.'}</p>"
             + (f'<p><a href="{pre}sobre.xhtml">Sobre o livro</a></p>' if about_section else "")
             + '<ol class="caps">'
@@ -532,9 +532,9 @@ def package_epub(out, files, spine, nav_items, begin, ident, title_text, summary
 
 def build(B, idx, LEX, ofl):
     """Um livro por EPUB."""
-    cod = B["cod"]
+    cod = B["code"]
     files, caps, used, about_section = gen_chapters(B, LEX)
-    files["lexico.xhtml"] = gen_lexicon(used, LEX, f"Verbetes usados em {h(B['nome'])}, em ordem Strong.")
+    files["lexico.xhtml"] = gen_lexicon(used, LEX, f"Verbetes usados em {h(B['name'])}, em ordem Strong.")
     files["creditos.xhtml"] = credits(ofl)
     spine = (
         (["sobre.xhtml"] if about_section else [])
@@ -546,13 +546,13 @@ def build(B, idx, LEX, ofl):
     )
     nav = (['<li><a href="sobre.xhtml">Sobre o livro</a></li>'] if about_section else []) + [
         '<li><a href="capitulos.xhtml">Capítulos</a><ol>'
-        + "".join(f'<li><a href="c{n}.xhtml">{h(B["nome"])} {n}{" — " + h(t) if t else ""}</a></li>' for n, t in caps)
+        + "".join(f'<li><a href="c{n}.xhtml">{h(B["name"])} {n}{" — " + h(t) if t else ""}</a></li>' for n, t in caps)
         + "</ol></li>",
         '<li><a href="lexico.xhtml">Léxico</a></li>',
         '<li><a href="creditos.xhtml">Fontes e licenças</a></li>',
     ]
     language = "grego" if B["nt"] else ("hebraico e aramaico" if cod in ("EZR", "DAN") else "hebraico")
-    name = unicodedata.normalize("NFD", B["nome"]).encode("ascii", "ignore").decode().replace(" ", "")
+    name = unicodedata.normalize("NFD", B["name"]).encode("ascii", "ignore").decode().replace(" ", "")
     return package_epub(
         os.path.join(OUT, f"{idx:02d}-{cod}-{name}.epub"),
         files,
@@ -560,8 +560,8 @@ def build(B, idx, LEX, ofl):
         nav,
         f"c{caps[0][0]}.xhtml",
         cod,
-        f"{B['nome']} · Bíblia Interlinear",
-        f"{B['nome']} em {language} com transliteração, glosa em português e nota de cada palavra (gramática e significado), "
+        f"{B['name']} · Bíblia Interlinear",
+        f"{B['name']} em {language} com transliteração, glosa em português e nota de cada palavra (gramática e significado), "
         "seguido do texto da Bíblia Livre. Versículos são títulos navegáveis; o original está marcado com idioma e "
         "direção próprios. Sem imagens nem áudio.",
         series=idx,
@@ -577,21 +577,21 @@ def build_volume(books, LEX, ofl, ident, title_text, filename, subtitle):
     ]
     group_name = None
     for B in books:
-        pre = B["cod"] + "-"
+        pre = B["code"] + "-"
         f, caps, used, about_section = gen_chapters(B, LEX, pre)
         files.update(f)
         all_used |= used
-        if B["grupo"] != group_name:
+        if B["group"] != group_name:
             if group_name is not None:
                 cover.append("</ul>")
-            group_name = B["grupo"]
+            group_name = B["group"]
             cover.append(f"<h2>{h(group_name)}</h2><ul>")
-        cover.append(f'<li><a href="{pre}capitulos.xhtml">{h(B["nome"])}</a> ({len(caps)} cap.)</li>')
+        cover.append(f'<li><a href="{pre}capitulos.xhtml">{h(B["name"])}</a> ({len(caps)} cap.)</li>')
         spine += ([f"{pre}sobre.xhtml"] if about_section else []) + [f"{pre}capitulos.xhtml"] + [f"{pre}c{n}.xhtml" for n, _ in caps]
         note_list += [f"{pre}notas{n}.xhtml" for n, _ in caps]
         nav.append(
-            f'<li><a href="{pre}{"sobre" if about_section else "capitulos"}.xhtml">{h(B["nome"])}</a><ol>'
-            + "".join(f'<li><a href="{pre}c{n}.xhtml">{h(B["nome"])} {n}</a></li>' for n, _ in caps)
+            f'<li><a href="{pre}{"sobre" if about_section else "capitulos"}.xhtml">{h(B["name"])}</a><ol>'
+            + "".join(f'<li><a href="{pre}c{n}.xhtml">{h(B["name"])} {n}</a></li>' for n, _ in caps)
             + "</ol></li>"
         )
     cover.append("</ul></section>\n")
@@ -611,7 +611,7 @@ def build_volume(books, LEX, ofl, ident, title_text, filename, subtitle):
         files,
         spine,
         nav,
-        f"{books[0]['cod']}-c1.xhtml",
+        f"{books[0]['code']}-c1.xhtml",
         ident,
         title_text,
         f"{subtitle} Cada palavra do original com transliteração, glosa em português e nota (gramática e significado), "
@@ -645,11 +645,11 @@ def build_blivre(books, ofl):
     )
     group_name = None
     for B in books:
-        fname = f"{B['cod']}.xhtml"
-        pieces = [f'<section class="livro" epub:type="chapter" id="l-{B["cod"]}"><h1>{h(B["nome"])}</h1>']
-        for c in B["caps"]:
-            d = json.loads(Path(os.path.join(DATA, "cap", B["cod"], f"{c['n']}.json")).read_text(encoding="utf8"))
-            pieces.append(f'<h2 id="c{c["n"]}">{h(B["nome"])} {c["n"]}</h2>')
+        fname = f"{B['code']}.xhtml"
+        pieces = [f'<section class="livro" epub:type="chapter" id="l-{B["code"]}"><h1>{h(B["name"])}</h1>']
+        for c in B["chapters"]:
+            d = json.loads(Path(os.path.join(DATA, "cap", B["code"], f"{c['n']}.json")).read_text(encoding="utf8"))
+            pieces.append(f'<h2 id="c{c["n"]}">{h(B["name"])} {c["n"]}</h2>')
             if c.get("t"):
                 pieces.append(f'<p class="tema">{h(c["t"])}</p>')
             body_parts = []
@@ -662,19 +662,19 @@ def build_blivre(books, ofl):
                     body_parts.append(f'<sup class="v">{v["n"]}</sup>{h(v["b"])}')
             pieces.append('<p class="txt">' + " ".join(body_parts) + "</p>")
         pieces.append("</section>\n")
-        files[fname] = page(B["nome"], "\n".join(pieces))
+        files[fname] = page(B["name"], "\n".join(pieces))
         spine.append(fname)
         nav.append(
-            f'<li><a href="{fname}">{h(B["nome"])}</a><ol>'
-            + "".join(f'<li><a href="{fname}#c{c["n"]}">{h(B["nome"])} {c["n"]}</a></li>' for c in B["caps"])
+            f'<li><a href="{fname}">{h(B["name"])}</a><ol>'
+            + "".join(f'<li><a href="{fname}#c{c["n"]}">{h(B["name"])} {c["n"]}</a></li>' for c in B["chapters"])
             + "</ol></li>"
         )
-        if B["grupo"] != group_name:
+        if B["group"] != group_name:
             if group_name is not None:
                 cover.append("</ul>")
-            group_name = B["grupo"]
+            group_name = B["group"]
             cover.append(f'<h2>{h(group_name)}</h2><ul class="livros">')
-        cover.append(f'<li><a href="{fname}">{h(B["nome"])}</a></li>')
+        cover.append(f'<li><a href="{fname}">{h(B["name"])}</a></li>')
     cover.append("</ul></section>\n")
     files["inicio.xhtml"] = page("Bíblia Livre", "\n".join(cover))
     files["creditos.xhtml"] = credits(ofl)
@@ -685,7 +685,7 @@ def build_blivre(books, ofl):
         files,
         spine,
         nav,
-        f"{books[0]['cod']}.xhtml",
+        f"{books[0]['code']}.xhtml",
         "BLIVRE-TEXTO",
         "Bíblia Livre (BLIVRE)",
         "Texto corrido da Bíblia Livre, os 66 livros, com números de versículo e tema de cada "
@@ -695,7 +695,7 @@ def build_blivre(books, ofl):
 
 
 def main(argv):
-    books = json.loads(Path(os.path.join(DATA, "livros.json")).read_text(encoding="utf8"))
+    books = json.loads(Path(os.path.join(DATA, "books.json")).read_text(encoding="utf8"))
     LEX = {}
     for L in "HG":
         LEX.update(json.loads(Path(os.path.join(DATA, "lex", f"{L}.json")).read_text(encoding="utf8")))
@@ -740,7 +740,7 @@ def main(argv):
             return
     total = 0
     for i, B in enumerate(books, 1):
-        if selected and B["cod"] not in selected:
+        if selected and B["code"] not in selected:
             continue
         out = build(B, i, LEX, ofl)
         total += os.path.getsize(out)

@@ -70,9 +70,9 @@ def book_html(B, LEX, idx):
     olang = 'lang="grc"' if grc else 'lang="he" dir="rtl"'
     A = B.get("about") or {}
     out = [
-        f'<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>{h(B["nome"])} · Bíblia Interlinear</title>'
+        f'<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>{h(B["name"])} · Bíblia Interlinear</title>'
         f'<link rel="stylesheet" href="../web/fonts/fonts.css"><style>{CSS}</style></head><body>',
-        f'<section class="capa"><h1>{h(B["nome"])}</h1><div class="orig {ocls}" {olang}>{h(A.get("title_orig"))}</div>'
+        f'<section class="capa"><h1>{h(B["name"])}</h1><div class="orig {ocls}" {olang}>{h(A.get("title_orig"))}</div>'
         f"<p>Bíblia Interlinear · {'grego' if grc else 'hebraico'} e português</p>"
         f"<p>Original, transliteração, número Strong e glosa de cada palavra, com o texto da Bíblia Livre (BLIVRE).</p>"
         f'<p class="intro">{"Leia da esquerda para a direita." if grc else "Os cartões se leem da direita para a esquerda."} '
@@ -82,10 +82,10 @@ def book_html(B, LEX, idx):
     if about_section:
         out.append(about_section.replace('epub:type="introduction" ', ""))
     used = {}
-    for c in B["caps"]:
+    for c in B["chapters"]:
         n = c["n"]
-        d = json.loads(Path(os.path.join(DATA, "cap", B["cod"], f"{n}.json")).read_text(encoding="utf8"))
-        out.append(f'<h1 class="cap" id="c{n}">{h(B["nome"])} {n}</h1>' + (f'<p class="tema">{h(c["t"])}</p>' if c.get("t") else ""))
+        d = json.loads(Path(os.path.join(DATA, "cap", B["code"], f"{n}.json")).read_text(encoding="utf8"))
+        out.append(f'<h1 class="cap" id="c{n}">{h(B["name"])} {n}</h1>' + (f'<p class="tema">{h(c["t"])}</p>' if c.get("t") else ""))
         for v in d["v"]:
             vn = v["n"]
             cards = []
@@ -114,7 +114,7 @@ def book_html(B, LEX, idx):
     def order(k):
         return (k.startswith("G:"), int(k[1:]) if k[1:].isdigit() else 10**9, k)
 
-    out.append(f'<section class="lexico"><h1>Léxico de {h(B["nome"])}</h1>')
+    out.append(f'<section class="lexico"><h1>Léxico de {h(B["name"])}</h1>')
     for k in sorted(used, key=order):
         e = used[k]
         lang = 'class="l grc" lang="grc"' if k[0] == "G" else 'class="l he" lang="he" dir="rtl"'
@@ -140,7 +140,7 @@ def book_html(B, LEX, idx):
 
 
 def main(argv):
-    books = json.loads(Path(os.path.join(DATA, "livros.json")).read_text(encoding="utf8"))
+    books = json.loads(Path(os.path.join(DATA, "books.json")).read_text(encoding="utf8"))
     LEX = {}
     for L in "HG":
         LEX.update(json.loads(Path(os.path.join(DATA, "lex", f"{L}.json")).read_text(encoding="utf8")))
@@ -154,14 +154,14 @@ def main(argv):
     os.makedirs(OUT, exist_ok=True)
     jobs, target = [], []
     for i, B in enumerate(books, 1):
-        if selected and B["cod"] not in selected:
+        if selected and B["code"] not in selected:
             continue
         if selected == {"VOLUMES"}:
             continue
-        name = unicodedata.normalize("NFD", B["nome"]).encode("ascii", "ignore").decode().replace(" ", "")
-        src = os.path.join(TMP, f"{B['cod']}.html")
+        name = unicodedata.normalize("NFD", B["name"]).encode("ascii", "ignore").decode().replace(" ", "")
+        src = os.path.join(TMP, f"{B['code']}.html")
         Path(src).write_text(book_html(B, LEX, i), encoding="utf8")
-        jobs.append([src, os.path.join(OUT, f"{i:02d}-{B['cod']}-{name}.pdf"), f"{B['nome']} · Bíblia Interlinear"])
+        jobs.append([src, os.path.join(OUT, f"{i:02d}-{B['code']}-{name}.pdf"), f"{B['name']} · Bíblia Interlinear"])
         target.append(B)
     if jobs:
         lst = os.path.join(TMP, "jobs.json")
@@ -198,10 +198,10 @@ sup { font-size: 6.5pt; font-weight: 700; color: #555; margin: 0 .5pt 0 2pt; }
 <p>Texto da Bíblia Livre (BLIVRE). Temas: projeto Bíblia Interlinear, com fontes abertas.</p></section>"""
     ]
     for B in books:
-        pieces.append(f'<section class="livro"><h1>{esc(B["nome"])}</h1>')
-        for c in B["caps"]:
-            d = json.loads(Path(os.path.join(DATA, "cap", B["cod"], f"{c['n']}.json")).read_text(encoding="utf8"))
-            pieces.append(f"<h2>{esc(B['nome'])} {c['n']}</h2>")
+        pieces.append(f'<section class="livro"><h1>{esc(B["name"])}</h1>')
+        for c in B["chapters"]:
+            d = json.loads(Path(os.path.join(DATA, "cap", B["code"], f"{c['n']}.json")).read_text(encoding="utf8"))
+            pieces.append(f"<h2>{esc(B['name'])} {c['n']}</h2>")
             if c.get("t"):
                 pieces.append(f'<p class="tema">{esc(c["t"])}</p>')
             body_parts = []
@@ -236,18 +236,18 @@ sup { font-size: 6.5pt; font-weight: 700; color: #555; margin: 0 .5pt 0 2pt; }
         for B in books:
             t = "Novo Testamento" if B["nt"] else "Antigo Testamento"
             for k in range(pg, len(page_list)):
-                if B["nome"] in page_list[k]:
+                if B["name"] in page_list[k]:
                     pg = k
                     break
             if t not in test:
                 test[t] = w.add_outline_item(t, pg)
-            book = w.add_outline_item(B["nome"], pg, parent=test[t])
-            for c in B["caps"]:
+            book = w.add_outline_item(B["name"], pg, parent=test[t])
+            for c in B["chapters"]:
                 for k in range(pg, len(page_list)):
-                    if f"{B['nome']} {c['n']}" in page_list[k]:
+                    if f"{B['name']} {c['n']}" in page_list[k]:
                         pg = k
                         break
-                w.add_outline_item(f"{B['nome']} {c['n']}", pg, parent=book)
+                w.add_outline_item(f"{B['name']} {c['n']}", pg, parent=book)
         w.page_mode = "/UseOutlines"
         w.add_metadata({"/Title": "Bíblia Livre", "/Author": "Bíblia Livre (BLIVRE)", "/Lang": "pt-BR"})
         with open(dest, "wb") as f:
@@ -264,10 +264,11 @@ def bookmarks(fname, B):
 
     txt = subprocess.run(["pdftotext", "-enc", "UTF-8", fname, "-"], capture_output=True, text=True).stdout
     page_list = [{ln.strip() for ln in p.splitlines() if ln.strip()} for p in txt.split("\f")]
-    name = B["nome"]
+    name = B["name"]
     targets = [("Sobre o livro", lambda ls: any(ln.startswith(f"Sobre {name}") for ln in ls))]
     targets += [
-        (f"{name} {c['n']}" + (f" — {c['t']}" if c.get("t") else ""), (lambda t: lambda ls: t in ls)(f"{name} {c['n']}")) for c in B["caps"]
+        (f"{name} {c['n']}" + (f" — {c['t']}" if c.get("t") else ""), (lambda t: lambda ls: t in ls)(f"{name} {c['n']}"))
+        for c in B["chapters"]
     ]
     targets += [("Léxico", lambda ls: f"Léxico de {name}" in ls), ("Fontes e licenças", lambda ls: "Fontes e licenças" in ls)]
     w = PdfWriter(clone_from=PdfReader(fname))
@@ -302,8 +303,8 @@ def volumes(books):
     from pypdf import PdfWriter
 
     def fname(i, B):
-        name = unicodedata.normalize("NFD", B["nome"]).encode("ascii", "ignore").decode().replace(" ", "")
-        return os.path.join(OUT, f"{i:02d}-{B['cod']}-{name}.pdf")
+        name = unicodedata.normalize("NFD", B["name"]).encode("ascii", "ignore").decode().replace(" ", "")
+        return os.path.join(OUT, f"{i:02d}-{B['code']}-{name}.pdf")
 
     all_books = [(B, fname(i, B)) for i, B in enumerate(books, 1)]
     missing_files = [os.path.basename(a) for _, a in all_books if not os.path.exists(a)]
@@ -328,7 +329,7 @@ def volumes(books):
                 if t not in pieces:
                     pieces[t] = w.add_outline_item(t, begin)
                 parent_node = pieces[t]
-            book = w.add_outline_item(B["nome"], begin, parent=parent_node)
+            book = w.add_outline_item(B["name"], begin, parent=parent_node)
             # capítulos: os marcadores que o Chromium criou no PDF do livro, um nível abaixo do livro
             from pypdf import PdfReader
 

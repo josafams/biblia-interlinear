@@ -31,7 +31,7 @@ async function aparelho(browser, info, nuvem, { config = RAPIDO, timezoneId } = 
   await simularGoogle(page, { nuvem });
   await page.goto("ler.html#RUT.1");
   await expect(page.locator(".verse").first()).toBeVisible();
-  await page.waitForFunction(() => window.Progresso && window.Conta && window.Sinc);
+  await page.waitForFunction(() => window.Progress && window.Account && window.Sync);
   return page;
 }
 async function signIn(page) {
@@ -58,7 +58,7 @@ test("sem conta, Meu progresso convida a entrar e não conta nada", async ({ bro
   await abrirProgresso(page);
   await expect(page.locator("#progresso")).toContainText("Entre com sua conta Google");
   await expect(page.locator("#progresso .js-entrar")).toBeVisible();
-  expect(await page.evaluate(() => window.Anotacoes.allRecords("leituras"))).toHaveLength(0);
+  expect(await page.evaluate(() => window.Annotations.allRecords("leituras"))).toHaveLength(0);
 });
 
 test("ler até o fim do capítulo marca como lido e conta o tempo", async ({ browser }, info) => {
@@ -70,12 +70,12 @@ test("ler até o fim do capítulo marca como lido e conta o tempo", async ({ bro
     await page.waitForTimeout(300);
   }
   await expect
-    .poll(() => page.evaluate(() => window.Anotacoes.allRecords("leituras").then(l => l.map(x => x.id))), { timeout: 8000 })
+    .poll(() => page.evaluate(() => window.Annotations.allRecords("leituras").then(l => l.map(x => x.id))), { timeout: 8000 })
     .toEqual(["RUT.1"]);
   await abrirProgresso(page);
   await expect(page.locator("#progresso .pg-grande").first()).toContainText("1 de 1.189 capítulos lidos");
   await expect(page.locator('.pg-livro[data-livro="RUT"]')).toHaveClass(/n1/);
-  const tempo = await page.evaluate(() => window.Anotacoes.allRecords("tempo"));
+  const tempo = await page.evaluate(() => window.Annotations.allRecords("tempo"));
   expect(tempo).toHaveLength(1);
   expect(tempo[0].segundos).toBeGreaterThan(0);
   expect(tempo[0].livros.RUT).toBeGreaterThan(0);
@@ -95,14 +95,14 @@ test("sem atividade (nem rolar, nem tocar), o tempo para de contar", async ({ br
   await page.mouse.wheel(0, 300);
   await page.waitForTimeout(2500); // o gesto "vale" por 1,5 s
   const t1 = await page.evaluate(() =>
-    window.Progresso.saveTime()
-      .then(() => window.Anotacoes.allRecords("tempo"))
+    window.Progress.saveTime()
+      .then(() => window.Annotations.allRecords("tempo"))
       .then(t => t[0]?.segundos || 0)
   );
   await page.waitForTimeout(2000);
   const t2 = await page.evaluate(() =>
-    window.Progresso.saveTime()
-      .then(() => window.Anotacoes.allRecords("tempo"))
+    window.Progress.saveTime()
+      .then(() => window.Annotations.allRecords("tempo"))
       .then(t => t[0]?.segundos || 0)
   );
   expect(t1).toBeGreaterThan(0);
@@ -122,9 +122,9 @@ test("o tempo de dois aparelhos no mesmo dia é somado, não sobrescrito", async
   ]) {
     await p.evaluate(
       ([dia, sec]) =>
-        window.Anotacoes.save("tempo", {
-          id: `${window.Anotacoes.storage.aparelho}:${dia}`,
-          aparelho: window.Anotacoes.storage.aparelho,
+        window.Annotations.save("tempo", {
+          id: `${window.Annotations.storage.aparelho}:${dia}`,
+          aparelho: window.Annotations.storage.aparelho,
           dia,
           segundos: sec,
           livros: { RUT: sec },
@@ -133,9 +133,9 @@ test("o tempo de dois aparelhos no mesmo dia é somado, não sobrescrito", async
         }),
       [dia, sec]
     );
-    await p.evaluate(() => window.Sinc.currentTime());
+    await p.evaluate(() => window.Sync.currentTime());
   }
-  await a.evaluate(() => window.Sinc.currentTime());
+  await a.evaluate(() => window.Sync.currentTime());
   await abrirProgresso(a);
   await expect(a.locator(".pg-tile").nth(1)).toContainText("25 min"); // 10 + 15 nos últimos 7 dias
   await expect(a.locator(".pg-tile").nth(3)).toContainText("4"); // verbetes: 2 + 2
@@ -150,10 +150,10 @@ test("sequência de dias e recorde", async ({ browser }, info) => {
         const d = new Date(d0.getFullYear(), d0.getMonth(), d0.getDate() - n);
         return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
       };
-    const ap = window.Anotacoes.storage.aparelho;
+    const ap = window.Annotations.storage.aparelho;
     // ontem, anteontem e 3 dias atrás (5 min cada) = sequência 3; antes, 4 dias seguidos = recorde 4; 1 dia só com 2 min não conta
     for (const n of [1, 2, 3, 10, 11, 12, 13])
-      await window.Anotacoes.save("tempo", {
+      await window.Annotations.save("tempo", {
         id: `${ap}:${dia(n)}`,
         aparelho: ap,
         dia: dia(n),
@@ -162,7 +162,7 @@ test("sequência de dias e recorde", async ({ browser }, info) => {
         caps: 0,
         verbetes: 0
       });
-    await window.Anotacoes.save("tempo", {
+    await window.Annotations.save("tempo", {
       id: `${ap}:${dia(5)}`,
       aparelho: ap,
       dia: dia(5),
@@ -187,13 +187,13 @@ test("plano de leitura: leitura do dia, em dia ou atrasado, reajustar", async ({
   await expect(page.locator(".pg-estado")).toHaveText("Em dia");
   // o plano começou há 10 dias e nada foi lido: atrasado
   await page.evaluate(async () => {
-    const p = (await window.Anotacoes.allRecords("planos"))[0];
+    const p = (await window.Annotations.allRecords("planos"))[0];
     const d = n => {
       const x = new Date();
       x.setDate(x.getDate() + n);
       return `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, "0")}-${String(x.getDate()).padStart(2, "0")}`;
     };
-    await window.Anotacoes.save("planos", { ...p, inicio: d(-10), fim: d(354) });
+    await window.Annotations.save("planos", { ...p, inicio: d(-10), fim: d(354) });
   });
   await expect(page.locator(".pg-estado")).toContainText("capítulos atrasado");
   await page.click("#pg-reajustar");
@@ -209,8 +209,8 @@ test("zerar estatísticas apaga leituras, tempo e plano, mas não as anotações
   const page = await aparelho(browser, info, novaNuvem());
   await signIn(page);
   await page.evaluate(async () => {
-    await window.Progresso.markRead("RUT", 1);
-    await window.Anotacoes.save("favoritos", {
+    await window.Progress.markRead("RUT", 1);
+    await window.Annotations.save("favoritos", {
       id: "f1",
       cap: "RUT.1",
       ancora: { livro: "RUT", cap: 1, ver: 1, ver_fim: 1, camada: "versiculo" }
@@ -222,7 +222,7 @@ test("zerar estatísticas apaga leituras, tempo e plano, mas não as anotações
   await page.click('.conta-caixa button[data-r="sim"]');
   await expect(page.locator("#progresso .pg-grande").first()).toContainText("0 de 1.189");
   await expect(page.locator('[data-plano="ano"]')).toBeVisible();
-  expect(await page.evaluate(() => window.Anotacoes.contar())).toBe(1);
+  expect(await page.evaluate(() => window.Annotations.contar())).toBe(1);
 });
 
 test("foto (só com FOTOS=pasta)", async ({ browser }, info) => {
@@ -230,7 +230,7 @@ test("foto (só com FOTOS=pasta)", async ({ browser }, info) => {
   const page = await aparelho(browser, info, novaNuvem());
   await signIn(page);
   await page.evaluate(async () => {
-    const A = window.Anotacoes,
+    const A = window.Annotations,
       ap = A.storage.aparelho,
       d0 = new Date();
     const dia = n => {
@@ -248,12 +248,12 @@ test("foto (só com FOTOS=pasta)", async ({ browser }, info) => {
           caps: 2,
           verbetes: 3
         });
-    for (let c = 1; c <= 50; c++) await window.Progresso.markRead("GEN", c);
+    for (let c = 1; c <= 50; c++) await window.Progress.markRead("GEN", c);
     for (const l of ["RUT", "JON", "PHM", "JUD", "OBA"]) {
       const n = window.__livros[l].ncaps;
-      for (let c = 1; c <= n; c++) await window.Progresso.markRead(l, c);
+      for (let c = 1; c <= n; c++) await window.Progress.markRead(l, c);
     }
-    for (let c = 1; c <= 10; c++) await window.Progresso.markRead("MAT", c);
+    for (let c = 1; c <= 10; c++) await window.Progress.markRead("MAT", c);
     await A.save("preferencias", { id: "posicao", cod: "MAT", cap: 11, quando: new Date().toISOString() });
   });
   await abrirProgresso(page);

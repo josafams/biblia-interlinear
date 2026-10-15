@@ -72,8 +72,8 @@ execFileSync("python3", [r("scripts/export.py")], { stdio: "inherit" });
 
 // ---- página: template + lista de livros (capítulos e léxico são lidos sob demanda de data/) ----
 const tpl = fs.readFileSync(r("web/template.html"), "utf8");
-const livros = JSON.parse(fs.readFileSync(r("build/data/livros.json"), "utf8"));
-const data = JSON.stringify({ livros, caps: {}, lex: {}, completo: true }).replace(/<\//g, "<\\/");
+const books = JSON.parse(fs.readFileSync(r("build/data/books.json"), "utf8"));
+const data = JSON.stringify({ books, chapters: {}, lex: {}, complete: true }).replace(/<\//g, "<\\/");
 let html = tpl.replace("__DATA__", () => data);
 html = html.replace(
   /<link rel="preconnect"[^>]*>\s*<link rel="stylesheet" href="https:\/\/fonts\.googleapis\.com[^>]*>/,
@@ -101,14 +101,14 @@ ${html.slice(cut).trim()}
 fs.writeFileSync(path.join(OUT, "ler.html"), doc);
 
 // ---- página inicial (index.html): números, amostra e tamanhos dos livros lidos dos dados ----
-fs.writeFileSync(path.join(OUT, "index.html"), await paginaInicial(livros));
+fs.writeFileSync(path.join(OUT, "index.html"), await paginaInicial(books));
 
 // ---- vídeos "Como usar" já gravados (scripts/videos/gravar.mjs grava em build/videos) ----
 const VIDEOS = r("build/videos");
 if (fs.existsSync(path.join(VIDEOS, "videos.js"))) fs.cpSync(VIDEOS, path.join(OUT, "videos"), { recursive: true });
 else {
   fs.mkdirSync(path.join(OUT, "videos"), { recursive: true });
-  fs.writeFileSync(path.join(OUT, "videos/videos.js"), "window.__videos = { arquivos: {} };\n");
+  fs.writeFileSync(path.join(OUT, "videos/videos.js"), "window.__videos = { files: {} };\n");
 }
 
 // ---- scripts do site e Dexie (Apache-2.0) para o banco local ----
@@ -187,7 +187,7 @@ self.addEventListener("fetch", e => {
 console.error(`Versão web gerada em build/web (${files.length + 1} arquivos, cache ${version})`);
 
 // ---------------------------------------------------------------------------------------------
-async function paginaInicial(livros) {
+async function paginaInicial(books) {
   const REPO = "https://github.com/josafams/biblia-interlinear";
   const payload = r("build/data");
   const cap = (cod, n) => JSON.parse(fs.readFileSync(path.join(payload, "cap", cod, `${n}.json`), "utf8"));
@@ -198,10 +198,10 @@ async function paginaInicial(livros) {
   let caps = 0,
     vers = 0,
     originalMarks = 0;
-  for (const b of livros)
-    for (const c of b.caps) {
+  for (const b of books)
+    for (const c of b.chapters) {
       caps++;
-      const f = path.join(payload, "cap", b.cod, `${c.n}.json`);
+      const f = path.join(payload, "cap", b.code, `${c.n}.json`);
       if (!fs.existsSync(f)) continue;
       for (const v of JSON.parse(fs.readFileSync(f, "utf8")).v) {
         if (v.n > 0) vers++;
@@ -247,7 +247,7 @@ async function paginaInicial(livros) {
     __REPO_CURTO__: "github.com/josafams/biblia-interlinear",
     __LIVROS__: `${REPO}/releases/download/livros`,
     __AMOSTRA__: amostra,
-    __N_LIVROS__: fmt(livros.length),
+    __N_LIVROS__: fmt(books.length),
     __N_CAPS__: fmt(caps),
     __N_VERS__: fmt(vers),
     __N_PALAVRAS__: fmt(originalMarks),

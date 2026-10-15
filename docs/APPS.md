@@ -5,7 +5,7 @@ Um único conteúdo (`web/template.html` + dados da Bíblia inteira) gera as sa�
 | Saída | Onde fica | Como é gerada |
 |---|---|---|
 | Banco do corpus (66 livros, 443 mil palavras, glosas, léxico) | `build/biblia.sqlite` | `scripts/corpus.py` e `scripts/make_glosses.py` (o `build.sh` roda se o banco não existir, ou com `REFAZER=1`) |
-| Dados em JSON | `build/data/` — `livros.json`, `cap/<LIVRO>/<n>.json` (1.189 capítulos), `lex/H.json` e `lex/G.json` | `scripts/export.py` (chamado pelo `build_web.mjs`) |
+| Dados em JSON | `build/data/` — `books.json`, `cap/<LIVRO>/<n>.json` (1.189 capítulos), `lex/H.json` e `lex/G.json` | `scripts/export.py` (chamado pelo `build_web.mjs`) |
 | Dados que o site e o app carregam | `build/web/dados/` — os mesmos dados em `.js`, que funcionam também abrindo o `index.html` direto do disco | idem |
 | Web instalável (PWA, funciona offline) | `build/web/` | `scripts/build.sh` |
 | Página única com capítulos de amostra | `build/preview.html` | `scripts/build.sh` |

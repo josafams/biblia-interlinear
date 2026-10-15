@@ -13,8 +13,8 @@
  */
 (function () {
   "use strict";
-  const A = window.Anotacoes,
-    C = window.Conta;
+  const A = window.Annotations,
+    C = window.Account;
   if (!A?.storage || !C) return;
   const B = A.storage;
   const CFG = Object.assign({ tick: 5000, minLeitura: 60, gesto: 120000, gravarCada: 300000 }, window.__progressoConfig || {});
@@ -677,5 +677,5 @@
     if (!panel.hidden) render();
   });
 
-  window.Progresso = { open, hide, markRead, saveTime, payload: () => payload() };
+  window.Progress = { open, hide, markRead, saveTime, payload: () => payload() };
 })();

@@ -1,5 +1,5 @@
 // Grava os vídeos "Como usar" a partir dos roteiros (scripts/videos/roteiros.mjs), com o Playwright.
-// Para cada vídeo e aparelho (celular 390×844, computador 1280×800) gera em build/videos:
+// Para cada vídeo e aparelho (phone 390×844, desktop 1280×800) gera em build/videos:
 //   <id>-<aparelho>.mp4   vídeo H.264 sem som (ffmpeg)
 //   <id>-<aparelho>.vtt   legendas (uma por passo, com os tempos reais)
 //   <id>-<aparelho>.jpg   capa
@@ -24,7 +24,7 @@ const VERIFICAR = args.includes("--verificar");
 const quais = args.filter(a => !a.startsWith("--"));
 const APARELHOS = {
   phone: { ...devices["Pixel 7"], viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 },
-  computador: { viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1 }
+  desktop: { viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1 }
 };
 
 // ---- servidor estático do site ----
@@ -267,12 +267,23 @@ const vtt = (ts, steps, fim) =>
 const browser = await chromium.launch(fs.existsSync("/opt/pw-browsers/chromium") ? { executablePath: "/opt/pw-browsers/chromium" } : {});
 if (!VERIFICAR) fs.mkdirSync(OUT, { recursive: true });
 const indice = fs.existsSync(path.join(OUT, "indice.json")) ? JSON.parse(fs.readFileSync(path.join(OUT, "indice.json"), "utf8")) : {};
+// índices gravados antes da troca de nomes usavam celular/computador e capa/tempos/duracao
+for (const porAparelho of Object.values(indice))
+  for (const [antigo, novo] of [
+    ["celular", "phone"],
+    ["computador", "desktop"]
+  ])
+    if (porAparelho[antigo]) {
+      const { capa, tempos, duracao, ...resto } = porAparelho[antigo];
+      porAparelho[novo] ??= { ...resto, cover: capa, times: tempos, duration: duracao };
+      delete porAparelho[antigo];
+    }
 let falhas = 0;
 function salvarIndice() {
   fs.writeFileSync(path.join(OUT, "indice.json"), JSON.stringify(indice, null, 1));
   fs.writeFileSync(
     path.join(OUT, "videos.js"),
-    `// Gerado por scripts/videos/gravar.mjs\nwindow.__videos = ${JSON.stringify({ arquivos: indice })};\n`
+    `// Gerado por scripts/videos/gravar.mjs\nwindow.__videos = ${JSON.stringify({ files: indice })};\n`
   );
 }
 for (const v of videos) {
@@ -307,7 +318,7 @@ for (const v of videos) {
       await page.locator(".verse").first().waitFor({ timeout: 15000 });
       await page.evaluate(() => document.fonts.ready);
       if (v.prepare) {
-        await page.waitForFunction(() => window.Anotacoes);
+        await page.waitForFunction(() => window.Annotations);
         await v.prepare(page);
         await page.reload();
         await page.locator(".verse").first().waitFor();
@@ -336,7 +347,7 @@ for (const v of videos) {
           .join("\n") + `\nfile '${quadros.at(-1).file}'\n`
       );
       const base = path.join(OUT, `${v.id}-${nome}`);
-      const escala = nome === "celular" ? "540:-2" : "1280:-2";
+      const escala = nome === "phone" ? "540:-2" : "1280:-2";
       execFileSync("ffmpeg", [
         "-y",
         "-loglevel",
@@ -388,8 +399,8 @@ for (const v of videos) {
         webm: `videos/${v.id}-${nome}.webm`,
         mp4: `videos/${v.id}-${nome}.mp4`,
         vtt: `videos/${v.id}-${nome}.vtt`,
-        capa: `videos/${v.id}-${nome}.jpg`,
-        tempos: tempos.map(x => +x.toFixed(2)),
+        cover: `videos/${v.id}-${nome}.jpg`,
+        times: tempos.map(x => +x.toFixed(2)),
         duration: `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, "0")}`
       };
       salvarIndice();

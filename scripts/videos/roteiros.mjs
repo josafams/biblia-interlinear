@@ -19,7 +19,7 @@ const fecharPainel = t => t.onKey("Escape");
 // anotações de exemplo para os vídeos que mostram a lista, o PDF e o backup
 const dadosDeExemplo = async page => {
   await page.evaluate(async () => {
-    const A = window.Anotacoes,
+    const A = window.Annotations,
       id = () => crypto.randomUUID();
     const anc = (livro, cap, ver, trecho) => ({ livro, cap, ver, ver_fim: ver, camada: "versiculo", trecho });
     const tag = await A.save("etiquetas", { id: id(), nome: "promessas" });
@@ -60,7 +60,7 @@ const dadosDeExemplo = async page => {
 // conta já ligada antes do corte do vídeo (para os vídeos que começam conectados)
 async function entrarNaConta(t) {
   const p = t.page;
-  await p.waitForFunction(() => window.Conta && window.Sinc);
+  await p.waitForFunction(() => window.Account && window.Sync);
   await p.click("#open-toc");
   await p.click("#conta-entrar");
   await p.locator("#conta-sinc", { hasText: "Sincronizado" }).waitFor();
@@ -69,9 +69,9 @@ async function entrarNaConta(t) {
 }
 // leituras e tempo de exemplo para o vídeo do progresso (40 dias, Gênesis, alguns livros curtos, Mateus 1–10)
 async function progressoDeExemplo(page) {
-  await page.waitForFunction(() => window.Progresso && window.__livros);
+  await page.waitForFunction(() => window.Progress && window.__livros);
   await page.evaluate(async () => {
-    const A = window.Anotacoes,
+    const A = window.Annotations,
       ap = A.storage.aparelho,
       d0 = new Date(),
       currentTime = new Date().toISOString();
@@ -276,7 +276,7 @@ export const videos = [
     titulo: "Usar pelo teclado",
     desc: "Tab, setas, Enter e Esc.",
     inicio: "GEN.1",
-    os: "computador",
+    os: "desktop",
     steps: [
       {
         legenda: "Tab passa de versículo em versículo.",
@@ -648,7 +648,7 @@ export const videos = [
             await d.open();
             for (const tb of d.tables) await tb.clear();
             d.close();
-            await window.Anotacoes.openList();
+            await window.Annotations.openList();
           }); // simula o aparelho novo
           await t.esperar(600);
           await t.realcar("#mn-importar");
@@ -709,7 +709,7 @@ export const videos = [
       {
         legenda: "…chega aqui sozinha em poucos segundos, com o app aberto.",
         faz: async t => {
-          await t.page.evaluate(() => window.Sinc.currentTime());
+          await t.page.evaluate(() => window.Sync.currentTime());
           await t.page.locator("#v1 .vnota").waitFor();
           await t.realcar("#v1 .vnota");
         }

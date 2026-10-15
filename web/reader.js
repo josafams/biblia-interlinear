@@ -3,10 +3,10 @@
  * (DATA = livros, capítulos embutidos e léxico; ver scripts/build_web.mjs). */
 const SPK =
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
-const BOOKS = DATA.livros;
-const BY_CODE = Object.fromEntries(BOOKS.map(b => [b.cod, b]));
+const BOOKS = DATA.books;
+const BY_CODE = Object.fromEntries(BOOKS.map(b => [b.code, b]));
 const LEX = Object.assign({}, DATA.lex || {});
-const CAPS = Object.assign({}, DATA.caps || {});
+const CAPS = Object.assign({}, DATA.chapters || {});
 
 // ---------- Morfologia ----------
 const STEM = {
@@ -229,7 +229,7 @@ function loadScript(key, src) {
 }
 const lexLoaded = {};
 function ensureLex(L) {
-  if (!DATA.completo) return Promise.resolve();
+  if (!DATA.complete) return Promise.resolve();
   if (!lexLoaded[L])
     lexLoaded[L] = loadScript("lex:" + L, `dados/lex/${L}.js`).catch(e => {
       lexLoaded[L] = null;
@@ -238,12 +238,12 @@ function ensureLex(L) {
   return lexLoaded[L];
 }
 function hasChapter(cod, n) {
-  return !!DATA.completo || !!CAPS[cod + "." + n];
+  return !!DATA.complete || !!CAPS[cod + "." + n];
 }
 async function fetchChapter(cod, n) {
   const k = cod + "." + n;
   if (CAPS[k]) return CAPS[k];
-  if (!DATA.completo) return null;
+  if (!DATA.complete) return null;
   return loadScript(k, `dados/cap/${cod}/${n}.js`);
 }
 function toWord(w) {
@@ -295,17 +295,17 @@ function vLabel(v) {
 }
 function renderHeader() {
   const A = BOOK.about;
-  document.title = `${BOOK.nome} ${CUR} · Bíblia Interlinear`;
+  document.title = `${BOOK.name} ${CUR} · Bíblia Interlinear`;
   document.getElementById("eyebrow").textContent = eyebrowText();
   document.getElementById("h1").innerHTML =
-    `${esc(BOOK.nome)} ${CUR}${A ? ` <span class="orig" lang="${OLANG()}">${esc(A.title_orig)}</span>` : ""}`;
-  const theme = BOOK.caps[CUR - 1] && BOOK.caps[CUR - 1].t;
+    `${esc(BOOK.name)} ${CUR}${A ? ` <span class="orig" lang="${OLANG()}">${esc(A.title_orig)}</span>` : ""}`;
+  const theme = BOOK.chapters[CUR - 1] && BOOK.chapters[CUR - 1].t;
   document.getElementById("ctheme").textContent = theme || "";
   document.getElementById("lede").innerHTML = GRC
     ? "Lê-se da esquerda para a direita. Cada cartão traz a palavra grega, a transliteração do lema, o número Strong e uma glosa; abaixo vem o versículo na Bíblia Livre. Toque numa palavra para abrir o verbete com origem, significado, pronúncia e análise gramatical."
     : "Lê-se da direita para a esquerda. Cada cartão traz a palavra hebraica, a transliteração do lema, o número Strong e uma glosa; abaixo vem o versículo na Bíblia Livre. Toque numa palavra para abrir o verbete com origem, significado, pronúncia e análise gramatical. O botão <b>Ouvir</b> lê o versículo em voz alta.";
   document.body.classList.toggle("grc", GRC);
-  document.getElementById("verses").setAttribute("aria-label", `Texto de ${BOOK.nome} ${CUR}`);
+  document.getElementById("verses").setAttribute("aria-label", `Texto de ${BOOK.name} ${CUR}`);
 }
 const SOURCE_NOTES = {
   aparato:
@@ -364,10 +364,10 @@ function renderVerses() {
   if (io) document.querySelectorAll(".verse").forEach(sec => io.observe(sec));
   // Anotações (anotacoes.js) desenham suas marcações quando o capítulo muda
   window.__capituloAtual = {
-    cod: BOOK.cod,
+    cod: BOOK.code,
     cap: CUR,
-    nome: BOOK.nome,
-    abrev: BOOK.abrev,
+    nome: BOOK.name,
+    abrev: BOOK.abbrev,
     verses: CH.verses.map(v => ({ n: v.n, blivre: v.blivre, words: v.words.map(w => ({ heb: w.heb })) }))
   };
   document.dispatchEvent(new CustomEvent("capitulo", { detail: window.__capituloAtual }));
@@ -379,8 +379,8 @@ function neighbor(dir) {
   if (n < 1) {
     b = BOOKS[bi - 1];
     if (!b) return null;
-    n = b.caps.length;
-  } else if (n > BOOK.caps.length) {
+    n = b.chapters.length;
+  } else if (n > BOOK.chapters.length) {
     b = BOOKS[bi + 1];
     if (!b) return null;
     n = 1;
@@ -391,8 +391,8 @@ function chapterNav() {
   const btn = (dir, cls, arrow) => {
     const x = neighbor(dir);
     if (!x) return "<span></span>";
-    const ok = hasChapter(x.b.cod, x.n);
-    return `<button class="cnav ${cls}${ok ? "" : " na"}" data-cod="${x.b.cod}" data-ch="${x.n}" ${ok ? "" : 'aria-disabled="true"'}>${dir < 0 ? arrow + " " : ""}${esc(x.b.nome)} ${x.n}${dir > 0 ? " " + arrow : ""}<small>${esc(x.b.caps[x.n - 1].t || "")}</small></button>`;
+    const ok = hasChapter(x.b.code, x.n);
+    return `<button class="cnav ${cls}${ok ? "" : " na"}" data-cod="${x.b.code}" data-ch="${x.n}" ${ok ? "" : 'aria-disabled="true"'}>${dir < 0 ? arrow + " " : ""}${esc(x.b.name)} ${x.n}${dir > 0 ? " " + arrow : ""}<small>${esc(x.b.chapters[x.n - 1].t || "")}</small></button>`;
   };
   return `<nav class="chnav" aria-label="Capítulo anterior e próximo">${btn(-1, "prev", "←")}${btn(1, "next", "→")}</nav>`;
 }
@@ -718,7 +718,7 @@ function entryHTML(k, word) {
     ? `<p>${esc(e.s)}</p>`
     : `<p class="en" lang="en">${esc(e.se || e.ge || "")} <em lang="pt-BR">(inglês, sem tradução)</em></p>`;
   const nc = chapterCount(k);
-  const uses = `${e.n} ${e.n === 1 ? "ocorrência" : "ocorrências"} na Bíblia${nc ? ` · ${nc} em ${BOOK.nome} ${CUR}` : ""}`;
+  const uses = `${e.n} ${e.n === 1 ? "ocorrência" : "ocorrências"} na Bíblia${nc ? ` · ${nc} em ${BOOK.name} ${CUR}` : ""}`;
   const blb = BLB(k);
   return (
     top +
@@ -807,7 +807,7 @@ function openPanel(name, focusEl) {
   detail.inert = true;
   document.body.style.overflow = "hidden";
   if (name === "toc") {
-    pickBook(BOOK.cod, CUR);
+    pickBook(BOOK.code, CUR);
   }
   const first = focusEl || (name === "toc" ? sheets.toc.querySelector(".vchip.here") : sheets.look.querySelector('[aria-pressed="true"]'));
   (first || focusables(sheets[name])[0]).focus({ preventScroll: true });
@@ -874,7 +874,7 @@ function renderBooks() {
   const groups = [];
   for (const b of BOOKS) {
     let g = groups[groups.length - 1];
-    if (!g || g.name !== b.grupo) groups.push((g = { name: b.grupo, nt: b.nt, books: [] }));
+    if (!g || g.name !== b.group) groups.push((g = { name: b.group, nt: b.nt, books: [] }));
     g.books.push(b);
   }
   const part = nt =>
@@ -882,7 +882,7 @@ function renderBooks() {
       .filter(g => g.nt === nt)
       .map(
         g => `
-    <div class="bgroup"><h4>${esc(g.name)}</h4><div class="bgrid">${g.books.map(b => `<button class="bchip" data-cod="${b.cod}" aria-pressed="${b.cod === pickedBook.cod}" aria-label="${esc(b.nome)}" title="${esc(b.nome)}">${esc(b.abrev)}</button>`).join("")}</div></div>`
+    <div class="bgroup"><h4>${esc(g.name)}</h4><div class="bgrid">${g.books.map(b => `<button class="bchip" data-cod="${b.code}" aria-pressed="${b.code === pickedBook.code}" aria-label="${esc(b.name)}" title="${esc(b.name)}">${esc(b.abbrev)}</button>`).join("")}</div></div>`
       )
       .join("");
   document.getElementById("bk-list").innerHTML = `
@@ -891,22 +891,22 @@ function renderBooks() {
 }
 function renderChapters() {
   const B = pickedBook;
-  document.getElementById("ch-h").textContent = `Capítulos de ${B.nome}`;
-  document.getElementById("chgrid").innerHTML = B.caps
+  document.getElementById("ch-h").textContent = `Capítulos de ${B.name}`;
+  document.getElementById("chgrid").innerHTML = B.chapters
     .map(c => {
-      const ok = hasChapter(B.cod, c.n);
+      const ok = hasChapter(B.code, c.n);
       return `<button class="chchip${ok ? "" : " na"}" data-ch="${c.n}" aria-pressed="${c.n === pickedCh}" title="${c.t ? esc(c.t) : ""}" aria-label="Abrir capítulo ${c.n}${c.t ? ": " + esc(c.t) : ""}${ok ? "" : ". Não incluído nesta prévia"}">${c.n}</button>`;
     })
     .join("");
-  const c = B.caps[pickedCh - 1],
-    ok = hasChapter(B.cod, c.n),
+  const c = B.chapters[pickedCh - 1],
+    ok = hasChapter(B.code, c.n),
     here = B === BOOK && c.n === CUR;
   document.getElementById("chcard").innerHTML = `
-    <span class="ct">${esc(B.nome)} ${c.n}${c.t ? " · " + esc(c.t) : ""}</span>
+    <span class="ct">${esc(B.name)} ${c.n}${c.t ? " · " + esc(c.t) : ""}</span>
     <span class="cm">${here ? "você está aqui · " : ""}${c.v} versículos${ok ? "" : " · não incluído nesta prévia"}</span>`;
 }
 function renderTocVerses() {
-  document.getElementById("toc-vh").textContent = `Versículos de ${BOOK.nome} ${CUR}`;
+  document.getElementById("toc-vh").textContent = `Versículos de ${BOOK.name} ${CUR}`;
   const chip = v =>
     `<a class="vchip" role="listitem" href="#v${v.n}" data-go data-v="${v.n}" aria-label="Versículo ${vLabel(v)}">${v.n === 0 ? "tít." : v.n}</a>`;
   document.getElementById("toc-days").innerHTML =
@@ -922,7 +922,7 @@ function pickBook(cod, ch) {
 document.getElementById("bk-list").addEventListener("click", e => {
   const b = e.target.closest(".bchip");
   if (!b) return;
-  pickBook(b.dataset.cod, b.dataset.cod === BOOK.cod ? CUR : 1);
+  pickBook(b.dataset.cod, b.dataset.cod === BOOK.code ? CUR : 1);
   document.getElementById("ch-h").scrollIntoView({ block: "start", behavior: "smooth" });
 });
 document.getElementById("chgrid").addEventListener("click", e => {
@@ -933,7 +933,7 @@ document.getElementById("chgrid").addEventListener("click", e => {
     renderChapters();
     return toast("Este capítulo não está incluído nesta prévia.");
   }
-  openChapter(pickedBook.cod, +b.dataset.ch, null);
+  openChapter(pickedBook.code, +b.dataset.ch, null);
 });
 document.getElementById("chcard").addEventListener("click", e => {
   const b = e.target.closest("[data-open]");
@@ -946,9 +946,9 @@ document.getElementById("chcard").addEventListener("click", e => {
 // "Ir para": "Jo 3:16", "1 Sm 17 4", "salmos 23", "1:14" (capítulo atual), "14" (versículo), "cap 12"
 const ALIASES = [];
 for (const b of BOOKS) {
-  const nome = b.nome.toLowerCase().replace(/\s+/g, ""),
-    ab = b.abrev.toLowerCase().replace(/\s+/g, "");
-  ALIASES.push([ab, b, 3], [nome, b, 3], [norm(ab), b, 2], [norm(nome), b, 2], [b.cod.toLowerCase(), b, 1]);
+  const nome = b.name.toLowerCase().replace(/\s+/g, ""),
+    ab = b.abbrev.toLowerCase().replace(/\s+/g, "");
+  ALIASES.push([ab, b, 3], [nome, b, 3], [norm(ab), b, 2], [norm(nome), b, 2], [b.code.toLowerCase(), b, 1]);
 }
 function findBook(w) {
   const raw = w.toLowerCase(),
@@ -994,7 +994,7 @@ function parseRef(q) {
   if (chapOnly) return { book: B, ch: nums[0], v: null };
   if (nums.length >= 2) return { book: B, ch: nums[0], v: nums[1] };
   if (/\d\s*[:.,]\s*$/.test(s) || book)
-    return { book: B, ch: B.caps.length === 1 && book ? 1 : nums[0], v: B.caps.length === 1 && book ? nums[0] : null };
+    return { book: B, ch: B.chapters.length === 1 && book ? 1 : nums[0], v: B.chapters.length === 1 && book ? nums[0] : null };
   return { book: B, ch: CUR, v: nums[0], verseOnly: true };
 }
 function resolveRef(r) {
@@ -1003,10 +1003,10 @@ function resolveRef(r) {
     return { warn: `Não reconheci o livro “${esc(r.word)}”. Use o nome ou a abreviação, como <b>Jo 3:16</b> ou <b>Salmos 23</b>.` };
   if (r.incomplete) return { warn: "Digite livro, capítulo e versículo, por exemplo <b>Jo 3:16</b>." };
   const B = r.book,
-    c = B.caps[r.ch - 1];
-  if (!c) return { warn: `${esc(B.nome)} tem ${B.caps.length} ${B.caps.length === 1 ? "capítulo" : "capítulos"}.` };
-  if (r.v !== null && (r.v < 0 || r.v > c.v)) return { warn: `${esc(B.nome)} ${c.n} tem ${c.v} versículos.` };
-  if (!hasChapter(B.cod, c.n)) return { na: c, book: B, v: r.v };
+    c = B.chapters[r.ch - 1];
+  if (!c) return { warn: `${esc(B.name)} tem ${B.chapters.length} ${B.chapters.length === 1 ? "capítulo" : "capítulos"}.` };
+  if (r.v !== null && (r.v < 0 || r.v > c.v)) return { warn: `${esc(B.name)} ${c.n} tem ${c.v} versículos.` };
+  if (!hasChapter(B.code, c.n)) return { na: c, book: B, v: r.v };
   return { ok: true, book: B, ch: c.n, v: r.v ?? 1, chapterStart: r.v === null };
 }
 const goIn = document.getElementById("go-in"),
@@ -1027,20 +1027,20 @@ function updatePreview() {
     return;
   }
   const B = res.book,
-    c = B.caps[(res.ok ? res.ch : res.na.n) - 1];
-  if (pickedBook !== B || pickedCh !== c.n) pickBook(B.cod, c.n);
+    c = B.chapters[(res.ok ? res.ch : res.na.n) - 1];
+  if (pickedBook !== B || pickedCh !== c.n) pickBook(B.code, c.n);
   if (res.na) {
-    goPrev.innerHTML = `<div class="gp-ref">${esc(B.nome)} ${c.n}${res.v ? ":" + res.v : ""}${c.t ? `<span class="gp-ct"> · ${esc(c.t)}</span>` : ""}</div><p class="gp-note">Este capítulo não está incluído nesta prévia.</p>`;
+    goPrev.innerHTML = `<div class="gp-ref">${esc(B.name)} ${c.n}${res.v ? ":" + res.v : ""}${c.t ? `<span class="gp-ct"> · ${esc(c.t)}</span>` : ""}</div><p class="gp-note">Este capítulo não está incluído nesta prévia.</p>`;
     return;
   }
-  const ref = res.chapterStart ? `${B.nome} ${c.n}` : `${B.nome} ${c.n}:${res.v}`;
-  const cached = CAPS[B.cod + "." + c.n];
+  const ref = res.chapterStart ? `${B.name} ${c.n}` : `${B.name} ${c.n}:${res.v}`;
+  const cached = CAPS[B.code + "." + c.n];
   const vv = cached && !res.chapterStart ? cached.v.find(x => x.n === res.v) : null;
   goPrev.innerHTML = `<div class="gp-ref">${esc(ref)}</div>${c.t ? `<div class="gp-theme">${esc(c.t)}</div>` : ""}${vv ? `<p class="gp-snip">${esc(vv.b)}</p>` : ""}
-    <button type="button" class="gp-go" id="gp-go">Ir para ${esc(res.chapterStart ? `${B.nome} ${c.n}` : `${B.abrev} ${c.n}:${res.v}`)} →</button>`;
+    <button type="button" class="gp-go" id="gp-go">Ir para ${esc(res.chapterStart ? `${B.name} ${c.n}` : `${B.abbrev} ${c.n}:${res.v}`)} →</button>`;
 }
 function go(t) {
-  openChapter(t.book.cod, t.ch, t.chapterStart ? null : t.v);
+  openChapter(t.book.code, t.ch, t.chapterStart ? null : t.v);
   goIn.value = "";
   updatePreview();
 }
@@ -1101,18 +1101,18 @@ function markHereChip() {
 function setHere(v) {
   hereV = v;
   const ref = v === 0 ? `${CUR}, título` : `${CUR}:${v}`;
-  const theme = BOOK.caps[CUR - 1].t;
+  const theme = BOOK.chapters[CUR - 1].t;
   document.getElementById("where-t").innerHTML =
-    `<b><span class="full">${esc(BOOK.nome)}</span><span class="abbr">${esc(BOOK.abrev)}</span> ${ref}</b>${theme ? " · " + esc(theme) : ""}`;
+    `<b><span class="full">${esc(BOOK.name)}</span><span class="abbr">${esc(BOOK.abbrev)}</span> ${ref}</b>${theme ? " · " + esc(theme) : ""}`;
   where.setAttribute(
     "aria-label",
-    `Você está em ${BOOK.nome} ${ref}${theme ? ", " + theme : ""}. Abrir o índice para ir a outro livro, capítulo ou versículo.`
+    `Você está em ${BOOK.name} ${ref}${theme ? ", " + theme : ""}. Abrir o índice para ir a outro livro, capítulo ou versículo.`
   );
   markHereChip();
   try {
-    history.replaceState(null, "", `#${BOOK.cod}.${CUR}.${v}`);
+    history.replaceState(null, "", `#${BOOK.code}.${CUR}.${v}`);
   } catch (_) {}
-  store.set("posicao", `${BOOK.cod}.${CUR}.${v}`);
+  store.set("posicao", `${BOOK.code}.${CUR}.${v}`);
 }
 where.addEventListener("click", () => {
   openPanel("toc", goIn);
@@ -1149,7 +1149,7 @@ const aboutBox = document.getElementById("sobre-body"),
 function renderAbout() {
   const A = BOOK.about;
   document.getElementById("ab-title").innerHTML =
-    `${esc(BOOK.nome)}${A ? `<span class="orig" lang="${OLANG()}">${esc(A.title_orig)}</span>` : ""}`;
+    `${esc(BOOK.name)}${A ? `<span class="orig" lang="${OLANG()}">${esc(A.title_orig)}</span>` : ""}`;
   if (!A) {
     aboutDet.hidden = true;
     return;
@@ -1207,7 +1207,7 @@ function renderAbout() {
       <ul class="ab-people">${A.people
         .map(
           p => `<li><span class="pn">${esc(p.name)}</span>
-        ${p.ch ? `<button class="chref" data-ch="${p.ch}" aria-label="${esc(p.name)}: ver capítulo ${p.ch} no índice">${BOOK.caps.length > 1 ? "caps. " : "v. "}${esc(p.chapters || p.ch)}</button>` : ""}
+        ${p.ch ? `<button class="chref" data-ch="${p.ch}" aria-label="${esc(p.name)}: ver capítulo ${p.ch} no índice">${BOOK.chapters.length > 1 ? "caps. " : "v. "}${esc(p.chapters || p.ch)}</button>` : ""}
         <span class="pnote">${esc(p.note)}</span></li>`
         )
         .join("")}</ul></section>`
@@ -1233,7 +1233,7 @@ function renderAbout() {
     ${
       A.key_verses && A.key_verses.length
         ? `<section class="ab-sec"><h3>Versículos-chave</h3>
-      ${A.key_verses.map(k => `<blockquote class="ab-quote"><p>${esc(k.text)}</p><cite>${esc(BOOK.nome)} ${esc(k.ref)} · BLIVRE</cite></blockquote>`).join("")}</section>`
+      ${A.key_verses.map(k => `<blockquote class="ab-quote"><p>${esc(k.text)}</p><cite>${esc(BOOK.name)} ${esc(k.ref)} · BLIVRE</cite></blockquote>`).join("")}</section>`
         : ""
     }
     ${A.note ? `<p class="ab-note">${esc(A.note)}</p>` : ""}
@@ -1245,7 +1245,7 @@ aboutBox.addEventListener("click", e => {
   const b = e.target.closest(".chref");
   if (!b) return;
   openPanel("toc");
-  pickBook(BOOK.cod, +b.dataset.ch);
+  pickBook(BOOK.code, +b.dataset.ch);
   const chip = document.querySelector(`.chchip[data-ch="${b.dataset.ch}"]`);
   if (chip) {
     chip.focus({ preventScroll: true });
@@ -1297,7 +1297,7 @@ function renderLex(q) {
     ? `${rows.length} ${rows.length === 1 ? "verbete encontrado" : "verbetes encontrados"}`
     : "";
   document.getElementById("lex-d").textContent =
-    `Os ${lexKeys.length} lemas de ${BOOK.nome} ${CUR}, em ordem Strong. Toque num verbete para abrir.`;
+    `Os ${lexKeys.length} lemas de ${BOOK.name} ${CUR}, em ordem Strong. Toque num verbete para abrir.`;
   document.getElementById("toc-lexn").textContent = lexKeys.length + " verbetes";
 }
 document.getElementById("lsearch").addEventListener("input", e => renderLex(e.target.value));
@@ -1313,7 +1313,7 @@ llist.addEventListener("click", e => {
 // ---------- Abrir capítulo ----------
 async function openChapter(cod, n, v) {
   const B = BY_CODE[cod];
-  if (!B || !B.caps[n - 1]) return;
+  if (!B || !B.chapters[n - 1]) return;
   closePanel(false);
   if (!detail.hidden) closeDetail();
   stopSpeech();
@@ -1471,7 +1471,7 @@ document.querySelectorAll(".chk[data-key]").forEach(t => {
 // ---------- Anotações (anotacoes.js) ----------
 window.__carregarCapitulo = (cod, n) => fetchChapter(cod, n);
 window.__livros = Object.fromEntries(
-  BOOKS.map((b, i) => [b.cod, { nome: b.nome, abrev: b.abrev, i, nt: !!b.nt, grupo: b.grupo, ncaps: b.caps.length }])
+  BOOKS.map((b, i) => [b.code, { nome: b.name, abrev: b.abbrev, i, nt: !!b.nt, grupo: b.group, ncaps: b.chapters.length }])
 );
 document.addEventListener("anotacoes:ir", e => {
   const d = e.detail;
@@ -1484,12 +1484,12 @@ document.addEventListener("anotacoes:abrir-painel", () => {
 document.getElementById("open-progresso").addEventListener("click", e => {
   e.preventDefault();
   closePanel(false);
-  if (window.Progresso) window.Progresso.open();
+  if (window.Progress) window.Progress.open();
 });
 document.getElementById("open-minhas").addEventListener("click", e => {
   e.preventDefault();
   closePanel(false);
-  if (window.Anotacoes) window.Anotacoes.openList();
+  if (window.Annotations) window.Annotations.openList();
   else toast("As anotações não estão disponíveis nesta página.");
 });
 
@@ -1704,7 +1704,7 @@ root.addEventListener("click", e => {
 })();
 window.addEventListener("hashchange", () => {
   const m = /^([1-3A-Z]{3})\.(\d+)(?:\.(\d+))?$/.exec(decodeURIComponent(location.hash.slice(1)));
-  if (m && (m[1] !== BOOK.cod || +m[2] !== CUR)) openChapter(m[1], +m[2], m[3] !== undefined ? +m[3] : null);
+  if (m && (m[1] !== BOOK.code || +m[2] !== CUR)) openChapter(m[1], +m[2], m[3] !== undefined ? +m[3] : null);
 });
 
 // ---------- App nativo: botão "voltar" do Android ----------
