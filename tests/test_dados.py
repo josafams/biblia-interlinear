@@ -1,19 +1,18 @@
 """Testes dos dados: banco (saida/biblia.sqlite) e exportação (saida/dados)."""
+
 import json
 import os
 import re
 import subprocess
 import sys
 
-import pytest
-
-from conftest import ROOT, DADOS, capitulo
+from conftest import ROOT, capitulo
 
 sys.path.insert(0, os.path.dirname(__file__))
 import retrato  # noqa: E402
 
-
 # ---------- contagens ----------
+
 
 def test_66_livros_1189_capitulos(livros):
     assert len(livros) == 66
@@ -83,6 +82,7 @@ def test_todo_livro_tem_introducao(livros):
 
 # ---------- versículos-chave ----------
 
+
 def glosas(cod, cap, vers):
     return [w[2] for v in capitulo(cod, cap)["v"] if v["n"] == vers for w in v["w"]]
 
@@ -99,13 +99,15 @@ def test_genesis_1_revisado_a_mao(db):
 def test_correcoes_de_glosa_aplicadas(db):
     """Cada linha de dados/correcoes/glosas.tsv tem de estar no banco com glosa_fonte = revisada."""
     import csv
+
     arq = os.path.join(ROOT, "dados", "correcoes", "glosas.tsv")
     for r in csv.DictReader(open(arq, encoding="utf8"), delimiter="\t"):
         if not r["ref"].strip() or r["ref"].startswith("#"):
             continue
         m = re.match(r"([1-3A-Z]{3}) (\d+):(\d+)", r["ref"])
-        pals = db.execute("SELECT glosa, glosa_fonte FROM palavras WHERE livro=? AND cap=? AND vers=? ORDER BY pos",
-                          (m[1], int(m[2]), int(m[3]))).fetchall()
+        pals = db.execute(
+            "SELECT glosa, glosa_fonte FROM palavras WHERE livro=? AND cap=? AND vers=? ORDER BY pos", (m[1], int(m[2]), int(m[3]))
+        ).fetchall()
         glosa, fonte = pals[int(r["pos"]) - 1]
         assert (glosa, fonte) == (r["glosa"].replace(" ", "-"), "revisada"), r["ref"]
 
@@ -141,16 +143,19 @@ def test_sinais_do_aparato_fora_do_grego(db):
 
 # ---------- retrato de referência ----------
 
+
 def test_retrato(db):
     ref = json.load(open(retrato.ARQ, encoding="utf8"))
     atual = retrato.calcular()
     mudaram = sorted(l for l in set(ref["livros"]) | set(atual["livros"]) if ref["livros"].get(l) != atual["livros"].get(l))
     assert not mudaram and ref["palavras"] == atual["palavras"], (
         f"As glosas mudaram em: {', '.join(mudaram)}. Se foi de propósito, rode "
-        "`python3 tests/retrato.py --atualizar` e envie o tests/retrato.json junto.")
+        "`python3 tests/retrato.py --atualizar` e envie o tests/retrato.json junto."
+    )
 
 
 # ---------- verificação dos arquivos de dados ----------
+
 
 def test_verificar_dados():
     r = subprocess.run([sys.executable, os.path.join(ROOT, "scripts", "verificar_dados.py")], capture_output=True, text=True)

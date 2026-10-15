@@ -1,0 +1,13 @@
+// markdownlint: formato dos Markdown. Regras de estilo que brigam com tabelas longas e HTML ficam desligadas.
+{
+  "config": {
+    "default": true,
+    "MD013": false, // comprimento de linha (tabelas e parágrafos longos)
+    "MD033": false, // HTML embutido (badges, <details>)
+    "MD041": false, // primeira linha não precisa ser título
+    "MD024": { "siblings_only": true },
+    "MD036": false, // ênfase usada como título curto
+    "MD060": false
+  },
+  "ignores": ["node_modules/**", "saida/**", "fontes-dados/**", "fontes-epub/**", "android/**", "ios/**", ".pytest_cache/**"]
+}

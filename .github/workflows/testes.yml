@@ -22,12 +22,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .nvmrc
           cache: npm
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-      - run: pip install eflomal pypdf pytest
+          python-version-file: .python-version
+          cache: pip
+      - run: pip install -r requirements-dev.txt
       - run: npm ci
       - name: Chromium, qpdf e pdftotext
         run: |
@@ -35,16 +36,21 @@ jobs:
           sudo apt-get install -y qpdf poppler-utils
       - name: Fontes abertas
         run: scripts/baixar_fontes.sh
-      - name: Corpus, glosas e site
+      - name: Corpus, glosas e site (medindo a cobertura do Python)
         run: |
-          python3 scripts/corpus.py
-          python3 scripts/glosar.py
-          python3 scripts/revisar.py > /dev/null
+          python3 -m coverage run -p scripts/corpus.py
+          python3 -m coverage run -p scripts/glosar.py
+          python3 -m coverage run -p scripts/revisar.py > /dev/null
           node scripts/build_web.mjs
       - name: Testes de dados, EPUB e PDF
         env:
           PDF_TESTE: "1"
-        run: python3 -m pytest tests -v
+        run: python3 -m pytest -v --cov --cov-append --cov-report=
+      - name: Cobertura do Python
+        run: |
+          python3 -m coverage combine --append
+          python3 -m coverage report
+          python3 -m coverage xml -o saida/coverage.xml
       - name: Testes no navegador
         env:
           CI: "1"
@@ -59,4 +65,5 @@ jobs:
           path: |
             saida/relatorio-testes
             saida/testes-resultados
+            saida/coverage.xml
           retention-days: 14

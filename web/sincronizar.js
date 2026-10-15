@@ -14,13 +14,23 @@
  */
 (function () {
   "use strict";
-  const A = window.Anotacoes, C = window.Conta;
+  const A = window.Anotacoes,
+    C = window.Conta;
   if (!A?.banco || !C) return;
   const B = A.banco;
-  const ESPERA = 3000, INTERVALO = 30000, LIMITE_LOTES = 40, DIA = 864e5, DIAS_LOTE = 30, DIAS_APAGADO = 90;
-  const FOLGA = 2 * 60000;   // a lista do Drive pode demorar um pouco: relê os últimos 2 minutos (aplicar de novo não muda nada)
+  const ESPERA = 3000,
+    INTERVALO = 30000,
+    LIMITE_LOTES = 40,
+    DIA = 864e5,
+    DIAS_LOTE = 30,
+    DIAS_APAGADO = 90;
+  const FOLGA = 2 * 60000; // a lista do Drive pode demorar um pouco: relê os últimos 2 minutos (aplicar de novo não muda nada)
 
-  let rodando = null, deNovo = false, timer = 0, aplicando = false, parado = false;
+  let rodando = null,
+    deNovo = false,
+    timer = 0,
+    aplicando = false,
+    parado = false;
   let status = null;
 
   function mostrar(tipo, texto) {
@@ -28,7 +38,10 @@
     status = { tipo, texto };
     C.redesenhar();
   }
-  function agendar(ms = ESPERA) { clearTimeout(timer); timer = setTimeout(ciclo, ms); }
+  function agendar(ms = ESPERA) {
+    clearTimeout(timer);
+    timer = setTimeout(ciclo, ms);
+  }
 
   async function lerEstado() {
     const email = C.conta()?.email || "";
@@ -41,26 +54,32 @@
   // ---------- um ciclo ----------
   async function ciclo() {
     if (parado || C.estado() !== "ligado" || !B.persistente()) return;
-    if (rodando) { deNovo = true; return rodando; }
+    if (rodando) {
+      deNovo = true;
+      return rodando;
+    }
     rodando = (async () => {
       try {
         if (navigator.onLine === false) return mostrar("alerta", "Sem internet — as mudanças esperam neste aparelho");
         const st = await lerEstado();
         if (!st.inicial && !(await primeiroLogin(st))) return;
         await receber(st);
-        await enviar(st);
-        await compactar(st).catch(() => {});   // compactar é só faxina: se falhar, tenta outro dia
+        await enviar();
+        await compactar(st).catch(() => {}); // compactar é só faxina: se falhar, tenta outro dia
         await salvar(st);
         const h = new Date();
         mostrar("ok", `Sincronizado às ${String(h.getHours()).padStart(2, "0")}:${String(h.getMinutes()).padStart(2, "0")}`);
       } catch (e) {
-        if (e.codigo === "reconectar" || e.codigo === "fora" || e.codigo === "interacao") return;   // a conta mostra o que fazer
+        if (e.codigo === "reconectar" || e.codigo === "fora" || e.codigo === "interacao") return; // a conta mostra o que fazer
         if (e.codigo === "drive-cheio") mostrar("alerta", "Seu Google Drive está sem espaço — as mudanças esperam neste aparelho");
         else if (e instanceof TypeError) mostrar("alerta", "Sem internet — as mudanças esperam neste aparelho");
         else mostrar("alerta", "Não foi possível sincronizar agora; tentando de novo em instantes");
       } finally {
         rodando = null;
-        if (deNovo) { deNovo = false; agendar(500); }
+        if (deNovo) {
+          deNovo = false;
+          agendar(500);
+        }
       }
     })();
     return rodando;
@@ -83,12 +102,18 @@
           const res = await B.mesclar(c, r, { daNuvem: true });
           if (res === "novo" || res === "atualizado") {
             mudou++;
-            if (c === "preferencias" && r.id === "leitura" && !r.apagado) { try { window.__preferencias?.aplicar(r); } catch (_) {} }
+            if (c === "preferencias" && r.id === "leitura" && !r.apagado) {
+              try {
+                window.__preferencias?.aplicar(r);
+              } catch (_) {}
+            }
           }
         }
       }
       if (mudou) B.aplicado();
-    } finally { aplicando = false; }
+    } finally {
+      aplicando = false;
+    }
     return mudou;
   }
 
@@ -123,7 +148,7 @@
     for (const [nome, quando] of Object.entries(st.aplicados)) if (quando < corte) delete st.aplicados[nome];
   }
 
-  async function enviar(st) {
+  async function enviar() {
     const fila = await B.fila();
     if (!fila.length) return;
     const ids = {};
@@ -133,16 +158,24 @@
     for (const [c, conj] of Object.entries(ids)) {
       for (const id of conj) {
         const r = await B.ler(c, id);
-        if (r && !r.local) { (colecoes[c] = colecoes[c] || []).push(r); n++; }
+        if (r && !r.local) {
+          (colecoes[c] = colecoes[c] || []).push(r);
+          n++;
+        }
       }
     }
     if (n) {
       mostrar("", `Enviando ${n} ${n === 1 ? "mudança" : "mudanças"}…`);
       const agora = new Date();
-      await C.drive.gravar(`lote-${B.aparelho}-${agora.getTime()}.json`,
-        { formato: "biblia-interlinear-lote", versao: 1, aparelho: B.aparelho, criado_em: agora.toISOString(), colecoes });
+      await C.drive.gravar(`lote-${B.aparelho}-${agora.getTime()}.json`, {
+        formato: "biblia-interlinear-lote",
+        versao: 1,
+        aparelho: B.aparelho,
+        criado_em: agora.toISOString(),
+        colecoes
+      });
     }
-    await B.tirarDaFila(fila.map(f => f.seq));   // só depois que o Drive confirmou
+    await B.tirarDaFila(fila.map(f => f.seq)); // só depois que o Drive confirmou
   }
 
   async function compactar(st, forcar = false) {
@@ -161,8 +194,14 @@
     }
     const agora = new Date();
     const ate = st.marcador || agora.toISOString();
-    const novo = await C.drive.gravar(`retrato-${agora.getTime()}-${B.aparelho}.json`,
-      { formato: "biblia-interlinear-retrato", versao: 1, aparelho: B.aparelho, criado_em: agora.toISOString(), ate, colecoes });
+    const novo = await C.drive.gravar(`retrato-${agora.getTime()}-${B.aparelho}.json`, {
+      formato: "biblia-interlinear-retrato",
+      versao: 1,
+      aparelho: B.aparelho,
+      criado_em: agora.toISOString(),
+      ate,
+      colecoes
+    });
     const limite = new Date(Date.now() - DIAS_LOTE * DIA).toISOString();
     for (const l of lotes) if (l.createdTime < limite && l.createdTime <= ate) await C.drive.apagar(l.id);
     // retratos antigos: o novo já tem tudo (se dois aparelhos compactarem juntos, os dois têm o mesmo conteúdo)
@@ -170,15 +209,27 @@
   }
 
   // ---------- quando rodar ----------
-  A.aoMudar(() => { if (!aplicando) agendar(ESPERA); });
-  C.aoMudar(estado => {
-    if (estado === "ligado") { parado = false; agendar(300); }
-    else { status = null; }
+  A.aoMudar(() => {
+    if (!aplicando) agendar(ESPERA);
   });
-  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") agendar(500); });
+  C.aoMudar(estado => {
+    if (estado === "ligado") {
+      parado = false;
+      agendar(300);
+    } else {
+      status = null;
+    }
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") agendar(500);
+  });
   window.addEventListener("online", () => agendar(500));
-  window.addEventListener("offline", () => { if (C.estado() === "ligado") mostrar("alerta", "Sem internet — as mudanças esperam neste aparelho"); });
-  setInterval(() => { if (document.visibilityState === "visible") ciclo(); }, INTERVALO);
+  window.addEventListener("offline", () => {
+    if (C.estado() === "ligado") mostrar("alerta", "Sem internet — as mudanças esperam neste aparelho");
+  });
+  setInterval(() => {
+    if (document.visibilityState === "visible") ciclo();
+  }, INTERVALO);
 
   // Preferências de leitura (modo e itens visíveis) também viajam: grava quando a pessoa muda
   document.addEventListener("preferencias", () => {
@@ -189,8 +240,19 @@
   window.Sinc = {
     agora: () => ciclo(),
     resumo: () => (C.estado() === "ligado" ? status : null),
-    parar: async () => { parado = true; clearTimeout(timer); if (rodando) await rodando.catch(() => {}); },
-    antesDeApagar: async () => { parado = true; if (rodando) await rodando.catch(() => {}); },
-    compactar: async () => { const st = await lerEstado(); await compactar(st, true); await salvar(st); }
+    parar: async () => {
+      parado = true;
+      clearTimeout(timer);
+      if (rodando) await rodando.catch(() => {});
+    },
+    antesDeApagar: async () => {
+      parado = true;
+      if (rodando) await rodando.catch(() => {});
+    },
+    compactar: async () => {
+      const st = await lerEstado();
+      await compactar(st, true);
+      await salvar(st);
+    }
   };
 })();

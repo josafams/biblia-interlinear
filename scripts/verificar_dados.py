@@ -7,6 +7,7 @@ indicadas em dados/correcoes/glosas.tsv.
 
 Uso: python3 scripts/verificar_dados.py        (sai com código 1 se houver erro)
 """
+
 import csv
 import glob
 import json
@@ -19,12 +20,61 @@ import unicodedata
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 D = os.path.join(ROOT, "dados")
 # capítulos de cada livro, na numeração das Bíblias em português
-CAPS = dict(GEN=50, EXO=40, LEV=27, NUM=36, DEU=34, JOS=24, JDG=21, RUT=4, **{"1SA": 31, "2SA": 24, "1KI": 22, "2KI": 25,
-            "1CH": 29, "2CH": 36}, EZR=10, NEH=13, EST=10, JOB=42, PSA=150, PRO=31, ECC=12, SNG=8, ISA=66, JER=52, LAM=5,
-            EZK=48, DAN=12, HOS=14, JOL=3, AMO=9, OBA=1, JON=4, MIC=7, NAM=3, HAB=3, ZEP=3, HAG=2, ZEC=14, MAL=4,
-            MAT=28, MRK=16, LUK=24, JHN=21, ACT=28, ROM=16, **{"1CO": 16, "2CO": 13}, GAL=6, EPH=6, PHP=4, COL=4,
-            **{"1TH": 5, "2TH": 3, "1TI": 6, "2TI": 4}, TIT=3, PHM=1, HEB=13, JAS=5, **{"1PE": 5, "2PE": 3, "1JN": 5,
-            "2JN": 1, "3JN": 1}, JUD=1, REV=22)
+CAPS = dict(
+    GEN=50,
+    EXO=40,
+    LEV=27,
+    NUM=36,
+    DEU=34,
+    JOS=24,
+    JDG=21,
+    RUT=4,
+    **{"1SA": 31, "2SA": 24, "1KI": 22, "2KI": 25, "1CH": 29, "2CH": 36},
+    EZR=10,
+    NEH=13,
+    EST=10,
+    JOB=42,
+    PSA=150,
+    PRO=31,
+    ECC=12,
+    SNG=8,
+    ISA=66,
+    JER=52,
+    LAM=5,
+    EZK=48,
+    DAN=12,
+    HOS=14,
+    JOL=3,
+    AMO=9,
+    OBA=1,
+    JON=4,
+    MIC=7,
+    NAM=3,
+    HAB=3,
+    ZEP=3,
+    HAG=2,
+    ZEC=14,
+    MAL=4,
+    MAT=28,
+    MRK=16,
+    LUK=24,
+    JHN=21,
+    ACT=28,
+    ROM=16,
+    **{"1CO": 16, "2CO": 13},
+    GAL=6,
+    EPH=6,
+    PHP=4,
+    COL=4,
+    **{"1TH": 5, "2TH": 3, "1TI": 6, "2TI": 4},
+    TIT=3,
+    PHM=1,
+    HEB=13,
+    JAS=5,
+    **{"1PE": 5, "2PE": 3, "1JN": 5, "2JN": 1, "3JN": 1},
+    JUD=1,
+    REV=22,
+)
 REF = re.compile(r"^([1-3A-Z]{3}) (\d+):(\d+)$")
 erros, avisos = [], []
 
@@ -36,7 +86,7 @@ def erro(arq, msg):
 def tsv(arq, colunas):
     with open(arq, encoding="utf8", newline="") as f:
         linhas = list(csv.reader(f, delimiter="\t", quoting=csv.QUOTE_NONE))
-    if not linhas or linhas[0][:len(colunas)] != colunas:
+    if not linhas or linhas[0][: len(colunas)] != colunas:
         erro(arq, f"cabeçalho deve ser: {' | '.join(colunas)}")
         return []
     out = []
@@ -146,8 +196,9 @@ DB = os.path.join(ROOT, "saida", "biblia.sqlite")
 if os.path.exists(DB):
     db = sqlite3.connect(DB)
     for ln, m, r in correcoes:
-        pals = db.execute("SELECT texto FROM palavras WHERE livro=? AND cap=? AND vers=? ORDER BY pos",
-                          (m[1], int(m[2]), int(m[3]))).fetchall()
+        pals = db.execute(
+            "SELECT texto FROM palavras WHERE livro=? AND cap=? AND vers=? ORDER BY pos", (m[1], int(m[2]), int(m[3]))
+        ).fetchall()
         i = int(r["pos"]) - 1
         if not 0 <= i < len(pals):
             erro(arq_g, f"linha {ln}: {r['ref']} tem {len(pals)} palavras; não há a posição {r['pos']}")
@@ -159,16 +210,19 @@ if os.path.exists(DB):
             if not mm:
                 continue
             c, a, b = int(mm[1]), int(mm[2]), int(mm[3] or mm[2])
-            txt = " ".join(t for (t,) in db.execute("SELECT blivre FROM versos WHERE livro=? AND cap=? AND vers BETWEEN ? AND ? "
-                                                     "ORDER BY vers", (cod, c, a, b)))
+            txt = " ".join(
+                t
+                for (t,) in db.execute(
+                    "SELECT blivre FROM versos WHERE livro=? AND cap=? AND vers BETWEEN ? AND ? ORDER BY vers", (cod, c, a, b)
+                )
+            )
             if " ".join(k.get("text", "").split()) not in " ".join(txt.split()):
                 avisos.append(f"dados/livros/{cod}.json: versículo-chave {k['ref']} não confere com a BLIVRE")
     if os.path.exists(arq_b):
         for ln, r in tsv(arq_b, ["ref", "trecho", "sugestao", "status", "nota"]):
             m = REF.match(r["ref"].strip())
             if m and r["status"] == "relatar":
-                t = db.execute("SELECT blivre FROM versos WHERE livro=? AND cap=? AND vers=?",
-                               (m[1], int(m[2]), int(m[3]))).fetchone()
+                t = db.execute("SELECT blivre FROM versos WHERE livro=? AND cap=? AND vers=?", (m[1], int(m[2]), int(m[3]))).fetchone()
                 if t and r["trecho"].strip() and r["trecho"].strip() not in t[0]:
                     avisos.append(f"dados/correcoes/blivre.tsv: linha {ln}: {r['trecho']!r} não aparece em {r['ref']}")
 else:

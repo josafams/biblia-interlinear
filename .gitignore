@@ -12,3 +12,9 @@ keystore.properties
 __pycache__/
 *.pyc
 __pycache__/
+
+# cobertura e caches de ferramentas
+.coverage
+.coverage.*
+coverage.xml
+.ruff_cache/

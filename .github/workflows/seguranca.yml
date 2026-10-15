@@ -1,0 +1,72 @@
+# Segurança: segredos vazados, análise estática (Semgrep e CodeQL) e dependências com vulnerabilidade.
+# Roda em todo pull request, na main e toda segunda (pega falhas novas em dependências antigas).
+name: Segurança
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 9 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  segredos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: gitleaks
+        run: |
+          docker run --rm -v "$PWD:/repo" zricethezav/gitleaks:v8.28.0 \
+            detect --source /repo --redact --exit-code 1 --config /repo/.gitleaks.toml
+
+  semgrep:
+    runs-on: ubuntu-latest
+    container: semgrep/semgrep
+    steps:
+      - uses: actions/checkout@v4
+      # relatório por enquanto: vira bloqueante (--error) depois da triagem dos achados atuais
+      - run: semgrep scan --config p/default --config p/owasp-top-ten --exclude saida --exclude node_modules
+
+  dependencias:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/dependency-review-action@v4
+        if: github.event_name == 'pull_request'
+        with:
+          fail-on-severity: high
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - name: npm audit (só o que vai para o app)
+        run: npm audit --audit-level=high --omit=dev
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+      - name: pip-audit
+        run: pip install pip-audit && pip-audit -r requirements-dev.txt
+
+  codeql:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - language: javascript-typescript
+          - language: python
+          - language: java-kotlin
+    steps:
+      - uses: actions/checkout@v4
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          queries: security-extended
+          build-mode: none
+      - uses: github/codeql-action/analyze@v3

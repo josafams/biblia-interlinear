@@ -4,11 +4,25 @@ A Bíblia inteira, os 66 livros, palavra por palavra: **hebraico e aramaico** no
 
 Tudo é feito com fontes abertas ou de domínio público, para poder ser distribuído livremente (veja [`docs/LICENCAS.md`](docs/LICENCAS.md)).
 
-- **Site:** https://josafams.github.io/biblia-interlinear/ (ramo `gh-pages`)
+- **Site:** <https://josafams.github.io/biblia-interlinear/> (ramo `gh-pages`)
 - **App:** `liberta.bibliainterlinear` · "Bíblia Interlinear" (Android; projeto iOS pronto)
 - **EPUB e PDF:** Bíblia completa, AT, NT e cada livro, nos dois formatos — em *Releases › livros* (gerados pelo GitHub a cada mudança nos dados)
 
 ---
+
+## Desenvolvimento
+
+Regras do projeto (idioma, formatação, testes, commits, segurança) em [CONTRIBUTING.md](CONTRIBUTING.md); decisões de arquitetura em [docs/adr/](docs/adr/README.md). Os comandos são os mesmos para todas as linguagens:
+
+```bash
+make setup   # dependências e ganchos do pre-commit
+make data    # fontes abertas → corpus, glosas e site
+make test    # pytest + Playwright
+make lint    # Prettier, ESLint, Ruff, markdownlint, ShellCheck
+make help    # todos os comandos
+```
+
+No GitHub, os workflows **Qualidade** (lint), **Testes** (dados, site, cobertura) e **Segurança** (gitleaks, Semgrep, CodeQL, dependências) rodam em todo pull request.
 
 ## Como está o projeto (10/10/2026)
 
@@ -37,8 +51,8 @@ Tudo é feito com fontes abertas ou de domínio público, para poder ser distrib
 
 1. **Gerar o APK/AAB do Android e testar no celular** — Android Studio (`android/`, *Build › Build APK*) ou o workflow `.github/workflows/android.yml`.
 2. **Revisão humana** das glosas, dos verbetes e das introduções, começando pelos avisos da revisão automática nos livros mais lidos (Gênesis, Salmos, Evangelhos) — como fazer: [`docs/CORRECOES.md`](docs/CORRECOES.md).
-4. **Relatar aos tradutores da BLIVRE** os 47 erros de digitação listados em `dados/correcoes/blivre.tsv`.
-3. **Publicação nas lojas** (Play Store: teste fechado com 12 testadores por 14 dias; ver [`docs/APPS.md`](docs/APPS.md)).
+3. **Relatar aos tradutores da BLIVRE** os 47 erros de digitação listados em `dados/correcoes/blivre.tsv`.
+4. **Publicação nas lojas** (Play Store: teste fechado com 12 testadores por 14 dias; ver [`docs/APPS.md`](docs/APPS.md)).
 
 ### Limitações conhecidas
 
@@ -65,7 +79,7 @@ Variáveis do `build.sh`: `REFAZER=1` refaz o banco e as glosas (sem ela, reapro
 
 ### O caminho dos dados
 
-```
+```text
 fontes-dados/ (morphhb, sblgnt, strongs, dodson, ebible, scrollmapper)
    │  scripts/corpus.py      textos, versificação, palavras, léxico → saida/biblia.sqlite
    │  scripts/glosar.py      alinhamento eflomal + regras → glosas no banco

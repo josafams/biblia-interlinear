@@ -17,7 +17,13 @@ export default defineConfig({
     trace: "retain-on-failure",
     screenshot: "only-on-failure"
   },
-  webServer: { command: `python3 -m http.server ${PORTA} --directory saida/web`, port: PORTA, reuseExistingServer: !process.env.CI, stdout: "ignore", stderr: "ignore" },
+  webServer: {
+    command: `python3 -m http.server ${PORTA} --directory saida/web`,
+    port: PORTA,
+    reuseExistingServer: !process.env.CI,
+    stdout: "ignore",
+    stderr: "ignore"
+  },
   projects: [
     { name: "celular", use: { ...devices["Pixel 7"], browserName: "chromium" } },
     { name: "computador", use: { viewport: { width: 1280, height: 860 }, browserName: "chromium" } }

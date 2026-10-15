@@ -15,25 +15,43 @@
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
   const CORES = [
-    { id: "amarelo", nome: "Amarelo" }, { id: "verde", nome: "Verde" }, { id: "azul", nome: "Azul" },
-    { id: "rosa", nome: "Rosa" }, { id: "laranja", nome: "Laranja" }
+    { id: "amarelo", nome: "Amarelo" },
+    { id: "verde", nome: "Verde" },
+    { id: "azul", nome: "Azul" },
+    { id: "rosa", nome: "Rosa" },
+    { id: "laranja", nome: "Laranja" }
   ];
   const EDICAO = (window.DATA_EDICAO || "").slice(0, 10);
 
   // ---------- identificadores, relógio e aparelho ----------
-  const uuid = () => (crypto.randomUUID ? crypto.randomUUID() : "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, c => {
-    const r = Math.random() * 16 | 0; return (c === "x" ? r : (r & 3 | 8)).toString(16);
-  }));
+  const uuid = () =>
+    crypto.randomUUID
+      ? crypto.randomUUID()
+      : "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, c => {
+          const r = (Math.random() * 16) | 0;
+          return (c === "x" ? r : (r & 3) | 8).toString(16);
+        });
   let aparelho;
-  try { aparelho = localStorage.getItem("interlinear:aparelho"); if (!aparelho) { aparelho = uuid().slice(0, 8); localStorage.setItem("interlinear:aparelho", aparelho); } }
-  catch (_) { aparelho = uuid().slice(0, 8); }
+  try {
+    aparelho = localStorage.getItem("interlinear:aparelho");
+    if (!aparelho) {
+      aparelho = uuid().slice(0, 8);
+      localStorage.setItem("interlinear:aparelho", aparelho);
+    }
+  } catch (_) {
+    aparelho = uuid().slice(0, 8);
+  }
   // Relógio lógico híbrido: milissegundos + contador + aparelho. Ordena edições mesmo com o relógio do celular errado
   // (avança sempre que se vê uma mudança mais nova de outro aparelho — usado pela sincronização).
   let hlc = { t: 0, c: 0 };
   function relogio(visto) {
     const agora = Date.now();
-    if (visto) { const [vt, vc] = visto.split("-").map(Number); if (vt > hlc.t || (vt === hlc.t && vc > hlc.c)) hlc = { t: vt, c: vc }; }
-    if (agora > hlc.t) hlc = { t: agora, c: 0 }; else hlc.c++;
+    if (visto) {
+      const [vt, vc] = visto.split("-").map(Number);
+      if (vt > hlc.t || (vt === hlc.t && vc > hlc.c)) hlc = { t: vt, c: vc };
+    }
+    if (agora > hlc.t) hlc = { t: agora, c: 0 };
+    else hlc.c++;
     return `${String(hlc.t).padStart(14, "0")}-${String(hlc.c).padStart(4, "0")}-${aparelho}`;
   }
 
@@ -41,7 +59,8 @@
   const COLECOES = ["marcacoes", "notas", "favoritos", "etiquetas"];
   // o que viaja para o Drive: anotações, preferências (modo de leitura, posição) e progresso (leituras, tempo, planos)
   const SINC = [...COLECOES, "preferencias", "leituras", "tempo", "planos"];
-  let db = null, memoria = null;
+  let db = null,
+    memoria = null;
   const memoriaEstado = {};
   try {
     if (!window.Dexie || !window.indexedDB) throw new Error("sem IndexedDB");
@@ -56,12 +75,23 @@
     });
     db.version(2).stores({ preferencias: "id" });
     db.version(3).stores({ leituras: "id, livro", tempo: "id, dia", planos: "id" });
-  } catch (_) { db = null; }
+  } catch (_) {
+    db = null;
+  }
   async function aberto() {
     if (memoria) return false;
-    if (!db) { memoria = Object.fromEntries(SINC.map(c => [c, new Map()])); return false; }
-    try { await db.open(); return true; }
-    catch (_) { db = null; memoria = Object.fromEntries(SINC.map(c => [c, new Map()])); return false; }
+    if (!db) {
+      memoria = Object.fromEntries(SINC.map(c => [c, new Map()]));
+      return false;
+    }
+    try {
+      await db.open();
+      return true;
+    } catch (_) {
+      db = null;
+      memoria = Object.fromEntries(SINC.map(c => [c, new Map()]));
+      return false;
+    }
   }
   const pronto = aberto();
   async function todos(col) {
@@ -78,29 +108,47 @@
     await pronto;
     const agora = new Date().toISOString();
     const antigo = db ? await db[col].get(reg.id) : memoria[col].get(reg.id);
-    const novo = { ...antigo, ...reg, criado_em: antigo?.criado_em || agora, alterado_em: agora, base: antigo?.relogio || null, relogio: relogio(), apagado: reg.apagado || false };
-    delete novo.local;   // editar algo que estava "só neste aparelho" passa a sincronizar
-    if (db) await db.transaction("rw", db[col], db.fila, async () => { await db[col].put(novo); await db.fila.add({ colecao: col, id: novo.id }); });
+    const novo = {
+      ...antigo,
+      ...reg,
+      criado_em: antigo?.criado_em || agora,
+      alterado_em: agora,
+      base: antigo?.relogio || null,
+      relogio: relogio(),
+      apagado: reg.apagado || false
+    };
+    delete novo.local; // editar algo que estava "só neste aparelho" passa a sincronizar
+    if (db)
+      await db.transaction("rw", db[col], db.fila, async () => {
+        await db[col].put(novo);
+        await db.fila.add({ colecao: col, id: novo.id });
+      });
     else memoria[col].set(novo.id, novo);
     avisar();
     return novo;
   }
   const apagar = (col, id) => gravar(col, { id, apagado: true });
   let ouvintes = [];
-  function avisar() { ouvintes.forEach(f => { try { f(); } catch (_) {} }); }
+  function avisar() {
+    ouvintes.forEach(f => {
+      try {
+        f();
+      } catch (_) {}
+    });
+  }
 
   // ---------- âncoras ----------
   const capDe = a => `${a.livro}.${a.cap}`;
   const chave = a => `${a.livro}.${a.cap}.${a.ver}:${a.camada}:${a.camada === "versiculo" ? "" : `${a.inicio ?? ""}-${a.fim ?? ""}`}`;
-  function ancoraVersiculo(cod, cap, v) { return { livro: cod, cap, ver: v, ver_fim: v, camada: "versiculo", edicao: EDICAO }; }
+  function ancoraVersiculo(cod, cap, v) {
+    return { livro: cod, cap, ver: v, ver_fim: v, camada: "versiculo", edicao: EDICAO };
+  }
 
   // ---------- estado do capítulo atual (vem do leitor) ----------
   let atual = null; // { cod, cap, nome, verses: [{ n, blivre, words: [{ heb }] }] }
   let selecao = null; // { ancora, rotulo, trecho }
   const raiz = () => document.getElementById("verses");
   const versoEl = n => document.getElementById("v" + n);
-  const viDe = n => atual ? atual.verses.findIndex(v => v.n === n) : -1;
-  const rotuloRef = a => `${a.abrev || atual?.abrev || a.livro} ${a.cap}:${a.ver}`;
 
   // Desenha as marcações do capítulo nos versículos (cores, notas, favoritos)
   async function pintar() {
@@ -111,16 +159,21 @@
     $$(".verse", raiz()).forEach(sec => {
       sec.classList.remove(...CORES.map(c => "mk-" + c.id));
       $$(".word", sec).forEach(w => w.classList.remove(...CORES.map(c => "mk-" + c.id)));
-      const vi = +sec.dataset.vi, v = atual.verses[vi];
+      const vi = +sec.dataset.vi,
+        v = atual.verses[vi];
       const bl = $(".blivre", sec);
-      if (bl && v) { bl._marcas = []; bl.innerHTML = `<span class="tag">BLIVRE</span>${esc(v.blivre)}`; }
+      if (bl && v) {
+        bl._marcas = [];
+        bl.innerHTML = `<span class="tag">BLIVRE</span>${esc(v.blivre)}`;
+      }
       sec.classList.remove("mk-deslocada");
       const tags = $(".vtags", sec);
       if (tags) tags.innerHTML = "";
     });
     for (const m of ms) {
       if (!m.cor) continue;
-      const a = m.ancora, sec = versoEl(a.ver);
+      const a = m.ancora,
+        sec = versoEl(a.ver);
       if (!sec) continue;
       if (a.camada === "versiculo") sec.classList.add("mk-" + m.cor);
       else if (a.camada === "original") {
@@ -128,30 +181,47 @@
       } else if (a.camada === "blivre") marcarTrecho(sec, a, m.cor);
     }
     const porVerso = {};
-    for (const n of ns) { const k = n.ancora.ver; (porVerso[k] = porVerso[k] || { n: 0, f: false }).n++; }
-    for (const f of fs) { const k = f.ancora.ver; (porVerso[k] = porVerso[k] || { n: 0, f: false }).f = true; }
+    for (const n of ns) {
+      const k = n.ancora.ver;
+      (porVerso[k] = porVerso[k] || { n: 0, f: false }).n++;
+    }
+    for (const f of fs) {
+      const k = f.ancora.ver;
+      (porVerso[k] = porVerso[k] || { n: 0, f: false }).f = true;
+    }
     for (const [ver, info] of Object.entries(porVerso)) {
-      const sec = versoEl(ver), tags = sec && $(".vtags", sec);
+      const sec = versoEl(ver),
+        tags = sec && $(".vtags", sec);
       if (!tags) continue;
-      tags.innerHTML = (info.f ? `<span class="vfav" title="Favorito" aria-label="Favorito">★</span>` : "")
-        + (info.n ? `<button class="vnota" data-ver="${ver}" aria-label="${info.n} ${info.n === 1 ? "nota" : "notas"} neste versículo">${ICONE.nota}<span aria-hidden="true">${info.n > 1 ? info.n : ""}</span></button>` : "");
+      tags.innerHTML =
+        (info.f ? `<span class="vfav" title="Favorito" aria-label="Favorito">★</span>` : "") +
+        (info.n
+          ? `<button class="vnota" data-ver="${ver}" aria-label="${info.n} ${info.n === 1 ? "nota" : "notas"} neste versículo">${ICONE.nota}<span aria-hidden="true">${info.n > 1 ? info.n : ""}</span></button>`
+          : "");
     }
   }
   // Marca um trecho da Bíblia Livre; se o texto mudou, procura o trecho guardado; não achou: marca o versículo inteiro
   function marcarTrecho(sec, a, cor) {
-    const vi = +sec.dataset.vi, txt = atual.verses[vi]?.blivre || "";
-    let i = a.inicio, f = a.fim;
+    const vi = +sec.dataset.vi,
+      txt = atual.verses[vi]?.blivre || "";
+    let i = a.inicio,
+      f = a.fim;
     if (txt.slice(i, f) !== a.trecho) {
       const k = a.trecho ? txt.indexOf(a.trecho) : -1;
-      if (k < 0) { sec.classList.add("mk-" + cor, "mk-deslocada"); return; }
-      i = k; f = k + a.trecho.length;
+      if (k < 0) {
+        sec.classList.add("mk-" + cor, "mk-deslocada");
+        return;
+      }
+      i = k;
+      f = k + a.trecho.length;
     }
     const bl = $(".blivre", sec);
     const html = bl.innerHTML;
     const corpo = html.slice(html.indexOf("</span>") + 7);
     // corpo já é texto escapado com possíveis <mark> anteriores: refaz a partir do texto puro com todas as marcas do verso
     const marcas = (bl._marcas = (bl._marcas || []).concat([{ i, f, cor }]));
-    let out = "", pos = 0;
+    let out = "",
+      pos = 0;
     const ordenadas = [...marcas].sort((x, y) => x.i - y.i);
     for (const m of ordenadas) {
       if (m.i < pos) continue;
@@ -168,13 +238,19 @@
     nota: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 4h14v12l-4 4H5z"/><path d="M9 9h6M9 13h4"/></svg>',
     fav: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>',
     tag: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></svg>',
-    copiar: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg>',
-    camadas: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>',
-    fechar: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>'
+    copiar:
+      '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg>',
+    camadas:
+      '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>',
+    fechar:
+      '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>'
   };
   const barra = document.createElement("div");
-  barra.id = "mbar"; barra.className = "mbar"; barra.hidden = true;
-  barra.setAttribute("role", "dialog"); barra.setAttribute("aria-label", "Marcar e anotar");
+  barra.id = "mbar";
+  barra.className = "mbar";
+  barra.hidden = true;
+  barra.setAttribute("role", "dialog");
+  barra.setAttribute("aria-label", "Marcar e anotar");
   barra.innerHTML = `
     <div class="mb-top"><b id="mb-ref"></b><span id="mb-trecho"></span><button class="mb-x" id="mb-fechar" aria-label="Fechar">${ICONE.fechar}</button></div>
     <div class="mb-cores" role="group" aria-label="Cor da marcação">
@@ -208,7 +284,8 @@
   }
   function fecharBarra() {
     if (barra.hidden) return;
-    barra.hidden = true; selecao = null;
+    barra.hidden = true;
+    selecao = null;
     document.body.classList.remove("com-mbar");
   }
   async function marcacaoDe(a) {
@@ -225,14 +302,23 @@
     const cor = e.target.closest(".mb-cor");
     if (cor) {
       const m = await marcacaoDe(a);
-      if (!cor.dataset.cor) { if (m) { if (m.etiquetas?.length) await gravar("marcacoes", { id: m.id, cor: null }); else await apagar("marcacoes", m.id); } }
-      else await gravar("marcacoes", { id: m?.id || uuid(), cap: capDe(a), ancora: a, cor: cor.dataset.cor, etiquetas: m?.etiquetas || [] });
+      if (!cor.dataset.cor) {
+        if (m) {
+          if (m.etiquetas?.length) await gravar("marcacoes", { id: m.id, cor: null });
+          else await apagar("marcacoes", m.id);
+        }
+      } else
+        await gravar("marcacoes", { id: m?.id || uuid(), cap: capDe(a), ancora: a, cor: cor.dataset.cor, etiquetas: m?.etiquetas || [] });
       await pintar();
       $$(".mb-cor", barra).forEach(b => b.setAttribute("aria-pressed", String(!!cor.dataset.cor && b === cor)));
       return;
     }
     const acao = e.target.closest("[data-acao]")?.dataset.acao;
-    if (acao === "nota") { const s = selecao; fecharBarra(); return abrirNota(null, s.ancora, s.trecho); }
+    if (acao === "nota") {
+      const s = selecao;
+      fecharBarra();
+      return abrirNota(null, s.ancora, s.trecho);
+    }
     if (acao === "fav") {
       const f = await favoritoDe(a.livro, a.cap, a.ver);
       if (f) await apagar("favoritos", f.id);
@@ -244,10 +330,18 @@
     if (acao === "copiar") {
       const v = atual?.verses.find(x => x.n === a.ver);
       const texto = `${selecao.trecho || v?.blivre || ""} (${atual?.nome || a.livro} ${a.cap}:${a.ver}, Bíblia Livre)`;
-      try { await navigator.clipboard.writeText(texto); aviso("Copiado."); } catch (_) { aviso("Não foi possível copiar neste navegador."); }
+      try {
+        await navigator.clipboard.writeText(texto);
+        aviso("Copiado.");
+      } catch (_) {
+        aviso("Não foi possível copiar neste navegador.");
+      }
       return fecharBarra();
     }
-    if (acao === "camadas") { versoEl(a.ver)?.classList.toggle("abrir"); return fecharBarra(); }
+    if (acao === "camadas") {
+      versoEl(a.ver)?.classList.toggle("abrir");
+      return fecharBarra();
+    }
     const et = e.target.closest("[data-etiqueta]");
     if (et) return alternarEtiqueta(et.dataset.etiqueta);
     if (e.target.closest("#mb-nova-et")) {
@@ -255,13 +349,19 @@
       const nome = campo.value.trim();
       if (!nome) return campo.focus();
       const existe = (await todos("etiquetas")).find(x => x.nome.toLowerCase() === nome.toLowerCase());
-      const t = existe || await gravar("etiquetas", { id: uuid(), nome, cor: null });
+      const t = existe || (await gravar("etiquetas", { id: uuid(), nome, cor: null }));
       await alternarEtiqueta(t.id, true);
     }
   });
   barra.addEventListener("keydown", e => {
-    if (e.key === "Escape") { e.stopPropagation(); fecharBarra(); }
-    if (e.key === "Enter" && e.target.id === "mb-et-nome") { e.preventDefault(); $("#mb-nova-et").click(); }
+    if (e.key === "Escape") {
+      e.stopPropagation();
+      fecharBarra();
+    }
+    if (e.key === "Enter" && e.target.id === "mb-et-nome") {
+      e.preventDefault();
+      $("#mb-nova-et").click();
+    }
   });
   async function mostrarEtiquetas() {
     const box = $("#mb-etiquetas");
@@ -278,7 +378,8 @@
     const m = await marcacaoDe(a);
     const lista = new Set(m?.etiquetas || []);
     const on = ligar ?? !lista.has(id);
-    if (on) lista.add(id); else lista.delete(id);
+    if (on) lista.add(id);
+    else lista.delete(id);
     if (m) {
       if (!m.cor && !lista.size) await apagar("marcacoes", m.id);
       else await gravar("marcacoes", { id: m.id, etiquetas: [...lista] });
@@ -298,12 +399,14 @@
     pre.selectNodeContents(bl);
     pre.setEnd(r.startContainer, r.startOffset);
     const off = tag ? tag.textContent.length : 0;
-    const ini = pre.toString().length - off, trecho = r.toString();
+    const ini = pre.toString().length - off,
+      trecho = r.toString();
     if (ini < 0 || !trecho.trim()) return null;
     return { inicio: ini, fim: ini + trecho.length, trecho };
   }
   function abrirParaVerso(sec, camada, extra) {
-    const vi = +sec.dataset.vi, v = atual.verses[vi];
+    const vi = +sec.dataset.vi,
+      v = atual.verses[vi];
     if (!v) return;
     const a = { ...ancoraVersiculo(atual.cod, atual.cap, v.n), ...extra, camada };
     if (camada === "versiculo") a.trecho = (v.blivre || "").slice(0, 200);
@@ -312,48 +415,83 @@
   }
   document.addEventListener("click", e => {
     const b = e.target.closest(".vmark");
-    if (b) { const sec = b.closest(".verse"); const s = sec && ancoraBlivre(sec); return abrirParaVerso(sec, s ? "blivre" : "versiculo", s || {}); }
+    if (b) {
+      const sec = b.closest(".verse");
+      const s = sec && ancoraBlivre(sec);
+      return abrirParaVerso(sec, s ? "blivre" : "versiculo", s || {});
+    }
     const n = e.target.closest(".vnota");
     if (n) return abrirNotasDoVerso(+n.dataset.ver);
   });
   // Toque longo num cartão do original: marca a palavra. Toque longo no versículo: marca o versículo.
-  let timer = 0, alvo = null, longo = false;
-  document.addEventListener("pointerdown", e => {
-    const sec = e.target.closest && e.target.closest("#verses .verse");
-    if (!sec || e.button > 0 || e.target.closest(".say, .vmark, .vnota, details")) return;
-    alvo = e.target.closest(".word") || sec; longo = false;
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      longo = true;
-      if (alvo.classList.contains("word")) {
-        const i = +alvo.dataset.i;
-        const v = atual.verses[+alvo.dataset.v];
-        abrirParaVerso(alvo.closest(".verse"), "original", { inicio: i, fim: i, trecho: v?.words[i]?.heb || "" });
-      } else if (!document.body.classList.contains("hide-orig") || !window.getSelection()?.toString()) {
-        if (!window.getSelection()?.toString()) abrirParaVerso(sec, "versiculo", {});
-      }
-    }, 550);
-  }, true);
-  ["pointerup", "pointercancel", "pointermove"].forEach(ev => document.addEventListener(ev, e => {
-    if (ev === "pointermove" && Math.abs(e.movementX) + Math.abs(e.movementY) < 4) return;
-    clearTimeout(timer);
-  }, true));
+  let timer = 0,
+    alvo = null,
+    longo = false;
+  document.addEventListener(
+    "pointerdown",
+    e => {
+      const sec = e.target.closest && e.target.closest("#verses .verse");
+      if (!sec || e.button > 0 || e.target.closest(".say, .vmark, .vnota, details")) return;
+      alvo = e.target.closest(".word") || sec;
+      longo = false;
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        longo = true;
+        if (alvo.classList.contains("word")) {
+          const i = +alvo.dataset.i;
+          const v = atual.verses[+alvo.dataset.v];
+          abrirParaVerso(alvo.closest(".verse"), "original", { inicio: i, fim: i, trecho: v?.words[i]?.heb || "" });
+        } else if (!document.body.classList.contains("hide-orig") || !window.getSelection()?.toString()) {
+          if (!window.getSelection()?.toString()) abrirParaVerso(sec, "versiculo", {});
+        }
+      }, 550);
+    },
+    true
+  );
+  ["pointerup", "pointercancel", "pointermove"].forEach(ev =>
+    document.addEventListener(
+      ev,
+      e => {
+        if (ev === "pointermove" && Math.abs(e.movementX) + Math.abs(e.movementY) < 4) return;
+        clearTimeout(timer);
+      },
+      true
+    )
+  );
   // O clique que termina um toque longo não abre o verbete
-  document.addEventListener("click", e => { if (longo && e.target.closest("#verses .word")) { e.stopPropagation(); e.preventDefault(); longo = false; } }, true);
+  document.addEventListener(
+    "click",
+    e => {
+      if (longo && e.target.closest("#verses .word")) {
+        e.stopPropagation();
+        e.preventDefault();
+        longo = false;
+      }
+    },
+    true
+  );
   // No celular o toque longo vira "contextmenu" (e o navegador cancela o pointer); no computador, é o botão direito.
   document.addEventListener("contextmenu", e => {
     const sec = e.target.closest && e.target.closest("#verses .verse");
     if (!sec) return;
     clearTimeout(timer);
     const s = ancoraBlivre(sec);
-    if (s) { e.preventDefault(); return abrirParaVerso(sec, "blivre", s); }
+    if (s) {
+      e.preventDefault();
+      return abrirParaVerso(sec, "blivre", s);
+    }
     const w = e.target.closest(".word");
     if (w) {
-      e.preventDefault(); longo = true;
-      const i = +w.dataset.i, v = atual.verses[+w.dataset.v];
+      e.preventDefault();
+      longo = true;
+      const i = +w.dataset.i,
+        v = atual.verses[+w.dataset.v];
       return abrirParaVerso(sec, "original", { inicio: i, fim: i, trecho: v?.words[i]?.heb || "" });
     }
-    if (!e.target.closest("a, input, textarea") && !window.getSelection()?.toString()) { e.preventDefault(); abrirParaVerso(sec, "versiculo", {}); }
+    if (!e.target.closest("a, input, textarea") && !window.getSelection()?.toString()) {
+      e.preventDefault();
+      abrirParaVerso(sec, "versiculo", {});
+    }
   });
   // Selecionar texto da Bíblia Livre mostra a barra (no celular, depois que a seleção para)
   let selTimer = 0;
@@ -362,8 +500,9 @@
     selTimer = setTimeout(() => {
       const sel = window.getSelection();
       if (!sel || sel.isCollapsed || !sel.rangeCount) return;
-      const sec = sel.anchorNode && (sel.anchorNode.nodeType === 1 ? sel.anchorNode : sel.anchorNode.parentElement)?.closest("#verses .verse");
-      if (!sec || !barra.hidden && selecao?.ancora.camada === "blivre") return;
+      const sec =
+        sel.anchorNode && (sel.anchorNode.nodeType === 1 ? sel.anchorNode : sel.anchorNode.parentElement)?.closest("#verses .verse");
+      if (!sec || (!barra.hidden && selecao?.ancora.camada === "blivre")) return;
       const s = ancoraBlivre(sec);
       if (s) abrirParaVerso(sec, "blivre", s);
     }, 700);
@@ -371,8 +510,12 @@
 
   // ---------- editor de nota ----------
   const nota = document.createElement("aside");
-  nota.id = "nota"; nota.className = "sheet right nota-sheet"; nota.hidden = true;
-  nota.setAttribute("role", "dialog"); nota.setAttribute("aria-modal", "true"); nota.setAttribute("aria-labelledby", "nota-h");
+  nota.id = "nota";
+  nota.className = "sheet right nota-sheet";
+  nota.hidden = true;
+  nota.setAttribute("role", "dialog");
+  nota.setAttribute("aria-modal", "true");
+  nota.setAttribute("aria-labelledby", "nota-h");
   nota.innerHTML = `
     <div class="shead"><h2 id="nota-h">Nota</h2><button class="ibtn" data-fechar aria-label="Fechar nota">${ICONE.fechar}</button></div>
     <div class="sgroup nota-corpo">
@@ -385,14 +528,20 @@
       <div class="nota-rodape"><span id="nota-estado" aria-live="polite"></span><button class="nota-apagar" id="nota-apagar">Apagar nota</button></div>
     </div>`;
   document.body.appendChild(nota);
-  let notaAtual = null, salvarTimer = 0, voltarFoco = null;
+  let notaAtual = null,
+    salvarTimer = 0,
+    voltarFoco = null;
   async function abrirNota(id, ancora, trecho) {
     voltarFoco = document.activeElement;
     const todasN = await todos("notas");
-    notaAtual = id ? todasN.find(n => n.id === id) : { id: uuid(), cap: ancora ? capDe(ancora) : "livre", ancora: ancora || null, titulo: "", texto: "", etiquetas: [], nova: true };
+    notaAtual = id
+      ? todasN.find(n => n.id === id)
+      : { id: uuid(), cap: ancora ? capDe(ancora) : "livre", ancora: ancora || null, titulo: "", texto: "", etiquetas: [], nova: true };
     if (!notaAtual) return;
     const a = notaAtual.ancora;
-    $("#nota-ref").textContent = a ? `${nomeLivro(a.livro)} ${a.cap}:${a.ver}${trecho || a.trecho ? ` · “${(trecho || a.trecho).slice(0, 80)}”` : ""}` : "Nota livre";
+    $("#nota-ref").textContent = a
+      ? `${nomeLivro(a.livro)} ${a.cap}:${a.ver}${trecho || a.trecho ? ` · “${(trecho || a.trecho).slice(0, 80)}”` : ""}`
+      : "Nota livre";
     $("#nota-titulo").value = notaAtual.titulo || "";
     $("#nota-texto").value = notaAtual.texto || "";
     $("#nota-estado").textContent = notaAtual.nova ? "" : "Salva.";
@@ -405,8 +554,10 @@
   async function desenharEtiquetasNota() {
     const ets = (await todos("etiquetas")).sort((x, y) => x.nome.localeCompare(y.nome, "pt"));
     const tem = new Set(notaAtual.etiquetas || []);
-    $("#nota-ets").innerHTML = `<span class="nota-ets-r">Etiquetas:</span>` + ets.map(t => `<button class="chip" data-et="${t.id}" aria-pressed="${tem.has(t.id)}">${esc(t.nome)}</button>`).join("")
-      + `<span class="nota-et-nova"><label class="sr" for="nota-et-nome">Nova etiqueta</label><input id="nota-et-nome" type="text" placeholder="+ nova etiqueta" autocomplete="off"><button class="chip" data-et-nova>Criar</button></span>`;
+    $("#nota-ets").innerHTML =
+      `<span class="nota-ets-r">Etiquetas:</span>` +
+      ets.map(t => `<button class="chip" data-et="${t.id}" aria-pressed="${tem.has(t.id)}">${esc(t.nome)}</button>`).join("") +
+      `<span class="nota-et-nova"><label class="sr" for="nota-et-nome">Nova etiqueta</label><input id="nota-et-nome" type="text" placeholder="+ nova etiqueta" autocomplete="off"><button class="chip" data-et-nova>Criar</button></span>`;
   }
   function agendarSalvar() {
     clearTimeout(salvarTimer);
@@ -415,9 +566,13 @@
   }
   async function salvarNota() {
     if (!notaAtual) return;
-    const titulo = $("#nota-titulo").value.trim(), texto = $("#nota-texto").value;
-    if (notaAtual.nova && !titulo && !texto.trim()) { $("#nota-estado").textContent = ""; return; }
-    const { nova, ...reg } = notaAtual;
+    const titulo = $("#nota-titulo").value.trim(),
+      texto = $("#nota-texto").value;
+    if (notaAtual.nova && !titulo && !texto.trim()) {
+      $("#nota-estado").textContent = "";
+      return;
+    }
+    const { nova: _nova, ...reg } = notaAtual;
     notaAtual = { ...(await gravar("notas", { ...reg, titulo, texto })) };
     $("#nota-estado").textContent = "Salva.";
     $("#nota-apagar").hidden = false;
@@ -427,7 +582,8 @@
     if (nota.hidden) return;
     clearTimeout(salvarTimer);
     salvarNota();
-    nota.hidden = true; notaAtual = null;
+    nota.hidden = true;
+    notaAtual = null;
     document.body.classList.remove("com-nota");
     if (voltarFoco && voltarFoco.isConnected) voltarFoco.focus({ preventScroll: true });
   }
@@ -437,46 +593,71 @@
     if (e.target.closest("[data-fechar]")) return fecharNota();
     if (e.target.closest("#nota-apagar")) {
       if (!confirmarApagar()) return;
-      await apagar("notas", notaAtual.id); notaAtual = null; await pintar(); return fecharNota();
+      await apagar("notas", notaAtual.id);
+      notaAtual = null;
+      await pintar();
+      return fecharNota();
     }
     const b = e.target.closest("[data-et]");
     if (b) {
       const set = new Set(notaAtual.etiquetas || []);
       set.has(b.dataset.et) ? set.delete(b.dataset.et) : set.add(b.dataset.et);
       notaAtual.etiquetas = [...set];
-      await salvarNota(); return desenharEtiquetasNota();
+      await salvarNota();
+      return desenharEtiquetasNota();
     }
     if (e.target.closest("[data-et-nova]")) {
       const nome = $("#nota-et-nome").value.trim();
       if (!nome) return $("#nota-et-nome").focus();
       const existe = (await todos("etiquetas")).find(x => x.nome.toLowerCase() === nome.toLowerCase());
-      const t = existe || await gravar("etiquetas", { id: uuid(), nome, cor: null });
+      const t = existe || (await gravar("etiquetas", { id: uuid(), nome, cor: null }));
       notaAtual.etiquetas = [...new Set([...(notaAtual.etiquetas || []), t.id])];
-      await salvarNota(); return desenharEtiquetasNota();
+      await salvarNota();
+      return desenharEtiquetasNota();
     }
   });
   nota.addEventListener("keydown", e => {
-    if (e.key === "Escape") { e.stopPropagation(); fecharNota(); }
-    if (e.key === "Enter" && e.target.id === "nota-et-nome") { e.preventDefault(); $("[data-et-nova]", nota).click(); }
+    if (e.key === "Escape") {
+      e.stopPropagation();
+      fecharNota();
+    }
+    if (e.key === "Enter" && e.target.id === "nota-et-nome") {
+      e.preventDefault();
+      $("[data-et-nova]", nota).click();
+    }
   });
   // Confirmação simples sem diálogo do navegador (o botão vira "Confirmar")
   let confirmar = 0;
   function confirmarApagar() {
     const b = $("#nota-apagar");
-    if (Date.now() - confirmar < 4000) { confirmar = 0; b.textContent = "Apagar nota"; return true; }
-    confirmar = Date.now(); b.textContent = "Toque de novo para apagar"; setTimeout(() => { b.textContent = "Apagar nota"; }, 4000);
+    if (Date.now() - confirmar < 4000) {
+      confirmar = 0;
+      b.textContent = "Apagar nota";
+      return true;
+    }
+    confirmar = Date.now();
+    b.textContent = "Toque de novo para apagar";
+    setTimeout(() => {
+      b.textContent = "Apagar nota";
+    }, 4000);
     return false;
   }
   async function abrirNotasDoVerso(ver) {
-    const ns = (await doCapitulo("notas", `${atual.cod}.${atual.cap}`)).filter(n => n.ancora?.ver === ver).sort((x, y) => x.criado_em.localeCompare(y.criado_em));
+    const ns = (await doCapitulo("notas", `${atual.cod}.${atual.cap}`))
+      .filter(n => n.ancora?.ver === ver)
+      .sort((x, y) => x.criado_em.localeCompare(y.criado_em));
     if (ns.length === 1) return abrirNota(ns[0].id);
     abrirLista({ cap: `${atual.cod}.${atual.cap}`, ver });
   }
 
   // ---------- Minhas anotações ----------
   const lista = document.createElement("aside");
-  lista.id = "minhas"; lista.className = "sheet right minhas-sheet"; lista.hidden = true;
-  lista.setAttribute("role", "dialog"); lista.setAttribute("aria-modal", "true"); lista.setAttribute("aria-labelledby", "minhas-h");
+  lista.id = "minhas";
+  lista.className = "sheet right minhas-sheet";
+  lista.hidden = true;
+  lista.setAttribute("role", "dialog");
+  lista.setAttribute("aria-modal", "true");
+  lista.setAttribute("aria-labelledby", "minhas-h");
   lista.innerHTML = `
     <div class="shead"><h2 id="minhas-h">Minhas anotações</h2><button class="ibtn" data-fechar aria-label="Fechar">${ICONE.fechar}</button></div>
     <div class="sgroup">
@@ -507,8 +688,12 @@
   let selecionando = false;
   const selecionados = new Set();
   let ultimosItens = [];
-  function nomeLivro(cod) { return (window.__livros || {})[cod]?.nome || cod; }
-  function ordemLivro(cod) { return (window.__livros || {})[cod]?.i ?? 999; }
+  function nomeLivro(cod) {
+    return (window.__livros || {})[cod]?.nome || cod;
+  }
+  function ordemLivro(cod) {
+    return (window.__livros || {})[cod]?.i ?? 999;
+  }
   async function abrirLista(f) {
     filtro = { tipo: "", cap: null, ver: null, ...(f || {}) };
     voltarFoco = document.activeElement;
@@ -527,38 +712,83 @@
   async function itens() {
     const [ms, ns, fs, ets] = await Promise.all([todos("marcacoes"), todos("notas"), todos("favoritos"), todos("etiquetas")]);
     const nomeEt = Object.fromEntries(ets.map(t => [t.id, t.nome]));
-    const ref = a => a ? `${nomeLivro(a.livro)} ${a.cap}:${a.ver}` : "Nota livre";
+    const ref = a => (a ? `${nomeLivro(a.livro)} ${a.cap}:${a.ver}` : "Nota livre");
     const textoVerso = a => a?.trecho || "";
     return {
       ets,
       lista: [
-        ...ns.map(n => ({ tipo: "notas", id: n.id, a: n.ancora, rot: "nota", titulo: n.titulo, texto: n.texto, extra: textoVerso(n.ancora), ets: n.etiquetas || [], data: n.alterado_em })),
-        ...ms.map(m => ({ tipo: "marcacoes", id: m.id, a: m.ancora, rot: m.cor ? "marcação" : "etiqueta", cor: m.cor, texto: m.ancora.trecho || "", ets: m.etiquetas || [], data: m.alterado_em })),
-        ...fs.map(f => ({ tipo: "favoritos", id: f.id, a: f.ancora, rot: "favorito", texto: "", ets: f.etiquetas || [], data: f.alterado_em }))
-      ].map(x => ({ ...x, ref: ref(x.a), etNomes: x.ets.map(i => nomeEt[i]).filter(Boolean) })),
+        ...ns.map(n => ({
+          tipo: "notas",
+          id: n.id,
+          a: n.ancora,
+          rot: "nota",
+          titulo: n.titulo,
+          texto: n.texto,
+          extra: textoVerso(n.ancora),
+          ets: n.etiquetas || [],
+          data: n.alterado_em
+        })),
+        ...ms.map(m => ({
+          tipo: "marcacoes",
+          id: m.id,
+          a: m.ancora,
+          rot: m.cor ? "marcação" : "etiqueta",
+          cor: m.cor,
+          texto: m.ancora.trecho || "",
+          ets: m.etiquetas || [],
+          data: m.alterado_em
+        })),
+        ...fs.map(f => ({
+          tipo: "favoritos",
+          id: f.id,
+          a: f.ancora,
+          rot: "favorito",
+          texto: "",
+          ets: f.etiquetas || [],
+          data: f.alterado_em
+        }))
+      ].map(x => ({ ...x, ref: ref(x.a), etNomes: x.ets.map(i => nomeEt[i]).filter(Boolean) }))
     };
   }
   async function desenharLista() {
     const { ets, lista: todosItens } = await itens();
-    const sel = $("#mn-etiqueta"), atualEt = sel.value;
-    sel.innerHTML = `<option value="">todas</option>` + ets.sort((x, y) => x.nome.localeCompare(y.nome, "pt")).map(t => `<option value="${t.id}">${esc(t.nome)}</option>`).join("");
+    const sel = $("#mn-etiqueta"),
+      atualEt = sel.value;
+    sel.innerHTML =
+      `<option value="">todas</option>` +
+      ets
+        .sort((x, y) => x.nome.localeCompare(y.nome, "pt"))
+        .map(t => `<option value="${t.id}">${esc(t.nome)}</option>`)
+        .join("");
     sel.value = ets.some(t => t.id === atualEt) ? atualEt : "";
     const q = $("#mn-busca").value.trim().toLowerCase();
-    let xs = todosItens.filter(x =>
-      (!filtro.tipo || x.tipo === filtro.tipo) &&
-      (!filtro.cap || (x.a && `${x.a.livro}.${x.a.cap}` === filtro.cap && (filtro.ver == null || x.a.ver === filtro.ver))) &&
-      (!sel.value || x.ets.includes(sel.value)) &&
-      (!q || `${x.ref} ${x.titulo || ""} ${x.texto} ${x.etNomes.join(" ")}`.toLowerCase().includes(q)));
+    let xs = todosItens.filter(
+      x =>
+        (!filtro.tipo || x.tipo === filtro.tipo) &&
+        (!filtro.cap || (x.a && `${x.a.livro}.${x.a.cap}` === filtro.cap && (filtro.ver == null || x.a.ver === filtro.ver))) &&
+        (!sel.value || x.ets.includes(sel.value)) &&
+        (!q || `${x.ref} ${x.titulo || ""} ${x.texto} ${x.etNomes.join(" ")}`.toLowerCase().includes(q))
+    );
     $$(".mn-filtros .chip", lista).forEach(b => b.setAttribute("aria-pressed", String(b.dataset.tipo === filtro.tipo)));
     if ($("#mn-ordem").value === "data") xs.sort((x, y) => y.data.localeCompare(x.data));
-    else xs.sort((x, y) => (x.a ? ordemLivro(x.a.livro) : 1e4) - (y.a ? ordemLivro(y.a.livro) : 1e4) || (x.a?.cap || 0) - (y.a?.cap || 0) || (x.a?.ver || 0) - (y.a?.ver || 0));
+    else
+      xs.sort(
+        (x, y) =>
+          (x.a ? ordemLivro(x.a.livro) : 1e4) - (y.a ? ordemLivro(y.a.livro) : 1e4) ||
+          (x.a?.cap || 0) - (y.a?.cap || 0) ||
+          (x.a?.ver || 0) - (y.a?.ver || 0)
+      );
     ultimosItens = xs;
     $("#mn-total").textContent = filtro.cap ? `${xs.length} neste versículo · ` : `${xs.length} ${xs.length === 1 ? "item" : "itens"}`;
     if (filtro.cap) $("#mn-total").innerHTML += `<button class="linklike" id="mn-ver-tudo">ver tudo</button>`;
-    let grupo = null, html = "";
+    let grupo = null,
+      html = "";
     for (const x of xs) {
-      const g = $("#mn-ordem").value === "data" ? null : (x.a ? nomeLivro(x.a.livro) : "Notas livres");
-      if (g !== grupo && g) { html += `<h3 class="mn-grupo">${esc(g)}</h3>`; grupo = g; }
+      const g = $("#mn-ordem").value === "data" ? null : x.a ? nomeLivro(x.a.livro) : "Notas livres";
+      if (g !== grupo && g) {
+        html += `<h3 class="mn-grupo">${esc(g)}</h3>`;
+        grupo = g;
+      }
       html += `<button class="mn-item${selecionando ? " sel" : ""}" data-tipo="${x.tipo}" data-id="${x.id}"${selecionando ? ` role="checkbox" aria-checked="${selecionados.has(x.id)}"` : ""}>
         <span class="mn-ref">${esc(x.ref)} · ${x.cor ? `<span class="mn-cor mk-${x.cor}">${x.rot}</span>` : x.rot}</span>
         ${x.titulo ? `<b class="mn-tit">${esc(x.titulo)}</b>` : ""}
@@ -566,16 +796,29 @@
         ${x.etNomes.length ? `<span class="mn-ets">${x.etNomes.map(n => `<span class="chip">${esc(n)}</span>`).join("")}</span>` : ""}
       </button>`;
     }
-    $("#mn-itens").innerHTML = html || `<p class="mn-vazio">${todosItens.length ? "Nada encontrado com esses filtros." : "Ainda não há anotações. Toque longo num versículo, selecione um trecho ou use o botão ⋯ ao lado do número para marcar e anotar."}</p>`;
+    $("#mn-itens").innerHTML =
+      html ||
+      `<p class="mn-vazio">${todosItens.length ? "Nada encontrado com esses filtros." : "Ainda não há anotações. Toque longo num versículo, selecione um trecho ou use o botão ⋯ ao lado do número para marcar e anotar."}</p>`;
   }
   lista.addEventListener("click", async e => {
     if (e.target.closest("[data-fechar]")) return fecharLista();
     const t = e.target.closest(".mn-filtros .chip");
-    if (t) { filtro.tipo = t.dataset.tipo; return desenharLista(); }
-    if (e.target.closest("#mn-ver-tudo")) { filtro.cap = null; filtro.ver = null; return desenharLista(); }
-    if (e.target.closest("#mn-nova")) { fecharLista(); return abrirNota(null, null); }
+    if (t) {
+      filtro.tipo = t.dataset.tipo;
+      return desenharLista();
+    }
+    if (e.target.closest("#mn-ver-tudo")) {
+      filtro.cap = null;
+      filtro.ver = null;
+      return desenharLista();
+    }
+    if (e.target.closest("#mn-nova")) {
+      fecharLista();
+      return abrirNota(null, null);
+    }
     if (e.target.closest("#mn-selecionar")) {
-      selecionando = !selecionando; if (!selecionando) selecionados.clear();
+      selecionando = !selecionando;
+      if (!selecionando) selecionados.clear();
       e.target.closest("#mn-selecionar").setAttribute("aria-pressed", String(selecionando));
       return desenharLista();
     }
@@ -590,7 +833,10 @@
       return;
     }
     if (it) {
-      if (it.dataset.tipo === "notas") { fecharLista(); return abrirNota(it.dataset.id); }
+      if (it.dataset.tipo === "notas") {
+        fecharLista();
+        return abrirNota(it.dataset.id);
+      }
       const { lista: xs } = await itens();
       const x = xs.find(y => y.id === it.dataset.id);
       fecharLista();
@@ -600,13 +846,21 @@
   $("#mn-busca").addEventListener("input", () => desenharLista());
   $("#mn-etiqueta").addEventListener("change", () => desenharLista());
   $("#mn-ordem").addEventListener("change", () => desenharLista());
-  lista.addEventListener("keydown", e => { if (e.key === "Escape") { e.stopPropagation(); fecharLista(); } });
-
+  lista.addEventListener("keydown", e => {
+    if (e.key === "Escape") {
+      e.stopPropagation();
+      fecharLista();
+    }
+  });
 
   // ---------- Exportar em PDF (caderno) ----------
   const exp = document.createElement("aside");
-  exp.id = "exportar"; exp.className = "sheet right minhas-sheet"; exp.hidden = true;
-  exp.setAttribute("role", "dialog"); exp.setAttribute("aria-modal", "true"); exp.setAttribute("aria-labelledby", "exp-h");
+  exp.id = "exportar";
+  exp.className = "sheet right minhas-sheet";
+  exp.hidden = true;
+  exp.setAttribute("role", "dialog");
+  exp.setAttribute("aria-modal", "true");
+  exp.setAttribute("aria-labelledby", "exp-h");
   exp.innerHTML = `
     <div class="shead"><h2 id="exp-h">Exportar em PDF</h2><button class="ibtn" data-fechar aria-label="Fechar">${ICONE.fechar}</button></div>
     <div class="sgroup exp-corpo">
@@ -639,52 +893,90 @@
     $('input[name="exp-o"][value="sel"]').disabled = !selecionados.size;
     $('input[name="exp-o"][value="livro"]').disabled = !livros.length;
     $('input[name="exp-o"][value="' + (selecionados.size ? "sel" : "lista") + '"]').checked = true;
-    lista.hidden = true; document.body.classList.remove("com-minhas");
+    lista.hidden = true;
+    document.body.classList.remove("com-minhas");
     exp.hidden = false;
     $("#exp-gerar").focus();
   }
-  function fecharExportar(voltar = true) { exp.hidden = true; if (voltar) abrirLista(filtro); }
+  function fecharExportar(voltar = true) {
+    exp.hidden = true;
+    if (voltar) abrirLista(filtro);
+  }
   exp.addEventListener("click", e => {
     if (e.target.closest("[data-fechar]")) return fecharExportar();
     if (e.target.closest("#exp-gerar")) return gerarCaderno();
   });
-  exp.addEventListener("change", e => { if (e.target.id === "exp-livro") $('input[name="exp-o"][value="livro"]').checked = true; });
-  exp.addEventListener("keydown", e => { if (e.key === "Escape") { e.stopPropagation(); fecharExportar(); } });
+  exp.addEventListener("change", e => {
+    if (e.target.id === "exp-livro") $('input[name="exp-o"][value="livro"]').checked = true;
+  });
+  exp.addEventListener("keydown", e => {
+    if (e.key === "Escape") {
+      e.stopPropagation();
+      fecharExportar();
+    }
+  });
 
   async function capitulo(cod, n) {
-    try { return window.__carregarCapitulo ? await window.__carregarCapitulo(cod, n) : null; } catch (_) { return null; }
+    try {
+      return window.__carregarCapitulo ? await window.__carregarCapitulo(cod, n) : null;
+    } catch (_) {
+      return null;
+    }
   }
   async function montarCaderno() {
     const { lista: todosXs } = await itens();
     const o = $('input[name="exp-o"]:checked').value;
-    let xs = o === "sel" ? todosXs.filter(x => selecionados.has(x.id))
-      : o === "livro" ? todosXs.filter(x => x.a?.livro === $("#exp-livro").value)
-      : todosXs.filter(x => ultimosItens.some(y => y.id === x.id));
+    let xs =
+      o === "sel"
+        ? todosXs.filter(x => selecionados.has(x.id))
+        : o === "livro"
+          ? todosXs.filter(x => x.a?.livro === $("#exp-livro").value)
+          : todosXs.filter(x => ultimosItens.some(y => y.id === x.id));
     const inc = { notas: $("#exp-notas").checked, marcacoes: $("#exp-marcacoes").checked, favoritos: $("#exp-favoritos").checked };
     xs = xs.filter(x => inc[x.tipo]);
-    const texto = $("#exp-texto").checked, inter = $("#exp-inter").checked;
+    const texto = $("#exp-texto").checked,
+      inter = $("#exp-inter").checked;
     const porData = $('input[name="exp-ordem"]:checked').value === "data";
     // agrupa por versículo (ou nota livre)
     const grupos = new Map();
     for (const x of xs) {
       const k = x.a ? `${x.a.livro}.${x.a.cap}.${x.a.ver}` : `livre.${x.id}`;
       if (!grupos.has(k)) grupos.set(k, { a: x.a, itens: [], data: x.data });
-      const g = grupos.get(k); g.itens.push(x); if (x.data > g.data) g.data = x.data;
+      const g = grupos.get(k);
+      g.itens.push(x);
+      if (x.data > g.data) g.data = x.data;
     }
     let gs = [...grupos.values()];
     if (porData) gs.sort((x, y) => y.data.localeCompare(x.data));
-    else gs.sort((x, y) => (x.a ? ordemLivro(x.a.livro) : 1e4) - (y.a ? ordemLivro(y.a.livro) : 1e4) || (x.a?.cap || 0) - (y.a?.cap || 0) || (x.a?.ver || 0) - (y.a?.ver || 0));
+    else
+      gs.sort(
+        (x, y) =>
+          (x.a ? ordemLivro(x.a.livro) : 1e4) - (y.a ? ordemLivro(y.a.livro) : 1e4) ||
+          (x.a?.cap || 0) - (y.a?.cap || 0) ||
+          (x.a?.ver || 0) - (y.a?.ver || 0)
+      );
     const caps = {};
-    for (const g of gs) if (g.a && (texto || inter)) { const k = `${g.a.livro}.${g.a.cap}`; if (!(k in caps)) caps[k] = await capitulo(g.a.livro, g.a.cap); }
+    for (const g of gs)
+      if (g.a && (texto || inter)) {
+        const k = `${g.a.livro}.${g.a.cap}`;
+        if (!(k in caps)) caps[k] = await capitulo(g.a.livro, g.a.cap);
+      }
     const marcasPorVerso = {};
-    for (const m of await todos("marcacoes")) { const k = `${m.ancora.livro}.${m.ancora.cap}.${m.ancora.ver}`; (marcasPorVerso[k] = marcasPorVerso[k] || []).push(m); }
+    for (const m of await todos("marcacoes")) {
+      const k = `${m.ancora.livro}.${m.ancora.cap}.${m.ancora.ver}`;
+      (marcasPorVerso[k] = marcasPorVerso[k] || []).push(m);
+    }
     const corHex = { amarelo: "#f6e3a1", verde: "#cfe6c4", azul: "#bcd6e6", rosa: "#f2d2dc", laranja: "#f6d6b8" };
     const livrosNoCaderno = [...new Set(gs.filter(g => g.a).map(g => nomeLivro(g.a.livro)))];
     const titulo = livrosNoCaderno.length === 1 ? livrosNoCaderno[0] : "Minhas anotações";
-    let corpo = "", livroAtual = null;
+    let corpo = "",
+      livroAtual = null;
     for (const g of gs) {
       const a = g.a;
-      if (!porData && a && nomeLivro(a.livro) !== livroAtual && livrosNoCaderno.length > 1) { livroAtual = nomeLivro(a.livro); corpo += `<h2 class="cl">${esc(livroAtual)}</h2>`; }
+      if (!porData && a && nomeLivro(a.livro) !== livroAtual && livrosNoCaderno.length > 1) {
+        livroAtual = nomeLivro(a.livro);
+        corpo += `<h2 class="cl">${esc(livroAtual)}</h2>`;
+      }
       const tipos = [...new Set(g.itens.map(x => x.rot))].join(" · ").toUpperCase();
       corpo += `<section class="en"><div class="ref">${esc(a ? `${nomeLivro(a.livro)} ${a.cap}:${a.ver}` : "NOTA LIVRE")}${tipos ? ` · ${esc(tipos)}` : ""}</div>`;
       const raw = a && caps[`${a.livro}.${a.cap}`];
@@ -693,13 +985,28 @@
       if (texto && v) {
         let t = v.b || "";
         const versoInteiro = ms.find(m => m.ancora.camada === "versiculo");
-        const trechos = ms.filter(m => m.ancora.camada === "blivre").map(m => {
-          let i = m.ancora.inicio, f = m.ancora.fim;
-          if (t.slice(i, f) !== m.ancora.trecho) { const k = t.indexOf(m.ancora.trecho); if (k < 0) return null; i = k; f = k + m.ancora.trecho.length; }
-          return { i, f, cor: m.cor };
-        }).filter(Boolean).sort((x, y) => x.i - y.i);
-        let html = "", pos = 0;
-        for (const m of trechos) { if (m.i < pos) continue; html += esc(t.slice(pos, m.i)) + `<mark style="background:${corHex[m.cor]}">${esc(t.slice(m.i, m.f))}</mark>`; pos = m.f; }
+        const trechos = ms
+          .filter(m => m.ancora.camada === "blivre")
+          .map(m => {
+            let i = m.ancora.inicio,
+              f = m.ancora.fim;
+            if (t.slice(i, f) !== m.ancora.trecho) {
+              const k = t.indexOf(m.ancora.trecho);
+              if (k < 0) return null;
+              i = k;
+              f = k + m.ancora.trecho.length;
+            }
+            return { i, f, cor: m.cor };
+          })
+          .filter(Boolean)
+          .sort((x, y) => x.i - y.i);
+        let html = "",
+          pos = 0;
+        for (const m of trechos) {
+          if (m.i < pos) continue;
+          html += esc(t.slice(pos, m.i)) + `<mark style="background:${corHex[m.cor]}">${esc(t.slice(m.i, m.f))}</mark>`;
+          pos = m.f;
+        }
         html += esc(t.slice(pos));
         corpo += `<p class="vt"${versoInteiro ? ` style="background:${corHex[versoInteiro.cor]};padding:2px 4px;border-radius:3px"` : ""}>${html}</p>`;
       }
@@ -713,15 +1020,20 @@
         }
       }
       for (const x of g.itens) {
-        if (x.tipo === "notas") corpo += `<div class="nt">${x.titulo ? `<b>${esc(x.titulo)}</b><br>` : ""}${esc(x.texto).replace(/\n/g, "<br>")}</div>`;
-        else if (x.tipo === "marcacoes" && x.a.camada === "blivre" && !texto) corpo += `<p class="vt"><mark style="background:${corHex[x.cor] || "#eee"}">${esc(x.texto)}</mark></p>`;
+        if (x.tipo === "notas")
+          corpo += `<div class="nt">${x.titulo ? `<b>${esc(x.titulo)}</b><br>` : ""}${esc(x.texto).replace(/\n/g, "<br>")}</div>`;
+        else if (x.tipo === "marcacoes" && x.a.camada === "blivre" && !texto)
+          corpo += `<p class="vt"><mark style="background:${corHex[x.cor] || "#eee"}">${esc(x.texto)}</mark></p>`;
       }
       const ets = [...new Set(g.itens.flatMap(x => x.etNomes))];
       if (ets.length) corpo += `<div class="tg">${ets.map(n => `<span>${esc(n)}</span>`).join("")}</div>`;
       corpo += `</section>`;
     }
     const data = new Date().toLocaleDateString("pt-BR");
-    return { titulo, n: xs.length, html: `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>${esc(titulo)} · Caderno de estudo</title><style>
+    return {
+      titulo,
+      n: xs.length,
+      html: `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>${esc(titulo)} · Caderno de estudo</title><style>
 @page { size: A4; margin: 16mm 15mm; }
 * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 body { font-family: "Literata", Georgia, "Times New Roman", serif; color: #1b2220; font-size: 11pt; line-height: 1.5; margin: 0; }
@@ -740,31 +1052,55 @@ footer { margin-top: 14px; font-size: 7.5pt; color: #5b6662; border-top: 1px sol
 <header><div><small>CADERNO DE ESTUDO · BÍBLIA INTERLINEAR</small><h1>${esc(titulo)}</h1></div><span>${xs.length} ${xs.length === 1 ? "item" : "itens"} · ${data}</span></header>
 ${corpo || "<p>Nenhum item com essas opções.</p>"}
 <footer>Texto: Bíblia Livre (BLIVRE). Original: Open Scriptures Hebrew Bible e SBLGNT (CC BY 4.0). Glosas e léxico: projeto Bíblia Interlinear.</footer>
-</body></html>` };
+</body></html>`
+    };
   }
   async function gerarCaderno() {
     const btn = $("#exp-gerar");
-    btn.disabled = true; btn.textContent = "Gerando…";
+    btn.disabled = true;
+    btn.textContent = "Gerando…";
     try {
       const c = await montarCaderno();
       window.__ultimoCaderno = c;
       await imprimir(c.html, `${c.titulo} - caderno`);
-    } finally { btn.disabled = false; btn.textContent = "Gerar PDF"; }
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Gerar PDF";
+    }
   }
   // Imprime um HTML: no app Android pelo serviço de impressão do sistema (plugin Impressao, que tem "Salvar como PDF");
   // no navegador, por um iframe escondido e a janela de impressão.
   async function imprimir(html, titulo) {
-    const Cap = window.Capacitor, nativo = Cap?.isNativePlatform?.();
+    const Cap = window.Capacitor,
+      nativo = Cap?.isNativePlatform?.();
     const plug = nativo && (Cap.Plugins?.Impressao || Cap.registerPlugin?.("Impressao"));
-    if (plug && Cap.getPlatform?.() === "android") { try { await plug.imprimir({ html, titulo }); return; } catch (_) { aviso("Não foi possível abrir a impressão do Android."); return; } }
+    if (plug && Cap.getPlatform?.() === "android") {
+      try {
+        await plug.imprimir({ html, titulo });
+        return;
+      } catch (_) {
+        aviso("Não foi possível abrir a impressão do Android.");
+        return;
+      }
+    }
     const fr = document.createElement("iframe");
-    fr.className = "fr-impressao"; fr.setAttribute("aria-hidden", "true"); fr.tabIndex = -1;
+    fr.className = "fr-impressao";
+    fr.setAttribute("aria-hidden", "true");
+    fr.tabIndex = -1;
     fr.style.cssText = "position:fixed;right:0;bottom:0;width:0;height:0;border:0;visibility:hidden";
     document.body.appendChild(fr);
     fr.srcdoc = html;
-    await new Promise(r => { fr.onload = r; setTimeout(r, 1500); });
-    if (window.__semImprimir) return;  // testes automáticos: só monta o caderno
-    try { fr.contentWindow.focus(); fr.contentWindow.print(); } catch (_) { aviso("Este navegador não permite imprimir; tente no Chrome, Edge ou Safari."); }
+    await new Promise(r => {
+      fr.onload = r;
+      setTimeout(r, 1500);
+    });
+    if (window.__semImprimir) return; // testes automáticos: só monta o caderno
+    try {
+      fr.contentWindow.focus();
+      fr.contentWindow.print();
+    } catch (_) {
+      aviso("Este navegador não permite imprimir; tente no Chrome, Edge ou Safari.");
+    }
     setTimeout(() => fr.remove(), 60000);
   }
 
@@ -782,26 +1118,38 @@ ${corpo || "<p>Nenhum item com essas opções.</p>"}
         const r = await Cap.Plugins.Filesystem.writeFile({ path: nome, data: json, directory: "CACHE", encoding: "utf8" });
         await Cap.Plugins.Share.share({ title: "Minhas anotações", files: [r.uri] });
         return;
-      } catch (_) { /* cai no download comum */ }
+      } catch (_) {
+        /* cai no download comum */
+      }
     }
     const url = URL.createObjectURL(new Blob([json], { type: "application/json" }));
     const a = document.createElement("a");
-    a.href = url; a.download = nome; document.body.appendChild(a); a.click(); a.remove();
+    a.href = url;
+    a.download = nome;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 10000);
     aviso("Arquivo de backup baixado.");
   }
   // Junta o arquivo com o que já está no aparelho: registro novo entra; registro que já existe fica com a versão mais recente.
   async function importar(dados) {
-    if (!dados || dados.formato !== "biblia-interlinear-anotacoes" || !dados.colecoes) throw new Error("Este arquivo não é um backup de anotações da Bíblia Interlinear.");
+    if (!dados || dados.formato !== "biblia-interlinear-anotacoes" || !dados.colecoes)
+      throw new Error("Este arquivo não é um backup de anotações da Bíblia Interlinear.");
     await pronto;
-    let novos = 0, atualizados = 0, iguais = 0;
+    let novos = 0,
+      atualizados = 0,
+      iguais = 0;
     for (const c of SINC) {
       for (const r of dados.colecoes[c] || []) {
         const res = await mesclar(c, r);
-        if (res === "novo") novos++; else if (res === "atualizado") atualizados++; else if (res === "igual") iguais++;
+        if (res === "novo") novos++;
+        else if (res === "atualizado") atualizados++;
+        else if (res === "igual") iguais++;
       }
     }
-    avisar(); pintar();
+    avisar();
+    pintar();
     return { novos, atualizados, iguais };
   }
 
@@ -809,14 +1157,20 @@ ${corpo || "<p>Nenhum item com essas opções.</p>"}
   // Junta um registro vindo de fora: vence o relógio maior (a mesma versão aplicada duas vezes não muda nada).
   // Nota editada nos dois lados ao mesmo tempo — a daqui ainda não enviada e a de fora não partiu da versão daqui —
   // vira duas: a vencedora fica com o id e a outra vira uma cópia "(conflito de dd/mm)". Nenhum texto se perde.
-  const pendente = async (c, id) => db ? (await db.fila.where("id").equals(id).count()) > 0 : false;
-  const conflitoDeNota = (aqui, fora, pend) => pend && !aqui.apagado && !fora.apagado && fora.base !== aqui.relogio
-    && ((aqui.texto || "") !== (fora.texto || "") || (aqui.titulo || "") !== (fora.titulo || ""));
+  const pendente = async (c, id) => (db ? (await db.fila.where("id").equals(id).count()) > 0 : false);
+  const conflitoDeNota = (aqui, fora, pend) =>
+    pend &&
+    !aqui.apagado &&
+    !fora.apagado &&
+    fora.base !== aqui.relogio &&
+    ((aqui.texto || "") !== (fora.texto || "") || (aqui.titulo || "") !== (fora.titulo || ""));
   async function copiaDeConflito(n) {
     const d = new Date(Number((n.relogio || "").split("-")[0]) || Date.now());
     const quando = `${String(d.getDate()).padStart(2, "0")}/${String(d.getMonth() + 1).padStart(2, "0")}`;
     const copia = { ...n, id: uuid(), titulo: `${n.titulo || "Nota"} (conflito de ${quando})` };
-    delete copia.relogio; delete copia.base; delete copia.criado_em;
+    delete copia.relogio;
+    delete copia.base;
+    delete copia.criado_em;
     return gravar("notas", copia);
   }
   async function mesclar(c, r, { daNuvem = false } = {}) {
@@ -829,12 +1183,15 @@ ${corpo || "<p>Nenhum item com essas opções.</p>"}
       return "igual";
     }
     const conflito = c === "notas" && atual && conflitoDeNota(atual, r, await pendente(c, r.id));
-    const novo = { ...r }; delete novo.local;
-    if (db) await db.transaction("rw", db[c], db.fila, async () => {
-      await db[c].put(novo);
-      if (daNuvem) await db.fila.where("id").equals(r.id).delete();   // a versão daqui perdeu: não reenviar
-      else await db.fila.add({ colecao: c, id: r.id });
-    });
+    const novo = { ...r };
+    delete novo.local;
+    if (db)
+      await db.transaction("rw", db[c], db.fila, async () => {
+        await db[c].put(novo);
+        if (daNuvem)
+          await db.fila.where("id").equals(r.id).delete(); // a versão daqui perdeu: não reenviar
+        else await db.fila.add({ colecao: c, id: r.id });
+      });
     else memoria[c].set(r.id, novo);
     if (conflito) await copiaDeConflito(atual);
     return atual ? "atualizado" : "novo";
@@ -844,25 +1201,51 @@ ${corpo || "<p>Nenhum item com essas opções.</p>"}
     colecoes: SINC,
     aparelho,
     persistente: () => !!db,
-    async fila() { await pronto; return db ? db.fila.toArray() : []; },
-    async tirarDaFila(seqs) { await pronto; if (db && seqs.length) await db.fila.bulkDelete(seqs); },
-    async ler(c, id) { await pronto; return db ? db[c].get(id) : memoria[c].get(id); },
-    async brutos(c) { await pronto; return db ? db[c].toArray() : [...memoria[c].values()]; },
+    async fila() {
+      await pronto;
+      return db ? db.fila.toArray() : [];
+    },
+    async tirarDaFila(seqs) {
+      await pronto;
+      if (db && seqs.length) await db.fila.bulkDelete(seqs);
+    },
+    async ler(c, id) {
+      await pronto;
+      return db ? db[c].get(id) : memoria[c].get(id);
+    },
+    async brutos(c) {
+      await pronto;
+      return db ? db[c].toArray() : [...memoria[c].values()];
+    },
     mesclar,
-    aplicado() { avisar(); pintar(); },
+    aplicado() {
+      avisar();
+      pintar();
+    },
     async estado(k, v) {
       await pronto;
-      if (!db) { if (v !== undefined) memoriaEstado[k] = v; return memoriaEstado[k]; }
+      if (!db) {
+        if (v !== undefined) memoriaEstado[k] = v;
+        return memoriaEstado[k];
+      }
       if (v === undefined) return (await db.estado.get(k))?.valor;
-      await db.estado.put({ chave: k, valor: v }); return v;
+      await db.estado.put({ chave: k, valor: v });
+      return v;
     },
-    async purgar(c, ids) { await pronto; if (db) await db[c].bulkDelete(ids); else ids.forEach(i => memoria[c].delete(i)); },
+    async purgar(c, ids) {
+      await pronto;
+      if (db) await db[c].bulkDelete(ids);
+      else ids.forEach(i => memoria[c].delete(i));
+    },
     // "Manter só neste aparelho": o que já existe não sobe para a conta (até ser editado de novo)
     async soNesteAparelho() {
       await pronto;
       if (!db) return;
       await db.transaction("rw", [...SINC.map(c => db[c]), db.fila], async () => {
-        for (const c of SINC) await db[c].toCollection().modify(r => { r.local = true; });
+        for (const c of SINC)
+          await db[c].toCollection().modify(r => {
+            r.local = true;
+          });
         await db.fila.clear();
       });
     },
@@ -879,9 +1262,14 @@ ${corpo || "<p>Nenhum item com essas opções.</p>"}
     },
     async apagarTudo() {
       await pronto;
-      if (db) await db.transaction("rw", [...SINC.map(c => db[c]), db.fila], async () => { for (const c of SINC) await db[c].clear(); await db.fila.clear(); });
+      if (db)
+        await db.transaction("rw", [...SINC.map(c => db[c]), db.fila], async () => {
+          for (const c of SINC) await db[c].clear();
+          await db.fila.clear();
+        });
       else SINC.forEach(c => memoria[c].clear());
-      avisar(); pintar();
+      avisar();
+      pintar();
     }
   };
   $("#mn-arquivo").addEventListener("change", async e => {
@@ -892,15 +1280,24 @@ ${corpo || "<p>Nenhum item com essas opções.</p>"}
       const r = await importar(JSON.parse(await f.text()));
       aviso(`Importado: ${r.novos} novos, ${r.atualizados} atualizados, ${r.iguais} já estavam aqui.`);
       desenharLista();
-    } catch (err) { aviso(err.message.startsWith("Este arquivo") ? err.message : "Não foi possível ler o arquivo."); }
+    } catch (err) {
+      aviso(err.message.startsWith("Este arquivo") ? err.message : "Não foi possível ler o arquivo.");
+    }
   });
 
   let avisoTimer = 0;
   function aviso(msg) {
     const t = document.getElementById("toast");
     if (!t) return;
-    t.textContent = msg; t.hidden = false;
-    clearTimeout(avisoTimer); avisoTimer = setTimeout(() => { t.hidden = true; }, Math.max(3500, msg.length * 70));
+    t.textContent = msg;
+    t.hidden = false;
+    clearTimeout(avisoTimer);
+    avisoTimer = setTimeout(
+      () => {
+        t.hidden = true;
+      },
+      Math.max(3500, msg.length * 70)
+    );
   }
 
   // ---------- integração com o leitor ----------
@@ -909,14 +1306,29 @@ ${corpo || "<p>Nenhum item com essas opções.</p>"}
     fecharBarra();
     pintar();
   });
-  document.addEventListener("keydown", e => { if (e.key === "Escape" && !barra.hidden) fecharBarra(); });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && !barra.hidden) fecharBarra();
+  });
   window.Anotacoes = {
-    abrirLista, abrirNota, fecharBarra, pintar, todos, gravar, apagar, importar, baixarDados, montarCaderno, imprimir,
+    abrirLista,
+    abrirNota,
+    fecharBarra,
+    pintar,
+    todos,
+    gravar,
+    apagar,
+    importar,
+    baixarDados,
+    montarCaderno,
+    imprimir,
     contar: async () => (await Promise.all(["notas", "marcacoes", "favoritos"].map(todos))).reduce((s, l) => s + l.length, 0),
     aoMudar: f => ouvintes.push(f),
     exportar: async () => Object.fromEntries(await Promise.all(COLECOES.map(async c => [c, await todos(c)]))),
     local: () => !!db,
     banco
   };
-  if (atual === null && window.__capituloAtual) { atual = window.__capituloAtual; pintar(); }
+  if (atual === null && window.__capituloAtual) {
+    atual = window.__capituloAtual;
+    pintar();
+  }
 })();

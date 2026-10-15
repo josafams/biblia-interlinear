@@ -4,7 +4,8 @@ import { test, expect } from "@playwright/test";
 const REPO = "https://github.com/josafams/biblia-interlinear";
 
 test("mostra amostra, números e seções", async ({ page }) => {
-  const erros = []; page.on("pageerror", e => erros.push(e.message));
+  const erros = [];
+  page.on("pageerror", e => erros.push(e.message));
   await page.goto("index.html");
   await expect(page.locator("h1")).toContainText("A Bíblia inteira");
   await expect(page.locator(".sample .wc")).toHaveCount(12);

@@ -1,0 +1,51 @@
+# Ganchos que rodam antes de cada commit (instale com: make setup). O CI roda as mesmas checagens
+# (e também o gitleaks, que no computador exigiria Go instalado).
+# arquivos gerados pelo Capacitor e pelo Android Studio ficam como as ferramentas os escrevem
+exclude: ^(android|ios)/(?!app/src/main/java/)
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: \.(tsv|md)$
+      - id: end-of-file-fixer
+        exclude: ^tests/retrato\.json$
+      - id: check-yaml
+      - id: check-json
+        exclude: ^(tsconfig|\.vscode/.*)\.json$
+      - id: check-added-large-files
+        args: [--maxkb=2048]
+      - id: detect-private-key
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.8
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.11.0.1
+    hooks:
+      - id: shellcheck
+  - repo: local
+    hooks:
+      - id: prettier
+        name: prettier
+        entry: npx prettier --write --ignore-unknown
+        language: system
+        types: [text]
+      - id: eslint
+        name: eslint
+        entry: npx eslint --fix
+        language: system
+        files: \.(js|mjs)$
+      - id: markdownlint
+        name: markdownlint
+        entry: npx markdownlint-cli2
+        language: system
+        files: \.md$
+      - id: verificar-dados
+        name: dados editados à mão (dados/)
+        entry: python3 scripts/verificar_dados.py
+        language: system
+        files: ^dados/
+        pass_filenames: false

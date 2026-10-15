@@ -61,7 +61,10 @@ const ICONS = [
   ["icone-arredondado.svg", "favicon-64.png", 64]
 ];
 for (const [src, out, size] of ICONS) {
-  await sharp(r(`web/icones/${src}`)).resize(size, size).png().toFile(path.join(OUT, "icones", out));
+  await sharp(r(`web/icones/${src}`))
+    .resize(size, size)
+    .png()
+    .toFile(path.join(OUT, "icones", out));
 }
 
 // ---- dados: livros, capítulos e léxico (scripts/exportar.py lê saida/biblia.sqlite) ----
@@ -72,14 +75,16 @@ const tpl = fs.readFileSync(r("web/template.html"), "utf8");
 const livros = JSON.parse(fs.readFileSync(r("saida/dados/livros.json"), "utf8"));
 const data = JSON.stringify({ livros, caps: {}, lex: {}, completo: true }).replace(/<\//g, "<\\/");
 let html = tpl.replace("__DATA__", () => data);
-html = html.replace(/<link rel="preconnect"[^>]*>\s*<link rel="stylesheet" href="https:\/\/fonts\.googleapis\.com[^>]*>/,
+html = html.replace(
+  /<link rel="preconnect"[^>]*>\s*<link rel="stylesheet" href="https:\/\/fonts\.googleapis\.com[^>]*>/,
   `<link rel="stylesheet" href="fonts/fonts.css">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="${APP.theme}">
 <meta name="description" content="${APP.desc}">
 <link rel="icon" type="image/png" href="icones/favicon-64.png">
 <link rel="apple-touch-icon" href="icones/apple-touch-icon.png">
-<style>body{margin:0}img{max-width:100%}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>`);
+<style>body{margin:0}img{max-width:100%}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>`
+);
 const cut = html.indexOf("</style>", html.indexOf("<style>")) + "</style>".length;
 const doc = `<!doctype html>
 <html lang="pt-BR">
@@ -101,7 +106,10 @@ fs.writeFileSync(path.join(OUT, "index.html"), await paginaInicial(livros));
 // ---- vídeos "Como usar" já gravados (scripts/videos/gravar.mjs grava em saida/videos) ----
 const VIDEOS = r("saida/videos");
 if (fs.existsSync(path.join(VIDEOS, "videos.js"))) fs.cpSync(VIDEOS, path.join(OUT, "videos"), { recursive: true });
-else { fs.mkdirSync(path.join(OUT, "videos"), { recursive: true }); fs.writeFileSync(path.join(OUT, "videos/videos.js"), "window.__videos = { arquivos: {} };\n"); }
+else {
+  fs.mkdirSync(path.join(OUT, "videos"), { recursive: true });
+  fs.writeFileSync(path.join(OUT, "videos/videos.js"), "window.__videos = { arquivos: {} };\n");
+}
 
 // ---- anotações: script próprio e Dexie (Apache-2.0) para o banco local ----
 fs.copyFileSync(r("web/anotacoes.js"), path.join(OUT, "anotacoes.js"));
@@ -114,31 +122,51 @@ fs.copyFileSync(r("node_modules/dexie/LICENSE"), path.join(OUT, "vendor/LICENSE-
 fs.copyFileSync(r("web/privacidade.html"), path.join(OUT, "privacidade.html"));
 
 // ---- manifesto ----
-fs.writeFileSync(path.join(OUT, "manifest.webmanifest"), JSON.stringify({
-  name: APP.name, short_name: APP.short, description: APP.desc, lang: "pt-BR", dir: "ltr",
-  start_url: "./ler.html", scope: "./", display: "standalone", orientation: "any",
-  background_color: APP.bg, theme_color: APP.theme, categories: ["books", "education"],
-  icons: [
-    { src: "icones/icone-192.png", sizes: "192x192", type: "image/png" },
-    { src: "icones/icone-512.png", sizes: "512x512", type: "image/png" },
-    { src: "icones/icone-maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" }
-  ]
-}, null, 2));
+fs.writeFileSync(
+  path.join(OUT, "manifest.webmanifest"),
+  JSON.stringify(
+    {
+      name: APP.name,
+      short_name: APP.short,
+      description: APP.desc,
+      lang: "pt-BR",
+      dir: "ltr",
+      start_url: "./ler.html",
+      scope: "./",
+      display: "standalone",
+      orientation: "any",
+      background_color: APP.bg,
+      theme_color: APP.theme,
+      categories: ["books", "education"],
+      icons: [
+        { src: "icones/icone-192.png", sizes: "192x192", type: "image/png" },
+        { src: "icones/icone-512.png", sizes: "512x512", type: "image/png" },
+        { src: "icones/icone-maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" }
+      ]
+    },
+    null,
+    2
+  )
+);
 
 // ---- service worker: guarda a página para uso offline; os capítulos ficam no cache quando lidos.
 // "Baixar tudo" (no app) não é preciso: no Android/iOS os dados já vêm dentro do pacote.
 const files = [];
 (function walk(d, base = "") {
   for (const f of fs.readdirSync(d)) {
-    const full = path.join(d, f), rel = base ? `${base}/${f}` : f;
-    if (fs.statSync(full).isDirectory()) walk(full, rel); else files.push(rel);
+    const full = path.join(d, f),
+      rel = base ? `${base}/${f}` : f;
+    if (fs.statSync(full).isDirectory()) walk(full, rel);
+    else files.push(rel);
   }
 })(OUT);
 const hash = crypto.createHash("sha256");
 for (const f of files.sort()) hash.update(f).update(fs.readFileSync(path.join(OUT, f)));
 const version = hash.digest("hex").slice(0, 12);
 const precache = ["./", ...files.filter(f => !f.endsWith(".txt") && !f.startsWith("dados/cap/") && !f.startsWith("videos/"))];
-fs.writeFileSync(path.join(OUT, "sw.js"), `// Gerado por scripts/build_web.mjs — não editar
+fs.writeFileSync(
+  path.join(OUT, "sw.js"),
+  `// Gerado por scripts/build_web.mjs — não editar
 const CACHE = "interlinear-${version}";
 const FILES = ${JSON.stringify(precache)};
 self.addEventListener("install", e => {
@@ -154,7 +182,8 @@ self.addEventListener("fetch", e => {
     return r;
   }))));
 });
-`);
+`
+);
 console.error(`Versão web gerada em saida/web (${files.length + 1} arquivos, cache ${version})`);
 
 // ---------------------------------------------------------------------------------------------
@@ -162,22 +191,39 @@ async function paginaInicial(livros) {
   const REPO = "https://github.com/josafams/biblia-interlinear";
   const dados = r("saida/dados");
   const cap = (cod, n) => JSON.parse(fs.readFileSync(path.join(dados, "cap", cod, `${n}.json`), "utf8"));
-  const lex = { H: JSON.parse(fs.readFileSync(path.join(dados, "lex/H.json"), "utf8")), G: JSON.parse(fs.readFileSync(path.join(dados, "lex/G.json"), "utf8")) };
-  let caps = 0, vers = 0, pal = 0;
-  for (const b of livros) for (const c of b.caps) {
-    caps++;
-    const f = path.join(dados, "cap", b.cod, `${c.n}.json`);
-    if (!fs.existsSync(f)) continue;
-    for (const v of JSON.parse(fs.readFileSync(f, "utf8")).v) { if (v.n > 0) vers++; pal += v.w.length; }
-  }
+  const lex = {
+    H: JSON.parse(fs.readFileSync(path.join(dados, "lex/H.json"), "utf8")),
+    G: JSON.parse(fs.readFileSync(path.join(dados, "lex/G.json"), "utf8"))
+  };
+  let caps = 0,
+    vers = 0,
+    pal = 0;
+  for (const b of livros)
+    for (const c of b.caps) {
+      caps++;
+      const f = path.join(dados, "cap", b.cod, `${c.n}.json`);
+      if (!fs.existsSync(f)) continue;
+      for (const v of JSON.parse(fs.readFileSync(f, "utf8")).v) {
+        if (v.n > 0) vers++;
+        pal += v.w.length;
+      }
+    }
   const fmt = n => n.toLocaleString("pt-BR");
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
-  const limpa = w => w.replace(/\//g, "").replace(/[\u0591-\u05AF\u05BD]/g, "").replace(/[,.;·]$/, "");
-  const cartoes = (v, grego) => v.w.map(w => {
-    const e = lex[w[1][0]]?.[w[1]] || {};
-    return `<div class="wc"><span class="o${grego ? " g" : ""}" lang="${grego ? "grc" : "he"}">${esc(limpa(w[0]))}</span><span class="x">${esc(e.x || "")}</span><span class="s">${esc(w[1])}</span><span class="t">${esc(w[2])}</span></div>`;
-  }).join("");
-  const gn = cap("GEN", 1).v.find(v => v.n === 1), jo = cap("JHN", 1).v.find(v => v.n === 1);
+  const limpa = w =>
+    w
+      .replace(/\//g, "")
+      .replace(/[\u0591-\u05AF\u05BD]/g, "")
+      .replace(/[,.;·]$/, "");
+  const cartoes = (v, grego) =>
+    v.w
+      .map(w => {
+        const e = lex[w[1][0]]?.[w[1]] || {};
+        return `<div class="wc"><span class="o${grego ? " g" : ""}" lang="${grego ? "grc" : "he"}">${esc(limpa(w[0]))}</span><span class="x">${esc(e.x || "")}</span><span class="s">${esc(w[1])}</span><span class="t">${esc(w[2])}</span></div>`;
+      })
+      .join("");
+  const gn = cap("GEN", 1).v.find(v => v.n === 1),
+    jo = cap("JHN", 1).v.find(v => v.n === 1);
   const amostra = `<div class="ref"><b>Gênesis 1:1</b><span>hebraico, lê-se da direita para a esquerda</span></div>
     <div class="cards rtl">${cartoes(gn, false)}</div>
     <p class="blivre"><small>BLIVRE</small>${esc(gn.b)}</p>
@@ -186,18 +232,34 @@ async function paginaInicial(livros) {
     <div class="cards">${cartoes({ w: jo.w.slice(0, 5) }, true)}</div>
     <p class="blivre"><small>BLIVRE</small>${esc(jo.b)}</p>`;
   // Tamanhos dos livros para baixar (de saida/epub e saida/pdf, quando gerados nesta máquina)
-  const tam = f => { try { const b = fs.statSync(r(f)).size; return b >= 1e8 ? `${Math.round(b / 1048576)} MB` : `${(b / 1048576).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} MB`; } catch (_) { return ""; } };
+  const tam = f => {
+    try {
+      const b = fs.statSync(r(f)).size;
+      return b >= 1e8 ? `${Math.round(b / 1048576)} MB` : `${(b / 1048576).toLocaleString("pt-BR", { maximumFractionDigits: 1 })} MB`;
+    } catch (_) {
+      return "";
+    }
+  };
   const { resumo } = await import(pathToFileURL(r("scripts/videos/roteiros.mjs")).href);
   const subs = {
-    __DESC__: esc(APP.desc), __REPO__: REPO, __REPO_CURTO__: "github.com/josafams/biblia-interlinear",
+    __DESC__: esc(APP.desc),
+    __REPO__: REPO,
+    __REPO_CURTO__: "github.com/josafams/biblia-interlinear",
     __LIVROS__: `${REPO}/releases/download/livros`,
     __AMOSTRA__: amostra,
-    __N_LIVROS__: fmt(livros.length), __N_CAPS__: fmt(caps), __N_VERS__: fmt(vers), __N_PALAVRAS__: fmt(pal),
+    __N_LIVROS__: fmt(livros.length),
+    __N_CAPS__: fmt(caps),
+    __N_VERS__: fmt(vers),
+    __N_PALAVRAS__: fmt(pal),
     __N_VERBETES__: fmt(Object.keys(lex.H).length + Object.keys(lex.G).length),
-    __TAM_EPUB_COMPLETA__: tam("saida/epub/00-Biblia-Interlinear-completa.epub"), __TAM_PDF_COMPLETA__: tam("saida/pdf/00-Biblia-Interlinear-completa.pdf"),
-    __TAM_EPUB_AT__: tam("saida/epub/00-Biblia-Interlinear-AT.epub"), __TAM_PDF_AT__: tam("saida/pdf/00-Biblia-Interlinear-AT.pdf"),
+    __TAM_EPUB_COMPLETA__: tam("saida/epub/00-Biblia-Interlinear-completa.epub"),
+    __TAM_PDF_COMPLETA__: tam("saida/pdf/00-Biblia-Interlinear-completa.pdf"),
+    __TAM_EPUB_AT__: tam("saida/epub/00-Biblia-Interlinear-AT.epub"),
+    __TAM_PDF_AT__: tam("saida/pdf/00-Biblia-Interlinear-AT.pdf"),
     __TAM_EPUB_NT__: tam("saida/epub/00-Biblia-Interlinear-NT.epub"),
-    __TAM_EPUB_BLIVRE__: tam("saida/epub/00-Biblia-Livre.epub"), __TAM_PDF_BLIVRE__: tam("saida/pdf/00-Biblia-Livre.pdf"), __TAM_PDF_NT__: tam("saida/pdf/00-Biblia-Interlinear-NT.pdf"),
+    __TAM_EPUB_BLIVRE__: tam("saida/epub/00-Biblia-Livre.epub"),
+    __TAM_PDF_BLIVRE__: tam("saida/pdf/00-Biblia-Livre.pdf"),
+    __TAM_PDF_NT__: tam("saida/pdf/00-Biblia-Interlinear-NT.pdf"),
     __DATA__: new Date().toLocaleDateString("pt-BR"),
     __ROTEIROS__: JSON.stringify(resumo()).replace(/<\//g, "<\\/")
   };

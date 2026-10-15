@@ -6,6 +6,7 @@ alterar glosas sem querer, o teste falha e mostra os livros afetados. Se a mudan
 
     python3 tests/retrato.py --atualizar
 """
+
 import hashlib
 import json
 import os
@@ -19,14 +20,17 @@ ARQ = os.path.join(os.path.dirname(__file__), "retrato.json")
 
 def calcular(db_path=DB):
     db = sqlite3.connect(db_path)
-    r = {"versiculos": db.execute("SELECT count(*) FROM versos").fetchone()[0],
-         "palavras": db.execute("SELECT count(*) FROM palavras").fetchone()[0],
-         "livros": {}}
+    r = {
+        "versiculos": db.execute("SELECT count(*) FROM versos").fetchone()[0],
+        "palavras": db.execute("SELECT count(*) FROM palavras").fetchone()[0],
+        "livros": {},
+    }
     for (livro,) in db.execute("SELECT DISTINCT livro FROM palavras ORDER BY livro"):
         h = hashlib.sha256()
         n = 0
         for cap, vers, pos, texto, glosa in db.execute(
-                "SELECT cap, vers, pos, texto, glosa FROM palavras WHERE livro=? ORDER BY cap, vers, pos", (livro,)):
+            "SELECT cap, vers, pos, texto, glosa FROM palavras WHERE livro=? ORDER BY cap, vers, pos", (livro,)
+        ):
             h.update(f"{cap}:{vers}:{pos}:{texto}:{glosa}\n".encode())
             n += 1
         r["livros"][livro] = {"palavras": n, "glosas": h.hexdigest()[:16]}

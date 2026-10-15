@@ -1,0 +1,45 @@
+# Configuração das ferramentas de Python (os scripts ficam em scripts/; não é um pacote publicado)
+[project]
+name = "biblia-interlinear"
+version = "0.1.0"
+requires-python = ">=3.12"
+
+[tool.ruff]
+line-length = 140
+target-version = "py312"
+src = ["scripts", "tests"]
+extend-exclude = ["node_modules", "saida", "fontes-dados", "android", "ios"]
+
+[tool.ruff.lint]
+# E/F: erros básicos, I: imports, B: bugs comuns, UP: sintaxe moderna, S: segurança,
+# SIM: simplificações, PT: estilo pytest, C90: complexidade
+select = ["E", "F", "I", "B", "UP", "S", "SIM", "PT", "C90"]
+ignore = [
+  "E501",   # linhas longas: o formatador cuida do que dá; tabelas de dados ficam numa linha
+  "S603", "S607",   # subprocess com lista de argumentos e programas do sistema (qpdf, eflomal): uso intencional
+  "SIM108", # ternário nem sempre é mais claro
+  # Pendências antigas, corrigidas na refatoração dos scripts (etapa 2 das boas práticas):
+  "B007", "B023", "B905", "C901", "E731", "E741", "PT006", "PT018", "S112", "SIM102", "SIM115", "SIM201", "UP031",
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 25   # piso atual; baixar aos poucos nas refatorações
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101"]   # assert é permitido nos testes
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = ["lento: gera EPUB/PDF ou roda ferramentas externas"]
+
+[tool.coverage.run]
+source = ["scripts"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true

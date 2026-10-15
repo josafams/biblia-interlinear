@@ -64,9 +64,14 @@ test("favoritar e desfavoritar", async ({ page }) => {
 test("marcar um trecho selecionado da Bíblia Livre", async ({ page }) => {
   await abrir(page);
   await page.evaluate(() => {
-    const bl = document.querySelector("#v3 .blivre"), t = bl.lastChild, i = t.textContent.indexOf("Haja luz");
-    const r = document.createRange(); r.setStart(t, i); r.setEnd(t, i + 8);
-    getSelection().removeAllRanges(); getSelection().addRange(r);
+    const bl = document.querySelector("#v3 .blivre"),
+      t = bl.lastChild,
+      i = t.textContent.indexOf("Haja luz");
+    const r = document.createRange();
+    r.setStart(t, i);
+    r.setEnd(t, i + 8);
+    getSelection().removeAllRanges();
+    getSelection().addRange(r);
   });
   await expect(barra(page)).toBeVisible();
   await expect(page.locator("#mb-trecho")).toContainText("Haja luz");
@@ -79,7 +84,8 @@ test("marcar um trecho selecionado da Bíblia Livre", async ({ page }) => {
 test("toque longo numa palavra do original marca só ela", async ({ page, isMobile }) => {
   await abrir(page);
   const w = page.locator('.word[data-v="0"][data-i="1"]');
-  if (isMobile) await w.dispatchEvent("contextmenu");  // o toque longo do celular chega como contextmenu
+  if (isMobile)
+    await w.dispatchEvent("contextmenu"); // o toque longo do celular chega como contextmenu
   else {
     const box = await w.boundingBox();
     await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);

@@ -9,6 +9,7 @@ Uso: python3 scripts/build_epub.py              → Bíblia completa, AT, NT e o
      python3 scripts/build_epub.py volumes      → só a Bíblia completa e os volumes AT e NT
      python3 scripts/build_epub.py GEN JHN      → só esses livros
 """
+
 import html
 import json
 import os
@@ -17,7 +18,7 @@ import sys
 import unicodedata
 import uuid
 import zipfile
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DADOS = os.path.join(ROOT, "saida", "dados")
@@ -38,20 +39,70 @@ def plain(t):
 
 
 # ---------- morfologia (mesma lógica da página) ----------
-STEM = {"q": "qal", "N": "nifal", "p": "piel", "P": "pual", "h": "hifil", "H": "hofal", "t": "hitpael", "o": "polel",
-        "O": "polal", "r": "hitpolel", "m": "poel", "M": "poal", "k": "palel", "K": "pulal", "Q": "qal passivo",
-        "l": "pilpel", "L": "polpal", "f": "hitpalpel", "D": "nitpael", "j": "pealal", "i": "pilel", "u": "hotpaal",
-        "c": "tifil", "v": "hishtafel", "w": "nitpael", "y": "hitpoel", "z": "hitpael", "e": "peal", "E": "peil",
-        "a": "afel", "A": "hafel"}
-TYPE = {"p": "perfeito", "q": "perfeito consecutivo", "i": "imperfeito", "w": "imperfeito consecutivo",
-        "h": "coortativo", "j": "jussivo", "v": "imperativo", "r": "particípio", "s": "particípio passivo",
-        "a": "infinitivo absoluto", "c": "infinitivo construto"}
+STEM = {
+    "q": "qal",
+    "N": "nifal",
+    "p": "piel",
+    "P": "pual",
+    "h": "hifil",
+    "H": "hofal",
+    "t": "hitpael",
+    "o": "polel",
+    "O": "polal",
+    "r": "hitpolel",
+    "m": "poel",
+    "M": "poal",
+    "k": "palel",
+    "K": "pulal",
+    "Q": "qal passivo",
+    "l": "pilpel",
+    "L": "polpal",
+    "f": "hitpalpel",
+    "D": "nitpael",
+    "j": "pealal",
+    "i": "pilel",
+    "u": "hotpaal",
+    "c": "tifil",
+    "v": "hishtafel",
+    "w": "nitpael",
+    "y": "hitpoel",
+    "z": "hitpael",
+    "e": "peal",
+    "E": "peil",
+    "a": "afel",
+    "A": "hafel",
+}
+TYPE = {
+    "p": "perfeito",
+    "q": "perfeito consecutivo",
+    "i": "imperfeito",
+    "w": "imperfeito consecutivo",
+    "h": "coortativo",
+    "j": "jussivo",
+    "v": "imperativo",
+    "r": "particípio",
+    "s": "particípio passivo",
+    "a": "infinitivo absoluto",
+    "c": "infinitivo construto",
+}
 PERS = {"1": "1ª", "2": "2ª", "3": "3ª"}
 GEN = {"m": "masc.", "f": "fem.", "c": "comum", "b": "ambos"}
 NUM = {"s": "sing.", "p": "plural", "d": "dual"}
-PART = {"R": "preposição", "Rd": "preposição com artigo", "C": "conjunção", "Td": "artigo", "To": "marcador de objeto",
-        "Tr": "relativo", "Tm": "interjeição", "Ti": "interrogativo", "Tn": "negação", "D": "advérbio",
-        "Sd": "he direcional", "Sh": "he paragógico", "Sn": "nun paragógico"}
+PART = {
+    "R": "preposição",
+    "Rd": "preposição com artigo",
+    "C": "conjunção",
+    "Td": "artigo",
+    "To": "marcador de objeto",
+    "Tr": "relativo",
+    "Tm": "interjeição",
+    "Ti": "interrogativo",
+    "Tn": "negação",
+    "D": "advérbio",
+    "Sd": "he direcional",
+    "Sh": "he paragógico",
+    "Sn": "nun paragógico",
+}
 
 
 def pgn(s):
@@ -66,8 +117,11 @@ def decode_part(p):
     if k == "V":
         return f"verbo {STEM.get(p[1:2], p[1:2])} {TYPE.get(p[2:3], p[2:3])} {pgn(p[3:])}".strip()
     if k in ("N", "A"):
-        base = ("nome próprio" if p[1:2] == "p" else "nome gentílico" if p[1:2] == "g" else "substantivo") if k == "N" \
+        base = (
+            ("nome próprio" if p[1:2] == "p" else "nome gentílico" if p[1:2] == "g" else "substantivo")
+            if k == "N"
             else {"c": "numeral", "o": "ordinal"}.get(p[1:2], "adjetivo")
+        )
         t = p[2:]
         st = {"c": "construto", "a": "absoluto", "d": "determinado"}.get(t[2:3], "")
         return " ".join(x for x in (base, GEN.get(t[:1]), NUM.get(t[1:2]), st) if x)
@@ -80,9 +134,21 @@ def decode_part(p):
     return p
 
 
-G_POS = {"A": "adjetivo", "C": "conjunção", "D": "advérbio", "I": "interjeição", "N": "substantivo", "P": "preposição",
-         "RA": "artigo", "RD": "pronome demonstrativo", "RI": "pronome interrogativo/indefinido",
-         "RP": "pronome pessoal", "RR": "pronome relativo", "V": "verbo", "X": "partícula"}
+G_POS = {
+    "A": "adjetivo",
+    "C": "conjunção",
+    "D": "advérbio",
+    "I": "interjeição",
+    "N": "substantivo",
+    "P": "preposição",
+    "RA": "artigo",
+    "RD": "pronome demonstrativo",
+    "RI": "pronome interrogativo/indefinido",
+    "RP": "pronome pessoal",
+    "RR": "pronome relativo",
+    "V": "verbo",
+    "X": "partícula",
+}
 G_TENSE = {"P": "presente", "I": "imperfeito", "F": "futuro", "A": "aoristo", "X": "perfeito", "Y": "mais-que-perfeito"}
 G_VOICE = {"A": "ativo", "M": "médio", "P": "passivo"}
 G_MOOD = {"I": "indicativo", "D": "imperativo", "S": "subjuntivo", "O": "optativo", "N": "infinitivo", "P": "particípio"}
@@ -133,10 +199,12 @@ def fmt_range(a, b):
 
 
 def page(title, body):
-    return ('<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE html>\n'
-            '<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="pt-BR" xml:lang="pt-BR">\n'
-            f'<head><meta charset="UTF-8"/><title>{h(title)}</title><link rel="stylesheet" type="text/css" href="estilo.css"/></head>\n'
-            f"<body>\n{body}</body>\n</html>\n")
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE html>\n'
+        '<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="pt-BR" xml:lang="pt-BR">\n'
+        f'<head><meta charset="UTF-8"/><title>{h(title)}</title><link rel="stylesheet" type="text/css" href="estilo.css"/></head>\n'
+        f"<body>\n{body}</body>\n</html>\n"
+    )
 
 
 PRON = "Pronúncia aproximada: sílaba tônica em MAIÚSCULAS; rr como em “carro”; h sempre aspirado; ch como em “chave”; th como no inglês “think”."
@@ -194,29 +262,48 @@ def about_html(B):
     if not A:
         return ""
     lang = 'lang="grc" class="grc"' if B["nt"] else 'lang="he" dir="rtl" class="he"'
-    o = [f'<section epub:type="introduction" id="sobre">\n<h1>Sobre {h(B["nome"])} <span {lang}>{h(A.get("title_orig"))}</span></h1>',
-         f'<p class="lead">{h(A.get("summary"))}</p>',
-         '<ul class="facts">' + "".join(f"<li><b>{h(k)}:</b> {h(v)}</li>" for k, v in A.get("facts", [])) + "</ul>"]
+    o = [
+        f'<section epub:type="introduction" id="sobre">\n<h1>Sobre {h(B["nome"])} <span {lang}>{h(A.get("title_orig"))}</span></h1>',
+        f'<p class="lead">{h(A.get("summary"))}</p>',
+        '<ul class="facts">' + "".join(f"<li><b>{h(k)}:</b> {h(v)}</li>" for k, v in A.get("facts", [])) + "</ul>",
+    ]
     if A.get("name"):
         o.append(f"<h2>O nome</h2><p>{h(A['name'])}</p>")
     if A.get("structure"):
-        o.append("<h2>Como o livro se divide</h2><ul>" + "".join(
-            f"<li><b>{h(p['title'])}</b>{' (caps. %s–%s)' % (p['from'], p['to']) if p.get('from') and p.get('to') and p['to'] != p['from'] else (' (cap. %s)' % p['from'] if p.get('from') else '')}: {h(p['text'])}</li>"
-            for p in A["structure"]) + "</ul>")
+        o.append(
+            "<h2>Como o livro se divide</h2><ul>"
+            + "".join(
+                f"<li><b>{h(p['title'])}</b>{' (caps. %s–%s)' % (p['from'], p['to']) if p.get('from') and p.get('to') and p['to'] != p['from'] else (' (cap. %s)' % p['from'] if p.get('from') else '')}: {h(p['text'])}</li>"
+                for p in A["structure"]
+            )
+            + "</ul>"
+        )
     if A.get("extra"):
         o.append(f"<h2>{h(A['extra']['title'])}</h2><p>{h(A['extra']['text'])}</p>")
     if A.get("people"):
-        o.append("<h2>Pessoas principais</h2><ul>" + "".join(
-            f"<li><b>{h(p['name'])}</b>{' (' + h(p.get('chapters')) + ')' if p.get('chapters') else ''}: {h(p.get('note'))}</li>"
-            for p in A["people"]) + "</ul>")
+        o.append(
+            "<h2>Pessoas principais</h2><ul>"
+            + "".join(
+                f"<li><b>{h(p['name'])}</b>{' (' + h(p.get('chapters')) + ')' if p.get('chapters') else ''}: {h(p.get('note'))}</li>"
+                for p in A["people"]
+            )
+            + "</ul>"
+        )
     if A.get("writing"):
-        o.append(f"<h2>Quando foi escrito</h2><p><b>Segundo a tradição.</b> {h(A['writing'].get('tradition'))}</p>"
-                 f"<p><b>Segundo a pesquisa acadêmica.</b> {h(A['writing'].get('academic'))}</p>")
+        o.append(
+            f"<h2>Quando foi escrito</h2><p><b>Segundo a tradição.</b> {h(A['writing'].get('tradition'))}</p>"
+            f"<p><b>Segundo a pesquisa acadêmica.</b> {h(A['writing'].get('academic'))}</p>"
+        )
     E = A.get("events")
     if E:
-        o.append(f"<h2>Quando se passam os acontecimentos</h2><p>{h(E.get('intro'))}</p><ul>" + "".join(
-            f"<li><b>{h(t['label'])}</b>: {fmt_range(min(t['from'], t['to']), max(t['from'], t['to']))}{' — ' + h(t['note']) if t.get('note') else ''}</li>"
-            for t in E.get("timeline", [])) + "</ul>")
+        o.append(
+            f"<h2>Quando se passam os acontecimentos</h2><p>{h(E.get('intro'))}</p><ul>"
+            + "".join(
+                f"<li><b>{h(t['label'])}</b>: {fmt_range(min(t['from'], t['to']), max(t['from'], t['to']))}{' — ' + h(t['note']) if t.get('note') else ''}</li>"
+                for t in E.get("timeline", [])
+            )
+            + "</ul>"
+        )
     if A.get("context"):
         o.append(f"<h2>Contexto histórico</h2><p>{h(A['context'])}</p>")
         if A.get("places"):
@@ -224,9 +311,13 @@ def about_html(B):
     if A.get("themes"):
         o.append("<h2>Temas</h2><p>" + " · ".join(h(x) for x in A["themes"]) + "</p>")
     if A.get("key_verses"):
-        o.append("<h2>Versículos-chave</h2>" + "".join(
-            f'<blockquote><p>{h(k["text"])}</p><p class="cite">{h(B["nome"])} {h(k["ref"])} · BLIVRE</p></blockquote>'
-            for k in A["key_verses"]))
+        o.append(
+            "<h2>Versículos-chave</h2>"
+            + "".join(
+                f'<blockquote><p>{h(k["text"])}</p><p class="cite">{h(B["nome"])} {h(k["ref"])} · BLIVRE</p></blockquote>'
+                for k in A["key_verses"]
+            )
+        )
     if A.get("note"):
         o.append(f'<p class="intro">{h(A["note"])}</p>')
     o.append('<p class="intro">Introdução escrita para esta edição; datas aproximadas e sujeitas a revisão.</p>\n</section>\n')
@@ -241,6 +332,7 @@ def link_refs(text, LEX, usados):
             return k
         lang = 'lang="grc" class="grc"' if k[0] == "G" else 'lang="he" dir="rtl" class="he"'
         return f'<a href="lexico.xhtml#{k}">{k} <span {lang}>{h(e.get("l"))}</span> <i>{h(e.get("x"))}</i></a>'
+
     return re.sub(r"\b[HG]\d+\b", rep, h(text))
 
 
@@ -274,17 +366,32 @@ def gen_capitulos(B, LEX, pre=""):
                     nid = f"n{vn}-{i}"
                     x = f'<p class="x">{h(e.get("x"))}</p>' if e.get("x") else ""
                     orig = h(plain(t) if not grc else t)
-                    cells.append(f'<td><p class="h {ocls}"><a epub:type="noteref" href="{pre}notas{n}.xhtml#{nid}" id="r{nid}" {olang}>{orig}</a></p>{x}<p class="g">{gloss_html(g)}</p></td>')
-                    strong = "partícula (sem número Strong)" if k and len(k) == 2 and k[1].isalpha() else (k if k and not k.startswith("G:") else "sem número Strong")
-                    lemma = f'<span {olang} class="{ocls}">{h(e.get("l"))}</span> <i>{h(e.get("x"))}</i> · pronúncia <span class="pr">{h(e.get("p"))}</span>' if e else ""
-                    ketiv = f'<p class="morph">Leitura indicada à margem (qere); no texto consonantal está escrito (ketiv): <span lang="he" dir="rtl" class="he">{h(w[6])}</span></p>' if len(w) > 6 and w[6] else ""
+                    cells.append(
+                        f'<td><p class="h {ocls}"><a epub:type="noteref" href="{pre}notas{n}.xhtml#{nid}" id="r{nid}" {olang}>{orig}</a></p>{x}<p class="g">{gloss_html(g)}</p></td>'
+                    )
+                    strong = (
+                        "partícula (sem número Strong)"
+                        if k and len(k) == 2 and k[1].isalpha()
+                        else (k if k and not k.startswith("G:") else "sem número Strong")
+                    )
+                    lemma = (
+                        f'<span {olang} class="{ocls}">{h(e.get("l"))}</span> <i>{h(e.get("x"))}</i> · pronúncia <span class="pr">{h(e.get("p"))}</span>'
+                        if e
+                        else ""
+                    )
+                    ketiv = (
+                        f'<p class="morph">Leitura indicada à margem (qere); no texto consonantal está escrito (ketiv): <span lang="he" dir="rtl" class="he">{h(w[6])}</span></p>'
+                        if len(w) > 6 and w[6]
+                        else ""
+                    )
                     ver = f' <a href="lexico.xhtml#{k}">verbete →</a>' if e and k else ""
                     notes.append(
                         f'<aside epub:type="footnote" id="{nid}" class="note">'
                         f'<p class="nh"><a href="{pre}c{n}.xhtml#r{nid}">{label}</a> <span {olang} class="{ocls}">{orig}</span> = {gloss_html(g)}</p>'
                         f'<p class="morph">{h(decode_morph(w[4], grc))}</p>{ketiv}'
-                        f'<p><b>{h(strong)}</b> {lemma}</p>'
-                        f'<p>{h(short(e))}{ver}</p></aside>')
+                        f"<p><b>{h(strong)}</b> {lemma}</p>"
+                        f"<p>{h(short(e))}{ver}</p></aside>"
+                    )
                 cells += ["<td></td>"] * (PER_ROW - len(cells))
                 if not grc:
                     cells.reverse()  # ordem visual: primeira palavra à direita, sem depender de bidi
@@ -292,28 +399,36 @@ def gen_capitulos(B, LEX, pre=""):
             if v.get("o") == "sem-original":
                 body.append('<p class="vnote">Sem correspondente no texto original usado nesta edição.</p>')
             elif v.get("o") == "aparato":
-                body.append('<p class="vnote">No SBLGNT, este trecho está só no aparato crítico; aqui aparece a leitura de Westcott-Hort, Tregelles e Nestle-Aland 28.</p>')
+                body.append(
+                    '<p class="vnote">No SBLGNT, este trecho está só no aparato crítico; aqui aparece a leitura de Westcott-Hort, Tregelles e Nestle-Aland 28.</p>'
+                )
             body.append(f'<p class="bl"><span class="tag">BLIVRE</span> {h(v["b"])}</p>')
         body.append("</section>\n")
         notes.append("</section>\n")
-        files[f"{pre}c{n}.xhtml"] = page(f'{B["nome"]} {n}', "\n".join(body))
-        files[f"{pre}notas{n}.xhtml"] = page(f'Notas · {B["nome"]} {n}', "\n".join(notes))
+        files[f"{pre}c{n}.xhtml"] = page(f"{B['nome']} {n}", "\n".join(body))
+        files[f"{pre}notas{n}.xhtml"] = page(f"Notas · {B['nome']} {n}", "\n".join(notes))
         caps.append((n, c.get("t", "")))
     sobre = about_html(B)
     if sobre:
-        files[f"{pre}sobre.xhtml"] = page(f'Sobre {B["nome"]}', sobre)
-    files[f"{pre}capitulos.xhtml"] = page(B["nome"], (
-        f'<section id="capitulos"><h1>{h(B["nome"])}</h1><p class="intro">Toque na palavra no original para abrir a nota '
-        f'com glosa, gramática e significado. {"Leia da esquerda para a direita." if grc else "Leia da direita para a esquerda."}</p>'
-        + (f'<p><a href="{pre}sobre.xhtml">Sobre o livro</a></p>' if sobre else "")
-        + '<ol class="caps">' + "".join(f'<li><a href="{pre}c{n}.xhtml">Capítulo {n}</a>{" — " + h(t) if t else ""}</li>' for n, t in caps)
-        + "</ol></section>\n"))
+        files[f"{pre}sobre.xhtml"] = page(f"Sobre {B['nome']}", sobre)
+    files[f"{pre}capitulos.xhtml"] = page(
+        B["nome"],
+        (
+            f'<section id="capitulos"><h1>{h(B["nome"])}</h1><p class="intro">Toque na palavra no original para abrir a nota '
+            f"com glosa, gramática e significado. {'Leia da esquerda para a direita.' if grc else 'Leia da direita para a esquerda.'}</p>"
+            + (f'<p><a href="{pre}sobre.xhtml">Sobre o livro</a></p>' if sobre else "")
+            + '<ol class="caps">'
+            + "".join(f'<li><a href="{pre}c{n}.xhtml">Capítulo {n}</a>{" — " + h(t) if t else ""}</li>' for n, t in caps)
+            + "</ol></section>\n"
+        ),
+    )
     return files, caps, usados, bool(sobre)
 
 
 def gen_lexico(usados, LEX, desc):
     def ordem(k):
-        return (k[0] == "G", k.startswith("G:"), int(k[1:]) if k[1:].isdigit() else 10 ** 9, k)
+        return (k[0] == "G", k.startswith("G:"), int(k[1:]) if k[1:].isdigit() else 10**9, k)
+
     lex = ['<section epub:type="glossary" id="lexico">\n<h1>Léxico</h1>', f'<p class="intro">{desc} {PRON}</p>']
     for k in sorted(usados, key=ordem):
         e = LEX.get(k)
@@ -323,71 +438,89 @@ def gen_lexico(usados, LEX, desc):
         num = "" if k.startswith("G:") else f"<b>{h(k)}</b> "
         origem = link_refs(e.get("o") or e.get("oe") or "", LEX, usados)
         sig = h(e.get("s") or e.get("se") or e.get("ge") or "")
-        lex.append(f'<div class="entry" id="{h(k)}"><p>{num}<span {lang}>{h(e.get("l"))}</span> <i>{h(e.get("x"))}</i> · pronúncia <span class="pr">{h(e.get("p"))}</span> · {e.get("n", 0)}× na Bíblia</p>'
-                   + (f'<p class="lbl">Origem</p><p>{origem}</p>' if origem else "")
-                   + f'<p class="lbl">Significado</p><p>{sig}</p>'
-                   + (f'<p class="lbl">Como a BLIVRE traduz</p><p>{h(e["t"])}</p>' if e.get("t") else "")
-                   + "</div>")
+        lex.append(
+            f'<div class="entry" id="{h(k)}"><p>{num}<span {lang}>{h(e.get("l"))}</span> <i>{h(e.get("x"))}</i> · pronúncia <span class="pr">{h(e.get("p"))}</span> · {e.get("n", 0)}× na Bíblia</p>'
+            + (f'<p class="lbl">Origem</p><p>{origem}</p>' if origem else "")
+            + f'<p class="lbl">Significado</p><p>{sig}</p>'
+            + (f'<p class="lbl">Como a BLIVRE traduz</p><p>{h(e["t"])}</p>' if e.get("t") else "")
+            + "</div>"
+        )
     lex.append("</section>\n")
     return page("Léxico", "\n".join(lex))
 
 
 def creditos(ofl):
-    return page("Fontes e licenças", '<section epub:type="colophon" id="creditos">\n<h1>Fontes e licenças</h1>\n'
-                + CREDITOS + '<div class="ofl">' + "".join(f"<p>{h(p.strip())}</p>" for p in re.split(r"\n{2,}", ofl) if p.strip())
-                + "</div>\n</section>\n")
+    return page(
+        "Fontes e licenças",
+        '<section epub:type="colophon" id="creditos">\n<h1>Fontes e licenças</h1>\n'
+        + CREDITOS
+        + '<div class="ofl">'
+        + "".join(f"<p>{h(p.strip())}</p>" for p in re.split(r"\n{2,}", ofl) if p.strip())
+        + "</div>\n</section>\n",
+    )
 
 
 def empacotar(out, files, spine, nav_items, inicio, ident, titulo, resumo, serie=None, css=None):
     files["estilo.css"] = css or CSS
-    files["nav.xhtml"] = ('<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE html>\n'
-                          '<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="pt-BR" xml:lang="pt-BR">\n'
-                          '<head><meta charset="UTF-8"/><title>Sumário</title></head>\n<body>\n'
-                          f'<nav epub:type="toc" id="toc"><h1>Sumário</h1><ol>{"".join(nav_items)}</ol></nav>\n'
-                          f'<nav epub:type="landmarks" hidden=""><ol><li><a epub:type="bodymatter" href="{inicio}">Início</a></li></ol></nav>\n'
-                          "</body>\n</html>\n")
-    manifest = ['<item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>',
-                '<item id="css" href="estilo.css" media-type="text/css"/>',
-                '<item id="f400" href="fonts/NotoSerifHebrew-400.ttf" media-type="font/ttf"/>',
-                '<item id="f600" href="fonts/NotoSerifHebrew-600.ttf" media-type="font/ttf"/>']
+    files["nav.xhtml"] = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE html>\n'
+        '<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="pt-BR" xml:lang="pt-BR">\n'
+        '<head><meta charset="UTF-8"/><title>Sumário</title></head>\n<body>\n'
+        f'<nav epub:type="toc" id="toc"><h1>Sumário</h1><ol>{"".join(nav_items)}</ol></nav>\n'
+        f'<nav epub:type="landmarks" hidden=""><ol><li><a epub:type="bodymatter" href="{inicio}">Início</a></li></ol></nav>\n'
+        "</body>\n</html>\n"
+    )
+    manifest = [
+        '<item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>',
+        '<item id="css" href="estilo.css" media-type="text/css"/>',
+        '<item id="f400" href="fonts/NotoSerifHebrew-400.ttf" media-type="font/ttf"/>',
+        '<item id="f600" href="fonts/NotoSerifHebrew-600.ttf" media-type="font/ttf"/>',
+    ]
     ids = {}
     for i, f in enumerate(spine):
         ids[f] = f"x{i}"
         manifest.append(f'<item id="x{i}" href="{f}" media-type="application/xhtml+xml"/>')
     col = ""
     if serie:
-        col = ('    <meta property="belongs-to-collection" id="col">Bíblia Interlinear</meta>\n'
-               '    <meta refines="#col" property="collection-type">series</meta>\n'
-               f'    <meta refines="#col" property="group-position">{serie}</meta>\n')
-    agora = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    opf = ('<?xml version="1.0" encoding="UTF-8"?>\n'
-           '<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="bookid" xml:lang="pt-BR">\n'
-           '  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">\n'
-           f'    <dc:identifier id="bookid">urn:uuid:{uuid.uuid5(uuid.NAMESPACE_URL, "liberta.bibliainterlinear/" + ident)}</dc:identifier>\n'
-           f'    <dc:title>{h(titulo)}</dc:title>\n'
-           '    <dc:language>pt-BR</dc:language>\n'
-           '    <dc:creator>Bíblia Interlinear (BLIVRE)</dc:creator>\n'
-           '    <dc:rights>Texto BLIVRE CC BY 4.0/3.0 Brasil; original OSHB/SBLGNT CC BY 4.0; léxico e morfologia CC BY-SA</dc:rights>\n'
-           + col +
-           f'    <meta property="dcterms:modified">{agora}</meta>\n'
-           '    <meta property="schema:accessMode">textual</meta>\n'
-           '    <meta property="schema:accessModeSufficient">textual</meta>\n'
-           '    <meta property="schema:accessibilityFeature">structuralNavigation</meta>\n'
-           '    <meta property="schema:accessibilityFeature">tableOfContents</meta>\n'
-           '    <meta property="schema:accessibilityFeature">alternativeScript</meta>\n'
-           '    <meta property="schema:accessibilityHazard">none</meta>\n'
-           f'    <meta property="schema:accessibilitySummary">{h(resumo)}</meta>\n'
-           '  </metadata>\n  <manifest>\n'
-           + "".join(f"    {m}\n" for m in manifest) +
-           '  </manifest>\n  <spine>\n'
-           + "".join(f'    <itemref idref="{ids[f]}"/>\n' for f in spine) +
-           '  </spine>\n</package>\n')
+        col = (
+            '    <meta property="belongs-to-collection" id="col">Bíblia Interlinear</meta>\n'
+            '    <meta refines="#col" property="collection-type">series</meta>\n'
+            f'    <meta refines="#col" property="group-position">{serie}</meta>\n'
+        )
+    agora = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+    opf = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="bookid" xml:lang="pt-BR">\n'
+        '  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">\n'
+        f'    <dc:identifier id="bookid">urn:uuid:{uuid.uuid5(uuid.NAMESPACE_URL, "liberta.bibliainterlinear/" + ident)}</dc:identifier>\n'
+        f"    <dc:title>{h(titulo)}</dc:title>\n"
+        "    <dc:language>pt-BR</dc:language>\n"
+        "    <dc:creator>Bíblia Interlinear (BLIVRE)</dc:creator>\n"
+        "    <dc:rights>Texto BLIVRE CC BY 4.0/3.0 Brasil; original OSHB/SBLGNT CC BY 4.0; léxico e morfologia CC BY-SA</dc:rights>\n"
+        + col
+        + f'    <meta property="dcterms:modified">{agora}</meta>\n'
+        '    <meta property="schema:accessMode">textual</meta>\n'
+        '    <meta property="schema:accessModeSufficient">textual</meta>\n'
+        '    <meta property="schema:accessibilityFeature">structuralNavigation</meta>\n'
+        '    <meta property="schema:accessibilityFeature">tableOfContents</meta>\n'
+        '    <meta property="schema:accessibilityFeature">alternativeScript</meta>\n'
+        '    <meta property="schema:accessibilityHazard">none</meta>\n'
+        f'    <meta property="schema:accessibilitySummary">{h(resumo)}</meta>\n'
+        "  </metadata>\n  <manifest>\n"
+        + "".join(f"    {m}\n" for m in manifest)
+        + "  </manifest>\n  <spine>\n"
+        + "".join(f'    <itemref idref="{ids[f]}"/>\n' for f in spine)
+        + "  </spine>\n</package>\n"
+    )
     os.makedirs(OUT, exist_ok=True)
     with zipfile.ZipFile(out, "w") as z:
         z.writestr(zipfile.ZipInfo("mimetype"), "application/epub+zip", compress_type=zipfile.ZIP_STORED)
-        z.writestr("META-INF/container.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container">\n'
-                   '  <rootfiles><rootfile full-path="OEBPS/content.opf" media-type="application/oebps-package+xml"/></rootfiles>\n</container>\n',
-                   compress_type=zipfile.ZIP_DEFLATED)
+        z.writestr(
+            "META-INF/container.xml",
+            '<?xml version="1.0" encoding="UTF-8"?>\n<container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container">\n'
+            '  <rootfiles><rootfile full-path="OEBPS/content.opf" media-type="application/oebps-package+xml"/></rootfiles>\n</container>\n',
+            compress_type=zipfile.ZIP_DEFLATED,
+        )
         z.writestr("OEBPS/content.opf", opf, compress_type=zipfile.ZIP_DEFLATED)
         for f, body in files.items():
             z.writestr(f"OEBPS/{f}", body, compress_type=zipfile.ZIP_DEFLATED)
@@ -402,26 +535,45 @@ def build(B, idx, LEX, ofl):
     files, caps, usados, sobre = gen_capitulos(B, LEX)
     files["lexico.xhtml"] = gen_lexico(usados, LEX, f"Verbetes usados em {h(B['nome'])}, em ordem Strong.")
     files["creditos.xhtml"] = creditos(ofl)
-    spine = (["sobre.xhtml"] if sobre else []) + ["capitulos.xhtml"] + [f"c{n}.xhtml" for n, _ in caps] \
-        + ["lexico.xhtml"] + [f"notas{n}.xhtml" for n, _ in caps] + ["creditos.xhtml"]
-    nav = (['<li><a href="sobre.xhtml">Sobre o livro</a></li>'] if sobre else []) \
-        + ['<li><a href="capitulos.xhtml">Capítulos</a><ol>' + "".join(
-            f'<li><a href="c{n}.xhtml">{h(B["nome"])} {n}{" — " + h(t) if t else ""}</a></li>' for n, t in caps) + "</ol></li>",
-           '<li><a href="lexico.xhtml">Léxico</a></li>', '<li><a href="creditos.xhtml">Fontes e licenças</a></li>']
+    spine = (
+        (["sobre.xhtml"] if sobre else [])
+        + ["capitulos.xhtml"]
+        + [f"c{n}.xhtml" for n, _ in caps]
+        + ["lexico.xhtml"]
+        + [f"notas{n}.xhtml" for n, _ in caps]
+        + ["creditos.xhtml"]
+    )
+    nav = (['<li><a href="sobre.xhtml">Sobre o livro</a></li>'] if sobre else []) + [
+        '<li><a href="capitulos.xhtml">Capítulos</a><ol>'
+        + "".join(f'<li><a href="c{n}.xhtml">{h(B["nome"])} {n}{" — " + h(t) if t else ""}</a></li>' for n, t in caps)
+        + "</ol></li>",
+        '<li><a href="lexico.xhtml">Léxico</a></li>',
+        '<li><a href="creditos.xhtml">Fontes e licenças</a></li>',
+    ]
     lingua = "grego" if B["nt"] else ("hebraico e aramaico" if cod in ("EZR", "DAN") else "hebraico")
     nome = unicodedata.normalize("NFD", B["nome"]).encode("ascii", "ignore").decode().replace(" ", "")
-    return empacotar(os.path.join(OUT, f"{idx:02d}-{cod}-{nome}.epub"), files, spine, nav, f"c{caps[0][0]}.xhtml", cod,
-                     f'{B["nome"]} · Bíblia Interlinear',
-                     f'{B["nome"]} em {lingua} com transliteração, glosa em português e nota de cada palavra (gramática e significado), '
-                     'seguido do texto da Bíblia Livre. Versículos são títulos navegáveis; o original está marcado com idioma e '
-                     'direção próprios. Sem imagens nem áudio.', serie=idx)
+    return empacotar(
+        os.path.join(OUT, f"{idx:02d}-{cod}-{nome}.epub"),
+        files,
+        spine,
+        nav,
+        f"c{caps[0][0]}.xhtml",
+        cod,
+        f"{B['nome']} · Bíblia Interlinear",
+        f"{B['nome']} em {lingua} com transliteração, glosa em português e nota de cada palavra (gramática e significado), "
+        "seguido do texto da Bíblia Livre. Versículos são títulos navegáveis; o original está marcado com idioma e "
+        "direção próprios. Sem imagens nem áudio.",
+        serie=idx,
+    )
 
 
 def build_volume(livros, LEX, ofl, ident, titulo, arquivo, subtitulo):
     """Vários livros num EPUB só (Bíblia completa ou um testamento), com um léxico único no fim."""
     files, spine, nav, notas, usados_todos = {}, [], [], [], set()
-    capa = [f'<section id="inicio"><h1>{h(titulo)}</h1><p class="intro">{h(subtitulo)} Toque na palavra no original para '
-            'abrir a nota com glosa, gramática e significado; o verbete completo fica no léxico, no fim.</p>']
+    capa = [
+        f'<section id="inicio"><h1>{h(titulo)}</h1><p class="intro">{h(subtitulo)} Toque na palavra no original para '
+        "abrir a nota com glosa, gramática e significado; o verbete completo fica no léxico, no fim.</p>"
+    ]
     grupo = None
     for B in livros:
         pre = B["cod"] + "-"
@@ -436,18 +588,34 @@ def build_volume(livros, LEX, ofl, ident, titulo, arquivo, subtitulo):
         capa.append(f'<li><a href="{pre}capitulos.xhtml">{h(B["nome"])}</a> ({len(caps)} cap.)</li>')
         spine += ([f"{pre}sobre.xhtml"] if sobre else []) + [f"{pre}capitulos.xhtml"] + [f"{pre}c{n}.xhtml" for n, _ in caps]
         notas += [f"{pre}notas{n}.xhtml" for n, _ in caps]
-        nav.append(f'<li><a href="{pre}{"sobre" if sobre else "capitulos"}.xhtml">{h(B["nome"])}</a><ol>'
-                   + "".join(f'<li><a href="{pre}c{n}.xhtml">{h(B["nome"])} {n}</a></li>' for n, _ in caps) + "</ol></li>")
+        nav.append(
+            f'<li><a href="{pre}{"sobre" if sobre else "capitulos"}.xhtml">{h(B["nome"])}</a><ol>'
+            + "".join(f'<li><a href="{pre}c{n}.xhtml">{h(B["nome"])} {n}</a></li>' for n, _ in caps)
+            + "</ol></li>"
+        )
     capa.append("</ul></section>\n")
     files["inicio.xhtml"] = page(titulo, "\n".join(capa))
-    files["lexico.xhtml"] = gen_lexico(usados_todos, LEX, "Verbetes usados nestes livros, em ordem Strong (hebraico e aramaico, depois grego).")
+    files["lexico.xhtml"] = gen_lexico(
+        usados_todos, LEX, "Verbetes usados nestes livros, em ordem Strong (hebraico e aramaico, depois grego)."
+    )
     files["creditos.xhtml"] = creditos(ofl)
     spine = ["inicio.xhtml"] + spine + ["lexico.xhtml"] + notas + ["creditos.xhtml"]
-    nav = ['<li><a href="inicio.xhtml">Livros</a></li>'] + nav + ['<li><a href="lexico.xhtml">Léxico</a></li>',
-                                                                   '<li><a href="creditos.xhtml">Fontes e licenças</a></li>']
-    return empacotar(os.path.join(OUT, arquivo), files, spine, nav, f"{livros[0]['cod']}-c1.xhtml", ident, titulo,
-                     f'{subtitulo} Cada palavra do original com transliteração, glosa em português e nota (gramática e significado), '
-                     'seguida do texto da Bíblia Livre. Sumário por livro e capítulo; versículos são títulos navegáveis. Sem imagens nem áudio.')
+    nav = (
+        ['<li><a href="inicio.xhtml">Livros</a></li>']
+        + nav
+        + ['<li><a href="lexico.xhtml">Léxico</a></li>', '<li><a href="creditos.xhtml">Fontes e licenças</a></li>']
+    )
+    return empacotar(
+        os.path.join(OUT, arquivo),
+        files,
+        spine,
+        nav,
+        f"{livros[0]['cod']}-c1.xhtml",
+        ident,
+        titulo,
+        f"{subtitulo} Cada palavra do original com transliteração, glosa em português e nota (gramática e significado), "
+        "seguida do texto da Bíblia Livre. Sumário por livro e capítulo; versículos são títulos navegáveis. Sem imagens nem áudio.",
+    )
 
 
 CSS_BLIVRE = """body { font-family: serif; line-height: 1.6; margin: 0 4%; }
@@ -464,9 +632,16 @@ p.intro { margin: 0 0 1em; } ul.livros { padding-left: 1.2em; }
 def build_blivre(livros, ofl):
     """Edição só com o texto da Bíblia Livre (como uma Bíblia comum): os 66 livros, temas dos capítulos e números
     dos versículos. Bem mais leve que a interlinear."""
-    files, spine, nav, capa = {}, [], [], ['<section id="inicio"><h1>Bíblia Livre</h1><p class="intro">Texto da Bíblia Livre '
-                                         '(BLIVRE), com o tema de cada capítulo escrito pelo projeto Bíblia Interlinear. '
-                                         'Para ver o original palavra por palavra, use a edição interlinear.</p>']
+    files, spine, nav, capa = (
+        {},
+        [],
+        [],
+        [
+            '<section id="inicio"><h1>Bíblia Livre</h1><p class="intro">Texto da Bíblia Livre '
+            "(BLIVRE), com o tema de cada capítulo escrito pelo projeto Bíblia Interlinear. "
+            "Para ver o original palavra por palavra, use a edição interlinear.</p>"
+        ],
+    )
     grupo = None
     for B in livros:
         arq = f"{B['cod']}.xhtml"
@@ -488,8 +663,11 @@ def build_blivre(livros, ofl):
         partes.append("</section>\n")
         files[arq] = page(B["nome"], "\n".join(partes))
         spine.append(arq)
-        nav.append(f'<li><a href="{arq}">{h(B["nome"])}</a><ol>'
-                   + "".join(f'<li><a href="{arq}#c{c["n"]}">{h(B["nome"])} {c["n"]}</a></li>' for c in B["caps"]) + "</ol></li>")
+        nav.append(
+            f'<li><a href="{arq}">{h(B["nome"])}</a><ol>'
+            + "".join(f'<li><a href="{arq}#c{c["n"]}">{h(B["nome"])} {c["n"]}</a></li>' for c in B["caps"])
+            + "</ol></li>"
+        )
         if B["grupo"] != grupo:
             if grupo is not None:
                 capa.append("</ul>")
@@ -501,9 +679,18 @@ def build_blivre(livros, ofl):
     files["creditos.xhtml"] = creditos(ofl)
     spine = ["inicio.xhtml"] + spine + ["creditos.xhtml"]
     nav = ['<li><a href="inicio.xhtml">Livros</a></li>'] + nav + ['<li><a href="creditos.xhtml">Fontes e licenças</a></li>']
-    return empacotar(os.path.join(OUT, "00-Biblia-Livre.epub"), files, spine, nav, f"{livros[0]['cod']}.xhtml", "BLIVRE-TEXTO",
-                     "Bíblia Livre (BLIVRE)", "Texto corrido da Bíblia Livre, os 66 livros, com números de versículo e tema de cada "
-                     "capítulo. Sumário por livro e capítulo. Sem imagens nem áudio.", css=CSS_BLIVRE)
+    return empacotar(
+        os.path.join(OUT, "00-Biblia-Livre.epub"),
+        files,
+        spine,
+        nav,
+        f"{livros[0]['cod']}.xhtml",
+        "BLIVRE-TEXTO",
+        "Bíblia Livre (BLIVRE)",
+        "Texto corrido da Bíblia Livre, os 66 livros, com números de versículo e tema de cada "
+        "capítulo. Sumário por livro e capítulo. Sem imagens nem áudio.",
+        css=CSS_BLIVRE,
+    )
 
 
 def main(argv):
@@ -523,12 +710,28 @@ def main(argv):
         at = [B for B in livros if not B["nt"]]
         nt = [B for B in livros if B["nt"]]
         for ls, ident, titulo, arq, sub in (
-                (livros, "BIBLIA", "Bíblia Interlinear — Bíblia completa", "00-Biblia-Interlinear-completa.epub",
-                 "Os 66 livros: Antigo Testamento em hebraico e aramaico, Novo Testamento em grego, com a Bíblia Livre."),
-                (at, "AT", "Bíblia Interlinear — Antigo Testamento", "00-Biblia-Interlinear-AT.epub",
-                 "Os 39 livros do Antigo Testamento em hebraico e aramaico, com a Bíblia Livre."),
-                (nt, "NT", "Bíblia Interlinear — Novo Testamento", "00-Biblia-Interlinear-NT.epub",
-                 "Os 27 livros do Novo Testamento em grego, com a Bíblia Livre.")):
+            (
+                livros,
+                "BIBLIA",
+                "Bíblia Interlinear — Bíblia completa",
+                "00-Biblia-Interlinear-completa.epub",
+                "Os 66 livros: Antigo Testamento em hebraico e aramaico, Novo Testamento em grego, com a Bíblia Livre.",
+            ),
+            (
+                at,
+                "AT",
+                "Bíblia Interlinear — Antigo Testamento",
+                "00-Biblia-Interlinear-AT.epub",
+                "Os 39 livros do Antigo Testamento em hebraico e aramaico, com a Bíblia Livre.",
+            ),
+            (
+                nt,
+                "NT",
+                "Bíblia Interlinear — Novo Testamento",
+                "00-Biblia-Interlinear-NT.epub",
+                "Os 27 livros do Novo Testamento em grego, com a Bíblia Livre.",
+            ),
+        ):
             out = build_volume(ls, LEX, ofl, ident, titulo, arq, sub)
             print(f"{os.path.basename(out)}  {os.path.getsize(out) // 1024} KB")
         quais.discard("VOLUMES")

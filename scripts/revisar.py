@@ -10,6 +10,7 @@ Saídas em saida/revisao/: marcas.json, resumo.tsv, relatorio.md; totais por có
 
 Uso: python3 scripts/revisar.py [LIVRO [CAP]]      (ex.: GEN · GEN 1 · JHN 3)
 """
+
 import json
 import os
 import re
@@ -36,6 +37,7 @@ ID, LIV, CAP, VER, POS, LING, TXT, LEMA, STR, PREF, MORF, REF, GL, GF, SF = rang
 
 NIVEIS = ("erro", "aviso", "info")
 
+
 # ------------------------------------------------------------------ português
 def sem_acento(s):
     return "".join(c for c in unicodedata.normalize("NFD", s) if not unicodedata.combining(c))
@@ -48,51 +50,414 @@ def toks(glosa):
     return [t for t in (glosa or "").lower().split("-") if t]
 
 
-ARTIGOS = set("o a os as".split())
-DETERMINANTES = ARTIGOS | set("""do da dos das no na nos nas ao à aos às pelo pela pelos pelas um uma uns umas
-num numa dum duma este esta estes estas isto esse essa esses essas isso aquele aquela aqueles aquelas aquilo
-deste desta destes destas disto neste nesta nestes nestas nisto desse dessa desses dessas nesse nessa daquele
-daquela daqueles daquelas daquilo naquele naquela naqueles naquelas naquilo àquele àquela àqueles àquelas
-que qual quais quem""".split())
-PREPOSICOES = set("""de em a para por com sem sob sobre entre contra até desde perante ante após segundo
-conforme diante dentro fora junto acima abaixo debaixo através durante mediante trás atrás frente perto longe
-pra pro""".split())
-CONTRACOES = set("""do da dos das no na nos nas ao à aos às pelo pela pelos pelas num numa dum duma nele nela
-neles nelas dele dela deles delas deste desta destes destas disto neste nesta nestes nestas nisto desse dessa
-nesse nessa daquele daquela naquele naquela àquele àquela daí dali daqui donde aonde comigo contigo consigo
-conosco convosco""".split())
-CONJUNCOES = set("""e mas porém pois porque que então ou nem contudo todavia também logo portanto assim ora
-quando se porquanto embora ainda senão enquanto como antes sim certamente depois tanto quer até mesmo
-entretanto conforme segundo visto já agora eis""".split())
+ARTIGOS = set(["o", "a", "os", "as"])
+DETERMINANTES = ARTIGOS | set(
+    [
+        "do",
+        "da",
+        "dos",
+        "das",
+        "no",
+        "na",
+        "nos",
+        "nas",
+        "ao",
+        "à",
+        "aos",
+        "às",
+        "pelo",
+        "pela",
+        "pelos",
+        "pelas",
+        "um",
+        "uma",
+        "uns",
+        "umas",
+        "num",
+        "numa",
+        "dum",
+        "duma",
+        "este",
+        "esta",
+        "estes",
+        "estas",
+        "isto",
+        "esse",
+        "essa",
+        "esses",
+        "essas",
+        "isso",
+        "aquele",
+        "aquela",
+        "aqueles",
+        "aquelas",
+        "aquilo",
+        "deste",
+        "desta",
+        "destes",
+        "destas",
+        "disto",
+        "neste",
+        "nesta",
+        "nestes",
+        "nestas",
+        "nisto",
+        "desse",
+        "dessa",
+        "desses",
+        "dessas",
+        "nesse",
+        "nessa",
+        "daquele",
+        "daquela",
+        "daqueles",
+        "daquelas",
+        "daquilo",
+        "naquele",
+        "naquela",
+        "naqueles",
+        "naquelas",
+        "naquilo",
+        "àquele",
+        "àquela",
+        "àqueles",
+        "àquelas",
+        "que",
+        "qual",
+        "quais",
+        "quem",
+    ]
+)
+PREPOSICOES = set(
+    [
+        "de",
+        "em",
+        "a",
+        "para",
+        "por",
+        "com",
+        "sem",
+        "sob",
+        "sobre",
+        "entre",
+        "contra",
+        "até",
+        "desde",
+        "perante",
+        "ante",
+        "após",
+        "segundo",
+        "conforme",
+        "diante",
+        "dentro",
+        "fora",
+        "junto",
+        "acima",
+        "abaixo",
+        "debaixo",
+        "através",
+        "durante",
+        "mediante",
+        "trás",
+        "atrás",
+        "frente",
+        "perto",
+        "longe",
+        "pra",
+        "pro",
+    ]
+)
+CONTRACOES = set(
+    [
+        "do",
+        "da",
+        "dos",
+        "das",
+        "no",
+        "na",
+        "nos",
+        "nas",
+        "ao",
+        "à",
+        "aos",
+        "às",
+        "pelo",
+        "pela",
+        "pelos",
+        "pelas",
+        "num",
+        "numa",
+        "dum",
+        "duma",
+        "nele",
+        "nela",
+        "neles",
+        "nelas",
+        "dele",
+        "dela",
+        "deles",
+        "delas",
+        "deste",
+        "desta",
+        "destes",
+        "destas",
+        "disto",
+        "neste",
+        "nesta",
+        "nestes",
+        "nestas",
+        "nisto",
+        "desse",
+        "dessa",
+        "nesse",
+        "nessa",
+        "daquele",
+        "daquela",
+        "naquele",
+        "naquela",
+        "àquele",
+        "àquela",
+        "daí",
+        "dali",
+        "daqui",
+        "donde",
+        "aonde",
+        "comigo",
+        "contigo",
+        "consigo",
+        "conosco",
+        "convosco",
+    ]
+)
+CONJUNCOES = set(
+    [
+        "e",
+        "mas",
+        "porém",
+        "pois",
+        "porque",
+        "que",
+        "então",
+        "ou",
+        "nem",
+        "contudo",
+        "todavia",
+        "também",
+        "logo",
+        "portanto",
+        "assim",
+        "ora",
+        "quando",
+        "se",
+        "porquanto",
+        "embora",
+        "ainda",
+        "senão",
+        "enquanto",
+        "como",
+        "antes",
+        "sim",
+        "certamente",
+        "depois",
+        "tanto",
+        "quer",
+        "até",
+        "mesmo",
+        "entretanto",
+        "conforme",
+        "segundo",
+        "visto",
+        "já",
+        "agora",
+        "eis",
+    ]
+)
 PRON = {
-    "1s": set("eu me mim meu minha meus minhas comigo".split()),
-    "1p": set("nós nosso nossa nossos nossas conosco".split()),
-    "2s": set("tu te ti teu tua teus tuas contigo".split()),
-    "2p": set("vós vos vosso vossa vossos vossas convosco".split()),
-    "3": set("ele ela eles elas lhe lhes seu sua seus suas dele dela deles delas nele nela neles nelas si "
-             "consigo lo la los las lho lha".split()),
+    "1s": set(["eu", "me", "mim", "meu", "minha", "meus", "minhas", "comigo"]),
+    "1p": set(["nós", "nosso", "nossa", "nossos", "nossas", "conosco"]),
+    "2s": set(["tu", "te", "ti", "teu", "tua", "teus", "tuas", "contigo"]),
+    "2p": set(["vós", "vos", "vosso", "vossa", "vossos", "vossas", "convosco"]),
+    "3": set(
+        [
+            "ele",
+            "ela",
+            "eles",
+            "elas",
+            "lhe",
+            "lhes",
+            "seu",
+            "sua",
+            "seus",
+            "suas",
+            "dele",
+            "dela",
+            "deles",
+            "delas",
+            "nele",
+            "nela",
+            "neles",
+            "nelas",
+            "si",
+            "consigo",
+            "lo",
+            "la",
+            "los",
+            "las",
+            "lho",
+            "lha",
+        ]
+    ),
 }
-PRON_AMBIG = set("o a os as no na nos nas se mesmo mesma próprio própria".split())
+PRON_AMBIG = set(["o", "a", "os", "as", "no", "na", "nos", "nas", "se", "mesmo", "mesma", "próprio", "própria"])
 PRON_TODOS = set().union(*PRON.values()) | PRON_AMBIG
 STOP = DETERMINANTES | PREPOSICOES | CONTRACOES | CONJUNCOES | PRON_TODOS | {"não"}
-NEGACAO = set("não nem nenhum nenhuma nenhuns nenhumas nunca jamais ninguém nada sem tampouco".split())
-NUMEROS = set("""um uma dois duas três quatro cinco seis sete oito nove dez onze doze treze catorze quatorze
-quinze dezesseis dezasseis dezessete dezassete dezoito dezenove dezanove vinte trinta quarenta cinquenta
-cinqüenta sessenta setenta oitenta noventa cem cento duzentos duzentas trezentos trezentas quatrocentos
-quatrocentas quinhentos quinhentas seiscentos seiscentas setecentos setecentas oitocentos oitocentas
-novecentos novecentas mil milhares milhão milhões dezenas centenas""".split())
+NEGACAO = set(["não", "nem", "nenhum", "nenhuma", "nenhuns", "nenhumas", "nunca", "jamais", "ninguém", "nada", "sem", "tampouco"])
+NUMEROS = set(
+    [
+        "um",
+        "uma",
+        "dois",
+        "duas",
+        "três",
+        "quatro",
+        "cinco",
+        "seis",
+        "sete",
+        "oito",
+        "nove",
+        "dez",
+        "onze",
+        "doze",
+        "treze",
+        "catorze",
+        "quatorze",
+        "quinze",
+        "dezesseis",
+        "dezasseis",
+        "dezessete",
+        "dezassete",
+        "dezoito",
+        "dezenove",
+        "dezanove",
+        "vinte",
+        "trinta",
+        "quarenta",
+        "cinquenta",
+        "cinqüenta",
+        "sessenta",
+        "setenta",
+        "oitenta",
+        "noventa",
+        "cem",
+        "cento",
+        "duzentos",
+        "duzentas",
+        "trezentos",
+        "trezentas",
+        "quatrocentos",
+        "quatrocentas",
+        "quinhentos",
+        "quinhentas",
+        "seiscentos",
+        "seiscentas",
+        "setecentos",
+        "setecentas",
+        "oitocentos",
+        "oitocentas",
+        "novecentos",
+        "novecentas",
+        "mil",
+        "milhares",
+        "milhão",
+        "milhões",
+        "dezenas",
+        "centenas",
+    ]
+)
 NUM_FORTES = NUMEROS - {"um", "uma"}
-ORDINAIS = {o + f for o in """primeir segund terceir quart quint sext sétim oitav non décim vigésim trigésim
-quadragésim quinquagésim sexagésim septuagésim octogésim nonagésim centésim milésim""".split()
-            for f in ("o", "a", "os", "as")} | {"ambos", "ambas", "dobro", "dobrado", "dupla", "duplo", "metade",
-                                                "par", "vezes", "vez"}
-INGLES = set("""the and of unto shall thou thee thy thine his which with from that this they them said lord
-was not have hath ye you your its who whom upon into out all by men god king people land day house word
-were their there what when where shalt""".split())
+ORDINAIS = {
+    o + f
+    for o in [
+        "primeir",
+        "segund",
+        "terceir",
+        "quart",
+        "quint",
+        "sext",
+        "sétim",
+        "oitav",
+        "non",
+        "décim",
+        "vigésim",
+        "trigésim",
+        "quadragésim",
+        "quinquagésim",
+        "sexagésim",
+        "septuagésim",
+        "octogésim",
+        "nonagésim",
+        "centésim",
+        "milésim",
+    ]
+    for f in ("o", "a", "os", "as")
+} | {"ambos", "ambas", "dobro", "dobrado", "dupla", "duplo", "metade", "par", "vezes", "vez"}
+INGLES = set(
+    [
+        "the",
+        "and",
+        "of",
+        "unto",
+        "shall",
+        "thou",
+        "thee",
+        "thy",
+        "thine",
+        "his",
+        "which",
+        "with",
+        "from",
+        "that",
+        "this",
+        "they",
+        "them",
+        "said",
+        "lord",
+        "was",
+        "not",
+        "have",
+        "hath",
+        "ye",
+        "you",
+        "your",
+        "its",
+        "who",
+        "whom",
+        "upon",
+        "into",
+        "out",
+        "all",
+        "by",
+        "men",
+        "god",
+        "king",
+        "people",
+        "land",
+        "day",
+        "house",
+        "word",
+        "were",
+        "their",
+        "there",
+        "what",
+        "when",
+        "where",
+        "shalt",
+    ]
+)
 
 
 # Verbos irregulares: radical(is) + terminações; cada forma aponta para a família (SER junta ser/estar/haver/ir).
-_T_PRES = "o es e emos eis em ".split(" ")
+_T_PRES = ["o", "es", "e", "emos", "eis", "em", ""]
 _FORMAS = {
     "SER": """sou és é somos sois são era eras éramos éreis eram fui foste foi fomos fostes foram fora foras
            seja sejas sejamos sejais sejam fosse fosses fôssemos fôsseis fossem for fores formos fordes forem
@@ -143,13 +508,14 @@ IRREG_MAP = {}
 for _k, _v in _FORMAS.items():
     for _f in _v.split():
         IRREG_MAP.setdefault(_f, _k)
+
+
 def singular(t):
     if t.endswith("us"):
         return t
-    for a, b in (("ões", "ão"), ("ães", "ão"), ("ãos", "ão"), ("ns", "m"), ("res", "r"), ("zes", "z"),
-                 ("ses", "s")):
+    for a, b in (("ões", "ão"), ("ães", "ão"), ("ãos", "ão"), ("ns", "m"), ("res", "r"), ("zes", "z"), ("ses", "s")):
         if t.endswith(a) and len(t) > len(a):
-            return t[:-len(a)] + b
+            return t[: -len(a)] + b
     if t.endswith("s") and len(t) > 3:
         return t[:-1]
     return t
@@ -266,8 +632,7 @@ class Marcas:
         if k in self.vistos:
             return
         self.vistos.add(k)
-        self.lista.append({"livro": livro, "cap": cap, "vers": vers, "palavra_id": pid,
-                           "codigo": codigo, "nivel": nivel, "msg": msg})
+        self.lista.append({"livro": livro, "cap": cap, "vers": vers, "palavra_id": pid, "codigo": codigo, "nivel": nivel, "msg": msg})
 
     def w(self, w, codigo, nivel, msg):
         self.add(w[LIV], w[CAP], w[VER], w[ID], codigo, nivel, msg)
@@ -286,14 +651,18 @@ class Dados:
         self.versos = {}
         for b, c, v, t, ed, nota in db.execute("SELECT livro, cap, vers, blivre, edicao, nota FROM versos"):
             self.versos[(b, c, v)] = (t or "", ed, nota)
-        self.palavras = db.execute("SELECT id, livro, cap, vers, pos, lingua, texto, lema, strong, prefixos, morph, "
-                                   "ref_orig, glosa, glosa_fonte, strong_fonte FROM palavras").fetchall()
+        self.palavras = db.execute(
+            "SELECT id, livro, cap, vers, pos, lingua, texto, lema, strong, prefixos, morph, "
+            "ref_orig, glosa, glosa_fonte, strong_fonte FROM palavras"
+        ).fetchall()
         self.palavras.sort(key=lambda w: (self.ordem.get(w[LIV], 999), w[CAP], w[VER], w[POS]))
         self.por_verso = defaultdict(list)
         for w in self.palavras:
             self.por_verso[(w[LIV], w[CAP], w[VER])].append(w)
-        self.lexico = {r[0]: r for r in db.execute("SELECT chave, lingua, lema, xlit, pron_en, derivacao_en, def_en, "
-                                                    "kjv_en, glosa_en, def_pt FROM lexico")}
+        self.lexico = {
+            r[0]: r
+            for r in db.execute("SELECT chave, lingua, lema, xlit, pron_en, derivacao_en, def_en, kjv_en, glosa_en, def_pt FROM lexico")
+        }
         self.trad = defaultdict(Counter)
         for ch, t, n in db.execute("SELECT chave, traducao, n FROM traducoes"):
             self.trad[ch][t] += n
@@ -376,14 +745,20 @@ def chk_texto_base(d, M, livros_escopo):
             if not M.dentro(livro, loc[0]):
                 continue
             if len(ws) != len(fonte):
-                M.add(livro, loc[0], loc[1], None, cod_cont, "erro",
-                      f"{len(ws)} palavras no banco × {len(fonte)} na fonte (original {k[0]}:{k[1]})")
+                M.add(
+                    livro,
+                    loc[0],
+                    loc[1],
+                    None,
+                    cod_cont,
+                    "erro",
+                    f"{len(ws)} palavras no banco × {len(fonte)} na fonte (original {k[0]}:{k[1]})",
+                )
                 continue
             if [n for n, _ in ws] != list(range(1, len(ws) + 1)):
                 M.add(livro, loc[0], loc[1], None, cod_cont, "erro", f"numeração das palavras com buraco ({k[0]}:{k[1]})")
             if consonantal("".join(w[TXT] for _, w in ws)) != consonantal("".join(f[0] for f in fonte)):
-                M.add(livro, loc[0], loc[1], None, cod_hash, "erro",
-                      f"texto consonantal difere da fonte (original {k[0]}:{k[1]})")
+                M.add(livro, loc[0], loc[1], None, cod_hash, "erro", f"texto consonantal difere da fonte (original {k[0]}:{k[1]})")
             elif not nt:
                 for (_, w), f in zip(ws, fonte):
                     if f[1]:
@@ -421,19 +796,33 @@ def chk_unicode(d, M, ws):
                 M.w(w, "TXT-03", "erro", f"caractere fora do permitido: {t!r}")
     for (livro, cap), l in siglas.items():
         sinais = "".join(sorted({c for w in l for c in SIGLAS.findall(w[TXT])}))
-        M.add(livro, cap, l[0][VER], None, "TXG-02", "aviso",
-              f"{len(l)} palavras com sinais do aparato crítico ({sinais}) no texto grego; ex.: {l[0][TXT]}")
+        M.add(
+            livro,
+            cap,
+            l[0][VER],
+            None,
+            "TXG-02",
+            "aviso",
+            f"{len(l)} palavras com sinais do aparato crítico ({sinais}) no texto grego; ex.: {l[0][TXT]}",
+        )
     for (livro, grego), n in nao_nfc.items():
         w = exemplo[(livro, grego)]
-        M.add(livro, w[CAP], w[VER], None, "TXG-02" if grego else "TXT-03", "info",
-              f"{n} palavras fora da forma NFC (ordem dos sinais da fonte preservada)")
+        M.add(
+            livro,
+            w[CAP],
+            w[VER],
+            None,
+            "TXG-02" if grego else "TXT-03",
+            "info",
+            f"{n} palavras fora da forma NFC (ordem dos sinais da fonte preservada)",
+        )
 
 
 def chk_versos_e_capitulos(d, M, livros_escopo):
     caps = defaultdict(lambda: defaultdict(set))
-    for (b, c, v) in d.versos:
+    for b, c, v in d.versos:
         caps[b][c].add(v)
-    for (b, c, v) in d.por_verso:
+    for b, c, v in d.por_verso:
         caps[b][c].add(v)
     for b in livros_escopo:
         cs = sorted(caps[b])
@@ -454,8 +843,7 @@ def chk_versos_e_capitulos(d, M, livros_escopo):
                 M.add(b, k[1], k[2], None, "TXT-05", "erro", "posições das palavras repetidas ou com buraco")
 
 
-ARAMAICO = [("GEN", 31, 47, 31, 47), ("JER", 10, 11, 10, 11), ("EZR", 4, 8, 6, 18), ("EZR", 7, 12, 7, 26),
-            ("DAN", 2, 4, 7, 28)]
+ARAMAICO = [("GEN", 31, 47, 31, 47), ("JER", 10, 11, 10, 11), ("EZR", 4, 8, 6, 18), ("EZR", 7, 12, 7, 26), ("DAN", 2, 4, 7, 28)]
 
 
 def em_aramaico(b, c, v):
@@ -484,7 +872,7 @@ def chk_aramaico(d, M, ws):
             continue
         if k == ("DAN", 2, 4):
             idx = [i for i, w in enumerate(vs) if w[LING] == "A"]
-            if not idx or any(w[LING] == "H" for w in vs[idx[0]:]):
+            if not idx or any(w[LING] == "H" for w in vs[idx[0] :]):
                 M.add(*k, None, "ARM-01", "erro", "troca hebraico → aramaico em Dn 2:4b fora do lugar")
             continue
         for w in vs:
@@ -495,13 +883,30 @@ def chk_aramaico(d, M, ws):
 
 
 # ================================================================== B. versificação e alinhamento
-ALG01 = {("MAT", 17, 21), ("MAT", 18, 11), ("MAT", 23, 14), ("MRK", 7, 16), ("MRK", 9, 44), ("MRK", 9, 46),
-         ("MRK", 11, 26), ("MRK", 15, 28), ("LUK", 17, 36), ("LUK", 23, 17), ("JHN", 5, 4), ("ACT", 8, 37),
-         ("ACT", 15, 34), ("ACT", 24, 7), ("ACT", 28, 29), ("ROM", 16, 24)}
-ALG02 = [("MAT", 6, 13, 6, 13, "Mt 6:13b (doxologia do Pai-Nosso)"),
-         ("1JN", 5, 7, 5, 8, "1Jo 5:7–8 (Comma Johanneum)"),
-         ("MRK", 16, 9, 16, 20, "Mc 16:9–20 (final longo de Marcos)"),
-         ("JHN", 7, 53, 8, 11, "Jo 7:53–8:11 (a mulher adúltera)")]
+ALG01 = {
+    ("MAT", 17, 21),
+    ("MAT", 18, 11),
+    ("MAT", 23, 14),
+    ("MRK", 7, 16),
+    ("MRK", 9, 44),
+    ("MRK", 9, 46),
+    ("MRK", 11, 26),
+    ("MRK", 15, 28),
+    ("LUK", 17, 36),
+    ("LUK", 23, 17),
+    ("JHN", 5, 4),
+    ("ACT", 8, 37),
+    ("ACT", 15, 34),
+    ("ACT", 24, 7),
+    ("ACT", 28, 29),
+    ("ROM", 16, 24),
+}
+ALG02 = [
+    ("MAT", 6, 13, 6, 13, "Mt 6:13b (doxologia do Pai-Nosso)"),
+    ("1JN", 5, 7, 5, 8, "1Jo 5:7–8 (Comma Johanneum)"),
+    ("MRK", 16, 9, 16, 20, "Mc 16:9–20 (final longo de Marcos)"),
+    ("JHN", 7, 53, 8, 11, "Jo 7:53–8:11 (a mulher adúltera)"),
+]
 CONHECIDOS_AT = {("NEH", 7, 68): "Ne 7:68 não existe no Texto Massorético (vem da tradição grega/latina)"}
 # Diferenças de numeração do NT aplicadas pelo corpus: (livro, ref original) → (cap, vers) de exibição
 ALG03 = [("2CO", "13:12.6", 13, 13), ("2CO", "13:13.1", 13, 14), ("ACT", "19:40.22", 19, 41), ("3JN", "1:15.1", 1, 14)]
@@ -522,8 +927,15 @@ def chk_versificacao(d, M, livros_escopo):
             elif (b, c, v) in CONHECIDOS_AT:
                 M.add(b, c, v, None, "ALN-02", "info", CONHECIDOS_AT[(b, c, v)])
             else:
-                M.add(b, c, v, None, "ALG-01" if nt else "ALN-01", "erro" if nt else "aviso",
-                      "versículo da BLIVRE sem texto original correspondente")
+                M.add(
+                    b,
+                    c,
+                    v,
+                    None,
+                    "ALG-01" if nt else "ALN-01",
+                    "erro" if nt else "aviso",
+                    "versículo da BLIVRE sem texto original correspondente",
+                )
         if nota == "sem-blivre" or not t.strip():
             if b == "PSA" and v == 0:
                 M.add(b, c, v, None, "ALN-04", "aviso", "título hebraico do salmo sem título na BLIVRE")
@@ -560,11 +972,21 @@ def chk_versificacao(d, M, livros_escopo):
         for k, nb, no in itens:
             esperado = no * med
             if nb > 2.3 * esperado and nb - esperado >= 14:
-                M.add(*k, None, "ALG-02" if nt else "ALN-03", "aviso",
-                      f"BLIVRE com {nb} palavras para {no} no original (esperado ~{esperado:.0f}): trecho a mais?")
+                M.add(
+                    *k,
+                    None,
+                    "ALG-02" if nt else "ALN-03",
+                    "aviso",
+                    f"BLIVRE com {nb} palavras para {no} no original (esperado ~{esperado:.0f}): trecho a mais?",
+                )
             elif nb < 0.4 * esperado and esperado - nb >= 14:
-                M.add(*k, None, "ALG-02" if nt else "ALN-03", "aviso",
-                      f"BLIVRE com {nb} palavras para {no} no original (esperado ~{esperado:.0f}): trecho faltando?")
+                M.add(
+                    *k,
+                    None,
+                    "ALG-02" if nt else "ALN-03",
+                    "aviso",
+                    f"BLIVRE com {nb} palavras para {no} no original (esperado ~{esperado:.0f}): trecho faltando?",
+                )
     # ALN-02 / ALN-04: versículo de exibição que junta mais de um versículo original
     for k, vs in d.por_verso.items():
         if k[0] not in livros_escopo:
@@ -578,11 +1000,25 @@ def chk_versificacao(d, M, livros_escopo):
             continue
         b, c, v = k
         if b == "PSA" and v == 1 and (b, c, 0) in d.por_verso:
-            M.add(b, c, v, None, "ALN-04", "erro",
-                  f"título do salmo ocupa dois versículos hebraicos; a 2ª parte ({origs[0]}) caiu no v. 1 junto com {origs[1]}")
+            M.add(
+                b,
+                c,
+                v,
+                None,
+                "ALN-04",
+                "erro",
+                f"título do salmo ocupa dois versículos hebraicos; a 2ª parte ({origs[0]}) caiu no v. 1 junto com {origs[1]}",
+            )
         else:
-            M.add(b, c, v, None, "ALG-03" if d.testamento.get(b) == "NT" else "ALN-02", "info",
-                  f"versículo junta {len(origs)} versículos originais ({', '.join(origs)})")
+            M.add(
+                b,
+                c,
+                v,
+                None,
+                "ALG-03" if d.testamento.get(b) == "NT" else "ALN-02",
+                "info",
+                f"versículo junta {len(origs)} versículos originais ({', '.join(origs)})",
+            )
     # ALG-03 / ALN-02: mapa de versificação aplicado e ordem do texto original preservada
     por_ref = {}
     for w in d.palavras:
@@ -602,8 +1038,7 @@ def chk_versificacao(d, M, livros_escopo):
         o = (int(c), int(v), int(n))
         p = ult.get(w[LIV])
         if p and o < p[0] and not (w[LIV] == "PSA"):
-            M.w(w, "ALG-03" if w[LING] == "G" else "ALN-02", "erro",
-                f"ordem do original quebrada: {w[REF]} depois de {p[1]}")
+            M.w(w, "ALG-03" if w[LING] == "G" else "ALN-02", "erro", f"ordem do original quebrada: {w[REF]} depois de {p[1]}")
         ult[w[LIV]] = (o, w[REF])
 
 
@@ -654,8 +1089,9 @@ def chk_deslocamento(d, M, livros_escopo):
         viz = [(score(cont, (b, c, v + dv)), v + dv) for dv in (-1, 1)]
         best, vv = max(viz)
         if best >= 0.6 and best >= own + 0.3:
-            M.add(b, c, v, None, "ALN-03", "aviso",
-                  f"glosas combinam mais com o v. {vv} da BLIVRE ({best:.0%}) que com o próprio ({own:.0%})")
+            M.add(
+                b, c, v, None, "ALN-03", "aviso", f"glosas combinam mais com o v. {vv} da BLIVRE ({best:.0%}) que com o próprio ({own:.0%})"
+            )
 
 
 # ================================================================== C. cobertura
@@ -700,11 +1136,20 @@ def chk_lexico(d, M, usados):
         for lt, num in re.findall(r"\b([HG])0*(\d+)\b", der):
             alvo = lt + num
             if alvo not in d.lexico:
-                dica = f" (provavelmente H{num})" if lt == "G" and int(num) > 5624 else \
-                    " (número que o próprio Strong pulou)" if lt == "G" and (int(num) == 2717 or 3203 <= int(num) <= 3302) else ""
+                dica = (
+                    f" (provavelmente H{num})"
+                    if lt == "G" and int(num) > 5624
+                    else " (número que o próprio Strong pulou)"
+                    if lt == "G" and (int(num) == 2717 or 3203 <= int(num) <= 3302)
+                    else ""
+                )
                 M.w(w, "LEX-03", "erro", f"{k} cita {alvo}, que não existe no léxico{dica}")
-            elif re.search(r"\b" + k[0] + "0*" + k[1:] + r"\b", d.lexico[alvo][5] or "") and alvo != k \
-                    and "from" in der and "from" in (d.lexico[alvo][5] or ""):
+            elif (
+                re.search(r"\b" + k[0] + "0*" + k[1:] + r"\b", d.lexico[alvo][5] or "")
+                and alvo != k
+                and "from" in der
+                and "from" in (d.lexico[alvo][5] or "")
+            ):
                 M.w(w, "LEX-03", "aviso", f"derivação circular: {k} ↔ {alvo}")
         if k.startswith("G") and k[1:].isdigit():
             n = int(k[1:])
@@ -714,23 +1159,173 @@ def chk_lexico(d, M, usados):
 
 # ================================================================== D. gramática × glosa (hebraico/aramaico)
 CONJ_H = CONJUNCOES | {"e"}
-PREP_B = set("""em no na nos nas num numa com por pelo pela pelos pelas entre dentro sobre quando ao aos à às
-durante contra nele nela neles nelas mediante diante perante comigo contigo consigo conosco convosco sob
-enquanto""".split())
-PREP_L = set("""para a ao aos à às de do da dos das lhe lhes por pelo pela pelos pelas em no na nos nas
-contra sobre até quanto segundo me te nos vos se mim ti si dele dela deles delas comigo contigo consigo conosco
-convosco que como diante perante entre ele ela eles elas com""".split())
-PREP_K = set("""como conforme segundo qual assim quando quase cerca semelhante tal tais igual iguais
-quanto mesmo modo ao logo enquanto depois apenas""".split())
-PREP_M = set("""de do da dos das desde dentre que deste desta dele dela deles delas daquele daquela por pelo
-pela pelos pelas fora mais sem dali daí daqui donde após depois""".split())
+PREP_B = set(
+    [
+        "em",
+        "no",
+        "na",
+        "nos",
+        "nas",
+        "num",
+        "numa",
+        "com",
+        "por",
+        "pelo",
+        "pela",
+        "pelos",
+        "pelas",
+        "entre",
+        "dentro",
+        "sobre",
+        "quando",
+        "ao",
+        "aos",
+        "à",
+        "às",
+        "durante",
+        "contra",
+        "nele",
+        "nela",
+        "neles",
+        "nelas",
+        "mediante",
+        "diante",
+        "perante",
+        "comigo",
+        "contigo",
+        "consigo",
+        "conosco",
+        "convosco",
+        "sob",
+        "enquanto",
+    ]
+)
+PREP_L = set(
+    [
+        "para",
+        "a",
+        "ao",
+        "aos",
+        "à",
+        "às",
+        "de",
+        "do",
+        "da",
+        "dos",
+        "das",
+        "lhe",
+        "lhes",
+        "por",
+        "pelo",
+        "pela",
+        "pelos",
+        "pelas",
+        "em",
+        "no",
+        "na",
+        "nos",
+        "nas",
+        "contra",
+        "sobre",
+        "até",
+        "quanto",
+        "segundo",
+        "me",
+        "te",
+        "nos",
+        "vos",
+        "se",
+        "mim",
+        "ti",
+        "si",
+        "dele",
+        "dela",
+        "deles",
+        "delas",
+        "comigo",
+        "contigo",
+        "consigo",
+        "conosco",
+        "convosco",
+        "que",
+        "como",
+        "diante",
+        "perante",
+        "entre",
+        "ele",
+        "ela",
+        "eles",
+        "elas",
+        "com",
+    ]
+)
+PREP_K = set(
+    [
+        "como",
+        "conforme",
+        "segundo",
+        "qual",
+        "assim",
+        "quando",
+        "quase",
+        "cerca",
+        "semelhante",
+        "tal",
+        "tais",
+        "igual",
+        "iguais",
+        "quanto",
+        "mesmo",
+        "modo",
+        "ao",
+        "logo",
+        "enquanto",
+        "depois",
+        "apenas",
+    ]
+)
+PREP_M = set(
+    [
+        "de",
+        "do",
+        "da",
+        "dos",
+        "das",
+        "desde",
+        "dentre",
+        "que",
+        "deste",
+        "desta",
+        "dele",
+        "dela",
+        "deles",
+        "delas",
+        "daquele",
+        "daquela",
+        "por",
+        "pelo",
+        "pela",
+        "pelos",
+        "pelas",
+        "fora",
+        "mais",
+        "sem",
+        "dali",
+        "daí",
+        "daqui",
+        "donde",
+        "após",
+        "depois",
+    ]
+)
 PART_H = {
     "H3808": (NEGACAO | {"senão", "sim"}, "partícula negativa לֹא sem 'não/nem/nenhum'"),
     "H408": (NEGACAO, "partícula negativa אַל sem 'não/nem/nenhum'"),
-    "H2009": ({"eis", "olha", "olhai", "vede", "veja", "vê", "aqui", "ei-lo", "ei-la", "se", "agora"},
-              "הִנֵּה sem 'eis'"),
-    "H3588": (CONJUNCOES | {"ainda", "verdade", "verdadeiramente", "certo", "quando", "porquanto",
-                            "visto", "senão", "mas"}, "כִּי sem 'que/porque/pois/quando'"),
+    "H2009": ({"eis", "olha", "olhai", "vede", "veja", "vê", "aqui", "ei-lo", "ei-la", "se", "agora"}, "הִנֵּה sem 'eis'"),
+    "H3588": (
+        CONJUNCOES | {"ainda", "verdade", "verdadeiramente", "certo", "quando", "porquanto", "visto", "senão", "mas"},
+        "כִּי sem 'que/porque/pois/quando'",
+    ),
 }
 # palavras em que o sufixo faz parte do sentido lexical (Adonai "Senhor", kol "todos", levad "sozinho",
 # ein/yesh/od/hinneh + sufixo)
@@ -769,23 +1364,30 @@ def chk_gramatica_h(d, M, ws):
                 M.w(w, "GRA-03", "aviso" if p in ("k",) else "info", f"preposição {nome} prefixada sem equivalente: '{g}'")
         # GRA-02: artigo
         if ("d" in prefs or any(s == "Rd" for s in pre) or raiz == "Rd") and lang == "H":
-            if not (tset & (DETERMINANTES | CONTRACOES)) and not nomes_da_glosa(g) and "SENHOR" not in g \
-                    and not raiz.startswith("Vr") and not raiz.startswith("Vs"):
+            if (
+                not (tset & (DETERMINANTES | CONTRACOES))
+                and not nomes_da_glosa(g)
+                and "SENHOR" not in g
+                and not raiz.startswith("Vr")
+                and not raiz.startswith("Vs")
+            ):
                 M.w(w, "GRA-02", "info", f"artigo ה sem artigo na glosa: '{g}'")
         # GRA-04: sufixo pronominal
         for s in suf:
-            if not s.startswith("Sp") or len(s) < 5 or w[STR] in SUF_LEXICAL or \
-                    (raiz.startswith("V") and raiz[2:3] == "c"):
+            if not s.startswith("Sp") or len(s) < 5 or w[STR] in SUF_LEXICAL or (raiz.startswith("V") and raiz[2:3] == "c"):
                 continue
             pessoa, num = s[2], s[4]
             alvo = "3" if pessoa == "3" else pessoa + ("s" if num == "s" else "p")
-            if not (tset & PRON_TODOS) and not (tset & CONTRACOES) and not any(
-                    t.endswith(("-lo", "-la")) for t in ts):
+            if not (tset & PRON_TODOS) and not (tset & CONTRACOES) and not any(t.endswith(("-lo", "-la")) for t in ts):
                 M.w(w, "GRA-04", "aviso", f"sufixo pronominal {s[2:]} sem pronome/possessivo na glosa: '{g}'")
             else:
                 outros = set().union(*(v for k, v in PRON.items() if k != alvo))
-                if (tset & outros) and not (tset & PRON[alvo]) and not (alvo == "1p" and "nos" in tset) \
-                        and not (alvo == "3" and tset & PRON_AMBIG):
+                if (
+                    (tset & outros)
+                    and not (tset & PRON[alvo])
+                    and not (alvo == "1p" and "nos" in tset)
+                    and not (alvo == "3" and tset & PRON_AMBIG)
+                ):
                     M.w(w, "GRA-04", "aviso", f"sufixo {s[2:]} mas glosa com pronome de outra pessoa: '{g}'")
         # GRA-05: pessoa do verbo (1ª e 2ª do plural, verbos finitos)
         if raiz.startswith("V") and len(raiz) >= 6 and raiz[2] in "pqiwhjv":
@@ -794,8 +1396,9 @@ def chk_gramatica_h(d, M, ws):
                 M.w(w, "GRA-05", "aviso", f"verbo 1ª pl. ({raiz}) sem forma de 'nós' na glosa: '{g}'")
         # GRA-07: infinitivo construto com ל
         if raiz.startswith("V") and len(raiz) >= 3 and raiz[2] == "c" and "l" in prefs and w[STR] != "H559":
-            if not (tset & {"para", "a", "de", "ao", "à", "por", "que", "até", "quando", "se", "em"}) and \
-                    not any(t.endswith(("ar", "er", "ir", "or")) for t in ts):
+            if not (tset & {"para", "a", "de", "ao", "à", "por", "que", "até", "quando", "se", "em"}) and not any(
+                t.endswith(("ar", "er", "ir", "or")) for t in ts
+            ):
                 M.w(w, "GRA-07", "info", f"infinitivo com ל sem 'para/a + infinitivo': '{g}'")
         # GRA-10: plural
         if raiz.startswith("Nc") and len(raiz) >= 5 and raiz[3] == "p" and w[STR] not in PLURAL_SO and not manual:
@@ -808,14 +1411,49 @@ def chk_gramatica_h(d, M, ws):
                 M.w(w, "ARM-03", "info", f"estado enfático sem artigo na glosa: '{g}'")
         # ARM-04: partícula דִּי
         if lang == "A" and w[STR] == "H1768":
-            if not (tset & ({"que", "qual", "quais", "quem", "porque", "pois", "de", "do", "da", "dos", "das",
-                             "quando", "cujo", "cuja", "cujos", "cujas", "onde", "como", "para"} | DETERMINANTES)):
+            if not (
+                tset
+                & (
+                    {
+                        "que",
+                        "qual",
+                        "quais",
+                        "quem",
+                        "porque",
+                        "pois",
+                        "de",
+                        "do",
+                        "da",
+                        "dos",
+                        "das",
+                        "quando",
+                        "cujo",
+                        "cuja",
+                        "cujos",
+                        "cujas",
+                        "onde",
+                        "como",
+                        "para",
+                    }
+                    | DETERMINANTES
+                )
+            ):
                 M.w(w, "ARM-04", "aviso", f"partícula דִּי com glosa '{g}'")
 
 
-MEDIDAS = {"H520": ("côvad",), "H8255": ("siclo",), "H374": ("efa",), "H1969": ("him", "hin"), "H3734": ("coro",),
-           "H6016": ("ômer", "gômer", "feixe"), "H1324": ("bato",), "H4488": ("mina", "libra"), "H7341": ("larg",),
-           "H753": ("compr", "longo", "longa", "dura", "extens", "prolong"), "H1092": ("beca", "meio")}
+MEDIDAS = {
+    "H520": ("côvad",),
+    "H8255": ("siclo",),
+    "H374": ("efa",),
+    "H1969": ("him", "hin"),
+    "H3734": ("coro",),
+    "H6016": ("ômer", "gômer", "feixe"),
+    "H1324": ("bato",),
+    "H4488": ("mina", "libra"),
+    "H7341": ("larg",),
+    "H753": ("compr", "longo", "longa", "dura", "extens", "prolong"),
+    "H1092": ("beca", "meio"),
+}
 
 
 def chk_numeros_e_nomes_divinos(d, M, ws):
@@ -835,8 +1473,13 @@ def chk_numeros_e_nomes_divinos(d, M, ws):
                 M.w(w, "FAT-03", "aviso", f"número '{falta[0]}' da glosa não aparece no versículo da BLIVRE")
         if w[LING] != "G":
             raiz = heb_segs(w[MORF])[2]
-            if raiz.startswith("Ac") and w[STR] not in ("H259",) and not (tset & NUMEROS) and \
-                    not (tset & ORDINAIS) and not any(t.startswith(("centuri", "dezen", "milhar", "centen")) for t in ts):
+            if (
+                raiz.startswith("Ac")
+                and w[STR] not in ("H259",)
+                and not (tset & NUMEROS)
+                and not (tset & ORDINAIS)
+                and not any(t.startswith(("centuri", "dezen", "milhar", "centen")) for t in ts)
+            ):
                 M.w(w, "FAT-03", "aviso", f"numeral cardinal ({w[STR]}) sem número na glosa: '{g}'")
         # FAT-09: medidas e unidades
         if w[STR] in MEDIDAS and not any(t.startswith(MEDIDAS[w[STR]]) for t in ts):
@@ -854,8 +1497,7 @@ def chk_numeros_e_nomes_divinos(d, M, ws):
 
 
 # ================================================================== E. grego
-ART_OK = DETERMINANTES | CONTRACOES | PREPOSICOES | PRON_TODOS | {"que", "quem", "qual", "quais", "coisas",
-                                                                  "aquilo", "aquele", "aqueles"}
+ART_OK = DETERMINANTES | CONTRACOES | PREPOSICOES | PRON_TODOS | {"que", "quem", "qual", "quais", "coisas", "aquilo", "aquele", "aqueles"}
 PART_G = {
     "καί": CONJUNCOES | {"inclusive", "nem"},
     "δέ": CONJUNCOES | {"entretanto", "enquanto", "porém", "ora", "outro", "outros", "uns", "uma", "um"},
@@ -865,34 +1507,91 @@ PART_G = {
     "ἵνα": CONJUNCOES | {"para", "a", "fim", "de", "afim"},
     "ὅτι": CONJUNCOES | {"pois", "visto", "porquanto", "como"},
 }
-NEG_G = {"οὐ", "μή", "οὐδέ", "μηδέ", "οὐδείς", "μηδείς", "οὔτε", "μήτε", "οὐκέτι", "μηκέτι", "οὔπω", "μήπω",
-         "οὐχί", "οὐδαμῶς", "οὐθείς", "μηθείς", "οὐδέποτε", "μηδέποτε", "οὐδαμῶς"}
-PREP_CASO = {  # (lema, caso): (glosas que indicam o outro caso, sem as do próprio caso)
-    ("διά", "A"): ({"meio", "através"}, {"causa", "razão", "isso", "motivo", "porque", "porquanto"},
-                   "διά + acusativo ('por causa de') glosada como 'por meio de'"),
-    ("διά", "G"): ({"causa", "razão", "motivo"}, {"meio", "através", "pelo", "pela", "por", "pelos", "pelas",
-                                                   "durante", "entre", "de", "em"},
-                   "διά + genitivo ('por meio de') glosada como 'por causa de'"),
-    ("μετά", "A"): ({"com", "conosco", "comigo", "contigo", "convosco", "consigo"}, {"depois", "após", "passados",
-                                                                                    "passado", "dentro", "em"},
-                    "μετά + acusativo ('depois de') glosada como 'com'"),
-    ("μετά", "G"): ({"depois", "após"}, {"com", "conosco", "comigo", "contigo", "convosco", "consigo", "entre"},
-                    "μετά + genitivo ('com') glosada como 'depois de'"),
-    ("ὑπό", "A"): ({"pelo", "pela", "pelos", "pelas"}, {"debaixo", "sob", "abaixo"},
-                   "ὑπό + acusativo ('debaixo de') glosada como agente 'por'"),
-    ("ὑπό", "G"): ({"debaixo", "sob", "abaixo"}, {"por", "pelo", "pela", "pelos", "pelas", "de"},
-                   "ὑπό + genitivo ('por', agente) glosada como 'debaixo de'"),
+NEG_G = {
+    "οὐ",
+    "μή",
+    "οὐδέ",
+    "μηδέ",
+    "οὐδείς",
+    "μηδείς",
+    "οὔτε",
+    "μήτε",
+    "οὐκέτι",
+    "μηκέτι",
+    "οὔπω",
+    "μήπω",
+    "οὐχί",
+    "οὐδαμῶς",
+    "οὐθείς",
+    "μηθείς",
+    "οὐδέποτε",
+    "μηδέποτε",
 }
-CRASE = {"κἀγώ": ({"eu", "me", "mim", "também", "nós"}, "κἀγώ (= καί + ἐγώ) sem 'eu/me/mim/também'"),
-         "κἀκεῖ": ({"ali", "lá", "aí", "também", "e"}, "κἀκεῖ (= καί + ἐκεῖ) sem 'ali/lá'"),
-         "κἀκεῖθεν": ({"dali", "daí", "ali", "lá", "depois", "e"}, "κἀκεῖθεν sem 'e dali'"),
-         "κἀκεῖνος": (PRON["3"] | {"aquele", "aquela", "aqueles", "aquelas", "este", "esta", "estes", "também",
-                                   "esse", "essa", "o", "a", "os", "as", "e", "outro", "outros", "isto"},
-                      "κἀκεῖνος sem 'e aquele/ele'")}
+PREP_CASO = {  # (lema, caso): (glosas que indicam o outro caso, sem as do próprio caso)
+    ("διά", "A"): (
+        {"meio", "através"},
+        {"causa", "razão", "isso", "motivo", "porque", "porquanto"},
+        "διά + acusativo ('por causa de') glosada como 'por meio de'",
+    ),
+    ("διά", "G"): (
+        {"causa", "razão", "motivo"},
+        {"meio", "através", "pelo", "pela", "por", "pelos", "pelas", "durante", "entre", "de", "em"},
+        "διά + genitivo ('por meio de') glosada como 'por causa de'",
+    ),
+    ("μετά", "A"): (
+        {"com", "conosco", "comigo", "contigo", "convosco", "consigo"},
+        {"depois", "após", "passados", "passado", "dentro", "em"},
+        "μετά + acusativo ('depois de') glosada como 'com'",
+    ),
+    ("μετά", "G"): (
+        {"depois", "após"},
+        {"com", "conosco", "comigo", "contigo", "convosco", "consigo", "entre"},
+        "μετά + genitivo ('com') glosada como 'depois de'",
+    ),
+    ("ὑπό", "A"): (
+        {"pelo", "pela", "pelos", "pelas"},
+        {"debaixo", "sob", "abaixo"},
+        "ὑπό + acusativo ('debaixo de') glosada como agente 'por'",
+    ),
+    ("ὑπό", "G"): (
+        {"debaixo", "sob", "abaixo"},
+        {"por", "pelo", "pela", "pelos", "pelas", "de"},
+        "ὑπό + genitivo ('por', agente) glosada como 'debaixo de'",
+    ),
+}
+CRASE = {
+    "κἀγώ": ({"eu", "me", "mim", "também", "nós"}, "κἀγώ (= καί + ἐγώ) sem 'eu/me/mim/também'"),
+    "κἀκεῖ": ({"ali", "lá", "aí", "também", "e"}, "κἀκεῖ (= καί + ἐκεῖ) sem 'ali/lá'"),
+    "κἀκεῖθεν": ({"dali", "daí", "ali", "lá", "depois", "e"}, "κἀκεῖθεν sem 'e dali'"),
+    "κἀκεῖνος": (
+        PRON["3"]
+        | {
+            "aquele",
+            "aquela",
+            "aqueles",
+            "aquelas",
+            "este",
+            "esta",
+            "estes",
+            "também",
+            "esse",
+            "essa",
+            "o",
+            "a",
+            "os",
+            "as",
+            "e",
+            "outro",
+            "outros",
+            "isto",
+        },
+        "κἀκεῖνος sem 'e aquele/ele'",
+    ),
+}
 
 
 def caso_seguinte(vs, i):
-    for w in vs[i + 1:i + 4]:
+    for w in vs[i + 1 : i + 4]:
         pos, parse = grk(w[MORF])
         if parse[4] in "NGDAV" and parse[4] != "-":
             return parse[4]
@@ -918,21 +1617,26 @@ def chk_grego(d, M, ws):
                 fora = [t for t in ts if t not in ART_OK]
                 if fora:
                     M.w(w, "GRG-01", "aviso", f"artigo com glosa que não é artigo/preposição: '{g}'")
-                elif parse[5] == "P" and not (tset - {"de", "a", "em", "que", "para", "por", "com"}) is False and \
-                        tset <= {"o", "a", "do", "da", "ao", "à", "no", "na", "pelo", "pela"}:
+                elif (
+                    parse[5] == "P"
+                    and (tset - {"de", "a", "em", "que", "para", "por", "com"}) is not False
+                    and tset <= {"o", "a", "do", "da", "ao", "à", "no", "na", "pelo", "pela"}
+                ):
                     M.w(w, "GRG-01", "info", f"artigo plural com glosa no singular: '{g}'")
                 continue
             # GRG-11: negação
             if lema in NEG_G:
-                ok = NEGACAO | ({"porventura", "acaso", "que", "senão", "para"} if lema in ("μή", "μήτε") else set()) \
+                ok = (
+                    NEGACAO
+                    | ({"porventura", "acaso", "que", "senão", "para"} if lema in ("μή", "μήτε") else set())
                     | ({"porventura", "acaso"} if lema in ("οὐ", "οὐχί") else set())
+                )
                 if not (tset & ok):
                     M.w(w, "GRG-11", "aviso", f"negação {lema} sem 'não/nem/nenhum' na glosa: '{g}'")
                 continue
             # GRG-12: conjunções e partículas
             if lema in PART_G and not (tset & PART_G[lema]):
-                M.w(w, "GRG-12", "aviso" if lema in ("ἵνα", "ὅτι", "γάρ", "ἀλλά") else "info",
-                    f"{lema} com glosa '{g}'")
+                M.w(w, "GRG-12", "aviso" if lema in ("ἵνα", "ὅτι", "γάρ", "ἀλλά") else "info", f"{lema} com glosa '{g}'")
                 continue
             # TXG-03: crase
             if lema in CRASE:
@@ -971,8 +1675,11 @@ def chk_grego(d, M, ws):
 
 
 # ================================================================== G. consistência
-GL_OK = re.compile(r"^-?[^\W\d_]+(?:[’']?[^\W\d_]+)*(?:-(?:[^\W\d_]+(?:[’'][^\W\d_]+)*|\[obj\]))*$|^\[obj\]$|"
-                   r"^[^\W\d_]+(?:-[^\W\d_]+)*-\[obj\](?:-[^\W\d_]+)*$", re.U)
+GL_OK = re.compile(
+    r"^-?[^\W\d_]+(?:[’']?[^\W\d_]+)*(?:-(?:[^\W\d_]+(?:[’'][^\W\d_]+)*|\[obj\]))*$|^\[obj\]$|"
+    r"^[^\W\d_]+(?:-[^\W\d_]+)*-\[obj\](?:-[^\W\d_]+)*$",
+    re.U,
+)
 
 
 def chk_estilo(d, M, ws):
@@ -1117,8 +1824,7 @@ def chk_nomes(d, M, ws, livros_escopo):
         cod = "GRG-15" if indecl else "CRG-05"
         if w[STR] in ("G2424",):  # Ἰησοῦς ← Josué: diferença esperada
             continue
-        M.w(w, cod, "aviso" if stem(gn)[:3] != stem(hn)[:3] else "info",
-            f"{w[LEMA]} glosado '{gn}' no NT; {h} é '{hn}' no AT")
+        M.w(w, cod, "aviso" if stem(gn)[:3] != stem(hn)[:3] else "info", f"{w[LEMA]} glosado '{gn}' no NT; {h} é '{hn}' no AT")
 
 
 # ================================================================== I. cruzamentos
@@ -1175,12 +1881,38 @@ def chk_paralelos(d, M, livros_escopo):
                         M.w(x, cod, "aviso", f"'{x[GL]}' × '{y[GL]}' em {ref(y)} (mesmo original)")
 
 
-EQUIV = [("H7307", "G4151", "espírito"), ("H8451", "G3551", "lei"), ("H2617", "G1656", "misericórdia"),
-         ("H1285", "G1242", "aliança"), ("H6662", "G1342", "justo"), ("H5315", "G5590", "alma"),
-         ("H3820", "G2588", "coração"), ("H3519", "G1391", "glória"), ("H7965", "G1515", "paz"),
-         ("H3444", "G4991", "salvação"), ("H6944", "G40", "santo"), ("H4397", "G32", "anjo")]
-CRG02 = {"G5008", "G2891", "G5", "G2188", "G1682", "G2982", "G4518", "G3134", "G4461", "G281", "G5614",
-         "G239", "G2878", "G3126", "G1115", "G2786"}
+EQUIV = [
+    ("H7307", "G4151", "espírito"),
+    ("H8451", "G3551", "lei"),
+    ("H2617", "G1656", "misericórdia"),
+    ("H1285", "G1242", "aliança"),
+    ("H6662", "G1342", "justo"),
+    ("H5315", "G5590", "alma"),
+    ("H3820", "G2588", "coração"),
+    ("H3519", "G1391", "glória"),
+    ("H7965", "G1515", "paz"),
+    ("H3444", "G4991", "salvação"),
+    ("H6944", "G40", "santo"),
+    ("H4397", "G32", "anjo"),
+]
+CRG02 = {
+    "G5008",
+    "G2891",
+    "G5",
+    "G2188",
+    "G1682",
+    "G2982",
+    "G4518",
+    "G3134",
+    "G4461",
+    "G281",
+    "G5614",
+    "G239",
+    "G2878",
+    "G3126",
+    "G1115",
+    "G2786",
+}
 
 
 def chk_pontes(d, M, livros_escopo):
@@ -1219,8 +1951,12 @@ def chk_pontes(d, M, livros_escopo):
             continue
         top, ntop = c.most_common(1)[0]
         for w in g_ws:
-            if w[LIV] in livros_escopo and len(g_ws) >= 2 and not (stems_conteudo(w[GL]) & {top}) and \
-                    all(c[x] / len(g_ws) < 0.2 for x in stems_conteudo(w[GL])):
+            if (
+                w[LIV] in livros_escopo
+                and len(g_ws) >= 2
+                and not (stems_conteudo(w[GL]) & {top})
+                and all(c[x] / len(g_ws) < 0.2 for x in stems_conteudo(w[GL]))
+            ):
                 M.w(w, "CRG-02", "aviso", f"transliteração {w[LEMA]} glosada '{w[GL]}' (usual '{top}…')")
     # ARM-07: verbete aramaico "corresponding to H####" com glosa da mesma família do hebraico
     por_str_a = defaultdict(list)
@@ -1250,7 +1986,12 @@ def chk_pontes(d, M, livros_escopo):
             if w[LIV] in livros_escopo and not (ta & th) and len(g_ws) >= 2:
                 M.w(w, "ARM-07", "info", f"aramaico {s} glosado {sorted(ta)}; o hebraico {h} é traduzido {sorted(th)[:4]}")
         # ARM-06: verbete do Strong precisa ser o aramaico
-        if s[1:].isdigit() and "(Aramaic)" not in der and "Chaldee" not in der and not (e[2] and heb_segs(g_ws[0][MORF])[2].startswith("Np")):
+        if (
+            s[1:].isdigit()
+            and "(Aramaic)" not in der
+            and "Chaldee" not in der
+            and not (e[2] and heb_segs(g_ws[0][MORF])[2].startswith("Np"))
+        ):
             for w in g_ws:
                 if w[LIV] in livros_escopo:
                     M.w(w, "ARM-06", "info", f"palavra aramaica com verbete {s} sem marca '(Aramaic)'")
@@ -1261,8 +2002,15 @@ def chk_pontes(d, M, livros_escopo):
         terra = [w for w in ws if w[STR] in ("H778", "H772")]
         gl = {tuple(sorted(stems_conteudo(w[GL]))) for w in terra if w[GL]}
         if len(gl) > 1:
-            M.add("JER", 10, 11, None, "ARM-10", "aviso",
-                  "as duas grafias de 'terra' com glosas diferentes: " + ", ".join(w[GL] for w in terra))
+            M.add(
+                "JER",
+                10,
+                11,
+                None,
+                "ARM-10",
+                "aviso",
+                "as duas grafias de 'terra' com glosas diferentes: " + ", ".join(w[GL] for w in terra),
+            )
 
 
 def chk_apoio(d, M, ws):
@@ -1291,8 +2039,10 @@ def chk_grego_strong(d, M, ws):
 def escrever(M, d, escopo, t0):
     os.makedirs(OUT, exist_ok=True)
     ordem = d.ordem
-    marcas = sorted(M.lista, key=lambda m: (ordem.get(m["livro"], 999), m["cap"], m["vers"] if m["vers"] is not None else 0,
-                                           m["palavra_id"] or 0, m["codigo"]))
+    marcas = sorted(
+        M.lista,
+        key=lambda m: (ordem.get(m["livro"], 999), m["cap"], m["vers"] if m["vers"] is not None else 0, m["palavra_id"] or 0, m["codigo"]),
+    )
     with open(os.path.join(OUT, "marcas.json"), "w", encoding="utf8") as f:
         f.write("[\n" + ",\n".join(json.dumps(m, ensure_ascii=False) for m in marcas) + "\n]\n")
     por_cap = defaultdict(Counter)
@@ -1300,7 +2050,7 @@ def escrever(M, d, escopo, t0):
         por_cap[(m["livro"], m["cap"])][m["nivel"]] += 1
     with open(os.path.join(OUT, "resumo.tsv"), "w", encoding="utf8") as f:
         f.write("livro\tcap\tn_erros\tn_avisos\tn_info\n")
-        for (b, c) in sorted(por_cap, key=lambda k: (ordem.get(k[0], 999), k[1])):
+        for b, c in sorted(por_cap, key=lambda k: (ordem.get(k[0], 999), k[1])):
             n = por_cap[(b, c)]
             f.write(f"{b}\t{c}\t{n['erro']}\t{n['aviso']}\t{n['info']}\n")
     por_cod = defaultdict(Counter)
@@ -1309,8 +2059,9 @@ def escrever(M, d, escopo, t0):
     for m in marcas:
         por_cod[m["codigo"]][m["nivel"]] += 1
         por_livro[m["livro"]][m["nivel"]] += 1
-        if len(exemplos[m["codigo"]]) < 3 and (not exemplos[m["codigo"]] or
-                                               exemplos[m["codigo"]][-1]["livro"] != m["livro"] or len(marcas) < 50):
+        if len(exemplos[m["codigo"]]) < 3 and (
+            not exemplos[m["codigo"]] or exemplos[m["codigo"]][-1]["livro"] != m["livro"] or len(marcas) < 50
+        ):
             exemplos[m["codigo"]].append(m)
     for m in marcas:  # completa exemplos quando o código só aparece num livro
         if len(exemplos[m["codigo"]]) < 3 and m not in exemplos[m["codigo"]]:
@@ -1322,13 +2073,20 @@ def escrever(M, d, escopo, t0):
             textos[w[ID]] = w
     abrev = {r[1]: r[3] for r in d.livros}
     esc = "Bíblia inteira" if escopo == (None, None) else " ".join(str(x) for x in escopo if x is not None)
-    L = [f"# Relatório de revisão automática — {esc}", "",
-         f"Gerado por `scripts/revisar.py` em {time.strftime('%Y-%m-%d %H:%M')} ({time.time() - t0:.0f}s). "
-         f"Catálogo: `docs/REVISOES.md`.", "",
-         f"**Total:** {len(marcas)} marcas — "
-         f"{sum(c['erro'] for c in por_cod.values())} erros, {sum(c['aviso'] for c in por_cod.values())} avisos, "
-         f"{sum(c['info'] for c in por_cod.values())} informativas.", "",
-         "## Totais por código", "", "| Código | Erros | Avisos | Info | Total |", "|---|---:|---:|---:|---:|"]
+    L = [
+        f"# Relatório de revisão automática — {esc}",
+        "",
+        f"Gerado por `scripts/revisar.py` em {time.strftime('%Y-%m-%d %H:%M')} ({time.time() - t0:.0f}s). Catálogo: `docs/REVISOES.md`.",
+        "",
+        f"**Total:** {len(marcas)} marcas — "
+        f"{sum(c['erro'] for c in por_cod.values())} erros, {sum(c['aviso'] for c in por_cod.values())} avisos, "
+        f"{sum(c['info'] for c in por_cod.values())} informativas.",
+        "",
+        "## Totais por código",
+        "",
+        "| Código | Erros | Avisos | Info | Total |",
+        "|---|---:|---:|---:|---:|",
+    ]
     for cod in sorted(por_cod):
         c = por_cod[cod]
         L.append(f"| {cod} | {c['erro']} | {c['aviso']} | {c['info']} | {sum(c.values())} |")

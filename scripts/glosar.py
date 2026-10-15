@@ -14,11 +14,12 @@ Grava em saida/biblia.sqlite: palavras.glosa, palavras.glosa_fonte e a tabela tr
 
 Uso: python3 scripts/glosar.py
 """
+
 import csv
-import gzip
-import hashlib
 import difflib
 import glob
+import gzip
+import hashlib
 import os
 import re
 import sqlite3
@@ -113,23 +114,69 @@ def ler_links(arq):
 
 # ------------------------------------------------------------- regras fixas
 ARTIGO_G = {  # caso + gênero + número → artigo português
-    ("N", "M", "S"): "o", ("N", "F", "S"): "a", ("N", "N", "S"): "o",
-    ("N", "M", "P"): "os", ("N", "F", "P"): "as", ("N", "N", "P"): "os",
-    ("A", "M", "S"): "o", ("A", "F", "S"): "a", ("A", "N", "S"): "o",
-    ("A", "M", "P"): "os", ("A", "F", "P"): "as", ("A", "N", "P"): "os",
-    ("G", "M", "S"): "do", ("G", "F", "S"): "da", ("G", "N", "S"): "do",
-    ("G", "M", "P"): "dos", ("G", "F", "P"): "das", ("G", "N", "P"): "dos",
-    ("D", "M", "S"): "ao", ("D", "F", "S"): "à", ("D", "N", "S"): "ao",
-    ("D", "M", "P"): "aos", ("D", "F", "P"): "às", ("D", "N", "P"): "aos",
+    ("N", "M", "S"): "o",
+    ("N", "F", "S"): "a",
+    ("N", "N", "S"): "o",
+    ("N", "M", "P"): "os",
+    ("N", "F", "P"): "as",
+    ("N", "N", "P"): "os",
+    ("A", "M", "S"): "o",
+    ("A", "F", "S"): "a",
+    ("A", "N", "S"): "o",
+    ("A", "M", "P"): "os",
+    ("A", "F", "P"): "as",
+    ("A", "N", "P"): "os",
+    ("G", "M", "S"): "do",
+    ("G", "F", "S"): "da",
+    ("G", "N", "S"): "do",
+    ("G", "M", "P"): "dos",
+    ("G", "F", "P"): "das",
+    ("G", "N", "P"): "dos",
+    ("D", "M", "S"): "ao",
+    ("D", "F", "S"): "à",
+    ("D", "N", "S"): "ao",
+    ("D", "M", "P"): "aos",
+    ("D", "F", "P"): "às",
+    ("D", "N", "P"): "aos",
 }
 
 PRE_H = {"p_c": "e", "p_d": "o", "p_b": "em", "p_l": "para", "p_k": "como", "p_m": "de", "p_s": "que", "p_i": "acaso"}
-SUF_NOME = {"1cs": "meu", "2ms": "teu", "2fs": "teu", "3ms": "dele", "3fs": "dela", "1cp": "nosso",
-            "2mp": "vosso", "2fp": "vosso", "3mp": "deles", "3fp": "delas"}
-SUF_VERBO = {"1cs": "me", "2ms": "te", "2fs": "te", "3ms": "o", "3fs": "a", "1cp": "nos",
-             "2mp": "vos", "2fp": "vos", "3mp": "os", "3fp": "as"}
-SUF_PREP = {"1cs": "mim", "2ms": "ti", "2fs": "ti", "3ms": "ele", "3fs": "ela", "1cp": "nós",
-            "2mp": "vós", "2fp": "vós", "3mp": "eles", "3fp": "elas"}
+SUF_NOME = {
+    "1cs": "meu",
+    "2ms": "teu",
+    "2fs": "teu",
+    "3ms": "dele",
+    "3fs": "dela",
+    "1cp": "nosso",
+    "2mp": "vosso",
+    "2fp": "vosso",
+    "3mp": "deles",
+    "3fp": "delas",
+}
+SUF_VERBO = {
+    "1cs": "me",
+    "2ms": "te",
+    "2fs": "te",
+    "3ms": "o",
+    "3fs": "a",
+    "1cp": "nos",
+    "2mp": "vos",
+    "2fp": "vos",
+    "3mp": "os",
+    "3fp": "as",
+}
+SUF_PREP = {
+    "1cs": "mim",
+    "2ms": "ti",
+    "2fs": "ti",
+    "3ms": "ele",
+    "3fs": "ela",
+    "1cp": "nós",
+    "2mp": "vós",
+    "2fp": "vós",
+    "3mp": "eles",
+    "3fp": "elas",
+}
 
 
 def glosa_regra_suf(tok, morph):
@@ -149,8 +196,40 @@ def tokens_pt(texto):
     return [(m.group(0), m.start(), m.end()) for m in TOKEN_PT.finditer(texto)]
 
 
-STOP_PT = set("""o a os as de do da dos das em no na nos nas e ao aos à às se por pelo pela
-pelos pelas para com que lhe lhes""".split())
+STOP_PT = set(
+    [
+        "o",
+        "a",
+        "os",
+        "as",
+        "de",
+        "do",
+        "da",
+        "dos",
+        "das",
+        "em",
+        "no",
+        "na",
+        "nos",
+        "nas",
+        "e",
+        "ao",
+        "aos",
+        "à",
+        "às",
+        "se",
+        "por",
+        "pelo",
+        "pela",
+        "pelos",
+        "pelas",
+        "para",
+        "com",
+        "que",
+        "lhe",
+        "lhes",
+    ]
+)
 
 
 def pos_raiz(lingua, morph):
@@ -186,11 +265,29 @@ def chaves_fallback(toks, lingua, morph):
     return [(pre, raiz, mr), (raiz, mr), (raiz, morf_curta(lingua, mr)), (pre, raiz), raiz]
 
 
-CONTRACOES = [("em-o", "no"), ("em-a", "na"), ("em-os", "nos"), ("em-as", "nas"), ("de-o", "do"),
-              ("de-a", "da"), ("de-os", "dos"), ("de-as", "das"), ("a-o", "ao"), ("a-os", "aos"),
-              ("em-ele", "nele"), ("em-ela", "nela"), ("em-eles", "neles"), ("em-elas", "nelas"),
-              ("de-ele", "dele"), ("de-ela", "dela"), ("de-eles", "deles"), ("de-elas", "delas"),
-              ("em-um", "num"), ("em-uma", "numa"), ("de-um", "dum")]
+CONTRACOES = [
+    ("em-o", "no"),
+    ("em-a", "na"),
+    ("em-os", "nos"),
+    ("em-as", "nas"),
+    ("de-o", "do"),
+    ("de-a", "da"),
+    ("de-os", "dos"),
+    ("de-as", "das"),
+    ("a-o", "ao"),
+    ("a-os", "aos"),
+    ("em-ele", "nele"),
+    ("em-ela", "nela"),
+    ("em-eles", "neles"),
+    ("em-elas", "nelas"),
+    ("de-ele", "dele"),
+    ("de-ela", "dela"),
+    ("de-eles", "deles"),
+    ("de-elas", "delas"),
+    ("em-um", "num"),
+    ("em-uma", "numa"),
+    ("de-um", "dum"),
+]
 
 
 def contrair(g):
@@ -261,8 +358,8 @@ def alinhar(itens, nome):
             al = eflomal.Aligner(model=3, n_samplers=2)
             al.align(src, trg, links_filename_fwd=fwd, links_filename_rev=rev, quiet=True)
             print(f"  eflomal {nome}: {len(src)} versículos em {time.time() - t0:.0f}s")
-        fw = open(fwd, encoding="utf8").read().split("\n")[:len(src)]
-        rv = open(rev, encoding="utf8").read().split("\n")[:len(src)]
+        fw = open(fwd, encoding="utf8").read().split("\n")[: len(src)]
+        rv = open(rev, encoding="utf8").read().split("\n")[: len(src)]
         pares = list(zip(fw, rv))
         os.makedirs(os.path.dirname(salvo), exist_ok=True)
         with gzip.open(salvo, "wt", encoding="utf8", compresslevel=9) as f:
@@ -270,8 +367,10 @@ def alinhar(itens, nome):
             f.writelines(f"{a}\t{b}\n" for a, b in pares)
     else:
         print(f"  {nome}: alinhamento salvo reaproveitado ({os.path.relpath(salvo, ROOT)})")
+
     def _links(linha):
         return {tuple(map(int, p.split("-"))) for p in linha.split()}
+
     links = []
     for it, (a, b) in zip(itens, ((_links(x), _links(y)) for x, y in pares)):
         idx = [ui for ui, u in enumerate(it[4]) if u[1] != "fora"]  # índice no alinhamento → unidade
@@ -330,8 +429,7 @@ def compor(itens, links):
         for wi, r in enumerate(pals):
             d = por_palavra[wi]
             # raiz de conteúdo (verbo, nome, adjetivo) ligada só a artigo/preposição: alinhamento espúrio
-            if d["raiz"] and pos_raiz(r[4], r[8]) in ("V", "N", "A") and \
-                    all(toks[j][0].lower() in STOP_PT for j in d["raiz"]):
+            if d["raiz"] and pos_raiz(r[4], r[8]) in ("V", "N", "A") and all(toks[j][0].lower() in STOP_PT for j in d["raiz"]):
                 d["raiz"] = set()
             js = sorted(d["raiz"] | d["pre"] | d["suf"])
             if js:
@@ -439,10 +537,9 @@ def sem_acento(s):
 
 def _ini(t):
     t = sem_acento(t).lower()
-    for a, b in (("ph", "p"), ("f", "p"), ("th", "t"), ("ch", "c"), ("kh", "c"), ("k", "c"), ("q", "c"),
-                 ("y", "i"), ("j", "i"), ("h", "")):
+    for a, b in (("ph", "p"), ("f", "p"), ("th", "t"), ("ch", "c"), ("kh", "c"), ("k", "c"), ("q", "c"), ("y", "i"), ("j", "i"), ("h", "")):
         if t.startswith(a):
-            t = b + t[len(a):]
+            t = b + t[len(a) :]
     return t[:1]
 
 
@@ -459,12 +556,19 @@ def nome_parecido(alvo, texto):
         return None
     # Empate (Sansão e Samuel para Sampson): desempata pela comparação no outro sentido e, por fim, pela ordem
     # alfabética, para o resultado não depender da ordem do set (que muda a cada execução do Python).
-    m = max(sorted(cands), key=lambda t: (parecido(t, alvo),
-                                          difflib.SequenceMatcher(None, sem_acento(alvo).lower(), sem_acento(t).lower()).ratio()))
+    m = max(
+        sorted(cands),
+        key=lambda t: (parecido(t, alvo), difflib.SequenceMatcher(None, sem_acento(alvo).lower(), sem_acento(t).lower()).ratio()),
+    )
     return m if parecido(m, alvo) >= 0.75 else None
 
 
-GR_LAT = dict(zip("αβγδεζηθικλμνξοπρστυφχψως", ["a", "b", "g", "d", "e", "z", "e", "th", "i", "k", "l", "m", "n", "x", "o", "p", "r", "s", "t", "u", "ph", "ch", "ps", "o", "s"]))
+GR_LAT = dict(
+    zip(
+        "αβγδεζηθικλμνξοπρστυφχψως",
+        ["a", "b", "g", "d", "e", "z", "e", "th", "i", "k", "l", "m", "n", "x", "o", "p", "r", "s", "t", "u", "ph", "ch", "ps", "o", "s"],
+    )
+)
 
 
 def nome_de_xlit(x):
@@ -475,7 +579,330 @@ def nome_de_xlit(x):
     return x[:1].upper() + x[1:] if x else ""
 
 
-GLOSAS_RARAS = {'I accompany': 'acompanho', 'I am exceedingly abundant': 'transbordo', 'I am with': 'estou com', 'I apportion': 'reparto', 'I change for the worse': 'pioro', 'I embark': 'embarco', 'I encourage': 'encorajo', 'I enter': 'entro', 'I mediate': 'sirvo de mediador', 'I pay': 'pago', 'I rise up against': 'levanto-me contra', 'I rise up together against': 'levantam-se juntos contra', 'I stick fast': 'fico preso', 'I wait': 'espero', 'Susanchites': 'susanquitas', 'Trachonitis': 'Traconites', 'a business': 'negócio', 'a casting': 'fundição', 'a joint of the body': 'junta', 'an enslaver': 'traficante de escravos', 'bad': 'mau', 'bark': 'casca', 'be darkened': 'escurecer', 'be put': 'ser posto', 'belonging to a mill': 'de moinho', 'better': 'melhor', 'bough': 'ramo', 'buy': 'comprar', 'chamber': 'câmara', 'cheerful': 'alegre', 'cloud': 'nuvem', 'compare': 'comparar', 'continually': 'continuamente', 'covert': 'abrigo', 'cry': 'clamor', 'damage': 'dano', 'deceit': 'engano', 'deck': 'enfeitar', 'deity': 'divindade', 'earnestly': 'com insistência', 'excellency': 'excelência', 'fierce': 'feroz', 'fisher': 'pescador', 'gather together': 'ajuntar', 'grief': 'tristeza', 'grieve': 'entristecer', 'habitation': 'morada', 'he': 'ele', 'in better health': 'melhorando', 'incense': 'incenso', 'indescribable': 'indescritível', 'joyous': 'alegre', 'left-handed': 'canhoto', 'living in the sea': 'marinho', 'lower': 'inferior', 'mercy': 'misericórdia', 'natural force': 'vigor', 'near kinswomen': 'parentas próximas', 'noise': 'barulho', 'otherwise': 'de outro modo', 'paternal': 'paterno', 'psaltery': 'saltério', 'purple': 'púrpura', 'put': 'pôr', 'respectful of what is divine': 'reverente', 'roaring': 'rugido', 'ruler': 'governante', 'scrip': 'alforje', 'stamp': 'pisar', 'standing': 'em pé', 'strive': 'lutar', 'subject to a husband': 'submissa ao marido', 'that is spread': 'estendido', 'that ought to be put': 'que se deve pôr', 'threshingfloor': 'eira', 'violence': 'violência', 'ye': 'vós', 'consume': 'consumir', 'child': 'filho', 'ancient': 'antigo', 'damsel': 'moça', 'cake': 'bolo', 'cutting': 'corte', 'kernel': 'semente', 'be an enemy': 'ser inimigo', '?': 'medida', '?': '?', 'Dehavites': 'daavitas', 'I am like': 'sou semelhante', 'I am out of my senses': 'estou fora de mim', 'I anticipate': 'antecipo', 'I bear away together with': 'levo junto', 'I bind around': 'amarro em volta', 'I burn with lust': 'ardo de desejo', 'I buy': 'compro', 'I cause to appear': 'faço aparecer', 'I cleanse': 'purifico', 'I come together with': 'junto-me', 'I compare': 'comparo', 'I cool': 'refresco', 'I crush': 'esmago', 'I drive away': 'expulso', 'I envy': 'invejo', 'I faint': 'desfaleço', 'I fatten': 'engordo', 'I fill completely': 'encho por completo', 'I frighten': 'amedronto', 'I have dealings with': 'tenho trato com', 'I have preeminence': 'tenho a primazia', 'I insult': 'insulto', 'I journey to': 'viajo para', 'I leap upon': 'salto sobre', 'I listen to': 'escuto', 'I resist': 'resisto', 'I roar': 'rujo', 'I rob': 'roubo', 'I roll or gather together': 'enrolo', 'I sail over': 'navego', 'I sink': 'afundo', 'I subject to regulations': 'sujeito a regras', 'I submit to': 'submeto-me', 'I take away': 'tiro', 'I turn': 'volto', 'I wait upon': 'sirvo', 'a captive': 'cativo', 'a festival assembly': 'assembleia festiva', 'a foster brother': 'irmão de criação', 'a freedman': 'liberto', 'a pail': 'balde', 'a reporter': 'relator', 'a state': 'estado', 'afore': 'antes', 'an old man': 'velho', 'angels': 'anjos', 'be meet': 'convir', 'belonging to old women': 'de velhas', 'bind': 'atar', 'break off': 'romper', 'burden': 'carga', 'burn': 'queimar', 'burning': 'queimadura', 'confusion': 'confusão', 'counsellor': 'conselheiro', 'courtiers': 'cortesãos', 'cruel': 'cruel', 'debtor': 'devedor', 'displease': 'desagradar', 'dissonant': 'dissonante', 'endure': 'durar', 'favour': 'favor', 'fellow-elect': 'coeleita', 'flight': 'fuga', 'froward': 'perverso', 'full of astonishment': 'cheio de espanto', 'gain': 'lucro', 'gall': 'fel', 'go': 'ir', 'going down': 'descida', 'gourd': 'cabaça', 'have maintenance': 'ser sustentado', 'help': 'ajuda', 'hunting': 'caça', 'image': 'imagem', 'improvement': 'melhoria', 'in secret': 'em segredo', 'inviolable': 'inviolável', 'island': 'ilha', 'join': 'unir', 'joyfully': 'com alegria', 'light': 'luz', 'living': 'vivo', 'mire': 'lama', 'not yet': 'ainda não', 'offscouring': 'escória', 'on high': 'no alto', 'perfection': 'perfeição', 'poor': 'pobre', 'rage': 'fúria', 'ready': 'pronto', 'recovery of sight': 'recuperação da vista', 'remain': 'ficar', 'roused out of sleep': 'despertado', 'scrapings': 'raspas', 'shout': 'grito', 'shut': 'fechar', 'smote': 'feriu', 'spoil': 'despojo', 'spread': 'estender', 'stay': 'ficar', 'strength': 'força', 'strong': 'forte', 'sun': 'sol', 'swearing by': 'jurando por', 'than': 'que', 'thee': 'a ti', 'think': 'pensar', 'treasurer': 'tesoureiro', 'uncountable': 'incontável', 'under': 'debaixo', 'unseemly': 'indecoroso', 'used': 'usado', 'very compassionate': 'muito compassivo', 'very rainy': 'muito chuvoso', 'waste': 'desolação', 'whom': 'quem', 'work': 'obra', 'lifting up of self': 'exaltação', 'cause': 'causa', 'any': 'algo', 'destruction': 'destruição', 'do secretly': 'fazer em segredo', 'drink offering': 'libação', 'earth': 'terra', 'hat': 'chapéu', 'point out': 'indicar', 'prophesy': 'profetizar', 'reach': 'alcançar', 'seal': 'selo', 'sedition': 'sedição', 'chapiter': 'capitel', 'muffler': 'véu', 'youth': 'juventude', 'clay': 'barro', 'drought': 'seca', 'grave': 'sepultura', 'heart': 'coração', 'sound': 'som', 'very early in the morning': 'de madrugada', 'watching': 'vigília', 'chain': 'corrente', 'shovel': 'pá', 'brier': 'espinheiro', 'fire': 'fogo', 'certain': 'certo', 'cote': 'curral', 'depth': 'profundeza', 'Ethanim': 'Etanim', 'I am in': 'estou em', 'I am in the middle': 'estou no meio', 'I appear': 'apareço', 'I conceal': 'escondo', 'I dissemble with': 'finjo junto', 'I enter secretly': 'entro às escondidas', 'I help': 'ajudo', 'I join closely': 'uno-me estreitamente', 'I overturn': 'derrubo', 'I practice soothsaying': 'pratico adivinhação', 'I receive in my turn': 'recebo em troca', 'I search diligently': 'busco com cuidado', 'I sew on': 'costuro', 'I strike': 'golpeio', 'I throw at in opposition': 'atiro contra', 'a Roman measure': 'medida romana', 'a cause of stumbling': 'tropeço', 'a narrative': 'narrativa', 'a noose or snare': 'laço', 'a particle asking a question': 'acaso', 'a porch': 'pórtico', 'a prayer or prayer for evil': 'imprecação', 'a prison': 'prisão', 'a proof': 'prova', 'a successor': 'sucessor', 'a young bird': 'filhote', 'an apron': 'avental', 'banquet': 'banquete', 'be poured': 'ser derramado', 'bend': 'curvar', 'blemish': 'defeito', 'bodily': 'corporal', 'chariot': 'carro', 'cleanness': 'pureza', 'cleave': 'apegar-se', 'company of horses': 'cavalaria', 'compass': 'rodear', 'confiscation': 'confisco', 'cover with a cloud': 'cobrir de nuvem', 'crave': 'desejar', 'darkness': 'trevas', 'destined to suffer': 'destinado a sofrer', 'disappearing': 'desaparecimento', 'doing of good': 'prática do bem', 'dulcimer': 'saltério', 'evil-mindedness': 'malícia', 'far': 'longe', 'garment': 'veste', 'gather': 'juntar', 'greater': 'maior', 'intent': 'intenção', 'jacinth': 'jacinto', 'knee': 'joelho', 'like': 'como', 'loin': 'lombo', 'mark': 'marca', 'more abundantly': 'mais abundantemente', 'mournfully': 'tristemente', 'naked': 'nu', 'on the second day': 'no segundo dia', 'one': 'um', 'other': 'outro', 'palmer-worm': 'lagarta', 'pursuing': 'perseguição', 'refreshing': 'refrigério', 'righteousness': 'justiça', 'sneeze': 'espirrar', 'solace': 'consolo', 'somewhere': 'em algum lugar', 'spice': 'especiaria', 'stamping': 'pisoteio', 'sup up': 'sorver', 'the proclamation of an appointment': 'proclamação', 'the skin': 'a pele', 'traffic': 'comércio', 'treasure': 'tesouro', 'tribe': 'tribo', 'wailing': 'lamento', 'wheel': 'roda', 'where': 'onde', 'wild ass': 'jumento selvagem', 'window': 'janela', 'winged': 'alado', 'without': 'sem', 'wrath': 'ira', 'yell': 'gritar'}  # inglês → português (palavras raras sem verbete traduzido)
+GLOSAS_RARAS = {
+    "I accompany": "acompanho",
+    "I am exceedingly abundant": "transbordo",
+    "I am with": "estou com",
+    "I apportion": "reparto",
+    "I change for the worse": "pioro",
+    "I embark": "embarco",
+    "I encourage": "encorajo",
+    "I enter": "entro",
+    "I mediate": "sirvo de mediador",
+    "I pay": "pago",
+    "I rise up against": "levanto-me contra",
+    "I rise up together against": "levantam-se juntos contra",
+    "I stick fast": "fico preso",
+    "I wait": "espero",
+    "Susanchites": "susanquitas",
+    "Trachonitis": "Traconites",
+    "a business": "negócio",
+    "a casting": "fundição",
+    "a joint of the body": "junta",
+    "an enslaver": "traficante de escravos",
+    "bad": "mau",
+    "bark": "casca",
+    "be darkened": "escurecer",
+    "be put": "ser posto",
+    "belonging to a mill": "de moinho",
+    "better": "melhor",
+    "bough": "ramo",
+    "buy": "comprar",
+    "chamber": "câmara",
+    "cheerful": "alegre",
+    "cloud": "nuvem",
+    "compare": "comparar",
+    "continually": "continuamente",
+    "covert": "abrigo",
+    "cry": "clamor",
+    "damage": "dano",
+    "deceit": "engano",
+    "deck": "enfeitar",
+    "deity": "divindade",
+    "earnestly": "com insistência",
+    "excellency": "excelência",
+    "fierce": "feroz",
+    "fisher": "pescador",
+    "gather together": "ajuntar",
+    "grief": "tristeza",
+    "grieve": "entristecer",
+    "habitation": "morada",
+    "he": "ele",
+    "in better health": "melhorando",
+    "incense": "incenso",
+    "indescribable": "indescritível",
+    "joyous": "alegre",
+    "left-handed": "canhoto",
+    "living in the sea": "marinho",
+    "lower": "inferior",
+    "mercy": "misericórdia",
+    "natural force": "vigor",
+    "near kinswomen": "parentas próximas",
+    "noise": "barulho",
+    "otherwise": "de outro modo",
+    "paternal": "paterno",
+    "psaltery": "saltério",
+    "purple": "púrpura",
+    "put": "pôr",
+    "respectful of what is divine": "reverente",
+    "roaring": "rugido",
+    "ruler": "governante",
+    "scrip": "alforje",
+    "stamp": "pisar",
+    "standing": "em pé",
+    "strive": "lutar",
+    "subject to a husband": "submissa ao marido",
+    "that is spread": "estendido",
+    "that ought to be put": "que se deve pôr",
+    "threshingfloor": "eira",
+    "violence": "violência",
+    "ye": "vós",
+    "consume": "consumir",
+    "child": "filho",
+    "ancient": "antigo",
+    "damsel": "moça",
+    "cake": "bolo",
+    "cutting": "corte",
+    "kernel": "semente",
+    "be an enemy": "ser inimigo",
+    "?": "?",
+    "Dehavites": "daavitas",
+    "I am like": "sou semelhante",
+    "I am out of my senses": "estou fora de mim",
+    "I anticipate": "antecipo",
+    "I bear away together with": "levo junto",
+    "I bind around": "amarro em volta",
+    "I burn with lust": "ardo de desejo",
+    "I buy": "compro",
+    "I cause to appear": "faço aparecer",
+    "I cleanse": "purifico",
+    "I come together with": "junto-me",
+    "I compare": "comparo",
+    "I cool": "refresco",
+    "I crush": "esmago",
+    "I drive away": "expulso",
+    "I envy": "invejo",
+    "I faint": "desfaleço",
+    "I fatten": "engordo",
+    "I fill completely": "encho por completo",
+    "I frighten": "amedronto",
+    "I have dealings with": "tenho trato com",
+    "I have preeminence": "tenho a primazia",
+    "I insult": "insulto",
+    "I journey to": "viajo para",
+    "I leap upon": "salto sobre",
+    "I listen to": "escuto",
+    "I resist": "resisto",
+    "I roar": "rujo",
+    "I rob": "roubo",
+    "I roll or gather together": "enrolo",
+    "I sail over": "navego",
+    "I sink": "afundo",
+    "I subject to regulations": "sujeito a regras",
+    "I submit to": "submeto-me",
+    "I take away": "tiro",
+    "I turn": "volto",
+    "I wait upon": "sirvo",
+    "a captive": "cativo",
+    "a festival assembly": "assembleia festiva",
+    "a foster brother": "irmão de criação",
+    "a freedman": "liberto",
+    "a pail": "balde",
+    "a reporter": "relator",
+    "a state": "estado",
+    "afore": "antes",
+    "an old man": "velho",
+    "angels": "anjos",
+    "be meet": "convir",
+    "belonging to old women": "de velhas",
+    "bind": "atar",
+    "break off": "romper",
+    "burden": "carga",
+    "burn": "queimar",
+    "burning": "queimadura",
+    "confusion": "confusão",
+    "counsellor": "conselheiro",
+    "courtiers": "cortesãos",
+    "cruel": "cruel",
+    "debtor": "devedor",
+    "displease": "desagradar",
+    "dissonant": "dissonante",
+    "endure": "durar",
+    "favour": "favor",
+    "fellow-elect": "coeleita",
+    "flight": "fuga",
+    "froward": "perverso",
+    "full of astonishment": "cheio de espanto",
+    "gain": "lucro",
+    "gall": "fel",
+    "go": "ir",
+    "going down": "descida",
+    "gourd": "cabaça",
+    "have maintenance": "ser sustentado",
+    "help": "ajuda",
+    "hunting": "caça",
+    "image": "imagem",
+    "improvement": "melhoria",
+    "in secret": "em segredo",
+    "inviolable": "inviolável",
+    "island": "ilha",
+    "join": "unir",
+    "joyfully": "com alegria",
+    "light": "luz",
+    "living": "vivo",
+    "mire": "lama",
+    "not yet": "ainda não",
+    "offscouring": "escória",
+    "on high": "no alto",
+    "perfection": "perfeição",
+    "poor": "pobre",
+    "rage": "fúria",
+    "ready": "pronto",
+    "recovery of sight": "recuperação da vista",
+    "remain": "ficar",
+    "roused out of sleep": "despertado",
+    "scrapings": "raspas",
+    "shout": "grito",
+    "shut": "fechar",
+    "smote": "feriu",
+    "spoil": "despojo",
+    "spread": "estender",
+    "stay": "ficar",
+    "strength": "força",
+    "strong": "forte",
+    "sun": "sol",
+    "swearing by": "jurando por",
+    "than": "que",
+    "thee": "a ti",
+    "think": "pensar",
+    "treasurer": "tesoureiro",
+    "uncountable": "incontável",
+    "under": "debaixo",
+    "unseemly": "indecoroso",
+    "used": "usado",
+    "very compassionate": "muito compassivo",
+    "very rainy": "muito chuvoso",
+    "waste": "desolação",
+    "whom": "quem",
+    "work": "obra",
+    "lifting up of self": "exaltação",
+    "cause": "causa",
+    "any": "algo",
+    "destruction": "destruição",
+    "do secretly": "fazer em segredo",
+    "drink offering": "libação",
+    "earth": "terra",
+    "hat": "chapéu",
+    "point out": "indicar",
+    "prophesy": "profetizar",
+    "reach": "alcançar",
+    "seal": "selo",
+    "sedition": "sedição",
+    "chapiter": "capitel",
+    "muffler": "véu",
+    "youth": "juventude",
+    "clay": "barro",
+    "drought": "seca",
+    "grave": "sepultura",
+    "heart": "coração",
+    "sound": "som",
+    "very early in the morning": "de madrugada",
+    "watching": "vigília",
+    "chain": "corrente",
+    "shovel": "pá",
+    "brier": "espinheiro",
+    "fire": "fogo",
+    "certain": "certo",
+    "cote": "curral",
+    "depth": "profundeza",
+    "Ethanim": "Etanim",
+    "I am in": "estou em",
+    "I am in the middle": "estou no meio",
+    "I appear": "apareço",
+    "I conceal": "escondo",
+    "I dissemble with": "finjo junto",
+    "I enter secretly": "entro às escondidas",
+    "I help": "ajudo",
+    "I join closely": "uno-me estreitamente",
+    "I overturn": "derrubo",
+    "I practice soothsaying": "pratico adivinhação",
+    "I receive in my turn": "recebo em troca",
+    "I search diligently": "busco com cuidado",
+    "I sew on": "costuro",
+    "I strike": "golpeio",
+    "I throw at in opposition": "atiro contra",
+    "a Roman measure": "medida romana",
+    "a cause of stumbling": "tropeço",
+    "a narrative": "narrativa",
+    "a noose or snare": "laço",
+    "a particle asking a question": "acaso",
+    "a porch": "pórtico",
+    "a prayer or prayer for evil": "imprecação",
+    "a prison": "prisão",
+    "a proof": "prova",
+    "a successor": "sucessor",
+    "a young bird": "filhote",
+    "an apron": "avental",
+    "banquet": "banquete",
+    "be poured": "ser derramado",
+    "bend": "curvar",
+    "blemish": "defeito",
+    "bodily": "corporal",
+    "chariot": "carro",
+    "cleanness": "pureza",
+    "cleave": "apegar-se",
+    "company of horses": "cavalaria",
+    "compass": "rodear",
+    "confiscation": "confisco",
+    "cover with a cloud": "cobrir de nuvem",
+    "crave": "desejar",
+    "darkness": "trevas",
+    "destined to suffer": "destinado a sofrer",
+    "disappearing": "desaparecimento",
+    "doing of good": "prática do bem",
+    "dulcimer": "saltério",
+    "evil-mindedness": "malícia",
+    "far": "longe",
+    "garment": "veste",
+    "gather": "juntar",
+    "greater": "maior",
+    "intent": "intenção",
+    "jacinth": "jacinto",
+    "knee": "joelho",
+    "like": "como",
+    "loin": "lombo",
+    "mark": "marca",
+    "more abundantly": "mais abundantemente",
+    "mournfully": "tristemente",
+    "naked": "nu",
+    "on the second day": "no segundo dia",
+    "one": "um",
+    "other": "outro",
+    "palmer-worm": "lagarta",
+    "pursuing": "perseguição",
+    "refreshing": "refrigério",
+    "righteousness": "justiça",
+    "sneeze": "espirrar",
+    "solace": "consolo",
+    "somewhere": "em algum lugar",
+    "spice": "especiaria",
+    "stamping": "pisoteio",
+    "sup up": "sorver",
+    "the proclamation of an appointment": "proclamação",
+    "the skin": "a pele",
+    "traffic": "comércio",
+    "treasure": "tesouro",
+    "tribe": "tribo",
+    "wailing": "lamento",
+    "wheel": "roda",
+    "where": "onde",
+    "wild ass": "jumento selvagem",
+    "window": "janela",
+    "winged": "alado",
+    "without": "sem",
+    "wrath": "ira",
+    "yell": "gritar",
+}  # inglês → português (palavras raras sem verbete traduzido)
 
 
 def ajustes_finais(res, contagem, pref, textos, lexico):
@@ -502,12 +929,20 @@ def ajustes_finais(res, contagem, pref, textos, lexico):
             continue
         if glosa and rend and nome_proprio(lingua, morph, lema):
             # nome no começo da frase perdeu a maiúscula (hendã → Hendã)
-            fix = lambda t: t[:1].upper() + t[1:] if len(t) > 2 and t[:1].islower() and re.search(r"(?<!\w)" + re.escape(t[:1].upper() + t[1:]) + r"(?!\w)", texto) else t
+            fix = lambda t: (
+                t[:1].upper() + t[1:]
+                if len(t) > 2 and t[:1].islower() and re.search(r"(?<!\w)" + re.escape(t[:1].upper() + t[1:]) + r"(?!\w)", texto)
+                else t
+            )
             rend = "-".join(fix(t) for t in rend.split("-"))
             glosa = item[1] = "-".join(fix(t) for t in glosa.split("-"))
         capsg = [t for t in (glosa or "").split("-") if t[:1].isupper() and len(t) > 1]
-        if glosa and nome_proprio(lingua, morph, lema) and len(capsg) > 1 and \
-                not re.search(r"(?<!\w)" + r"[- ]".join(map(re.escape, capsg)) + r"(?!\w)", texto):
+        if (
+            glosa
+            and nome_proprio(lingua, morph, lema)
+            and len(capsg) > 1
+            and not re.search(r"(?<!\w)" + r"[- ]".join(map(re.escape, capsg)) + r"(?!\w)", texto)
+        ):
             rend = glosa
             # dois nomes colados (Tamar-Perez): fica o mais parecido com a transliteração
             alvo = nome_de_xlit((lexico.get(r[7]) or {}).get("xlit") or lema)
@@ -525,9 +960,10 @@ def ajustes_finais(res, contagem, pref, textos, lexico):
             alvo = nome_de_xlit((lexico.get(r[7]) or {}).get("xlit") or lema)
             caps = [t for t in rend.split("-") if t[:1].isupper()]
             achado = nome_parecido(alvo, texto)
-            if caps and achado and achado not in caps and \
-                    parecido(achado, alvo) > max(parecido(t, alvo) for t in caps) + 0.2:
-                item[1] = "-".join(t for t in glosa.split("-") if not t[:1].isupper()) + ("-" if glosa.split("-")[0][:1].islower() and len(glosa.split("-")) > 1 else "")
+            if caps and achado and achado not in caps and parecido(achado, alvo) > max(parecido(t, alvo) for t in caps) + 0.2:
+                item[1] = "-".join(t for t in glosa.split("-") if not t[:1].isupper()) + (
+                    "-" if glosa.split("-")[0][:1].islower() and len(glosa.split("-")) > 1 else ""
+                )
                 item[1] = (item[1] + achado) if item[1].endswith("-") else achado
                 item[2] = "regra"
                 n["nome próprio pela transliteração"] += 1
@@ -535,10 +971,15 @@ def ajustes_finais(res, contagem, pref, textos, lexico):
             nome = pref.get(raiz_tok)
             outros = {nm for rt, nm in nomes_verso[(r[1], r[2], r[3])] if rt != raiz_tok}
             alvo2 = nome_de_xlit((lexico.get(r[7]) or {}).get("xlit") or lema)
-            if nome and nome[:1].isupper() and nome.lower() != rend.lower() and \
-                    re.search(r"(?<!\w)" + re.escape(nome) + r"(?!\w)", texto) and \
-                    any(t in outros for t in rend.split("-")) and nome not in rend.split("-") and \
-                    parecido(nome, alvo2) > max(parecido(t, alvo2) for t in rend.split("-")):
+            if (
+                nome
+                and nome[:1].isupper()
+                and nome.lower() != rend.lower()
+                and re.search(r"(?<!\w)" + re.escape(nome) + r"(?!\w)", texto)
+                and any(t in outros for t in rend.split("-"))
+                and nome not in rend.split("-")
+                and parecido(nome, alvo2) > max(parecido(t, alvo2) for t in rend.split("-"))
+            ):
                 # o nome alinhado é de outra pessoa/lugar: troca só a parte da raiz, mantendo prefixos
                 item[1] = glosa.replace(rend, nome) if rend in glosa else nome
                 item[2] = "regra"
@@ -632,8 +1073,7 @@ def main():
                     f.write("vers\thebraico\trevisada\tautomatica\tfonte\n")
                     for d in difs:
                         f.write("\t".join(str(x) for x in d) + "\n")
-        db.executemany("UPDATE palavras SET glosa = ?, glosa_fonte = ? WHERE id = ?",
-                       [(g, f, pid) for pid, g, f, _, _, _ in res])
+        db.executemany("UPDATE palavras SET glosa = ?, glosa_fonte = ? WHERE id = ?", [(g, f, pid) for pid, g, f, _, _, _ in res])
         # "como a BLIVRE traduz": por chave de Strong (ou lema grego sem Strong)
         por_chave = defaultdict(Counter)
         tok_chave = {}
@@ -648,8 +1088,7 @@ def main():
             if ch:
                 for t, n in c.items():
                     por_chave[ch][t.lower()] += n
-        db.executemany("INSERT INTO traducoes VALUES (?,?,?)",
-                       [(ch, t, n) for ch, c in por_chave.items() for t, n in c.most_common(12)])
+        db.executemany("INSERT INTO traducoes VALUES (?,?,?)", [(ch, t, n) for ch, c in por_chave.items() for t, n in c.most_common(12)])
         total.update(f for _, _, f, _, _, _ in res)
     db.commit()
     print("glosas por fonte:", dict(total))
@@ -681,8 +1120,9 @@ def aplicar_correcoes(db):
             print(f"  correções, linha {n}: referência, posição ou glosa inválida: {r}")
             erros += 1
             continue
-        pals = db.execute("SELECT id, texto FROM palavras WHERE livro=? AND cap=? AND vers=? ORDER BY pos",
-                          (m[1], int(m[2]), int(m[3]))).fetchall()
+        pals = db.execute(
+            "SELECT id, texto FROM palavras WHERE livro=? AND cap=? AND vers=? ORDER BY pos", (m[1], int(m[2]), int(m[3]))
+        ).fetchall()
         i = int(r["pos"]) - 1
         if not 0 <= i < len(pals):
             print(f"  correções, linha {n}: {r['ref']} não tem palavra na posição {r['pos']} ({len(pals)} palavras)")
@@ -693,8 +1133,7 @@ def aplicar_correcoes(db):
             print(f"  correções, linha {n}: em {r['ref']} posição {r['pos']} está {texto}, não {r['original']}; ignorada")
             erros += 1
             continue
-        db.execute("UPDATE palavras SET glosa = ?, glosa_fonte = 'revisada' WHERE id = ?",
-                   (r["glosa"].strip().replace(" ", "-"), pid))
+        db.execute("UPDATE palavras SET glosa = ?, glosa_fonte = 'revisada' WHERE id = ?", (r["glosa"].strip().replace(" ", "-"), pid))
         ok += 1
     db.commit()
     print(f"correções de glosa (dados/correcoes/glosas.tsv): {ok} aplicadas, {erros} com problema")

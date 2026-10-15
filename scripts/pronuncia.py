@@ -79,6 +79,7 @@ Parênteses, hífens e apóstrofos de elisão do lema são ignorados, mantendo a
 letras (οὕτω(ς) → HU-tôs). Palavra sem vogal (o numeral χξϛ) é lida pelos
 nomes das letras.
 """
+
 import re
 import unicodedata
 
@@ -87,11 +88,11 @@ import unicodedata
 # ===========================================================================
 
 PRON_OVERRIDES = {
-    "khah'-ee": "RRAI",     # חַי
-    "haw-yaw": "ha-IA",     # הָיָה (o Strong não marca a tônica)
+    "khah'-ee": "RRAI",  # חַי
+    "haw-yaw": "ha-IA",  # הָיָה (o Strong não marca a tônica)
     "baw-kar": "ba-KAR",
-    "ates": "ÊTS",          # עֵץ
-    "eh'seb": "É-sev",      # עֵשֶׂב
+    "ates": "ÊTS",  # עֵץ
+    "eh'seb": "É-sev",  # עֵשֶׂב
     "bo": "bô",
     "law-hem'": "la-HEM",
     "law-kem'": "la-KEM",
@@ -136,14 +137,14 @@ def _tokens_en(s):
     e consoantes (C), na convenção inglesa do dicionário."""
     toks, i, n = [], 0, len(s)
     while i < n:
-        c, two = s[i], s[i:i + 2]
+        c, two = s[i], s[i : i + 2]
         nxt = s[i + 2] if i + 2 < n else ""
         if two in ("aw", "ow", "ee", "oo") or (two == "ay" and (not nxt or nxt not in "aeiou")):
             toks.append(("V", two))
             i += 2
         elif c in "aeiou":
             if i + 1 < n and s[i + 1] == "h" and (not nxt or nxt not in "aeiouy"):
-                toks.append(("V", two))       # ah, eh, oh (h só alonga a vogal)
+                toks.append(("V", two))  # ah, eh, oh (h só alonga a vogal)
                 i += 2
             else:
                 toks.append(("V", c))
@@ -157,11 +158,17 @@ def _tokens_en(s):
         else:
             toks.append(("C", c))
             i += 1
+
     # "e" mudo final (ale, booce, tsates) não é núcleo: junta-se às consoantes
     def mudo(k):
-        return (k >= 2 and toks[k] == ("V", "e") and toks[k - 1][0] == "C" and toks[k - 1][1] not in "wyh"
-                and (toks[k - 2][0] == "V" or (k >= 3 and toks[k - 2][0] == "C" and toks[k - 2][1] not in "wyh"
-                                               and toks[k - 3][0] == "V")))
+        return (
+            k >= 2
+            and toks[k] == ("V", "e")
+            and toks[k - 1][0] == "C"
+            and toks[k - 1][1] not in "wyh"
+            and (toks[k - 2][0] == "V" or (k >= 3 and toks[k - 2][0] == "C" and toks[k - 2][1] not in "wyh" and toks[k - 3][0] == "V"))
+        )
+
     last = len(toks) - 1
     if last >= 2 and mudo(last):
         toks[last] = ("C", "e")
@@ -186,7 +193,7 @@ def _divide_en(s):
                 continue
             cortes.append(b)
         else:
-            cortes.append(b - 1)              # a última consoante vai para a sílaba seguinte
+            cortes.append(b - 1)  # a última consoante vai para a sílaba seguinte
     if not cortes:
         return [s]
     pedacos, ini = [], 0
@@ -200,16 +207,16 @@ def _divide_en(s):
 def _normaliza_he(pron):
     p = pron.lower()
     p = re.sub(r"[’`´ʼ]", "'", p)
-    p = re.split(r"\s+or\s+|[,;]", p)[0]                 # só a primeira alternativa
-    p = re.sub(r"\([^)]*\)", " ", p)                    # "(with enclitic)"
+    p = re.split(r"\s+or\s+|[,;]", p)[0]  # só a primeira alternativa
+    p = re.sub(r"\([^)]*\)", " ", p)  # "(with enclitic)"
     p = p.replace("kch", "kh")
-    p = re.sub(r"(?<!s)ch", "kh", p)                    # "ch" do Strong = ח
+    p = re.sub(r"(?<!s)ch", "kh", p)  # "ch" do Strong = ח
     p = p.replace("gh", "g").replace("q", "k").replace("uw", "oo").replace("ck", "k")
     p = re.sub(r"c(?=[eiy])", "s", p).replace("c", "k")
     p = re.sub(r"h{2,}", "h", p)
-    p = re.sub(r"(?<=[aeiou])gue(?=['\- ]|\Z)", "g", p)   # maw-gogue' → maw-gog'
-    p = re.sub(r"oe(?=['\- ]|\Z)", "o", p)                # yakh-doe' → yakh-do'
-    p = p.replace("ai", "ay")                              # akh-air' → akh-ayr'
+    p = re.sub(r"(?<=[aeiou])gue(?=['\- ]|\Z)", "g", p)  # maw-gogue' → maw-gog'
+    p = re.sub(r"oe(?=['\- ]|\Z)", "o", p)  # yakh-doe' → yakh-do'
+    p = p.replace("ai", "ay")  # akh-air' → akh-ayr'
     p = re.sub(r"[^a-z'\- ]", "", p)
     return p.strip()
 
@@ -224,7 +231,7 @@ def _palavra_he(w, tonica_padrao=True):
         w = w.replace("''", "")
     else:
         w = w.replace("''", "'")
-    w = re.sub(r"(^|-)'+", r"\1", w)                    # apóstrofo no começo de sílaba
+    w = re.sub(r"(^|-)'+", r"\1", w)  # apóstrofo no começo de sílaba
     w = re.sub(r"-{2,}", "-", w).strip("-")
     if not w:
         return ""
@@ -234,7 +241,7 @@ def _palavra_he(w, tonica_padrao=True):
     # apóstrofo no meio também separa sílabas (o'fel → o'-fel), menos antes do "ee" do ditongo
     w = re.sub(r"'(?!ee(?:\Z|-))(?=[a-z])", "'-", w)
 
-    raw = []                                            # (sílaba do Strong, tônica?)
+    raw = []  # (sílaba do Strong, tônica?)
     for p in [x for x in w.split("-") if x]:
         tonica = "'" in p
         subs = _divide_en(p.replace("'", ""))
@@ -265,7 +272,7 @@ def _palavra_he(w, tonica_padrao=True):
         if not m or len(cur) <= len(m.group(0)):
             continue
         coda = m.group(0)
-        parts[i][0] = cur[:-len(coda)]
+        parts[i][0] = cur[: -len(coda)]
         parts[i + 1][0] = coda + nxt
     return "-".join(s.upper() if t else s for s, t in parts if s)
 
@@ -297,18 +304,55 @@ _TREMA = "̈"
 _ACENTOS = (_AGUDO, _GRAVE, _CIRC)
 _VOGAIS_G = set("αεηιουω")
 _VOGAL_PT = {"α": "a", "ε": "e", "η": "ê", "ι": "i", "ο": "o", "υ": "i", "ω": "ô"}
-_DITONGOS = {"αι": "ai", "ει": "ei", "οι": "oi", "υι": "ui", "αυ": "au", "ευ": "eu",
-             "ηυ": "êu", "ου": "u", "ωυ": "ôu"}
-_CONS_PT = {"β": "b", "γ": "g", "δ": "d", "ζ": "z", "θ": "th", "κ": "k", "λ": "l", "μ": "m",
-            "ν": "n", "π": "p", "ρ": "r", "σ": "s", "τ": "t", "φ": "f", "χ": "rr"}
+_DITONGOS = {"αι": "ai", "ει": "ei", "οι": "oi", "υι": "ui", "αυ": "au", "ευ": "eu", "ηυ": "êu", "ου": "u", "ωυ": "ôu"}
+_CONS_PT = {
+    "β": "b",
+    "γ": "g",
+    "δ": "d",
+    "ζ": "z",
+    "θ": "th",
+    "κ": "k",
+    "λ": "l",
+    "μ": "m",
+    "ν": "n",
+    "π": "p",
+    "ρ": "r",
+    "σ": "s",
+    "τ": "t",
+    "φ": "f",
+    "χ": "rr",
+}
 _OCLUSIVAS = set("πβφτδθκγχ")
 _LIQUIDAS = set("λρ")
 _VARIANTES = {"ς": "σ", "ϲ": "σ", "ϐ": "β", "ϑ": "θ", "ϕ": "φ", "ϰ": "κ", "ϱ": "ρ", "ϖ": "π"}
 # nomes das letras, para "palavras" sem vogal (numerais como χξϛ)
-_NOMES = {"α": "ἄλφα", "β": "βῆτα", "γ": "γάμμα", "δ": "δέλτα", "ε": "ἒ ψιλόν", "ζ": "ζῆτα",
-          "η": "ἦτα", "θ": "θῆτα", "ι": "ἰῶτα", "κ": "κάππα", "λ": "λάμβδα", "μ": "μῦ", "ν": "νῦ",
-          "ξ": "ξῖ", "ο": "ὂ μικρόν", "π": "πῖ", "ρ": "ῥῶ", "σ": "σίγμα", "τ": "ταῦ",
-          "υ": "ὖ ψιλόν", "φ": "φῖ", "χ": "χῖ", "ψ": "ψῖ", "ω": "ὦ μέγα", "ϛ": "στίγμα"}
+_NOMES = {
+    "α": "ἄλφα",
+    "β": "βῆτα",
+    "γ": "γάμμα",
+    "δ": "δέλτα",
+    "ε": "ἒ ψιλόν",
+    "ζ": "ζῆτα",
+    "η": "ἦτα",
+    "θ": "θῆτα",
+    "ι": "ἰῶτα",
+    "κ": "κάππα",
+    "λ": "λάμβδα",
+    "μ": "μῦ",
+    "ν": "νῦ",
+    "ξ": "ξῖ",
+    "ο": "ὂ μικρόν",
+    "π": "πῖ",
+    "ρ": "ῥῶ",
+    "σ": "σίγμα",
+    "τ": "ταῦ",
+    "υ": "ὖ ψιλόν",
+    "φ": "φῖ",
+    "χ": "χῖ",
+    "ψ": "ψῖ",
+    "ω": "ὦ μέγα",
+    "ϛ": "στίγμα",
+}
 
 
 def _letras_g(palavra):
@@ -333,8 +377,7 @@ def _fonemas_g(letras):
         b, marcas = letras[i]
         if b in _VOGAIS_G:
             par = b + letras[i + 1][0] if i + 1 < n else ""
-            if (par in _DITONGOS and _TREMA not in letras[i + 1][1]
-                    and not marcas & {_AGUDO, _GRAVE, _CIRC, _PSILE, _DASIA}):
+            if par in _DITONGOS and _TREMA not in letras[i + 1][1] and not marcas & {_AGUDO, _GRAVE, _CIRC, _PSILE, _DASIA}:
                 m2 = marcas | letras[i + 1][1]
                 itens.append(["V", _DITONGOS[par], bool(m2 & set(_ACENTOS)), _DASIA in m2, par])
                 i += 2
@@ -367,15 +410,15 @@ def _silabas_g(itens):
         return [itens]
     cortes = []
     for a, b in zip(nuc, nuc[1:]):
-        grupo = itens[a + 1:b]
+        grupo = itens[a + 1 : b]
         if len(grupo) <= 1:
-            cortes.append(a + 1)                          # θε-ός, λό-γος
+            cortes.append(a + 1)  # θε-ός, λό-γος
             continue
         c1, c2 = grupo[-2][4], grupo[-1][4]
         if c1 in _OCLUSIVAS and c2 in _LIQUIDAS and c1 != c2:
-            cortes.append(b - 2)                          # ἐκ-κλη-σί-α, ἄν-θρω-πος
+            cortes.append(b - 2)  # ἐκ-κλη-σί-α, ἄν-θρω-πος
         else:
-            cortes.append(b - 1)                          # ἁ-μαρ-τί-α, πίσ-τις
+            cortes.append(b - 1)  # ἁ-μαρ-τί-α, πίσ-τις
     silabas, ini = [], 0
     for c in cortes:
         silabas.append(itens[ini:c])
@@ -398,7 +441,7 @@ def _palavra_g(palavra):
         txt = ""
         for it in sil:
             if it[0] == "V" and it[3]:
-                txt += "h"                                # espírito áspero
+                txt += "h"  # espírito áspero
             txt += it[1]
         txt = re.sub(r"g(?=[eiêé])", "gu", txt)
         saida.append(txt.upper() if k == tonica else txt)
@@ -410,7 +453,7 @@ def pron_grego(lema):
     em maiúsculas (λόγος → "LO-gos", Ἰησοῦς → "i-ê-SUS")."""
     if not lema:
         return ""
-    texto = re.sub(r"[()\[\]\-’'ʼ᾽`]", "", lema)        # οὕτω(ς) → οὕτως
+    texto = re.sub(r"[()\[\]\-’'ʼ᾽`]", "", lema)  # οὕτω(ς) → οὕτως
     return " ".join(x for x in (_palavra_g(w) for w in texto.split()) if x)
 
 
@@ -420,23 +463,65 @@ def pron_grego(lema):
 
 TESTES_GREGO = {
     # exemplos da especificação
-    "λόγος": "LO-gos", "θεός": "the-OS", "ἀγάπη": "a-GA-pê", "Ἰησοῦς": "i-ê-SUS",
-    "πνεῦμα": "PNEU-ma", "ἐκκλησία": "ek-klê-SI-a", "χάρις": "RRA-ris", "ψυχή": "psi-RRÊ",
-    "οὐρανός": "u-ra-NOS", "ἁμαρτία": "ha-mar-TI-a", "οὕτω(ς)": "HU-tôs",
+    "λόγος": "LO-gos",
+    "θεός": "the-OS",
+    "ἀγάπη": "a-GA-pê",
+    "Ἰησοῦς": "i-ê-SUS",
+    "πνεῦμα": "PNEU-ma",
+    "ἐκκλησία": "ek-klê-SI-a",
+    "χάρις": "RRA-ris",
+    "ψυχή": "psi-RRÊ",
+    "οὐρανός": "u-ra-NOS",
+    "ἁμαρτία": "ha-mar-TI-a",
+    "οὕτω(ς)": "HU-tôs",
     # palavras comuns do NT
-    "καί": "KAI", "ὁ": "ho", "ἐν": "en", "εἰμί": "ei-MI", "λέγω": "LE-gô", "κύριος": "KI-ri-os",
-    "ἄνθρωπος": "AN-thrô-pos", "Χριστός": "kris-TOS", "πίστις": "PIS-tis", "υἱός": "hui-OS",
-    "πατήρ": "pa-TÊR", "ἡμέρα": "hê-ME-ra", "γῆ": "GUÊ", "βασιλεία": "ba-si-LEI-a",
-    "εὐαγγέλιον": "eu-an-GUE-li-on", "ἄγγελος": "AN-gue-los", "ἀνάγκη": "a-NAN-kê",
-    "δόξα": "DOK-sa", "ζωή": "zô-Ê", "εἰρήνη": "ei-RÊ-nê", "σάρξ": "SARKS",
-    "μαθητής": "ma-thê-TÊS", "ἀπόστολος": "a-POS-to-los", "δικαιοσύνη": "di-kai-o-SI-nê",
-    "ἀλήθεια": "a-LÊ-thei-a", "ἔρχομαι": "ER-rro-mai", "γίνομαι": "GUI-no-mai",
-    "κόσμος": "KOS-mos", "Ἰωάννης": "i-ô-AN-nês", "Ἰουδαῖος": "i-u-DAI-os",
-    "Μωϋσῆς": "mô-i-SÊS", "Ἠσαΐας": "ê-sa-I-as", "ἄλλος": "AL-los", "παρρησία": "par-rê-SI-a",
-    "ἐξουσία": "ek-su-SI-a", "ἔσχατος": "ES-rra-tos", "τέκνον": "TEK-non",
-    "Ἰερουσαλήμ": "i-e-ru-sa-LÊM", "σταυρός": "stau-ROS", "ἀμήν": "a-MÊN",
-    "Παῦλος": "PAU-los", "Πέτρος": "PE-tros", "ῥῆμα": "RÊ-ma", "ὑπέρ": "hi-PER",
-    "ποιέω": "poi-E-ô", "γυνή": "gui-NÊ", "εἰ μή": "ei MÊ",
+    "καί": "KAI",
+    "ὁ": "ho",
+    "ἐν": "en",
+    "εἰμί": "ei-MI",
+    "λέγω": "LE-gô",
+    "κύριος": "KI-ri-os",
+    "ἄνθρωπος": "AN-thrô-pos",
+    "Χριστός": "kris-TOS",
+    "πίστις": "PIS-tis",
+    "υἱός": "hui-OS",
+    "πατήρ": "pa-TÊR",
+    "ἡμέρα": "hê-ME-ra",
+    "γῆ": "GUÊ",
+    "βασιλεία": "ba-si-LEI-a",
+    "εὐαγγέλιον": "eu-an-GUE-li-on",
+    "ἄγγελος": "AN-gue-los",
+    "ἀνάγκη": "a-NAN-kê",
+    "δόξα": "DOK-sa",
+    "ζωή": "zô-Ê",
+    "εἰρήνη": "ei-RÊ-nê",
+    "σάρξ": "SARKS",
+    "μαθητής": "ma-thê-TÊS",
+    "ἀπόστολος": "a-POS-to-los",
+    "δικαιοσύνη": "di-kai-o-SI-nê",
+    "ἀλήθεια": "a-LÊ-thei-a",
+    "ἔρχομαι": "ER-rro-mai",
+    "γίνομαι": "GUI-no-mai",
+    "κόσμος": "KOS-mos",
+    "Ἰωάννης": "i-ô-AN-nês",
+    "Ἰουδαῖος": "i-u-DAI-os",
+    "Μωϋσῆς": "mô-i-SÊS",
+    "Ἠσαΐας": "ê-sa-I-as",
+    "ἄλλος": "AL-los",
+    "παρρησία": "par-rê-SI-a",
+    "ἐξουσία": "ek-su-SI-a",
+    "ἔσχατος": "ES-rra-tos",
+    "τέκνον": "TEK-non",
+    "Ἰερουσαλήμ": "i-e-ru-sa-LÊM",
+    "σταυρός": "stau-ROS",
+    "ἀμήν": "a-MÊN",
+    "Παῦλος": "PAU-los",
+    "Πέτρος": "PE-tros",
+    "ῥῆμα": "RÊ-ma",
+    "ὑπέρ": "hi-PER",
+    "ποιέω": "poi-E-ô",
+    "γυνή": "gui-NÊ",
+    "εἰ μή": "ei MÊ",
 }
 
 
@@ -445,6 +530,7 @@ def _testes(raiz=None):
     import os
     import sqlite3
     import time
+
     raiz = raiz or os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
     falhas = 0
 
@@ -477,11 +563,11 @@ def _testes(raiz=None):
         for lingua, col, func in (("H", "pron_en", pron_hebraico), ("G", "lema", pron_grego)):
             print(f"== Léxico do banco: lingua='{lingua}' ({col})")
             t0, n, erros, estranhos, vazios = time.time(), 0, 0, [], 0
-            for chave, valor in con.execute(f"SELECT chave, {col} FROM lexico WHERE lingua=?", (lingua,)):
+            for chave, valor in con.execute(f"SELECT chave, {col} FROM lexico WHERE lingua=?", (lingua,)):  # noqa: S608 (col vem de uma tupla fixa)
                 n += 1
                 try:
                     out = func(valor)
-                except Exception as e:                    # noqa: BLE001
+                except Exception as e:  # noqa: BLE001
                     erros += 1
                     print(f"  EXCEÇÃO  {chave} {valor!r}: {e!r}")
                     continue
@@ -492,12 +578,15 @@ def _testes(raiz=None):
             falhas += erros + len(estranhos)
             for e in estranhos[:20]:
                 print("  ESTRANHO ", *e)
-            print(f"  {n} verbetes, {erros} exceção(ões), {len(estranhos)} saída(s) com caracteres "
-                  f"estranhos, {vazios} vazia(s), {time.time() - t0:.1f}s")
+            print(
+                f"  {n} verbetes, {erros} exceção(ões), {len(estranhos)} saída(s) com caracteres "
+                f"estranhos, {vazios} vazia(s), {time.time() - t0:.1f}s"
+            )
     print("OK" if not falhas else f"{falhas} problema(s)")
     return falhas
 
 
 if __name__ == "__main__":
     import sys
+
     sys.exit(1 if _testes() else 0)

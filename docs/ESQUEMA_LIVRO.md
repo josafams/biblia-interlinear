@@ -6,10 +6,10 @@ Citações bíblicas: só da BLIVRE, copiadas exatamente de `python3 scripts/con
 
 ## `dados/temas/<COD>.tsv`
 
-```
-cap	tema
-1	O chamado de Abrão
-2	…
+```text
+cap tema
+1 O chamado de Abrão
+2 …
 ```
 
 Um tema por capítulo, na numeração da BLIVRE (a das Bíblias em português; confira com

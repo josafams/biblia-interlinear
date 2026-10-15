@@ -1,0 +1,26 @@
+# Atualizações automáticas de dependências (um PR por semana por ecossistema)
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      capacitor:
+        patterns: ["@capacitor/*", "@capacitor-community/*"]
+      fontes:
+        patterns: ["@fontsource/*"]
+      ferramentas:
+        dependency-type: development
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+  - package-ecosystem: gradle
+    directory: /android
+    schedule:
+      interval: monthly

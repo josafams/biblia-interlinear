@@ -8,7 +8,8 @@ async function abrir(page, ref) {
 const titulo = page => page.locator("#h1");
 
 test("abre Gênesis 1 com os 31 versículos e as palavras", async ({ page }) => {
-  const erros = []; page.on("pageerror", e => erros.push(e.message));
+  const erros = [];
+  page.on("pageerror", e => erros.push(e.message));
   await abrir(page, "GEN.1");
   await expect(titulo(page)).toContainText("Gênesis 1");
   await expect(page.locator(".verse")).toHaveCount(31);
@@ -26,7 +27,12 @@ test("índice: tocar no livro e no capítulo abre direto", async ({ page }) => {
   await expect(page.locator("#toc")).toBeHidden();
 });
 
-for (const [digitado, esperado] of [["jo 3:16", "João 3"], ["sl 23", "Salmos 23"], ["1 sm 17", "1 Samuel 17"], ["apocalipse 21", "Apocalipse 21"]]) {
+for (const [digitado, esperado] of [
+  ["jo 3:16", "João 3"],
+  ["sl 23", "Salmos 23"],
+  ["1 sm 17", "1 Samuel 17"],
+  ["apocalipse 21", "Apocalipse 21"]
+]) {
   test(`ir para “${digitado}”`, async ({ page }) => {
     await abrir(page, "GEN.1");
     await page.click("#open-toc");

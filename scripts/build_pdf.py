@@ -9,6 +9,7 @@ Uso: python3 scripts/build_pdf.py              → os 66 livros + Bíblia comple
      python3 scripts/build_pdf.py volumes      → só junta os PDFs já gerados na Bíblia completa e nos volumes
      python3 scripts/build_pdf.py GEN JHN      → só esses livros
 """
+
 import html
 import json
 import os
@@ -18,7 +19,7 @@ import sys
 import unicodedata
 
 sys.path.insert(0, os.path.dirname(__file__))
-from build_epub import DADOS, ROOT, about_html, gloss_html, h, plain, short  # noqa: E402
+from build_epub import DADOS, ROOT, about_html, gloss_html, h, plain  # noqa: E402
 
 TMP = os.path.join(ROOT, "saida", "pdf-build")
 OUT = os.path.join(ROOT, "saida", "pdf")
@@ -67,13 +68,15 @@ def html_livro(B, LEX, idx):
     ocls = "grc" if grc else "he"
     olang = 'lang="grc"' if grc else 'lang="he" dir="rtl"'
     A = B.get("about") or {}
-    out = [f'<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>{h(B["nome"])} · Bíblia Interlinear</title>'
-           f'<link rel="stylesheet" href="../web/fonts/fonts.css"><style>{CSS}</style></head><body>',
-           f'<section class="capa"><h1>{h(B["nome"])}</h1><div class="orig {ocls}" {olang}>{h(A.get("title_orig"))}</div>'
-           f'<p>Bíblia Interlinear · {"grego" if grc else "hebraico"} e português</p>'
-           f'<p>Original, transliteração, número Strong e glosa de cada palavra, com o texto da Bíblia Livre (BLIVRE).</p>'
-           f'<p class="intro">{"Leia da esquerda para a direita." if grc else "Os cartões se leem da direita para a esquerda."} '
-           'Glosas em itálico cinza não vieram do alinhamento direto com a BLIVRE.</p></section>']
+    out = [
+        f'<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>{h(B["nome"])} · Bíblia Interlinear</title>'
+        f'<link rel="stylesheet" href="../web/fonts/fonts.css"><style>{CSS}</style></head><body>',
+        f'<section class="capa"><h1>{h(B["nome"])}</h1><div class="orig {ocls}" {olang}>{h(A.get("title_orig"))}</div>'
+        f"<p>Bíblia Interlinear · {'grego' if grc else 'hebraico'} e português</p>"
+        f"<p>Original, transliteração, número Strong e glosa de cada palavra, com o texto da Bíblia Livre (BLIVRE).</p>"
+        f'<p class="intro">{"Leia da esquerda para a direita." if grc else "Os cartões se leem da direita para a esquerda."} '
+        "Glosas em itálico cinza não vieram do alinhamento direto com a BLIVRE.</p></section>",
+    ]
     sobre = about_html(B)
     if sobre:
         out.append(sobre.replace('epub:type="introduction" ', ""))
@@ -91,36 +94,46 @@ def html_livro(B, LEX, idx):
                 if k and e:
                     usados[k] = e
                 num = "part." if k and len(k) == 2 and k[1].isalpha() else (k if k and not k.startswith("G:") else "—")
-                cards.append(f'<div class="w"><span class="o {ocls}" {olang}>{h(t if grc else plain(t))}</span>'
-                             + (f'<span class="x">{h(e.get("x"))}</span>' if e.get("x") else "")
-                             + f'<span class="s">{h(num)}</span><span class="g{" aux" if f and f != "m" else ""}">{gloss_html(g)}</span></div>')
+                cards.append(
+                    f'<div class="w"><span class="o {ocls}" {olang}>{h(t if grc else plain(t))}</span>'
+                    + (f'<span class="x">{h(e.get("x"))}</span>' if e.get("x") else "")
+                    + f'<span class="s">{h(num)}</span><span class="g{" aux" if f and f != "m" else ""}">{gloss_html(g)}</span></div>'
+                )
             nota = ""
             if v.get("o") == "sem-original":
                 nota = '<p class="vnote">Sem correspondente no texto original usado nesta edição.</p>'
             elif v.get("o") == "aparato":
                 nota = '<p class="vnote">No SBLGNT este trecho está só no aparato crítico; leitura de Westcott-Hort, Tregelles e NA28.</p>'
-            out.append(f'<div class="verse"><div class="vn">{"Título" if vn == 0 else f"{n}:{vn}"}</div>'
-                       + (f'<div class="words{"" if grc else " rtl"}">{"".join(cards)}</div>' if cards else "")
-                       + f'{nota}<p class="bl"><span class="tag">BLIVRE</span>{h(v["b"])}</p></div>')
+            out.append(
+                f'<div class="verse"><div class="vn">{"Título" if vn == 0 else f"{n}:{vn}"}</div>'
+                + (f'<div class="words{"" if grc else " rtl"}">{"".join(cards)}</div>' if cards else "")
+                + f'{nota}<p class="bl"><span class="tag">BLIVRE</span>{h(v["b"])}</p></div>'
+            )
 
     def ordem(k):
-        return (k.startswith("G:"), int(k[1:]) if k[1:].isdigit() else 10 ** 9, k)
+        return (k.startswith("G:"), int(k[1:]) if k[1:].isdigit() else 10**9, k)
+
     out.append(f'<section class="lexico"><h1>Léxico de {h(B["nome"])}</h1>')
     for k in sorted(usados, key=ordem):
         e = usados[k]
         lang = 'class="l grc" lang="grc"' if k[0] == "G" else 'class="l he" lang="he" dir="rtl"'
-        out.append(f'<div class="entry"><b>{"" if k.startswith("G:") else h(k)}</b> <span {lang}>{h(e.get("l"))}</span> '
-                   f'<i>{h(e.get("x"))}</i> · <span class="pr">{h(e.get("p"))}</span><br>'
-                   f'{h(e.get("s") or e.get("se") or e.get("ge") or "")}'
-                   + (f'<br><span class="intro">BLIVRE: {h(e["t"])}</span>' if e.get("t") else "") + "</div>")
+        out.append(
+            f'<div class="entry"><b>{"" if k.startswith("G:") else h(k)}</b> <span {lang}>{h(e.get("l"))}</span> '
+            f'<i>{h(e.get("x"))}</i> · <span class="pr">{h(e.get("p"))}</span><br>'
+            f"{h(e.get('s') or e.get('se') or e.get('ge') or '')}"
+            + (f'<br><span class="intro">BLIVRE: {h(e["t"])}</span>' if e.get("t") else "")
+            + "</div>"
+        )
     out.append("</section>")
-    out.append('<section class="creditos"><h1>Fontes e licenças</h1>'
-               '<p>Hebraico e aramaico: Open Scriptures Hebrew Bible (CC BY 4.0), sobre o Westminster Leningrad Codex. '
-               'Grego: SBL Greek New Testament (CC BY 4.0) e MorphGNT (CC BY-SA 3.0). Tradução corrida: Bíblia Livre (BLIVRE), '
-               'de Diego Santos, Mario Sérgio e Marco Teles, CC BY 4.0 / 3.0 Brasil, reproduzida sem alterações. Léxico: Strong '
-               '(domínio público; edição Open Scriptures, CC BY-SA) e Dodson (domínio público), vertidos para o português nesta edição. '
-               'Glosas por alinhamento estatístico com a BLIVRE, revisão pendente; não fazem parte da BLIVRE. Introdução e temas escritos '
-               'para esta edição. Fontes tipográficas sob a SIL Open Font License 1.1. Este PDF é distribuído sob CC BY-SA.</p></section>')
+    out.append(
+        '<section class="creditos"><h1>Fontes e licenças</h1>'
+        "<p>Hebraico e aramaico: Open Scriptures Hebrew Bible (CC BY 4.0), sobre o Westminster Leningrad Codex. "
+        "Grego: SBL Greek New Testament (CC BY 4.0) e MorphGNT (CC BY-SA 3.0). Tradução corrida: Bíblia Livre (BLIVRE), "
+        "de Diego Santos, Mario Sérgio e Marco Teles, CC BY 4.0 / 3.0 Brasil, reproduzida sem alterações. Léxico: Strong "
+        "(domínio público; edição Open Scriptures, CC BY-SA) e Dodson (domínio público), vertidos para o português nesta edição. "
+        "Glosas por alinhamento estatístico com a BLIVRE, revisão pendente; não fazem parte da BLIVRE. Introdução e temas escritos "
+        "para esta edição. Fontes tipográficas sob a SIL Open Font License 1.1. Este PDF é distribuído sob CC BY-SA.</p></section>"
+    )
     out.append("</body></html>")
     return "\n".join(out)
 
@@ -163,8 +176,10 @@ def main(argv):
 def blivre(livros):
     """Edição só com o texto da Bíblia Livre (A4, duas colunas), com marcadores por testamento, livro e capítulo."""
     from pypdf import PdfReader, PdfWriter
+
     esc = html.escape
-    partes = ["""<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Bíblia Livre</title><style>
+    partes = [
+        """<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Bíblia Livre</title><style>
 @page { size: A4; }
 body { font-family: "Literata", Georgia, serif; font-size: 10.5pt; line-height: 1.45; color: #111; margin: 0; }
 .capa { height: 240mm; display: flex; flex-direction: column; justify-content: center; text-align: center; page-break-after: always; }
@@ -179,12 +194,13 @@ sup { font-size: 6.5pt; font-weight: 700; color: #555; margin: 0 .5pt 0 2pt; }
 .creditos { page-break-before: always; font-size: 9pt; color: #333; }
 </style><link rel="stylesheet" href="../web/fonts/fonts.css"></head><body>
 <section class="capa"><h1>Bíblia Livre</h1><p>Os 66 livros, com o tema de cada capítulo.</p>
-<p>Texto da Bíblia Livre (BLIVRE). Temas: projeto Bíblia Interlinear, com fontes abertas.</p></section>"""]
+<p>Texto da Bíblia Livre (BLIVRE). Temas: projeto Bíblia Interlinear, com fontes abertas.</p></section>"""
+    ]
     for B in livros:
         partes.append(f'<section class="livro"><h1>{esc(B["nome"])}</h1>')
         for c in B["caps"]:
             d = json.load(open(os.path.join(DADOS, "cap", B["cod"], f"{c['n']}.json"), encoding="utf8"))
-            partes.append(f'<h2>{esc(B["nome"])} {c["n"]}</h2>')
+            partes.append(f"<h2>{esc(B['nome'])} {c['n']}</h2>")
             if c.get("t"):
                 partes.append(f'<p class="tema">{esc(c["t"])}</p>')
             corpo = []
@@ -194,12 +210,14 @@ sup { font-size: 6.5pt; font-weight: 700; color: #555; margin: 0 .5pt 0 2pt; }
                 if v["n"] == 0:
                     partes.append(f'<p class="tit">{esc(v["b"])}</p>')
                 else:
-                    corpo.append(f'<sup>{v["n"]}</sup>{esc(v["b"])}')
+                    corpo.append(f"<sup>{v['n']}</sup>{esc(v['b'])}")
             partes.append('<p class="txt">' + " ".join(corpo) + "</p>")
         partes.append("</section>")
-    partes.append('<section class="creditos"><h1>Fontes e licenças</h1><p>Texto: Bíblia Livre (BLIVRE), de Diego Santos, '
-                  'Mario Sérgio e Marco Teles. Temas dos capítulos: projeto Bíblia Interlinear '
-                  '(github.com/josafams/biblia-interlinear).</p></section></body></html>')
+    partes.append(
+        '<section class="creditos"><h1>Fontes e licenças</h1><p>Texto: Bíblia Livre (BLIVRE), de Diego Santos, '
+        "Mario Sérgio e Marco Teles. Temas dos capítulos: projeto Bíblia Interlinear "
+        "(github.com/josafams/biblia-interlinear).</p></section></body></html>"
+    )
     src = os.path.join(TMP, "BLIVRE.html")
     os.makedirs(TMP, exist_ok=True)
     os.makedirs(OUT, exist_ok=True)
@@ -242,12 +260,14 @@ def marcadores(arq, B):
     if not shutil.which("pdftotext"):
         return
     from pypdf import PdfReader, PdfWriter
+
     txt = subprocess.run(["pdftotext", "-enc", "UTF-8", arq, "-"], capture_output=True, text=True).stdout
     paginas = [{l.strip() for l in p.splitlines() if l.strip()} for p in txt.split("\f")]
     nome = B["nome"]
     alvos = [("Sobre o livro", lambda ls: any(l.startswith(f"Sobre {nome}") for l in ls))]
-    alvos += [(f"{nome} {c['n']}" + (f" — {c['t']}" if c.get("t") else ""), (lambda t: lambda ls: t in ls)(f"{nome} {c['n']}"))
-              for c in B["caps"]]
+    alvos += [
+        (f"{nome} {c['n']}" + (f" — {c['t']}" if c.get("t") else ""), (lambda t: lambda ls: t in ls)(f"{nome} {c['n']}")) for c in B["caps"]
+    ]
     alvos += [("Léxico", lambda ls: f"Léxico de {nome}" in ls), ("Fontes e licenças", lambda ls: "Fontes e licenças" in ls)]
     w = PdfWriter(clone_from=PdfReader(arq))
     pg = 0
@@ -269,8 +289,9 @@ def otimizar(arq):
     if not shutil.which("qpdf"):
         return
     tmp = arq + ".tmp"
-    r = subprocess.run(["qpdf", "--object-streams=generate", "--compress-streams=y", "--recompress-flate",
-                        "--compression-level=9", arq, tmp])
+    r = subprocess.run(
+        ["qpdf", "--object-streams=generate", "--compress-streams=y", "--recompress-flate", "--compression-level=9", arq, tmp]
+    )
     if r.returncode in (0, 3) and os.path.exists(tmp):  # 3 = avisos
         os.replace(tmp, arq)
 
@@ -289,9 +310,10 @@ def volumes(livros):
         print("volumes não gerados; faltam os PDFs:", ", ".join(faltam[:5]), "…" if len(faltam) > 5 else "")
         return
     for nome, titulo, sel in (
-            ("00-Biblia-Interlinear-completa.pdf", "Bíblia Interlinear — Bíblia completa", lambda B: True),
-            ("00-Biblia-Interlinear-AT.pdf", "Bíblia Interlinear — Antigo Testamento", lambda B: not B["nt"]),
-            ("00-Biblia-Interlinear-NT.pdf", "Bíblia Interlinear — Novo Testamento", lambda B: B["nt"])):
+        ("00-Biblia-Interlinear-completa.pdf", "Bíblia Interlinear — Bíblia completa", lambda B: True),
+        ("00-Biblia-Interlinear-AT.pdf", "Bíblia Interlinear — Antigo Testamento", lambda B: not B["nt"]),
+        ("00-Biblia-Interlinear-NT.pdf", "Bíblia Interlinear — Novo Testamento", lambda B: B["nt"]),
+    ):
         w = PdfWriter()
         partes = {}
         for B, a in todos:
@@ -308,7 +330,9 @@ def volumes(livros):
             livro = w.add_outline_item(B["nome"], inicio, parent=pai)
             # capítulos: os marcadores que o Chromium criou no PDF do livro, um nível abaixo do livro
             from pypdf import PdfReader
+
             r = PdfReader(a)
+
             def copiar(itens, destino):
                 ultimo = None
                 for it in itens:
@@ -321,6 +345,7 @@ def volumes(livros):
                     except Exception:
                         continue
                     ultimo = w.add_outline_item(it.title, inicio + pg, parent=destino)
+
             copiar(r.outline, livro)
         w.add_metadata({"/Title": titulo, "/Author": "Bíblia Interlinear (BLIVRE)", "/Lang": "pt-BR"})
         w.page_mode = "/UseOutlines"
