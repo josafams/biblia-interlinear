@@ -192,6 +192,8 @@ for cod, n in CAPS.items():
             error(fname, f"linha {ln}: só perguntas do tipo original levam número Strong")
     for c in range(1, n + 1):
         kinds = per_chapter.get(c, [])
+        if not kinds:
+            continue  # capítulo ainda sem perguntas: o leitor simplesmente não mostra a seção
         if not 3 <= len(kinds) <= 5:
             error(fname, f"capítulo {c}: {len(kinds)} perguntas (devem ser de 3 a 5)")
         for k in ("observation", "interpretation", "application"):
