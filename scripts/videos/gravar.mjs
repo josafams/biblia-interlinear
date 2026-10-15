@@ -14,6 +14,7 @@ import http from "node:http";
 import { execFileSync } from "node:child_process";
 import { chromium, devices } from "playwright";
 import { videos } from "./roteiros.mjs";
+import { simularGoogle } from "../../tests/web/google-falso.mjs";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../..");
 const WEB = path.join(ROOT, "saida/web");
@@ -196,10 +197,13 @@ for (const v of videos) {
     const t = ajudante(page, VERIFICAR);
     const tempos = [];
     try {
+      // vídeos da conta: Google simulado, com uma conta fictícia (nada sai para a internet)
+      if (v.google) t.nuvem = await simularGoogle(page, { perfil: { name: "Maria Souza", email: "maria.souza@exemplo.com" } });
       await page.goto(`${BASE}ler.html#${v.inicio || "GEN.1"}`);
       await page.locator(".verse").first().waitFor({ timeout: 15000 });
       await page.evaluate(() => document.fonts.ready);
       if (v.preparar) { await page.waitForFunction(() => window.Anotacoes); await v.preparar(page); await page.reload(); await page.locator(".verse").first().waitFor(); }
+      if (v.antes) await v.antes(t);   // preparação que fica fora do corte do vídeo
       await t.pausa(900);
       const inicio = (Date.now() - t0) / 1000 - 0.3;
       for (const p of v.passos) {

@@ -1,59 +1,9 @@
 // Login Google (opcional) e acesso à pasta do app no Drive — com o Google simulado (nada sai para a internet).
 import { test, expect } from "@playwright/test";
+import { simularGoogle } from "./google-falso.mjs";
 
 // o service worker serviria o google-config.js real do cache, passando por cima da simulação
 test.use({ serviceWorkers: "block" });
-
-const DRIVE = "https://www.googleapis.com/auth/drive.appdata";
-const CORS = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "*", "Access-Control-Allow-Methods": "GET,POST,PATCH,DELETE,OPTIONS" };
-
-// Google Identity Services falso: entrega um token na hora (ou cancela / nega o Drive, conforme window.__gisModo)
-const GIS_FALSO = `window.google = { accounts: { oauth2: {
-  initTokenClient(c) { return { requestAccessToken(o) {
-    (window.__gisPedidos = window.__gisPedidos || []).push(o);
-    setTimeout(() => {
-      const m = window.__gisModo || "ok";
-      if (m === "cancelar") return c.error_callback({ type: "popup_closed" });
-      c.callback({ access_token: "tk-" + Date.now(), expires_in: 3599,
-        scope: m === "sem-drive" ? "openid email profile" : "openid email profile ${DRIVE}" });
-    }, 60);
-  } }; },
-  hasGrantedAllScopes(r, ...s) { return s.every(x => r.scope.split(" ").includes(x)); },
-  revoke(t, cb) { window.__revogado = t; cb && cb(); }
-} } };`;
-
-// Drive falso: guarda os arquivos da pasta do app em memória
-async function simularGoogle(page, { configurado = true } = {}) {
-  const arquivos = new Map();
-  let n = 0;
-  const id = configurado ? "teste.apps.googleusercontent.com" : "";
-  await page.route("**/google-config.js", r => r.fulfill({ contentType: "text/javascript", body: `window.GOOGLE_CONFIG = { webClientId: "${id}" };` }));
-  await page.route("https://accounts.google.com/gsi/client", r => r.fulfill({ contentType: "text/javascript", body: GIS_FALSO }));
-  await page.route("https://www.googleapis.com/**", async r => {
-    const req = r.request(), url = new URL(req.url()), m = req.method();
-    if (m === "OPTIONS") return r.fulfill({ status: 204, headers: CORS });
-    if (!/^Bearer tk-/.test(req.headers()["authorization"] || "")) return r.fulfill({ status: 401, headers: CORS, json: { error: { message: "sem token" } } });
-    const json = (status, body) => r.fulfill({ status, headers: CORS, contentType: "application/json", body: JSON.stringify(body) });
-    if (url.pathname === "/oauth2/v3/userinfo") return json(200, { name: "Maria Teste", email: "maria@exemplo.com", picture: "" });
-    let id = url.pathname.match(/\/files\/([^/]+)$/)?.[1];
-    if (m === "GET" && url.pathname === "/drive/v3/files") {
-      const nome = url.searchParams.get("q")?.match(/name='(.+)'/)?.[1];
-      return json(200, { files: [...arquivos.entries()].filter(([, a]) => !nome || a.name === nome).map(([id, a]) => ({ id, name: a.name })) });
-    }
-    if (m === "GET" && id) return json(200, JSON.parse(arquivos.get(id).conteudo));
-    if (m === "POST" && url.pathname === "/upload/drive/v3/files") {
-      const partes = req.postData().split(/--biblia[a-z0-9]+/).filter(p => p.includes("{"));
-      const meta = JSON.parse(partes[0].slice(partes[0].indexOf("{")).trim());
-      expect(meta.parents).toEqual(["appDataFolder"]);
-      id = "a" + (++n);
-      arquivos.set(id, { name: meta.name, conteudo: partes[1].slice(partes[1].indexOf("{")).trim() });
-      return json(200, { id, name: meta.name });
-    }
-    if (m === "PATCH" && id) { arquivos.get(id).conteudo = req.postData(); return json(200, { id }); }
-    return json(404, { error: { message: "não simulado: " + m + " " + url.pathname } });
-  });
-  return arquivos;
-}
 
 async function abrirIndice(page) {
   await page.goto("ler.html#GEN.1");
@@ -70,7 +20,7 @@ test("sem ID de cliente configurado, o login não aparece", async ({ page }) => 
 });
 
 test("entrar com Google conecta a pasta do app no Drive e registra o aparelho", async ({ page }) => {
-  const arquivos = await simularGoogle(page);
+  const { arquivos } = await simularGoogle(page);
   await abrirIndice(page);
   await expect(page.locator("#conta")).toContainText("Guardar no seu Google Drive");
   await page.click("#conta-entrar");
@@ -122,8 +72,10 @@ test("sair esquece a conta e mantém as anotações no aparelho", async ({ page 
     await window.Anotacoes.gravar("favoritos", { id: crypto.randomUUID(), cap: "GEN.1", ancora: { livro: "GEN", cap: 1, ver: 1, ver_fim: 1, camada: "versiculo" } });
   });
   await page.click("#conta-entrar");
-  await expect(page.locator("#conta .conta-drive")).toContainText("conectado");
+  await expect(page.locator("#conta-sinc")).toContainText("Sincronizado");
   await page.click("#conta-sair");
+  await expect(page.locator(".conta-caixa")).toContainText("continuam guardadas no seu Google Drive");
+  await page.click('.conta-caixa button[data-r="manter"]');
   await expect(page.locator("#conta-entrar")).toContainText("Entrar com Google");
   expect(await page.evaluate(() => window.__revogado)).toMatch(/^tk-/);
   expect(await page.evaluate(() => localStorage.getItem("interlinear:conta"))).toBeNull();

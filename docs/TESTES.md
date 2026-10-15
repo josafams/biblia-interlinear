@@ -21,6 +21,13 @@ npm run test:web      # só o site no navegador (Playwright)
 | `tests/web/inicio.spec.mjs` | página inicial: amostra, números, links do repositório, APK, iOS, EPUB e PDF, seção Como usar, links antigos |
 | `tests/web/leitor.spec.mjs` | leitor: índice, Ir para, capítulos, verbete, léxico, grego, aparência guardada, Sobre o livro, uso offline |
 | `tests/web/acessibilidade.spec.mjs` | axe-core: nenhum problema grave de acessibilidade |
+| `tests/web/modos.spec.mjs` | modos de leitura e itens visíveis |
+| `tests/web/anotacoes.spec.mjs` | marcar com cores, notas, favoritos, etiquetas, Minhas anotações |
+| `tests/web/caderno.spec.mjs` | caderno em PDF, baixar e importar meus dados |
+| `tests/web/conta.spec.mjs` | login com Google (simulado): entrar, permissão do Drive, sair, sugestão depois da 1ª anotação |
+| `tests/web/sinc.spec.mjs` | sincronização entre 2 e 3 aparelhos simulados: ida e volta, exclusão, primeiro login, conflito de notas, relógio errado, compactação e aparelho novo, modo de leitura, sair e apagar da nuvem |
+
+O Google é simulado em `tests/web/google-falso.mjs` (login e uma API do Drive em memória, compartilhada entre os "aparelhos"); nada sai para a internet.
 
 Os testes do navegador rodam no tamanho de celular e de computador.
 

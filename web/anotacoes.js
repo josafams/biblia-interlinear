@@ -39,7 +39,9 @@
 
   // ---------- banco local ----------
   const COLECOES = ["marcacoes", "notas", "favoritos", "etiquetas"];
+  const SINC = [...COLECOES, "preferencias"];   // o que viaja para o Drive (preferências = modo de leitura)
   let db = null, memoria = null;
+  const memoriaEstado = {};
   try {
     if (!window.Dexie || !window.indexedDB) throw new Error("sem IndexedDB");
     db = new Dexie("biblia-interlinear");
@@ -51,12 +53,13 @@
       fila: "++seq, colecao, id",
       estado: "chave"
     });
+    db.version(2).stores({ preferencias: "id" });
   } catch (_) { db = null; }
   async function aberto() {
     if (memoria) return false;
-    if (!db) { memoria = Object.fromEntries(COLECOES.map(c => [c, new Map()])); return false; }
+    if (!db) { memoria = Object.fromEntries(SINC.map(c => [c, new Map()])); return false; }
     try { await db.open(); return true; }
-    catch (_) { db = null; memoria = Object.fromEntries(COLECOES.map(c => [c, new Map()])); return false; }
+    catch (_) { db = null; memoria = Object.fromEntries(SINC.map(c => [c, new Map()])); return false; }
   }
   const pronto = aberto();
   async function todos(col) {
@@ -74,6 +77,7 @@
     const agora = new Date().toISOString();
     const antigo = db ? await db[col].get(reg.id) : memoria[col].get(reg.id);
     const novo = { ...antigo, ...reg, criado_em: antigo?.criado_em || agora, alterado_em: agora, base: antigo?.relogio || null, relogio: relogio(), apagado: reg.apagado || false };
+    delete novo.local;   // editar algo que estava "só neste aparelho" passa a sincronizar
     if (db) await db.transaction("rw", db[col], db.fila, async () => { await db[col].put(novo); await db.fila.add({ colecao: col, id: novo.id }); });
     else memoria[col].set(novo.id, novo);
     avisar();
@@ -791,18 +795,93 @@ ${corpo || "<p>Nenhum item com essas opções.</p>"}
     let novos = 0, atualizados = 0, iguais = 0;
     for (const c of COLECOES) {
       for (const r of dados.colecoes[c] || []) {
-        if (!r || !r.id) continue;
-        const atual = db ? await db[c].get(r.id) : memoria[c].get(r.id);
-        if (atual && (atual.relogio || "") >= (r.relogio || "")) { iguais++; continue; }
-        if (r.relogio) relogio(r.relogio.split("-").slice(0, 2).join("-"));
-        if (db) await db.transaction("rw", db[c], db.fila, async () => { await db[c].put(r); await db.fila.add({ colecao: c, id: r.id }); });
-        else memoria[c].set(r.id, r);
-        atual ? atualizados++ : novos++;
+        const res = await mesclar(c, r);
+        if (res === "novo") novos++; else if (res === "atualizado") atualizados++; else if (res === "igual") iguais++;
       }
     }
     avisar(); pintar();
     return { novos, atualizados, iguais };
   }
+
+  // ---------- mescla (backup e sincronização) ----------
+  // Junta um registro vindo de fora: vence o relógio maior (a mesma versão aplicada duas vezes não muda nada).
+  // Nota editada nos dois lados ao mesmo tempo — a daqui ainda não enviada e a de fora não partiu da versão daqui —
+  // vira duas: a vencedora fica com o id e a outra vira uma cópia "(conflito de dd/mm)". Nenhum texto se perde.
+  const pendente = async (c, id) => db ? (await db.fila.where("id").equals(id).count()) > 0 : false;
+  const conflitoDeNota = (aqui, fora, pend) => pend && !aqui.apagado && !fora.apagado && fora.base !== aqui.relogio
+    && ((aqui.texto || "") !== (fora.texto || "") || (aqui.titulo || "") !== (fora.titulo || ""));
+  async function copiaDeConflito(n) {
+    const d = new Date(Number((n.relogio || "").split("-")[0]) || Date.now());
+    const quando = `${String(d.getDate()).padStart(2, "0")}/${String(d.getMonth() + 1).padStart(2, "0")}`;
+    const copia = { ...n, id: uuid(), titulo: `${n.titulo || "Nota"} (conflito de ${quando})` };
+    delete copia.relogio; delete copia.base; delete copia.criado_em;
+    return gravar("notas", copia);
+  }
+  async function mesclar(c, r, { daNuvem = false } = {}) {
+    if (!r || !r.id || !SINC.includes(c)) return "ignorado";
+    await pronto;
+    const atual = db ? await db[c].get(r.id) : memoria[c].get(r.id);
+    if (r.relogio) relogio(r.relogio.split("-").slice(0, 2).join("-"));
+    if (atual && (atual.relogio || "") >= (r.relogio || "")) {
+      if (c === "notas" && atual.relogio !== r.relogio && conflitoDeNota(atual, r, await pendente(c, r.id))) await copiaDeConflito(r);
+      return "igual";
+    }
+    const conflito = c === "notas" && atual && conflitoDeNota(atual, r, await pendente(c, r.id));
+    const novo = { ...r }; delete novo.local;
+    if (db) await db.transaction("rw", db[c], db.fila, async () => {
+      await db[c].put(novo);
+      if (daNuvem) await db.fila.where("id").equals(r.id).delete();   // a versão daqui perdeu: não reenviar
+      else await db.fila.add({ colecao: c, id: r.id });
+    });
+    else memoria[c].set(r.id, novo);
+    if (conflito) await copiaDeConflito(atual);
+    return atual ? "atualizado" : "novo";
+  }
+  // Acesso de baixo nível para a sincronização (web/sincronizar.js)
+  const banco = {
+    colecoes: SINC,
+    aparelho,
+    persistente: () => !!db,
+    async fila() { await pronto; return db ? db.fila.toArray() : []; },
+    async tirarDaFila(seqs) { await pronto; if (db && seqs.length) await db.fila.bulkDelete(seqs); },
+    async ler(c, id) { await pronto; return db ? db[c].get(id) : memoria[c].get(id); },
+    async brutos(c) { await pronto; return db ? db[c].toArray() : [...memoria[c].values()]; },
+    mesclar,
+    aplicado() { avisar(); pintar(); },
+    async estado(k, v) {
+      await pronto;
+      if (!db) { if (v !== undefined) memoriaEstado[k] = v; return memoriaEstado[k]; }
+      if (v === undefined) return (await db.estado.get(k))?.valor;
+      await db.estado.put({ chave: k, valor: v }); return v;
+    },
+    async purgar(c, ids) { await pronto; if (db) await db[c].bulkDelete(ids); else ids.forEach(i => memoria[c].delete(i)); },
+    // "Manter só neste aparelho": o que já existe não sobe para a conta (até ser editado de novo)
+    async soNesteAparelho() {
+      await pronto;
+      if (!db) return;
+      await db.transaction("rw", [...SINC.map(c => db[c]), db.fila], async () => {
+        for (const c of SINC) await db[c].toCollection().modify(r => { r.local = true; });
+        await db.fila.clear();
+      });
+    },
+    // "Enviar para a conta": tudo o que existe aqui (menos o marcado "só neste aparelho") entra na fila
+    async enfileirarTudo() {
+      await pronto;
+      if (!db) return;
+      await db.transaction("rw", [...SINC.map(c => db[c]), db.fila], async () => {
+        for (const c of SINC) {
+          const ids = (await db[c].toArray()).filter(r => !r.local).map(r => ({ colecao: c, id: r.id }));
+          if (ids.length) await db.fila.bulkAdd(ids);
+        }
+      });
+    },
+    async apagarTudo() {
+      await pronto;
+      if (db) await db.transaction("rw", [...SINC.map(c => db[c]), db.fila], async () => { for (const c of SINC) await db[c].clear(); await db.fila.clear(); });
+      else SINC.forEach(c => memoria[c].clear());
+      avisar(); pintar();
+    }
+  };
   $("#mn-arquivo").addEventListener("change", async e => {
     const f = e.target.files[0];
     e.target.value = "";
@@ -834,7 +913,8 @@ ${corpo || "<p>Nenhum item com essas opções.</p>"}
     contar: async () => (await Promise.all(["notas", "marcacoes", "favoritos"].map(todos))).reduce((s, l) => s + l.length, 0),
     aoMudar: f => ouvintes.push(f),
     exportar: async () => Object.fromEntries(await Promise.all(COLECOES.map(async c => [c, await todos(c)]))),
-    local: () => !!db
+    local: () => !!db,
+    banco
   };
   if (atual === null && window.__capituloAtual) { atual = window.__capituloAtual; pintar(); }
 })();
