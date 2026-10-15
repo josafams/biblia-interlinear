@@ -40,6 +40,20 @@ async function entrarNaConta(t) {
   await p.keyboard.press("Escape");
   await p.evaluate(() => window.scrollTo(0, 0));
 }
+// leituras e tempo de exemplo para o vídeo do progresso (40 dias, Gênesis, alguns livros curtos, Mateus 1–10)
+async function progressoDeExemplo(page) {
+  await page.waitForFunction(() => window.Progresso && window.__livros);
+  await page.evaluate(async () => {
+    const A = window.Anotacoes, ap = A.banco.aparelho, d0 = new Date(), agora = new Date().toISOString();
+    const dia = n => { const d = new Date(d0.getFullYear(), d0.getMonth(), d0.getDate() - n); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
+    for (let n = 0; n < 40; n++) if (n % 6 !== 5) await A.gravar("tempo", { id: `${ap}:${dia(n)}`, aparelho: ap, dia: dia(n), segundos: 300 + (n * 137) % 1500, livros: { GEN: 400, MAT: 200 }, caps: 2, verbetes: 3 });
+    const lido = async (cod, n) => A.gravar("leituras", { id: `${cod}.${n}`, livro: cod, n, lido: true, primeira: agora, ultima: agora, vezes: 1 });
+    for (let c = 1; c <= 50; c++) await lido("GEN", c);
+    for (const l of ["RUT", "JON", "PHM", "JUD", "OBA"]) for (let c = 1; c <= window.__livros[l].ncaps; c++) await lido(l, c);
+    for (let c = 1; c <= 10; c++) await lido("MAT", c);
+    await A.gravar("preferencias", { id: "posicao", cod: "MAT", cap: 11, quando: agora });
+  });
+}
 // simula o computador gravando uma nota na nuvem (um lote de outro aparelho)
 function notaDeOutroAparelho(t) {
   const agora = new Date().toISOString();
@@ -320,7 +334,18 @@ export const videos = [
     ]
   },
   { id: "27", n: 27, grupo: "estudo", titulo: "Perguntas ao texto", desc: "Ligar, responder e ver o progresso.", pronto: false, passos: [] },
-  { id: "31", n: 31, grupo: "estudo", titulo: "Meu progresso", desc: "Capítulos lidos, tempo e plano de leitura.", pronto: false, passos: [] },
+  {
+    id: "31", n: 31, grupo: "estudo", titulo: "Meu progresso", desc: "Capítulos lidos, tempo e plano de leitura.", inicio: "MAT.11", google: true,
+    preparar: progressoDeExemplo, antes: entrarNaConta,
+    passos: [
+      { legenda: "No Índice, toque em Meu progresso (com a conta Google conectada).", faz: async t => { await t.tocar("#open-toc"); await t.rolarAte("#open-progresso"); await t.tocar("#open-progresso"); } },
+      { legenda: "Quanto da Bíblia você já leu, os dias seguidos e o tempo de leitura — somados em todos os seus aparelhos.", faz: t => t.realcar("#progresso .pg-tiles") },
+      { legenda: "O gráfico mostra o tempo de leitura por dia; dá para ver o mês ou o ano.", faz: async t => { await t.rolarAte("#progresso .pg-graf"); await t.tocar('#progresso [data-aba="mes"]'); } },
+      { legenda: "Cada livro aparece pintado pelo quanto já foi lido. Toque num livro…", faz: async t => { await t.rolarAte('#progresso [data-livro="MAT"]'); await t.tocar('#progresso [data-livro="MAT"]'); } },
+      { legenda: "…para ver os capítulos. Um toque marca ou desmarca o capítulo como lido.", faz: t => t.tocar('#progresso [data-cap="11"]') },
+      { legenda: "Volte e escolha um plano de leitura: a leitura de cada dia aparece aqui.", faz: async t => { await t.tocar("#pg-voltar"); await t.rolarAte('#progresso [data-plano="ano"]'); await t.tocar('#progresso [data-plano="ano"]'); await t.rolarAte("#progresso .pg-dia"); await t.realcar("#progresso .pg-dia"); } }
+    ]
+  },
   // Gravados à mão (telas do sistema): sequências de imagens com legenda em videos/manuais/.
   {
     id: "28", n: 28, grupo: "instalar", titulo: "Instalar na tela inicial", desc: "Android e iPhone, sem loja.", manual: true,

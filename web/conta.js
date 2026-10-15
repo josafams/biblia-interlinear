@@ -326,10 +326,10 @@
     }
   }
   // carrega o script do Google pouco antes do toque, para o popup abrir ainda dentro do gesto da pessoa
-  const preparar = e => { if (!nativo && e.target.closest?.("#conta-entrar, #cs-entrar")) carregarGIS().catch(() => {}); };
+  const preparar = e => { if (!nativo && e.target.closest?.("#conta-entrar, #cs-entrar, .js-entrar")) carregarGIS().catch(() => {}); };
   ["pointerover", "pointerdown", "focusin", "touchstart"].forEach(t => document.addEventListener(t, preparar, { passive: true }));
   document.addEventListener("click", e => {
-    if (e.target.closest("#conta-entrar, #cs-entrar")) { e.preventDefault(); fecharSugestao(); entrar(); }
+    if (e.target.closest("#conta-entrar, #cs-entrar, .js-entrar")) { e.preventDefault(); fecharSugestao(); entrar(); }
     else if (e.target.closest("#conta-sair")) pedirSair();
     else if (e.target.closest("#conta-apagar-nuvem")) apagarNuvem();
     else if (e.target.closest("#cs-nao")) { guardar(CHAVE_SUG, "nao"); fecharSugestao(); }
