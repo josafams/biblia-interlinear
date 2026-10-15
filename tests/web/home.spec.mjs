@@ -52,3 +52,12 @@ test("links antigos com referência vão para o leitor", async ({ page }) => {
   await expect(page).toHaveURL(/ler\.html#JHN\.3/);
   await expect(page.locator("#h1")).toContainText("João 3");
 });
+
+test("política de privacidade: publicada, com a seção de como apagar os dados e link no Índice do leitor", async ({ page }) => {
+  await page.goto("privacidade.html#apagar");
+  await expect(page.locator("h1")).toHaveText("Política de privacidade");
+  await expect(page.locator("#apagar")).toBeVisible();
+  await expect(page.locator("main")).toContainText("drive.appdata");
+  await page.goto("ler.html#GEN.1");
+  await expect(page.locator('#toc a[href$="privacidade.html"]')).toBeAttached();
+});

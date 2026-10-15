@@ -82,11 +82,7 @@ Para gerar o AAB assinado localmente, defina as mesmas variáveis (`ANDROID_KEYS
 
 ### Play Store
 
-1. Conta de desenvolvedor no Google Play Console.
-2. Contas pessoais criadas depois de 13/11/2023: teste fechado com pelo menos 12 testadores por 14 dias seguidos antes de pedir a produção.
-3. Política de privacidade: publique a versão web (abaixo) e use o endereço `…/privacidade.html`. Preencha o e-mail de contato em `web/privacidade.html` antes.
-4. Ficha da loja: ícone 512×512 (`build/web/icones/icone-512.png`), capturas de tela, descrição.
-5. Formulário de segurança dos dados: o app não coleta dados; preferências ficam só no aparelho.
+Ficha da loja, formulários (conteúdo, segurança dos dados), tela de consentimento do Google e teste fechado: [LOJAS.md](LOJAS.md).
 
 ## iOS
 

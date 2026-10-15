@@ -1,6 +1,6 @@
 # Comandos do projeto (os mesmos no computador e no CI). `make` sozinho lista tudo.
 .DEFAULT_GOAL := help
-.PHONY: help setup data web test test-data test-web lint format coverage videos-check build
+.PHONY: help setup data web test test-data test-web lint format coverage videos-check store build
 
 help: ## Lista os comandos
 	@grep -E '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  %-14s %s\n", $$1, $$2}'
@@ -53,6 +53,9 @@ coverage: ## Cobertura do Python: o pipeline de dados e os testes
 
 videos-check: ## Confere se os roteiros dos vídeos ainda funcionam (sem gravar)
 	node scripts/videos/gravar.mjs --verificar
+
+store: web ## Imagens da ficha da Play Store em build/store
+	node scripts/store_assets.mjs
 
 build: ## Gera tudo: dados, site, EPUB e PDF
 	scripts/build.sh
