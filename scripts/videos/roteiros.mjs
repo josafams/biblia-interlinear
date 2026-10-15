@@ -761,9 +761,51 @@ export const videos = [
     n: 27,
     grupo: "estudo",
     titulo: "Perguntas ao texto",
-    desc: "Ligar, responder e ver o progresso.",
-    ready: false,
-    steps: []
+    desc: "Pensar no capítulo e anotar a resposta.",
+    inicio: "RUT.1",
+    steps: [
+      {
+        legenda: "No fim do capítulo ficam as Perguntas ao texto: de 3 a 5, sem respostas, para pensar sozinho ou em grupo.",
+        faz: async t => {
+          await t.rolarAte("#perguntas");
+          await t.realcar("#perguntas h2");
+        }
+      },
+      {
+        legenda: "Há quatro tipos: observe, interprete, no original e aplique.",
+        faz: t => t.realcar("#perguntas .q-observation")
+      },
+      {
+        legenda: "O versículo da pergunta leva direto ao texto.",
+        faz: t => t.tocar("#perguntas .q-ref")
+      },
+      {
+        legenda: "Na pergunta sobre o original, a palavra hebraica ou grega abre o verbete.",
+        faz: async t => {
+          await t.rolarAte("#perguntas .q-word");
+          await t.tocar("#perguntas .q-word");
+          await t.pausa(1500);
+          await fecharPainel(t);
+        }
+      },
+      {
+        legenda: "Anotar resposta abre uma nota no versículo, com a pergunta como título.",
+        faz: async t => {
+          await t.rolarAte("#perguntas .q-note");
+          await t.tocar("#perguntas .q-note");
+          await t.digitar("#note-text", "Rute escolhe ficar com Noemi e com o povo dela.");
+        }
+      },
+      {
+        legenda: "A nota fica em Minhas anotações. Para esconder as perguntas: Aa › Mostrar na página.",
+        faz: async t => {
+          await fecharPainel(t);
+          await t.tocar("#open-look");
+          await t.rolarAte("#t-questions");
+          await t.realcar("#t-questions");
+        }
+      }
+    ]
   },
   {
     id: "31",
