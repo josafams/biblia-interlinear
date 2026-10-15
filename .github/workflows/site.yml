@@ -1,7 +1,7 @@
 # Gera o site a cada envio para a main e publica no ramo gh-pages (GitHub Pages).
 # Refaz o corpus a partir das fontes abertas; as glosas saem iguais às do repositório porque o alinhamento
 # fica salvo em data/alignment. Os vídeos "Como usar" já publicados em gh-pages/videos são mantidos.
-# Quando termina, dispara o app Android e a gravação dos vídeos (workflow_run), que usam este site.
+# Quando termina, dispara o app Android e a gravação dos vídeos (workflow_dispatch), que usam este site.
 name: Site
 on:
   push:
@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: gh-pages
@@ -56,3 +57,9 @@ jobs:
           git add -A
           git commit -q -m "Site: ${GITHUB_SHA::7} ($(git -C .. log -1 --format=%s | cut -c1-60))" || { echo "Nada mudou no site."; exit 0; }
           git push origin HEAD:gh-pages
+      - name: Disparar Android e Vídeos (usam o site publicado)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run android.yml --ref main
+          gh workflow run videos.yml --ref main
