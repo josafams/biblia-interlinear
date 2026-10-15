@@ -9,7 +9,8 @@ export default defineConfig({
   testDir: "tests/web",
   timeout: 30000,
   retries: process.env.CI ? 1 : 0,
-  reporter: process.env.CI ? [["list"], ["html", { open: "never", outputFolder: "build/test-report" }]] : "list",
+  // no CI, o reporter "github" põe cada falha como anotação na página da execução (visível sem login)
+  reporter: process.env.CI ? [["github"], ["list"], ["html", { open: "never", outputFolder: "build/test-report" }]] : "list",
   use: {
     baseURL: `http://localhost:${PORTA}/`,
     launchOptions: exe ? { executablePath: exe } : {},
