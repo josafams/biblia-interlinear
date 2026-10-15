@@ -61,3 +61,9 @@ test("política de privacidade: publicada, com a seção de como apagar os dados
   await page.goto("ler.html#GEN.1");
   await expect(page.locator('#toc a[href$="privacidade.html"]')).toBeAttached();
 });
+
+test("Perguntas ao texto aparece entre as funcionalidades, com o vídeo, e não como 'Em breve'", async ({ page }) => {
+  await page.goto("index.html");
+  await expect(page.locator("#recursos .feat", { hasText: "Perguntas ao texto" }).locator('a[href="#v-27"]')).toBeVisible();
+  await expect(page.locator("#recursos")).not.toContainText("Em breve");
+});
