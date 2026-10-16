@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Anotações e etiquetas</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&amp;family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1d5b74}a:hover{color:#123d4f}
+</style>
+</helmet>
+<div style="width: 1280px; min-height: 1900px; box-sizing: border-box; padding: 64px; background: #eceeea; color: #1b2220; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 15px; line-height: 1.5; display: flex; flex-direction: column; gap: 36px">
+
+  <div style="display: flex; flex-direction: column; gap: 10px; max-width: 920px">
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a5551">Anotações e etiquetas</div>
+    <h1 style="margin: 0; font-family: Literata, Georgia, serif; font-size: 38px; font-weight: 600; line-height: 1.15">Um versículo, um lugar: cor, nota e etiquetas juntas</h1>
+    <p style="margin: 0; color: #4a5551; font-size: 16px">Teste feito no site local: marquei João 3:16 em amarelo, criei as etiquetas “promessas” e “amor de Deus” e escrevi uma nota. O resultado mostra onde o fluxo atual se perde.</p>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 12px">
+    <h2 style="margin: 0; font-family: Literata, Georgia, serif; font-size: 24px; font-weight: 600">O que acontece hoje</h2>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px">
+      <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 6px">
+        <span style="align-self: flex-start; background: #7d4a2e; color: #ffffff; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px">Alta</span>
+        <b style="font-size: 16px">O mesmo versículo vira dois itens</b>
+        <span>“Minhas anotações” mostra “João 3:16 · nota” e “João 3:16 · marcação” separados. Marcação, nota e favorito são três registros diferentes.</span>
+      </div>
+      <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 6px">
+        <span style="align-self: flex-start; background: #7d4a2e; color: #ffffff; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px">Alta</span>
+        <b style="font-size: 16px">A etiqueta não chega à nota</b>
+        <span>As etiquetas criadas na barra ficam na marcação; a nota do mesmo versículo fica sem nenhuma. Filtrar por “promessas” esconde a nota.</span>
+      </div>
+      <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 6px">
+        <span style="align-self: flex-start; background: #7d4a2e; color: #ffffff; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px">Alta</span>
+        <b style="font-size: 16px">Na leitura, a anotação quase some</b>
+        <span>Depois de tudo, o versículo mostra só o “3:16” em amarelo e um ícone de nota. As etiquetas não aparecem em lugar nenhum do texto.</span>
+      </div>
+      <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 6px">
+        <span style="align-self: flex-start; background: #d9c3a5; color: #3d2414; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px">Média</span>
+        <b style="font-size: 16px">A nota abre em outra tela</b>
+        <span>“Nota” fecha a barra e abre uma folha em tela cheia, que cobre o texto e corta o trecho (“…para qu”). Cor e etiqueta ficam para trás.</span>
+      </div>
+      <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 6px">
+        <span style="align-self: flex-start; background: #d9c3a5; color: #3d2414; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px">Média</span>
+        <b style="font-size: 16px">Lista com controles demais</b>
+        <span>5 linhas de controles antes da primeira anotação: busca, 4 tipos, 2 seletores, “Nova nota livre” e 4 botões de ação.</span>
+      </div>
+      <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 6px">
+        <span style="align-self: flex-start; background: #d9c3a5; color: #3d2414; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px">Média</span>
+        <b style="font-size: 16px">Etiquetas sem gestão</b>
+        <span>Não há como renomear, apagar ou juntar etiquetas. Um erro de digitação (“promesas”) fica para sempre.</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; align-items: start">
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-family: Literata, Georgia, serif; font-size: 24px; font-weight: 600">O modelo proposto</h2>
+      <p style="margin: 0">Para quem usa, existe uma <b>anotação por versículo</b>, com quatro partes opcionais. As etiquetas valem para o versículo inteiro, então a nota e a cor aparecem juntas em qualquer filtro.</p>
+      <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 18px 18px 18px 22px; box-shadow: inset 5px 0 0 #d9b93a; display: flex; flex-direction: column; gap: 10px">
+        <div style="display: flex; justify-content: space-between"><b style="font-family: Literata, Georgia, serif; font-size: 18px">João 3:16</b><span style="color: #7d4a2e">★</span></div>
+        <div style="display: grid; grid-template-columns: 110px 1fr; gap: 6px 12px; font-size: 14px">
+          <span style="color: #4a5551">Cor</span><span>amarelo (barra à esquerda e fundo leve)</span>
+          <span style="color: #4a5551">Favorito</span><span>sim</span>
+          <span style="color: #4a5551">Nota</span><span style="font-family: Literata, Georgia, serif">[texto da sua nota]</span>
+          <span style="color: #4a5551">Etiquetas</span><span>#promessas · #amor de deus</span>
+          <span style="color: #4a5551">Dentro dele</span><span>trechos da BLIVRE e palavras do original marcados, cada um com a sua cor</span>
+        </div>
+      </div>
+      <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 8px">
+        <b>Como implementar sem quebrar a sincronização</b>
+        <span><b>A · agrupar só na interface (recomendado primeiro).</b> As coleções do IndexedDB (marcações, notas, favoritos) e os lotes do Google Drive continuam iguais. A tela agrupa por versículo, e a etiqueta escolhida no painel é gravada em todos os registros daquele versículo.</span>
+        <span><b>B · registro único por versículo.</b> Modelo mais limpo, mas exige migração dos dados e mudança no formato dos lotes do sync.js. Só vale depois que A estiver no ar.</span>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-family: Literata, Georgia, serif; font-size: 24px; font-weight: 600">Como aparece na leitura</h2>
+      <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+        <div style="padding: 12px 12px 12px 16px; border-radius: 12px; background: rgba(243,227,160,0.55); box-shadow: inset 4px 0 0 #d9b93a; display: flex; flex-direction: column; gap: 8px">
+          <b style="font-family: Literata, Georgia, serif; color: #1d5b74; font-size: 18px">3:16</b>
+          <span style="font-family: Literata, Georgia, serif; font-size: 16px"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: #4a5551; margin-right: 6px">BLIVRE</span>Porque Deus amou ao mundo de tal maneira, que deu o seu Filho unigênito…</span>
+          <span style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center; padding: 8px 10px; border-radius: 10px; border: 1px solid #d2d8d3; background: #f8f9f6">
+            <span style="color: #7d4a2e">★</span>
+            <span style="font-family: Literata, Georgia, serif; font-size: 14px; width: 100%">✎ [primeira linha da sua nota]</span>
+            <span style="padding: 2px 9px; border-radius: 999px; background: #e2e7e3; font-size: 12px">#promessas</span>
+            <span style="padding: 2px 9px; border-radius: 999px; background: #e2e7e3; font-size: 12px">#amor de deus</span>
+          </span>
+        </div>
+        <span style="font-size: 14px; color: #4a5551">Faixa sob o versículo, que só aparece quando há nota, favorito ou etiqueta; tocar nela abre o painel. No modo Bíblia, viram sinais ao lado do número (★ ✎ #). O chip “Minhas anotações” no Aa esconde tudo para uma leitura limpa.</span>
+      </div>
+      <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 6px; font-size: 14px">
+        <b style="font-size: 15px">Detalhes do painel “Anotar”</b>
+        <span>· Cor, favorito, nota e etiquetas no mesmo painel; “Pronto” fecha.</span>
+        <span>· A nota salva sozinha e mostra “Salvo”.</span>
+        <span>· Etiqueta: digitar filtra as existentes; Enter cria. Sem diferença entre maiúsculas e minúsculas, e o # é opcional.</span>
+        <span>· As mais usadas aparecem primeiro; sem nenhuma etiqueta, aparecem 4 sugestões para começar.</span>
+        <span>· Apagar tudo de um versículo mostra “Desfazer” por alguns segundos.</span>
+        <span>· “Anotar resposta” das perguntas abre o mesmo painel.</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 12px">
+    <h2 style="margin: 0; font-family: Literata, Georgia, serif; font-size: 24px; font-weight: 600">Toques por tarefa</h2>
+    <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 8px 24px 18px">
+      <table style="width: 100%; border-collapse: collapse; font-size: 15px">
+        <thead>
+          <tr style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #4a5551">
+            <th style="padding: 14px 10px; border-bottom: 1px solid #d2d8d3; width: 28%">Tarefa</th>
+            <th style="padding: 14px 10px; border-bottom: 1px solid #d2d8d3; width: 30%">Hoje</th>
+            <th style="padding: 14px 10px; border-bottom: 1px solid #d2d8d3">Proposta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding: 11px 10px; border-bottom: 1px solid #d2d8d3">Dar cor, pôr etiqueta e escrever nota no mesmo versículo</td><td style="padding: 11px 10px; border-bottom: 1px solid #d2d8d3">6 toques em 2 telas; a nota fica sem a etiqueta</td><td style="padding: 11px 10px; border-bottom: 1px solid #d2d8d3; color: #1d5b74; font-weight: 700">4 toques num painel só: nº → cor → etiqueta → Pronto</td></tr>
+          <tr><td style="padding: 11px 10px; border-bottom: 1px solid #d2d8d3">Criar uma etiqueta nova</td><td style="padding: 11px 10px; border-bottom: 1px solid #d2d8d3">⋯ → Etiqueta → digitar → Criar</td><td style="padding: 11px 10px; border-bottom: 1px solid #d2d8d3; color: #1d5b74; font-weight: 700">nº → digitar → Enter</td></tr>
+          <tr><td style="padding: 11px 10px; border-bottom: 1px solid #d2d8d3">Ver tudo de #promessas</td><td style="padding: 11px 10px; border-bottom: 1px solid #d2d8d3">Índice → rolar 2,8 telas → Minhas anotações → seletor → opção</td><td style="padding: 11px 10px; border-bottom: 1px solid #d2d8d3; color: #1d5b74; font-weight: 700">Livros → Notas → #promessas</td></tr>
+          <tr><td style="padding: 11px 10px; border-bottom: 1px solid #d2d8d3">Corrigir o nome de uma etiqueta</td><td style="padding: 11px 10px; border-bottom: 1px solid #d2d8d3">não existe</td><td style="padding: 11px 10px; border-bottom: 1px solid #d2d8d3; color: #1d5b74; font-weight: 700">Notas → Gerenciar → Renomear (se o nome já existe, junta as duas)</td></tr>
+          <tr><td style="padding: 11px 10px; border-bottom: 1px solid #d2d8d3">Apagar uma etiqueta</td><td style="padding: 11px 10px; border-bottom: 1px solid #d2d8d3">não existe</td><td style="padding: 11px 10px; border-bottom: 1px solid #d2d8d3; color: #1d5b74; font-weight: 700">Notas → Gerenciar → Apagar; as notas e as cores continuam</td></tr>
+          <tr><td style="padding: 11px 10px">Exportar PDF, backup, importar</td><td style="padding: 11px 10px">sempre visíveis no topo da lista</td><td style="padding: 11px 10px">menu ⋯ ao lado da busca (1 toque a mais, lista mais limpa)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="font-size: 13px; color: #4a5551">“Hoje”: percorrido no site local com navegador automatizado. “Proposta”: toques no protótipo do celular deste canvas.</div>
+  </div>
+
+  <div style="background: #f8f9f6; border: 1px dashed #8e9a95; border-radius: 14px; padding: 18px; font-size: 14px; display: flex; flex-direction: column; gap: 4px">
+    <b style="font-size: 15px">Fica como está (já funciona bem)</b>
+    <span>Marcar um trecho selecionado da Bíblia Livre e uma palavra do original; exportar o caderno A4 em PDF; backup e importação sem duplicar; sincronização pelo Google Drive. No novo desenho, trechos e palavras marcados aparecem dentro do item do versículo na lista.</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

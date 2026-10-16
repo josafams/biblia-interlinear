@@ -1,0 +1,1126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Leitor no celular</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&amp;family=Gentium+Book+Plus:wght@400;700&amp;family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1d5b74}a:hover{color:#123d4f}
+button{font:inherit}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; overflow: hidden; background: {{c.bg}}; color: {{c.fg}}; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 15px; line-height: 1.45">
+
+  <!-- barra superior -->
+  <div style="position: absolute; left: 0; top: 0; right: 0; height: 56px; box-sizing: border-box; padding: 6px 12px; display: flex; align-items: center; background: {{c.surface}}; border-bottom: 1px solid {{c.line}}; z-index: 3">
+    <button onClick="{{openChapters}}" aria-label="Escolher capítulo de {{bookName}}" style="flex: 1; min-width: 0; height: 44px; border: 0; background: transparent; color: {{c.fg}}; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; border-radius: 10px">
+      <span style="display: flex; flex-direction: column; align-items: center; min-width: 0">
+        <span style="font-family: Literata, Georgia, serif; font-weight: 600; font-size: 17px; line-height: 1.2">{{refLabel}}</span>
+        <span style="font-size: 12px; color: {{c.muted}}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px">{{chTitle}}</span>
+      </span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+    </button>
+  </div>
+
+  <!-- área de leitura -->
+  <div ref="{{setScroller}}" style="position: absolute; left: 0; right: 0; top: 56px; bottom: {{readBottom}}px; overflow-y: auto; box-sizing: border-box; padding: 18px 16px 28px">
+
+    <sc-if value="{{isCh3}}" hint-placeholder-val="{{ true }}">
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px">
+        <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap">
+          <h1 style="margin: 0; font-family: Literata, Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.15">João 3</h1>
+          <span style="font-family: 'Gentium Book Plus', Georgia, serif; font-size: 20px; color: {{c.muted}}">Κατὰ Ἰωάννην</span>
+        </div>
+        <sc-if value="{{show.theme}}" hint-placeholder-val="{{ true }}">
+          <div style="font-family: Literata, Georgia, serif; font-style: italic; color: {{c.accent}}">Nicodemos e o novo nascimento</div>
+        </sc-if>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap">
+          <button onClick="{{toggleAbout}}" aria-expanded="{{aboutOpen}}" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid {{c.line}}; background: {{c.surface}}; color: {{c.fg}}; cursor: pointer">Sobre João</button>
+          <a href="#lexico" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid {{c.line}}; background: {{c.surface}}; color: {{c.fg}}; text-decoration: none; display: inline-flex; align-items: center">Léxico</a>
+          <sc-if value="{{show.questions}}" hint-placeholder-val="{{ true }}">
+            <a href="#perguntas" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid {{c.line}}; background: {{c.surface}}; color: {{c.fg}}; text-decoration: none; display: inline-flex; align-items: center; gap: 6px">Perguntas <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: {{c.muted}}">4</span></a>
+          </sc-if>
+        </div>
+        <sc-if value="{{aboutOpen}}" hint-placeholder-val="{{ false }}">
+          <div style="background: {{c.surface}}; border: 1px solid {{c.line}}; border-radius: 12px; padding: 14px; color: {{c.muted}}; font-size: 14px">[Introdução do livro: resumo, origem do nome, autoria e data, contexto, lugares e versículos-chave — o mesmo conteúdo de hoje, recolhido por padrão.]</div>
+        </sc-if>
+        <sc-if value="{{firstRun}}" hint-placeholder-val="{{ true }}">
+          <div style="background: {{c.soft}}; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px">
+            <div style="display: flex; justify-content: space-between; align-items: center">
+              <b style="font-size: 14px">Como você quer ler?</b>
+              <button onClick="{{dismissFirstRun}}" aria-label="Decidir depois" style="width: 64px; height: 32px; border: 0; background: transparent; color: {{c.muted}}; cursor: pointer; font-size: 13px">Depois</button>
+            </div>
+            <div style="display: flex; gap: 6px">
+              <button onClick="{{pickBiblia}}" style="flex: 1; height: 40px; border-radius: 10px; border: 1px solid {{c.accent}}; background: {{c.surface}}; color: {{c.fg}}; cursor: pointer; font-size: 13px">Bíblia</button>
+              <button onClick="{{pickOriginal}}" style="flex: 1; height: 40px; border-radius: 10px; border: 1px solid {{c.accent}}; background: {{c.surface}}; color: {{c.fg}}; cursor: pointer; font-size: 13px">Original</button>
+              <button onClick="{{pickInterlinear}}" style="flex: 1.3; height: 40px; border-radius: 10px; border: 1px solid {{c.accent}}; background: {{c.accent}}; color: {{c.on}}; cursor: pointer; font-size: 13px">Interlinear</button>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <!-- modo Interlinear / Estudo -->
+      <sc-if value="{{modeCards}}" hint-placeholder-val="{{ true }}">
+        <sc-for list="{{verses}}" as="v" hint-placeholder-count="2">
+          <div id="{{v.anchor}}" style="{{v.blockStyle}}">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px">
+              <button onClick="{{v.openMenu}}" aria-label="{{v.menuLabel}}" style="position: relative; height: 44px; min-width: 44px; padding: 0 6px; border: 0; background: transparent; color: {{c.accent}}; font-family: Literata, Georgia, serif; font-weight: 600; font-size: 20px; cursor: pointer; text-align: left">{{v.numLabel}}<sc-if value="{{v.hasReview}}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="position: absolute; top: 10px; right: -2px; width: 8px; height: 8px; border-radius: 50%; background: {{c.warm}}"></span></sc-if></button>
+              <button onClick="{{v.openMenu}}" aria-label="{{v.menuLabel}}" style="width: 44px; height: 44px; border: 0; background: transparent; color: {{c.muted}}; cursor: pointer; border-radius: 10px; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.8"></circle><circle cx="12" cy="12" r="1.8"></circle><circle cx="19" cy="12" r="1.8"></circle></svg></button>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px">
+              <sc-for list="{{v.words}}" as="w" hint-placeholder-count="6">
+                <button onClick="{{w.pick}}" aria-label="{{w.aria}}" style="{{w.style}}">
+                  <span style="font-family: 'Gentium Book Plus', Georgia, serif; font-size: {{gSize}}px; line-height: 1.2">{{w.g}}</span>
+                  <sc-if value="{{w.showX}}" hint-placeholder-val="{{ true }}"><span style="font-family: Literata, Georgia, serif; font-style: italic; font-size: {{xSize}}px; color: {{c.accent}}">{{w.x}}</span></sc-if>
+                  <sc-if value="{{w.showP}}" hint-placeholder-val="{{ false }}"><span style="font-family: 'IBM Plex Mono', monospace; font-size: {{sSize}}px; color: {{c.muted}}">{{w.p}}</span></sc-if>
+                  <sc-if value="{{w.showS}}" hint-placeholder-val="{{ false }}"><span style="font-family: 'IBM Plex Mono', monospace; font-size: {{sSize}}px; color: {{c.muted}}">{{w.strong}}</span></sc-if>
+                  <sc-if value="{{w.showM}}" hint-placeholder-val="{{ false }}"><span style="font-size: {{sSize}}px; color: {{c.muted}}">{{w.mShort}}</span></sc-if>
+                  <sc-if value="{{w.showG}}" hint-placeholder-val="{{ true }}"><span style="font-size: {{glSize}}px; font-weight: 700; white-space: nowrap">{{w.gl}}</span></sc-if>
+                </button>
+              </sc-for>
+            </div>
+            <sc-if value="{{v.showBlivre}}" hint-placeholder-val="{{ true }}">
+              <p style="margin: 10px 0 0; font-family: {{blivreFont}}; font-size: {{bSize}}px; line-height: {{lh}}"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: {{c.muted}}; margin-right: 6px">BLIVRE</span>{{v.blivre}}</p>
+            </sc-if>
+            <sc-if value="{{v.hasStrip}}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{v.openMenu}}" aria-label="{{v.stripLabel}}" style="{{v.stripStyle}}">
+                <sc-if value="{{v.fav}}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="color: {{c.warm}}">★</span></sc-if>
+                <sc-if value="{{v.hasNote}}" hint-placeholder-val="{{ false }}"><span style="display: flex; gap: 6px; align-items: flex-start; font-family: Literata, Georgia, serif; font-size: 14px; color: {{c.fg}}; width: 100%"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px; color: {{c.muted}}"><path d="M5 4h14v16H5z"></path><path d="M8 9h8M8 13h8M8 17h5"></path></svg><span>{{v.notePreview}}</span></span></sc-if>
+                <sc-for list="{{v.tagChips}}" as="t" hint-placeholder-count="2">
+                  <span style="padding: 2px 9px; border-radius: 999px; background: {{c.chip}}; color: {{c.fg}}; font-size: 12px">#{{t.name}}</span>
+                </sc-for>
+              </button>
+            </sc-if>
+          </div>
+        </sc-for>
+      </sc-if>
+
+      <!-- modo Bíblia -->
+      <sc-if value="{{modeBiblia}}" hint-placeholder-val="{{ false }}">
+        <p style="margin: 0; font-family: {{blivreFont}}; font-size: {{bSize}}px; line-height: {{lhPar}}">
+          <sc-for list="{{verses}}" as="v" hint-placeholder-count="2">
+            <span style="{{v.inlineMark}}"><button onClick="{{v.openMenu}}" aria-label="{{v.menuLabel}}" style="border: 0; background: transparent; color: {{c.accent}}; font-family: 'Atkinson Hyperlegible', sans-serif; font-weight: 700; font-size: 12px; vertical-align: super; padding: 4px 4px; cursor: pointer">{{v.n}}{{v.inlineIcons}}</button>{{v.blivre}} </span>
+          </sc-for>
+        </p>
+        <p style="margin: 10px 0 0; font-size: 13px; color: {{c.muted}}">Toque no número do versículo para marcar, anotar ou ver o interlinear dele.</p>
+      </sc-if>
+
+      <!-- modo Original -->
+      <sc-if value="{{modeOriginal}}" hint-placeholder-val="{{ false }}">
+        <p style="margin: 0; font-family: 'Gentium Book Plus', Georgia, serif; font-size: {{gSize}}px; line-height: 1.9">
+          <sc-for list="{{verses}}" as="v" hint-placeholder-count="2">
+            <span><button onClick="{{v.openMenu}}" aria-label="{{v.menuLabel}}" style="border: 0; background: transparent; color: {{c.accent}}; font-family: 'Atkinson Hyperlegible', sans-serif; font-weight: 700; font-size: 12px; vertical-align: super; padding: 4px 4px; cursor: pointer">{{v.n}}{{v.inlineIcons}}</button><sc-for list="{{v.words}}" as="w" hint-placeholder-count="6"><button onClick="{{w.pick}}" aria-label="{{w.aria}}" style="{{w.inlineStyle}}">{{w.g}}</button> </sc-for></span>
+          </sc-for>
+        </p>
+        <p style="margin: 10px 0 0; font-size: 13px; color: {{c.muted}}">Toque numa palavra para ver o verbete.</p>
+      </sc-if>
+
+      <!-- perguntas -->
+      <sc-if value="{{show.questions}}" hint-placeholder-val="{{ true }}">
+        <div id="perguntas" style="margin-top: 24px; display: flex; flex-direction: column; gap: 10px">
+          <h2 style="margin: 0; font-family: Literata, Georgia, serif; font-size: 20px; font-weight: 600">Perguntas ao texto</h2>
+          <sc-for list="{{questions}}" as="q" hint-placeholder-count="4">
+            <div style="background: {{c.surface}}; border: 1px solid {{c.line}}; border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px">
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: {{c.muted}}">{{q.kind}} · 3:{{q.ref}}</div>
+              <div style="font-family: Literata, Georgia, serif; font-size: 15px">{{q.text}}</div>
+              <button onClick="{{q.answer}}" style="align-self: flex-start; height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid {{c.line}}; background: transparent; color: {{c.accent}}; cursor: pointer; font-size: 13px">Anotar resposta</button>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- léxico do capítulo -->
+      <div id="lexico" style="margin-top: 24px; display: flex; flex-direction: column; gap: 8px">
+        <h2 style="margin: 0; font-family: Literata, Georgia, serif; font-size: 20px; font-weight: 600">Léxico do capítulo</h2>
+        <div style="background: {{c.surface}}; border: 1px solid {{c.line}}; border-radius: 12px; overflow: hidden">
+          <sc-for list="{{lexList}}" as="l" hint-placeholder-count="6">
+            <button onClick="{{l.open}}" style="width: 100%; min-height: 48px; display: flex; align-items: baseline; gap: 10px; padding: 10px 14px; border: 0; border-bottom: 1px solid {{c.line}}; background: transparent; color: {{c.fg}}; cursor: pointer; text-align: left">
+              <span style="font-family: 'Gentium Book Plus', Georgia, serif; font-size: 18px; min-width: 96px">{{l.l}}</span>
+              <span style="flex: 1; color: {{c.muted}}; font-size: 14px">{{l.gl}}</span>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: {{c.muted}}">{{l.n}}×</span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- próximo capítulo -->
+      <button onClick="{{nextCh}}" style="margin-top: 24px; width: 100%; padding: 16px; border-radius: 14px; border: 1px solid {{c.line}}; background: {{c.surface}}; color: {{c.fg}}; cursor: pointer; text-align: left; display: flex; align-items: center; gap: 12px">
+        <span style="flex: 1; display: flex; flex-direction: column; gap: 2px">
+          <span style="font-size: 12px; color: {{c.muted}}">Próximo capítulo</span>
+          <span style="font-family: Literata, Georgia, serif; font-weight: 600; font-size: 18px">João 4</span>
+          <span style="font-size: 13px; color: {{c.muted}}">A samaritana e o filho do nobre</span>
+        </span>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+      </button>
+    </sc-if>
+
+    <!-- outros capítulos (sem dados no protótipo) -->
+    <sc-if value="{{notCh3}}" hint-placeholder-val="{{ false }}">
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <h1 style="margin: 0; font-family: Literata, Georgia, serif; font-size: 28px; font-weight: 600">{{refLabel}}</h1>
+        <div style="font-family: Literata, Georgia, serif; font-style: italic; color: {{c.accent}}">{{chTitle}}</div>
+        <div style="background: {{c.surface}}; border: 1px dashed {{c.line}}; border-radius: 12px; padding: 24px 16px; color: {{c.muted}}; text-align: center">[Texto de {{refLabel}}: neste protótipo só João 3:16–17 tem conteúdo. Use ‹ › ou o título para voltar.]</div>
+      </div>
+    </sc-if>
+  </div>
+
+  <!-- mini player -->
+  <sc-if value="{{playing}}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; left: 8px; right: 8px; bottom: 80px; height: 48px; box-sizing: border-box; padding: 0 6px 0 14px; border-radius: 12px; background: {{c.accent}}; color: {{c.on}}; display: flex; align-items: center; gap: 8px; z-index: 4">
+      <span style="flex: 1; font-size: 14px">Lendo {{playRef}} · grego</span>
+      <button onClick="{{togglePlay}}" aria-label="Pausar leitura" style="width: 44px; height: 44px; border: 0; background: transparent; color: {{c.on}}; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg></button>
+    </div>
+  </sc-if>
+
+  <!-- barra inferior -->
+  <nav aria-label="Navegação" style="position: absolute; left: 0; right: 0; bottom: 0; height: 72px; box-sizing: border-box; padding: 6px 6px 10px; display: flex; justify-content: space-around; align-items: stretch; background: {{c.surface}}; border-top: 1px solid {{c.line}}; z-index: 3">
+    <button onClick="{{openBooks}}" style="flex: 1; border: 0; background: transparent; color: {{c.fg}}; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 12px; border-radius: 10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"></path><path d="M4 19V5"></path></svg>Livros</button>
+    <button onClick="{{prevCh}}" aria-label="Capítulo anterior: {{prevLabel}}" style="flex: 1; border: 0; background: transparent; color: {{c.fg}}; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 12px; border-radius: 10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>{{prevLabel}}</button>
+    <button onClick="{{togglePlay}}" aria-label="{{playLabel}}" style="flex: 1.2; border: 0; background: {{c.accent}}; color: {{c.on}}; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 12px; border-radius: 14px; margin: 0 4px"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5l12 7-12 7z"></path></svg>{{playShort}}</button>
+    <button onClick="{{nextCh}}" aria-label="Próximo capítulo: {{nextLabel}}" style="flex: 1; border: 0; background: transparent; color: {{c.fg}}; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 12px; border-radius: 10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>{{nextLabel}}</button>
+    <button onClick="{{openAa}}" style="flex: 1; border: 0; background: transparent; color: {{c.fg}}; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 12px; border-radius: 10px"><span aria-hidden="true" style="font-family: Literata, Georgia, serif; font-size: 19px; line-height: 22px">Aa</span>Aparência</button>
+  </nav>
+
+  <!-- fundo escuro das folhas modais -->
+  <sc-if value="{{modal}}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{closeSheet}}" aria-label="Fechar" style="position: absolute; inset: 0; border: 0; background: {{c.scrim}}; cursor: default; z-index: 5"></button>
+  </sc-if>
+
+  <!-- folha: verbete (não modal) -->
+  <sc-if value="{{sheetWord}}" hint-placeholder-val="{{ false }}">
+    <section role="dialog" aria-label="Verbete" style="position: absolute; left: 0; right: 0; bottom: 0; height: 420px; box-sizing: border-box; background: {{c.surface}}; border-top: 1px solid {{c.line}}; border-radius: 20px 20px 0 0; box-shadow: 0 -10px 30px rgba(0,0,0,0.12); z-index: 6; display: flex; flex-direction: column">
+      <div style="display: flex; align-items: center; gap: 4px; padding: 8px 8px 4px">
+        <button onClick="{{wordPrev}}" aria-label="Palavra anterior" style="width: 44px; height: 44px; border: 1px solid {{c.line}}; border-radius: 12px; background: transparent; color: {{c.fg}}; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button>
+        <div style="flex: 1; text-align: center; display: flex; flex-direction: column">
+          <span style="font-family: 'Gentium Book Plus', Georgia, serif; font-size: 30px; line-height: 1.15">{{ws.g}}</span>
+          <span style="font-size: 12px; color: {{c.muted}}">{{ws.pos}}</span>
+        </div>
+        <button onClick="{{wordNext}}" aria-label="Próxima palavra" style="width: 44px; height: 44px; border: 1px solid {{c.line}}; border-radius: 12px; background: transparent; color: {{c.fg}}; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
+        <button onClick="{{closeSheet}}" aria-label="Fechar verbete" style="width: 44px; height: 44px; border: 0; background: transparent; color: {{c.muted}}; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+      </div>
+      <div style="flex: 1; overflow-y: auto; padding: 4px 18px 18px; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; align-items: center; gap: 10px; justify-content: center; color: {{c.muted}}; font-size: 14px; flex-wrap: wrap">
+          <span><span style="font-family: 'Gentium Book Plus', Georgia, serif; color: {{c.fg}}">{{ws.lemma}}</span> · <i style="font-family: Literata, Georgia, serif; color: {{c.accent}}">{{ws.x}}</i> · {{ws.p}}</span>
+          <button onClick="{{sayWord}}" style="height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid {{c.line}}; background: transparent; color: {{c.accent}}; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-size: 13px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg>Ouvir</button>
+        </div>
+        <div style="background: {{c.bg}}; border-radius: 12px; padding: 12px 14px">
+          <div style="font-size: 12px; color: {{c.muted}}">Neste versículo</div>
+          <div style="font-family: Literata, Georgia, serif; font-size: 22px; font-weight: 600">{{ws.gl}}</div>
+          <div style="font-size: 13px; color: {{c.muted}}">{{ws.morph}}</div>
+        </div>
+        <div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: {{c.muted}}">Significado</div>
+          <div style="font-family: Literata, Georgia, serif; font-size: 15px">{{ws.sig}}</div>
+        </div>
+        <div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: {{c.muted}}; margin-bottom: 6px">Como a BLIVRE traduz</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px">
+            <sc-for list="{{ws.tr}}" as="t" hint-placeholder-count="4">
+              <span style="padding: 4px 10px; border-radius: 999px; background: {{c.chip}}; font-size: 13px">{{t.w}} <span style="color: {{c.muted}}; font-family: 'IBM Plex Mono', monospace; font-size: 11px">{{t.n}}</span></span>
+            </sc-for>
+          </div>
+        </div>
+        <sc-if value="{{ws.hasO}}" hint-placeholder-val="{{ false }}">
+          <div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: {{c.muted}}">Origem</div>
+            <div style="font-size: 14px">{{ws.o}}</div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ws.hasReview}}" hint-placeholder-val="{{ false }}">
+          <div style="background: {{c.chip}}; border-radius: 12px; padding: 10px 12px; font-size: 13px"><b style="color: {{c.warm}}">Revisão automática.</b> {{ws.review}}</div>
+        </sc-if>
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12px; color: {{c.muted}}; border-top: 1px solid {{c.line}}; padding-top: 10px">
+          <span>Strong {{ws.strong}} · {{ws.n}} ocorrências</span>
+          <button onClick="{{markWord}}" aria-pressed="{{ws.marked}}" style="height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid {{c.line}}; background: transparent; color: {{c.fg}}; cursor: pointer; font-size: 13px">{{ws.markLabel}}</button>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- folha: anotar (versículo ou nota livre) -->
+  <sc-if value="{{sheetVerse}}" hint-placeholder-val="{{ false }}">
+    <section role="dialog" aria-label="Anotar {{vm.ref}}" style="position: absolute; left: 0; right: 0; bottom: 0; max-height: 790px; box-sizing: border-box; background: {{c.surface}}; border-radius: 20px 20px 0 0; z-index: 6; display: flex; flex-direction: column">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; padding: 12px 8px 6px 18px">
+        <div style="display: flex; flex-direction: column; min-width: 0">
+          <b style="font-family: Literata, Georgia, serif; font-size: 19px">{{vm.ref}}</b>
+          <span style="font-family: Literata, Georgia, serif; font-size: 13px; color: {{c.muted}}">{{vm.snippet}}</span>
+        </div>
+        <button onClick="{{closeSheet}}" aria-label="Fechar" style="width: 44px; height: 44px; flex-shrink: 0; border: 0; background: transparent; color: {{c.muted}}; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+      </div>
+      <div style="flex: 1; min-height: 0; overflow-y: auto; padding: 4px 18px 12px; display: flex; flex-direction: column; gap: 16px">
+        <sc-if value="{{vm.isVerse}}" hint-placeholder-val="{{ true }}">
+          <div role="group" aria-label="Cor da marcação" style="display: flex; justify-content: space-between">
+            <sc-for list="{{vm.colors}}" as="col" hint-placeholder-count="5">
+              <button onClick="{{col.pick}}" aria-label="{{col.label}}" aria-pressed="{{col.on}}" style="{{col.style}}"></button>
+            </sc-for>
+            <button onClick="{{vm.clearColor}}" aria-label="Tirar a cor" style="width: 48px; height: 48px; border-radius: 50%; border: 1px solid {{c.line}}; background: transparent; color: {{c.muted}}; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px">
+            <button onClick="{{vm.toggleFav}}" aria-pressed="{{vm.fav}}" style="height: 56px; border-radius: 12px; border: 1px solid {{c.line}}; background: {{vm.favBg}}; color: {{c.fg}}; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 12px"><span aria-hidden="true" style="font-size: 18px; line-height: 18px; color: {{c.warm}}">{{vm.star}}</span>{{vm.favLabel}}</button>
+            <button onClick="{{vm.listen}}" style="height: 56px; border-radius: 12px; border: 1px solid {{c.line}}; background: transparent; color: {{c.fg}}; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg>Ouvir</button>
+            <button onClick="{{vm.copy}}" style="height: 56px; border-radius: 12px; border: 1px solid {{c.line}}; background: transparent; color: {{c.fg}}; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"></rect><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"></path></svg>Copiar</button>
+            <button onClick="{{vm.interlinear}}" style="height: 56px; border-radius: 12px; border: 1px solid {{c.line}}; background: transparent; color: {{c.fg}}; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 12px"><span aria-hidden="true" style="font-family: 'Gentium Book Plus', serif; font-size: 16px; line-height: 18px">αβ</span>Interlinear</button>
+          </div>
+        </sc-if>
+
+        <label style="display: flex; flex-direction: column; gap: 6px">
+          <span style="display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: {{c.muted}}">Nota<span style="font-family: 'Atkinson Hyperlegible', sans-serif; letter-spacing: 0; text-transform: none; font-size: 12px; color: {{c.accent}}">{{vm.saved}}</span></span>
+          <textarea onChange="{{vm.noteInput}}" value="{{vm.note}}" rows="4" placeholder="O que você percebeu neste versículo?" style="font-family: Literata, Georgia, serif; font-size: 16px; line-height: 1.5; color: {{c.fg}}; background: {{c.bg}}; border: 1px solid {{c.line}}; border-radius: 12px; padding: 10px 12px; resize: none"></textarea>
+        </label>
+
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: {{c.muted}}">Etiquetas</div>
+          <sc-if value="{{vm.hasTags}}" hint-placeholder-val="{{ false }}">
+            <div style="display: flex; flex-wrap: wrap; gap: 6px">
+              <sc-for list="{{vm.tags}}" as="t" hint-placeholder-count="2">
+                <button onClick="{{t.remove}}" aria-label="Tirar a etiqueta {{t.name}}" style="height: 36px; padding: 0 8px 0 12px; border-radius: 999px; border: 0; background: {{c.accent}}; color: {{c.on}}; cursor: pointer; font-size: 14px; display: inline-flex; align-items: center; gap: 6px">#{{t.name}}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+              </sc-for>
+            </div>
+          </sc-if>
+          <label style="position: relative; display: block">
+            <span style="position: absolute; left: -9999px">Adicionar etiqueta</span>
+            <input type="text" value="{{tagQuery}}" onChange="{{onTagQuery}}" onKeyDown="{{onTagKey}}" placeholder="+ Adicionar etiqueta" autocomplete="off" style="width: 100%; box-sizing: border-box; font: inherit; font-size: 16px; height: 44px; padding: 0 14px; border-radius: 999px; border: 1px dashed {{c.line}}; background: transparent; color: {{c.fg}}">
+          </label>
+          <sc-if value="{{vm.hasSuggest}}" hint-placeholder-val="{{ true }}">
+            <div style="display: flex; flex-direction: column; gap: 6px">
+              <span style="font-size: 12px; color: {{c.muted}}">{{vm.suggestLabel}}</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 6px">
+                <sc-for list="{{vm.suggest}}" as="t" hint-placeholder-count="3">
+                  <button onClick="{{t.add}}" style="height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid {{c.line}}; background: transparent; color: {{c.fg}}; cursor: pointer; font-size: 14px">#{{t.name}} <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: {{c.muted}}">{{t.count}}</span></button>
+                </sc-for>
+                <sc-if value="{{vm.canCreate}}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{vm.create}}" style="height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid {{c.accent}}; background: {{c.soft}}; color: {{c.fg}}; cursor: pointer; font-size: 14px">+ Criar “{{vm.createName}}”</button>
+                </sc-if>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+
+        <sc-if value="{{vm.hasReview}}" hint-placeholder-val="{{ false }}">
+          <div style="background: {{c.chip}}; border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; font-size: 14px">
+            <b style="color: {{c.warm}}">Ponto de revisão automática</b>
+            <span>{{vm.review}}</span>
+            <span style="font-size: 12px; color: {{c.muted}}">Detalhes técnicos: {{vm.code}}</span>
+          </div>
+        </sc-if>
+        <sc-if value="{{vm.canDelete}}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{vm.remove}}" style="align-self: flex-start; height: 40px; padding: 0; border: 0; background: transparent; color: {{c.warm}}; cursor: pointer; font-size: 14px; text-decoration: underline">{{vm.removeLabel}}</button>
+        </sc-if>
+      </div>
+      <div style="padding: 10px 18px 18px; border-top: 1px solid {{c.line}}">
+        <button onClick="{{closeSheet}}" style="width: 100%; height: 48px; border-radius: 12px; border: 0; background: {{c.accent}}; color: {{c.on}}; cursor: pointer; font-size: 16px">Pronto</button>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- folha: Aparência -->
+  <sc-if value="{{sheetAa}}" hint-placeholder-val="{{ false }}">
+    <section role="dialog" aria-label="Aparência" style="position: absolute; left: 0; right: 0; bottom: 0; height: 640px; box-sizing: border-box; background: {{c.surface}}; border-radius: 20px 20px 0 0; z-index: 6; display: flex; flex-direction: column">
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 12px 4px 18px">
+        <b style="font-family: Literata, Georgia, serif; font-size: 20px">Aparência</b>
+        <button onClick="{{closeSheet}}" aria-label="Fechar aparência" style="width: 44px; height: 44px; border: 0; background: transparent; color: {{c.muted}}; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+      </div>
+      <div style="flex: 1; overflow-y: auto; padding: 4px 18px 22px; display: flex; flex-direction: column; gap: 18px">
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: {{c.muted}}">Modo de leitura</div>
+          <div role="radiogroup" aria-label="Modo de leitura" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 3px; background: {{c.chip}}; padding: 3px; border-radius: 12px">
+            <sc-for list="{{modes}}" as="m" hint-placeholder-count="4">
+              <button role="radio" aria-checked="{{m.on}}" onClick="{{m.pick}}" style="{{m.style}}">{{m.label}}</button>
+            </sc-for>
+          </div>
+          <div style="font-size: 13px; color: {{c.muted}}">{{modeHint}}</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: {{c.muted}}">O que mostrar</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px">
+            <sc-for list="{{chips}}" as="ch" hint-placeholder-count="8">
+              <button aria-pressed="{{ch.on}}" onClick="{{ch.toggle}}" style="{{ch.style}}">{{ch.label}}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: {{c.muted}}">Texto</div>
+          <div style="display: flex; align-items: center; gap: 10px">
+            <button onClick="{{sizeDown}}" aria-label="Diminuir texto" style="width: 48px; height: 44px; border-radius: 10px; border: 1px solid {{c.line}}; background: transparent; color: {{c.fg}}; cursor: pointer; font-size: 14px">A−</button>
+            <output aria-live="polite" style="font-family: 'IBM Plex Mono', monospace; min-width: 52px; text-align: center">{{size}}%</output>
+            <button onClick="{{sizeUp}}" aria-label="Aumentar texto" style="width: 48px; height: 44px; border-radius: 10px; border: 1px solid {{c.line}}; background: transparent; color: {{c.fg}}; cursor: pointer; font-size: 19px">A+</button>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px">
+            <sc-for list="{{readChips}}" as="ch" hint-placeholder-count="3">
+              <button aria-pressed="{{ch.on}}" onClick="{{ch.toggle}}" style="{{ch.style}}">{{ch.label}}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: {{c.muted}}">Tema</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px">
+            <sc-for list="{{themes}}" as="t" hint-placeholder-count="7">
+              <button aria-pressed="{{t.on}}" onClick="{{t.pick}}" style="{{t.style}}"><span aria-hidden="true" style="{{t.dot}}"></span>{{t.label}}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: {{c.muted}}">Áudio</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px">
+            <sc-for list="{{audioChips}}" as="ch" hint-placeholder-count="2">
+              <button aria-pressed="{{ch.on}}" onClick="{{ch.toggle}}" style="{{ch.style}}">{{ch.label}}</button>
+            </sc-for>
+          </div>
+        </div>
+        <button onClick="{{showSources}}" style="align-self: flex-start; height: 40px; padding: 0; border: 0; background: transparent; color: {{c.accent}}; cursor: pointer; text-decoration: underline; font-size: 14px">Fontes e licenças</button>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- folha: Livros · Notas · Você -->
+  <sc-if value="{{sheetNav}}" hint-placeholder-val="{{ false }}">
+    <section role="dialog" aria-label="Índice" style="position: absolute; left: 0; right: 0; bottom: 0; height: 780px; box-sizing: border-box; background: {{c.surface}}; border-radius: 20px 20px 0 0; z-index: 6; display: flex; flex-direction: column">
+      <div style="display: flex; align-items: center; gap: 8px; padding: 10px 8px 6px 16px">
+        <div role="tablist" aria-label="Índice" style="flex: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; background: {{c.chip}}; padding: 3px; border-radius: 12px">
+          <sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+            <button role="tab" aria-selected="{{t.on}}" onClick="{{t.pick}}" style="{{t.style}}">{{t.label}}</button>
+          </sc-for>
+        </div>
+        <button onClick="{{closeSheet}}" aria-label="Fechar índice" style="width: 44px; height: 44px; border: 0; background: transparent; color: {{c.muted}}; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+      </div>
+
+      <div style="flex: 1; overflow-y: auto; padding: 8px 16px 24px; display: flex; flex-direction: column; gap: 14px">
+
+        <sc-if value="{{tabLivros}}" hint-placeholder-val="{{ true }}">
+          <label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: {{c.muted}}">Buscar livro ou ir para uma referência
+            <input type="search" value="{{q}}" onChange="{{onQuery}}" placeholder="Ex.: Jo 3:16, salmos 23, Cânticos" style="font: inherit; font-size: 16px; height: 48px; box-sizing: border-box; padding: 0 14px; border-radius: 12px; border: 1px solid {{c.line}}; background: {{c.bg}}; color: {{c.fg}}">
+          </label>
+          <sc-if value="{{hasJump}}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{doJump}}" style="height: 52px; border-radius: 12px; border: 0; background: {{c.accent}}; color: {{c.on}}; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; gap: 8px">Ir para {{jumpLabel}}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+          </sc-if>
+          <sc-if value="{{showBookList}}" hint-placeholder-val="{{ false }}">
+            <div role="radiogroup" aria-label="Testamento" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px; background: {{c.chip}}; padding: 3px; border-radius: 12px">
+              <button role="radio" aria-checked="{{atOn}}" onClick="{{pickAT}}" style="{{atStyle}}">Antigo Testamento</button>
+              <button role="radio" aria-checked="{{ntOn}}" onClick="{{pickNT}}" style="{{ntStyle}}">Novo Testamento</button>
+            </div>
+            <sc-for list="{{groups}}" as="gr" hint-placeholder-count="3">
+              <div style="display: flex; flex-direction: column; gap: 6px">
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: {{c.muted}}">{{gr.name}}</div>
+                <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+                  <sc-for list="{{gr.books}}" as="b" hint-placeholder-count="4">
+                    <button onClick="{{b.pick}}" style="{{b.style}}"><span>{{b.name}}</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; opacity: 0.7">{{b.ch}}</span></button>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+          </sc-if>
+          <sc-if value="{{showChGrid}}" hint-placeholder-val="{{ false }}">
+            <div style="display: flex; align-items: center; gap: 4px">
+              <button onClick="{{backToBooks}}" style="height: 44px; padding: 0 10px 0 4px; border: 0; background: transparent; color: {{c.accent}}; cursor: pointer; display: flex; align-items: center; gap: 4px; font-size: 14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>Livros</button>
+              <b style="font-family: Literata, Georgia, serif; font-size: 20px">{{navBookName}}</b>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px">
+              <sc-for list="{{chGrid}}" as="n" hint-placeholder-count="21">
+                <button onClick="{{n.pick}}" aria-label="{{n.aria}}" aria-current="{{n.cur}}" style="{{n.style}}">{{n.n}}</button>
+              </sc-for>
+            </div>
+            <sc-if value="{{hasChTitles}}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; border-top: 1px solid {{c.line}}">
+                <sc-for list="{{chTitles}}" as="t" hint-placeholder-count="6">
+                  <button onClick="{{t.pick}}" style="min-height: 44px; display: flex; gap: 12px; align-items: center; padding: 6px 4px; border: 0; border-bottom: 1px solid {{c.line}}; background: transparent; color: {{c.fg}}; cursor: pointer; text-align: left; font-size: 14px"><span style="font-family: 'IBM Plex Mono', monospace; color: {{c.muted}}; min-width: 22px">{{t.n}}</span><span>{{t.t}}</span></button>
+                </sc-for>
+              </div>
+            </sc-if>
+          </sc-if>
+        </sc-if>
+
+        <!-- Notas: lista -->
+        <sc-if value="{{showNotesList}}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; gap: 6px; align-items: center">
+            <label style="flex: 1; display: block">
+              <span style="position: absolute; left: -9999px">Buscar nas anotações</span>
+              <input type="search" value="{{nq}}" onChange="{{onNotesQuery}}" placeholder="Buscar: luz, pastor, #oração" style="width: 100%; box-sizing: border-box; font: inherit; font-size: 16px; height: 44px; padding: 0 14px; border-radius: 12px; border: 1px solid {{c.line}}; background: {{c.bg}}; color: {{c.fg}}">
+            </label>
+            <button onClick="{{toggleMore}}" aria-expanded="{{moreOpen}}" aria-label="Mais opções" style="width: 44px; height: 44px; border-radius: 12px; border: 1px solid {{c.line}}; background: transparent; color: {{c.fg}}; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.8"></circle><circle cx="12" cy="12" r="1.8"></circle><circle cx="19" cy="12" r="1.8"></circle></svg></button>
+          </div>
+          <sc-if value="{{moreOpen}}" hint-placeholder-val="{{ false }}">
+            <div role="menu" style="display: flex; flex-direction: column; border: 1px solid {{c.line}}; border-radius: 12px; overflow: hidden">
+              <button role="menuitem" onClick="{{exportPdf}}" style="min-height: 48px; padding: 0 14px; border: 0; border-bottom: 1px solid {{c.line}}; background: transparent; color: {{c.fg}}; cursor: pointer; text-align: left; font-size: 15px">Exportar caderno em PDF</button>
+              <button role="menuitem" onClick="{{backup}}" style="min-height: 48px; padding: 0 14px; border: 0; border-bottom: 1px solid {{c.line}}; background: transparent; color: {{c.fg}}; cursor: pointer; text-align: left; font-size: 15px">Baixar meus dados (backup)</button>
+              <button role="menuitem" onClick="{{importData}}" style="min-height: 48px; padding: 0 14px; border: 0; border-bottom: 1px solid {{c.line}}; background: transparent; color: {{c.fg}}; cursor: pointer; text-align: left; font-size: 15px">Importar backup</button>
+              <button role="menuitem" onClick="{{openTagManager}}" style="min-height: 48px; padding: 0 14px; border: 0; background: transparent; color: {{c.fg}}; cursor: pointer; text-align: left; font-size: 15px">Gerenciar etiquetas</button>
+            </div>
+          </sc-if>
+          <div role="group" aria-label="Filtrar" style="display: flex; gap: 6px; flex-wrap: wrap">
+            <sc-for list="{{notesFilters}}" as="f" hint-placeholder-count="4">
+              <button aria-pressed="{{f.on}}" onClick="{{f.pick}}" style="{{f.style}}">{{f.label}} <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; opacity: 0.75">{{f.count}}</span></button>
+            </sc-for>
+          </div>
+          <sc-if value="{{hasAnyTags}}" hint-placeholder-val="{{ false }}">
+            <div role="group" aria-label="Etiquetas" style="display: flex; gap: 6px; flex-wrap: wrap; align-items: center">
+              <sc-for list="{{tagFilters}}" as="t" hint-placeholder-count="3">
+                <button aria-pressed="{{t.on}}" onClick="{{t.pick}}" style="{{t.style}}">#{{t.name}} <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; opacity: 0.75">{{t.count}}</span></button>
+              </sc-for>
+              <button onClick="{{openTagManager}}" style="height: 36px; padding: 0 6px; border: 0; background: transparent; color: {{c.accent}}; cursor: pointer; font-size: 13px; text-decoration: underline">Gerenciar</button>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{noAnn}}" hint-placeholder-val="{{ true }}">
+            <div style="padding: 24px 12px; text-align: center; color: {{c.muted}}; display: flex; flex-direction: column; gap: 6px">
+              <b style="color: {{c.fg}}; font-size: 16px">Nenhuma anotação ainda</b>
+              <span>Toque no número de um versículo para dar uma cor, escrever uma nota ou pôr etiquetas.</span>
+            </div>
+          </sc-if>
+          <sc-if value="{{noResults}}" hint-placeholder-val="{{ false }}">
+            <div style="padding: 20px 12px; text-align: center; color: {{c.muted}}; display: flex; flex-direction: column; gap: 8px; align-items: center">
+              <span>Nada com esses filtros.</span>
+              <button onClick="{{clearFilters}}" style="height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid {{c.line}}; background: transparent; color: {{c.fg}}; cursor: pointer">Limpar filtros</button>
+            </div>
+          </sc-if>
+          <sc-for list="{{annList}}" as="a" hint-placeholder-count="0">
+            <button onClick="{{a.open}}" style="{{a.style}}">
+              <span style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><b style="font-size: 14px">{{a.ref}}</b><span style="color: {{c.warm}}">{{a.star}}</span></span>
+              <sc-if value="{{a.hasNote}}" hint-placeholder-val="{{ true }}"><span style="font-family: Literata, Georgia, serif; font-size: 15px; color: {{c.fg}}">{{a.note}}</span></sc-if>
+              <span style="font-family: Literata, Georgia, serif; font-size: 13px; color: {{c.muted}}">{{a.verse}}</span>
+              <sc-if value="{{a.hasTags}}" hint-placeholder-val="{{ false }}">
+                <span style="display: flex; flex-wrap: wrap; gap: 4px">
+                  <sc-for list="{{a.tags}}" as="t" hint-placeholder-count="2"><span style="padding: 2px 9px; border-radius: 999px; background: {{c.chip}}; color: {{c.fg}}; font-size: 12px">#{{t.name}}</span></sc-for>
+                </span>
+              </sc-if>
+            </button>
+          </sc-for>
+          <button onClick="{{newFreeNote}}" style="height: 48px; border-radius: 12px; border: 1px dashed {{c.accent}}; background: transparent; color: {{c.accent}}; cursor: pointer; font-size: 15px">+ Nota livre (sem versículo)</button>
+        </sc-if>
+
+        <!-- Notas: gerenciar etiquetas -->
+        <sc-if value="{{showTagManager}}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; align-items: center; gap: 4px">
+            <button onClick="{{closeTagManager}}" style="height: 44px; padding: 0 10px 0 4px; border: 0; background: transparent; color: {{c.accent}}; cursor: pointer; display: flex; align-items: center; gap: 4px; font-size: 14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>Notas</button>
+            <b style="font-family: Literata, Georgia, serif; font-size: 20px">Etiquetas</b>
+          </div>
+          <sc-if value="{{noTags}}" hint-placeholder-val="{{ false }}">
+            <span style="color: {{c.muted}}">Nenhuma etiqueta ainda. Crie uma abaixo ou ao anotar um versículo.</span>
+          </sc-if>
+          <div style="display: flex; flex-direction: column; border-top: 1px solid {{c.line}}">
+            <sc-for list="{{tagRows}}" as="t" hint-placeholder-count="3">
+              <div style="display: flex; flex-direction: column; gap: 6px; padding: 8px 0; border-bottom: 1px solid {{c.line}}">
+                <sc-if value="{{t.viewing}}" hint-placeholder-val="{{ true }}">
+                  <div style="display: flex; align-items: center; gap: 6px">
+                    <span style="flex: 1; font-size: 16px">#{{t.name}} <span style="font-size: 13px; color: {{c.muted}}">· {{t.countLabel}}</span></span>
+                    <button onClick="{{t.startRename}}" style="height: 40px; padding: 0 12px; border-radius: 999px; border: 1px solid {{c.line}}; background: transparent; color: {{c.fg}}; cursor: pointer; font-size: 13px">Renomear</button>
+                    <button onClick="{{t.askDelete}}" style="height: 40px; padding: 0 12px; border-radius: 999px; border: 1px solid {{c.line}}; background: transparent; color: {{c.warm}}; cursor: pointer; font-size: 13px">Apagar</button>
+                  </div>
+                </sc-if>
+                <sc-if value="{{t.renaming}}" hint-placeholder-val="{{ false }}">
+                  <div style="display: flex; align-items: center; gap: 6px">
+                    <label style="flex: 1; display: block"><span style="position: absolute; left: -9999px">Novo nome</span><input type="text" value="{{renameVal}}" onChange="{{onRename}}" style="width: 100%; box-sizing: border-box; font: inherit; font-size: 16px; height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid {{c.accent}}; background: {{c.bg}}; color: {{c.fg}}"></label>
+                    <button onClick="{{t.saveRename}}" style="height: 40px; padding: 0 14px; border-radius: 999px; border: 0; background: {{c.accent}}; color: {{c.on}}; cursor: pointer; font-size: 13px">Salvar</button>
+                  </div>
+                  <sc-if value="{{t.mergeHint}}" hint-placeholder-val="{{ false }}"><span style="font-size: 12px; color: {{c.muted}}">Já existe #{{renameVal}}: salvar junta as duas.</span></sc-if>
+                </sc-if>
+                <sc-if value="{{t.deleting}}" hint-placeholder-val="{{ false }}">
+                  <div style="display: flex; flex-direction: column; gap: 8px; background: {{c.chip}}; border-radius: 10px; padding: 10px 12px">
+                    <span style="font-size: 14px">Apagar #{{t.name}}? A etiqueta sai de {{t.countLabel}}; as notas e cores continuam.</span>
+                    <div style="display: flex; gap: 6px">
+                      <button onClick="{{t.cancel}}" style="height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid {{c.line}}; background: transparent; color: {{c.fg}}; cursor: pointer; font-size: 13px">Cancelar</button>
+                      <button onClick="{{t.confirmDelete}}" style="height: 40px; padding: 0 14px; border-radius: 999px; border: 0; background: {{c.warm}}; color: {{c.on}}; cursor: pointer; font-size: 13px">Apagar etiqueta</button>
+                    </div>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display: flex; gap: 6px">
+            <label style="flex: 1; display: block"><span style="position: absolute; left: -9999px">Nova etiqueta</span><input type="text" value="{{newTagVal}}" onChange="{{onNewTag}}" placeholder="Nova etiqueta" style="width: 100%; box-sizing: border-box; font: inherit; font-size: 16px; height: 44px; padding: 0 14px; border-radius: 12px; border: 1px solid {{c.line}}; background: {{c.bg}}; color: {{c.fg}}"></label>
+            <button onClick="{{createTag}}" style="height: 44px; padding: 0 16px; border-radius: 12px; border: 0; background: {{c.accent}}; color: {{c.on}}; cursor: pointer">Criar</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{tabVoce}}" hint-placeholder-val="{{ false }}">
+          <div style="background: {{c.bg}}; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+            <b style="font-size: 16px">Guardar no seu Google Drive</b>
+            <span style="color: {{c.muted}}; font-size: 14px">Opcional. As anotações ficam numa pasta privada do app no seu Drive e passam a valer em todos os seus aparelhos. Sem conta, tudo continua neste aparelho.</span>
+            <button onClick="{{login}}" style="height: 48px; border-radius: 999px; border: 1px solid {{c.line}}; background: {{c.surface}}; color: {{c.fg}}; cursor: pointer; font-size: 15px">Entrar com Google</button>
+          </div>
+          <div style="border: 1px solid {{c.line}}; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+            <b style="font-size: 16px">Meu progresso</b>
+            <span style="color: {{c.muted}}; font-size: 14px">Capítulos lidos, tempo de leitura, dias seguidos e o mapa dos 66 livros. Aparece depois de entrar com a conta.</span>
+          </div>
+          <div style="border: 1px solid {{c.line}}; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+            <b style="font-size: 16px">Planos de leitura</b>
+            <button onClick="{{plan}}" style="min-height: 48px; display: flex; justify-content: space-between; align-items: center; padding: 0 12px; border-radius: 10px; border: 1px solid {{c.line}}; background: transparent; color: {{c.fg}}; cursor: pointer; font-size: 14px">Bíblia em 1 ano<span style="color: {{c.muted}}">›</span></button>
+            <button onClick="{{plan}}" style="min-height: 48px; display: flex; justify-content: space-between; align-items: center; padding: 0 12px; border-radius: 10px; border: 1px solid {{c.line}}; background: transparent; color: {{c.fg}}; cursor: pointer; font-size: 14px">Novo Testamento em 90 dias<span style="color: {{c.muted}}">›</span></button>
+          </div>
+        </sc-if>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- aviso curto -->
+  <sc-if value="{{hasToast}}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="position: absolute; left: 50%; bottom: 92px; transform: translateX(-50%); max-width: 340px; padding: 10px 16px; border-radius: 999px; background: {{c.fg}}; color: {{c.bg}}; font-size: 14px; z-index: 9; white-space: nowrap; display: flex; gap: 12px; align-items: center">{{toast}}<sc-if value="{{hasUndo}}" hint-placeholder-val="{{ false }}"><button onClick="{{undo}}" style="border: 0; background: transparent; color: {{c.bg}}; font-weight: 700; text-decoration: underline; cursor: pointer; padding: 6px 0">Desfazer</button></sc-if></div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+const THEMES = {
+  claro:   {label: "Claro",   bg: "#eceeea", surface: "#f8f9f6", card: "#ffffff", fg: "#1b2220", muted: "#4a5551", line: "#d2d8d3", accent: "#1d5b74", soft: "#dbe8ec", on: "#f8f9f6", warm: "#7d4a2e", chip: "#e2e7e3", scrim: "rgba(20,26,24,0.38)", dark: false},
+  papel:   {label: "Papel",   bg: "#efe7d8", surface: "#faf5ec", card: "#fffdf8", fg: "#2a2118", muted: "#5b4f41", line: "#dccfb9", accent: "#7d4a2e", soft: "#efe0d1", on: "#fffdf8", warm: "#9a3412", chip: "#e6dcc9", scrim: "rgba(42,33,24,0.38)", dark: false},
+  oliva:   {label: "Oliva",   bg: "#e6e9de", surface: "#f3f5ed", card: "#fbfcf7", fg: "#1e2416", muted: "#48513d", line: "#cfd5c2", accent: "#465f26", soft: "#dfe7cf", on: "#fbfcf7", warm: "#7d4a2e", chip: "#dbe0cf", scrim: "rgba(30,36,22,0.38)", dark: false},
+  escuro:  {label: "Escuro",  bg: "#121615", surface: "#1a201e", card: "#202826", fg: "#e3e9e5", muted: "#a9b5b0", line: "#2c3532", accent: "#7cc0d8", soft: "#1f343b", on: "#0e2a35", warm: "#e0b07a", chip: "#262f2c", scrim: "rgba(0,0,0,0.5)", dark: true},
+  noite:   {label: "Noite",   bg: "#0b0f14", surface: "#121821", card: "#18202b", fg: "#dfe6ee", muted: "#9fb0c2", line: "#253041", accent: "#8fb7e8", soft: "#1b2a3d", on: "#0b1624", warm: "#e8b77f", chip: "#1c2532", scrim: "rgba(0,0,0,0.55)", dark: true},
+  grafite: {label: "Grafite", bg: "#1b1b1b", surface: "#242424", card: "#2b2b2b", fg: "#ececec", muted: "#b3b3b3", line: "#3a3a3a", accent: "#9cc7d6", soft: "#2f3a3e", on: "#14262d", warm: "#e0b07a", chip: "#323232", scrim: "rgba(0,0,0,0.55)", dark: true}
+};
+const MARKS = [
+  {id: "amarelo", label: "Amarelo", rgb: "243,227,160", bar: "#d9b93a"},
+  {id: "verde", label: "Verde", rgb: "196,224,184", bar: "#6fa35a"},
+  {id: "azul", label: "Azul", rgb: "190,214,230", bar: "#4f8db5"},
+  {id: "rosa", label: "Rosa", rgb: "240,200,212", bar: "#c76a8a"},
+  {id: "laranja", label: "Laranja", rgb: "244,210,176", bar: "#d58a45"}
+];
+const STARTER_TAGS = ["promessas", "oração", "estudar depois", "perguntas"];
+const LEX = {
+  G3779: {l: "οὕτω", x: "hoútō", p: "HU-tô", n: 207, s: "deste modo, assim (referindo-se ao que precede ou ao que segue)", t: "assim (173); tal (4); portanto (3); tão (3)"},
+  G1063: {l: "γάρ", x: "gár", p: "GAR", n: 1039, s: "apresenta uma razão (em argumentação, explicação ou intensificação): pois, porque", t: "porque (560); pois (403); ora (3); ainda (3)"},
+  G25: {l: "ἀγαπάω", x: "agapáō", p: "a-ga-PA-ô", n: 143, o: "talvez de um termo que significa “muito” (ou compare G5689)", s: "amar (em sentido social ou moral)", t: "ama (24); amou (17); amarás (10); amam (9)"},
+  G3588: {l: "ὁ", x: "ho", p: "ho", n: 19776, s: "o, a (às vezes deve ser suprido e outras vezes omitido, conforme o idioma da tradução)", t: "o (2525); a (2098); os (1330); de (1065)"},
+  G2316: {l: "θεός", x: "theós", p: "the-OS", n: 1309, o: "de afinidade incerta", s: "divindade, especialmente (com o artigo) a Divindade suprema; figuradamente, magistrado", t: "deus (1271); deuses (8); senhor (2)"},
+  G2889: {l: "κόσμος", x: "kósmos", p: "KOS-mos", n: 185, o: "provavelmente da base de G2865 (κομίζω)", s: "arranjo ordenado, isto é, adorno; por implicação, o mundo (incluindo seus habitantes, literal ou moralmente)", t: "mundo (183); vestuário (1)"},
+  G5620: {l: "ὥστε", x: "hṓste", p: "HÔS-te", n: 83, s: "assim também, isto é, desse modo, portanto (em várias relações de consequência)", t: "maneira (24); portanto (17); tal-maneira (10); que (9)"},
+  G5207: {l: "υἱός", x: "huiós", p: "hui-OS", n: 375, o: "aparentemente palavra primária", s: "filho, usado muito amplamente para parentesco imediato, remoto ou figurado", t: "filho (302); filhos (66); convidados (3)"},
+  G3439: {l: "μονογενής", x: "monogenḗs", p: "mo-no-gue-NÊS", n: 9, o: "de G3441 (μόνος) e G1096 (γίνομαι)", s: "unigênito, isto é, único", t: "unigênito (5); único (3); única (1)"},
+  G1325: {l: "δίδωμι", x: "dídōmi", p: "DI-dô-mi", n: 415, o: "forma prolongada de um verbo primário", s: "dar (em aplicação muito ampla, literal ou figuradamente; muito modificado pelo contexto)", t: "deu (84); dado (47); dada (32); dar (25)"},
+  G2443: {l: "ἵνα", x: "hína", p: "HI-na", n: 662, s: "para que, a fim de que (indicando propósito ou resultado)", t: "para (432); que (133); fim (35); para-que (17)"},
+  G3956: {l: "πᾶς", x: "pâs", p: "PAS", n: 1245, s: "todo, qualquer, cada; o todo, inteiro", t: "todos (452); todas (201); toda (195); todo (159)"},
+  G4100: {l: "πιστεύω", x: "pisteúō", p: "pis-TEU-ô", n: 241, o: "de G4102 (πίστις)", s: "ter fé, dar crédito, crer; por implicação, confiar algo a alguém (especialmente o próprio bem-estar espiritual a Cristo)", t: "crê (31); creram (23); creu (18); credes (16)"},
+  G1519: {l: "εἰς", x: "eis", p: "eis", n: 1757, s: "a, para, para dentro de (o ponto alcançado ou em que se entra), de lugar, de tempo ou de propósito", t: "para (480); em (206); a (172); no (145)"},
+  G846: {l: "αὐτός", x: "autós", p: "au-TOS", n: 5546, s: "pronome “mesmo, próprio”, usado para a terceira pessoa e, com o pronome correspondente, para as outras", t: "lhe (629); ele (426); lhes (406); o (257)"},
+  G3361: {l: "μή", x: "mḗ", p: "MÊ", n: 1041, s: "não; (como conjunção) para que não; em pergunta que supõe resposta negativa, porventura", t: "não (762); que (37); acaso (20)"},
+  G622: {l: "ἀπόλλυμι", x: "apóllymi", p: "a-POL-li-mi", n: 90, o: "de G575 (ἀπό) e da base de G3639 (ὄλεθρος)", s: "destruir completamente (reflexivamente, perecer, ou perder), literal ou figuradamente", t: "perderá (8); perder (7); destruir (6); perca (5)"},
+  G235: {l: "ἀλλά", x: "allá", p: "al-LA", n: 638, s: "ao contrário (em muitas relações): mas, porém", t: "mas (345); mas-sim (126); porém (48)"},
+  G2192: {l: "ἔχω", x: "échō", p: "E-rrô", n: 706, s: "ter, segurar (posse, capacidade, continuidade, relação ou condição)", t: "tem (125); tinha (60); tenho (43); temos (40)"},
+  G2222: {l: "ζωή", x: "zōḗ", p: "zô-Ê", n: 135, o: "de G2198 (ζάω)", s: "vida (literal ou figuradamente)", t: "vida (133); vivas (1); vivente (1)"},
+  G166: {l: "αἰώνιος", x: "aiṓnios", p: "ai-Ô-ni-os", n: 71, o: "de G165 (αἰών)", s: "perpétuo (usado também do tempo passado, ou do passado e do futuro juntos)", t: "eterna (51); eterno (11); tempos (3); sempre (2)"},
+  G3756: {l: "οὐ", x: "ou", p: "u", n: 1622, s: "advérbio de negação absoluta: não", t: "não (1445); nem (35); nada (20)"},
+  G649: {l: "ἀποστέλλω", x: "apostéllō", p: "a-pos-TEL-lô", n: 132, o: "de G575 (ἀπό) e G4724 (στέλλω)", s: "pôr à parte, isto é, enviar (propriamente, em missão), literal ou figuradamente", t: "enviou (34); mandou (18); enviado (11); mandaram (11)"},
+  G2919: {l: "κρίνω", x: "krínō", p: "KRI-nô", n: 114, s: "distinguir, isto é, decidir (mental ou judicialmente); por implicação, julgar, condenar, punir", t: "julgados (12); julgado (10); julga (9); julgas (8)"},
+  G4982: {l: "σῴζω", x: "sṓzō", p: "SÔ-zô", n: 106, s: "salvar, isto é, livrar ou proteger (literal ou figuradamente)", t: "salvar (21); salvo (15); salvos (12); salvou (10)"},
+  G1223: {l: "διά", x: "diá", p: "di-A", n: 668, s: "através de, por (local, causal ou ocasional)", t: "por (206); pela (82); causa (71); meio (70)"}
+};
+const VERSES = [
+  {n: 16, b: "Porque Deus amou ao mundo de tal maneira, que deu o seu Filho unigênito; para que todo aquele que nele crê não pereça, mas tenha a vida eterna.", w: [
+    ["Οὕτως","G3779","assim","D---------"],["γὰρ","G1063","porque","C---------"],["ἠγάπησεν","G25","amou","V-3AAI-S--"],["ὁ","G3588","o","RA-----NSM-"],["θεὸς","G2316","Deus","N-----NSM-"],["τὸν","G3588","ao","RA-----ASM-"],["κόσμον","G2889","mundo","N-----ASM-"],["ὥστε","G5620","tal-maneira","C---------"],["τὸν","G3588","que","RA-----ASM-"],["υἱὸν","G5207","Filho","N-----ASM-"],["τὸν","G3588","o","RA-----ASM-"],["μονογενῆ","G3439","unigênito","A-----ASM-"],["ἔδωκεν,","G1325","deu","V-3AAI-S--"],["ἵνα","G2443","para","C---------"],["πᾶς","G3956","todo","A-----NSM-"],["ὁ","G3588","o","RA-----NSM-"],["πιστεύων","G4100","crê","V--PAPNSM-"],["εἰς","G1519","para","P---------"],["αὐτὸν","G846","o","RP-----ASM-"],["μὴ","G3361","não","D---------"],["ἀπόληται","G622","pereça","V-3AMS-S--"],["ἀλλὰ","G235","mas","C---------"],["ἔχῃ","G2192","tenha","V-3PAS-S--"],["ζωὴν","G2222","vida","N-----ASF-"],["αἰώνιον.","G166","eterna","A-----ASF-"]
+  ]},
+  {n: 17, b: "Porque Deus não mandou seu Filho ao mundo para que condenasse ao mundo; mas sim para que o mundo por ele fosse salvo;", review: {w: 2, code: "CON-01", text: "A glosa “mandou” é diferente da mais usada para esta forma em João, “enviou” (7 de 8 vezes)."}, w: [
+    ["οὐ","G3756","não","D---------"],["γὰρ","G1063","porque","C---------"],["ἀπέστειλεν","G649","mandou","V-3AAI-S--"],["ὁ","G3588","o","RA-----NSM-"],["θεὸς","G2316","Deus","N-----NSM-"],["τὸν","G3588","o","RA-----ASM-"],["υἱὸν","G5207","Filho","N-----ASM-"],["εἰς","G1519","ao","P---------"],["τὸν","G3588","o","RA-----ASM-"],["κόσμον","G2889","mundo","N-----ASM-"],["ἵνα","G2443","para","C---------"],["κρίνῃ","G2919","condenasse","V-3AAS-S--"],["τὸν","G3588","ao","RA-----ASM-"],["κόσμον,","G2889","mundo","N-----ASM-"],["ἀλλ’","G235","mas-sim","C---------"],["ἵνα","G2443","para","C---------"],["σωθῇ","G4982","salvo","V-3APS-S--"],["ὁ","G3588","o","RA-----NSM-"],["κόσμος","G2889","mundo","N-----NSM-"],["δι’","G1223","por","P---------"],["αὐτοῦ.","G846","ele","RP-----GSM-"]
+  ]}
+];
+const QUESTIONS = [
+  {kind: "Observe", ref: "1–10", text: "Em que circunstâncias Nicodemos procura Jesus, e como ele reage às palavras sobre “voltar a nascer”?"},
+  {kind: "No original", ref: "3–8", text: "O verbo γεννάω (gennao, “nascer, gerar”) se repete na conversa: que contraste Jesus faz entre o que nasce da carne e o que nasce do Espírito?"},
+  {kind: "Interprete", ref: "14–21", text: "Por que Jesus compara sua missão à serpente levantada por Moisés no deserto, e como a imagem da luz e das trevas explica a “condenação”?"},
+  {kind: "Aplique", ref: "27–30", text: "João Batista diz “a ele convém crescer, porém a mim diminuir”: em que área da sua vida essa frase seria um desafio?"}
+];
+const BOOKS = [["GEN","Gênesis",0,"Pentateuco",50],["EXO","Êxodo",0,"Pentateuco",40],["LEV","Levítico",0,"Pentateuco",27],["NUM","Números",0,"Pentateuco",36],["DEU","Deuteronômio",0,"Pentateuco",34],["JOS","Josué",0,"Históricos",24],["JDG","Juízes",0,"Históricos",21],["RUT","Rute",0,"Históricos",4],["1SA","1 Samuel",0,"Históricos",31],["2SA","2 Samuel",0,"Históricos",24],["1KI","1 Reis",0,"Históricos",22],["2KI","2 Reis",0,"Históricos",25],["1CH","1 Crônicas",0,"Históricos",29],["2CH","2 Crônicas",0,"Históricos",36],["EZR","Esdras",0,"Históricos",10],["NEH","Neemias",0,"Históricos",13],["EST","Ester",0,"Históricos",10],["JOB","Jó",0,"Poéticos e sapienciais",42],["PSA","Salmos",0,"Poéticos e sapienciais",150],["PRO","Provérbios",0,"Poéticos e sapienciais",31],["ECC","Eclesiastes",0,"Poéticos e sapienciais",12],["SNG","Cânticos",0,"Poéticos e sapienciais",8],["ISA","Isaías",0,"Profetas",66],["JER","Jeremias",0,"Profetas",52],["LAM","Lamentações",0,"Profetas",5],["EZK","Ezequiel",0,"Profetas",48],["DAN","Daniel",0,"Profetas",12],["HOS","Oseias",0,"Profetas",14],["JOL","Joel",0,"Profetas",3],["AMO","Amós",0,"Profetas",9],["OBA","Obadias",0,"Profetas",1],["JON","Jonas",0,"Profetas",4],["MIC","Miqueias",0,"Profetas",7],["NAM","Naum",0,"Profetas",3],["HAB","Habacuque",0,"Profetas",3],["ZEP","Sofonias",0,"Profetas",3],["HAG","Ageu",0,"Profetas",2],["ZEC","Zacarias",0,"Profetas",14],["MAL","Malaquias",0,"Profetas",4],["MAT","Mateus",1,"Evangelhos e Atos",28],["MRK","Marcos",1,"Evangelhos e Atos",16],["LUK","Lucas",1,"Evangelhos e Atos",24],["JHN","João",1,"Evangelhos e Atos",21],["ACT","Atos",1,"Evangelhos e Atos",28],["ROM","Romanos",1,"Cartas de Paulo",16],["1CO","1 Coríntios",1,"Cartas de Paulo",16],["2CO","2 Coríntios",1,"Cartas de Paulo",13],["GAL","Gálatas",1,"Cartas de Paulo",6],["EPH","Efésios",1,"Cartas de Paulo",6],["PHP","Filipenses",1,"Cartas de Paulo",4],["COL","Colossenses",1,"Cartas de Paulo",4],["1TH","1 Tessalonicenses",1,"Cartas de Paulo",5],["2TH","2 Tessalonicenses",1,"Cartas de Paulo",3],["1TI","1 Timóteo",1,"Cartas de Paulo",6],["2TI","2 Timóteo",1,"Cartas de Paulo",4],["TIT","Tito",1,"Cartas de Paulo",3],["PHM","Filemom",1,"Cartas de Paulo",1],["HEB","Hebreus",1,"Outras cartas e Apocalipse",13],["JAS","Tiago",1,"Outras cartas e Apocalipse",5],["1PE","1 Pedro",1,"Outras cartas e Apocalipse",5],["2PE","2 Pedro",1,"Outras cartas e Apocalipse",3],["1JN","1 João",1,"Outras cartas e Apocalipse",5],["2JN","2 João",1,"Outras cartas e Apocalipse",1],["3JN","3 João",1,"Outras cartas e Apocalipse",1],["JUD","Judas",1,"Outras cartas e Apocalipse",1],["REV","Apocalipse",1,"Outras cartas e Apocalipse",22]];
+const JHN_TITLES = ["A Palavra; João Batista e os primeiros discípulos","O casamento em Caná e o templo","Nicodemos e o novo nascimento","A samaritana e o filho do nobre","Cura em Betesda; a obra do Filho","Os cinco mil e o pão da vida","Jesus na festa dos tabernáculos","A mulher adúltera; a luz do mundo","A cura do cego de nascença","O bom pastor e a festa da Dedicação","A ressurreição de Lázaro","Unção, entrada em Jerusalém e a hora","O lava-pés e o anúncio da traição","O caminho para o Pai e o Consolador","A videira verdadeira; o ódio do mundo","A obra do Espírito; tristeza que vira alegria","A oração de Jesus pelos discípulos","Prisão, Anás, negação de Pedro e Pilatos","A condenação, a crucificação e o sepultamento","O túmulo vazio, Maria Madalena e Tomé","Aparição em Tibérias; Pedro e o discípulo amado"];
+const ABBR = {GEN:"Gn",EXO:"Êx",LEV:"Lv",NUM:"Nm",DEU:"Dt",JOS:"Js",JDG:"Jz",RUT:"Rt","1SA":"1Sm","2SA":"2Sm","1KI":"1Rs","2KI":"2Rs","1CH":"1Cr","2CH":"2Cr",EZR:"Ed",NEH:"Ne",EST:"Et",JOB:"Jó",PSA:"Sl",PRO:"Pv",ECC:"Ec",SNG:"Ct",ISA:"Is",JER:"Jr",LAM:"Lm",EZK:"Ez",DAN:"Dn",HOS:"Os",JOL:"Jl",AMO:"Am",OBA:"Ob",JON:"Jn",MIC:"Mq",NAM:"Na",HAB:"Hc",ZEP:"Sf",HAG:"Ag",ZEC:"Zc",MAL:"Ml",MAT:"Mt",MRK:"Mc",LUK:"Lc",JHN:"Jo",ACT:"At",ROM:"Rm","1CO":"1Co","2CO":"2Co",GAL:"Gl",EPH:"Ef",PHP:"Fp",COL:"Cl","1TH":"1Ts","2TH":"2Ts","1TI":"1Tm","2TI":"2Tm",TIT:"Tt",PHM:"Fm",HEB:"Hb",JAS:"Tg","1PE":"1Pe","2PE":"2Pe","1JN":"1Jo","2JN":"2Jo","3JN":"3Jo",JUD:"Jd",REV:"Ap"};
+const MODE_SHOW = {
+  biblia: {xlit: true, gloss: true, strong: false, morph: false, pron: false, blivre: true},
+  original: {xlit: true, gloss: true, strong: false, morph: false, pron: false, blivre: false},
+  interlinear: {xlit: true, gloss: true, strong: false, morph: false, pron: false, blivre: true},
+  estudo: {xlit: true, gloss: true, strong: true, morph: true, pron: true, blivre: true}
+};
+const MODE_HINT = {
+  biblia: "Só a Bíblia Livre, em parágrafos. Toque no número do versículo para anotar ou ver o interlinear dele.",
+  original: "Hebraico ou grego corrido. Toque numa palavra para abrir o verbete.",
+  interlinear: "Palavra por palavra: original, transliteração e glosa, com a Bíblia Livre abaixo.",
+  estudo: "Tudo do Interlinear mais número Strong, pronúncia e análise gramatical."
+};
+
+function norm(s) { return (s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim(); }
+function cleanTag(s) { return (s || "").replace(/^#+/, "").replace(/\s+/g, " ").trim().toLowerCase(); }
+function morphFull(code) {
+  const pos = code.split("-")[0];
+  const r = code.slice(pos.length + 1);
+  const P = {D: "advérbio", C: "conjunção", V: "verbo", RA: "artigo", N: "substantivo", A: "adjetivo", P: "preposição", RP: "pronome pessoal"};
+  const T = {A: "aoristo", P: "presente", I: "imperfeito", F: "futuro", X: "perfeito"};
+  const VO = {A: "ativa", M: "média", P: "passiva"};
+  const MO = {I: "indicativo", S: "subjuntivo", P: "particípio", N: "infinitivo", D: "imperativo"};
+  const CS = {N: "nominativo", A: "acusativo", G: "genitivo", D: "dativo"};
+  const NU = {S: "singular", P: "plural"};
+  const GE = {M: "masculino", F: "feminino", N: "neutro"};
+  const out = [P[pos] || pos];
+  if (pos === "V") {
+    if (r[0] && r[0] !== "-") out.push(r[0] + "ª pessoa");
+    if (T[r[1]]) out.push(T[r[1]]);
+    if (MO[r[3]]) out.push(MO[r[3]]);
+    if (VO[r[2]]) out.push("voz " + VO[r[2]]);
+  }
+  if (CS[r[4]]) out.push(CS[r[4]]);
+  if (GE[r[6]]) out.push(GE[r[6]]);
+  if (NU[r[5]]) out.push(NU[r[5]]);
+  return out.join(", ");
+}
+function morphShort(code) {
+  const pos = code.split("-")[0];
+  const r = code.slice(pos.length + 1);
+  const P = {D: "adv.", C: "conj.", V: "verbo", RA: "art.", N: "subst.", A: "adj.", P: "prep.", RP: "pron."};
+  const T = {A: "aor.", P: "pres.", I: "imperf.", F: "fut.", X: "perf."};
+  const CS = {N: "nom.", A: "ac.", G: "gen.", D: "dat."};
+  if (pos === "V") return "verbo " + (T[r[1]] || "");
+  return (P[pos] || pos) + (CS[r[4]] ? " " + CS[r[4]] : "");
+}
+function parseTr(t) {
+  return (t || "").split(";").map(function (s) {
+    const m = s.trim().match(/^(.*)\s\((\d+)\)$/);
+    return m ? {w: m[1], n: m[2]} : null;
+  }).filter(Boolean).slice(0, 4);
+}
+function hasContent(a) { return !!(a && (a.cor || a.fav || (a.note && a.note.trim()) || (a.tags && a.tags.length))); }
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mode: "interlinear", firstRun: true, aboutOpen: false,
+      sheet: null, wv: 0, wi: 2, akey: "16",
+      navTab: "livros", navBook: null, nt: true, q: "",
+      book: "JHN", chapter: 3,
+      playing: false, playV: 0, playW: -1,
+      size: 100, theme: "claro", easy: false, spacious: false, cant: true,
+      follow: true, slow: false,
+      show: Object.assign({num: true, theme: true, questions: true, review: true, ann: true}, MODE_SHOW.interlinear),
+      ann: {}, tags: [], markedWords: {}, freeCount: 0,
+      tagQuery: "", nq: "", nFilter: "todas", nTag: null, moreOpen: false,
+      tagManager: false, renaming: null, renameVal: "", deleting: null, newTagVal: "",
+      toast: "", undoAnn: null
+    };
+    this.scroller = null;
+    this.timer = null;
+    this.toastTimer = null;
+  }
+  componentWillUnmount() { clearInterval(this.timer); clearTimeout(this.toastTimer); }
+
+  say(msg, undoAnn) {
+    clearTimeout(this.toastTimer);
+    this.setState({toast: msg, undoAnn: undoAnn || null});
+    this.toastTimer = setTimeout(() => this.setState({toast: "", undoAnn: null}), undoAnn ? 4500 : 1900);
+  }
+  scrollToVerse(i) {
+    setTimeout(() => {
+      if (!this.scroller || i < 0) return;
+      const el = this.scroller.querySelector("#v" + VERSES[i].n);
+      if (el) this.scroller.scrollTo({top: el.offsetTop - 8, behavior: "smooth"});
+    }, 60);
+  }
+  setMode(m) {
+    const s = this.state.show;
+    this.setState({mode: m, firstRun: false, show: Object.assign({}, s, MODE_SHOW[m])});
+  }
+  goTo(book, ch) {
+    this.stopPlay();
+    this.setState({book: book, chapter: ch, sheet: null, navBook: null, q: ""});
+    if (this.scroller) this.scroller.scrollTop = 0;
+  }
+  bookInfo(code) { return BOOKS.find(function (b) { return b[0] === code; }); }
+  stepCh(d) {
+    const idx = BOOKS.findIndex((b) => b[0] === this.state.book);
+    let b = idx, ch = this.state.chapter + d;
+    if (ch < 1) { if (b === 0) return; b = b - 1; ch = BOOKS[b][4]; }
+    if (ch > BOOKS[b][4]) { if (b === BOOKS.length - 1) return; b = b + 1; ch = 1; }
+    this.goTo(BOOKS[b][0], ch);
+  }
+  chLabel(d) {
+    const idx = BOOKS.findIndex((b) => b[0] === this.state.book);
+    let b = idx, ch = this.state.chapter + d;
+    if (ch < 1) { if (b === 0) return "—"; b = b - 1; ch = BOOKS[b][4]; }
+    if (ch > BOOKS[b][4]) { if (b === BOOKS.length - 1) return "—"; b = b + 1; ch = 1; }
+    return (ABBR[BOOKS[b][0]] || BOOKS[b][1].slice(0, 3)) + " " + ch;
+  }
+  stopPlay() { clearInterval(this.timer); this.timer = null; this.setState({playing: false, playW: -1}); }
+  startPlay(fromV) {
+    clearInterval(this.timer);
+    this.setState({playing: true, playV: fromV, playW: 0, sheet: null});
+    this.timer = setInterval(() => {
+      let v = this.state.playV, w = this.state.playW + 1;
+      if (w >= VERSES[v].w.length) { v = v + 1; w = 0; }
+      if (v >= VERSES.length) { this.stopPlay(); return; }
+      this.setState({playV: v, playW: w});
+    }, this.state.slow ? 1000 : 650);
+  }
+  findWord(strong) {
+    for (let v = 0; v < VERSES.length; v++) for (let i = 0; i < VERSES[v].w.length; i++) if (VERSES[v].w[i][1] === strong) return [v, i];
+    return [0, 0];
+  }
+  parseRef(q) {
+    // compara primeiro com acento (Jo = João, Jó = Jó); só depois sem acento
+    const raw = (q || "").toLowerCase().trim();
+    const m = raw.match(/^(\d?\s?[a-zà-ú]+)\.?\s*(\d+)(?::(\d+))?$/);
+    if (!m) return null;
+    const keyRaw = m[1].replace(/\s/g, "");
+    const keyN = norm(keyRaw);
+    const b = BOOKS.find(function (x) { return (ABBR[x[0]] || "").toLowerCase() === keyRaw || x[1].toLowerCase().replace(/\s/g, "") === keyRaw; })
+      || BOOKS.find(function (x) { return keyN.length >= 3 && norm(x[1]).replace(/\s/g, "").indexOf(keyN) === 0; })
+      || BOOKS.find(function (x) { return norm(ABBR[x[0]] || "") === keyN; });
+    if (!b) return null;
+    const ch = Math.min(parseInt(m[2], 10), b[4]);
+    return {book: b[0], ch: ch, v: m[3] ? parseInt(m[3], 10) : null, label: b[1] + " " + ch + (m[3] ? ":" + m[3] : "")};
+  }
+
+  // ---- anotações: um registro por âncora (versículo ou nota livre) ----
+  getAnn(key) { return this.state.ann[key] || {cor: null, fav: false, note: "", tags: []}; }
+  updAnn(key, patch) {
+    const all = Object.assign({}, this.state.ann);
+    const next = Object.assign({}, this.getAnn(key), patch);
+    if (hasContent(next) || key.indexOf("livre") === 0) all[key] = next; else delete all[key];
+    this.setState({ann: all});
+  }
+  tagByName(name) { const n = cleanTag(name); return this.state.tags.find(function (t) { return t.name === n; }); }
+  addTagTo(key, name) {
+    const n = cleanTag(name);
+    if (!n) return;
+    let t = this.tagByName(n);
+    let tags = this.state.tags;
+    if (!t) { t = {id: "t" + Date.now() + Math.floor(Math.random() * 1000), name: n}; tags = tags.concat([t]); }
+    const a = this.getAnn(key);
+    const ids = a.tags.indexOf(t.id) >= 0 ? a.tags : a.tags.concat([t.id]);
+    const all = Object.assign({}, this.state.ann);
+    all[key] = Object.assign({}, a, {tags: ids});
+    this.setState({tags: tags, ann: all, tagQuery: ""});
+  }
+  tagCount(id) { const ann = this.state.ann; return Object.keys(ann).filter(function (k) { return ann[k].tags.indexOf(id) >= 0; }).length; }
+  openAnn(key) {
+    const vi = VERSES.findIndex(function (v) { return String(v.n) === key; });
+    this.setState({sheet: "verse", akey: key, tagQuery: "", moreOpen: false});
+    if (vi >= 0) this.scrollToVerse(vi);
+  }
+
+  renderVals() {
+    const st = this.state;
+    const c = THEMES[st.theme] || THEMES.claro;
+    const s = st.size / 100;
+    const sh = st.show;
+    const isCh3 = st.book === "JHN" && st.chapter === 3;
+    const binfo = this.bookInfo(st.book);
+    const tagName = (id) => { const t = st.tags.find(function (x) { return x.id === id; }); return t ? t.name : ""; };
+    const chip = (on) => "min-height: 40px; padding: 0 14px; border-radius: 999px; cursor: pointer; font-size: 14px; display: inline-flex; align-items: center; gap: 6px; border: 1px solid " + (on ? c.accent : c.line) + "; background: " + (on ? c.accent : "transparent") + "; color: " + (on ? c.on : c.fg);
+    const smallChip = (on) => "height: 36px; padding: 0 12px; border-radius: 999px; cursor: pointer; font-size: 14px; display: inline-flex; align-items: center; gap: 6px; border: 1px solid " + (on ? c.accent : c.line) + "; background: " + (on ? c.accent : "transparent") + "; color: " + (on ? c.on : c.fg);
+    const seg = (on) => "height: 40px; border: 0; border-radius: 9px; cursor: pointer; font-size: 13px; font-weight: " + (on ? 700 : 400) + "; background: " + (on ? c.surface : "transparent") + "; color: " + (on ? c.fg : c.muted) + (on ? "; box-shadow: 0 1px 2px rgba(0,0,0,0.12)" : "");
+
+    const verses = VERSES.map((v, vi) => {
+      const key = String(v.n);
+      const a = this.getAnn(key);
+      const mk = sh.ann ? MARKS.find(function (m) { return m.id === a.cor; }) : null;
+      const tint = mk ? "rgba(" + mk.rgb + "," + (c.dark ? 0.18 : 0.55) + ")" : "transparent";
+      const words = v.w.map((w, wi) => {
+        const lx = LEX[w[1]] || {};
+        const sel = st.sheet === "word" && st.wv === vi && st.wi === wi;
+        const playingThis = st.playing && st.follow && st.playV === vi && st.playW === wi;
+        const review = sh.review && v.review && v.review.w === wi;
+        const marked = sh.ann && st.markedWords[vi + ":" + wi];
+        const border = sel ? c.accent : c.line;
+        return {
+          g: w[0], gl: w[2], x: lx.x || "", p: lx.p || "", strong: w[1], mShort: morphShort(w[3]),
+          showX: sh.xlit, showG: sh.gloss, showS: sh.strong, showM: sh.morph, showP: sh.pron,
+          aria: w[0] + ", " + w[2] + ". Abrir verbete",
+          style: "display: flex; flex-direction: column; align-items: center; gap: 1px; min-width: 52px; padding: 7px 9px 6px; border-radius: 10px; cursor: pointer; color: " + c.fg + "; border: 1px solid " + border + "; border-top: 2px solid " + (review ? c.warm : border) + "; background: " + (playingThis ? c.soft : (marked ? "rgba(243,227,160," + (c.dark ? 0.25 : 0.85) + ")" : c.card)) + (sel ? "; box-shadow: 0 0 0 2px " + c.accent : ""),
+          inlineStyle: "border: 0; padding: 2px 1px; margin: 0; cursor: pointer; font: inherit; color: " + c.fg + "; border-radius: 4px; background: " + (sel || playingThis ? c.soft : (marked ? "rgba(243,227,160,0.8)" : "transparent")) + (review ? "; text-decoration: underline dotted " + c.warm : ""),
+          pick: () => { this.setState({sheet: "word", wv: vi, wi: wi}); this.scrollToVerse(vi); }
+        };
+      });
+      const tagChips = a.tags.map((id) => ({name: tagName(id)})).filter(function (t) { return t.name; });
+      const note = (a.note || "").trim();
+      const hasStrip = sh.ann && (a.fav || !!note || tagChips.length > 0);
+      return {
+        n: v.n, anchor: "v" + v.n, numLabel: sh.num ? "3:" + v.n : "",
+        menuLabel: "Anotar João 3:" + v.n,
+        blivre: v.b, showBlivre: sh.blivre, words: words,
+        hasReview: sh.review && !!v.review,
+        fav: a.fav, hasNote: !!note, notePreview: note.length > 90 ? note.slice(0, 88) + "…" : note,
+        tagChips: tagChips, hasStrip: hasStrip,
+        stripLabel: "Anotações de João 3:" + v.n + ": " + (a.fav ? "favorito; " : "") + (note ? "nota; " : "") + tagChips.map(function (t) { return "#" + t.name; }).join(", "),
+        stripStyle: "margin-top: 10px; width: 100%; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 10px; border: 1px solid " + c.line + "; background: " + c.surface + "; cursor: pointer; text-align: left; color: " + c.fg,
+        inlineIcons: sh.ann ? ((a.fav ? " ★" : "") + (note ? " ✎" : "") + (tagChips.length ? " #" : "")) : "",
+        blockStyle: "padding: 10px 8px 14px 12px; margin: 0 -8px; border-radius: 12px; border-bottom: 1px solid " + c.line + "; background: " + tint + "; box-shadow: inset 4px 0 0 " + (mk ? mk.bar : "transparent"),
+        inlineMark: "background: " + tint + "; border-radius: 4px",
+        openMenu: () => this.openAnn(key)
+      };
+    });
+
+    const wv = VERSES[st.wv], ww = wv.w[st.wi], wl = LEX[ww[1]] || {};
+    const wMarked = !!st.markedWords[st.wv + ":" + st.wi];
+    const ws = {
+      g: ww[0], lemma: wl.l || "", x: wl.x || "", p: wl.p || "", gl: ww[2], morph: morphFull(ww[3]),
+      sig: wl.s || "", tr: parseTr(wl.t), o: wl.o || "", hasO: !!wl.o, strong: ww[1], n: wl.n || 0,
+      pos: "palavra " + (st.wi + 1) + " de " + wv.w.length + " · João 3:" + wv.n,
+      hasReview: !!(wv.review && wv.review.w === st.wi), review: wv.review ? wv.review.text : "",
+      marked: wMarked, markLabel: wMarked ? "Palavra marcada ✓" : "Marcar palavra"
+    };
+
+    // folha de anotação
+    const key = st.akey;
+    const isVerse = key.indexOf("livre") !== 0;
+    const vv = isVerse ? VERSES.find(function (x) { return String(x.n) === key; }) : null;
+    const a = this.getAnn(key);
+    const qTag = cleanTag(st.tagQuery);
+    const selected = a.tags.map((id) => ({id: id, name: tagName(id), remove: () => this.updAnn(key, {tags: a.tags.filter(function (x) { return x !== id; })})})).filter(function (t) { return t.name; });
+    let suggest = st.tags.filter(function (t) { return a.tags.indexOf(t.id) < 0 && (!qTag || norm(t.name).indexOf(norm(qTag)) >= 0); })
+      .map((t) => ({name: t.name, count: this.tagCount(t.id) || "", add: () => this.addTagTo(key, t.name)}))
+      .sort(function (x, y) { return (y.count || 0) - (x.count || 0); }).slice(0, 8);
+    let suggestLabel = qTag ? "Etiquetas que combinam" : "Suas etiquetas";
+    if (!st.tags.length && !qTag) {
+      suggest = STARTER_TAGS.map((n) => ({name: n, count: "", add: () => this.addTagTo(key, n)}));
+      suggestLabel = "Sugestões para começar";
+    }
+    const exact = qTag && st.tags.some(function (t) { return t.name === qTag; });
+    const vm = {
+      isVerse: isVerse,
+      ref: isVerse ? "João 3:" + key : "Nota livre",
+      snippet: isVerse ? "“" + (vv.b.length > 72 ? vv.b.slice(0, 70) + "…" : vv.b) + "”" : "Sem versículo ligado. Use etiquetas para achá-la depois.",
+      fav: a.fav, star: a.fav ? "★" : "☆", favLabel: a.fav ? "Favorito" : "Favoritar", favBg: a.fav ? c.soft : "transparent",
+      note: a.note, saved: a.note && a.note.trim() ? "Salvo" : "",
+      hasTags: selected.length > 0, tags: selected,
+      suggest: suggest, suggestLabel: suggestLabel, hasSuggest: suggest.length > 0 || (!!qTag && !exact),
+      canCreate: !!qTag && !exact, createName: qTag, create: () => this.addTagTo(key, qTag),
+      hasReview: isVerse && sh.review && !!(vv && vv.review), review: vv && vv.review ? vv.review.text : "", code: vv && vv.review ? vv.review.code + " · palavra " + (vv.review.w + 1) : "",
+      canDelete: hasContent(a) || !isVerse,
+      removeLabel: isVerse ? "Apagar tudo deste versículo" : "Apagar nota livre",
+      remove: () => {
+        const before = st.ann[key];
+        const all = Object.assign({}, st.ann); delete all[key];
+        this.setState({ann: all, sheet: null});
+        this.say(isVerse ? "Anotações apagadas" : "Nota apagada", {key: key, val: before});
+      },
+      colors: MARKS.map((m) => ({
+        label: "Marcar em " + m.label.toLowerCase(), on: a.cor === m.id,
+        style: "width: 48px; height: 48px; border-radius: 50%; cursor: pointer; background: rgb(" + m.rgb + "); border: " + (a.cor === m.id ? "3px solid " + c.fg : "1px solid rgba(0,0,0,0.12)"),
+        pick: () => this.updAnn(key, {cor: a.cor === m.id ? null : m.id})
+      })),
+      clearColor: () => this.updAnn(key, {cor: null}),
+      toggleFav: () => this.updAnn(key, {fav: !a.fav}),
+      noteInput: (e) => this.updAnn(key, {note: e.target.value}),
+      copy: () => this.say("João 3:" + key + " copiado"),
+      listen: () => this.startPlay(VERSES.findIndex(function (x) { return String(x.n) === key; })),
+      interlinear: () => { this.setMode("interlinear"); this.setState({sheet: null}); this.scrollToVerse(VERSES.findIndex(function (x) { return String(x.n) === key; })); }
+    };
+
+    const modes = [["biblia", "Bíblia"], ["original", "Original"], ["interlinear", "Interlinear"], ["estudo", "Estudo"]].map((m) => ({
+      label: m[1], on: st.mode === m[0], style: seg(st.mode === m[0]), pick: () => this.setMode(m[0])
+    }));
+    const toggleShow = (k) => () => { const n = Object.assign({}, st.show); n[k] = !n[k]; this.setState({show: n}); };
+    const chips = [["xlit", "Transliteração"], ["gloss", "Glosa"], ["pron", "Pronúncia"], ["strong", "Strong"], ["morph", "Gramática"], ["blivre", "Bíblia Livre"], ["num", "Números"], ["theme", "Tema do capítulo"], ["questions", "Perguntas"], ["review", "Revisão ⚑"], ["ann", "Minhas anotações"]].map((k) => ({
+      label: k[1], on: !!sh[k[0]], style: chip(!!sh[k[0]]), toggle: toggleShow(k[0])
+    }));
+    const flip = (k) => () => { const o = {}; o[k] = !st[k]; this.setState(o); };
+    const readChips = [["easy", "Fonte fácil"], ["spacious", "Espaçamento amplo"], ["cant", "Cantilação (hebraico)"]].map((k) => ({label: k[1], on: !!st[k[0]], style: chip(!!st[k[0]]), toggle: flip(k[0])}));
+    const audioChips = [["follow", "Realçar cada palavra"], ["slow", "Falar mais devagar"]].map((k) => ({label: k[1], on: !!st[k[0]], style: chip(!!st[k[0]]), toggle: flip(k[0])}));
+    const themes = [["auto", "Automático"]].concat(Object.keys(THEMES).map((k) => [k, THEMES[k].label])).map((t) => {
+      const tk = t[0] === "auto" ? "claro" : t[0];
+      const on = t[0] === "auto" ? false : st.theme === t[0];
+      return {label: t[1], on: on, style: chip(on), dot: "width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.2); background: " + (t[0] === "auto" ? "linear-gradient(90deg, #f8f9f6 50%, #1a201e 50%)" : THEMES[tk].bg), pick: () => this.setState({theme: tk})};
+    });
+
+    // Índice
+    const annKeys = Object.keys(st.ann).filter(function (k) { return hasContent(st.ann[k]) || k.indexOf("livre") === 0; });
+    const tabs = [["livros", "Livros"], ["notas", "Notas" + (annKeys.length ? " · " + annKeys.length : "")], ["voce", "Você"]].map((t) => ({
+      label: t[1], on: st.navTab === t[0], style: seg(st.navTab === t[0]), pick: () => this.setState({navTab: t[0], tagManager: false, moreOpen: false})
+    }));
+    const qn = norm(st.q);
+    const jump = st.q ? this.parseRef(st.q) : null;
+    const groups = [];
+    BOOKS.forEach((b) => {
+      if (qn && !jump) { if (norm(b[1]).indexOf(qn) < 0) return; }
+      else if (!!b[2] !== st.nt) return;
+      let g = groups.find(function (x) { return x.name === b[3]; });
+      if (!g) { g = {name: b[3], books: []}; groups.push(g); }
+      const cur = b[0] === st.book;
+      g.books.push({
+        name: b[1], ch: b[4] + " cap.",
+        style: "min-height: 48px; padding: 0 12px; border-radius: 10px; cursor: pointer; font-size: 15px; display: flex; align-items: center; justify-content: space-between; gap: 6px; text-align: left; border: 1px solid " + (cur ? c.accent : c.line) + "; background: " + (cur ? c.soft : "transparent") + "; color: " + c.fg,
+        pick: () => { if (b[4] === 1) this.goTo(b[0], 1); else this.setState({navBook: b[0]}); }
+      });
+    });
+    const nb = st.navBook ? this.bookInfo(st.navBook) : null;
+    const chGrid = [];
+    if (nb) for (let i = 1; i <= nb[4]; i++) {
+      const cur = nb[0] === st.book && i === st.chapter;
+      chGrid.push({
+        n: i, cur: cur ? "page" : "false", aria: nb[1] + " " + i + (nb[0] === "JHN" ? ": " + JHN_TITLES[i - 1] : ""),
+        style: "height: 48px; border-radius: 10px; cursor: pointer; font-size: 15px; font-family: 'IBM Plex Mono', monospace; border: 1px solid " + (cur ? c.accent : c.line) + "; background: " + (cur ? c.accent : "transparent") + "; color: " + (cur ? c.on : c.fg),
+        pick: () => this.goTo(nb[0], i)
+      });
+    }
+    const chTitles = nb && nb[0] === "JHN" ? JHN_TITLES.map((t, i) => ({n: i + 1, t: t, pick: () => this.goTo("JHN", i + 1)})) : [];
+
+    // Notas: lista unificada (um item por versículo)
+    const counts = {
+      todas: annKeys.length,
+      nota: annKeys.filter(function (k) { return (st.ann[k].note || "").trim(); }).length,
+      fav: annKeys.filter(function (k) { return st.ann[k].fav; }).length,
+      cor: annKeys.filter(function (k) { return st.ann[k].cor; }).length
+    };
+    const notesFilters = [["todas", "Todas"], ["nota", "Com nota"], ["fav", "Favoritos"], ["cor", "Marcadas"]].map((f) => ({
+      label: f[1], count: counts[f[0]], on: st.nFilter === f[0], style: smallChip(st.nFilter === f[0]), pick: () => this.setState({nFilter: f[0]})
+    }));
+    const tagFilters = st.tags.map((t) => ({id: t.id, name: t.name, count: this.tagCount(t.id)})).filter(function (t) { return t.count > 0; })
+      .sort(function (x, y) { return y.count - x.count; })
+      .map((t) => ({name: t.name, count: t.count, on: st.nTag === t.id, style: smallChip(st.nTag === t.id), pick: () => this.setState({nTag: st.nTag === t.id ? null : t.id})}));
+    const nqn = norm(st.nq).replace(/^#/, "");
+    const annList = annKeys.filter((k) => {
+      const x = st.ann[k];
+      if (st.nFilter === "nota" && !(x.note || "").trim()) return false;
+      if (st.nFilter === "fav" && !x.fav) return false;
+      if (st.nFilter === "cor" && !x.cor) return false;
+      if (st.nTag && x.tags.indexOf(st.nTag) < 0) return false;
+      if (nqn) {
+        const v = VERSES.find(function (y) { return String(y.n) === k; });
+        const hay = norm((k.indexOf("livre") === 0 ? "nota livre" : "joao 3:" + k) + " " + (x.note || "") + " " + (v ? v.b : "") + " " + x.tags.map(tagName).join(" "));
+        if (hay.indexOf(nqn) < 0) return false;
+      }
+      return true;
+    }).sort(function (x, y) {
+      const fx = x.indexOf("livre") === 0, fy = y.indexOf("livre") === 0;
+      if (fx !== fy) return fx ? 1 : -1;
+      return fx ? x.localeCompare(y) : Number(x) - Number(y);
+    }).map((k) => {
+      const x = st.ann[k];
+      const v = VERSES.find(function (y) { return String(y.n) === k; });
+      const mk = MARKS.find(function (m) { return m.id === x.cor; });
+      const note = (x.note || "").trim();
+      const tags = x.tags.map((id) => ({name: tagName(id)})).filter(function (t) { return t.name; });
+      return {
+        ref: k.indexOf("livre") === 0 ? "Nota livre" : "João 3:" + k, star: x.fav ? "★" : "",
+        hasNote: !!note, note: note || "", verse: v ? (v.b.length > 110 ? v.b.slice(0, 108) + "…" : v.b) : (note ? "" : "[nota vazia]"),
+        hasTags: tags.length > 0, tags: tags,
+        style: "display: flex; flex-direction: column; gap: 4px; padding: 12px 14px 12px 16px; border-radius: 12px; border: 1px solid " + c.line + "; cursor: pointer; text-align: left; color: " + c.fg + "; background: " + c.bg + "; box-shadow: inset 4px 0 0 " + (mk ? mk.bar : c.line),
+        open: () => { if (k.indexOf("livre") !== 0) this.goTo("JHN", 3); this.openAnn(k); }
+      };
+    });
+
+    // gerenciar etiquetas
+    const rn = cleanTag(st.renameVal);
+    const tagRows = st.tags.slice().sort(function (x, y) { return x.name.localeCompare(y.name, "pt"); }).map((t) => {
+      const n = this.tagCount(t.id);
+      const renaming = st.renaming === t.id, deleting = st.deleting === t.id;
+      const other = rn && st.tags.find(function (o) { return o.name === rn && o.id !== t.id; });
+      return {
+        name: t.name, countLabel: n === 1 ? "1 anotação" : n + " anotações",
+        viewing: !renaming && !deleting, renaming: renaming, deleting: deleting, mergeHint: renaming && !!other,
+        startRename: () => this.setState({renaming: t.id, renameVal: t.name, deleting: null}),
+        askDelete: () => this.setState({deleting: t.id, renaming: null}),
+        cancel: () => this.setState({deleting: null}),
+        saveRename: () => {
+          if (!rn) return this.setState({renaming: null});
+          if (other) {
+            const all = {};
+            Object.keys(st.ann).forEach(function (k) {
+              const x = st.ann[k];
+              let ids = x.tags.map(function (id) { return id === t.id ? other.id : id; });
+              ids = ids.filter(function (id, i) { return ids.indexOf(id) === i; });
+              all[k] = Object.assign({}, x, {tags: ids});
+            });
+            this.setState({ann: all, tags: st.tags.filter(function (o) { return o.id !== t.id; }), renaming: null, nTag: null});
+            this.say("Juntadas em #" + other.name);
+          } else {
+            this.setState({tags: st.tags.map(function (o) { return o.id === t.id ? Object.assign({}, o, {name: rn}) : o; }), renaming: null});
+          }
+        },
+        confirmDelete: () => {
+          const all = {};
+          Object.keys(st.ann).forEach(function (k) {
+            const x = Object.assign({}, st.ann[k], {tags: st.ann[k].tags.filter(function (id) { return id !== t.id; })});
+            if (hasContent(x) || k.indexOf("livre") === 0) all[k] = x;
+          });
+          this.setState({ann: all, tags: st.tags.filter(function (o) { return o.id !== t.id; }), deleting: null, nTag: st.nTag === t.id ? null : st.nTag});
+          this.say("Etiqueta apagada");
+        }
+      };
+    });
+
+    const sheet = st.sheet;
+    const readBottom = sheet === "word" ? 420 : (st.playing ? 128 : 72);
+    const chTitle = st.book === "JHN" ? JHN_TITLES[st.chapter - 1] : (binfo ? binfo[3] : "");
+    const pv = VERSES[st.playV];
+
+    return {
+      c: c, show: sh, size: st.size,
+      gSize: Math.round(21 * s), xSize: Math.round(12 * s), glSize: Math.round(13 * s), sSize: Math.round(11 * s), bSize: Math.round(17 * s),
+      lh: st.spacious ? 1.9 : 1.6, lhPar: st.spacious ? 2.1 : 1.8,
+      blivreFont: st.easy ? "'Atkinson Hyperlegible', sans-serif" : "Literata, Georgia, serif",
+      setScroller: (el) => { this.scroller = el; },
+      isCh3: isCh3, notCh3: !isCh3,
+      refLabel: (binfo ? binfo[1] : "") + " " + st.chapter, bookName: binfo ? binfo[1] : "", chTitle: chTitle,
+      aboutOpen: st.aboutOpen, toggleAbout: () => this.setState({aboutOpen: !st.aboutOpen}),
+      firstRun: st.firstRun && isCh3,
+      dismissFirstRun: () => this.setState({firstRun: false}),
+      pickBiblia: () => this.setMode("biblia"), pickOriginal: () => this.setMode("original"), pickInterlinear: () => this.setMode("interlinear"),
+      modeCards: st.mode === "interlinear" || st.mode === "estudo", modeBiblia: st.mode === "biblia", modeOriginal: st.mode === "original",
+      verses: verses,
+      questions: QUESTIONS.map((q) => Object.assign({}, q, {answer: () => {
+        const k = "livre-" + (st.freeCount + 1);
+        const all = Object.assign({}, st.ann);
+        all[k] = {cor: null, fav: false, note: "Resposta (3:" + q.ref + "): ", tags: []};
+        this.setState({ann: all, freeCount: st.freeCount + 1});
+        this.openAnn(k);
+      }})),
+      lexList: ["G25", "G2889", "G3439", "G4100", "G2222", "G166", "G649", "G2919", "G4982"].map((k) => ({
+        l: LEX[k].l, gl: LEX[k].s.split(/[,;(]/)[0], n: LEX[k].n,
+        open: () => { const f = this.findWord(k); this.setState({sheet: "word", wv: f[0], wi: f[1]}); this.scrollToVerse(f[0]); }
+      })),
+      playing: st.playing, playRef: "João 3:" + pv.n,
+      togglePlay: () => { if (st.playing) this.stopPlay(); else if (isCh3) this.startPlay(0); else this.say("Áudio disponível só em João 3 no protótipo"); },
+      playLabel: st.playing ? "Pausar leitura" : "Ouvir a partir daqui", playShort: st.playing ? "Pausar" : "Ouvir",
+      prevCh: () => this.stepCh(-1), nextCh: () => this.stepCh(1), prevLabel: this.chLabel(-1), nextLabel: this.chLabel(1),
+      openBooks: () => this.setState({sheet: "nav", navTab: "livros", navBook: null, nt: binfo ? !!binfo[2] : true, q: ""}),
+      openChapters: () => this.setState({sheet: "nav", navTab: "livros", navBook: st.book, q: ""}),
+      openAa: () => this.setState({sheet: "aa"}),
+      closeSheet: () => this.setState({sheet: null, tagQuery: ""}),
+      modal: sheet === "verse" || sheet === "aa" || sheet === "nav",
+      sheetWord: sheet === "word", sheetVerse: sheet === "verse", sheetAa: sheet === "aa", sheetNav: sheet === "nav",
+      readBottom: readBottom,
+      ws: ws,
+      wordPrev: () => { let v = st.wv, i = st.wi - 1; if (i < 0) { if (v === 0) return; v = v - 1; i = VERSES[v].w.length - 1; } this.setState({wv: v, wi: i}); if (v !== st.wv) this.scrollToVerse(v); },
+      wordNext: () => { let v = st.wv, i = st.wi + 1; if (i >= VERSES[v].w.length) { if (v === VERSES.length - 1) return; v = v + 1; i = 0; } this.setState({wv: v, wi: i}); if (v !== st.wv) this.scrollToVerse(v); },
+      sayWord: () => this.say("Ouvindo " + ws.lemma),
+      markWord: () => { const m = Object.assign({}, st.markedWords); const k = st.wv + ":" + st.wi; m[k] = !m[k]; this.setState({markedWords: m}); },
+      vm: vm,
+      tagQuery: st.tagQuery,
+      onTagQuery: (e) => this.setState({tagQuery: e.target.value}),
+      onTagKey: (e) => { if (e.key === "Enter" && qTag) { e.preventDefault(); this.addTagTo(key, qTag); } },
+      modes: modes, modeHint: MODE_HINT[st.mode], chips: chips, readChips: readChips, audioChips: audioChips, themes: themes,
+      sizeDown: () => this.setState({size: Math.max(80, st.size - 10)}), sizeUp: () => this.setState({size: Math.min(150, st.size + 10)}),
+      showSources: () => this.say("Abre Fontes e licenças"),
+      tabs: tabs, tabLivros: st.navTab === "livros", tabVoce: st.navTab === "voce",
+      showNotesList: st.navTab === "notas" && !st.tagManager, showTagManager: st.navTab === "notas" && st.tagManager,
+      q: st.q, onQuery: (e) => this.setState({q: e.target.value, navBook: null}),
+      hasJump: !!jump, jumpLabel: jump ? jump.label : "",
+      doJump: () => { if (!jump) return; this.goTo(jump.book, jump.ch); if (jump.book === "JHN" && jump.ch === 3 && jump.v) { const i = VERSES.findIndex(function (x) { return x.n === jump.v; }); if (i >= 0) this.scrollToVerse(i); } },
+      showBookList: !st.navBook, showChGrid: !!st.navBook,
+      atOn: !st.nt, ntOn: st.nt, atStyle: seg(!st.nt), ntStyle: seg(st.nt),
+      pickAT: () => this.setState({nt: false}), pickNT: () => this.setState({nt: true}),
+      groups: groups, navBookName: nb ? nb[1] : "", chGrid: chGrid, chTitles: chTitles, hasChTitles: chTitles.length > 0,
+      backToBooks: () => this.setState({navBook: null}),
+      nq: st.nq, onNotesQuery: (e) => this.setState({nq: e.target.value}),
+      moreOpen: st.moreOpen, toggleMore: () => this.setState({moreOpen: !st.moreOpen}),
+      notesFilters: notesFilters, tagFilters: tagFilters, hasAnyTags: tagFilters.length > 0,
+      annList: annList, noAnn: annKeys.length === 0, noResults: annKeys.length > 0 && annList.length === 0,
+      clearFilters: () => this.setState({nFilter: "todas", nTag: null, nq: ""}),
+      newFreeNote: () => { const k = "livre-" + (st.freeCount + 1); const all = Object.assign({}, st.ann); all[k] = {cor: null, fav: false, note: "", tags: []}; this.setState({ann: all, freeCount: st.freeCount + 1}); this.openAnn(k); },
+      openTagManager: () => this.setState({tagManager: true, moreOpen: false, renaming: null, deleting: null}),
+      closeTagManager: () => this.setState({tagManager: false}),
+      tagRows: tagRows, noTags: st.tags.length === 0,
+      renameVal: st.renameVal, onRename: (e) => this.setState({renameVal: e.target.value}),
+      newTagVal: st.newTagVal, onNewTag: (e) => this.setState({newTagVal: e.target.value}),
+      createTag: () => { const n = cleanTag(st.newTagVal); if (!n) return; if (!this.tagByName(n)) this.setState({tags: st.tags.concat([{id: "t" + Date.now(), name: n}])}); this.setState({newTagVal: ""}); },
+      exportPdf: () => this.say("Monta o caderno A4 em PDF"), backup: () => this.say("Baixa um JSON com tudo"), importData: () => this.say("Escolher arquivo de backup"),
+      login: () => this.say("Abre o login do Google"), plan: () => this.say("Entre com a conta para seguir um plano"),
+      hasToast: !!st.toast, toast: st.toast, hasUndo: !!st.undoAnn,
+      undo: () => { const u = st.undoAnn; if (!u) return; const all = Object.assign({}, st.ann); all[u.key] = u.val; this.setState({ann: all, toast: "", undoAnn: null}); }
+    };
+  }
+}
+</script>
+</body>
+</html>
