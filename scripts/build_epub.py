@@ -21,6 +21,12 @@ import zipfile
 from datetime import UTC, datetime
 from pathlib import Path
 
+
+def blivre_text(v):
+    """Texto da BLIVRE do versículo; nos acrósticos (Salmo 119) o nome da letra volta para o começo, como na BLIVRE."""
+    return f"{v['h']} :{v['b']}" if v.get("h") else v.get("b") or ""
+
+
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DATA = os.path.join(ROOT, "build", "data")
 SOURCES = os.path.join(ROOT, "epub-fonts")
@@ -403,7 +409,7 @@ def gen_chapters(B, LEX, pre=""):
                 body.append(
                     '<p class="vnote">No SBLGNT, este trecho está só no aparato crítico; aqui aparece a leitura de Westcott-Hort, Tregelles e Nestle-Aland 28.</p>'
                 )
-            body.append(f'<p class="bl"><span class="tag">BLIVRE</span> {h(v["b"])}</p>')
+            body.append(f'<p class="bl"><span class="tag">BLIVRE</span> {h(blivre_text(v))}</p>')
         body.append("</section>\n")
         notes.append("</section>\n")
         files[f"{pre}c{n}.xhtml"] = page(f"{B['name']} {n}", "\n".join(body))
@@ -654,12 +660,12 @@ def build_blivre(books, ofl):
                 pieces.append(f'<p class="tema">{h(c["t"])}</p>')
             body_parts = []
             for v in d["v"]:
-                if not (v.get("b") or "").strip():
+                if not blivre_text(v).strip():
                     continue
                 if v["n"] == 0:
-                    pieces.append(f'<p class="tit">{h(v["b"])}</p>')
+                    pieces.append(f'<p class="tit">{h(blivre_text(v))}</p>')
                 else:
-                    body_parts.append(f'<sup class="v">{v["n"]}</sup>{h(v["b"])}')
+                    body_parts.append(f'<sup class="v">{v["n"]}</sup>{h(blivre_text(v))}')
             pieces.append('<p class="txt">' + " ".join(body_parts) + "</p>")
         pieces.append("</section>\n")
         files[fname] = page(B["name"], "\n".join(pieces))
