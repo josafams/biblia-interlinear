@@ -20,7 +20,7 @@ import unicodedata
 from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(__file__))
-from build_epub import DATA, ROOT, about_html, gloss_html, h, plain  # noqa: E402
+from build_epub import DATA, ROOT, about_html, blivre_text, gloss_html, h, plain  # noqa: E402
 
 TMP = os.path.join(ROOT, "build", "pdf-build")
 OUT = os.path.join(ROOT, "build", "pdf")
@@ -108,7 +108,7 @@ def book_html(B, LEX, idx):
             out.append(
                 f'<div class="verse"><div class="vn">{"Título" if vn == 0 else f"{n}:{vn}"}</div>'
                 + (f'<div class="words{"" if grc else " rtl"}">{"".join(cards)}</div>' if cards else "")
-                + f'{note}<p class="bl"><span class="tag">BLIVRE</span>{h(v["b"])}</p></div>'
+                + f'{note}<p class="bl"><span class="tag">BLIVRE</span>{h(blivre_text(v))}</p></div>'
             )
 
     def order(k):
@@ -206,10 +206,10 @@ sup { font-size: 6.5pt; font-weight: 700; color: #555; margin: 0 .5pt 0 2pt; }
                 pieces.append(f'<p class="tema">{esc(c["t"])}</p>')
             body_parts = []
             for v in d["v"]:
-                if not (v.get("b") or "").strip():
+                if not blivre_text(v).strip():
                     continue
                 if v["n"] == 0:
-                    pieces.append(f'<p class="tit">{esc(v["b"])}</p>')
+                    pieces.append(f'<p class="tit">{esc(blivre_text(v))}</p>')
                 else:
                     body_parts.append(f"<sup>{v['n']}</sup>{esc(v['b'])}")
             pieces.append('<p class="txt">' + " ".join(body_parts) + "</p>")
