@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Diagnóstico do leitor</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&amp;family=Literata:opsz,wght@7..72,400;7..72,600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1d5b74}a:hover{color:#123d4f}
+</style>
+</helmet>
+<div style="width: 1280px; min-height: 1840px; box-sizing: border-box; padding: 64px; background: #eceeea; color: #1b2220; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 15px; line-height: 1.5; display: flex; flex-direction: column; gap: 40px">
+
+  <div style="display: flex; flex-direction: column; gap: 10px; max-width: 900px">
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #4a5551">Diagnóstico · leitor atual (ler.html)</div>
+    <h1 style="margin: 0; font-family: Literata, Georgia, serif; font-size: 40px; font-weight: 600; line-height: 1.15">O texto bíblico disputa espaço com a interface</h1>
+    <p style="margin: 0; color: #4a5551; font-size: 16px">Medido no site rodando localmente (ramo gh-pages), com navegador automatizado, em João 3, modo Interlinear, nas telas de 390×844 (celular) e 1280×800 (desktop). Os números abaixo vêm dessas medições; onde é estimativa, está escrito.</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+    <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 4px">
+      <div style="font-family: Literata, Georgia, serif; font-size: 40px; font-weight: 600; color: #1d5b74; line-height: 1.1">561 px</div>
+      <div style="font-weight: 700">até o 1º versículo no celular</div>
+      <div style="color: #4a5551; font-size: 13px">A primeira tela inteira (844 px) não mostra nenhum versículo enquanto o “Como você quer ler?” está aberto.</div>
+    </div>
+    <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 4px">
+      <div style="font-family: Literata, Georgia, serif; font-size: 40px; font-weight: 600; color: #1d5b74; line-height: 1.1">27 telas</div>
+      <div style="font-weight: 700">para ler João 3 no celular</div>
+      <div style="color: #4a5551; font-size: 13px">23.181 px de versículos; cerca de 640 px por versículo (0,8 tela).</div>
+    </div>
+    <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 4px">
+      <div style="font-family: Literata, Georgia, serif; font-size: 40px; font-weight: 600; color: #1d5b74; line-height: 1.1">72%</div>
+      <div style="font-weight: 700">da tela coberta pelo verbete</div>
+      <div style="color: #4a5551; font-size: 13px">No desktop, folha de 1280×576 px sobre o texto; o versículo estudado some.</div>
+    </div>
+    <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 4px">
+      <div style="font-family: Literata, Georgia, serif; font-size: 40px; font-weight: 600; color: #1d5b74; line-height: 1.1">37</div>
+      <div style="font-weight: 700">controles no painel Aa</div>
+      <div style="color: #4a5551; font-size: 13px">20 interruptores, 6 modos e 7 temas em 2,9 telas de rolagem.</div>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 14px">
+    <h2 style="margin: 0; font-family: Literata, Georgia, serif; font-size: 24px; font-weight: 600">Problemas, por prioridade</h2>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px">
+
+      <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; gap: 10px; align-items: center"><span style="background: #7d4a2e; color: #ffffff; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px">Alta</span><b style="font-size: 17px">A primeira tela não mostra a Bíblia</b></div>
+        <div><b>Medido:</b> cabeçalho de 290 px com dicas de teclado (inúteis no celular), cartão “Como você quer ler?” e “Sobre o livro” antes do 3:1.</div>
+        <div style="color: #1d5b74"><b>Proposta:</b> cabeçalho de 2 linhas; “Sobre João”, “Léxico” e “Perguntas” viram chips; escolha do modo numa faixa de 1 linha; dicas de teclado só no desktop.</div>
+      </div>
+
+      <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; gap: 10px; align-items: center"><span style="background: #7d4a2e; color: #ffffff; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px">Alta</span><b style="font-size: 17px">O verbete esconde o versículo</b></div>
+        <div><b>Medido:</b> folha inferior de 72% da altura no desktop e 608 px no celular; para ver a palavra seguinte é preciso fechar e tocar de novo. O verbete começa por “Strong G3530” e repete o lema duas vezes.</div>
+        <div style="color: #1d5b74"><b>Proposta:</b> painel lateral fixo no desktop; meia folha no celular com o versículo acima; setas ‹ › entre as palavras; significado primeiro, Strong por último.</div>
+      </div>
+
+      <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; gap: 10px; align-items: center"><span style="background: #7d4a2e; color: #ffffff; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px">Alta</span><b style="font-size: 17px">Mudar de capítulo é caro</b></div>
+        <div><b>Medido:</b> 3 toques (Índice → livro → capítulo). O “João 4 →” só aparece depois das 27 telas e das fontes e licenças.</div>
+        <div style="color: #1d5b74"><b>Proposta:</b> barra inferior fixa com ‹ e › (1 toque) e gesto de deslizar; o título abre direto a grade de capítulos do livro.</div>
+      </div>
+
+      <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; gap: 10px; align-items: center"><span style="background: #7d4a2e; color: #ffffff; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px">Alta</span><b style="font-size: 17px">Cartões pesados por padrão</b></div>
+        <div><b>Medido:</b> 4 linhas por palavra no modo Interlinear (original, transliteração, Strong, glosa) e “Ouvir” fixo em cada um dos 36 versículos (740 botões na página).</div>
+        <div style="color: #1d5b74"><b>Proposta:</b> 3 linhas no Interlinear (Strong e gramática só no Estudo); um único “Ouvir” na barra, que lê a partir do versículo na tela.</div>
+      </div>
+
+      <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; gap: 10px; align-items: center"><span style="background: #d9c3a5; color: #3d2414; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px">Média</span><b style="font-size: 17px">Painel Aa longo e redundante</b></div>
+        <div><b>Medido:</b> a opção “Transliteração” fica a 2.142 px do topo do painel (2,5 telas). O modo “Personalizado” duplica os mesmos interruptores dos outros modos.</div>
+        <div style="color: #1d5b74"><b>Proposta:</b> modo em seletor de 4 opções; “O que mostrar” em chips logo abaixo, sem rolagem; tema, texto e áudio em grupos compactos.</div>
+      </div>
+
+      <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; gap: 10px; align-items: center"><span style="background: #d9c3a5; color: #3d2414; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px">Média</span><b style="font-size: 17px">Índice mistura conta, busca e livros</b></div>
+        <div><b>Medido:</b> “Entrar com Google” vem antes dos livros; o Índice tem 3,2 telas; “Minhas anotações” está a 2.386 px; os livros aparecem só como abreviações (Ct, Ed, Ne).</div>
+        <div style="color: #1d5b74"><b>Proposta:</b> abas Livros · Notas · Você; busca única no topo (“Jo 3:16” ou “Cânticos”); nomes completos dos livros.</div>
+      </div>
+
+      <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; gap: 10px; align-items: center"><span style="background: #d9c3a5; color: #3d2414; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px">Média</span><b style="font-size: 17px">A revisão ⚑ fala com o desenvolvedor</b></div>
+        <div><b>Medido:</b> o ⚑ abre no meio da linha do versículo com códigos internos (“GRG-05”, “CON-01”) e empurra o número e os botões.</div>
+        <div style="color: #1d5b74"><b>Proposta:</b> um ponto âmbar no número; explicação em português no menu ⋯ do versículo; o código fica em “detalhes técnicos”.</div>
+      </div>
+
+      <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; gap: 10px; align-items: center"><span style="background: #d9c3a5; color: #3d2414; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px">Média</span><b style="font-size: 17px">Tema em dois lugares, referência cortada</b></div>
+        <div><b>Medido:</b> botões ☀/☾ na barra e 7 temas no Aa; no celular a referência vira “Jo 3:1 · Nico…”.</div>
+        <div style="color: #1d5b74"><b>Proposta:</b> tema só no Aa; a barra mostra a referência inteira e o tema do capítulo.</div>
+      </div>
+
+      <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; gap: 10px; align-items: center"><span style="background: #e4e8e4; color: #1b2220; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px; border: 1px solid #b9c2bc">Baixa</span><b style="font-size: 17px">Alvos de toque pequenos</b></div>
+        <div><b>Medido:</b> ⋯ do versículo com 38×36 px; ☀ e ☾ com 40×40 px (mínimo recomendado: 44×44).</div>
+        <div style="color: #1d5b74"><b>Proposta:</b> todos os botões com pelo menos 44×44 px.</div>
+      </div>
+
+      <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; gap: 10px; align-items: center"><span style="background: #e4e8e4; color: #1b2220; font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px; border: 1px solid #b9c2bc">Baixa</span><b style="font-size: 17px">Glosas quebradas e rodapé repetido</b></div>
+        <div><b>Medido:</b> glosas partidas no meio (“testemunham / os”, “em-verdade- / em”); “Fontes e licenças” no fim de cada um dos 1.189 capítulos.</div>
+        <div style="color: #1d5b74"><b>Proposta:</b> cartão sempre da largura da glosa, sem hifenizar; fontes e licenças num link do Aa e do “Sobre”.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="background: #f8f9f6; border: 1px solid #d2d8d3; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+    <h2 style="margin: 0; font-family: Literata, Georgia, serif; font-size: 22px; font-weight: 600">Princípios do redesenho</h2>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px">
+      <div><b>O texto vem primeiro.</b><br><span style="color: #4a5551">Ao abrir, o versículo aparece sem rolar. Nada de instrução permanente na tela.</span></div>
+      <div><b>Cada função, um lugar.</b><br><span style="color: #4a5551">Ler e navegar na barra inferior; aparência no Aa; conta e notas no Índice.</span></div>
+      <div><b>Uma camada por vez.</b><br><span style="color: #4a5551">Verbete, menu do versículo e painéis não se sobrepõem; fechar volta ao mesmo ponto.</span></div>
+      <div><b>Nada some.</b><br><span style="color: #4a5551">Todas as funções atuais continuam; só mudam de lugar ou ficam a um toque.</span></div>
+    </div>
+  </div>
+
+  <div style="color: #4a5551; font-size: 13px">Achado à parte, nos dados: em João 3:1 a glosa de Νικόδημος é “cujo” (efeito do alinhamento automático).</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1840}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

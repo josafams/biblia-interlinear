@@ -13,3 +13,5 @@ web/*.html
 tests/snapshot.json
 # Markdown: tabelas longas ficam ilegíveis alinhadas; o markdownlint confere o formato
 *.md
+# Protótipos do redesenho: HTML do runtime do canvas de design, não do site
+docs/redesenho/
