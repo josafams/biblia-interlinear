@@ -150,8 +150,12 @@ function decodeMorph(morph, grc) {
 function esc(s) {
   return String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 }
+// Glosa no cartão: o hífen que junta palavras ("no-princípio") fica como separador discreto, e a partícula
+// de objeto direto (אֵת), que não se traduz, vira um sinal curto com a explicação ao lado (leitor de tela e título)
 function glossHTML(g) {
-  return esc(g || "—").replace(/\[obj\]/g, '<span class="obj">[obj]</span>');
+  return esc(g || "—")
+    .replace(/-/g, '<span class="hy">-</span>')
+    .replace(/\[obj\]/g, '<abbr class="obj" title="marca de objeto direto: não se traduz">obj.</abbr>');
 }
 function glossSpoken(g) {
   return String(g || "")
@@ -301,11 +305,26 @@ function renderHeader() {
     `${esc(BOOK.name)} ${CUR}${A ? ` <span class="orig" lang="${OLANG()}">${esc(A.title_orig)}</span>` : ""}`;
   const theme = BOOK.chapters[CUR - 1] && BOOK.chapters[CUR - 1].t;
   document.getElementById("ctheme").textContent = theme || "";
-  document.getElementById("lede").innerHTML = GRC
-    ? "Lê-se da esquerda para a direita. Cada cartão traz a palavra grega, a transliteração do lema, o número Strong e uma glosa; abaixo vem o versículo na Bíblia Livre. Toque numa palavra para abrir o verbete com origem, significado, pronúncia e análise gramatical."
-    : "Lê-se da direita para a esquerda. Cada cartão traz a palavra hebraica, a transliteração do lema, o número Strong e uma glosa; abaixo vem o versículo na Bíblia Livre. Toque numa palavra para abrir o verbete com origem, significado, pronúncia e análise gramatical. O botão <b>Ouvir</b> lê o versículo em voz alta.";
+  document.getElementById("lede").textContent = GRC
+    ? "Lê-se da esquerda para a direita. Cada palavra grega abre o verbete; abaixo de cada versículo vem a Bíblia Livre."
+    : "Lê-se da direita para a esquerda. Cada palavra hebraica abre o verbete; abaixo de cada versículo vem a Bíblia Livre.";
   document.body.classList.toggle("grc", GRC);
   document.getElementById("verses").setAttribute("aria-label", `Texto de ${BOOK.name} ${CUR}`);
+  // atalhos do cabeçalho e rótulos de capítulo anterior/próximo (barra de cima no computador, de baixo no celular)
+  const nq = CH ? CH.questions.length : 0,
+    chipQ = document.getElementById("chip-q");
+  chipQ.hidden = !nq;
+  chipQ.innerHTML = `Perguntas <span class="n">${nq}</span>`;
+  for (const id of ["bar-prev", "bar-next", "bb-prev", "bb-next"]) {
+    const b = document.getElementById(id),
+      x = neighbor(+b.dataset.dir);
+    const label = x ? `${b.dataset.dir < 0 ? "Capítulo anterior" : "Próximo capítulo"}: ${x.b.name} ${x.n}` : "";
+    b.setAttribute("aria-label", label || (b.dataset.dir < 0 ? "Este é o primeiro capítulo" : "Este é o último capítulo"));
+    b.setAttribute("aria-disabled", String(!x));
+    b.title = label;
+    const t = b.querySelector(".bb-t");
+    if (t) t.textContent = x ? `${x.b.abbrev} ${x.n}` : "";
+  }
 }
 const SOURCE_NOTES = {
   aparato:
@@ -313,15 +332,17 @@ const SOURCE_NOTES = {
   "sem-original": "Este versículo não tem correspondente no texto original usado aqui (aparece em outras edições).",
   "sem-blivre": "A BLIVRE não tem este versículo separado; o texto está no versículo vizinho."
 };
+// Revisão automática: o texto em português vem primeiro; o código da regra fica num canto, para quem revisa os dados
 function marksHTML(v) {
   if (!v.marks.length) return "";
   const list = v.marks
     .map(
       m =>
-        `<li><span class="mk-c">${esc(m[3])}</span> ${esc(m[4])}${m[1] !== null && v.words[m[1]] ? ` <span class="mk-w" lang="${OLANG()}">${esc(hebShown(v.words[m[1]].heb))}</span>` : ""}</li>`
+        `<li><span>${m[1] !== null && v.words[m[1]] ? `<span class="mk-w" lang="${OLANG()}">${esc(hebShown(v.words[m[1]].heb))}</span>: ` : ""}${esc(m[4])}</span><span class="mk-c">detalhe técnico: ${esc(m[3])}</span></li>`
     )
     .join("");
-  return `<details class="marks"><summary aria-label="${v.marks.length} ${v.marks.length === 1 ? "ponto" : "pontos"} da revisão automática">⚑ ${v.marks.length}</summary><ul>${list}</ul></details>`;
+  const n = v.marks.length;
+  return `<details class="marks"><summary>⚑ ${n === 1 ? "1 ponto" : `${n} pontos`} da revisão automática</summary><ul>${list}</ul></details>`;
 }
 function renderVerses() {
   const lang = OLANG();
@@ -345,19 +366,21 @@ function renderVerses() {
           })
           .join("");
         const lbl = vLabel(v);
-        return `
+        const head = v.h
+          ? `<h2 class="sechead acro" id="s${v.n}"><span>${esc(v.h)}</span><span class="sref">v. ${v.n}–${v.n + 7}</span></h2>`
+          : "";
+        return `${head}
     <section class="verse" id="v${v.n}" data-vi="${vi}" aria-labelledby="vh${v.n}">
       <div class="vhead">
-        <h3 class="vnum" id="vh${v.n}"><span class="sr">Versículo </span>${lbl.includes(":") ? `<span class="vcap">${esc(lbl.split(":")[0])}:</span>${esc(lbl.split(":")[1])}` : lbl}</h3>
-        ${v.words.length && !GRC ? `<button class="say vsay" data-verse="${vi}" aria-label="Ouvir ${lbl} em hebraico">${SPK}<span aria-hidden="true">Ouvir</span></button>` : ""}
-        ${v.words.length && GRC ? `<button class="say vsay" data-verse="${vi}" aria-label="Ouvir ${lbl} em grego">${SPK}<span aria-hidden="true">Ouvir</span></button>` : ""}
+        <h3 class="vnum${v.marks.length ? " has-rev" : ""}" id="vh${v.n}"><span class="sr">Versículo </span>${lbl.includes(":") ? `<span class="vcap">${esc(lbl.split(":")[0])}:</span>${esc(lbl.split(":")[1])}` : lbl}${v.marks.length ? `<span class="sr"> (com pontos da revisão automática)</span>` : ""}</h3>
         <span class="vtags"></span>
-        <button class="vmark" data-verse="${vi}" aria-label="Marcar ou anotar ${lbl}"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
-        ${marksHTML(v)}
+        <button class="vmark" data-verse="${vi}" aria-label="Anotar ou ouvir ${lbl}"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
       </div>
       ${v.words.length ? `<div class="words" role="group" aria-label="Palavras do versículo ${lbl}${GRC ? "" : ", da direita para a esquerda"}">${words}</div>` : ""}
       ${v.nota ? `<p class="vnote">${esc(SOURCE_NOTES[v.nota] || v.nota)}</p>` : ""}
       <p class="blivre"><span class="tag">BLIVRE</span>${esc(v.blivre)}</p>
+      <div class="vann" hidden></div>
+      ${marksHTML(v)}
     </section>`;
       })
       .join("") +
@@ -730,35 +753,61 @@ function chapterCount(k) {
   return CH ? CH.verses.reduce((s, v) => s + v.words.filter(w => w.strong === k).length, 0) : 0;
 }
 
-function entryHTML(k, word) {
-  const e = LEX[k];
-  const lang = k && k[0] === "G" ? "grc" : "he";
-  const lemma = e ? e.l : (word && word.lemma) || "",
-    xlit = e ? e.x : "",
-    pron = e ? e.p : "";
-  const chip = k && !k.startsWith("G:") ? (/^H[a-z]$/.test(k) ? "partícula hebraica" : "Strong " + k) : "sem verbete Strong";
-  const top = `
+// Verbete: a palavra no texto e o significado primeiro; origem, número Strong e legenda da pronúncia no fim.
+const ARROW_L =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>';
+const ARROW_R =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
+function translationsHTML(t) {
+  const parts = String(t || "")
+    .split(";")
+    .map(s => s.trim().match(/^(.*?)\s*\((\d+)\)$/))
+    .filter(Boolean)
+    .slice(0, 8);
+  return parts.map(m => `<span>${esc(m[1])}<small>${m[2]}</small></span>`).join("");
+}
+function entryTopHTML(lang, lemma, xlit, pron, word) {
+  const pos =
+    word && active
+      ? `palavra ${+active.dataset.i + 1} de ${CH.verses[active.dataset.v].words.length} · ${vLabel(CH.verses[active.dataset.v])}`
+      : "";
+  const nav = (dir, label) =>
+    word
+      ? `<button class="dnav" id="${dir < 0 ? "d-prev" : "d-next"}" aria-label="${label}"${stepTarget(dir) ? "" : " disabled"}>${dir < 0 === GRC ? ARROW_L : ARROW_R}</button>`
+      : "";
+  return `
     <div class="dtop">
+      ${nav(GRC ? -1 : 1, GRC ? "Palavra anterior" : "Próxima palavra (à esquerda)")}
       <div class="dtitle">
-        <span class="dchip">${esc(chip)}</span>
         <h2 class="dh${lang === "grc" ? " grc" : ""}" id="d-title" tabindex="-1" lang="${lang}">${esc(lemma)}</h2>
         <div class="dx">${xlit ? `<em>${esc(xlit)}</em> · ` : ""}<span class="pron">pronúncia: <b>${esc(pron)}</b></span></div>
-        <button class="say" data-say="${esc(lemma)}">${SPK}<span>Ouvir lema</span></button>
+        ${pos ? `<span class="dpos">${esc(pos)}</span>` : ""}
       </div>
+      ${nav(GRC ? 1 : -1, GRC ? "Próxima palavra" : "Palavra anterior (à direita)")}
       <button class="dclose" id="d-close" aria-label="Fechar verbete">✕</button>
     </div>`;
-  const back = navStack.length ? `<button class="dback" id="d-back">← voltar ao verbete anterior</button>` : "";
-  const ctx = word
-    ? `
+}
+function wordContextHTML(word, lemma) {
+  const sayLemma = `<button class="say" data-say="${esc(lemma)}">${SPK}<span>Ouvir o lema</span></button>`;
+  if (!word) return `<div class="dsay">${sayLemma}</div>`;
+  const objNote = /\[obj\]/.test(word.gloss || "")
+    ? `<small class="gfn">Marca o objeto direto; não tem tradução em português.</small>`
+    : "";
+  const gfNote = word.gf && GF_NOTE[word.gf] ? `<small class="gfn">${esc(GF_NOTE[word.gf])}</small>` : "";
+  const ketiv = word.ketiv
+    ? `<p class="kq">Leitura indicada à margem (<i>qere</i>). No texto consonantal está escrito (<i>ketiv</i>): <span lang="he">${esc(word.ketiv)}</span></p>`
+    : "";
+  return `
     <div class="dctx">
       <div class="cw${GRC ? " grc" : ""}" lang="${OLANG()}">${esc(hebShown(word.heb))}</div>
-      <div class="cg">${glossHTML(word.gloss)} <span class="sr">(${esc(glossSpoken(word.gloss))})</span>${word.gf && GF_NOTE[word.gf] ? `<small class="gfn">${esc(GF_NOTE[word.gf])}</small>` : ""}</div>
+      <div class="cg">${glossHTML(word.gloss)} <span class="sr">(${esc(glossSpoken(word.gloss))})</span>${gfNote}${objNote}</div>
       <div class="dmeta">${esc(decodeMorph(word.morph, GRC))}</div>
-      ${word.ketiv ? `<p class="kq">Leitura indicada à margem (<i>qere</i>). No texto consonantal está escrito (<i>ketiv</i>): <span lang="he">${esc(word.ketiv)}</span></p>` : ""}
-      <button class="say" data-say="${esc(word.heb)}">${SPK}<span>Ouvir como está no texto</span></button>
-    </div>`
-    : "";
-  if (!e) return top + back + ctx + `<div class="dsec"><p>Sem verbete no dicionário de Strong.</p>${PRON_LEGEND}</div>`;
+      ${ketiv}
+      <div class="dsay"><button class="say" data-say="${esc(word.heb)}">${SPK}<span>Ouvir</span></button>${sayLemma}</div>
+    </div>`;
+}
+function entryBodyHTML(k, e) {
+  const strongLabel = k && !k.startsWith("G:") ? (/^H[a-z]$/.test(k) ? "partícula hebraica" : "Strong " + k) : "sem verbete Strong";
   const originHtml = e.o
     ? `<p>${linkRefs(e.o)}</p>`
     : e.oe
@@ -768,19 +817,53 @@ function entryHTML(k, word) {
     ? `<p>${esc(e.s)}</p>`
     : `<p class="en" lang="en">${esc(e.se || e.ge || "")} <em lang="pt-BR">(inglês, sem tradução)</em></p>`;
   const nc = chapterCount(k);
-  const uses = `${e.n} ${e.n === 1 ? "ocorrência" : "ocorrências"} na Bíblia${nc ? ` · ${nc} em ${BOOK.name} ${CUR}` : ""}`;
+  const uses = `${strongLabel} · ${e.n} ${e.n === 1 ? "ocorrência" : "ocorrências"} na Bíblia${nc ? ` · ${nc} em ${BOOK.name} ${CUR}` : ""}`;
   const blb = BLB(k);
-  return (
-    top +
-    back +
-    ctx +
-    `
+  const conc =
+    window.__concordance && k && e.n > 1 ? `<button class="dconc" id="d-conc" data-key="${esc(k)}">Ver as ${e.n} ocorrências</button>` : "";
+  return `
+    <div class="dsec dmean"><h3>Significado</h3>${sig}</div>
+    ${e.t ? `<div class="dsec"><h3>Como a BLIVRE traduz</h3><div class="dtr">${translationsHTML(e.t)}</div><p class="plegend">Contagem pelo alinhamento automático com a Bíblia Livre.</p></div>` : ""}
+    ${conc}
     ${originHtml ? `<div class="dsec"><h3>Origem</h3>${originHtml}</div>` : ""}
-    <div class="dsec"><h3>Significado</h3>${sig}</div>
-    ${e.t ? `<div class="dsec"><h3>Como a BLIVRE traduz</h3><p>${esc(e.t)}</p><p class="plegend">Contagem pelo alinhamento automático com a Bíblia Livre.</p></div>` : ""}
-    <div class="dsec"><h3>Uso</h3><p>${uses}${blb ? ` · <a href="${blb}" target="_blank" rel="noopener">verbete completo<span class="sr"> (abre em nova aba, em inglês)</span></a>` : ""}</p></div>
-    <div class="dsec">${PRON_LEGEND}</div>`
-  );
+    <div class="dsec"><h3>Uso</h3><p>${esc(uses)}${blb ? ` · <a href="${blb}" target="_blank" rel="noopener">verbete em inglês<span class="sr"> (abre em nova aba)</span></a>` : ""}</p></div>
+    <div class="dsec">${PRON_LEGEND}</div>`;
+}
+function entryHTML(k, word) {
+  const e = LEX[k];
+  const lang = k && k[0] === "G" ? "grc" : "he";
+  const lemma = e ? e.l : (word && word.lemma) || "";
+  const top = entryTopHTML(lang, lemma, e ? e.x : "", e ? e.p : "", word);
+  const back = navStack.length ? `<button class="dback" id="d-back">← voltar ao verbete anterior</button>` : "";
+  const ctx = wordContextHTML(word, lemma);
+  if (!e) return top + back + ctx + `<div class="dsec"><p>Sem verbete no dicionário de Strong.</p>${PRON_LEGEND}</div>`;
+  return top + back + ctx + entryBodyHTML(k, e);
+}
+// Palavra seguinte/anterior na ordem de leitura (passa para o versículo vizinho)
+function stepTarget(dir) {
+  if (!active || !CH) return null;
+  let v = +active.dataset.v,
+    i = +active.dataset.i + dir;
+  while (v >= 0 && v < CH.verses.length) {
+    const n = CH.verses[v].words.length;
+    if (i >= 0 && i < n) return wordEl(v, i);
+    v += dir;
+    if (v < 0 || v >= CH.verses.length) return null;
+    i = dir > 0 ? 0 : CH.verses[v].words.length - 1;
+  }
+  return null;
+}
+function openWord(b) {
+  const w = CH.verses[b.dataset.v].words[b.dataset.i];
+  if (active) active.classList.remove("active");
+  active = b;
+  b.classList.add("active");
+  b.parentElement.querySelectorAll(".word").forEach(x => {
+    x.tabIndex = -1;
+  });
+  b.tabIndex = 0;
+  navStack = [];
+  show(w.strong, w, b);
 }
 async function show(k, word, opener) {
   if (opener) returnTo = opener;
@@ -790,13 +873,28 @@ async function show(k, word, opener) {
   detail.setAttribute("aria-label", `Verbete ${k && !k.startsWith("G:") ? k : ""} ${e ? e.x : ""}`.replace(/\s+/g, " ").trim());
   dbody.innerHTML = entryHTML(k, word);
   detail.hidden = false;
+  document.body.classList.add("com-detail");
   if (k) document.dispatchEvent(new CustomEvent("lexicon-entry-opened", { detail: { k } }));
+  document.dispatchEvent(
+    new CustomEvent("word-opened", { detail: { word: word && active ? { v: +active.dataset.v, i: +active.dataset.i } : null } })
+  );
   detail.scrollTop = 0;
   document.getElementById("d-title").focus({ preventScroll: true });
+  keepWordVisible();
+}
+// No celular o verbete é meia folha: se a palavra ficou atrás dela, rola o texto para a palavra aparecer acima
+function keepWordVisible() {
+  if (!active || matchMedia("(min-width: 1100px)").matches) return;
+  const r = active.getBoundingClientRect(),
+    sheetTop = detail.getBoundingClientRect().top;
+  const barH = document.querySelector(".bar").getBoundingClientRect().bottom;
+  if (r.bottom > sheetTop - 12 || r.top < barH) window.scrollBy({ top: r.top - barH - 16, behavior: "auto" });
 }
 function closeDetail() {
   stopSpeech();
   detail.hidden = true;
+  document.body.classList.remove("com-detail");
+  document.dispatchEvent(new CustomEvent("word-opened", { detail: { word: null } }));
   navStack = [];
   if (active) active.classList.remove("active");
   active = null;
@@ -810,21 +908,23 @@ root.addEventListener("click", e => {
   if (sb) return speakVerse(+sb.dataset.verse, sb);
   const b = e.target.closest(".word");
   if (!b) return;
-  const w = CH.verses[b.dataset.v].words[b.dataset.i];
-  if (active) active.classList.remove("active");
-  active = b;
-  b.classList.add("active");
-  b.parentElement.querySelectorAll(".word").forEach(x => {
-    x.tabIndex = -1;
-  });
-  b.tabIndex = 0;
-  navStack = [];
-  show(w.strong, w, b);
+  openWord(b);
 });
 detail.addEventListener("click", e => {
   const sb = e.target.closest(".say");
   if (sb) return speak([sb.dataset.say], sb);
   if (e.target.closest("#d-close")) return closeDetail();
+  const step = e.target.closest("#d-prev, #d-next");
+  if (step) {
+    const to = stepTarget(step.id === "d-next" ? 1 : -1);
+    if (to) {
+      openWord(to);
+      document.getElementById(step.id)?.focus({ preventScroll: true });
+    }
+    return;
+  }
+  const cc = e.target.closest("#d-conc");
+  if (cc && window.__concordance) return window.__concordance(cc.dataset.key, current && current.word ? current.word : null);
   if (e.target.closest("#d-back")) {
     const prev = navStack.pop();
     return show(prev.k, prev.word);
@@ -1125,6 +1225,7 @@ sheets.toc.addEventListener("click", e => {
   if (v) return scrollToVerse(+v[1], true);
   const target = document.getElementById(id);
   if (!target) return;
+  if (target.classList.contains("fontes")) target.classList.add("show");
   target.scrollIntoView({ behavior: "smooth" });
   if (target.tagName === "DETAILS") {
     target.open = true;
@@ -1384,7 +1485,15 @@ async function openChapter(cod, n, v) {
   CUR = n;
   GRC = isGrc(B);
   CH = {
-    verses: raw.v.map(x => ({ n: x.n, blivre: x.b, nota: x.o, words: x.w.map(toWord), marks: (raw.m || []).filter(m => m[0] === x.n) })),
+    verses: raw.v.map(x => ({
+      n: x.n,
+      blivre: x.b,
+      nota: x.o,
+      h: x.h || null,
+      links: x.a || [],
+      words: x.w.map(toWord),
+      marks: (raw.m || []).filter(m => m[0] === x.n)
+    })),
     questions: (raw.q || []).map(([kind, text, verses, strong]) => ({ kind, text, verses, strong }))
   };
   renderHeader();
@@ -1421,8 +1530,6 @@ tgrid.insertAdjacentHTML(
 );
 const sysDark = matchMedia("(prefers-color-scheme: dark)");
 let palette = store.get("tema", "auto");
-let lastLight = store.get("tema-claro", "claro");
-let lastDark = store.get("tema-escuro", "escuro");
 function isDarkNow() {
   return palette === "auto" ? sysDark.matches : THEMES.find(t => t.id === palette).dark;
 }
@@ -1432,26 +1539,16 @@ function applyPalette(p) {
   else document.documentElement.setAttribute("data-palette", palette);
   const t = THEMES.find(x => x.id === palette);
   if (t) {
-    if (t.dark) {
-      lastDark = t.id;
-      store.set("tema-escuro", t.id);
-    } else {
-      lastLight = t.id;
-      store.set("tema-claro", t.id);
-    }
+    store.set(t.dark ? "tema-escuro" : "tema-claro", t.id);
   }
   store.set("tema", palette);
   tgrid.querySelectorAll(".tcard").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.p === palette)));
-  const dark = isDarkNow();
-  document.getElementById("to-light").setAttribute("aria-pressed", String(!dark));
-  document.getElementById("to-dark").setAttribute("aria-pressed", String(dark));
+  document.documentElement.dataset.dark = String(isDarkNow());
 }
 applyPalette(palette);
 sysDark.addEventListener?.("change", () => {
   if (palette === "auto") applyPalette("auto");
 });
-document.getElementById("to-light").addEventListener("click", () => applyPalette(lastLight));
-document.getElementById("to-dark").addEventListener("click", () => applyPalette(lastDark));
 tgrid.addEventListener("click", e => {
   const b = e.target.closest(".tcard");
   if (b) applyPalette(b.dataset.p);
@@ -1594,7 +1691,7 @@ const MODES = [
   {
     id: "interlinear",
     nome: "Interlinear",
-    desc: "cartões palavra a palavra",
+    desc: "original, transliteração e glosa",
     fala: "Interlinear",
     v: {
       "t-orig": 1,
@@ -1604,7 +1701,7 @@ const MODES = [
       "t-xlit": 1,
       "t-pron": 0,
       "t-gloss": 1,
-      "t-strong": 1,
+      "t-strong": 0,
       "t-morf": 0,
       "t-vnum": 1,
       "t-theme": 1,
@@ -1617,7 +1714,7 @@ const MODES = [
   {
     id: "estudo",
     nome: "Estudo",
-    desc: "tudo: pronúncia, gramática, revisão",
+    desc: "mais Strong, pronúncia e gramática",
     fala: "Estudo",
     v: {
       "t-orig": 1,
@@ -1765,6 +1862,86 @@ root.addEventListener("click", e => {
   if (n) openVerse(n.closest(".verse"));
 });
 // Toque longo no versículo abre a barra de marcação (annotations.js), que tem o botão "Interlinear".
+
+// ---------- Barras: capítulo anterior/próximo, Ouvir a partir daqui, atalhos e progresso no capítulo ----------
+function goNeighbor(dir) {
+  const x = neighbor(dir);
+  if (x) openChapter(x.b.code, x.n, null);
+}
+for (const id of ["bar-prev", "bar-next", "bb-prev", "bb-next"]) {
+  const b = document.getElementById(id);
+  b.addEventListener("click", () => goNeighbor(+b.dataset.dir));
+}
+function hereIndex() {
+  const i = CH ? CH.verses.findIndex(v => v.n === hereV) : -1;
+  return i < 0 ? 0 : i;
+}
+// Lê do versículo que está na tela até o fim do capítulo: o original palavra por palavra (realçando cada uma) ou,
+// com o original escondido, a Bíblia Livre. Tocar de novo para.
+function speakFrom(vi, btn) {
+  if (document.body.classList.contains("hide-orig")) return speakBlivre(vi, btn);
+  const vs = CH.verses.slice(vi).filter(v => v.words.length);
+  if (!vs.length) return speakBlivre(vi, btn);
+  if (!prefs.follow)
+    return speak(
+      vs.map(v => v.words.map(w => w.heb).join(" ")),
+      btn,
+      i => markSpeaking(document.getElementById("v" + vs[i].n))
+    );
+  const seq = [];
+  for (const v of vs) {
+    const k = CH.verses.indexOf(v);
+    v.words.forEach((w, i) => seq.push([k, i, w.heb]));
+  }
+  speak(
+    seq.map(s => s[2]),
+    btn,
+    i => markSpeaking(wordEl(seq[i][0], seq[i][1]))
+  );
+}
+for (const id of ["bar-say", "bb-say"]) document.getElementById(id).addEventListener("click", e => speakFrom(hereIndex(), e.currentTarget));
+// Atalhos do cabeçalho (Léxico, Perguntas): rolam até a seção sem mudar o endereço da página
+document.getElementById("hchips").addEventListener("click", e => {
+  const a = e.target.closest("[data-go-local]");
+  if (!a) return;
+  e.preventDefault();
+  const target = document.querySelector(a.getAttribute("href"));
+  if (!target) return;
+  target.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  const h = target.querySelector("h2");
+  if (h) {
+    h.tabIndex = -1;
+    h.focus({ preventScroll: true });
+  }
+});
+// Teclado (fora de campos de texto e painéis): [ e ] trocam de capítulo; / abre a busca
+document.addEventListener("keydown", e => {
+  if (e.defaultPrevented || e.ctrlKey || e.metaKey || e.altKey || openSheet || document.body.classList.contains("com-busca")) return;
+  if (e.target.closest && e.target.closest("input, textarea, select, [contenteditable]")) return;
+  if (e.key === "[" || e.key === "]") {
+    e.preventDefault();
+    goNeighbor(e.key === "]" ? 1 : -1);
+  } else if (e.key === "/" && window.__openSearch) {
+    e.preventDefault();
+    window.__openSearch();
+  }
+});
+// Barra fina de progresso: quanto do capítulo já passou pela tela
+const readbar = document.getElementById("readbar");
+let readbarFrame = 0;
+function updateReadbar() {
+  readbarFrame = 0;
+  const max = document.documentElement.scrollHeight - innerHeight;
+  readbar.style.width = (max > 0 ? Math.min(100, (scrollY / max) * 100) : 0).toFixed(1) + "%";
+}
+addEventListener(
+  "scroll",
+  () => {
+    if (!readbarFrame) readbarFrame = requestAnimationFrame(updateReadbar);
+  },
+  { passive: true }
+);
+document.addEventListener("chapter-rendered", () => requestAnimationFrame(updateReadbar));
 
 // ---------- Início: endereço (#JHN.3.16), última posição ou o primeiro capítulo disponível ----------
 (function start() {

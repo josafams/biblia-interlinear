@@ -303,8 +303,8 @@ export const videos = [
     desc: "Seis temas de cor, ou seguir o aparelho.",
     inicio: "PSA.23",
     steps: [
-      { legenda: "O botão da lua troca para o tema escuro.", faz: t => t.tocar("#to-dark") },
       { legenda: "Em Aa há seis temas de cor.", faz: t => t.tocar("#open-look") },
+      { legenda: "Escuro para ler à noite.", faz: t => t.tocar('.tcard[data-p="escuro"]') },
       { legenda: "Escolha um tema: Papel.", faz: t => t.tocar('.tcard[data-p="papel"]') },
       { legenda: "“Automático” segue o tema do aparelho.", faz: t => t.tocar('.tcard[data-p="auto"]') }
     ]
@@ -364,7 +364,7 @@ export const videos = [
         }
       },
       { legenda: "Ligue a pronúncia em português (tônica em maiúsculas).", faz: t => t.tocar("#t-pron") },
-      { legenda: "Desligue o número Strong para cartões mais limpos.", faz: t => t.tocar("#t-strong") },
+      { legenda: "Ligue o número Strong para estudar com o dicionário.", faz: t => t.tocar("#t-strong") },
       { legenda: "Feche para ver o resultado.", faz: fecharPainel }
     ]
   },

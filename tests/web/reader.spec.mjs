@@ -82,6 +82,13 @@ test("léxico do capítulo com busca", async ({ page }) => {
   await expect(page.locator("#llist .lrow:visible").first()).toContainText("H216"); // אוֹר, luz
 });
 
+test("a página não fica mais larga que a tela (léxico com significados longos)", async ({ page }) => {
+  await open(page, "ROM.8");
+  const largura = await page.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.clientWidth]);
+  expect(largura[0]).toBeLessThanOrEqual(page.viewportSize().width);
+  expect(largura[1]).toBe(page.viewportSize().width);
+});
+
 test("grego no Novo Testamento, da esquerda para a direita", async ({ page }) => {
   await open(page, "JHN.1");
   await expect(page.locator('.word[data-v="0"] .h').first()).toHaveText(/Ἐν/);
@@ -90,8 +97,8 @@ test("grego no Novo Testamento, da esquerda para a direita", async ({ page }) =>
 
 test("tema, tamanho e camadas ficam guardados ao recarregar", async ({ page }) => {
   await open(page, "PSA.23");
-  await page.click("#to-dark");
   await page.click("#open-look");
+  await page.click('.tcard[data-p="escuro"]');
   await page.click("#size-up");
   await expect(page.locator("#size-out")).toHaveText("115%");
   await page.click("#t-strong");
@@ -99,8 +106,9 @@ test("tema, tamanho e camadas ficam guardados ao recarregar", async ({ page }) =
   await expect(page.locator(".verse").first()).toBeVisible();
   await expect(page.locator("html")).toHaveAttribute("data-palette", "escuro");
   await expect(page.locator("#size-out")).toHaveText("115%");
-  await expect(page.locator("body")).toHaveClass(/hide-strong/);
-  await expect(page.locator(".word .s").first()).toBeHidden();
+  // O número Strong começa desligado; o clique liga e a escolha fica guardada.
+  await expect(page.locator("body")).not.toHaveClass(/hide-strong/);
+  await expect(page.locator(".word .s").first()).toBeVisible();
 });
 
 test("sobre o livro abre com resumo", async ({ page }) => {
