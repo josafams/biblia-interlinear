@@ -94,7 +94,8 @@
   };
   const isActive = () => document.visibilityState === "visible" && (Date.now() - lastGesture < CFG.gesture || listening());
 
-  let observer = null;
+  let observer = null,
+    endTarget = null;
   function watchEnd() {
     endSeen = false;
     observer?.disconnect();
@@ -111,7 +112,20 @@
       }
     });
     observer.observe(lastEl);
+    endTarget = lastEl;
   }
+  // Uma rolagem longa pode pular o último versículo sem ele cruzar a tela; passar dele também conta.
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (endSeen || !endTarget?.isConnected) return;
+      if (endTarget.getBoundingClientRect().bottom < window.innerHeight) {
+        endSeen = true;
+        checkRead();
+      }
+    },
+    { passive: true }
+  );
   let positionTimer = 0;
   document.addEventListener("chapter-rendered", e => {
     const d = e.detail || {};

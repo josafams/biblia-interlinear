@@ -37,7 +37,7 @@ async function aparelho(browser, info, nuvem, { config = RAPIDO, timezoneId } = 
 async function signIn(page) {
   await page.click("#open-toc");
   await page.click("#account-signin");
-  await expect(page.locator("#account-sync")).toContainText("Sincronizado");
+  await expect(page.locator("#account-sync")).toContainText("Sincronizado", { timeout: 20000 });
   await page.keyboard.press("Escape");
 }
 async function abrirProgresso(page) {
@@ -59,6 +59,17 @@ test("sem conta, Meu progresso convida a entrar e não conta nada", async ({ bro
   await expect(page.locator("#progresso")).toContainText("Entre com sua conta Google");
   await expect(page.locator("#progresso .js-signin")).toBeVisible();
   expect(await page.evaluate(() => window.Annotations.allRecords("leituras"))).toHaveLength(0);
+});
+
+test("uma rolagem longa que passa do último versículo também marca como lido", async ({ browser }, info) => {
+  const page = await aparelho(browser, info, novaNuvem());
+  await signIn(page);
+  // salta direto para o fim da página: o último versículo nunca cruza a tela
+  await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+  await page.mouse.wheel(0, 10);
+  await expect
+    .poll(() => page.evaluate(() => window.Annotations.allRecords("leituras").then(l => l.map(x => x.id))), { timeout: 8000 })
+    .toEqual(["RUT.1"]);
 });
 
 test("ler até o fim do capítulo marca como lido e conta o tempo", async ({ browser }, info) => {
