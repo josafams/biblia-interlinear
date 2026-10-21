@@ -425,6 +425,8 @@
   width: min(440px, calc(100% - 32px)); background: var(--surface); color: var(--fg); border: 1px solid var(--line); border-radius: 14px;
   box-shadow: 0 8px 28px rgba(0,0,0,.18); padding: 14px 16px; }
 .account-suggestion[hidden] { display: none; }
+/* no celular fica acima da barra de baixo (Livros · ‹ · Ouvir · › · Aa) */
+@media (max-width: 720px) { .account-suggestion { bottom: calc(80px + env(safe-area-inset-bottom)); } }
 .account-suggestion p { margin: 0 0 10px; font-size: 15px; line-height: 1.4; }
 .account-suggestion .linha { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .account-suggestion .nao { min-height: 44px; padding: 0 14px; border: 0; background: transparent; color: var(--accent); font: inherit; cursor: pointer; text-decoration: underline; }
@@ -436,9 +438,11 @@
   accountBox.id = "conta";
   accountBox.setAttribute("aria-labelledby", "account-h");
   accountBox.setAttribute("aria-live", "polite");
-  const toc = document.getElementById("toc");
-  const headEl = toc?.querySelector(".shead");
-  if (headEl) headEl.after(accountBox);
+  // A conta fica na parte "Você" do índice (ou logo abaixo do título, em páginas sem essa parte)
+  const slot = document.getElementById("toc-account");
+  const headEl = document.getElementById("toc")?.querySelector(".shead");
+  if (slot) slot.appendChild(accountBox);
+  else if (headEl) headEl.after(accountBox);
 
   const initials = n =>
     (n || "?")
@@ -524,6 +528,13 @@
     setTimeout(attempt, 1200);
   }
   if (window.Annotations?.onChange) window.Annotations.onChange(maybeSuggest);
+  // Se o painel de anotar abrir com a sugestão na tela, a sugestão sai da frente e volta quando o painel fechar
+  new MutationObserver(() => {
+    if (suggestion.hidden || !/\bcom-(mbar|nota|minhas)\b/.test(document.body.className)) return;
+    suggestion.hidden = true;
+    suggested = false;
+    maybeSuggest();
+  }).observe(document.body, { attributes: true, attributeFilter: ["class"] });
 
   render();
   // no app, quem já entrou volta conectado sem tela nenhuma
