@@ -83,9 +83,14 @@
     if (!w) return clearLinks();
     showLinks(w.v, [w.i], false);
   });
-  document.addEventListener("chapter-rendered", () => {
+  // Mudou de capítulo: a lista de ocorrências fecha (redesenhar o mesmo capítulo, ao trocar o modo, não fecha)
+  let shownChapter = "";
+  document.addEventListener("chapter-rendered", e => {
     clearLinks();
-    window.Study?.close();
+    const d = e.detail || {};
+    const k = `${d.book}.${d.chapter}`;
+    if (shownChapter && k !== shownChapter) window.Study?.close();
+    shownChapter = k;
   });
   // Tocar numa palavra da BLIVRE acende os cartões do original que ela traduz
   function offsetFromPoint(bl, x, y) {
@@ -208,7 +213,7 @@
   sheet.setAttribute("aria-modal", "true");
   sheet.setAttribute("aria-labelledby", "conc-h");
   sheet.innerHTML = `
-    <div class="shead"><h2 id="conc-h">Ocorrências</h2><button class="ibtn" data-fechar aria-label="Fechar">✕</button></div>
+    <div class="shead"><h2 id="conc-h">Ocorrências</h2><button class="ibtn" data-fechar aria-label="Fechar"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
     <div class="sgroup">
       <p class="conc-sub" id="conc-sub"></p>
       <div class="conc-gl" id="conc-gl" role="group" aria-label="Filtrar pela tradução"></div>
