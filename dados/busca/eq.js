@@ -1,0 +1,1 @@
+__busca("eq",{"equipamentos":"4rn0s,lryi","equidade":"5yizw,4s8ma,gz2,k1gd,1shr7,ktygk","equer":"758tn","equilibrios":"a55ug","equidades":"bb99n","equivalente":"ewp02,9i7gg"});

@@ -1,0 +1,1 @@
+__busca("pt",{"ptolemaida":"pm37z"});
