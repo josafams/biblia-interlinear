@@ -147,13 +147,13 @@
     const sm = /^([HG])\s*0*(\d{1,4})$/i.exec(text);
     if (sm && window.__concordance) {
       const key = sm[1].toUpperCase() + sm[2];
-      top.innerHTML = `<button class="busca-go" data-strong="${key}">Ver todas as ocorrências de <b>${key}</b> →</button>`;
+      top.innerHTML = `<button class="busca-go" data-strong="${esc(key)}">Ver todas as ocorrências de <b>${esc(key)}</b> →</button>`;
     }
     // referência: "Jo 3:16", "Salmos 23"
     if (/\d/.test(text) && !sm && window.__resolveRef) {
       const r = window.__resolveRef(text);
       if (r && r.ok)
-        top.innerHTML = `<button class="busca-go" data-cod="${r.book.code}" data-c="${r.ch}" data-v="${r.chapterStart ? "" : r.v}">Ir para <b>${esc(r.book.name)} ${r.ch}${r.chapterStart ? "" : ":" + r.v}</b> →</button>`;
+        top.innerHTML = `<button class="busca-go" data-cod="${esc(r.book.code)}" data-c="${+r.ch}" data-v="${r.chapterStart ? "" : +r.v}">Ir para <b>${esc(r.book.name)} ${+r.ch}${r.chapterStart ? "" : ":" + +r.v}</b> →</button>`;
     }
     const terms = [...new Set((text.match(TOKEN) || []).map(norm))].filter(t => !/^\d+$/.test(t));
     if (!terms.length || sm) {
