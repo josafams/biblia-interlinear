@@ -800,13 +800,59 @@ body.hide-marks .vnum.has-rev::after { display: none; }
     border-top: 0; border-left: 1px solid var(--line); box-shadow: -6px 0 24px rgba(0,0,0,.08); padding-bottom: 24px;
   }
   body.com-detail { padding-right: 416px; }
+  /* Anotar também num painel ao lado, sem cobrir o texto */
+  .mbar {
+    top: calc(var(--bar-h) + env(safe-area-inset-top, 0px)); bottom: 0; left: auto; right: 0; width: 400px; max-width: none; margin: 0;
+    border-radius: 0; border-top: 0; border-left: 1px solid var(--line); box-shadow: -6px 0 24px rgba(0,0,0,.08);
+    align-content: start; overflow-y: auto; padding: 16px 18px 24px;
+  }
+  body.com-mbar { padding-right: 416px; }
 }
+
+/* Barra de cor à esquerda do versículo anotado; ★ na faixa; Desfazer */
+.verse.com-cor { box-shadow: inset 4px 0 0 var(--barcor); padding-inline-start: 12px; }
+.vann .vfav { color: #c08a12; font-size: 18px; line-height: 1; }
+.toast-undo { margin-inline-start: 10px; border: 0; background: none; color: inherit; font: 700 14px var(--font-body); text-decoration: underline; cursor: pointer; min-height: 32px; }
+.mb-sug { border-style: dashed; color: var(--muted); }
+
+/* Celular: Livros e Aparência descem para a barra de baixo (Livros · ‹ · Ouvir · › · Aa) */
+@media (max-width: 720px) {
+  .bbar.cinco { grid-template-columns: 52px 1fr 1.2fr 1fr 52px; gap: 2px; padding-inline: 4px; }
+  .bbar.cinco .ibtn { min-height: 52px; width: 52px; border: 0; border-radius: 12px; background: transparent; padding: 0; justify-content: center; }
+  .bbar.cinco .ibtn .lbl { display: none; }
+  .bbar.cinco .bb-t { font-size: 13px; }
+}
+
+/* Posição em capítulos longos: "v. 60 de 176" e ‹ › entre as seções */
+.vpos { position: absolute; right: 12px; top: calc(100% + 6px); display: inline-flex; align-items: center; gap: 2px; padding: 0 4px; min-height: 30px;
+  border-radius: 999px; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 2px 8px rgba(0,0,0,.08); font: 500 12.5px var(--font-mono); color: var(--muted); }
+.vpos[hidden] { display: none; }
+.vpos span { padding: 0 6px; white-space: nowrap; }
+.vpos button { width: 30px; height: 30px; border: 0; border-radius: 50%; background: none; color: var(--accent); cursor: pointer; font-size: 16px; }
+.vpos button:disabled { opacity: .35; cursor: default; }
+/* Capítulos longos: o navegador só desenha os versículos perto da tela */
+body.cap-longo #verses .verse { content-visibility: auto; contain-intrinsic-size: auto 320px; }
+.llist { content-visibility: auto; contain-intrinsic-size: auto 2400px; }
+
+/* Aparência: "O que mostrar" em chips (os mesmos interruptores, sem rolar) */
+.chks.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chks.chips .chk { width: auto; min-height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); display: inline-flex; align-items: center; gap: 6px; font: 500 14px var(--font-body); }
+.chks.chips .chk small, .chks.chips .chk .sw2 { display: none; }
+.chks.chips .chk > span { display: contents; }
+.chks.chips .chk[aria-checked="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.chks.chips .chk[aria-checked="true"]::before { content: "✓"; font-weight: 700; }
+.sgroup h4.sub { margin: 10px 0 6px; font: 500 11px var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+
+/* Concordância e busca: onde aparece, por livro */
+.conc-books { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.conc-books .chip small { color: var(--muted); }
+.conc-h3 { margin: 4px 0 6px; font: 500 11px var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 </style>
 
 <a class="skip" href="#verses" id="skip">Pular para o texto</a>
 <div class="wrap" id="page" lang="pt-BR">
   <nav class="bar" aria-label="Navegação">
-    <button class="ibtn" id="open-toc" aria-controls="toc" aria-expanded="false" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/></svg><span class="lbl">Livros</span></button>
+    <button class="ibtn" id="open-toc" aria-label="Livros e índice" aria-controls="toc" aria-expanded="false" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/></svg><span class="lbl">Livros</span></button>
     <button class="ibtn icon wide-only" id="bar-prev" data-dir="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
     <button class="where" id="where" aria-haspopup="dialog" aria-controls="toc"><span id="where-t"><b>Bíblia Interlinear</b></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
     <button class="ibtn icon wide-only" id="bar-next" data-dir="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
@@ -930,9 +976,19 @@ body.hide-marks .vnum.has-rev::after { display: none; }
     <div class="mode-grid" id="mode-grid" role="radiogroup" aria-labelledby="g-mode"></div>
     <p class="mode-note" id="mode-note"></p>
   </div>
-  <div class="sgroup" role="group" aria-labelledby="g-show">
-    <h3 id="g-show">Mostrar na página</h3>
-    <div class="chks">
+  <div class="sgroup" role="group" aria-labelledby="g-what">
+    <h3 id="g-what">O que mostrar</h3>
+    <h4 class="sub" id="g-cards">Nos cartões</h4>
+    <div class="chks chips">
+      <button class="chk" role="switch" id="t-xlit" data-modo data-key="t-xlit" data-default="on" data-off-class="hide-xlit" aria-checked="true">Transliteração<span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-pron" data-modo data-key="pronuncia" data-default="off" data-on-class="show-pron" aria-checked="false"><span>Pronúncia em português<small>tônica em MAIÚSCULAS</small></span><span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-gloss" data-modo data-key="t-gloss" data-default="on" data-off-class="hide-gloss" aria-checked="true">Glosa em português<span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-strong" data-modo data-key="t-strong" data-default="off" data-off-class="hide-strong" aria-checked="true">Número Strong<span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-morf" data-key="t-morf" data-default="off" data-on-class="show-morf" data-modo aria-checked="false"><span>Análise gramatical<small>classe, pessoa, gênero, número</small></span><span class="sw2" aria-hidden="true"></span></button>
+    
+    </div>
+    <h4 class="sub" id="g-show">Na página</h4>
+    <div class="chks chips">
       <button class="chk" role="switch" id="t-orig" data-key="t-orig" data-default="on" data-off-class="hide-orig" data-modo aria-checked="true"><span>Texto original<small>hebraico, aramaico ou grego</small></span><span class="sw2" aria-hidden="true"></span></button>
       <button class="chk" role="switch" id="t-cards" data-key="t-cards" data-default="on" data-off-class="orig-running" data-modo aria-checked="true"><span>Original em cartões<small>desligado: texto corrido; toque na palavra abre o verbete</small></span><span class="sw2" aria-hidden="true"></span></button>
       <button class="chk" role="switch" id="t-blivre" data-key="t-blivre" data-default="on" data-off-class="hide-blivre" data-modo aria-checked="true">Texto da Bíblia Livre<span class="sw2" aria-hidden="true"></span></button>
@@ -943,41 +999,31 @@ body.hide-marks .vnum.has-rev::after { display: none; }
       <button class="chk" role="switch" id="t-lexicon" data-key="t-lexicon" data-default="on" data-off-class="hide-lexicon" data-modo aria-checked="true">Léxico do capítulo<span class="sw2" aria-hidden="true"></span></button>
       <button class="chk" role="switch" id="t-questions" data-key="t-questions" data-default="on" data-off-class="hide-questions" data-modo aria-checked="true"><span>Perguntas ao texto<small>no fim do capítulo, sem respostas</small></span><span class="sw2" aria-hidden="true"></span></button>
       <button class="chk" role="switch" id="t-marks" data-key="t-marks" data-default="on" data-off-class="hide-marks" data-modo aria-checked="true"><span>Pontos da revisão (⚑) e notas<small>revisão automática, ketiv/qere, aparato</small></span><span class="sw2" aria-hidden="true"></span></button>
-    </div>
-  </div>
-  <div class="sgroup" role="group" aria-labelledby="g-theme">
-    <h3 id="g-theme">Tema</h3>
-    <div class="tgrid" id="tgrid">
-      <button class="tcard tauto" data-p="auto" aria-pressed="false"><span class="half" aria-hidden="true"></span><span>Automático<small>segue o tema do aparelho</small></span></button>
+    
     </div>
   </div>
   <div class="sgroup" role="group" aria-labelledby="g-size">
-    <h3 id="g-size">Tamanho do texto</h3>
+    <h3 id="g-size">Texto</h3>
     <div class="sizer">
       <button class="step sm" id="size-down" aria-label="Diminuir texto">A</button>
       <output id="size-out" aria-live="polite">100%</output>
       <button class="step lg" id="size-up" aria-label="Aumentar texto">A</button>
     </div>
-  </div>
-  <div class="sgroup" role="group" aria-labelledby="g-cards">
-    <h3 id="g-cards">Mostrar nos cartões</h3>
-    <div class="chks">
-      <button class="chk" role="switch" id="t-xlit" data-modo data-key="t-xlit" data-default="on" data-off-class="hide-xlit" aria-checked="true">Transliteração<span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-pron" data-modo data-key="pronuncia" data-default="off" data-on-class="show-pron" aria-checked="false"><span>Pronúncia em português<small>tônica em MAIÚSCULAS</small></span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-gloss" data-modo data-key="t-gloss" data-default="on" data-off-class="hide-gloss" aria-checked="true">Glosa em português<span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-strong" data-modo data-key="t-strong" data-default="off" data-off-class="hide-strong" aria-checked="true">Número Strong<span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-morf" data-key="t-morf" data-default="off" data-on-class="show-morf" data-modo aria-checked="false"><span>Análise gramatical<small>classe, pessoa, gênero, número</small></span><span class="sw2" aria-hidden="true"></span></button>
-    </div>
-  </div>
-  <div class="sgroup" role="group" aria-labelledby="g-read">
-    <h3 id="g-read">Leitura</h3>
-    <div class="chks">
+    <h4 class="sub" id="g-read">Leitura</h4>
+    <div class="chks chips">
       <button class="chk" role="switch" id="t-easy" data-key="fonte-facil" data-default="off" data-on-class="font-easy" aria-checked="false"><span>Fonte de leitura fácil<small>Atkinson Hyperlegible no português</small></span><span class="sw2" aria-hidden="true"></span></button>
       <button class="chk" role="switch" id="t-space" data-key="espacamento" data-default="off" data-on-class="spacious" aria-checked="false"><span>Espaçamento amplo<small>mais espaço entre linhas, letras e palavras</small></span><span class="sw2" aria-hidden="true"></span></button>
       <button class="chk" role="switch" id="t-cant" data-key="cantilacao" data-default="on" data-off-class="no-cant" aria-checked="true"><span>Sinais de cantilação<small>desligue para ver só consoantes e vogais</small></span><span class="sw2" aria-hidden="true"></span></button>
+    
     </div>
   </div>
-  <div class="sgroup" role="group" aria-labelledby="g-audio">
+<div class="sgroup" role="group" aria-labelledby="g-theme">
+    <h3 id="g-theme">Tema</h3>
+    <div class="tgrid" id="tgrid">
+      <button class="tcard tauto" data-p="auto" aria-pressed="false"><span class="half" aria-hidden="true"></span><span>Automático<small>segue o tema do aparelho</small></span></button>
+    </div>
+  </div>
+<div class="sgroup" role="group" aria-labelledby="g-audio">
     <h3 id="g-audio">Áudio</h3>
     <p class="vnote" id="voice-note">Procurando vozes…</p>
     <div class="chks">

@@ -86,6 +86,7 @@
       <div id="busca-top"></div>
       <p class="busca-sub" id="busca-sub" aria-live="polite"></p>
       <p class="busca-sim" id="busca-sim"></p>
+      <div class="conc-books" id="busca-books" role="group" aria-label="Filtrar por livro"></div>
       <ol class="busca-list" id="busca-list"></ol>
       <button class="conc-more" id="busca-more" hidden>Mostrar mais</button>
       <p class="busca-help" id="busca-help">Várias palavras acham os versículos que têm todas. Acentos e maiúsculas não importam. Também dá para digitar uma referência (<b>Sl 23</b>) ou um número Strong (<b>H430</b>).</p>
@@ -174,11 +175,28 @@
     }
     const B = books();
     const all = ids.length;
+    const nt = ids.filter(id => B[Math.floor(id / 1e6)]?.nt).length;
     ids = ids.filter(id => inScope(id, B));
+    // Onde aparece: contagem por livro (tocar filtra)
+    const perBook = {};
+    for (const id of ids) perBook[Math.floor(id / 1e6)] = (perBook[Math.floor(id / 1e6)] || 0) + 1;
+    if (state.book != null && !perBook[state.book]) state.book = null;
+    const ranked = Object.entries(perBook).sort((a, b) => b[1] - a[1] || a[0] - b[0]);
+    $("#busca-books", sheet).innerHTML =
+      ranked.length > 1
+        ? ranked
+            .slice(0, 12)
+            .map(
+              ([b, k]) =>
+                `<button class="chip" data-book="${b}" aria-pressed="${state.book === +b}">${esc(B[b]?.name || "?")} <small>${k}</small></button>`
+            )
+            .join("")
+        : "";
+    if (state.book != null) ids = ids.filter(id => Math.floor(id / 1e6) === state.book);
     state = { ...state, list: ids, shown: 0, terms, B };
     const n = ids.length;
     $("#busca-sub", sheet).textContent = n
-      ? `${n} ${n === 1 ? "versículo" : "versículos"}${all !== n ? ` (de ${all} na Bíblia toda)` : ""}.`
+      ? `${n} ${n === 1 ? "versículo" : "versículos"}${all !== n ? ` (de ${all} na Bíblia toda)` : ` · AT ${all - nt} · NT ${nt}`}.`
       : all
         ? `Nada aqui; ${all} ${all === 1 ? "versículo" : "versículos"} na Bíblia toda.`
         : `Nenhum versículo com ${terms.length > 1 ? "todas essas palavras" : `“${terms[0]}”`}.`;
@@ -243,6 +261,7 @@
     }
   }
   q.addEventListener("input", () => {
+    state.book = null;
     clearTimeout(timer);
     timer = setTimeout(run, 250);
   });
@@ -259,7 +278,13 @@
     const sc = e.target.closest("[data-scope]");
     if (sc) {
       state.scope = sc.dataset.scope;
+      state.book = null;
       sheet.querySelectorAll("[data-scope]").forEach(b => b.setAttribute("aria-pressed", String(b === sc)));
+      return run();
+    }
+    const bk = e.target.closest("[data-book]");
+    if (bk) {
+      state.book = state.book === +bk.dataset.book ? null : +bk.dataset.book;
       return run();
     }
     const sim = e.target.closest("[data-sim]");
@@ -288,6 +313,10 @@
       e.stopPropagation();
       close();
     }
+  });
+  // Esc fecha mesmo quando o foco saiu da folha (por exemplo, depois de um filtro redesenhar a lista)
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && !sheet.hidden && !sheet.contains(document.activeElement)) close();
   });
   document.getElementById("open-search")?.addEventListener("click", () => open());
   window.__openSearch = open;
