@@ -1618,6 +1618,7 @@ document.querySelectorAll(".chk[data-key]").forEach(t => {
 
 // ---------- Anotações (annotations.js) ----------
 window.__carregarCapitulo = (cod, n) => fetchChapter(cod, n);
+window.__chapter = () => CH;
 window.__books = Object.fromEntries(
   BOOKS.map((b, i) => [b.code, { name: b.name, abbrev: b.abbrev, i, nt: !!b.nt, group: b.group, chapterCount: b.chapters.length }])
 );
@@ -1625,6 +1626,7 @@ document.addEventListener("annotations:goto", e => {
   const d = e.detail;
   openChapter(d.book, d.chapter, d.verse);
 });
+document.addEventListener("annotations:speak", e => speakVerse(e.detail.vi, e.detail.btn));
 document.addEventListener("annotations:open-panel", () => {
   if (openSheet) closePanel(false);
   if (!detail.hidden) closeDetail();
