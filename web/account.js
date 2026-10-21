@@ -436,9 +436,11 @@
   accountBox.id = "conta";
   accountBox.setAttribute("aria-labelledby", "account-h");
   accountBox.setAttribute("aria-live", "polite");
-  const toc = document.getElementById("toc");
-  const headEl = toc?.querySelector(".shead");
-  if (headEl) headEl.after(accountBox);
+  // A conta fica na parte "Você" do índice (ou logo abaixo do título, em páginas sem essa parte)
+  const slot = document.getElementById("toc-account");
+  const headEl = document.getElementById("toc")?.querySelector(".shead");
+  if (slot) slot.appendChild(accountBox);
+  else if (headEl) headEl.after(accountBox);
 
   const initials = n =>
     (n || "?")

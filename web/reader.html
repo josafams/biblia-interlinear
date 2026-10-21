@@ -617,6 +617,22 @@ body.com-mbar #page { padding-bottom: 220px; }
 .conc-txt mark { background: var(--accent-soft); color: inherit; border-radius: 3px; padding: 0 1px; }
 .conc-more { margin: 12px 0; min-height: 44px; width: 100%; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); font: inherit; cursor: pointer; }
 
+/* Livros com o nome inteiro (a abreviação aparece pequena, para quem aprende a usar o "Ir para") */
+#bk-list .bgrid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+#bk-list .bchip { display: grid; justify-items: start; align-content: center; gap: 0; padding: 4px 8px; text-align: start; font: 500 13.5px/1.2 var(--font-body); }
+#bk-list .bchip .ba { font: 400 11px var(--font-mono); color: var(--muted); }
+#bk-list .bchip[aria-pressed="true"] .ba { color: var(--accent); }
+
+/* Índice em três partes: abas fixas no topo da folha */
+.toc-tabs { position: sticky; top: calc(-14px - env(safe-area-inset-top, 0px)); z-index: 2; display: flex; gap: 4px; margin: -8px -18px 0; padding: 8px 18px; background: var(--surface); border-bottom: 1px solid var(--line); }
+.toc-tabs a { flex: 1; display: inline-flex; align-items: center; justify-content: center; min-height: 40px; border-radius: 999px; color: var(--muted); text-decoration: none; font-size: 14.5px; }
+.toc-tabs a[aria-current="true"] { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+#toc-livros, #toc-estudo, #toc-voce { scroll-margin-top: 64px; }
+#toc-account:empty { display: none; }
+
+.look-foot { margin: 0; font-size: 14px; }
+.look-foot a { color: var(--accent); }
+
 /* Busca */
 .busca-scope { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 6px; }
 .busca-go { display: block; width: 100%; text-align: start; min-height: 48px; margin: 6px 0; padding: 0 14px; border-radius: 12px; border: 1px solid var(--accent); background: var(--accent-soft); color: var(--accent); font: inherit; cursor: pointer; }
@@ -860,7 +876,12 @@ body.hide-marks .vnum.has-rev::after { display: none; }
 
 <aside class="sheet left" id="toc" role="dialog" aria-modal="true" aria-labelledby="toc-h" lang="pt-BR" hidden>
   <div class="shead"><h2 id="toc-h">Índice</h2><button class="ibtn" data-close aria-label="Fechar índice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  <section class="sgroup" aria-labelledby="go-h">
+  <nav class="toc-tabs" aria-label="Partes do índice">
+    <a href="#toc-livros" data-tab aria-current="true">Livros</a>
+    <a href="#toc-estudo" data-tab>Neste livro</a>
+    <a href="#toc-voce" data-tab>Você</a>
+  </nav>
+  <section class="sgroup" aria-labelledby="go-h" id="toc-livros">
     <h3 id="go-h"><label for="go-in">Ir para</label></h3>
     <form class="go-row" id="go-form" autocomplete="off">
       <input id="go-in" type="text" enterkeyhint="go" placeholder="1:14" spellcheck="false" aria-describedby="go-hint">
@@ -879,20 +900,27 @@ body.hide-marks .vnum.has-rev::after { display: none; }
     <div class="chcard" id="chcard" aria-live="polite"></div>
   </section>
   <nav class="sgroup" aria-labelledby="toc-vh"><h3 id="toc-vh">Versículos</h3><div id="toc-days" class="sgroup"></div></nav>
-  <nav class="sgroup" aria-labelledby="toc-sh">
-    <h3 id="toc-sh">Seções</h3>
+  <nav class="sgroup" aria-labelledby="toc-sh" id="toc-estudo">
+    <h3 id="toc-sh">Neste livro</h3>
     <div class="toc-links">
       <a href="#sobre" data-go>Sobre o livro <span>resumo e contexto</span></a>
       <a href="#perguntas" data-go>Perguntas ao texto <span>para pensar e conversar</span></a>
       <a href="#lexico" data-go>Léxico <span id="toc-lexn"></span></a>
-      <a href="#fontes" data-go>Fontes e licenças <span></span></a>
+      <a href="#" id="toc-search">Buscar na Bíblia <span>palavras, referências, Strong</span></a>
+    </div>
+  </nav>
+  <section class="sgroup" aria-labelledby="toc-yh" id="toc-voce">
+    <h3 id="toc-yh">Você</h3>
+    <div id="toc-account"></div>
+    <div class="toc-links">
       <a href="#" id="open-mine">Minhas anotações <span id="mine-n">notas, marcações, favoritos</span></a>
       <a href="#" id="open-progress">Meu progresso <span>leitura, tempo e planos</span></a>
       <a href="index.html#como-usar" class="site-link">Como usar <span>vídeos curtos</span></a>
       <a href="index.html" class="site-link">Sobre o projeto <span>apps, EPUB e PDF</span></a>
+      <a href="#fontes" data-go>Fontes e licenças <span>textos, dicionários e fontes de letra</span></a>
       <a href="privacidade.html" class="site-link">Privacidade <span>o que o app guarda e como apagar</span></a>
     </div>
-  </nav>
+  </section>
 </aside>
 
 <aside class="sheet right" id="look" role="dialog" aria-modal="true" aria-labelledby="look-h" lang="pt-BR" hidden>
@@ -931,6 +959,16 @@ body.hide-marks .vnum.has-rev::after { display: none; }
       <button class="step lg" id="size-up" aria-label="Aumentar texto">A</button>
     </div>
   </div>
+  <div class="sgroup" role="group" aria-labelledby="g-cards">
+    <h3 id="g-cards">Mostrar nos cartões</h3>
+    <div class="chks">
+      <button class="chk" role="switch" id="t-xlit" data-modo data-key="t-xlit" data-default="on" data-off-class="hide-xlit" aria-checked="true">Transliteração<span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-pron" data-modo data-key="pronuncia" data-default="off" data-on-class="show-pron" aria-checked="false"><span>Pronúncia em português<small>tônica em MAIÚSCULAS</small></span><span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-gloss" data-modo data-key="t-gloss" data-default="on" data-off-class="hide-gloss" aria-checked="true">Glosa em português<span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-strong" data-modo data-key="t-strong" data-default="off" data-off-class="hide-strong" aria-checked="true">Número Strong<span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" role="switch" id="t-morf" data-key="t-morf" data-default="off" data-on-class="show-morf" data-modo aria-checked="false"><span>Análise gramatical<small>classe, pessoa, gênero, número</small></span><span class="sw2" aria-hidden="true"></span></button>
+    </div>
+  </div>
   <div class="sgroup" role="group" aria-labelledby="g-read">
     <h3 id="g-read">Leitura</h3>
     <div class="chks">
@@ -948,16 +986,7 @@ body.hide-marks .vnum.has-rev::after { display: none; }
       <button class="chk" role="switch" id="t-slow" data-key="voz-lenta" data-default="off" aria-checked="false"><span>Falar mais devagar</span><span class="sw2" aria-hidden="true"></span></button>
     </div>
   </div>
-  <div class="sgroup" role="group" aria-labelledby="g-cards">
-    <h3 id="g-cards">Mostrar nos cartões</h3>
-    <div class="chks">
-      <button class="chk" role="switch" id="t-xlit" data-modo data-key="t-xlit" data-default="on" data-off-class="hide-xlit" aria-checked="true">Transliteração<span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-pron" data-modo data-key="pronuncia" data-default="off" data-on-class="show-pron" aria-checked="false"><span>Pronúncia em português<small>tônica em MAIÚSCULAS</small></span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-gloss" data-modo data-key="t-gloss" data-default="on" data-off-class="hide-gloss" aria-checked="true">Glosa em português<span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-strong" data-modo data-key="t-strong" data-default="off" data-off-class="hide-strong" aria-checked="true">Número Strong<span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-morf" data-key="t-morf" data-default="off" data-on-class="show-morf" data-modo aria-checked="false"><span>Análise gramatical<small>classe, pessoa, gênero, número</small></span><span class="sw2" aria-hidden="true"></span></button>
-    </div>
-  </div>
+  <p class="look-foot"><a href="#fontes" id="look-sources">Fontes e licenças</a></p>
 </aside>
 
 <div class="toast" id="toast" role="status" lang="pt-BR" hidden></div>

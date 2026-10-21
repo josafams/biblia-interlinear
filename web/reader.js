@@ -1032,7 +1032,7 @@ function renderBooks() {
       .filter(g => g.nt === nt)
       .map(
         g => `
-    <div class="bgroup"><h4>${esc(g.name)}</h4><div class="bgrid">${g.books.map(b => `<button class="bchip" data-cod="${b.code}" aria-pressed="${b.code === pickedBook.code}" aria-label="${esc(b.name)}" title="${esc(b.name)}">${esc(b.abbrev)}</button>`).join("")}</div></div>`
+    <div class="bgroup"><h4>${esc(g.name)}</h4><div class="bgrid">${g.books.map(b => `<button class="bchip" data-cod="${b.code}" aria-pressed="${b.code === pickedBook.code}" aria-label="${esc(b.name)}"><span class="bn">${esc(b.name)}</span><span class="ba" aria-hidden="true">${esc(b.abbrev)}</span></button>`).join("")}</div></div>`
       )
       .join("");
   document.getElementById("bk-list").innerHTML = `
@@ -1215,6 +1215,48 @@ function scrollToVerse(n, smooth) {
   focusWord(wordEl(vi, 0), true);
   setHere(n);
 }
+// Aparência › Fontes e licenças: mostra o rodapé de fontes (escondido no dia a dia) e vai até ele
+sheets.look.addEventListener("click", e => {
+  if (!e.target.closest("#look-sources")) return;
+  e.preventDefault();
+  closePanel(false);
+  const f = document.getElementById("fontes");
+  f.classList.add("show");
+  f.scrollIntoView({ behavior: "smooth" });
+});
+// Abas do índice (Livros · Neste livro · Você): pulam para a parte dentro da própria folha e marcam onde se está
+const tocTabs = [...sheets.toc.querySelectorAll(".toc-tabs [data-tab]")];
+function markTocTab() {
+  const top = sheets.toc.getBoundingClientRect().top + 90;
+  let cur = tocTabs[0];
+  for (const t of tocTabs) {
+    const sec = document.getElementById(t.getAttribute("href").slice(1));
+    if (sec && sec.getBoundingClientRect().top <= top) cur = t;
+  }
+  if (sheets.toc.scrollTop + sheets.toc.clientHeight >= sheets.toc.scrollHeight - 4) cur = tocTabs[tocTabs.length - 1];
+  tocTabs.forEach(t => (t === cur ? t.setAttribute("aria-current", "true") : t.removeAttribute("aria-current")));
+}
+sheets.toc.addEventListener("scroll", () => requestAnimationFrame(markTocTab), { passive: true });
+sheets.toc.addEventListener("click", e => {
+  const tab = e.target.closest("[data-tab]");
+  if (tab) {
+    e.preventDefault();
+    const sec = document.getElementById(tab.getAttribute("href").slice(1));
+    const bar = sheets.toc.querySelector(".toc-tabs");
+    if (sec)
+      sheets.toc.scrollTo({
+        top: sec.offsetTop - bar.offsetHeight - 12,
+        behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+      });
+    tocTabs.forEach(t => (t === tab ? t.setAttribute("aria-current", "true") : t.removeAttribute("aria-current")));
+    return;
+  }
+  if (e.target.closest("#toc-search")) {
+    e.preventDefault();
+    closePanel(false);
+    return window.__openSearch && window.__openSearch();
+  }
+});
 sheets.toc.addEventListener("click", e => {
   const a = e.target.closest("[data-go]");
   if (!a) return;
