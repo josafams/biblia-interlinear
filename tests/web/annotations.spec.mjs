@@ -100,19 +100,83 @@ test("toque longo numa palavra do original marca só ela", async ({ page, isMobi
   await expect(page.locator('.word[data-v="0"][data-i="0"]')).not.toHaveClass(/mk-rosa/);
 });
 
-test("etiquetas: criar, aplicar e filtrar na lista", async ({ page }) => {
-  await open(page, "JHN.3");
-  await page.click("#v16 .vmark");
-  await page.click('#mbar [data-action="etiqueta"]');
-  await page.fill("#mb-tag-name", "promessas");
+async function etiquetar(page, verso, nome) {
+  await page.click(`#v${verso} .vmark`);
+  await page.fill("#mb-tag-name", nome);
   await page.click("#mb-new-tag");
-  await expect(page.locator('#mb-tags .chip[aria-pressed="true"]')).toHaveText("promessas");
+  await expect(page.locator('#mb-tags .chip[aria-pressed="true"]').filter({ hasText: nome })).toBeVisible();
   await page.click("#mb-close");
+}
+
+test("etiquetas: criar no painel, ver sob o versículo e filtrar na lista", async ({ page }) => {
+  await open(page, "JHN.3");
+  await etiquetar(page, 16, "promessas");
+  await expect(page.locator("#v16 .vann")).toContainText("promessas");
+  await etiquetar(page, 3, "novo nascimento");
   await page.click("#open-toc");
   await page.click("#open-mine");
-  await page.selectOption("#mn-tag", { label: "promessas" });
+  await expect(page.locator(".mn-item")).toHaveCount(2);
+  await page.click('#mn-tags .chip:has-text("promessas")');
   await expect(page.locator(".mn-item")).toHaveCount(1);
-  await expect(page.locator(".mn-item")).toContainText("João 3:16");
+  await expect(page.locator(".mn-verse")).toContainText("João 3:16");
+  await page.click('#mn-tags .chip:has-text("promessas")');
+  await expect(page.locator(".mn-item")).toHaveCount(2);
+});
+
+test("gerenciar etiquetas: renomear, juntar e apagar", async ({ page }) => {
+  await open(page, "JHN.3");
+  await etiquetar(page, 16, "promessa");
+  await etiquetar(page, 17, "promessas");
+  await etiquetar(page, 18, "rascunho");
+  await page.click("#open-toc");
+  await page.click("#open-mine");
+  await page.click("#mn-more summary");
+  await page.click("#mn-manage");
+  // renomear "promessa" para "Promessas" junta com a que já existe
+  const promessa = page.locator(".tm-row").filter({ has: page.locator('input[value="promessa"]') });
+  await promessa.locator("input").fill("Promessas");
+  await promessa.locator("input").press("Enter");
+  await expect(page.locator("#toast")).toContainText("juntada");
+  await expect(page.locator(".tm-row")).toHaveCount(2);
+  await expect(page.locator('#mn-tags .chip:has-text("promessas") small')).toHaveText("2");
+  // apagar pede dois toques e tira a etiqueta dos versículos
+  const rascunho = page.locator(".tm-row").filter({ has: page.locator('input[value="rascunho"]') });
+  await rascunho.locator('[data-tm="del"]').click();
+  await expect(rascunho.locator('[data-tm="del"]')).toHaveText("Toque de novo");
+  await rascunho.locator('[data-tm="del"]').click();
+  await expect(page.locator(".tm-row")).toHaveCount(1);
+  await expect(page.locator(".mn-item")).toHaveCount(2);
+  await page.keyboard.press("Escape");
+  await expect(page.locator("#v18 .vann")).toBeHidden();
+  await expect(page.locator("#v16 .vann")).toContainText("promessas");
+});
+
+test("nota rápida no painel aparece sob o versículo e abre em tela cheia", async ({ page }) => {
+  await open(page, "PSA.23");
+  await page.click("#v1 .vmark");
+  await page.fill("#mb-note", "O Senhor cuida como pastor");
+  await expect(page.locator("#mb-note-status")).toHaveText("Salva.");
+  await page.click("#mb-close");
+  await expect(page.locator("#v1 .vann-note")).toContainText("O Senhor cuida como pastor");
+  await page.reload();
+  await page.click("#v1 .vann-note");
+  await expect(page.locator("#note-text")).toHaveValue("O Senhor cuida como pastor");
+  await page.keyboard.press("Escape");
+  await page.click("#v1 .vmark");
+  await expect(page.locator("#mb-note")).toHaveValue("O Senhor cuida como pastor");
+  await page.click('#mbar [data-action="nota"]');
+  await expect(page.locator("#note-text")).toHaveValue("O Senhor cuida como pastor");
+});
+
+test("o painel do versículo tem Ouvir", async ({ page }) => {
+  await page.addInitScript(() => {
+    window.__falas = [];
+    window.speechSynthesis.speak = u => window.__falas.push(u.text);
+  });
+  await open(page);
+  await page.click("#v1 .vmark");
+  await page.click('#mbar [data-action="ouvir"]');
+  await expect.poll(() => page.evaluate(() => window.__falas.length)).toBeGreaterThan(0);
 });
 
 test("da lista, tocar numa marcação leva ao versículo", async ({ page }) => {
