@@ -1619,6 +1619,7 @@ document.querySelectorAll(".chk[data-key]").forEach(t => {
 // ---------- Anotações (annotations.js) ----------
 window.__carregarCapitulo = (cod, n) => fetchChapter(cod, n);
 window.__chapter = () => CH;
+window.__resolveRef = q => resolveRef(parseRef(q));
 window.__books = Object.fromEntries(
   BOOKS.map((b, i) => [b.code, { name: b.name, abbrev: b.abbrev, i, nt: !!b.nt, group: b.group, chapterCount: b.chapters.length }])
 );
