@@ -125,6 +125,28 @@ test("links do índice levam à página inicial e aos vídeos", async ({ page })
   await expect(page.locator("h1")).toContainText("A Bíblia inteira");
 });
 
+test("índice em três partes: as abas levam a Livros, Neste livro e Você", async ({ page }) => {
+  await open(page, "GEN.1");
+  await page.click("#open-toc");
+  await expect(page.locator('.bchip[data-cod="DEU"] .bn')).toHaveText("Deuteronômio");
+  await page.click('.toc-tabs a[href="#toc-voce"]');
+  await expect(page.locator('.toc-tabs a[href="#toc-voce"]')).toHaveAttribute("aria-current", "true");
+  await expect(page.locator("#open-mine")).toBeInViewport();
+  await page.click('.toc-tabs a[href="#toc-livros"]');
+  await expect(page.locator("#go-in")).toBeInViewport();
+  await page.click('.toc-tabs a[href="#toc-estudo"]');
+  await page.click("#toc-search");
+  await expect(page.locator("#busca")).toBeVisible();
+});
+
+test("fontes e licenças ficam fora do caminho e abrem pela Aparência", async ({ page }) => {
+  await open(page, "GEN.1");
+  await expect(page.locator("#fontes")).toBeHidden();
+  await page.click("#open-look");
+  await page.click("#look-sources");
+  await expect(page.locator("#fontes")).toBeVisible();
+});
+
 test("funciona offline depois da primeira visita", async ({ page, context }) => {
   await open(page, "GEN.1");
   await page.evaluate(() => navigator.serviceWorker && navigator.serviceWorker.ready);
