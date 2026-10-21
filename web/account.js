@@ -524,6 +524,13 @@
     setTimeout(attempt, 1200);
   }
   if (window.Annotations?.onChange) window.Annotations.onChange(maybeSuggest);
+  // Se o painel de anotar abrir com a sugestão na tela, a sugestão sai da frente e volta quando o painel fechar
+  new MutationObserver(() => {
+    if (suggestion.hidden || !/\bcom-(mbar|nota|minhas)\b/.test(document.body.className)) return;
+    suggestion.hidden = true;
+    suggested = false;
+    maybeSuggest();
+  }).observe(document.body, { attributes: true, attributeFilter: ["class"] });
 
   render();
   // no app, quem já entrou volta conectado sem tela nenhuma
