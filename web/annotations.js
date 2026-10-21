@@ -329,6 +329,7 @@
 
   // titulo: abre o painel para responder uma pergunta (a resposta vira uma nota nova com a pergunta como título)
   async function openBar(ancora, labelText, trecho, titulo) {
+    document.dispatchEvent(new CustomEvent("annotations:open-panel"));
     selection = { ancora, labelText, trecho, titulo };
     $("#mb-ref").textContent = labelText;
     $("#mb-snippet").textContent = titulo
@@ -1641,6 +1642,12 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
   }
 
   // ---------- integração com o leitor ----------
+  // Capítulos longos montam os cartões aos poucos: redesenha as marcações das palavras que acabaram de aparecer
+  let filledTimer = 0;
+  document.addEventListener("words-filled", () => {
+    clearTimeout(filledTimer);
+    filledTimer = setTimeout(paint, 120);
+  });
   document.addEventListener("chapter-rendered", e => {
     currentChapter = e.detail;
     closeBar();
@@ -1662,6 +1669,10 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
       return openBar(a, `${currentChapter.bookName} ${chapter}:${verse}`, "", question);
     },
     closeBar,
+    openVerse: n => {
+      const sec = verseEl(n);
+      if (sec) openForVerse(sec, "versiculo", {});
+    },
     paint,
     allRecords,
     save,

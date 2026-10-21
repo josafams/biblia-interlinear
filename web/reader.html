@@ -807,6 +807,16 @@ body.hide-marks .vnum.has-rev::after { display: none; }
     align-content: start; overflow-y: auto; padding: 16px 18px 24px;
   }
   body.com-mbar { padding-right: 416px; }
+  /* Aparência no mesmo painel, sem escurecer nem travar o texto */
+  #look { top: calc(var(--bar-h) + 48px + env(safe-area-inset-top, 0px)); width: 400px; box-shadow: -6px 0 24px rgba(0,0,0,.08); }
+  body.com-look { padding-right: 416px; }
+  /* Abas do painel: Verbete · Anotar · Aparência */
+  .ptabs { position: fixed; z-index: 41; right: 0; width: 400px; top: calc(var(--bar-h) + env(safe-area-inset-top, 0px)); height: 48px;
+    display: none; gap: 4px; padding: 6px 12px; background: var(--surface); border-left: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  body.com-detail .ptabs, body.com-mbar .ptabs, body.com-look .ptabs { display: flex; }
+  .ptabs button { flex: 1; border: 0; border-radius: 999px; background: none; color: var(--muted); font: 500 14px var(--font-body); cursor: pointer; }
+  .ptabs button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  body.com-detail .detail, body.com-mbar .mbar { top: calc(var(--bar-h) + 48px + env(safe-area-inset-top, 0px)); }
 }
 
 /* Barra de cor à esquerda do versículo anotado; ★ na faixa; Desfazer */

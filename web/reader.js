@@ -256,6 +256,7 @@ function toWord(w) {
 }
 
 // ---------- Estado ----------
+let lastWord = null; // última palavra aberta (a aba Verbete volta para ela)
 let BOOK = null,
   CUR = 0,
   CH = null,
@@ -344,17 +345,14 @@ function marksHTML(v) {
   const n = v.marks.length;
   return `<details class="marks"><summary>⚑ ${n === 1 ? "1 ponto" : `${n} pontos`} da revisão automática</summary><ul>${list}</ul></details>`;
 }
-function renderVerses() {
-  const lang = OLANG();
-  root.innerHTML =
-    CH.verses
-      .map((v, vi) => {
-        const flagged = new Set(v.marks.filter(m => m[1] !== null).map(m => m[1]));
-        const words = v.words
-          .map((w, i) => {
-            const e = LEX[w.strong] || {};
-            const aux = w.gf && w.gf !== "m" ? " aux" : "";
-            return `
+// Cartões de um versículo
+function wordsHTML(v, vi, lang = OLANG()) {
+  const flagged = new Set(v.marks.filter(m => m[1] !== null).map(m => m[1]));
+  return v.words
+    .map((w, i) => {
+      const e = LEX[w.strong] || {};
+      const aux = w.gf && w.gf !== "m" ? " aux" : "";
+      return `
       <button class="word${flagged.has(i) ? " flag" : ""}${w.ketiv ? " kt" : ""}" data-v="${vi}" data-i="${i}" tabindex="${i === 0 ? 0 : -1}" aria-label="${esc(wordLabel(w))}">
         <span class="h" lang="${lang}" aria-hidden="true">${origHTML(w.parts)}</span>
         ${e.x ? `<span class="x" aria-hidden="true">${esc(e.x)}</span>` : ""}
@@ -363,8 +361,29 @@ function renderVerses() {
         <span class="g${aux}" aria-hidden="true">${glossHTML(w.gloss)}</span>
         <span class="m" aria-hidden="true">${esc(decodeMorph(w.morph, GRC))}</span>
       </button>`;
-          })
-          .join("");
+    })
+    .join("");
+}
+// Capítulos muito longos (Salmo 119): os cartões só são montados quando o versículo chega perto da tela
+const LAZY_FROM = 100;
+let lazyIO = null;
+function fillWords(box) {
+  if (!box || !box.dataset.lazy) return;
+  const vi = +box.closest(".verse").dataset.vi;
+  box.innerHTML = wordsHTML(CH.verses[vi], vi);
+  delete box.dataset.lazy;
+  box.style.minHeight = "";
+  if (lazyIO) lazyIO.unobserve(box);
+  document.dispatchEvent(new CustomEvent("words-filled", { detail: { vi } }));
+}
+function renderVerses() {
+  const lang = OLANG();
+  const lazy = CH.verses.length >= LAZY_FROM && "IntersectionObserver" in window;
+  root.innerHTML =
+    CH.verses
+      .map((v, vi) => {
+        const later = lazy && vi > 4;
+        const words = later ? "" : wordsHTML(v, vi, lang);
         const lbl = vLabel(v);
         const head = v.h
           ? `<h2 class="sechead acro" id="s${v.n}"><span>${esc(v.h)}</span><span class="sref">v. ${v.n}–${v.n + 7}</span></h2>`
@@ -376,7 +395,7 @@ function renderVerses() {
         <span class="vtags"></span>
         <button class="vmark" data-verse="${vi}" aria-label="Anotar ou ouvir ${lbl}"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M3.2 12a1.8 1.8 0 1 0 3.6 0a1.8 1.8 0 1 0-3.6 0M10.2 12a1.8 1.8 0 1 0 3.6 0a1.8 1.8 0 1 0-3.6 0M17.2 12a1.8 1.8 0 1 0 3.6 0a1.8 1.8 0 1 0-3.6 0"/></svg></button>
       </div>
-      ${v.words.length ? `<div class="words" role="group" aria-label="Palavras do versículo ${lbl}${GRC ? "" : ", da direita para a esquerda"}">${words}</div>` : ""}
+      ${v.words.length ? `<div class="words" role="group" aria-label="Palavras do versículo ${lbl}${GRC ? "" : ", da direita para a esquerda"}"${later ? ` data-lazy="1" style="min-height:${Math.ceil(v.words.length / 5) * 74}px"` : ""}>${words}</div>` : ""}
       ${v.nota ? `<p class="vnote">${esc(SOURCE_NOTES[v.nota] || v.nota)}</p>` : ""}
       <p class="blivre"><span class="tag">BLIVRE</span>${esc(v.blivre)}</p>
       <div class="vann" hidden></div>
@@ -387,6 +406,12 @@ function renderVerses() {
     questionsHTML() +
     chapterNav();
   if (io) document.querySelectorAll(".verse").forEach(sec => io.observe(sec));
+  if (lazyIO) lazyIO.disconnect();
+  lazyIO = null;
+  if (lazy) {
+    lazyIO = new IntersectionObserver(es => es.forEach(en => en.isIntersecting && fillWords(en.target)), { rootMargin: "1500px 0px" });
+    root.querySelectorAll(".words[data-lazy]").forEach(b => lazyIO.observe(b));
+  }
   // Anotações (annotations.js) desenham suas marcações quando o capítulo muda
   window.__currentChapter = {
     book: BOOK.code,
@@ -478,6 +503,7 @@ root.addEventListener("click", e => {
 });
 
 function wordEl(vi, i) {
+  fillWords(root.querySelector(`.verse[data-vi="${vi}"] .words[data-lazy]`));
   return root.querySelector(`.word[data-v="${vi}"][data-i="${i}"]`);
 }
 function firstWordOfVerse(vi) {
@@ -863,10 +889,12 @@ function openWord(b) {
   });
   b.tabIndex = 0;
   navStack = [];
+  lastWord = b;
   show(w.strong, w, b);
 }
 async function show(k, word, opener) {
   if (opener) returnTo = opener;
+  if (openSheet === "look" && SIDE.matches) closePanel(false);
   if (k && /^[HG]/.test(k)) await ensureLex(k[0] === "G" ? "G" : "H").catch(() => {});
   current = { k, word };
   const e = LEX[k];
@@ -946,16 +974,22 @@ function focusables(el) {
     x => x.offsetParent !== null
   );
 }
+// No computador (≥ 1100 px) a Aparência abre no painel ao lado do texto, como o Verbete e o Anotar
+const SIDE = matchMedia("(min-width: 1100px)");
 function openPanel(name, focusEl) {
   if (!detail.hidden) closeDetail();
   if (openSheet) closePanel(false);
+  if (window.Annotations) window.Annotations.closeBar();
   openSheet = name;
   sheets[name].hidden = false;
-  scrim.hidden = false;
   openers[name].setAttribute("aria-expanded", "true");
-  page.inert = true;
-  detail.inert = true;
-  document.body.style.overflow = "hidden";
+  if (name === "look" && SIDE.matches) document.body.classList.add("com-look");
+  else {
+    scrim.hidden = false;
+    page.inert = true;
+    detail.inert = true;
+    document.body.style.overflow = "hidden";
+  }
   if (name === "toc") {
     pickBook(BOOK.code, CUR);
   }
@@ -968,6 +1002,7 @@ function closePanel(restore = true) {
   sheets[name].hidden = true;
   scrim.hidden = true;
   openers[name].setAttribute("aria-expanded", "false");
+  document.body.classList.remove("com-look");
   page.inert = false;
   detail.inert = false;
   document.body.style.overflow = "";
@@ -2116,3 +2151,37 @@ document.querySelectorAll(".chks.chips .chk").forEach(c => {
 });
 // Capítulos muito longos (Salmo 119): o navegador só desenha os versículos perto da tela
 document.addEventListener("chapter-rendered", () => document.body.classList.toggle("cap-longo", !!CH && CH.verses.length >= 100));
+
+// Computador: abas Verbete · Anotar · Aparência no topo do painel ao lado do texto
+{
+  const tabs = document.createElement("nav");
+  tabs.id = "ptabs";
+  tabs.className = "ptabs";
+  tabs.setAttribute("aria-label", "Painel ao lado do texto");
+  tabs.innerHTML = `<button type="button" data-ptab="verbete">Verbete</button><button type="button" data-ptab="anotar">Anotar</button><button type="button" data-ptab="aparencia">Aparência</button>`;
+  document.body.appendChild(tabs);
+  const mark = () => {
+    const b = document.body.classList;
+    const cur = b.contains("com-detail") ? "verbete" : b.contains("com-mbar") ? "anotar" : b.contains("com-look") ? "aparencia" : "";
+    tabs.querySelectorAll("[data-ptab]").forEach(t => t.setAttribute("aria-pressed", String(t.dataset.ptab === cur)));
+  };
+  new MutationObserver(mark).observe(document.body, { attributes: true, attributeFilter: ["class"] });
+  tabs.addEventListener("click", e => {
+    const t = e.target.closest("[data-ptab]");
+    if (!t || t.getAttribute("aria-pressed") === "true") return;
+    if (t.dataset.ptab === "aparencia") return openPanel("look");
+    if (t.dataset.ptab === "anotar") {
+      if (openSheet) closePanel(false);
+      if (!detail.hidden) closeDetail();
+      return window.Annotations && window.Annotations.openVerse(hereV);
+    }
+    if (lastWord && lastWord.isConnected) return openWord(lastWord);
+    const first = firstWordOfVerse(
+      Math.max(
+        0,
+        CH.verses.findIndex(v => v.n === hereV)
+      )
+    );
+    if (first) openWord(first);
+  });
+}
