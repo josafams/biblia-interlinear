@@ -15,6 +15,17 @@ export const grupos = [
 
 // Ações usadas pelos roteiros (t = ajudante de gravação: t.tocar, t.digitar, t.rolar, t.esperar…)
 const abrirIndice = t => t.tocar("#open-toc");
+// no celular as setas e o Ouvir ficam na barra de baixo; no computador, na barra de cima
+const naBarra = (t, celular, computador) => t.tocar(t.page.viewportSize().width <= 720 ? celular : computador);
+// Índice › Você (conta, Minhas anotações, Meu progresso)
+const abrirVoce = async t => {
+  await t.tocar("#open-toc");
+  await t.tocar('.toc-tabs a[href="#toc-voce"]');
+};
+const abrirMinhas = async t => {
+  await abrirVoce(t);
+  await t.tocar("#open-mine");
+};
 const fecharPainel = t => t.onKey("Escape");
 // anotações de exemplo para os vídeos que mostram a lista, o PDF e o backup
 const dadosDeExemplo = async page => {
@@ -136,10 +147,10 @@ export const videos = [
     desc: "Pelo índice, com um toque no capítulo.",
     inicio: "GEN.1",
     steps: [
-      { legenda: "Toque em Índice, no canto de cima.", faz: abrirIndice },
-      { legenda: "Escolha o livro: Êx é Êxodo.", faz: t => t.tocar('.bchip[data-cod="EXO"]') },
+      { legenda: "Toque no botão de livros, no canto de cima.", faz: abrirIndice },
+      { legenda: "Escolha o livro: Êxodo. Embaixo do nome, a abreviação (Êx).", faz: t => t.tocar('.bchip[data-cod="EXO"]') },
       { legenda: "Toque no capítulo: ele abre direto.", faz: t => t.tocar('.chchip[data-ch="20"]') },
-      { legenda: "Role para ler. O topo mostra onde você está.", faz: t => t.doScroll(700) }
+      { legenda: "Role para ler. O topo mostra onde você está, e a linha fina, quanto já leu.", faz: t => t.doScroll(700) }
     ]
   },
   {
@@ -168,11 +179,11 @@ export const videos = [
     n: 3,
     grupo: "ler",
     titulo: "Capítulo anterior e próximo",
-    desc: "E a lista de versículos do capítulo.",
+    desc: "Pela barra, e a lista de versículos do capítulo.",
     inicio: "RUT.1",
     steps: [
-      { legenda: "No fim do capítulo, use as setas para o anterior ou o próximo.", faz: t => t.rolarAte(".chnav") },
-      { legenda: "Toque em → para ir ao próximo capítulo.", faz: t => t.tocar(".chnav .next") },
+      { legenda: "As setas da barra levam ao capítulo anterior ou ao próximo.", faz: t => naBarra(t, "#bb-next", "#bar-next") },
+      { legenda: "No fim do capítulo também há setas.", faz: t => t.rolarAte(".chnav") },
       {
         legenda: "No Índice, a lista de versículos leva direto a cada um.",
         faz: async t => {
@@ -206,9 +217,10 @@ export const videos = [
     inicio: "GEN.1",
     steps: [
       { legenda: "Toque numa palavra para abrir o verbete.", faz: t => t.tocar('.word[data-v="0"][data-i="0"]') },
-      { legenda: "Veja origem, significado e como a Bíblia Livre traduz.", faz: t => t.rolarPainel("#detail", 300) },
+      { legenda: "Veja significado, como a Bíblia Livre traduz e a origem.", faz: t => t.rolarPainel("#detail", 300) },
       { legenda: "Toque num número Strong para ir ao verbete ligado.", faz: t => t.tocar("#detail .ref") },
-      { legenda: "Use ← para voltar e ✕ para fechar.", faz: t => t.tocar("#d-back") }
+      { legenda: "Use ← para voltar ao verbete anterior.", faz: t => t.tocar("#d-back") },
+      { legenda: "As setas ‹ › passam para a palavra seguinte, sem fechar. ✕ fecha.", faz: t => t.tocar("#d-next") }
     ]
   },
   {
@@ -241,12 +253,22 @@ export const videos = [
     id: "08",
     n: 8,
     grupo: "ler",
-    titulo: "Ouvir o versículo",
+    titulo: "Ouvir o capítulo",
     desc: "Realce palavra a palavra e voz mais lenta.",
     inicio: "GEN.1",
     steps: [
-      { legenda: "Toque em Ouvir ao lado do número do versículo.", faz: t => t.tocar('.vsay[data-verse="0"]') },
-      { legenda: "Cada palavra é realçada enquanto é lida.", faz: t => t.esperar(2500) },
+      { legenda: "Toque em Ouvir: a leitura começa no versículo que está na tela.", faz: t => naBarra(t, "#bb-say", "#bar-say") },
+      { legenda: "Cada palavra é realçada enquanto é lida. Toque de novo para parar.", faz: t => t.esperar(2500) },
+      {
+        legenda: "Para ouvir um versículo só, toque em ⋯ ao lado dele e em Ouvir.",
+        faz: async t => {
+          await naBarra(t, "#bb-say", "#bar-say");
+          await t.tocar("#v3 .vmark");
+          await t.tocar('#mbar [data-action="ouvir"]');
+          await t.esperar(1200);
+          await t.tocar("#mb-close");
+        }
+      },
       {
         legenda: "Em Aparência › Áudio dá para falar mais devagar.",
         faz: async t => {
@@ -292,7 +314,16 @@ export const videos = [
         }
       },
       { legenda: "Enter abre o verbete.", faz: t => t.onKey("Enter") },
-      { legenda: "Esc fecha.", faz: fecharPainel }
+      { legenda: "Esc fecha.", faz: fecharPainel },
+      { legenda: "[ e ] mudam de capítulo.", faz: t => t.onKey("]") },
+      {
+        legenda: "/ abre a busca.",
+        faz: async t => {
+          await t.onKey("/");
+          await t.esperar(400);
+          await fecharPainel(t);
+        }
+      }
     ]
   },
   {
@@ -303,8 +334,8 @@ export const videos = [
     desc: "Seis temas de cor, ou seguir o aparelho.",
     inicio: "PSA.23",
     steps: [
-      { legenda: "O botão da lua troca para o tema escuro.", faz: t => t.tocar("#to-dark") },
       { legenda: "Em Aa há seis temas de cor.", faz: t => t.tocar("#open-look") },
+      { legenda: "Escuro para ler à noite.", faz: t => t.tocar('.tcard[data-p="escuro"]') },
       { legenda: "Escolha um tema: Papel.", faz: t => t.tocar('.tcard[data-p="papel"]') },
       { legenda: "“Automático” segue o tema do aparelho.", faz: t => t.tocar('.tcard[data-p="auto"]') }
     ]
@@ -364,7 +395,7 @@ export const videos = [
         }
       },
       { legenda: "Ligue a pronúncia em português (tônica em maiúsculas).", faz: t => t.tocar("#t-pron") },
-      { legenda: "Desligue o número Strong para cartões mais limpos.", faz: t => t.tocar("#t-strong") },
+      { legenda: "Ligue o número Strong para estudar com o dicionário.", faz: t => t.tocar("#t-strong") },
       { legenda: "Feche para ver o resultado.", faz: fecharPainel }
     ]
   },
@@ -494,23 +525,23 @@ export const videos = [
     desc: "Ligada ao versículo; salva sozinha.",
     inicio: "GEN.1",
     steps: [
+      { legenda: "Toque em ⋯ no versículo.", faz: t => t.tocar("#v2 .vmark") },
       {
-        legenda: "Toque em ⋯ no versículo e depois em Nota.",
+        legenda: "Escreva na nota: ela salva sozinha enquanto você digita.",
+        faz: t => t.digitar("#mb-note", "Sem forma e vazia: tôhû wâbôhû rima no hebraico.")
+      },
+      {
+        legenda: "Feche: o começo da nota aparece embaixo do versículo.",
         faz: async t => {
-          await t.tocar("#v2 .vmark");
-          await t.tocar('#mbar [data-action="nota"]');
+          await t.tocar("#mb-close");
+          await t.realcar("#v2 .vann");
         }
       },
       {
-        legenda: "Escreva: a nota salva sozinha enquanto você digita.",
-        faz: t => t.digitar("#note-text", "Sem forma e vazia: tôhû wâbôhû rima no hebraico.")
-      },
-      { legenda: "Dá para pôr um título e etiquetas.", faz: t => t.digitar("#note-title", "Tohu e bohu") },
-      {
-        legenda: "Feche: o ícone da nota aparece no versículo; toque nele para reabrir.",
+        legenda: "Toque nela para abrir em tela cheia e pôr um título.",
         faz: async t => {
-          await t.tocar("#nota [data-fechar]");
-          await t.realcar("#v2 .vnota");
+          await t.tocar("#v2 .vann-note");
+          await t.digitar("#note-title", "Tohu e bohu");
         }
       }
     ]
@@ -531,9 +562,8 @@ export const videos = [
         }
       },
       {
-        legenda: "Em Etiqueta, crie uma etiqueta: promessas.",
+        legenda: "Nas etiquetas, crie uma nova: promessas.",
         faz: async t => {
-          await t.tocar('#mbar [data-action="etiqueta"]');
           await t.digitar("#mb-tag-name", "promessas");
           await t.tocar("#mb-new-tag");
         }
@@ -542,7 +572,13 @@ export const videos = [
         legenda: "A etiqueta fica disponível para outros versículos e notas.",
         faz: t => t.realcar('#mb-tags .chip[aria-pressed="true"]')
       },
-      { legenda: "Feche a barra.", faz: t => t.tocar("#mb-close") }
+      {
+        legenda: "Feche: as etiquetas aparecem embaixo do versículo.",
+        faz: async t => {
+          await t.tocar("#mb-close");
+          await t.realcar("#v1 .vann");
+        }
+      }
     ]
   },
   {
@@ -554,20 +590,15 @@ export const videos = [
     inicio: "GEN.1",
     prepare: dadosDeExemplo,
     steps: [
-      {
-        legenda: "No Índice, toque em Minhas anotações.",
-        faz: async t => {
-          await t.tocar("#open-toc");
-          await t.rolarAte("#open-mine");
-          await t.tocar("#open-mine");
-        }
-      },
-      { legenda: "Tudo o que você marcou e anotou, na ordem da Bíblia.", faz: t => t.esperar(800) },
+      { legenda: "No Índice, em Você, toque em Minhas anotações.", faz: abrirMinhas },
+      { legenda: "Tudo o que você marcou e anotou, versículo por versículo, na ordem da Bíblia.", faz: t => t.esperar(800) },
       { legenda: "Busque por uma palavra: pastor.", faz: t => t.digitar("#mn-search", "pastor") },
       {
         legenda: "Ou filtre por tipo e por etiqueta.",
         faz: async t => {
           await t.digitar("#mn-search", "");
+          await t.tocar('#mn-tags .chip:has-text("promessas")');
+          await t.tocar('#mn-tags .chip:has-text("promessas")');
           await t.tocar('.mn-filters .chip[data-tipo="notas"]');
         }
       },
@@ -584,14 +615,13 @@ export const videos = [
     prepare: dadosDeExemplo,
     steps: [
       {
-        legenda: "Em Minhas anotações, toque em Exportar PDF.",
+        legenda: "Em Minhas anotações, no menu ⋯, toque em Exportar PDF.",
         faz: async t => {
           await t.page.evaluate(() => {
             window.__noPrint = true;
           });
-          await t.tocar("#open-toc");
-          await t.rolarAte("#open-mine");
-          await t.tocar("#open-mine");
+          await abrirMinhas(t);
+          await t.tocar("#mn-more summary");
           await t.tocar("#mn-export");
         }
       },
@@ -630,11 +660,10 @@ export const videos = [
     prepare: dadosDeExemplo,
     steps: [
       {
-        legenda: "Em Minhas anotações, toque em Baixar meus dados.",
+        legenda: "Em Minhas anotações, no menu ⋯, toque em Baixar meus dados.",
         faz: async t => {
-          await t.tocar("#open-toc");
-          await t.rolarAte("#open-mine");
-          await t.tocar("#open-mine");
+          await abrirMinhas(t);
+          await t.tocar("#mn-more summary");
           await t.tocar("#mn-download");
         }
       },
@@ -651,6 +680,7 @@ export const videos = [
             await window.Annotations.openList();
           }); // simula o aparelho novo
           await t.esperar(600);
+          await t.tocar("#mn-more summary");
           await t.realcar("#mn-import");
           await t.page.setInputFiles("#mn-file", {
             name: "biblia-annotations.json",
@@ -673,9 +703,9 @@ export const videos = [
     prepare: dadosDeExemplo,
     steps: [
       {
-        legenda: "No Índice, toque em Entrar com Google.",
+        legenda: "No Índice, em Você, toque em Entrar com Google.",
         faz: async t => {
-          await t.tocar("#open-toc");
+          await abrirVoce(t);
           await t.realcar("#conta");
           await t.tocar("#account-signin");
         }
@@ -729,9 +759,9 @@ export const videos = [
     before: entrarNaConta,
     steps: [
       {
-        legenda: "Sua conta fica no topo do Índice.",
+        legenda: "Sua conta fica no Índice, em Você.",
         faz: async t => {
-          await t.tocar("#open-toc");
+          await abrirVoce(t);
           await t.realcar("#conta");
         }
       },
@@ -819,10 +849,9 @@ export const videos = [
     before: entrarNaConta,
     steps: [
       {
-        legenda: "No Índice, toque em Meu progresso (com a conta Google conectada).",
+        legenda: "No Índice, em Você, toque em Meu progresso (com a conta Google conectada).",
         faz: async t => {
-          await t.tocar("#open-toc");
-          await t.rolarAte("#open-progress");
+          await abrirVoce(t);
           await t.tocar("#open-progress");
         }
       },
@@ -858,6 +887,115 @@ export const videos = [
           await t.realcar("#progresso .pg-day");
         }
       }
+    ]
+  },
+  {
+    id: "32",
+    n: 32,
+    grupo: "estudo",
+    titulo: "Buscar na Bíblia",
+    desc: "Palavras, referências e números Strong.",
+    inicio: "GEN.1",
+    steps: [
+      { legenda: "Toque na lupa, no topo.", faz: t => t.tocar("#open-search") },
+      { legenda: "Digite palavras: acentos e maiúsculas não importam.", faz: t => t.digitar("#busca-q", "graca paz") },
+      { legenda: "Aparecem os versículos com todas as palavras, já destacadas.", faz: t => t.realcar(".busca-item") },
+      { legenda: "Filtre por testamento ou só no livro que você está lendo.", faz: t => t.tocar('.busca-scope [data-scope="nt"]') },
+      { legenda: "Uma referência vira atalho: Sl 23.", faz: t => t.digitar("#busca-q", "Sl 23") },
+      { legenda: "Toque para ir.", faz: t => t.tocar(".busca-go") }
+    ]
+  },
+  {
+    id: "33",
+    n: 33,
+    grupo: "estudo",
+    titulo: "A palavra e a tradução",
+    desc: "Ver no português o que cada palavra traduz.",
+    inicio: "JHN.3",
+    steps: [
+      {
+        legenda: "Abra uma palavra do original: a tradução dela fica destacada na Bíblia Livre.",
+        faz: async t => {
+          await t.rolarAte("#v16");
+          await t.tocar('#v16 .word[data-i="2"]');
+          await t.esperar(800);
+          await t.tocar("#d-close");
+        }
+      },
+      {
+        legenda: "O contrário também: toque numa palavra da Bíblia Livre…",
+        faz: async t => {
+          await t.page.evaluate(() => document.querySelector("#v16 .blivre").scrollIntoView({ block: "center" }));
+          await t.esperar(500);
+          const p = await t.page.evaluate(() => {
+            const bl = document.querySelector("#v16 .blivre");
+            const w = document.createTreeWalker(bl, NodeFilter.SHOW_TEXT);
+            for (let n = w.nextNode(); n; n = w.nextNode()) {
+              const k = n.data.indexOf("Filho");
+              if (k < 0) continue;
+              const r = document.createRange();
+              r.setStart(n, k + 1);
+              r.setEnd(n, k + 3);
+              const b = r.getBoundingClientRect();
+              return { x: b.left + b.width / 2, y: b.top + b.height / 2 };
+            }
+            return null;
+          });
+          await t.page.mouse.click(p.x, p.y);
+        }
+      },
+      { legenda: "…e o cartão do original que ela traduz se acende.", faz: t => t.realcar("#v16 .word.linked") }
+    ]
+  },
+  {
+    id: "34",
+    n: 34,
+    grupo: "estudo",
+    titulo: "Todas as ocorrências",
+    desc: "Onde mais a Bíblia usa a mesma palavra.",
+    inicio: "JHN.3",
+    steps: [
+      {
+        legenda: "No verbete, toque em Ver as ocorrências.",
+        faz: async t => {
+          await t.rolarAte("#v16");
+          await t.tocar('#v16 .word[data-i="2"]');
+          await t.rolarAte("#d-conc");
+          await t.tocar("#d-conc");
+        }
+      },
+      { legenda: "A lista vem na ordem da Bíblia, com a palavra destacada em cada versículo.", faz: t => t.esperar(1200) },
+      { legenda: "Filtre pela tradução: amou.", faz: t => t.tocar('#conc-gl .chip:has-text("amou")') },
+      { legenda: "Ou só no livro que você está lendo.", faz: t => t.tocar('.conc-scope [data-scope="livro"]') },
+      { legenda: "Toque num versículo para ir até ele.", faz: t => t.tocar(".conc-item") }
+    ]
+  },
+  {
+    id: "35",
+    n: 35,
+    grupo: "anotacoes",
+    titulo: "Organizar as etiquetas",
+    desc: "Renomear, juntar e apagar.",
+    inicio: "GEN.1",
+    prepare: dadosDeExemplo,
+    steps: [
+      { legenda: "Em Minhas anotações, as etiquetas aparecem como filtros.", faz: abrirMinhas },
+      {
+        legenda: "No menu ⋯, toque em Gerenciar etiquetas.",
+        faz: async t => {
+          await t.tocar("#mn-more summary");
+          await t.tocar("#mn-manage");
+        }
+      },
+      {
+        legenda: "Mude o nome no campo. Dar o nome de outra etiqueta junta as duas.",
+        faz: async t => {
+          await t.digitar(".tm-name", "promessas de Deus");
+          await t.page.keyboard.press("Enter");
+          await t.esperar(600);
+        }
+      },
+      { legenda: "Apagar pede dois toques e tira a etiqueta dos versículos.", faz: t => t.realcar(".tm-del") }
     ]
   },
   // Gravados à mão (telas do sistema): sequências de imagens com legenda em videos/manuais/.

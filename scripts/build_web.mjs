@@ -165,7 +165,17 @@ const files = [];
 const hash = crypto.createHash("sha256");
 for (const f of files.sort()) hash.update(f).update(fs.readFileSync(path.join(OUT, f)));
 const version = hash.digest("hex").slice(0, 12);
-const precache = ["./", ...files.filter(f => !f.endsWith(".txt") && !f.startsWith("dados/cap/") && !f.startsWith("videos/"))];
+const precache = [
+  "./",
+  ...files.filter(
+    f =>
+      !f.endsWith(".txt") &&
+      !f.startsWith("dados/cap/") &&
+      !f.startsWith("dados/conc/") &&
+      !f.startsWith("dados/busca/") &&
+      !f.startsWith("videos/")
+  )
+];
 fs.writeFileSync(
   path.join(OUT, "sw.js"),
   `// Gerado por scripts/build_web.mjs — não editar
