@@ -217,6 +217,8 @@
     <div class="sgroup">
       <p class="conc-sub" id="conc-sub"></p>
       <div class="conc-gl" id="conc-gl" role="group" aria-label="Filtrar pela tradução"></div>
+      <h3 class="conc-h3">Onde aparece</h3>
+      <div class="conc-books" id="conc-books" role="group" aria-label="Filtrar por livro"></div>
       <div class="conc-scope" role="group" aria-label="Onde">
         <button class="chip" data-scope="" aria-pressed="true">Bíblia toda</button>
         <button class="chip" data-scope="livro" aria-pressed="false" id="conc-book"></button>
@@ -240,7 +242,7 @@
     const CH = chapter();
     const books = bookByIndex();
     const here = CH && window.__currentChapter ? window.__currentChapter.book : null;
-    state = { key, d, gloss: -1, scope: "", shown: 0, books, here, word };
+    state = { key, d, gloss: -1, scope: "", book: null, shown: 0, books, here, word };
     $("#conc-h").textContent = word && word.lemma ? `Ocorrências de ${word.lemma}` : `Ocorrências de ${key}`;
     $("#conc-book").textContent = here ? `Só em ${(window.__books[here] || {}).name || here}` : "";
     $("#conc-book").hidden = !here;
@@ -257,14 +259,15 @@
     document.body.classList.remove("com-conc");
     if (focusBack && focusBack.isConnected) focusBack.focus({ preventScroll: true });
   }
-  function filtered() {
-    const { d, gloss, scope, books, here } = state;
+  // Ocorrências com o filtro de tradução; byBook=false ignora o filtro de livro (para contar por livro)
+  function filtered(byBook = true) {
+    const { d, gloss, book } = state;
     const o = d ? d.o : [];
     const out = [];
     for (let k = 0; k + 4 < o.length; k += 5) {
       const [b, c, v, i, g] = o.slice(k, k + 5);
       if (gloss >= 0 && g !== gloss) continue;
-      if (scope === "livro" && books[b]?.cod !== here) continue;
+      if (byBook && book != null && b !== book) continue;
       out.push({ b, c, v, i, g });
     }
     return out.sort((x, y) => x.b - y.b || x.c - y.c || x.v - y.v || x.i - y.i);
@@ -296,6 +299,21 @@
       (extra.length
         ? `<button class="chip conc-allgl" data-allgl aria-label="Mostrar mais ${extra.length} traduções">+${extra.length}</button>`
         : "");
+    // Onde aparece: livros com mais ocorrências primeiro; tocar filtra
+    const perBook = {};
+    for (const x of filtered(false)) perBook[x.b] = (perBook[x.b] || 0) + 1;
+    const ranked = Object.entries(perBook).sort((a, b) => b[1] - a[1] || a[0] - b[0]);
+    const showBooks = state.allBooks ? ranked : ranked.slice(0, 8);
+    $("#conc-books").innerHTML =
+      showBooks
+        .map(
+          ([b, n]) =>
+            `<button class="chip" data-book="${b}" aria-pressed="${state.book === +b}">${esc(state.books[b]?.name || "?")} <small>${n}</small></button>`
+        )
+        .join("") +
+      (ranked.length > showBooks.length ? `<button class="chip" data-allbooks>+${ranked.length - showBooks.length}</button>` : "");
+    const hereIdx = state.books.findIndex(b => b && b.cod === state.here);
+    state.scope = state.book == null ? "" : state.book === hereIdx ? "livro" : "outro";
     sheet.querySelectorAll("[data-scope]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.scope === state.scope)));
     const xs = filtered();
     const total = d.o.length / 5;
@@ -360,6 +378,15 @@
   }
   sheet.addEventListener("click", e => {
     if (e.target.closest("[data-fechar]")) return close();
+    const bk = e.target.closest("[data-book]");
+    if (bk) {
+      state.book = state.book === +bk.dataset.book ? null : +bk.dataset.book;
+      return render();
+    }
+    if (e.target.closest("[data-allbooks]")) {
+      state.allBooks = true;
+      return render();
+    }
     if (e.target.closest("[data-allgl]")) {
       state.allGlosses = true;
       return render();
@@ -371,7 +398,7 @@
     }
     const sc = e.target.closest("[data-scope]");
     if (sc) {
-      state.scope = sc.dataset.scope;
+      state.book = sc.dataset.scope === "livro" ? state.books.findIndex(b => b && b.cod === state.here) : null;
       return render();
     }
     if (e.target.closest("#conc-more")) return more();
@@ -388,6 +415,10 @@
       e.stopPropagation();
       close();
     }
+  });
+  // Esc fecha mesmo quando o foco saiu da folha (por exemplo, depois de um filtro redesenhar a lista)
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && !sheet.hidden && !sheet.contains(document.activeElement)) close();
   });
   window.__concordance = (key, word) => open(key, word);
   window.Study = { open, close, bucketOf };

@@ -425,6 +425,8 @@
   width: min(440px, calc(100% - 32px)); background: var(--surface); color: var(--fg); border: 1px solid var(--line); border-radius: 14px;
   box-shadow: 0 8px 28px rgba(0,0,0,.18); padding: 14px 16px; }
 .account-suggestion[hidden] { display: none; }
+/* no celular fica acima da barra de baixo (Livros · ‹ · Ouvir · › · Aa) */
+@media (max-width: 720px) { .account-suggestion { bottom: calc(80px + env(safe-area-inset-bottom)); } }
 .account-suggestion p { margin: 0 0 10px; font-size: 15px; line-height: 1.4; }
 .account-suggestion .linha { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .account-suggestion .nao { min-height: 44px; padding: 0 14px; border: 0; background: transparent; color: var(--accent); font: inherit; cursor: pointer; text-decoration: underline; }

@@ -374,7 +374,7 @@ function renderVerses() {
       <div class="vhead">
         <h3 class="vnum${v.marks.length ? " has-rev" : ""}" id="vh${v.n}"><span class="sr">Versículo </span>${lbl.includes(":") ? `<span class="vcap">${esc(lbl.split(":")[0])}:</span>${esc(lbl.split(":")[1])}` : lbl}${v.marks.length ? `<span class="sr"> (com pontos da revisão automática)</span>` : ""}</h3>
         <span class="vtags"></span>
-        <button class="vmark" data-verse="${vi}" aria-label="Anotar ou ouvir ${lbl}"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
+        <button class="vmark" data-verse="${vi}" aria-label="Anotar ou ouvir ${lbl}"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M3.2 12a1.8 1.8 0 1 0 3.6 0a1.8 1.8 0 1 0-3.6 0M10.2 12a1.8 1.8 0 1 0 3.6 0a1.8 1.8 0 1 0-3.6 0M17.2 12a1.8 1.8 0 1 0 3.6 0a1.8 1.8 0 1 0-3.6 0"/></svg></button>
       </div>
       ${v.words.length ? `<div class="words" role="group" aria-label="Palavras do versículo ${lbl}${GRC ? "" : ", da direita para a esquerda"}">${words}</div>` : ""}
       ${v.nota ? `<p class="vnote">${esc(SOURCE_NOTES[v.nota] || v.nota)}</p>` : ""}
@@ -1306,6 +1306,7 @@ function setHere(v) {
     history.replaceState(null, "", `#${BOOK.code}.${CUR}.${v}`);
   } catch (_) {}
   store.set("posicao", `${BOOK.code}.${CUR}.${v}`);
+  if (window.__updateVpos) window.__updateVpos();
 }
 where.addEventListener("click", () => {
   openPanel("toc", goIn);
@@ -2019,3 +2020,99 @@ if ("serviceWorker" in navigator && !NATIVE && /^https?:$/.test(location.protoco
     navigator.serviceWorker.register("sw.js").catch(() => {});
   });
 }
+
+// ---------- Redesenho, parte final ----------
+// Celular: Livros e Aparência descem para a barra de baixo (os mesmos botões, que só mudam de lugar)
+{
+  const bbar = document.getElementById("bbar");
+  const tocBtn = document.getElementById("open-toc"),
+    lookBtn = document.getElementById("open-look");
+  const tocHome = document.createComment("open-toc"),
+    lookHome = document.createComment("open-look");
+  tocBtn.before(tocHome);
+  lookBtn.before(lookHome);
+  const mq = matchMedia("(max-width: 720px)");
+  const place = () => {
+    if (mq.matches) {
+      bbar.prepend(tocBtn);
+      bbar.append(lookBtn);
+      bbar.classList.add("cinco");
+    } else {
+      tocHome.after(tocBtn);
+      lookHome.after(lookBtn);
+      bbar.classList.remove("cinco");
+    }
+  };
+  place();
+  mq.addEventListener("change", place);
+}
+// Tocar no título do capítulo abre o índice já na grade de capítulos do livro
+where.addEventListener("click", () => {
+  requestAnimationFrame(() => {
+    const here = document.querySelector('#chgrid .chchip[aria-pressed="true"]');
+    document.getElementById("ch-h").scrollIntoView({ block: "start" });
+    if (here) here.focus({ preventScroll: true });
+  });
+});
+// "Ir para" também filtra os livros pelo nome ("cânt", "1 jo")
+function filterBooks() {
+  const raw = goIn.value.trim();
+  const q = /\d\s*[:.]|\d\s+\d/.test(raw) ? "" : norm(raw.replace(/\s+/g, ""));
+  const qLetters = q.replace(/\d+$/, "");
+  let shown = 0;
+  document.querySelectorAll("#bk-list .bchip").forEach(b => {
+    const B = BY_CODE[b.dataset.cod];
+    const ok =
+      !qLetters || [B.name, B.abbrev].some(x => norm(x.replace(/\s+/g, "")).startsWith(qLetters)) || norm(B.name).includes(qLetters);
+    b.hidden = !ok;
+    if (ok) shown++;
+  });
+  document.querySelectorAll("#bk-list .bgroup, #bk-list .testa").forEach(g => {
+    if (g.classList.contains("bgroup")) g.hidden = ![...g.querySelectorAll(".bchip")].some(b => !b.hidden);
+  });
+  document.getElementById("bk-list").dataset.filtro = qLetters && shown ? "1" : "";
+}
+goIn.addEventListener("input", filterBooks);
+// Capítulos longos: "v. 60 de 176" e, quando há seções (Salmo 119), ‹ › passam de seção
+{
+  const pos = document.createElement("div");
+  pos.className = "vpos";
+  pos.id = "vpos";
+  pos.hidden = true;
+  pos.innerHTML = `<button type="button" id="sec-prev" aria-label="Seção anterior">‹</button><span id="vpos-t"></span><button type="button" id="sec-next" aria-label="Próxima seção">›</button>`;
+  document.querySelector(".bar").appendChild(pos);
+  const heads = () => (CH ? CH.verses.filter(v => v.h) : []);
+  function updateVpos() {
+    const long = CH && CH.verses.length >= 40;
+    pos.hidden = !long || window.scrollY < 300;
+    if (pos.hidden) return;
+    const hs = heads();
+    const cur = hs.filter(v => v.n <= hereV).pop();
+    document.getElementById("vpos-t").textContent = `${cur ? cur.h + " · " : ""}v. ${hereV} de ${CH.verses[CH.verses.length - 1].n}`;
+    const arrows = hs.length > 1;
+    document.getElementById("sec-prev").hidden = !arrows;
+    document.getElementById("sec-next").hidden = !arrows;
+    if (arrows) {
+      document.getElementById("sec-prev").disabled = !hs.some(v => v.n < (cur ? cur.n : hereV));
+      document.getElementById("sec-next").disabled = !hs.some(v => v.n > hereV);
+    }
+  }
+  pos.addEventListener("click", e => {
+    const b = e.target.closest("button");
+    if (!b || b.disabled) return;
+    const hs = heads();
+    const cur = hs.filter(v => v.n <= hereV).pop();
+    const to = b.id === "sec-next" ? hs.find(v => v.n > hereV) : [...hs].reverse().find(v => v.n < (cur ? cur.n : hereV));
+    if (to) document.getElementById("s" + to.n)?.scrollIntoView({ block: "start", behavior: "smooth" });
+  });
+  window.__updateVpos = updateVpos;
+  window.addEventListener("scroll", () => requestAnimationFrame(updateVpos), { passive: true });
+  document.addEventListener("chapter-rendered", () => requestAnimationFrame(updateVpos));
+}
+// Aparência: os chips mostram a explicação ao passar o dedo/mouse
+document.querySelectorAll(".chks.chips .chk").forEach(c => {
+  const s = c.querySelector("small");
+  if (s && !c.title) c.title = s.textContent;
+});
+// Capítulos muito longos (Salmo 119): o navegador só desenha os versículos perto da tela
+document.addEventListener("chapter-rendered", () => document.body.classList.toggle("cap-longo", !!CH && CH.verses.length >= 100));
