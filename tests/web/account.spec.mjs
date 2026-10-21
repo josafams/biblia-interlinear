@@ -119,6 +119,27 @@ test("depois da primeira anotação sugere guardar no Drive; “Agora não” n�
   await expect(page.locator("#account-suggestion")).toBeHidden();
 });
 
+test("a sugestão do Drive sai da frente quando o painel de anotar abre e volta depois", async ({ page }) => {
+  await simularGoogle(page);
+  await page.goto("ler.html#GEN.1");
+  await expect(page.locator(".verse").first()).toBeVisible();
+  await page.waitForFunction(() => window.Account && window.Annotations);
+  await page.evaluate(async () => {
+    await window.Annotations.save("favoritos", {
+      id: crypto.randomUUID(),
+      cap: "GEN.1",
+      ancora: { livro: "GEN", cap: 1, ver: 1, ver_fim: 1, camada: "versiculo" }
+    });
+  });
+  await expect(page.locator("#account-suggestion")).toBeVisible();
+  await page.click("#v2 .vmark");
+  await expect(page.locator("#account-suggestion")).toBeHidden();
+  await page.fill("#mb-tag-name", "criação");
+  await page.click("#mb-new-tag");
+  await page.click("#mb-close");
+  await expect(page.locator("#account-suggestion")).toBeVisible();
+});
+
 test("foto (só com FOTOS=1)", async ({ page }, info) => {
   test.skip(!process.env.FOTOS);
   await simularGoogle(page);
