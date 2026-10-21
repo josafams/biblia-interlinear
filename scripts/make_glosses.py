@@ -34,6 +34,9 @@ import eflomal
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DB = os.path.join(ROOT, "build", "biblia.sqlite")
 TMP = os.path.join(ROOT, "build", "alignment")
+# Trechos da BLIVRE ligados a cada palavra pelo alinhamento: id da palavra → [(início, fim), ...] em caracteres.
+# Vão para a tabela alignment e daí para o app (ligação palavra ↔ português).
+ALIGN_SPANS = {}
 
 TOKEN_PT = re.compile(r"[^\W_]+(?:[’'][^\W_]+)?", re.U)
 
@@ -451,6 +454,7 @@ def compose(item_list, links):
                     full = sorted(set(g) & d["raiz"]) or g[:6]
                 gloss = "-".join(match_case(toks[j][0], propers) for j in full)
                 source = "alinhamento" if d["raiz"] else "parcial"
+                ALIGN_SPANS[r[0]] = [(toks[j][1], toks[j][2]) for j in full]
             else:
                 gloss, source = None, None
             root_tok = next((t for tp, t in d["toks"] if tp == "raiz"), None)
@@ -1063,7 +1067,11 @@ def load_lexicon(db):
 def main():
     db = sqlite3.connect(DB)
     db.execute("DROP TABLE IF EXISTS traducoes")
+    db.execute("DROP TABLE IF EXISTS translations")
     db.execute("CREATE TABLE translations(entry_key TEXT, translation TEXT, n INTEGER)")
+    db.execute("DROP TABLE IF EXISTS alignment")
+    db.execute("CREATE TABLE alignment(word_id INTEGER PRIMARY KEY, spans TEXT)")
+    ALIGN_SPANS.clear()
     total = Counter()
     for test, name in (("AT", "at"), ("NT", "nt")):
         item_list = assemble(db, test)
@@ -1099,6 +1107,10 @@ def main():
                     by_key[ch][t.lower()] += n
         db.executemany("INSERT INTO translations VALUES (?,?,?)", [(ch, t, n) for ch, c in by_key.items() for t, n in c.most_common(12)])
         total.update(f for _, _, f, _, _, _ in res)
+    db.executemany(
+        "INSERT INTO alignment VALUES (?, ?)",
+        [(pid, ",".join(f"{a},{b}" for a, b in spans)) for pid, spans in ALIGN_SPANS.items() if spans],
+    )
     db.commit()
     print("glosas por fonte:", dict(total))
     apply_corrections(db)

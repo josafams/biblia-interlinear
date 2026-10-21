@@ -17,6 +17,7 @@ import os
 import re
 import sqlite3
 import sys
+import unicodedata
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -38,6 +39,67 @@ GROUPS = [  # agrupamento dos livros no índice
     ("Cartas de Paulo", "ROM", "PHM"),
     ("Outras cartas e Apocalipse", "HEB", "REV"),
 ]
+
+
+# Nomes das letras hebraicas que a BLIVRE põe no começo do versículo nos acrósticos (Salmo 119…): "Álefe :Bem-aventurados".
+# No app viram título da seção (campo "h") e saem do texto do versículo.
+HEB_LETTERS = [
+    "Álefe",
+    "Bete",
+    "Guímel",
+    "Dálete",
+    "Hê",
+    "Vau",
+    "Záin",
+    "Hete",
+    "Tete",
+    "Iode",
+    "Cafe",
+    "Lâmede",
+    "Mem",
+    "Nun",
+    "Sâmeque",
+    "Áin",
+    "Pê",
+    "Tsadê",
+    "Cofe",
+    "Rexe",
+    "Xin",
+    "Tau",
+]
+LETTER_HEAD = re.compile(r"^\s*(" + "|".join(map(re.escape, HEB_LETTERS)) + r")\s*:\s*")
+# Palavras da BLIVRE para a busca: o mesmo critério do alinhamento (scripts/make_glosses.py)
+TOKEN_PT = re.compile(r"[^\W_]+(?:[’'][^\W_]+)?", re.U)
+
+
+def split_heading(text):
+    """'Álefe :Bem-aventurados…' → ('Álefe', 'Bem-aventurados…', 8). Sem título: (None, text, 0)."""
+    m = LETTER_HEAD.match(text or "")
+    if not m:
+        return None, text, 0
+    return m.group(1), text[m.end() :], m.end()
+
+
+def search_norm(word):
+    """Forma da busca: minúsculas, sem acentos (amor = Amor; "fe" acha "fé")."""
+    nfd = unicodedata.normalize("NFD", word.lower().replace("’", "'"))
+    return "".join(c for c in nfd if not unicodedata.combining(c))
+
+
+def conc_bucket(key):
+    """Arquivo da concordância de uma chave Strong: H1234 → H12, G25 → G0; partículas e lemas sem Strong → Hx/Gx."""
+    m = re.match(r"^([HG])(\d+)$", key or "")
+    return f"{m.group(1)}{int(m.group(2)) // 100}" if m else f"{(key or 'G')[0]}x"
+
+
+def b36(n):
+    digits = "0123456789abcdefghijklmnopqrstuvwxyz"
+    out = ""
+    while True:
+        n, r = divmod(n, 36)
+        out = digits[r] + out
+        if not n:
+            return out
 
 
 def fmt_int(n):
@@ -124,6 +186,9 @@ def main(argv):
         texts[(b, c)][v] = (t, ed, note)
     words = defaultdict(lambda: defaultdict(list))
     usage = Counter()
+    book_index = {row[0]: i for i, row in enumerate(BOOKS)}
+    # concordância: chave Strong → ocorrências (livro, capítulo, versículo, palavra, glosa)
+    concordance = defaultdict(list)
     for pid, b, c, v, language, verse_text, lemma, strong, morph, gloss, source, ketiv in db.execute(
         "SELECT id, book, chapter, verse, language, text, lemma, strong, morph, gloss, gloss_source, ketiv FROM words "
         "ORDER BY book, chapter, verse, pos"
@@ -135,17 +200,32 @@ def main(argv):
             w.append(lemma)
         elif ketiv:
             w += [None, ketiv]  # forma escrita (ketiv); o texto traz a forma lida (qere)
+        if entry_key:
+            concordance[entry_key].append((book_index[b], c, v, len(words[(b, c)][v]), gloss or ""))
         words[(b, c)][v].append((pid, w))
+    # ligação palavra ↔ português: trechos da BLIVRE alinhados a cada palavra (tabela de scripts/make_glosses.py)
+    has_alignment = db.execute("SELECT count(*) FROM sqlite_master WHERE type='table' AND name='alignment'").fetchone()[0]
+    align = {pid: [int(x) for x in s.split(",")] for pid, s in db.execute("SELECT word_id, spans FROM alignment")} if has_alignment else {}
 
     def chapter(b, c):
         vs = []
         ids = {}
         for v in sorted(set(texts[(b, c)]) | set(words[(b, c)])):
             t, ed, note = texts[(b, c)].get(v, ("", None, "sem-blivre"))
+            heading, t, cut = split_heading(t)
             ws = words[(b, c)].get(v, [])
+            links = []
             for i, (pid, _) in enumerate(ws):
                 ids[pid] = (v, i)
+                spans = [x - cut for x in align.get(pid, [])]
+                pairs = [(spans[k], spans[k + 1]) for k in range(0, len(spans), 2) if spans[k] >= 0]
+                if pairs:
+                    links.append([i] + [x for p in pairs for x in p])
             item = {"n": v, "b": t, "w": [w for _, w in ws]}
+            if heading:
+                item["h"] = heading
+            if links:
+                item["a"] = links
             if note:
                 item["o"] = note
             vs.append(item)
@@ -244,6 +324,49 @@ def main(argv):
         Path(os.path.join(WEB, "cap", b, f"{c}.js")).write_text(f"__cap({json.dumps(b + '.' + str(c))},{cap});", encoding="utf8")
         n += 1
     print(f"{len(books)} livros, {n} capítulos, léxico H {len(lex['H'])} + G {len(lex['G'])} → {OUT} e {WEB}")
+    write_concordance(concordance)
+    write_search_index(texts, book_index)
+
+
+def write_concordance(concordance):
+    """dados/conc/<grupo>.js: cada chave Strong com as glosas usadas ("g") e as ocorrências ("o"), cinco números
+    por ocorrência: livro (posição 0–65), capítulo, versículo, palavra no versículo e índice da glosa em "g"."""
+    buckets = defaultdict(dict)
+    for key, occ in concordance.items():
+        glosses = [g for g, _ in Counter(o[4] for o in occ).most_common()]
+        gi = {g: i for i, g in enumerate(glosses)}
+        flat = [x for b, c, v, i, g in occ for x in (b, c, v, i, gi[g])]
+        buckets[conc_bucket(key)][key] = {"g": glosses, "o": flat}
+    os.makedirs(os.path.join(WEB, "conc"), exist_ok=True)
+    for name, d in buckets.items():
+        body = json.dumps(d, ensure_ascii=False, separators=(",", ":"))
+        Path(os.path.join(WEB, "conc", f"{name}.js")).write_text(f"__conc({json.dumps(name)},{body});", encoding="utf8")
+    print(f"concordância: {len(concordance)} chaves em {len(buckets)} arquivos → {os.path.join(WEB, 'conc')}")
+
+
+def write_search_index(texts, book_index):
+    """dados/busca/<2 letras>.js: palavra da BLIVRE (sem acento, minúscula) → versículos onde aparece.
+    Cada versículo é livro*1.000.000 + capítulo*1.000 + versículo, em ordem, gravado como diferença do anterior em base 36."""
+    postings = defaultdict(set)
+    for (b, c), vs in texts.items():
+        for v, (t, _ed, _note) in vs.items():
+            _h, t, _cut = split_heading(t)
+            vid = book_index[b] * 1_000_000 + c * 1000 + v
+            for m in TOKEN_PT.finditer(t or ""):
+                postings[search_norm(m.group(0))].add(vid)
+    buckets = defaultdict(dict)
+    for word, ids in postings.items():
+        prev, out = 0, []
+        for x in sorted(ids):
+            out.append(b36(x - prev))
+            prev = x
+        buckets[word[:2]][word] = ",".join(out)
+    os.makedirs(os.path.join(WEB, "busca"), exist_ok=True)
+    for name, d in buckets.items():
+        body = json.dumps(d, ensure_ascii=False, separators=(",", ":"))
+        fname = "".join(ch if ch.isalnum() and ch.isascii() else f"_{ord(ch):x}" for ch in name)
+        Path(os.path.join(WEB, "busca", f"{fname}.js")).write_text(f"__busca({json.dumps(name)},{body});", encoding="utf8")
+    print(f"busca: {len(postings)} palavras em {len(buckets)} arquivos → {os.path.join(WEB, 'busca')}")
 
 
 if __name__ == "__main__":

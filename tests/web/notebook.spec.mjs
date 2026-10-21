@@ -36,6 +36,7 @@ async function abrirComDados(page) {
 
 test("caderno em PDF com o texto dos versículos, as marcações e as notas", async ({ page }) => {
   await abrirComDados(page);
+  await page.click("#mn-more summary");
   await page.click("#mn-export");
   await expect(page.locator("#exportar")).toBeVisible();
   await page.click("#exp-generate");
@@ -52,9 +53,11 @@ test("caderno em PDF com o texto dos versículos, as marcações e as notas", as
 
 test("caderno só com os itens selecionados e sem o texto", async ({ page }) => {
   await abrirComDados(page);
+  await page.click("#mn-more summary");
   await page.click("#mn-select");
   await page.click('.mn-item[data-tipo="notas"]');
   await expect(page.locator("#mn-total")).toHaveText("1 selecionado");
+  await page.click("#mn-more summary");
   await page.click("#mn-export");
   await expect(page.locator('input[name="exp-scope"][value="sel"]')).toBeChecked();
   await page.uncheck("#exp-text");
@@ -69,6 +72,7 @@ test("caderno só com os itens selecionados e sem o texto", async ({ page }) => 
 
 test("baixar meus dados e importar em outro aparelho", async ({ page, browser }, info) => {
   await abrirComDados(page);
+  await page.click("#mn-more summary");
   const [dl] = await Promise.all([page.waitForEvent("download"), page.click("#mn-download")]);
   const file = info.outputPath("backup.json");
   await dl.saveAs(file);
