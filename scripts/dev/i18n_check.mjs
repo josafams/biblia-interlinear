@@ -66,7 +66,7 @@ for (const file of files) {
     const code = line.replace(/\/\/.*$/, "").replace(/\b(?:t|tryT)\(\s*(["'`])(?:(?!\1).)*\1/g, "");
     for (const m of code.matchAll(/(["'`])((?:\\.|(?!\1).)*)\1/g)) {
       const s = m[2];
-      if (/\bclass=$/.test(code.slice(0, m.index))) continue; // CSS classes, not text
+      if (/\bclass=(\{[^}]*)?$/.test(code.slice(0, m.index))) continue; // CSS classes (class="…" or class={…}), not text
       if (/\p{L}{2,}[\s,.:;!?]+\p{L}{2,}/u.test(s) && !/^[+\w.-]+(,\s*[+\w.-]+)*$/.test(s) && !/[<>{}=/\\]/.test(s))
         errors.push(`${where(file, i)}: screen text in code, move it to the locale: ${JSON.stringify(s)}`);
     }

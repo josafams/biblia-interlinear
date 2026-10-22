@@ -338,7 +338,11 @@
     "books": "Livros",
     "books_label": "Livros e índice",
     "look": "Aparência",
-    "look_label": "Aparência e acessibilidade"
+    "look_label": "Aparência e acessibilidade",
+    "prev_chapter": "Capítulo anterior: {ref}",
+    "next_chapter": "Próximo capítulo: {ref}",
+    "first_chapter": "Este é o primeiro capítulo",
+    "last_chapter": "Este é o último capítulo"
   },
   "you": {
     "progress": "Capítulos lidos, tempo de leitura, dias seguidos e o mapa dos 66 livros.",
