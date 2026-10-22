@@ -250,5 +250,78 @@
       "hebrew": "hebraico",
       "greek": "grego"
     }
+  },
+  "audio": {
+    "unavailable": "Este navegador não tem leitura de voz (acontece, por exemplo, dentro de alguns apps no Android). Abra a página no Chrome, Safari ou Edge para ouvir.",
+    "system": {
+      "ios": "do iPhone",
+      "android": "do Android"
+    },
+    "language": {
+      "he": "hebraico",
+      "el": "grego",
+      "pt": "português"
+    },
+    "native": {
+      "checking": "Verificando a voz em {lang}…",
+      "installed": "Voz em {lang} {system}: instalada.",
+      "missing": "Voz em {lang}: não instalada {system}."
+    },
+    "web": {
+      "voice": "Voz em {lang}: {voice}.",
+      "none": "Nenhuma voz em {lang} neste aparelho.",
+      "searching": "Procurando voz em {lang}…"
+    },
+    "modern_note": "A pronúncia é a da língua moderna (hebraico israelense; grego moderno), não a reconstrução antiga. Para instalar vozes, use as configurações de texto para fala do sistema{where}",
+    "ios_settings": " (Ajustes › Acessibilidade › Conteúdo Falado › Vozes).",
+    "missing_native": "Não há voz em {lang} instalada {system}. Veja em Aparência › Áudio.",
+    "missing_web": "Este aparelho pode não ter voz em {lang}. Veja em Aparência › Áudio.",
+    "install_failed": "Não foi possível abrir as configurações de voz."
+  },
+  "annotations": {
+    "note": "Nota",
+    "conflict_title": "{title} (conflito de {date})",
+    "backup": {
+      "not_a_backup": "Este arquivo não é um backup de anotações da Bíblia Interlinear."
+    }
+  },
+  "sync": {
+    "offline": "Sem internet — as mudanças esperam neste aparelho",
+    "done": "Sincronizado às {time}",
+    "drive_full": "Seu Google Drive está sem espaço — as mudanças esperam neste aparelho",
+    "failed": "Não foi possível sincronizar agora; tentando de novo em instantes",
+    "receiving_all": "Recebendo suas anotações…",
+    "receiving": "Recebendo mudanças…",
+    "sending": {
+      "one": "Enviando {count} mudança…",
+      "other": "Enviando {count} mudanças…"
+    }
+  },
+  "progress": {
+    "duration": {
+      "under_minute": "menos de 1 min",
+      "minutes": "{m} min",
+      "hours": "{h} h",
+      "hours_minutes": "{h} h {m} min"
+    },
+    "plans": {
+      "ano": "Bíblia em 1 ano",
+      "nt90": "Novo Testamento em 90 dias"
+    },
+    "plan": {
+      "done": "Plano concluído!",
+      "on_track": "Em dia",
+      "ahead": {
+        "one": "{count} capítulo adiantado",
+        "other": "{count} capítulos adiantado"
+      },
+      "behind": {
+        "one": "{count} capítulo atrasado",
+        "other": "{count} capítulos atrasado"
+      }
+    }
+  },
+  "account": {
+    "drive_error": "Erro {status} no Google Drive"
   }
 }

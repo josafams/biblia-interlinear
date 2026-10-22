@@ -1,3 +1,15 @@
+import {
+  addDays,
+  byDay as sumByDay,
+  duration,
+  newPlan,
+  planStatus,
+  readingPace,
+  reschedule,
+  shortDate,
+  streaks,
+  today
+} from "../src/lib/progress/stats";
 import { esc } from "../src/lib/text";
 /* Meu progresso: capítulos lidos, tempo de leitura, sequência de dias, mapa dos livros e plano de leitura.
  * Só conta para quem entrou com a conta Google (o plano do projeto): sem conta, o app guarda só a última posição.
@@ -19,21 +31,7 @@ import { esc } from "../src/lib/text";
   if (!A?.storage || !C) return;
   const B = A.storage;
   const CFG = Object.assign({ tick: 5000, minReading: 60, gesture: 120000, saveEvery: 300000 }, window.__progressConfig || {});
-  const DAY_MS = 864e5;
   const pad = n => String(n).padStart(2, "0");
-  const dayOf = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; // dia local (fuso do aparelho)
-  const today = () => dayOf(new Date());
-  const addDays = (dia, n) => {
-    const [a, m, d] = dia.split("-").map(Number);
-    return dayOf(new Date(a, m - 1, d + n));
-  };
-  const daysBetween = (a, b) => {
-    const [x, y] = [a, b].map(s => {
-      const [p, q, r] = s.split("-").map(Number);
-      return Date.UTC(p, q - 1, r);
-    });
-    return Math.round((y - x) / DAY_MS);
-  };
   const readLS = k => {
     try {
       return localStorage.getItem(k);
@@ -54,20 +52,6 @@ import { esc } from "../src/lib/text";
   const totalChapters = listSheet => listSheet.reduce((s, l) => s + (l.chapterCount || 0), 0);
   const signedIn = () => !!C.account(); // conta lembrada neste aparelho (mesmo à espera de reconectar)
   const paused = () => readLS("interlinear:tempo-pausado") === "sim";
-
-  function duration(sec) {
-    const m = Math.round(sec / 60);
-    if (m < 1) return sec > 0 ? "menos de 1 min" : "0 min";
-    if (m < 60) return `${m} min`;
-    const h = Math.floor(m / 60),
-      r = m % 60;
-    return r ? `${h} h ${r} min` : `${h} h`;
-  }
-  const shortDate = iso => {
-    if (!iso) return "—";
-    const d = new Date(iso);
-    return `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()}`;
-  };
 
   // ---------- medição ----------
   let currentChapter = null; // capítulo na tela { cod, cap }
@@ -227,19 +211,7 @@ import { esc } from "../src/lib/text";
       ["leituras", "tempo", "planos", "preferencias", "notas", "marcacoes", "favoritos"].map(c => A.allRecords(c))
     );
     const readSet = new Map(leituras.filter(l => l.lido).map(l => [l.id, l]));
-    const byDay = {};
-    for (const t of tempo) {
-      const d = (byDay[t.dia] = byDay[t.dia] || { segundos: 0, caps: 0, verbetes: 0, livros: {} });
-      d.segundos += t.segundos || 0;
-      d.caps += t.caps || 0;
-      d.verbetes += t.verbetes || 0;
-      for (const [k, v] of Object.entries(t.livros || {})) d.livros[k] = (d.livros[k] || 0) + v;
-    }
-    // dias com leitura também pelas datas dos capítulos (cobre marcações feitas à mão)
-    for (const l of readSet.values()) {
-      const d = dayOf(new Date(l.ultima || l.primeira));
-      (byDay[d] = byDay[d] || { segundos: 0, caps: 0, verbetes: 0, livros: {} }).capsLidos = true;
-    }
+    const byDay = sumByDay(tempo, readSet.values());
     const withNotes = new Set([...notas, ...marcacoes, ...favoritos].map(r => r.cap).filter(Boolean));
     return {
       readSet,
@@ -250,95 +222,14 @@ import { esc } from "../src/lib/text";
       estudo: { notas: notas.length, marcacoes: marcacoes.length, favoritos: favoritos.length }
     };
   }
-  function streaks(byDay) {
-    const account = d => {
-      const x = byDay[d];
-      return !!x && (x.caps > 0 || x.capsLidos || x.segundos >= 300);
-    };
-    let currentStreak = 0,
-      d = today();
-    if (!account(d)) d = addDays(d, -1);
-    while (account(d)) {
-      currentStreak++;
-      d = addDays(d, -1);
-    }
-    const days = Object.keys(byDay).filter(account).sort();
-    let record = 0,
-      run = 0,
-      previous = null;
-    for (const x of days) {
-      run = previous && daysBetween(previous, x) === 1 ? run + 1 : 1;
-      record = Math.max(record, run);
-      previous = x;
-    }
-    return { currentChapter: currentStreak, record };
-  }
-  function readingPace(readSet) {
-    // capítulos por dia nos últimos 30 dias
-    const since = Date.now() - 30 * DAY_MS;
-    let n = 0;
-    for (const l of readSet.values()) if (Date.parse(l.ultima || l.primeira) >= since) n++;
-    return n / 30;
-  }
 
   // ---------- planos de leitura ----------
-  const PLANS = {
-    ano: {
-      nome: "Bíblia em 1 ano",
-      days: 365,
-      caps: () => bookList().flatMap(l => Array.from({ length: l.chapterCount }, (_, i) => `${l.code}.${i + 1}`))
-    },
-    nt90: {
-      nome: "Novo Testamento em 90 dias",
-      days: 90,
-      caps: () =>
-        bookList()
-          .filter(l => l.nt)
-          .flatMap(l => Array.from({ length: l.chapterCount }, (_, i) => `${l.code}.${i + 1}`))
-    }
-  };
-  function planStatus(p, readSet) {
-    const N = p.caps.length,
-      D = daysBetween(p.inicio, p.fim) + 1;
-    const d = Math.min(Math.max(daysBetween(p.inicio, today()), 0), D - 1);
-    const todays = p.caps.slice(Math.floor((d * N) / D), Math.floor(((d + 1) * N) / D));
-    const done = p.caps.filter(c => readSet.has(c)).length;
-    const before = Math.floor((d * N) / D),
-      untilToday = Math.floor(((d + 1) * N) / D);
-    let texto, tipo;
-    if (done >= N) {
-      texto = "Plano concluído!";
-      tipo = "ok";
-    } else if (done > untilToday) {
-      texto = `${done - untilToday} ${done - untilToday === 1 ? "capítulo adiantado" : "capítulos adiantado"}`;
-      tipo = "ok";
-    } else if (done >= before) {
-      texto = "Em dia";
-      tipo = "ok";
-    } else {
-      texto = `${before - done} ${before - done === 1 ? "capítulo atrasado" : "capítulos atrasado"}`;
-      tipo = "alerta";
-    }
-    return { todays, done, N, dia: d + 1, D, texto, tipo };
-  }
   async function startPlan(tipo) {
-    const P = PLANS[tipo];
-    await A.save("planos", {
-      id: "atual",
-      tipo,
-      nome: P.nome,
-      inicio: today(),
-      fim: addDays(today(), P.days - 1),
-      caps: P.caps(),
-      apagado: false
-    });
+    await A.save("planos", newPlan(tipo, bookList()));
     render();
   }
   async function reschedulePlan(p, readSet) {
-    const remaining = p.caps.filter(c => !readSet.has(c));
-    const originalPace = p.caps.length / (daysBetween(p.inicio, p.fim) + 1) || 1;
-    const days = Math.max(1, Math.ceil(remaining.length / originalPace));
-    await A.save("planos", { ...p, caps: remaining, inicio: today(), fim: addDays(today(), days - 1) });
+    await A.save("planos", reschedule(p, readSet));
     render();
   }
 
@@ -464,7 +355,7 @@ import { esc } from "../src/lib/text";
         <p class="pg-sub">Antigo Testamento: ${nOT} de ${totalChapters(at)} · Novo Testamento: ${nNT} de ${totalChapters(nt)} · ${completedBooks} ${completedBooks === 1 ? "livro concluído" : "livros concluídos"}</p>
       </section>
       <section class="pg-sec" aria-label="Números"><div class="pg-tiles">
-        <div class="pg-tile"><b>${streak.currentChapter} ${streak.currentChapter === 1 ? "dia" : "dias"}</b><span>seguidos lendo · recorde ${streak.record}</span></div>
+        <div class="pg-tile"><b>${streak.current} ${streak.current === 1 ? "dia" : "dias"}</b><span>seguidos lendo · recorde ${streak.record}</span></div>
         <div class="pg-tile"><b>${duration(week)}</b><span>nos últimos 7 dias · média ${duration(week / 7)}/dia</span></div>
         <div class="pg-tile"><b>${duration(totalSeconds)}</b><span>de leitura no total</span></div>
         <div class="pg-tile"><b>${verbetes.toLocaleString("pt-BR")}</b><span>verbetes abertos</span></div>
@@ -584,7 +475,7 @@ import { esc } from "../src/lib/text";
     const bookTime = Object.values(D.byDay).reduce((s, d) => s + (d.livros[cod] || 0), 0);
     const reading = D.posicao?.cod === cod ? D.posicao.cap : null;
     const remaining = l.chapterCount - readHere.length,
-      r = readingPace(D.readSet);
+      r = readingPace(D.readSet.values());
     const forecast =
       remaining && r > 0 ? ` · no seu ritmo, cerca de ${Math.ceil(remaining / r)} ${Math.ceil(remaining / r) === 1 ? "dia" : "dias"}` : "";
     const nextChapter = caps.find(n => !D.readSet.has(`${cod}.${n}`)) || 1;

@@ -2,7 +2,10 @@
  * ES module bundled by src/reader/main.ts; the books list (DATA) is inlined in ler.html before it
  * (see vite/site/reader-page.ts). Pure helpers live in src/lib. */
 import { decodeMorph, shortMorph } from "../src/lib/morph";
+import { t } from "../src/i18n";
+import { createSpeech } from "../src/lib/audio/tts";
 import { createBible, toWord } from "../src/lib/data/bible";
+import { SITE_URL, isNative as NATIVE, nativePlugin, platform as PLATFORM } from "../src/lib/native";
 import { MODE_IDS, MODE_MENU, eyebrowText as eyebrowFor, getMode, isModeId, modeHint, swapLabel } from "../src/lib/modes";
 import { createRefs } from "../src/lib/refs";
 import { store } from "../src/lib/store";
@@ -338,87 +341,23 @@ let active = null,
   returnTo = null;
 
 // ---------- Áudio ----------
-// No app (Android/iOS, Capacitor) usa o motor de voz do sistema; no navegador, a Web Speech API.
-const CAP = window.Capacitor;
-const NATIVE = !!(CAP && typeof CAP.isNativePlatform === "function" && CAP.isNativePlatform());
-const PLATFORM = NATIVE && typeof CAP.getPlatform === "function" ? CAP.getPlatform() : "web";
-// No app, a página inicial e os vídeos ficam no site (abrem no navegador do aparelho).
-const SITE = "https://josafams.github.io/biblia-interlinear/";
+// The engine (system voices in the app, Web Speech in the browser) is src/lib/audio/tts.ts; here are the buttons.
+// In the app the home page and the videos stay on the site (they open in the device browser).
 if (NATIVE)
   document.querySelectorAll("a.site-link").forEach(a => {
-    a.href = SITE + a.getAttribute("href");
+    a.href = SITE_URL + a.getAttribute("href");
     a.target = "_blank";
     a.rel = "noopener";
   });
-function capPlugin(name) {
-  if (!NATIVE) return null;
-  return (CAP.Plugins && CAP.Plugins[name]) || (typeof CAP.registerPlugin === "function" ? CAP.registerPlugin(name) : null);
-}
-const NativeTTS = capPlugin("TextToSpeech");
-const WEB_TTS = !NATIVE && "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
-const TTS = !!NativeTTS || WEB_TTS;
-const NO_TTS_MSG =
-  "Este navegador não tem leitura de voz (acontece, por exemplo, dentro de alguns apps no Android). Abra a página no Chrome, Safari ou Edge para ouvir.";
-const SYS = PLATFORM === "ios" ? "do iPhone" : "do Android";
-const VOICES = {
-  he: { name: "hebraico", codes: ["he-IL", "iw-IL", "he"], re: /^(he|iw)([-_]|$)/i, voice: null, lang: "he-IL", ok: null },
-  el: { name: "grego", codes: ["el-GR", "el"], re: /^el([-_]|$)/i, voice: null, lang: "el-GR", ok: null },
-  pt: { name: "português", codes: ["pt-BR", "pt"], re: /^pt([-_]|$)/i, voice: null, lang: "pt-BR", ok: null }
-};
-const curVoice = () => VOICES[GRC ? "el" : "he"];
-let curToken = null,
-  curBtn = null,
+let curBtn = null,
   speakingEl = null,
   toastTimer = 0;
 
-function updateVoiceNote(vs) {
-  const note = document.getElementById("voice-note"),
-    inst = document.getElementById("voice-install");
-  const lines = Object.values(VOICES)
-    .map(V => {
-      if (NativeTTS)
-        return V.ok === null
-          ? `Verificando a voz em ${V.name}…`
-          : V.ok
-            ? `Voz em ${V.name} ${SYS}: instalada.`
-            : `Voz em ${V.name}: não instalada ${SYS}.`;
-      if (!WEB_TTS) return null;
-      return V.voice
-        ? `Voz em ${V.name}: ${V.voice.name}.`
-        : vs && vs.length
-          ? `Nenhuma voz em ${V.name} neste aparelho.`
-          : `Procurando voz em ${V.name}…`;
-    })
-    .filter(Boolean);
-  note.textContent = !TTS
-    ? NO_TTS_MSG
-    : lines.join(" ") +
-      " A pronúncia é a da língua moderna (hebraico israelense; grego moderno), não a reconstrução antiga. Para instalar vozes, use as configurações de texto para fala do sistema" +
-      (PLATFORM === "ios" ? " (Ajustes › Acessibilidade › Conteúdo Falado › Vozes)." : ".");
-  inst.hidden = !(NativeTTS && PLATFORM === "android" && Object.values(VOICES).some(V => V.ok === false));
+function updateVoiceNote(speech) {
+  document.getElementById("voice-note").textContent = speech.voiceNote();
+  document.getElementById("voice-install").hidden = !speech.canInstallVoices();
 }
-function pickVoice() {
-  const vs = speechSynthesis.getVoices();
-  for (const V of Object.values(VOICES))
-    V.voice = vs.find(v => V.re.test(v.lang) && v.localService) || vs.find(v => V.re.test(v.lang)) || null;
-  updateVoiceNote(vs);
-}
-async function checkNativeVoice() {
-  for (const V of Object.values(VOICES)) {
-    V.ok = false;
-    for (const lang of V.codes) {
-      try {
-        const r = await NativeTTS.isLanguageSupported({ lang });
-        if (r && r.supported) {
-          V.lang = lang;
-          V.ok = true;
-          break;
-        }
-      } catch (_) {}
-    }
-  }
-  updateVoiceNote();
-}
+const tts = createSpeech(updateVoiceNote);
 function setBtn(btn) {
   if (curBtn) curBtn.classList.remove("on");
   curBtn = btn;
@@ -435,11 +374,9 @@ function markSpeaking(el) {
   }
 }
 function stopSpeech() {
-  curToken = null;
+  tts.stop();
   setBtn(null);
   markSpeaking(null);
-  if (NativeTTS) NativeTTS.stop().catch(() => {});
-  else if (WEB_TTS) speechSynthesis.cancel();
 }
 function toast(msg) {
   const t = document.getElementById("toast");
@@ -457,52 +394,21 @@ document.getElementById("toast").addEventListener("click", e => {
 });
 const spokenOrig = t => (GRC ? String(t).replace(/[^\p{L}\p{M}\s]/gu, "") : cleanHeb(t));
 function speak(texts, btn, onEach, voice) {
-  if (!TTS) return toast(NO_TTS_MSG);
+  if (!tts.available) return toast(tts.unavailableText());
   if (btn && btn === curBtn) return stopSpeech();
   stopSpeech();
-  const V = voice ? VOICES[voice] : curVoice(),
-    token = {};
-  const spoken = voice === "pt" ? t => String(t) : spokenOrig;
-  curToken = token;
+  const spoken = voice === "pt" ? String : spokenOrig;
   setBtn(btn);
-  const finish = () => {
-    if (curToken === token) {
-      curToken = null;
+  const warning = tts.speak(texts.map(spoken), {
+    voice: voice || (GRC ? "el" : "he"),
+    rate: prefs.slow ? 0.6 : 0.9,
+    onEach,
+    onEnd() {
       setBtn(null);
       markSpeaking(null);
     }
-  };
-  const rate = prefs.slow ? 0.6 : 0.9;
-  if (NativeTTS) {
-    (async () => {
-      for (let i = 0; i < texts.length; i++) {
-        if (curToken !== token) return;
-        if (onEach) onEach(i);
-        try {
-          await NativeTTS.speak({ text: spoken(texts[i]), lang: V.lang, rate, pitch: 1.0, volume: 1.0, category: "playback" });
-        } catch (_) {
-          break;
-        }
-      }
-      finish();
-    })();
-    if (V.ok === false) toast(`Não há voz em ${V.name} instalada ${SYS}. Veja em Aparência › Áudio.`);
-    return;
-  }
-  texts.forEach((t, i) => {
-    const u = new SpeechSynthesisUtterance(spoken(t));
-    u.lang = V.voice ? V.voice.lang : V.lang;
-    if (V.voice) u.voice = V.voice;
-    u.rate = rate;
-    u.onstart = () => {
-      if (curToken === token && onEach) onEach(i);
-    };
-    u.onend = u.onerror = () => {
-      if (i === texts.length - 1) finish();
-    };
-    speechSynthesis.speak(u);
   });
-  if (!V.voice) toast(`Este aparelho pode não ter voz em ${V.name}. Veja em Aparência › Áudio.`);
+  if (warning) toast(warning);
 }
 // Bíblia Livre em voz alta (modo Bíblia ou com o original desligado): versículo a versículo, em português.
 function speakBlivre(from, btn, one) {
@@ -525,16 +431,8 @@ function speakVerse(vi, btn) {
   );
 }
 document.getElementById("voice-install").addEventListener("click", () => {
-  if (NativeTTS && typeof NativeTTS.openInstall === "function")
-    NativeTTS.openInstall().catch(() => toast("Não foi possível abrir as configurações de voz."));
+  tts.openInstall().catch(() => toast(t("audio.install_failed")));
 });
-if (NativeTTS) {
-  updateVoiceNote();
-  checkNativeVoice();
-} else if (WEB_TTS) {
-  pickVoice();
-  speechSynthesis.onvoiceschanged = pickVoice;
-} else updateVoiceNote();
 
 // ---------- Verbete ----------
 const BLB = k =>
@@ -1685,7 +1583,7 @@ window.addEventListener("hashchange", () => {
 });
 
 // ---------- App nativo: botão "voltar" do Android ----------
-const AppPlugin = capPlugin("App");
+const AppPlugin = nativePlugin("App");
 if (AppPlugin && PLATFORM === "android") {
   AppPlugin.addListener("backButton", () => {
     if (openSheet) return closePanel();
