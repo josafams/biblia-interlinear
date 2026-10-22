@@ -428,5 +428,11 @@
       "one": "{count} verbete",
       "other": "{count} verbetes"
     }
+  },
+  "header": {
+    "about": "Sobre o livro",
+    "about_book": "Sobre {book}",
+    "lexicon": "Léxico",
+    "questions": "Perguntas"
   }
 }
