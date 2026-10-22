@@ -354,5 +354,9 @@
   },
   "app": {
     "name": "Bíblia Interlinear"
+  },
+  "reader": {
+    "chapter_nav": "Capítulo anterior e próximo",
+    "not_in_preview": "Este capítulo não está incluído nesta prévia."
   }
 }

@@ -2,8 +2,16 @@
 // The legacy web/reader.js writes it while its parts move to components (phase 4).
 import type { ModeId } from "../lib/modes";
 
-/** A chapter next to the one on screen, for the ‹ › buttons. */
-export type NeighborChapter = { name: string; abbrev: string; n: number };
+/** A chapter next to the one on screen, for the ‹ › buttons and the "Próximo capítulo" card. */
+export type NeighborChapter = {
+  code: string;
+  name: string;
+  abbrev: string;
+  n: number;
+  theme: string;
+  /** false in the preview build when the chapter is not included */
+  available: boolean;
+};
 /** Where the reading is: the verse at the top of the screen (0 = the chapter title). */
 export type Here = { book: string; chapter: number; verse: number; theme: string };
 
