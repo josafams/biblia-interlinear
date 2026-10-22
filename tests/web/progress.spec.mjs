@@ -88,7 +88,13 @@ test("ler até o fim do capítulo marca como lido e conta o tempo", async ({ bro
 test("sem atividade (nem rolar, nem tocar), o tempo para de contar", async ({ browser }, info) => {
   const page = await aparelho(browser, info, novaNuvem());
   await signIn(page);
-  await page.mouse.wheel(0, 300);
+  // the first sync after signing in repaints the annotations, and the browser may adjust the scroll position
+  // (a scroll event, which counts as activity): let it finish before measuring
+  await page.evaluate(() => window.Sync.currentTime());
+  await expect.poll(() => page.evaluate(() => window.Sync.statusSummary()?.tipo)).toBe("ok");
+  // one instant gesture (a key): a wheel scroll is animated, and on a busy machine its scroll events keep
+  // arriving for a while, which kept the time counting past the wait below
+  await page.keyboard.press("Shift");
   await page.waitForTimeout(2500); // o gesto "vale" por 1,5 s
   const t1 = await page.evaluate(() =>
     window.Progress.saveTime()
