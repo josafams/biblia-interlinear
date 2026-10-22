@@ -6,10 +6,14 @@ import { t } from "../src/i18n";
 import { createSpeech } from "../src/lib/audio/tts";
 import { createBible, toWord } from "../src/lib/data/bible";
 import { SITE_URL, isNative as NATIVE, nativePlugin, platform as PLATFORM } from "../src/lib/native";
-import { MODE_IDS, MODE_MENU, eyebrowText as eyebrowFor, getMode, isModeId, modeHint, swapLabel } from "../src/lib/modes";
+import { flushSync, mount } from "svelte";
+import ModeNote from "../src/components/ModeNote.svelte";
+import ModeSelector from "../src/components/ModeSelector.svelte";
+import { MODE_IDS, eyebrowText as eyebrowFor, getMode, isModeId, swapLabel } from "../src/lib/modes";
 import { createRefs } from "../src/lib/refs";
 import { store } from "../src/lib/store";
 import { cleanHeb, esc, glossHTML, glossSpoken, norm } from "../src/lib/text";
+import { reader as readerState } from "../src/state/reader.svelte";
 const SPK =
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
 const BOOKS = DATA.books;
@@ -1354,12 +1358,11 @@ document.getElementById("open-mine").addEventListener("click", e => {
 // Cada modo é um conjunto de valores para os interruptores marcados com data-modo. Mudar um deles à mão
 // vira "Personalizado" (a partir do modo de origem). O modo vale para todos os aparelhos quando houver conta.
 const MODES = MODE_IDS.map(getMode);
-const modeGrid = document.getElementById("mode-grid"),
-  modeNote = document.getElementById("mode-note"),
-  modeSwap = document.getElementById("mode-swap");
-modeGrid.innerHTML = MODE_MENU.map(id => MODES.find(m => m.id === id))
-  .map(m => `<button class="mcard" role="radio" aria-checked="false" data-modo="${m.id}" title="${m.description}">${m.name}</button>`)
-  .join("");
+const modeSwap = document.getElementById("mode-swap");
+// the selectors (top bar and Aparência) and the note under them are Svelte components that follow readerState
+mount(ModeSelector, { target: document.getElementById("mode-grid"), props: { variant: "card", onselect: id => applyMode(id) } });
+mount(ModeSelector, { target: document.getElementById("bar-modes"), props: { variant: "bar", onselect: id => applyMode(id) } });
+mount(ModeNote, { target: document.getElementById("mode-note") });
 let modo = store.get("modo", "");
 let baseMode = store.get("modo-base", "interlinear");
 let previousMode = store.get("modo-anterior", "");
@@ -1374,19 +1377,11 @@ function setSwitch(id, on) {
   store.set(t.dataset.key, on ? "on" : "off");
   if (ON_CHANGE[t.id]) ON_CHANGE[t.id](!!on);
 }
-const barModes = document.getElementById("bar-modes");
-barModes.innerHTML = MODE_MENU.map(id => MODES.find(m => m.id === id))
-  .map(m => `<button class="bmode" role="radio" aria-checked="false" data-modo="${m.id}" title="${m.description}">${m.name}</button>`)
-  .join("");
-barModes.addEventListener("click", e => {
-  const b = e.target.closest(".bmode");
-  if (b) applyMode(b.dataset.modo);
-});
 function showModo() {
   const currentChapter = modo || "interlinear";
-  barModes.querySelectorAll(".bmode").forEach(b => b.setAttribute("aria-checked", String(b.dataset.modo === currentChapter)));
-  modeGrid.querySelectorAll(".mcard").forEach(b => b.setAttribute("aria-checked", String(b.dataset.modo === currentChapter)));
-  modeNote.textContent = isModeId(currentChapter) ? modeHint(currentChapter, baseMode) : "";
+  readerState.mode = isModeId(currentChapter) ? currentChapter : "interlinear";
+  readerState.baseMode = isModeId(baseMode) ? baseMode : "interlinear";
+  flushSync();
   const other = MODES.find(m => m.id === previousMode && m.id !== currentChapter);
   modeSwap.hidden = !other;
   if (other) {
@@ -1414,10 +1409,6 @@ function applyMode(id, manual = true) {
   document.querySelectorAll(".verse.abrir").forEach(v => v.classList.remove("abrir"));
   showModo();
 }
-modeGrid.addEventListener("click", e => {
-  const b = e.target.closest(".mcard");
-  if (b) applyMode(b.dataset.modo);
-});
 modeSwap.addEventListener("click", () => {
   const targetEl = previousMode;
   if (targetEl) applyMode(targetEl);

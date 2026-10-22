@@ -46,7 +46,9 @@ for (const file of legacy)
   for (const m of fs.readFileSync(file, "utf8").matchAll(/\b(?:t|tryT)\(\s*["'`]([a-z_]+(?:\.[\w-]+)+)["'`]/g)) used.add(m[1]);
 
 for (const file of files) {
-  const lines = fs.readFileSync(file, "utf8").split("\n");
+  // HTML comments of .svelte files are not screen text (blanked, keeping the line numbers)
+  const source = fs.readFileSync(file, "utf8").replace(/<!--[\s\S]*?-->/g, c => c.replace(/[^\n]/g, " "));
+  const lines = source.split("\n");
   lines.forEach((line, i) => {
     for (const m of line.matchAll(/\b(?:t|tryT)\(\s*(["'`])((?:(?!\1).)*)\1/g)) {
       const key = m[2];
