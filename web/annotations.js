@@ -1,3 +1,8 @@
+import { flushSync, mount } from "svelte";
+import AnnotatePanel from "../src/components/AnnotatePanel.svelte";
+import { t } from "../src/i18n";
+import { chapterOf, createVerseAnnotations, tagKey, verseAnchor as anchorFor } from "../src/lib/annotations/verse";
+import { COLOR_IDS, annotate } from "../src/state/annotate.svelte";
 import { COLLECTIONS, createAnnotationStore, uuid } from "../src/lib/annotations/store";
 import { exposedPlugin, nativePlugin, platform } from "../src/lib/native";
 import { esc } from "../src/lib/text";
@@ -16,13 +21,6 @@ import { esc } from "../src/lib/text";
   if (window.Annotations) return;
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
-  const COLORS = [
-    { id: "amarelo", nome: "Amarelo" },
-    { id: "verde", nome: "Verde" },
-    { id: "azul", nome: "Azul" },
-    { id: "rosa", nome: "Rosa" },
-    { id: "laranja", nome: "Laranja" }
-  ];
   const EDITION = (window.DATA_EDICAO || "").slice(0, 10);
 
   // ---------- banco local (src/lib/annotations/store.ts) ----------
@@ -31,11 +29,7 @@ import { esc } from "../src/lib/text";
   annotations.setRepaint(() => paint());
 
   // ---------- âncoras ----------
-  const chapterOf = a => `${a.livro}.${a.cap}`;
-  const anchorKey = a => `${a.livro}.${a.cap}.${a.ver}:${a.camada}:${a.camada === "versiculo" ? "" : `${a.inicio ?? ""}-${a.fim ?? ""}`}`;
-  function verseAnchor(cod, cap, v) {
-    return { livro: cod, cap, ver: v, ver_fim: v, camada: "versiculo", edicao: EDITION };
-  }
+  const verseAnchor = (cod, cap, v) => anchorFor(cod, cap, v, EDITION);
 
   // ---------- estado do capítulo atual (vem do leitor) ----------
   let currentChapter = null; // { cod, cap, nome, verses: [{ n, blivre, words: [{ heb }] }] }
@@ -55,8 +49,8 @@ import { esc } from "../src/lib/text";
     ]);
     if (!currentChapter || cap !== `${currentChapter.book}.${currentChapter.chapter}`) return;
     $$(".verse", versesRoot()).forEach(sec => {
-      sec.classList.remove(...COLORS.map(c => "mk-" + c.id));
-      $$(".word", sec).forEach(w => w.classList.remove(...COLORS.map(c => "mk-" + c.id)));
+      sec.classList.remove(...COLOR_IDS.map(c => "mk-" + c));
+      $$(".word", sec).forEach(w => w.classList.remove(...COLOR_IDS.map(c => "mk-" + c)));
       const vi = +sec.dataset.vi,
         v = currentChapter.verses[vi];
       const bl = $(".blivre", sec);
@@ -167,7 +161,7 @@ import { esc } from "../src/lib/text";
     void bodyHtml;
   }
 
-  // ---------- barra de marcação ----------
+  // ícones dos painéis que ainda não são componentes (nota, Minhas anotações, caderno)
   const ICONS = {
     nota: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 4h14v12l-4 4H5z"/><path d="M9 9h6M9 13h4"/></svg>',
     fav: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>',
@@ -182,37 +176,21 @@ import { esc } from "../src/lib/text";
       '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>',
     hide: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>'
   };
-  const bar = document.createElement("div");
-  bar.id = "mbar";
-  bar.className = "mbar";
-  bar.hidden = true;
-  bar.setAttribute("role", "dialog");
-  bar.setAttribute("aria-label", "Marcar e anotar");
-  bar.innerHTML = `
-    <div class="mb-top"><div class="mb-head"><b id="mb-ref"></b><span id="mb-snippet"></span></div><button class="mb-x" id="mb-close" aria-label="Fechar">${ICONS.hide}</button></div>
-    <div class="mb-body">
-      <div class="mb-colors" role="group" aria-label="Cor da marcação">
-        ${COLORS.map(c => `<button class="mb-color mk-${c.id}" data-cor="${c.id}" aria-pressed="false" aria-label="${c.nome}"></button>`).join("")}
-        <button class="mb-color mb-none" data-cor="" aria-label="Tirar a marcação">${ICONS.hide}</button>
-      </div>
-      <div class="mb-actions">
-        <button data-action="fav" aria-pressed="false">${ICONS.fav}<span>Favoritar</span></button>
-        <button data-action="ouvir">${ICONS.ouvir}<span>Ouvir</span></button>
-        <button data-action="copiar">${ICONS.copyText}<span>Copiar</span></button>
-        <button data-action="compartilhar">${ICONS.share}<span>Compartilhar</span></button>
-        <button data-action="camadas" hidden><span class="mb-ab" aria-hidden="true">αβ</span><span>Interlinear</span></button>
-      </div>
-      <div class="mb-note">
-        <div class="mb-lbl"><label for="mb-note">Nota</label><span id="mb-note-status" aria-live="polite"></span></div>
-        <textarea id="mb-note" rows="4" placeholder="O que você percebeu neste versículo?"></textarea>
-        <div class="mb-note-foot"><button class="linklike" data-action="nota">Abrir em tela cheia</button></div>
-      </div>
-      <div class="mb-tags" id="mb-tags" role="group" aria-label="Etiquetas"></div>
-      <div class="mb-review" id="mb-review" hidden><b>Ponto de revisão automática</b><ul id="mb-review-list"></ul></div>
-      <button class="linklike mb-del" data-action="limpar" hidden>Apagar tudo deste versículo</button>
-    </div>
-    <div class="mb-foot"><button class="mb-done" id="mb-done">Pronto</button></div>`;
-  document.body.appendChild(bar);
+  // ---------- painel Anotar (AnnotatePanel.svelte; as regras do versículo em src/lib/annotations/verse.ts) ----------
+  const verse = createVerseAnnotations(annotations);
+  const verseTags = a => verse.tags(a);
+  mount(AnnotatePanel, {
+    target: document.body,
+    props: {
+      onclose: () => closeBar(),
+      oncolor: color => setColor(color),
+      onaction: (action, button) => panelAction(action, button),
+      ontag: id => toggleTag(id),
+      onnewtag: async name => toggleTag((await verse.tagNamed(name)).id, true),
+      onnote: () => noteTyped()
+    }
+  });
+  const bar = $("#mbar");
 
   // Compartilhar: o endereço do versículo (#JHN.3.16) com o texto da BLIVRE. No app vai pela folha de
   // compartilhar do sistema e aponta para o site publicado; no navegador usa a Web Share API ou copia o link.
@@ -240,106 +218,63 @@ import { esc } from "../src/lib/text";
     }
   }
 
-  // Tudo o que está guardado num versículo (cor de qualquer camada, notas e favorito)
-  async function verseRecords(a) {
-    const cap = chapterOf(a);
-    const [ms, ns, fs] = await Promise.all(["marcacoes", "notas", "favoritos"].map(c => ofChapter(c, cap)));
-    const at = r => r.ancora?.ver === a.ver;
-    return { marcacoes: ms.filter(at), notas: ns.filter(at), favoritos: fs.filter(at) };
-  }
-  // As etiquetas valem para o versículo inteiro: é a união das etiquetas de todos os registros dele
-  async function verseTags(a) {
-    const r = await verseRecords(a);
-    return [...new Set(Object.values(r).flatMap(l => l.flatMap(x => x.etiquetas || [])))];
-  }
-
   // titulo: abre o painel para responder uma pergunta (a resposta vira uma nota nova com a pergunta como título)
   async function openBar(ancora, labelText, trecho, titulo) {
     document.dispatchEvent(new CustomEvent("annotations:open-panel"));
     selection = { ancora, labelText, trecho, titulo };
-    $("#mb-ref").textContent = labelText;
     // sem trecho selecionado, mostra o começo do próprio versículo, como no design
     const citado = trecho || (ancora.camada === "versiculo" ? ancora.trecho : "") || "";
-    $("#mb-snippet").textContent = titulo
-      ? `Pergunta: ${titulo}`
+    annotate.ref = labelText;
+    annotate.snippet = titulo
+      ? t("annotate.question", { question: titulo })
       : citado
         ? `“${citado.length > 90 ? citado.slice(0, 88) + "…" : citado}”`
         : "";
+    annotate.verse = ancora.ver;
+    annotate.question = !!titulo;
     await loadQuickNote(ancora);
     if (titulo) {
       quickNote = null;
-      $("#mb-note").value = "";
-      $("#mb-note-status").textContent = "";
+      annotate.note = "";
+      annotate.noteStatus = "";
     }
-    $("#mb-note").placeholder = titulo ? "Sua resposta… (salva sozinha)" : "O que você percebeu neste versículo?";
-    await showTags({ focus: false });
-    const m = await highlightOf(ancora);
-    $$(".mb-color", bar).forEach(b => b.setAttribute("aria-pressed", String(!!m && m.cor === b.dataset.cor && !!b.dataset.cor)));
-    const f = await favoriteOf(ancora.livro, ancora.cap, ancora.ver);
-    $('[data-action="fav"]', bar).setAttribute("aria-pressed", String(!!f));
-    $('[data-action="fav"] span', bar).textContent = f ? "Favorito" : "Favoritar";
-    $('[data-action="camadas"]', bar).hidden = !document.body.classList.contains("hide-orig");
-    const r = await verseRecords(ancora);
-    $('[data-action="limpar"]', bar).hidden = !Object.values(r).some(l => l.length);
+    await showTags();
+    annotate.color = (await verse.highlightOf(ancora))?.cor || "";
+    annotate.favorite = !!(await verse.favoriteOf(ancora));
+    annotate.showLayers = document.body.classList.contains("hide-orig");
+    annotate.hasRecords = await verse.hasAny(ancora);
     $$(".verse.editando").forEach(v => v.classList.remove("editando"));
     const sec = verseEl(ancora.ver);
     sec?.classList.add("editando");
-    // a explicação da revisão automática fica aqui, como no design (no texto, só o ponto no número)
-    const marks = sec?.querySelector("details.marks ul");
-    $("#mb-review").hidden = !marks;
-    if (marks) $("#mb-review-list").innerHTML = marks.innerHTML;
     // no celular a folha cobre a parte de baixo: o versículo sobe para ficar visível acima dela
     if (sec && !matchMedia("(min-width: 1100px)").matches) sec.scrollIntoView({ block: "start" });
-    bar.hidden = false;
+    annotate.open = true;
+    flushSync();
     document.body.classList.add("com-mbar");
     (titulo ? $("#mb-note") : $(".mb-color", bar)).focus({ preventScroll: true });
   }
   async function refreshClear() {
-    if (!selection) return;
-    const r = await verseRecords(selection.ancora);
-    $('[data-action="limpar"]', bar).hidden = !Object.values(r).some(l => l.length);
+    if (selection) annotate.hasRecords = await verse.hasAny(selection.ancora);
   }
   function closeBar() {
-    if (bar.hidden) return;
+    if (!annotate.open) return;
     flushQuickNote();
-    bar.hidden = true;
+    annotate.open = false;
+    flushSync();
     selection = null;
     $$(".verse.editando").forEach(v => v.classList.remove("editando"));
     document.body.classList.remove("com-mbar");
   }
-  async function highlightOf(a) {
-    const k = anchorKey(a);
-    return (await ofChapter("marcacoes", chapterOf(a))).find(m => anchorKey(m.ancora) === k) || null;
+  async function setColor(color) {
+    if (!selection) return;
+    await verse.setColor(selection.ancora, color || null);
+    await paint();
+    annotate.color = color;
+    refreshClear();
   }
-  async function favoriteOf(livro, cap, ver) {
-    return (await ofChapter("favoritos", `${livro}.${cap}`)).find(f => f.ancora.ver === ver) || null;
-  }
-  bar.addEventListener("click", async e => {
+  async function panelAction(action, button) {
     if (!selection) return;
     const a = selection.ancora;
-    if (e.target.closest("#mb-close, #mb-done")) return closeBar();
-    const cor = e.target.closest(".mb-color");
-    if (cor) {
-      const m = await highlightOf(a);
-      if (!cor.dataset.cor) {
-        if (m) {
-          if (m.etiquetas?.length) await save("marcacoes", { id: m.id, cor: null });
-          else await removeRecord("marcacoes", m.id);
-        }
-      } else
-        await save("marcacoes", {
-          id: m?.id || uuid(),
-          cap: chapterOf(a),
-          ancora: a,
-          cor: cor.dataset.cor,
-          etiquetas: m?.etiquetas || (await verseTags(a))
-        });
-      await paint();
-      $$(".mb-color", bar).forEach(b => b.setAttribute("aria-pressed", String(!!cor.dataset.cor && b === cor)));
-      refreshClear();
-      return;
-    }
-    const action = e.target.closest("[data-action]")?.dataset.action;
     if (action === "nota") {
       const s = selection;
       await flushQuickNote();
@@ -349,19 +284,11 @@ import { esc } from "../src/lib/text";
     }
     if (action === "ouvir") {
       const vi = currentChapter?.verses.findIndex(x => x.n === a.ver);
-      if (vi >= 0) document.dispatchEvent(new CustomEvent("annotations:speak", { detail: { vi, btn: e.target.closest("button") } }));
+      if (vi >= 0) document.dispatchEvent(new CustomEvent("annotations:speak", { detail: { vi, btn: button } }));
       return;
     }
     if (action === "fav") {
-      const f = await favoriteOf(a.livro, a.cap, a.ver);
-      if (f) await removeRecord("favoritos", f.id);
-      else
-        await save("favoritos", {
-          id: uuid(),
-          cap: chapterOf(a),
-          ancora: verseAnchor(a.livro, a.cap, a.ver),
-          etiquetas: await verseTags(a)
-        });
+      await verse.toggleFavorite(a, EDITION);
       await paint();
       return openBar(a, selection.labelText, selection.trecho);
     }
@@ -371,9 +298,9 @@ import { esc } from "../src/lib/text";
       const texto = `${selection.trecho || v?.blivre || ""} (${currentChapter?.bookName || a.livro} ${a.cap}:${a.ver}, Bíblia Livre)`;
       try {
         await navigator.clipboard.writeText(texto);
-        toastMsg("Copiado.");
+        toastMsg(t("annotate.copied"));
       } catch (_) {
-        toastMsg("Não foi possível copiar neste navegador.");
+        toastMsg(t("annotate.copy_failed"));
       }
       return closeBar();
     }
@@ -385,72 +312,26 @@ import { esc } from "../src/lib/text";
       verseEl(a.ver)?.classList.toggle("abrir");
       return closeBar();
     }
-    const tag = e.target.closest("[data-etiqueta]");
-    if (tag) return toggleTag(tag.dataset.etiqueta);
-    const sug = e.target.closest("[data-sug]");
-    if (sug || e.target.closest("#mb-new-tag")) {
-      const field = $("#mb-tag-name");
-      // o # é opcional ("#oração" e "oração" são a mesma etiqueta)
-      const nome = (sug ? sug.dataset.sug : field.value).trim().replace(/^#+\s*/, "");
-      if (!nome) return field.focus();
-      const exists = (await allRecords("etiquetas")).find(x => x.nome.toLowerCase() === nome.toLowerCase());
-      const t = exists || (await save("etiquetas", { id: uuid(), nome, cor: null }));
-      await toggleTag(t.id, true);
-    }
-  });
-  // Digitar no campo de etiqueta filtra as que já existem
-  bar.addEventListener("input", e => {
-    if (e.target.id !== "mb-tag-name") return;
-    const q = tagKey(e.target.value);
-    $$("#mb-tags [data-etiqueta]", bar).forEach(b => {
-      b.hidden = !!q && !tagKey(b.textContent).includes(q);
-    });
-  });
-  const tagKey = s =>
-    String(s || "")
-      .replace(/^#+\s*/, "")
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/\p{M}/gu, "")
-      .trim();
+  }
   // Limpar o versículo (cor, notas, favorito) com "Desfazer" por alguns segundos
   async function clearVerse(a) {
-    const r = await verseRecords(a);
-    const gone = Object.entries(r).flatMap(([col, l]) => l.map(x => [col, x]));
-    for (const [col, x] of gone) await removeRecord(col, x.id);
+    const gone = await verse.clear(a);
     closeBar();
     await paint();
-    toastUndo(`${gone.length} ${gone.length === 1 ? "item apagado" : "itens apagados"} deste versículo.`, async () => {
-      for (const [col, x] of gone) {
-        const { criado_em: _c, alterado_em: _a, relogio: _r, base: _b, apagado: _d, ...rec } = x;
-        await save(col, rec);
-      }
+    toastUndo(t("annotate.cleared", { count: gone.count }), async () => {
+      await gone.undo();
       await paint();
-      toastMsg("Anotações de volta.");
+      toastMsg(t("annotate.restored"));
     });
   }
-  bar.addEventListener("keydown", e => {
-    if (e.key === "Escape") {
-      e.stopPropagation();
-      closeBar();
-    }
-    if (e.key === "Enter" && e.target.id === "mb-tag-name") {
-      e.preventDefault();
-      $("#mb-new-tag").click();
-    }
-  });
   // Nota rápida no próprio painel: edita a primeira nota do versículo (ou cria uma ao digitar)
   let quickNote = null,
     quickTimer = 0;
   async function loadQuickNote(a) {
-    const ns = (await ofChapter("notas", chapterOf(a)))
-      .filter(n => n.ancora?.ver === a.ver)
-      .sort((x, y) => x.criado_em.localeCompare(y.criado_em));
+    const ns = await verse.notes(a);
     quickNote = ns[0] || null;
-    const field = $("#mb-note");
-    field.value = quickNote?.texto || "";
-    $("#mb-note-status").textContent =
-      ns.length > 1 ? `+${ns.length - 1} ${ns.length === 2 ? "outra nota" : "outras notas"} neste versículo` : "";
+    annotate.note = quickNote?.texto || "";
+    annotate.noteStatus = ns.length > 1 ? t("annotate.other_notes", { count: ns.length - 1 }) : "";
   }
   async function flushQuickNote() {
     if (!quickTimer) return;
@@ -460,69 +341,28 @@ import { esc } from "../src/lib/text";
   }
   async function saveQuickNote() {
     if (!selection) return;
-    const texto = $("#mb-note").value;
+    const texto = annotate.note;
     if (!quickNote && !texto.trim()) return;
-    const a = { ...selection.ancora };
-    quickNote = quickNote
-      ? await save("notas", { id: quickNote.id, texto })
-      : await save("notas", {
-          id: uuid(),
-          cap: chapterOf(a),
-          ancora: a,
-          titulo: selection.titulo || "",
-          texto,
-          etiquetas: await verseTags(a)
-        });
-    $("#mb-note-status").textContent = "Salva.";
+    quickNote = await verse.saveNote(quickNote, selection.ancora, texto, selection.titulo || "");
+    annotate.noteStatus = t("annotate.saved");
     paint();
     refreshClear();
   }
-  $("#mb-note").addEventListener("input", () => {
+  function noteTyped() {
     clearTimeout(quickTimer);
-    $("#mb-note-status").textContent = "…";
+    annotate.noteStatus = "…";
     quickTimer = setTimeout(() => {
       quickTimer = 0;
       saveQuickNote();
     }, 600);
-  });
-
-  const SUGGESTED_TAGS = ["promessas", "oração", "amor de Deus", "para estudar"];
-  async function showTags({ focus = true } = {}) {
-    const box = $("#mb-tags");
-    const [tagList, ms, ns, fs] = await Promise.all(["etiquetas", "marcacoes", "notas", "favoritos"].map(allRecords));
-    // as mais usadas primeiro
-    const uses = {};
-    for (const r of [...ms, ...ns, ...fs]) for (const t of r.etiquetas || []) uses[t] = (uses[t] || 0) + 1;
-    tagList.sort((x, y) => (uses[y.id] || 0) - (uses[x.id] || 0) || x.nome.localeCompare(y.nome, "pt"));
-    const has = new Set(await verseTags(selection.ancora));
-    const chip = t =>
-      `<button class="chip" data-etiqueta="${t.id}" aria-pressed="${has.has(t.id)}"${has.has(t.id) ? ` aria-label="Tirar a etiqueta ${esc(t.nome)}"` : ""}>${esc(t.nome)}</button>`;
-    const mine = tagList.filter(t => has.has(t.id)),
-      rest = tagList.filter(t => !has.has(t.id));
-    const sugs = tagList.length
-      ? rest.map(chip).join("")
-      : SUGGESTED_TAGS.map(s => `<button class="chip mb-sug" data-sug="${esc(s)}">${esc(s)}</button>`).join("");
-    box.innerHTML = `<div class="mb-lbl">Etiquetas</div>
-      ${mine.length ? `<div class="mb-tag-list mb-mine">${mine.map(chip).join("")}</div>` : ""}
-      <span class="mb-tag-new"><label class="sr" for="mb-tag-name">Adicionar etiqueta</label><input id="mb-tag-name" type="text" placeholder="+ Adicionar etiqueta (Enter cria)" autocomplete="off"><button id="mb-new-tag" class="chip">Criar</button></span>
-      ${sugs ? `<span class="mb-sug-lbl">${tagList.length ? "Suas etiquetas" : "Sugestões para começar"}</span><div class="mb-tag-list">${sugs}</div>` : ""}`;
-    if (focus) $("#mb-tag-name").focus();
+  }
+  async function showTags() {
+    if (selection) annotate.tags = await verse.tagChoices(selection.ancora);
   }
   // Ligar ou desligar uma etiqueta no versículo: vale para todos os registros dele (cor, notas e favorito)
   async function toggleTag(id, turnOn) {
-    const a = selection.ancora;
-    const r = await verseRecords(a);
-    const all = Object.entries(r).flatMap(([col, l]) => l.map(x => [col, x]));
-    const on = turnOn ?? !all.some(([, x]) => (x.etiquetas || []).includes(id));
-    for (const [col, x] of all) {
-      const set = new Set(x.etiquetas || []);
-      if (on) set.add(id);
-      else set.delete(id);
-      if (col === "marcacoes" && !x.cor && !set.size) await removeRecord(col, x.id);
-      else await save(col, { id: x.id, etiquetas: [...set] });
-    }
-    if (on && !all.length) await save("marcacoes", { id: uuid(), cap: chapterOf(a), ancora: a, cor: null, etiquetas: [id] });
-    await showTags({ focus: false });
+    await verse.toggleTag(selection.ancora, id, turnOn);
+    await showTags();
     paint();
     refreshClear();
   }

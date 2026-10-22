@@ -468,5 +468,51 @@
     "in_chapter": "{count} em {ref}",
     "ref_label": "Abrir verbete {strong}, {xlit}",
     "pronunciation_legend": "Pronúncia aproximada: sílaba tônica em MAIÚSCULAS; <b>rr</b> como em “carro”; <b>h</b> sempre aspirado; <b>ch</b> como em “chave”; <b>th</b> como no inglês “think”."
+  },
+  "annotate": {
+    "label": "Marcar e anotar",
+    "close": "Fechar",
+    "colors": "Cor da marcação",
+    "color": {
+      "amarelo": "Amarelo",
+      "verde": "Verde",
+      "azul": "Azul",
+      "rosa": "Rosa",
+      "laranja": "Laranja"
+    },
+    "no_color": "Tirar a marcação",
+    "favorite": "Favoritar",
+    "favorite_on": "Favorito",
+    "copy": "Copiar",
+    "share": "Compartilhar",
+    "layers": "Interlinear",
+    "note": "Nota",
+    "note_placeholder": "O que você percebeu neste versículo?",
+    "answer_placeholder": "Sua resposta… (salva sozinha)",
+    "full_screen": "Abrir em tela cheia",
+    "tags": "Etiquetas",
+    "add_tag": "Adicionar etiqueta",
+    "add_tag_placeholder": "+ Adicionar etiqueta (Enter cria)",
+    "create_tag": "Criar",
+    "your_tags": "Suas etiquetas",
+    "suggested_tags": "Sugestões para começar",
+    "untag": "Tirar a etiqueta {tag}",
+    "review": "Ponto de revisão automática",
+    "clear": "Apagar tudo deste versículo",
+    "done": "Pronto",
+    "question": "Pergunta: {question}",
+    "copied": "Copiado.",
+    "copy_failed": "Não foi possível copiar neste navegador.",
+    "cleared": {
+      "one": "{count} item apagado deste versículo.",
+      "other": "{count} itens apagados deste versículo."
+    },
+    "restored": "Anotações de volta.",
+    "other_notes": {
+      "one": "+{count} outra nota neste versículo",
+      "other": "+{count} outras notas neste versículo"
+    },
+    "saved": "Salva.",
+    "suggestions": "promessas|oração|amor de Deus|para estudar"
   }
 }
