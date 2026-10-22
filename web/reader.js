@@ -1532,42 +1532,11 @@ tocView("livros");
     sheets.toc.prepend(x);
   }
 }
-// Minhas anotações vira a aba Notas do índice: as mesmas abas no topo, a busca com o ⋯ ao lado
-window.addEventListener("load", () => {
-  const ms = document.getElementById("minhas");
-  if (!ms) return;
-  const tabs = sheets.toc.querySelector(".toc-tabs").cloneNode(true);
-  tabs.querySelectorAll("[id]").forEach(x => x.removeAttribute("id"));
-  tabs.className = "mn-tabs";
-  tabs
-    .querySelectorAll("[data-tab]")
-    .forEach(t => (t.getAttribute("href") === "#toc-notas" ? t.setAttribute("aria-current", "true") : t.removeAttribute("aria-current")));
-  ms.prepend(tabs);
-  const x = ms.querySelector(".shead [data-fechar]");
-  if (x) {
-    x.classList.add("toc-x");
-    ms.prepend(x);
-  }
-  tabs.addEventListener("click", e => {
-    const t = e.target.closest("[data-tab]");
-    if (!t) return;
-    e.preventDefault();
-    const aba = t.getAttribute("href").slice(5);
-    if (aba === "notas") return;
-    ms.querySelector("[data-fechar]").click();
-    openPanel("toc");
-    tocTab(aba);
-    tocView("livros");
-  });
-  const row = ms.querySelector(".mn-searchrow"),
-    more = ms.querySelector("#mn-more");
-  if (row && more) row.append(more);
-  const count = document.getElementById("tab-notas-n");
-  new MutationObserver(() => (tabs.querySelector('[href="#toc-notas"]').textContent = "Notas" + count.textContent)).observe(count, {
-    childList: true,
-    characterData: true,
-    subtree: true
-  });
+// Minhas anotações (NotesSheet.svelte) is the Notas tab: its own tabs open the other parts of the index
+document.addEventListener("annotations:open-index", e => {
+  openPanel("toc");
+  tocTab(e.detail.tab);
+  tocView("livros");
 });
 // Você: os planos de leitura pedem a conta (sem ela, um aviso); com ela, abrem o progresso, onde o plano começa
 document.querySelectorAll("[data-vc-plano]").forEach(b =>

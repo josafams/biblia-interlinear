@@ -1,12 +1,15 @@
 import { flushSync, mount } from "svelte";
 import AnnotatePanel from "../src/components/AnnotatePanel.svelte";
 import NoteEditor from "../src/components/NoteEditor.svelte";
+import NotesSheet from "../src/components/NotesSheet.svelte";
 import TagManager from "../src/components/TagManager.svelte";
 import { t } from "../src/i18n";
-import { chapterOf, createVerseAnnotations, tagKey, verseAnchor as anchorFor } from "../src/lib/annotations/verse";
+import { chapterOf, createVerseAnnotations, verseAnchor as anchorFor } from "../src/lib/annotations/verse";
 import { COLOR_IDS, annotate } from "../src/state/annotate.svelte";
+import { listItems as buildListItems, filterItems, groupItems, sortItems, tagCounts } from "../src/lib/annotations/list";
 import { createTagManager } from "../src/lib/annotations/tags";
 import { note } from "../src/state/note.svelte";
+import { notes } from "../src/state/notes.svelte";
 import { tagManager } from "../src/state/tags.svelte";
 import { COLLECTIONS, createAnnotationStore, uuid } from "../src/lib/annotations/store";
 import { exposedPlugin, nativePlugin, platform } from "../src/lib/native";
@@ -602,193 +605,111 @@ import { esc } from "../src/lib/text";
     openList({ cap: `${currentChapter.book}.${currentChapter.chapter}`, ver });
   }
 
-  // ---------- Minhas anotações ----------
-  const listSheet = document.createElement("aside");
-  listSheet.id = "minhas";
-  listSheet.className = "sheet right mine-sheet";
-  listSheet.hidden = true;
-  listSheet.setAttribute("role", "dialog");
-  listSheet.setAttribute("aria-modal", "true");
-  listSheet.setAttribute("aria-labelledby", "mine-h");
-  listSheet.innerHTML = `
-    <div class="shead"><h2 id="mine-h">Minhas anotações</h2><button class="ibtn" data-fechar aria-label="Fechar">${ICONS.hide}</button></div>
-    <div class="sgroup">
-      <label class="sr" for="mn-search">Buscar nas anotações</label>
-      <div class="mn-searchrow"><input id="mn-search" class="lsearch" type="search" placeholder="Buscar: luz, pastor, #oração" autocomplete="off"></div>
-      <div class="mn-filters" role="group" aria-label="Tipo">
-        <button class="chip" data-tipo="" aria-pressed="true">Todas</button>
-        <button class="chip" data-tipo="notas" aria-pressed="false">Com nota</button>
-        <button class="chip" data-tipo="marcacoes" aria-pressed="false">Marcadas</button>
-        <button class="chip" data-tipo="favoritos" aria-pressed="false">Favoritos</button>
-      </div>
-      <div class="mn-tagchips" id="mn-tags" role="group" aria-label="Filtrar por etiqueta"></div>
-      <div class="mn-actions">
-        <button class="mn-new" id="mn-new">+ Nota livre (sem versículo)</button>
-        <span id="mn-total" aria-live="polite"></span>
-        <label class="mn-order"><span class="sr">Ordem</span><select id="mn-order"><option value="biblica">Ordem bíblica</option><option value="data">Mais recentes</option></select></label>
-        <details class="mn-more" id="mn-more">
-          <summary aria-label="Mais opções">⋯</summary>
-          <div class="mn-menu">
-            <button id="mn-select" aria-pressed="false">Selecionar itens</button>
-            <button id="mn-export">Exportar PDF</button>
-            <button id="mn-download">Baixar meus dados</button>
-            <button id="mn-import">Importar</button>
-            <button id="mn-manage">Gerenciar etiquetas</button>
-          </div>
-        </details>
-        <input type="file" id="mn-file" accept=".json,application/json" hidden>
-      </div>
-      <div class="mn-manage" id="mn-tagmgr" hidden></div>
-      <div id="mn-items"></div>
-    </div>`;
-  document.body.appendChild(listSheet);
-  let listFilter = { tipo: "", cap: null, ver: null, tag: "" };
-  let selecting = false;
-  const selected = new Set();
-  let lastItems = [];
+  // ---------- Minhas anotações (NotesSheet.svelte; a lista em src/lib/annotations/list.ts) ----------
   function bookName(cod) {
     return (window.__books || {})[cod]?.name || cod;
   }
   function bookOrder(cod) {
     return (window.__books || {})[cod]?.i ?? 999;
   }
+  const listBooks = { name: bookName, order: bookOrder };
+  const listLabels = () => ({
+    note: t("notes.kind_note"),
+    highlight: t("notes.kind_highlight"),
+    tagOnly: t("notes.kind_tag"),
+    favorite: t("notes.kind_favorite"),
+    free: t("note.free")
+  });
+  mount(NotesSheet, {
+    target: document.body,
+    props: {
+      onclose: () => closeList(),
+      onchange: () => renderList(),
+      onitem: x => openItem(x),
+      onnew() {
+        closeList();
+        openNote(null, null);
+      },
+      onmenu: action => listMenu(action),
+      ontab(tab) {
+        closeList();
+        document.dispatchEvent(new CustomEvent("annotations:open-index", { detail: { tab } }));
+      }
+    }
+  });
+  let lastItems = [];
   async function openList(f) {
-    listFilter = { tipo: "", cap: null, ver: null, tag: "", ...(f || {}) };
+    notes.filter = { tipo: "", cap: null, ver: null, tag: "", query: notes.filter.query, ...(f || {}) };
     focusReturn = document.activeElement;
     document.dispatchEvent(new CustomEvent("annotations:open-panel"));
-    listSheet.hidden = false;
+    notes.open = true;
+    flushSync();
     document.body.classList.add("com-minhas");
     await renderList();
     $("#mn-search").focus();
   }
-  function closeList() {
-    if (listSheet.hidden) return;
-    listSheet.hidden = true;
+  function hideList() {
+    notes.open = false;
+    flushSync();
     document.body.classList.remove("com-minhas");
+  }
+  function closeList() {
+    if (!notes.open) return;
+    hideList();
     if (focusReturn && focusReturn.isConnected) focusReturn.focus({ preventScroll: true });
   }
+  async function allItems() {
+    const [notas, marcacoes, favoritos, etiquetas] = await Promise.all(
+      ["notas", "marcacoes", "favoritos", "etiquetas"].map(c => allRecords(c))
+    );
+    return { etiquetas, items: buildListItems({ notas, marcacoes, favoritos, etiquetas }, listBooks, listLabels()) };
+  }
+  // the PDF notebook still reads the item fields by their old names
   async function listItems() {
-    const [ms, ns, fs, tagList] = await Promise.all([
-      allRecords("marcacoes"),
-      allRecords("notas"),
-      allRecords("favoritos"),
-      allRecords("etiquetas")
-    ]);
-    const tagNames = Object.fromEntries(tagList.map(t => [t.id, t.nome]));
-    const ref = a => (a ? `${bookName(a.livro)} ${a.cap}:${a.ver}` : "Nota livre");
-    const verseText = a => a?.trecho || "";
-    return {
-      tagList,
-      listSheet: [
-        ...ns.map(n => ({
-          tipo: "notas",
-          id: n.id,
-          a: n.ancora,
-          rot: "nota",
-          titulo: n.titulo,
-          texto: n.texto,
-          extra: verseText(n.ancora),
-          tagList: n.etiquetas || [],
-          data: n.alterado_em
-        })),
-        ...ms.map(m => ({
-          tipo: "marcacoes",
-          id: m.id,
-          a: m.ancora,
-          rot: m.cor ? "marcação" : "etiqueta",
-          cor: m.cor,
-          texto: m.ancora.trecho || "",
-          tagList: m.etiquetas || [],
-          data: m.alterado_em
-        })),
-        ...fs.map(f => ({
-          tipo: "favoritos",
-          id: f.id,
-          a: f.ancora,
-          rot: "favorito",
-          texto: "",
-          tagList: f.etiquetas || [],
-          data: f.alterado_em
-        }))
-      ].map(x => ({ ...x, ref: ref(x.a), etNomes: x.tagList.map(i => tagNames[i]).filter(Boolean) }))
-    };
+    const { etiquetas, items } = await allItems();
+    const legacy = items.map(x => ({
+      ...x,
+      rot: x.label,
+      cor: x.color,
+      titulo: x.title,
+      texto: x.text,
+      tagList: x.tags,
+      etNomes: x.tagNames,
+      data: x.date
+    }));
+    return { tagList: etiquetas, listSheet: legacy };
   }
   async function renderList() {
-    const { tagList, listSheet: allItems } = await listItems();
-    if (!tagList.some(t => t.id === listFilter.tag)) listFilter.tag = "";
-    const counts = {};
-    allItems.forEach(x => x.tagList.forEach(t => (counts[t] = (counts[t] || 0) + 1)));
-    $("#mn-tags").innerHTML = tagList.length
-      ? tagList
-          .sort((x, y) => x.nome.localeCompare(y.nome, "pt"))
-          .map(
-            t =>
-              `<button class="chip" data-tagf="${t.id}" aria-pressed="${listFilter.tag === t.id}">${esc(t.nome)} <small>${counts[t.id] || 0}</small></button>`
-          )
-          .join("")
-      : "";
-    const sel = { value: listFilter.tag };
-    const raw = $("#mn-search").value.trim();
-    const q = raw.toLowerCase();
-    // "#oração" procura só nas etiquetas
-    const tagQ = raw.startsWith("#") ? tagKey(raw) : "";
-    const matches = x =>
-      tagQ
-        ? x.etNomes.some(n => tagKey(n).includes(tagQ))
-        : !q || `${x.ref} ${x.titulo || ""} ${x.texto} ${x.etNomes.join(" ")}`.toLowerCase().includes(q);
-    const base = allItems.filter(
-      x =>
-        (!listFilter.cap ||
-          (x.a && `${x.a.livro}.${x.a.cap}` === listFilter.cap && (listFilter.ver == null || x.a.ver === listFilter.ver))) &&
-        (!sel.value || x.tagList.includes(sel.value)) &&
-        matches(x)
-    );
-    let xs = base.filter(x => !listFilter.tipo || x.tipo === listFilter.tipo);
-    $$(".mn-filters .chip", listSheet).forEach(b => {
-      b.setAttribute("aria-pressed", String(b.dataset.tipo === listFilter.tipo));
-      const n = b.dataset.tipo ? base.filter(x => x.tipo === b.dataset.tipo).length : base.length;
-      let c = $("small", b);
-      if (!c) b.insertAdjacentHTML("beforeend", " <small></small>");
-      c = $("small", b);
-      c.textContent = n;
-    });
-    if ($("#mn-order").value === "data") xs.sort((x, y) => y.data.localeCompare(x.data));
-    else
-      xs.sort(
-        (x, y) =>
-          (x.a ? bookOrder(x.a.livro) : 1e4) - (y.a ? bookOrder(y.a.livro) : 1e4) ||
-          (x.a?.cap || 0) - (y.a?.cap || 0) ||
-          (x.a?.ver || 0) - (y.a?.ver || 0)
-      );
+    const { etiquetas, items } = await allItems();
+    if (!etiquetas.some(x => x.id === notes.filter.tag)) notes.filter.tag = "";
+    const used = tagCounts(items);
+    notes.tags = [...etiquetas].sort((x, y) => x.nome.localeCompare(y.nome, "pt")).map(x => ({ ...x, count: used[x.id] || 0 }));
+    const { items: shown, counts } = filterItems(items, notes.filter);
+    const xs = sortItems(shown, notes.order, listBooks);
     lastItems = xs;
-    $("#mn-total").textContent = listFilter.cap ? `${xs.length} neste versículo · ` : `${xs.length} ${xs.length === 1 ? "item" : "itens"}`;
-    if (listFilter.cap) $("#mn-total").innerHTML += `<button class="linklike" id="mn-see-all">ver tudo</button>`;
-    // Tudo de um mesmo versículo fica junto, num cartão: referência uma vez, depois cor, notas e favorito
-    let grupo = null,
-      verso = null,
-      html = "";
-    const byDate = $("#mn-order").value === "data";
-    for (const x of xs) {
-      const g = byDate ? null : x.a ? bookName(x.a.livro) : "Notas livres";
-      const vk = x.a ? `${x.a.livro}.${x.a.cap}.${x.a.ver}` : "livre:" + x.id;
-      if (g !== grupo && g) {
-        if (verso) html += `</div>`;
-        verso = null;
-        html += `<h3 class="mn-group">${esc(g)}</h3>`;
-        grupo = g;
-      }
-      if (vk !== verso) {
-        if (verso) html += `</div>`;
-        verso = vk;
-        html += `<div class="mn-verse"><span class="mn-ref">${esc(x.ref)}</span>`;
-      }
-      html += itemHTML(x);
-    }
-    if (verso) html += `</div>`;
-    $("#mn-items").innerHTML =
-      html ||
-      `<p class="mn-empty">${allItems.length ? "Nada encontrado com esses filtros." : "Ainda não há anotações. Toque longo num versículo, selecione um trecho ou use o botão ⋯ ao lado do número para marcar e anotar."}</p>`;
+    notes.counts = counts;
+    notes.shown = xs.length;
+    notes.any = items.length > 0;
+    notes.groups = groupItems(xs, notes.order === "data", listBooks, t("notes.free_notes"));
+    flushSync();
   }
+  function openItem(x) {
+    closeList();
+    if (x.tipo === "notas") return openNote(x.id);
+    if (x.a) document.dispatchEvent(new CustomEvent("annotations:goto", { detail: { book: x.a.livro, chapter: x.a.cap, verse: x.a.ver } }));
+  }
+  function listMenu(action) {
+    if (action === "manage") return toggleTagManager();
+    if (action === "select") {
+      notes.selecting = !notes.selecting;
+      if (!notes.selecting) notes.selected = [];
+      return renderList();
+    }
+    if (action === "export") return openExport();
+    if (action === "download") return downloadData();
+    if (action === "import") return $("#mn-file").click();
+  }
+
   // ---------- Gerenciar etiquetas (TagManager.svelte; as regras em src/lib/annotations/tags.ts) ----------
   const tagRules = createTagManager(annotations);
   mount(TagManager, {
@@ -816,82 +737,11 @@ import { esc } from "../src/lib/text";
     const r = await tagRules.rename(id, name);
     if (!r) return toggleTagManager(true);
     if (r.merged) {
-      if (listFilter.tag === id) listFilter.tag = r.merged.into.id;
+      if (notes.filter.tag === id) notes.filter.tag = r.merged.into.id;
       toastMsg(t("tags.merged", { from: r.merged.from.nome, into: r.merged.into.nome }));
     }
     await tagsChanged();
   }
-  function itemHTML(x) {
-    const kind = x.cor ? `<span class="mn-color mk-${x.cor}">${x.rot}</span>` : `<span class="mn-kind">${x.rot}</span>`;
-    return `<button class="mn-item${selecting ? " sel" : ""}" data-tipo="${x.tipo}" data-id="${x.id}"${selecting ? ` role="checkbox" aria-checked="${selected.has(x.id)}"` : ""}>
-        <span class="mn-line">${kind}${x.titulo ? ` <b class="mn-title">${esc(x.titulo)}</b>` : ""}<span class="sr"> · ${esc(x.ref)}</span></span>
-        ${x.texto ? `<span class="mn-txt">${esc(x.texto.length > 160 ? x.texto.slice(0, 158) + "…" : x.texto)}</span>` : ""}
-        ${x.etNomes.length ? `<span class="mn-tags">${x.etNomes.map(n => `<span class="chip">${esc(n)}</span>`).join("")}</span>` : ""}
-      </button>`;
-  }
-  listSheet.addEventListener("click", async e => {
-    if (e.target.closest("[data-fechar]")) return closeList();
-    const tf = e.target.closest("[data-tagf]");
-    if (tf) {
-      listFilter.tag = listFilter.tag === tf.dataset.tagf ? "" : tf.dataset.tagf;
-      return renderList();
-    }
-    if (e.target.closest("#mn-manage")) {
-      $("#mn-more").open = false;
-      return toggleTagManager();
-    }
-    if (e.target.closest(".mn-menu button")) $("#mn-more").open = false;
-    const t = e.target.closest(".mn-filters .chip");
-    if (t) {
-      listFilter.tipo = t.dataset.tipo;
-      return renderList();
-    }
-    if (e.target.closest("#mn-see-all")) {
-      listFilter.cap = null;
-      listFilter.ver = null;
-      return renderList();
-    }
-    if (e.target.closest("#mn-new")) {
-      closeList();
-      return openNote(null, null);
-    }
-    if (e.target.closest("#mn-select")) {
-      selecting = !selecting;
-      if (!selecting) selected.clear();
-      e.target.closest("#mn-select").setAttribute("aria-pressed", String(selecting));
-      return renderList();
-    }
-    if (e.target.closest("#mn-export")) return openExport();
-    if (e.target.closest("#mn-download")) return downloadData();
-    if (e.target.closest("#mn-import")) return $("#mn-file").click();
-    const it = e.target.closest(".mn-item");
-    if (it && selecting) {
-      selected.has(it.dataset.id) ? selected.delete(it.dataset.id) : selected.add(it.dataset.id);
-      it.setAttribute("aria-checked", String(selected.has(it.dataset.id)));
-      $("#mn-total").textContent = `${selected.size} selecionado${selected.size === 1 ? "" : "s"}`;
-      return;
-    }
-    if (it) {
-      if (it.dataset.tipo === "notas") {
-        closeList();
-        return openNote(it.dataset.id);
-      }
-      const { listSheet: xs } = await listItems();
-      const x = xs.find(y => y.id === it.dataset.id);
-      closeList();
-      if (x?.a)
-        document.dispatchEvent(new CustomEvent("annotations:goto", { detail: { book: x.a.livro, chapter: x.a.cap, verse: x.a.ver } }));
-    }
-  });
-  $("#mn-search").addEventListener("input", () => renderList());
-  $("#mn-order").addEventListener("change", () => renderList());
-  listSheet.addEventListener("keydown", e => {
-    if (e.key === "Escape") {
-      e.stopPropagation();
-      closeList();
-    }
-  });
-
   // ---------- Exportar em PDF (caderno) ----------
   const exportSheet = document.createElement("aside");
   exportSheet.id = "exportar";
@@ -928,18 +778,17 @@ import { esc } from "../src/lib/text";
     const livros = [...new Set(xs.filter(x => x.a).map(x => x.a.livro))].sort((a, b) => bookOrder(a) - bookOrder(b));
     $("#exp-book").innerHTML = livros.map(c => `<option value="${c}">${esc(bookName(c))}</option>`).join("");
     $("#exp-n-list").textContent = `(${lastItems.length})`;
-    $("#exp-n-sel").textContent = `(${selected.size})`;
-    $('input[name="exp-scope"][value="sel"]').disabled = !selected.size;
+    $("#exp-n-sel").textContent = `(${notes.selected.length})`;
+    $('input[name="exp-scope"][value="sel"]').disabled = !notes.selected.length;
     $('input[name="exp-scope"][value="livro"]').disabled = !livros.length;
-    $('input[name="exp-scope"][value="' + (selected.size ? "sel" : "lista") + '"]').checked = true;
-    listSheet.hidden = true;
-    document.body.classList.remove("com-minhas");
+    $('input[name="exp-scope"][value="' + (notes.selected.length ? "sel" : "lista") + '"]').checked = true;
+    hideList();
     exportSheet.hidden = false;
     $("#exp-generate").focus();
   }
   function closeExport(goBack = true) {
     exportSheet.hidden = true;
-    if (goBack) openList(listFilter);
+    if (goBack) openList(notes.filter);
   }
   exportSheet.addEventListener("click", e => {
     if (e.target.closest("[data-fechar]")) return closeExport();
@@ -967,7 +816,7 @@ import { esc } from "../src/lib/text";
     const o = $('input[name="exp-scope"]:checked').value;
     let xs =
       o === "sel"
-        ? todosXs.filter(x => selected.has(x.id))
+        ? todosXs.filter(x => notes.selected.includes(x.id))
         : o === "livro"
           ? todosXs.filter(x => x.a?.livro === $("#exp-book").value)
           : todosXs.filter(x => lastItems.some(y => y.id === x.id));
