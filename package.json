@@ -15,7 +15,7 @@
     "test:web": "npx playwright test",
     "test:data": "python3 -m pytest tests -q",
     "build:web": "vite build",
-    "check": "tsc -p .",
+    "check": "tsc -p . && svelte-check --tsconfig ./tsconfig.json --fail-on-warnings --output human",
     "check:i18n": "node scripts/dev/i18n_check.mjs",
     "lint": "prettier --check . && eslint . && stylelint \"web/styles/*.css\" && markdownlint-cli2 \"**/*.md\"",
     "format": "prettier --write ."
@@ -40,6 +40,7 @@
     "@fontsource/literata": "5.3.0",
     "@fontsource/noto-serif-hebrew": "5.3.0",
     "@playwright/test": "^1.64.0",
+    "@sveltejs/vite-plugin-svelte": "5.1.1",
     "@types/node": "26.6.4",
     "acorn": "8.19.0",
     "acorn-walk": "8.3.5",
@@ -52,6 +53,8 @@
     "prettier": "3.9.10",
     "sharp": "0.35.5",
     "stylelint": "16.26.1",
+    "svelte": "5.57.2",
+    "svelte-check": "4.7.7",
     "typescript": "5.9.3",
     "vite": "6.4.5",
     "vitest": "3.2.4"
