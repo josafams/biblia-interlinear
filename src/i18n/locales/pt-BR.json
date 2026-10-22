@@ -537,5 +537,21 @@
     "none": "Nenhuma etiqueta ainda.",
     "help": "Mude o nome no campo. Dar o nome de outra etiqueta junta as duas.",
     "merged": "“{from}” foi juntada a “{into}”."
+  },
+  "index": {
+    "books": "Livros",
+    "chapters": "Capítulos",
+    "testament": "Testamento",
+    "old_testament": "Antigo Testamento",
+    "new_testament": "Novo Testamento",
+    "chapter_count": "{count} cap.",
+    "open_chapter": "Abrir capítulo {n}{theme}",
+    "open_chapter_na": "Abrir capítulo {n}{theme}. Não incluído nesta prévia",
+    "you_are_here": "você está aqui · ",
+    "verse_count": {
+      "one": "{count} versículo",
+      "other": "{count} versículos"
+    },
+    "not_in_preview": " · não incluído nesta prévia"
   }
 }

@@ -6,9 +6,11 @@ import { createSpeech } from "../src/lib/audio/tts";
 import { createBible, toWord } from "../src/lib/data/bible";
 import { SITE_URL, isNative as NATIVE, nativePlugin, platform as PLATFORM } from "../src/lib/native";
 import { flushSync, mount } from "svelte";
+import BookList from "../src/components/BookList.svelte";
 import ChapterHeading from "../src/components/ChapterHeading.svelte";
 import ChapterLexicon from "../src/components/ChapterLexicon.svelte";
 import ChapterNavButton from "../src/components/ChapterNavButton.svelte";
+import ChapterPicker from "../src/components/ChapterPicker.svelte";
 import ChapterText from "../src/components/ChapterText.svelte";
 import HeaderChips from "../src/components/HeaderChips.svelte";
 import LexiconEntry from "../src/components/LexiconEntry.svelte";
@@ -27,14 +29,16 @@ import TocButton from "../src/components/TocButton.svelte";
 import WhereButton from "../src/components/WhereButton.svelte";
 import { MODE_IDS, eyebrowText as eyebrowFor, getMode, isModeId } from "../src/lib/modes";
 import { entryView } from "../src/lib/lexicon/entry";
+import { bookQuery } from "../src/lib/books";
 import { createRefs } from "../src/lib/refs";
 import { store } from "../src/lib/store";
-import { cleanHeb, esc, norm } from "../src/lib/text";
+import { cleanHeb, esc } from "../src/lib/text";
 import { followAnnotations } from "../src/state/annotations.svelte";
 import { entry as entryState } from "../src/state/entry.svelte";
 import { LAZY_FROM, chapter as chapterState, fillVerse, showChapter } from "../src/state/chapter.svelte";
 import { reader as readerState } from "../src/state/reader.svelte";
 import { speech as speechState } from "../src/state/speech.svelte";
+import { toc } from "../src/state/toc.svelte";
 import { ui } from "../src/state/ui.svelte";
 const BOOKS = DATA.books;
 const BY_CODE = Object.fromEntries(BOOKS.map(b => [b.code, b]));
@@ -86,6 +90,7 @@ function renderHeader() {
   document.body.classList.toggle("grc", GRC);
   document.getElementById("verses").setAttribute("aria-label", `Texto de ${BOOK.name} ${CUR}`);
   // os ‹ › das barras (ChapterNavButton) e os atalhos do cabeçalho (HeaderChips) leem readerState
+  toc.here = { book: BOOK.code, chapter: CUR };
   for (const dir of [-1, 1]) {
     const x = neighbor(dir);
     readerState[dir < 0 ? "prev" : "next"] = x
@@ -576,47 +581,6 @@ document.getElementById("skip").addEventListener("click", e => {
 // ---------- Índice: livros, capítulos, versículos ----------
 let pickedBook = null,
   pickedCh = 1;
-function renderBooks() {
-  const groups = [];
-  for (const b of BOOKS) {
-    let g = groups[groups.length - 1];
-    if (!g || g.name !== b.group) groups.push((g = { name: b.group, nt: b.nt, books: [] }));
-    g.books.push(b);
-  }
-  const part = nt =>
-    groups
-      .filter(g => g.nt === nt)
-      .map(
-        g => `
-    <div class="bgroup" data-nt="${g.nt ? 1 : 0}"><h4>${esc(g.name)}</h4><div class="bgrid">${g.books.map(b => `<button class="bchip" data-cod="${b.code}" aria-pressed="${b.code === pickedBook.code}" aria-label="${esc(b.name)}"><span class="bn">${esc(b.name)}</span><span class="ba" aria-hidden="true">${b.chapters.length} cap.</span></button>`).join("")}</div></div>`
-      )
-      .join("");
-  document.getElementById("bk-list").innerHTML = `
-    ${part(false)}${part(true)}`;
-}
-function renderChapters() {
-  const B = pickedBook;
-  document.getElementById("ch-h").textContent = B.name;
-  // embaixo da grade, a lista com o título de cada capítulo
-  document.getElementById("ch-list").innerHTML = B.chapters
-    .map(
-      c =>
-        `<button type="button" class="ch-row${c.n === pickedCh ? " here" : ""}" data-ch="${c.n}"${hasChapter(B.code, c.n) ? "" : ' aria-disabled="true"'}><span class="cr-n">${c.n}</span><span class="cr-t">${esc(c.t || "")}</span></button>`
-    )
-    .join("");
-  document.getElementById("chgrid").innerHTML = B.chapters
-    .map(c => {
-      const ok = hasChapter(B.code, c.n);
-      return `<button class="chchip${ok ? "" : " na"}" data-ch="${c.n}" aria-pressed="${c.n === pickedCh}" title="${c.t ? esc(c.t) : ""}" aria-label="Abrir capítulo ${c.n}${c.t ? ": " + esc(c.t) : ""}${ok ? "" : ". Não incluído nesta prévia"}">${c.n}</button>`;
-    })
-    .join("");
-  const c = B.chapters[pickedCh - 1],
-    ok = hasChapter(B.code, c.n),
-    here = B === BOOK && c.n === CUR;
-  document.getElementById("chcard").innerHTML = `
-    <span class="ct">${esc(B.name)} ${c.n}${c.t ? " · " + esc(c.t) : ""}</span>
-    <span class="cm">${here ? "você está aqui · " : ""}${c.v} versículos${ok ? "" : " · não incluído nesta prévia"}</span>`;
-}
 function renderTocVerses() {
   document.getElementById("toc-vh").textContent = `Versículos de ${BOOK.name} ${CUR}`;
   const chip = v =>
@@ -628,30 +592,31 @@ function renderTocVerses() {
 function pickBook(cod, ch) {
   pickedBook = BY_CODE[cod];
   pickedCh = ch || 1;
-  renderBooks();
-  renderChapters();
+  toc.book = cod;
+  toc.chapter = pickedCh;
+  flushSync();
 }
-document.getElementById("bk-list").addEventListener("click", e => {
-  const b = e.target.closest(".bchip");
-  if (!b) return;
-  pickBook(b.dataset.cod, b.dataset.cod === BOOK.code ? CUR : 1);
-  tocView("capitulos");
-});
-document.getElementById("chgrid").addEventListener("click", e => {
-  const b = e.target.closest(".chchip");
-  if (!b) return;
-  if (b.classList.contains("na")) {
-    pickedCh = +b.dataset.ch;
-    renderChapters();
-    return toast("Este capítulo não está incluído nesta prévia.");
+mount(BookList, {
+  target: document.querySelector("#toc .toc-books"),
+  props: {
+    books: BOOKS,
+    onpick(code) {
+      pickBook(code, code === BOOK.code ? CUR : 1);
+      tocView("capitulos");
+    }
   }
-  openChapter(pickedBook.code, +b.dataset.ch, null);
 });
-document.getElementById("chcard").addEventListener("click", e => {
-  const b = e.target.closest("[data-open]");
-  if (b) {
-    const [cod, n] = b.dataset.open.split(".");
-    openChapter(cod, +n, null);
+mount(ChapterPicker, {
+  target: document.querySelector("#toc .toc-chapters"),
+  props: {
+    books: BOOKS,
+    available: hasChapter,
+    onback: () => tocView("livros"),
+    onopen: n => openChapter(pickedBook.code, n, null),
+    onunavailable(n) {
+      pickBook(pickedBook.code, n);
+      toast(t("reader.not_in_preview"));
+    }
   }
 });
 
@@ -1336,7 +1301,7 @@ document.addEventListener("chapter-rendered", () => requestAnimationFrame(update
   };
   const first = Object.keys(CAPS)[0] ? Object.keys(CAPS)[0].split(".") : ["GEN", "1"];
   const pos = parse(decodeURIComponent(location.hash.slice(1))) || parse(store.get("posicao", "")) || [first[0], +first[1], null];
-  pickedBook = BY_CODE[pos[0]];
+  pickBook(pos[0], pos[1]);
   openChapter(pos[0], pos[1], pos[2]);
 })();
 window.addEventListener("hashchange", () => {
@@ -1378,24 +1343,10 @@ function openWhere() {
   });
 }
 // "Ir para" também filtra os livros pelo nome ("cânt", "1 jo")
-function filterBooks() {
-  const raw = goIn.value.trim();
-  const q = /\d\s*[:.]|\d\s+\d/.test(raw) ? "" : norm(raw.replace(/\s+/g, ""));
-  const qLetters = q.replace(/\d+$/, "");
-  let shown = 0;
-  document.querySelectorAll("#bk-list .bchip").forEach(b => {
-    const B = BY_CODE[b.dataset.cod];
-    const ok =
-      !qLetters || [B.name, B.abbrev].some(x => norm(x.replace(/\s+/g, "")).startsWith(qLetters)) || norm(B.name).includes(qLetters);
-    b.hidden = !ok;
-    if (ok) shown++;
-  });
-  document.querySelectorAll("#bk-list .bgroup, #bk-list .testa").forEach(g => {
-    if (g.classList.contains("bgroup")) g.hidden = ![...g.querySelectorAll(".bchip")].some(b => !b.hidden);
-  });
-  document.getElementById("bk-list").dataset.filtro = qLetters && shown ? "1" : "";
-}
-goIn.addEventListener("input", filterBooks);
+goIn.addEventListener("input", () => {
+  toc.filter = bookQuery(goIn.value);
+  flushSync();
+});
 // Capítulos longos: "v. 60 de 176" e, quando há seções (Salmo 119), ‹ › passam de seção
 {
   const pos = document.createElement("div");
@@ -1563,8 +1514,8 @@ function tocView(v) {
   sheets.toc.scrollTop = 0;
 }
 function setTesta(nt) {
-  document.getElementById("bk-list").dataset.nt = nt;
-  document.querySelectorAll("#bk-testa [data-nt]").forEach(b => b.setAttribute("aria-checked", String(b.dataset.nt === nt)));
+  toc.testament = nt;
+  flushSync();
 }
 function tocTab(aba) {
   sheets.toc.dataset.aba = aba;
@@ -1591,17 +1542,6 @@ sheets.toc.addEventListener(
   },
   true
 );
-document.getElementById("bk-testa").addEventListener("click", e => {
-  const b = e.target.closest("[data-nt]");
-  if (b) setTesta(b.dataset.nt);
-});
-document.getElementById("ch-back").addEventListener("click", () => tocView("livros"));
-document.getElementById("ch-list").addEventListener("click", e => {
-  const b = e.target.closest(".ch-row");
-  if (!b) return;
-  if (b.getAttribute("aria-disabled") === "true") return toast("Este capítulo não está incluído nesta prévia.");
-  openChapter(pickedBook.code, +b.dataset.ch, null);
-});
 tocTab("livros");
 tocView("livros");
 // o ✕ do índice fica na linha das abas, como no design
