@@ -334,6 +334,14 @@
     "notes_label_count": {
       "one": "Minhas anotações: {count} versículo",
       "other": "Minhas anotações: {count} versículos"
-    }
+    },
+    "books": "Livros",
+    "books_label": "Livros e índice",
+    "look": "Aparência",
+    "look_label": "Aparência e acessibilidade"
+  },
+  "you": {
+    "progress": "Capítulos lidos, tempo de leitura, dias seguidos e o mapa dos 66 livros.",
+    "progress_signed_out": "Capítulos lidos, tempo de leitura, dias seguidos e o mapa dos 66 livros. Aparece depois de entrar com a conta."
   }
 }

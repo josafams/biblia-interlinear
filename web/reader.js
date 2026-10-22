@@ -7,11 +7,13 @@ import { createSpeech } from "../src/lib/audio/tts";
 import { createBible, toWord } from "../src/lib/data/bible";
 import { SITE_URL, isNative as NATIVE, nativePlugin, platform as PLATFORM } from "../src/lib/native";
 import { flushSync, mount } from "svelte";
+import LookButton from "../src/components/LookButton.svelte";
 import MiniPlayer from "../src/components/MiniPlayer.svelte";
 import ModeNote from "../src/components/ModeNote.svelte";
 import ModeSelector from "../src/components/ModeSelector.svelte";
 import NotesButton from "../src/components/NotesButton.svelte";
 import NotesCount from "../src/components/NotesCount.svelte";
+import TocButton from "../src/components/TocButton.svelte";
 import { MODE_IDS, eyebrowText as eyebrowFor, getMode, isModeId, swapLabel } from "../src/lib/modes";
 import { createRefs } from "../src/lib/refs";
 import { store } from "../src/lib/store";
@@ -19,6 +21,7 @@ import { cleanHeb, esc, glossHTML, glossSpoken, norm } from "../src/lib/text";
 import { followAnnotations } from "../src/state/annotations.svelte";
 import { reader as readerState } from "../src/state/reader.svelte";
 import { speech as speechState } from "../src/state/speech.svelte";
+import { ui } from "../src/state/ui.svelte";
 const SPK =
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
 const BOOKS = DATA.books;
@@ -645,8 +648,10 @@ detail.addEventListener("click", e => {
 
 // ---------- Painéis (índice / aparência) ----------
 const scrim = document.getElementById("scrim");
+const bbar = document.getElementById("bbar");
 const sheets = { toc: document.getElementById("toc"), look: document.getElementById("look") };
-const openers = { toc: document.getElementById("open-toc"), look: document.getElementById("open-look") };
+// the buttons that open them are components (TocButton, LookButton) in the top or the bottom bar, by screen width
+const opener = name => document.getElementById(name === "toc" ? "open-toc" : "open-look");
 let openSheet = null;
 function focusables(el) {
   return [...el.querySelectorAll('button:not([disabled]), a[href], input, summary, [tabindex]:not([tabindex="-1"])')].filter(
@@ -661,7 +666,8 @@ function openPanel(name, focusEl) {
   if (window.Annotations) window.Annotations.closeBar();
   openSheet = name;
   sheets[name].hidden = false;
-  openers[name].setAttribute("aria-expanded", "true");
+  ui.sheet = name;
+  flushSync();
   if (name === "look" && SIDE.matches) document.body.classList.add("com-look");
   else {
     scrim.hidden = false;
@@ -681,17 +687,28 @@ function closePanel(restore = true) {
   const name = openSheet;
   sheets[name].hidden = true;
   scrim.hidden = true;
-  openers[name].setAttribute("aria-expanded", "false");
+  ui.sheet = null;
+  flushSync();
   document.body.classList.remove("com-look");
   page.inert = false;
   topBar.inert = false;
   detail.inert = false;
   document.body.style.overflow = "";
   openSheet = null;
-  if (restore) openers[name].focus({ preventScroll: true });
+  if (restore) opener(name)?.focus({ preventScroll: true });
 }
-openers.toc.addEventListener("click", () => openPanel("toc"));
-openers.look.addEventListener("click", () => openPanel("look"));
+// "Livros" opens the index on the list of books (the title in the bar opens it on the chapters)
+function openToc() {
+  openPanel("toc");
+  tocTab("livros");
+  tocView("livros");
+  showYouProgress();
+}
+const openLook = () => openPanel("look");
+mount(TocButton, { target: topBar, anchor: topBar.firstChild, props: { place: "top", onopen: openToc } });
+mount(LookButton, { target: topBar, anchor: document.getElementById("open-account"), props: { place: "top", onopen: openLook } });
+mount(TocButton, { target: bbar, anchor: bbar.firstChild, props: { place: "bottom", onopen: openToc } });
+mount(LookButton, { target: bbar, props: { place: "bottom", onopen: openLook } });
 scrim.addEventListener("click", () => closePanel());
 Object.values(sheets).forEach(sh =>
   sh.addEventListener("click", e => {
@@ -1595,29 +1612,12 @@ if ("serviceWorker" in navigator && !NATIVE && /^https?:$/.test(location.protoco
 }
 
 // ---------- Redesenho, parte final ----------
-// Celular: Livros e Aparência descem para a barra de baixo (os mesmos botões, que só mudam de lugar)
+// Phone: the bottom bar has five buttons (Livros and Aparência join it)
 {
-  const bbar = document.getElementById("bbar");
-  const tocBtn = document.getElementById("open-toc"),
-    lookBtn = document.getElementById("open-look");
-  const tocHome = document.createComment("open-toc"),
-    lookHome = document.createComment("open-look");
-  tocBtn.before(tocHome);
-  lookBtn.before(lookHome);
-  const mq = matchMedia("(max-width: 720px)");
-  const place = () => {
-    if (mq.matches) {
-      bbar.prepend(tocBtn);
-      bbar.append(lookBtn);
-      bbar.classList.add("cinco");
-    } else {
-      tocHome.after(tocBtn);
-      lookHome.after(lookBtn);
-      bbar.classList.remove("cinco");
-    }
-  };
-  place();
-  mq.addEventListener("change", place);
+  const phone = matchMedia("(max-width: 720px)");
+  const five = () => bbar.classList.toggle("cinco", phone.matches);
+  five();
+  phone.addEventListener("change", five);
 }
 // Tocar no título do capítulo abre o índice já na grade de capítulos do livro
 where.addEventListener("click", () => {
@@ -1852,11 +1852,6 @@ document.getElementById("ch-list").addEventListener("click", e => {
   if (b.getAttribute("aria-disabled") === "true") return toast("Este capítulo não está incluído nesta prévia.");
   openChapter(pickedBook.code, +b.dataset.ch, null);
 });
-// Abrir pelo botão Livros mostra a lista de livros; pelo título (lá em cima), a grade de capítulos
-document.getElementById("open-toc").addEventListener("click", () => {
-  tocTab("livros");
-  tocView("livros");
-});
 tocTab("livros");
 tocView("livros");
 // o ✕ do índice fica na linha das abas, como no design
@@ -1913,12 +1908,11 @@ document.querySelectorAll("[data-vc-plano]").forEach(b =>
     if (window.Progress) window.Progress.open();
   })
 );
-document.getElementById("open-toc").addEventListener("click", () => {
+// Você: the progress card says it needs the account
+function showYouProgress() {
   const on = window.Account && !["signed-out", "unavailable"].includes(window.Account.status());
-  document.getElementById("vc-prog").textContent = on
-    ? "Capítulos lidos, tempo de leitura, dias seguidos e o mapa dos 66 livros."
-    : "Capítulos lidos, tempo de leitura, dias seguidos e o mapa dos 66 livros. Aparece depois de entrar com a conta.";
-});
+  document.getElementById("vc-prog").textContent = t(on ? "you.progress" : "you.progress_signed_out");
+}
 // Fim do capítulo como no design: Perguntas, Léxico do capítulo e, por último, o cartão "Próximo capítulo"
 {
   const lex = document.getElementById("lexico");

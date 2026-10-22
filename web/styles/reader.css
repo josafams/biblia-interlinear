@@ -1264,3 +1264,6 @@ body.orig-running.hide-blivre .verse[class*="mk-"]:not(.abrir) { background: col
 /* o cartão usa sempre a cor de texto do tema; o realce de cor (mk-) continua com a tinta própria */
 .word { color: var(--fg); }
 .word[class*="mk-"] { color: var(--mk-ink); }
+
+/* the Aa of the Aparência button (LookButton.svelte) */
+#open-look .aa { font-family: var(--font-body); font-size: 16px; }

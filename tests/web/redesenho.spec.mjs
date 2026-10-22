@@ -14,6 +14,28 @@ test("celular: Livros · ‹ · Ouvir · › · Aa na barra de baixo; computador
   await expect(page.locator("#look")).toBeVisible();
 });
 
+test("mudar a largura da janela troca Livros e Aa de barra, sem duplicar e sem perder o clique", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 860 });
+  await open(page);
+  for (const [width, inBottom] of [
+    [400, true],
+    [1280, false],
+    [400, true]
+  ]) {
+    await page.setViewportSize({ width, height: 860 });
+    await expect(page.locator("#open-toc")).toHaveCount(1);
+    await expect(page.locator("#open-look")).toHaveCount(1);
+    expect(await page.evaluate(() => !!document.getElementById("open-toc").closest("#bbar"))).toBe(inBottom);
+    await expect(page.locator("#bbar")).toHaveClass(inBottom ? /cinco/ : /^(?!.*cinco)/);
+  }
+  await page.click("#open-toc");
+  await expect(page.locator("#toc")).toBeVisible();
+  await expect(page.locator("#open-toc")).toHaveAttribute("aria-expanded", "true");
+  await page.keyboard.press("Escape");
+  await expect(page.locator("#open-toc")).toHaveAttribute("aria-expanded", "false");
+  await expect(page.locator("#open-toc")).toBeFocused();
+});
+
 test("tocar no título do capítulo abre a grade de capítulos do livro", async ({ page }) => {
   await open(page);
   await page.click("#where");
