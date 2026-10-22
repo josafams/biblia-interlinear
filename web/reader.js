@@ -13,6 +13,7 @@ import MiniPlayer from "../src/components/MiniPlayer.svelte";
 import ModeNote from "../src/components/ModeNote.svelte";
 import ModeSelector from "../src/components/ModeSelector.svelte";
 import ModeSwapButton from "../src/components/ModeSwapButton.svelte";
+import NextChapter from "../src/components/NextChapter.svelte";
 import NotesButton from "../src/components/NotesButton.svelte";
 import NotesCount from "../src/components/NotesCount.svelte";
 import SayButton from "../src/components/SayButton.svelte";
@@ -102,7 +103,16 @@ function renderHeader() {
   chipQ.innerHTML = `Perguntas <span class="n">${nq}</span>`;
   for (const dir of [-1, 1]) {
     const x = neighbor(dir);
-    readerState[dir < 0 ? "prev" : "next"] = x ? { name: x.b.name, abbrev: x.b.abbrev, n: x.n } : null;
+    readerState[dir < 0 ? "prev" : "next"] = x
+      ? {
+          code: x.b.code,
+          name: x.b.name,
+          abbrev: x.b.abbrev,
+          n: x.n,
+          theme: x.b.chapters[x.n - 1].t || "",
+          available: hasChapter(x.b.code, x.n)
+        }
+      : null;
   }
   flushSync();
 }
@@ -181,9 +191,7 @@ function renderVerses() {
       ${marksHTML(v)}
     </section>`;
       })
-      .join("") +
-    questionsHTML() +
-    chapterNav();
+      .join("") + questionsHTML();
   if (io) document.querySelectorAll(".verse").forEach(sec => io.observe(sec));
   if (lazyIO) lazyIO.disconnect();
   lazyIO = null;
@@ -264,21 +272,12 @@ document.getElementById("verses").addEventListener("click", e => {
     window.Annotations.noteForQuestion(BOOK.code, CUR, first, q.text);
   }
 });
-function chapterNav() {
-  const btn = (dir, cls, arrow) => {
-    const x = neighbor(dir);
-    if (!x) return "<span></span>";
-    const ok = hasChapter(x.b.code, x.n);
-    return `<button class="cnav ${cls}${ok ? "" : " na"}" data-cod="${x.b.code}" data-ch="${x.n}" ${ok ? "" : 'aria-disabled="true"'}>${dir < 0 ? arrow + " " : ""}${esc(x.b.name)} ${x.n}<small>${esc(x.b.chapters[x.n - 1].t || "")}</small></button>`;
-  };
-  return `<nav class="chnav" aria-label="Capítulo anterior e próximo">${btn(-1, "prev", "←")}${btn(1, "next", "→")}</nav>`;
-}
-// o cartão do próximo capítulo fica depois do léxico (fora de #verses), por isso o clique é ouvido no documento
-document.addEventListener("click", e => {
-  const c = e.target.closest(".cnav");
-  if (c) {
-    if (c.classList.contains("na")) return toast("Este capítulo não está incluído nesta prévia.");
-    return openChapter(c.dataset.cod, +c.dataset.ch, null);
+// the "Próximo capítulo" card after the chapter lexicon (NextChapter.svelte)
+mount(NextChapter, {
+  target: document.getElementById("page"),
+  anchor: document.getElementById("lexico").nextSibling,
+  props: {
+    ongo: c => (c.available ? openChapter(c.code, c.n, null) : toast(t("reader.not_in_preview")))
   }
 });
 
@@ -1908,18 +1907,6 @@ document.querySelectorAll("[data-vc-plano]").forEach(b =>
 function showYouProgress() {
   const on = window.Account && !["signed-out", "unavailable"].includes(window.Account.status());
   document.getElementById("vc-prog").textContent = t(on ? "you.progress" : "you.progress_signed_out");
-}
-// Fim do capítulo como no design: Perguntas, Léxico do capítulo e, por último, o cartão "Próximo capítulo"
-{
-  const lex = document.getElementById("lexico");
-  const place = () => {
-    const nav = root.querySelector(".chnav");
-    if (!nav || !lex) return;
-    document.querySelectorAll("#page > .chnav").forEach(x => x.remove());
-    lex.after(nav);
-  };
-  new MutationObserver(place).observe(root, { childList: true });
-  place();
 }
 // Mini player do celular, como no design: "Lendo João 3:16 · grego" acima da barra de baixo, com pausa;
 // enquanto toca, o Ouvir da barra vira "Pausar"
