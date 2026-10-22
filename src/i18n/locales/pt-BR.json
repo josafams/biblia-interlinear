@@ -405,5 +405,28 @@
       "s": "sem glosa",
       "m": "glosa revisada"
     }
+  },
+  "lexicon": {
+    "title": "Léxico do capítulo",
+    "lede": {
+      "one": "O {count} lema de {ref}, em ordem Strong. Toque num verbete para abrir.",
+      "other": "Os {count} lemas de {ref}, em ordem Strong. Toque num verbete para abrir."
+    },
+    "search_label": "Buscar no léxico",
+    "search_placeholder": "Buscar: luz, ʼôwr, H216, logos",
+    "found": {
+      "one": "{count} verbete encontrado",
+      "other": "{count} verbetes encontrados"
+    },
+    "empty": "Nenhum verbete encontrado.",
+    "row_strong": "Strong {strong}, ",
+    "row_label": {
+      "one": "{strong}{xlit}, pronúncia {pron}: {meaning}. {count} ocorrência no capítulo.",
+      "other": "{strong}{xlit}, pronúncia {pron}: {meaning}. {count} ocorrências no capítulo."
+    },
+    "toc_count": {
+      "one": "{count} verbete",
+      "other": "{count} verbetes"
+    }
   }
 }

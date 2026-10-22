@@ -8,6 +8,7 @@ import { createBible, toWord } from "../src/lib/data/bible";
 import { SITE_URL, isNative as NATIVE, nativePlugin, platform as PLATFORM } from "../src/lib/native";
 import { flushSync, mount } from "svelte";
 import ChapterHeading from "../src/components/ChapterHeading.svelte";
+import ChapterLexicon from "../src/components/ChapterLexicon.svelte";
 import ChapterNavButton from "../src/components/ChapterNavButton.svelte";
 import ChapterText from "../src/components/ChapterText.svelte";
 import LookButton from "../src/components/LookButton.svelte";
@@ -27,7 +28,7 @@ import { createRefs } from "../src/lib/refs";
 import { store } from "../src/lib/store";
 import { cleanHeb, esc, glossHTML, glossSpoken, norm } from "../src/lib/text";
 import { followAnnotations } from "../src/state/annotations.svelte";
-import { LAZY_FROM, fillVerse, showChapter } from "../src/state/chapter.svelte";
+import { LAZY_FROM, chapter as chapterState, fillVerse, showChapter } from "../src/state/chapter.svelte";
 import { reader as readerState } from "../src/state/reader.svelte";
 import { speech as speechState } from "../src/state/speech.svelte";
 import { ui } from "../src/state/ui.svelte";
@@ -1021,60 +1022,17 @@ aboutBox.addEventListener("click", e => {
 });
 
 // ---------- Léxico do capítulo ----------
-const llist = document.getElementById("llist");
-let lexKeys = [];
-function shortMeaning(e) {
-  return ((e.s || e.ge || e.se || "").split(/[;(]/)[0] || "").trim();
-}
-function renderLex(q) {
-  const nq = norm(q).trim();
-  const counts = {};
-  CH.verses.forEach(v =>
-    v.words.forEach(w => {
-      if (w.strong) counts[w.strong] = (counts[w.strong] || 0) + 1;
-    })
-  );
-  lexKeys = Object.keys(counts)
-    .filter(k => LEX[k])
-    .sort((a, b) => (parseInt(a.slice(1)) || 1e9) - (parseInt(b.slice(1)) || 1e9));
-  const rows = lexKeys.filter(k => {
-    if (!nq) return true;
-    const e = LEX[k];
-    return (
-      norm(k) === nq ||
-      norm(k) === "h" + nq ||
-      norm(k) === "g" + nq ||
-      norm(e.x).includes(nq) ||
-      norm(e.l).includes(nq) ||
-      norm(e.p).includes(nq) ||
-      norm(e.s).includes(nq) ||
-      norm(e.t).includes(nq)
-    );
-  });
-  llist.innerHTML = rows.length
-    ? rows
-        .map(k => {
-          const e = LEX[k],
-            lang = k[0] === "G" ? "grc" : "he";
-          return `<button class="lrow" data-ref="${esc(k)}" aria-label="${k.startsWith("G:") ? "" : "Strong " + esc(k) + ", "}${esc(e.x)}, pronúncia ${esc(e.p)}: ${esc(shortMeaning(e))}. ${counts[k]} ${counts[k] === 1 ? "ocorrência" : "ocorrências"} no capítulo."><span class="ln" aria-hidden="true">${k.startsWith("G:") ? "—" : esc(k)}</span><span class="lh${lang === "grc" ? " grc" : ""}" lang="${lang}" aria-hidden="true">${esc(e.l)}</span><span class="lx" aria-hidden="true">${esc(e.x)}</span><span class="ls" aria-hidden="true">${esc(shortMeaning(e))} · ${counts[k]}×</span></button>`;
-        })
-        .join("")
-    : `<p class="lempty">Nenhum verbete encontrado.</p>`;
-  document.getElementById("lex-count").textContent = nq
-    ? `${rows.length} ${rows.length === 1 ? "verbete encontrado" : "verbetes encontrados"}`
-    : "";
-  document.getElementById("lex-d").textContent =
-    `Os ${lexKeys.length} lemas de ${BOOK.name} ${CUR}, em ordem Strong. Toque num verbete para abrir.`;
-  document.getElementById("toc-lexn").textContent = lexKeys.length + " verbetes";
-}
-document.getElementById("lsearch").addEventListener("input", e => renderLex(e.target.value));
-llist.addEventListener("click", e => {
-  const r = e.target.closest(".lrow");
-  if (!r) return;
-  if (active) active.classList.remove("active");
-  active = null;
-  navStack = [];
-  show(r.dataset.ref, null, r);
+// "Léxico do capítulo" is ChapterLexicon.svelte (inside section#lexico)
+mount(ChapterLexicon, {
+  target: document.getElementById("lexico"),
+  props: {
+    onopen(key, row) {
+      if (active) active.classList.remove("active");
+      active = null;
+      navStack = [];
+      show(key, null, row);
+    }
+  }
 });
 
 // ---------- Abrir capítulo ----------
@@ -1116,7 +1074,7 @@ async function openChapter(cod, n, v) {
   if (bookChanged) renderAbout();
   renderVerses();
   renderTocVerses();
-  renderLex(document.getElementById("lsearch").value);
+  document.getElementById("toc-lexn").textContent = t("lexicon.toc_count", { count: chapterState.lexicon.length });
   const target = v !== null && v !== undefined && CH.verses.some(x => x.n === v) ? v : null;
   if (target !== null) scrollToVerse(target, false);
   else {
