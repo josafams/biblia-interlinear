@@ -1,8 +1,7 @@
 /* Leitor da Bíblia Interlinear (ler.html): índice, capítulos, verbetes, áudio, aparência e modos de leitura.
  * ES module bundled by src/reader/main.ts; the books list (DATA) is inlined in ler.html before it
  * (see vite/site/reader-page.ts). Pure helpers live in src/lib. */
-import { decodeMorph } from "../src/lib/morph";
-import { t, tryT } from "../src/i18n";
+import { t } from "../src/i18n";
 import { createSpeech } from "../src/lib/audio/tts";
 import { createBible, toWord } from "../src/lib/data/bible";
 import { SITE_URL, isNative as NATIVE, nativePlugin, platform as PLATFORM } from "../src/lib/native";
@@ -12,6 +11,7 @@ import ChapterLexicon from "../src/components/ChapterLexicon.svelte";
 import ChapterNavButton from "../src/components/ChapterNavButton.svelte";
 import ChapterText from "../src/components/ChapterText.svelte";
 import HeaderChips from "../src/components/HeaderChips.svelte";
+import LexiconEntry from "../src/components/LexiconEntry.svelte";
 import LookButton from "../src/components/LookButton.svelte";
 import MiniPlayer from "../src/components/MiniPlayer.svelte";
 import ModeNote from "../src/components/ModeNote.svelte";
@@ -25,16 +25,16 @@ import SayButton from "../src/components/SayButton.svelte";
 import TocButton from "../src/components/TocButton.svelte";
 import WhereButton from "../src/components/WhereButton.svelte";
 import { MODE_IDS, eyebrowText as eyebrowFor, getMode, isModeId } from "../src/lib/modes";
+import { entryView } from "../src/lib/lexicon/entry";
 import { createRefs } from "../src/lib/refs";
 import { store } from "../src/lib/store";
-import { cleanHeb, esc, glossHTML, glossSpoken, norm } from "../src/lib/text";
+import { cleanHeb, esc, norm } from "../src/lib/text";
 import { followAnnotations } from "../src/state/annotations.svelte";
+import { entry as entryState } from "../src/state/entry.svelte";
 import { LAZY_FROM, chapter as chapterState, fillVerse, showChapter } from "../src/state/chapter.svelte";
 import { reader as readerState } from "../src/state/reader.svelte";
 import { speech as speechState } from "../src/state/speech.svelte";
 import { ui } from "../src/state/ui.svelte";
-const SPK =
-  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
 const BOOKS = DATA.books;
 const BY_CODE = Object.fromEntries(BOOKS.map(b => [b.code, b]));
 // chapters and lexicon on demand (src/lib/data/bible.ts)
@@ -54,9 +54,6 @@ let BOOK = null,
   GRC = false,
   hereV = 1;
 const isGrc = b => b.nt;
-function hebShown(t) {
-  return GRC || prefs.cant ? t : cleanHeb(t);
-}
 const OLANG = () => (GRC ? "grc" : "he");
 
 // ---------- Cabeçalho, versículos ----------
@@ -328,106 +325,30 @@ document.getElementById("voice-install").addEventListener("click", () => {
 });
 
 // ---------- Verbete ----------
-const BLB = k =>
-  /^[HG]\d+$/.test(k) ? `https://www.blueletterbible.org/lexicon/${k.toLowerCase()}/kjv/${k[0] === "H" ? "wlc" : "tr"}/0-1/` : null;
-function linkRefs(text) {
-  return esc(text).replace(/\b([HG])(\d+)\b/g, m => {
-    const e = LEX[m];
-    if (!e) return m;
-    return `<button class="ref" data-ref="${m}" aria-label="Abrir verbete ${m}, ${esc(e.x)}">${m}<span class="rh" lang="${m[0] === "H" ? "he" : "grc"}">${esc(e.l)}</span>${esc(e.x)}</button>`;
-  });
-}
-const PRON_LEGEND = `<p class="plegend">Pronúncia aproximada: sílaba tônica em MAIÚSCULAS; <b>rr</b> como em “carro”; <b>h</b> sempre aspirado; <b>ch</b> como em “chave”; <b>th</b> como no inglês “think”.</p>`;
 function chapterCount(k) {
   return CH ? CH.verses.reduce((s, v) => s + v.words.filter(w => w.strong === k).length, 0) : 0;
 }
 
-// Verbete: a palavra no texto e o significado primeiro; origem, número Strong e legenda da pronúncia no fim.
-const ARROW_L =
-  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>';
-const ARROW_R =
-  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
-function translationsHTML(t) {
-  const parts = String(t || "")
-    .split(";")
-    .map(s => s.trim().match(/^(.*?)\s*\((\d+)\)$/))
-    .filter(Boolean)
-    .slice(0, 8);
-  return parts.map(m => `<span>${esc(m[1])}<small>${m[2]}</small></span>`).join("");
-}
-function entryTopHTML(lang, lemma, xlit, pron, word) {
-  const pos =
-    word && active
-      ? `palavra ${+active.dataset.i + 1} de ${CH.verses[active.dataset.v].words.length} · ${BOOK.name} ${vLabel(CH.verses[active.dataset.v])}`
-      : "";
-  const nav = (dir, label) =>
-    word
-      ? `<button class="dnav" id="${dir < 0 ? "d-prev" : "d-next"}" aria-label="${label}"${stepTarget(dir) ? "" : " disabled"}>${dir < 0 === GRC ? ARROW_L : ARROW_R}</button>`
-      : "";
-  const title = word ? hebShown(word.heb) : lemma;
-  const say = word ? word.heb : lemma;
-  return `
-    <div class="dtop">
-      ${nav(GRC ? -1 : 1, GRC ? "Palavra anterior" : "Próxima palavra (à esquerda)")}
-      <div class="dtitle">
-        <h2 class="dh${lang === "grc" ? " grc" : ""}" id="d-title" tabindex="-1" lang="${lang}">${esc(title)}</h2>
-        ${pos ? `<span class="dpos">${esc(pos)}</span>` : ""}
-      </div>
-      ${nav(GRC ? 1 : -1, GRC ? "Próxima palavra" : "Palavra anterior (à direita)")}
-      <button class="dclose" id="d-close" aria-label="Fechar verbete">✕</button>
-    </div>
-    <div class="dlem"><span class="dlem-t"><span class="dl${lang === "grc" ? " grc" : ""}" lang="${lang}">${esc(lemma)}</span>${xlit ? ` · <em>${esc(xlit)}</em>` : ""}${pron ? ` · <span class="pron">${esc(pron)}</span>` : ""}</span><button class="say" data-say="${esc(say)}">${SPK}<span>Ouvir</span></button></div>`;
-}
-function wordContextHTML(word) {
-  if (!word) return "";
-  const objNote = /\[obj\]/.test(word.gloss || "")
-    ? `<small class="gfn">Marca o objeto direto; não tem tradução em português.</small>`
-    : "";
-  const gfSource = word.gf && tryT(`word.gloss_source.${word.gf}`);
-  const gfNote = gfSource ? `<small class="gfn">${esc(gfSource)}</small>` : "";
-  const ketiv = word.ketiv
-    ? `<p class="kq">Leitura indicada à margem (<i>qere</i>). No texto consonantal está escrito (<i>ketiv</i>): <span lang="he">${esc(word.ketiv)}</span></p>`
-    : "";
-  return `
-    <div class="dctx">
-      <div class="dk">Neste versículo</div>
-      <div class="cg">${glossHTML(word.gloss)} <span class="sr">(${esc(glossSpoken(word.gloss))})</span>${gfNote}${objNote}</div>
-      <div class="dmeta">${esc(decodeMorph(word.morph, GRC))}</div>
-      ${ketiv}
-    </div>`;
-}
-function entryBodyHTML(k, e) {
-  const strongLabel = k && !k.startsWith("G:") ? (/^H[a-z]$/.test(k) ? "partícula hebraica" : "Strong " + k) : "sem verbete Strong";
-  const originHtml = e.o
-    ? `<p>${linkRefs(e.o)}</p>`
-    : e.oe
-      ? `<p class="en" lang="en">${linkRefs(e.oe)} <em lang="pt-BR">(inglês, sem tradução)</em></p>`
-      : "";
-  const sig = e.s
-    ? `<p>${esc(e.s)}</p>`
-    : `<p class="en" lang="en">${esc(e.se || e.ge || "")} <em lang="pt-BR">(inglês, sem tradução)</em></p>`;
-  const nc = chapterCount(k);
-  const uses = `${strongLabel} · ${e.n} ${e.n === 1 ? "ocorrência" : "ocorrências"} na Bíblia${nc ? ` · ${nc} em ${BOOK.name} ${CUR}` : ""}`;
-  const blb = BLB(k);
-  const conc =
-    window.__concordance && k && e.n > 1 ? `<button class="dconc" id="d-conc" data-key="${esc(k)}">Ver as ${e.n} ocorrências</button>` : "";
-  return `
-    <div class="dsec dmean"><h3>Significado</h3>${sig}</div>
-    ${e.t ? `<div class="dsec"><h3>Como a BLIVRE traduz</h3><div class="dtr">${translationsHTML(e.t)}</div><p class="plegend">Contagem pelo alinhamento automático com a Bíblia Livre.</p></div>` : ""}
-    ${conc}
-    ${originHtml ? `<div class="dsec"><h3>Origem</h3>${originHtml}</div>` : ""}
-    <div class="dfoot"><span>${esc(uses)}${blb ? ` · <a href="${blb}" target="_blank" rel="noopener">verbete em inglês<span class="sr"> (abre em nova aba)</span></a>` : ""}</span></div>
-    <div class="dsec">${PRON_LEGEND}</div>`;
-}
-function entryHTML(k, word) {
-  const e = LEX[k];
-  const lang = k && k[0] === "G" ? "grc" : "he";
-  const lemma = e ? e.l : (word && word.lemma) || "";
-  const top = entryTopHTML(lang, lemma, e ? e.x : "", e ? e.p : "", word);
-  const back = navStack.length ? `<button class="dback" id="d-back">← voltar ao verbete anterior</button>` : "";
-  const ctx = wordContextHTML(word, lemma);
-  if (!e) return top + back + ctx + `<div class="dsec"><p>Sem verbete no dicionário de Strong.</p>${PRON_LEGEND}</div>`;
-  return top + back + ctx + entryBodyHTML(k, e);
+// Verbete: LexiconEntry.svelte draws the entry of "current" (src/lib/lexicon/entry.ts works out what it shows)
+function renderEntry() {
+  const { k, word } = current;
+  const at = word && active ? CH.verses[active.dataset.v] : null;
+  const position = at ? t("entry.position", { i: +active.dataset.i + 1, n: at.words.length, ref: `${BOOK.name} ${vLabel(at)}` }) : "";
+  const view = entryView(k, word, {
+    lex: LEX,
+    greek: GRC,
+    cantillation: prefs.cant,
+    position,
+    inChapter: chapterCount(k),
+    chapterRef: `${BOOK.name} ${CUR}`,
+    concordance: !!window.__concordance
+  });
+  entryState.view = view;
+  entryState.canPrev = !!(word && stepTarget(-1));
+  entryState.canNext = !!(word && stepTarget(1));
+  entryState.canGoBack = navStack.length > 0;
+  flushSync();
+  detail.setAttribute("aria-label", view.ariaLabel);
 }
 // Palavra seguinte/anterior na ordem de leitura (passa para o versículo vizinho)
 function stepTarget(dir) {
@@ -461,9 +382,7 @@ async function show(k, word, opener) {
   if (openSheet === "look" && SIDE.matches) closePanel(false);
   if (k && /^[HG]/.test(k)) await ensureLex(k[0] === "G" ? "G" : "H").catch(() => {});
   current = { k, word };
-  const e = LEX[k];
-  detail.setAttribute("aria-label", `Verbete ${k && !k.startsWith("G:") ? k : ""} ${e ? e.x : ""}`.replace(/\s+/g, " ").trim());
-  dbody.innerHTML = entryHTML(k, word);
+  renderEntry();
   detail.hidden = false;
   document.body.classList.add("com-detail");
   if (k) document.dispatchEvent(new CustomEvent("lexicon-entry-opened", { detail: { k } }));
@@ -502,29 +421,26 @@ root.addEventListener("click", e => {
   if (!b) return;
   openWord(b);
 });
-detail.addEventListener("click", e => {
-  const sb = e.target.closest(".say");
-  if (sb) return speak([sb.dataset.say], sb);
-  if (e.target.closest("#d-close")) return closeDetail();
-  const step = e.target.closest("#d-prev, #d-next");
-  if (step) {
-    const to = stepTarget(step.id === "d-next" ? 1 : -1);
-    if (to) {
+mount(LexiconEntry, {
+  target: dbody,
+  props: {
+    onclose: () => closeDetail(),
+    onstep(dir) {
+      const to = stepTarget(dir);
+      if (!to) return;
       openWord(to);
-      document.getElementById(step.id)?.focus({ preventScroll: true });
+      document.getElementById(dir > 0 ? "d-next" : "d-prev")?.focus({ preventScroll: true });
+    },
+    onsay: (text, button) => speak([text], button),
+    onconcordance: key => window.__concordance?.(key, current && current.word ? current.word : null),
+    onback() {
+      const prev = navStack.pop();
+      show(prev.k, prev.word);
+    },
+    onref(key) {
+      navStack.push(current);
+      show(key, null);
     }
-    return;
-  }
-  const cc = e.target.closest("#d-conc");
-  if (cc && window.__concordance) return window.__concordance(cc.dataset.key, current && current.word ? current.word : null);
-  if (e.target.closest("#d-back")) {
-    const prev = navStack.pop();
-    return show(prev.k, prev.word);
-  }
-  const r = e.target.closest(".ref");
-  if (r) {
-    navStack.push(current);
-    show(r.dataset.ref, null);
   }
 });
 
@@ -1169,7 +1085,7 @@ const ON_CHANGE = {
       if (active) active.classList.add("active");
     }
     if (focused) focusWord(wordEl(focused.dataset.v, focused.dataset.i));
-    if (!detail.hidden && current) dbody.innerHTML = entryHTML(current.k, current.word);
+    if (!detail.hidden && current) renderEntry();
   },
   "t-follow": on => {
     prefs.follow = on;

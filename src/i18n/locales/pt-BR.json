@@ -434,5 +434,39 @@
     "about_book": "Sobre {book}",
     "lexicon": "Léxico",
     "questions": "Perguntas"
+  },
+  "entry": {
+    "label": "Verbete {strong} {xlit}",
+    "position": "palavra {i} de {n} · {ref}",
+    "prev_word": "Palavra anterior",
+    "next_word": "Próxima palavra",
+    "prev_word_rtl": "Palavra anterior (à direita)",
+    "next_word_rtl": "Próxima palavra (à esquerda)",
+    "close": "Fechar verbete",
+    "back": "← voltar ao verbete anterior",
+    "in_verse": "Neste versículo",
+    "object_note": "Marca o objeto direto; não tem tradução em português.",
+    "ketiv": "Leitura indicada à margem (<i>qere</i>). No texto consonantal está escrito (<i>ketiv</i>):",
+    "not_found": "Sem verbete no dicionário de Strong.",
+    "meaning": "Significado",
+    "english_note": "(inglês, sem tradução)",
+    "translations": "Como a BLIVRE traduz",
+    "translations_note": "Contagem pelo alinhamento automático com a Bíblia Livre.",
+    "concordance": {
+      "one": "Ver a {count} ocorrência",
+      "other": "Ver as {count} ocorrências"
+    },
+    "origin": "Origem",
+    "english_entry": "verbete em inglês",
+    "new_tab": " (abre em nova aba)",
+    "no_strong": "sem verbete Strong",
+    "hebrew_particle": "partícula hebraica",
+    "occurrences": {
+      "one": "{count} ocorrência na Bíblia",
+      "other": "{count} ocorrências na Bíblia"
+    },
+    "in_chapter": "{count} em {ref}",
+    "ref_label": "Abrir verbete {strong}, {xlit}",
+    "pronunciation_legend": "Pronúncia aproximada: sílaba tônica em MAIÚSCULAS; <b>rr</b> como em “carro”; <b>h</b> sempre aspirado; <b>ch</b> como em “chave”; <b>th</b> como no inglês “think”."
   }
 }
