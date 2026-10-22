@@ -22,17 +22,20 @@ Medido nos dois arquivos exportados do canvas de design (`Bíblia Interlinea 1.h
 ## Celular (390×844)
 
 ### Barra de cima
+
 - 56px, superfície, borda inferior 1px linha; padding 6px 12px.
 - Título centralizado: “João 3” Literata 600 17px / 1,2; embaixo o tema, Atkinson 12px apagado; seta ⌄ 16px.
 - (No protótipo de estudo: busca à direita, ícone 44×44 sem borda; à esquerda um espaço de 44px.)
 
 ### Cabeçalho do capítulo
+
 - h1 “João 3” Literata 600 28px; ao lado o nome no original, Gentium 20px apagado.
 - Tema do capítulo: Literata itálico 15px, cor destaque.
 - Chips “Sobre João”, “Léxico”, “Perguntas 4”: altura 36px, padding 0 14px, raio 999px, superfície, borda 1px linha, 15px; o número em Plex Mono 12px apagado.
 - Primeira abertura: caixa “Como você quer ler?” fundo `#dbe8ec`, padding 12px, raio 12px; título 14px 700; “Depois” 13px apagado; três botões 40px de altura, raio 10px, borda 1px destaque, 13px; Interlinear cheio (destaque).
 
 ### Versículo (modo Interlinear)
+
 - Bloco: margem 0 −8px, padding 10px 8px 14px 12px, raio 12px; sombra interna de 4px à esquerda (transparente; da cor quando marcado). Sem borda.
 - Número “3:16”: Literata 600 20px, destaque, botão 44px de altura; ponto de revisão 8×8px quente no canto.
 - Menu ⋯: 44×44px, apagado, à direita.
@@ -44,26 +47,31 @@ Medido nos dois arquivos exportados do canvas de design (`Bíblia Interlinea 1.h
 - Faixa de anotação (quando há nota/etiqueta): botão superfície, borda 1px linha, raio 10px, padding 8px 10px; nota Literata 14px com ícone; etiquetas `#nome` 12px, fundo chip, padding 2px 9px, raio 999px.
 
 ### Modo Bíblia
+
 - Um parágrafo só, Literata 17px / 1,8. Número do versículo sobrescrito, Atkinson 700 12px destaque, com ✎ # quando há nota/etiqueta.
 - Versículo marcado: fundo da cor a 55%, raio 4px.
 - Nota embaixo: “Toque no número do versículo para marcar, anotar ou ver o interlinear dele.” 13px apagado.
 
 ### Modo Original
+
 - Texto corrido em Gentium 21px / 1,9; cada palavra é um botão (padding 2px 1px, raio 4px); número sobrescrito como no modo Bíblia.
 - Nota: “Toque numa palavra para ver o verbete.” 13px apagado.
 
 ### Fim do capítulo
+
 - “Perguntas ao texto” h2 Literata 600 20px; cartões superfície, borda 1px linha, raio 12px, padding 12px 14px, espaço 6px; cabeçalho Plex Mono 11px maiúsculo (“OBSERVE · 3:1–10”); pergunta Literata 15px; “Anotar resposta” 36px, raio 999px, borda linha, 13px destaque.
 - “Léxico do capítulo”: lista numa caixa superfície (borda linha, raio 12px); cada linha 48px, padding 10px 14px: lema Gentium 18px, sentido 14px apagado, ocorrências Plex Mono 11px “143×”.
 - Cartão “Próximo capítulo”: superfície, borda linha, raio 14px, padding 16px; “Próximo capítulo” 12px apagado, “João 4” Literata 600 18px, tema 13px apagado, seta ›.
 
 ### Barra de baixo
+
 - 72px, superfície, borda superior 1px linha, padding 6px 6px 10px.
 - Cinco botões em coluna (ícone em cima, nome embaixo, 12px): Livros · ‹ Jo 2 · Ouvir · Jo 4 › · Aa Aparência (“Aa” Literata 19px).
 - Ouvir: fundo destaque, raio 14px, mais largo (1,2); tocando vira “Pausar”.
 - Mini player ao tocar: faixa destaque, 48px, raio 12px, 8px das bordas, logo acima da barra: “Lendo João 3:16 · grego” e pausa.
 
 ### Folha Livros · Notas · Você (modal, sobe de baixo)
+
 - Até 780px de altura, raio 20px em cima; fundo escuro atrás.
 - Abas em seletor (3 segmentos, 13px) e ✕ 44px.
 - **Livros:** rótulo “Buscar livro ou ir para uma referência” 13px apagado; campo 48px, fundo `#eceeea`, borda linha, raio 12px, 16px; seletor Antigo/Novo Testamento; grupos em Plex Mono 11px maiúsculo; livros em 2 colunas, botões 48px, raio 10px, borda linha, nome 15px e “28 cap.” Plex Mono 11px; livro atual: fundo `#dbe8ec`, borda destaque.
@@ -72,6 +80,7 @@ Medido nos dois arquivos exportados do canvas de design (`Bíblia Interlinea 1.h
 - **Você:** caixa Google Drive (fundo `#eceeea`, padding 16px, raio 14px; título 16px 700, texto 14px apagado, “Entrar com Google” 48px, raio 999px, superfície, borda); caixas “Meu progresso” e “Planos de leitura” (borda linha, raio 14px, padding 16px; planos em botões 48px, raio 10px, com ›).
 
 ### Folha Anotar (versículo)
+
 - Abre pelo número ou pelo ⋯; o versículo sobe para o topo e fica visível acima da folha.
 - Cabeçalho: “João 3:16” Literata 700 19px; trecho entre aspas Literata 13px apagado (2 linhas); ✕ 44px.
 - Cores: 5 círculos de 48px + “Tirar a cor” 48px com borda; escolhida: borda 3px na cor do texto.
@@ -82,6 +91,7 @@ Medido nos dois arquivos exportados do canvas de design (`Bíblia Interlinea 1.h
 - Rodapé com borda superior: “Pronto” 48px, raio 12px, destaque, 16px.
 
 ### Folha Verbete (sem fundo escuro)
+
 - 420px, raio 20px em cima, borda superior linha, sombra `0 -10px 30px rgba(0,0,0,.12)`; o versículo sobe.
 - ‹ e › 44×44 com borda, raio 12px; palavra Gentium 30px; “palavra 3 de 25 · João 3:16” 12px apagado; ✕.
 - Linha: lema Gentium 14px · transliteração Literata itálico 14px destaque · pronúncia; “Ouvir” 36px, raio 999px, borda, 13px destaque.
@@ -90,6 +100,7 @@ Medido nos dois arquivos exportados do canvas de design (`Bíblia Interlinea 1.h
 - Rodapé com borda: “Strong G25 · 143 ocorrências” 12px apagado e “Marcar palavra” 36px, raio 999px.
 
 ### Folha Aparência (modal)
+
 - “Aparência” Literata 700 20px e ✕.
 - MODO DE LEITURA: seletor de 4 (Bíblia · Original · Interlinear · Estudo) e a explicação 13px apagado.
 - O QUE MOSTRAR: Transliteração, Glosa, Pronúncia, Strong, Gramática, Bíblia Livre, Números, Tema do capítulo, Perguntas, Revisão ⚑, Minhas anotações.
