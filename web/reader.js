@@ -12,11 +12,13 @@ import LookButton from "../src/components/LookButton.svelte";
 import MiniPlayer from "../src/components/MiniPlayer.svelte";
 import ModeNote from "../src/components/ModeNote.svelte";
 import ModeSelector from "../src/components/ModeSelector.svelte";
+import ModeSwapButton from "../src/components/ModeSwapButton.svelte";
 import NotesButton from "../src/components/NotesButton.svelte";
 import NotesCount from "../src/components/NotesCount.svelte";
 import SayButton from "../src/components/SayButton.svelte";
 import TocButton from "../src/components/TocButton.svelte";
-import { MODE_IDS, eyebrowText as eyebrowFor, getMode, isModeId, swapLabel } from "../src/lib/modes";
+import WhereButton from "../src/components/WhereButton.svelte";
+import { MODE_IDS, eyebrowText as eyebrowFor, getMode, isModeId } from "../src/lib/modes";
 import { createRefs } from "../src/lib/refs";
 import { store } from "../src/lib/store";
 import { cleanHeb, esc, glossHTML, glossSpoken, norm } from "../src/lib/text";
@@ -703,6 +705,8 @@ function openToc() {
 }
 const openLook = () => openPanel("look");
 mount(TocButton, { target: topBar, anchor: topBar.firstChild, props: { place: "top", onopen: openToc } });
+mount(WhereButton, { target: topBar, anchor: document.getElementById("bar-modes"), props: { onopen: () => openWhere() } });
+mount(ModeSwapButton, { target: topBar, anchor: document.getElementById("open-search"), props: { onswap: id => applyMode(id) } });
 mount(LookButton, { target: topBar, anchor: document.getElementById("open-account"), props: { place: "top", onopen: openLook } });
 mount(ChapterNavButton, {
   target: topBar,
@@ -976,7 +980,6 @@ sheets.toc.addEventListener("click", e => {
 });
 
 // Onde estou
-const where = document.getElementById("where");
 function markHereChip() {
   document.querySelectorAll(".vchip").forEach(c => {
     const here = +c.dataset.v === hereV;
@@ -987,14 +990,8 @@ function markHereChip() {
 }
 function setHere(v) {
   hereV = v;
-  const ref = v === 0 ? `${CUR}, título` : `${CUR}:${v}`;
-  const theme = BOOK.chapters[CUR - 1].t;
-  document.getElementById("where-t").innerHTML =
-    `<b>${esc(BOOK.name)} ${CUR}</b>${theme ? `<span class="wt-sub">${esc(theme)}</span>` : ""}`;
-  where.setAttribute(
-    "aria-label",
-    `Você está em ${BOOK.name} ${ref}${theme ? ", " + theme : ""}. Abrir o índice para ir a outro livro, capítulo ou versículo.`
-  );
+  readerState.here = { book: BOOK.name, chapter: CUR, verse: v, theme: BOOK.chapters[CUR - 1].t || "" };
+  flushSync();
   markHereChip();
   try {
     history.replaceState(null, "", `#${BOOK.code}.${CUR}.${v}`);
@@ -1002,9 +999,6 @@ function setHere(v) {
   store.set("posicao", `${BOOK.code}.${CUR}.${v}`);
   if (window.__updateVpos) window.__updateVpos();
 }
-where.addEventListener("click", () => {
-  openPanel("toc", goIn);
-});
 if ("IntersectionObserver" in window) {
   const visible = new Set();
   io = new IntersectionObserver(
@@ -1396,7 +1390,6 @@ document.getElementById("open-mine").addEventListener("click", e => {
 // Cada modo é um conjunto de valores para os interruptores marcados com data-modo. Mudar um deles à mão
 // vira "Personalizado" (a partir do modo de origem). O modo vale para todos os aparelhos quando houver conta.
 const MODES = MODE_IDS.map(getMode);
-const modeSwap = document.getElementById("mode-swap");
 // the selectors (top bar and Aparência) and the note under them are Svelte components that follow readerState
 mount(ModeSelector, { target: document.getElementById("mode-grid"), props: { variant: "card", onselect: id => applyMode(id) } });
 mount(ModeSelector, { target: document.getElementById("bar-modes"), props: { variant: "bar", onselect: id => applyMode(id) } });
@@ -1420,12 +1413,7 @@ function showModo() {
   readerState.mode = isModeId(currentChapter) ? currentChapter : "interlinear";
   readerState.baseMode = isModeId(baseMode) ? baseMode : "interlinear";
   flushSync();
-  const other = MODES.find(m => m.id === previousMode && m.id !== currentChapter);
-  modeSwap.hidden = !other;
-  if (other) {
-    modeSwap.innerHTML = `⇄<span class="ms-t"> ${esc(other.spoken)}</span>`;
-    modeSwap.setAttribute("aria-label", swapLabel(other));
-  }
+  readerState.previousMode = isModeId(previousMode) ? previousMode : "";
   if (CH) document.getElementById("eyebrow").textContent = eyebrowText();
 }
 function applyMode(id, manual = true) {
@@ -1447,10 +1435,6 @@ function applyMode(id, manual = true) {
   document.querySelectorAll(".verse.abrir").forEach(v => v.classList.remove("abrir"));
   showModo();
 }
-modeSwap.addEventListener("click", () => {
-  const targetEl = previousMode;
-  if (targetEl) applyMode(targetEl);
-});
 // Mudou um item à mão: vira Personalizado
 document.querySelectorAll(".chk[data-modo]").forEach(t =>
   t.addEventListener("click", () => {
@@ -1631,13 +1615,14 @@ if ("serviceWorker" in navigator && !NATIVE && /^https?:$/.test(location.protoco
   phone.addEventListener("change", five);
 }
 // Tocar no título do capítulo abre o índice já na grade de capítulos do livro
-where.addEventListener("click", () => {
+function openWhere() {
+  openPanel("toc", goIn);
   tocView("capitulos");
   requestAnimationFrame(() => {
     const here = document.querySelector('#chgrid .chchip[aria-pressed="true"]');
     if (here) here.focus({ preventScroll: true });
   });
-});
+}
 // "Ir para" também filtra os livros pelo nome ("cânt", "1 jo")
 function filterBooks() {
   const raw = goIn.value.trim();

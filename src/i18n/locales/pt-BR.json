@@ -343,10 +343,16 @@
     "prev_chapter": "Capítulo anterior: {ref}",
     "next_chapter": "Próximo capítulo: {ref}",
     "first_chapter": "Este é o primeiro capítulo",
-    "last_chapter": "Este é o último capítulo"
+    "last_chapter": "Este é o último capítulo",
+    "where_title_ref": "{ch}, título",
+    "where_label": "Você está em {book} {ref}. Abrir o índice para ir a outro livro, capítulo ou versículo.",
+    "where_label_theme": "Você está em {book} {ref}, {theme}. Abrir o índice para ir a outro livro, capítulo ou versículo."
   },
   "you": {
     "progress": "Capítulos lidos, tempo de leitura, dias seguidos e o mapa dos 66 livros.",
     "progress_signed_out": "Capítulos lidos, tempo de leitura, dias seguidos e o mapa dos 66 livros. Aparece depois de entrar com a conta."
+  },
+  "app": {
+    "name": "Bíblia Interlinear"
   }
 }
