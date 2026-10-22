@@ -1,3 +1,4 @@
+import { jsonpChannel } from "../src/lib/data/jsonp";
 import { esc } from "../src/lib/text";
 // Estudo: ligação palavra ↔ Bíblia Livre, concordância (todas as ocorrências de um lema) e mapa das seções do capítulo.
 // Usa o que o leitor expõe: window.__chapter(), window.__books, window.__carregarCapitulo e os eventos
@@ -172,32 +173,17 @@ import { esc } from "../src/lib/text";
   });
 
   // ---------- Concordância ----------
-  const CONC = {},
-    pendingConc = {};
-  window.__conc = (bucket, d) => {
+  const CONC = {};
+  const loadConc = jsonpChannel("__conc", (bucket, d) => {
     CONC[bucket] = d;
-    pendingConc[bucket]?.ok(d);
-    delete pendingConc[bucket];
-  };
+  });
   const bucketOf = key => {
     const m = /^([HG])(\d+)$/.exec(key || "");
     return m ? `${m[1]}${Math.floor(+m[2] / 100)}` : `${(key || "G")[0]}x`;
   };
   function loadBucket(b) {
     if (CONC[b]) return Promise.resolve(CONC[b]);
-    return new Promise((ok, fail) => {
-      pendingConc[b] = { ok };
-      const s = document.createElement("script");
-      s.src = `dados/conc/${b}.js`;
-      s.async = true;
-      s.onload = () => s.remove();
-      s.onerror = () => {
-        delete pendingConc[b];
-        s.remove();
-        fail(new Error("sem concordância"));
-      };
-      document.head.appendChild(s);
-    });
+    return loadConc(b, `dados/conc/${b}.js`);
   }
   const bookByIndex = () => {
     const out = [];

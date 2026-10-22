@@ -204,5 +204,51 @@
       "one": "{book} {ch} tem {count} versículo.",
       "other": "{book} {ch} tem {count} versículos."
     }
+  },
+  "modes": {
+    "biblia": {
+      "name": "Bíblia",
+      "description": "só a Bíblia Livre, em parágrafos",
+      "spoken": "Bíblia",
+      "hint": "Só a Bíblia Livre, em parágrafos. Toque no número do versículo para ver o interlinear dele."
+    },
+    "original": {
+      "name": "Original",
+      "description": "só hebraico ou grego, corrido",
+      "spoken": "Original",
+      "hint": "Hebraico ou grego corrido. Toque numa palavra para abrir o verbete."
+    },
+    "paralelo": {
+      "name": "Original e Bíblia Livre",
+      "description": "os dois, versículo a versículo",
+      "spoken": "Paralelo",
+      "hint": "Original e Bíblia Livre, versículo a versículo (o original corrido, sem cartões)."
+    },
+    "interlinear": {
+      "name": "Interlinear",
+      "description": "original, transliteração e glosa",
+      "spoken": "Interlinear",
+      "hint": "Palavra por palavra: original, transliteração e glosa, com a Bíblia Livre abaixo."
+    },
+    "estudo": {
+      "name": "Estudo",
+      "description": "mais Strong, pronúncia e gramática",
+      "spoken": "Estudo",
+      "hint": "Tudo do Interlinear mais número Strong, pronúncia e análise gramatical."
+    },
+    "personalizado": {
+      "name": "Personalizado",
+      "description": "escolha cada item abaixo",
+      "spoken": "Personalizado",
+      "hint_from": "Personalizado a partir do modo {mode}. Toque num modo para voltar ao padrão dele."
+    },
+    "swap_label": "Trocar para o modo {mode}",
+    "eyebrow": {
+      "running": "Texto {lang}",
+      "interlinear": "Interlinear {lang} · português",
+      "blivre": "Bíblia Livre",
+      "hebrew": "hebraico",
+      "greek": "grego"
+    }
   }
 }

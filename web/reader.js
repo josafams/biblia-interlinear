@@ -2,6 +2,8 @@
  * ES module bundled by src/reader/main.ts; the books list (DATA) is inlined in ler.html before it
  * (see vite/site/reader-page.ts). Pure helpers live in src/lib. */
 import { decodeMorph, shortMorph } from "../src/lib/morph";
+import { createBible, toWord } from "../src/lib/data/bible";
+import { MODE_IDS, MODE_MENU, eyebrowText as eyebrowFor, getMode, isModeId, modeHint, swapLabel } from "../src/lib/modes";
 import { createRefs } from "../src/lib/refs";
 import { store } from "../src/lib/store";
 import { cleanHeb, esc, glossHTML, glossSpoken, norm } from "../src/lib/text";
@@ -9,70 +11,14 @@ const SPK =
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
 const BOOKS = DATA.books;
 const BY_CODE = Object.fromEntries(BOOKS.map(b => [b.code, b]));
-const LEX = Object.assign({}, DATA.lex || {});
-const CAPS = Object.assign({}, DATA.chapters || {});
+// chapters and lexicon on demand (src/lib/data/bible.ts)
+const { lex: LEX, chapters: CAPS, ensureLex, hasChapter, fetchChapter } = createBible(DATA);
 
 const prefs = {
   cant: store.get("cantilacao", "on") === "on",
   follow: store.get("acompanhar", "on") === "on",
   slow: store.get("voz-lenta", "off") === "on"
 };
-
-// ---------- Dados: capítulos e léxico sob demanda ----------
-// Carrega por <script> (funciona em http://, no app e também abrindo o arquivo direto do disco)
-const pending = {};
-window.__cap = (k, d) => {
-  CAPS[k] = d;
-  if (pending[k]) {
-    pending[k].ok(d);
-    delete pending[k];
-  }
-};
-window.__lex = (L, d) => {
-  Object.assign(LEX, d);
-  if (pending["lex:" + L]) {
-    pending["lex:" + L].ok();
-    delete pending["lex:" + L];
-  }
-};
-function loadScript(key, src) {
-  return new Promise((ok, fail) => {
-    pending[key] = { ok };
-    const s = document.createElement("script");
-    s.src = src;
-    s.async = true;
-    s.onerror = () => {
-      delete pending[key];
-      s.remove();
-      fail(new Error("falha ao carregar " + src));
-    };
-    s.onload = () => s.remove();
-    document.head.appendChild(s);
-  });
-}
-const lexLoaded = {};
-function ensureLex(L) {
-  if (!DATA.complete) return Promise.resolve();
-  if (!lexLoaded[L])
-    lexLoaded[L] = loadScript("lex:" + L, `dados/lex/${L}.js`).catch(e => {
-      lexLoaded[L] = null;
-      throw e;
-    });
-  return lexLoaded[L];
-}
-function hasChapter(cod, n) {
-  return !!DATA.complete || !!CAPS[cod + "." + n];
-}
-async function fetchChapter(cod, n) {
-  const k = cod + "." + n;
-  if (CAPS[k]) return CAPS[k];
-  if (!DATA.complete) return null;
-  return loadScript(k, `dados/cap/${cod}/${n}.js`);
-}
-function toWord(w) {
-  const [t, k, g, f, m, l, kt] = w;
-  return { heb: t.replace(/\//g, ""), parts: t.split("/"), strong: k, gloss: g, gf: f, morph: m, lemma: l, ketiv: kt };
-}
 
 // ---------- Estado ----------
 let lastWord = null; // última palavra aberta (a aba Verbete volta para ela)
@@ -1509,120 +1455,19 @@ document.getElementById("open-mine").addEventListener("click", e => {
 // ---------- Modos de leitura ----------
 // Cada modo é um conjunto de valores para os interruptores marcados com data-modo. Mudar um deles à mão
 // vira "Personalizado" (a partir do modo de origem). O modo vale para todos os aparelhos quando houver conta.
-const MODES = [
-  {
-    id: "biblia",
-    nome: "Bíblia",
-    desc: "só a Bíblia Livre, em parágrafos",
-    fala: "Bíblia",
-    v: { "t-orig": 0, "t-blivre": 1, "t-par": 1, "t-vnum": 1, "t-theme": 1, "t-about": 1, "t-lexicon": 1, "t-marks": 0, "t-questions": 1 }
-  },
-  {
-    id: "original",
-    nome: "Original",
-    desc: "só hebraico ou grego, corrido",
-    fala: "Original",
-    v: {
-      "t-orig": 1,
-      "t-cards": 0,
-      "t-blivre": 0,
-      "t-par": 0,
-      "t-vnum": 1,
-      "t-theme": 1,
-      "t-about": 1,
-      "t-lexicon": 1,
-      "t-marks": 0,
-      "t-questions": 0
-    }
-  },
-  {
-    id: "paralelo",
-    nome: "Original e Bíblia Livre",
-    desc: "os dois, versículo a versículo",
-    fala: "Paralelo",
-    v: {
-      "t-orig": 1,
-      "t-cards": 0,
-      "t-blivre": 1,
-      "t-par": 0,
-      "t-vnum": 1,
-      "t-theme": 1,
-      "t-about": 1,
-      "t-lexicon": 1,
-      "t-marks": 0,
-      "t-questions": 1
-    }
-  },
-  {
-    id: "interlinear",
-    nome: "Interlinear",
-    desc: "original, transliteração e glosa",
-    fala: "Interlinear",
-    v: {
-      "t-orig": 1,
-      "t-cards": 1,
-      "t-blivre": 1,
-      "t-par": 0,
-      "t-xlit": 1,
-      "t-pron": 0,
-      "t-gloss": 1,
-      "t-strong": 0,
-      "t-morf": 0,
-      "t-vnum": 1,
-      "t-theme": 1,
-      "t-about": 1,
-      "t-lexicon": 1,
-      "t-marks": 1,
-      "t-questions": 1
-    }
-  },
-  {
-    id: "estudo",
-    nome: "Estudo",
-    desc: "mais Strong, pronúncia e gramática",
-    fala: "Estudo",
-    v: {
-      "t-orig": 1,
-      "t-cards": 1,
-      "t-blivre": 1,
-      "t-par": 0,
-      "t-xlit": 1,
-      "t-pron": 1,
-      "t-gloss": 1,
-      "t-strong": 1,
-      "t-morf": 1,
-      "t-vnum": 1,
-      "t-theme": 1,
-      "t-about": 1,
-      "t-lexicon": 1,
-      "t-marks": 1,
-      "t-questions": 1
-    }
-  },
-  { id: "personalizado", nome: "Personalizado", desc: "escolha cada item abaixo", fala: "Personalizado", v: {} }
-];
+const MODES = MODE_IDS.map(getMode);
 const modeGrid = document.getElementById("mode-grid"),
   modeNote = document.getElementById("mode-note"),
   modeSwap = document.getElementById("mode-swap");
-// O seletor tem 4 opções, como no design; "Original e Bíblia Livre" e "Personalizado" continuam valendo
-// (vêm de quem já usava ou de mudar um item em "O que mostrar") e aparecem só na explicação embaixo
-const MODE_MENU = ["biblia", "original", "interlinear", "estudo"];
-const MODE_HINT = {
-  biblia: "Só a Bíblia Livre, em parágrafos. Toque no número do versículo para ver o interlinear dele.",
-  original: "Hebraico ou grego corrido. Toque numa palavra para abrir o verbete.",
-  paralelo: "Original e Bíblia Livre, versículo a versículo (o original corrido, sem cartões).",
-  interlinear: "Palavra por palavra: original, transliteração e glosa, com a Bíblia Livre abaixo.",
-  estudo: "Tudo do Interlinear mais número Strong, pronúncia e análise gramatical."
-};
 modeGrid.innerHTML = MODE_MENU.map(id => MODES.find(m => m.id === id))
-  .map(m => `<button class="mcard" role="radio" aria-checked="false" data-modo="${m.id}" title="${m.desc}">${m.nome}</button>`)
+  .map(m => `<button class="mcard" role="radio" aria-checked="false" data-modo="${m.id}" title="${m.description}">${m.name}</button>`)
   .join("");
 let modo = store.get("modo", "");
 let baseMode = store.get("modo-base", "interlinear");
 let previousMode = store.get("modo-anterior", "");
 function eyebrowText() {
-  const orig = document.body.classList.contains("hide-orig") ? null : GRC ? "grego" : "hebraico";
-  return orig ? (document.body.classList.contains("orig-running") ? `Texto ${orig}` : `Interlinear ${orig} · português`) : "Bíblia Livre";
+  const c = document.body.classList;
+  return eyebrowFor({ original: !c.contains("hide-orig"), running: c.contains("orig-running"), greek: !!GRC });
 }
 function setSwitch(id, on) {
   const t = document.getElementById(id);
@@ -1633,7 +1478,7 @@ function setSwitch(id, on) {
 }
 const barModes = document.getElementById("bar-modes");
 barModes.innerHTML = MODE_MENU.map(id => MODES.find(m => m.id === id))
-  .map(m => `<button class="bmode" role="radio" aria-checked="false" data-modo="${m.id}" title="${m.desc}">${m.nome}</button>`)
+  .map(m => `<button class="bmode" role="radio" aria-checked="false" data-modo="${m.id}" title="${m.description}">${m.name}</button>`)
   .join("");
 barModes.addEventListener("click", e => {
   const b = e.target.closest(".bmode");
@@ -1643,16 +1488,12 @@ function showModo() {
   const currentChapter = modo || "interlinear";
   barModes.querySelectorAll(".bmode").forEach(b => b.setAttribute("aria-checked", String(b.dataset.modo === currentChapter)));
   modeGrid.querySelectorAll(".mcard").forEach(b => b.setAttribute("aria-checked", String(b.dataset.modo === currentChapter)));
-  const base = MODES.find(m => m.id === baseMode);
-  modeNote.textContent =
-    currentChapter === "personalizado" && base
-      ? `Personalizado a partir do modo ${base.nome}. Toque num modo para voltar ao padrão dele.`
-      : MODE_HINT[currentChapter] || "";
+  modeNote.textContent = isModeId(currentChapter) ? modeHint(currentChapter, baseMode) : "";
   const other = MODES.find(m => m.id === previousMode && m.id !== currentChapter);
   modeSwap.hidden = !other;
   if (other) {
-    modeSwap.innerHTML = `⇄<span class="ms-t"> ${other.fala}</span>`;
-    modeSwap.setAttribute("aria-label", `Trocar para o modo ${other.nome}`);
+    modeSwap.innerHTML = `⇄<span class="ms-t"> ${esc(other.spoken)}</span>`;
+    modeSwap.setAttribute("aria-label", swapLabel(other));
   }
   if (CH) document.getElementById("eyebrow").textContent = eyebrowText();
 }
@@ -1664,7 +1505,7 @@ function applyMode(id, manual = true) {
     store.set("modo-anterior", modo);
   }
   if (id !== "personalizado") {
-    for (const [k, on] of Object.entries(m.v)) setSwitch(k, on);
+    for (const [k, on] of Object.entries(m.switches)) setSwitch(k, on);
     baseMode = id;
     store.set("modo-base", id);
   }
