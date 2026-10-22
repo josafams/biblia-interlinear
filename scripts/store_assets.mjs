@@ -2,7 +2,7 @@
 //   phone-1..6.png   capturas de tela do celular (1080×1920)
 //   feature.png      imagem de destaque (1024×500)
 //   icon-512.png     ícone (cópia de build/web/icones/icone-512.png)
-// Uso: node scripts/build_web.mjs && node scripts/store_assets.mjs
+// Uso: npm run build:web && node scripts/store_assets.mjs
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -12,7 +12,7 @@ import { serveStatic } from "./lib/static-server.mjs";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const WEB = path.join(ROOT, "build", "web");
 const OUT = path.join(ROOT, "build", "store");
-if (!fs.existsSync(path.join(WEB, "ler.html"))) throw new Error("build/web não existe: rode node scripts/build_web.mjs antes");
+if (!fs.existsSync(path.join(WEB, "ler.html"))) throw new Error("build/web não existe: rode npm run build:web antes");
 fs.mkdirSync(OUT, { recursive: true });
 
 const exe = process.env.CHROMIUM_PATH || (fs.existsSync("/opt/pw-browsers/chromium") ? "/opt/pw-browsers/chromium" : undefined);

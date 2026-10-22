@@ -1,14 +1,15 @@
-// Builds the reader bundle. scripts/build_web.mjs runs this first and then assembles build/web
-// (pages, data, fonts, icons, service worker) around the bundle listed in the Vite manifest.
+// Builds the site in build/web: Vite bundles the reader JavaScript and the interlinear-site plugin
+// (vite/interlinear-plugin.ts) assembles pages, data, fonts, icons and the service worker around it.
 import { defineConfig } from "vite";
+import { interlinearSite } from "./vite/interlinear-plugin";
 
 export default defineConfig({
   base: "./",
   publicDir: false,
+  plugins: [interlinearSite()],
   build: {
-    outDir: "build/vite",
+    outDir: "build/web",
     emptyOutDir: true,
-    manifest: true,
     target: "es2020",
     sourcemap: false,
     rollupOptions: {

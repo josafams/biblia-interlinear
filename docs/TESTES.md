@@ -3,7 +3,7 @@
 ## Testes automáticos
 
 Rodam no GitHub em todo pull request e envio à `main` (workflow **Testes**). Para rodar no computador,
-depois de gerar os dados e o site (`scripts/build.sh`, ou `corpus.py` + `make_glosses.py` + `node scripts/build_web.mjs`):
+depois de gerar os dados e o site (`scripts/build.sh`, ou `corpus.py` + `make_glosses.py` + `npm run build:web`):
 
 ```bash
 pip install pytest pypdf
@@ -59,7 +59,7 @@ A página inicial mostra a lista de vídeos (dos roteiros) e toca os que já for
 node scripts/videos/gravar.mjs --verificar   # só executa os roteiros (rápido; também roda nos testes)
 node scripts/videos/gravar.mjs               # grava todos (precisa do ffmpeg)
 node scripts/videos/gravar.mjs 05 12         # grava só esses
-node scripts/build_web.mjs                   # copia build/videos para o site
+npm run build:web                   # copia build/videos para o site
 ```
 
 No GitHub, o workflow **Vídeos** grava de novo depois de cada publicação do site (workflow **Site**) e publica em `gh-pages/videos`.

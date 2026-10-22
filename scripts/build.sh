@@ -20,18 +20,18 @@ if [ "${REFAZER:-0}" = "1" ] || [ ! -f build/biblia.sqlite ]; then
 fi
 python3 scripts/export.py > /dev/null   # grava o léxico em português no banco
 python3 scripts/review.py > /dev/null
-node scripts/build_web.mjs
+npm run build:web
 python3 scripts/export.py --preview build/preview.json GEN.1 GEN.2 GEN.3 GEN.12 EXO.20 RUT.1 PSA.1 PSA.23 PSA.51 \
   ISA.53 DAN.2 MAT.5 JHN.1 JHN.3 ROM.8 1CO.13 REV.21
 python3 - <<'PY'
 from pathlib import Path
 
-# single page: the reader bundle (build/vite) and the stylesheets are inlined, because the preview is one file
-import json
+# single page: the reader bundle (named in build/web/ler.html) and the stylesheets are inlined, because the preview is one file
+import re
 t = Path("web/reader.html").read_text(encoding="utf8")
 d = Path("build/preview.json").read_text(encoding="utf8").replace("</", "<\\/")
-bundle = json.loads(Path("build/vite/.vite/manifest.json").read_text(encoding="utf8"))["src/reader/main.ts"]["file"]
-js = Path("build/vite", bundle).read_text(encoding="utf8").replace("</script", "<\\/script")
+bundle = re.search(r'src="(assets/reader-[^"]+.js)"', Path("build/web/ler.html").read_text(encoding="utf8"))[1]
+js = Path("build/web", bundle).read_text(encoding="utf8").replace("</script", "<\\/script")
 t = t.replace('<script type="module" src="__READER_BUNDLE__"></script>', '<script type="module">\n' + js + "</script>", 1)
 for name in ("tokens", "reader"):
     css = Path(f"web/styles/{name}.css").read_text(encoding="utf8")
