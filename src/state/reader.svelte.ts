@@ -36,8 +36,10 @@ export const reader = $state({
   /** null until the first chapter opens. */
   here: null as Here | null,
   /** The chapter title block (null until the first chapter opens); eyebrow says what text is on screen. */
-  heading: null as { book: string; chapter: number; titleOrig: string; theme: string } | null,
+  heading: null as { book: string; chapter: number; titleOrig: string; theme: string; hasAbout: boolean } | null,
   eyebrow: "",
+  /** "Sobre o livro" (the book introduction) is open */
+  aboutOpen: false,
   /** The book on screen is in Greek (New Testament); otherwise Hebrew/Aramaic. */
   greek: false,
   /** "Perguntas ao texto" of the chapter on screen. */

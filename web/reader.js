@@ -11,6 +11,7 @@ import ChapterHeading from "../src/components/ChapterHeading.svelte";
 import ChapterLexicon from "../src/components/ChapterLexicon.svelte";
 import ChapterNavButton from "../src/components/ChapterNavButton.svelte";
 import ChapterText from "../src/components/ChapterText.svelte";
+import HeaderChips from "../src/components/HeaderChips.svelte";
 import LookButton from "../src/components/LookButton.svelte";
 import MiniPlayer from "../src/components/MiniPlayer.svelte";
 import ModeNote from "../src/components/ModeNote.svelte";
@@ -61,6 +62,11 @@ const OLANG = () => (GRC ? "grc" : "he");
 // ---------- Cabeçalho, versículos ----------
 const root = document.getElementById("verses");
 mount(ChapterText, { target: root });
+mount(HeaderChips, {
+  target: document.querySelector("#page > header"),
+  anchor: document.getElementById("ch-say"),
+  props: { onabout: () => toggleAbout(), ongo: selector => goLocal(selector) }
+});
 mount(ChapterHeading, { target: document.querySelector("#page > header"), anchor: document.querySelector("#page > header .kbd") });
 let io = null;
 function vLabel(v) {
@@ -72,14 +78,16 @@ function renderHeader() {
   // the title block is ChapterHeading.svelte
   readerState.greek = GRC;
   readerState.eyebrow = eyebrowText();
-  readerState.heading = { book: BOOK.name, chapter: CUR, titleOrig: A?.title_orig || "", theme: BOOK.chapters[CUR - 1]?.t || "" };
+  readerState.heading = {
+    book: BOOK.name,
+    chapter: CUR,
+    titleOrig: A?.title_orig || "",
+    theme: BOOK.chapters[CUR - 1]?.t || "",
+    hasAbout: !!A
+  };
   document.body.classList.toggle("grc", GRC);
   document.getElementById("verses").setAttribute("aria-label", `Texto de ${BOOK.name} ${CUR}`);
-  // atalhos do cabeçalho; os ‹ › das barras (ChapterNavButton) leem o capítulo anterior e o próximo de readerState
-  const nq = CH ? CH.questions.length : 0,
-    chipQ = document.getElementById("chip-q");
-  chipQ.hidden = !nq;
-  chipQ.innerHTML = `Perguntas <span class="n">${nq}</span>`;
+  // os ‹ › das barras (ChapterNavButton) e os atalhos do cabeçalho (HeaderChips) leem readerState
   for (const dir of [-1, 1]) {
     const x = neighbor(dir);
     readerState[dir < 0 ? "prev" : "next"] = x
@@ -902,19 +910,15 @@ function niceStep(span) {
   return 2000;
 }
 const aboutBox = document.getElementById("about-body"),
-  aboutDet = document.getElementById("sobre"),
-  aboutChip = document.getElementById("chip-about");
-aboutChip.addEventListener("click", () => {
+  aboutDet = document.getElementById("sobre");
+function toggleAbout() {
   aboutDet.open = !aboutDet.open;
   if (aboutDet.open) aboutDet.scrollIntoView({ block: "nearest" });
-});
+}
 function renderAbout() {
   const A = BOOK.about;
   document.getElementById("ab-title").innerHTML =
     `${esc(BOOK.name)}${A ? `<span class="orig" lang="${OLANG()}">${esc(A.title_orig)}</span>` : ""}`;
-  // "Sobre João": um chip ao lado de Léxico e Perguntas, como no design; o texto abre embaixo
-  aboutChip.textContent = `Sobre ${BOOK.name}`;
-  aboutChip.hidden = !A;
   if (!A) {
     aboutDet.hidden = true;
     return;
@@ -1006,7 +1010,7 @@ function renderAbout() {
 }
 aboutDet.addEventListener("toggle", () => {
   store.set("sobre-aberto", aboutDet.open ? "on" : "off");
-  aboutChip.setAttribute("aria-expanded", String(aboutDet.open));
+  readerState.aboutOpen = aboutDet.open;
 });
 if (store.get("sobre-aberto", "off") === "on") aboutDet.open = true;
 aboutBox.addEventListener("click", e => {
@@ -1365,11 +1369,8 @@ function speakFrom(vi, btn) {
   );
 }
 // Atalhos do cabeçalho (Léxico, Perguntas): rolam até a seção sem mudar o endereço da página
-document.getElementById("hchips").addEventListener("click", e => {
-  const a = e.target.closest("[data-go-local]");
-  if (!a) return;
-  e.preventDefault();
-  const target = document.querySelector(a.getAttribute("href"));
+function goLocal(selector) {
+  const target = document.querySelector(selector);
   if (!target) return;
   target.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   const h = target.querySelector("h2");
@@ -1377,7 +1378,7 @@ document.getElementById("hchips").addEventListener("click", e => {
     h.tabIndex = -1;
     h.focus({ preventScroll: true });
   }
-});
+}
 // Teclado (fora de campos de texto e painéis): [ e ] trocam de capítulo; / abre a busca
 document.addEventListener("keydown", e => {
   if (e.defaultPrevented || e.ctrlKey || e.metaKey || e.altKey || openSheet || document.body.classList.contains("com-busca")) return;

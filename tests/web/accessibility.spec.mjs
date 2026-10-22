@@ -10,7 +10,11 @@ for (const [nome, url] of [
   test(`acessibilidade: ${nome}`, async ({ page }) => {
     test.setTimeout(120000);
     await page.goto(url);
-    await page.waitForLoadState("networkidle");
+    // the page is drawn: the reader's chapter with its lexicon, and the fonts (waiting for "networkidle" is
+    // discouraged by Playwright and timed out now and then when the whole suite runs in parallel)
+    if (url.startsWith("ler.html")) await page.locator("#verses .word").first().waitFor();
+    if (url.startsWith("ler.html")) await page.locator("#llist .lrow").first().waitFor();
+    await page.evaluate(() => document.fonts.ready);
     const r = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa"]).analyze();
     const graves = r.violations.filter(v => v.impact === "critical" || v.impact === "serious");
     expect(graves.map(v => `${v.id}: ${v.help} (${v.nodes.length}× ex.: ${v.nodes[0].target.join(" ")})`)).toEqual([]);
