@@ -1,3 +1,4 @@
+import { esc } from "../src/lib/text";
 /* Meu progresso: capítulos lidos, tempo de leitura, sequência de dias, mapa dos livros e plano de leitura.
  * Só conta para quem entrou com a conta Google (o plano do projeto): sem conta, o app guarda só a última posição.
  * Tudo fica no banco local e sincroniza pelo Drive como as anotações (web/sync.js):
@@ -19,7 +20,6 @@
   const B = A.storage;
   const CFG = Object.assign({ tick: 5000, minReading: 60, gesture: 120000, saveEvery: 300000 }, window.__progressConfig || {});
   const DAY_MS = 864e5;
-  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
   const pad = n => String(n).padStart(2, "0");
   const dayOf = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; // dia local (fuso do aparelho)
   const today = () => dayOf(new Date());

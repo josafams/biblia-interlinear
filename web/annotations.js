@@ -1,3 +1,4 @@
+import { esc } from "../src/lib/text";
 /* Anotações no aparelho: marcações com cores, notas, favoritos e etiquetas.
  * Tudo fica no banco local do navegador/app (IndexedDB, via Dexie — Apache-2.0); funciona sem conta e offline.
  * Cada gravação também entra numa fila de mudanças, que a sincronização com o Google Drive (fase 5) vai enviar.
@@ -13,7 +14,6 @@
   if (window.Annotations) return;
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
-  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
   const COLORS = [
     { id: "amarelo", nome: "Amarelo" },
     { id: "verde", nome: "Verde" },

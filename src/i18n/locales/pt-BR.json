@@ -1,0 +1,208 @@
+{
+  "gloss": {
+    "object_marker": "obj.",
+    "object_marker_title": "marca de objeto direto: não se traduz",
+    "object_marker_spoken": "marcador de objeto"
+  },
+  "morph": {
+    "aramaic_prefix": "aramaico: ",
+    "verb": "verbo",
+    "pronoun": "pronome",
+    "suffix": "sufixo",
+    "particle": "partícula",
+    "person_word": "pessoa",
+    "person": {
+      "1": "1ª",
+      "2": "2ª",
+      "3": "3ª"
+    },
+    "he": {
+      "stem": {
+        "q": "qal",
+        "N": "nifal",
+        "p": "piel",
+        "P": "pual",
+        "h": "hifil",
+        "H": "hofal",
+        "t": "hitpael",
+        "o": "polel",
+        "O": "polal",
+        "r": "hitpolel",
+        "m": "poel",
+        "M": "poal",
+        "k": "palel",
+        "K": "pulal",
+        "Q": "qal passivo",
+        "l": "pilpel",
+        "L": "polpal",
+        "f": "hitpalpel",
+        "D": "nitpael",
+        "j": "pealal",
+        "i": "pilel",
+        "u": "hotpaal",
+        "c": "tifil",
+        "v": "hishtafel",
+        "w": "nitpael",
+        "y": "hitpoel",
+        "z": "hitpael",
+        "e": "peal",
+        "E": "peil",
+        "a": "afel",
+        "A": "hafel"
+      },
+      "type": {
+        "p": "perfeito",
+        "q": "perfeito consecutivo",
+        "i": "imperfeito",
+        "w": "imperfeito consecutivo",
+        "h": "coortativo",
+        "j": "jussivo",
+        "v": "imperativo",
+        "r": "particípio",
+        "s": "particípio passivo",
+        "a": "infinitivo absoluto",
+        "c": "infinitivo construto"
+      },
+      "gender": {
+        "m": "masc.",
+        "f": "fem.",
+        "c": "comum",
+        "b": "ambos"
+      },
+      "number": {
+        "s": "sing.",
+        "p": "plural",
+        "d": "dual"
+      },
+      "state": {
+        "c": "construto",
+        "a": "absoluto",
+        "d": "determinado"
+      },
+      "noun": {
+        "p": "nome próprio",
+        "g": "nome gentílico",
+        "other": "substantivo"
+      },
+      "adjective": {
+        "c": "numeral",
+        "o": "ordinal",
+        "other": "adjetivo"
+      },
+      "particle": {
+        "R": "preposição",
+        "Rd": "preposição com artigo",
+        "C": "conjunção",
+        "Td": "artigo",
+        "To": "marcador de objeto",
+        "Tr": "relativo",
+        "Tm": "interjeição",
+        "Ti": "interrogativo",
+        "Tn": "negação",
+        "D": "advérbio",
+        "Sd": "he direcional",
+        "Sh": "he paragógico",
+        "Sn": "nun paragógico"
+      }
+    },
+    "grc": {
+      "pos": {
+        "A": "adjetivo",
+        "C": "conjunção",
+        "D": "advérbio",
+        "I": "interjeição",
+        "N": "substantivo",
+        "P": "preposição",
+        "RA": "artigo",
+        "RD": "pronome demonstrativo",
+        "RI": "pronome interrogativo/indefinido",
+        "RP": "pronome pessoal",
+        "RR": "pronome relativo",
+        "V": "verbo",
+        "X": "partícula"
+      },
+      "tense": {
+        "P": "presente",
+        "I": "imperfeito",
+        "F": "futuro",
+        "A": "aoristo",
+        "X": "perfeito",
+        "Y": "mais-que-perfeito"
+      },
+      "voice": {
+        "A": "ativo",
+        "M": "médio",
+        "P": "passivo"
+      },
+      "mood": {
+        "I": "indicativo",
+        "D": "imperativo",
+        "S": "subjuntivo",
+        "O": "optativo",
+        "N": "infinitivo",
+        "P": "particípio"
+      },
+      "case": {
+        "N": "nominativo",
+        "G": "genitivo",
+        "D": "dativo",
+        "A": "acusativo",
+        "V": "vocativo"
+      },
+      "number": {
+        "S": "sing.",
+        "P": "plural"
+      },
+      "gender": {
+        "M": "masc.",
+        "F": "fem.",
+        "N": "neutro"
+      },
+      "degree": {
+        "C": "comparativo",
+        "S": "superlativo"
+      }
+    },
+    "short": {
+      "substantivo": "subst.",
+      "artigo": "art.",
+      "adjetivo": "adj.",
+      "preposição": "prep.",
+      "pronome": "pron.",
+      "conjunção": "conj.",
+      "advérbio": "adv.",
+      "partícula": "part.",
+      "interjeição": "interj.",
+      "aoristo": "aor.",
+      "presente": "pres.",
+      "imperfeito": "imperf.",
+      "futuro": "fut.",
+      "perfeito": "perf.",
+      "mais-que-perfeito": "m.-q.-perf.",
+      "nominativo": "nom.",
+      "genitivo": "gen.",
+      "dativo": "dat.",
+      "acusativo": "acus.",
+      "vocativo": "voc.",
+      "qal": "qal",
+      "nifal": "nifal",
+      "piel": "piel",
+      "hifil": "hifil",
+      "particípio": "part.",
+      "infinitivo": "inf."
+    }
+  },
+  "refs": {
+    "chapter_words": "c|cap|capitulo",
+    "unknown_book": "Não reconheci o livro “{word}”. Use o nome ou a abreviação, como <b>Jo 3:16</b> ou <b>Salmos 23</b>.",
+    "incomplete": "Digite livro, capítulo e versículo, por exemplo <b>Jo 3:16</b>.",
+    "chapter_count": {
+      "one": "{book} tem {count} capítulo.",
+      "other": "{book} tem {count} capítulos."
+    },
+    "verse_count": {
+      "one": "{book} {ch} tem {count} versículo.",
+      "other": "{book} {ch} tem {count} versículos."
+    }
+  }
+}

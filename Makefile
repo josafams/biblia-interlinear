@@ -66,10 +66,13 @@ web: ## Gera só o site (build/web); precisa do banco gerado por `make data`
 check-data: ## Confere os arquivos editados à mão em data/ (temas, léxico, correções, perguntas)
 	python3 scripts/check_data.py
 
-test: test-data test-web ## Roda todos os testes
+test: test-data test-unit test-web ## Roda todos os testes
 
 test-data: ## Testes de dados, scripts, EPUB e PDF (pytest)
 	python3 -m pytest
+
+test-unit: ## Testes de unidade do núcleo em TypeScript (Vitest)
+	npx vitest run
 
 test-web: ## Testes do site no navegador (Playwright)
 	npx playwright test
@@ -79,6 +82,7 @@ lint: ## Linters de todas as linguagens
 	npx eslint .
 	npx stylelint "web/styles/*.css"
 	npm run check
+	node scripts/dev/i18n_check.mjs
 	ruff check .
 	ruff format --check .
 	npx markdownlint-cli2 "**/*.md"

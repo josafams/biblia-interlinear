@@ -1,3 +1,4 @@
+import { esc } from "../src/lib/text";
 /* Conta Google opcional: login e acesso à pasta privada do app no Google Drive (appDataFolder).
  * Sem servidor do projeto: o app fala direto com a API do Drive usando o token que o Google entrega no login.
  *   - Site: Google Identity Services, modelo de token (popup). O script do Google só é carregado quando a pessoa
@@ -36,7 +37,6 @@
       v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v);
     } catch (_) {}
   };
-  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
   let account = null; // { nome, email, foto }
   try {

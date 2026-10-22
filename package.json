@@ -10,11 +10,13 @@
     "icons": "node scripts/native_icons.mjs",
     "android:sync": "npx cap sync android",
     "android:open": "npx cap open android",
-    "test": "python3 -m pytest tests -q && npx playwright test",
+    "test": "python3 -m pytest tests -q && vitest run && npx playwright test",
+    "test:unit": "vitest run",
     "test:web": "npx playwright test",
     "test:data": "python3 -m pytest tests -q",
     "build:web": "vite build",
     "check": "tsc -p .",
+    "check:i18n": "node scripts/dev/i18n_check.mjs",
     "lint": "prettier --check . && eslint . && stylelint \"web/styles/*.css\" && markdownlint-cli2 \"**/*.md\"",
     "format": "prettier --write ."
   },
@@ -50,6 +52,7 @@
     "sharp": "0.35.5",
     "stylelint": "16.26.1",
     "typescript": "5.9.3",
-    "vite": "6.4.5"
+    "vite": "6.4.5",
+    "vitest": "3.2.4"
   }
 }

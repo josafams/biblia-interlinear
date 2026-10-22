@@ -1,10 +1,10 @@
+import { esc } from "../src/lib/text";
 // Estudo: ligação palavra ↔ Bíblia Livre, concordância (todas as ocorrências de um lema) e mapa das seções do capítulo.
 // Usa o que o leitor expõe: window.__chapter(), window.__books, window.__carregarCapitulo e os eventos
 // "word-opened" e "chapter-rendered".
 (() => {
   "use strict";
   const $ = (s, el = document) => el.querySelector(s);
-  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
   const HL = typeof CSS !== "undefined" && CSS.highlights && typeof Highlight !== "undefined";
   const chapter = () => (window.__chapter ? window.__chapter() : null);
 
