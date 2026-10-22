@@ -1,6 +1,7 @@
 // Meu progresso: capítulo lido, tempo ativo, soma entre aparelhos, sequência, mapa, plano de leitura — com o Google simulado.
 import { test, expect } from "@playwright/test";
-import { simularGoogle, novaNuvem } from "./fake-google.mjs";
+import { newDevice, openIndexTab, signIn } from "./helpers.mjs";
+import { novaNuvem } from "./fake-google.mjs";
 
 test.use({ serviceWorkers: "block" });
 test.describe.configure({ timeout: 90000 });
@@ -8,42 +9,24 @@ test.describe.configure({ timeout: 90000 });
 // contagem acelerada: 1 "segundo" de leitura mínima, verificação a cada 200 ms, sem gesto = parado depois de 1,5 s
 const RAPIDO = { tick: 200, minReading: 1, gesture: 1500, saveEvery: 1000 };
 
-async function aparelho(browser, info, nuvem, { config = RAPIDO, timezoneId } = {}) {
-  const u = info.project.use;
-  const ctx = await browser.newContext({
-    viewport: u.viewport,
-    userAgent: u.userAgent,
-    deviceScaleFactor: u.deviceScaleFactor,
-    isMobile: u.isMobile,
-    hasTouch: u.hasTouch,
-    locale: "pt-BR",
-    baseURL: u.baseURL || "http://localhost:8790/",
-    serviceWorkers: "block",
-    timezoneId
+const aparelho = (browser, info, nuvem, { config = RAPIDO, timezoneId } = {}) =>
+  newDevice(browser, info, {
+    cloud: nuvem,
+    ref: "RUT.1",
+    timezoneId,
+    init: [
+      c => {
+        window.__progressConfig = c;
+        try {
+          localStorage.setItem("interlinear:conta-sugestao", "nao");
+        } catch (_) {}
+      },
+      config
+    ],
+    ready: () => window.Progress && window.Account && window.Sync
   });
-  await ctx.addInitScript(c => {
-    window.__progressConfig = c;
-    try {
-      localStorage.setItem("interlinear:conta-sugestao", "nao");
-    } catch (_) {}
-  }, config);
-  const page = await ctx.newPage();
-  await simularGoogle(page, { nuvem });
-  await page.goto("ler.html#RUT.1");
-  await expect(page.locator(".verse").first()).toBeVisible();
-  await page.waitForFunction(() => window.Progress && window.Account && window.Sync);
-  return page;
-}
-async function signIn(page) {
-  await page.click("#open-toc");
-  await page.click('#toc .toc-tabs a[href="#toc-voce"]');
-  await page.click("#account-signin");
-  await expect(page.locator("#account-sync")).toContainText("Sincronizado", { timeout: 20000 });
-  await page.keyboard.press("Escape");
-}
 async function abrirProgresso(page) {
-  await page.click("#open-toc");
-  await page.click('#toc .toc-tabs a[href="#toc-voce"]');
+  await openIndexTab(page, "voce");
   await page.click("#open-progress");
   await expect(page.locator("#progresso")).toBeVisible();
 }

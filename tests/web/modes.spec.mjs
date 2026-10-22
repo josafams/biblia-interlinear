@@ -1,10 +1,8 @@
 // Modos de leitura: seletor com Bíblia, Original, Interlinear e Estudo; mudar um item vira Personalizado.
 import { test, expect } from "@playwright/test";
+import { openReader } from "./helpers.mjs";
 
-async function open(page, ref = "GEN.1") {
-  await page.goto(`ler.html#${ref}`);
-  await expect(page.locator(".verse").first()).toBeVisible();
-}
+const open = (page, ref = "GEN.1") => openReader(page, ref);
 async function modo(page, id) {
   await page.click("#open-look");
   await page.click(`.mcard[data-modo="${id}"]`);

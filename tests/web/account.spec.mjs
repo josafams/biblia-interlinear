@@ -1,16 +1,15 @@
 // Login Google (opcional) e acesso à pasta do app no Drive — com o Google simulado (nada sai para a internet).
 import { test, expect } from "@playwright/test";
+import { openReader, openIndexTab } from "./helpers.mjs";
 import { simularGoogle } from "./fake-google.mjs";
 
 // o service worker serviria o google-config.js real do cache, passando por cima da simulação
 test.use({ serviceWorkers: "block" });
 
 async function abrirIndice(page) {
-  await page.goto("ler.html#GEN.1");
-  await expect(page.locator(".verse").first()).toBeVisible();
+  await openReader(page, "GEN.1");
   await page.waitForFunction(() => window.Account);
-  await page.click("#open-toc");
-  await page.click('#toc .toc-tabs a[href="#toc-voce"]');
+  await openIndexTab(page, "voce");
 }
 
 test("sem ID de cliente configurado, o login não aparece", async ({ page }) => {

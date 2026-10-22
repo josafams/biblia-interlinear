@@ -1,14 +1,9 @@
 // Itens da proposta de redesenho (docs/REDESENHO.md) que não têm teste em outro arquivo: barras, Índice, Aparência,
 // anotações por versículo, contagens por livro e capítulos longos — no celular e no computador.
 import { test, expect } from "@playwright/test";
+import { openReader } from "./helpers.mjs";
 
-async function open(page, ref = "JHN.3") {
-  await page.addInitScript(() => localStorage.setItem("interlinear:conta-sugestao", "nao"));
-  await page.goto(`ler.html#${ref}`);
-  await expect(page.locator(".verse").first()).toBeVisible();
-  const welcome = page.locator("#welcome");
-  if (await welcome.isVisible()) await welcome.locator('button[data-modo="interlinear"]').click();
-}
+const open = (page, ref = "JHN.3") => openReader(page, ref, { hideAccountHint: true, skipWelcome: true });
 const celular = info => info.project.name === "celular";
 
 test("celular: Livros · ‹ · Ouvir · › · Aa na barra de baixo; computador: tudo na barra de cima", async ({ page }, info) => {

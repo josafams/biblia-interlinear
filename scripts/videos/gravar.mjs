@@ -10,13 +10,14 @@
 //   node scripts/videos/gravar.mjs --verificar     só executa os roteiros, sem gravar (rápido; usado nos testes)
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import http from "node:http";
 import { execFileSync } from "node:child_process";
 import { chromium, devices } from "playwright";
 import { videos } from "./roteiros.mjs";
 import { simularGoogle } from "../../tests/web/fake-google.mjs";
 
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../..");
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const WEB = path.join(ROOT, "build/web");
 const OUT = path.join(ROOT, "build/videos");
 const args = process.argv.slice(2);

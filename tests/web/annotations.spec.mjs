@@ -1,10 +1,8 @@
 // Anotações no aparelho: marcações com cores, notas, favoritos, etiquetas e "Minhas anotações".
 import { test, expect } from "@playwright/test";
+import { openReader } from "./helpers.mjs";
 
-async function open(page, ref = "GEN.1") {
-  await page.goto(`ler.html#${ref}`);
-  await expect(page.locator(".verse").first()).toBeVisible();
-}
+const open = (page, ref = "GEN.1") => openReader(page, ref);
 const bar = page => page.locator("#mbar");
 
 test("marcar um versículo com cor fica guardado", async ({ page }) => {

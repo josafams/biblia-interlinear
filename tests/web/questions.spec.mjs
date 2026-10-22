@@ -1,13 +1,8 @@
 // Perguntas ao texto: perguntas no fim do capítulo, sem respostas (data/questions).
 import { test, expect } from "@playwright/test";
+import { openReader } from "./helpers.mjs";
 
-async function open(page, ref) {
-  await page.addInitScript(() => localStorage.setItem("interlinear:conta-sugestao", "nao"));
-  await page.goto(`ler.html#${ref}`);
-  await expect(page.locator(".verse").first()).toBeVisible();
-  const welcome = page.locator("#welcome");
-  if (await welcome.isVisible()) await welcome.locator('button[data-modo="interlinear"]').click();
-}
+const open = (page, ref) => openReader(page, ref, { hideAccountHint: true, skipWelcome: true });
 
 test("o fim do capítulo traz de 3 a 5 perguntas, de cada tipo, sem respostas", async ({ page }) => {
   await open(page, "RUT.1");

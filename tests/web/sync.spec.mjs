@@ -1,42 +1,31 @@
 // Sincronização das anotações pelo Drive entre vários "aparelhos" (contextos do navegador), com o Google simulado.
 import { test, expect } from "@playwright/test";
-import { simularGoogle, novaNuvem } from "./fake-google.mjs";
+import { newDevice, signIn as signInFake } from "./helpers.mjs";
+import { novaNuvem } from "./fake-google.mjs";
 
 test.use({ serviceWorkers: "block" });
 test.describe.configure({ timeout: 90000 });
 
 // Abre um "aparelho" novo (contexto próprio: banco e aparelho próprios) ligado à mesma nuvem
-async function aparelho(browser, nuvem, info, { atraso = 0 } = {}) {
-  const u = info.project.use;
-  const ctx = await browser.newContext({
-    viewport: u.viewport,
-    userAgent: u.userAgent,
-    deviceScaleFactor: u.deviceScaleFactor,
-    isMobile: u.isMobile,
-    hasTouch: u.hasTouch,
-    locale: "pt-BR",
-    baseURL: u.baseURL || "http://localhost:8790/",
-    serviceWorkers: "block"
+const aparelho = (browser, nuvem, info, { atraso = 0 } = {}) =>
+  newDevice(browser, info, {
+    cloud: nuvem,
+    ref: "GEN.1",
+    // relógio do aparelho errado
+    init: atraso
+      ? [
+          d => {
+            const real = Date.now;
+            Date.now = () => real() + d;
+          },
+          atraso
+        ]
+      : undefined,
+    ready: () => window.Account && window.Sync && window.Annotations
   });
-  if (atraso)
-    await ctx.addInitScript(d => {
-      const real = Date.now;
-      Date.now = () => real() + d;
-    }, atraso); // relógio do aparelho errado
-  const page = await ctx.newPage();
-  await simularGoogle(page, { nuvem });
-  await page.goto("ler.html#GEN.1");
-  await expect(page.locator(".verse").first()).toBeVisible();
-  await page.waitForFunction(() => window.Account && window.Sync && window.Annotations);
-  return page;
-}
 async function signIn(page) {
-  await page.click("#open-toc");
-  await page.click('#toc .toc-tabs a[href="#toc-voce"]');
-  await page.click("#account-signin");
-  await expect(page.locator("#account-sync")).toContainText("Sincronizado");
+  await signInFake(page);
   await expect(page.locator(".account-box")).toHaveCount(0); // nada de pergunta: sincroniza sozinho
-  await page.keyboard.press("Escape");
 }
 const sincronizar = page => page.evaluate(() => window.Sync.currentTime());
 const anc = (livro, cap, ver) => ({ livro, cap, ver, ver_fim: ver, camada: "versiculo" });

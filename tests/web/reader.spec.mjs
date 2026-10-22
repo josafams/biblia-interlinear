@@ -1,10 +1,8 @@
 // Leitor (ler.html): navegação, verbetes, léxico, aparência e uso offline.
 import { test, expect } from "@playwright/test";
+import { openReader } from "./helpers.mjs";
 
-async function open(page, ref) {
-  await page.goto(`ler.html#${ref}`);
-  await expect(page.locator(".verse").first()).toBeVisible();
-}
+const open = (page, ref) => openReader(page, ref);
 const titulo = page => page.locator("#h1");
 
 test("abre Gênesis 1 com os 31 versículos e as palavras", async ({ page }) => {
