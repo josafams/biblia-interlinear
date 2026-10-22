@@ -15,6 +15,7 @@ import ModeSelector from "../src/components/ModeSelector.svelte";
 import ModeSwapButton from "../src/components/ModeSwapButton.svelte";
 import NextChapter from "../src/components/NextChapter.svelte";
 import NotesButton from "../src/components/NotesButton.svelte";
+import Questions from "../src/components/Questions.svelte";
 import NotesCount from "../src/components/NotesCount.svelte";
 import SayButton from "../src/components/SayButton.svelte";
 import TocButton from "../src/components/TocButton.svelte";
@@ -168,16 +169,15 @@ function fillWords(box) {
 function renderVerses() {
   const lang = OLANG();
   const lazy = CH.verses.length >= LAZY_FROM && "IntersectionObserver" in window;
-  root.innerHTML =
-    CH.verses
-      .map((v, vi) => {
-        const later = lazy && vi > 4;
-        const words = later ? "" : wordsHTML(v, vi, lang);
-        const lbl = vLabel(v);
-        const head = v.h
-          ? `<h2 class="sechead acro" id="s${v.n}"><span>${esc(v.h)}</span><span class="sref">v. ${v.n}–${v.n + 7}</span></h2>`
-          : "";
-        return `${head}
+  root.innerHTML = CH.verses
+    .map((v, vi) => {
+      const later = lazy && vi > 4;
+      const words = later ? "" : wordsHTML(v, vi, lang);
+      const lbl = vLabel(v);
+      const head = v.h
+        ? `<h2 class="sechead acro" id="s${v.n}"><span>${esc(v.h)}</span><span class="sref">v. ${v.n}–${v.n + 7}</span></h2>`
+        : "";
+      return `${head}
     <section class="verse" id="v${v.n}" data-vi="${vi}" aria-labelledby="vh${v.n}">
       <div class="vhead">
         <h3 class="vnum${v.marks.length ? " has-rev" : ""}" id="vh${v.n}"><span class="sr">Versículo </span>${lbl.includes(":") ? `<span class="vcap">${esc(lbl.split(":")[0])}:</span>${esc(lbl.split(":")[1])}` : lbl}${v.marks.length ? `<span class="sr"> (com pontos da revisão automática)</span>` : ""}</h3>
@@ -190,8 +190,11 @@ function renderVerses() {
       <div class="vann" hidden></div>
       ${marksHTML(v)}
     </section>`;
-      })
-      .join("") + questionsHTML();
+    })
+    .join("");
+  readerState.greek = GRC;
+  readerState.questions = CH.questions.map(q => ({ ...q, lemma: (q.strong && LEX[q.strong]?.l) || undefined }));
+  flushSync();
   if (io) document.querySelectorAll(".verse").forEach(sec => io.observe(sec));
   if (lazyIO) lazyIO.disconnect();
   lazyIO = null;
@@ -225,51 +228,23 @@ function neighbor(dir) {
   return { b, n };
 }
 // ---------- Perguntas ao texto (data/questions): perguntas sem respostas, para pensar ou conversar ----------
-const QUESTION_KINDS = {
-  observation: "Observe",
-  interpretation: "Interprete",
-  original: "No original",
-  application: "Aplique"
-};
-function questionsHTML() {
-  if (!CH.questions.length) return "";
-  const items = CH.questions
-    .map((q, i) => {
-      const [a, b] = (q.verses || "").split("-").map(Number);
-      const label = a ? (b ? `v. ${a}–${b}` : `v. ${a}`) : "";
-      const e = q.strong ? LEX[q.strong] : null;
-      return `<li class="q q-${q.kind}">
-        <span class="q-k">${QUESTION_KINDS[q.kind] || ""}</span>
-        <p class="q-t">${esc(q.text)}</p>
-        <div class="q-acts">
-          ${a ? `<button type="button" class="q-ref" data-v="${a}" aria-label="Ir para o versículo ${a}">${label}</button>` : ""}
-          ${q.strong ? `<button type="button" class="q-word" data-strong="${esc(q.strong)}" aria-label="Abrir o verbete ${esc(q.strong)}">${e && e.l ? `<span lang="${GRC ? "grc" : "he"}">${esc(e.l)}</span> ` : ""}${esc(q.strong)}</button>` : ""}
-          <button type="button" class="q-note" data-q="${i}">Anotar resposta</button>
-        </div>
-      </li>`;
-    })
-    .join("");
-  return `<section class="qsec" id="perguntas" aria-labelledby="q-h">
-    <h2 id="q-h">Perguntas ao texto</h2>
-    <p class="lede">Para pensar sozinho ou conversar em grupo. As respostas ficam com você — se quiser, guarde a sua numa nota.</p>
-    <ol class="qlist">${items}</ol>
-  </section>`;
-}
-document.getElementById("verses").addEventListener("click", e => {
-  const ref = e.target.closest(".q-ref");
-  if (ref) return scrollToVerse(+ref.dataset.v, true);
-  const word = e.target.closest(".q-word");
-  if (word) {
-    if (active) active.classList.remove("active");
-    active = null;
-    navStack = [];
-    return show(word.dataset.strong, null, word);
-  }
-  const note = e.target.closest(".q-note");
-  if (note && window.Annotations?.noteForQuestion) {
-    const q = CH.questions[+note.dataset.q];
-    const first = +(q.verses || "").split("-")[0] || CH.verses[0]?.n || 1;
-    window.Annotations.noteForQuestion(BOOK.code, CUR, first, q.text);
+// the section is Questions.svelte, before the chapter lexicon
+mount(Questions, {
+  target: document.getElementById("page"),
+  anchor: document.getElementById("lexico"),
+  props: {
+    ongoverse: v => scrollToVerse(v, true),
+    onword(strong, button) {
+      if (active) active.classList.remove("active");
+      active = null;
+      navStack = [];
+      show(strong, null, button);
+    },
+    onnote(q) {
+      if (!window.Annotations?.noteForQuestion) return;
+      const first = +(q.verses || "").split("-")[0] || CH.verses[0]?.n || 1;
+      window.Annotations.noteForQuestion(BOOK.code, CUR, first, q.text);
+    }
   }
 });
 // the "Próximo capítulo" card after the chapter lexicon (NextChapter.svelte)
