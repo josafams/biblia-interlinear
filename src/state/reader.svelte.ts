@@ -12,6 +12,14 @@ export type NeighborChapter = {
   /** false in the preview build when the chapter is not included */
   available: boolean;
 };
+/** A question of data/questions; lemma is the original word of its Strong number, when known. */
+export type Question = {
+  kind: "observation" | "interpretation" | "original" | "application";
+  text: string;
+  verses?: string;
+  strong?: string;
+  lemma?: string;
+};
 /** Where the reading is: the verse at the top of the screen (0 = the chapter title). */
 export type Here = { book: string; chapter: number; verse: number; theme: string };
 
@@ -26,5 +34,9 @@ export const reader = $state({
   prev: null as NeighborChapter | null,
   next: null as NeighborChapter | null,
   /** null until the first chapter opens. */
-  here: null as Here | null
+  here: null as Here | null,
+  /** The book on screen is in Greek (New Testament); otherwise Hebrew/Aramaic. */
+  greek: false,
+  /** "Perguntas ao texto" of the chapter on screen. */
+  questions: [] as Question[]
 });

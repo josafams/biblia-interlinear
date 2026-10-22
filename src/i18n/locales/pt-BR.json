@@ -358,5 +358,18 @@
   "reader": {
     "chapter_nav": "Capítulo anterior e próximo",
     "not_in_preview": "Este capítulo não está incluído nesta prévia."
+  },
+  "questions": {
+    "title": "Perguntas ao texto",
+    "lede": "Para pensar sozinho ou conversar em grupo. As respostas ficam com você — se quiser, guarde a sua numa nota.",
+    "kind": {
+      "observation": "Observe",
+      "interpretation": "Interprete",
+      "original": "No original",
+      "application": "Aplique"
+    },
+    "go_verse": "Ir para o versículo {v}",
+    "open_word": "Abrir o verbete {strong}",
+    "note": "Anotar resposta"
   }
 }
