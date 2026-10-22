@@ -1,3 +1,4 @@
+import { jsonpChannel } from "../src/lib/data/jsonp";
 import { esc } from "../src/lib/text";
 // Busca na Bíblia toda (texto da Bíblia Livre): índice por palavra em dados/busca/<2 letras>.js, carregado aos poucos.
 // Também entende referências ("Jo 3:16") e números Strong ("G25", "H430").
@@ -9,32 +10,16 @@ import { esc } from "../src/lib/text";
   const PAGE = 30;
 
   // ---------- índice ----------
-  const IDX = {},
-    pending = {};
-  window.__busca = (prefix, d) => {
+  const IDX = {};
+  const loadIndex = jsonpChannel("__busca", (prefix, d) => {
     IDX[prefix] = d;
-    pending[prefix]?.ok(d);
-    delete pending[prefix];
-  };
+  });
   const prefixOf = w => [...w].slice(0, 2).join("");
   const fileOf = p => [...p].map(ch => (/[a-z0-9]/i.test(ch) ? ch : "_" + ch.codePointAt(0).toString(16))).join("");
   function loadPrefix(p) {
     if (IDX[p]) return Promise.resolve(IDX[p]);
-    return new Promise(ok => {
-      pending[p] = { ok };
-      const s = document.createElement("script");
-      s.src = `dados/busca/${fileOf(p)}.js`;
-      s.async = true;
-      s.onload = () => s.remove();
-      // sem arquivo para esse começo de palavra: nenhuma palavra começa assim
-      s.onerror = () => {
-        s.remove();
-        IDX[p] = {};
-        pending[p]?.ok(IDX[p]);
-        delete pending[p];
-      };
-      document.head.appendChild(s);
-    });
+    // no file for that start of word: no word starts like that
+    return loadIndex(p, `dados/busca/${fileOf(p)}.js`).catch(() => (IDX[p] = {}));
   }
   function decode(str) {
     const out = [];
