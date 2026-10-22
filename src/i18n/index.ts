@@ -15,15 +15,23 @@ export function setLocale(next: string) {
   if (!LOCALES[next]) throw new Error(`i18n: unknown locale ${next}`);
   locale = next;
   messages = LOCALES[next];
+  found.clear();
   if (typeof document !== "undefined") document.documentElement.lang = next;
 }
 
+// keys already looked up (a chapter asks for the same morphology labels thousands of times)
+const found = new Map<string, string | Messages | undefined>();
 function lookup(key: string): string | Messages | undefined {
+  if (found.has(key)) return found.get(key);
   let node: string | Messages | undefined = messages;
   for (const part of key.split(".")) {
-    if (node === undefined || typeof node === "string") return undefined;
+    if (node === undefined || typeof node === "string") {
+      node = undefined;
+      break;
+    }
     node = node[part];
   }
+  found.set(key, node);
   return node;
 }
 

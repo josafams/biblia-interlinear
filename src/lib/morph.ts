@@ -1,5 +1,5 @@
 // Morphology codes (OSHB for Hebrew/Aramaic, MorphGNT/Robinson for Greek) decoded into words of the locale.
-import { t, tryT } from "../i18n";
+import { getLocale, t, tryT } from "../i18n";
 
 const label = (group: string, code: string | undefined) => (code ? tryT(`morph.${group}.${code}`) : undefined);
 const join = (parts: (string | undefined)[]) => parts.filter(Boolean).join(" ");
@@ -42,10 +42,18 @@ function decodeGreek(m: string) {
 
 /** The full grammar of a word, as in the lexicon entry ("verbo qal perfeito 3ª masc. sing."). */
 export function decodeMorph(morph: string, greek: boolean) {
-  if (greek) return decodeGreek(morph);
-  const lang = morph[0] === "A" ? t("morph.aramaic_prefix") : "";
-  return lang + morph.slice(1).split("/").map(decodeHebrewPart).join(" + ");
+  const key = `${getLocale()}|${greek ? "g" : "h"}|${morph}`;
+  let full = decoded.get(key);
+  if (full === undefined) {
+    full = greek
+      ? decodeGreek(morph)
+      : (morph[0] === "A" ? t("morph.aramaic_prefix") : "") + morph.slice(1).split("/").map(decodeHebrewPart).join(" + ");
+    decoded.set(key, full);
+  }
+  return full;
 }
+// a few thousand different codes in the whole Bible, each decoded once per locale
+const decoded = new Map<string, string>();
 
 /** The short grammar on the Study card ("verbo aor.", "subst. nom."), taken from the full one. */
 export function shortMorph(full: string | null | undefined) {
