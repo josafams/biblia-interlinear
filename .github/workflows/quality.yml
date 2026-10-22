@@ -35,6 +35,8 @@ jobs:
         run: npx eslint . --max-warnings 5
       - name: Stylelint (colors only in tokens.css)
         run: npx stylelint "web/styles/*.css"
+      - name: TypeScript (type check)
+        run: npm run check
       - name: Ruff (lint e formatação do Python)
         run: |
           ruff check .

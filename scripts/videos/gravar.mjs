@@ -11,11 +11,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import http from "node:http";
 import { execFileSync } from "node:child_process";
 import { chromium, devices } from "playwright";
 import { videos } from "./roteiros.mjs";
 import { simularGoogle } from "../../tests/web/fake-google.mjs";
+import { serveStatic } from "../lib/static-server.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const WEB = path.join(ROOT, "build/web");
@@ -28,28 +28,9 @@ const APARELHOS = {
   desktop: { viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1 }
 };
 
-// ---- servidor estático do site ----
-const TIPOS = {
-  ".html": "text/html; charset=utf-8",
-  ".js": "text/javascript",
-  ".css": "text/css",
-  ".json": "application/json",
-  ".woff2": "font/woff2",
-  ".png": "image/png",
-  ".svg": "image/svg+xml",
-  ".webmanifest": "application/manifest+json"
-};
-const servidor = http.createServer((req, res) => {
-  const f = path.join(WEB, decodeURIComponent(new URL(req.url, "http://x").pathname).replace(/\/$/, "/index.html"));
-  if (!f.startsWith(WEB) || !fs.existsSync(f)) {
-    res.writeHead(404);
-    return res.end();
-  }
-  res.writeHead(200, { "content-type": TIPOS[path.extname(f)] || "application/octet-stream" });
-  fs.createReadStream(f).pipe(res);
-});
-await new Promise(r => servidor.listen(0, r));
-const BASE = `http://localhost:${servidor.address().port}/`;
+// ---- static server for build/web ----
+const servidor = await serveStatic(WEB);
+const BASE = servidor.base;
 
 // ---- ajudante usado pelos roteiros ----
 function ajudante(page, rapido) {

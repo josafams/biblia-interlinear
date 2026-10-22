@@ -12,6 +12,8 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "build/web");
 const r = p => path.join(ROOT, p);
 fs.rmSync(OUT, { recursive: true, force: true });
+// the reader JavaScript is a Vite bundle (vite.config.ts); build it first
+execFileSync("npx", ["vite", "build", "--logLevel", "warn"], { cwd: ROOT, stdio: "inherit" });
 fs.mkdirSync(path.join(OUT, "fonts"), { recursive: true });
 fs.mkdirSync(path.join(OUT, "icones"), { recursive: true });
 
@@ -74,7 +76,11 @@ execFileSync("python3", [r("scripts/export.py")], { stdio: "inherit" });
 const tpl = fs.readFileSync(r("web/reader.html"), "utf8");
 const books = JSON.parse(fs.readFileSync(r("build/data/books.json"), "utf8"));
 const data = JSON.stringify({ books, chapters: {}, lex: {}, complete: true }).replace(/<\//g, "<\\/");
-let html = tpl.replace("__DATA__", () => data);
+// the reader bundle built by Vite (vite.config.ts), named in the Vite manifest
+const viteManifest = JSON.parse(fs.readFileSync(r("build/vite/.vite/manifest.json"), "utf8"));
+const readerBundle = viteManifest["src/reader/main.ts"].file;
+fs.cpSync(r("build/vite/assets"), path.join(OUT, "assets"), { recursive: true });
+let html = tpl.replace("__DATA__", () => data).replace("__READER_BUNDLE__", readerBundle);
 html = html.replace(
   /<link rel="preconnect"[^>]*>\s*<link rel="stylesheet" href="https:\/\/fonts\.googleapis\.com[^>]*>/,
   `<link rel="stylesheet" href="fonts/fonts.css">
@@ -112,12 +118,11 @@ else {
 }
 
 // ---- scripts do site e Dexie (Apache-2.0) para o banco local ----
-// todos os scripts do site (leitor, página inicial, anotações, conta, sincronização, progresso)
-for (const f of fs.readdirSync(r("web")).filter(f => f.endsWith(".js"))) fs.copyFileSync(r("web/" + f), path.join(OUT, f));
+// scripts that stay outside the bundle: google-config.js (tests and deploys swap it) and the home page script
+for (const f of ["google-config.js", "home.js"]) fs.copyFileSync(r("web/" + f), path.join(OUT, f));
 // folhas de estilo do leitor (web/styles)
 fs.cpSync(r("web/styles"), path.join(OUT, "styles"), { recursive: true });
 fs.mkdirSync(path.join(OUT, "vendor"), { recursive: true });
-fs.copyFileSync(r("node_modules/dexie/dist/dexie.min.js"), path.join(OUT, "vendor/dexie.min.js"));
 fs.copyFileSync(r("node_modules/dexie/LICENSE"), path.join(OUT, "vendor/LICENSE-dexie.txt"));
 
 // ---- política de privacidade ----

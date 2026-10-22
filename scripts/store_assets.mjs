@@ -7,6 +7,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { chromium } from "playwright";
+import { serveStatic } from "./lib/static-server.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const WEB = path.join(ROOT, "build", "web");
@@ -16,7 +17,9 @@ fs.mkdirSync(OUT, { recursive: true });
 
 const exe = process.env.CHROMIUM_PATH || (fs.existsSync("/opt/pw-browsers/chromium") ? "/opt/pw-browsers/chromium" : undefined);
 const browser = await chromium.launch(exe ? { executablePath: exe } : {});
-const reader = pathToFileURL(path.join(WEB, "ler.html")).href;
+// the reader is an ES module bundle: serve build/web over http (file:// cannot load modules)
+const server = await serveStatic(WEB);
+const reader = server.base + "ler.html";
 
 // Cada cena: modo de leitura, capítulo e o que fazer antes da foto
 const scenes = [
@@ -119,4 +122,5 @@ console.log("feature.png");
 
 fs.copyFileSync(path.join(WEB, "icones", "icone-512.png"), path.join(OUT, "icon-512.png"));
 await browser.close();
+server.close();
 console.log(`Imagens da Play Store em ${path.relative(ROOT, OUT)}/`);
