@@ -7,6 +7,7 @@ import { createSpeech } from "../src/lib/audio/tts";
 import { createBible, toWord } from "../src/lib/data/bible";
 import { SITE_URL, isNative as NATIVE, nativePlugin, platform as PLATFORM } from "../src/lib/native";
 import { flushSync, mount } from "svelte";
+import ChapterNavButton from "../src/components/ChapterNavButton.svelte";
 import LookButton from "../src/components/LookButton.svelte";
 import MiniPlayer from "../src/components/MiniPlayer.svelte";
 import ModeNote from "../src/components/ModeNote.svelte";
@@ -91,21 +92,16 @@ function renderHeader() {
     : "Lê-se da direita para a esquerda. Cada palavra hebraica abre o verbete; abaixo de cada versículo vem a Bíblia Livre.";
   document.body.classList.toggle("grc", GRC);
   document.getElementById("verses").setAttribute("aria-label", `Texto de ${BOOK.name} ${CUR}`);
-  // atalhos do cabeçalho e rótulos de capítulo anterior/próximo (barra de cima no computador, de baixo no celular)
+  // atalhos do cabeçalho; os ‹ › das barras (ChapterNavButton) leem o capítulo anterior e o próximo de readerState
   const nq = CH ? CH.questions.length : 0,
     chipQ = document.getElementById("chip-q");
   chipQ.hidden = !nq;
   chipQ.innerHTML = `Perguntas <span class="n">${nq}</span>`;
-  for (const id of ["bar-prev", "bar-next", "bb-prev", "bb-next"]) {
-    const b = document.getElementById(id),
-      x = neighbor(+b.dataset.dir);
-    const label = x ? `${b.dataset.dir < 0 ? "Capítulo anterior" : "Próximo capítulo"}: ${x.b.name} ${x.n}` : "";
-    b.setAttribute("aria-label", label || (b.dataset.dir < 0 ? "Este é o primeiro capítulo" : "Este é o último capítulo"));
-    b.setAttribute("aria-disabled", String(!x));
-    b.title = label;
-    const t = b.querySelector(".bb-t");
-    if (t) t.textContent = x ? `${x.b.abbrev} ${x.n}` : "";
+  for (const dir of [-1, 1]) {
+    const x = neighbor(dir);
+    readerState[dir < 0 ? "prev" : "next"] = x ? { name: x.b.name, abbrev: x.b.abbrev, n: x.n } : null;
   }
+  flushSync();
 }
 const SOURCE_NOTES = {
   aparato:
@@ -707,7 +703,23 @@ function openToc() {
 const openLook = () => openPanel("look");
 mount(TocButton, { target: topBar, anchor: topBar.firstChild, props: { place: "top", onopen: openToc } });
 mount(LookButton, { target: topBar, anchor: document.getElementById("open-account"), props: { place: "top", onopen: openLook } });
+mount(ChapterNavButton, {
+  target: topBar,
+  anchor: document.getElementById("where"),
+  props: { dir: -1, place: "top", ongo: d => goNeighbor(d) }
+});
+mount(ChapterNavButton, {
+  target: topBar,
+  anchor: document.getElementById("bar-modes"),
+  props: { dir: 1, place: "top", ongo: d => goNeighbor(d) }
+});
 mount(TocButton, { target: bbar, anchor: bbar.firstChild, props: { place: "bottom", onopen: openToc } });
+mount(ChapterNavButton, {
+  target: bbar,
+  anchor: document.getElementById("bb-say"),
+  props: { dir: -1, place: "bottom", ongo: d => goNeighbor(d) }
+});
+mount(ChapterNavButton, { target: bbar, props: { dir: 1, place: "bottom", ongo: d => goNeighbor(d) } });
 mount(LookButton, { target: bbar, props: { place: "bottom", onopen: openLook } });
 scrim.addEventListener("click", () => closePanel());
 Object.values(sheets).forEach(sh =>
@@ -1503,10 +1515,6 @@ root.addEventListener("click", e => {
 function goNeighbor(dir) {
   const x = neighbor(dir);
   if (x) openChapter(x.b.code, x.n, null);
-}
-for (const id of ["bar-prev", "bar-next", "bb-prev", "bb-next"]) {
-  const b = document.getElementById(id);
-  b.addEventListener("click", () => goNeighbor(+b.dataset.dir));
 }
 function hereIndex() {
   const i = CH ? CH.verses.findIndex(v => v.n === hereV) : -1;
