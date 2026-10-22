@@ -1335,6 +1335,18 @@ body.orig-running.hide-blivre .verse[class*="mk-"]:not(.abrir) { background: col
 /* o versículo nunca fica mais largo que a coluna (no celular, uma grade sem colunas crescia até o conteúdo e a página dava zoom para fora) */
 .verse { grid-template-columns: minmax(0, 1fr); }
 .verse > * { min-width: 0; }
+
+/* ================= Cores do design em todos os temas (cartão, chip e tom quente acompanham o tema escolhido) ================= */
+:root:root[data-palette="claro"] { --card: #ffffff; --chip: #e2e7e3; --warm: #7d4a2e; }
+:root:root[data-palette="papel"] { --card: #fffdf9; --chip: #ebe3d6; --warm: #7d4a2e; }
+:root:root[data-palette="oliva"] { --card: #fcfdf9; --chip: #e3e8d9; --warm: #6b4a22; }
+:root:root[data-palette="escuro"] { --card: #222a27; --chip: #2c3532; --warm: #e0a985; }
+:root:root[data-palette="noite"] { --card: #1c2a40; --chip: #26354d; --warm: #e8b98a; }
+:root:root[data-palette="grafite"] { --card: #161616; --chip: #262626; --warm: #e8b08a; }
+@media (prefers-color-scheme: dark) { :root:not([data-palette]):not([data-theme="light"]) { --card: #222a27; --chip: #2c3532; --warm: #e0a985; } }
+/* o cartão usa sempre a cor de texto do tema; o realce de cor (mk-) continua com a tinta própria */
+.word { color: var(--fg); }
+.word[class*="mk-"] { color: var(--mk-ink); }
 </style>
 
 <a class="skip" href="#verses" id="skip">Pular para o texto</a>
