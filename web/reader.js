@@ -12,6 +12,7 @@ import ChapterNavButton from "../src/components/ChapterNavButton.svelte";
 import ChapterText from "../src/components/ChapterText.svelte";
 import HeaderChips from "../src/components/HeaderChips.svelte";
 import LexiconEntry from "../src/components/LexiconEntry.svelte";
+import LexiconSheet from "../src/components/LexiconSheet.svelte";
 import LookButton from "../src/components/LookButton.svelte";
 import MiniPlayer from "../src/components/MiniPlayer.svelte";
 import ModeNote from "../src/components/ModeNote.svelte";
@@ -220,6 +221,8 @@ root.addEventListener("keydown", e => {
   }
 });
 
+// the panel is LexiconSheet.svelte; its hidden attribute follows entryState.open
+mount(LexiconSheet, { target: document.body });
 const detail = document.getElementById("detail");
 const dbody = document.getElementById("d-body");
 const page = document.getElementById("page");
@@ -348,7 +351,6 @@ function renderEntry() {
   entryState.canNext = !!(word && stepTarget(1));
   entryState.canGoBack = navStack.length > 0;
   flushSync();
-  detail.setAttribute("aria-label", view.ariaLabel);
 }
 // Palavra seguinte/anterior na ordem de leitura (passa para o versículo vizinho)
 function stepTarget(dir) {
@@ -383,7 +385,8 @@ async function show(k, word, opener) {
   if (k && /^[HG]/.test(k)) await ensureLex(k[0] === "G" ? "G" : "H").catch(() => {});
   current = { k, word };
   renderEntry();
-  detail.hidden = false;
+  entryState.open = true;
+  flushSync();
   document.body.classList.add("com-detail");
   if (k) document.dispatchEvent(new CustomEvent("lexicon-entry-opened", { detail: { k } }));
   document.dispatchEvent(
@@ -403,7 +406,8 @@ function keepWordVisible() {
 }
 function closeDetail() {
   stopSpeech();
-  detail.hidden = true;
+  entryState.open = false;
+  flushSync();
   document.body.classList.remove("com-detail");
   document.dispatchEvent(new CustomEvent("word-opened", { detail: { word: null } }));
   navStack = [];

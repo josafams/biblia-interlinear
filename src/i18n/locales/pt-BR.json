@@ -528,5 +528,14 @@
     "new_tag_placeholder": "+ nova etiqueta",
     "delete": "Apagar nota",
     "delete_confirm": "Toque de novo para apagar"
+  },
+  "tags": {
+    "manage": "Gerenciar etiquetas",
+    "name_label": "Nome da etiqueta {tag}",
+    "delete": "Apagar",
+    "delete_again": "Toque de novo",
+    "none": "Nenhuma etiqueta ainda.",
+    "help": "Mude o nome no campo. Dar o nome de outra etiqueta junta as duas.",
+    "merged": "“{from}” foi juntada a “{into}”."
   }
 }
