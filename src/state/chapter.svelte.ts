@@ -3,7 +3,9 @@
 // The verse views are raw state (not deeply reactive): they never change after a render, and proxies on
 // thousands of objects would slow long chapters down.
 import { flushSync } from "svelte";
+import { type LexiconRow, chapterLexicon } from "../lib/chapter/lexicon";
 import { type ChapterVerse, type Context, type VerseView, verseView, wordViews } from "../lib/chapter/view";
+import type { LexEntry } from "../lib/types";
 
 /** Long chapters (Psalm 119) build the word cards only when the verse comes near the screen. */
 export const LAZY_FROM = 100;
@@ -15,6 +17,9 @@ class ChapterState {
   verses = $state.raw<VerseView[]>([]);
   /** per verse: the word cards are built */
   filled = $state.raw<boolean[]>([]);
+  /** the lemmas of the chapter ("Léxico do capítulo") and the lexicon they come from */
+  lexicon = $state.raw<LexiconRow[]>([]);
+  lex = $state.raw<Record<string, LexEntry>>({});
 }
 export const chapter = new ChapterState();
 
@@ -27,6 +32,8 @@ export function showChapter(verses: ChapterVerse[], c: Context, lang: string, la
   chapter.lang = lang;
   chapter.verses = verses.map((v, vi) => verseView(v, vi, c));
   chapter.filled = verses.map((_, vi) => !lazy || vi < EAGER);
+  chapter.lexicon = chapterLexicon(verses, c.lex);
+  chapter.lex = c.lex;
   chapter.renderId++;
   flushSync();
 }
