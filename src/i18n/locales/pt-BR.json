@@ -564,5 +564,45 @@
     "verses_of": "Versículos de {ref}",
     "verse_label": "Versículo {ref}",
     "title_short": "tít."
+  },
+  "notes": {
+    "index_parts": "Partes do índice",
+    "you": "Você",
+    "search_label": "Buscar nas anotações",
+    "search_placeholder": "Buscar: luz, pastor, #oração",
+    "more": "Mais opções",
+    "select": "Selecionar itens",
+    "export": "Exportar PDF",
+    "download": "Baixar meus dados",
+    "import": "Importar",
+    "kind": "Tipo",
+    "kinds": {
+      "all": "Todas",
+      "notas": "Com nota",
+      "marcacoes": "Marcadas",
+      "favoritos": "Favoritos"
+    },
+    "by_tag": "Filtrar por etiqueta",
+    "new_free": "+ Nota livre (sem versículo)",
+    "items": {
+      "one": "{count} item",
+      "other": "{count} itens"
+    },
+    "in_verse": "{count} neste versículo · ",
+    "selected": {
+      "one": "{count} selecionado",
+      "other": "{count} selecionados"
+    },
+    "see_all": "ver tudo",
+    "order": "Ordem",
+    "order_bible": "Ordem bíblica",
+    "order_recent": "Mais recentes",
+    "nothing_found": "Nada encontrado com esses filtros.",
+    "empty": "Ainda não há anotações. Toque longo num versículo, selecione um trecho ou use o botão ⋯ ao lado do número para marcar e anotar.",
+    "free_notes": "Notas livres",
+    "kind_note": "nota",
+    "kind_highlight": "marcação",
+    "kind_tag": "etiqueta",
+    "kind_favorite": "favorito"
   }
 }
