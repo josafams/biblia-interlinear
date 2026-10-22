@@ -514,5 +514,19 @@
     },
     "saved": "Salva.",
     "suggestions": "promessas|oração|amor de Deus|para estudar"
+  },
+  "note": {
+    "title": "Nota",
+    "close": "Fechar nota",
+    "free": "Nota livre",
+    "title_label": "Título",
+    "title_placeholder": "Título (opcional)",
+    "text_label": "Texto da nota",
+    "text_placeholder": "Escreva aqui. Salva sozinho.",
+    "tags": "Etiquetas:",
+    "new_tag": "Nova etiqueta",
+    "new_tag_placeholder": "+ nova etiqueta",
+    "delete": "Apagar nota",
+    "delete_confirm": "Toque de novo para apagar"
   }
 }

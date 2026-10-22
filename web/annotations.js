@@ -1,8 +1,10 @@
 import { flushSync, mount } from "svelte";
 import AnnotatePanel from "../src/components/AnnotatePanel.svelte";
+import NoteEditor from "../src/components/NoteEditor.svelte";
 import { t } from "../src/i18n";
 import { chapterOf, createVerseAnnotations, tagKey, verseAnchor as anchorFor } from "../src/lib/annotations/verse";
 import { COLOR_IDS, annotate } from "../src/state/annotate.svelte";
+import { note } from "../src/state/note.svelte";
 import { COLLECTIONS, createAnnotationStore, uuid } from "../src/lib/annotations/store";
 import { exposedPlugin, nativePlugin, platform } from "../src/lib/native";
 import { esc } from "../src/lib/text";
@@ -488,26 +490,17 @@ import { esc } from "../src/lib/text";
     }, 700);
   });
 
-  // ---------- editor de nota ----------
-  const nota = document.createElement("aside");
-  nota.id = "nota";
-  nota.className = "sheet right note-sheet";
-  nota.hidden = true;
-  nota.setAttribute("role", "dialog");
-  nota.setAttribute("aria-modal", "true");
-  nota.setAttribute("aria-labelledby", "note-h");
-  nota.innerHTML = `
-    <div class="shead"><h2 id="note-h">Nota</h2><button class="ibtn" data-fechar aria-label="Fechar nota">${ICONS.hide}</button></div>
-    <div class="sgroup note-body">
-      <p class="note-ref" id="note-ref"></p>
-      <label class="sr" for="note-title">Título</label>
-      <input id="note-title" type="text" placeholder="Título (opcional)" autocomplete="off">
-      <label class="sr" for="note-text">Texto da nota</label>
-      <textarea id="note-text" rows="10" placeholder="Escreva aqui. Salva sozinho."></textarea>
-      <div class="note-tags" id="note-tags"></div>
-      <div class="note-footer"><span id="note-status" aria-live="polite"></span><button class="note-delete" id="note-delete">Apagar nota</button></div>
-    </div>`;
-  document.body.appendChild(nota);
+  // ---------- editor de nota (NoteEditor.svelte) ----------
+  mount(NoteEditor, {
+    target: document.body,
+    props: {
+      onclose: () => closeNote(),
+      oninput: () => scheduleSave(),
+      ontag: id => toggleNoteTag(id),
+      onnewtag: async name => toggleNoteTag((await verse.tagNamed(name)).id, true),
+      ondelete: () => deleteNote()
+    }
+  });
   let currentNote = null,
     saveTimer = 0,
     focusReturn = null;
@@ -527,108 +520,76 @@ import { esc } from "../src/lib/text";
         };
     if (!currentNote) return;
     const a = currentNote.ancora;
-    $("#note-ref").textContent = a
+    note.ref = a
       ? `${bookName(a.livro)} ${a.cap}:${a.ver}${trecho || a.trecho ? ` · “${(trecho || a.trecho).slice(0, 80)}”` : ""}`
-      : "Nota livre";
-    $("#note-title").value = currentNote.titulo || "";
-    $("#note-text").value = currentNote.texto || "";
-    $("#note-status").textContent = currentNote.nova ? "" : "Salva.";
-    $("#note-delete").hidden = !!currentNote.nova;
+      : t("note.free");
+    note.title = currentNote.titulo || "";
+    note.text = currentNote.texto || "";
+    note.status = currentNote.nova ? "" : t("annotate.saved");
+    note.saved = !currentNote.nova;
+    note.confirming = false;
     await renderNoteTags();
-    nota.hidden = false;
+    note.open = true;
+    flushSync();
     document.body.classList.add("com-nota");
     $("#note-text").focus();
   }
   async function renderNoteTags() {
-    const tagList = (await allRecords("etiquetas")).sort((x, y) => x.nome.localeCompare(y.nome, "pt"));
-    const has = new Set(currentNote.etiquetas || []);
-    $("#note-tags").innerHTML =
-      `<span class="note-tags-r">Etiquetas:</span>` +
-      tagList.map(t => `<button class="chip" data-tag="${t.id}" aria-pressed="${has.has(t.id)}">${esc(t.nome)}</button>`).join("") +
-      `<span class="note-tag-new"><label class="sr" for="note-tag-name">Nova etiqueta</label><input id="note-tag-name" type="text" placeholder="+ nova etiqueta" autocomplete="off"><button class="chip" data-et-nova>Criar</button></span>`;
+    note.tags = (await allRecords("etiquetas")).sort((x, y) => x.nome.localeCompare(y.nome, "pt"));
+    note.selected = [...(currentNote?.etiquetas || [])];
   }
   function scheduleSave() {
     clearTimeout(saveTimer);
-    $("#note-status").textContent = "…";
+    note.status = "…";
     saveTimer = setTimeout(saveNote, 600);
   }
   async function saveNote() {
     if (!currentNote) return;
-    const titulo = $("#note-title").value.trim(),
-      texto = $("#note-text").value;
+    const titulo = note.title.trim(),
+      texto = note.text;
     if (currentNote.nova && !titulo && !texto.trim()) {
-      $("#note-status").textContent = "";
+      note.status = "";
       return;
     }
     const { nova: _nova, ...rec } = currentNote;
     currentNote = { ...(await save("notas", { ...rec, titulo, texto })) };
-    $("#note-status").textContent = "Salva.";
-    $("#note-delete").hidden = false;
+    note.status = t("annotate.saved");
+    note.saved = true;
     paint();
   }
   function closeNote() {
-    if (nota.hidden) return;
+    if (!note.open) return;
     clearTimeout(saveTimer);
     saveNote();
-    nota.hidden = true;
+    note.open = false;
+    flushSync();
     currentNote = null;
     document.body.classList.remove("com-nota");
     if (focusReturn && focusReturn.isConnected) focusReturn.focus({ preventScroll: true });
   }
-  $("#note-title").addEventListener("input", scheduleSave);
-  $("#note-text").addEventListener("input", scheduleSave);
-  nota.addEventListener("click", async e => {
-    if (e.target.closest("[data-fechar]")) return closeNote();
-    if (e.target.closest("#note-delete")) {
-      if (!confirmDelete()) return;
-      await removeRecord("notas", currentNote.id);
-      currentNote = null;
-      await paint();
-      return closeNote();
+  async function toggleNoteTag(id, turnOn) {
+    const set = new Set(currentNote.etiquetas || []);
+    if (turnOn ?? !set.has(id)) set.add(id);
+    else set.delete(id);
+    currentNote.etiquetas = [...set];
+    await saveNote();
+    return renderNoteTags();
+  }
+  // Confirmação simples sem diálogo do navegador (o botão vira "Toque de novo para apagar")
+  let confirmTimer = 0;
+  async function deleteNote() {
+    if (!note.confirming) {
+      note.confirming = true;
+      clearTimeout(confirmTimer);
+      confirmTimer = setTimeout(() => (note.confirming = false), 4000);
+      return;
     }
-    const b = e.target.closest("[data-tag]");
-    if (b) {
-      const set = new Set(currentNote.etiquetas || []);
-      set.has(b.dataset.tag) ? set.delete(b.dataset.tag) : set.add(b.dataset.tag);
-      currentNote.etiquetas = [...set];
-      await saveNote();
-      return renderNoteTags();
-    }
-    if (e.target.closest("[data-et-nova]")) {
-      const nome = $("#note-tag-name").value.trim();
-      if (!nome) return $("#note-tag-name").focus();
-      const exists = (await allRecords("etiquetas")).find(x => x.nome.toLowerCase() === nome.toLowerCase());
-      const t = exists || (await save("etiquetas", { id: uuid(), nome, cor: null }));
-      currentNote.etiquetas = [...new Set([...(currentNote.etiquetas || []), t.id])];
-      await saveNote();
-      return renderNoteTags();
-    }
-  });
-  nota.addEventListener("keydown", e => {
-    if (e.key === "Escape") {
-      e.stopPropagation();
-      closeNote();
-    }
-    if (e.key === "Enter" && e.target.id === "note-tag-name") {
-      e.preventDefault();
-      $("[data-et-nova]", nota).click();
-    }
-  });
-  // Confirmação simples sem diálogo do navegador (o botão vira "Confirmar")
-  let confirmAction = 0;
-  function confirmDelete() {
-    const b = $("#note-delete");
-    if (Date.now() - confirmAction < 4000) {
-      confirmAction = 0;
-      b.textContent = "Apagar nota";
-      return true;
-    }
-    confirmAction = Date.now();
-    b.textContent = "Toque de novo para apagar";
-    setTimeout(() => {
-      b.textContent = "Apagar nota";
-    }, 4000);
-    return false;
+    clearTimeout(confirmTimer);
+    note.confirming = false;
+    await removeRecord("notas", currentNote.id);
+    currentNote = null;
+    await paint();
+    return closeNote();
   }
   async function openVerseNotes(ver) {
     const ns = (await ofChapter("notas", `${currentChapter.book}.${currentChapter.chapter}`))
