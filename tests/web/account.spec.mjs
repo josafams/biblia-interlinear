@@ -10,6 +10,7 @@ async function abrirIndice(page) {
   await expect(page.locator(".verse").first()).toBeVisible();
   await page.waitForFunction(() => window.Account);
   await page.click("#open-toc");
+  await page.click('#toc .toc-tabs a[href="#toc-voce"]');
 }
 
 test("sem ID de cliente configurado, o login não aparece", async ({ page }) => {
@@ -39,6 +40,7 @@ test("entrar com Google conecta a pasta do app no Drive e registra o aparelho", 
   await page.reload();
   await page.waitForFunction(() => window.Account);
   await page.click("#open-toc");
+  await page.click('#toc .toc-tabs a[href="#toc-voce"]');
   await expect(page.locator("#conta")).toContainText("Reconectar");
   await page.click("#account-signin");
   await expect(page.locator("#conta .account-drive")).toHaveText("Google Drive conectado · 1 aparelho");

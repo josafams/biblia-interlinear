@@ -1,4 +1,4 @@
-// Modos de leitura: Bíblia, Original, Original e Bíblia Livre, Interlinear, Estudo e Personalizado.
+// Modos de leitura: seletor com Bíblia, Original, Interlinear e Estudo; mudar um item vira Personalizado.
 import { test, expect } from "@playwright/test";
 
 async function open(page, ref = "GEN.1") {
@@ -22,7 +22,6 @@ test("primeira abertura pergunta como ler; escolher Bíblia mostra só a Bíblia
   await expect(primeiraPalavra(page)).toBeHidden();
   await expect(page.locator("#v1 .blivre")).toBeVisible();
   await expect(page.locator("#eyebrow")).toHaveText(/Bíblia Livre/i);
-  await expect(page.locator("#ch-say")).toBeVisible();
   await page.reload();
   await expect(page.locator(".verse").first()).toBeVisible();
   await expect(primeiraPalavra(page)).toBeHidden();
@@ -41,9 +40,20 @@ test("modo Original: só o texto original, corrido, e a palavra abre o verbete",
   await expect(page.locator("#detail")).toContainText("H7225");
 });
 
-test("modo Original e Bíblia Livre mostra os dois", async ({ page }) => {
+test("o seletor tem 4 modos e explica o escolhido", async ({ page }) => {
+  await open(page);
+  await page.click("#open-look");
+  await expect(page.locator("#mode-grid .mcard")).toHaveText(["Bíblia", "Original", "Interlinear", "Estudo"]);
+  await page.click('.mcard[data-modo="estudo"]');
+  await expect(page.locator("#mode-note")).toContainText("Strong");
+});
+
+test("modo Original com a Bíblia Livre ligada mostra os dois (o antigo Original e Bíblia Livre)", async ({ page }) => {
   await open(page, "JHN.1");
-  await modo(page, "paralelo");
+  await modo(page, "original");
+  await page.click("#open-look");
+  await page.click("#t-blivre");
+  await page.keyboard.press("Escape");
   await expect(primeiraPalavra(page)).toBeVisible();
   await expect(primeiraPalavra(page).locator(".g")).toBeHidden();
   await expect(page.locator("#v1 .blivre")).toBeVisible();
@@ -54,20 +64,18 @@ test("modo Estudo liga pronúncia e análise gramatical", async ({ page }) => {
   await modo(page, "estudo");
   await expect(primeiraPalavra(page).locator(".p")).toBeVisible();
   await expect(primeiraPalavra(page).locator(".m")).toBeVisible();
-  await expect(primeiraPalavra(page).locator(".m")).toContainText(/substantivo|preposição/);
+  await expect(primeiraPalavra(page).locator(".m")).toContainText(/subst\.|prep\./);
 });
 
-test("mudar um item vira Personalizado; o atalho volta ao modo anterior", async ({ page }) => {
+test("mudar um item vira Personalizado; tocar num modo volta ao padrão dele", async ({ page }) => {
   await open(page);
   await modo(page, "biblia");
   await modo(page, "interlinear");
   await page.click("#open-look");
   await page.click("#t-strong");
-  await expect(page.locator('.mcard[data-modo="personalizado"]')).toHaveAttribute("aria-checked", "true");
-  await expect(page.locator("#mode-note")).toContainText("Interlinear");
-  await page.keyboard.press("Escape");
-  await expect(page.locator("#mode-swap")).toBeVisible();
-  await page.click("#mode-swap");
+  await expect(page.locator('.mcard[aria-checked="true"]')).toHaveCount(0);
+  await expect(page.locator("#mode-note")).toContainText("Personalizado a partir do modo Interlinear");
+  await page.click('.mcard[data-modo="biblia"]');
   await expect(page.locator("body")).toHaveClass(/hide-orig/);
 });
 

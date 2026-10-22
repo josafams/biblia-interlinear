@@ -17,7 +17,8 @@ const ligado = page =>
 test("abrir uma palavra destaca a tradução dela na Bíblia Livre", async ({ page }) => {
   await open(page, "JHN.3");
   await page.click('#v16 .word[data-i="2"]');
-  await expect(page.locator("#d-title")).toHaveText("ἀγαπάω");
+  await expect(page.locator("#d-title")).toHaveText("ἠγάπησεν");
+  await expect(page.locator(".dlem .dl")).toHaveText("ἀγαπάω");
   await expect.poll(() => ligado(page)).toEqual(["amou"]);
   await page.click("#d-next");
   await expect.poll(() => ligado(page)).not.toEqual(["amou"]);

@@ -113,30 +113,40 @@ test("tema, tamanho e camadas ficam guardados ao recarregar", async ({ page }) =
 
 test("sobre o livro abre com resumo", async ({ page }) => {
   await open(page, "RUT.1");
-  await page.click("#sobre summary");
+  await page.click("#chip-about");
   await expect(page.locator("#about-body")).toContainText(/Noemi/);
 });
 
 test("links do índice levam à página inicial e aos vídeos", async ({ page }) => {
   await open(page, "GEN.1");
   await page.click("#open-toc");
+  await page.click('#toc .toc-tabs a[href="#toc-voce"]');
   await expect(page.locator('a.site-link[href="index.html#como-usar"]')).toBeVisible();
   await page.click('a.site-link[href="index.html"]');
   await expect(page.locator("h1")).toContainText("A Bíblia inteira");
 });
 
-test("índice em três partes: as abas levam a Livros, Neste livro e Você", async ({ page }) => {
+test("índice em abas: Livros (livros e capítulos), Notas e Você", async ({ page }) => {
   await open(page, "GEN.1");
   await page.click("#open-toc");
   await expect(page.locator('.bchip[data-cod="DEU"] .bn')).toHaveText("Deuteronômio");
-  await page.click('.toc-tabs a[href="#toc-voce"]');
-  await expect(page.locator('.toc-tabs a[href="#toc-voce"]')).toHaveAttribute("aria-current", "true");
-  await expect(page.locator("#open-mine")).toBeInViewport();
-  await page.click('.toc-tabs a[href="#toc-livros"]');
+  await expect(page.locator('.bchip[data-cod="DEU"] .ba')).toHaveText("34 cap.");
+  // Novo Testamento no seletor; tocar no livro mostra a grade de capítulos com os títulos
+  await expect(page.locator('.bchip[data-cod="JHN"]')).toBeHidden();
+  await page.click('#bk-testa [data-nt="1"]');
+  await page.click('.bchip[data-cod="JHN"]');
+  await expect(page.locator("#ch-h")).toHaveText("João");
+  await expect(page.locator("#ch-list .ch-row")).toHaveCount(21);
+  await page.click("#ch-back");
+  await expect(page.locator('.bchip[data-cod="JHN"]')).toBeVisible();
+  await page.click('#toc .toc-tabs a[href="#toc-voce"]');
+  await expect(page.locator('#toc .toc-tabs a[href="#toc-voce"]')).toHaveAttribute("aria-current", "true");
+  await expect(page.locator("#open-progress")).toBeInViewport();
+  await expect(page.locator("#go-in")).toBeHidden();
+  await page.click('#toc .toc-tabs a[href="#toc-livros"]');
   await expect(page.locator("#go-in")).toBeInViewport();
-  await page.click('.toc-tabs a[href="#toc-estudo"]');
-  await page.click("#toc-search");
-  await expect(page.locator("#busca")).toBeVisible();
+  await page.click('#toc .toc-tabs a[href="#toc-notas"]');
+  await expect(page.locator("#minhas")).toBeVisible();
 });
 
 test("fontes e licenças ficam fora do caminho e abrem pela Aparência", async ({ page }) => {

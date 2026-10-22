@@ -30,7 +30,7 @@ async function abrirComDados(page) {
     window.__noPrint = true;
   });
   await page.click("#open-toc");
-  await page.click("#open-mine");
+  await page.click('#toc .toc-tabs a[href="#toc-notas"]');
   await expect(page.locator(".mn-item")).toHaveCount(3);
 }
 
@@ -86,7 +86,7 @@ test("baixar meus dados e importar em outro aparelho", async ({ page, browser },
   await p2.goto("ler.html#GEN.1");
   await expect(p2.locator(".verse").first()).toBeVisible();
   await p2.click("#open-toc");
-  await p2.click("#open-mine");
+  await p2.click('#toc .toc-tabs a[href="#toc-notas"]');
   await expect(p2.locator(".mn-empty")).toBeVisible();
   await p2.waitForFunction(() => window.Annotations);
   await p2.setInputFiles("#mn-file", file);
@@ -104,7 +104,7 @@ test("importar um arquivo que não é backup avisa sem quebrar", async ({ page }
   await expect(page.locator(".verse").first()).toBeVisible();
   await page.waitForFunction(() => window.Annotations);
   await page.click("#open-toc");
-  await page.click("#open-mine");
+  await page.click('#toc .toc-tabs a[href="#toc-notas"]');
   await expect(page.locator("#minhas")).toBeVisible();
   // conteúdo em memória: um caminho com acento (nome do teste) chega vazio ao navegador
   await page.setInputFiles("#mn-file", {

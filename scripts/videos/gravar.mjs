@@ -304,6 +304,8 @@ for (const v of videos) {
         if (!localStorage.getItem("interlinear:modo")) localStorage.setItem("interlinear:modo", m);
         // a sugestão "guardar no Google Drive" (depois da 1ª anotação) cobriria a tela nos vídeos
         localStorage.setItem("interlinear:conta-sugestao", "nao");
+        // as dicas de primeiro uso também cobririam o que o vídeo mostra
+        for (const d of ["palavra", "versiculo", "verbete"]) localStorage.setItem("interlinear:dica-" + d, "vista");
       } catch (_) {}
     }, v.modo || "interlinear");
     const page = await ctx.newPage();

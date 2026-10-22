@@ -17,14 +17,14 @@ export const grupos = [
 const abrirIndice = t => t.tocar("#open-toc");
 // no celular as setas e o Ouvir ficam na barra de baixo; no computador, na barra de cima
 const naBarra = (t, celular, computador) => t.tocar(t.page.viewportSize().width <= 720 ? celular : computador);
-// Índice › Você (conta, Minhas anotações, Meu progresso)
+// Índice › Você (conta, Meu progresso, planos) e Índice › Notas (Minhas anotações)
 const abrirVoce = async t => {
   await t.tocar("#open-toc");
-  await t.tocar('.toc-tabs a[href="#toc-voce"]');
+  await t.tocar('#toc .toc-tabs a[href="#toc-voce"]');
 };
 const abrirMinhas = async t => {
-  await abrirVoce(t);
-  await t.tocar("#open-mine");
+  await t.tocar("#open-toc");
+  await t.tocar('#toc .toc-tabs a[href="#toc-notas"]');
 };
 const fecharPainel = t => t.onKey("Escape");
 // anotações de exemplo para os vídeos que mostram a lista, o PDF e o backup
@@ -73,6 +73,7 @@ async function entrarNaConta(t) {
   const p = t.page;
   await p.waitForFunction(() => window.Account && window.Sync);
   await p.click("#open-toc");
+  await p.click('#toc .toc-tabs a[href="#toc-voce"]');
   await p.click("#account-signin");
   await p.locator("#account-sync", { hasText: "Sincronizado" }).waitFor();
   await p.keyboard.press("Escape");
@@ -144,11 +145,11 @@ export const videos = [
     n: 1,
     grupo: "ler",
     titulo: "Abrir um livro e um capítulo",
-    desc: "Pelo índice, com um toque no capítulo.",
+    desc: "Por Livros, com um toque no capítulo.",
     inicio: "GEN.1",
     steps: [
-      { legenda: "Toque no botão de livros, no canto de cima.", faz: abrirIndice },
-      { legenda: "Escolha o livro: Êxodo. Embaixo do nome, a abreviação (Êx).", faz: t => t.tocar('.bchip[data-cod="EXO"]') },
+      { legenda: "Toque em Livros (na barra de baixo no celular, na de cima no computador).", faz: abrirIndice },
+      { legenda: "Escolha o livro: Êxodo. Ao lado do nome, quantos capítulos ele tem.", faz: t => t.tocar('.bchip[data-cod="EXO"]') },
       { legenda: "Toque no capítulo: ele abre direto.", faz: t => t.tocar('.chchip[data-ch="20"]') },
       { legenda: "Role para ler. O topo mostra onde você está, e a linha fina, quanto já leu.", faz: t => t.doScroll(700) }
     ]
@@ -161,8 +162,8 @@ export const videos = [
     desc: "Jo 3:16, sl 23, 1:14 ou cap 12.",
     inicio: "GEN.1",
     steps: [
-      { legenda: "Abra o Índice.", faz: abrirIndice },
-      { legenda: "Em “Ir para”, digite livro, capítulo e versículo: jo 3:16.", faz: t => t.digitar("#go-in", "jo 3:16") },
+      { legenda: "Toque em Livros.", faz: abrirIndice },
+      { legenda: "Na busca de Livros, digite livro, capítulo e versículo: jo 3:16.", faz: t => t.digitar("#go-in", "jo 3:16") },
       { legenda: "Toque em Ir: o versículo abre destacado.", faz: t => t.tocar("#go-form button[type=submit]") },
       {
         legenda: "Funciona também com “sl 23”, “1:14” ou só o número do versículo.",
@@ -179,19 +180,16 @@ export const videos = [
     n: 3,
     grupo: "ler",
     titulo: "Capítulo anterior e próximo",
-    desc: "Pela barra, e a lista de versículos do capítulo.",
+    desc: "Pela barra, pelo fim do capítulo e pelo título.",
     inicio: "RUT.1",
     steps: [
       { legenda: "As setas da barra levam ao capítulo anterior ou ao próximo.", faz: t => naBarra(t, "#bb-next", "#bar-next") },
-      { legenda: "No fim do capítulo também há setas.", faz: t => t.rolarAte(".chnav") },
+      { legenda: "No fim do capítulo, o cartão leva ao próximo.", faz: t => t.rolarAte(".chnav") },
       {
-        legenda: "No Índice, a lista de versículos leva direto a cada um.",
-        faz: async t => {
-          await abrirIndice(t);
-          await t.rolarPainel("#toc", 600);
-        }
+        legenda: "Tocar no título, lá em cima, abre os capítulos do livro.",
+        faz: t => t.tocar("#where")
       },
-      { legenda: "Toque num versículo para ir até ele.", faz: t => t.tocar('#toc-days .vchip[data-v="10"]') }
+      { legenda: "Toque num capítulo para ir até ele.", faz: t => t.tocar('#chgrid .chchip[data-ch="2"]') }
     ]
   },
   {
@@ -244,7 +242,7 @@ export const videos = [
     desc: "Resumo, pessoas, linha do tempo e lugares.",
     inicio: "RUT.1",
     steps: [
-      { legenda: "Toque em “Sobre o livro”, acima do texto.", faz: t => t.tocar("#sobre summary") },
+      { legenda: "Toque em “Sobre” e o nome do livro, acima do texto.", faz: t => t.tocar("#chip-about") },
       { legenda: "Resumo, autoria e data, pessoas principais…", faz: t => t.doScroll(500) },
       { legenda: "…linha do tempo, contexto e lugares.", faz: t => t.doScroll(700) }
     ]
@@ -286,9 +284,15 @@ export const videos = [
     desc: "O que a revisão automática encontrou.",
     inicio: "GEN.8",
     steps: [
-      { legenda: "O sinal ⚑ mostra pontos da revisão automática no versículo.", faz: t => t.rolarAte("details.marks") },
-      { legenda: "Toque para ver a lista.", faz: t => t.tocar("details.marks summary") },
-      { legenda: "Palavras com leitura à margem (qere) mostram a forma escrita (ketiv) no verbete.", faz: t => t.tocar(".word.kt") }
+      { legenda: "O ponto no número mostra que a revisão automática encontrou algo no versículo.", faz: t => t.rolarAte(".vnum.has-rev") },
+      { legenda: "Toque no ⋯ para ler a explicação.", faz: t => t.tocar(".verse:has(.vnum.has-rev) .vmark") },
+      {
+        legenda: "Palavras com leitura à margem (qere) mostram a forma escrita (ketiv) no verbete.",
+        faz: async t => {
+          await fecharPainel(t);
+          await t.tocar(".word.kt");
+        }
+      }
     ]
   },
   {
@@ -368,10 +372,10 @@ export const videos = [
     inicio: "GEN.1",
     steps: [
       {
-        legenda: "Em Aa › Leitura estão os ajustes de leitura.",
+        legenda: "Em Aa › Texto estão os ajustes de leitura.",
         faz: async t => {
           await t.tocar("#open-look");
-          await t.rolarAte("#g-read");
+          await t.rolarAte("#t-easy");
         }
       },
       { legenda: "Fonte de leitura fácil no português.", faz: t => t.tocar("#t-easy") },
@@ -388,10 +392,10 @@ export const videos = [
     inicio: "GEN.1",
     steps: [
       {
-        legenda: "Em Aa › Mostrar nos cartões, escolha o que aparece.",
+        legenda: "Em Aa › O que mostrar, escolha o que aparece.",
         faz: async t => {
           await t.tocar("#open-look");
-          await t.rolarAte("#g-cards");
+          await t.rolarAte("#g-show");
         }
       },
       { legenda: "Ligue a pronúncia em português (tônica em maiúsculas).", faz: t => t.tocar("#t-pron") },
@@ -432,7 +436,14 @@ export const videos = [
           await t.onKey("Escape");
         }
       },
-      { legenda: "O botão ⇄ no topo volta ao modo anterior.", faz: t => t.tocar("#mode-swap") }
+      {
+        legenda: "Estudo: tudo do Interlinear mais Strong, pronúncia e gramática.",
+        faz: async t => {
+          await t.tocar("#open-look");
+          await t.tocar('.mcard[data-modo="estudo"]');
+          await t.onKey("Escape");
+        }
+      }
     ]
   },
   {
@@ -451,13 +462,13 @@ export const videos = [
         }
       },
       {
-        legenda: "Em “Mostrar na página”, ligue ou desligue cada item.",
+        legenda: "Em “O que mostrar”, ligue ou desligue cada item.",
         faz: async t => {
           await t.rolarAte("#g-show");
           await t.tocar("#t-about");
         }
       },
-      { legenda: "Ao mudar qualquer item, o modo vira Personalizado.", faz: t => t.realcar('.mcard[data-modo="personalizado"]') },
+      { legenda: "Ao mudar qualquer item, o modo vira Personalizado.", faz: t => t.realcar("#mode-note") },
       { legenda: "A escolha fica guardada para a próxima vez.", faz: t => t.onKey("Escape") }
     ]
   },
@@ -590,7 +601,7 @@ export const videos = [
     inicio: "GEN.1",
     prepare: dadosDeExemplo,
     steps: [
-      { legenda: "No Índice, em Você, toque em Minhas anotações.", faz: abrirMinhas },
+      { legenda: "Em Livros, toque na aba Notas.", faz: abrirMinhas },
       { legenda: "Tudo o que você marcou e anotou, versículo por versículo, na ordem da Bíblia.", faz: t => t.esperar(800) },
       { legenda: "Busque por uma palavra: pastor.", faz: t => t.digitar("#mn-search", "pastor") },
       {
@@ -615,7 +626,7 @@ export const videos = [
     prepare: dadosDeExemplo,
     steps: [
       {
-        legenda: "Em Minhas anotações, no menu ⋯, toque em Exportar PDF.",
+        legenda: "Em Notas, no menu ⋯, toque em Exportar PDF.",
         faz: async t => {
           await t.page.evaluate(() => {
             window.__noPrint = true;
@@ -660,7 +671,7 @@ export const videos = [
     prepare: dadosDeExemplo,
     steps: [
       {
-        legenda: "Em Minhas anotações, no menu ⋯, toque em Baixar meus dados.",
+        legenda: "Em Notas, no menu ⋯, toque em Baixar meus dados.",
         faz: async t => {
           await abrirMinhas(t);
           await t.tocar("#mn-more summary");
@@ -703,7 +714,7 @@ export const videos = [
     prepare: dadosDeExemplo,
     steps: [
       {
-        legenda: "No Índice, em Você, toque em Entrar com Google.",
+        legenda: "Em Livros, na aba Você, toque em Entrar com Google.",
         faz: async t => {
           await abrirVoce(t);
           await t.realcar("#conta");
@@ -740,11 +751,11 @@ export const videos = [
         legenda: "…chega aqui sozinha em poucos segundos, com o app aberto.",
         faz: async t => {
           await t.page.evaluate(() => window.Sync.currentTime());
-          await t.page.locator("#v1 .vnota").waitFor();
-          await t.realcar("#v1 .vnota");
+          await t.page.locator("#v1 .vann-note").waitFor();
+          await t.realcar("#v1 .vann-note");
         }
       },
-      { legenda: "Toque no ícone para ler a nota.", faz: t => t.tocar("#v1 .vnota") }
+      { legenda: "Toque na nota sob o versículo para lê-la.", faz: t => t.tocar("#v1 .vann-note") }
     ]
   },
   {
@@ -759,7 +770,7 @@ export const videos = [
     before: entrarNaConta,
     steps: [
       {
-        legenda: "Sua conta fica no Índice, em Você.",
+        legenda: "Sua conta fica em Livros, na aba Você.",
         faz: async t => {
           await abrirVoce(t);
           await t.realcar("#conta");
@@ -819,17 +830,17 @@ export const videos = [
         }
       },
       {
-        legenda: "Anotar resposta abre uma nota no versículo, com a pergunta como título.",
+        legenda: "Anotar resposta abre o painel do versículo, com a pergunta em cima.",
         faz: async t => {
           await t.rolarAte("#perguntas .q-note");
           await t.tocar("#perguntas .q-note");
-          await t.digitar("#note-text", "Rute escolhe ficar com Noemi e com o povo dela.");
+          await t.digitar("#mb-note", "Rute escolhe ficar com Noemi e com o povo dela.");
         }
       },
       {
-        legenda: "A nota fica em Minhas anotações. Para esconder as perguntas: Aa › Mostrar na página.",
+        legenda: "Toque em Pronto: a nota fica em Notas. Para esconder as perguntas: Aa › O que mostrar › Perguntas.",
         faz: async t => {
-          await fecharPainel(t);
+          await t.tocar(t.page.viewportSize().width <= 720 ? "#mb-done" : "#mb-close");
           await t.tocar("#open-look");
           await t.rolarAte("#t-questions");
           await t.realcar("#t-questions");
@@ -849,7 +860,7 @@ export const videos = [
     before: entrarNaConta,
     steps: [
       {
-        legenda: "No Índice, em Você, toque em Meu progresso (com a conta Google conectada).",
+        legenda: "Em Livros, na aba Você, toque em Meu progresso (com a conta Google conectada).",
         faz: async t => {
           await abrirVoce(t);
           await t.tocar("#open-progress");
@@ -979,7 +990,7 @@ export const videos = [
     inicio: "GEN.1",
     prepare: dadosDeExemplo,
     steps: [
-      { legenda: "Em Minhas anotações, as etiquetas aparecem como filtros.", faz: abrirMinhas },
+      { legenda: "Em Notas, as etiquetas aparecem como filtros.", faz: abrirMinhas },
       {
         legenda: "No menu ⋯, toque em Gerenciar etiquetas.",
         faz: async t => {

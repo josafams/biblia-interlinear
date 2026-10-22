@@ -36,12 +36,14 @@ async function aparelho(browser, info, nuvem, { config = RAPIDO, timezoneId } = 
 }
 async function signIn(page) {
   await page.click("#open-toc");
+  await page.click('#toc .toc-tabs a[href="#toc-voce"]');
   await page.click("#account-signin");
   await expect(page.locator("#account-sync")).toContainText("Sincronizado", { timeout: 20000 });
   await page.keyboard.press("Escape");
 }
 async function abrirProgresso(page) {
   await page.click("#open-toc");
+  await page.click('#toc .toc-tabs a[href="#toc-voce"]');
   await page.click("#open-progress");
   await expect(page.locator("#progresso")).toBeVisible();
 }
