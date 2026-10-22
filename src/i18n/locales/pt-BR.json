@@ -276,7 +276,11 @@
     "ios_settings": " (Ajustes › Acessibilidade › Conteúdo Falado › Vozes).",
     "missing_native": "Não há voz em {lang} instalada {system}. Veja em Aparência › Áudio.",
     "missing_web": "Este aparelho pode não ter voz em {lang}. Veja em Aparência › Áudio.",
-    "install_failed": "Não foi possível abrir as configurações de voz."
+    "install_failed": "Não foi possível abrir as configurações de voz.",
+    "pause": "Pausar leitura",
+    "pause_short": "Pausar",
+    "listen": "Ouvir",
+    "reading": "Lendo {ref} · {lang}"
   },
   "annotations": {
     "note": "Nota",
@@ -323,5 +327,13 @@
   },
   "account": {
     "drive_error": "Erro {status} no Google Drive"
+  },
+  "bar": {
+    "notes": "Notas",
+    "notes_label": "Minhas anotações",
+    "notes_label_count": {
+      "one": "Minhas anotações: {count} versículo",
+      "other": "Minhas anotações: {count} versículos"
+    }
   }
 }

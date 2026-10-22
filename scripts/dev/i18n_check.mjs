@@ -42,8 +42,11 @@ const legacy = fs
   .readdirSync(path.join(ROOT, "web"))
   .filter(f => f.endsWith(".js"))
   .map(f => path.join(ROOT, "web", f));
-for (const file of legacy)
-  for (const m of fs.readFileSync(file, "utf8").matchAll(/\b(?:t|tryT)\(\s*["'`]([a-z_]+(?:\.[\w-]+)+)["'`]/g)) used.add(m[1]);
+for (const file of legacy) {
+  const text = fs.readFileSync(file, "utf8");
+  for (const m of text.matchAll(/\b(?:t|tryT)\(\s*["'`]([a-z_]+(?:\.[\w-]+)+)["'`]/g)) used.add(m[1]);
+  for (const m of text.matchAll(/["'`]([a-z_]+(?:\.[\w-]+)+)["'`]/g)) mentioned.add(m[1]);
+}
 
 for (const file of files) {
   // HTML comments of .svelte files are not screen text (blanked, keeping the line numbers)
@@ -63,6 +66,7 @@ for (const file of files) {
     const code = line.replace(/\/\/.*$/, "").replace(/\b(?:t|tryT)\(\s*(["'`])(?:(?!\1).)*\1/g, "");
     for (const m of code.matchAll(/(["'`])((?:\\.|(?!\1).)*)\1/g)) {
       const s = m[2];
+      if (/\bclass=$/.test(code.slice(0, m.index))) continue; // CSS classes, not text
       if (/\p{L}{2,}[\s,.:;!?]+\p{L}{2,}/u.test(s) && !/^[+\w.-]+(,\s*[+\w.-]+)*$/.test(s) && !/[<>{}=/\\]/.test(s))
         errors.push(`${where(file, i)}: screen text in code, move it to the locale: ${JSON.stringify(s)}`);
     }
