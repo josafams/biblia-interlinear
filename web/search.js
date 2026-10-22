@@ -1,9 +1,9 @@
+import { esc } from "../src/lib/text";
 // Busca na Bíblia toda (texto da Bíblia Livre): índice por palavra em dados/busca/<2 letras>.js, carregado aos poucos.
 // Também entende referências ("Jo 3:16") e números Strong ("G25", "H430").
 (() => {
   "use strict";
   const $ = (s, el = document) => el.querySelector(s);
-  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
   const norm = w => w.replace(/’/g, "'").toLowerCase().normalize("NFD").replace(/\p{M}/gu, "");
   const TOKEN = /[\p{L}\p{N}]+(?:['’][\p{L}\p{N}]+)?/gu;
   const PAGE = 30;

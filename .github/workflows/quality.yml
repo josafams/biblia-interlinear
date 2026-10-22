@@ -37,6 +37,10 @@ jobs:
         run: npx stylelint "web/styles/*.css"
       - name: TypeScript (type check)
         run: npm run check
+      - name: i18n (screen text only in the locale)
+        run: node scripts/dev/i18n_check.mjs
+      - name: Unit tests (Vitest)
+        run: npx vitest run
       - name: Ruff (lint e formatação do Python)
         run: |
           ruff check .
