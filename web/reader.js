@@ -12,6 +12,7 @@ import ChapterLexicon from "../src/components/ChapterLexicon.svelte";
 import ChapterNavButton from "../src/components/ChapterNavButton.svelte";
 import ChapterPicker from "../src/components/ChapterPicker.svelte";
 import ChapterText from "../src/components/ChapterText.svelte";
+import GoTo from "../src/components/GoTo.svelte";
 import HeaderChips from "../src/components/HeaderChips.svelte";
 import LexiconEntry from "../src/components/LexiconEntry.svelte";
 import LexiconSheet from "../src/components/LexiconSheet.svelte";
@@ -26,15 +27,18 @@ import Questions from "../src/components/Questions.svelte";
 import NotesCount from "../src/components/NotesCount.svelte";
 import SayButton from "../src/components/SayButton.svelte";
 import TocButton from "../src/components/TocButton.svelte";
+import TocVerses from "../src/components/TocVerses.svelte";
 import WhereButton from "../src/components/WhereButton.svelte";
 import { MODE_IDS, eyebrowText as eyebrowFor, getMode, isModeId } from "../src/lib/modes";
 import { entryView } from "../src/lib/lexicon/entry";
 import { bookQuery } from "../src/lib/books";
+import { gotoPreview } from "../src/lib/goto";
 import { createRefs } from "../src/lib/refs";
 import { store } from "../src/lib/store";
 import { cleanHeb, esc } from "../src/lib/text";
 import { followAnnotations } from "../src/state/annotations.svelte";
 import { entry as entryState } from "../src/state/entry.svelte";
+import { goto as gotoState } from "../src/state/goto.svelte";
 import { LAZY_FROM, chapter as chapterState, fillVerse, showChapter } from "../src/state/chapter.svelte";
 import { reader as readerState } from "../src/state/reader.svelte";
 import { speech as speechState } from "../src/state/speech.svelte";
@@ -64,6 +68,7 @@ const OLANG = () => (GRC ? "grc" : "he");
 // ---------- Cabeçalho, versículos ----------
 const root = document.getElementById("verses");
 mount(ChapterText, { target: root });
+mount(TocVerses, { target: document.querySelector('#toc nav[aria-labelledby="toc-vh"]') });
 mount(HeaderChips, {
   target: document.querySelector("#page > header"),
   anchor: document.getElementById("ch-say"),
@@ -582,11 +587,8 @@ document.getElementById("skip").addEventListener("click", e => {
 let pickedBook = null,
   pickedCh = 1;
 function renderTocVerses() {
-  document.getElementById("toc-vh").textContent = `Versículos de ${BOOK.name} ${CUR}`;
-  const chip = v =>
-    `<a class="vchip" role="listitem" href="#v${v.n}" data-go data-v="${v.n}" aria-label="Versículo ${vLabel(v)}">${v.n === 0 ? "tít." : v.n}</a>`;
-  document.getElementById("toc-days").innerHTML =
-    `<div class="vgrid" role="list" aria-labelledby="toc-vh">${CH.verses.map(chip).join("")}</div>`;
+  gotoState.versesOf = t("goto.verses_of", { ref: `${BOOK.name} ${CUR}` });
+  gotoState.verses = CH.verses.map(v => ({ n: v.n, label: vLabel(v) }));
   markHereChip();
 }
 function pickBook(cod, ch) {
@@ -624,53 +626,41 @@ mount(ChapterPicker, {
 const refs = createRefs(BOOKS);
 const parseRef = q => refs.parseRef(q, { book: BOOK, ch: CUR });
 const resolveRef = r => refs.resolveRef(r, hasChapter);
-const goIn = document.getElementById("go-in"),
-  goPrev = document.getElementById("go-prev");
+// the field and its preview are GoTo.svelte; the preview is worked out by src/lib/goto.ts
+mount(GoTo, {
+  target: document.getElementById("toc-livros"),
+  props: {
+    oninput() {
+      updatePreview();
+      toc.filter = bookQuery(goIn.value);
+      flushSync();
+    },
+    ongo() {
+      if (goTarget) go(goTarget);
+      else {
+        updatePreview();
+        goIn.focus();
+      }
+    }
+  }
+});
+const goIn = document.getElementById("go-in");
 let goTarget = null;
 function updatePreview() {
   const res = resolveRef(parseRef(goIn.value));
   goTarget = res && res.ok ? res : null;
-  if (!res) {
-    goPrev.hidden = true;
-    goPrev.innerHTML = "";
-    return;
+  if (res && !res.warn) {
+    const n = res.ok ? res.ch : res.na.n;
+    if (pickedBook !== res.book || pickedCh !== n) pickBook(res.book.code, n);
   }
-  goPrev.hidden = false;
-  goPrev.classList.toggle("warn", !res.ok);
-  if (res.warn) {
-    goPrev.innerHTML = `<p class="gp-note">${res.warn}</p>`;
-    return;
-  }
-  const B = res.book,
-    c = B.chapters[(res.ok ? res.ch : res.na.n) - 1];
-  if (pickedBook !== B || pickedCh !== c.n) pickBook(B.code, c.n);
-  if (res.na) {
-    goPrev.innerHTML = `<div class="gp-ref">${esc(B.name)} ${c.n}${res.v ? ":" + res.v : ""}${c.t ? `<span class="gp-ct"> · ${esc(c.t)}</span>` : ""}</div><p class="gp-note">Este capítulo não está incluído nesta prévia.</p>`;
-    return;
-  }
-  const ref = res.chapterStart ? `${B.name} ${c.n}` : `${B.name} ${c.n}:${res.v}`;
-  const cached = CAPS[B.code + "." + c.n];
-  const vv = cached && !res.chapterStart ? cached.v.find(x => x.n === res.v) : null;
-  goPrev.innerHTML = `<div class="gp-ref">${esc(ref)}</div>${c.t ? `<div class="gp-theme">${esc(c.t)}</div>` : ""}${vv ? `<p class="gp-snip">${esc(vv.b)}</p>` : ""}
-    <button type="button" class="gp-go" id="gp-go">Ir para ${esc(res.chapterStart ? `${B.name} ${c.n}` : `${B.abbrev} ${c.n}:${res.v}`)} →</button>`;
+  gotoState.preview = gotoPreview(res, CAPS);
+  flushSync();
 }
-function go(t) {
-  openChapter(t.book.code, t.ch, t.chapterStart ? null : t.v);
+function go(target) {
+  openChapter(target.book.code, target.ch, target.chapterStart ? null : target.v);
   goIn.value = "";
   updatePreview();
 }
-goIn.addEventListener("input", updatePreview);
-document.getElementById("go-form").addEventListener("submit", e => {
-  e.preventDefault();
-  if (goTarget) go(goTarget);
-  else {
-    updatePreview();
-    goIn.focus();
-  }
-});
-goPrev.addEventListener("click", e => {
-  if (e.target.closest("#gp-go") && goTarget) go(goTarget);
-});
 
 function scrollToVerse(n, smooth) {
   const target = document.getElementById("v" + n);
@@ -749,12 +739,7 @@ sheets.toc.addEventListener("click", e => {
 
 // Onde estou
 function markHereChip() {
-  document.querySelectorAll(".vchip").forEach(c => {
-    const here = +c.dataset.v === hereV;
-    c.classList.toggle("here", here);
-    if (here) c.setAttribute("aria-current", "location");
-    else c.removeAttribute("aria-current");
-  });
+  gotoState.here = hereV;
 }
 function setHere(v) {
   hereV = v;
@@ -1342,11 +1327,6 @@ function openWhere() {
     if (here) here.focus({ preventScroll: true });
   });
 }
-// "Ir para" também filtra os livros pelo nome ("cânt", "1 jo")
-goIn.addEventListener("input", () => {
-  toc.filter = bookQuery(goIn.value);
-  flushSync();
-});
 // Capítulos longos: "v. 60 de 176" e, quando há seções (Salmo 119), ‹ › passam de seção
 {
   const pos = document.createElement("div");

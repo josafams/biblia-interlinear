@@ -553,5 +553,16 @@
       "other": "{count} versículos"
     },
     "not_in_preview": " · não incluído nesta prévia"
+  },
+  "goto": {
+    "label": "Buscar livro ou ir para uma referência",
+    "placeholder": "Ex.: Jo 3:16, salmos 23, Cânticos",
+    "go": "Ir",
+    "hint": "Livro, capítulo e versículo, como <b>Jo 3:16</b>, <b>1 Sm 17</b> ou <b>salmos 23</b>. Sem livro, vale o atual: <b>1:14</b>, ou só <b>14</b> para o versículo; <b>cap 12</b> vai para o capítulo.",
+    "go_to": "Ir para {ref} →",
+    "verses": "Versículos",
+    "verses_of": "Versículos de {ref}",
+    "verse_label": "Versículo {ref}",
+    "title_short": "tít."
   }
 }
