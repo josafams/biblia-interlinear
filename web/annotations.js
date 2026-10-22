@@ -1,10 +1,13 @@
 import { flushSync, mount } from "svelte";
 import AnnotatePanel from "../src/components/AnnotatePanel.svelte";
 import NoteEditor from "../src/components/NoteEditor.svelte";
+import TagManager from "../src/components/TagManager.svelte";
 import { t } from "../src/i18n";
 import { chapterOf, createVerseAnnotations, tagKey, verseAnchor as anchorFor } from "../src/lib/annotations/verse";
 import { COLOR_IDS, annotate } from "../src/state/annotate.svelte";
+import { createTagManager } from "../src/lib/annotations/tags";
 import { note } from "../src/state/note.svelte";
+import { tagManager } from "../src/state/tags.svelte";
 import { COLLECTIONS, createAnnotationStore, uuid } from "../src/lib/annotations/store";
 import { exposedPlugin, nativePlugin, platform } from "../src/lib/native";
 import { esc } from "../src/lib/text";
@@ -786,78 +789,38 @@ import { esc } from "../src/lib/text";
       html ||
       `<p class="mn-empty">${allItems.length ? "Nada encontrado com esses filtros." : "Ainda não há anotações. Toque longo num versículo, selecione um trecho ou use o botão ⋯ ao lado do número para marcar e anotar."}</p>`;
   }
-  // ---------- Gerenciar etiquetas: renomear, juntar (renomear para um nome que já existe) e apagar ----------
-  let managing = false;
+  // ---------- Gerenciar etiquetas (TagManager.svelte; as regras em src/lib/annotations/tags.ts) ----------
+  const tagRules = createTagManager(annotations);
+  mount(TagManager, {
+    target: $("#mn-tagmgr"),
+    props: {
+      onrename: (id, name) => renameTag(id, name),
+      ondelete: async id => {
+        await tagRules.remove(id);
+        await tagsChanged();
+      },
+      ondone: () => toggleTagManager(false)
+    }
+  });
   async function toggleTagManager(force) {
-    managing = force ?? !managing;
-    const box = $("#mn-tagmgr");
-    box.hidden = !managing;
-    if (!managing) return;
-    const tags = (await allRecords("etiquetas")).sort((x, y) => x.nome.localeCompare(y.nome, "pt"));
-    box.innerHTML =
-      `<h3 class="mn-group">Gerenciar etiquetas</h3>` +
-      (tags.length
-        ? tags
-            .map(
-              t => `<div class="tm-row" data-id="${t.id}">
-          <label class="sr" for="tm-${t.id}">Nome da etiqueta ${esc(t.nome)}</label>
-          <input id="tm-${t.id}" class="tm-name" type="text" value="${esc(t.nome)}" autocomplete="off">
-          <button class="chip tm-del" data-tm="del">Apagar</button></div>`
-            )
-            .join("")
-        : `<p class="mn-empty">Nenhuma etiqueta ainda.</p>`) +
-      `<p class="tm-help">Mude o nome no campo. Dar o nome de outra etiqueta junta as duas.</p><button class="chip" data-tm="done">Pronto</button>`;
+    tagManager.open = force ?? !tagManager.open;
+    $("#mn-tagmgr").hidden = !tagManager.open;
+    if (tagManager.open) tagManager.tags = await tagRules.list();
   }
-  async function retag(fromId, toId) {
-    for (const col of ["marcacoes", "notas", "favoritos"])
-      for (const r of await allRecords(col)) {
-        if (!r.etiquetas?.includes(fromId)) continue;
-        const set = new Set(r.etiquetas);
-        set.delete(fromId);
-        if (toId) set.add(toId);
-        if (col === "marcacoes" && !r.cor && !set.size) await removeRecord(col, r.id);
-        else await save(col, { id: r.id, etiquetas: [...set] });
-      }
-  }
-  async function renameTag(id, nome) {
-    nome = nome.trim();
-    const tags = await allRecords("etiquetas");
-    const me = tags.find(t => t.id === id);
-    if (!me || !nome || nome === me.nome) return toggleTagManager(true);
-    const other = tags.find(t => t.id !== id && t.nome.toLowerCase() === nome.toLowerCase());
-    if (other) {
-      await retag(id, other.id);
-      await removeRecord("etiquetas", id);
-      if (listFilter.tag === id) listFilter.tag = other.id;
-      toastMsg(`“${me.nome}” foi juntada a “${other.nome}”.`);
-    } else await save("etiquetas", { id, nome });
+  async function tagsChanged() {
     await toggleTagManager(true);
     await renderList();
     paint();
   }
-  async function tagManagerClick(e) {
-    const b = e.target.closest("[data-tm]");
-    if (!b) return;
-    if (b.dataset.tm === "done") return toggleTagManager(false);
-    if (b.dataset.tm === "del") {
-      // dois toques para apagar, sem diálogo do navegador
-      if (Date.now() - (+b.dataset.armed || 0) > 4000) {
-        b.dataset.armed = Date.now();
-        b.textContent = "Toque de novo";
-        return;
-      }
-      const id = b.closest(".tm-row").dataset.id;
-      await retag(id, null);
-      await removeRecord("etiquetas", id);
-      await toggleTagManager(true);
-      await renderList();
-      paint();
+  async function renameTag(id, name) {
+    const r = await tagRules.rename(id, name);
+    if (!r) return toggleTagManager(true);
+    if (r.merged) {
+      if (listFilter.tag === id) listFilter.tag = r.merged.into.id;
+      toastMsg(t("tags.merged", { from: r.merged.from.nome, into: r.merged.into.nome }));
     }
+    await tagsChanged();
   }
-  listSheet.addEventListener("change", e => {
-    const f = e.target.closest(".tm-name");
-    if (f) renameTag(f.closest(".tm-row").dataset.id, f.value);
-  });
   function itemHTML(x) {
     const kind = x.cor ? `<span class="mn-color mk-${x.cor}">${x.rot}</span>` : `<span class="mn-kind">${x.rot}</span>`;
     return `<button class="mn-item${selecting ? " sel" : ""}" data-tipo="${x.tipo}" data-id="${x.id}"${selecting ? ` role="checkbox" aria-checked="${selected.has(x.id)}"` : ""}>
@@ -877,7 +840,6 @@ import { esc } from "../src/lib/text";
       $("#mn-more").open = false;
       return toggleTagManager();
     }
-    if (e.target.closest("#mn-tagmgr")) return tagManagerClick(e);
     if (e.target.closest(".mn-menu button")) $("#mn-more").open = false;
     const t = e.target.closest(".mn-filters .chip");
     if (t) {

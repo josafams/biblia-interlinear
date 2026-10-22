@@ -2,6 +2,8 @@
 import type { EntryView } from "../lib/lexicon/entry";
 
 export const entry = $state({
+  /** the panel is showing */
+  open: false,
   view: null as EntryView | null,
   /** the ‹ › buttons: is there a word before / after in reading order */
   canPrev: false,

@@ -131,14 +131,16 @@ test("gerenciar etiquetas: renomear, juntar e apagar", async ({ page }) => {
   await page.click("#mn-more summary");
   await page.click("#mn-manage");
   // renomear "promessa" para "Promessas" junta com a que já existe
-  const promessa = page.locator(".tm-row").filter({ has: page.locator('input[value="promessa"]') });
+  // each row is found by its field's label ("Nome da etiqueta …"), as a screen reader announces it
+  const row = name => page.locator(".tm-row").filter({ has: page.getByLabel(`Nome da etiqueta ${name}`, { exact: true }) });
+  const promessa = row("promessa");
   await promessa.locator("input").fill("Promessas");
   await promessa.locator("input").press("Enter");
   await expect(page.locator("#toast")).toContainText("juntada");
   await expect(page.locator(".tm-row")).toHaveCount(2);
   await expect(page.locator('#mn-tags .chip:has-text("promessas") small')).toHaveText("2");
   // apagar pede dois toques e tira a etiqueta dos versículos
-  const rascunho = page.locator(".tm-row").filter({ has: page.locator('input[value="rascunho"]') });
+  const rascunho = row("rascunho");
   await rascunho.locator('[data-tm="del"]').click();
   await expect(rascunho.locator('[data-tm="del"]')).toHaveText("Toque de novo");
   await rascunho.locator('[data-tm="del"]').click();
