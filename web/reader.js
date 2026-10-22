@@ -14,6 +14,7 @@ import ModeNote from "../src/components/ModeNote.svelte";
 import ModeSelector from "../src/components/ModeSelector.svelte";
 import NotesButton from "../src/components/NotesButton.svelte";
 import NotesCount from "../src/components/NotesCount.svelte";
+import SayButton from "../src/components/SayButton.svelte";
 import TocButton from "../src/components/TocButton.svelte";
 import { MODE_IDS, eyebrowText as eyebrowFor, getMode, isModeId, swapLabel } from "../src/lib/modes";
 import { createRefs } from "../src/lib/refs";
@@ -713,12 +714,15 @@ mount(ChapterNavButton, {
   anchor: document.getElementById("bar-modes"),
   props: { dir: 1, place: "top", ongo: d => goNeighbor(d) }
 });
-mount(TocButton, { target: bbar, anchor: bbar.firstChild, props: { place: "bottom", onopen: openToc } });
-mount(ChapterNavButton, {
-  target: bbar,
-  anchor: document.getElementById("bb-say"),
-  props: { dir: -1, place: "bottom", ongo: d => goNeighbor(d) }
+mount(SayButton, {
+  target: topBar,
+  anchor: document.getElementById("mode-swap"),
+  props: { place: "top", onsay: b => speakFrom(hereIndex(), b) }
 });
+// bottom bar (phone): Livros · ‹ · Ouvir · › · Aa (Livros and Aa only on phones), appended in order
+mount(TocButton, { target: bbar, props: { place: "bottom", onopen: openToc } });
+mount(ChapterNavButton, { target: bbar, props: { dir: -1, place: "bottom", ongo: d => goNeighbor(d) } });
+mount(SayButton, { target: bbar, props: { place: "bottom", onsay: b => speakFrom(hereIndex(), b) } });
 mount(ChapterNavButton, { target: bbar, props: { dir: 1, place: "bottom", ongo: d => goNeighbor(d) } });
 mount(LookButton, { target: bbar, props: { place: "bottom", onopen: openLook } });
 scrim.addEventListener("click", () => closePanel());
@@ -1543,7 +1547,6 @@ function speakFrom(vi, btn) {
     i => markSpeaking(wordEl(seq[i][0], seq[i][1]))
   );
 }
-for (const id of ["bar-say", "bb-say"]) document.getElementById(id).addEventListener("click", e => speakFrom(hereIndex(), e.currentTarget));
 // Atalhos do cabeçalho (Léxico, Perguntas): rolam até a seção sem mudar o endereço da página
 document.getElementById("hchips").addEventListener("click", e => {
   const a = e.target.closest("[data-go-local]");
@@ -1937,12 +1940,10 @@ function showYouProgress() {
 // enquanto toca, o Ouvir da barra vira "Pausar"
 {
   mount(MiniPlayer, { target: document.body, props: { onstop: () => stopSpeech() } });
-  const label = document.querySelector("#bb-say .bb-t");
   document.addEventListener("speech-state", e => {
     const on = e.detail.on;
     speechState.on = on;
     document.body.classList.toggle("tocando", on);
-    if (label) label.textContent = t(on ? "audio.pause_short" : "audio.listen");
     const sec = e.detail.el && e.detail.el.closest(".verse");
     if (on && sec && CH) {
       const v = CH.verses[+sec.dataset.vi];

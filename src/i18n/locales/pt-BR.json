@@ -280,7 +280,8 @@
     "pause": "Pausar leitura",
     "pause_short": "Pausar",
     "listen": "Ouvir",
-    "reading": "Lendo {ref} · {lang}"
+    "reading": "Lendo {ref} · {lang}",
+    "listen_from_here": "Ouvir a partir do versículo na tela"
   },
   "annotations": {
     "note": "Nota",
