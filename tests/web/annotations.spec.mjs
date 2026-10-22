@@ -30,15 +30,15 @@ test("nota: criar, reabrir pelo ícone, editar, achar na lista e apagar", async 
   await expect(page.locator("#note-status")).toHaveText("Salva.");
   await page.keyboard.press("Escape");
   await expect(page.locator("#nota")).toBeHidden();
-  await expect(page.locator("#v2 .vnota")).toBeVisible();
+  await expect(page.locator("#v2 .vann-note")).toBeVisible();
   await page.reload();
-  await page.click("#v2 .vnota");
+  await page.click("#v2 .vann-note");
   await expect(page.locator("#note-text")).toHaveValue("tôhû wâbôhû: rima no hebraico");
   await page.fill("#note-title", "Tohu e bohu");
   await expect(page.locator("#note-status")).toHaveText("Salva.");
   await page.keyboard.press("Escape");
   await page.click("#open-toc");
-  await page.click("#open-mine");
+  await page.click('#toc .toc-tabs a[href="#toc-notas"]');
   await expect(page.locator("#minhas")).toBeVisible();
   await page.fill("#mn-search", "rima");
   await expect(page.locator(".mn-item")).toHaveCount(1);
@@ -48,7 +48,7 @@ test("nota: criar, reabrir pelo ícone, editar, achar na lista e apagar", async 
   await page.click("#note-delete");
   await page.click("#note-delete");
   await expect(page.locator("#nota")).toBeHidden();
-  await expect(page.locator("#v2 .vnota")).toHaveCount(0);
+  await expect(page.locator("#v2 .vann-note")).toHaveCount(0);
 });
 
 test("favoritar e desfavoritar", async ({ page }) => {
@@ -114,7 +114,7 @@ test("etiquetas: criar no painel, ver sob o versículo e filtrar na lista", asyn
   await expect(page.locator("#v16 .vann")).toContainText("promessas");
   await etiquetar(page, 3, "novo nascimento");
   await page.click("#open-toc");
-  await page.click("#open-mine");
+  await page.click('#toc .toc-tabs a[href="#toc-notas"]');
   await expect(page.locator(".mn-item")).toHaveCount(2);
   await page.click('#mn-tags .chip:has-text("promessas")');
   await expect(page.locator(".mn-item")).toHaveCount(1);
@@ -129,7 +129,7 @@ test("gerenciar etiquetas: renomear, juntar e apagar", async ({ page }) => {
   await etiquetar(page, 17, "promessas");
   await etiquetar(page, 18, "rascunho");
   await page.click("#open-toc");
-  await page.click("#open-mine");
+  await page.click('#toc .toc-tabs a[href="#toc-notas"]');
   await page.click("#mn-more summary");
   await page.click("#mn-manage");
   // renomear "promessa" para "Promessas" junta com a que já existe
@@ -186,7 +186,7 @@ test("da lista, tocar numa marcação leva ao versículo", async ({ page }) => {
   await page.click("#mb-close");
   await open(page, "GEN.1");
   await page.click("#open-toc");
-  await page.click("#open-mine");
+  await page.click('#toc .toc-tabs a[href="#toc-notas"]');
   await page.click('.mn-item[data-tipo="marcacoes"]');
   await expect(page.locator("#h1")).toContainText("Romanos 8");
   await expect(page.locator("#v28")).toHaveClass(/mk-laranja/);

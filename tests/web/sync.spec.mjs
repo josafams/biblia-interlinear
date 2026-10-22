@@ -32,6 +32,7 @@ async function aparelho(browser, nuvem, info, { atraso = 0 } = {}) {
 }
 async function signIn(page) {
   await page.click("#open-toc");
+  await page.click('#toc .toc-tabs a[href="#toc-voce"]');
   await page.click("#account-signin");
   await expect(page.locator("#account-sync")).toContainText("Sincronizado");
   await expect(page.locator(".account-box")).toHaveCount(0); // nada de pergunta: sincroniza sozinho
@@ -185,6 +186,7 @@ test("sair apagando deste aparelho e apagar os dados do Google Drive", async ({ 
   await sincronizar(a);
   // apagar da nuvem: some do Drive, fica no aparelho
   await a.click("#open-toc");
+  await a.click('#toc .toc-tabs a[href="#toc-voce"]');
   await a.click("#account-wipe-cloud");
   await a.click('.account-box button[data-r="sim"]');
   await expect(a.locator("#account-signin")).toContainText("Entrar com Google");

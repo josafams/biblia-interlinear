@@ -32,8 +32,9 @@ test("Ir para também filtra os livros pelo nome", async ({ page }) => {
   await page.fill("#go-in", "cânt");
   await expect(page.locator("#bk-list .bchip:visible")).toHaveCount(1);
   await expect(page.locator("#bk-list .bchip:visible")).toContainText("Cânticos");
+  // uma referência não filtra: volta a lista do testamento escolhido
   await page.fill("#go-in", "jo 3:16");
-  expect(await page.locator("#bk-list .bchip:visible").count()).toBeGreaterThan(60);
+  expect(await page.locator("#bk-list .bchip:visible").count()).toBeGreaterThan(20);
 });
 
 test("Aparência em cinco grupos; “O que mostrar” em chips, sem rolar", async ({ page }) => {
@@ -101,8 +102,7 @@ test("Minhas anotações: filtros com contagem e busca por #etiqueta", async ({ 
   await page.click('#mbar .mb-color[data-cor="rosa"]');
   await page.click("#mb-close");
   await page.click("#open-toc");
-  await page.click('.toc-tabs a[href="#toc-voce"]');
-  await page.click("#open-mine");
+  await page.click('#toc .toc-tabs a[href="#toc-notas"]');
   await expect(page.locator('.mn-filters .chip[data-tipo="notas"] small')).toHaveText("1");
   await expect(page.locator('.mn-filters .chip[data-tipo=""] small')).toHaveText("2");
   await page.fill("#mn-search", "#oracao");
