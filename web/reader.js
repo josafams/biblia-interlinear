@@ -7,13 +7,18 @@ import { createSpeech } from "../src/lib/audio/tts";
 import { createBible, toWord } from "../src/lib/data/bible";
 import { SITE_URL, isNative as NATIVE, nativePlugin, platform as PLATFORM } from "../src/lib/native";
 import { flushSync, mount } from "svelte";
+import MiniPlayer from "../src/components/MiniPlayer.svelte";
 import ModeNote from "../src/components/ModeNote.svelte";
 import ModeSelector from "../src/components/ModeSelector.svelte";
+import NotesButton from "../src/components/NotesButton.svelte";
+import NotesCount from "../src/components/NotesCount.svelte";
 import { MODE_IDS, eyebrowText as eyebrowFor, getMode, isModeId, swapLabel } from "../src/lib/modes";
 import { createRefs } from "../src/lib/refs";
 import { store } from "../src/lib/store";
 import { cleanHeb, esc, glossHTML, glossSpoken, norm } from "../src/lib/text";
+import { followAnnotations } from "../src/state/annotations.svelte";
 import { reader as readerState } from "../src/state/reader.svelte";
+import { speech as speechState } from "../src/state/speech.svelte";
 const SPK =
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
 const BOOKS = DATA.books;
@@ -1777,23 +1782,19 @@ document.addEventListener("chapter-rendered", () => document.body.classList.togg
 
 // Barra do computador, como no design: "Notas · N" abre Minhas anotações; o ícone da conta abre "Você" no índice
 {
-  const notesBtn = document.getElementById("open-notes"),
-    notesN = document.getElementById("notes-n");
-  notesBtn.addEventListener("click", () => {
-    if (openSheet) closePanel(false);
-    if (window.Annotations) window.Annotations.openList();
+  mount(NotesButton, {
+    target: topBar,
+    anchor: document.getElementById("bar-prev"),
+    props: {
+      onopen() {
+        if (openSheet) closePanel(false);
+        if (window.Annotations) window.Annotations.openList();
+      }
+    }
   });
-  // conta os versículos com alguma anotação (cor, nota ou favorito), não os registros
-  const count = async () => {
-    if (!window.Annotations) return;
-    const lists = await Promise.all(["notas", "marcacoes", "favoritos"].map(c => window.Annotations.allRecords(c)));
-    const n = new Set(lists.flat().map(r => (r.ancora ? `${r.ancora.livro}.${r.ancora.cap}.${r.ancora.ver}` : r.id))).size;
-    notesN.textContent = n ? ` · ${n}` : "";
-    notesBtn.setAttribute("aria-label", n ? `Minhas anotações: ${n} ${n === 1 ? "versículo" : "versículos"}` : "Minhas anotações");
-  };
+  mount(NotesCount, { target: document.getElementById("tab-notas-n") });
   window.addEventListener("load", () => {
-    count();
-    if (window.Annotations) window.Annotations.onChange(count);
+    if (window.Annotations) followAnnotations(window.Annotations);
   });
   document.getElementById("open-account").addEventListener("click", () => {
     openPanel("toc");
@@ -1858,18 +1859,6 @@ document.getElementById("open-toc").addEventListener("click", () => {
 });
 tocTab("livros");
 tocView("livros");
-// "Notas · N" na aba, como no design
-window.addEventListener("load", () => {
-  const n = document.getElementById("tab-notas-n");
-  const count = async () => {
-    if (!window.Annotations) return;
-    const lists = await Promise.all(["notas", "marcacoes", "favoritos"].map(c => window.Annotations.allRecords(c)));
-    const k = new Set(lists.flat().map(r => (r.ancora ? `${r.ancora.livro}.${r.ancora.cap}.${r.ancora.ver}` : r.id))).size;
-    n.textContent = k ? ` · ${k}` : "";
-  };
-  count();
-  if (window.Annotations) window.Annotations.onChange(count);
-});
 // o ✕ do índice fica na linha das abas, como no design
 {
   const x = sheets.toc.querySelector(".shead [data-close]");
@@ -1945,25 +1934,19 @@ document.getElementById("open-toc").addEventListener("click", () => {
 // Mini player do celular, como no design: "Lendo João 3:16 · grego" acima da barra de baixo, com pausa;
 // enquanto toca, o Ouvir da barra vira "Pausar"
 {
-  const bar = document.createElement("div");
-  bar.className = "miniplayer";
-  bar.id = "miniplayer";
-  bar.hidden = true;
-  bar.setAttribute("role", "status");
-  bar.innerHTML = `<span id="mp-t"></span><button type="button" id="mp-stop" aria-label="Pausar leitura"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>`;
-  document.body.appendChild(bar);
+  mount(MiniPlayer, { target: document.body, props: { onstop: () => stopSpeech() } });
   const label = document.querySelector("#bb-say .bb-t");
-  bar.querySelector("#mp-stop").addEventListener("click", () => stopSpeech());
   document.addEventListener("speech-state", e => {
     const on = e.detail.on;
-    bar.hidden = !on;
+    speechState.on = on;
     document.body.classList.toggle("tocando", on);
-    if (label) label.textContent = on ? "Pausar" : "Ouvir";
+    if (label) label.textContent = t(on ? "audio.pause_short" : "audio.listen");
     const sec = e.detail.el && e.detail.el.closest(".verse");
     if (on && sec && CH) {
       const v = CH.verses[+sec.dataset.vi];
-      const lang = document.body.classList.contains("hide-orig") ? "português" : GRC ? "grego" : "hebraico";
-      document.getElementById("mp-t").textContent = `Lendo ${BOOK.name} ${v ? vLabel(v) : CUR} · ${lang}`;
+      const lang = t(document.body.classList.contains("hide-orig") ? "audio.language.pt" : GRC ? "audio.language.el" : "audio.language.he");
+      speechState.label = t("audio.reading", { ref: `${BOOK.name} ${v ? vLabel(v) : CUR}`, lang });
     }
+    flushSync();
   });
 }
