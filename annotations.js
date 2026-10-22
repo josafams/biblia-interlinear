@@ -171,7 +171,8 @@
         bl._marcas = [];
         bl.innerHTML = `<span class="tag">BLIVRE</span>${esc(v.blivre)}`;
       }
-      sec.classList.remove("mk-deslocada");
+      sec.classList.remove("mk-deslocada", "com-cor");
+      sec.style.removeProperty("--barcor");
       const tags = $(".vtags", sec);
       if (tags) tags.innerHTML = "";
       const ann = $(".vann", sec);
@@ -185,6 +186,11 @@
       const a = m.ancora,
         sec = verseEl(a.ver);
       if (!sec) continue;
+      // barra de cor à esquerda: o versículo tem alguma marcação (inteiro, trecho ou palavra)
+      if (!sec.classList.contains("com-cor") || a.camada === "versiculo") {
+        sec.classList.add("com-cor");
+        sec.style.setProperty("--barcor", `var(--mk-${m.cor})`);
+      }
       if (a.camada === "versiculo") sec.classList.add("mk-" + m.cor);
       else if (a.camada === "original") {
         for (let i = a.inicio; i <= a.fim; i++) $(`.word[data-i="${i}"]`, sec)?.classList.add("mk-" + m.cor);
@@ -204,19 +210,18 @@
       const sec = verseEl(ver),
         tags = sec && $(".vtags", sec);
       if (!tags) continue;
-      tags.innerHTML =
-        (info.f ? `<span class="vfav" title="Favorito" aria-label="Favorito">★</span>` : "") +
-        (info.n
-          ? `<button class="vnota" data-ver="${ver}" aria-label="${info.n} ${info.n === 1 ? "nota" : "notas"} neste versículo">${ICONS.nota}<span aria-hidden="true">${info.n > 1 ? info.n : ""}</span></button>`
-          : "");
+      tags.innerHTML = info.n
+        ? `<button class="vnota" data-ver="${ver}" aria-label="${info.n} ${info.n === 1 ? "nota" : "notas"} neste versículo">${ICONS.nota}<span aria-hidden="true">${info.n > 1 ? info.n : ""}</span></button>`
+        : "";
     }
   }
   // Faixa sob o versículo: começo da nota e etiquetas, para ver o que foi anotado sem abrir nada
   function paintStrips(ms, ns, fs, ets) {
     const names = Object.fromEntries(ets.map(t => [t.id, t.nome]));
     const per = {};
-    const slot = ver => (per[ver] = per[ver] || { notas: [], tags: new Set() });
+    const slot = ver => (per[ver] = per[ver] || { notas: [], tags: new Set(), fav: false });
     for (const r of [...ms, ...fs]) (r.etiquetas || []).forEach(t => names[t] && slot(r.ancora.ver).tags.add(names[t]));
+    for (const f of fs) slot(f.ancora.ver).fav = true;
     for (const n of ns) {
       const p = slot(n.ancora.ver);
       p.notas.push(n);
@@ -228,10 +233,11 @@
       const first = p.notas.sort((x, y) => x.criado_em.localeCompare(y.criado_em))[0];
       const txt = first ? (first.titulo || first.texto || "").trim() : "";
       ann.innerHTML =
+        (p.fav ? `<span class="vfav" title="Favorito" aria-label="Favorito">★</span>` : "") +
         (txt
           ? `<button class="vann-note" data-ver="${ver}">${ICONS.nota}<span>${esc(txt.length > 90 ? txt.slice(0, 88) + "…" : txt)}</span>${p.notas.length > 1 ? `<small>+${p.notas.length - 1}</small>` : ""}</button>`
           : "") +
-        (p.tags.size ? `<span class="vann-tags">${[...p.tags].map(t => `<span class="chip">${esc(t)}</span>`).join("")}</span>` : "");
+        (p.tags.size ? `<span class="vann-tags">${[...p.tags].map(t => `<span class="chip">#${esc(t)}</span>`).join("")}</span>` : "");
       ann.hidden = !ann.innerHTML;
     }
   }
@@ -275,6 +281,8 @@
     tag: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></svg>',
     copyText:
       '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg>',
+    share:
+      '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3M7.5 7.5L12 3l4.5 4.5"/><path d="M5 12v7a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-7"/></svg>',
     camadas:
       '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>',
     ouvir:
@@ -288,30 +296,89 @@
   bar.setAttribute("role", "dialog");
   bar.setAttribute("aria-label", "Marcar e anotar");
   bar.innerHTML = `
-    <div class="mb-top"><b id="mb-ref"></b><span id="mb-snippet"></span><button class="mb-x" id="mb-close" aria-label="Fechar">${ICONS.hide}</button></div>
-    <div class="mb-colors" role="group" aria-label="Cor da marcação">
-      ${COLORS.map(c => `<button class="mb-color mk-${c.id}" data-cor="${c.id}" aria-pressed="false" aria-label="${c.nome}"></button>`).join("")}
-      <button class="mb-color mb-none" data-cor="" aria-label="Tirar a marcação">${ICONS.hide}</button>
+    <div class="mb-top"><div class="mb-head"><b id="mb-ref"></b><span id="mb-snippet"></span></div><button class="mb-x" id="mb-close" aria-label="Fechar">${ICONS.hide}</button></div>
+    <div class="mb-body">
+      <div class="mb-colors" role="group" aria-label="Cor da marcação">
+        ${COLORS.map(c => `<button class="mb-color mk-${c.id}" data-cor="${c.id}" aria-pressed="false" aria-label="${c.nome}"></button>`).join("")}
+        <button class="mb-color mb-none" data-cor="" aria-label="Tirar a marcação">${ICONS.hide}</button>
+      </div>
+      <div class="mb-actions">
+        <button data-action="fav" aria-pressed="false">${ICONS.fav}<span>Favoritar</span></button>
+        <button data-action="ouvir">${ICONS.ouvir}<span>Ouvir</span></button>
+        <button data-action="copiar">${ICONS.copyText}<span>Copiar</span></button>
+        <button data-action="compartilhar">${ICONS.share}<span>Compartilhar</span></button>
+        <button data-action="camadas" hidden><span class="mb-ab" aria-hidden="true">αβ</span><span>Interlinear</span></button>
+      </div>
+      <div class="mb-note">
+        <div class="mb-lbl"><label for="mb-note">Nota</label><span id="mb-note-status" aria-live="polite"></span></div>
+        <textarea id="mb-note" rows="4" placeholder="O que você percebeu neste versículo?"></textarea>
+        <div class="mb-note-foot"><button class="linklike" data-action="nota">Abrir em tela cheia</button></div>
+      </div>
+      <div class="mb-tags" id="mb-tags" role="group" aria-label="Etiquetas"></div>
+      <div class="mb-review" id="mb-review" hidden><b>Ponto de revisão automática</b><ul id="mb-review-list"></ul></div>
+      <button class="linklike mb-del" data-action="limpar" hidden>Apagar tudo deste versículo</button>
     </div>
-    <div class="mb-note">
-      <label class="sr" for="mb-note">Nota neste versículo</label>
-      <textarea id="mb-note" rows="2" placeholder="Escrever uma nota… (salva sozinha)"></textarea>
-      <div class="mb-note-foot"><span id="mb-note-status" aria-live="polite"></span><button class="linklike" data-action="nota">Abrir em tela cheia</button></div>
-    </div>
-    <div class="mb-tags" id="mb-tags" role="group" aria-label="Etiquetas"></div>
-    <div class="mb-actions">
-      <button data-action="ouvir">${ICONS.ouvir}<span>Ouvir</span></button>
-      <button data-action="fav" aria-pressed="false">${ICONS.fav}<span>Favoritar</span></button>
-      <button data-action="copiar">${ICONS.copyText}<span>Copiar</span></button>
-      <button data-action="camadas" hidden>${ICONS.camadas}<span>Interlinear</span></button>
-    </div>`;
+    <div class="mb-foot"><button class="mb-done" id="mb-done">Pronto</button></div>`;
   document.body.appendChild(bar);
 
-  async function openBar(ancora, labelText, trecho) {
-    selection = { ancora, labelText, trecho };
+  // Compartilhar: o endereço do versículo (#JHN.3.16) com o texto da BLIVRE. No app vai pela folha de
+  // compartilhar do sistema e aponta para o site publicado; no navegador usa a Web Share API ou copia o link.
+  async function shareVerse(a) {
+    const v = currentChapter?.verses.find(x => x.n === a.ver);
+    const ref = `${currentChapter?.bookName || a.livro} ${a.cap}:${a.ver}`;
+    const base = /^https?:$/.test(location.protocol)
+      ? location.href.split("#")[0]
+      : "https://josafams.github.io/biblia-interlinear/ler.html";
+    const url = `${base}#${a.livro}.${a.cap}.${a.ver}`;
+    const text = `${selection.trecho || v?.blivre || ""} (${ref}, Bíblia Livre)`.trim();
+    const Cap = window.Capacitor;
+    try {
+      if (Cap?.isNativePlatform?.() && Cap.Plugins?.Share) return await Cap.Plugins.Share.share({ title: ref, text, url });
+      if (navigator.share) return await navigator.share({ title: ref, text, url });
+    } catch (err) {
+      // a pessoa fechou a folha de compartilhar (navegador: AbortError; app: "Share canceled")
+      if (err && (err.name === "AbortError" || /cancel/i.test(err.message || ""))) return;
+    }
+    try {
+      await navigator.clipboard.writeText(`${text}\n${url}`);
+      toastMsg("Link do versículo copiado.");
+    } catch (_) {
+      toastMsg("Não foi possível compartilhar neste navegador.");
+    }
+  }
+
+  // Tudo o que está guardado num versículo (cor de qualquer camada, notas e favorito)
+  async function verseRecords(a) {
+    const cap = chapterOf(a);
+    const [ms, ns, fs] = await Promise.all(["marcacoes", "notas", "favoritos"].map(c => ofChapter(c, cap)));
+    const at = r => r.ancora?.ver === a.ver;
+    return { marcacoes: ms.filter(at), notas: ns.filter(at), favoritos: fs.filter(at) };
+  }
+  // As etiquetas valem para o versículo inteiro: é a união das etiquetas de todos os registros dele
+  async function verseTags(a) {
+    const r = await verseRecords(a);
+    return [...new Set(Object.values(r).flatMap(l => l.flatMap(x => x.etiquetas || [])))];
+  }
+
+  // titulo: abre o painel para responder uma pergunta (a resposta vira uma nota nova com a pergunta como título)
+  async function openBar(ancora, labelText, trecho, titulo) {
+    document.dispatchEvent(new CustomEvent("annotations:open-panel"));
+    selection = { ancora, labelText, trecho, titulo };
     $("#mb-ref").textContent = labelText;
-    $("#mb-snippet").textContent = trecho ? `“${trecho.length > 60 ? trecho.slice(0, 58) + "…" : trecho}”` : "";
+    // sem trecho selecionado, mostra o começo do próprio versículo, como no design
+    const citado = trecho || (ancora.camada === "versiculo" ? ancora.trecho : "") || "";
+    $("#mb-snippet").textContent = titulo
+      ? `Pergunta: ${titulo}`
+      : citado
+        ? `“${citado.length > 90 ? citado.slice(0, 88) + "…" : citado}”`
+        : "";
     await loadQuickNote(ancora);
+    if (titulo) {
+      quickNote = null;
+      $("#mb-note").value = "";
+      $("#mb-note-status").textContent = "";
+    }
+    $("#mb-note").placeholder = titulo ? "Sua resposta… (salva sozinha)" : "O que você percebeu neste versículo?";
     await showTags({ focus: false });
     const m = await highlightOf(ancora);
     $$(".mb-color", bar).forEach(b => b.setAttribute("aria-pressed", String(!!m && m.cor === b.dataset.cor && !!b.dataset.cor)));
@@ -319,15 +386,32 @@
     $('[data-action="fav"]', bar).setAttribute("aria-pressed", String(!!f));
     $('[data-action="fav"] span', bar).textContent = f ? "Favorito" : "Favoritar";
     $('[data-action="camadas"]', bar).hidden = !document.body.classList.contains("hide-orig");
+    const r = await verseRecords(ancora);
+    $('[data-action="limpar"]', bar).hidden = !Object.values(r).some(l => l.length);
+    $$(".verse.editando").forEach(v => v.classList.remove("editando"));
+    const sec = verseEl(ancora.ver);
+    sec?.classList.add("editando");
+    // a explicação da revisão automática fica aqui, como no design (no texto, só o ponto no número)
+    const marks = sec?.querySelector("details.marks ul");
+    $("#mb-review").hidden = !marks;
+    if (marks) $("#mb-review-list").innerHTML = marks.innerHTML;
+    // no celular a folha cobre a parte de baixo: o versículo sobe para ficar visível acima dela
+    if (sec && !matchMedia("(min-width: 1100px)").matches) sec.scrollIntoView({ block: "start" });
     bar.hidden = false;
     document.body.classList.add("com-mbar");
-    $(".mb-color", bar).focus({ preventScroll: true });
+    (titulo ? $("#mb-note") : $(".mb-color", bar)).focus({ preventScroll: true });
+  }
+  async function refreshClear() {
+    if (!selection) return;
+    const r = await verseRecords(selection.ancora);
+    $('[data-action="limpar"]', bar).hidden = !Object.values(r).some(l => l.length);
   }
   function closeBar() {
     if (bar.hidden) return;
     flushQuickNote();
     bar.hidden = true;
     selection = null;
+    $$(".verse.editando").forEach(v => v.classList.remove("editando"));
     document.body.classList.remove("com-mbar");
   }
   async function highlightOf(a) {
@@ -340,7 +424,7 @@
   bar.addEventListener("click", async e => {
     if (!selection) return;
     const a = selection.ancora;
-    if (e.target.closest("#mb-close")) return closeBar();
+    if (e.target.closest("#mb-close, #mb-done")) return closeBar();
     const cor = e.target.closest(".mb-color");
     if (cor) {
       const m = await highlightOf(a);
@@ -350,9 +434,16 @@
           else await removeRecord("marcacoes", m.id);
         }
       } else
-        await save("marcacoes", { id: m?.id || uuid(), cap: chapterOf(a), ancora: a, cor: cor.dataset.cor, etiquetas: m?.etiquetas || [] });
+        await save("marcacoes", {
+          id: m?.id || uuid(),
+          cap: chapterOf(a),
+          ancora: a,
+          cor: cor.dataset.cor,
+          etiquetas: m?.etiquetas || (await verseTags(a))
+        });
       await paint();
       $$(".mb-color", bar).forEach(b => b.setAttribute("aria-pressed", String(!!cor.dataset.cor && b === cor)));
+      refreshClear();
       return;
     }
     const action = e.target.closest("[data-action]")?.dataset.action;
@@ -371,10 +462,17 @@
     if (action === "fav") {
       const f = await favoriteOf(a.livro, a.cap, a.ver);
       if (f) await removeRecord("favoritos", f.id);
-      else await save("favoritos", { id: uuid(), cap: chapterOf(a), ancora: verseAnchor(a.livro, a.cap, a.ver), etiquetas: [] });
+      else
+        await save("favoritos", {
+          id: uuid(),
+          cap: chapterOf(a),
+          ancora: verseAnchor(a.livro, a.cap, a.ver),
+          etiquetas: await verseTags(a)
+        });
       await paint();
       return openBar(a, selection.labelText, selection.trecho);
     }
+    if (action === "limpar") return clearVerse(a);
     if (action === "copiar") {
       const v = currentChapter?.verses.find(x => x.n === a.ver);
       const texto = `${selection.trecho || v?.blivre || ""} (${currentChapter?.bookName || a.livro} ${a.cap}:${a.ver}, Bíblia Livre)`;
@@ -386,21 +484,58 @@
       }
       return closeBar();
     }
+    if (action === "compartilhar") {
+      await shareVerse(a);
+      return closeBar();
+    }
     if (action === "camadas") {
       verseEl(a.ver)?.classList.toggle("abrir");
       return closeBar();
     }
     const tag = e.target.closest("[data-etiqueta]");
     if (tag) return toggleTag(tag.dataset.etiqueta);
-    if (e.target.closest("#mb-new-tag")) {
+    const sug = e.target.closest("[data-sug]");
+    if (sug || e.target.closest("#mb-new-tag")) {
       const field = $("#mb-tag-name");
-      const nome = field.value.trim();
+      // o # é opcional ("#oração" e "oração" são a mesma etiqueta)
+      const nome = (sug ? sug.dataset.sug : field.value).trim().replace(/^#+\s*/, "");
       if (!nome) return field.focus();
       const exists = (await allRecords("etiquetas")).find(x => x.nome.toLowerCase() === nome.toLowerCase());
       const t = exists || (await save("etiquetas", { id: uuid(), nome, cor: null }));
       await toggleTag(t.id, true);
     }
   });
+  // Digitar no campo de etiqueta filtra as que já existem
+  bar.addEventListener("input", e => {
+    if (e.target.id !== "mb-tag-name") return;
+    const q = tagKey(e.target.value);
+    $$("#mb-tags [data-etiqueta]", bar).forEach(b => {
+      b.hidden = !!q && !tagKey(b.textContent).includes(q);
+    });
+  });
+  const tagKey = s =>
+    String(s || "")
+      .replace(/^#+\s*/, "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/\p{M}/gu, "")
+      .trim();
+  // Limpar o versículo (cor, notas, favorito) com "Desfazer" por alguns segundos
+  async function clearVerse(a) {
+    const r = await verseRecords(a);
+    const gone = Object.entries(r).flatMap(([col, l]) => l.map(x => [col, x]));
+    for (const [col, x] of gone) await removeRecord(col, x.id);
+    closeBar();
+    await paint();
+    toastUndo(`${gone.length} ${gone.length === 1 ? "item apagado" : "itens apagados"} deste versículo.`, async () => {
+      for (const [col, x] of gone) {
+        const { criado_em: _c, alterado_em: _a, relogio: _r, base: _b, apagado: _d, ...rec } = x;
+        await save(col, rec);
+      }
+      await paint();
+      toastMsg("Anotações de volta.");
+    });
+  }
   bar.addEventListener("keydown", e => {
     if (e.key === "Escape") {
       e.stopPropagation();
@@ -437,9 +572,17 @@
     const a = { ...selection.ancora };
     quickNote = quickNote
       ? await save("notas", { id: quickNote.id, texto })
-      : await save("notas", { id: uuid(), cap: chapterOf(a), ancora: a, titulo: "", texto, etiquetas: [] });
+      : await save("notas", {
+          id: uuid(),
+          cap: chapterOf(a),
+          ancora: a,
+          titulo: selection.titulo || "",
+          texto,
+          etiquetas: await verseTags(a)
+        });
     $("#mb-note-status").textContent = "Salva.";
     paint();
+    refreshClear();
   }
   $("#mb-note").addEventListener("input", () => {
     clearTimeout(quickTimer);
@@ -450,28 +593,45 @@
     }, 600);
   });
 
+  const SUGGESTED_TAGS = ["promessas", "oração", "amor de Deus", "para estudar"];
   async function showTags({ focus = true } = {}) {
     const box = $("#mb-tags");
-    const tagList = (await allRecords("etiquetas")).sort((x, y) => x.nome.localeCompare(y.nome, "pt"));
-    const m = await highlightOf(selection.ancora);
-    const has = new Set(m?.etiquetas || []);
-    box.innerHTML = `<div class="mb-tag-list">${ICONS.tag}${tagList.map(t => `<button class="chip" data-etiqueta="${t.id}" aria-pressed="${has.has(t.id)}">${esc(t.nome)}</button>`).join("")}
-      <span class="mb-tag-new"><label class="sr" for="mb-tag-name">Nova etiqueta</label><input id="mb-tag-name" type="text" placeholder="+ etiqueta" autocomplete="off"><button id="mb-new-tag" class="chip">Criar</button></span></div>`;
+    const [tagList, ms, ns, fs] = await Promise.all(["etiquetas", "marcacoes", "notas", "favoritos"].map(allRecords));
+    // as mais usadas primeiro
+    const uses = {};
+    for (const r of [...ms, ...ns, ...fs]) for (const t of r.etiquetas || []) uses[t] = (uses[t] || 0) + 1;
+    tagList.sort((x, y) => (uses[y.id] || 0) - (uses[x.id] || 0) || x.nome.localeCompare(y.nome, "pt"));
+    const has = new Set(await verseTags(selection.ancora));
+    const chip = t =>
+      `<button class="chip" data-etiqueta="${t.id}" aria-pressed="${has.has(t.id)}"${has.has(t.id) ? ` aria-label="Tirar a etiqueta ${esc(t.nome)}"` : ""}>${esc(t.nome)}</button>`;
+    const mine = tagList.filter(t => has.has(t.id)),
+      rest = tagList.filter(t => !has.has(t.id));
+    const sugs = tagList.length
+      ? rest.map(chip).join("")
+      : SUGGESTED_TAGS.map(s => `<button class="chip mb-sug" data-sug="${esc(s)}">${esc(s)}</button>`).join("");
+    box.innerHTML = `<div class="mb-lbl">Etiquetas</div>
+      ${mine.length ? `<div class="mb-tag-list mb-mine">${mine.map(chip).join("")}</div>` : ""}
+      <span class="mb-tag-new"><label class="sr" for="mb-tag-name">Adicionar etiqueta</label><input id="mb-tag-name" type="text" placeholder="+ Adicionar etiqueta (Enter cria)" autocomplete="off"><button id="mb-new-tag" class="chip">Criar</button></span>
+      ${sugs ? `<span class="mb-sug-lbl">${tagList.length ? "Suas etiquetas" : "Sugestões para começar"}</span><div class="mb-tag-list">${sugs}</div>` : ""}`;
     if (focus) $("#mb-tag-name").focus();
   }
+  // Ligar ou desligar uma etiqueta no versículo: vale para todos os registros dele (cor, notas e favorito)
   async function toggleTag(id, turnOn) {
     const a = selection.ancora;
-    const m = await highlightOf(a);
-    const listSheet = new Set(m?.etiquetas || []);
-    const on = turnOn ?? !listSheet.has(id);
-    if (on) listSheet.add(id);
-    else listSheet.delete(id);
-    if (m) {
-      if (!m.cor && !listSheet.size) await removeRecord("marcacoes", m.id);
-      else await save("marcacoes", { id: m.id, etiquetas: [...listSheet] });
-    } else if (listSheet.size) await save("marcacoes", { id: uuid(), cap: chapterOf(a), ancora: a, cor: null, etiquetas: [...listSheet] });
+    const r = await verseRecords(a);
+    const all = Object.entries(r).flatMap(([col, l]) => l.map(x => [col, x]));
+    const on = turnOn ?? !all.some(([, x]) => (x.etiquetas || []).includes(id));
+    for (const [col, x] of all) {
+      const set = new Set(x.etiquetas || []);
+      if (on) set.add(id);
+      else set.delete(id);
+      if (col === "marcacoes" && !x.cor && !set.size) await removeRecord(col, x.id);
+      else await save(col, { id: x.id, etiquetas: [...set] });
+    }
+    if (on && !all.length) await save("marcacoes", { id: uuid(), cap: chapterOf(a), ancora: a, cor: null, etiquetas: [id] });
     await showTags({ focus: false });
     paint();
+    refreshClear();
   }
 
   // ---------- gestos: botão do versículo, toque longo, seleção de texto ----------
@@ -629,7 +789,7 @@
           ancora: ancora || null,
           titulo: title || "",
           texto: "",
-          etiquetas: [],
+          etiquetas: ancora ? await verseTags(ancora) : [],
           nova: true
         };
     if (!currentNote) return;
@@ -757,16 +917,16 @@
     <div class="shead"><h2 id="mine-h">Minhas anotações</h2><button class="ibtn" data-fechar aria-label="Fechar">${ICONS.hide}</button></div>
     <div class="sgroup">
       <label class="sr" for="mn-search">Buscar nas anotações</label>
-      <input id="mn-search" class="lsearch" type="search" placeholder="Buscar: luz, pastor, Gn 1" autocomplete="off">
+      <div class="mn-searchrow"><input id="mn-search" class="lsearch" type="search" placeholder="Buscar: luz, pastor, #oração" autocomplete="off"></div>
       <div class="mn-filters" role="group" aria-label="Tipo">
-        <button class="chip" data-tipo="" aria-pressed="true">Tudo</button>
-        <button class="chip" data-tipo="notas" aria-pressed="false">Notas</button>
-        <button class="chip" data-tipo="marcacoes" aria-pressed="false">Marcações</button>
+        <button class="chip" data-tipo="" aria-pressed="true">Todas</button>
+        <button class="chip" data-tipo="notas" aria-pressed="false">Com nota</button>
+        <button class="chip" data-tipo="marcacoes" aria-pressed="false">Marcadas</button>
         <button class="chip" data-tipo="favoritos" aria-pressed="false">Favoritos</button>
       </div>
       <div class="mn-tagchips" id="mn-tags" role="group" aria-label="Filtrar por etiqueta"></div>
       <div class="mn-actions">
-        <button class="mn-new" id="mn-new">+ Nota livre</button>
+        <button class="mn-new" id="mn-new">+ Nota livre (sem versículo)</button>
         <span id="mn-total" aria-live="polite"></span>
         <label class="mn-order"><span class="sr">Ordem</span><select id="mn-order"><option value="biblica">Ordem bíblica</option><option value="data">Mais recentes</option></select></label>
         <details class="mn-more" id="mn-more">
@@ -871,16 +1031,30 @@
           .join("")
       : "";
     const sel = { value: listFilter.tag };
-    const q = $("#mn-search").value.trim().toLowerCase();
-    let xs = allItems.filter(
+    const raw = $("#mn-search").value.trim();
+    const q = raw.toLowerCase();
+    // "#oração" procura só nas etiquetas
+    const tagQ = raw.startsWith("#") ? tagKey(raw) : "";
+    const matches = x =>
+      tagQ
+        ? x.etNomes.some(n => tagKey(n).includes(tagQ))
+        : !q || `${x.ref} ${x.titulo || ""} ${x.texto} ${x.etNomes.join(" ")}`.toLowerCase().includes(q);
+    const base = allItems.filter(
       x =>
-        (!listFilter.tipo || x.tipo === listFilter.tipo) &&
         (!listFilter.cap ||
           (x.a && `${x.a.livro}.${x.a.cap}` === listFilter.cap && (listFilter.ver == null || x.a.ver === listFilter.ver))) &&
         (!sel.value || x.tagList.includes(sel.value)) &&
-        (!q || `${x.ref} ${x.titulo || ""} ${x.texto} ${x.etNomes.join(" ")}`.toLowerCase().includes(q))
+        matches(x)
     );
-    $$(".mn-filters .chip", listSheet).forEach(b => b.setAttribute("aria-pressed", String(b.dataset.tipo === listFilter.tipo)));
+    let xs = base.filter(x => !listFilter.tipo || x.tipo === listFilter.tipo);
+    $$(".mn-filters .chip", listSheet).forEach(b => {
+      b.setAttribute("aria-pressed", String(b.dataset.tipo === listFilter.tipo));
+      const n = b.dataset.tipo ? base.filter(x => x.tipo === b.dataset.tipo).length : base.length;
+      let c = $("small", b);
+      if (!c) b.insertAdjacentHTML("beforeend", " <small></small>");
+      c = $("small", b);
+      c.textContent = n;
+    });
     if ($("#mn-order").value === "data") xs.sort((x, y) => y.data.localeCompare(x.data));
     else
       xs.sort(
@@ -1500,6 +1674,7 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
     const t = document.getElementById("toast");
     if (!t) return;
     t.textContent = msg;
+    t.classList.remove("dica");
     t.hidden = false;
     clearTimeout(toastMsgTimer);
     toastMsgTimer = setTimeout(
@@ -1509,8 +1684,27 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
       Math.max(3500, msg.length * 70)
     );
   }
+  // Aviso com o botão "Desfazer" (fica 8 segundos)
+  function toastUndo(msg, undo) {
+    const t = document.getElementById("toast");
+    if (!t) return;
+    t.innerHTML = `<span>${esc(msg)}</span> <button type="button" class="toast-undo" data-undo>Desfazer</button>`;
+    t.classList.remove("dica");
+    t.hidden = false;
+    $("[data-undo]", t).addEventListener("click", () => undo(), { once: true });
+    clearTimeout(toastMsgTimer);
+    toastMsgTimer = setTimeout(() => {
+      t.hidden = true;
+    }, 8000);
+  }
 
   // ---------- integração com o leitor ----------
+  // Capítulos longos montam os cartões aos poucos: redesenha as marcações das palavras que acabaram de aparecer
+  let filledTimer = 0;
+  document.addEventListener("words-filled", () => {
+    clearTimeout(filledTimer);
+    filledTimer = setTimeout(paint, 120);
+  });
   document.addEventListener("chapter-rendered", e => {
     currentChapter = e.detail;
     closeBar();
@@ -1523,8 +1717,19 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
     openList,
     openNote,
     // "Anotar resposta" das Perguntas ao texto: nota no versículo, com a pergunta como título
-    noteForQuestion: (book, chapter, verse, question) => openNote(null, verseAnchor(book, chapter, verse), null, question),
+    // "Anotar resposta" das perguntas abre o mesmo painel do versículo
+    noteForQuestion: (book, chapter, verse, question) => {
+      const a = verseAnchor(book, chapter, verse);
+      const v = currentChapter?.verses.find(x => x.n === verse);
+      if (!v) return openNote(null, a, null, question);
+      a.trecho = (v.blivre || "").slice(0, 200);
+      return openBar(a, `${currentChapter.bookName} ${chapter}:${verse}`, "", question);
+    },
     closeBar,
+    openVerse: n => {
+      const sec = verseEl(n);
+      if (sec) openForVerse(sec, "versiculo", {});
+    },
     paint,
     allRecords,
     save,

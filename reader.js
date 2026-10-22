@@ -141,6 +141,44 @@ function decodeGreek(m) {
   out.push(G_CASE[p[4]], G_GEN[p[6]], G_NUM[p[5]], G_DEG[p[7]]);
   return out.filter(Boolean).join(" ");
 }
+// No cartão do modo Estudo a gramática vai curta, como no design ("verbo aor.", "subst. nom."); a completa fica no verbete
+const MORPH_SHORT = {
+  substantivo: "subst.",
+  artigo: "art.",
+  adjetivo: "adj.",
+  preposição: "prep.",
+  pronome: "pron.",
+  conjunção: "conj.",
+  advérbio: "adv.",
+  partícula: "part.",
+  interjeição: "interj.",
+  aoristo: "aor.",
+  presente: "pres.",
+  imperfeito: "imperf.",
+  futuro: "fut.",
+  perfeito: "perf.",
+  "mais-que-perfeito": "m.-q.-perf.",
+  nominativo: "nom.",
+  genitivo: "gen.",
+  dativo: "dat.",
+  acusativo: "acus.",
+  vocativo: "voc.",
+  qal: "qal",
+  nifal: "nifal",
+  piel: "piel",
+  hifil: "hifil",
+  particípio: "part.",
+  infinitivo: "inf."
+};
+function shortMorph(full) {
+  const words = String(full || "")
+    .replace(/^aramaico: /, "")
+    .split(/[\s+]+/);
+  const pos = words.find(w => MORPH_SHORT[w] || w === "verbo");
+  if (!pos) return words.slice(0, 2).join(" ");
+  const rest = words.slice(words.indexOf(pos) + 1).find(w => MORPH_SHORT[w] && MORPH_SHORT[w] !== MORPH_SHORT[pos]);
+  return [pos === "verbo" ? "verbo" : MORPH_SHORT[pos], rest ? MORPH_SHORT[rest] : ""].filter(Boolean).join(" ");
+}
 function decodeMorph(morph, grc) {
   if (grc) return decodeGreek(morph);
   const lang = morph[0] === "A" ? "aramaico: " : "";
@@ -256,6 +294,7 @@ function toWord(w) {
 }
 
 // ---------- Estado ----------
+let lastWord = null; // última palavra aberta (a aba Verbete volta para ela)
 let BOOK = null,
   CUR = 0,
   CH = null,
@@ -344,27 +383,45 @@ function marksHTML(v) {
   const n = v.marks.length;
   return `<details class="marks"><summary>⚑ ${n === 1 ? "1 ponto" : `${n} pontos`} da revisão automática</summary><ul>${list}</ul></details>`;
 }
-function renderVerses() {
-  const lang = OLANG();
-  root.innerHTML =
-    CH.verses
-      .map((v, vi) => {
-        const flagged = new Set(v.marks.filter(m => m[1] !== null).map(m => m[1]));
-        const words = v.words
-          .map((w, i) => {
-            const e = LEX[w.strong] || {};
-            const aux = w.gf && w.gf !== "m" ? " aux" : "";
-            return `
+// Cartões de um versículo
+function wordsHTML(v, vi, lang = OLANG()) {
+  const flagged = new Set(v.marks.filter(m => m[1] !== null).map(m => m[1]));
+  return v.words
+    .map((w, i) => {
+      const e = LEX[w.strong] || {};
+      const aux = w.gf && w.gf !== "m" ? " aux" : "";
+      return `
       <button class="word${flagged.has(i) ? " flag" : ""}${w.ketiv ? " kt" : ""}" data-v="${vi}" data-i="${i}" tabindex="${i === 0 ? 0 : -1}" aria-label="${esc(wordLabel(w))}">
         <span class="h" lang="${lang}" aria-hidden="true">${origHTML(w.parts)}</span>
         ${e.x ? `<span class="x" aria-hidden="true">${esc(e.x)}</span>` : ""}
         ${e.p ? `<span class="p" aria-hidden="true">${esc(e.p)}</span>` : ""}
         <span class="s" aria-hidden="true">${w.strong && !w.strong.startsWith("G:") ? esc(w.strong) : "—"}</span>
+        <span class="m" aria-hidden="true" title="${esc(decodeMorph(w.morph, GRC))}">${esc(shortMorph(decodeMorph(w.morph, GRC)))}</span>
         <span class="g${aux}" aria-hidden="true">${glossHTML(w.gloss)}</span>
-        <span class="m" aria-hidden="true">${esc(decodeMorph(w.morph, GRC))}</span>
       </button>`;
-          })
-          .join("");
+    })
+    .join("");
+}
+// Capítulos muito longos (Salmo 119): os cartões só são montados quando o versículo chega perto da tela
+const LAZY_FROM = 100;
+let lazyIO = null;
+function fillWords(box) {
+  if (!box || !box.dataset.lazy) return;
+  const vi = +box.closest(".verse").dataset.vi;
+  box.innerHTML = wordsHTML(CH.verses[vi], vi);
+  delete box.dataset.lazy;
+  box.style.minHeight = "";
+  if (lazyIO) lazyIO.unobserve(box);
+  document.dispatchEvent(new CustomEvent("words-filled", { detail: { vi } }));
+}
+function renderVerses() {
+  const lang = OLANG();
+  const lazy = CH.verses.length >= LAZY_FROM && "IntersectionObserver" in window;
+  root.innerHTML =
+    CH.verses
+      .map((v, vi) => {
+        const later = lazy && vi > 4;
+        const words = later ? "" : wordsHTML(v, vi, lang);
         const lbl = vLabel(v);
         const head = v.h
           ? `<h2 class="sechead acro" id="s${v.n}"><span>${esc(v.h)}</span><span class="sref">v. ${v.n}–${v.n + 7}</span></h2>`
@@ -374,9 +431,9 @@ function renderVerses() {
       <div class="vhead">
         <h3 class="vnum${v.marks.length ? " has-rev" : ""}" id="vh${v.n}"><span class="sr">Versículo </span>${lbl.includes(":") ? `<span class="vcap">${esc(lbl.split(":")[0])}:</span>${esc(lbl.split(":")[1])}` : lbl}${v.marks.length ? `<span class="sr"> (com pontos da revisão automática)</span>` : ""}</h3>
         <span class="vtags"></span>
-        <button class="vmark" data-verse="${vi}" aria-label="Anotar ou ouvir ${lbl}"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
+        <button class="vmark" data-verse="${vi}" aria-label="Anotar ou ouvir ${lbl}"><svg class="vm-dots" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M3.2 12a1.8 1.8 0 1 0 3.6 0a1.8 1.8 0 1 0-3.6 0M10.2 12a1.8 1.8 0 1 0 3.6 0a1.8 1.8 0 1 0-3.6 0M17.2 12a1.8 1.8 0 1 0 3.6 0a1.8 1.8 0 1 0-3.6 0"/></svg><svg class="vm-pen" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg><span class="vm-t" aria-hidden="true">Anotar</span></button>
       </div>
-      ${v.words.length ? `<div class="words" role="group" aria-label="Palavras do versículo ${lbl}${GRC ? "" : ", da direita para a esquerda"}">${words}</div>` : ""}
+      ${v.words.length ? `<div class="words" role="group" aria-label="Palavras do versículo ${lbl}${GRC ? "" : ", da direita para a esquerda"}"${later ? ` data-lazy="1" style="min-height:${Math.ceil(v.words.length / 5) * 74}px"` : ""}>${words}</div>` : ""}
       ${v.nota ? `<p class="vnote">${esc(SOURCE_NOTES[v.nota] || v.nota)}</p>` : ""}
       <p class="blivre"><span class="tag">BLIVRE</span>${esc(v.blivre)}</p>
       <div class="vann" hidden></div>
@@ -387,6 +444,12 @@ function renderVerses() {
     questionsHTML() +
     chapterNav();
   if (io) document.querySelectorAll(".verse").forEach(sec => io.observe(sec));
+  if (lazyIO) lazyIO.disconnect();
+  lazyIO = null;
+  if (lazy) {
+    lazyIO = new IntersectionObserver(es => es.forEach(en => en.isIntersecting && fillWords(en.target)), { rootMargin: "1500px 0px" });
+    root.querySelectorAll(".words[data-lazy]").forEach(b => lazyIO.observe(b));
+  }
   // Anotações (annotations.js) desenham suas marcações quando o capítulo muda
   window.__currentChapter = {
     book: BOOK.code,
@@ -465,11 +528,12 @@ function chapterNav() {
     const x = neighbor(dir);
     if (!x) return "<span></span>";
     const ok = hasChapter(x.b.code, x.n);
-    return `<button class="cnav ${cls}${ok ? "" : " na"}" data-cod="${x.b.code}" data-ch="${x.n}" ${ok ? "" : 'aria-disabled="true"'}>${dir < 0 ? arrow + " " : ""}${esc(x.b.name)} ${x.n}${dir > 0 ? " " + arrow : ""}<small>${esc(x.b.chapters[x.n - 1].t || "")}</small></button>`;
+    return `<button class="cnav ${cls}${ok ? "" : " na"}" data-cod="${x.b.code}" data-ch="${x.n}" ${ok ? "" : 'aria-disabled="true"'}>${dir < 0 ? arrow + " " : ""}${esc(x.b.name)} ${x.n}<small>${esc(x.b.chapters[x.n - 1].t || "")}</small></button>`;
   };
   return `<nav class="chnav" aria-label="Capítulo anterior e próximo">${btn(-1, "prev", "←")}${btn(1, "next", "→")}</nav>`;
 }
-root.addEventListener("click", e => {
+// o cartão do próximo capítulo fica depois do léxico (fora de #verses), por isso o clique é ouvido no documento
+document.addEventListener("click", e => {
   const c = e.target.closest(".cnav");
   if (c) {
     if (c.classList.contains("na")) return toast("Este capítulo não está incluído nesta prévia.");
@@ -478,6 +542,7 @@ root.addEventListener("click", e => {
 });
 
 function wordEl(vi, i) {
+  fillWords(root.querySelector(`.verse[data-vi="${vi}"] .words[data-lazy]`));
   return root.querySelector(`.word[data-v="${vi}"][data-i="${i}"]`);
 }
 function firstWordOfVerse(vi) {
@@ -538,6 +603,8 @@ root.addEventListener("keydown", e => {
 const detail = document.getElementById("detail");
 const dbody = document.getElementById("d-body");
 const page = document.getElementById("page");
+// a barra de cima fica fora de #page (na largura toda); entra junto quando um painel modal trava a página
+const topBar = document.querySelector("nav.bar");
 let active = null,
   navStack = [],
   current = null,
@@ -629,10 +696,12 @@ function setBtn(btn) {
   if (curBtn) curBtn.classList.remove("on");
   curBtn = btn;
   if (btn) btn.classList.add("on");
+  document.dispatchEvent(new CustomEvent("speech-state", { detail: { on: !!btn } }));
 }
 function markSpeaking(el) {
   if (speakingEl) speakingEl.classList.remove("speaking");
   speakingEl = el;
+  document.dispatchEvent(new CustomEvent("speech-state", { detail: { on: !!curBtn, el } }));
   if (el) {
     el.classList.add("speaking");
     el.scrollIntoView({ block: "nearest" });
@@ -648,10 +717,12 @@ function stopSpeech() {
 function toast(msg) {
   const t = document.getElementById("toast");
   t.textContent = msg;
+  t.classList.remove("dica");
   t.hidden = false;
   clearTimeout(toastTimer);
+  // só esconde se o aviso ainda for este (outro aviso, como o "Desfazer", pode ter tomado o lugar)
   toastTimer = setTimeout(() => {
-    t.hidden = true;
+    if (t.textContent === msg) t.hidden = true;
   }, 7000);
 }
 document.getElementById("toast").addEventListener("click", e => {
@@ -769,27 +840,28 @@ function translationsHTML(t) {
 function entryTopHTML(lang, lemma, xlit, pron, word) {
   const pos =
     word && active
-      ? `palavra ${+active.dataset.i + 1} de ${CH.verses[active.dataset.v].words.length} · ${vLabel(CH.verses[active.dataset.v])}`
+      ? `palavra ${+active.dataset.i + 1} de ${CH.verses[active.dataset.v].words.length} · ${BOOK.name} ${vLabel(CH.verses[active.dataset.v])}`
       : "";
   const nav = (dir, label) =>
     word
       ? `<button class="dnav" id="${dir < 0 ? "d-prev" : "d-next"}" aria-label="${label}"${stepTarget(dir) ? "" : " disabled"}>${dir < 0 === GRC ? ARROW_L : ARROW_R}</button>`
       : "";
+  const title = word ? hebShown(word.heb) : lemma;
+  const say = word ? word.heb : lemma;
   return `
     <div class="dtop">
       ${nav(GRC ? -1 : 1, GRC ? "Palavra anterior" : "Próxima palavra (à esquerda)")}
       <div class="dtitle">
-        <h2 class="dh${lang === "grc" ? " grc" : ""}" id="d-title" tabindex="-1" lang="${lang}">${esc(lemma)}</h2>
-        <div class="dx">${xlit ? `<em>${esc(xlit)}</em> · ` : ""}<span class="pron">pronúncia: <b>${esc(pron)}</b></span></div>
+        <h2 class="dh${lang === "grc" ? " grc" : ""}" id="d-title" tabindex="-1" lang="${lang}">${esc(title)}</h2>
         ${pos ? `<span class="dpos">${esc(pos)}</span>` : ""}
       </div>
       ${nav(GRC ? 1 : -1, GRC ? "Próxima palavra" : "Palavra anterior (à direita)")}
       <button class="dclose" id="d-close" aria-label="Fechar verbete">✕</button>
-    </div>`;
+    </div>
+    <div class="dlem"><span class="dlem-t"><span class="dl${lang === "grc" ? " grc" : ""}" lang="${lang}">${esc(lemma)}</span>${xlit ? ` · <em>${esc(xlit)}</em>` : ""}${pron ? ` · <span class="pron">${esc(pron)}</span>` : ""}</span><button class="say" data-say="${esc(say)}">${SPK}<span>Ouvir</span></button></div>`;
 }
-function wordContextHTML(word, lemma) {
-  const sayLemma = `<button class="say" data-say="${esc(lemma)}">${SPK}<span>Ouvir o lema</span></button>`;
-  if (!word) return `<div class="dsay">${sayLemma}</div>`;
+function wordContextHTML(word) {
+  if (!word) return "";
   const objNote = /\[obj\]/.test(word.gloss || "")
     ? `<small class="gfn">Marca o objeto direto; não tem tradução em português.</small>`
     : "";
@@ -799,11 +871,10 @@ function wordContextHTML(word, lemma) {
     : "";
   return `
     <div class="dctx">
-      <div class="cw${GRC ? " grc" : ""}" lang="${OLANG()}">${esc(hebShown(word.heb))}</div>
+      <div class="dk">Neste versículo</div>
       <div class="cg">${glossHTML(word.gloss)} <span class="sr">(${esc(glossSpoken(word.gloss))})</span>${gfNote}${objNote}</div>
       <div class="dmeta">${esc(decodeMorph(word.morph, GRC))}</div>
       ${ketiv}
-      <div class="dsay"><button class="say" data-say="${esc(word.heb)}">${SPK}<span>Ouvir</span></button>${sayLemma}</div>
     </div>`;
 }
 function entryBodyHTML(k, e) {
@@ -826,7 +897,7 @@ function entryBodyHTML(k, e) {
     ${e.t ? `<div class="dsec"><h3>Como a BLIVRE traduz</h3><div class="dtr">${translationsHTML(e.t)}</div><p class="plegend">Contagem pelo alinhamento automático com a Bíblia Livre.</p></div>` : ""}
     ${conc}
     ${originHtml ? `<div class="dsec"><h3>Origem</h3>${originHtml}</div>` : ""}
-    <div class="dsec"><h3>Uso</h3><p>${esc(uses)}${blb ? ` · <a href="${blb}" target="_blank" rel="noopener">verbete em inglês<span class="sr"> (abre em nova aba)</span></a>` : ""}</p></div>
+    <div class="dfoot"><span>${esc(uses)}${blb ? ` · <a href="${blb}" target="_blank" rel="noopener">verbete em inglês<span class="sr"> (abre em nova aba)</span></a>` : ""}</span></div>
     <div class="dsec">${PRON_LEGEND}</div>`;
 }
 function entryHTML(k, word) {
@@ -863,10 +934,12 @@ function openWord(b) {
   });
   b.tabIndex = 0;
   navStack = [];
+  lastWord = b;
   show(w.strong, w, b);
 }
 async function show(k, word, opener) {
   if (opener) returnTo = opener;
+  if (openSheet === "look" && SIDE.matches) closePanel(false);
   if (k && /^[HG]/.test(k)) await ensureLex(k[0] === "G" ? "G" : "H").catch(() => {});
   current = { k, word };
   const e = LEX[k];
@@ -946,16 +1019,23 @@ function focusables(el) {
     x => x.offsetParent !== null
   );
 }
+// No computador (≥ 1100 px) a Aparência abre no painel ao lado do texto, como o Verbete e o Anotar
+const SIDE = matchMedia("(min-width: 1100px)");
 function openPanel(name, focusEl) {
   if (!detail.hidden) closeDetail();
   if (openSheet) closePanel(false);
+  if (window.Annotations) window.Annotations.closeBar();
   openSheet = name;
   sheets[name].hidden = false;
-  scrim.hidden = false;
   openers[name].setAttribute("aria-expanded", "true");
-  page.inert = true;
-  detail.inert = true;
-  document.body.style.overflow = "hidden";
+  if (name === "look" && SIDE.matches) document.body.classList.add("com-look");
+  else {
+    scrim.hidden = false;
+    page.inert = true;
+    topBar.inert = true;
+    detail.inert = true;
+    document.body.style.overflow = "hidden";
+  }
   if (name === "toc") {
     pickBook(BOOK.code, CUR);
   }
@@ -968,7 +1048,9 @@ function closePanel(restore = true) {
   sheets[name].hidden = true;
   scrim.hidden = true;
   openers[name].setAttribute("aria-expanded", "false");
+  document.body.classList.remove("com-look");
   page.inert = false;
+  topBar.inert = false;
   detail.inert = false;
   document.body.style.overflow = "";
   openSheet = null;
@@ -1032,16 +1114,22 @@ function renderBooks() {
       .filter(g => g.nt === nt)
       .map(
         g => `
-    <div class="bgroup"><h4>${esc(g.name)}</h4><div class="bgrid">${g.books.map(b => `<button class="bchip" data-cod="${b.code}" aria-pressed="${b.code === pickedBook.code}" aria-label="${esc(b.name)}"><span class="bn">${esc(b.name)}</span><span class="ba" aria-hidden="true">${esc(b.abbrev)}</span></button>`).join("")}</div></div>`
+    <div class="bgroup" data-nt="${g.nt ? 1 : 0}"><h4>${esc(g.name)}</h4><div class="bgrid">${g.books.map(b => `<button class="bchip" data-cod="${b.code}" aria-pressed="${b.code === pickedBook.code}" aria-label="${esc(b.name)}"><span class="bn">${esc(b.name)}</span><span class="ba" aria-hidden="true">${b.chapters.length} cap.</span></button>`).join("")}</div></div>`
       )
       .join("");
   document.getElementById("bk-list").innerHTML = `
-    <h4 class="testa">Antigo Testamento <span>hebraico e aramaico</span></h4>${part(false)}
-    <h4 class="testa">Novo Testamento <span>grego</span></h4>${part(true)}`;
+    ${part(false)}${part(true)}`;
 }
 function renderChapters() {
   const B = pickedBook;
-  document.getElementById("ch-h").textContent = `Capítulos de ${B.name}`;
+  document.getElementById("ch-h").textContent = B.name;
+  // embaixo da grade, a lista com o título de cada capítulo
+  document.getElementById("ch-list").innerHTML = B.chapters
+    .map(
+      c =>
+        `<button type="button" class="ch-row${c.n === pickedCh ? " here" : ""}" data-ch="${c.n}"${hasChapter(B.code, c.n) ? "" : ' aria-disabled="true"'}><span class="cr-n">${c.n}</span><span class="cr-t">${esc(c.t || "")}</span></button>`
+    )
+    .join("");
   document.getElementById("chgrid").innerHTML = B.chapters
     .map(c => {
       const ok = hasChapter(B.code, c.n);
@@ -1073,7 +1161,7 @@ document.getElementById("bk-list").addEventListener("click", e => {
   const b = e.target.closest(".bchip");
   if (!b) return;
   pickBook(b.dataset.cod, b.dataset.cod === BOOK.code ? CUR : 1);
-  document.getElementById("ch-h").scrollIntoView({ block: "start", behavior: "smooth" });
+  tocView("capitulos");
 });
 document.getElementById("chgrid").addEventListener("click", e => {
   const b = e.target.closest(".chchip");
@@ -1227,6 +1315,7 @@ sheets.look.addEventListener("click", e => {
 // Abas do índice (Livros · Neste livro · Você): pulam para a parte dentro da própria folha e marcam onde se está
 const tocTabs = [...sheets.toc.querySelectorAll(".toc-tabs [data-tab]")];
 function markTocTab() {
+  if (sheets.toc.dataset.aba) return;
   const top = sheets.toc.getBoundingClientRect().top + 90;
   let cur = tocTabs[0];
   for (const t of tocTabs) {
@@ -1296,7 +1385,7 @@ function setHere(v) {
   const ref = v === 0 ? `${CUR}, título` : `${CUR}:${v}`;
   const theme = BOOK.chapters[CUR - 1].t;
   document.getElementById("where-t").innerHTML =
-    `<b><span class="full">${esc(BOOK.name)}</span><span class="abbr">${esc(BOOK.abbrev)}</span> ${ref}</b>${theme ? " · " + esc(theme) : ""}`;
+    `<b>${esc(BOOK.name)} ${CUR}</b>${theme ? `<span class="wt-sub">${esc(theme)}</span>` : ""}`;
   where.setAttribute(
     "aria-label",
     `Você está em ${BOOK.name} ${ref}${theme ? ", " + theme : ""}. Abrir o índice para ir a outro livro, capítulo ou versículo.`
@@ -1306,6 +1395,7 @@ function setHere(v) {
     history.replaceState(null, "", `#${BOOK.code}.${CUR}.${v}`);
   } catch (_) {}
   store.set("posicao", `${BOOK.code}.${CUR}.${v}`);
+  if (window.__updateVpos) window.__updateVpos();
 }
 where.addEventListener("click", () => {
   openPanel("toc", goIn);
@@ -1338,11 +1428,19 @@ function niceStep(span) {
   return 2000;
 }
 const aboutBox = document.getElementById("about-body"),
-  aboutDet = document.getElementById("sobre");
+  aboutDet = document.getElementById("sobre"),
+  aboutChip = document.getElementById("chip-about");
+aboutChip.addEventListener("click", () => {
+  aboutDet.open = !aboutDet.open;
+  if (aboutDet.open) aboutDet.scrollIntoView({ block: "nearest" });
+});
 function renderAbout() {
   const A = BOOK.about;
   document.getElementById("ab-title").innerHTML =
     `${esc(BOOK.name)}${A ? `<span class="orig" lang="${OLANG()}">${esc(A.title_orig)}</span>` : ""}`;
+  // "Sobre João": um chip ao lado de Léxico e Perguntas, como no design; o texto abre embaixo
+  aboutChip.textContent = `Sobre ${BOOK.name}`;
+  aboutChip.hidden = !A;
   if (!A) {
     aboutDet.hidden = true;
     return;
@@ -1432,7 +1530,10 @@ function renderAbout() {
     ${A.note ? `<p class="ab-note">${esc(A.note)}</p>` : ""}
     <p class="ab-note">Introdução escrita para este projeto; datas aproximadas e sujeitas a revisão.</p>`;
 }
-aboutDet.addEventListener("toggle", () => store.set("sobre-aberto", aboutDet.open ? "on" : "off"));
+aboutDet.addEventListener("toggle", () => {
+  store.set("sobre-aberto", aboutDet.open ? "on" : "off");
+  aboutChip.setAttribute("aria-expanded", String(aboutDet.open));
+});
 if (store.get("sobre-aberto", "off") === "on") aboutDet.open = true;
 aboutBox.addEventListener("click", e => {
   const b = e.target.closest(".chref");
@@ -1695,7 +1796,7 @@ const MODES = [
     nome: "Bíblia",
     desc: "só a Bíblia Livre, em parágrafos",
     fala: "Bíblia",
-    v: { "t-orig": 0, "t-blivre": 1, "t-par": 1, "t-vnum": 1, "t-theme": 1, "t-about": 0, "t-lexicon": 0, "t-marks": 0, "t-questions": 1 }
+    v: { "t-orig": 0, "t-blivre": 1, "t-par": 1, "t-vnum": 1, "t-theme": 1, "t-about": 1, "t-lexicon": 1, "t-marks": 0, "t-questions": 1 }
   },
   {
     id: "original",
@@ -1709,7 +1810,7 @@ const MODES = [
       "t-par": 0,
       "t-vnum": 1,
       "t-theme": 1,
-      "t-about": 0,
+      "t-about": 1,
       "t-lexicon": 1,
       "t-marks": 0,
       "t-questions": 0
@@ -1784,9 +1885,19 @@ const MODES = [
 const modeGrid = document.getElementById("mode-grid"),
   modeNote = document.getElementById("mode-note"),
   modeSwap = document.getElementById("mode-swap");
-modeGrid.innerHTML = MODES.map(
-  m => `<button class="mcard" role="radio" aria-checked="false" data-modo="${m.id}"><b>${m.nome}</b><small>${m.desc}</small></button>`
-).join("");
+// O seletor tem 4 opções, como no design; "Original e Bíblia Livre" e "Personalizado" continuam valendo
+// (vêm de quem já usava ou de mudar um item em "O que mostrar") e aparecem só na explicação embaixo
+const MODE_MENU = ["biblia", "original", "interlinear", "estudo"];
+const MODE_HINT = {
+  biblia: "Só a Bíblia Livre, em parágrafos. Toque no número do versículo para ver o interlinear dele.",
+  original: "Hebraico ou grego corrido. Toque numa palavra para abrir o verbete.",
+  paralelo: "Original e Bíblia Livre, versículo a versículo (o original corrido, sem cartões).",
+  interlinear: "Palavra por palavra: original, transliteração e glosa, com a Bíblia Livre abaixo.",
+  estudo: "Tudo do Interlinear mais número Strong, pronúncia e análise gramatical."
+};
+modeGrid.innerHTML = MODE_MENU.map(id => MODES.find(m => m.id === id))
+  .map(m => `<button class="mcard" role="radio" aria-checked="false" data-modo="${m.id}" title="${m.desc}">${m.nome}</button>`)
+  .join("");
 let modo = store.get("modo", "");
 let baseMode = store.get("modo-base", "interlinear");
 let previousMode = store.get("modo-anterior", "");
@@ -1801,14 +1912,23 @@ function setSwitch(id, on) {
   store.set(t.dataset.key, on ? "on" : "off");
   if (ON_CHANGE[t.id]) ON_CHANGE[t.id](!!on);
 }
+const barModes = document.getElementById("bar-modes");
+barModes.innerHTML = MODE_MENU.map(id => MODES.find(m => m.id === id))
+  .map(m => `<button class="bmode" role="radio" aria-checked="false" data-modo="${m.id}" title="${m.desc}">${m.nome}</button>`)
+  .join("");
+barModes.addEventListener("click", e => {
+  const b = e.target.closest(".bmode");
+  if (b) applyMode(b.dataset.modo);
+});
 function showModo() {
   const currentChapter = modo || "interlinear";
+  barModes.querySelectorAll(".bmode").forEach(b => b.setAttribute("aria-checked", String(b.dataset.modo === currentChapter)));
   modeGrid.querySelectorAll(".mcard").forEach(b => b.setAttribute("aria-checked", String(b.dataset.modo === currentChapter)));
   const base = MODES.find(m => m.id === baseMode);
   modeNote.textContent =
     currentChapter === "personalizado" && base
-      ? `Personalizado a partir do modo ${base.nome}.`
-      : "No modo Bíblia, toque no número de um versículo para ver o interlinear só dele.";
+      ? `Personalizado a partir do modo ${base.nome}. Toque num modo para voltar ao padrão dele.`
+      : MODE_HINT[currentChapter] || "";
   const other = MODES.find(m => m.id === previousMode && m.id !== currentChapter);
   modeSwap.hidden = !other;
   if (other) {
@@ -2017,5 +2137,384 @@ if (AppPlugin && PLATFORM === "android") {
 if ("serviceWorker" in navigator && !NATIVE && /^https?:$/.test(location.protocol) && document.querySelector('link[rel="manifest"]')) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("sw.js").catch(() => {});
+  });
+}
+
+// ---------- Redesenho, parte final ----------
+// Celular: Livros e Aparência descem para a barra de baixo (os mesmos botões, que só mudam de lugar)
+{
+  const bbar = document.getElementById("bbar");
+  const tocBtn = document.getElementById("open-toc"),
+    lookBtn = document.getElementById("open-look");
+  const tocHome = document.createComment("open-toc"),
+    lookHome = document.createComment("open-look");
+  tocBtn.before(tocHome);
+  lookBtn.before(lookHome);
+  const mq = matchMedia("(max-width: 720px)");
+  const place = () => {
+    if (mq.matches) {
+      bbar.prepend(tocBtn);
+      bbar.append(lookBtn);
+      bbar.classList.add("cinco");
+    } else {
+      tocHome.after(tocBtn);
+      lookHome.after(lookBtn);
+      bbar.classList.remove("cinco");
+    }
+  };
+  place();
+  mq.addEventListener("change", place);
+}
+// Tocar no título do capítulo abre o índice já na grade de capítulos do livro
+where.addEventListener("click", () => {
+  tocView("capitulos");
+  requestAnimationFrame(() => {
+    const here = document.querySelector('#chgrid .chchip[aria-pressed="true"]');
+    if (here) here.focus({ preventScroll: true });
+  });
+});
+// "Ir para" também filtra os livros pelo nome ("cânt", "1 jo")
+function filterBooks() {
+  const raw = goIn.value.trim();
+  const q = /\d\s*[:.]|\d\s+\d/.test(raw) ? "" : norm(raw.replace(/\s+/g, ""));
+  const qLetters = q.replace(/\d+$/, "");
+  let shown = 0;
+  document.querySelectorAll("#bk-list .bchip").forEach(b => {
+    const B = BY_CODE[b.dataset.cod];
+    const ok =
+      !qLetters || [B.name, B.abbrev].some(x => norm(x.replace(/\s+/g, "")).startsWith(qLetters)) || norm(B.name).includes(qLetters);
+    b.hidden = !ok;
+    if (ok) shown++;
+  });
+  document.querySelectorAll("#bk-list .bgroup, #bk-list .testa").forEach(g => {
+    if (g.classList.contains("bgroup")) g.hidden = ![...g.querySelectorAll(".bchip")].some(b => !b.hidden);
+  });
+  document.getElementById("bk-list").dataset.filtro = qLetters && shown ? "1" : "";
+}
+goIn.addEventListener("input", filterBooks);
+// Capítulos longos: "v. 60 de 176" e, quando há seções (Salmo 119), ‹ › passam de seção
+{
+  const pos = document.createElement("div");
+  pos.className = "vpos";
+  pos.id = "vpos";
+  pos.hidden = true;
+  pos.innerHTML = `<button type="button" id="sec-prev" aria-label="Seção anterior">‹</button><span id="vpos-t"></span><button type="button" id="sec-next" aria-label="Próxima seção">›</button>`;
+  document.querySelector(".bar").appendChild(pos);
+  const heads = () => (CH ? CH.verses.filter(v => v.h) : []);
+  function updateVpos() {
+    const long = CH && CH.verses.length >= 40;
+    pos.hidden = !long || window.scrollY < 300;
+    if (pos.hidden) return;
+    const hs = heads();
+    const cur = hs.filter(v => v.n <= hereV).pop();
+    document.getElementById("vpos-t").textContent = `${cur ? cur.h + " · " : ""}v. ${hereV} de ${CH.verses[CH.verses.length - 1].n}`;
+    const arrows = hs.length > 1;
+    document.getElementById("sec-prev").hidden = !arrows;
+    document.getElementById("sec-next").hidden = !arrows;
+    if (arrows) {
+      document.getElementById("sec-prev").disabled = !hs.some(v => v.n < (cur ? cur.n : hereV));
+      document.getElementById("sec-next").disabled = !hs.some(v => v.n > hereV);
+    }
+  }
+  pos.addEventListener("click", e => {
+    const b = e.target.closest("button");
+    if (!b || b.disabled) return;
+    const hs = heads();
+    const cur = hs.filter(v => v.n <= hereV).pop();
+    const to = b.id === "sec-next" ? hs.find(v => v.n > hereV) : [...hs].reverse().find(v => v.n < (cur ? cur.n : hereV));
+    if (to) document.getElementById("s" + to.n)?.scrollIntoView({ block: "start", behavior: "smooth" });
+  });
+  window.__updateVpos = updateVpos;
+  window.addEventListener("scroll", () => requestAnimationFrame(updateVpos), { passive: true });
+  document.addEventListener("chapter-rendered", () => requestAnimationFrame(updateVpos));
+}
+// Aparência: os chips mostram a explicação ao passar o dedo/mouse
+document.querySelectorAll(".chks.chips .chk").forEach(c => {
+  const s = c.querySelector("small");
+  if (s && !c.title) c.title = s.textContent;
+});
+// Capítulos muito longos (Salmo 119): o navegador só desenha os versículos perto da tela
+document.addEventListener("chapter-rendered", () => document.body.classList.toggle("cap-longo", !!CH && CH.verses.length >= 100));
+
+// Computador: abas Verbete · Anotar · Aparência no topo do painel ao lado do texto
+{
+  const tabs = document.createElement("nav");
+  tabs.id = "ptabs";
+  tabs.className = "ptabs";
+  tabs.setAttribute("aria-label", "Painel ao lado do texto");
+  tabs.innerHTML = `<button type="button" data-ptab="verbete">Verbete</button><button type="button" data-ptab="anotar">Anotar</button><button type="button" data-ptab="aparencia">Aparência</button>`;
+  document.body.appendChild(tabs);
+  const mark = () => {
+    const b = document.body.classList;
+    const cur = b.contains("com-detail") ? "verbete" : b.contains("com-mbar") ? "anotar" : b.contains("com-look") ? "aparencia" : "";
+    tabs.querySelectorAll("[data-ptab]").forEach(t => t.setAttribute("aria-pressed", String(t.dataset.ptab === cur)));
+  };
+  new MutationObserver(mark).observe(document.body, { attributes: true, attributeFilter: ["class"] });
+  tabs.addEventListener("click", e => {
+    const t = e.target.closest("[data-ptab]");
+    if (!t || t.getAttribute("aria-pressed") === "true") return;
+    if (t.dataset.ptab === "aparencia") return openPanel("look");
+    if (t.dataset.ptab === "anotar") {
+      if (openSheet) closePanel(false);
+      if (!detail.hidden) closeDetail();
+      return window.Annotations && window.Annotations.openVerse(hereV);
+    }
+    if (lastWord && lastWord.isConnected) return openWord(lastWord);
+    const first = firstWordOfVerse(
+      Math.max(
+        0,
+        CH.verses.findIndex(v => v.n === hereV)
+      )
+    );
+    if (first) openWord(first);
+  });
+}
+
+// Modo de foco (Aparência › Leitura): rolar para baixo esconde as barras; rolar para cima ou abrir um painel as traz de volta
+{
+  const b = document.body.classList;
+  let lastY = scrollY;
+  window.addEventListener(
+    "scroll",
+    () => {
+      const y = scrollY,
+        dy = y - lastY;
+      if (Math.abs(dy) < 8) return;
+      lastY = y;
+      b.toggle("barras-fora", b.contains("foco") && dy > 0 && y > 200 && !openSheet && detail.hidden && !b.contains("com-mbar"));
+    },
+    { passive: true }
+  );
+  new MutationObserver(() => {
+    if (b.contains("barras-fora") && (b.contains("com-detail") || b.contains("com-mbar") || b.contains("com-look")))
+      b.remove("barras-fora");
+  }).observe(document.body, { attributes: true, attributeFilter: ["class"] });
+}
+
+// Dicas de primeiro uso: cada uma aparece uma vez só, quando faz sentido, e some sozinha
+{
+  const TECLADO = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const DICAS = {
+    palavra: "Dica: toque numa palavra do original para ver o significado e como a Bíblia Livre a traduz.",
+    versiculo: "Dica: toque no ⋯ ao lado do número (ou segure o versículo) para marcar, anotar, ouvir ou compartilhar.",
+    verbete: `Dica: ‹ › no verbete passam para a palavra vizinha${TECLADO ? " (← → no teclado)" : ""}, sem fechar.`
+  };
+  const vista = id => store.get("dica-" + id, "") === "vista";
+  const marcar = id => store.set("dica-" + id, "vista");
+  const dica = id => {
+    const t = document.getElementById("toast");
+    if (vista(id) || (!t.hidden && !t.classList.contains("dica"))) return false; // não atropela um aviso
+    marcar(id);
+    toast(DICAS[id]);
+    t.classList.add("dica");
+    return true;
+  };
+  document.addEventListener("chapter-rendered", () =>
+    setTimeout(() => {
+      if (openSheet || !detail.hidden || document.body.classList.contains("com-mbar")) return;
+      if (document.querySelector("#verses .word") && dica("palavra")) return;
+      if (vista("palavra") || !document.querySelector("#verses .word")) dica("versiculo");
+    }, 1200)
+  );
+  document.addEventListener("word-opened", e => {
+    if (!e.detail.word) return; // verbete aberto pelo léxico, sem palavra no texto
+    marcar("palavra");
+    dica("verbete");
+  });
+  new MutationObserver(() => {
+    if (document.body.classList.contains("com-mbar")) marcar("versiculo");
+  }).observe(document.body, { attributes: true, attributeFilter: ["class"] });
+}
+
+// Barra do computador, como no design: "Notas · N" abre Minhas anotações; o ícone da conta abre "Você" no índice
+{
+  const notesBtn = document.getElementById("open-notes"),
+    notesN = document.getElementById("notes-n");
+  notesBtn.addEventListener("click", () => {
+    if (openSheet) closePanel(false);
+    if (window.Annotations) window.Annotations.openList();
+  });
+  // conta os versículos com alguma anotação (cor, nota ou favorito), não os registros
+  const count = async () => {
+    if (!window.Annotations) return;
+    const lists = await Promise.all(["notas", "marcacoes", "favoritos"].map(c => window.Annotations.allRecords(c)));
+    const n = new Set(lists.flat().map(r => (r.ancora ? `${r.ancora.livro}.${r.ancora.cap}.${r.ancora.ver}` : r.id))).size;
+    notesN.textContent = n ? ` · ${n}` : "";
+    notesBtn.setAttribute("aria-label", n ? `Minhas anotações: ${n} ${n === 1 ? "versículo" : "versículos"}` : "Minhas anotações");
+  };
+  window.addEventListener("load", () => {
+    count();
+    if (window.Annotations) window.Annotations.onChange(count);
+  });
+  document.getElementById("open-account").addEventListener("click", () => {
+    openPanel("toc");
+    requestAnimationFrame(() => sheets.toc.querySelector('.toc-tabs [href="#toc-voce"]').click());
+  });
+}
+
+// Índice como no design: abas de verdade (Livros · Notas · Você); em Livros, a lista de livros por testamento
+// ou, depois de tocar num livro, a grade de capítulos com o título de cada um
+function tocView(v) {
+  sheets.toc.dataset.ver = v;
+  if (v === "livros") {
+    const nt = pickedBook ? (pickedBook.nt ? "1" : "0") : "0";
+    setTesta(nt);
+  }
+  sheets.toc.scrollTop = 0;
+}
+function setTesta(nt) {
+  document.getElementById("bk-list").dataset.nt = nt;
+  document.querySelectorAll("#bk-testa [data-nt]").forEach(b => b.setAttribute("aria-checked", String(b.dataset.nt === nt)));
+}
+function tocTab(aba) {
+  sheets.toc.dataset.aba = aba;
+  tocTabs.forEach(t =>
+    t.getAttribute("href") === "#toc-" + aba ? t.setAttribute("aria-current", "true") : t.removeAttribute("aria-current")
+  );
+  sheets.toc.scrollTop = 0;
+}
+sheets.toc.addEventListener(
+  "click",
+  e => {
+    const tab = e.target.closest(".toc-tabs [data-tab]");
+    if (!tab) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const aba = tab.getAttribute("href").slice(5);
+    // Notas: a lista de Minhas anotações (a mesma do botão "Notas" da barra do computador)
+    if (aba === "notas") {
+      closePanel(false);
+      if (window.Annotations) window.Annotations.openList();
+      return;
+    }
+    tocTab(aba);
+  },
+  true
+);
+document.getElementById("bk-testa").addEventListener("click", e => {
+  const b = e.target.closest("[data-nt]");
+  if (b) setTesta(b.dataset.nt);
+});
+document.getElementById("ch-back").addEventListener("click", () => tocView("livros"));
+document.getElementById("ch-list").addEventListener("click", e => {
+  const b = e.target.closest(".ch-row");
+  if (!b) return;
+  if (b.getAttribute("aria-disabled") === "true") return toast("Este capítulo não está incluído nesta prévia.");
+  openChapter(pickedBook.code, +b.dataset.ch, null);
+});
+// Abrir pelo botão Livros mostra a lista de livros; pelo título (lá em cima), a grade de capítulos
+document.getElementById("open-toc").addEventListener("click", () => {
+  tocTab("livros");
+  tocView("livros");
+});
+tocTab("livros");
+tocView("livros");
+// "Notas · N" na aba, como no design
+window.addEventListener("load", () => {
+  const n = document.getElementById("tab-notas-n");
+  const count = async () => {
+    if (!window.Annotations) return;
+    const lists = await Promise.all(["notas", "marcacoes", "favoritos"].map(c => window.Annotations.allRecords(c)));
+    const k = new Set(lists.flat().map(r => (r.ancora ? `${r.ancora.livro}.${r.ancora.cap}.${r.ancora.ver}` : r.id))).size;
+    n.textContent = k ? ` · ${k}` : "";
+  };
+  count();
+  if (window.Annotations) window.Annotations.onChange(count);
+});
+// o ✕ do índice fica na linha das abas, como no design
+{
+  const x = sheets.toc.querySelector(".shead [data-close]");
+  if (x) {
+    x.classList.add("toc-x");
+    sheets.toc.prepend(x);
+  }
+}
+// Minhas anotações vira a aba Notas do índice: as mesmas abas no topo, a busca com o ⋯ ao lado
+window.addEventListener("load", () => {
+  const ms = document.getElementById("minhas");
+  if (!ms) return;
+  const tabs = sheets.toc.querySelector(".toc-tabs").cloneNode(true);
+  tabs.querySelectorAll("[id]").forEach(x => x.removeAttribute("id"));
+  tabs.className = "mn-tabs";
+  tabs
+    .querySelectorAll("[data-tab]")
+    .forEach(t => (t.getAttribute("href") === "#toc-notas" ? t.setAttribute("aria-current", "true") : t.removeAttribute("aria-current")));
+  ms.prepend(tabs);
+  const x = ms.querySelector(".shead [data-fechar]");
+  if (x) {
+    x.classList.add("toc-x");
+    ms.prepend(x);
+  }
+  tabs.addEventListener("click", e => {
+    const t = e.target.closest("[data-tab]");
+    if (!t) return;
+    e.preventDefault();
+    const aba = t.getAttribute("href").slice(5);
+    if (aba === "notas") return;
+    ms.querySelector("[data-fechar]").click();
+    openPanel("toc");
+    tocTab(aba);
+    tocView("livros");
+  });
+  const row = ms.querySelector(".mn-searchrow"),
+    more = ms.querySelector("#mn-more");
+  if (row && more) row.append(more);
+  const count = document.getElementById("tab-notas-n");
+  new MutationObserver(() => (tabs.querySelector('[href="#toc-notas"]').textContent = "Notas" + count.textContent)).observe(count, {
+    childList: true,
+    characterData: true,
+    subtree: true
+  });
+});
+// Você: os planos de leitura pedem a conta (sem ela, um aviso); com ela, abrem o progresso, onde o plano começa
+document.querySelectorAll("[data-vc-plano]").forEach(b =>
+  b.addEventListener("click", () => {
+    if (!window.Account || ["signed-out", "unavailable"].includes(window.Account.status()))
+      return toast("Entre com a conta para seguir um plano.");
+    closePanel(false);
+    if (window.Progress) window.Progress.open();
+  })
+);
+document.getElementById("open-toc").addEventListener("click", () => {
+  const on = window.Account && !["signed-out", "unavailable"].includes(window.Account.status());
+  document.getElementById("vc-prog").textContent = on
+    ? "Capítulos lidos, tempo de leitura, dias seguidos e o mapa dos 66 livros."
+    : "Capítulos lidos, tempo de leitura, dias seguidos e o mapa dos 66 livros. Aparece depois de entrar com a conta.";
+});
+// Fim do capítulo como no design: Perguntas, Léxico do capítulo e, por último, o cartão "Próximo capítulo"
+{
+  const lex = document.getElementById("lexico");
+  const place = () => {
+    const nav = root.querySelector(".chnav");
+    if (!nav || !lex) return;
+    document.querySelectorAll("#page > .chnav").forEach(x => x.remove());
+    lex.after(nav);
+  };
+  new MutationObserver(place).observe(root, { childList: true });
+  place();
+}
+// Mini player do celular, como no design: "Lendo João 3:16 · grego" acima da barra de baixo, com pausa;
+// enquanto toca, o Ouvir da barra vira "Pausar"
+{
+  const bar = document.createElement("div");
+  bar.className = "miniplayer";
+  bar.id = "miniplayer";
+  bar.hidden = true;
+  bar.setAttribute("role", "status");
+  bar.innerHTML = `<span id="mp-t"></span><button type="button" id="mp-stop" aria-label="Pausar leitura"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>`;
+  document.body.appendChild(bar);
+  const label = document.querySelector("#bb-say .bb-t");
+  bar.querySelector("#mp-stop").addEventListener("click", () => stopSpeech());
+  document.addEventListener("speech-state", e => {
+    const on = e.detail.on;
+    bar.hidden = !on;
+    document.body.classList.toggle("tocando", on);
+    if (label) label.textContent = on ? "Pausar" : "Ouvir";
+    const sec = e.detail.el && e.detail.el.closest(".verse");
+    if (on && sec && CH) {
+      const v = CH.verses[+sec.dataset.vi];
+      const lang = document.body.classList.contains("hide-orig") ? "português" : GRC ? "grego" : "hebraico";
+      document.getElementById("mp-t").textContent = `Lendo ${BOOK.name} ${v ? vLabel(v) : CUR} · ${lang}`;
+    }
   });
 }
