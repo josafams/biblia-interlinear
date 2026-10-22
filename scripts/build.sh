@@ -31,6 +31,8 @@ t = Path("web/reader.html").read_text(encoding="utf8")
 d = Path("build/preview.json").read_text(encoding="utf8").replace("</", "<\\/")
 js = Path("web/reader.js").read_text(encoding="utf8").replace("</script", "<\\/script")
 t = t.replace('<script src="reader.js"></script>', "<script>\n" + js + "</script>", 1)
+css = Path("web/styles/reader.css").read_text(encoding="utf8")
+t = t.replace('<link rel="stylesheet" href="styles/reader.css">', "<style>\n" + css + "</style>", 1)
 Path("build/preview.html").write_text(t.replace("__DATA__", d, 1), encoding="utf8")
 PY
 python3 scripts/build_epub.py     # build/epub: um EPUB por livro

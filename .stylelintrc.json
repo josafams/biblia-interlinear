@@ -1,0 +1,17 @@
+{
+  "rules": {
+    "color-no-hex": true,
+    "color-named": "never",
+    "declaration-no-important": true
+  },
+  "overrides": [
+    {
+      "files": ["web/styles/tokens.css"],
+      "rules": { "color-no-hex": null }
+    },
+    {
+      "files": ["web/styles/reader.css"],
+      "rules": { "declaration-no-important": null }
+    }
+  ]
+}

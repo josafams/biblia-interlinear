@@ -77,6 +77,7 @@ test-web: ## Testes do site no navegador (Playwright)
 lint: ## Linters de todas as linguagens
 	npx prettier --check .
 	npx eslint .
+	npx stylelint "web/styles/*.css"
 	ruff check .
 	ruff format --check .
 	npx markdownlint-cli2 "**/*.md"

@@ -114,6 +114,8 @@ else {
 // ---- scripts do site e Dexie (Apache-2.0) para o banco local ----
 // todos os scripts do site (leitor, página inicial, anotações, conta, sincronização, progresso)
 for (const f of fs.readdirSync(r("web")).filter(f => f.endsWith(".js"))) fs.copyFileSync(r("web/" + f), path.join(OUT, f));
+// folhas de estilo do leitor (web/styles)
+fs.cpSync(r("web/styles"), path.join(OUT, "styles"), { recursive: true });
 fs.mkdirSync(path.join(OUT, "vendor"), { recursive: true });
 fs.copyFileSync(r("node_modules/dexie/dist/dexie.min.js"), path.join(OUT, "vendor/dexie.min.js"));
 fs.copyFileSync(r("node_modules/dexie/LICENSE"), path.join(OUT, "vendor/LICENSE-dexie.txt"));
