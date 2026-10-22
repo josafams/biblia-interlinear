@@ -1,13 +1,8 @@
 // Estudo: ligação palavra ↔ Bíblia Livre, concordância e mapa das seções do Salmo 119.
 import { test, expect } from "@playwright/test";
+import { openReader } from "./helpers.mjs";
 
-async function open(page, ref) {
-  await page.addInitScript(() => localStorage.setItem("interlinear:conta-sugestao", "nao"));
-  await page.goto(`ler.html#${ref}`);
-  await expect(page.locator(".verse").first()).toBeVisible();
-  const welcome = page.locator("#welcome");
-  if (await welcome.isVisible()) await welcome.locator('button[data-modo="interlinear"]').click();
-}
+const open = (page, ref) => openReader(page, ref, { hideAccountHint: true, skipWelcome: true });
 const ligado = page =>
   page.evaluate(() => {
     const h = CSS.highlights.get("ligada");

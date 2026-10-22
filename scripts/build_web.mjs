@@ -6,9 +6,9 @@ import path from "node:path";
 import crypto from "node:crypto";
 import sharp from "sharp";
 import { execFileSync } from "node:child_process";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "build/web");
 const r = p => path.join(ROOT, p);
 fs.rmSync(OUT, { recursive: true, force: true });

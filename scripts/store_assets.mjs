@@ -5,10 +5,10 @@
 // Uso: node scripts/build_web.mjs && node scripts/store_assets.mjs
 import fs from "node:fs";
 import path from "node:path";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { chromium } from "playwright";
 
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const WEB = path.join(ROOT, "build", "web");
 const OUT = path.join(ROOT, "build", "store");
 if (!fs.existsSync(path.join(WEB, "ler.html"))) throw new Error("build/web não existe: rode node scripts/build_web.mjs antes");

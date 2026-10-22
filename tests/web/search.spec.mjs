@@ -1,11 +1,8 @@
 // Busca na Bíblia toda: palavras (sem acento), várias palavras, filtros, referência e número Strong.
 import { test, expect } from "@playwright/test";
+import { openReader } from "./helpers.mjs";
 
-async function open(page, ref = "GEN.1") {
-  await page.addInitScript(() => localStorage.setItem("interlinear:conta-sugestao", "nao"));
-  await page.goto(`ler.html#${ref}`);
-  await expect(page.locator(".verse").first()).toBeVisible();
-}
+const open = (page, ref = "GEN.1") => openReader(page, ref, { hideAccountHint: true });
 async function buscar(page, texto) {
   if (!(await page.locator("#busca").isVisible())) await page.click("#open-search");
   await page.fill("#busca-q", texto);

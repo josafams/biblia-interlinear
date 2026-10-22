@@ -2,9 +2,10 @@
 // Uso: node scripts/native_icons.mjs   (rodar depois de "npx cap add android/ios")
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const r = p => path.join(ROOT, p);
 const BG = "#1d5b74";
 const SVG = n => r(`web/icones/${n}`);
