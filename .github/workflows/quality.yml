@@ -33,6 +33,8 @@ jobs:
         run: npx prettier --check .
       - name: ESLint
         run: npx eslint . --max-warnings 5
+      - name: Stylelint (colors only in tokens.css)
+        run: npx stylelint "web/styles/*.css"
       - name: Ruff (lint e formatação do Python)
         run: |
           ruff check .

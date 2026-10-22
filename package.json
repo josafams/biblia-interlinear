@@ -13,7 +13,7 @@
     "test": "python3 -m pytest tests -q && npx playwright test",
     "test:web": "npx playwright test",
     "test:data": "python3 -m pytest tests -q",
-    "lint": "prettier --check . && eslint . && markdownlint-cli2 \"**/*.md\"",
+    "lint": "prettier --check . && eslint . && stylelint \"web/styles/*.css\" && markdownlint-cli2 \"**/*.md\"",
     "format": "prettier --write ."
   },
   "dependencies": {
@@ -44,6 +44,7 @@
     "markdownlint-cli2": "0.23.3",
     "playwright": "^1.64.0",
     "prettier": "3.9.10",
-    "sharp": "0.35.5"
+    "sharp": "0.35.5",
+    "stylelint": "16.26.1"
   }
 }

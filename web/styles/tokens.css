@@ -1,0 +1,257 @@
+/* Design tokens: the only place where colors, fonts and sizes are defined (values from docs/redesenho/LAYOUT.md).
+   Rules elsewhere use var(--token); a theme is a block that redefines the color tokens. */
+
+/* ---------- Light theme (default) ---------- */
+:root {
+  /* surfaces and text */
+  --bg: #eceeea;
+  --surface: #f8f9f6;
+  --card: #ffffff;
+  --chip: #e2e7e3;
+  --fg: #1b2220;
+  --muted: #4a5551;
+  --line: #d2d8d3;
+  --accent: #1d5b74;
+  --accent-soft: #dbe8ec;
+  --warm: #7d4a2e;
+
+  /* status colors */
+  --flag: #c9822b; /* automatic review point */
+  --fav: #b07a10; /* favorite star */
+  --fav-fill: #e0b040;
+  --fav-strong: #c08a12;
+  --danger: #a23a3a;
+  --review-ink: #8a4f10;
+  --review-ink-dark: #e0a560;
+  --swatch-light: #f8f9f6; /* "automatic" theme swatch halves */
+  --swatch-dark: #1a201e;
+
+  /* highlight colors (background, text on it, and the 4px bar on cards and lists) */
+  --mk-amarelo: #f6e3a1;
+  --mk-verde: #cfe6c4;
+  --mk-azul: #bcd6e6;
+  --mk-rosa: #f2d2dc;
+  --mk-laranja: #f6d6b8;
+  --mk-ink: #1b2220;
+  --mk-bar-amarelo: #d9b93a;
+  --mk-bar-verde: #7fb06a;
+  --mk-bar-azul: #6f9fc0;
+  --mk-bar-rosa: #c98aa0;
+  --mk-bar-laranja: #d39a5e;
+
+  /* fonts */
+  --font-ui: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "Literata", Georgia, "Times New Roman", serif;
+  --font-grc: "Gentium Book Plus", "Literata", "Times New Roman", serif;
+  --font-heb: "Noto Serif Hebrew", "SBL Hebrew", "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  /* type scale and line heights */
+  --fs-10: 10px;
+  --fs-11: 11px;
+  --fs-12: 12px;
+  --fs-13: 13px;
+  --fs-14: 14px;
+  --fs-15: 15px;
+  --fs-16: 16px;
+  --fs-17: 17px;
+  --fs-18: 18px;
+  --fs-20: 20px;
+  --fs-21: 21px;
+  --fs-22: 22px;
+  --fs-24: 24px;
+  --fs-28: 28px;
+  --fs-30: 30px;
+  --fs-34: 34px;
+  --lh-tight: 1.2;
+  --lh-ui: 1.45;
+  --lh-text: 1.6;
+  --lh-paragraph: 1.8;
+  --lh-running: 1.9;
+  --ls-label: 0.08em; /* mono uppercase labels */
+
+  /* spacing, radii, control heights, shadows */
+  --sp-1: 4px;
+  --sp-2: 6px;
+  --sp-3: 8px;
+  --sp-4: 12px;
+  --sp-5: 16px;
+  --sp-6: 24px;
+  --r-xs: 4px;
+  --r-sm: 9px;
+  --r-md: 10px;
+  --r-lg: 12px;
+  --r-xl: 14px;
+  --r-sheet: 20px;
+  --r-pill: 999px;
+  --h-chip: 36px;
+  --h-control: 40px;
+  --h-touch: 44px;
+  --h-button: 48px;
+  --h-action: 56px;
+  --bar-h: 64px;
+  --shadow-seg: 0 1px 2px rgba(0, 0, 0, 0.12);
+  --shadow-sheet: 0 -10px 30px rgba(0, 0, 0, 0.12);
+  --shadow-drawer: 10px 0 30px rgba(0, 0, 0, 0.12);
+}
+@media (max-width: 720px) {
+  :root {
+    --bar-h: 56px;
+  }
+}
+
+/* ---------- System dark mode (when the reader has not picked a theme) ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121615;
+    --surface: #1a201e;
+    --fg: #e3e9e5;
+    --muted: #95a29c;
+    --line: #2c3532;
+    --accent: #7cc0d8;
+    --accent-soft: #1f343b;
+    --chip: #242c29;
+    --card: #1f2624;
+    --warm: #d9a07a;
+    color-scheme: dark;
+  }
+  :root:not([data-palette]) {
+    --mk-amarelo: #5c4d1c;
+    --mk-verde: #2f4a2a;
+    --mk-azul: #22435a;
+    --mk-rosa: #563040;
+    --mk-laranja: #5c3a1e;
+    --mk-ink: #f2f4f2;
+  }
+  :root:not([data-palette]):not([data-theme="light"]) {
+    --card: #222a27;
+    --chip: #2c3532;
+    --warm: #e0a985;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121615;
+  --surface: #1a201e;
+  --fg: #e3e9e5;
+  --muted: #95a29c;
+  --line: #2c3532;
+  --accent: #7cc0d8;
+  --accent-soft: #1f343b;
+  --chip: #242c29;
+  --card: #1f2624;
+  --warm: #d9a07a;
+  color-scheme: dark;
+}
+
+/* ---------- Themes picked in Appearance (html[data-palette]); higher specificity than the system blocks ---------- */
+:root:root[data-palette="claro"] {
+  --bg: #eceeea;
+  --surface: #f8f9f6;
+  --fg: #1b2220;
+  --muted: #4a5551;
+  --line: #d2d8d3;
+  --accent: #1d5b74;
+  --accent-soft: #dbe8ec;
+  --card: #ffffff;
+  --chip: #e2e7e3;
+  --warm: #7d4a2e;
+  color-scheme: light;
+}
+:root:root[data-palette="papel"] {
+  --bg: #f3ede3;
+  --surface: #faf6ef;
+  --fg: #2b241c;
+  --muted: #67594c;
+  --line: #e0d4c3;
+  --accent: #7d4a2e;
+  --accent-soft: #efe0d1;
+  --card: #fffdf9;
+  --chip: #ebe3d6;
+  --warm: #7d4a2e;
+  color-scheme: light;
+}
+:root:root[data-palette="oliva"] {
+  --bg: #e9ece2;
+  --surface: #f5f7f0;
+  --fg: #1f241a;
+  --muted: #5f6853;
+  --line: #d3d9c7;
+  --accent: #4f6b2a;
+  --accent-soft: #dfe7cf;
+  --card: #fcfdf9;
+  --chip: #e3e8d9;
+  --warm: #6b4a22;
+  color-scheme: light;
+}
+:root:root[data-palette="escuro"] {
+  --bg: #121615;
+  --surface: #1a201e;
+  --fg: #e3e9e5;
+  --muted: #95a29c;
+  --line: #2c3532;
+  --accent: #7cc0d8;
+  --accent-soft: #1f343b;
+  --card: #222a27;
+  --chip: #2c3532;
+  --warm: #e0a985;
+  color-scheme: dark;
+}
+:root:root[data-palette="noite"] {
+  --bg: #0e1522;
+  --surface: #152031;
+  --fg: #e3e8f1;
+  --muted: #8e9cb4;
+  --line: #24334a;
+  --accent: #e0b66a;
+  --accent-soft: #2c2a20;
+  --card: #1c2a40;
+  --chip: #26354d;
+  --warm: #e8b98a;
+  color-scheme: dark;
+}
+:root:root[data-palette="grafite"] {
+  --bg: #000000;
+  --surface: #121212;
+  --fg: #ececec;
+  --muted: #9b9b9b;
+  --line: #2a2a2a;
+  --accent: #a5c8ff;
+  --accent-soft: #14243a;
+  --card: #161616;
+  --chip: #262626;
+  --warm: #e8b08a;
+  color-scheme: dark;
+}
+/* dark highlight colors for the dark themes */
+:root[data-palette="escuro"],
+:root[data-palette="noite"],
+:root[data-palette="grafite"] {
+  --mk-amarelo: #5c4d1c;
+  --mk-verde: #2f4a2a;
+  --mk-azul: #22435a;
+  --mk-rosa: #563040;
+  --mk-laranja: #5c3a1e;
+  --mk-ink: #f2f4f2;
+}
+
+/* ---------- Semantic mapping: a highlight class sets --mk for its element ---------- */
+.mk-amarelo {
+  --mk: var(--mk-amarelo);
+  --mk-bar: var(--mk-bar-amarelo);
+}
+.mk-verde {
+  --mk: var(--mk-verde);
+  --mk-bar: var(--mk-bar-verde);
+}
+.mk-azul {
+  --mk: var(--mk-azul);
+  --mk-bar: var(--mk-bar-azul);
+}
+.mk-rosa {
+  --mk: var(--mk-rosa);
+  --mk-bar: var(--mk-bar-rosa);
+}
+.mk-laranja {
+  --mk: var(--mk-laranja);
+  --mk-bar: var(--mk-bar-laranja);
+}
