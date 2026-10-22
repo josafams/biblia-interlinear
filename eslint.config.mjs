@@ -19,12 +19,17 @@ export default [
     }
   },
   {
-    // código que roda no navegador e no app (scripts clássicos, sem módulos)
+    // browser/app code bundled by Vite (src/reader/main.ts imports these as ES modules)
     files: ["web/**/*.js"],
     languageOptions: {
-      sourceType: "script",
+      sourceType: "module",
       globals: { ...globals.browser, Dexie: "readonly", google: "readonly", DATA: "readonly" }
     }
+  },
+  {
+    // classic scripts loaded outside the bundle
+    files: ["web/google-config.js", "web/home.js"],
+    languageOptions: { sourceType: "script" }
   },
   {
     // scripts de build, vídeos, testes e configurações (Node, módulos ES)

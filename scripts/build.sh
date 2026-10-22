@@ -26,13 +26,16 @@ python3 scripts/export.py --preview build/preview.json GEN.1 GEN.2 GEN.3 GEN.12 
 python3 - <<'PY'
 from pathlib import Path
 
-# página única: o leitor (web/reader.js) vai embutido, porque a prévia é um arquivo só
+# single page: the reader bundle (build/vite) and the stylesheets are inlined, because the preview is one file
+import json
 t = Path("web/reader.html").read_text(encoding="utf8")
 d = Path("build/preview.json").read_text(encoding="utf8").replace("</", "<\\/")
-js = Path("web/reader.js").read_text(encoding="utf8").replace("</script", "<\\/script")
-t = t.replace('<script src="reader.js"></script>', "<script>\n" + js + "</script>", 1)
-css = Path("web/styles/reader.css").read_text(encoding="utf8")
-t = t.replace('<link rel="stylesheet" href="styles/reader.css">', "<style>\n" + css + "</style>", 1)
+bundle = json.loads(Path("build/vite/.vite/manifest.json").read_text(encoding="utf8"))["src/reader/main.ts"]["file"]
+js = Path("build/vite", bundle).read_text(encoding="utf8").replace("</script", "<\\/script")
+t = t.replace('<script type="module" src="__READER_BUNDLE__"></script>', '<script type="module">\n' + js + "</script>", 1)
+for name in ("tokens", "reader"):
+    css = Path(f"web/styles/{name}.css").read_text(encoding="utf8")
+    t = t.replace(f'<link rel="stylesheet" href="styles/{name}.css">', "<style>\n" + css + "</style>", 1)
 Path("build/preview.html").write_text(t.replace("__DATA__", d, 1), encoding="utf8")
 PY
 python3 scripts/build_epub.py     # build/epub: um EPUB por livro

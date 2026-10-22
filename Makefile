@@ -78,6 +78,7 @@ lint: ## Linters de todas as linguagens
 	npx prettier --check .
 	npx eslint .
 	npx stylelint "web/styles/*.css"
+	npm run check
 	ruff check .
 	ruff format --check .
 	npx markdownlint-cli2 "**/*.md"
