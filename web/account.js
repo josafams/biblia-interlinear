@@ -1,3 +1,5 @@
+import { createDrive } from "../src/lib/account/drive";
+import { exposedPlugin, isNative, platform } from "../src/lib/native";
 import { esc } from "../src/lib/text";
 /* Conta Google opcional: login e acesso à pasta privada do app no Google Drive (appDataFolder).
  * Sem servidor do projeto: o app fala direto com a API do Drive usando o token que o Google entrega no login.
@@ -12,16 +14,11 @@ import { esc } from "../src/lib/text";
   "use strict";
   const DRIVE_SCOPE = "https://www.googleapis.com/auth/drive.appdata";
   const SCOPES = ["openid", "email", "profile", DRIVE_SCOPE].join(" ");
-  const API = "https://www.googleapis.com/drive/v3";
-  const UP = "https://www.googleapis.com/upload/drive/v3";
   const GIS = "https://accounts.google.com/gsi/client";
   const ACCOUNT_KEY = "interlinear:conta",
     SUGGESTION_KEY = "interlinear:conta-sugestao";
 
-  const Cap = window.Capacitor;
-  const isNative = !!Cap?.isNativePlatform?.();
-  const platform = isNative ? Cap.getPlatform() : "web";
-  const plugin = isNative ? Cap.Plugins?.GoogleAccount : null;
+  const plugin = exposedPlugin("GoogleAccount");
   const cfg = window.GOOGLE_CONFIG || {};
   const available = isNative ? platform === "android" && !!plugin : !!cfg.webClientId;
 
@@ -126,74 +123,10 @@ import { esc } from "../src/lib/text";
     throw Object.assign(new Error("A conexão com o Google expirou."), { errorCode: "reconnect" });
   }
 
-  // ---------- API do Google ----------
-  async function callApi(url, options = {}, attempt = true) {
-    const tk = await token();
-    const r = await fetch(url, { ...options, headers: { ...(options.headers || {}), Authorization: "Bearer " + tk } });
-    if (r.status === 401 && attempt) {
-      currentToken = null;
-      return callApi(url, options, false);
-    }
-    if (!r.ok) {
-      let msg = "";
-      try {
-        msg = (await r.json()).error?.message || "";
-      } catch (_) {}
-      const errorCode =
-        r.status === 403 && /storage|quota/i.test(msg) ? "drive-full" : r.status === 403 ? "no-permission" : "http-" + r.status;
-      throw Object.assign(new Error(msg || `Erro ${r.status} no Google Drive`), { errorCode, status: r.status });
-    }
-    return r;
-  }
-  const Drive = {
-    async listFiles(nome) {
-      const q = nome ? `&q=${encodeURIComponent(`name='${nome.replace(/'/g, "\\'")}'`)}` : "";
-      const r = await callApi(`${API}/files?spaces=appDataFolder&pageSize=1000&fields=files(id,name,modifiedTime,size)${q}`);
-      return (await r.json()).files || [];
-    },
-    // busca na pasta do app com uma consulta do Drive (q), seguindo as páginas
-    async queryDrive(q) {
-      const listSheet = [];
-      let pageHtml = "";
-      do {
-        const r = await callApi(
-          `${API}/files?spaces=appDataFolder&pageSize=1000&orderBy=createdTime&fields=nextPageToken,files(id,name,createdTime,size)` +
-            (q ? `&q=${encodeURIComponent(q)}` : "") +
-            (pageHtml ? `&pageToken=${pageHtml}` : "")
-        );
-        const d = await r.json();
-        listSheet.push(...(d.files || []));
-        pageHtml = d.nextPageToken || "";
-      } while (pageHtml);
-      return listSheet;
-    },
-    async readStorage(id) {
-      return (await callApi(`${API}/files/${id}?alt=media`)).json();
-    },
-    async save(nome, payload, id) {
-      const bodyHtml = JSON.stringify(payload);
-      if (id) {
-        const r = await callApi(`${UP}/files/${id}?uploadType=media&fields=id,name,modifiedTime`, {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: bodyHtml
-        });
-        return r.json();
-      }
-      const b = "biblia" + Math.random().toString(36).slice(2);
-      const meta = JSON.stringify({ name: nome, parents: ["appDataFolder"], mimeType: "application/json" });
-      const multi = `--${b}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n${meta}\r\n--${b}\r\nContent-Type: application/json\r\n\r\n${bodyHtml}\r\n--${b}--`;
-      const r = await callApi(`${UP}/files?uploadType=multipart&fields=id,name,modifiedTime`, {
-        method: "POST",
-        headers: { "Content-Type": `multipart/related; boundary=${b}` },
-        body: multi
-      });
-      return r.json();
-    },
-    async removeRecord(id) {
-      await callApi(`${API}/files/${id}`, { method: "DELETE" });
-    }
-  };
+  // ---------- Google Drive (src/lib/account/drive.ts) ----------
+  const Drive = createDrive(token, () => {
+    currentToken = null;
+  });
 
   function deviceIdOf() {
     let a = readStorage("interlinear:aparelho");
@@ -243,7 +176,7 @@ import { esc } from "../src/lib/text";
   }
 
   async function profile() {
-    const r = await callApi("https://www.googleapis.com/oauth2/v3/userinfo");
+    const r = await Drive.request("https://www.googleapis.com/oauth2/v3/userinfo");
     const p = await r.json();
     return { nome: p.name || p.email || "", email: p.email || "", photo: p.picture || "" };
   }

@@ -1,3 +1,5 @@
+import { COLLECTIONS, createAnnotationStore, uuid } from "../src/lib/annotations/store";
+import { exposedPlugin, nativePlugin, platform } from "../src/lib/native";
 import { esc } from "../src/lib/text";
 /* Anotações no aparelho: marcações com cores, notas, favoritos e etiquetas.
  * Tudo fica no banco local do navegador/app (IndexedDB, via Dexie — Apache-2.0); funciona sem conta e offline.
@@ -23,119 +25,10 @@ import { esc } from "../src/lib/text";
   ];
   const EDITION = (window.DATA_EDICAO || "").slice(0, 10);
 
-  // ---------- identificadores, relógio e aparelho ----------
-  const uuid = () =>
-    crypto.randomUUID
-      ? crypto.randomUUID()
-      : "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, c => {
-          const r = (Math.random() * 16) | 0;
-          return (c === "x" ? r : (r & 3) | 8).toString(16);
-        });
-  let aparelho;
-  try {
-    aparelho = localStorage.getItem("interlinear:aparelho");
-    if (!aparelho) {
-      aparelho = uuid().slice(0, 8);
-      localStorage.setItem("interlinear:aparelho", aparelho);
-    }
-  } catch (_) {
-    aparelho = uuid().slice(0, 8);
-  }
-  // Relógio lógico híbrido: milissegundos + contador + aparelho. Ordena edições mesmo com o relógio do celular errado
-  // (avança sempre que se vê uma mudança mais nova de outro aparelho — usado pela sincronização).
-  let hlc = { t: 0, c: 0 };
-  function relogio(seen) {
-    const currentTime = Date.now();
-    if (seen) {
-      const [vt, vc] = seen.split("-").map(Number);
-      if (vt > hlc.t || (vt === hlc.t && vc > hlc.c)) hlc = { t: vt, c: vc };
-    }
-    if (currentTime > hlc.t) hlc = { t: currentTime, c: 0 };
-    else hlc.c++;
-    return `${String(hlc.t).padStart(14, "0")}-${String(hlc.c).padStart(4, "0")}-${aparelho}`;
-  }
-
-  // ---------- banco local ----------
-  const COLLECTIONS = ["marcacoes", "notas", "favoritos", "etiquetas"];
-  // o que viaja para o Drive: anotações, preferências (modo de leitura, posição) e progresso (leituras, tempo, planos)
-  const SYNCED = [...COLLECTIONS, "preferencias", "leituras", "tempo", "planos"];
-  let db = null,
-    memory = null;
-  const memoryState = {};
-  try {
-    if (!window.Dexie || !window.indexedDB) throw new Error("sem IndexedDB");
-    db = new Dexie("biblia-interlinear");
-    db.version(1).stores({
-      marcacoes: "id, cap, alterado_em, apagado",
-      notas: "id, cap, alterado_em, apagado",
-      favoritos: "id, cap, alterado_em, apagado",
-      etiquetas: "id, nome, apagado",
-      fila: "++seq, colecao, id",
-      estado: "chave"
-    });
-    db.version(2).stores({ preferencias: "id" });
-    db.version(3).stores({ leituras: "id, livro", tempo: "id, dia", planos: "id" });
-  } catch (_) {
-    db = null;
-  }
-  async function openDb() {
-    if (memory) return false;
-    if (!db) {
-      memory = Object.fromEntries(SYNCED.map(c => [c, new Map()]));
-      return false;
-    }
-    try {
-      await db.open();
-      return true;
-    } catch (_) {
-      db = null;
-      memory = Object.fromEntries(SYNCED.map(c => [c, new Map()]));
-      return false;
-    }
-  }
-  const dbReady = openDb();
-  async function allRecords(col) {
-    await dbReady;
-    const listSheet = db ? await db[col].toArray() : [...memory[col].values()];
-    return listSheet.filter(r => !r.apagado);
-  }
-  async function ofChapter(col, cap) {
-    await dbReady;
-    const listSheet = db ? await db[col].where("cap").equals(cap).toArray() : [...memory[col].values()].filter(r => r.cap === cap);
-    return listSheet.filter(r => !r.apagado);
-  }
-  async function save(col, rec) {
-    await dbReady;
-    const currentTime = new Date().toISOString();
-    const oldRecord = db ? await db[col].get(rec.id) : memory[col].get(rec.id);
-    const fresh = {
-      ...oldRecord,
-      ...rec,
-      criado_em: oldRecord?.criado_em || currentTime,
-      alterado_em: currentTime,
-      base: oldRecord?.relogio || null,
-      relogio: relogio(),
-      apagado: rec.apagado || false
-    };
-    delete fresh.local; // editar algo que estava "só neste aparelho" passa a sincronizar
-    if (db)
-      await db.transaction("rw", db[col], db.fila, async () => {
-        await db[col].put(fresh);
-        await db.fila.add({ colecao: col, id: fresh.id });
-      });
-    else memory[col].set(fresh.id, fresh);
-    notify();
-    return fresh;
-  }
-  const removeRecord = (col, id) => save(col, { id, apagado: true });
-  let listeners = [];
-  function notify() {
-    listeners.forEach(f => {
-      try {
-        f();
-      } catch (_) {}
-    });
-  }
+  // ---------- banco local (src/lib/annotations/store.ts) ----------
+  const annotations = createAnnotationStore(window.Dexie);
+  const { allRecords, ofChapter, save, removeRecord, storage } = annotations;
+  annotations.setRepaint(() => paint());
 
   // ---------- âncoras ----------
   const chapterOf = a => `${a.livro}.${a.cap}`;
@@ -331,9 +224,9 @@ import { esc } from "../src/lib/text";
       : "https://josafams.github.io/biblia-interlinear/ler.html";
     const url = `${base}#${a.livro}.${a.cap}.${a.ver}`;
     const text = `${selection.trecho || v?.blivre || ""} (${ref}, Bíblia Livre)`.trim();
-    const Cap = window.Capacitor;
+    const share = exposedPlugin("Share");
     try {
-      if (Cap?.isNativePlatform?.() && Cap.Plugins?.Share) return await Cap.Plugins.Share.share({ title: ref, text, url });
+      if (share) return await share.share({ title: ref, text, url });
       if (navigator.share) return await navigator.share({ title: ref, text, url });
     } catch (err) {
       // a pessoa fechou a folha de compartilhar (navegador: AbortError; app: "Share canceled")
@@ -1454,10 +1347,8 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
   // Imprime um HTML: no app Android pelo serviço de impressão do sistema (plugin Print, que tem "Salvar como PDF");
   // no navegador, por um iframe escondido e a janela de impressão.
   async function printHtml(html, titulo) {
-    const Cap = window.Capacitor,
-      isNative = Cap?.isNativePlatform?.();
-    const plug = isNative && (Cap.Plugins?.Print || Cap.registerPlugin?.("Print"));
-    if (plug && Cap.getPlatform?.() === "android") {
+    const plug = nativePlugin("Print");
+    if (plug && platform === "android") {
       try {
         await plug.printHtml({ html, title: titulo });
         return;
@@ -1489,17 +1380,16 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
 
   // ---------- Baixar e importar meus dados (JSON) ----------
   async function downloadData() {
-    await dbReady;
-    const payload = { formato: "biblia-interlinear-anotacoes", versao: 1, exportado_em: new Date().toISOString(), aparelho, colecoes: {} };
-    for (const c of SYNCED) payload.colecoes[c] = db ? await db[c].toArray() : [...memory[c].values()];
+    const payload = await annotations.backup();
     const json = JSON.stringify(payload, null, 1);
     const nome = `biblia-interlinear-anotacoes-${payload.exportado_em.slice(0, 10)}.json`;
     window.__ultimoBackup = payload;
-    const Cap = window.Capacitor;
-    if (Cap?.isNativePlatform?.() && Cap.Plugins?.Filesystem && Cap.Plugins?.Share) {
+    const files = exposedPlugin("Filesystem"),
+      share = exposedPlugin("Share");
+    if (files && share) {
       try {
-        const r = await Cap.Plugins.Filesystem.writeFile({ path: nome, data: json, directory: "CACHE", encoding: "utf8" });
-        await Cap.Plugins.Share.share({ title: "Minhas anotações", files: [r.uri] });
+        const r = await files.writeFile({ path: nome, data: json, directory: "CACHE", encoding: "utf8" });
+        await share.share({ title: "Minhas anotações", files: [r.uri] });
         return;
       } catch (_) {
         /* cai no download comum */
@@ -1515,147 +1405,7 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
     setTimeout(() => URL.revokeObjectURL(url), 10000);
     toastMsg("Arquivo de backup baixado.");
   }
-  // Junta o arquivo com o que já está no aparelho: registro novo entra; registro que já existe fica com a versão mais recente.
-  async function importData(payload) {
-    if (!payload || payload.formato !== "biblia-interlinear-anotacoes" || !payload.colecoes)
-      throw new Error("Este arquivo não é um backup de anotações da Bíblia Interlinear.");
-    await dbReady;
-    let added = 0,
-      updated = 0,
-      same = 0;
-    for (const c of SYNCED) {
-      for (const r of payload.colecoes[c] || []) {
-        const res = await merge(c, r);
-        if (res === "novo") added++;
-        else if (res === "atualizado") updated++;
-        else if (res === "igual") same++;
-      }
-    }
-    notify();
-    paint();
-    return { added, updated, same };
-  }
-
-  // ---------- mescla (backup e sincronização) ----------
-  // Junta um registro vindo de fora: vence o relógio maior (a mesma versão aplicada duas vezes não muda nada).
-  // Nota editada nos dois lados ao mesmo tempo — a daqui ainda não enviada e a de fora não partiu da versão daqui —
-  // vira duas: a vencedora fica com o id e a outra vira uma cópia "(conflito de dd/mm)". Nenhum texto se perde.
-  const pendingCall = async (c, id) => (db ? (await db.fila.where("id").equals(id).count()) > 0 : false);
-  const isNoteConflict = (localRec, remoteRec, pendingFlag) =>
-    pendingFlag &&
-    !localRec.apagado &&
-    !remoteRec.apagado &&
-    remoteRec.base !== localRec.relogio &&
-    ((localRec.texto || "") !== (remoteRec.texto || "") || (localRec.titulo || "") !== (remoteRec.titulo || ""));
-  async function conflictCopy(n) {
-    const d = new Date(Number((n.relogio || "").split("-")[0]) || Date.now());
-    const quando = `${String(d.getDate()).padStart(2, "0")}/${String(d.getMonth() + 1).padStart(2, "0")}`;
-    const copy = { ...n, id: uuid(), titulo: `${n.titulo || "Nota"} (conflito de ${quando})` };
-    delete copy.relogio;
-    delete copy.base;
-    delete copy.criado_em;
-    return save("notas", copy);
-  }
-  async function merge(c, r, { fromCloud = false } = {}) {
-    if (!r || !r.id || !SYNCED.includes(c)) return "ignorado";
-    await dbReady;
-    const currentChapter = db ? await db[c].get(r.id) : memory[c].get(r.id);
-    if (r.relogio) relogio(r.relogio.split("-").slice(0, 2).join("-"));
-    if (currentChapter && (currentChapter.relogio || "") >= (r.relogio || "")) {
-      if (c === "notas" && currentChapter.relogio !== r.relogio && isNoteConflict(currentChapter, r, await pendingCall(c, r.id)))
-        await conflictCopy(r);
-      return "igual";
-    }
-    const conflict = c === "notas" && currentChapter && isNoteConflict(currentChapter, r, await pendingCall(c, r.id));
-    const fresh = { ...r };
-    delete fresh.local;
-    if (db)
-      await db.transaction("rw", db[c], db.fila, async () => {
-        await db[c].put(fresh);
-        if (fromCloud)
-          await db.fila.where("id").equals(r.id).delete(); // a versão daqui perdeu: não reenviar
-        else await db.fila.add({ colecao: c, id: r.id });
-      });
-    else memory[c].set(r.id, fresh);
-    if (conflict) await conflictCopy(currentChapter);
-    return currentChapter ? "atualizado" : "novo";
-  }
-  // Acesso de baixo nível para a sincronização (web/sync.js)
-  const storage = {
-    colecoes: SYNCED,
-    aparelho,
-    persistente: () => !!db,
-    async fila() {
-      await dbReady;
-      return db ? db.fila.toArray() : [];
-    },
-    async tirarDaFila(seqs) {
-      await dbReady;
-      if (db && seqs.length) await db.fila.bulkDelete(seqs);
-    },
-    async readStorage(c, id) {
-      await dbReady;
-      return db ? db[c].get(id) : memory[c].get(id);
-    },
-    async brutos(c) {
-      await dbReady;
-      return db ? db[c].toArray() : [...memory[c].values()];
-    },
-    merge,
-    afterApply() {
-      notify();
-      paint();
-    },
-    async estado(k, v) {
-      await dbReady;
-      if (!db) {
-        if (v !== undefined) memoryState[k] = v;
-        return memoryState[k];
-      }
-      if (v === undefined) return (await db.estado.get(k))?.valor;
-      await db.estado.put({ chave: k, valor: v });
-      return v;
-    },
-    async purgeDeleted(c, ids) {
-      await dbReady;
-      if (db) await db[c].bulkDelete(ids);
-      else ids.forEach(i => memory[c].delete(i));
-    },
-    // "Manter só neste aparelho": o que já existe não sobe para a conta (até ser editado de novo)
-    async soNesteAparelho() {
-      await dbReady;
-      if (!db) return;
-      await db.transaction("rw", [...SYNCED.map(c => db[c]), db.fila], async () => {
-        for (const c of SYNCED)
-          await db[c].toCollection().modify(r => {
-            r.local = true;
-          });
-        await db.fila.clear();
-      });
-    },
-    // "Enviar para a conta": tudo o que existe aqui (menos o marcado "só neste aparelho") entra na fila
-    async enqueueAll() {
-      await dbReady;
-      if (!db) return;
-      await db.transaction("rw", [...SYNCED.map(c => db[c]), db.fila], async () => {
-        for (const c of SYNCED) {
-          const ids = (await db[c].toArray()).filter(r => !r.local).map(r => ({ colecao: c, id: r.id }));
-          if (ids.length) await db.fila.bulkAdd(ids);
-        }
-      });
-    },
-    async wipeAll() {
-      await dbReady;
-      if (db)
-        await db.transaction("rw", [...SYNCED.map(c => db[c]), db.fila], async () => {
-          for (const c of SYNCED) await db[c].clear();
-          await db.fila.clear();
-        });
-      else SYNCED.forEach(c => memory[c].clear());
-      notify();
-      paint();
-    }
-  };
+  const importData = annotations.importBackup;
   $("#mn-file").addEventListener("change", async e => {
     const f = e.target.files[0];
     e.target.value = "";
@@ -1665,7 +1415,7 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
       toastMsg(`Importado: ${r.added} novos, ${r.updated} atualizados, ${r.same} já estavam aqui.`);
       renderList();
     } catch (err) {
-      toastMsg(err.message.startsWith("Este arquivo") ? err.message : "Não foi possível ler o arquivo.");
+      toastMsg(err.name === "BackupFormatError" ? err.message : "Não foi possível ler o arquivo.");
     }
   });
 
@@ -1739,9 +1489,9 @@ ${bodyHtml || "<p>Nenhum item com essas opções.</p>"}
     assembleNotebook,
     printHtml,
     countAll: async () => (await Promise.all(["notas", "marcacoes", "favoritos"].map(allRecords))).reduce((s, l) => s + l.length, 0),
-    onChange: f => listeners.push(f),
+    onChange: annotations.onChange,
     exportAll: async () => Object.fromEntries(await Promise.all(COLLECTIONS.map(async c => [c, await allRecords(c)]))),
-    local: () => !!db,
+    local: annotations.persistent,
     storage
   };
   if (currentChapter === null && window.__currentChapter) {
