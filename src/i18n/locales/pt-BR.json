@@ -371,5 +371,37 @@
     "go_verse": "Ir para o versículo {v}",
     "open_word": "Abrir o verbete {strong}",
     "note": "Anotar resposta"
+  },
+  "verse": {
+    "sr": "Versículo ",
+    "review_sr": " (com pontos da revisão automática)",
+    "title_ref": "título",
+    "mark": "Anotar",
+    "mark_label": "Anotar ou ouvir {ref}",
+    "words_label": "Palavras do versículo {ref}",
+    "words_label_rtl": "Palavras do versículo {ref}, da direita para a esquerda",
+    "section_range": "v. {from}–{to}",
+    "review_points": {
+      "one": "1 ponto da revisão automática",
+      "other": "{count} pontos da revisão automática"
+    },
+    "technical": "detalhe técnico: {code}",
+    "source_note": {
+      "aparato": "No SBLGNT este trecho está só no aparato crítico (o texto principal termina Romanos em 16:24); aqui aparece a leitura de Westcott-Hort, Tregelles e Nestle-Aland 28.",
+      "sem-original": "Este versículo não tem correspondente no texto original usado aqui (aparece em outras edições).",
+      "sem-blivre": "A BLIVRE não tem este versículo separado; o texto está no versículo vizinho."
+    }
+  },
+  "word": {
+    "pronunciation": "{xlit}, pronúncia {pron}",
+    "strong": "Strong {strong}",
+    "no_strong": "sem número Strong",
+    "gloss_source": {
+      "l": "glosa pela tradução mais comum (sem alinhamento direto)",
+      "r": "glosa por regra gramatical",
+      "p": "glosa parcial",
+      "s": "sem glosa",
+      "m": "glosa revisada"
+    }
   }
 }

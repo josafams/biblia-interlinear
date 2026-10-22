@@ -1,13 +1,14 @@
 /* Leitor da Bíblia Interlinear (ler.html): índice, capítulos, verbetes, áudio, aparência e modos de leitura.
  * ES module bundled by src/reader/main.ts; the books list (DATA) is inlined in ler.html before it
  * (see vite/site/reader-page.ts). Pure helpers live in src/lib. */
-import { decodeMorph, shortMorph } from "../src/lib/morph";
-import { t } from "../src/i18n";
+import { decodeMorph } from "../src/lib/morph";
+import { t, tryT } from "../src/i18n";
 import { createSpeech } from "../src/lib/audio/tts";
 import { createBible, toWord } from "../src/lib/data/bible";
 import { SITE_URL, isNative as NATIVE, nativePlugin, platform as PLATFORM } from "../src/lib/native";
 import { flushSync, mount } from "svelte";
 import ChapterNavButton from "../src/components/ChapterNavButton.svelte";
+import ChapterText from "../src/components/ChapterText.svelte";
 import LookButton from "../src/components/LookButton.svelte";
 import MiniPlayer from "../src/components/MiniPlayer.svelte";
 import ModeNote from "../src/components/ModeNote.svelte";
@@ -25,6 +26,7 @@ import { createRefs } from "../src/lib/refs";
 import { store } from "../src/lib/store";
 import { cleanHeb, esc, glossHTML, glossSpoken, norm } from "../src/lib/text";
 import { followAnnotations } from "../src/state/annotations.svelte";
+import { LAZY_FROM, fillVerse, showChapter } from "../src/state/chapter.svelte";
 import { reader as readerState } from "../src/state/reader.svelte";
 import { speech as speechState } from "../src/state/speech.svelte";
 import { ui } from "../src/state/ui.svelte";
@@ -52,34 +54,11 @@ const isGrc = b => b.nt;
 function hebShown(t) {
   return GRC || prefs.cant ? t : cleanHeb(t);
 }
-function origHTML(parts) {
-  parts = parts.map(hebShown);
-  if (parts.length < 2) return esc(parts[0]);
-  let core = 0;
-  parts.forEach((p, i) => {
-    if (p.length > parts[core].length) core = i;
-  });
-  return parts.map((p, i) => (i === core ? esc(p) : `<span class="pre">${esc(p)}</span>`)).join("");
-}
-const GF_NOTE = {
-  l: "glosa pela tradução mais comum (sem alinhamento direto)",
-  r: "glosa por regra gramatical",
-  p: "glosa parcial",
-  s: "sem glosa",
-  m: "glosa revisada"
-};
-function wordLabel(w) {
-  const e = LEX[w.strong];
-  const bits = [glossSpoken(w.gloss)];
-  if (e && e.x) bits.push(`${e.x}, pronúncia ${e.p || ""}`);
-  bits.push(w.strong && !w.strong.startsWith("G:") ? `Strong ${w.strong}` : "sem número Strong");
-  if (w.gf && GF_NOTE[w.gf] && w.gf !== "m") bits.push(GF_NOTE[w.gf]);
-  return bits.join(". ");
-}
 const OLANG = () => (GRC ? "grc" : "he");
 
 // ---------- Cabeçalho, versículos ----------
 const root = document.getElementById("verses");
+mount(ChapterText, { target: root });
 let io = null;
 function vLabel(v) {
   return v.n === 0 ? "título" : `${CUR}:${v.n}`;
@@ -117,91 +96,13 @@ function renderHeader() {
   }
   flushSync();
 }
-const SOURCE_NOTES = {
-  aparato:
-    "No SBLGNT este trecho está só no aparato crítico (o texto principal termina Romanos em 16:24); aqui aparece a leitura de Westcott-Hort, Tregelles e Nestle-Aland 28.",
-  "sem-original": "Este versículo não tem correspondente no texto original usado aqui (aparece em outras edições).",
-  "sem-blivre": "A BLIVRE não tem este versículo separado; o texto está no versículo vizinho."
-};
-// Revisão automática: o texto em português vem primeiro; o código da regra fica num canto, para quem revisa os dados
-function marksHTML(v) {
-  if (!v.marks.length) return "";
-  const list = v.marks
-    .map(
-      m =>
-        `<li><span>${m[1] !== null && v.words[m[1]] ? `<span class="mk-w" lang="${OLANG()}">${esc(hebShown(v.words[m[1]].heb))}</span>: ` : ""}${esc(m[4])}</span><span class="mk-c">detalhe técnico: ${esc(m[3])}</span></li>`
-    )
-    .join("");
-  const n = v.marks.length;
-  return `<details class="marks"><summary>⚑ ${n === 1 ? "1 ponto" : `${n} pontos`} da revisão automática</summary><ul>${list}</ul></details>`;
-}
-// Cartões de um versículo
-function wordsHTML(v, vi, lang = OLANG()) {
-  const flagged = new Set(v.marks.filter(m => m[1] !== null).map(m => m[1]));
-  return v.words
-    .map((w, i) => {
-      const e = LEX[w.strong] || {};
-      const aux = w.gf && w.gf !== "m" ? " aux" : "";
-      return `
-      <button class="word${flagged.has(i) ? " flag" : ""}${w.ketiv ? " kt" : ""}" data-v="${vi}" data-i="${i}" tabindex="${i === 0 ? 0 : -1}" aria-label="${esc(wordLabel(w))}">
-        <span class="h" lang="${lang}" aria-hidden="true">${origHTML(w.parts)}</span>
-        ${e.x ? `<span class="x" aria-hidden="true">${esc(e.x)}</span>` : ""}
-        ${e.p ? `<span class="p" aria-hidden="true">${esc(e.p)}</span>` : ""}
-        <span class="s" aria-hidden="true">${w.strong && !w.strong.startsWith("G:") ? esc(w.strong) : "—"}</span>
-        <span class="m" aria-hidden="true" title="${esc(decodeMorph(w.morph, GRC))}">${esc(shortMorph(decodeMorph(w.morph, GRC)))}</span>
-        <span class="g${aux}" aria-hidden="true">${glossHTML(w.gloss)}</span>
-      </button>`;
-    })
-    .join("");
-}
-// Capítulos muito longos (Salmo 119): os cartões só são montados quando o versículo chega perto da tela
-const LAZY_FROM = 100;
-let lazyIO = null;
-function fillWords(box) {
-  if (!box || !box.dataset.lazy) return;
-  const vi = +box.closest(".verse").dataset.vi;
-  box.innerHTML = wordsHTML(CH.verses[vi], vi);
-  delete box.dataset.lazy;
-  box.style.minHeight = "";
-  if (lazyIO) lazyIO.unobserve(box);
-  document.dispatchEvent(new CustomEvent("words-filled", { detail: { vi } }));
-}
 function renderVerses() {
-  const lang = OLANG();
   const lazy = CH.verses.length >= LAZY_FROM && "IntersectionObserver" in window;
-  root.innerHTML = CH.verses
-    .map((v, vi) => {
-      const later = lazy && vi > 4;
-      const words = later ? "" : wordsHTML(v, vi, lang);
-      const lbl = vLabel(v);
-      const head = v.h
-        ? `<h2 class="sechead acro" id="s${v.n}"><span>${esc(v.h)}</span><span class="sref">v. ${v.n}–${v.n + 7}</span></h2>`
-        : "";
-      return `${head}
-    <section class="verse" id="v${v.n}" data-vi="${vi}" aria-labelledby="vh${v.n}">
-      <div class="vhead">
-        <h3 class="vnum${v.marks.length ? " has-rev" : ""}" id="vh${v.n}"><span class="sr">Versículo </span>${lbl.includes(":") ? `<span class="vcap">${esc(lbl.split(":")[0])}:</span>${esc(lbl.split(":")[1])}` : lbl}${v.marks.length ? `<span class="sr"> (com pontos da revisão automática)</span>` : ""}</h3>
-        <span class="vtags"></span>
-        <button class="vmark" data-verse="${vi}" aria-label="Anotar ou ouvir ${lbl}"><svg class="vm-dots" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M3.2 12a1.8 1.8 0 1 0 3.6 0a1.8 1.8 0 1 0-3.6 0M10.2 12a1.8 1.8 0 1 0 3.6 0a1.8 1.8 0 1 0-3.6 0M17.2 12a1.8 1.8 0 1 0 3.6 0a1.8 1.8 0 1 0-3.6 0"/></svg><svg class="vm-pen" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg><span class="vm-t" aria-hidden="true">Anotar</span></button>
-      </div>
-      ${v.words.length ? `<div class="words" role="group" aria-label="Palavras do versículo ${lbl}${GRC ? "" : ", da direita para a esquerda"}"${later ? ` data-lazy="1" style="min-height:${Math.ceil(v.words.length / 5) * 74}px"` : ""}>${words}</div>` : ""}
-      ${v.nota ? `<p class="vnote">${esc(SOURCE_NOTES[v.nota] || v.nota)}</p>` : ""}
-      <p class="blivre"><span class="tag">BLIVRE</span>${esc(v.blivre)}</p>
-      <div class="vann" hidden></div>
-      ${marksHTML(v)}
-    </section>`;
-    })
-    .join("");
+  showChapter(CH.verses, { lex: LEX, greek: GRC, cantillation: prefs.cant, chapter: CUR }, OLANG(), lazy);
   readerState.greek = GRC;
   readerState.questions = CH.questions.map(q => ({ ...q, lemma: (q.strong && LEX[q.strong]?.l) || undefined }));
   flushSync();
   if (io) document.querySelectorAll(".verse").forEach(sec => io.observe(sec));
-  if (lazyIO) lazyIO.disconnect();
-  lazyIO = null;
-  if (lazy) {
-    lazyIO = new IntersectionObserver(es => es.forEach(en => en.isIntersecting && fillWords(en.target)), { rootMargin: "1500px 0px" });
-    root.querySelectorAll(".words[data-lazy]").forEach(b => lazyIO.observe(b));
-  }
   // Anotações (annotations.js) desenham suas marcações quando o capítulo muda
   window.__currentChapter = {
     book: BOOK.code,
@@ -257,7 +158,7 @@ mount(NextChapter, {
 });
 
 function wordEl(vi, i) {
-  fillWords(root.querySelector(`.verse[data-vi="${vi}"] .words[data-lazy]`));
+  fillVerse(vi);
   return root.querySelector(`.word[data-v="${vi}"][data-i="${i}"]`);
 }
 function firstWordOfVerse(vi) {
@@ -475,7 +376,8 @@ function wordContextHTML(word) {
   const objNote = /\[obj\]/.test(word.gloss || "")
     ? `<small class="gfn">Marca o objeto direto; não tem tradução em português.</small>`
     : "";
-  const gfNote = word.gf && GF_NOTE[word.gf] ? `<small class="gfn">${esc(GF_NOTE[word.gf])}</small>` : "";
+  const gfSource = word.gf && tryT(`word.gloss_source.${word.gf}`);
+  const gfNote = gfSource ? `<small class="gfn">${esc(gfSource)}</small>` : "";
   const ketiv = word.ketiv
     ? `<p class="kq">Leitura indicada à margem (<i>qere</i>). No texto consonantal está escrito (<i>ketiv</i>): <span lang="he">${esc(word.ketiv)}</span></p>`
     : "";
