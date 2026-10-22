@@ -357,7 +357,9 @@
   },
   "reader": {
     "chapter_nav": "Capítulo anterior e próximo",
-    "not_in_preview": "Este capítulo não está incluído nesta prévia."
+    "not_in_preview": "Este capítulo não está incluído nesta prévia.",
+    "lede_greek": "Lê-se da esquerda para a direita. Cada palavra grega abre o verbete; abaixo de cada versículo vem a Bíblia Livre.",
+    "lede_hebrew": "Lê-se da direita para a esquerda. Cada palavra hebraica abre o verbete; abaixo de cada versículo vem a Bíblia Livre."
   },
   "questions": {
     "title": "Perguntas ao texto",

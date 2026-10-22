@@ -7,6 +7,7 @@ import { createSpeech } from "../src/lib/audio/tts";
 import { createBible, toWord } from "../src/lib/data/bible";
 import { SITE_URL, isNative as NATIVE, nativePlugin, platform as PLATFORM } from "../src/lib/native";
 import { flushSync, mount } from "svelte";
+import ChapterHeading from "../src/components/ChapterHeading.svelte";
 import ChapterNavButton from "../src/components/ChapterNavButton.svelte";
 import ChapterText from "../src/components/ChapterText.svelte";
 import LookButton from "../src/components/LookButton.svelte";
@@ -59,6 +60,7 @@ const OLANG = () => (GRC ? "grc" : "he");
 // ---------- Cabeçalho, versículos ----------
 const root = document.getElementById("verses");
 mount(ChapterText, { target: root });
+mount(ChapterHeading, { target: document.querySelector("#page > header"), anchor: document.querySelector("#page > header .kbd") });
 let io = null;
 function vLabel(v) {
   return v.n === 0 ? "título" : `${CUR}:${v.n}`;
@@ -66,14 +68,10 @@ function vLabel(v) {
 function renderHeader() {
   const A = BOOK.about;
   document.title = `${BOOK.name} ${CUR} · Bíblia Interlinear`;
-  document.getElementById("eyebrow").textContent = eyebrowText();
-  document.getElementById("h1").innerHTML =
-    `${esc(BOOK.name)} ${CUR}${A ? ` <span class="orig" lang="${OLANG()}">${esc(A.title_orig)}</span>` : ""}`;
-  const theme = BOOK.chapters[CUR - 1] && BOOK.chapters[CUR - 1].t;
-  document.getElementById("ctheme").textContent = theme || "";
-  document.getElementById("lede").textContent = GRC
-    ? "Lê-se da esquerda para a direita. Cada palavra grega abre o verbete; abaixo de cada versículo vem a Bíblia Livre."
-    : "Lê-se da direita para a esquerda. Cada palavra hebraica abre o verbete; abaixo de cada versículo vem a Bíblia Livre.";
+  // the title block is ChapterHeading.svelte
+  readerState.greek = GRC;
+  readerState.eyebrow = eyebrowText();
+  readerState.heading = { book: BOOK.name, chapter: CUR, titleOrig: A?.title_orig || "", theme: BOOK.chapters[CUR - 1]?.t || "" };
   document.body.classList.toggle("grc", GRC);
   document.getElementById("verses").setAttribute("aria-label", `Texto de ${BOOK.name} ${CUR}`);
   // atalhos do cabeçalho; os ‹ › das barras (ChapterNavButton) leem o capítulo anterior e o próximo de readerState
@@ -1290,7 +1288,8 @@ function showModo() {
   readerState.baseMode = isModeId(baseMode) ? baseMode : "interlinear";
   flushSync();
   readerState.previousMode = isModeId(previousMode) ? previousMode : "";
-  if (CH) document.getElementById("eyebrow").textContent = eyebrowText();
+  if (CH) readerState.eyebrow = eyebrowText();
+  flushSync();
 }
 function applyMode(id, manual = true) {
   const m = MODES.find(x => x.id === id);
