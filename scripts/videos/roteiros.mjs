@@ -1,5 +1,5 @@
 // Roteiros dos vídeos "Como usar". Cada vídeo é uma lista de passos: a legenda que aparece na tela
-// e a ação que o Playwright executa. scripts/videos/gravar.mjs grava; scripts/build_web.mjs lê só
+// e a ação que o Playwright executa. scripts/videos/gravar.mjs grava; vite/site/home-page.ts lê só
 // os títulos e as legendas para montar a seção "Como usar" da página inicial.
 // `pronto: false` = a função ainda não existe; o vídeo aparece na lista como "quando a função sair".
 

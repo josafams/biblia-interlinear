@@ -10,7 +10,7 @@ Todos rodam a partir da raiz do repositório. O caminho normal é `make data` (o
 | `corpus.py` | monta `build/biblia.sqlite`: livros, versículos da BLIVRE, palavras do original com morfologia e o léxico | `make data`, CI |
 | `make_glosses.py` | alinha cada versículo do original com a BLIVRE (eflomal) e grava as glosas; aplica `data/corrections/glosses.tsv` | `make data`, CI (precisa do eflomal) |
 | `review.py` | revisões automáticas (`docs/REVISOES.md`) → `build/review/` | `make data`, CI |
-| `export.py` | exporta o banco e `data/` para `build/data` (JSON) e `build/web/dados` (JS do site); `--preview` monta a prévia | `build_web.mjs`, `build.sh` |
+| `export.py` | exporta o banco e `data/` para `build/data` (JSON) e `build/web/dados` (JS do site); `--preview` monta a prévia | `vite/interlinear-plugin.ts`, `build.sh` |
 | `check_data.py` | confere os arquivos editados à mão em `data/` (formato, colunas, referências) | pre-commit, CI em todo PR |
 | `query.py` | consulta rápida ao corpus: `books`, `chapter`, `verses`, `interlinear`, `entry` | quem escreve temas, introduções e correções |
 | `pronunciation.py` | pronúncia aproximada dos lemas (módulo; rodando sozinho, executa os testes de pronúncia) | `export.py` |
@@ -22,7 +22,7 @@ Todos rodam a partir da raiz do repositório. O caminho normal é `make data` (o
 
 | Script | O que faz | Quem usa / quando |
 |---|---|---|
-| `build_web.mjs` | gera o site em `build/web` (leitor, página inicial, service worker) | `make web`, CI |
+| `../vite/interlinear-plugin.ts` | gera o site em `build/web` (leitor, página inicial, service worker) | `make web`, CI |
 | `print_pdf.mjs` | imprime em PDF, com o Chromium, os HTML gerados por `build_pdf.py` | `build_pdf.py` |
 | `native_icons.mjs` | ícones e telas de abertura do Android e do iOS a partir de `web/icones` | depois de `npx cap add` |
 | `videos/gravar.mjs` | grava os vídeos "Como usar" a partir dos roteiros; `--verificar` só executa os roteiros | workflow Vídeos, CI |

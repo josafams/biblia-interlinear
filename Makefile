@@ -58,10 +58,10 @@ data: ## Baixa as fontes abertas e gera corpus, glosas, revisões e o site
 	python3 scripts/corpus.py
 	python3 scripts/make_glosses.py
 	python3 scripts/review.py > /dev/null
-	node scripts/build_web.mjs
+	npm run build:web
 
 web: ## Gera só o site (build/web); precisa do banco gerado por `make data`
-	node scripts/build_web.mjs
+	npm run build:web
 
 check-data: ## Confere os arquivos editados à mão em data/ (temas, léxico, correções, perguntas)
 	python3 scripts/check_data.py

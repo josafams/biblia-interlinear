@@ -95,7 +95,7 @@ sources/ (morphhb, sblgnt, strongs, dodson, ebible, scrollmapper)
    │  scripts/make_glosses.py      alinhamento eflomal + regras → glosas no banco
    │  scripts/review.py     revisões automáticas → build/review/
    │  scripts/export.py    banco + dados/ → build/data/ (JSON) e build/web/dados/ (.js)
-   ├─ scripts/build_web.mjs  web/reader.html → build/web (site, PWA, conteúdo dos apps)
+   ├─ vite/interlinear-plugin.ts  web/reader.html → build/web (site, PWA, conteúdo dos apps)
    ├─ scripts/build_epub.py  → build/epub (66 EPUBs)
    └─ scripts/build_pdf.py   → build/pdf (66 PDFs, via scripts/print_pdf.mjs)
 ```
@@ -140,7 +140,7 @@ python3 scripts/query.py entry H430          # e o arquivo/linha para editar
 | `scripts/review.py` | revisões automáticas |
 | `scripts/export.py` | dados do site, do EPUB e do PDF; `--previa` gera a página única de amostra |
 | `scripts/pronunciation.py` | pronúncia em português do hebraico (a partir do Strong) e do grego (a partir do acento do lema) |
-| `scripts/build_web.mjs`, `build_epub.py`, `build_pdf.py`, `print_pdf.mjs` | saídas |
+| `vite/interlinear-plugin.ts`, `build_epub.py`, `build_pdf.py`, `print_pdf.mjs` | saídas |
 | `scripts/books.py` | os 66 livros: códigos, nomes, abreviações, arquivos de origem |
 | `scripts/query.py` | consulta ao banco pela linha de comando |
 | `scripts/check_data.py` | confere os arquivos de `data/` (também roda no GitHub em cada pull request) |

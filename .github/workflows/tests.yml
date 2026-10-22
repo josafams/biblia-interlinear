@@ -41,7 +41,7 @@ jobs:
           python3 -m coverage run -p scripts/corpus.py
           python3 -m coverage run -p scripts/make_glosses.py
           python3 -m coverage run -p scripts/review.py > /dev/null
-          node scripts/build_web.mjs
+          npm run build:web
       - name: Testes de dados, EPUB e PDF
         env:
           PDF_TESTE: "1"

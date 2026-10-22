@@ -1,6 +1,6 @@
 /* Leitor da Bíblia Interlinear (ler.html): índice, capítulos, verbetes, áudio, aparência e modos de leitura.
  * Script clássico (sem módulos), carregado depois do bloco que define DATA no ler.html
- * (DATA = livros, capítulos embutidos e léxico; ver scripts/build_web.mjs). */
+ * (DATA = livros, capítulos embutidos e léxico; ver vite/site/reader-page.ts). */
 const SPK =
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
 const BOOKS = DATA.books;

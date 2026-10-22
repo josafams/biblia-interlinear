@@ -40,7 +40,7 @@ jobs:
           python3 scripts/corpus.py
           python3 scripts/make_glosses.py
           python3 scripts/review.py > /dev/null
-          node scripts/build_web.mjs
+          npm run build:web
       - name: Ramo gh-pages
         uses: actions/checkout@v5
         with:

@@ -1,4 +1,4 @@
-// Testes do site no navegador: npx playwright test  (gere o site antes: node scripts/build_web.mjs)
+// Testes do site no navegador: npx playwright test  (gere o site antes: npm run build:web)
 import { defineConfig, devices } from "@playwright/test";
 import fs from "node:fs";
 
