@@ -19,25 +19,14 @@ import json
 import os
 import re
 import sqlite3
-import sys
 import unicodedata
 from collections import Counter, defaultdict
 from pathlib import Path
 
-sys.path.insert(0, os.path.dirname(__file__))
-from books import BOOKS, BY_CODE, OT_BOOKS  # noqa: E402
-
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-SOURCES_DIR = os.path.join(ROOT, "sources")
-DB = os.path.join(ROOT, "build", "biblia.sqlite")
-
-
-def strip_marks(s):
-    return "".join(c for c in unicodedata.normalize("NFD", s) if not unicodedata.combining(c))
-
-
-def norm_greek(s):
-    return strip_marks(s).lower().replace("ς", "σ")
+from books import BOOKS, BY_CODE, OT_BOOKS
+from interlinear.paths import DB, ROOT
+from interlinear.paths import SOURCES as SOURCES_DIR
+from interlinear.text import norm_greek
 
 
 # ---------------------------------------------------------------- BLIVRE
