@@ -1,11 +1,12 @@
-// Reader entry point: the reader (src/reader/reader.ts), then the scripts that talk to it through window.*
-// bridges, in the order the page has always loaded them.
+// Reader entry point: the styles, the reader (src/reader/reader.ts), then the parts that start when imported, in
+// this order: the concordance and the search use the reader; the sync and the progress use the annotations and
+// the account (window.Annotations, window.Account).
 import "../styles/reader.css";
 import "./dexie-global";
 import "./reader";
-import "../../web/study.js";
-import "../../web/search.js";
+import "./concordance";
+import "./search";
 import "./annotations";
-import "../../web/account.js";
-import "../../web/sync.js";
-import "../../web/progress.js";
+import "./account";
+import "./sync";
+import "./progress";
