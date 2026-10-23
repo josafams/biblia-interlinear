@@ -731,5 +731,40 @@
         "label": "Falar mais devagar"
       }
     }
+  },
+  "search": {
+    "title": "Buscar na Bíblia",
+    "close": "Fechar busca",
+    "label": "Palavras, referência ou número Strong",
+    "placeholder": "amor, Jo 3:16, G25",
+    "where": "Onde buscar",
+    "scopes": {
+      "all": "Bíblia toda",
+      "at": "Antigo Testamento",
+      "nt": "Novo Testamento"
+    },
+    "only_in": "Só em {book}",
+    "all_of_strong": "Ver todas as ocorrências de <b>{strong}</b> →",
+    "go_to_before": "Ir para ",
+    "go_to_after": " →",
+    "similar": "Parecidas:",
+    "by_book": "Filtrar por livro",
+    "more": "Mostrar mais",
+    "help": "Várias palavras acham os versículos que têm todas. Acentos e maiúsculas não importam. Também dá para digitar uma referência (<b>Sl 23</b>) ou um número Strong (<b>H430</b>).",
+    "searching": "Buscando…",
+    "found": {
+      "one": "{count} versículo · AT {at} · NT {nt}.",
+      "other": "{count} versículos · AT {at} · NT {nt}."
+    },
+    "found_of": {
+      "one": "{count} versículo (de {all} na Bíblia toda).",
+      "other": "{count} versículos (de {all} na Bíblia toda)."
+    },
+    "nothing_here": {
+      "one": "Nada aqui; {count} versículo na Bíblia toda.",
+      "other": "Nada aqui; {count} versículos na Bíblia toda."
+    },
+    "none": "Nenhum versículo com “{word}”.",
+    "none_all": "Nenhum versículo com todas essas palavras."
   }
 }
