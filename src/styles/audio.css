@@ -52,16 +52,14 @@ body.hide-orig .ch-say {
 body.blivre-par.hide-orig .verse:not(.abrir) .vhead .say {
   display: none;
 }
-.bar .say-main {
-  background: var(--accent);
-  color: var(--surface);
-  border-color: var(--accent);
-}
 .bar .say-main.on {
   background: var(--accent-soft);
   color: var(--accent);
 }
 .bar .say-main {
+  background: var(--accent);
+  color: var(--surface);
+  border-color: var(--accent);
   height: 44px;
   padding: 0 16px;
   border-radius: 999px;

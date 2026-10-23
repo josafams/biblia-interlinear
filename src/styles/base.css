@@ -56,13 +56,6 @@ body.font-easy {
   outline: 3px solid var(--accent);
   outline-offset: 2px;
 }
-.wrap {
-  max-width: 920px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 28px;
-}
 .wrap > * {
   min-width: 0;
 }
@@ -81,9 +74,6 @@ h1 {
   outline: 3px solid var(--accent);
   outline-offset: 2px;
 }
-footer {
-  scroll-margin-top: calc(var(--bar-h) + 12px);
-}
 /* Espaçamento amplo (WCAG 1.4.12) */
 body.spacious {
   line-height: 1.9;
@@ -94,6 +84,7 @@ body.spacious :is(.blivre, .lede, .kbd, .dsec p, .cg, footer p, .lrow .ls) {
   word-spacing: 0.12em;
 }
 footer {
+  scroll-margin-top: calc(var(--bar-h) + 12px);
   font-size: 13px;
   color: var(--muted);
   display: grid;
@@ -147,6 +138,11 @@ footer a {
 }
 /* Cabeçalho compacto: título, tema e atalhos; nada de instrução fixa na frente do texto */
 .wrap {
+  max-width: 920px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
   gap: 18px;
 }
 header {

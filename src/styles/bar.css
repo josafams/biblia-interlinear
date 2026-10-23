@@ -42,11 +42,6 @@
   color: var(--fg);
   font-weight: 500;
 }
-.bar .where svg {
-  width: 16px;
-  height: 16px;
-  flex: none;
-}
 @media (max-width: 480px) {
   .bar #open-toc {
     padding: 0;
@@ -166,11 +161,11 @@
   text-align: center;
 }
 .wide-only {
-  display: none !important;
+  display: none;
 }
 @media (min-width: 721px) {
   .wide-only {
-    display: inline-flex !important;
+    display: inline-flex;
   }
   .bar .where {
     flex: 0 1 auto;
@@ -219,9 +214,6 @@
     width: 20px;
     height: 20px;
     flex: none;
-  }
-  .bbar #bb-next {
-    flex-direction: row-reverse;
   }
   .bbar button[aria-disabled="true"] {
     opacity: 0.4;
@@ -375,9 +367,12 @@ body.foco.barras-fora .bbar:not(:focus-within) {
   width: 16px;
   height: 16px;
   flex: none;
+  width: 16px;
+  height: 16px;
+  flex: none;
 }
 .bar-modes {
-  display: none !important;
+  display: none;
 }
 @media (min-width: 721px) {
   .bar .where {
@@ -392,7 +387,7 @@ body.foco.barras-fora .bbar:not(:focus-within) {
 }
 @media (min-width: 1100px) {
   .bar-modes {
-    display: flex !important;
+    display: flex;
     gap: 2px;
     padding: 3px;
     border-radius: 12px;
@@ -458,17 +453,18 @@ body.foco.barras-fora .bbar:not(:focus-within) {
   }
   .bbar button,
   .bbar.cinco .ibtn {
-    flex-direction: column !important;
+    flex-direction: column;
     gap: 2px;
     font: 400 12px var(--font-ui);
     min-height: 0;
     height: 100%;
   }
   .bbar #bb-next {
-    flex-direction: column !important;
+    flex-direction: row-reverse;
+    flex-direction: column;
   }
   .bbar #open-look > span:first-child {
-    font-size: 19px !important;
+    font-size: 19px;
     line-height: 22px;
   }
 }
@@ -531,7 +527,7 @@ body.foco.barras-fora .bbar:not(:focus-within) {
 }
 /* Computador: abas do painel em seletor (trilho cinza, opção branca), como no design; sem o atalho ⇄ */
 #mode-swap {
-  display: none !important;
+  display: none;
 }
 /* the Aa of the Aparência button (LookButton.svelte) */
 #open-look .aa {

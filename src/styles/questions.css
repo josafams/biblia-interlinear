@@ -35,9 +35,6 @@
   text-transform: uppercase;
   color: var(--accent);
 }
-.q-k::before {
-  content: counter(q) ". ";
-}
 .q-t {
   margin: 6px 0 8px;
   font-size: 17px;
@@ -97,6 +94,7 @@ body.hide-questions #perguntas {
   color: var(--muted);
 }
 .q-k::before {
+  content: counter(q) ". ";
   content: none;
 }
 .q-t {

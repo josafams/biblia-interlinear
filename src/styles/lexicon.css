@@ -6,11 +6,6 @@
   gap: 12px;
   scroll-margin-top: calc(var(--bar-h) + 12px);
 }
-.lexsec h2 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 600;
-}
 .lsearch {
   width: 100%;
   height: 48px;
@@ -25,6 +20,8 @@
 .llist {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 2400px;
 }
 .lrow {
   display: grid;
@@ -62,6 +59,7 @@
   color: var(--accent);
   min-width: 0;
   overflow-wrap: anywhere;
+  display: none;
 }
 .lrow .ls {
   grid-column: 2 / -1;
@@ -99,12 +97,11 @@
 body.hide-lexicon #lexico {
   display: none;
 }
-.llist {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 2400px;
-}
 /* Léxico do capítulo: lista numa caixa; lema Gentium 18px, sentido 14px apagado, contagem e código em Plex Mono 11px */
 .lexsec h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
   font-size: 20px;
 }
 .lsearch {
@@ -140,7 +137,4 @@ body.hide-lexicon #lexico {
 .lrow .ln {
   order: 2;
   font-size: 11px;
-}
-.lrow .lx {
-  display: none;
 }

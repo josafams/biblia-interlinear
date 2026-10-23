@@ -274,11 +274,6 @@
   border: 1px solid var(--line);
   font-size: 14px;
 }
-.dtr span small {
-  font: 400 11px var(--font-mono);
-  color: var(--muted);
-  margin-inline-start: 4px;
-}
 .dconc {
   justify-self: start;
   min-height: 44px;
@@ -302,9 +297,6 @@
     border-left: 1px solid var(--line);
     box-shadow: -6px 0 24px rgba(0, 0, 0, 0.08);
     padding-bottom: 24px;
-  }
-  body.com-detail .detail {
-    top: calc(var(--bar-h) + 48px + env(safe-area-inset-top, 0px));
   }
 }
 .lk-lbl {
@@ -407,6 +399,9 @@
   font: 400 13px var(--font-ui);
 }
 .dtr span small {
+  font: 400 11px var(--font-mono);
+  color: var(--muted);
+  margin-inline-start: 4px;
   color: var(--muted);
 }
 .plegend {
@@ -438,6 +433,7 @@
     font-size: 32px;
   }
   body.com-detail .detail {
+    top: calc(var(--bar-h) + 48px + env(safe-area-inset-top, 0px));
     top: calc(var(--bar-h) + 56px + env(safe-area-inset-top, 0px));
   }
 }

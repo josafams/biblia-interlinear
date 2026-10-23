@@ -125,8 +125,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
-}
-.mn-tagchips {
   margin-top: 8px;
   gap: 6px;
 }
