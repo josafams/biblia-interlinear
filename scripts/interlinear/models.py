@@ -22,8 +22,9 @@ class Word(NamedTuple):
     gloss_source: str | None
     strong_source: str | None
 
-    # the columns, in the order of the SELECT that makes a Word
-    COLUMNS = "id, book, chapter, verse, pos, language, text, lemma, strong, prefixes, morph, ref_orig, gloss, gloss_source, strong_source"
+
+# the columns of the words table, in the order of the fields of Word
+WORD_COLUMNS = ", ".join(Word._fields)
 
 
 class AlignedWord(NamedTuple):

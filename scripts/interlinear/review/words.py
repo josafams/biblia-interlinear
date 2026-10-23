@@ -26,7 +26,7 @@ STRONG_NUMBERS = NUMBERS - {"um", "uma"}
 ORDINALS = set(_C["ordinal"])
 ENGLISH = set(_C["english"])
 # irregular verbs (data/rules/pt_irregular_verbs.tsv): each form points to its family (SER joins ser/estar/haver/ir)
-IRREG_MAP = {}
+IRREG_MAP: dict[str, str] = {}
 for _k, _f in irregular_verbs():
     IRREG_MAP.setdefault(_f, _k)
 

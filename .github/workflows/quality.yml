@@ -45,6 +45,8 @@ jobs:
         run: |
           ruff check .
           ruff format --check .
+      - name: mypy (tipos do Python)
+        run: mypy
       - name: Markdown
         run: npx markdownlint-cli2 "**/*.md"
       - name: ShellCheck

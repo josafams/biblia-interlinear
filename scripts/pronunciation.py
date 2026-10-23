@@ -577,8 +577,8 @@ def _tests(root=None):
                 elif re.search(r"[^a-zA-ZéêôÉÊÔ\- ]|--|^-|-$|- | -", out):
                     odd.append((entry_key, value, out))
             failures += errors + len(odd)
-            for e in odd[:20]:
-                print("  ESTRANHO ", *e)
+            for item in odd[:20]:
+                print("  ESTRANHO ", *item)
             print(
                 f"  {n} verbetes, {errors} exceção(ões), {len(odd)} saída(s) com caracteres "
                 f"estranhos, {empties} vazia(s), {time.time() - t0:.1f}s"

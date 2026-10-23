@@ -104,7 +104,7 @@ def check_intros(R: Report, data: Path):
 
 
 def check_lexicon_pt(R: Report, data: Path):
-    seen = {}
+    seen: dict[str, str] = {}
     for fname in sorted((data / "lexicon_pt").glob("*.tsv")):
         for ln, r in tsv(R, fname, ["key", "origin", "meaning"]):
             k = r["key"]
@@ -126,7 +126,7 @@ def check_questions(R: Report, data: Path):
             continue  # books without questions yet (test_every_chapter_has_questions asks for the whole Bible)
         lines = tsv(R, fname, ["chapter", "kind", "verses", "strong", "question"])
         questions[code] = lines
-        per_chapter = {}
+        per_chapter: dict[int, list[str]] = {}
         for ln, r in lines:
             if not r["chapter"].isdigit() or not 1 <= int(r["chapter"]) <= n:
                 R.error(fname, f"linha {ln}: capítulo {r['chapter']!r} fora do livro (1 a {n})")
@@ -158,7 +158,7 @@ def check_questions(R: Report, data: Path):
 def check_gloss_corrections(R: Report, data: Path):
     """data/corrections/glosses.tsv; returns the rows to check against the words of the text."""
     fname = data / "corrections" / "glosses.tsv"
-    corrections = []
+    corrections: list[tuple[int, re.Match[str], dict[str, str]]] = []
     if not fname.exists():
         return corrections
     for ln, r in tsv(R, fname, ["ref", "pos", "original", "gloss", "reviewer", "note"]):
