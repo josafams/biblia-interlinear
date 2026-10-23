@@ -14,7 +14,7 @@ import sqlite3
 import sys
 
 from interlinear.paths import DB
-from interlinear.tsv import lexicon_pt_files
+from interlinear.tsv import lexicon_pt, lexicon_pt_files
 from interlinear.tsv import rows as tsv_rows
 
 # verbos e partículas muito comuns, que não rendem pergunta sobre a língua original
@@ -49,7 +49,7 @@ def print_key_words(db, book, chapter):
         row = db.execute("SELECT lemma, xlit, def_pt FROM lexicon WHERE entry_key=?", (strong,)).fetchone() or ("", "", "")
         vs = sorted(set(k["verses"]))
         gl = ", ".join(g for g, _ in sorted(k["glosses"].items(), key=lambda x: -x[1])[:4])
-        meaning = (row[2] or "")[:90]
+        meaning = ((lexicon_pt().get(strong) or {}).get("meaning") or row[2] or "")[:90]
         print(f"{strong}\t{row[0]}\t{row[1]}\t{names[k['pos']]}\t{len(k['verses'])}x\tv. {','.join(map(str, vs))}\tglosas: {gl}\t{meaning}")
 
 

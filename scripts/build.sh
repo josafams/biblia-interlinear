@@ -18,7 +18,6 @@ if [ "${REFAZER:-0}" = "1" ] || [ ! -f build/biblia.sqlite ]; then
   python3 scripts/corpus.py
   python3 scripts/make_glosses.py
 fi
-python3 scripts/export.py > /dev/null   # grava o léxico em português no banco
 python3 scripts/review.py > /dev/null
 npm run build:web
 python3 scripts/export.py --preview build/preview.json GEN.1 GEN.2 GEN.3 GEN.12 EXO.20 RUT.1 PSA.1 PSA.23 PSA.51 \
