@@ -20,18 +20,18 @@ def check_style(d, M, ws):
         if not g:
             continue
         if " " in g or "--" in g or g.endswith("-") or not GL_OK.match(g):
-            M.w(w, "CON-04", "erro", f"glosa fora do estilo (espaço, pontuação, hífen solto): '{g}'")
+            M.w(w, "CON-04", "erro", "CON-04_1", gloss=g)
             continue
         pieces = g.split("-")
         for t in pieces:
             if t and not t.isupper() and not t.islower() and not (t[0].isupper() and t[1:].islower()):
-                M.w(w, "CON-04", "aviso", f"maiúsculas no meio da palavra: '{g}'")
+                M.w(w, "CON-04", "aviso", "CON-04_4", gloss=g)
                 break
         ts = toks(g)
         if any(a == b for a, b in zip(ts, ts[1:], strict=False)):
-            M.w(w, "CON-04", "aviso", f"palavra repetida na glosa: '{g}'")
+            M.w(w, "CON-04", "aviso", "CON-04_2", gloss=g)
         if len(g) > 40 or len(ts) > 6:
-            M.w(w, "CON-04", "aviso", f"glosa longa demais ({len(ts)} palavras): '{g}'")
+            M.w(w, "CON-04", "aviso", "CON-04_3", count=len(ts), gloss=g)
 
 
 def check_consistency(d, M, ws, scope_books):
@@ -63,7 +63,7 @@ def check_consistency(d, M, ws, scope_books):
             if st & st_maj or any(freq_st[s] / n >= 0.15 for s in st):
                 continue
             marked.add(w.id)
-            M.w(w, "CON-01", "aviso", f"'{w.gloss}' destoa da glosa usual '{majority}' ({n_majority}/{n}) desta forma no livro")
+            M.w(w, "CON-01", "aviso", "CON-01", gloss=w.gloss, majority=majority, n_majority=n_majority, n=n)
     # CON-02: por Strong, na Bíblia inteira (só palavras de conteúdo)
     by_strong = defaultdict(list)
     for w in d.words:
@@ -88,4 +88,4 @@ def check_consistency(d, M, ws, scope_books):
                 continue
             st = content_stems(w.gloss)
             if st and all(freq[x] / n < 0.01 for x in st):
-                M.w(w, "CON-02", "info" if polysemous else "aviso", f"glosa rara '{w.gloss}' para {s} (usual: '{top}…', {ntop}/{n})")
+                M.w(w, "CON-02", "info" if polysemous else "aviso", "CON-02", gloss=w.gloss, s=s, top=top, ntop=ntop, n=n)

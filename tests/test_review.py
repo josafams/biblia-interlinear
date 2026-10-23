@@ -54,9 +54,14 @@ def test_proper_names():
 def test_marks_keep_the_scope_and_skip_repeats():
     M = Marks(("GEN", 1))
     w = word(id=7, verse=3)
-    M.w(w, "CON-01", "aviso", "glosa destoa")
-    M.w(w, "CON-01", "aviso", "glosa destoa")  # the same word and code: once
-    M.add("GEN", 2, 1, None, "TXT-05", "erro", "fora do capítulo revisado")
-    M.add("GEN", 1, 4, None, "TXT-05", "erro", "versículo ausente")
-    assert [(m["code"], m["verse"]) for m in M.lst] == [("CON-01", 3), ("TXT-05", 4)]
+    M.w(w, "CON-04", "aviso", "CON-04_2", gloss="luz-luz")
+    M.w(w, "CON-04", "aviso", "CON-04_2", gloss="luz-luz")  # the same word and code: once
+    M.add("GEN", 2, 1, None, "TXT-05", "erro", "TXT-05_2", missing=[1])  # outside the chapter reviewed
+    M.add("GEN", 1, 4, None, "TXT-05", "erro", "TXT-05_2", missing=[4, 5])
+    assert [(m["code"], m["verse"]) for m in M.lst] == [("CON-04", 3), ("TXT-05", 4)]
+    # the key and the params go to marks.json; the text is the locale's (as the app shows it)
+    assert M.lst[0]["key"] == "CON-04_2"
+    assert M.lst[0]["params"] == {"gloss": "luz-luz"}
+    assert M.lst[0]["msg"] == "palavra repetida na glosa: 'luz-luz'"
+    assert M.lst[1]["msg"] == "versículo(s) ausente(s): [4, 5]"
     assert ref(w) == "GEN 1:3"

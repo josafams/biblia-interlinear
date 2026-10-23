@@ -56,7 +56,7 @@ def check_base_text(d, M, scope_books):
         src = greek_source(row[4]) if nt and row[4] else (hebrew_source(row[1]) if row[1] else None)
         code_count, cod_hash = ("TXG-01", "TXG-01") if nt else ("TXT-01", "TXT-02")
         if src is None:
-            M.add(book, 1, 1, None, code_count, "info", "fonte original ausente em sources/; contagem não conferida")
+            M.add(book, 1, 1, None, code_count, "info", "TXT-01_1")
             continue
         db_orig = defaultdict(list)
         for w in d.words:
@@ -80,18 +80,22 @@ def check_base_text(d, M, scope_books):
                     None,
                     code_count,
                     "erro",
-                    f"{len(ws)} palavras no banco × {len(source)} na fonte (original {k[0]}:{k[1]})",
+                    "TXT-01_2",
+                    count=len(ws),
+                    count2=len(source),
+                    chapter=k[0],
+                    verse=k[1],
                 )
                 continue
             if [n for n, _ in ws] != list(range(1, len(ws) + 1)):
-                M.add(book, loc[0], loc[1], None, code_count, "erro", f"numeração das palavras com buraco ({k[0]}:{k[1]})")
+                M.add(book, loc[0], loc[1], None, code_count, "erro", "TXT-01_3", chapter=k[0], verse=k[1])
             if consonantal("".join(w.text for _, w in ws)) != consonantal("".join(f[0] for f in source)):
-                M.add(book, loc[0], loc[1], None, cod_hash, "erro", f"texto consonantal difere da fonte (original {k[0]}:{k[1]})")
+                M.add(book, loc[0], loc[1], None, cod_hash, "erro", "TXT-02", chapter=k[0], verse=k[1])
             elif not nt:
                 for (_, w), f in zip(ws, source, strict=False):
                     if f[1]:
                         q = f" (Qere {f[2]})" if f[2] else ""
-                        M.w(w, "TXT-04", "aviso", f"forma escrita (Ketiv) {w.text} no texto; a lida{q} não está registrada")
+                        M.w(w, "TXT-04", "aviso", "TXT-04", text=w.text, q=q)
 
 
 HEB_OK = re.compile(r"^[\u0591-\u05C7\u05D0-\u05EA\u05F0-\u05F4\u034F\u200D/]+$")
@@ -114,14 +118,14 @@ def check_unicode(d, M, ws):
                 acronyms[(w.book, w.chapter)].append(w)
             letters = "".join(GRC_LETTER.findall(unicodedata.normalize("NFC", t)))
             if "ς" in letters[:-1]:
-                M.w(w, "TXG-02", "erro", f"sigma final no meio da palavra: {t}")
+                M.w(w, "TXG-02", "erro", "TXG-02_2", t=t)
             elif len(letters) > 1 and letters[-1] == "σ" and "’" not in t:
-                M.w(w, "TXG-02", "aviso", f"sigma medial no fim da palavra: {t}")
+                M.w(w, "TXG-02", "aviso", "TXG-02_4", t=t)
             if not GRC_OK.match(ACRONYMS.sub("", t)):
-                M.w(w, "TXG-02", "erro", f"caractere fora do permitido: {t!r}")
+                M.w(w, "TXG-02", "erro", "TXG-02_3", t=repr(t))
         else:
             if not HEB_OK.match(t):
-                M.w(w, "TXT-03", "erro", f"caractere fora do permitido: {t!r}")
+                M.w(w, "TXT-03", "erro", "TXT-03_2", t=repr(t))
     for (book, cap), wds_in_verse in acronyms.items():
         signs = "".join(sorted({c for w in wds_in_verse for c in ACRONYMS.findall(w.text)}))
         M.add(
@@ -131,7 +135,10 @@ def check_unicode(d, M, ws):
             None,
             "TXG-02",
             "aviso",
-            f"{len(wds_in_verse)} palavras com sinais do aparato crítico ({signs}) no texto grego; ex.: {wds_in_verse[0].text}",
+            "TXG-02_1",
+            count=len(wds_in_verse),
+            signs=signs,
+            text=wds_in_verse[0].text,
         )
     for (book, greek), n in not_nfc.items():
         w = example[(book, greek)]
@@ -142,7 +149,8 @@ def check_unicode(d, M, ws):
             None,
             "TXG-02" if greek else "TXT-03",
             "info",
-            f"{n} palavras fora da forma NFC (ordem dos sinais da fonte preservada)",
+            "TXT-03_1",
+            n=n,
         )
 
 
@@ -156,19 +164,19 @@ def check_verses_and_chapters(d, M, scope_books):
         cs = sorted(caps[b])
         for i, c in enumerate(cs, 1):
             if c != i and i <= (cs[-1] if cs else 0):
-                M.add(b, c, 1, None, "TXT-05", "erro", f"capítulo {i} ausente (numeração pula para {c})")
+                M.add(b, c, 1, None, "TXT-05", "erro", "TXT-05_1", i=i, c=c)
                 break
         for c in cs:
             vs = sorted(v for v in caps[b][c] if v > 0)
             missing = sorted(set(range(1, vs[-1] + 1)) - set(vs)) if vs else []
             if missing:
-                M.add(b, c, missing[0], None, "TXT-05", "erro", f"versículo(s) ausente(s): {missing[:8]}")
+                M.add(b, c, missing[0], None, "TXT-05", "erro", "TXT-05_2", missing=missing[:8])
         for k, ws in d.by_verse.items():
             if k[0] != b:
                 continue
             ps = [w.pos for w in ws]
             if ps != list(range(1, len(ps) + 1)):
-                M.add(b, k[1], k[2], None, "TXT-05", "erro", "posições das palavras repetidas ou com buraco")
+                M.add(b, k[1], k[2], None, "TXT-05", "erro", "TXT-05_3")
 
 
 ARAMAIC = [("GEN", 31, 47, 31, 47), ("JER", 10, 11, 10, 11), ("EZR", 4, 8, 6, 18), ("EZR", 7, 12, 7, 26), ("DAN", 2, 4, 7, 28)]
@@ -186,25 +194,25 @@ def check_aramaic(d, M, ws):
         by_verse[(w.book, w.chapter, w.verse)].append(w)
         lang = (w.morph or "?")[:1]
         if (w.language == "A") != (lang == "A"):
-            M.w(w, "ARM-02", "erro", f"língua {w.language} × morfologia {w.morph}")
+            M.w(w, "ARM-02", "erro", "ARM-02", language=w.language, morph=w.morph)
     for k, vs in by_verse.items():
         inside = in_aramaic(*k)
         aram = [w for w in vs if w.language == "A"]
         if not inside:
             for w in aram:
-                M.w(w, "ARM-01", "erro", "palavra aramaica fora dos trechos aramaicos conhecidos")
+                M.w(w, "ARM-01", "erro", "ARM-01_1")
             continue
         if k == ("GEN", 31, 47):
             if len(aram) != 2:
-                M.add(*k, None, "ARM-01", "erro", f"Gn 31:47 deveria ter 2 palavras aramaicas, tem {len(aram)}")
+                M.add(*k, None, "ARM-01", "erro", "ARM-01_2", count=len(aram))
             continue
         if k == ("DAN", 2, 4):
             idx = [i for i, w in enumerate(vs) if w.language == "A"]
             if not idx or any(w.language == "H" for w in vs[idx[0] :]):
-                M.add(*k, None, "ARM-01", "erro", "troca hebraico → aramaico em Dn 2:4b fora do lugar")
+                M.add(*k, None, "ARM-01", "erro", "ARM-01_3")
             continue
         for w in vs:
             if w.language == "H":
-                M.w(w, "ARM-01", "aviso", "palavra marcada como hebraica dentro de trecho aramaico")
+                M.w(w, "ARM-01", "aviso", "ARM-01_4")
         if not aram:
-            M.add(*k, None, "TXT-06", "aviso", "versículo de trecho aramaico sem palavras aramaicas")
+            M.add(*k, None, "TXT-06", "aviso", "TXT-06")

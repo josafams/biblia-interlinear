@@ -1,5 +1,5 @@
 """cap/<BOOK>/<n>: one chapter as the app reads it: verses, words, glosses, the links to the Bíblia Livre, the marks of
-the automatic review and the questions.
+the automatic review (code, key of its text in the app locale, params) and the questions.
 
 Compact form of each word: [text, Strong key, gloss, gloss source, morphology, lemma (Greek) | None, ketiv]."""
 
@@ -69,7 +69,7 @@ class Chapters:
         ms = []
         for m in self.marks.get((b, c), []):
             pos = ids.get(m.get("word_id"))
-            ms.append([m["verse"], pos[1] if pos else None, m["level"][0], m["code"], m["msg"]])
+            ms.append([m["verse"], pos[1] if pos else None, m["level"][0], m["code"], m["key"], m["params"]])
         d = {"book": b, "chapter": c, "v": vs, "m": ms}
         if self.questions.get((b, c)):
             d["q"] = self.questions[(b, c)]

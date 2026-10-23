@@ -17,7 +17,9 @@ def write_out(M, d, book_scope, t0):
         key=lambda m: (order.get(m["book"], 999), m["chapter"], m["verse"] if m["verse"] is not None else 0, m["word_id"] or 0, m["code"]),
     )
     with open(os.path.join(OUT, "marks.json"), "w", encoding="utf8") as f:
-        f.write("[\n" + ",\n".join(json.dumps(m, ensure_ascii=False) for m in marks) + "\n]\n")
+        # each mark with its code, key and params; the text is the locale's (the app makes it with t())
+        lines = (json.dumps({k: v for k, v in m.items() if k != "msg"}, ensure_ascii=False) for m in marks)
+        f.write("[\n" + ",\n".join(lines) + "\n]\n")
     by_chapter = defaultdict(Counter)
     for m in marks:
         by_chapter[(m["book"], m["chapter"])][m["level"]] += 1

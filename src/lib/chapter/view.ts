@@ -6,7 +6,8 @@ import { cleanHeb, esc, glossHTML, glossSpoken } from "../text";
 import type { LexEntry, Word } from "../types";
 
 /** A review mark of the automatic review: [verse, word index or null, ?, code, message]. */
-export type ReviewMark = [number, number | null, unknown, string, string];
+/** [verse, word (or null), level, code, key of the text in the locale (review.*), params of the text] */
+export type ReviewMark = [number, number | null, unknown, string, string, Record<string, string>];
 export type ChapterVerse = { n: number; blivre: string; nota?: string | null; h?: string | null; words: Word[]; marks: ReviewMark[] };
 
 export type WordView = {
@@ -96,7 +97,8 @@ export function verseView(v: ChapterVerse, vi: number, c: Context): VerseView {
     blivre: v.blivre,
     marks: v.marks.map(m => ({
       word: m[1] !== null && v.words[m[1]] ? shown(v.words[m[1]].heb, c) : null,
-      text: m[4],
+      // a chapter saved before the messages had params (still in a device's cache) carries the text itself
+      text: m[5] ? t(`review.${m[4]}`, m[5]) : m[4],
       code: m[3]
     }))
   };

@@ -11,6 +11,7 @@ import Questions from "../components/Questions.svelte";
 import SectionMap from "../components/SectionMap.svelte";
 import TocVerses from "../components/TocVerses.svelte";
 import { t } from "../i18n";
+import type { ReviewMark } from "../lib/chapter/view";
 import { toWord } from "../lib/data/bible";
 import { store } from "../lib/store";
 import { LAZY_FROM, chapter as chapterState, showChapter } from "../state/chapter.svelte";
@@ -87,7 +88,7 @@ export function renderVerses() {
 
 type RawChapter = {
   v: { n: number; b: string; o?: string; h?: string; a?: number[][]; w: Parameters<typeof toWord>[0][] }[];
-  m?: [number, number | null, unknown, string, string][];
+  m?: ReviewMark[];
   q?: [Question["kind"], string, string?, string?][];
 };
 
