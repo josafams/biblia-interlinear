@@ -35,7 +35,7 @@
   padding-top: 30px;
   padding-bottom: 8px;
   border-bottom: 2px solid var(--accent);
-  scroll-margin-top: calc(var(--bar-h) + 8px);
+  scroll-margin-top: calc(var(--bar-h) + 8px + env(safe-area-inset-top, 0px));
 }
 .sechead h2 {
   margin: 0;

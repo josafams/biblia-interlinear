@@ -155,3 +155,26 @@ test("Salmo 119: “v. N de 176” e ‹ › passam de seção", async ({ page }
   await expect.poll(() => page.evaluate(() => Math.round(document.getElementById("s65").getBoundingClientRect().top))).toBeLessThan(200);
   await expect(page.locator("#vpos-t")).toContainText("Tete");
 });
+
+test("app de ponta a ponta (Android 15+): as barras do sistema não espremem nem cobrem as do leitor", async ({ page, context }, info) => {
+  test.skip(info.project.name !== "celular", "as margens do sistema só existem no celular");
+  const cdp = await context.newCDPSession(page);
+  await cdp.send("Emulation.setSafeAreaInsetsOverride", { insets: { top: 32, bottom: 48, left: 0, right: 0 } });
+  await openReader(page, "DEU.13", { skipWelcome: true });
+  // a barra de cima começa no topo da tela (cobre a barra de status) e o conteúdo dela fica abaixo da margem
+  const bar = await page.locator("nav.bar").boundingBox();
+  expect(bar.y).toBe(0);
+  expect((await page.locator("#where").boundingBox()).y).toBeGreaterThanOrEqual(32);
+  // a barra de baixo cresce com a margem dos gestos: os botões continuam inteiros
+  for (const id of ["#open-toc", "#bb-prev", "#bb-say", "#bb-next", "#open-look"]) {
+    const b = await page.locator(`#bbar ${id}`).boundingBox();
+    expect(b.height, id).toBeGreaterThanOrEqual(44);
+  }
+  const bbar = await page.locator("#bbar").boundingBox();
+  expect(bbar.y + bbar.height).toBeCloseTo(page.viewportSize().height, 0);
+  // a folha do índice sobe de baixo: não leva a margem da barra de status (as abas ficam perto do topo dela)
+  await page.click("#open-toc");
+  const sheet = await page.locator("#toc").boundingBox();
+  const tabs = await page.locator("#toc .toc-tabs").boundingBox();
+  expect(tabs.y - sheet.y).toBeLessThan(24);
+});

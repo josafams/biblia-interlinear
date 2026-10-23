@@ -17,6 +17,8 @@ test("mostra amostra, números e seções", async ({ page }) => {
 
 test("aponta para o repositório, o APK, o projeto iOS e os livros", async ({ page }) => {
   await page.goto("index.html");
+  // the table of books comes from home-data.json, after the page opens
+  await expect(page.locator("#home-books a").first()).toBeAttached();
   const hrefs = await page.locator("a").evaluateAll(as => as.map(a => a.getAttribute("href")));
   expect(hrefs).toContain(REPO);
   expect(hrefs).toContain(`${REPO}/releases/tag/app-android`);
