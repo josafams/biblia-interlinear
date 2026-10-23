@@ -6,6 +6,7 @@ import { createSpeech } from "../src/lib/audio/tts";
 import { createBible, toWord } from "../src/lib/data/bible";
 import { SITE_URL, isNative as NATIVE, nativePlugin, platform as PLATFORM } from "../src/lib/native";
 import { flushSync, mount } from "svelte";
+import Appearance from "../src/components/Appearance.svelte";
 import BookList from "../src/components/BookList.svelte";
 import ChapterHeading from "../src/components/ChapterHeading.svelte";
 import ChapterLexicon from "../src/components/ChapterLexicon.svelte";
@@ -18,7 +19,6 @@ import LexiconEntry from "../src/components/LexiconEntry.svelte";
 import LexiconSheet from "../src/components/LexiconSheet.svelte";
 import LookButton from "../src/components/LookButton.svelte";
 import MiniPlayer from "../src/components/MiniPlayer.svelte";
-import ModeNote from "../src/components/ModeNote.svelte";
 import ModeSelector from "../src/components/ModeSelector.svelte";
 import ModeSwapButton from "../src/components/ModeSwapButton.svelte";
 import NextChapter from "../src/components/NextChapter.svelte";
@@ -33,6 +33,7 @@ import { MODE_IDS, eyebrowText as eyebrowFor, getMode, isModeId } from "../src/l
 import { entryView } from "../src/lib/lexicon/entry";
 import { bookQuery } from "../src/lib/books";
 import { gotoPreview } from "../src/lib/goto";
+import { PREFS } from "../src/lib/prefs";
 import { createRefs } from "../src/lib/refs";
 import { store } from "../src/lib/store";
 import { cleanHeb, esc } from "../src/lib/text";
@@ -40,6 +41,7 @@ import { followAnnotations } from "../src/state/annotations.svelte";
 import { entry as entryState } from "../src/state/entry.svelte";
 import { goto as gotoState } from "../src/state/goto.svelte";
 import { LAZY_FROM, chapter as chapterState, fillVerse, showChapter } from "../src/state/chapter.svelte";
+import { loadPrefs, prefs as prefsState, setPref } from "../src/state/prefs.svelte";
 import { reader as readerState } from "../src/state/reader.svelte";
 import { speech as speechState } from "../src/state/speech.svelte";
 import { toc } from "../src/state/toc.svelte";
@@ -49,10 +51,17 @@ const BY_CODE = Object.fromEntries(BOOKS.map(b => [b.code, b]));
 // chapters and lexicon on demand (src/lib/data/bible.ts)
 const { lex: LEX, chapters: CAPS, ensureLex, hasChapter, fetchChapter } = createBible(DATA);
 
+// the switches of Aparência (src/state/prefs.svelte.ts); these three change how the text is drawn and read
 const prefs = {
-  cant: store.get("cantilacao", "on") === "on",
-  follow: store.get("acompanhar", "on") === "on",
-  slow: store.get("voz-lenta", "off") === "on"
+  get cant() {
+    return prefsState.values["t-cant"];
+  },
+  get follow() {
+    return prefsState.values["t-follow"];
+  },
+  get slow() {
+    return prefsState.values["t-slow"];
+  }
 };
 
 // ---------- Estado ----------
@@ -257,8 +266,8 @@ let curBtn = null,
   toastTimer = 0;
 
 function updateVoiceNote(speech) {
-  document.getElementById("voice-note").textContent = speech.voiceNote();
-  document.getElementById("voice-install").hidden = !speech.canInstallVoices();
+  speechState.voiceNote = speech.voiceNote();
+  speechState.canInstallVoices = speech.canInstallVoices();
 }
 const tts = createSpeech(updateVoiceNote);
 function setBtn(btn) {
@@ -333,9 +342,6 @@ function speakVerse(vi, btn) {
     i => markSpeaking(wordEl(vi, i))
   );
 }
-document.getElementById("voice-install").addEventListener("click", () => {
-  tts.openInstall().catch(() => toast(t("audio.install_failed")));
-});
 
 // ---------- Verbete ----------
 function chapterCount(k) {
@@ -461,6 +467,24 @@ mount(LexiconEntry, {
 // ---------- Painéis (índice / aparência) ----------
 const scrim = document.getElementById("scrim");
 const bbar = document.getElementById("bbar");
+// the saved preferences first (body classes, text size, theme), then Aparência (Appearance.svelte), after the index
+loadPrefs();
+mount(Appearance, {
+  target: document.body,
+  anchor: document.getElementById("toc").nextSibling,
+  props: {
+    onmode: id => applyMode(id),
+    ontoggle: def => togglePref(def),
+    oninstallvoices: () => tts.openInstall().catch(() => toast(t("audio.install_failed"))),
+    onsources() {
+      // Fontes e licenças: mostra o rodapé de fontes (escondido no dia a dia) e vai até ele
+      closePanel(false);
+      const f = document.getElementById("fontes");
+      f.classList.add("show");
+      f.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+});
 const sheets = { toc: document.getElementById("toc"), look: document.getElementById("look") };
 // the buttons that open them are components (TocButton, LookButton) in the top or the bottom bar, by screen width
 const opener = name => document.getElementById(name === "toc" ? "open-toc" : "open-look");
@@ -670,15 +694,6 @@ function scrollToVerse(n, smooth) {
   focusWord(wordEl(vi, 0), true);
   setHere(n);
 }
-// Aparência › Fontes e licenças: mostra o rodapé de fontes (escondido no dia a dia) e vai até ele
-sheets.look.addEventListener("click", e => {
-  if (!e.target.closest("#look-sources")) return;
-  e.preventDefault();
-  closePanel(false);
-  const f = document.getElementById("fontes");
-  f.classList.add("show");
-  f.scrollIntoView({ behavior: "smooth" });
-});
 // Abas do índice (Livros · Neste livro · Você): pulam para a parte dentro da própria folha e marcam onde se está
 const tocTabs = [...sheets.toc.querySelectorAll(".toc-tabs [data-tab]")];
 function markTocTab() {
@@ -957,79 +972,9 @@ async function openChapter(cod, n, v) {
   }
 }
 
-// ---------- Tema ----------
-const THEMES = [
-  { id: "claro", name: "Claro", dark: false, bg: "#f8f9f6", fg: "#1b2220", ac: "#1d5b74" },
-  { id: "papel", name: "Papel", dark: false, bg: "#faf6ef", fg: "#2b241c", ac: "#7d4a2e" },
-  { id: "oliva", name: "Oliva", dark: false, bg: "#f5f7f0", fg: "#1f241a", ac: "#4f6b2a" },
-  { id: "escuro", name: "Escuro", dark: true, bg: "#1a201e", fg: "#e3e9e5", ac: "#7cc0d8" },
-  { id: "noite", name: "Noite", dark: true, bg: "#152031", fg: "#e3e8f1", ac: "#e0b66a" },
-  { id: "grafite", name: "Grafite", dark: true, bg: "#000000", fg: "#ececec", ac: "#a5c8ff" }
-];
-const tgrid = document.getElementById("tgrid");
-tgrid.insertAdjacentHTML(
-  "beforeend",
-  THEMES.map(
-    t => `
-  <button class="tcard" data-p="${t.id}" aria-pressed="false" aria-label="Tema ${t.name}${t.dark ? ", escuro" : ", claro"}" style="--pb:${t.bg};--pf:${t.fg};--pa:${t.ac}">
-    <span class="tprev" aria-hidden="true"><span class="ph" lang="he">אוֹר</span><span class="px">ʼôwr</span><span class="pg">luz</span></span><span aria-hidden="true">${t.name}</span>
-  </button>`
-  ).join("")
-);
-const sysDark = matchMedia("(prefers-color-scheme: dark)");
-let palette = store.get("tema", "auto");
-function isDarkNow() {
-  return palette === "auto" ? sysDark.matches : THEMES.find(t => t.id === palette).dark;
-}
-function applyPalette(p) {
-  palette = THEMES.some(t => t.id === p) ? p : "auto";
-  if (palette === "auto") document.documentElement.removeAttribute("data-palette");
-  else document.documentElement.setAttribute("data-palette", palette);
-  const t = THEMES.find(x => x.id === palette);
-  if (t) {
-    store.set(t.dark ? "tema-escuro" : "tema-claro", t.id);
-  }
-  store.set("tema", palette);
-  tgrid.querySelectorAll(".tcard").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.p === palette)));
-  document.documentElement.dataset.dark = String(isDarkNow());
-}
-applyPalette(palette);
-sysDark.addEventListener?.("change", () => {
-  if (palette === "auto") applyPalette("auto");
-});
-tgrid.addEventListener("click", e => {
-  const b = e.target.closest(".tcard");
-  if (b) applyPalette(b.dataset.p);
-});
-
-// ---------- Tamanho do texto ----------
-const SIZES = [0.85, 1, 1.15, 1.3, 1.5, 1.75];
-let sizeIdx = Math.max(0, SIZES.indexOf(+store.get("tamanho", "1")));
-function applySize() {
-  document.body.style.setProperty("--k", SIZES[sizeIdx]);
-  document.getElementById("size-out").textContent = Math.round(SIZES[sizeIdx] * 100) + "%";
-  document.getElementById("size-down").disabled = sizeIdx === 0;
-  document.getElementById("size-up").disabled = sizeIdx === SIZES.length - 1;
-  store.set("tamanho", String(SIZES[sizeIdx]));
-}
-applySize();
-document.getElementById("size-down").addEventListener("click", () => {
-  if (sizeIdx > 0) {
-    sizeIdx--;
-    applySize();
-  }
-});
-document.getElementById("size-up").addEventListener("click", () => {
-  if (sizeIdx < SIZES.length - 1) {
-    sizeIdx++;
-    applySize();
-  }
-});
-
 // ---------- Interruptores ----------
 const ON_CHANGE = {
-  "t-cant": on => {
-    prefs.cant = on;
+  "t-cant": () => {
     stopSpeech();
     const focused = document.activeElement && document.activeElement.closest ? document.activeElement.closest(".word") : null;
     const keep = active ? [active.dataset.v, active.dataset.i] : null;
@@ -1040,29 +985,25 @@ const ON_CHANGE = {
     }
     if (focused) focusWord(wordEl(focused.dataset.v, focused.dataset.i));
     if (!detail.hidden && current) renderEntry();
-  },
-  "t-follow": on => {
-    prefs.follow = on;
-  },
-  "t-slow": on => {
-    prefs.slow = on;
   }
 };
-function applySwitch(t, on) {
-  t.setAttribute("aria-checked", String(on));
-  if (t.dataset.onClass) document.body.classList.toggle(t.dataset.onClass, on);
-  if (t.dataset.offClass) document.body.classList.toggle(t.dataset.offClass, !on);
+// a switch pressed by hand; one of the reading mode turns the mode into "personalizado"
+function togglePref(def) {
+  const on = !prefsState.values[def.id];
+  setPref(def.id, on);
+  if (ON_CHANGE[def.id]) ON_CHANGE[def.id](on);
+  if (!def.inMode) return;
+  if (modo !== "personalizado") {
+    if (modo) {
+      baseMode = modo;
+      store.set("modo-base", modo);
+    }
+    modo = "personalizado";
+    store.set("modo", modo);
+  }
+  showModo();
+  document.dispatchEvent(new CustomEvent("preferences-changed"));
 }
-document.querySelectorAll(".chk[data-key]").forEach(t => {
-  const on = store.get(t.dataset.key, t.dataset.default) === "on";
-  applySwitch(t, on);
-  t.addEventListener("click", () => {
-    const now = t.getAttribute("aria-checked") !== "true";
-    applySwitch(t, now);
-    store.set(t.dataset.key, now ? "on" : "off");
-    if (ON_CHANGE[t.id]) ON_CHANGE[t.id](now);
-  });
-});
 
 // ---------- Anotações (annotations.js) ----------
 window.__carregarCapitulo = (cod, n) => fetchChapter(cod, n);
@@ -1097,22 +1038,16 @@ document.getElementById("open-mine").addEventListener("click", e => {
 // vira "Personalizado" (a partir do modo de origem). O modo vale para todos os aparelhos quando houver conta.
 const MODES = MODE_IDS.map(getMode);
 // the selectors (top bar and Aparência) and the note under them are Svelte components that follow readerState
-mount(ModeSelector, { target: document.getElementById("mode-grid"), props: { variant: "card", onselect: id => applyMode(id) } });
 mount(ModeSelector, { target: document.getElementById("bar-modes"), props: { variant: "bar", onselect: id => applyMode(id) } });
-mount(ModeNote, { target: document.getElementById("mode-note") });
 let modo = store.get("modo", "");
 let baseMode = store.get("modo-base", "interlinear");
 let previousMode = store.get("modo-anterior", "");
 function eyebrowText() {
-  const c = document.body.classList;
-  return eyebrowFor({ original: !c.contains("hide-orig"), running: c.contains("orig-running"), greek: !!GRC });
+  const v = prefsState.values;
+  return eyebrowFor({ original: v["t-orig"], running: !v["t-cards"], greek: !!GRC });
 }
 function setSwitch(id, on) {
-  const t = document.getElementById(id);
-  if (!t || (t.getAttribute("aria-checked") === "true") === !!on) return;
-  applySwitch(t, !!on);
-  store.set(t.dataset.key, on ? "on" : "off");
-  if (ON_CHANGE[t.id]) ON_CHANGE[t.id](!!on);
+  if (setPref(id, !!on) && ON_CHANGE[id]) ON_CHANGE[id](!!on);
 }
 function showModo() {
   const currentChapter = modo || "interlinear";
@@ -1142,28 +1077,11 @@ function applyMode(id, manual = true) {
   document.querySelectorAll(".verse.abrir").forEach(v => v.classList.remove("abrir"));
   showModo();
 }
-// Mudou um item à mão: vira Personalizado
-document.querySelectorAll(".chk[data-modo]").forEach(t =>
-  t.addEventListener("click", () => {
-    if (modo !== "personalizado") {
-      if (modo) {
-        baseMode = modo;
-        store.set("modo-base", modo);
-      }
-      modo = "personalizado";
-      store.set("modo", modo);
-    }
-    showModo();
-    document.dispatchEvent(new CustomEvent("preferences-changed"));
-  })
-);
 // Preferências de leitura para a sincronização (web/sync.js): o modo e os itens visíveis
 window.__preferencias = {
   readStorage() {
     const sw = {};
-    document.querySelectorAll(".chk[data-modo]").forEach(t => {
-      sw[t.id] = t.getAttribute("aria-checked") === "true";
-    });
+    for (const def of PREFS) if (def.inMode) sw[def.id] = !!prefsState.values[def.id];
     return { modo: modo || "interlinear", modo_base: baseMode, listItems: sw };
   },
   applyChanges(p) {
@@ -1363,11 +1281,6 @@ function openWhere() {
   window.addEventListener("scroll", () => requestAnimationFrame(updateVpos), { passive: true });
   document.addEventListener("chapter-rendered", () => requestAnimationFrame(updateVpos));
 }
-// Aparência: os chips mostram a explicação ao passar o dedo/mouse
-document.querySelectorAll(".chks.chips .chk").forEach(c => {
-  const s = c.querySelector("small");
-  if (s && !c.title) c.title = s.textContent;
-});
 // Capítulos muito longos (Salmo 119): o navegador só desenha os versículos perto da tela
 document.addEventListener("chapter-rendered", () => document.body.classList.toggle("cap-longo", !!CH && CH.verses.length >= 100));
 
