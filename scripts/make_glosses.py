@@ -30,6 +30,7 @@ from pathlib import Path
 
 import eflomal
 
+from interlinear.models import AlignedWord
 from interlinear.paths import DB, ROOT
 from interlinear.text import TOKEN_PT, letters_only, norm_greek, strip_marks, without_cantillation
 from interlinear.tsv import lexicon_pt
@@ -314,8 +315,8 @@ def assemble(db, testament):
            FROM words p JOIN books l ON l.code = p.book
            WHERE l.testament = ? ORDER BY l.book_order, p.chapter, p.verse, p.pos"""
     verses = defaultdict(list)
-    for r in db.execute(q, (testament,)):
-        verses[(r[1], r[2], r[3])].append(r)
+    for r in map(AlignedWord._make, db.execute(q, (testament,))):
+        verses[(r.book, r.chapter, r.verse)].append(r)
     texts = {(b, c, v): t for b, c, v, t in db.execute("SELECT book, chapter, verse, blivre FROM verses")}
     item_list = []
     for k, wds in verses.items():
@@ -323,7 +324,7 @@ def assemble(db, testament):
         toks = tokens_pt(t)
         unit = []  # (indice da palavra, tipo, token); tipo "fora" não entra no alinhamento
         for wi, r in enumerate(wds):
-            us = greek_units(r[6], r[8]) if r[4] == "G" else hebrew_units(r[6], r[8])
+            us = greek_units(r.lemma, r.morph) if r.language == "G" else hebrew_units(r.lemma, r.morph)
             for kind, tok in us:
                 if tok == "h853":  # partícula de objeto: sem equivalente em português
                     kind = "fora"
@@ -428,7 +429,7 @@ def compose(item_list, links):
         for wi, r in enumerate(wds):
             d = by_word[wi]
             # raiz de conteúdo (verbo, nome, adjetivo) ligada só a artigo/preposição: alinhamento espúrio
-            if d["raiz"] and root_pos(r[4], r[8]) in ("V", "N", "A") and all(toks[j][0].lower() in STOP_PT for j in d["raiz"]):
+            if d["raiz"] and root_pos(r.language, r.morph) in ("V", "N", "A") and all(toks[j][0].lower() in STOP_PT for j in d["raiz"]):
                 d["raiz"] = set()
             js = sorted(d["raiz"] | d["pre"] | d["suf"])
             if js:
@@ -449,18 +450,18 @@ def compose(item_list, links):
                     full = sorted(set(g) & d["raiz"]) or g[:6]
                 gloss = "-".join(match_case(toks[j][0], propers) for j in full)
                 source = "alinhamento" if d["raiz"] else "parcial"
-                ALIGN_SPANS[r[0]] = [(toks[j][1], toks[j][2]) for j in full]
+                ALIGN_SPANS[r.id] = [(toks[j][1], toks[j][2]) for j in full]
             else:
                 gloss, source = None, None
             root_tok = next((t for tp, t in d["toks"] if tp == "raiz"), None)
             rend = None
             if d["raiz"] and root_tok:
                 rend = "-".join(match_case(toks[j][0], propers) for j in sorted(d["raiz"]))
-                for ch in fallback_keys(d["toks"], r[4], r[8]):
+                for ch in fallback_keys(d["toks"], r.language, r.morph):
                     counts[ch][rend] += 1
                 for j in d["raiz"]:
                     counts[("tok", root_tok)][toks[j][0].lower()] += 1
-            res.append([r[0], gloss, source, d["toks"], r, rend])
+            res.append([r.id, gloss, source, d["toks"], r, rend])
     return res, counts
 
 
@@ -474,7 +475,7 @@ def complete(res, counts):
     pref = {tok: preferred_translation(c) for tok, c in counts.items()}
     for item in res:
         pid, gloss, source, toks, r, rend = item
-        language, morph = r[4], r[8] or ""
+        language, morph = r.language, r.morph or ""
         root_tok = next((t for tp, t in toks if tp == "raiz"), None)
         # palavra gramatical alinhada a uma tradução rara para ela: provável erro de alinhamento;
         # ficam só as palavras portuguesas que são traduções comuns dela
@@ -914,16 +915,16 @@ def final_adjustments(res, counts, pref, texts, lexicon):
     verse_names = defaultdict(set)  # nomes (tradução preferida) das palavras de nome próprio de cada versículo
     for item in res:
         r = item[4]
-        if proper_name(r[4], r[8] or "", r[6] or ""):
+        if proper_name(r.language, r.morph or "", r.lemma or ""):
             rt = next((t for tp, t in item[3] if tp == "raiz"), None)
             if pref.get(rt):
-                verse_names[(r[1], r[2], r[3])].add((rt, pref[rt]))
+                verse_names[(r.book, r.chapter, r.verse)].add((rt, pref[rt]))
     for item in res:
         pid, gloss, source, toks, r, rend = item
-        language, morph, lemma = r[4], r[8] or "", r[6] or ""
-        verse_text = texts.get((r[1], r[2], r[3]), "")
+        language, morph, lemma = r.language, r.morph or "", r.lemma or ""
+        verse_text = texts.get((r.book, r.chapter, r.verse), "")
         root_tok = next((t for tp, t in toks if tp == "raiz"), None)
-        if r[7] == "H3068" and gloss and re.search(r"(^|-)SOU($|-)", gloss) and re.search(r"EU[ -]SOU", verse_text):
+        if r.strong == "H3068" and gloss and re.search(r"(^|-)SOU($|-)", gloss) and re.search(r"EU[ -]SOU", verse_text):
             item[1] = re.sub(r"(^|-)SOU($|-)", r"\1EU-SOU\2", gloss)
             n["YHWH EU-SOU"] += 1
             continue
@@ -947,7 +948,7 @@ def final_adjustments(res, counts, pref, texts, lexicon):
         ):
             rend = gloss
             # dois nomes colados (Tamar-Perez): fica o mais parecido com a transliteração
-            target = name_from_xlit((lexicon.get(r[7]) or {}).get("xlit") or lemma)
+            target = name_from_xlit((lexicon.get(r.strong) or {}).get("xlit") or lemma)
             caps = [t for t in rend.split("-") if t[:1].isupper() and len(t) > 1]
             best_match = max(caps, key=lambda t: similar(t, target))
             item[1] = "-".join(t for t in gloss.split("-") if not (t[:1].isupper() and len(t) > 1) or t == best_match)
@@ -959,7 +960,7 @@ def final_adjustments(res, counts, pref, texts, lexicon):
         if gloss and not rend and proper_name(language, morph, lemma):
             rend = gloss.split("-")[-1]  # glosa pelo léxico: confere o nome também
         if rend and proper_name(language, morph, lemma):
-            target = name_from_xlit((lexicon.get(r[7]) or {}).get("xlit") or lemma)
+            target = name_from_xlit((lexicon.get(r.strong) or {}).get("xlit") or lemma)
             caps = [t for t in rend.split("-") if t[:1].isupper()]
             found = similar_name(target, verse_text)
             if caps and found and found not in caps and similar(found, target) > max(similar(t, target) for t in caps) + 0.2:
@@ -971,8 +972,8 @@ def final_adjustments(res, counts, pref, texts, lexicon):
                 n["nome próprio pela transliteração"] += 1
                 continue
             name = pref.get(root_tok)
-            others = {nm for rt, nm in verse_names[(r[1], r[2], r[3])] if rt != root_tok}
-            target2 = name_from_xlit((lexicon.get(r[7]) or {}).get("xlit") or lemma)
+            others = {nm for rt, nm in verse_names[(r.book, r.chapter, r.verse)] if rt != root_tok}
+            target2 = name_from_xlit((lexicon.get(r.strong) or {}).get("xlit") or lemma)
             if (
                 name
                 and name[:1].isupper()
@@ -988,7 +989,7 @@ def final_adjustments(res, counts, pref, texts, lexicon):
                 n["nome próprio"] += 1
                 continue
         if item[2] in ("sem", "parcial") or not item[1]:
-            e = lexicon.get(r[7]) or {}
+            e = lexicon.get(r.strong) or {}
             if proper_name(language, morph, lemma):
                 base = similar_name(name_from_xlit(e.get("xlit") or lemma), verse_text) or name_from_xlit(e.get("xlit") or lemma)
             elif e.get("pt"):
@@ -1021,15 +1022,15 @@ def apply_manual(db, res, report=None):
     n = equal = 0
     for item in res:
         r = item[4]
-        if r[1] == "GEN" and r[2] == 1:
-            g = manual_glosses.get((without_cantillation(r[5]), r[8]))
+        if r.book == "GEN" and r.chapter == 1:
+            g = manual_glosses.get((without_cantillation(r.text), r.morph))
             if g:
                 n += 1
                 auto = (item[1] or "").lower().replace(" ", "-")
                 if auto == g.lower():
                     equal += 1
                 elif report is not None:
-                    report.append((r[3], without_cantillation(r[5]), g, item[1], item[2]))
+                    report.append((r.verse, without_cantillation(r.text), g, item[1], item[2]))
                 item[1], item[2] = g, "manual"
     return n, equal, len(manual_glosses)
 
@@ -1079,7 +1080,7 @@ def main():
         for _pid, _g, _f, toks, r, _ in res:
             root_tok = next((t for tp, t in toks if tp == "raiz"), None)
             if root_tok:
-                tok_key.setdefault(root_tok, r[7] or ("G:" + r[6] if r[4] == "G" else None))
+                tok_key.setdefault(root_tok, r.strong or ("G:" + r.lemma if r.language == "G" else None))
         for tok, c in counts.items():
             if isinstance(tok, tuple):
                 continue
