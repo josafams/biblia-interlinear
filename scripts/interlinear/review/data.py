@@ -4,6 +4,7 @@ from collections import Counter, defaultdict
 
 from interlinear.models import Word
 from interlinear.text import TOKEN_PT_LETTERS, strip_marks
+from interlinear.tsv import lexicon_pt
 
 
 # ------------------------------------------------------------------ dados
@@ -20,8 +21,10 @@ class Data:
         self.by_verse = defaultdict(list)
         for w in self.words:
             self.by_verse[(w.book, w.chapter, w.verse)].append(w)
+        # def_pt: the meaning in Portuguese of data/lexicon_pt, or the one the corpus gives (the Hebrew particles)
+        pt = lexicon_pt()
         self.lexicon = {
-            r[0]: r
+            r[0]: (*r[:9], pt[r[0]]["meaning"] if r[0] in pt else r[9])
             for r in db.execute(
                 "SELECT entry_key, language, lemma, xlit, pron_en, derivation_en, def_en, kjv_en, gloss_en, def_pt FROM lexicon"
             )

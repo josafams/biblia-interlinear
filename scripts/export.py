@@ -145,9 +145,6 @@ def main(argv):
     if argv[:1] == ["--preview"]:
         preview = (argv[1], set(argv[2:]))
     lex_pt = read_lexicon_pt()
-    # o significado em português também vai para o banco (usado pela revisão automática)
-    db.executemany("UPDATE lexicon SET def_pt = ? WHERE entry_key = ?", [(sig, k) for k, (_, sig) in lex_pt.items()])
-    db.commit()
     marks = read_marks()
     questions = read_questions()
 
