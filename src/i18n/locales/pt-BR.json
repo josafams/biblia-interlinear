@@ -327,7 +327,21 @@
     }
   },
   "account": {
-    "drive_error": "Erro {status} no Google Drive"
+    "drive_error": "Erro {status} no Google Drive",
+    "title": "Guardar no seu Google Drive",
+    "pitch": "Opcional. Suas anotações ficam numa pasta privada do app no seu Drive e passam a valer em todos os seus aparelhos. Sem conta, tudo continua neste aparelho.",
+    "connecting": "Conectando…",
+    "sign_in": "Entrar com Google",
+    "drive_ok": "Google Drive conectado",
+    "devices": {
+      "one": "{count} aparelho",
+      "other": "{count} aparelhos"
+    },
+    "drive_checking": "Conferindo o Google Drive…",
+    "sign_out": "Sair",
+    "wipe_cloud": "Apagar meus dados do Google Drive",
+    "reconnect_hint": "Toque em Reconectar para voltar a salvar no Drive.",
+    "reconnect": "Reconectar"
   },
   "bar": {
     "notes": "Notas",

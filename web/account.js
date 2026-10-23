@@ -1,3 +1,6 @@
+import { flushSync, mount } from "svelte";
+import AccountBox from "../src/components/AccountBox.svelte";
+import { accountView } from "../src/state/account.svelte";
 import { createDrive } from "../src/lib/account/drive";
 import { exposedPlugin, isNative, platform } from "../src/lib/native";
 import { esc } from "../src/lib/text";
@@ -366,53 +369,18 @@ import { esc } from "../src/lib/text";
 `;
   document.head.appendChild(css);
 
-  const accountBox = document.createElement("section");
-  accountBox.className = "sgroup conta";
-  accountBox.id = "conta";
-  accountBox.setAttribute("aria-labelledby", "account-h");
-  accountBox.setAttribute("aria-live", "polite");
-  // A conta fica na parte "Você" do índice (ou logo abaixo do título, em páginas sem essa parte)
+  // A conta fica na parte "Você" do índice (ou logo abaixo do título, em páginas sem essa parte): AccountBox.svelte
   const slot = document.getElementById("toc-account");
   const headEl = document.getElementById("toc")?.querySelector(".shead");
-  if (slot) slot.appendChild(accountBox);
-  else if (headEl) headEl.after(accountBox);
-
-  const initials = n =>
-    (n || "?")
-      .split(/\s+/)
-      .filter(Boolean)
-      .slice(0, 2)
-      .map(p => p[0].toUpperCase())
-      .join("");
-  function meBlock() {
-    const photo = account.photo ? `<img src="${esc(account.photo)}" alt="" referrerpolicy="no-referrer">` : esc(initials(account.nome));
-    return `<div class="account-me"><div class="account-photo">${photo}</div><div><div class="account-name" id="account-h">${esc(account.nome || account.email)}</div><div class="account-email">${esc(account.email)}</div></div></div>`;
-  }
+  if (slot) mount(AccountBox, { target: slot });
+  else if (headEl) mount(AccountBox, { target: headEl.parentElement, anchor: headEl.nextSibling });
   function render() {
-    accountBox.hidden = accountStatus === "unavailable";
-    if (accountBox.hidden) return;
-    const err = errorMsg ? `<p class="account-error" role="alert">${esc(errorMsg)}</p>` : "";
-    if (accountStatus === "signed-out" || (accountStatus === "connecting" && !account)) {
-      accountBox.innerHTML = `<h3 class="account-t" id="account-h">Guardar no seu Google Drive</h3>
-        <p class="account-s">Opcional. Suas anotações ficam numa pasta privada do app no seu Drive e passam a valer em todos os seus aparelhos. Sem conta, tudo continua neste aparelho.</p>
-        <button class="gbtn" id="account-signin" ${accountStatus === "connecting" ? "disabled" : ""}>${G}<span>${accountStatus === "connecting" ? "Conectando…" : "Entrar com Google"}</span></button>${err}`;
-    } else if (accountStatus === "connected") {
-      const ap = drive ? ` · ${drive.aparelhos} ${drive.aparelhos === 1 ? "aparelho" : "aparelhos"}` : "";
-      const st = window.Sync?.statusSummary?.();
-      const d =
-        drive || st
-          ? `<p class="account-drive ok">Google Drive conectado${ap}</p>`
-          : errorMsg
-            ? ""
-            : `<p class="account-drive">Conferindo o Google Drive…</p>`;
-      const s = st ? `<p class="account-sync ${esc(st.tipo)}" id="account-sync">${esc(st.texto)}</p>` : "";
-      accountBox.innerHTML = `${meBlock()}${d}${s}${err}<div class="account-actions"><button id="account-signout">Sair</button></div>
-        <div class="account-more"><button id="account-wipe-cloud">Apagar meus dados do Google Drive</button></div>`;
-    } else {
-      // reconectar ou conectando com conta lembrada
-      accountBox.innerHTML = `${meBlock()}<p class="account-drive alerta">${accountStatus === "connecting" ? "Conectando…" : "Toque em Reconectar para voltar a salvar no Drive."}</p>${err}
-        <div class="account-actions"><button class="prim" id="account-signin" ${accountStatus === "connecting" ? "disabled" : ""}>Reconectar</button><button id="account-signout">Sair</button></div>`;
-    }
+    accountView.status = accountStatus;
+    accountView.me = account ? { nome: account.nome, email: account.email, photo: account.photo } : null;
+    accountView.devices = drive ? drive.aparelhos : null;
+    accountView.sync = accountStatus === "connected" ? window.Sync?.statusSummary?.() || null : null;
+    accountView.error = errorMsg || "";
+    flushSync();
   }
   // carrega o script do Google pouco antes do toque, para o popup abrir ainda dentro do gesto da pessoa
   const prepare = e => {
