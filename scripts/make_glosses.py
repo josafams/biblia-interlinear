@@ -20,6 +20,7 @@ import sqlite3
 import sys
 from collections import Counter, defaultdict
 
+from interlinear.cli import parser
 from interlinear.glosses.adjust import apply_manual, final_adjustments, load_lexicon
 from interlinear.glosses.align import TMP, align_corpus
 from interlinear.glosses.compose import assemble, complete, compose
@@ -28,6 +29,7 @@ from interlinear.paths import DB
 
 
 def main():
+    parser(__doc__).parse_args()
     db = sqlite3.connect(DB)
     db.execute("DROP TABLE IF EXISTS traducoes")
     db.execute("DROP TABLE IF EXISTS translations")

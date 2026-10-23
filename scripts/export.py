@@ -14,6 +14,7 @@ Uso: python3 scripts/export.py [--preview ARQ.json COD.CAP ...]  (a prévia junt
 import sqlite3
 import sys
 
+from interlinear.cli import parser
 from interlinear.export.books import build_books
 from interlinear.export.chapters import Chapters
 from interlinear.export.concordance import write_concordance
@@ -26,8 +27,13 @@ from interlinear.paths import DB
 
 
 def main(argv):
+    ap = parser(__doc__)
+    ap.add_argument("--preview", nargs="+", metavar="ARQ.json COD.CAP", help="só a prévia: o arquivo e os capítulos (GEN.1 JHN.3…)")
+    args = ap.parse_args(argv)
+    if args.preview and len(args.preview) < 2:
+        ap.error("--preview precisa do arquivo e de pelo menos um capítulo")
     db = sqlite3.connect(DB)
-    preview = (argv[1], set(argv[2:])) if argv[:1] == ["--preview"] else None
+    preview = (args.preview[0], set(args.preview[1:])) if args.preview else None
     lex_pt = read_lexicon_pt()
     books = build_books(db)
     chapters = Chapters(db, read_marks(), read_questions())

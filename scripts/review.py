@@ -17,6 +17,7 @@ import sys
 import time
 from collections import Counter
 
+from interlinear.cli import parser
 from interlinear.paths import DB, ROOT
 from interlinear.review.checks.consistency import check_consistency, check_style
 from interlinear.review.checks.coverage import check_coverage, check_lexicon
@@ -33,9 +34,12 @@ from interlinear.review.settings import OUT
 
 
 def main(argv):
+    ap = parser(__doc__)
+    ap.add_argument("book", nargs="?", type=str.upper, help="código do livro (GEN, JHN…); sem ele, a Bíblia inteira")
+    ap.add_argument("chapter", nargs="?", type=int, help="só este capítulo do livro")
+    args = ap.parse_args(argv)
     t0 = time.time()
-    book = argv[0].upper() if argv else None
-    cap = int(argv[1]) if len(argv) > 1 else None
+    book, cap = args.book, args.chapter
     db = sqlite3.connect(f"file:{DB}?mode=ro", uri=True)
     d = Data(db)
     if book and book not in d.order:

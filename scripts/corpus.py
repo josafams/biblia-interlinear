@@ -24,6 +24,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 from interlinear.books import BOOKS, BY_CODE, OT_BOOKS
+from interlinear.cli import parser
 from interlinear.paths import DB
 from interlinear.paths import SOURCES as SOURCES_DIR
 from interlinear.sources import dodson_file, morphgnt_lines, morphhb_file
@@ -334,6 +335,7 @@ def load_strong(fname):
 
 # ---------------------------------------------------------------- banco
 def main():
+    parser(__doc__).parse_args()
     os.makedirs(os.path.dirname(DB), exist_ok=True)
     if os.path.exists(DB):
         os.remove(DB)

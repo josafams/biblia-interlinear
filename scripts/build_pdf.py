@@ -21,6 +21,7 @@ from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(__file__))
 from build_epub import DATA, ROOT, about_html, blivre_text, gloss_html, h, plain  # noqa: E402
+from interlinear.cli import parser
 
 TMP = os.path.join(ROOT, "build", "pdf-build")
 OUT = os.path.join(ROOT, "build", "pdf")
@@ -140,6 +141,9 @@ def book_html(B, LEX, idx):
 
 
 def main(argv):
+    ap = parser(__doc__)
+    ap.add_argument("books", nargs="*", metavar="LIVRO", help="códigos dos livros (RUT…), BLIVRE ou VOLUMES; sem nada, todos os PDF")
+    argv = ap.parse_args(argv).books
     books = json.loads(Path(os.path.join(DATA, "books.json")).read_text(encoding="utf8"))
     LEX = {}
     for L in "HG":
