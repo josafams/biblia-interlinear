@@ -1,16 +1,9 @@
-import {
-  addDays,
-  byDay as sumByDay,
-  duration,
-  newPlan,
-  planStatus,
-  readingPace,
-  reschedule,
-  shortDate,
-  streaks,
-  today
-} from "../src/lib/progress/stats";
-import { esc } from "../src/lib/text";
+import { flushSync, mount } from "svelte";
+import ProgressSheet from "../src/components/ProgressSheet.svelte";
+import { t } from "../src/i18n";
+import { bookDetail, chartBars, overview, planView } from "../src/lib/progress/view";
+import { progressView } from "../src/state/progress.svelte";
+import { byDay as sumByDay, newPlan, reschedule, today } from "../src/lib/progress/stats";
 /* Meu progresso: capítulos lidos, tempo de leitura, sequência de dias, mapa dos livros e plano de leitura.
  * Só conta para quem entrou com a conta Google (o plano do projeto): sem conta, o app guarda só a última posição.
  * Tudo fica no banco local e sincroniza pelo Drive como as anotações (web/sync.js):
@@ -31,7 +24,6 @@ import { esc } from "../src/lib/text";
   if (!A?.storage || !C) return;
   const B = A.storage;
   const CFG = Object.assign({ tick: 5000, minReading: 60, gesture: 120000, saveEvery: 300000 }, window.__progressConfig || {});
-  const pad = n => String(n).padStart(2, "0");
   const readLS = k => {
     try {
       return localStorage.getItem(k);
@@ -49,7 +41,6 @@ import { esc } from "../src/lib/text";
     Object.entries(window.__books || {})
       .sort((a, b) => a[1].i - b[1].i)
       .map(([code, l]) => ({ code, ...l }));
-  const totalChapters = listSheet => listSheet.reduce((s, l) => s + (l.chapterCount || 0), 0);
   const signedIn = () => !!C.account(); // conta lembrada neste aparelho (mesmo à espera de reconectar)
   const paused = () => readLS("interlinear:tempo-pausado") === "sim";
 
@@ -280,307 +271,111 @@ import { esc } from "../src/lib/text";
 .pg-footer { display: grid; gap: 6px; border-top: 1px solid var(--line); padding-top: 12px; }
 .pg-footer button { justify-self: start; border: 0; background: none; padding: 6px 0; color: var(--muted); font: inherit; font-size: 13.5px; text-decoration: underline; cursor: pointer; min-height: 36px; }
 .pg-invite p { line-height: 1.5; }
+.pg-legend i.pg-legend-1 { background: color-mix(in srgb, var(--accent) 22%, var(--surface)); }
+.pg-legend i.pg-legend-2 { background: color-mix(in srgb, var(--accent) 50%, var(--surface)); }
+.pg-legend i.pg-legend-3 { background: var(--accent); }
 `;
   document.head.appendChild(css);
 
-  const panel = document.createElement("aside");
-  panel.id = "progresso";
-  panel.className = "sheet right progresso-sheet";
-  panel.hidden = true;
-  panel.setAttribute("role", "dialog");
-  panel.setAttribute("aria-modal", "true");
-  panel.setAttribute("aria-labelledby", "pg-h");
-  panel.setAttribute("lang", "pt-BR");
-  document.body.appendChild(panel);
-  let activeTab = "semana",
-    openBook = null,
-    focusReturn = null;
+  // a tela é ProgressSheet.svelte; os números dela saem de src/lib/progress/view.ts
+  mount(ProgressSheet, {
+    target: document.body,
+    props: {
+      onclose: () => hide(),
+      ongo(cod, n) {
+        hide();
+        document.dispatchEvent(new CustomEvent("annotations:goto", { detail: { book: cod, chapter: n } }));
+      },
+      ontab(tab) {
+        progressView.tab = tab;
+        render();
+      },
+      async onbook(cod) {
+        const b = (window.__books || {})[cod];
+        progressView.book = { code: cod, name: b?.name || cod, abbrev: b?.abbrev || cod };
+        await render();
+        panel.scrollTop = 0;
+        panel.querySelector("#pg-back")?.focus();
+      },
+      onback() {
+        progressView.book = null;
+        render();
+      },
+      async onchapter(n, read) {
+        await markRead(progressView.book.code, n, read);
+        panel.querySelector(`[data-cap="${n}"]`)?.focus();
+      },
+      onplan: id => startPlan(id),
+      async onreschedule() {
+        const D = await payload();
+        return reschedulePlan(D.plano, D.readSet);
+      },
+      async onfinish() {
+        const r = await C.ask(t("progress.finish_title"), t("progress.finish_text"), [
+          { id: "sim", texto: t("progress.finish_yes"), prim: true },
+          { id: "", texto: t("progress.cancel") }
+        ]);
+        if (r === "sim") {
+          await A.removeRecord("planos", "atual");
+          render();
+        }
+      },
+      onpause() {
+        saveLS("interlinear:tempo-pausado", paused() ? null : "sim");
+        render();
+      },
+      async onreset() {
+        const r = await C.ask(t("progress.reset_title"), t("progress.reset_text"), [
+          { id: "sim", texto: t("progress.reset_yes"), perigo: true },
+          { id: "", texto: t("progress.cancel"), prim: true }
+        ]);
+        if (r !== "sim") return;
+        acc = { dia: today(), segundos: 0, livros: {}, caps: 0, verbetes: 0 };
+        for (const c of ["leituras", "tempo", "planos"]) for (const x of await A.allRecords(c)) await A.removeRecord(c, x.id);
+        render();
+      }
+    }
+  });
+  const panel = document.getElementById("progresso");
+  let focusReturn = null;
 
   function open() {
     focusReturn = document.activeElement;
     document.dispatchEvent(new CustomEvent("annotations:open-panel"));
-    openBook = null;
-    panel.hidden = false;
+    progressView.book = null;
+    progressView.open = true;
     render().then(() => panel.querySelector("#pg-close")?.focus());
   }
   function hide() {
-    if (panel.hidden) return;
-    panel.hidden = true;
+    if (!progressView.open) return;
+    progressView.open = false;
+    flushSync();
     if (focusReturn?.isConnected) focusReturn.focus({ preventScroll: true });
   }
-  const headerHtml = titulo =>
-    `<div class="shead"><h2 id="pg-h">${esc(titulo)}</h2><button class="ibtn" id="pg-close" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>`;
-
   async function render() {
-    if (panel.hidden) return;
-    if (!signedIn()) {
-      panel.innerHTML =
-        headerHtml("Meu progresso") +
-        `<div class="pg-sec pg-invite">
-        <p>Entre com sua conta Google para acompanhar quanto da Bíblia já leu, o tempo de leitura por dia, a sequência de dias e um plano de leitura — somados em todos os seus aparelhos.</p>
-        <p class="pg-sub">Os números ficam só para você, no seu aparelho e numa pasta privada do app no seu Google Drive.</p>
-        ${C.available() ? `<div><button class="gbtn js-signin">Entrar com Google</button></div>` : `<p class="pg-sub">O login ainda não está disponível nesta versão.</p>`}</div>`;
-      return;
-    }
-    const D = await payload();
-    panel.innerHTML =
-      headerHtml(openBook ? window.__books?.[openBook]?.name || openBook : "Meu progresso") +
-      (openBook ? bookHtml(D, openBook) : overviewHtml(D));
-  }
-
-  function overviewHtml(D) {
-    const ls = bookList(),
-      total = totalChapters(ls) || 1189;
-    const at = ls.filter(l => !l.nt),
-      nt = ls.filter(l => l.nt);
-    const readCountOf = listSheet =>
-      listSheet.reduce((s, l) => s + [...Array(l.chapterCount).keys()].filter(i => D.readSet.has(`${l.code}.${i + 1}`)).length, 0);
-    const nRead = D.readSet.size,
-      nOT = readCountOf(at),
-      nNT = readCountOf(nt);
-    const completedBooks = ls.filter(l => readCountOf([l]) === l.chapterCount).length;
-    const pct = Math.floor((nRead / total) * 1000) / 10;
-    const streak = streaks(D.byDay);
-    const week = [...Array(7).keys()].map(i => D.byDay[addDays(today(), -i)]?.segundos || 0).reduce((a, b) => a + b, 0);
-    const totalSeconds = Object.values(D.byDay).reduce((s, d) => s + d.segundos, 0);
-    const verbetes = Object.values(D.byDay).reduce((s, d) => s + d.verbetes, 0);
-    const pos = D.posicao && window.__books?.[D.posicao.cod];
-    const continueBtn = pos
-      ? `<button class="pg-continue" data-ir="${esc(D.posicao.cod)}.${D.posicao.cap}"><span><small>Continuar de onde parou</small><b>${esc(pos.name)} ${D.posicao.cap}</b></span><span aria-hidden="true">→</span></button>`
-      : "";
-    return `${continueBtn}
-      <section class="pg-sec" aria-labelledby="pg-bible"><h3 id="pg-bible">A Bíblia inteira</h3>
-        <div class="pg-big"><b>${pct.toLocaleString("pt-BR")}%</b><span>${nRead.toLocaleString("pt-BR")} de ${total.toLocaleString("pt-BR")} capítulos lidos</span></div>
-        <div class="pg-bar" role="img" aria-label="${pct.toLocaleString("pt-BR")}% lidos"><i style="width:${Math.min(100, pct)}%"></i></div>
-        <p class="pg-sub">Antigo Testamento: ${nOT} de ${totalChapters(at)} · Novo Testamento: ${nNT} de ${totalChapters(nt)} · ${completedBooks} ${completedBooks === 1 ? "livro concluído" : "livros concluídos"}</p>
-      </section>
-      <section class="pg-sec" aria-label="Números"><div class="pg-tiles">
-        <div class="pg-tile"><b>${streak.current} ${streak.current === 1 ? "dia" : "dias"}</b><span>seguidos lendo · recorde ${streak.record}</span></div>
-        <div class="pg-tile"><b>${duration(week)}</b><span>nos últimos 7 dias · média ${duration(week / 7)}/dia</span></div>
-        <div class="pg-tile"><b>${duration(totalSeconds)}</b><span>de leitura no total</span></div>
-        <div class="pg-tile"><b>${verbetes.toLocaleString("pt-BR")}</b><span>verbetes abertos</span></div>
-      </div></section>
-      <section class="pg-sec" aria-labelledby="pg-time"><h3 id="pg-time">Tempo de leitura por dia</h3>
-        <div class="pg-tabs" role="group" aria-label="Período">${[
-          ["semana", "Semana"],
-          ["mes", "Mês"],
-          ["ano", "Ano"]
-        ]
-          .map(([k, n]) => `<button class="chip" data-active-tab="${k}" aria-pressed="${activeTab === k}">${n}</button>`)
-          .join("")}</div>
-        <div class="pg-chart">${chart(D.byDay)}</div>
-      </section>
-      <section class="pg-sec" aria-labelledby="pg-map"><h3 id="pg-map">Os 66 livros</h3>
-        <div class="pg-map">${ls
-          .map(l => {
-            const n = readCountOf([l]),
-              f = n / l.chapterCount;
-            const nv = n === 0 ? 0 : n === l.chapterCount ? 3 : f > 0.5 ? 2 : 1;
-            return `<button class="pg-book n${nv}" data-livro="${l.code}" title="${esc(l.name)}: ${n} de ${l.chapterCount}" aria-label="${esc(l.name)}: ${n} de ${l.chapterCount} capítulos lidos">${esc(l.abbrev)}</button>`;
-          })
-          .join("")}</div>
-        <div class="pg-legend"><span><i></i>não começado</span><span><i style="background:color-mix(in srgb,var(--accent) 22%,var(--surface))"></i>até a metade</span><span><i style="background:color-mix(in srgb,var(--accent) 50%,var(--surface))"></i>mais da metade</span><span><i style="background:var(--accent)"></i>concluído</span></div>
-      </section>
-      ${planSection(D)}
-      <section class="pg-sec" aria-labelledby="pg-study"><h3 id="pg-study">Estudo</h3>
-        <p class="pg-sub">${D.estudo.notas} ${D.estudo.notas === 1 ? "nota" : "notas"} · ${D.estudo.marcacoes} ${D.estudo.marcacoes === 1 ? "marcação" : "marcações"} · ${D.estudo.favoritos} ${D.estudo.favoritos === 1 ? "favorito" : "favoritos"}</p>
-      </section>
-      <div class="pg-footer">
-        <button id="pg-pause">${paused() ? "Voltar a contar o tempo de leitura" : "Pausar a contagem de tempo neste aparelho"}</button>
-        <button id="pg-reset">Zerar estatísticas</button>
-      </div>`;
-  }
-
-  function chart(byDay) {
-    let bars = [];
-    if (activeTab === "ano") {
-      const currentTime = new Date();
-      for (let i = 11; i >= 0; i--) {
-        const d = new Date(currentTime.getFullYear(), currentTime.getMonth() - i, 1),
-          monthKey = `${d.getFullYear()}-${pad(d.getMonth() + 1)}`;
-        const sec = Object.entries(byDay)
-          .filter(([k]) => k.startsWith(monthKey))
-          .reduce((s, [, v]) => s + v.segundos, 0);
-        bars.push({ rot: ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"][d.getMonth()], sec });
-      }
-    } else {
-      const n = activeTab === "mes" ? 30 : 7,
-        sem = ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"];
-      for (let i = n - 1; i >= 0; i--) {
-        const dia = addDays(today(), -i),
-          [a, m, d] = dia.split("-").map(Number);
-        bars.push({ rot: n === 7 ? sem[new Date(a, m - 1, d).getDay()] : i % 5 === 0 ? String(d) : "", sec: byDay[dia]?.segundos || 0 });
-      }
-    }
-    const W = 520,
-      H = 160,
-      base = 136,
-      topY = 12,
-      max = Math.max(60, ...bars.map(b => b.sec));
-    const barWidth = W / bars.length,
-      average = bars.reduce((s, b) => s + b.sec, 0) / bars.length;
-    const y = s => base - (s / max) * (base - topY);
-    const desc = bars
-      .map(b => `${b.rot || ""} ${duration(b.sec)}`)
-      .filter(Boolean)
-      .join(", ");
-    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Tempo de leitura: ${esc(desc)}. Média ${duration(average)}.">
-      ${bars
-        .map(
-          (
-            b,
-            i
-          ) => `<rect class="bar" x="${(i * barWidth + barWidth * 0.18).toFixed(1)}" y="${y(b.sec).toFixed(1)}" width="${(barWidth * 0.64).toFixed(1)}" height="${(base - y(b.sec)).toFixed(1)}" rx="2"><title>${esc(b.rot)} ${duration(b.sec)}</title></rect>
-        <text x="${(i * barWidth + barWidth / 2).toFixed(1)}" y="${H - 6}" text-anchor="middle">${esc(b.rot)}</text>`
-        )
-        .join("")}
-      <line class="media" x1="0" x2="${W}" y1="${y(average).toFixed(1)}" y2="${y(average).toFixed(1)}"/>
-      <text x="${W - 2}" y="${Math.max(10, y(average) - 4).toFixed(1)}" text-anchor="end">média ${esc(duration(average))}</text>
-    </svg>`;
-  }
-
-  function planSection(D) {
-    const p = D.plano;
-    if (!p || !p.caps?.length)
-      return `<section class="pg-sec" aria-labelledby="pg-plan"><h3 id="pg-plan">Plano de leitura</h3>
-      <p class="pg-sub">Opcional: um ritmo para ler a Bíblia toda ou o Novo Testamento, com a leitura de cada dia.</p>
-      <div class="pg-btns"><button data-plano="ano">Bíblia em 1 ano</button><button data-plano="nt90">Novo Testamento em 90 dias</button></div></section>`;
-    const s = planStatus(p, D.readSet);
-    const chapterName = id => {
-      const [cod, n] = id.split(".");
-      return `${window.__books?.[cod]?.abbrev || cod} ${n}`;
-    };
-    return `<section class="pg-sec" aria-labelledby="pg-plan"><h3 id="pg-plan">Plano de leitura · ${esc(p.nome)}</h3>
-      <p class="pg-sub">Dia ${s.dia} de ${s.D} · ${s.done.toLocaleString("pt-BR")} de ${s.N.toLocaleString("pt-BR")} capítulos · <span class="pg-status ${s.tipo}">${esc(s.texto)}</span></p>
-      ${s.done < s.N ? `<p class="pg-sub">Leitura de hoje:</p><div class="pg-day">${s.todays.map(c => `<button data-ir="${c}" class="${D.readSet.has(c) ? "feito" : ""}">${esc(chapterName(c))}</button>`).join("") || '<span class="pg-sub">nada para hoje</span>'}</div>` : ""}
-      <div class="pg-btns"><button id="pg-readjust">Reajustar as datas a partir de hoje</button><button id="pg-finish">Encerrar o plano</button></div></section>`;
-  }
-
-  function bookHtml(D, cod) {
-    const l = bookList().find(x => x.code === cod);
-    if (!l) return "";
-    const caps = Array.from({ length: l.chapterCount }, (_, i) => i + 1);
-    const readHere = caps.filter(n => D.readSet.has(`${cod}.${n}`));
-    const recs = readHere.map(n => D.readSet.get(`${cod}.${n}`));
-    const primeira = recs
-      .map(r => r.primeira)
-      .filter(Boolean)
-      .sort()[0];
-    const ultima = recs
-      .map(r => r.ultima)
-      .filter(Boolean)
-      .sort()
-      .at(-1);
-    const reread = recs.filter(r => (r.vezes || 0) > 1).sort((a, b) => b.vezes - a.vezes)[0];
-    const bookTime = Object.values(D.byDay).reduce((s, d) => s + (d.livros[cod] || 0), 0);
-    const reading = D.posicao?.cod === cod ? D.posicao.cap : null;
-    const remaining = l.chapterCount - readHere.length,
-      r = readingPace(D.readSet.values());
-    const forecast =
-      remaining && r > 0 ? ` · no seu ritmo, cerca de ${Math.ceil(remaining / r)} ${Math.ceil(remaining / r) === 1 ? "dia" : "dias"}` : "";
-    const nextChapter = caps.find(n => !D.readSet.has(`${cod}.${n}`)) || 1;
-    return `<div><button class="pg-back" id="pg-back">← Meu progresso</button></div>
-      <section class="pg-sec" aria-label="Resumo do livro">
-        <div class="pg-big"><b>${readHere.length}</b><span>de ${l.chapterCount} capítulos lidos</span></div>
-        <div class="pg-bar"><i style="width:${((readHere.length / l.chapterCount) * 100).toFixed(1)}%"></i></div>
-        <p class="pg-sub">${remaining ? `Faltam ${remaining}${forecast}` : "Livro concluído"}</p>
-      </section>
-      <section class="pg-sec" aria-labelledby="pg-chaptersh"><h3 id="pg-chaptersh">Capítulos</h3>
-        <p class="pg-sub">Toque para marcar ou desmarcar como lido. Ponto: tem anotação; tracejado: em leitura.</p>
-        <div class="pg-chapters">${caps
-          .map(n => {
-            const id = `${cod}.${n}`;
-            return `<button class="pg-chapter${D.withNotes.has(id) ? " anot" : ""}${reading === n && !D.readSet.has(id) ? " lendo" : ""}" data-cap="${n}" aria-pressed="${D.readSet.has(id)}" aria-label="Capítulo ${n}${D.readSet.has(id) ? ", lido" : ""}${D.withNotes.has(id) ? ", com anotação" : ""}">${n}</button>`;
-          })
-          .join("")}</div>
-      </section>
-      <section class="pg-sec" aria-label="Números do livro"><div class="pg-tiles">
-        <div class="pg-tile"><b>${duration(bookTime)}</b><span>de leitura neste livro</span></div>
-        <div class="pg-tile"><b>${reread ? `${l.abbrev} ${reread.n}` : "—"}</b><span>${reread ? `mais relido (${reread.vezes} vezes)` : "capítulo mais relido"}</span></div>
-        <div class="pg-tile"><b>${shortDate(primeira)}</b><span>primeira leitura</span></div>
-        <div class="pg-tile"><b>${shortDate(ultima)}</b><span>última leitura</span></div>
-      </div></section>
-      <div class="pg-btns"><button class="prim" data-ir="${cod}.${nextChapter}">Ler ${esc(l.abbrev)} ${nextChapter}</button></div>`;
-  }
-
-  panel.addEventListener("click", async e => {
-    const b = e.target.closest("button");
-    if (!b) return;
-    if (b.id === "pg-close") return hide();
-    if (b.dataset.ir) {
-      const [cod, n] = b.dataset.ir.split(".");
-      hide();
-      document.dispatchEvent(new CustomEvent("annotations:goto", { detail: { book: cod, chapter: +n } }));
-      return;
-    }
-    if (b.dataset.activeTab) {
-      activeTab = b.dataset.activeTab;
-      return render();
-    }
-    if (b.dataset.livro) {
-      openBook = b.dataset.livro;
-      await render();
-      panel.scrollTop = 0;
-      panel.querySelector("#pg-back")?.focus();
-      return;
-    }
-    if (b.id === "pg-back") {
-      openBook = null;
-      return render();
-    }
-    if (b.dataset.cap && openBook) {
-      await markRead(openBook, +b.dataset.cap, b.getAttribute("aria-pressed") !== "true");
-      panel.querySelector(`[data-cap="${b.dataset.cap}"]`)?.focus();
-      return;
-    }
-    if (b.dataset.plano) return startPlan(b.dataset.plano);
-    if (b.id === "pg-readjust") {
+    if (!progressView.open) return;
+    progressView.signedIn = signedIn();
+    progressView.canSignIn = C.available();
+    progressView.paused = paused();
+    if (progressView.signedIn) {
       const D = await payload();
-      return reschedulePlan(D.plano, D.readSet);
+      const books = bookList();
+      const byCode = window.__books || {};
+      const pos = D.posicao && byCode[D.posicao.cod];
+      progressView.continueAt = pos ? { code: D.posicao.cod, chapter: D.posicao.cap, name: pos.name } : null;
+      progressView.overview = overview(D, books);
+      progressView.chart = chartBars(D.byDay, progressView.tab);
+      progressView.plan = planView(D, byCode);
+      progressView.study = D.estudo;
+      const b = progressView.book && books.find(x => x.code === progressView.book.code);
+      progressView.detail = b ? bookDetail(D, b) : null;
     }
-    if (b.id === "pg-finish") {
-      const r = await C.ask("Encerrar o plano?", "Os capítulos lidos continuam contando no seu progresso.", [
-        { id: "sim", texto: "Encerrar", prim: true },
-        { id: "", texto: "Cancelar" }
-      ]);
-      if (r === "sim") {
-        await A.removeRecord("planos", "atual");
-        render();
-      }
-      return;
-    }
-    if (b.id === "pg-pause") {
-      saveLS("interlinear:tempo-pausado", paused() ? null : "sim");
-      return render();
-    }
-    if (b.id === "pg-reset") {
-      const r = await C.ask(
-        "Zerar estatísticas?",
-        "Apaga os capítulos lidos, o tempo de leitura e o plano, em todos os seus aparelhos. As anotações não são afetadas.",
-        [
-          { id: "sim", texto: "Zerar", perigo: true },
-          { id: "", texto: "Cancelar", prim: true }
-        ]
-      );
-      if (r !== "sim") return;
-      acc = { dia: today(), segundos: 0, livros: {}, caps: 0, verbetes: 0 };
-      for (const c of ["leituras", "tempo", "planos"]) for (const x of await A.allRecords(c)) await A.removeRecord(c, x.id);
-      return render();
-    }
-  });
-  panel.addEventListener("keydown", e => {
-    if (e.key === "Escape") {
-      e.stopPropagation();
-      hide();
-    }
-  });
+    flushSync();
+  }
+
   // o painel se atualiza quando chegam mudanças de outro aparelho
-  A.onChange(() => {
-    if (!panel.hidden) render();
-  });
-  C.onChange(() => {
-    if (!panel.hidden) render();
-  });
+  A.onChange(() => render());
+  C.onChange(() => render());
 
   window.Progress = { open, hide, markRead, saveTime, payload: () => payload() };
 })();
