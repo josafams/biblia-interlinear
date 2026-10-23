@@ -10,11 +10,14 @@ Usage:
 
 import argparse
 import hashlib
+import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 OUTPUTS = ["build/data", "build/web/dados", "build/review"]
+# lines that change on every run by design: the time the review report was made
+VOLATILE = {"build/review/report.md": re.compile(rb"^Gerado por `scripts/review\.py` em .*$", re.M)}
 
 
 def file_hashes(root: Path = ROOT) -> dict[str, str]:
@@ -24,7 +27,11 @@ def file_hashes(root: Path = ROOT) -> dict[str, str]:
         if not base.exists():
             continue
         for f in sorted(p for p in base.rglob("*") if p.is_file()):
-            hashes[f.relative_to(root).as_posix()] = hashlib.sha256(f.read_bytes()).hexdigest()
+            name = f.relative_to(root).as_posix()
+            content = f.read_bytes()
+            if name in VOLATILE:
+                content = VOLATILE[name].sub(b"", content)
+            hashes[name] = hashlib.sha256(content).hexdigest()
     return hashes
 
 

@@ -564,6 +564,7 @@ def content(ts):
 
 
 def content_stems(gloss):
+    # a set: a Counter fed with it must get it sorted, or most_common breaks ties differently on each run
     return {stem(t) for t in content(toks(gloss))}
 
 
@@ -1729,7 +1730,7 @@ def check_consistency(d, M, ws, scope_books):
         if n_majority / n < 0.5:
             continue
         st_maj = content_stems(majority)
-        freq_st = Counter(s for w in g_ws for s in content_stems(w[GL]))
+        freq_st = Counter(s for w in g_ws for s in sorted(content_stems(w[GL])))
         for w in g_ws:
             gl = w[GL].lower()
             if gl == majority or tally[gl] / n > 0.2:
@@ -1755,7 +1756,7 @@ def check_consistency(d, M, ws, scope_books):
             continue
         freq = Counter()
         for w in g_ws:
-            freq.update(content_stems(w[GL]))
+            freq.update(sorted(content_stems(w[GL])))
         top, ntop = freq.most_common(1)[0] if freq else (None, 0)
         if ntop / n < 0.6:
             continue
@@ -1934,7 +1935,7 @@ def check_bridges(d, M, scope_books):
     def dominant(s):
         c = Counter()
         for w in by_strong.get(s, []):
-            c.update(content_stems(w[GL]))
+            c.update(sorted(content_stems(w[GL])))
         return c
 
     for h, g, expected in EQUIV:
@@ -1987,7 +1988,7 @@ def check_bridges(d, M, scope_books):
                 continue
             ca = Counter()
             for w in g_ws:
-                ca.update(content_stems(w[GL]))
+                ca.update(sorted(content_stems(w[GL])))
             if not ca:
                 continue
             ta = {x for x, _ in ca.most_common(2)}
