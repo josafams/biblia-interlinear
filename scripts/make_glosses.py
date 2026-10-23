@@ -17,7 +17,6 @@ Uso: python3 scripts/make_glosses.py
 
 import csv
 import difflib
-import glob
 import gzip
 import hashlib
 import os
@@ -33,6 +32,7 @@ import eflomal
 
 from interlinear.paths import DB, ROOT
 from interlinear.text import TOKEN_PT, letters_only, norm_greek, strip_marks, without_cantillation
+from interlinear.tsv import lexicon_pt
 
 TMP = os.path.join(ROOT, "build", "alignment")
 # Trechos da BLIVRE ligados a cada palavra pelo alinhamento: id da palavra → [(início, fim), ...] em caracteres.
@@ -1036,11 +1036,7 @@ def apply_manual(db, res, report=None):
 
 def load_lexicon(db):
     """Significado curto de cada verbete: português (data/lexicon_pt) ou inglês (Strong/Dodson)."""
-    pt = {}
-    for fname in glob.glob(os.path.join(ROOT, "data", "lexicon_pt", "*.tsv")):
-        with open(fname, encoding="utf8") as f:
-            for row in csv.DictReader(f, delimiter="\t"):
-                pt[row["key"]] = row["meaning"]
+    pt = {k: r["meaning"] for k, r in lexicon_pt().items()}
     lex = {}
     for entry_key, xlit, gloss_en, kjv, def_en, def_pt in db.execute(
         "SELECT entry_key, xlit, gloss_en, kjv_en, def_en, def_pt FROM lexicon"
