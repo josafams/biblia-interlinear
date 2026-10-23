@@ -5,7 +5,8 @@ import { flushSync, mount } from "svelte";
 import AnnotatePanel from "../../components/AnnotatePanel.svelte";
 import { t } from "../../i18n";
 import type { Anchor, Anchored } from "../../lib/annotations/verse";
-import { exposedPlugin } from "../../lib/native";
+import { exposedPlugin, isNative } from "../../lib/native";
+import { verseLink } from "../../lib/share";
 import { annotate } from "../../state/annotate.svelte";
 import { side } from "../../state/layout.svelte";
 import { ANNOTATIONS_OPEN_PANEL, ANNOTATIONS_SPEAK } from "../events";
@@ -21,8 +22,7 @@ const blivreOf = (a: Anchor) => A.chapter?.verses.find(x => x.n === a.ver)?.bliv
 // Share: the address of the verse (#JHN.3.16) with the Bíblia Livre text. In the app it goes through the system
 // share sheet and points to the published site; in the browser it uses the Web Share API or copies the link.
 async function shareVerse(a: Anchor) {
-  const base = /^https?:$/.test(location.protocol) ? location.href.split("#")[0] : "https://josafams.github.io/biblia-interlinear/ler.html";
-  const url = `${base}#${a.livro}.${a.cap}.${a.ver}`;
+  const url = verseLink({ book: a.livro, chapter: a.cap, verse: a.ver }, { native: isNative, href: location.href });
   const text = t("annotate.share_text", { text: selection?.trecho || blivreOf(a), ref: ref(a) }).trim();
   const share = exposedPlugin<{ share(o: object): Promise<unknown> }>("Share");
   try {
