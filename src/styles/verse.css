@@ -23,6 +23,7 @@ h1 .heb {
   padding-block: 18px;
   border-bottom: 1px solid var(--line);
   scroll-margin-top: calc(var(--bar-h) + 8px);
+  grid-template-columns: minmax(0, 1fr);
 }
 .vhead {
   display: flex;
@@ -34,6 +35,8 @@ h1 .heb {
   font: 500 14px var(--font-mono);
   color: var(--accent);
   font-variant-numeric: tabular-nums;
+  position: relative;
+  position: relative;
 }
 .words {
   display: flex;
@@ -57,6 +60,9 @@ h1 .heb {
   font: inherit;
   color: inherit;
   text-align: center;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 .word:hover {
   border-color: var(--line);
@@ -173,8 +179,6 @@ body.grc .words {
 body.grc .word .h {
   font-family: var(--font-grc);
   direction: ltr;
-}
-body.grc .word .h {
   font-size: calc(21px * var(--k));
 }
 .word .g.aux {
@@ -244,6 +248,7 @@ body.orig-running .word {
   background: none;
   border: 0;
   border-radius: 4px;
+  padding: 2px 1px;
 }
 body.orig-running .word .x,
 body.orig-running .word .p,
@@ -255,9 +260,6 @@ body.orig-running .word .m {
 body.orig-running .word.active,
 body.orig-running .word.speaking {
   background: var(--accent-soft);
-}
-body.orig-running .word .h {
-  font-size: calc(26px * var(--k));
 }
 .word .m {
   display: none;
@@ -279,11 +281,6 @@ body.hide-vnum .vnum:not(:focus-within) {
 body.hide-marks .marks,
 body.hide-marks .vnote {
   display: none;
-}
-body.blivre-par.hide-orig #verses {
-  max-width: 68ch;
-  font-size: calc(18px * var(--k));
-  line-height: 1.8;
 }
 body.blivre-par.hide-orig .verse:not(.abrir) {
   display: inline;
@@ -356,11 +353,6 @@ mark.mk {
   color: var(--mk-ink);
   opacity: 0.85;
 }
-.word {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
 .vtags {
   display: inline-flex;
   align-items: center;
@@ -399,9 +391,6 @@ mark.mk {
 body.blivre-par.hide-orig .verse:not(.abrir) .vtags,
 body.blivre-par.hide-orig .verse:not(.abrir) .vmark {
   display: none;
-}
-.word.linked {
-  box-shadow: 0 0 0 2px var(--accent);
 }
 .vann {
   display: flex;
@@ -457,19 +446,6 @@ body.blivre-par.hide-orig .verse:not(.abrir) .vmark {
 .vhead {
   gap: 6px;
   min-height: 44px;
-}
-.vnum {
-  position: relative;
-}
-.vnum.has-rev::after {
-  content: "";
-  position: absolute;
-  top: -2px;
-  right: -9px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--flag);
 }
 body.hide-marks .vnum.has-rev::after {
   display: none;
@@ -530,6 +506,7 @@ body.hide-marks .vnum.has-rev::after {
   color: var(--muted);
 }
 .word.linked {
+  box-shadow: 0 0 0 2px var(--accent);
   border-color: var(--accent);
   background: var(--accent-soft);
 }
@@ -553,7 +530,7 @@ body.hide-ann .vann,
 body.hide-ann .vtags,
 body.hide-ann .vfav,
 body.hide-ann .vnota {
-  display: none !important;
+  display: none;
 }
 body.hide-ann .verse[class*="mk-"] .blivre,
 body.hide-ann .verse[class*="mk-"] .vnum,
@@ -762,6 +739,9 @@ h1 .heb {
 }
 /* Bíblia: um parágrafo em Literata 17px / 1,8; número sobrescrito Atkinson 700 12px no destaque; cor como realce do trecho */
 body.blivre-par.hide-orig #verses {
+  max-width: 68ch;
+  font-size: calc(18px * var(--k));
+  line-height: 1.8;
   font-family: var(--font-body);
   font-size: calc(17px * var(--k));
   line-height: 1.8;
@@ -831,10 +811,8 @@ body.orig-running.hide-blivre .verse:not(.abrir) .vnum {
 body.orig-running.hide-blivre .verse:not(.abrir) .words {
   display: inline;
 }
-body.orig-running .word {
-  padding: 2px 1px;
-}
 body.orig-running .word .h {
+  font-size: calc(26px * var(--k));
   font-size: calc(21px * var(--k));
   line-height: 1.9;
 }
@@ -845,10 +823,15 @@ body.orig-running.hide-blivre .verse[class*="mk-"]:not(.abrir) {
 .verse details.marks {
   display: none;
 }
-.vnum {
-  position: relative;
-}
 .vnum.has-rev::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: -9px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--flag);
   width: 8px;
   height: 8px;
   top: 2px;
@@ -860,9 +843,6 @@ body.orig-running.hide-blivre .verse[class*="mk-"]:not(.abrir) {
   color: var(--muted);
 }
 /* o versículo nunca fica mais largo que a coluna (no celular, uma grade sem colunas crescia até o conteúdo e a página dava zoom para fora) */
-.verse {
-  grid-template-columns: minmax(0, 1fr);
-}
 .verse > * {
   min-width: 0;
 }

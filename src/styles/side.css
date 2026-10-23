@@ -14,6 +14,10 @@
     background: var(--surface);
     border-left: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
+    height: 56px;
+    padding: 6px 12px;
+    gap: 3px;
+    isolation: isolate;
   }
   body.com-detail .ptabs,
   body.com-mbar .ptabs,
@@ -29,11 +33,6 @@
     font: 500 14px var(--font-body);
     cursor: pointer;
   }
-  .ptabs button[aria-pressed="true"] {
-    background: var(--accent-soft);
-    color: var(--accent);
-    font-weight: 600;
-  }
 }
 @media (max-width: 1099px) {
   /* Abas do painel do computador não aparecem no celular */
@@ -42,11 +41,6 @@
   }
 }
 @media (min-width: 1100px) {
-  .ptabs {
-    height: 56px;
-    padding: 6px 12px;
-    gap: 3px;
-  }
   .ptabs::before {
     content: "";
     position: absolute;
@@ -54,9 +48,6 @@
     border-radius: 12px;
     background: var(--chip);
     z-index: -1;
-  }
-  .ptabs {
-    isolation: isolate;
   }
   .ptabs button {
     margin: 3px 0;
@@ -71,6 +62,9 @@
     margin-right: 3px;
   }
   .ptabs button[aria-pressed="true"] {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 600;
     background: var(--surface);
     color: var(--fg);
     font-weight: 700;

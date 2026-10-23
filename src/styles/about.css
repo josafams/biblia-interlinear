@@ -345,11 +345,6 @@
 body.hide-about #sobre {
   display: none;
 }
-/* "Sobre o livro" recolhido vira uma linha discreta */
-.about:not([open]) {
-  background: transparent;
-  border-color: transparent;
-}
 .about:not([open]) > summary {
   min-height: 44px;
   padding: 6px 2px;
@@ -380,6 +375,9 @@ header + .about {
 .about > summary {
   display: none;
 }
+/* "Sobre o livro" recolhido vira uma linha discreta */
 .about:not([open]) {
+  background: transparent;
+  border-color: transparent;
   display: none;
 }

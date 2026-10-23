@@ -91,23 +91,10 @@ body.grc .orig,
   gap: 10px;
   margin-top: 16px;
 }
-.welcome p {
-  margin: 0;
-}
 .welcome .wopts {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-}
-.welcome .wopts button {
-  min-height: 44px;
-  padding: 0 16px;
-  border-radius: 999px;
-  border: 1px solid var(--accent);
-  background: var(--surface);
-  color: var(--fg);
-  font: inherit;
-  cursor: pointer;
 }
 .welcome .wopts button.later {
   border-color: transparent;
@@ -164,16 +151,13 @@ body.com-mbar #page {
   text-decoration: none;
   cursor: pointer;
 }
-.hchip .n {
-  font: 500 12px var(--font-mono);
-  color: var(--muted);
-}
 .welcome {
   margin-top: 10px;
   padding: 10px 12px;
   gap: 8px;
 }
 .welcome p {
+  margin: 0;
   font-size: 15px;
 }
 .welcome p span {
@@ -181,6 +165,14 @@ body.com-mbar #page {
   font-size: 13.5px;
 }
 .welcome .wopts button {
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: var(--surface);
+  color: var(--fg);
+  font: inherit;
+  cursor: pointer;
   min-height: 40px;
   padding: 0 14px;
 }
@@ -237,6 +229,8 @@ h1 .orig {
   min-height: 36px;
 }
 .hchip .n {
+  font: 500 12px var(--font-mono);
+  color: var(--muted);
   font: 400 12px var(--font-mono);
 }
 .qsec .lede {

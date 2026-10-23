@@ -295,10 +295,6 @@
   cursor: pointer;
   padding: 0;
 }
-/* Livros com o nome inteiro (a abreviação aparece pequena, para quem aprende a usar o "Ir para") */
-#bk-list .bgrid {
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-}
 #bk-list .bchip {
   display: grid;
   justify-items: start;
@@ -327,17 +323,6 @@
   background: var(--surface);
   border-bottom: 1px solid var(--line);
 }
-.toc-tabs a {
-  flex: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 40px;
-  border-radius: 999px;
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 14.5px;
-}
 .toc-tabs a[aria-current="true"] {
   background: var(--accent-soft);
   color: var(--accent);
@@ -361,10 +346,6 @@
   cursor: pointer;
 }
 @media (max-width: 720px) {
-  .bbar .main {
-    background: var(--accent);
-    color: var(--surface);
-  }
   .bbar .main.on {
     background: var(--accent-soft);
     color: var(--accent);
@@ -405,6 +386,8 @@
 }
 @media (max-width: 720px) {
   .bbar .main {
+    background: var(--accent);
+    color: var(--surface);
     border-radius: 14px;
     margin-inline: 4px;
   }
@@ -446,6 +429,15 @@
   background: var(--chip);
 }
 .toc-tabs a {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border-radius: 999px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14.5px;
   min-height: 40px;
   display: flex;
   align-items: center;
@@ -523,7 +515,9 @@
   text-transform: uppercase;
   color: var(--muted);
 }
+/* Livros com o nome inteiro (a abreviação aparece pequena, para quem aprende a usar o "Ir para") */
 #bk-list .bgrid {
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 6px;
