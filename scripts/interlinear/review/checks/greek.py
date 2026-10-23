@@ -136,13 +136,13 @@ def check_greek(d, M, ws):
             if pos == "RA":
                 outside = [t for t in ts if t not in ART_OK]
                 if outside:
-                    M.w(w, "GRG-01", "aviso", f"artigo com glosa que não é artigo/preposição: '{g}'")
+                    M.w(w, "GRG-01", "aviso", "GRG-01_1", gloss=g)
                 elif (
                     parse[5] == "P"
                     and (tset - {"de", "a", "em", "que", "para", "por", "com"}) is not False
                     and tset <= {"o", "a", "do", "da", "ao", "à", "no", "na", "pelo", "pela"}
                 ):
-                    M.w(w, "GRG-01", "info", f"artigo plural com glosa no singular: '{g}'")
+                    M.w(w, "GRG-01", "info", "GRG-01_2", gloss=g)
                 continue
             # GRG-11: negação
             if lemma in NEG_G:
@@ -152,17 +152,17 @@ def check_greek(d, M, ws):
                     | ({"porventura", "acaso"} if lemma in ("οὐ", "οὐχί") else set())
                 )
                 if not (tset & ok):
-                    M.w(w, "GRG-11", "aviso", f"negação {lemma} sem 'não/nem/nenhum' na glosa: '{g}'")
+                    M.w(w, "GRG-11", "aviso", "GRG-11", lemma=lemma, gloss=g)
                 continue
             # GRG-12: conjunções e partículas
             if lemma in PART_G and not (tset & PART_G[lemma]):
-                M.w(w, "GRG-12", "aviso" if lemma in ("ἵνα", "ὅτι", "γάρ", "ἀλλά") else "info", f"{lemma} com glosa '{g}'")
+                M.w(w, "GRG-12", "aviso" if lemma in ("ἵνα", "ὅτι", "γάρ", "ἀλλά") else "info", "GRG-12", lemma=lemma, gloss=g)
                 continue
             # TXG-03: crase
             if lemma in CRASIS:
                 ok, msg = CRASIS[lemma]
                 if not (tset & ok):
-                    M.w(w, "TXG-03", "aviso", f"{msg}: '{g}'")
+                    M.w(w, "TXG-03", "aviso", "TXG-03", what=msg, gloss=g)
                 continue
             # GRG-10: preposição × caso
             if pos == "P" and lemma in ("διά", "μετά", "ὑπό"):
@@ -171,7 +171,7 @@ def check_greek(d, M, ws):
                 if rule:
                     wrong, right, msg = rule
                     if tset & wrong and not (tset & right):
-                        M.w(w, "GRG-10", "aviso", f"{msg}: '{g}'")
+                        M.w(w, "GRG-10", "aviso", "GRG-10", what=msg, gloss=g)
                 continue
             # GRG-13: pronomes pessoais
             if lemma in ("ἐγώ", "σύ", "αὐτός") and pos.startswith("R"):
@@ -181,14 +181,14 @@ def check_greek(d, M, ws):
                 if lemma == "αὐτός":
                     proper |= PRON_AMBIG | {"mesmo", "mesma", "mesmos", "mesmas", "próprio", "própria", "próprios"}
                 if (tset & others) and not (tset & proper):
-                    M.w(w, "GRG-13", "aviso", f"{lemma} ({parse[0] if parse[0] != '-' else 'pron.'}) com glosa de outra pessoa: '{g}'")
+                    M.w(w, "GRG-13", "aviso", "GRG-13", lemma=lemma, value=parse[0] if parse[0] != "-" else "pron.", gloss=g)
                 continue
             # GRG-05: pessoa do verbo (1ª pl.)
             if pos == "V" and parse[3] in "ISOD" and parse[0] == "1" and parse[5] == "P":
                 if not any(t.endswith(("mos", "mo")) or t in ("nós", "nos") for t in ts):
-                    M.w(w, "GRG-05", "aviso", f"verbo 1ª pl. sem forma de 'nós' na glosa: '{g}'")
+                    M.w(w, "GRG-05", "aviso", "GRG-05", gloss=g)
             # GRG-04: plural
             if pos == "N" and parse[5] == "P" and not lemma[:1].isupper():
                 tally = content(ts)
                 if tally and not any(t.endswith("s") for t in ts) and lemma not in ("οὐρανός",):
-                    M.w(w, "GRG-04", "info", f"substantivo plural com glosa no singular: '{g}'")
+                    M.w(w, "GRG-04", "info", "GRG-04", gloss=g)

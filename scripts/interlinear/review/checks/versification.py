@@ -41,13 +41,13 @@ def check_versification(d, M, scope_books):
         nt = d.testament.get(b) == "NT"
         if note == "sem-original":
             if b == "PSA" and v == 0:
-                M.add(b, c, v, None, "ALN-04", "aviso", "título do salmo na BLIVRE sem título no hebraico")
+                M.add(b, c, v, None, "ALN-04", "aviso", "ALN-04_2")
             elif nt and (b, c, v) in ALG01:
-                M.add(b, c, v, None, "ALG-01", "info", "versículo ausente do texto crítico (lista conhecida); exibir com nota")
+                M.add(b, c, v, None, "ALG-01", "info", "ALG-01")
             elif nt and any(b == lb and (c1, v1) <= (c, v) <= (c2, v2) for lb, c1, v1, c2, v2, _ in ALG02):
-                M.add(b, c, v, None, "ALG-02", "aviso", "trecho com tratamento editorial especial sem texto grego")
+                M.add(b, c, v, None, "ALG-02", "aviso", "ALG-02_2")
             elif (b, c, v) in KNOWN_OT:
-                M.add(b, c, v, None, "ALN-02", "info", KNOWN_OT[(b, c, v)])
+                M.add(b, c, v, None, "ALN-02", "info", "ALN-02_3", text=KNOWN_OT[(b, c, v)])
             else:
                 M.add(
                     b,
@@ -56,27 +56,27 @@ def check_versification(d, M, scope_books):
                     None,
                     "ALG-01" if nt else "ALN-01",
                     "erro" if nt else "aviso",
-                    "versículo da BLIVRE sem texto original correspondente",
+                    "ALN-01",
                 )
         if note == "sem-blivre" or not t.strip():
             if b == "PSA" and v == 0:
-                M.add(b, c, v, None, "ALN-04", "aviso", "título hebraico do salmo sem título na BLIVRE")
+                M.add(b, c, v, None, "ALN-04", "aviso", "ALN-04_3")
             else:
-                M.add(b, c, v, None, "ALN-05", "erro", "versículo da BLIVRE vazio")
+                M.add(b, c, v, None, "ALN-05", "erro", "ALN-05_2")
         else:
             prev = d.verses.get((b, c, v - 1))
             if prev and prev[0].strip() and prev[0].strip() == t.strip():
-                M.add(b, c, v, None, "ALN-05", "erro", f"texto da BLIVRE repete o v. {v - 1}")
+                M.add(b, c, v, None, "ALN-05", "erro", "ALN-05_3", value=v - 1)
     for k in d.by_verse:
         if k[0] in scope_books and k not in d.verses:
-            M.add(*k, None, "ALN-05", "erro", "palavras originais num versículo inexistente na tabela versos")
+            M.add(*k, None, "ALN-05", "erro", "ALN-05_1")
     # ALG-02: trechos conhecidos e versículos em que a BLIVRE é bem mais longa que o grego
     for lb, c1, v1, c2, v2, name in ALG02:
         if lb in scope_books:
             ks = [k for k in d.verses if k[0] == lb and (c1, v1) <= k[1:] <= (c2, v2)]
             if ks:
                 k = min(ks)
-                M.add(*k, None, "ALG-02", "aviso", f"{name}: marcar trecho de tratamento especial")
+                M.add(*k, None, "ALG-02", "aviso", "ALG-02_1", name=name)
     for b in scope_books:
         ratios = []
         item_list = []
@@ -99,7 +99,10 @@ def check_versification(d, M, scope_books):
                     None,
                     "ALG-02" if nt else "ALN-03",
                     "aviso",
-                    f"BLIVRE com {nb} palavras para {no} no original (esperado ~{expected:.0f}): trecho a mais?",
+                    "ALN-03_2",
+                    nb=nb,
+                    no=no,
+                    expected=format(expected, ".0f"),
                 )
             elif nb < 0.4 * expected and expected - nb >= 14:
                 M.add(
@@ -107,7 +110,10 @@ def check_versification(d, M, scope_books):
                     None,
                     "ALG-02" if nt else "ALN-03",
                     "aviso",
-                    f"BLIVRE com {nb} palavras para {no} no original (esperado ~{expected:.0f}): trecho faltando?",
+                    "ALN-03_3",
+                    nb=nb,
+                    no=no,
+                    expected=format(expected, ".0f"),
                 )
     # ALN-02 / ALN-04: versículo de exibição que junta mais de um versículo original
     for k, vs in d.by_verse.items():
@@ -129,7 +135,9 @@ def check_versification(d, M, scope_books):
                 None,
                 "ALN-04",
                 "erro",
-                f"título do salmo ocupa dois versículos hebraicos; a 2ª parte ({origs[0]}) caiu no v. 1 junto com {origs[1]}",
+                "ALN-04_1",
+                original=origs[0],
+                original2=origs[1],
             )
         else:
             M.add(
@@ -139,7 +147,9 @@ def check_versification(d, M, scope_books):
                 None,
                 "ALG-03" if d.testament.get(b) == "NT" else "ALN-02",
                 "info",
-                f"versículo junta {len(origs)} versículos originais ({', '.join(origs)})",
+                "ALN-02_1",
+                count=len(origs),
+                value=", ".join(origs),
             )
     # ALG-03 / ALN-02: mapa de versificação aplicado e ordem do texto original preservada
     by_ref = {}
@@ -150,7 +160,7 @@ def check_versification(d, M, scope_books):
         if b in scope_books:
             w = by_ref.get((b, r))
             if not w or (w.chapter, w.verse) != (c, v):
-                M.add(b, c, v, None, "ALG-03", "erro", f"palavra original {r} não está em {c}:{v} (mapa de versificação)")
+                M.add(b, c, v, None, "ALG-03", "erro", "ALG-03", r=r, c=c, v=v)
     last_by_book = {}
     for w in d.words:
         if w.book not in scope_books or not w.ref_orig:
@@ -160,7 +170,7 @@ def check_versification(d, M, scope_books):
         o = (int(c), int(v), int(n))
         p = last_by_book.get(w.book)
         if p and o < p[0] and w.book != "PSA":
-            M.w(w, "ALG-03" if w.language == "G" else "ALN-02", "erro", f"ordem do original quebrada: {w.ref_orig} depois de {p[1]}")
+            M.w(w, "ALG-03" if w.language == "G" else "ALN-02", "erro", "ALN-02_2", ref_orig=w.ref_orig, previous=p[1])
         last_by_book[w.book] = (o, w.ref_orig)
 
 
@@ -211,6 +221,4 @@ def check_offset(d, M, scope_books):
         neighbors = [(score(tally, (b, c, v + dv)), v + dv) for dv in (-1, 1)]
         best, vv = max(neighbors)
         if best >= 0.6 and best >= own + 0.3:
-            M.add(
-                b, c, v, None, "ALN-03", "aviso", f"glosas combinam mais com o v. {vv} da BLIVRE ({best:.0%}) que com o próprio ({own:.0%})"
-            )
+            M.add(b, c, v, None, "ALN-03", "aviso", "ALN-03_1", vv=vv, best=format(best, ".0%"), own=format(own, ".0%"))

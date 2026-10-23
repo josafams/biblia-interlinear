@@ -57,9 +57,8 @@ def check_parallels(d, M, scope_books):
                         continue
                     sx, sy = content_stems(x.gloss), content_stems(y.gloss)
                     if (sx or sy) and not (sx & sy):
-                        msg = f"'{y.gloss}' × '{x.gloss}' em {ref(x)} (mesmo original)"
-                        M.w(y, cod, "aviso", msg)
-                        M.w(x, cod, "aviso", f"'{x.gloss}' × '{y.gloss}' em {ref(y)} (mesmo original)")
+                        M.w(y, cod, "aviso", "CRZ-parallel", gloss=y.gloss, gloss2=x.gloss, where=ref(x))
+                        M.w(x, cod, "aviso", "CRZ-parallel", gloss=x.gloss, gloss2=y.gloss, where=ref(y))
 
 
 EQUIV = [
@@ -119,9 +118,9 @@ def check_bridges(d, M, scope_books):
         if w.book not in scope_books:
             continue
         if not (th & tg):
-            M.w(w, "CRZ-05", "aviso", f"{h} ↔ {g}: glosas sem família comum ({sorted(th)} × {sorted(tg)}); esperado '{expected}'")
+            M.w(w, "CRZ-05", "aviso", "CRZ-05_1", h=h, gloss=g, hebrew_glosses=sorted(th), greek_glosses=sorted(tg), expected=expected)
         elif stem(expected) not in (th | tg):
-            M.w(w, "CRZ-05", "info", f"{h} ↔ {g}: '{expected}' não está entre as glosas mais comuns")
+            M.w(w, "CRZ-05", "info", "CRZ-05_2", h=h, gloss=g, expected=expected)
     # CRG-02: palavras aramaicas/hebraicas transliteradas no NT
     for s in CRG02:
         g_ws = by_strong.get(s, [])
@@ -138,7 +137,7 @@ def check_bridges(d, M, scope_books):
                 and not (content_stems(w.gloss) & {top})
                 and all(c[x] / len(g_ws) < 0.2 for x in content_stems(w.gloss))
             ):
-                M.w(w, "CRG-02", "aviso", f"transliteração {w.lemma} glosada '{w.gloss}' (usual '{top}…')")
+                M.w(w, "CRG-02", "aviso", "CRG-02", lemma=w.lemma, gloss=w.gloss, top=top)
     # ARM-07: verbete aramaico "corresponding to H####" com glosa da mesma família do hebraico
     by_str_a = defaultdict(list)
     for w in d.words:
@@ -165,7 +164,7 @@ def check_bridges(d, M, scope_books):
             ta = {x for x, _ in ca.most_common(2)}
             w = g_ws[0]
             if w.book in scope_books and not (ta & th) and len(g_ws) >= 2:
-                M.w(w, "ARM-07", "info", f"aramaico {s} glosado {sorted(ta)}; o hebraico {h} é traduzido {sorted(th)[:4]}")
+                M.w(w, "ARM-07", "info", "ARM-07", s=s, aramaic_glosses=sorted(ta), h=h, hebrew_glosses=sorted(th)[:4])
         # ARM-06: verbete do Strong precisa ser o aramaico
         if (
             s[1:].isdigit()
@@ -175,7 +174,7 @@ def check_bridges(d, M, scope_books):
         ):
             for w in g_ws:
                 if w.book in scope_books:
-                    M.w(w, "ARM-06", "info", f"palavra aramaica com verbete {s} sem marca '(Aramaic)'")
+                    M.w(w, "ARM-06", "info", "ARM-06", s=s)
                     break
     # ARM-10: Jr 10:11, as duas grafias de "terra"
     if "JER" in scope_books:
@@ -190,7 +189,8 @@ def check_bridges(d, M, scope_books):
                 None,
                 "ARM-10",
                 "aviso",
-                "as duas grafias de 'terra' com glosas diferentes: " + ", ".join(w.gloss for w in land_words),
+                "ARM-10",
+                text="as duas grafias de 'terra' com glosas diferentes: " + ", ".join(w.gloss for w in land_words),
             )
 
 
@@ -204,7 +204,7 @@ def check_support(d, M, ws):
             continue
         bl = {stem(x) for x in d.tokset_blivre((w.book, w.chapter, w.verse))}
         if not (st & bl):
-            M.w(w, "CRZ-01", "info", f"glosa '{w.gloss}' (fonte {w.gloss_source}) sem palavra correspondente na BLIVRE do versículo")
+            M.w(w, "CRZ-01", "info", "CRZ-01", gloss=w.gloss, gloss_source=w.gloss_source)
 
 
 def check_greek_strong(d, M, ws):
@@ -213,4 +213,4 @@ def check_greek_strong(d, M, ws):
             continue
         if w.strong_source == "aprox":
             e = d.lexicon.get(w.strong or "")
-            M.w(w, "LXG-02", "aviso", f"lema {w.lemma} ligado a {w.strong} ({e[2] if e else '?'}) por semelhança")
+            M.w(w, "LXG-02", "aviso", "LXG-02", lemma=w.lemma, strong=w.strong, value=e[2] if e else "?")

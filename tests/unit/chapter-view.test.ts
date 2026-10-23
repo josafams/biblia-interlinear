@@ -7,7 +7,7 @@ const gen1: ChapterVerse = {
   n: 1,
   blivre: "No princípio criou Deus os céus e a terra.",
   words: [toWord(["בְּ/רֵאשִׁ֖ית", "H7225", "no-princípio", "m", "HR/Ncfsa"]), toWord(["בָּרָ֣א", "H1254", "criou", "l", "HVqp3ms"])],
-  marks: [[1, 1, null, "CON-01", "'criou' destoa da glosa usual"]]
+  marks: [[1, 1, null, "CON-01", "CON-01", { gloss: "criou", majority: "fez", n_majority: "3", n: "4" }]]
 };
 const ctx = { lex, greek: false, cantillation: false, chapter: 1 };
 
@@ -34,7 +34,7 @@ test("verse view", () => {
   const v = verseView(gen1, 0, ctx);
   expect(v).toMatchObject({ label: "1:1", hasMarks: true, wordCount: 2, section: null });
   expect(v.wordsLabel).toBe("Palavras do versículo 1:1, da direita para a esquerda");
-  expect(v.marks).toEqual([{ word: "בָּרָא", text: "'criou' destoa da glosa usual", code: "CON-01" }]);
+  expect(v.marks).toEqual([{ word: "בָּרָא", text: "'criou' destoa da glosa usual 'fez' (3/4) desta forma no livro", code: "CON-01" }]);
   expect(verseView({ ...gen1, n: 0, h: "Álef", nota: "sem-blivre" }, 0, { ...ctx, greek: true })).toMatchObject({
     label: "título",
     section: { title: "Álef", range: "v. 0–7" },
@@ -53,4 +53,9 @@ test("word cards HTML: the legacy markup, with every text escaped", () => {
       ' <span class="s" aria-hidden="true">H7225</span> <span class="m" aria-hidden="true" title="preposição + substantivo fem. sing. absoluto">prep. subst.</span>' +
       ' <span class="g" aria-hidden="true">no<span class="hy">-</span>princípio</span> </button>'
   );
+});
+
+test("a chapter in the old format (the text of the mark itself) still shows its marks", () => {
+  const old = { ...gen1, marks: [[1, 1, null, "CON-01", "'criou' destoa da glosa usual"]] } as unknown as ChapterVerse;
+  expect(verseView(old, 0, ctx).marks[0].text).toBe("'criou' destoa da glosa usual");
 });

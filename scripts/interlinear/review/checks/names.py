@@ -27,11 +27,11 @@ def check_names(d, M, ws, scope_books):
         bl = d.tokset_blivre((w.book, w.chapter, w.verse))
         if not ns:
             if not any(t[:1].isupper() for t in w.gloss.split("-")):
-                M.w(w, "FAT-01", "info", f"nome próprio com glosa em minúsculas: '{w.gloss}'")
+                M.w(w, "FAT-01", "info", "FAT-01_2", gloss=w.gloss)
             continue
         missing = [x for x in ns if strip_marks(x.lower()) not in bl]
         if missing:
-            M.w(w, "FAT-01", "aviso", f"nome '{missing[0]}' não aparece no versículo da BLIVRE")
+            M.w(w, "FAT-01", "aviso", "FAT-01_1", missing=missing[0])
     # FAT-02: mesmo Strong de nome próprio → mesmo nome
     by_strong = defaultdict(list)
     for w in d.words:
@@ -52,7 +52,7 @@ def check_names(d, M, ws, scope_books):
                 continue
             ns = gloss_names(w.gloss)
             if ns and top not in ns and c[ns[0]] / n <= 0.1 and stem(ns[0])[:3] != stem(top)[:3]:
-                M.w(w, "FAT-02", "aviso", f"{s} glosado '{ns[0]}'; no resto da Bíblia é '{top}' ({ntop}/{n})")
+                M.w(w, "FAT-02", "aviso", "FAT-02", s=s, name=ns[0], top=top, ntop=ntop, n=n)
     # GRG-15 / CRG-05: nome grego de origem hebraica × nome no AT
     seen = set()
     for w in d.words:
@@ -73,4 +73,4 @@ def check_names(d, M, ws, scope_books):
         cod = "GRG-15" if indecl else "CRG-05"
         if w.strong in ("G2424",):  # Ἰησοῦς ← Josué: diferença esperada
             continue
-        M.w(w, cod, "aviso" if stem(gn)[:3] != stem(hn)[:3] else "info", f"{w.lemma} glosado '{gn}' no NT; {h} é '{hn}' no AT")
+        M.w(w, cod, "aviso" if stem(gn)[:3] != stem(hn)[:3] else "info", "CRG-05", lemma=w.lemma, gn=gn, h=h, hn=hn)

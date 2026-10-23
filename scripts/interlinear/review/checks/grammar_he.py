@@ -207,23 +207,23 @@ def check_grammar_h(d, M, ws):
         # GRA-12: partícula de objeto
         if w.strong == "H853":
             if "[obj]" not in tset and not (tset & PRON_ALL) and not (tset & CONTRACTIONS):
-                M.w(w, "GRA-12", "aviso", f"partícula de objeto אֵת com glosa '{g}'")
+                M.w(w, "GRA-12", "aviso", "GRA-12_2", gloss=g)
             continue
         if "[obj]" in g:
-            M.w(w, "GRA-12", "erro", f"'[obj]' fora da partícula אֵת ({w.strong})")
+            M.w(w, "GRA-12", "erro", "GRA-12_1", strong=w.strong)
         # GRA-13: partículas com glosa fixa
         if w.strong in PART_H:
             ok, msg = PART_H[w.strong]
             if not (tset & ok):
-                M.w(w, "GRA-13", "aviso", f"{msg}: '{g}'")
+                M.w(w, "GRA-13", "aviso", "GRA-13", what=msg, gloss=g)
         prefs = (w.prefixes or "").split("/") if w.prefixes else []
         # GRA-01: conjunção prefixada
         if "c" in prefs and not (tset & CONJ_H):
-            M.w(w, "GRA-01", "info", f"conjunção ו prefixada sem conjunção na glosa: '{g}'")
+            M.w(w, "GRA-01", "info", "GRA-01", gloss=g)
         # GRA-03: preposições prefixadas
         for p, conj, name in (("b", PREP_B, "בְּ"), ("l", PREP_L, "לְ"), ("k", PREP_K, "כְּ"), ("m", PREP_M, "מִן")):
             if p in prefs and not (tset & conj) and not (root.startswith("V") and root[2:3] == "c"):
-                M.w(w, "GRA-03", "aviso" if p in ("k",) else "info", f"preposição {name} prefixada sem equivalente: '{g}'")
+                M.w(w, "GRA-03", "aviso" if p in ("k",) else "info", "GRA-03", name=name, gloss=g)
         # GRA-02: artigo
         if (
             ("d" in prefs or any(s == "Rd" for s in pre) or root == "Rd")
@@ -236,7 +236,7 @@ def check_grammar_h(d, M, ws):
                 and not root.startswith("Vs")
             )
         ):
-            M.w(w, "GRA-02", "info", f"artigo ה sem artigo na glosa: '{g}'")
+            M.w(w, "GRA-02", "info", "GRA-02", gloss=g)
         # GRA-04: sufixo pronominal
         for s in suf:
             if not s.startswith("Sp") or len(s) < 5 or w.strong in SUF_LEXICAL or (root.startswith("V") and root[2:3] == "c"):
@@ -244,7 +244,7 @@ def check_grammar_h(d, M, ws):
             person, num = s[2], s[4]
             target = "3" if person == "3" else person + ("s" if num == "s" else "p")
             if not (tset & PRON_ALL) and not (tset & CONTRACTIONS) and not any(t.endswith(("-lo", "-la")) for t in ts):
-                M.w(w, "GRA-04", "aviso", f"sufixo pronominal {s[2:]} sem pronome/possessivo na glosa: '{g}'")
+                M.w(w, "GRA-04", "aviso", "GRA-04_1", s_item=s[2:], gloss=g)
             else:
                 others = set().union(*(v for k, v in PRON.items() if k != target))
                 if (
@@ -253,27 +253,27 @@ def check_grammar_h(d, M, ws):
                     and not (target == "1p" and "nos" in tset)
                     and not (target == "3" and tset & PRON_AMBIG)
                 ):
-                    M.w(w, "GRA-04", "aviso", f"sufixo {s[2:]} mas glosa com pronome de outra pessoa: '{g}'")
+                    M.w(w, "GRA-04", "aviso", "GRA-04_2", s_item=s[2:], gloss=g)
         # GRA-05: pessoa do verbo (1ª e 2ª do plural, verbos finitos)
         if root.startswith("V") and len(root) >= 6 and root[2] in "pqiwhjv":
             person, num = root[3], root[5]
             if person == "1" and num == "p" and not any(t.endswith(("mos", "mo")) or t in ("nós", "nos") for t in ts):
-                M.w(w, "GRA-05", "aviso", f"verbo 1ª pl. ({root}) sem forma de 'nós' na glosa: '{g}'")
+                M.w(w, "GRA-05", "aviso", "GRA-05", root=root, gloss=g)
         # GRA-07: infinitivo construto com ל
         if root.startswith("V") and len(root) >= 3 and root[2] == "c" and "l" in prefs and w.strong != "H559":
             if not (tset & {"para", "a", "de", "ao", "à", "por", "que", "até", "quando", "se", "em"}) and not any(
                 t.endswith(("ar", "er", "ir", "or")) for t in ts
             ):
-                M.w(w, "GRA-07", "info", f"infinitivo com ל sem 'para/a + infinitivo': '{g}'")
+                M.w(w, "GRA-07", "info", "GRA-07", gloss=g)
         # GRA-10: plural
         if root.startswith("Nc") and len(root) >= 5 and root[3] == "p" and w.strong not in PLURAL_ONLY and not manual:
             tally = content(ts)
             if tally and not any(t.endswith("s") for t in ts) and not gloss_names(g):
-                M.w(w, "GRA-10", "info", f"substantivo plural com glosa no singular: '{g}'")
+                M.w(w, "GRA-10", "info", "GRA-10", gloss=g)
         # ARM-03: estado enfático do aramaico
         if lang == "A" and root.startswith("N") and root.endswith("d") and root[1] != "p":
             if not (tset & (DETERMINERS | CONTRACTIONS | PRON_ALL)):
-                M.w(w, "ARM-03", "info", f"estado enfático sem artigo na glosa: '{g}'")
+                M.w(w, "ARM-03", "info", "ARM-03", gloss=g)
         # ARM-04: partícula דִּי
         if (
             lang == "A"
@@ -306,7 +306,7 @@ def check_grammar_h(d, M, ws):
                 )
             )
         ):
-            M.w(w, "ARM-04", "aviso", f"partícula דִּי com glosa '{g}'")
+            M.w(w, "ARM-04", "aviso", "ARM-04", gloss=g)
 
 
 MEASURES = {
@@ -338,7 +338,7 @@ def check_numbers_and_divine_names(d, M, ws):
             bl = d.tokset_blivre(k)
             missing = [t for t in strongs if strip_marks(t) not in bl]
             if missing:
-                M.w(w, "FAT-03", "aviso", f"número '{missing[0]}' da glosa não aparece no versículo da BLIVRE")
+                M.w(w, "FAT-03", "aviso", "FAT-03_1", missing=missing[0])
         if w.language != "G":
             root = heb_segs(w.morph)[2]
             if (
@@ -348,17 +348,17 @@ def check_numbers_and_divine_names(d, M, ws):
                 and not (tset & ORDINALS)
                 and not any(t.startswith(("centuri", "dezen", "milhar", "centen")) for t in ts)
             ):
-                M.w(w, "FAT-03", "aviso", f"numeral cardinal ({w.strong}) sem número na glosa: '{g}'")
+                M.w(w, "FAT-03", "aviso", "FAT-03_2", strong=w.strong, gloss=g)
         # FAT-09: medidas e unidades
         if w.strong in MEASURES and not any(t.startswith(MEASURES[w.strong]) for t in ts):
-            M.w(w, "FAT-09", "aviso", f"medida {w.strong} glosada '{g}' (esperado {'/'.join(MEASURES[w.strong])}…)")
+            M.w(w, "FAT-09", "aviso", "FAT-09", strong=w.strong, gloss=g, value="/".join(MEASURES[w.strong]))
         # FAT-04: nomes divinos
         s = w.strong
         if s == "H3068" and "SENHOR" not in g and "DEUS" not in g:
-            M.w(w, "FAT-04", "aviso", f"YHWH com glosa '{g}' (esperado SENHOR / DEUS)")
+            M.w(w, "FAT-04", "aviso", "FAT-04_1", gloss=g)
         elif s == "H136" and not re.search(r"(^|-)Senhor(es)?($|-)|(^|-)senhor", g):
-            M.w(w, "FAT-04", "aviso", f"Adonai com glosa '{g}' (esperado Senhor)")
+            M.w(w, "FAT-04", "aviso", "FAT-04_2", gloss=g)
         elif s == "H430" and not (tset & {"deus", "deuses", "divino", "divina", "juízes", "anjos", "poderosos"}):
-            M.w(w, "FAT-04", "aviso", f"Elohim com glosa '{g}' (esperado Deus/deuses)")
+            M.w(w, "FAT-04", "aviso", "FAT-04_3", gloss=g)
         elif s == "H3050" and not re.search(r"SENHOR|JAH|Jah|DEUS|aleluia", g, re.I):
-            M.w(w, "FAT-04", "aviso", f"Yah com glosa '{g}'")
+            M.w(w, "FAT-04", "aviso", "FAT-04_4", gloss=g)
