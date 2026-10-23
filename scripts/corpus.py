@@ -24,8 +24,9 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 from books import BOOKS, BY_CODE, OT_BOOKS
-from interlinear.paths import DB, ROOT
+from interlinear.paths import DB
 from interlinear.paths import SOURCES as SOURCES_DIR
+from interlinear.sources import dodson_file, morphgnt_lines, morphhb_file
 from interlinear.text import norm_greek
 
 
@@ -112,7 +113,7 @@ def _cv(ref):
 
 
 def read_hebrew(osis, vm):
-    x = Path(os.path.join(SOURCES_DIR, f"morphhb/wlc/{osis}.xml")).read_text(encoding="utf8")
+    x = morphhb_file(osis).read_text(encoding="utf8")
 
     # ketiv/qere: no texto fica a leitura (qere), com vogais; a forma escrita (ketiv) vai num atributo
     def swap(m):
@@ -206,11 +207,7 @@ DIVISIONS_G = {
 
 
 def read_greek(fname):
-    lines = list(Path(os.path.join(SOURCES_DIR, f"sblgnt/{fname}-morphgnt.txt")).read_text(encoding="utf8").splitlines(keepends=True))
-    sup = os.path.join(ROOT, "data", f"greek_supplement_{fname}.txt")
-    if os.path.exists(sup):  # trechos que o SBLGNT põe só no aparato (ex.: Rm 16:25–27)
-        lines += [ln for ln in Path(sup).read_text(encoding="utf8").splitlines(keepends=True) if ln.strip() and not ln.startswith("#")]
-    for line in lines:
+    for line in morphgnt_lines(fname):
         ref, pos, parse, verse_text, word, normal, lemma = line.rstrip("\n").split(" ")
         c, v = int(ref[2:4]), int(ref[4:6])
         verse_text = re.sub(r"[\u2E00-\u2E05\u27E6\u27E7]|(?<=[\u2E00-\u2E05])\d+", "", verse_text)
@@ -219,7 +216,7 @@ def read_greek(fname):
 
 def load_dodson():
     """Léxico grego de Jeffrey Dodson (domínio público): lema → número de Strong e glosa curta."""
-    x = Path(os.path.join(SOURCES_DIR, "dodson/dodson.xml")).read_text(encoding="utf8")
+    x = dodson_file().read_text(encoding="utf8")
     by_lemma, gloss = {}, {}
     for lemma, num, body_parts in re.findall(r'<entry n="([^"|]+) \| (\d+)">(.*?)</entry>', x, re.S):
         k = "G" + str(int(num))
