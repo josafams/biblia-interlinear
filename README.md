@@ -154,7 +154,7 @@ python3 scripts/query.py entry H430          # e o arquivo/linha para editar
 | `data/glosses_pt.tsv` | glosas revisadas de Gênesis 1 (prevalecem sobre as automáticas) |
 | `data/greek_supplement_66-Ro.txt` | grego de Rm 16:25–27 com morfologia anotada |
 | `web/reader.html` e `src/reader/` | a página do leitor (marcação) e o seu código em TypeScript; as telas são componentes Svelte em `src/components/` |
-| `src/reader/annotations/`, `web/account.js`, `sync.js`, `progress.js` | anotações e caderno, conta Google, sincronização pelo Drive, Meu progresso |
+| `src/reader/annotations/`, `src/reader/account.ts`, `sync.ts`, `progress.ts` | anotações e caderno, conta Google, sincronização pelo Drive, Meu progresso |
 | `src/styles/` | o CSS: `tokens.css` (cores, fontes, tamanhos) e um arquivo por área da tela |
 | `web/home.html` e `src/home/` | a página inicial (`index.html`) e as partes que vêm dos dados (amostra, números, Como usar, livros) |
 | `android/`, `ios/` | projetos nativos do Capacitor |

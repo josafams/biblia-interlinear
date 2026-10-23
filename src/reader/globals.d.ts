@@ -19,6 +19,7 @@ declare global {
     Progress?: Loose & { open(): void };
     Study?: Loose;
     Sync?: Loose;
+    Search?: { open(text?: string): void; close(): void };
     DATA_EDICAO?: string;
     __openSearch?: () => void;
     __concordance?: (key: string, word: unknown) => void;

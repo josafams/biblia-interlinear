@@ -455,7 +455,35 @@
     "sign_out": "Sair",
     "wipe_cloud": "Apagar meus dados do Google Drive",
     "reconnect_hint": "Toque em Reconectar para voltar a salvar no Drive.",
-    "reconnect": "Reconectar"
+    "reconnect": "Reconectar",
+    "google_unreachable": "Não foi possível falar com o Google. Verifique a conexão.",
+    "no_drive_short": "Sem a permissão do Drive",
+    "no_drive": "Para guardar no Drive, deixe marcada a permissão “Ver, criar e apagar os próprios dados de configuração no Google Drive”.",
+    "cancelled": "Login cancelado.",
+    "no_account": "Sem conta",
+    "expired": "A conexão com o Google expirou.",
+    "app_android": "App Android",
+    "app_iphone": "App iPhone",
+    "browser": "Navegador",
+    "browser_on": "{browser} no {os}",
+    "connected_as": "Conectado como {name}.",
+    "sign_out_title": "Sair da conta",
+    "sign_out_text": "As {count} anotações continuam guardadas no seu Google Drive. Neste aparelho, você quer:",
+    "keep_here": "Manter uma cópia aqui",
+    "delete_here": "Apagar deste aparelho",
+    "cancel": "Cancelar",
+    "signed_out_wiped": "Você saiu da conta e as anotações foram apagadas deste aparelho.",
+    "wipe_text": "Isso apaga a pasta do app no seu Drive (anotações e lista de aparelhos). As anotações deste aparelho continuam aqui, e você sai da conta. Outros aparelhos ainda conectados podem enviá-las de novo.",
+    "wipe_yes": "Apagar do Drive",
+    "wiped": "Seus dados foram apagados do Google Drive. As anotações continuam neste aparelho.",
+    "signed_out": "Você saiu da conta. As anotações continuam neste aparelho.",
+    "drive_full": "Seu Google Drive está sem espaço. As anotações continuam neste aparelho.",
+    "no_permission": "O Google recusou o acesso ao Drive. Tente entrar de novo.",
+    "offline": "Sem conexão com o Google agora. As anotações continuam neste aparelho.",
+    "failed": "Algo deu errado ao falar com o Google.",
+    "suggestion_label": "Guardar no Google Drive",
+    "suggestion": "Quer guardar suas anotações no seu Google Drive, para não perder e ver em outros aparelhos?",
+    "not_now": "Agora não"
   },
   "bar": {
     "notes": "Notas",
@@ -1047,6 +1075,12 @@
       "not_yet": "Este vídeo será gravado quando a função for lançada.",
       "preparing": "Vídeo em preparação. Siga o passo a passo ao lado.",
       "soon": "Quando a função sair"
+    }
+  },
+  "study": {
+    "linked": {
+      "one": "{count} palavra do original ligada a este trecho.",
+      "other": "{count} palavras do original ligadas a este trecho."
     }
   }
 }
