@@ -35,7 +35,8 @@ js = Path("build/web", bundle).read_text(encoding="utf8").replace("</script", "<
 t = t.replace('<script type="module" src="__READER_BUNDLE__"></script>', '<script type="module">\n' + js + "</script>", 1)
 for name in ("tokens", "reader"):
     css = Path(f"web/styles/{name}.css").read_text(encoding="utf8")
-    t = t.replace(f'<link rel="stylesheet" href="styles/{name}.css">', "<style>\n" + css + "</style>", 1)
+    # the tag as written or as Prettier writes it (with " />")
+    t = re.sub(rf'<link rel="stylesheet" href="styles/{name}\.css"\s*/?>', lambda _m, c=css: "<style>\n" + c + "</style>", t, count=1)
 Path("build/preview.html").write_text(t.replace("__DATA__", d, 1), encoding="utf8")
 PY
 python3 scripts/build_epub.py     # build/epub: um EPUB por livro

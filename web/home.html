@@ -1,308 +1,1071 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Bíblia Interlinear — hebraico, aramaico e grego palavra por palavra</title>
-<script>
-/* No app (Android/iOS) e no site instalado, abre direto o leitor. Links antigos com referência
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Bíblia Interlinear — hebraico, aramaico e grego palavra por palavra</title>
+    <script>
+      /* No app (Android/iOS) e no site instalado, abre direto o leitor. Links antigos com referência
    (index.html#JHN.3.16) vão para o mesmo versículo em ler.html. */
-(function () {
-  var nativo = !!(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform())
-    || location.protocol === "capacitor:";
-  var hash = location.hash.slice(1);
-  if (nativo || /^[1-3A-Z]{3}\.\d+/.test(decodeURIComponent(hash))) location.replace("ler.html" + location.hash);
-  try {
-    var t = localStorage.getItem("interlinear:tema");
-    if (t === "escuro" || t === "noite" || t === "grafite") document.documentElement.setAttribute("data-theme", "dark");
-    else if (t && t !== "auto") document.documentElement.setAttribute("data-theme", "light");
-  } catch (e) {}
-})();
-</script>
-<meta name="description" content="__DESC__">
-<meta name="theme-color" content="#1d5b74">
-<link rel="stylesheet" href="fonts/fonts.css">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" type="image/png" href="icones/favicon-64.png">
-<link rel="apple-touch-icon" href="icones/apple-touch-icon.png">
-<meta property="og:title" content="Bíblia Interlinear">
-<meta property="og:description" content="__DESC__">
-<meta property="og:image" content="icones/icone-512.png">
-<style>
-:root {
-  --bg: #eceeea; --surface: #f8f9f6; --fg: #1b2220; --muted: #4a5551; --faint: #5b6662;
-  --line: #d2d8d3; --accent: #1d5b74; --accent-ink: #f8f9f6; --accent-soft: #dbe8ec;
-  --warm: #7d4a2e; --warm-soft: #efe0d1; --card: #eceeea; --dark-band: #1b2220; --dark-ink: #f8f9f6; --dark-muted: #c9d3cf;
-  --font-heb: "Noto Serif Hebrew", "Times New Roman", serif;
-  --font-grc: "Gentium Book Plus", "Literata", serif;
-  --font-body: "Literata", Georgia, "Times New Roman", serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #121615; --surface: #1a201e; --fg: #e3e9e5; --muted: #a9b5b0; --faint: #95a29c;
-    --line: #2c3532; --accent: #7cc0d8; --accent-ink: #0e2a35; --accent-soft: #1f343b;
-    --warm: #e0b07a; --warm-soft: #3a2c20; --card: #121615; --dark-band: #0c100f; --dark-ink: #e3e9e5; --dark-muted: #a9b5b0;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #121615; --surface: #1a201e; --fg: #e3e9e5; --muted: #a9b5b0; --faint: #95a29c;
-  --line: #2c3532; --accent: #7cc0d8; --accent-ink: #0e2a35; --accent-soft: #1f343b;
-  --warm: #e0b07a; --warm-soft: #3a2c20; --card: #121615; --dark-band: #0c100f; --dark-ink: #e3e9e5; --dark-muted: #a9b5b0;
-  color-scheme: dark;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 var(--font-body); -webkit-text-size-adjust: 100%; }
-a { color: var(--accent); }
-img, video { max-width: 100%; }
-.wrap { max-width: 1160px; margin: 0 auto; padding-left: 20px; padding-right: 20px; }
-.skip { position: absolute; left: -9999px; } .skip:focus { left: 12px; top: 12px; background: var(--surface); padding: 8px 12px; z-index: 10; }
-.kick { font: 500 13px var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0; }
-.h2 { font-size: clamp(28px, 4vw, 36px); line-height: 1.15; margin: 0; font-weight: 600; }
-.lede { margin: 0; font-size: 17px; color: var(--muted); max-width: 46em; }
-.btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 16px; }
-.btn.primary { background: var(--accent); color: var(--accent-ink); }
-.btn.ghost { border: 1px solid var(--accent); color: var(--accent); font-weight: 400; }
-section { scroll-margin-top: 16px; }
+      (function () {
+        var nativo =
+          !!(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform()) ||
+          location.protocol === "capacitor:";
+        var hash = location.hash.slice(1);
+        if (nativo || /^[1-3A-Z]{3}\.\d+/.test(decodeURIComponent(hash))) location.replace("ler.html" + location.hash);
+        try {
+          var t = localStorage.getItem("interlinear:tema");
+          if (t === "escuro" || t === "noite" || t === "grafite") document.documentElement.setAttribute("data-theme", "dark");
+          else if (t && t !== "auto") document.documentElement.setAttribute("data-theme", "light");
+        } catch (e) {}
+      })();
+    </script>
+    <meta name="description" content="__DESC__" />
+    <meta name="theme-color" content="#1d5b74" />
+    <link rel="stylesheet" href="fonts/fonts.css" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" type="image/png" href="icones/favicon-64.png" />
+    <link rel="apple-touch-icon" href="icones/apple-touch-icon.png" />
+    <meta property="og:title" content="Bíblia Interlinear" />
+    <meta property="og:description" content="__DESC__" />
+    <meta property="og:image" content="icones/icone-512.png" />
+    <style>
+      :root {
+        --bg: #eceeea;
+        --surface: #f8f9f6;
+        --fg: #1b2220;
+        --muted: #4a5551;
+        --faint: #5b6662;
+        --line: #d2d8d3;
+        --accent: #1d5b74;
+        --accent-ink: #f8f9f6;
+        --accent-soft: #dbe8ec;
+        --warm: #7d4a2e;
+        --warm-soft: #efe0d1;
+        --card: #eceeea;
+        --dark-band: #1b2220;
+        --dark-ink: #f8f9f6;
+        --dark-muted: #c9d3cf;
+        --font-heb: "Noto Serif Hebrew", "Times New Roman", serif;
+        --font-grc: "Gentium Book Plus", "Literata", serif;
+        --font-body: "Literata", Georgia, "Times New Roman", serif;
+        --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #121615;
+          --surface: #1a201e;
+          --fg: #e3e9e5;
+          --muted: #a9b5b0;
+          --faint: #95a29c;
+          --line: #2c3532;
+          --accent: #7cc0d8;
+          --accent-ink: #0e2a35;
+          --accent-soft: #1f343b;
+          --warm: #e0b07a;
+          --warm-soft: #3a2c20;
+          --card: #121615;
+          --dark-band: #0c100f;
+          --dark-ink: #e3e9e5;
+          --dark-muted: #a9b5b0;
+          color-scheme: dark;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #121615;
+        --surface: #1a201e;
+        --fg: #e3e9e5;
+        --muted: #a9b5b0;
+        --faint: #95a29c;
+        --line: #2c3532;
+        --accent: #7cc0d8;
+        --accent-ink: #0e2a35;
+        --accent-soft: #1f343b;
+        --warm: #e0b07a;
+        --warm-soft: #3a2c20;
+        --card: #121615;
+        --dark-band: #0c100f;
+        --dark-ink: #e3e9e5;
+        --dark-muted: #a9b5b0;
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font: 16px/1.6 var(--font-body);
+        -webkit-text-size-adjust: 100%;
+      }
+      a {
+        color: var(--accent);
+      }
+      img,
+      video {
+        max-width: 100%;
+      }
+      .wrap {
+        max-width: 1160px;
+        margin: 0 auto;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .skip {
+        position: absolute;
+        left: -9999px;
+      }
+      .skip:focus {
+        left: 12px;
+        top: 12px;
+        background: var(--surface);
+        padding: 8px 12px;
+        z-index: 10;
+      }
+      .kick {
+        font: 500 13px var(--font-mono);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 0;
+      }
+      .h2 {
+        font-size: clamp(28px, 4vw, 36px);
+        line-height: 1.15;
+        margin: 0;
+        font-weight: 600;
+      }
+      .lede {
+        margin: 0;
+        font-size: 17px;
+        color: var(--muted);
+        max-width: 46em;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        min-height: 48px;
+        padding: 0 24px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+      }
+      .btn.primary {
+        background: var(--accent);
+        color: var(--accent-ink);
+      }
+      .btn.ghost {
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        font-weight: 400;
+      }
+      section {
+        scroll-margin-top: 16px;
+      }
 
-/* topo */
-.top { border-bottom: 1px solid var(--line); }
-.top nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; padding-top: 14px; padding-bottom: 14px; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--fg); margin-right: auto; }
-.brand span { width: 36px; height: 36px; border-radius: 9px; background: var(--accent); color: var(--accent-ink); display: flex; align-items: center; justify-content: center; font: 22px var(--font-heb); }
-.top nav a.l { text-decoration: none; font-size: 15px; }
-@media (max-width: 760px) { .top nav a.l { display: none; } }
+      /* topo */
+      .top {
+        border-bottom: 1px solid var(--line);
+      }
+      .top nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 24px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--fg);
+        margin-right: auto;
+      }
+      .brand span {
+        width: 36px;
+        height: 36px;
+        border-radius: 9px;
+        background: var(--accent);
+        color: var(--accent-ink);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font: 22px var(--font-heb);
+      }
+      .top nav a.l {
+        text-decoration: none;
+        font-size: 15px;
+      }
+      @media (max-width: 760px) {
+        .top nav a.l {
+          display: none;
+        }
+      }
 
-/* abertura */
-.hero { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; padding-top: 56px; padding-bottom: 48px; }
-.hero > div { flex: 1 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
-.hero h1 { margin: 0; font-size: clamp(38px, 6vw, 56px); line-height: 1.05; font-weight: 700; letter-spacing: -.01em; }
-.hero .note { font-size: 14px; color: var(--faint); margin: 0; }
-.sample { flex: 1 1 440px; min-width: 0; margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 14px; }
-.sample .ref { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; flex-wrap: wrap; }
-.sample .ref b { font: 500 14px var(--font-mono); color: var(--accent); }
-.sample .ref span { font-size: 13px; color: var(--faint); }
-.cards { display: flex; flex-wrap: wrap; gap: 6px; background: var(--card); padding: 10px; border-radius: 10px; }
-.cards.rtl { flex-direction: row-reverse; }
-.wc { display: flex; flex-direction: column; align-items: center; gap: 1px; padding: 8px 9px 6px; background: var(--surface); border-radius: 8px; min-width: 56px; }
-.wc .o { font: 26px/1.3 var(--font-heb); } .wc .o.g { font-family: var(--font-grc); font-size: 22px; }
-.wc .x { font-style: italic; font-size: 13px; color: var(--accent); }
-.wc .s { font: 11.5px var(--font-mono); color: var(--faint); }
-.wc .t { font-size: 14px; }
-.blivre { margin: 0; font-size: 16px; } .blivre small { font: 11px var(--font-mono); color: var(--faint); margin-right: 8px; }
+      /* abertura */
+      .hero {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        align-items: center;
+        padding-top: 56px;
+        padding-bottom: 48px;
+      }
+      .hero > div {
+        flex: 1 1 400px;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .hero h1 {
+        margin: 0;
+        font-size: clamp(38px, 6vw, 56px);
+        line-height: 1.05;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .hero .note {
+        font-size: 14px;
+        color: var(--faint);
+        margin: 0;
+      }
+      .sample {
+        flex: 1 1 440px;
+        min-width: 0;
+        margin: 0;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .sample .ref {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        align-items: baseline;
+        flex-wrap: wrap;
+      }
+      .sample .ref b {
+        font: 500 14px var(--font-mono);
+        color: var(--accent);
+      }
+      .sample .ref span {
+        font-size: 13px;
+        color: var(--faint);
+      }
+      .cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        background: var(--card);
+        padding: 10px;
+        border-radius: 10px;
+      }
+      .cards.rtl {
+        flex-direction: row-reverse;
+      }
+      .wc {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1px;
+        padding: 8px 9px 6px;
+        background: var(--surface);
+        border-radius: 8px;
+        min-width: 56px;
+      }
+      .wc .o {
+        font: 26px/1.3 var(--font-heb);
+      }
+      .wc .o.g {
+        font-family: var(--font-grc);
+        font-size: 22px;
+      }
+      .wc .x {
+        font-style: italic;
+        font-size: 13px;
+        color: var(--accent);
+      }
+      .wc .s {
+        font: 11.5px var(--font-mono);
+        color: var(--faint);
+      }
+      .wc .t {
+        font-size: 14px;
+      }
+      .blivre {
+        margin: 0;
+        font-size: 16px;
+      }
+      .blivre small {
+        font: 11px var(--font-mono);
+        color: var(--faint);
+        margin-right: 8px;
+      }
 
-/* números */
-.nums { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
-.nums .wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; padding-top: 28px; padding-bottom: 28px; }
-.nums b { display: block; font-size: 32px; font-weight: 600; font-variant-numeric: tabular-nums; }
-.nums span { font-size: 14px; color: var(--muted); }
+      /* números */
+      .nums {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: var(--surface);
+      }
+      .nums .wrap {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+        padding-top: 28px;
+        padding-bottom: 28px;
+      }
+      .nums b {
+        display: block;
+        font-size: 32px;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+      }
+      .nums span {
+        font-size: 14px;
+        color: var(--muted);
+      }
 
-.block { padding-top: 72px; padding-bottom: 24px; display: flex; flex-direction: column; gap: 24px; }
-.grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
-.feat { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; gap: 8px; }
-.feat h3 { margin: 0; font-size: 19px; font-weight: 600; }
-.feat p { margin: 0; font-size: 15px; color: var(--muted); }
-.feat a.como { font-size: 14px; margin-top: auto; }
-.badge { font: 11px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--warm); background: var(--warm-soft); border-radius: 999px; padding: 3px 9px; align-self: flex-start; }
+      .block {
+        padding-top: 72px;
+        padding-bottom: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      .grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      }
+      .feat {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .feat h3 {
+        margin: 0;
+        font-size: 19px;
+        font-weight: 600;
+      }
+      .feat p {
+        margin: 0;
+        font-size: 15px;
+        color: var(--muted);
+      }
+      .feat a.como {
+        font-size: 14px;
+        margin-top: auto;
+      }
+      .badge {
+        font: 11px var(--font-mono);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--warm);
+        background: var(--warm-soft);
+        border-radius: 999px;
+        padding: 3px 9px;
+        align-self: flex-start;
+      }
 
-/* como usar */
-.tabs { display: flex; flex-wrap: wrap; gap: 8px; }
-.tab { min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); font: 15px var(--font-body); cursor: pointer; }
-.tab[aria-selected="true"] { background: var(--fg); border-color: var(--fg); color: var(--bg); }
-.tab small { font: 11px var(--font-mono); opacity: .7; margin-left: 6px; }
-.player { display: flex; flex-wrap: wrap; gap: 28px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
-.player .tela { flex: 3 1 420px; min-width: 0; }
-.player .tela video, .player .tela .sem { width: 100%; aspect-ratio: 16 / 10; border-radius: 12px; background: #1b2220; display: block; object-fit: contain; }
-.player .tela .sem { display: flex; align-items: center; justify-content: center; color: #c9d3cf; font-size: 15px; padding: 24px; text-align: center; }
-.player .passos { flex: 2 1 280px; min-width: 0; display: flex; flex-direction: column; }
-.player .passos h3 { margin: 4px 0 8px; font-size: 22px; font-weight: 600; }
-.player ol { margin: 0; padding: 0; list-style: none; counter-reset: p; }
-.player li { counter-increment: p; display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
-.player li:last-child { border-bottom: 0; }
-.player li::before { content: counter(p); flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font: 13px/28px var(--font-mono); text-align: center; }
-.player li.on::before { background: var(--accent); color: var(--accent-ink); }
-.vids { display: grid; gap: 22px 18px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
-.vid { display: flex; flex-direction: column; gap: 8px; text-align: left; background: none; border: 0; padding: 0; color: var(--fg); font: inherit; cursor: pointer; }
-.vid .capa { position: relative; aspect-ratio: 16 / 10; border-radius: 12px; overflow: hidden; background: var(--card); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; }
-.vid .capa img { width: 100%; height: 100%; object-fit: cover; }
-.vid .capa .n { font: 600 28px var(--font-mono); color: var(--accent); }
-.vid .capa .dur { position: absolute; right: 8px; top: 8px; font: 12px var(--font-mono); background: rgba(27,34,32,.85); color: #fff; border-radius: 6px; padding: 2px 7px; }
-.vid .capa .soon { position: absolute; left: 8px; top: 8px; }
-.vid b { font-size: 16px; font-weight: 600; line-height: 1.35; }
-.vid span.d { font-size: 14px; color: var(--muted); }
-.vid[aria-current="true"] .capa { outline: 3px solid var(--accent); outline-offset: 2px; }
+      /* como usar */
+      .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .tab {
+        min-height: 44px;
+        padding: 0 16px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        color: var(--fg);
+        font: 15px var(--font-body);
+        cursor: pointer;
+      }
+      .tab[aria-selected="true"] {
+        background: var(--fg);
+        border-color: var(--fg);
+        color: var(--bg);
+      }
+      .tab small {
+        font: 11px var(--font-mono);
+        opacity: 0.7;
+        margin-left: 6px;
+      }
+      .player {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 28px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 22px;
+      }
+      .player .tela {
+        flex: 3 1 420px;
+        min-width: 0;
+      }
+      .player .tela video,
+      .player .tela .sem {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        border-radius: 12px;
+        background: #1b2220;
+        display: block;
+        object-fit: contain;
+      }
+      .player .tela .sem {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #c9d3cf;
+        font-size: 15px;
+        padding: 24px;
+        text-align: center;
+      }
+      .player .passos {
+        flex: 2 1 280px;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+      }
+      .player .passos h3 {
+        margin: 4px 0 8px;
+        font-size: 22px;
+        font-weight: 600;
+      }
+      .player ol {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        counter-reset: p;
+      }
+      .player li {
+        counter-increment: p;
+        display: flex;
+        gap: 12px;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 15px;
+      }
+      .player li:last-child {
+        border-bottom: 0;
+      }
+      .player li::before {
+        content: counter(p);
+        flex: none;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font: 13px/28px var(--font-mono);
+        text-align: center;
+      }
+      .player li.on::before {
+        background: var(--accent);
+        color: var(--accent-ink);
+      }
+      .vids {
+        display: grid;
+        gap: 22px 18px;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      }
+      .vid {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        text-align: left;
+        background: none;
+        border: 0;
+        padding: 0;
+        color: var(--fg);
+        font: inherit;
+        cursor: pointer;
+      }
+      .vid .capa {
+        position: relative;
+        aspect-ratio: 16 / 10;
+        border-radius: 12px;
+        overflow: hidden;
+        background: var(--card);
+        border: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .vid .capa img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .vid .capa .n {
+        font: 600 28px var(--font-mono);
+        color: var(--accent);
+      }
+      .vid .capa .dur {
+        position: absolute;
+        right: 8px;
+        top: 8px;
+        font: 12px var(--font-mono);
+        background: rgba(27, 34, 32, 0.85);
+        color: #fff;
+        border-radius: 6px;
+        padding: 2px 7px;
+      }
+      .vid .capa .soon {
+        position: absolute;
+        left: 8px;
+        top: 8px;
+      }
+      .vid b {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.35;
+      }
+      .vid span.d {
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .vid[aria-current="true"] .capa {
+        outline: 3px solid var(--accent);
+        outline-offset: 2px;
+      }
 
-/* baixar */
-.dl { display: flex; flex-direction: column; gap: 8px; padding: 22px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); text-decoration: none; color: var(--fg); }
-.dl:hover { border-color: var(--accent); }
-.dl b { font-size: 18px; } .dl span { font-size: 14.5px; color: var(--muted); } .dl i { font: normal 13.5px var(--font-mono); color: var(--accent); margin-top: auto; }
-.tbl { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow-x: auto; }
-.tbl table { width: 100%; border-collapse: collapse; min-width: 520px; font-size: 15px; }
-.tbl th, .tbl td { padding: 13px 18px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
-.tbl tr:last-child td { border-bottom: 0; }
-.tbl td small { display: block; font-size: 13px; color: var(--faint); }
-.tbl .sz { font: 12px var(--font-mono); color: var(--faint); margin-left: 6px; }
-.repo { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; background: var(--dark-band); color: var(--dark-ink); border-radius: 16px; padding: 28px 30px; text-decoration: none; }
-.repo b { font-size: 20px; } .repo span { font-size: 15px; color: var(--dark-muted); } .repo i { font: normal 14px var(--font-mono); color: #7cc0d8; }
+      /* baixar */
+      .dl {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 22px;
+        border-radius: 12px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        text-decoration: none;
+        color: var(--fg);
+      }
+      .dl:hover {
+        border-color: var(--accent);
+      }
+      .dl b {
+        font-size: 18px;
+      }
+      .dl span {
+        font-size: 14.5px;
+        color: var(--muted);
+      }
+      .dl i {
+        font: normal 13.5px var(--font-mono);
+        color: var(--accent);
+        margin-top: auto;
+      }
+      .tbl {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        overflow-x: auto;
+      }
+      .tbl table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 520px;
+        font-size: 15px;
+      }
+      .tbl th,
+      .tbl td {
+        padding: 13px 18px;
+        text-align: left;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+      .tbl tr:last-child td {
+        border-bottom: 0;
+      }
+      .tbl td small {
+        display: block;
+        font-size: 13px;
+        color: var(--faint);
+      }
+      .tbl .sz {
+        font: 12px var(--font-mono);
+        color: var(--faint);
+        margin-left: 6px;
+      }
+      .repo {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 20px;
+        background: var(--dark-band);
+        color: var(--dark-ink);
+        border-radius: 16px;
+        padding: 28px 30px;
+        text-decoration: none;
+      }
+      .repo b {
+        font-size: 20px;
+      }
+      .repo span {
+        font-size: 15px;
+        color: var(--dark-muted);
+      }
+      .repo i {
+        font: normal 14px var(--font-mono);
+        color: #7cc0d8;
+      }
 
-/* como é feito */
-.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 18px; }
-.steps li { display: flex; gap: 14px; }
-.steps .n { flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font: 500 14px/34px var(--font-mono); text-align: center; }
-.steps b { font-size: 17px; } .steps p { margin: 2px 0 0; font-size: 15px; color: var(--muted); }
-.cta { background: var(--accent); color: var(--accent-ink); border-radius: 16px; padding: 36px; display: flex; flex-wrap: wrap; gap: 22px; align-items: center; }
-.cta h2 { margin: 0; font-size: 28px; } .cta p { margin: 6px 0 0; opacity: .9; }
-.cta a { background: var(--accent-ink); color: var(--accent); text-decoration: none; padding: 12px 22px; border-radius: 999px; font-weight: 600; }
-.cta a.o { background: none; color: var(--accent-ink); border: 1px solid currentColor; font-weight: 400; }
-footer { border-top: 1px solid var(--line); margin-top: 72px; }
-footer .wrap { display: flex; flex-wrap: wrap; gap: 14px 28px; padding-top: 28px; padding-bottom: 44px; font-size: 14px; color: var(--faint); }
-footer p { margin: 0; flex: 1 1 480px; }
-footer nav { display: flex; flex-wrap: wrap; gap: 8px 18px; }
-</style>
-</head>
-<body>
-<a class="skip" href="#principal">Pular para o conteúdo</a>
-<header class="top">
-  <nav class="wrap" aria-label="Principal">
-    <a class="brand" href="#topo"><span aria-hidden="true">א</span><b>Bíblia Interlinear</b></a>
-    <a class="l" href="#recursos">Funcionalidades</a>
-    <a class="l" href="#como-usar">Como usar</a>
-    <a class="l" href="#baixar">Baixar</a>
-    <a class="l" href="#como">Como é feito</a>
-    <a class="l" href="__REPO__">GitHub</a>
-    <a class="btn primary" href="ler.html" style="min-height: 44px; padding: 0 18px; font-size: 15px">Abrir a Bíblia</a>
-  </nav>
-</header>
+      /* como é feito */
+      .steps {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .steps li {
+        display: flex;
+        gap: 14px;
+      }
+      .steps .n {
+        flex: none;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font: 500 14px/34px var(--font-mono);
+        text-align: center;
+      }
+      .steps b {
+        font-size: 17px;
+      }
+      .steps p {
+        margin: 2px 0 0;
+        font-size: 15px;
+        color: var(--muted);
+      }
+      .cta {
+        background: var(--accent);
+        color: var(--accent-ink);
+        border-radius: 16px;
+        padding: 36px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 22px;
+        align-items: center;
+      }
+      .cta h2 {
+        margin: 0;
+        font-size: 28px;
+      }
+      .cta p {
+        margin: 6px 0 0;
+        opacity: 0.9;
+      }
+      .cta a {
+        background: var(--accent-ink);
+        color: var(--accent);
+        text-decoration: none;
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-weight: 600;
+      }
+      .cta a.o {
+        background: none;
+        color: var(--accent-ink);
+        border: 1px solid currentColor;
+        font-weight: 400;
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        margin-top: 72px;
+      }
+      footer .wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px 28px;
+        padding-top: 28px;
+        padding-bottom: 44px;
+        font-size: 14px;
+        color: var(--faint);
+      }
+      footer p {
+        margin: 0;
+        flex: 1 1 480px;
+      }
+      footer nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#principal">Pular para o conteúdo</a>
+    <header class="top">
+      <nav class="wrap" aria-label="Principal">
+        <a class="brand" href="#topo"><span aria-hidden="true">א</span><b>Bíblia Interlinear</b></a>
+        <a class="l" href="#recursos">Funcionalidades</a>
+        <a class="l" href="#como-usar">Como usar</a>
+        <a class="l" href="#baixar">Baixar</a>
+        <a class="l" href="#como">Como é feito</a>
+        <a class="l" href="__REPO__">GitHub</a>
+        <a class="btn primary" href="ler.html" style="min-height: 44px; padding: 0 18px; font-size: 15px">Abrir a Bíblia</a>
+      </nav>
+    </header>
 
-<main id="principal">
-<section id="topo" class="wrap hero">
-  <div>
-    <p class="kick">Hebraico · Aramaico · Grego · Português</p>
-    <h1>A Bíblia inteira, palavra por palavra.</h1>
-    <p class="lede" style="font-size: 19px">Os 66 livros no original, cada palavra com transliteração, pronúncia, número Strong e glosa em português, e abaixo de cada versículo o texto da Bíblia Livre. Gratuito, aberto e sem anúncios — no navegador, no celular, em EPUB e em PDF.</p>
-    <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center">
-      <a class="btn primary" href="ler.html">Abrir a Bíblia</a>
-    </div>
-    <p class="note">Não precisa de conta. Funciona sem internet depois de aberto. Prefere app, EPUB ou PDF? <a href="#baixar">Veja como baixar</a>.</p>
-  </div>
-  <figure class="sample" aria-label="Exemplo: Gênesis 1:1 e João 1:1">
-    __AMOSTRA__
-  </figure>
-</section>
+    <main id="principal">
+      <section id="topo" class="wrap hero">
+        <div>
+          <p class="kick">Hebraico · Aramaico · Grego · Português</p>
+          <h1>A Bíblia inteira, palavra por palavra.</h1>
+          <p class="lede" style="font-size: 19px">
+            Os 66 livros no original, cada palavra com transliteração, pronúncia, número Strong e glosa em português, e abaixo de cada
+            versículo o texto da Bíblia Livre. Gratuito, aberto e sem anúncios — no navegador, no celular, em EPUB e em PDF.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center">
+            <a class="btn primary" href="ler.html">Abrir a Bíblia</a>
+          </div>
+          <p class="note">
+            Não precisa de conta. Funciona sem internet depois de aberto. Prefere app, EPUB ou PDF? <a href="#baixar">Veja como baixar</a>.
+          </p>
+        </div>
+        <figure class="sample" aria-label="Exemplo: Gênesis 1:1 e João 1:1">__AMOSTRA__</figure>
+      </section>
 
-<section class="nums" aria-label="Números do projeto">
-  <div class="wrap">
-    <div><b>__N_LIVROS__</b><span>livros</span></div>
-    <div><b>__N_CAPS__</b><span>capítulos, cada um com tema</span></div>
-    <div><b>__N_VERS__</b><span>versículos da Bíblia Livre</span></div>
-    <div><b>__N_PALAVRAS__</b><span>palavras do original com glosa</span></div>
-    <div><b>__N_VERBETES__</b><span>verbetes em português</span></div>
-  </div>
-</section>
+      <section class="nums" aria-label="Números do projeto">
+        <div class="wrap">
+          <div><b>__N_LIVROS__</b><span>livros</span></div>
+          <div><b>__N_CAPS__</b><span>capítulos, cada um com tema</span></div>
+          <div><b>__N_VERS__</b><span>versículos da Bíblia Livre</span></div>
+          <div><b>__N_PALAVRAS__</b><span>palavras do original com glosa</span></div>
+          <div><b>__N_VERBETES__</b><span>verbetes em português</span></div>
+        </div>
+      </section>
 
-<section id="recursos" class="wrap block" aria-labelledby="h-features">
-  <p class="kick">Funcionalidades</p>
-  <h2 class="h2" id="h-features">Feita para ler de perto</h2>
-  <div class="grid">
-    <div class="feat"><h3>Cartões palavra a palavra</h3><p>Palavra original, transliteração, pronúncia em português, número Strong e glosa. Cada camada liga e desliga.</p><a class="como" href="#v-04">Ver como usar</a></div>
-    <div class="feat"><h3>Verbetes em português</h3><p>Toque numa palavra: origem, significado, análise gramatical e como a Bíblia Livre traduz essa palavra em outros lugares.</p><a class="como" href="#v-05">Ver como usar</a></div>
-    <div class="feat"><h3>Ir para qualquer versículo</h3><p>Digite <b>Jo 3:16</b>, <b>sl 23</b> ou só <b>1:14</b>. No índice, um toque no capítulo já abre.</p><a class="como" href="#v-02">Ver como usar</a></div>
-    <div class="feat"><h3>Sobre o livro</h3><p>Resumo, pessoas, linha do tempo, lugares e contexto de cada um dos 66 livros, e um tema para cada capítulo.</p><a class="como" href="#v-07">Ver como usar</a></div>
-    <div class="feat"><h3>Ouvir o original</h3><p>O versículo é lido em hebraico ou grego pela voz do aparelho, realçando cada palavra; dá para falar mais devagar.</p><a class="como" href="#v-08">Ver como usar</a></div>
-    <div class="feat"><h3>Modos de leitura</h3><p>Leia só a Bíblia Livre, como uma Bíblia comum, só o original, os dois lado a lado, o interlinear ou o modo de estudo — ou monte o seu.</p><a class="como" href="#v-15">Ver como usar</a></div>
-    <div class="feat"><h3>Marcar e anotar</h3><p>Cores sobre versículos, trechos ou palavras do original, notas, favoritos e etiquetas — tudo guardado no seu aparelho, sem conta.</p><a class="como" href="#v-18">Ver como usar</a></div>
-    <div class="feat"><h3>Caderno em PDF e backup</h3><p>Exporte suas notas e marcações como um caderno de estudo em PDF, com o texto e o interlinear. Baixe tudo num arquivo e importe em outro aparelho.</p><a class="como" href="#v-22">Ver como usar</a></div>
-    <div class="feat"><h3>Sincronizar com o Google Drive</h3><p>Opcional: entre com Google e suas anotações e o modo de leitura passam a valer no celular e no computador. Ficam numa pasta privada do app no seu Drive — o projeto não tem servidor e não vê seus dados.</p><a class="como" href="#v-24">Ver como usar</a></div>
-    <div class="feat"><h3>Meu progresso</h3><p>Com a conta conectada: quanto da Bíblia você já leu, tempo de leitura por dia, dias seguidos, o mapa dos 66 livros e planos como a Bíblia em 1 ano — somados em todos os aparelhos.</p><a class="como" href="#v-31">Ver como usar</a></div>
-    <div class="feat"><h3>Perguntas ao texto</h3><p>No fim do capítulo, perguntas para pensar ou conversar em grupo — observar, interpretar, olhar o original e aplicar —, sem respostas prontas. A sua resposta vira uma nota.</p><a class="como" href="#v-27">Ver como usar</a></div>
-    <div class="feat"><h3>Acessível e offline</h3><p>Seis temas de cor, tamanho do texto, fonte de leitura fácil, leitor de tela e teclado. Depois de aberto, funciona sem internet.</p><a class="como" href="#v-11">Ver como usar</a></div>
-  </div>
-</section>
+      <section id="recursos" class="wrap block" aria-labelledby="h-features">
+        <p class="kick">Funcionalidades</p>
+        <h2 class="h2" id="h-features">Feita para ler de perto</h2>
+        <div class="grid">
+          <div class="feat">
+            <h3>Cartões palavra a palavra</h3>
+            <p>Palavra original, transliteração, pronúncia em português, número Strong e glosa. Cada camada liga e desliga.</p>
+            <a class="como" href="#v-04">Ver como usar</a>
+          </div>
+          <div class="feat">
+            <h3>Verbetes em português</h3>
+            <p>Toque numa palavra: origem, significado, análise gramatical e como a Bíblia Livre traduz essa palavra em outros lugares.</p>
+            <a class="como" href="#v-05">Ver como usar</a>
+          </div>
+          <div class="feat">
+            <h3>Ir para qualquer versículo</h3>
+            <p>Digite <b>Jo 3:16</b>, <b>sl 23</b> ou só <b>1:14</b>. No índice, um toque no capítulo já abre.</p>
+            <a class="como" href="#v-02">Ver como usar</a>
+          </div>
+          <div class="feat">
+            <h3>Sobre o livro</h3>
+            <p>Resumo, pessoas, linha do tempo, lugares e contexto de cada um dos 66 livros, e um tema para cada capítulo.</p>
+            <a class="como" href="#v-07">Ver como usar</a>
+          </div>
+          <div class="feat">
+            <h3>Ouvir o original</h3>
+            <p>O versículo é lido em hebraico ou grego pela voz do aparelho, realçando cada palavra; dá para falar mais devagar.</p>
+            <a class="como" href="#v-08">Ver como usar</a>
+          </div>
+          <div class="feat">
+            <h3>Modos de leitura</h3>
+            <p>
+              Leia só a Bíblia Livre, como uma Bíblia comum, só o original, os dois lado a lado, o interlinear ou o modo de estudo — ou
+              monte o seu.
+            </p>
+            <a class="como" href="#v-15">Ver como usar</a>
+          </div>
+          <div class="feat">
+            <h3>Marcar e anotar</h3>
+            <p>
+              Cores sobre versículos, trechos ou palavras do original, notas, favoritos e etiquetas — tudo guardado no seu aparelho, sem
+              conta.
+            </p>
+            <a class="como" href="#v-18">Ver como usar</a>
+          </div>
+          <div class="feat">
+            <h3>Caderno em PDF e backup</h3>
+            <p>
+              Exporte suas notas e marcações como um caderno de estudo em PDF, com o texto e o interlinear. Baixe tudo num arquivo e importe
+              em outro aparelho.
+            </p>
+            <a class="como" href="#v-22">Ver como usar</a>
+          </div>
+          <div class="feat">
+            <h3>Sincronizar com o Google Drive</h3>
+            <p>
+              Opcional: entre com Google e suas anotações e o modo de leitura passam a valer no celular e no computador. Ficam numa pasta
+              privada do app no seu Drive — o projeto não tem servidor e não vê seus dados.
+            </p>
+            <a class="como" href="#v-24">Ver como usar</a>
+          </div>
+          <div class="feat">
+            <h3>Meu progresso</h3>
+            <p>
+              Com a conta conectada: quanto da Bíblia você já leu, tempo de leitura por dia, dias seguidos, o mapa dos 66 livros e planos
+              como a Bíblia em 1 ano — somados em todos os aparelhos.
+            </p>
+            <a class="como" href="#v-31">Ver como usar</a>
+          </div>
+          <div class="feat">
+            <h3>Perguntas ao texto</h3>
+            <p>
+              No fim do capítulo, perguntas para pensar ou conversar em grupo — observar, interpretar, olhar o original e aplicar —, sem
+              respostas prontas. A sua resposta vira uma nota.
+            </p>
+            <a class="como" href="#v-27">Ver como usar</a>
+          </div>
+          <div class="feat">
+            <h3>Acessível e offline</h3>
+            <p>
+              Seis temas de cor, tamanho do texto, fonte de leitura fácil, leitor de tela e teclado. Depois de aberto, funciona sem
+              internet.
+            </p>
+            <a class="como" href="#v-11">Ver como usar</a>
+          </div>
+        </div>
+      </section>
 
-<section id="como-usar" class="wrap block" aria-labelledby="h-how-to-use">
-  <p class="kick">Como usar</p>
-  <h2 class="h2" id="h-how-to-use">Veja cada função em menos de 30 segundos</h2>
-  <p class="lede">Vídeos curtos, sem som, com legenda e o passo a passo escrito. Gravados a partir do próprio app e refeitos sozinhos quando algo muda.</p>
-  <div class="tabs" role="tablist" aria-label="Grupos de vídeos" id="howto-tabs"></div>
-  <div class="player" id="howto-player">
-    <div class="tela" id="howto-screen"></div>
-    <div class="passos"><span class="kick" id="howto-num" style="font-size: 12px"></span><h3 id="howto-title"></h3><ol id="howto-steps"></ol></div>
-  </div>
-  <div class="vids" id="howto-list"></div>
-  <noscript><p>Ative o JavaScript para ver os vídeos. O passo a passo de cada função está na documentação do repositório.</p></noscript>
-</section>
+      <section id="como-usar" class="wrap block" aria-labelledby="h-how-to-use">
+        <p class="kick">Como usar</p>
+        <h2 class="h2" id="h-how-to-use">Veja cada função em menos de 30 segundos</h2>
+        <p class="lede">
+          Vídeos curtos, sem som, com legenda e o passo a passo escrito. Gravados a partir do próprio app e refeitos sozinhos quando algo
+          muda.
+        </p>
+        <div class="tabs" role="tablist" aria-label="Grupos de vídeos" id="howto-tabs"></div>
+        <div class="player" id="howto-player">
+          <div class="tela" id="howto-screen"></div>
+          <div class="passos">
+            <span class="kick" id="howto-num" style="font-size: 12px"></span>
+            <h3 id="howto-title"></h3>
+            <ol id="howto-steps"></ol>
+          </div>
+        </div>
+        <div class="vids" id="howto-list"></div>
+        <noscript
+          ><p>Ative o JavaScript para ver os vídeos. O passo a passo de cada função está na documentação do repositório.</p></noscript
+        >
+      </section>
 
-<section id="baixar" class="wrap block" aria-labelledby="h-download">
-  <p class="kick">Onde ler</p>
-  <h2 class="h2" id="h-download">No navegador, no celular, em EPUB ou em PDF</h2>
-  <h3 style="margin: 4px 0 0; font-size: 20px; font-weight: 600">Apps</h3>
-  <div class="grid">
-    <a class="dl" href="ler.html"><b>Site</b><span>Abre em qualquer navegador e pode ser instalado na tela inicial do celular ou do computador (menu do navegador › Instalar ou Adicionar à tela inicial). Depois de aberto, funciona offline.</span><i>Abrir a Bíblia →</i></a>
-    <a class="dl" href="__REPO__/releases/tag/app-android"><b>Android</b><span>App com a Bíblia inteira dentro, sem precisar de internet para ler. Baixe o APK no celular e instale (permita instalar de fontes desconhecidas). Na Play Store: em breve.</span><i>Baixar o APK (última versão) →</i></a>
-    <a class="dl" href="__REPO__/tree/main/ios"><b>iPhone e iPad</b><span>O projeto do app para iOS está pronto no repositório e entra na App Store quando a conta de desenvolvedor Apple estiver ativa. Enquanto isso, instale o site na tela inicial pelo Safari (Compartilhar › Adicionar à Tela de Início).</span><i>Ver o projeto iOS →</i></a>
-  </div>
-  <h3 style="margin: 12px 0 0; font-size: 20px; font-weight: 600">Livros para baixar: EPUB e PDF</h3>
-  <p class="lede" style="font-size: 15.5px">Ficam na página <b>Releases</b> do repositório e são gerados de novo pelo GitHub a cada correção nos dados, então os links sempre trazem a versão mais recente. No EPUB, cada palavra do original é uma nota que abre ao tocar (funciona no Kindle). O PDF é A4, com os cartões das palavras, a Bíblia Livre abaixo de cada versículo e marcadores por livro e capítulo.</p>
-  <div class="tbl">
-    <table>
-      <thead><tr><th scope="col">Arquivo</th><th scope="col">EPUB</th><th scope="col">PDF (A4)</th></tr></thead>
-      <tbody>
-        <tr><td><b>Bíblia completa</b><small>os 66 livros num arquivo só</small></td><td><a href="__LIVROS__/00-Biblia-Interlinear-completa.epub">Baixar</a><span class="sz">__TAM_EPUB_COMPLETA__</span></td><td><a href="__LIVROS__/00-Biblia-Interlinear-completa.pdf">Baixar</a><span class="sz">__TAM_PDF_COMPLETA__</span></td></tr>
-        <tr><td><b>Antigo Testamento</b><small>39 livros</small></td><td><a href="__LIVROS__/00-Biblia-Interlinear-AT.epub">Baixar</a><span class="sz">__TAM_EPUB_AT__</span></td><td><a href="__LIVROS__/00-Biblia-Interlinear-AT.pdf">Baixar</a><span class="sz">__TAM_PDF_AT__</span></td></tr>
-        <tr><td><b>Novo Testamento</b><small>27 livros</small></td><td><a href="__LIVROS__/00-Biblia-Interlinear-NT.epub">Baixar</a><span class="sz">__TAM_EPUB_NT__</span></td><td><a href="__LIVROS__/00-Biblia-Interlinear-NT.pdf">Baixar</a><span class="sz">__TAM_PDF_NT__</span></td></tr>
-        <tr><td><b>Só a Bíblia Livre</b><small>sem o original, como uma Bíblia comum; bem mais leve</small></td><td><a href="__LIVROS__/00-Biblia-Livre.epub">Baixar</a><span class="sz">__TAM_EPUB_BLIVRE__</span></td><td><a href="__LIVROS__/00-Biblia-Livre.pdf">Baixar</a><span class="sz">__TAM_PDF_BLIVRE__</span></td></tr>
-        <tr><td><b>Cada livro separado</b><small>01-GEN-Genesis … 66-REV-Apocalipse, abrem mais rápido</small></td><td><a href="__REPO__/releases/tag/livros">Escolher o livro</a></td><td><a href="__REPO__/releases/tag/livros">Escolher o livro</a></td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p style="margin: 0; font-size: 13.5px; color: var(--faint)">No Kindle: envie o EPUB pelo Send to Kindle (até 200 MB pelo app ou site; por e-mail, até 50 MB — use o AT, o NT ou um livro).</p>
-  <a class="repo" href="__REPO__">
-    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#7cc0d8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg>
-    <span style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px"><b>Código aberto no GitHub</b><span>__REPO_CURTO__ — dados (glosas, léxico, temas, correções), scripts que geram tudo a partir das fontes abertas, o app Android e iOS, os workflows que publicam o site e os livros, e a documentação.</span></span>
-    <i>Ver o repositório →</i>
-  </a>
-</section>
+      <section id="baixar" class="wrap block" aria-labelledby="h-download">
+        <p class="kick">Onde ler</p>
+        <h2 class="h2" id="h-download">No navegador, no celular, em EPUB ou em PDF</h2>
+        <h3 style="margin: 4px 0 0; font-size: 20px; font-weight: 600">Apps</h3>
+        <div class="grid">
+          <a class="dl" href="ler.html"
+            ><b>Site</b
+            ><span
+              >Abre em qualquer navegador e pode ser instalado na tela inicial do celular ou do computador (menu do navegador › Instalar ou
+              Adicionar à tela inicial). Depois de aberto, funciona offline.</span
+            ><i>Abrir a Bíblia →</i></a
+          >
+          <a class="dl" href="__REPO__/releases/tag/app-android"
+            ><b>Android</b
+            ><span
+              >App com a Bíblia inteira dentro, sem precisar de internet para ler. Baixe o APK no celular e instale (permita instalar de
+              fontes desconhecidas). Na Play Store: em breve.</span
+            ><i>Baixar o APK (última versão) →</i></a
+          >
+          <a class="dl" href="__REPO__/tree/main/ios"
+            ><b>iPhone e iPad</b
+            ><span
+              >O projeto do app para iOS está pronto no repositório e entra na App Store quando a conta de desenvolvedor Apple estiver
+              ativa. Enquanto isso, instale o site na tela inicial pelo Safari (Compartilhar › Adicionar à Tela de Início).</span
+            ><i>Ver o projeto iOS →</i></a
+          >
+        </div>
+        <h3 style="margin: 12px 0 0; font-size: 20px; font-weight: 600">Livros para baixar: EPUB e PDF</h3>
+        <p class="lede" style="font-size: 15.5px">
+          Ficam na página <b>Releases</b> do repositório e são gerados de novo pelo GitHub a cada correção nos dados, então os links sempre
+          trazem a versão mais recente. No EPUB, cada palavra do original é uma nota que abre ao tocar (funciona no Kindle). O PDF é A4, com
+          os cartões das palavras, a Bíblia Livre abaixo de cada versículo e marcadores por livro e capítulo.
+        </p>
+        <div class="tbl">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Arquivo</th>
+                <th scope="col">EPUB</th>
+                <th scope="col">PDF (A4)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Bíblia completa</b><small>os 66 livros num arquivo só</small></td>
+                <td><a href="__LIVROS__/00-Biblia-Interlinear-completa.epub">Baixar</a><span class="sz">__TAM_EPUB_COMPLETA__</span></td>
+                <td><a href="__LIVROS__/00-Biblia-Interlinear-completa.pdf">Baixar</a><span class="sz">__TAM_PDF_COMPLETA__</span></td>
+              </tr>
+              <tr>
+                <td><b>Antigo Testamento</b><small>39 livros</small></td>
+                <td><a href="__LIVROS__/00-Biblia-Interlinear-AT.epub">Baixar</a><span class="sz">__TAM_EPUB_AT__</span></td>
+                <td><a href="__LIVROS__/00-Biblia-Interlinear-AT.pdf">Baixar</a><span class="sz">__TAM_PDF_AT__</span></td>
+              </tr>
+              <tr>
+                <td><b>Novo Testamento</b><small>27 livros</small></td>
+                <td><a href="__LIVROS__/00-Biblia-Interlinear-NT.epub">Baixar</a><span class="sz">__TAM_EPUB_NT__</span></td>
+                <td><a href="__LIVROS__/00-Biblia-Interlinear-NT.pdf">Baixar</a><span class="sz">__TAM_PDF_NT__</span></td>
+              </tr>
+              <tr>
+                <td><b>Só a Bíblia Livre</b><small>sem o original, como uma Bíblia comum; bem mais leve</small></td>
+                <td><a href="__LIVROS__/00-Biblia-Livre.epub">Baixar</a><span class="sz">__TAM_EPUB_BLIVRE__</span></td>
+                <td><a href="__LIVROS__/00-Biblia-Livre.pdf">Baixar</a><span class="sz">__TAM_PDF_BLIVRE__</span></td>
+              </tr>
+              <tr>
+                <td><b>Cada livro separado</b><small>01-GEN-Genesis … 66-REV-Apocalipse, abrem mais rápido</small></td>
+                <td><a href="__REPO__/releases/tag/livros">Escolher o livro</a></td>
+                <td><a href="__REPO__/releases/tag/livros">Escolher o livro</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin: 0; font-size: 13.5px; color: var(--faint)">
+          No Kindle: envie o EPUB pelo Send to Kindle (até 200 MB pelo app ou site; por e-mail, até 50 MB — use o AT, o NT ou um livro).
+        </p>
+        <a class="repo" href="__REPO__">
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#7cc0d8"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" />
+          </svg>
+          <span style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px"
+            ><b>Código aberto no GitHub</b
+            ><span
+              >__REPO_CURTO__ — dados (glosas, léxico, temas, correções), scripts que geram tudo a partir das fontes abertas, o app Android
+              e iOS, os workflows que publicam o site e os livros, e a documentação.</span
+            ></span
+          >
+          <i>Ver o repositório →</i>
+        </a>
+      </section>
 
-<section id="como" class="wrap block" aria-labelledby="h-howto">
-  <div style="display: flex; flex-wrap: wrap; gap: 40px">
-    <div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
-      <p class="kick">Como é feito</p>
-      <h2 class="h2" id="h-howto">Só fontes abertas, do começo ao fim</h2>
-      <p class="lede" style="font-size: 16px">Tudo pode ser copiado e redistribuído. As glosas e o léxico são do projeto e não fazem parte da Bíblia Livre.</p>
-      <p class="lede" style="font-size: 15px"><b style="color: var(--fg)">Limitações:</b> as glosas vêm de alinhamento automático e às vezes ficam deslocadas; léxico, temas e introduções ainda aguardam revisão humana. O sinal ⚑ no versículo mostra o que a revisão automática encontrou.</p>
-    </div>
-    <ol class="steps" style="flex: 2 1 460px; min-width: 0">
-      <li><span class="n">1</span><div><b>Textos originais</b><p>Hebraico e aramaico do Westminster Leningrad Codex (Open Scriptures) e grego do SBL Greek New Testament com a morfologia do MorphGNT.</p></div></li>
-      <li><span class="n">2</span><div><b>Bíblia Livre</b><p>O texto corrido em português, versículo a versículo, com a numeração das Bíblias em português.</p></div></li>
-      <li><span class="n">3</span><div><b>Glosas por alinhamento</b><p>Cada palavra do original é ligada ao trecho da Bíblia Livre que a traduz (eflomal), completada por regras e por revisão.</p></div></li>
-      <li><span class="n">4</span><div><b>Léxico e introduções</b><p>Dicionário de Strong traduzido para o português, introdução de cada livro e tema de cada capítulo.</p></div></li>
-      <li><span class="n">5</span><div><b>Revisões e testes automáticos</b><p>Verificações nos dados e testes do site a cada mudança, antes de publicar o site, o app, os EPUB e os PDF.</p></div></li>
-    </ol>
-  </div>
-</section>
+      <section id="como" class="wrap block" aria-labelledby="h-howto">
+        <div style="display: flex; flex-wrap: wrap; gap: 40px">
+          <div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+            <p class="kick">Como é feito</p>
+            <h2 class="h2" id="h-howto">Só fontes abertas, do começo ao fim</h2>
+            <p class="lede" style="font-size: 16px">
+              Tudo pode ser copiado e redistribuído. As glosas e o léxico são do projeto e não fazem parte da Bíblia Livre.
+            </p>
+            <p class="lede" style="font-size: 15px">
+              <b style="color: var(--fg)">Limitações:</b> as glosas vêm de alinhamento automático e às vezes ficam deslocadas; léxico, temas
+              e introduções ainda aguardam revisão humana. O sinal ⚑ no versículo mostra o que a revisão automática encontrou.
+            </p>
+          </div>
+          <ol class="steps" style="flex: 2 1 460px; min-width: 0">
+            <li>
+              <span class="n">1</span>
+              <div>
+                <b>Textos originais</b>
+                <p>
+                  Hebraico e aramaico do Westminster Leningrad Codex (Open Scriptures) e grego do SBL Greek New Testament com a morfologia
+                  do MorphGNT.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="n">2</span>
+              <div>
+                <b>Bíblia Livre</b>
+                <p>O texto corrido em português, versículo a versículo, com a numeração das Bíblias em português.</p>
+              </div>
+            </li>
+            <li>
+              <span class="n">3</span>
+              <div>
+                <b>Glosas por alinhamento</b>
+                <p>
+                  Cada palavra do original é ligada ao trecho da Bíblia Livre que a traduz (eflomal), completada por regras e por revisão.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="n">4</span>
+              <div>
+                <b>Léxico e introduções</b>
+                <p>Dicionário de Strong traduzido para o português, introdução de cada livro e tema de cada capítulo.</p>
+              </div>
+            </li>
+            <li>
+              <span class="n">5</span>
+              <div>
+                <b>Revisões e testes automáticos</b>
+                <p>Verificações nos dados e testes do site a cada mudança, antes de publicar o site, o app, os EPUB e os PDF.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
 
-<section id="contribuir" class="wrap block">
-  <div class="cta">
-    <div style="flex: 1 1 380px; min-width: 0"><h2>Achou uma glosa errada?</h2><p>Qualquer pessoa pode propor correções de glosas, verbetes e introduções. O guia explica o caminho, do arquivo ao pull request.</p></div>
-    <div style="display: flex; flex-wrap: wrap; gap: 12px"><a href="__REPO__/blob/main/docs/CORRECOES.md">Guia de correções</a><a class="o" href="__REPO__/issues">Relatar um problema</a></div>
-  </div>
-</section>
-</main>
+      <section id="contribuir" class="wrap block">
+        <div class="cta">
+          <div style="flex: 1 1 380px; min-width: 0">
+            <h2>Achou uma glosa errada?</h2>
+            <p>
+              Qualquer pessoa pode propor correções de glosas, verbetes e introduções. O guia explica o caminho, do arquivo ao pull request.
+            </p>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px">
+            <a href="__REPO__/blob/main/docs/CORRECOES.md">Guia de correções</a><a class="o" href="__REPO__/issues">Relatar um problema</a>
+          </div>
+        </div>
+      </section>
+    </main>
 
-<footer>
-  <div class="wrap">
-    <p>Hebraico: Open Scriptures Hebrew Bible (CC BY 4.0). Grego: SBLGNT (CC BY 4.0) e MorphGNT. Tradução: Bíblia Livre. Léxico: Strong (domínio público). Fontes tipográficas sob a SIL Open Font License. Gerado em __DATA__.</p>
-    <nav aria-label="Rodapé"><a href="__REPO__/blob/main/docs/LICENCAS.md">Licenças</a><a href="privacidade.html">Privacidade</a><a href="__REPO__">Código no GitHub</a></nav>
-  </div>
-</footer>
+    <footer>
+      <div class="wrap">
+        <p>
+          Hebraico: Open Scriptures Hebrew Bible (CC BY 4.0). Grego: SBLGNT (CC BY 4.0) e MorphGNT. Tradução: Bíblia Livre. Léxico: Strong
+          (domínio público). Fontes tipográficas sob a SIL Open Font License. Gerado em __DATA__.
+        </p>
+        <nav aria-label="Rodapé">
+          <a href="__REPO__/blob/main/docs/LICENCAS.md">Licenças</a><a href="privacidade.html">Privacidade</a
+          ><a href="__REPO__">Código no GitHub</a>
+        </nav>
+      </div>
+    </footer>
 
-<script src="videos/videos.js" onerror="void 0"></script>
-<script>
-  window.__ROTEIROS = __ROTEIROS__;
-</script>
-<script src="home.js"></script>
-</body>
+    <script src="videos/videos.js" onerror="void 0"></script>
+    <script>
+      window.__ROTEIROS = __ROTEIROS__;
+    </script>
+    <script src="home.js"></script>
+  </body>
 </html>

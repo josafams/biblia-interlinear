@@ -9,8 +9,11 @@ export function writeReaderPage(readerBundle: string, books: unknown) {
   const data = JSON.stringify({ books, chapters: {}, lex: {}, complete: true }).replace(/<\//g, "<\\/");
   let html = template.replace("__DATA__", () => data).replace("__READER_BUNDLE__", readerBundle);
   // the Google Fonts links of the template become the local fonts plus the app metadata
+  // (any formatting of the two tags: Prettier breaks the long one over several lines)
+  const googleFonts = /<link\s+rel="preconnect"[^>]*>\s*<link\s+rel="stylesheet"\s+href="https:\/\/fonts\.googleapis\.com[^>]*>/;
+  if (!googleFonts.test(html)) throw new Error("web/reader.html: the Google Fonts links were not found");
   html = html.replace(
-    /<link rel="preconnect"[^>]*>\s*<link rel="stylesheet" href="https:\/\/fonts\.googleapis\.com[^>]*>/,
+    googleFonts,
     `<link rel="stylesheet" href="fonts/fonts.css">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="${APP.theme}">

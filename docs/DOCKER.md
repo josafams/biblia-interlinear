@@ -20,6 +20,7 @@ make serve             # abre o site em http://localhost:8000
 | --- | --- |
 | `make data` | fontes abertas → corpus, glosas, revisões e site |
 | `make web` | só o site (`build/web`) |
+| `make dev` | refaz o site a cada arquivo salvo em `src/` ou `web/` (use junto com `make serve`) |
 | `make test` | testes de dados (pytest) e do site no navegador (Playwright) |
 | `make lint` / `make format` | linters e formatação de todas as linguagens |
 | `make check-data` | confere os arquivos editados à mão em `data/` |
