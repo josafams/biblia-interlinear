@@ -105,7 +105,7 @@ export function verseView(v: ChapterVerse, vi: number, c: Context): VerseView {
 /**
  * The word cards of a verse as HTML (every text escaped). A chapter has hundreds of cards that never change
  * once drawn, so they are inserted at once instead of as one component each (several times faster).
- * Clicks and arrow keys are handled for the whole text by web/reader.js (data-v, data-i).
+ * Clicks and arrow keys are handled for the whole text by src/reader/words.ts and entry.ts (data-v, data-i).
  */
 export function wordCardsHTML(words: WordView[], vi: number, lang: string) {
   return words

@@ -18,7 +18,7 @@
     "dev": "CHOKIDAR_USEPOLLING=1 vite build --watch --mode development",
     "check": "tsc -p . && svelte-check --tsconfig ./tsconfig.json --fail-on-warnings --output human",
     "check:i18n": "node scripts/dev/i18n_check.mjs",
-    "lint": "prettier --check . && eslint . && stylelint \"web/styles/*.css\" && markdownlint-cli2 \"**/*.md\"",
+    "lint": "prettier --check . && eslint . && stylelint \"src/styles/*.css\" && markdownlint-cli2 \"**/*.md\"",
     "format": "prettier --write ."
   },
   "dependencies": {

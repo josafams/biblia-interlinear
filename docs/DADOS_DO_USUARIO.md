@@ -2,7 +2,7 @@
 
 Anotações, preferências e progresso ficam no aparelho e, com login, numa pasta escondida do Google Drive da própria pessoa (ADR 0001). Os nomes abaixo são um **formato de arquivo**: continuam em português mesmo com o código em inglês (ADR 0005). Mudar qualquer um deles exige ler o formato antigo e o novo ao mesmo tempo, porque aparelhos em versões diferentes compartilham o mesmo Drive.
 
-## IndexedDB (`biblia-interlinear`, Dexie, `web/annotations.js`)
+## IndexedDB (`biblia-interlinear`, Dexie, `src/lib/annotations/store.ts`)
 
 | Coleção | Índices | Para quê |
 | --- | --- | --- |

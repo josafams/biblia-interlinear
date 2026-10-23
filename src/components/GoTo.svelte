@@ -1,6 +1,6 @@
 <!--
   "Ir para" (section#toc-livros): a reference or a book name. While typing, the preview says where it goes
-  (or what is wrong); Enter or the button goes there. web/reader.js reads #go-in and does the going.
+  (or what is wrong); Enter or the button goes there. src/reader/toc.ts reads #go-in and does the going.
 -->
 <script lang="ts">
   import { t } from "../i18n";

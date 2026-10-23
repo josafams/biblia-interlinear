@@ -6,6 +6,8 @@ export const toc = $state({
   testament: "0" as "0" | "1",
   /** the letters typed in "Ir para" (see bookQuery) */
   filter: "",
+  /** the part of the index shown (Notas opens "Minhas anotações" instead) */
+  tab: "livros" as "livros" | "voce",
   /** the chapter on screen, for "você está aqui" */
   here: { book: "", chapter: 0 }
 });

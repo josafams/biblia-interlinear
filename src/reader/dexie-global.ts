@@ -1,4 +1,5 @@
-// annotations.js expects the Dexie global that vendor/dexie.min.js used to provide.
+// The Dexie global that vendor/dexie.min.js used to provide: the "Como usar" video scripts open the database
+// with it (scripts/videos/roteiros.mjs).
 import Dexie from "dexie";
 
 declare global {

@@ -1,5 +1,5 @@
 // The chapter text on screen. Every showChapter() draws it again from scratch (a new renderId), as the
-// legacy innerHTML did: web/annotations.js paints highlights and tags straight into the verse elements.
+// legacy innerHTML did.
 // The verse views are raw state (not deeply reactive): they never change after a render, and proxies on
 // thousands of objects would slow long chapters down.
 import { flushSync } from "svelte";
@@ -41,14 +41,13 @@ export function showChapter(verses: ChapterVerse[], c: Context, lang: string, la
 /** The word cards of a verse (computed when drawn, with the lexicon loaded by then). */
 export const wordsOf = (vi: number) => wordViews(source[vi], context);
 
-/** Builds the cards of verse vi now (keyboard navigation, reading aloud); tells the annotations to paint them. */
+/** Builds the cards of verse vi now (keyboard navigation, reading aloud). */
 export function fillVerse(vi: number) {
   if (chapter.filled[vi] !== false) return;
   const filled = [...chapter.filled];
   filled[vi] = true;
   chapter.filled = filled;
   flushSync();
-  document.dispatchEvent(new CustomEvent("words-filled", { detail: { vi } }));
 }
 
 // one observer for the lazy verses of the chapter on screen

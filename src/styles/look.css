@@ -1,0 +1,454 @@
+/* Look: Aparência: reading modes, what to show, text, theme and audio. Values come from tokens.css. */
+@media (max-width: 480px) {
+  .bar .where .full {
+    display: none;
+  }
+  .bar #open-toc .lbl {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+.seg {
+  display: inline-flex;
+  padding: 2px;
+  gap: 2px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.seg button {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.seg button svg {
+  width: 18px;
+  height: 18px;
+}
+.seg button[aria-pressed="true"] {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.day-block .dl {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0;
+  font-weight: 400;
+}
+.day-block .dl span {
+  font: 400 12px var(--font-mono);
+  color: var(--muted);
+  white-space: nowrap;
+}
+/* Aparência */
+.tgrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.tcard {
+  display: grid;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--fg);
+  font: 500 12px var(--font-mono);
+  text-align: center;
+}
+.tcard[aria-pressed="true"] {
+  border: 2px solid var(--accent);
+  padding: 5px;
+}
+.tprev {
+  border-radius: 5px;
+  padding: 8px 4px 6px;
+  display: grid;
+  gap: 1px;
+  justify-items: center;
+  background: var(--pb);
+  color: var(--pf);
+  border: 1px solid rgba(127, 127, 127, 0.25);
+}
+.tprev .ph {
+  font-family: var(--font-heb);
+  font-size: 20px;
+  line-height: 1.2;
+}
+.tprev .px {
+  font-size: 10px;
+  font-style: italic;
+  color: var(--pa);
+}
+.tprev .pg {
+  font-size: 10px;
+}
+.tauto {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  padding: 10px 12px;
+  min-height: 52px;
+}
+.tauto[aria-pressed="true"] {
+  padding: 9px 11px;
+}
+.tauto .half {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  flex: none;
+  background: linear-gradient(90deg, var(--swatch-light) 50%, var(--swatch-dark) 50%);
+  border: 1px solid rgba(127, 127, 127, 0.4);
+}
+.tauto small {
+  display: block;
+  color: var(--muted);
+  font-weight: 400;
+}
+.sizer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.step {
+  width: 48px;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--fg);
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+.step.sm {
+  font-size: 14px;
+}
+.step.lg {
+  font-size: 20px;
+}
+.step:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.sizer output {
+  flex: 1;
+  text-align: center;
+  font: 500 13px var(--font-mono);
+  color: var(--muted);
+}
+.chks {
+  display: grid;
+  gap: 6px;
+}
+.chk {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: left;
+}
+.chk small {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+}
+.chk .sw2 {
+  width: 40px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--line);
+  border: 1px solid var(--muted);
+  position: relative;
+  flex: none;
+  transition: background-color 0.15s;
+}
+.chk .sw2::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--fg);
+  transition: transform 0.15s;
+}
+.chk[aria-checked="true"] .sw2 {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.chk[aria-checked="true"] .sw2::after {
+  transform: translateX(16px);
+  background: var(--surface);
+}
+@media (prefers-reduced-motion: reduce) {
+  .chk .sw2,
+  .chk .sw2::after {
+    transition: none;
+  }
+}
+@media (prefers-contrast: more) {
+  .chk,
+  .tcard,
+  .seg,
+  .step {
+    border-color: var(--muted);
+  }
+}
+@media (forced-colors: active) {
+  .tcard,
+  .chk,
+  .seg,
+  .step {
+    border: 1px solid ButtonText;
+  }
+  .tcard[aria-pressed="true"],
+  .seg button[aria-pressed="true"] {
+    outline: 3px solid Highlight;
+    outline-offset: 1px;
+  }
+  .chk .sw2 {
+    border: 1px solid ButtonText;
+    background: Canvas;
+  }
+  .chk .sw2::after {
+    background: ButtonText;
+  }
+  .chk[aria-checked="true"] .sw2 {
+    background: Highlight;
+  }
+  .chk[aria-checked="true"] .sw2::after {
+    background: HighlightText;
+  }
+  .tprev,
+  .tauto .half {
+    forced-color-adjust: none;
+  }
+}
+/* seletor de 4 opções (Bíblia · Original · Interlinear · Estudo); a explicação do modo escolhido fica embaixo */
+.mode-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 3px;
+  padding: 3px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--line) 70%, var(--surface));
+}
+.mcard {
+  min-height: 44px;
+  min-width: 0;
+  padding: 0 2px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--muted);
+  font: 400 13px var(--font-body);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mcard[aria-checked="true"] {
+  background: var(--surface);
+  color: var(--fg);
+  font-weight: 700;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.14);
+}
+.mcard:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.mode-note {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 8px 0 0;
+}
+.look-foot {
+  margin: 0;
+  font-size: 14px;
+}
+.look-foot a {
+  color: var(--accent);
+}
+@media (min-width: 1100px) {
+  /* Aparência no mesmo painel, sem escurecer nem travar o texto */
+  #look {
+    top: calc(var(--bar-h) + 48px + env(safe-area-inset-top, 0px));
+    width: 400px;
+    box-shadow: -6px 0 24px rgba(0, 0, 0, 0.08);
+  }
+}
+@media (max-width: 720px) {
+  .bbar.cinco .ibtn .lbl {
+    display: none;
+  }
+}
+/* Aparência: "O que mostrar" em chips (os mesmos interruptores, sem rolar) */
+.chks.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.chks.chips .chk {
+  width: auto;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 500 14px var(--font-body);
+}
+.chks.chips .chk small,
+.chks.chips .chk .sw2 {
+  display: none;
+}
+.chks.chips .chk > span {
+  display: contents;
+}
+.chks.chips .chk[aria-checked="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--surface);
+  font-weight: 700;
+}
+@media (max-width: 720px) {
+  #look .sizer output {
+    flex: none;
+    min-width: 52px;
+  }
+}
+/* Tema em chips com uma bolinha da cor, como no design */
+.tgrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tcard,
+.tauto {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--fg);
+  font: 400 14px var(--font-ui);
+  grid-column: auto;
+  text-align: left;
+}
+.tcard[aria-pressed="true"],
+.tauto[aria-pressed="true"] {
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--surface);
+  padding: 0 14px;
+}
+.tcard .tprev {
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--pb);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.tcard .tprev > * {
+  display: none;
+}
+.tauto .half {
+  width: 14px;
+  height: 14px;
+}
+.tauto small {
+  display: none;
+}
+@media (max-width: 720px) {
+  .bbar #open-toc .lbl {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    display: inline;
+  }
+}
+.bbar .lbl {
+  font-size: 12px;
+}
+/* Antigo · Novo Testamento */
+.seg2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3px;
+  padding: 3px;
+  border-radius: 12px;
+  background: var(--chip);
+}
+.seg2 button {
+  min-height: 40px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--muted);
+  font: 400 13px var(--font-ui);
+  cursor: pointer;
+}
+.seg2 button[aria-checked="true"] {
+  background: var(--surface);
+  color: var(--fg);
+  font-weight: 700;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+#toc-livros:has(#go-in:not(:placeholder-shown)) + .toc-books .seg2 {
+  display: none;
+}
+@media (min-width: 721px) {
+  .seg2 button {
+    font-size: 14px;
+    min-height: 38px;
+  }
+}
+.dlem .dl {
+  font-family: var(--font-heb);
+  color: var(--fg);
+}
+.dlem .dl.grc {
+  font-family: var(--font-grc);
+}
+@media (min-width: 1100px) {
+  #look {
+    top: calc(var(--bar-h) + 56px + env(safe-area-inset-top, 0px));
+  }
+}

@@ -23,6 +23,16 @@
   --danger: #a23a3a;
   --review-ink: #8a4f10;
   --review-ink-dark: #e0a560;
+  --ok: light-dark(#2e7d4f, #7fd3a0); /* account and progress: synced, read */
+  --ok-dot: #2e7d4f;
+  --warn: light-dark(#8a5300, #e8b25c); /* account and progress: needs attention */
+  --warn-dot: #b26a00;
+  --error: light-dark(#a3361b, #f0a58f);
+  --note-dot: #c98a1b; /* a chapter with annotations, in the progress map */
+  /* the "Fazer login com o Google" button keeps Google's colors */
+  --google-line: #747775;
+  --google-bg: #ffffff;
+  --google-ink: #1f1f1f;
   --swatch-light: #f8f9f6; /* "automatic" theme swatch halves */
   --swatch-dark: #1a201e;
 

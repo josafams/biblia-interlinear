@@ -754,17 +754,11 @@
             Não precisa de conta. Funciona sem internet depois de aberto. Prefere app, EPUB ou PDF? <a href="#baixar">Veja como baixar</a>.
           </p>
         </div>
-        <figure class="sample" aria-label="Exemplo: Gênesis 1:1 e João 1:1">__AMOSTRA__</figure>
+        <figure class="sample" id="home-sample" aria-label="Exemplo: Gênesis 1:1 e João 1:1"></figure>
       </section>
 
       <section class="nums" aria-label="Números do projeto">
-        <div class="wrap">
-          <div><b>__N_LIVROS__</b><span>livros</span></div>
-          <div><b>__N_CAPS__</b><span>capítulos, cada um com tema</span></div>
-          <div><b>__N_VERS__</b><span>versículos da Bíblia Livre</span></div>
-          <div><b>__N_PALAVRAS__</b><span>palavras do original com glosa</span></div>
-          <div><b>__N_VERBETES__</b><span>verbetes em português</span></div>
-        </div>
+        <div class="wrap" id="home-numbers"></div>
       </section>
 
       <section id="recursos" class="wrap block" aria-labelledby="h-features">
@@ -862,16 +856,7 @@
           Vídeos curtos, sem som, com legenda e o passo a passo escrito. Gravados a partir do próprio app e refeitos sozinhos quando algo
           muda.
         </p>
-        <div class="tabs" role="tablist" aria-label="Grupos de vídeos" id="howto-tabs"></div>
-        <div class="player" id="howto-player">
-          <div class="tela" id="howto-screen"></div>
-          <div class="passos">
-            <span class="kick" id="howto-num" style="font-size: 12px"></span>
-            <h3 id="howto-title"></h3>
-            <ol id="howto-steps"></ol>
-          </div>
-        </div>
-        <div class="vids" id="howto-list"></div>
+        <div id="home-howto"></div>
         <noscript
           ><p>Ative o JavaScript para ver os vídeos. O passo a passo de cada função está na documentação do repositório.</p></noscript
         >
@@ -910,44 +895,7 @@
           trazem a versão mais recente. No EPUB, cada palavra do original é uma nota que abre ao tocar (funciona no Kindle). O PDF é A4, com
           os cartões das palavras, a Bíblia Livre abaixo de cada versículo e marcadores por livro e capítulo.
         </p>
-        <div class="tbl">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Arquivo</th>
-                <th scope="col">EPUB</th>
-                <th scope="col">PDF (A4)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Bíblia completa</b><small>os 66 livros num arquivo só</small></td>
-                <td><a href="__LIVROS__/00-Biblia-Interlinear-completa.epub">Baixar</a><span class="sz">__TAM_EPUB_COMPLETA__</span></td>
-                <td><a href="__LIVROS__/00-Biblia-Interlinear-completa.pdf">Baixar</a><span class="sz">__TAM_PDF_COMPLETA__</span></td>
-              </tr>
-              <tr>
-                <td><b>Antigo Testamento</b><small>39 livros</small></td>
-                <td><a href="__LIVROS__/00-Biblia-Interlinear-AT.epub">Baixar</a><span class="sz">__TAM_EPUB_AT__</span></td>
-                <td><a href="__LIVROS__/00-Biblia-Interlinear-AT.pdf">Baixar</a><span class="sz">__TAM_PDF_AT__</span></td>
-              </tr>
-              <tr>
-                <td><b>Novo Testamento</b><small>27 livros</small></td>
-                <td><a href="__LIVROS__/00-Biblia-Interlinear-NT.epub">Baixar</a><span class="sz">__TAM_EPUB_NT__</span></td>
-                <td><a href="__LIVROS__/00-Biblia-Interlinear-NT.pdf">Baixar</a><span class="sz">__TAM_PDF_NT__</span></td>
-              </tr>
-              <tr>
-                <td><b>Só a Bíblia Livre</b><small>sem o original, como uma Bíblia comum; bem mais leve</small></td>
-                <td><a href="__LIVROS__/00-Biblia-Livre.epub">Baixar</a><span class="sz">__TAM_EPUB_BLIVRE__</span></td>
-                <td><a href="__LIVROS__/00-Biblia-Livre.pdf">Baixar</a><span class="sz">__TAM_PDF_BLIVRE__</span></td>
-              </tr>
-              <tr>
-                <td><b>Cada livro separado</b><small>01-GEN-Genesis … 66-REV-Apocalipse, abrem mais rápido</small></td>
-                <td><a href="__REPO__/releases/tag/livros">Escolher o livro</a></td>
-                <td><a href="__REPO__/releases/tag/livros">Escolher o livro</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <div class="tbl" id="home-books"></div>
         <p style="margin: 0; font-size: 13.5px; color: var(--faint)">
           No Kindle: envie o EPUB pelo Send to Kindle (até 200 MB pelo app ou site; por e-mail, até 50 MB — use o AT, o NT ou um livro).
         </p>
@@ -1053,7 +1001,7 @@
       <div class="wrap">
         <p>
           Hebraico: Open Scriptures Hebrew Bible (CC BY 4.0). Grego: SBLGNT (CC BY 4.0) e MorphGNT. Tradução: Bíblia Livre. Léxico: Strong
-          (domínio público). Fontes tipográficas sob a SIL Open Font License. Gerado em __DATA__.
+          (domínio público). Fontes tipográficas sob a SIL Open Font License. Gerado em <span id="home-date"></span>.
         </p>
         <nav aria-label="Rodapé">
           <a href="__REPO__/blob/main/docs/LICENCAS.md">Licenças</a><a href="privacidade.html">Privacidade</a
@@ -1063,9 +1011,6 @@
     </footer>
 
     <script src="videos/videos.js" onerror="void 0"></script>
-    <script>
-      window.__ROTEIROS = __ROTEIROS__;
-    </script>
-    <script src="home.js"></script>
+    <script type="module" src="__HOME_BUNDLE__"></script>
   </body>
 </html>

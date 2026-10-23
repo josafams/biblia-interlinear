@@ -34,7 +34,7 @@ jobs:
       - name: ESLint
         run: npx eslint . --max-warnings 5
       - name: Stylelint (colors only in tokens.css)
-        run: npx stylelint "web/styles/*.css"
+        run: npx stylelint "src/styles/*.css"
       - name: TypeScript (type check)
         run: npm run check
       - name: i18n (screen text only in the locale)

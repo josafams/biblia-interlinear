@@ -478,7 +478,15 @@
   },
   "you": {
     "progress": "Capítulos lidos, tempo de leitura, dias seguidos e o mapa dos 66 livros.",
-    "progress_signed_out": "Capítulos lidos, tempo de leitura, dias seguidos e o mapa dos 66 livros. Aparece depois de entrar com a conta."
+    "progress_signed_out": "Capítulos lidos, tempo de leitura, dias seguidos e o mapa dos 66 livros. Aparece depois de entrar com a conta.",
+    "progress_title": "Meu progresso",
+    "plans": "Planos de leitura",
+    "plan_year": "Bíblia em 1 ano",
+    "plan_nt90": "Novo Testamento em 90 dias",
+    "plan_needs_account": "Entre com a conta para seguir um plano.",
+    "how_to": "Como usar",
+    "about_project": "Sobre o projeto",
+    "privacy": "Privacidade"
   },
   "app": {
     "name": "Bíblia Interlinear"
@@ -488,7 +496,13 @@
     "not_in_preview": "Este capítulo não está incluído nesta prévia.",
     "lede_greek": "Lê-se da esquerda para a direita. Cada palavra grega abre o verbete; abaixo de cada versículo vem a Bíblia Livre.",
     "lede_hebrew": "Lê-se da direita para a esquerda. Cada palavra hebraica abre o verbete; abaixo de cada versículo vem a Bíblia Livre.",
-    "sections": "Seções do capítulo"
+    "sections": "Seções do capítulo",
+    "section_prev": "Seção anterior",
+    "section_next": "Próxima seção",
+    "verse_of": "v. {v} de {last}",
+    "text_of": "Texto de {ref}",
+    "load_failed": "Não foi possível carregar este capítulo. Verifique a conexão.",
+    "lexicon_failed": "Não foi possível carregar o léxico."
   },
   "questions": {
     "title": "Perguntas ao texto",
@@ -521,7 +535,12 @@
       "aparato": "No SBLGNT este trecho está só no aparato crítico (o texto principal termina Romanos em 16:24); aqui aparece a leitura de Westcott-Hort, Tregelles e Nestle-Aland 28.",
       "sem-original": "Este versículo não tem correspondente no texto original usado aqui (aparece em outras edições).",
       "sem-blivre": "A BLIVRE não tem este versículo separado; o texto está no versículo vizinho."
-    }
+    },
+    "notes_label": {
+      "one": "{count} nota neste versículo",
+      "other": "{count} notas neste versículo"
+    },
+    "favorite": "Favorito"
   },
   "word": {
     "pronunciation": "{xlit}, pronúncia {pron}",
@@ -642,7 +661,10 @@
       "other": "+{count} outras notas neste versículo"
     },
     "saved": "Salva.",
-    "suggestions": "promessas|oração|amor de Deus|para estudar"
+    "suggestions": "promessas|oração|amor de Deus|para estudar",
+    "share_text": "{text} ({ref}, Bíblia Livre)",
+    "link_copied": "Link do versículo copiado.",
+    "share_failed": "Não foi possível compartilhar neste navegador."
   },
   "note": {
     "title": "Nota",
@@ -681,7 +703,9 @@
       "one": "{count} versículo",
       "other": "{count} versículos"
     },
-    "not_in_preview": " · não incluído nesta prévia"
+    "not_in_preview": " · não incluído nesta prévia",
+    "title": "Índice",
+    "close": "Fechar índice"
   },
   "goto": {
     "label": "Buscar livro ou ir para uma referência",
@@ -732,7 +756,11 @@
     "kind_note": "nota",
     "kind_highlight": "marcação",
     "kind_tag": "etiqueta",
-    "kind_favorite": "favorito"
+    "kind_favorite": "favorito",
+    "backup_share_title": "Minhas anotações",
+    "backup_downloaded": "Arquivo de backup baixado.",
+    "imported": "Importado: {added} novos, {updated} atualizados, {same} já estavam aqui.",
+    "import_failed": "Não foi possível ler o arquivo."
   },
   "look": {
     "close": "Fechar aparência",
@@ -898,5 +926,127 @@
       "other": "{count} ocorrências na Bíblia."
     },
     "some": "{count} de {total} ocorrências."
+  },
+  "toast": {
+    "undo": "Desfazer"
+  },
+  "about": {
+    "subtitle": "Resumo, pessoas principais, datas e contexto histórico",
+    "year_bc": "{y} a.C.",
+    "year_ad": "{y} d.C.",
+    "circa": "c. {range}",
+    "years": "anos",
+    "years_bc": "anos a.C.",
+    "years_ad": "anos d.C.",
+    "chapters": "caps. {from}–{to}",
+    "chapter": "cap. {n}",
+    "see_chapters": "Ver capítulos {from} a {to} no índice",
+    "see_chapter": "Ver capítulo {n} no índice",
+    "the_name": "O nome",
+    "structure": "Como o livro se divide",
+    "people": "Pessoas principais",
+    "person_chapter": "{name}: ver capítulo {n} no índice",
+    "caps_short": "caps. ",
+    "verses_short": "v. ",
+    "written": "Quando foi escrito",
+    "tradition": "Segundo a tradição",
+    "academic": "Segundo a pesquisa acadêmica",
+    "when": "Quando se passam os acontecimentos",
+    "timeline": "Linha do tempo, datas aproximadas",
+    "legend": {
+      "people": "pessoas",
+      "events": "acontecimentos",
+      "writing": "escrita do livro"
+    },
+    "context": "Contexto histórico",
+    "places": "Lugares",
+    "themes": "Temas",
+    "key_verses": "Versículos-chave",
+    "disclaimer": "Introdução escrita para este projeto; datas aproximadas e sujeitas a revisão."
+  },
+  "welcome": {
+    "title": "Como você quer ler?",
+    "hint": "Dá para mudar depois em Aa.",
+    "later": "Depois"
+  },
+  "side": {
+    "label": "Painel ao lado do texto",
+    "entry": "Verbete",
+    "annotate": "Anotar"
+  },
+  "hints": {
+    "word": "Dica: toque numa palavra do original para ver o significado e como a Bíblia Livre a traduz.",
+    "verse": "Dica: toque no ⋯ ao lado do número (ou segure o versículo) para marcar, anotar, ouvir ou compartilhar.",
+    "entry": "Dica: ‹ › no verbete passam para a palavra vizinha, sem fechar.",
+    "entry_keys": "Dica: ‹ › no verbete passam para a palavra vizinha (← → no teclado), sem fechar."
+  },
+  "notebook": {
+    "close": "Fechar",
+    "scope": "O que entra",
+    "scope_list": "O que está na lista agora",
+    "scope_selected": "Os itens selecionados",
+    "scope_book": "Um livro",
+    "book": "Livro",
+    "include": "Incluir",
+    "include_notes": "Notas",
+    "include_highlights": "Marcações",
+    "include_favorites": "Favoritos",
+    "include_text": "Texto de cada versículo (Bíblia Livre)",
+    "include_interlinear": "Interlinear das palavras marcadas no original",
+    "order_bible": "Bíblica",
+    "order_date": "Por data",
+    "generate": "Gerar PDF",
+    "generating": "Gerando…",
+    "note": "Gerado no próprio aparelho, sem internet. Na janela de impressão, escolha “Salvar como PDF”.",
+    "title": "Minhas anotações",
+    "free_note": "NOTA LIVRE",
+    "doc_title": "Caderno de estudo",
+    "eyebrow": "CADERNO DE ESTUDO · BÍBLIA INTERLINEAR",
+    "count": {
+      "one": "{count} item",
+      "other": "{count} itens"
+    },
+    "nothing": "Nenhum item com essas opções.",
+    "footer": "Texto: Bíblia Livre (BLIVRE). Original: Open Scriptures Hebrew Bible e SBLGNT (CC BY 4.0). Glosas e léxico: projeto Bíblia Interlinear.",
+    "file_title": "{title} - caderno"
+  },
+  "print": {
+    "android_failed": "Não foi possível abrir a impressão do Android.",
+    "unsupported": "Este navegador não permite imprimir; tente no Chrome, Edge ou Safari."
+  },
+  "home": {
+    "sample_hebrew": "hebraico, lê-se da direita para a esquerda",
+    "sample_greek": "grego, da esquerda para a direita",
+    "numbers": {
+      "books": "livros",
+      "chapters": "capítulos, cada um com tema",
+      "verses": "versículos da Bíblia Livre",
+      "words": "palavras do original com glosa",
+      "entries": "verbetes em português"
+    },
+    "books": {
+      "file": "Arquivo",
+      "pdf": "PDF (A4)",
+      "download": "Baixar",
+      "choose": "Escolher o livro",
+      "complete": "Bíblia completa",
+      "complete_note": "os 66 livros num arquivo só",
+      "ot": "Antigo Testamento",
+      "ot_note": "39 livros",
+      "nt": "Novo Testamento",
+      "nt_note": "27 livros",
+      "blivre": "Só a Bíblia Livre",
+      "blivre_note": "sem o original, como uma Bíblia comum; bem mais leve",
+      "each": "Cada livro separado",
+      "each_note": "01-GEN-Genesis … 66-REV-Apocalipse, abrem mais rápido"
+    },
+    "howto": {
+      "groups": "Grupos de vídeos",
+      "number": "Vídeo {n} · {group}",
+      "captions": "Português",
+      "not_yet": "Este vídeo será gravado quando a função for lançada.",
+      "preparing": "Vídeo em preparação. Siga o passo a passo ao lado.",
+      "soon": "Quando a função sair"
+    }
   }
 }

@@ -1,5 +1,6 @@
 // What the reader is showing, as Svelte state: components read it and redraw by themselves.
-// The legacy web/reader.js writes it while its parts move to components (phase 4).
+// src/reader (the chapter, the modes, the index) writes it.
+import type { About } from "../lib/about";
 import type { ModeId } from "../lib/modes";
 
 /** A chapter next to the one on screen, for the ‹ › buttons and the "Próximo capítulo" card. */
@@ -40,6 +41,14 @@ export const reader = $state({
   eyebrow: "",
   /** "Sobre o livro" (the book introduction) is open */
   aboutOpen: false,
+  /** the book introduction of the book on screen */
+  about: { book: "", chapters: 0, greek: false, data: null as About | null },
+  /** the first-opening question (#welcome) is on screen */
+  welcome: false,
+  /** the section titles of the chapter (Psalm 119), its verse count and its last verse number */
+  sections: [] as { n: number; h: string }[],
+  verseCount: 0,
+  lastVerse: 0,
   /** The book on screen is in Greek (New Testament); otherwise Hebrew/Aramaic. */
   greek: false,
   /** "Perguntas ao texto" of the chapter on screen. */

@@ -1,0 +1,43 @@
+/* Toast: the message at the bottom of the screen and the first-use hints. Values come from tokens.css. */
+.toast {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(var(--bar-h) + 8px + env(safe-area-inset-top, 0px));
+  z-index: 30;
+  width: min(440px, calc(100% - 32px));
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: var(--fg);
+  color: var(--bg);
+  font-size: 14px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 720px) {
+  .toast {
+    top: auto;
+    bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+  }
+  body.foco.barras-fora .toast {
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  }
+}
+/* Dica de primeiro uso: aparece uma vez cada, some sozinha e não bloqueia o toque no texto */
+.toast.dica {
+  pointer-events: none;
+  background: var(--accent);
+  color: var(--surface);
+}
+.toast.dica b {
+  font-weight: 700;
+}
+.toast-undo {
+  margin-inline-start: 10px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: 700 14px var(--font-body);
+  text-decoration: underline;
+  cursor: pointer;
+  min-height: 32px;
+}

@@ -6,12 +6,16 @@
   },
   "overrides": [
     {
-      "files": ["web/styles/tokens.css"],
-      "rules": { "color-no-hex": null }
+      "files": ["src/styles/tokens.css"],
+      "rules": {
+        "color-no-hex": null
+      }
     },
     {
-      "files": ["web/styles/reader.css"],
-      "rules": { "declaration-no-important": null }
+      "files": ["src/styles/base.css", "src/styles/bar.css", "src/styles/verse.css", "src/styles/chapter.css", "src/styles/look.css"],
+      "rules": {
+        "declaration-no-important": null
+      }
     }
   ]
 }

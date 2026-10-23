@@ -1,0 +1,540 @@
+/* Bar: the top bar and the bottom bar (phone), the reading progress line and the position in long chapters. Values come from tokens.css. */
+/* Barra fixa: índice à esquerda, tema e aparência à direita */
+.bar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 6;
+  margin-inline: -16px;
+  padding: 8px 16px;
+  min-height: var(--bar-h);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.bar .where {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 8px;
+  border-radius: 8px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: 500 14px var(--font-mono);
+  cursor: pointer;
+  text-align: left;
+}
+.bar .where:hover {
+  background: var(--surface);
+}
+.bar .where > span {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bar .where b {
+  color: var(--fg);
+  font-weight: 500;
+}
+.bar .where svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+@media (max-width: 480px) {
+  .bar #open-toc {
+    padding: 0;
+    width: 44px;
+  }
+}
+.ibtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 44px;
+  min-width: 44px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--fg);
+  font: 500 13px var(--font-mono);
+  cursor: pointer;
+}
+.ibtn svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+/* Painéis laterais (índice e aparência) */
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.4);
+}
+@media (prefers-contrast: more) {
+  .ibtn {
+    border-color: var(--muted);
+  }
+  .bar {
+    border-color: var(--muted);
+  }
+}
+@media (forced-colors: active) {
+  .ibtn {
+    border: 1px solid ButtonText;
+  }
+}
+.cnav {
+  display: grid;
+  gap: 2px;
+  text-align: start;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--fg);
+  font: 500 15px var(--font-body);
+  cursor: pointer;
+  min-height: 56px;
+}
+.cnav.next {
+  text-align: end;
+}
+.cnav small {
+  font: 400 12px var(--font-body);
+  color: var(--muted);
+}
+.cnav.na {
+  opacity: 0.55;
+  border-style: dashed;
+}
+#mode-swap {
+  font: 500 12px var(--font-mono);
+  width: auto;
+  padding: 0 12px;
+}
+@media (max-width: 380px) {
+  #mode-swap {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  #mode-swap {
+    padding: 0;
+    width: 44px;
+  }
+}
+/* Barra superior: Livros · (‹ referência ›) · Ouvir · busca · Aa; barra fina de progresso no capítulo */
+.bar {
+  gap: 6px;
+}
+.ibtn.icon {
+  padding: 0;
+  width: 44px;
+}
+.readbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  pointer-events: none;
+}
+.readbar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  transition: width 0.15s linear;
+}
+@media (prefers-reduced-motion: reduce) {
+  .readbar span {
+    transition: none;
+  }
+}
+.bar .where {
+  justify-content: center;
+  text-align: center;
+}
+.wide-only {
+  display: none !important;
+}
+@media (min-width: 721px) {
+  .wide-only {
+    display: inline-flex !important;
+  }
+  .bar .where {
+    flex: 0 1 auto;
+    min-width: 200px;
+    max-width: 440px;
+  }
+  .bar #mode-swap {
+    margin-inline-start: auto;
+  }
+  .bar #mode-swap[hidden] + #open-search {
+    margin-inline-start: auto;
+  }
+}
+/* Barra inferior (celular): capítulo anterior · Ouvir · próximo */
+.bbar {
+  display: none;
+}
+@media (max-width: 720px) {
+  .bbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 7;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 6px;
+    padding: 6px 8px calc(8px + env(safe-area-inset-bottom, 0px));
+    background: var(--surface);
+    border-top: 1px solid var(--line);
+  }
+  .bbar button {
+    min-height: 52px;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--fg);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font: 500 14px var(--font-body);
+  }
+  .bbar button svg {
+    width: 20px;
+    height: 20px;
+    flex: none;
+  }
+  .bbar #bb-next {
+    flex-direction: row-reverse;
+  }
+  .bbar button[aria-disabled="true"] {
+    opacity: 0.4;
+  }
+  body.com-detail .bbar,
+  body.com-mbar .bbar {
+    display: none;
+  }
+}
+/* Modo de foco (Aparência › Leitura): as barras saem ao rolar para baixo e voltam ao rolar para cima */
+body.foco .bar,
+body.foco .bbar {
+  transition: transform 0.2s ease;
+}
+body.foco.barras-fora .bar:not(:focus-within) {
+  transform: translateY(calc(-100% - env(safe-area-inset-top, 0px)));
+}
+body.foco.barras-fora .bbar:not(:focus-within) {
+  transform: translateY(100%);
+}
+@media (prefers-reduced-motion: reduce) {
+  body.foco .bar,
+  body.foco .bbar {
+    transition: none;
+  }
+}
+@media (max-width: 720px) {
+  /* Celular: Livros e Aparência descem para a barra de baixo (Livros · ‹ · Ouvir · › · Aa) */
+  .bbar.cinco {
+    grid-template-columns: 52px 1fr 1.2fr 1fr 52px;
+    gap: 2px;
+    padding-inline: 4px;
+  }
+  .bbar.cinco .ibtn {
+    min-height: 52px;
+    width: 52px;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    padding: 0;
+    justify-content: center;
+  }
+  .bbar.cinco .bb-t {
+    font-size: 13px;
+  }
+}
+/* Posição em capítulos longos: "v. 60 de 176" e ‹ › entre as seções */
+.vpos {
+  position: absolute;
+  right: 12px;
+  top: calc(100% + 6px);
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0 4px;
+  min-height: 30px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  font: 500 12.5px var(--font-mono);
+  color: var(--muted);
+}
+.vpos[hidden] {
+  display: none;
+}
+.vpos span {
+  padding: 0 6px;
+  white-space: nowrap;
+}
+.vpos button {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 16px;
+}
+.vpos button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.where b {
+  font-family: var(--font-body);
+}
+/* Barra superior: fora da coluna de leitura, na largura toda (acima dos painéis laterais) */
+.bar {
+  background: var(--surface);
+  margin-bottom: 18px;
+}
+@media (min-width: 1100px) {
+  body.com-detail .bar,
+  body.com-mbar .bar,
+  body.com-look .bar {
+    margin-right: -416px;
+  }
+}
+.bar .ibtn {
+  font-family: var(--font-ui);
+  flex-shrink: 0;
+}
+.bar .where {
+  flex-shrink: 1;
+  min-width: 0;
+}
+#open-toc,
+#open-notes {
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--fg);
+  gap: 8px;
+  font-size: 15px;
+}
+#open-toc svg,
+#open-notes svg {
+  width: 18px;
+  height: 18px;
+}
+.bar .where {
+  flex-direction: row;
+  gap: 8px;
+  color: var(--fg);
+  font: inherit;
+}
+#where-t {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.2;
+}
+#where-t b {
+  font-weight: 600;
+  font-size: 17px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#where-t .wt-sub {
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bar .where svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.bar-modes {
+  display: none !important;
+}
+@media (min-width: 721px) {
+  .bar .where {
+    justify-content: flex-start;
+    text-align: left;
+    min-width: 200px;
+    max-width: 280px;
+  }
+  #where-t .wt-sub {
+    max-width: 220px;
+  }
+}
+@media (min-width: 1100px) {
+  .bar-modes {
+    display: flex !important;
+    gap: 2px;
+    padding: 3px;
+    border-radius: 12px;
+    background: var(--chip);
+    margin-inline: auto;
+  }
+  .bar #mode-swap,
+  .bar #mode-swap[hidden] + #open-search {
+    margin-inline-start: 0;
+  }
+}
+.bmode {
+  height: 38px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--muted);
+  font: 400 14px var(--font-ui);
+  cursor: pointer;
+}
+.bmode[aria-checked="true"] {
+  background: var(--surface);
+  color: var(--fg);
+  font-weight: 700;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+.bar .avatar {
+  border-radius: 50%;
+  border: 0;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+@media (max-width: 720px) {
+  .bar .where {
+    align-items: center;
+  }
+  #where-t {
+    align-items: center;
+  }
+  #where-t .wt-sub {
+    max-width: 260px;
+  }
+  .bar {
+    min-height: 56px;
+    padding-block: 6px;
+  }
+  .bar::before {
+    content: "";
+    width: 44px;
+    flex: none;
+  }
+  .bar #open-search {
+    border: 0;
+    background: transparent;
+    border-radius: 10px;
+  }
+  /* barra de baixo: ícone em cima e o nome embaixo (Livros · Jo 2 · Ouvir · Jo 4 · Aparência) */
+  .bbar {
+    height: 72px;
+    box-sizing: border-box;
+    padding: 6px 6px calc(10px + env(safe-area-inset-bottom, 0px));
+  }
+  .bbar button,
+  .bbar.cinco .ibtn {
+    flex-direction: column !important;
+    gap: 2px;
+    font: 400 12px var(--font-ui);
+    min-height: 0;
+    height: 100%;
+  }
+  .bbar #bb-next {
+    flex-direction: column !important;
+  }
+  .bbar #open-look > span:first-child {
+    font-size: 19px !important;
+    line-height: 22px;
+  }
+}
+.cnav {
+  font-family: var(--font-ui);
+}
+.cnav.next {
+  order: -1;
+  position: relative;
+  display: grid;
+  gap: 2px;
+  text-align: left;
+  padding: 16px 44px 16px 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  font: 600 18px/1.3 var(--font-body);
+  color: var(--fg);
+}
+.cnav.next::before {
+  content: "Próximo capítulo";
+  font: 400 12px var(--font-ui);
+  color: var(--muted);
+}
+.cnav.next small {
+  font: 400 13px var(--font-ui);
+  color: var(--muted);
+}
+.cnav.next::after {
+  content: "›";
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font: 400 26px var(--font-ui);
+  color: var(--fg);
+}
+.cnav.prev {
+  justify-self: start;
+  border: 0;
+  background: none;
+  padding: 8px 4px;
+  min-height: 44px;
+  font: 400 14px var(--font-ui);
+  color: var(--accent);
+}
+.cnav.prev small {
+  display: none;
+}
+/* Barra de baixo: Livros sem borda (a pílula é da barra de cima) e nomes em 12px */
+.bbar #open-toc {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  height: 100%;
+  border-radius: 10px;
+}
+.bbar .bb-t {
+  font-size: 12px;
+}
+/* Computador: abas do painel em seletor (trilho cinza, opção branca), como no design; sem o atalho ⇄ */
+#mode-swap {
+  display: none !important;
+}
+/* the Aa of the Aparência button (LookButton.svelte) */
+#open-look .aa {
+  font-family: var(--font-body);
+  font-size: 16px;
+}

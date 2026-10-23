@@ -33,10 +33,10 @@ d = Path("build/preview.json").read_text(encoding="utf8").replace("</", "<\\/")
 bundle = re.search(r'src="(assets/reader-[^"]+.js)"', Path("build/web/ler.html").read_text(encoding="utf8"))[1]
 js = Path("build/web", bundle).read_text(encoding="utf8").replace("</script", "<\\/script")
 t = t.replace('<script type="module" src="__READER_BUNDLE__"></script>', '<script type="module">\n' + js + "</script>", 1)
-for name in ("tokens", "reader"):
-    css = Path(f"web/styles/{name}.css").read_text(encoding="utf8")
-    # the tag as written or as Prettier writes it (with " />")
-    t = re.sub(rf'<link rel="stylesheet" href="styles/{name}\.css"\s*/?>', lambda _m, c=css: "<style>\n" + c + "</style>", t, count=1)
+sheet = re.search(r'href="(assets/reader-[^"]+\.css)"', Path("build/web/ler.html").read_text(encoding="utf8"))[1]
+css = Path("build/web", sheet).read_text(encoding="utf8")
+# the tag as written or as Prettier writes it (with " />")
+t = re.sub(r'<link rel="stylesheet" href="__READER_CSS__"\s*/?>', lambda _m: "<style>\n" + css + "</style>", t, count=1)
 Path("build/preview.html").write_text(t.replace("__DATA__", d, 1), encoding="utf8")
 PY
 python3 scripts/build_epub.py     # build/epub: um EPUB por livro

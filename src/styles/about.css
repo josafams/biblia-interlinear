@@ -1,0 +1,385 @@
+/* About: Sobre o livro and its timeline. Values come from tokens.css. */
+/* Sobre o livro */
+.about {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  scroll-margin-top: calc(var(--bar-h) + 12px);
+}
+.about > summary {
+  list-style: none;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px 12px;
+  padding: 16px 18px;
+  min-height: 64px;
+  border-radius: 12px;
+}
+.about > summary::-webkit-details-marker {
+  display: none;
+}
+.about > summary > span {
+  grid-column: 1;
+}
+.about > summary svg {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  align-self: center;
+  width: 22px;
+  height: 22px;
+  color: var(--accent);
+  transition: transform 0.2s;
+}
+.about[open] > summary svg {
+  transform: rotate(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .about > summary svg {
+    transition: none;
+  }
+}
+.ab-k {
+  font: 500 12px var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.ab-t {
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.ab-s {
+  font-size: 14px;
+  color: var(--muted);
+}
+.ab-body {
+  padding: 18px 18px 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
+  border-top: 1px solid var(--line);
+}
+.ab-lead {
+  margin: 0;
+  font-size: calc(18px * var(--k));
+  line-height: 1.6;
+  max-width: 62ch;
+}
+.ab-facts {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.ab-facts div {
+  background: var(--bg);
+  padding: 10px 12px;
+  display: grid;
+  gap: 2px;
+}
+.ab-facts dt {
+  font: 500 11px var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.ab-facts dd {
+  margin: 0;
+  font-size: 15px;
+}
+.ab-sec {
+  display: grid;
+  gap: 12px;
+}
+.ab-sec h3 {
+  margin: 0;
+  font: 500 12px var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.ab-sec p {
+  margin: 0;
+  max-width: 64ch;
+  font-size: calc(16px * var(--k));
+}
+.ab-sec .he {
+  font-family: var(--font-heb);
+}
+.ab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+}
+.ab-grid.four {
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+.ab-card {
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: var(--bg);
+  border-left: 3px solid var(--accent);
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+.ab-card h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+.ab-card p {
+  font-size: 15px;
+}
+.ab-card.alt {
+  border-left-color: var(--muted);
+}
+.chref {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--accent);
+  font: 500 12px var(--font-mono);
+  cursor: pointer;
+}
+.ab-people {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+}
+.ab-people li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px 12px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.ab-people .pn {
+  font-weight: 600;
+}
+.ab-people .pnote {
+  grid-column: 1 / -1;
+  font-size: 14px;
+  color: var(--muted);
+}
+.ab-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.ab-chips span {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  font-size: 14px;
+}
+.ab-quote {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: var(--bg);
+  display: grid;
+  gap: 6px;
+}
+.ab-quote p {
+  font-style: italic;
+}
+.ab-quote cite {
+  font: 500 12px var(--font-mono);
+  font-style: normal;
+  color: var(--accent);
+}
+.ab-note {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+/* Linha do tempo (escala em anos a.C.) */
+.tl {
+  --tl-lab: 168px;
+  position: relative;
+  display: grid;
+  gap: 4px;
+}
+.tl-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+  position: relative;
+  z-index: 1;
+}
+.tl-row {
+  display: grid;
+  grid-template-columns: var(--tl-lab) minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  min-height: 44px;
+}
+.tl-lab {
+  font-size: 14px;
+  line-height: 1.25;
+}
+.tl-lab small {
+  display: block;
+  font: 400 11.5px var(--font-mono);
+  color: var(--muted);
+}
+.tl-track {
+  position: relative;
+  height: 14px;
+}
+.tl-bar {
+  position: absolute;
+  top: 2px;
+  height: 10px;
+  min-width: 5px;
+  border-radius: 5px;
+  background: var(--accent);
+}
+.tl-bar.escrita {
+  background: var(--muted);
+}
+.tl-bg {
+  position: absolute;
+  top: 0;
+  bottom: 26px;
+  left: calc(var(--tl-lab) + 10px);
+  right: 0;
+}
+.tl-band {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: var(--accent-soft);
+}
+.tl-tick {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--line);
+}
+.tl-axis {
+  display: grid;
+  grid-template-columns: var(--tl-lab) minmax(0, 1fr);
+  gap: 10px;
+}
+.tl-labels {
+  position: relative;
+  height: 22px;
+}
+.tl-labels span {
+  position: absolute;
+  top: 4px;
+  transform: translateX(-50%);
+  font: 400 11px var(--font-mono);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.tl-labels span:first-child {
+  transform: none;
+}
+.tl-unit {
+  font: 400 11px var(--font-mono);
+  color: var(--muted);
+  padding-top: 4px;
+  text-align: right;
+}
+.tl-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.tl-legend i {
+  display: inline-block;
+  width: 18px;
+  height: 10px;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+@media (max-width: 480px) {
+  .tl {
+    --tl-lab: 112px;
+  }
+  .tl-lab small {
+    font-size: 10.5px;
+  }
+}
+.tl-bar.evento {
+  background: var(--accent);
+  opacity: 0.55;
+}
+.tl-legend i.k-person {
+  background: var(--accent);
+}
+.tl-legend i.k-event {
+  background: var(--accent);
+  opacity: 0.55;
+}
+.tl-legend i.k-writing {
+  background: var(--muted);
+}
+.tl-legend i.k-band {
+  background: var(--accent-soft);
+  border: 1px solid var(--line);
+}
+body.hide-about #sobre {
+  display: none;
+}
+/* "Sobre o livro" recolhido vira uma linha discreta */
+.about:not([open]) {
+  background: transparent;
+  border-color: transparent;
+}
+.about:not([open]) > summary {
+  min-height: 44px;
+  padding: 6px 2px;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+}
+.about:not([open]) > summary > span {
+  grid-column: auto;
+}
+.about:not([open]) > summary .ab-t {
+  font-size: 16px;
+}
+.about:not([open]) > summary .ab-s {
+  display: none;
+}
+.about:not([open]) > summary svg {
+  grid-column: auto;
+  grid-row: auto;
+  justify-self: start;
+  width: 18px;
+  height: 18px;
+}
+header + .about {
+  margin-top: -10px;
+}
+/* "Sobre João" é um chip; o texto do livro abre embaixo dos chips */
+.about > summary {
+  display: none;
+}
+.about:not([open]) {
+  display: none;
+}

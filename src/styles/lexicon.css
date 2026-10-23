@@ -1,0 +1,146 @@
+/* Lexicon: Léxico do capítulo. Values come from tokens.css. */
+/* Léxico */
+.lexsec {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  scroll-margin-top: calc(var(--bar-h) + 12px);
+}
+.lexsec h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+.lsearch {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border-radius: 8px;
+  border: 1px solid var(--muted);
+  background: var(--surface);
+  color: var(--fg);
+  font: inherit;
+  font-size: 16px;
+}
+.llist {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+.lrow {
+  display: grid;
+  grid-template-columns: 64px minmax(0, auto) minmax(0, 1fr);
+  gap: 4px 12px;
+  align-items: baseline;
+  padding: 10px 4px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: none;
+  color: var(--fg);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  min-height: 48px;
+}
+.lrow:hover {
+  background: var(--surface);
+}
+.lrow .ln {
+  font: 400 12px var(--font-mono);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.lrow .lh {
+  font-family: var(--font-heb);
+  font-size: 22px;
+  line-height: 1.2;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.lrow .lx {
+  font-style: italic;
+  color: var(--accent);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.lrow .ls {
+  grid-column: 2 / -1;
+  font-size: 14px;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+.lempty {
+  color: var(--muted);
+  padding: 12px 4px;
+}
+@media (prefers-contrast: more) {
+  .lsearch {
+    border-color: var(--muted);
+  }
+  .lrow {
+    border-color: var(--muted);
+  }
+  .lrow .ln {
+    color: var(--fg);
+  }
+}
+@media (forced-colors: active) {
+  .lrow,
+  .lsearch {
+    border: 1px solid ButtonText;
+  }
+}
+.lrow .lh.grc {
+  font-family: var(--font-grc);
+}
+body.hide-lexicon #lexico {
+  display: none;
+}
+.llist {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 2400px;
+}
+/* Léxico do capítulo: lista numa caixa; lema Gentium 18px, sentido 14px apagado, contagem e código em Plex Mono 11px */
+.lexsec h2 {
+  font-size: 20px;
+}
+.lsearch {
+  border-color: var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+}
+.llist {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  overflow: hidden;
+}
+.lrow {
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 14px;
+  min-height: 48px;
+}
+.lrow:last-child {
+  border-bottom: 0;
+}
+.lrow .lh {
+  order: 0;
+  font-size: 18px;
+}
+.lrow .ls {
+  order: 1;
+  grid-column: auto;
+  font-size: 14px;
+}
+.lrow .ln {
+  order: 2;
+  font-size: 11px;
+}
+.lrow .lx {
+  display: none;
+}

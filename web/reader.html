@@ -1,6 +1,5 @@
 <title>Bíblia Interlinear</title>
-<link rel="stylesheet" href="styles/tokens.css" />
-<link rel="stylesheet" href="styles/reader.css" />
+<link rel="stylesheet" href="__READER_CSS__" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link
   rel="stylesheet"
@@ -45,7 +44,6 @@
       <path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" />
     </svg>
   </button>
-  <div class="readbar" aria-hidden="true"><span id="readbar"></span></div>
 </nav>
 <div class="wrap" id="page" lang="pt-BR">
   <header>
@@ -67,35 +65,7 @@
         <path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" /></svg
       ><span>Ouvir o capítulo</span>
     </button>
-    <div class="welcome" id="welcome" hidden role="region" aria-labelledby="welcome-h">
-      <p id="welcome-h"><b>Como você quer ler?</b> <span>Dá para mudar depois em Aa.</span></p>
-      <div class="wopts">
-        <button type="button" data-modo="biblia">Bíblia</button>
-        <button type="button" data-modo="original">Original</button>
-        <button type="button" data-modo="interlinear">Interlinear</button>
-        <button type="button" class="later" data-modo="">Depois</button>
-      </div>
-    </div>
   </header>
-
-  <details class="about" id="sobre">
-    <summary>
-      <span class="ab-k">Sobre o livro</span><span class="ab-t" id="ab-title"></span
-      ><span class="ab-s">Resumo, pessoas principais, datas e contexto histórico</span
-      ><svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        aria-hidden="true"
-      >
-        <path d="M6 9l6 6 6-6" />
-      </svg>
-    </summary>
-    <div class="ab-body" id="about-body"></div>
-  </details>
 
   <main id="verses" aria-label="Texto"></main>
 
@@ -146,19 +116,6 @@
 <div class="scrim" id="scrim" hidden></div>
 
 <aside class="sheet left" id="toc" role="dialog" aria-modal="true" aria-labelledby="toc-h" lang="pt-BR" hidden>
-  <div class="shead">
-    <h2 id="toc-h">Índice</h2>
-    <button class="ibtn" data-close aria-label="Fechar índice">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M6 6l12 12M18 6L6 18" />
-      </svg>
-    </button>
-  </div>
-  <nav class="toc-tabs" aria-label="Partes do índice">
-    <a href="#toc-livros" data-tab aria-current="true">Livros</a>
-    <a href="#toc-notas" data-tab id="tab-notas">Notas<span id="tab-notas-n"></span></a>
-    <a href="#toc-voce" data-tab>Você</a>
-  </nav>
   <section class="sgroup" aria-labelledby="go-h" id="toc-livros"></section>
   <section class="sgroup toc-books" aria-labelledby="bk-h"></section>
   <section class="sgroup toc-chapters" aria-labelledby="ch-h"></section>
@@ -172,29 +129,7 @@
       <a href="#" id="toc-search">Buscar na Bíblia <span>palavras, referências, Strong</span></a>
     </div>
   </nav>
-  <section class="sgroup" aria-labelledby="toc-yh" id="toc-voce">
-    <h3 id="toc-yh" class="sr">Você</h3>
-    <div id="toc-account"></div>
-    <button type="button" class="vc-card" id="open-progress">
-      <b>Meu progresso</b
-      ><span id="vc-prog"
-        >Capítulos lidos, tempo de leitura, dias seguidos e o mapa dos 66 livros. Aparece depois de entrar com a conta.</span
-      >
-    </button>
-    <div class="vc-card vc-plans" role="group" aria-labelledby="vc-plans-h">
-      <b id="vc-plans-h">Planos de leitura</b>
-      <button type="button" data-vc-plano="ano">Bíblia em 1 ano<span aria-hidden="true">›</span></button>
-      <button type="button" data-vc-plano="nt90">Novo Testamento em 90 dias<span aria-hidden="true">›</span></button>
-    </div>
-    <p class="vc-links">
-      <a href="index.html#como-usar" class="site-link">Como usar</a> · <a href="index.html" class="site-link">Sobre o projeto</a> ·
-      <a href="privacidade.html" class="site-link">Privacidade</a>
-    </p>
-    <a href="#" id="open-mine" hidden>Minhas anotações <span id="mine-n"></span></a>
-  </section>
 </aside>
-
-<div class="toast" id="toast" role="status" lang="pt-BR" hidden></div>
 
 <script>
   document.documentElement.lang = "pt-BR";

@@ -1,7 +1,7 @@
 <!--
   Anotar (#mbar): the sheet on phones, the side panel on computers. Highlight color, favorite, listen, copy,
   share, the quick note (saved by itself), the verse's tags and its points of the automatic review.
-  web/annotations.js does the work through the props; ids, data-cor and data-action stay for tests and videos.
+  src/reader/annotations/panel.ts does the work through the props; ids, data-cor and data-action stay for tests and videos.
 -->
 <script lang="ts">
   import { t } from "../i18n";
