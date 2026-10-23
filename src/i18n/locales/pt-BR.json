@@ -618,5 +618,118 @@
     "kind_highlight": "marcação",
     "kind_tag": "etiqueta",
     "kind_favorite": "favorito"
+  },
+  "look": {
+    "close": "Fechar aparência",
+    "mode": "Modo de leitura",
+    "show": "O que mostrar",
+    "text": "Texto",
+    "smaller": "Diminuir texto",
+    "larger": "Aumentar texto",
+    "theme": "Tema",
+    "theme_light": "Tema {theme}, claro",
+    "theme_dark": "Tema {theme}, escuro",
+    "themes": {
+      "auto": "Automático",
+      "auto_hint": "segue o tema do aparelho",
+      "claro": "Claro",
+      "papel": "Papel",
+      "oliva": "Oliva",
+      "escuro": "Escuro",
+      "noite": "Noite",
+      "grafite": "Grafite"
+    },
+    "preview_gloss": "luz",
+    "audio": "Áudio",
+    "searching_voices": "Procurando vozes…",
+    "install_voices": "Instalar vozes",
+    "install_voices_hint": "abre as configurações de texto para fala do Android",
+    "sources": "Fontes e licenças",
+    "switch": {
+      "t-xlit": {
+        "label": "Transliteração"
+      },
+      "t-gloss": {
+        "label": "Glosa",
+        "hint": "glosa em português em cada cartão"
+      },
+      "t-pron": {
+        "label": "Pronúncia",
+        "hint": "pronúncia em português, tônica em MAIÚSCULAS"
+      },
+      "t-strong": {
+        "label": "Strong",
+        "hint": "número Strong em cada cartão"
+      },
+      "t-morf": {
+        "label": "Gramática",
+        "hint": "classe, pessoa, gênero, número"
+      },
+      "t-blivre": {
+        "label": "Bíblia Livre",
+        "hint": "texto da Bíblia Livre"
+      },
+      "t-vnum": {
+        "label": "Números",
+        "hint": "números dos versículos"
+      },
+      "t-theme": {
+        "label": "Tema do capítulo"
+      },
+      "t-questions": {
+        "label": "Perguntas",
+        "hint": "perguntas ao texto, no fim do capítulo, sem respostas"
+      },
+      "t-marks": {
+        "label": "Revisão ⚑",
+        "hint": "pontos da revisão automática, ketiv/qere, aparato"
+      },
+      "t-ann": {
+        "label": "Minhas anotações",
+        "hint": "cores, notas, favoritos e etiquetas no texto; desligue para uma leitura limpa"
+      },
+      "t-orig": {
+        "label": "Original",
+        "hint": "hebraico, aramaico ou grego"
+      },
+      "t-cards": {
+        "label": "Cartões",
+        "hint": "original em cartões; desligado: texto corrido, e tocar na palavra abre o verbete"
+      },
+      "t-par": {
+        "label": "Parágrafos",
+        "hint": "Bíblia Livre em parágrafos, quando o original está desligado"
+      },
+      "t-about": {
+        "label": "Sobre o livro"
+      },
+      "t-lexicon": {
+        "label": "Léxico",
+        "hint": "léxico do capítulo"
+      },
+      "t-easy": {
+        "label": "Fonte fácil",
+        "hint": "Atkinson Hyperlegible no português"
+      },
+      "t-space": {
+        "label": "Espaçamento amplo",
+        "hint": "mais espaço entre linhas, letras e palavras"
+      },
+      "t-cant": {
+        "label": "Cantilação (hebraico)",
+        "hint": "sinais de cantilação; desligue para ver só consoantes e vogais"
+      },
+      "t-foco": {
+        "label": "Esconder as barras",
+        "hint": "ao rolar para baixo; voltam quando você rola para cima"
+      },
+      "t-follow": {
+        "label": "Realçar cada palavra",
+        "hint": "o versículo é lido palavra por palavra"
+      },
+      "t-slow": {
+        "label": "Falar mais devagar"
+      }
+    }
   }
 }

@@ -2,5 +2,9 @@
 export const speech = $state({
   on: false,
   /** "Lendo João 3:16 · grego" */
-  label: ""
+  label: "",
+  /** Aparência › Áudio: which voices this device has */
+  voiceNote: "",
+  /** Android: the button that opens the system screen to install voices */
+  canInstallVoices: false
 });
