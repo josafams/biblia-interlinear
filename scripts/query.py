@@ -13,6 +13,7 @@ python3 scripts/query.py words RUT 1           # palavras-chave do capítulo no 
 import sqlite3
 import sys
 
+from interlinear.cli import parser
 from interlinear.paths import DB
 from interlinear.tsv import lexicon_pt, lexicon_pt_files
 from interlinear.tsv import rows as tsv_rows
@@ -53,15 +54,32 @@ def print_key_words(db, book, chapter):
         print(f"{strong}\t{row[0]}\t{row[1]}\t{names[k['pos']]}\t{len(k['verses'])}x\tv. {','.join(map(str, vs))}\tglosas: {gl}\t{meaning}")
 
 
+def parse(argv):
+    ap = parser(__doc__)
+    sub = ap.add_subparsers(dest="cmd")
+    sub.add_parser("books", help="códigos, nomes, capítulos e versículos")
+    for name, what in (("chapter", "texto BLIVRE do capítulo"), ("words", "palavras-chave do capítulo no original")):
+        p = sub.add_parser(name, help=what)
+        p.add_argument("book", type=str.upper)
+        p.add_argument("chapter", type=int)
+    for name, what in (("verses", "versículos (3:14 ou 3:13-15)"), ("interlinear", "palavras, Strong e glosas dos versículos")):
+        p = sub.add_parser(name, help=what)
+        p.add_argument("book", type=str.upper)
+        p.add_argument("ref", metavar="CAP:VERS")
+    sub.add_parser("entry", help="verbete do léxico").add_argument("key", type=str.upper)
+    return ap.parse_args(argv)
+
+
 def main(argv):
+    args = parse(argv)
     db = sqlite3.connect(DB)
-    if not argv or argv[0] == "books":
+    if args.cmd in (None, "books"):
         for cod, name, test in db.execute("SELECT code, name, testament FROM books ORDER BY book_order"):
             caps, vs = db.execute("SELECT count(DISTINCT chapter), count(*) FROM verses WHERE book=? AND verse>0", (cod,)).fetchone()
             print(f"{cod}\t{name}\t{test}\t{caps} capítulos\t{vs} versículos")
         return
-    if argv[0] == "entry":
-        k = argv[1].upper()
+    if args.cmd == "entry":
+        k = args.key
         e = db.execute("SELECT lemma, xlit, derivation_en, def_en FROM lexicon WHERE entry_key=?", (k,)).fetchone()
         print(f"{k}  {e[0]}  {e[1]}\n  inglês (Strong): {e[2]} | {e[3]}" if e else f"{k}: não existe no léxico")
         for fname in lexicon_pt_files():
@@ -76,17 +94,17 @@ def main(argv):
             )
         )
         return
-    cmd, book = argv[0], argv[1].upper()
+    cmd, book = args.cmd, args.book
     if cmd == "words":
-        print_key_words(db, book, int(argv[2]))
+        print_key_words(db, book, args.chapter)
         return
     if cmd == "chapter":
         for v, t, note in db.execute(
-            "SELECT verse, blivre, note FROM verses WHERE book=? AND chapter=? ORDER BY verse", (book, int(argv[2]))
+            "SELECT verse, blivre, note FROM verses WHERE book=? AND chapter=? ORDER BY verse", (book, args.chapter)
         ):
             print(f"{v}\t{t}" + (f"   [{note}]" if note else ""))
     elif cmd in ("verses", "interlinear"):
-        c, vv = argv[2].split(":")
+        c, vv = args.ref.split(":")
         a, _, b = vv.partition("-")
         a, b = int(a), int(b or a)
         for v, t in db.execute(
@@ -100,8 +118,6 @@ def main(argv):
                 ).fetchall()
                 for i, (txt, st, g, f) in enumerate(rows, 1):
                     print(f"  {i:>3}  {txt}\t{st}\t{g}\t({f})")
-    else:
-        print(__doc__)
 
 
 if __name__ == "__main__":

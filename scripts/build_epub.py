@@ -21,6 +21,8 @@ import zipfile
 from datetime import UTC, datetime
 from pathlib import Path
 
+from interlinear.cli import parser
+
 
 def blivre_text(v):
     """Texto da BLIVRE do versículo; nos acrósticos (Salmo 119) o nome da letra volta para o começo, como na BLIVRE."""
@@ -701,6 +703,9 @@ def build_blivre(books, ofl):
 
 
 def main(argv):
+    ap = parser(__doc__)
+    ap.add_argument("books", nargs="*", metavar="LIVRO", help="códigos dos livros (RUT…), BLIVRE ou VOLUMES; sem nada, todos os EPUB")
+    argv = ap.parse_args(argv).books
     books = json.loads(Path(os.path.join(DATA, "books.json")).read_text(encoding="utf8"))
     LEX = {}
     for L in "HG":
