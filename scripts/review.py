@@ -21,6 +21,7 @@ import unicodedata
 from collections import Counter, defaultdict
 from difflib import SequenceMatcher
 
+from interlinear.models import Word
 from interlinear.paths import DB, ROOT
 from interlinear.sources import morphgnt_lines, morphhb_file
 from interlinear.text import CANTILLATION_AND_VERSE_END, TOKEN_PT_LETTERS, consonantal, strip_marks
@@ -32,8 +33,6 @@ try:
 except Exception:  # pragma: no cover
     BOOKS = []
 
-# campos da tabela palavras
-ID, BOOK, CAP, VER, POS, LING, TXT, LEMMA, STR, PREF, MORPH_COL, REF, GL, GF, SF = range(15)
 
 LEVELS = ("erro", "aviso", "info")
 
@@ -583,9 +582,9 @@ def grk(morph):
 
 
 def is_proper_name(w):
-    if w[LING] == "G":
-        return grk(w[MORPH_COL])[0] == "N" and (w[LEMMA] or "")[:1].isupper()
-    return heb_segs(w[MORPH_COL])[2].startswith("Np")
+    if w.language == "G":
+        return grk(w.morph)[0] == "N" and (w.lemma or "")[:1].isupper()
+    return heb_segs(w.morph)[2].startswith("Np")
 
 
 def gloss_names(g):
@@ -593,8 +592,8 @@ def gloss_names(g):
 
 
 def norm_form(w):
-    t = unicodedata.normalize("NFD", w[TXT] or "")
-    if w[LING] == "G":
+    t = unicodedata.normalize("NFD", w.text or "")
+    if w.language == "G":
         t = "".join(c for c in t if unicodedata.category(c)[0] in "LM").lower()
         return unicodedata.normalize("NFC", t)
     return CANTILLATION_AND_VERSE_END.sub("", t)
@@ -621,11 +620,11 @@ class Marks:
         self.lst.append({"book": book, "chapter": cap, "verse": vers, "word_id": pid, "code": code, "level": level, "msg": msg})
 
     def w(self, w, code, level, msg):
-        self.add(w[BOOK], w[CAP], w[VER], w[ID], code, level, msg)
+        self.add(w.book, w.chapter, w.verse, w.id, code, level, msg)
 
 
 def ref(w):
-    return f"{w[BOOK]} {w[CAP]}:{w[VER]}"
+    return f"{w.book} {w.chapter}:{w.verse}"
 
 
 # ------------------------------------------------------------------ dados
@@ -637,14 +636,11 @@ class Data:
         self.verses = {}
         for b, c, v, t, ed, note in db.execute("SELECT book, chapter, verse, blivre, edition, note FROM verses"):
             self.verses[(b, c, v)] = (t or "", ed, note)
-        self.words = db.execute(
-            "SELECT id, book, chapter, verse, pos, language, text, lemma, strong, prefixes, morph, "
-            "ref_orig, gloss, gloss_source, strong_source FROM words"
-        ).fetchall()
-        self.words.sort(key=lambda w: (self.order.get(w[BOOK], 999), w[CAP], w[VER], w[POS]))
+        self.words = [Word._make(r) for r in db.execute(f"SELECT {Word.COLUMNS} FROM words")]  # noqa: S608 (fixed columns)
+        self.words.sort(key=lambda w: (self.order.get(w.book, 999), w.chapter, w.verse, w.pos))
         self.by_verse = defaultdict(list)
         for w in self.words:
-            self.by_verse[(w[BOOK], w[CAP], w[VER])].append(w)
+            self.by_verse[(w.book, w.chapter, w.verse)].append(w)
         self.lexicon = {
             r[0]: r
             for r in db.execute(
@@ -716,16 +712,16 @@ def check_base_text(d, M, scope_books):
             continue
         db_orig = defaultdict(list)
         for w in d.words:
-            if w[BOOK] != book or not w[REF]:
+            if w.book != book or not w.ref_orig:
                 continue
-            cv, n = w[REF].split(".")
+            cv, n = w.ref_orig.split(".")
             c, v = cv.split(":")
             db_orig[(int(c), int(v))].append((int(n), w))
         for k in sorted(set(src) | set(db_orig)):
             ws = sorted(db_orig.get(k, []))
             source = src.get(k, [])
             target = ws[0][1] if ws else None
-            loc = (target[CAP], target[VER]) if target else k
+            loc = (target.chapter, target.verse) if target else k
             if not M.inside(book, loc[0]):
                 continue
             if len(ws) != len(source):
@@ -741,13 +737,13 @@ def check_base_text(d, M, scope_books):
                 continue
             if [n for n, _ in ws] != list(range(1, len(ws) + 1)):
                 M.add(book, loc[0], loc[1], None, code_count, "erro", f"numeração das palavras com buraco ({k[0]}:{k[1]})")
-            if consonantal("".join(w[TXT] for _, w in ws)) != consonantal("".join(f[0] for f in source)):
+            if consonantal("".join(w.text for _, w in ws)) != consonantal("".join(f[0] for f in source)):
                 M.add(book, loc[0], loc[1], None, cod_hash, "erro", f"texto consonantal difere da fonte (original {k[0]}:{k[1]})")
             elif not nt:
                 for (_, w), f in zip(ws, source, strict=False):
                     if f[1]:
                         q = f" (Qere {f[2]})" if f[2] else ""
-                        M.w(w, "TXT-04", "aviso", f"forma escrita (Ketiv) {w[TXT]} no texto; a lida{q} não está registrada")
+                        M.w(w, "TXT-04", "aviso", f"forma escrita (Ketiv) {w.text} no texto; a lida{q} não está registrada")
 
 
 HEB_OK = re.compile(r"^[\u0591-\u05C7\u05D0-\u05EA\u05F0-\u05F4\u034F\u200D/]+$")
@@ -761,13 +757,13 @@ def check_unicode(d, M, ws):
     example = {}
     acronyms = defaultdict(list)
     for w in ws:
-        t = w[TXT] or ""
+        t = w.text or ""
         if t != unicodedata.normalize("NFC", t):
-            not_nfc[(w[BOOK], w[LING] == "G")] += 1
-            example.setdefault((w[BOOK], w[LING] == "G"), w)
-        if w[LING] == "G":
+            not_nfc[(w.book, w.language == "G")] += 1
+            example.setdefault((w.book, w.language == "G"), w)
+        if w.language == "G":
             if ACRONYMS.search(t):
-                acronyms[(w[BOOK], w[CAP])].append(w)
+                acronyms[(w.book, w.chapter)].append(w)
             letters = "".join(GRC_LETTER.findall(unicodedata.normalize("NFC", t)))
             if "ς" in letters[:-1]:
                 M.w(w, "TXG-02", "erro", f"sigma final no meio da palavra: {t}")
@@ -779,22 +775,22 @@ def check_unicode(d, M, ws):
             if not HEB_OK.match(t):
                 M.w(w, "TXT-03", "erro", f"caractere fora do permitido: {t!r}")
     for (book, cap), wds_in_verse in acronyms.items():
-        signs = "".join(sorted({c for w in wds_in_verse for c in ACRONYMS.findall(w[TXT])}))
+        signs = "".join(sorted({c for w in wds_in_verse for c in ACRONYMS.findall(w.text)}))
         M.add(
             book,
             cap,
-            wds_in_verse[0][VER],
+            wds_in_verse[0].verse,
             None,
             "TXG-02",
             "aviso",
-            f"{len(wds_in_verse)} palavras com sinais do aparato crítico ({signs}) no texto grego; ex.: {wds_in_verse[0][TXT]}",
+            f"{len(wds_in_verse)} palavras com sinais do aparato crítico ({signs}) no texto grego; ex.: {wds_in_verse[0].text}",
         )
     for (book, greek), n in not_nfc.items():
         w = example[(book, greek)]
         M.add(
             book,
-            w[CAP],
-            w[VER],
+            w.chapter,
+            w.verse,
             None,
             "TXG-02" if greek else "TXT-03",
             "info",
@@ -822,7 +818,7 @@ def check_verses_and_chapters(d, M, scope_books):
         for k, ws in d.by_verse.items():
             if k[0] != b:
                 continue
-            ps = [w[POS] for w in ws]
+            ps = [w.pos for w in ws]
             if ps != list(range(1, len(ps) + 1)):
                 M.add(b, k[1], k[2], None, "TXT-05", "erro", "posições das palavras repetidas ou com buraco")
 
@@ -837,15 +833,15 @@ def in_aramaic(b, c, v):
 def check_aramaic(d, M, ws):
     by_verse = defaultdict(list)
     for w in ws:
-        if w[LING] == "G":
+        if w.language == "G":
             continue
-        by_verse[(w[BOOK], w[CAP], w[VER])].append(w)
-        lang = (w[MORPH_COL] or "?")[:1]
-        if (w[LING] == "A") != (lang == "A"):
-            M.w(w, "ARM-02", "erro", f"língua {w[LING]} × morfologia {w[MORPH_COL]}")
+        by_verse[(w.book, w.chapter, w.verse)].append(w)
+        lang = (w.morph or "?")[:1]
+        if (w.language == "A") != (lang == "A"):
+            M.w(w, "ARM-02", "erro", f"língua {w.language} × morfologia {w.morph}")
     for k, vs in by_verse.items():
         inside = in_aramaic(*k)
-        aram = [w for w in vs if w[LING] == "A"]
+        aram = [w for w in vs if w.language == "A"]
         if not inside:
             for w in aram:
                 M.w(w, "ARM-01", "erro", "palavra aramaica fora dos trechos aramaicos conhecidos")
@@ -855,12 +851,12 @@ def check_aramaic(d, M, ws):
                 M.add(*k, None, "ARM-01", "erro", f"Gn 31:47 deveria ter 2 palavras aramaicas, tem {len(aram)}")
             continue
         if k == ("DAN", 2, 4):
-            idx = [i for i, w in enumerate(vs) if w[LING] == "A"]
-            if not idx or any(w[LING] == "H" for w in vs[idx[0] :]):
+            idx = [i for i, w in enumerate(vs) if w.language == "A"]
+            if not idx or any(w.language == "H" for w in vs[idx[0] :]):
                 M.add(*k, None, "ARM-01", "erro", "troca hebraico → aramaico em Dn 2:4b fora do lugar")
             continue
         for w in vs:
-            if w[LING] == "H":
+            if w.language == "H":
                 M.w(w, "ARM-01", "aviso", "palavra marcada como hebraica dentro de trecho aramaico")
         if not aram:
             M.add(*k, None, "TXT-06", "aviso", "versículo de trecho aramaico sem palavras aramaicas")
@@ -977,7 +973,7 @@ def check_versification(d, M, scope_books):
             continue
         origs = []
         for w in vs:
-            o = w[REF].split(".")[0] if w[REF] else None
+            o = w.ref_orig.split(".")[0] if w.ref_orig else None
             if o and o not in origs:
                 origs.append(o)
         if len(origs) < 2:
@@ -1006,24 +1002,24 @@ def check_versification(d, M, scope_books):
     # ALG-03 / ALN-02: mapa de versificação aplicado e ordem do texto original preservada
     by_ref = {}
     for w in d.words:
-        if w[BOOK] in ("2CO", "ACT", "3JN") and w[BOOK] in scope_books:
-            by_ref[(w[BOOK], w[REF])] = w
+        if w.book in ("2CO", "ACT", "3JN") and w.book in scope_books:
+            by_ref[(w.book, w.ref_orig)] = w
     for b, r, c, v in ALG03:
         if b in scope_books:
             w = by_ref.get((b, r))
-            if not w or (w[CAP], w[VER]) != (c, v):
+            if not w or (w.chapter, w.verse) != (c, v):
                 M.add(b, c, v, None, "ALG-03", "erro", f"palavra original {r} não está em {c}:{v} (mapa de versificação)")
     last_by_book = {}
     for w in d.words:
-        if w[BOOK] not in scope_books or not w[REF]:
+        if w.book not in scope_books or not w.ref_orig:
             continue
-        cv, n = w[REF].split(".")
+        cv, n = w.ref_orig.split(".")
         c, v = cv.split(":")
         o = (int(c), int(v), int(n))
-        p = last_by_book.get(w[BOOK])
-        if p and o < p[0] and w[BOOK] != "PSA":
-            M.w(w, "ALG-03" if w[LING] == "G" else "ALN-02", "erro", f"ordem do original quebrada: {w[REF]} depois de {p[1]}")
-        last_by_book[w[BOOK]] = (o, w[REF])
+        p = last_by_book.get(w.book)
+        if p and o < p[0] and w.book != "PSA":
+            M.w(w, "ALG-03" if w.language == "G" else "ALN-02", "erro", f"ordem do original quebrada: {w.ref_orig} depois de {p[1]}")
+        last_by_book[w.book] = (o, w.ref_orig)
 
 
 def check_offset(d, M, scope_books):
@@ -1056,12 +1052,12 @@ def check_offset(d, M, scope_books):
             continue
         tally = []
         for w in ws:
-            if w[LING] == "G":
-                p = grk(w[MORPH_COL])[0]
+            if w.language == "G":
+                p = grk(w.morph)[0]
             else:
-                p = heb_segs(w[MORPH_COL])[2][:1]
+                p = heb_segs(w.morph)[2][:1]
             if p in ("N", "V", "A") and not is_proper_name(w):
-                ch = w[STR] or ("G:" + w[LEMMA])
+                ch = w.strong or ("G:" + w.lemma)
                 if ch in transl:
                     tally.append(transl[ch])
         if len(tally) < 5:
@@ -1082,14 +1078,14 @@ def check_offset(d, M, scope_books):
 def check_coverage(d, M, ws):
     used = {}
     for w in ws:
-        g = w[GL]
-        if not g or not g.strip() or w[GF] == "sem":
+        g = w.gloss
+        if not g or not g.strip() or w.gloss_source == "sem":
             M.w(w, "COB-01", "erro", "palavra sem glosa")
-        elif w[GF] == "parcial":
+        elif w.gloss_source == "parcial":
             M.w(w, "COB-01", "aviso", f"glosa só do prefixo/partícula: '{g}'")
-        k = w[STR]
+        k = w.strong
         if not k:
-            M.w(w, "COB-02", "erro", f"sem número de Strong (lema {w[LEMMA]})")
+            M.w(w, "COB-02", "erro", f"sem número de Strong (lema {w.lemma})")
             continue
         if k not in d.lexicon:
             M.w(w, "COB-02", "erro", f"{k} não existe no léxico")
@@ -1319,26 +1315,26 @@ PLURAL_ONLY = {"H136", "H6440", "H4325", "H8064", "H430", "H2416", "H7356", "H52
 
 def check_grammar_h(d, M, ws):
     for w in ws:
-        if w[LING] == "G" or not w[MORPH_COL] or not w[GL]:
+        if w.language == "G" or not w.morph or not w.gloss:
             continue
-        lang, pre, root, suf = heb_segs(w[MORPH_COL])
-        ts = toks(w[GL])
+        lang, pre, root, suf = heb_segs(w.morph)
+        ts = toks(w.gloss)
         tset = set(ts)
-        g = w[GL]
-        manual = w[GF] == "manual"
+        g = w.gloss
+        manual = w.gloss_source == "manual"
         # GRA-12: partícula de objeto
-        if w[STR] == "H853":
+        if w.strong == "H853":
             if "[obj]" not in tset and not (tset & PRON_ALL) and not (tset & CONTRACTIONS):
                 M.w(w, "GRA-12", "aviso", f"partícula de objeto אֵת com glosa '{g}'")
             continue
         if "[obj]" in g:
-            M.w(w, "GRA-12", "erro", f"'[obj]' fora da partícula אֵת ({w[STR]})")
+            M.w(w, "GRA-12", "erro", f"'[obj]' fora da partícula אֵת ({w.strong})")
         # GRA-13: partículas com glosa fixa
-        if w[STR] in PART_H:
-            ok, msg = PART_H[w[STR]]
+        if w.strong in PART_H:
+            ok, msg = PART_H[w.strong]
             if not (tset & ok):
                 M.w(w, "GRA-13", "aviso", f"{msg}: '{g}'")
-        prefs = (w[PREF] or "").split("/") if w[PREF] else []
+        prefs = (w.prefixes or "").split("/") if w.prefixes else []
         # GRA-01: conjunção prefixada
         if "c" in prefs and not (tset & CONJ_H):
             M.w(w, "GRA-01", "info", f"conjunção ו prefixada sem conjunção na glosa: '{g}'")
@@ -1361,7 +1357,7 @@ def check_grammar_h(d, M, ws):
             M.w(w, "GRA-02", "info", f"artigo ה sem artigo na glosa: '{g}'")
         # GRA-04: sufixo pronominal
         for s in suf:
-            if not s.startswith("Sp") or len(s) < 5 or w[STR] in SUF_LEXICAL or (root.startswith("V") and root[2:3] == "c"):
+            if not s.startswith("Sp") or len(s) < 5 or w.strong in SUF_LEXICAL or (root.startswith("V") and root[2:3] == "c"):
                 continue
             person, num = s[2], s[4]
             target = "3" if person == "3" else person + ("s" if num == "s" else "p")
@@ -1382,13 +1378,13 @@ def check_grammar_h(d, M, ws):
             if person == "1" and num == "p" and not any(t.endswith(("mos", "mo")) or t in ("nós", "nos") for t in ts):
                 M.w(w, "GRA-05", "aviso", f"verbo 1ª pl. ({root}) sem forma de 'nós' na glosa: '{g}'")
         # GRA-07: infinitivo construto com ל
-        if root.startswith("V") and len(root) >= 3 and root[2] == "c" and "l" in prefs and w[STR] != "H559":
+        if root.startswith("V") and len(root) >= 3 and root[2] == "c" and "l" in prefs and w.strong != "H559":
             if not (tset & {"para", "a", "de", "ao", "à", "por", "que", "até", "quando", "se", "em"}) and not any(
                 t.endswith(("ar", "er", "ir", "or")) for t in ts
             ):
                 M.w(w, "GRA-07", "info", f"infinitivo com ל sem 'para/a + infinitivo': '{g}'")
         # GRA-10: plural
-        if root.startswith("Nc") and len(root) >= 5 and root[3] == "p" and w[STR] not in PLURAL_ONLY and not manual:
+        if root.startswith("Nc") and len(root) >= 5 and root[3] == "p" and w.strong not in PLURAL_ONLY and not manual:
             tally = content(ts)
             if tally and not any(t.endswith("s") for t in ts) and not gloss_names(g):
                 M.w(w, "GRA-10", "info", f"substantivo plural com glosa no singular: '{g}'")
@@ -1399,7 +1395,7 @@ def check_grammar_h(d, M, ws):
         # ARM-04: partícula דִּי
         if (
             lang == "A"
-            and w[STR] == "H1768"
+            and w.strong == "H1768"
             and not (
                 tset
                 & (
@@ -1448,12 +1444,12 @@ MEASURES = {
 
 def check_numbers_and_divine_names(d, M, ws):
     for w in ws:
-        g = w[GL]
+        g = w.gloss
         if not g:
             continue
         ts = toks(g)
         tset = set(ts)
-        k = (w[BOOK], w[CAP], w[VER])
+        k = (w.book, w.chapter, w.verse)
         # FAT-03: números da glosa presentes na BLIVRE
         strongs = [t for t in ts if t in STRONG_NUMBERS]
         if strongs:
@@ -1461,21 +1457,21 @@ def check_numbers_and_divine_names(d, M, ws):
             missing = [t for t in strongs if strip_marks(t) not in bl]
             if missing:
                 M.w(w, "FAT-03", "aviso", f"número '{missing[0]}' da glosa não aparece no versículo da BLIVRE")
-        if w[LING] != "G":
-            root = heb_segs(w[MORPH_COL])[2]
+        if w.language != "G":
+            root = heb_segs(w.morph)[2]
             if (
                 root.startswith("Ac")
-                and w[STR] not in ("H259",)
+                and w.strong not in ("H259",)
                 and not (tset & NUMBERS)
                 and not (tset & ORDINALS)
                 and not any(t.startswith(("centuri", "dezen", "milhar", "centen")) for t in ts)
             ):
-                M.w(w, "FAT-03", "aviso", f"numeral cardinal ({w[STR]}) sem número na glosa: '{g}'")
+                M.w(w, "FAT-03", "aviso", f"numeral cardinal ({w.strong}) sem número na glosa: '{g}'")
         # FAT-09: medidas e unidades
-        if w[STR] in MEASURES and not any(t.startswith(MEASURES[w[STR]]) for t in ts):
-            M.w(w, "FAT-09", "aviso", f"medida {w[STR]} glosada '{g}' (esperado {'/'.join(MEASURES[w[STR]])}…)")
+        if w.strong in MEASURES and not any(t.startswith(MEASURES[w.strong]) for t in ts):
+            M.w(w, "FAT-09", "aviso", f"medida {w.strong} glosada '{g}' (esperado {'/'.join(MEASURES[w.strong])}…)")
         # FAT-04: nomes divinos
-        s = w[STR]
+        s = w.strong
         if s == "H3068" and "SENHOR" not in g and "DEUS" not in g:
             M.w(w, "FAT-04", "aviso", f"YHWH com glosa '{g}' (esperado SENHOR / DEUS)")
         elif s == "H136" and not re.search(r"(^|-)Senhor(es)?($|-)|(^|-)senhor", g):
@@ -1582,7 +1578,7 @@ CRASIS = {
 
 def next_case(vs, i):
     for w in vs[i + 1 : i + 4]:
-        pos, parse = grk(w[MORPH_COL])
+        pos, parse = grk(w.morph)
         if parse[4] in "NGDAV" and parse[4] != "-":
             return parse[4]
     return None
@@ -1591,17 +1587,17 @@ def next_case(vs, i):
 def check_greek(d, M, ws):
     by_verse = defaultdict(list)
     for w in ws:
-        if w[LING] == "G":
-            by_verse[(w[BOOK], w[CAP], w[VER])].append(w)
+        if w.language == "G":
+            by_verse[(w.book, w.chapter, w.verse)].append(w)
     for _k, vs in by_verse.items():
         for i, w in enumerate(vs):
-            g = w[GL]
+            g = w.gloss
             if not g:
                 continue
             ts = toks(g)
             tset = set(ts)
-            pos, parse = grk(w[MORPH_COL])
-            lemma = w[LEMMA] or ""
+            pos, parse = grk(w.morph)
+            lemma = w.lemma or ""
             # GRG-01: artigo
             if pos == "RA":
                 outside = [t for t in ts if t not in ART_OK]
@@ -1674,7 +1670,7 @@ GL_OK = re.compile(
 
 def check_style(d, M, ws):
     for w in ws:
-        g = w[GL]
+        g = w.gloss
         if not g:
             continue
         if " " in g or "--" in g or g.endswith("-") or not GL_OK.match(g):
@@ -1697,22 +1693,22 @@ def check_consistency(d, M, ws, scope_books):
     marked = set()
     groups = defaultdict(list)
     for w in d.words:
-        if w[BOOK] in scope_books and w[GL] and w[GF] != "manual" and not is_proper_name(w):
-            p = grk(w[MORPH_COL])[0] if w[LING] == "G" else heb_segs(w[MORPH_COL])[2][:1]
+        if w.book in scope_books and w.gloss and w.gloss_source != "manual" and not is_proper_name(w):
+            p = grk(w.morph)[0] if w.language == "G" else heb_segs(w.morph)[2][:1]
             if p in ("N", "V", "A"):
-                groups[(w[BOOK], norm_form(w), w[MORPH_COL])].append(w)
+                groups[(w.book, norm_form(w), w.morph)].append(w)
     for _k, g_ws in groups.items():
         n = len(g_ws)
         if n < 4:
             continue
-        tally = Counter(w[GL].lower() for w in g_ws)
+        tally = Counter(w.gloss.lower() for w in g_ws)
         majority, n_majority = tally.most_common(1)[0]
         if n_majority / n < 0.5:
             continue
         st_maj = content_stems(majority)
-        freq_st = Counter(s for w in g_ws for s in sorted(content_stems(w[GL])))
+        freq_st = Counter(s for w in g_ws for s in sorted(content_stems(w.gloss)))
         for w in g_ws:
-            gl = w[GL].lower()
+            gl = w.gloss.lower()
             if gl == majority or tally[gl] / n > 0.2:
                 continue
             st = content_stems(gl)
@@ -1720,40 +1716,40 @@ def check_consistency(d, M, ws, scope_books):
                 continue
             if st & st_maj or any(freq_st[s] / n >= 0.15 for s in st):
                 continue
-            marked.add(w[ID])
-            M.w(w, "CON-01", "aviso", f"'{w[GL]}' destoa da glosa usual '{majority}' ({n_majority}/{n}) desta forma no livro")
+            marked.add(w.id)
+            M.w(w, "CON-01", "aviso", f"'{w.gloss}' destoa da glosa usual '{majority}' ({n_majority}/{n}) desta forma no livro")
     # CON-02: por Strong, na Bíblia inteira (só palavras de conteúdo)
     by_strong = defaultdict(list)
     for w in d.words:
-        if not w[GL] or not w[STR] or is_proper_name(w):
+        if not w.gloss or not w.strong or is_proper_name(w):
             continue
-        p = grk(w[MORPH_COL])[0] if w[LING] == "G" else heb_segs(w[MORPH_COL])[2][:1]
+        p = grk(w.morph)[0] if w.language == "G" else heb_segs(w.morph)[2][:1]
         if p in ("N", "V", "A"):
-            by_strong[w[STR]].append(w)
+            by_strong[w.strong].append(w)
     for s, g_ws in by_strong.items():
         n = len(g_ws)
         if n < 20:
             continue
         freq = Counter()
         for w in g_ws:
-            freq.update(sorted(content_stems(w[GL])))
+            freq.update(sorted(content_stems(w.gloss)))
         top, ntop = freq.most_common(1)[0] if freq else (None, 0)
         if ntop / n < 0.6:
             continue
         polysemous = sum(1 for x, k in freq.items() if k / n >= 0.03) >= 4
         for w in g_ws:
-            if w[ID] in marked or w[BOOK] not in scope_books or w[GF] == "manual":
+            if w.id in marked or w.book not in scope_books or w.gloss_source == "manual":
                 continue
-            st = content_stems(w[GL])
+            st = content_stems(w.gloss)
             if st and all(freq[x] / n < 0.01 for x in st):
-                M.w(w, "CON-02", "info" if polysemous else "aviso", f"glosa rara '{w[GL]}' para {s} (usual: '{top}…', {ntop}/{n})")
+                M.w(w, "CON-02", "info" if polysemous else "aviso", f"glosa rara '{w.gloss}' para {s} (usual: '{top}…', {ntop}/{n})")
 
 
 # ================================================================== H. nomes próprios
 def dominant_name(g_ws):
     c = Counter()
     for w in g_ws:
-        ns = gloss_names(w[GL])
+        ns = gloss_names(w.gloss)
         if ns:
             c[ns[0]] += 1
     return c
@@ -1762,13 +1758,13 @@ def dominant_name(g_ws):
 def check_names(d, M, ws, scope_books):
     # FAT-01: nome da glosa aparece no versículo da BLIVRE
     for w in ws:
-        if not w[GL] or not is_proper_name(w):
+        if not w.gloss or not is_proper_name(w):
             continue
-        ns = gloss_names(w[GL])
-        bl = d.tokset_blivre((w[BOOK], w[CAP], w[VER]))
+        ns = gloss_names(w.gloss)
+        bl = d.tokset_blivre((w.book, w.chapter, w.verse))
         if not ns:
-            if not any(t[:1].isupper() for t in w[GL].split("-")):
-                M.w(w, "FAT-01", "info", f"nome próprio com glosa em minúsculas: '{w[GL]}'")
+            if not any(t[:1].isupper() for t in w.gloss.split("-")):
+                M.w(w, "FAT-01", "info", f"nome próprio com glosa em minúsculas: '{w.gloss}'")
             continue
         missing = [x for x in ns if strip_marks(x.lower()) not in bl]
         if missing:
@@ -1776,8 +1772,8 @@ def check_names(d, M, ws, scope_books):
     # FAT-02: mesmo Strong de nome próprio → mesmo nome
     by_strong = defaultdict(list)
     for w in d.words:
-        if w[GL] and w[STR] and is_proper_name(w):
-            by_strong[w[STR]].append(w)
+        if w.gloss and w.strong and is_proper_name(w):
+            by_strong[w.strong].append(w)
     dominant_by_key = {}
     for s, g_ws in by_strong.items():
         c = dominant_name(g_ws)
@@ -1789,32 +1785,32 @@ def check_names(d, M, ws, scope_books):
         if n < 5 or ntop / n < 0.7:
             continue
         for w in g_ws:
-            if w[BOOK] not in scope_books:
+            if w.book not in scope_books:
                 continue
-            ns = gloss_names(w[GL])
+            ns = gloss_names(w.gloss)
             if ns and top not in ns and c[ns[0]] / n <= 0.1 and stem(ns[0])[:3] != stem(top)[:3]:
                 M.w(w, "FAT-02", "aviso", f"{s} glosado '{ns[0]}'; no resto da Bíblia é '{top}' ({ntop}/{n})")
     # GRG-15 / CRG-05: nome grego de origem hebraica × nome no AT
     seen = set()
     for w in d.words:
-        if w[LING] != "G" or not w[STR] or w[STR] in seen or w[STR] not in dominant_by_key or w[BOOK] not in scope_books:
+        if w.language != "G" or not w.strong or w.strong in seen or w.strong not in dominant_by_key or w.book not in scope_books:
             continue
-        seen.add(w[STR])
-        derivation = (d.lexicon.get(w[STR]) or [None] * 10)[5] or ""
+        seen.add(w.strong)
+        derivation = (d.lexicon.get(w.strong) or [None] * 10)[5] or ""
         m = re.search(r"of Hebrew origin \(H0*(\d+)\)", derivation)
         if not m:
             continue
         h = "H" + m.group(1)
         if h not in dominant_by_key:
             continue
-        gn, hn = dominant_by_key[w[STR]][0], dominant_by_key[h][0]
+        gn, hn = dominant_by_key[w.strong][0], dominant_by_key[h][0]
         if strip_marks(gn.lower()) == strip_marks(hn.lower()):
             continue
-        indecl = not re.search(r"[ςνυ]$", strip_marks(w[LEMMA] or ""))  # Ἀβραάμ, Δαυίδ
+        indecl = not re.search(r"[ςνυ]$", strip_marks(w.lemma or ""))  # Ἀβραάμ, Δαυίδ
         cod = "GRG-15" if indecl else "CRG-05"
-        if w[STR] in ("G2424",):  # Ἰησοῦς ← Josué: diferença esperada
+        if w.strong in ("G2424",):  # Ἰησοῦς ← Josué: diferença esperada
             continue
-        M.w(w, cod, "aviso" if stem(gn)[:3] != stem(hn)[:3] else "info", f"{w[LEMMA]} glosado '{gn}' no NT; {h} é '{hn}' no AT")
+        M.w(w, cod, "aviso" if stem(gn)[:3] != stem(hn)[:3] else "info", f"{w.lemma} glosado '{gn}' no NT; {h} é '{hn}' no AT")
 
 
 # ================================================================== I. cruzamentos
@@ -1843,7 +1839,7 @@ PARALLELS_NT = [
 
 def snippet(d, t):
     b, c1, v1, c2, v2 = t
-    return [w for w in d.words if w[BOOK] == b and (c1, v1) <= (w[CAP], w[VER]) <= (c2, v2)]
+    return [w for w in d.words if w.book == b and (c1, v1) <= (w.chapter, w.verse) <= (c2, v2)]
 
 
 def check_parallels(d, M, scope_books):
@@ -1854,21 +1850,21 @@ def check_parallels(d, M, scope_books):
             wa, wb = snippet(d, a), snippet(d, b)
             if not wa or not wb:
                 continue
-            sa = [(norm_form(w), w[MORPH_COL]) for w in wa]
-            sb = [(norm_form(w), w[MORPH_COL]) for w in wb]
+            sa = [(norm_form(w), w.morph) for w in wa]
+            sb = [(norm_form(w), w.morph) for w in wb]
             sm = SequenceMatcher(None, sa, sb, autojunk=False)
             for bl in sm.get_matching_blocks():
                 if bl.size < 3:
                     continue
                 for i in range(bl.size):
                     x, y = wa[bl.a + i], wb[bl.b + i]
-                    if not x[GL] or not y[GL] or x[GL].lower() == y[GL].lower():
+                    if not x.gloss or not y.gloss or x.gloss.lower() == y.gloss.lower():
                         continue
-                    sx, sy = content_stems(x[GL]), content_stems(y[GL])
+                    sx, sy = content_stems(x.gloss), content_stems(y.gloss)
                     if (sx or sy) and not (sx & sy):
-                        msg = f"'{y[GL]}' × '{x[GL]}' em {ref(x)} (mesmo original)"
+                        msg = f"'{y.gloss}' × '{x.gloss}' em {ref(x)} (mesmo original)"
                         M.w(y, cod, "aviso", msg)
-                        M.w(x, cod, "aviso", f"'{x[GL]}' × '{y[GL]}' em {ref(y)} (mesmo original)")
+                        M.w(x, cod, "aviso", f"'{x.gloss}' × '{y.gloss}' em {ref(y)} (mesmo original)")
 
 
 EQUIV = [
@@ -1909,13 +1905,13 @@ def check_bridges(d, M, scope_books):
     by_strong = defaultdict(list)
     targets = {s for e in EQUIV for s in e[:2]} | CRG02
     for w in d.words:
-        if w[STR] in targets and w[GL]:
-            by_strong[w[STR]].append(w)
+        if w.strong in targets and w.gloss:
+            by_strong[w.strong].append(w)
 
     def dominant(s):
         c = Counter()
         for w in by_strong.get(s, []):
-            c.update(sorted(content_stems(w[GL])))
+            c.update(sorted(content_stems(w.gloss)))
         return c
 
     for h, g, expected in EQUIV:
@@ -1925,7 +1921,7 @@ def check_bridges(d, M, scope_books):
         th = {s for s, _ in ch.most_common(3)}
         tg = {s for s, _ in cg.most_common(3)}
         w = by_strong[g][0]
-        if w[BOOK] not in scope_books:
+        if w.book not in scope_books:
             continue
         if not (th & tg):
             M.w(w, "CRZ-05", "aviso", f"{h} ↔ {g}: glosas sem família comum ({sorted(th)} × {sorted(tg)}); esperado '{expected}'")
@@ -1942,17 +1938,17 @@ def check_bridges(d, M, scope_books):
         top, ntop = c.most_common(1)[0]
         for w in g_ws:
             if (
-                w[BOOK] in scope_books
+                w.book in scope_books
                 and len(g_ws) >= 2
-                and not (content_stems(w[GL]) & {top})
-                and all(c[x] / len(g_ws) < 0.2 for x in content_stems(w[GL]))
+                and not (content_stems(w.gloss) & {top})
+                and all(c[x] / len(g_ws) < 0.2 for x in content_stems(w.gloss))
             ):
-                M.w(w, "CRG-02", "aviso", f"transliteração {w[LEMMA]} glosada '{w[GL]}' (usual '{top}…')")
+                M.w(w, "CRG-02", "aviso", f"transliteração {w.lemma} glosada '{w.gloss}' (usual '{top}…')")
     # ARM-07: verbete aramaico "corresponding to H####" com glosa da mesma família do hebraico
     by_str_a = defaultdict(list)
     for w in d.words:
-        if w[LING] == "A" and w[STR] and w[GL]:
-            by_str_a[w[STR]].append(w)
+        if w.language == "A" and w.strong and w.gloss:
+            by_str_a[w.strong].append(w)
     for s, g_ws in by_str_a.items():
         e = d.lexicon.get(s)
         if not e:
@@ -1968,29 +1964,29 @@ def check_bridges(d, M, scope_books):
                 continue
             ca = Counter()
             for w in g_ws:
-                ca.update(sorted(content_stems(w[GL])))
+                ca.update(sorted(content_stems(w.gloss)))
             if not ca:
                 continue
             ta = {x for x, _ in ca.most_common(2)}
             w = g_ws[0]
-            if w[BOOK] in scope_books and not (ta & th) and len(g_ws) >= 2:
+            if w.book in scope_books and not (ta & th) and len(g_ws) >= 2:
                 M.w(w, "ARM-07", "info", f"aramaico {s} glosado {sorted(ta)}; o hebraico {h} é traduzido {sorted(th)[:4]}")
         # ARM-06: verbete do Strong precisa ser o aramaico
         if (
             s[1:].isdigit()
             and "(Aramaic)" not in derivation
             and "Chaldee" not in derivation
-            and not (e[2] and heb_segs(g_ws[0][MORPH_COL])[2].startswith("Np"))
+            and not (e[2] and heb_segs(g_ws[0].morph)[2].startswith("Np"))
         ):
             for w in g_ws:
-                if w[BOOK] in scope_books:
+                if w.book in scope_books:
                     M.w(w, "ARM-06", "info", f"palavra aramaica com verbete {s} sem marca '(Aramaic)'")
                     break
     # ARM-10: Jr 10:11, as duas grafias de "terra"
     if "JER" in scope_books:
         ws = d.by_verse.get(("JER", 10, 11), [])
-        land_words = [w for w in ws if w[STR] in ("H778", "H772")]
-        gl = {tuple(sorted(content_stems(w[GL]))) for w in land_words if w[GL]}
+        land_words = [w for w in ws if w.strong in ("H778", "H772")]
+        gl = {tuple(sorted(content_stems(w.gloss))) for w in land_words if w.gloss}
         if len(gl) > 1:
             M.add(
                 "JER",
@@ -1999,30 +1995,30 @@ def check_bridges(d, M, scope_books):
                 None,
                 "ARM-10",
                 "aviso",
-                "as duas grafias de 'terra' com glosas diferentes: " + ", ".join(w[GL] for w in land_words),
+                "as duas grafias de 'terra' com glosas diferentes: " + ", ".join(w.gloss for w in land_words),
             )
 
 
 def check_support(d, M, ws):
     """CRZ-01: glosa sem apoio no alinhamento e sem nenhuma palavra presente no versículo da BLIVRE."""
     for w in ws:
-        if w[GF] not in ("lexico", "parcial") or not w[GL]:
+        if w.gloss_source not in ("lexico", "parcial") or not w.gloss:
             continue
-        st = content_stems(w[GL])
+        st = content_stems(w.gloss)
         if not st:
             continue
-        bl = {stem(x) for x in d.tokset_blivre((w[BOOK], w[CAP], w[VER]))}
+        bl = {stem(x) for x in d.tokset_blivre((w.book, w.chapter, w.verse))}
         if not (st & bl):
-            M.w(w, "CRZ-01", "info", f"glosa '{w[GL]}' (fonte {w[GF]}) sem palavra correspondente na BLIVRE do versículo")
+            M.w(w, "CRZ-01", "info", f"glosa '{w.gloss}' (fonte {w.gloss_source}) sem palavra correspondente na BLIVRE do versículo")
 
 
 def check_greek_strong(d, M, ws):
     for w in ws:
-        if w[LING] != "G":
+        if w.language != "G":
             continue
-        if w[SF] == "aprox":
-            e = d.lexicon.get(w[STR] or "")
-            M.w(w, "LXG-02", "aviso", f"lema {w[LEMMA]} ligado a {w[STR]} ({e[2] if e else '?'}) por semelhança")
+        if w.strong_source == "aprox":
+            e = d.lexicon.get(w.strong or "")
+            M.w(w, "LXG-02", "aviso", f"lema {w.lemma} ligado a {w.strong} ({e[2] if e else '?'}) por semelhança")
 
 
 # ================================================================== saída
@@ -2057,8 +2053,8 @@ def write_out(M, d, book_scope, t0):
     texts = {}
     pids = {m["word_id"] for es in examples.values() for m in es if m["word_id"]}
     for w in d.words:
-        if w[ID] in pids:
-            texts[w[ID]] = w
+        if w.id in pids:
+            texts[w.id] = w
     abbrev = {r[1]: r[3] for r in d.books}
     esc = "Bíblia inteira" if book_scope == (None, None) else " ".join(str(x) for x in book_scope if x is not None)
     L = [
@@ -2088,7 +2084,7 @@ def write_out(M, d, book_scope, t0):
         L.append("")
         for m in examples[cod]:
             w = texts.get(m["word_id"])
-            wd = f" — `{w[TXT]}` ({w[STR]}, {w[MORPH_COL]})" if w else ""
+            wd = f" — `{w.text}` ({w.strong}, {w.morph})" if w else ""
             L.append(f"- {abbrev.get(m['book'], m['book'])} {m['chapter']}:{m['verse']} [{m['level']}]{wd}: {m['msg']}")
         L.append("")
     with open(os.path.join(OUT, "report.md"), "w", encoding="utf8") as f:
@@ -2107,7 +2103,7 @@ def main(argv):
     book_scope = (book, cap)
     M = Marks(book_scope)
     scope_books = {book} if book else set(d.order)
-    ws = [w for w in d.words if (book is None or w[BOOK] == book) and (cap is None or w[CAP] == cap)]
+    ws = [w for w in d.words if (book is None or w.book == book) and (cap is None or w.chapter == cap)]
 
     steps = [
         ("texto-base", lambda: check_base_text(d, M, scope_books)),
