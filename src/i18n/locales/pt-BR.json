@@ -373,7 +373,8 @@
     "chapter_nav": "Capítulo anterior e próximo",
     "not_in_preview": "Este capítulo não está incluído nesta prévia.",
     "lede_greek": "Lê-se da esquerda para a direita. Cada palavra grega abre o verbete; abaixo de cada versículo vem a Bíblia Livre.",
-    "lede_hebrew": "Lê-se da direita para a esquerda. Cada palavra hebraica abre o verbete; abaixo de cada versículo vem a Bíblia Livre."
+    "lede_hebrew": "Lê-se da direita para a esquerda. Cada palavra hebraica abre o verbete; abaixo de cada versículo vem a Bíblia Livre.",
+    "sections": "Seções do capítulo"
   },
   "questions": {
     "title": "Perguntas ao texto",
@@ -766,5 +767,22 @@
     },
     "none": "Nenhum versículo com “{word}”.",
     "none_all": "Nenhum versículo com todas essas palavras."
+  },
+  "concordance": {
+    "title": "Ocorrências de {lemma}",
+    "by_translation": "Filtrar pela tradução",
+    "all": "Todas",
+    "more_translations": {
+      "one": "Mostrar mais {count} tradução",
+      "other": "Mostrar mais {count} traduções"
+    },
+    "where": "Onde aparece",
+    "scope": "Onde",
+    "unavailable": "A lista de ocorrências não está disponível neste aparelho (precisa de internet na primeira vez).",
+    "total": {
+      "one": "{count} ocorrência na Bíblia.",
+      "other": "{count} ocorrências na Bíblia."
+    },
+    "some": "{count} de {total} ocorrências."
   }
 }

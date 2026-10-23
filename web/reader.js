@@ -26,6 +26,7 @@ import NotesButton from "../src/components/NotesButton.svelte";
 import Questions from "../src/components/Questions.svelte";
 import NotesCount from "../src/components/NotesCount.svelte";
 import SayButton from "../src/components/SayButton.svelte";
+import SectionMap from "../src/components/SectionMap.svelte";
 import TocButton from "../src/components/TocButton.svelte";
 import TocVerses from "../src/components/TocVerses.svelte";
 import WhereButton from "../src/components/WhereButton.svelte";
@@ -77,6 +78,8 @@ const OLANG = () => (GRC ? "grc" : "he");
 // ---------- Cabeçalho, versículos ----------
 const root = document.getElementById("verses");
 mount(ChapterText, { target: root });
+// the section map of chapters with section titles (Psalm 119), above the text
+mount(SectionMap, { target: root.parentElement, anchor: root });
 mount(TocVerses, { target: document.querySelector('#toc nav[aria-labelledby="toc-vh"]') });
 mount(HeaderChips, {
   target: document.querySelector("#page > header"),
