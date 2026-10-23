@@ -200,3 +200,17 @@ test("no modo Bíblia, a barra abre o interlinear do versículo", async ({ page 
   await page.click('#mbar [data-action="camadas"]');
   await expect(page.locator('.word[data-v="3"][data-i="0"]')).toBeVisible();
 });
+
+test("compartilhar sem a folha do sistema copia o texto e o link da página aberta para o versículo", async ({ page, context, baseURL }) => {
+  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, "share", { value: undefined }); // como no navegador do computador
+  });
+  await open(page, "LUK.3");
+  await page.click("#v12 .vmark");
+  await page.click('#mbar [data-action="compartilhar"]');
+  await expect(page.locator("#toast")).toContainText("Link do versículo copiado");
+  const copied = await page.evaluate(() => navigator.clipboard.readText());
+  expect(copied).toContain("(Lucas 3:12, Bíblia Livre)");
+  expect(copied).toContain(`${new URL("ler.html", baseURL).href}#LUK.3.12`);
+});
