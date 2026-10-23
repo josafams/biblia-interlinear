@@ -324,7 +324,121 @@
         "one": "{count} capítulo atrasado",
         "other": "{count} capítulos atrasado"
       }
-    }
+    },
+    "title": "Meu progresso",
+    "invite": "Entre com sua conta Google para acompanhar quanto da Bíblia já leu, o tempo de leitura por dia, a sequência de dias e um plano de leitura — somados em todos os seus aparelhos.",
+    "invite_private": "Os números ficam só para você, no seu aparelho e numa pasta privada do app no seu Google Drive.",
+    "no_sign_in": "O login ainda não está disponível nesta versão.",
+    "back": "← Meu progresso",
+    "continue": "Continuar de onde parou",
+    "whole_bible": "A Bíblia inteira",
+    "read_of": "{read} de {total} capítulos lidos",
+    "pct_read": "{pct}% lidos",
+    "testaments": "Antigo Testamento: {ot} de {otTotal} · Novo Testamento: {nt} de {ntTotal}",
+    "finished_books": {
+      "one": "{count} livro concluído",
+      "other": "{count} livros concluídos"
+    },
+    "numbers": "Números",
+    "days": {
+      "one": "{count} dia",
+      "other": "{count} dias"
+    },
+    "streak": "seguidos lendo · recorde {record}",
+    "week": "nos últimos 7 dias · média {average}/dia",
+    "total_time": "de leitura no total",
+    "entries": "verbetes abertos",
+    "time_per_day": "Tempo de leitura por dia",
+    "period": "Período",
+    "tabs": {
+      "semana": "Semana",
+      "mes": "Mês",
+      "ano": "Ano"
+    },
+    "chart_label": "Tempo de leitura: {days}. Média {average}.",
+    "average": "média {time}",
+    "months": {
+      "jan": "jan",
+      "fev": "fev",
+      "mar": "mar",
+      "abr": "abr",
+      "mai": "mai",
+      "jun": "jun",
+      "jul": "jul",
+      "ago": "ago",
+      "set": "set",
+      "out": "out",
+      "nov": "nov",
+      "dez": "dez"
+    },
+    "weekdays": {
+      "dom": "dom",
+      "seg": "seg",
+      "ter": "ter",
+      "qua": "qua",
+      "qui": "qui",
+      "sex": "sex",
+      "sáb": "sáb"
+    },
+    "books_map": "Os 66 livros",
+    "book_title": "{book}: {read} de {total}",
+    "book_label": "{book}: {read} de {total} capítulos lidos",
+    "legend": {
+      "none": "não começado",
+      "half": "até a metade",
+      "more": "mais da metade",
+      "done": "concluído"
+    },
+    "plan_of": "Plano de leitura · {plan}",
+    "plan_pitch": "Opcional: um ritmo para ler a Bíblia toda ou o Novo Testamento, com a leitura de cada dia.",
+    "plan_day": "Dia {day} de {days} · {done} de {total} capítulos",
+    "today": "Leitura de hoje:",
+    "nothing_today": "nada para hoje",
+    "reschedule": "Reajustar as datas a partir de hoje",
+    "finish_plan": "Encerrar o plano",
+    "study": "Estudo",
+    "notes": {
+      "one": "{count} nota",
+      "other": "{count} notas"
+    },
+    "highlights": {
+      "one": "{count} marcação",
+      "other": "{count} marcações"
+    },
+    "favorites": {
+      "one": "{count} favorito",
+      "other": "{count} favoritos"
+    },
+    "pause_time": "Pausar a contagem de tempo neste aparelho",
+    "resume_time": "Voltar a contar o tempo de leitura",
+    "reset": "Zerar estatísticas",
+    "book_summary": "Resumo do livro",
+    "of_chapters": "de {total} capítulos lidos",
+    "remaining": "Faltam {count}",
+    "forecast": {
+      "one": " · no seu ritmo, cerca de {count} dia",
+      "other": " · no seu ritmo, cerca de {count} dias"
+    },
+    "book_done": "Livro concluído",
+    "chapters_hint": "Toque para marcar ou desmarcar como lido. Ponto: tem anotação; tracejado: em leitura.",
+    "chapter_label": "Capítulo {n}",
+    "chapter_read": ", lido",
+    "chapter_notes": ", com anotação",
+    "book_numbers": "Números do livro",
+    "book_time": "de leitura neste livro",
+    "most_reread": "mais relido ({count} vezes)",
+    "most_reread_none": "capítulo mais relido",
+    "first_read": "primeira leitura",
+    "last_read": "última leitura",
+    "read_next": "Ler {ref}",
+    "finish_title": "Encerrar o plano?",
+    "finish_text": "Os capítulos lidos continuam contando no seu progresso.",
+    "finish_yes": "Encerrar",
+    "cancel": "Cancelar",
+    "reset_title": "Zerar estatísticas?",
+    "reset_text": "Apaga os capítulos lidos, o tempo de leitura e o plano, em todos os seus aparelhos. As anotações não são afetadas.",
+    "reset_yes": "Zerar",
+    "plan_title": "Plano de leitura"
   },
   "account": {
     "drive_error": "Erro {status} no Google Drive",
