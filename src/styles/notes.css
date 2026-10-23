@@ -1,0 +1,489 @@
+/* Notes: Minhas anotações, the tag manager and Exportar em PDF. Values come from tokens.css. */
+.mn-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.mn-empty {
+  font-size: 13px;
+  color: var(--muted);
+}
+.mine-sheet {
+  z-index: 45;
+}
+.mn-filters2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 13.5px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+.mn-filters2 select {
+  font: inherit;
+  color: var(--fg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-height: 36px;
+  padding: 0 6px;
+}
+.mn-filters {
+  margin-top: 10px;
+}
+.mn-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 12px 0 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.mn-new {
+  min-height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: none;
+  color: var(--accent);
+  padding: 0 14px;
+  font: inherit;
+  cursor: pointer;
+}
+.mn-group {
+  font: 500 11px var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 16px 0 6px;
+}
+.mn-item {
+  display: grid;
+  gap: 3px;
+  width: 100%;
+  text-align: start;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: none;
+  color: var(--fg);
+  padding: 10px 2px;
+  font: inherit;
+  cursor: pointer;
+}
+.mn-ref {
+  font: 500 12.5px var(--font-mono);
+  color: var(--accent);
+}
+.mn-color {
+  background: var(--mk);
+  color: var(--mk-ink);
+  padding: 0 5px;
+  border-radius: 4px;
+}
+.mn-title {
+  font-size: 15px;
+}
+.mn-txt {
+  font-size: 14px;
+  color: var(--fg);
+}
+.mn-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.mn-tags .chip {
+  min-height: 24px;
+  font-size: 11.5px;
+  padding: 0 8px;
+  cursor: default;
+}
+.mn-actions2 {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 6px;
+  margin-top: 0;
+}
+.mn-tabs {
+  position: sticky;
+  top: calc(-14px - env(safe-area-inset-top, 0px));
+  z-index: 2;
+  display: flex;
+  gap: 4px;
+  margin: -8px -18px 0;
+  padding: 8px 18px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.mn-tabs a[aria-current="true"] {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}
+.mn-tagchips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.mn-tagchips {
+  margin-top: 8px;
+  gap: 6px;
+}
+.mn-tagchips .chip small {
+  color: var(--muted);
+  margin-inline-start: 2px;
+}
+.mn-actions {
+  flex-wrap: wrap;
+}
+.mn-order select {
+  font: inherit;
+  color: var(--fg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-height: 36px;
+  padding: 0 6px;
+}
+.mn-more {
+  position: relative;
+  margin-inline-start: auto;
+}
+.mn-more summary {
+  list-style: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--fg);
+}
+.mn-more summary::-webkit-details-marker {
+  display: none;
+}
+.mn-menu {
+  position: absolute;
+  right: 0;
+  top: 46px;
+  z-index: 5;
+  display: grid;
+  min-width: 210px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+  padding: 6px;
+}
+.mn-menu button {
+  text-align: start;
+  min-height: 42px;
+  border: 0;
+  background: none;
+  color: var(--fg);
+  font: inherit;
+  padding: 0 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.mn-menu button:hover,
+.mn-menu button:focus-visible {
+  background: var(--accent-soft);
+}
+.mn-verse {
+  display: grid;
+  gap: 2px;
+  border-bottom: 1px solid var(--line);
+  padding: 10px 0 6px;
+}
+.mn-verse .mn-item {
+  border-bottom: 0;
+  padding: 6px 2px;
+}
+.mn-line {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.mn-kind {
+  font: 500 11.5px var(--font-mono);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.mn-manage {
+  display: grid;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 4px 12px 12px;
+  margin: 8px 0;
+}
+.tm-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.tm-row input {
+  flex: 1;
+  min-width: 0;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--fg);
+  padding: 0 10px;
+  font: inherit;
+}
+.tm-help {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin: 0;
+}
+.mn-item.sel {
+  grid-template-columns: 26px 1fr;
+}
+.mn-item.sel::before {
+  content: "";
+  grid-row: 1 / span 4;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--muted);
+  margin-top: 2px;
+}
+.mn-item.sel[aria-checked="true"]::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 3px var(--surface);
+}
+.exp-body {
+  display: grid;
+  gap: 14px;
+}
+.exp-body fieldset {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 8px 12px 10px;
+  margin: 0;
+  display: grid;
+  gap: 2px;
+}
+.exp-body legend {
+  font: 500 11px var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0 4px;
+}
+.exp-body .opt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  font-size: 15px;
+}
+.exp-body .opt input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--accent);
+  flex: none;
+}
+.exp-body .opt small {
+  color: var(--muted);
+}
+.exp-body select {
+  font: inherit;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--fg);
+  min-height: 34px;
+  margin-inline-start: 6px;
+}
+.exp-generate {
+  min-height: 50px;
+  border-radius: 999px;
+  border: 0;
+  background: var(--accent);
+  color: var(--surface);
+  font: 600 16px var(--font-body);
+  cursor: pointer;
+}
+.exp-generate:disabled {
+  opacity: 0.6;
+}
+.exp-note {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+.mn-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3px;
+  padding: 3px;
+  margin-right: 52px;
+  border-radius: 12px;
+  background: var(--chip);
+}
+.mn-tabs a {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  color: var(--muted);
+  font: 400 13px var(--font-ui);
+  text-decoration: none;
+}
+.mn-tabs a[aria-current="true"] {
+  background: var(--surface);
+  color: var(--fg);
+  font-weight: 700;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+/* ================= Aba Notas (Minhas anotações) como no design ================= */
+#minhas {
+  gap: 14px;
+  padding-top: calc(10px + env(safe-area-inset-top, 0px));
+  font-family: var(--font-ui);
+}
+#minhas .mn-searchrow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+#minhas #mn-search {
+  flex: 1;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  font: 400 16px var(--font-ui);
+}
+#minhas .mn-more {
+  margin: 0;
+}
+#minhas .mn-more summary {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+}
+#minhas .mn-filters {
+  margin-top: 0;
+}
+#minhas .chip {
+  min-height: 36px;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--fg);
+  font: 400 14px var(--font-ui);
+  gap: 6px;
+}
+#minhas .chip small {
+  font: 400 11px var(--font-mono);
+  color: inherit;
+}
+#minhas .chip[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--surface);
+}
+#minhas .mn-filters .chip[data-tipo="favoritos"] {
+  order: 1;
+}
+#minhas .mn-filters .chip[data-tipo="marcacoes"] {
+  order: 2;
+}
+#minhas .mn-tagchips .chip[data-tagf]::before {
+  content: "# ";
+}
+#minhas .mn-actions {
+  margin: 0;
+  font: 400 12px var(--font-ui);
+}
+#minhas .mn-new {
+  order: 9;
+  width: 100%;
+  min-height: 48px;
+  border-radius: 12px;
+  border: 1px dashed var(--accent);
+  font: 400 15px var(--font-ui);
+}
+#minhas .mn-actions {
+  order: 8;
+}
+#minhas #mn-items {
+  order: 7;
+  display: grid;
+  gap: 8px;
+}
+/* cada versículo num cartão: fundo da página, borda, raio 12, barra de 4px da cor */
+#minhas .mn-verse {
+  padding: 12px 14px 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+  box-shadow: inset 4px 0 0 var(--line);
+  gap: 4px;
+}
+#minhas .mn-verse:has(.mn-color.mk-amarelo) {
+  box-shadow: inset 4px 0 0 var(--mk-bar-amarelo);
+}
+#minhas .mn-verse:has(.mn-color.mk-verde) {
+  box-shadow: inset 4px 0 0 var(--mk-bar-verde);
+}
+#minhas .mn-verse:has(.mn-color.mk-azul) {
+  box-shadow: inset 4px 0 0 var(--mk-bar-azul);
+}
+#minhas .mn-verse:has(.mn-color.mk-rosa) {
+  box-shadow: inset 4px 0 0 var(--mk-bar-rosa);
+}
+#minhas .mn-verse:has(.mn-color.mk-laranja) {
+  box-shadow: inset 4px 0 0 var(--mk-bar-laranja);
+}
+#minhas .mn-ref {
+  font: 700 14px var(--font-ui);
+}
+#minhas .mn-item {
+  padding: 2px 0;
+  border: 0;
+  font-family: var(--font-ui);
+}
+#minhas .mn-txt {
+  font: 400 15px/1.45 var(--font-body);
+}
+#minhas .mn-tags .chip {
+  height: auto;
+  min-height: 0;
+  padding: 2px 9px;
+  border: 0;
+  background: var(--chip);
+  color: var(--fg);
+  font-size: 12px;
+}
+#minhas .mn-empty {
+  text-align: center;
+  color: var(--muted);
+  font-size: 15px;
+  padding: 24px 12px;
+}
+#minhas .mn-empty::before {
+  content: "Nenhuma anotação ainda";
+  display: block;
+  margin-bottom: 6px;
+  font: 700 16px var(--font-ui);
+  color: var(--fg);
+}

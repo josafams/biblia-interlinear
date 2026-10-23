@@ -1,7 +1,7 @@
 <!--
   Minhas anotações (#minhas), the Notas tab of the index: the index tabs, search, filters by kind and tag, the
   list in cards per verse, selection for the PDF notebook and the ⋯ menu (export, backup, import, tags).
-  web/annotations.js loads the records into src/state/notes.svelte.ts and does the actions through the props.
+  src/reader/annotations/list.ts loads the records into src/state/notes.svelte.ts and does the actions through the props.
 -->
 <script lang="ts">
   import { t } from "../i18n";
@@ -16,6 +16,7 @@
     onitem,
     onnew,
     onmenu,
+    onimport,
     ontab
   }: {
     onclose: () => void;
@@ -24,6 +25,8 @@
     onitem: (item: Item) => void;
     onnew: () => void;
     onmenu: (action: MenuAction) => void;
+    /** "Importar": the file picked */
+    onimport: (file: File) => void;
     ontab: (tab: "livros" | "voce") => void;
   } = $props();
   let more: HTMLDetailsElement | undefined = $state();
@@ -165,7 +168,18 @@
           ><option value="biblica">{t("notes.order_bible")}</option><option value="data">{t("notes.order_recent")}</option></select
         ></label
       >
-      <input type="file" id="mn-file" accept=".json,application/json" hidden />
+      <input
+        type="file"
+        id="mn-file"
+        accept=".json,application/json"
+        hidden
+        onchange={e => {
+          const input = e.currentTarget;
+          const file = input.files?.[0];
+          input.value = "";
+          if (file) onimport(file);
+        }}
+      />
     </div>
     <div class="mn-manage" id="mn-tagmgr" hidden></div>
     <div id="mn-items">

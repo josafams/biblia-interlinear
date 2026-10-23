@@ -1,0 +1,130 @@
+/* Audio: reading aloud: Ouvir buttons and the mini player. Values come from tokens.css. */
+/* Áudio */
+.say {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--accent);
+  font: 500 13px var(--font-mono);
+  cursor: pointer;
+}
+.say svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.say.on {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+.vsay {
+  height: 40px;
+  padding: 0 12px;
+  margin-inline-start: auto;
+}
+@media (prefers-contrast: more) {
+  .say {
+    border-color: var(--muted);
+  }
+}
+@media (forced-colors: active) {
+  .say {
+    border: 1px solid ButtonText;
+  }
+  .say.on {
+    outline: 3px solid Highlight;
+    outline-offset: 1px;
+  }
+}
+.ch-say {
+  display: none;
+}
+body.hide-orig .ch-say {
+  display: inline-flex;
+  margin-top: 12px;
+}
+body.blivre-par.hide-orig .verse:not(.abrir) .vhead .say {
+  display: none;
+}
+.bar .say-main {
+  background: var(--accent);
+  color: var(--surface);
+  border-color: var(--accent);
+}
+.bar .say-main.on {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.bar .say-main {
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 0;
+  gap: 8px;
+}
+.dlem .say {
+  height: 36px;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--accent);
+  font: 400 13px var(--font-ui);
+  gap: 6px;
+}
+/* "Ouvir o capítulo" fica na barra (embaixo no celular, em cima no computador), não no cabeçalho */
+#ch-say {
+  display: none;
+}
+/* Mini player (celular): faixa no destaque, 48px, raio 12, 8px das bordas, logo acima da barra de baixo */
+.miniplayer {
+  display: none;
+}
+@media (max-width: 720px) {
+  .miniplayer:not([hidden]) {
+    position: fixed;
+    left: 8px;
+    right: 8px;
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    z-index: 8;
+    height: 48px;
+    box-sizing: border-box;
+    padding: 0 6px 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 12px;
+    background: var(--accent);
+    color: var(--surface);
+    font: 400 14px var(--font-ui);
+  }
+  .miniplayer span {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .miniplayer button {
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  body.com-detail .miniplayer,
+  body.com-mbar .miniplayer {
+    display: none;
+  }
+}

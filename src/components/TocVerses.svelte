@@ -1,4 +1,4 @@
-<!-- "Versículos de João 3" in the index: one chip per verse, the one on screen marked. The links are data-go (web/reader.js). -->
+<!-- "Versículos de João 3" in the index: one chip per verse, the one on screen marked. The links are data-go (src/reader/toc.ts). -->
 <script lang="ts">
   import { t } from "../i18n";
   import { goto } from "../state/goto.svelte";

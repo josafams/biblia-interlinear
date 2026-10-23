@@ -13,7 +13,5 @@ tests/snapshot.json
 *.md
 # Protótipos do redesenho: HTML do runtime do canvas de design, não do site
 docs/redesenho/
-# legacy reader stylesheet (one-line rules); replaced by component styles in the refactor
-web/styles/reader.css
 # local output folder, not in the repository
 saida/

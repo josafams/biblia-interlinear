@@ -1,0 +1,217 @@
+/* Account: the Google Drive box in Você, its dialogs and the suggestion to save to Drive. Values come from tokens.css. */
+.conta {
+  border-bottom: 1px solid var(--line);
+}
+.conta[hidden] {
+  display: none;
+}
+.account-t {
+  margin: 0;
+  font-weight: 600;
+}
+.account-s {
+  margin: 4px 0 12px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+.gbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--google-line);
+  border-radius: 22px;
+  background: var(--google-bg);
+  color: var(--google-ink);
+  font:
+    500 14px/1 Roboto,
+    Arial,
+    sans-serif;
+  cursor: pointer;
+}
+.gbtn:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+.gbtn[disabled] {
+  opacity: 0.6;
+  cursor: progress;
+}
+.account-me {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.account-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+  flex: none;
+  overflow: hidden;
+}
+.account-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.account-name {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.account-email {
+  color: var(--muted);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.account-drive {
+  margin: 10px 0 0;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+}
+.account-drive::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+  flex: none;
+}
+.account-drive.ok::before {
+  background: var(--ok-dot);
+}
+.account-drive.alerta::before {
+  background: var(--warn-dot);
+}
+.account-sync {
+  margin: 4px 0 0 16px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.account-sync.alerta {
+  color: var(--warn);
+}
+.account-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.account-actions button {
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+.account-actions button.prim {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--surface);
+}
+.account-error {
+  margin: 10px 0 0;
+  color: var(--error);
+  font-size: 14px;
+}
+.account-actions button.perigo {
+  border-color: var(--error);
+  color: var(--error);
+}
+.account-more {
+  margin-top: 10px;
+}
+.account-more button {
+  border: 0;
+  background: none;
+  padding: 6px 0;
+  color: var(--muted);
+  font: inherit;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+  min-height: 32px;
+}
+.account-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(0, 0, 0, 0.45);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+.account-box {
+  background: var(--surface);
+  color: var(--fg);
+  border-radius: 16px;
+  padding: 20px;
+  width: min(420px, 100%);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+.account-box h2 {
+  margin: 0 0 8px;
+  font-size: 19px;
+}
+.account-box p {
+  margin: 0 0 4px;
+  line-height: 1.5;
+  font-size: 15px;
+}
+.account-suggestion {
+  position: fixed;
+  left: 50%;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  z-index: 60;
+  width: min(440px, calc(100% - 32px));
+  background: var(--surface);
+  color: var(--fg);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+  padding: 14px 16px;
+}
+.account-suggestion[hidden] {
+  display: none;
+}
+/* on phones it stays above the bottom bar (Livros · ‹ · Ouvir · › · Aa) */
+@media (max-width: 720px) {
+  .account-suggestion {
+    bottom: calc(80px + env(safe-area-inset-bottom));
+  }
+}
+.account-suggestion p {
+  margin: 0 0 10px;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.account-suggestion .linha {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.account-suggestion .nao {
+  min-height: 44px;
+  padding: 0 14px;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}

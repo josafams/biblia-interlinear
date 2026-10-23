@@ -1,0 +1,113 @@
+/* Questions: Perguntas ao texto. Values come from tokens.css. */
+.qsec {
+  margin: 28px 0 8px;
+  padding: 18px 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  scroll-margin-top: calc(var(--bar-h) + 12px);
+}
+.qsec h2 {
+  margin: 0 0 4px;
+  font-size: 22px;
+  font-weight: 600;
+}
+.qlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+  counter-reset: q;
+}
+.q {
+  counter-increment: q;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.q:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.q-k {
+  font: 600 12px/1 var(--mono, monospace);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.q-k::before {
+  content: counter(q) ". ";
+}
+.q-t {
+  margin: 6px 0 8px;
+  font-size: 17px;
+  line-height: 1.5;
+}
+.q-acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.q-acts button {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+.q-acts button:hover {
+  border-color: var(--accent);
+}
+.q-word span[lang] {
+  font-size: 17px;
+}
+body.hide-questions #perguntas {
+  display: none;
+}
+/* Perguntas: h2 20px e cada pergunta num cartão; cabeçalho em Plex Mono 11px maiúsculo */
+.qsec {
+  margin: 24px 0 0;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+.qsec h2 {
+  font-size: 20px;
+  margin: 0 0 10px;
+}
+.qlist {
+  gap: 10px;
+}
+.q,
+.q:first-child {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  display: grid;
+  gap: 6px;
+}
+.q-k {
+  font: 400 11px/1.45 var(--font-mono);
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.q-k::before {
+  content: none;
+}
+.q-t {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.45;
+}
+.q-acts button {
+  min-height: 36px;
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--accent);
+}

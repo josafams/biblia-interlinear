@@ -1,3 +1,4 @@
+import { showToast } from "../src/state/toast.svelte";
 import { flushSync, mount } from "svelte";
 import AccountBox from "../src/components/AccountBox.svelte";
 import { accountView } from "../src/state/account.svelte";
@@ -276,19 +277,7 @@ import { esc } from "../src/lib/text";
     if (e instanceof TypeError) return "Sem conexão com o Google agora. As anotações continuam neste aparelho.";
     return e.message || "Algo deu errado ao falar com o Google.";
   }
-  function toastMsg(msg) {
-    const t = document.getElementById("toast");
-    if (!t) return;
-    t.textContent = msg;
-    t.hidden = false;
-    clearTimeout(toastMsg.t);
-    toastMsg.t = setTimeout(
-      () => {
-        t.hidden = true;
-      },
-      Math.max(3500, msg.length * 70)
-    );
-  }
+  const toastMsg = msg => showToast(msg);
 
   // Janela de pergunta simples (sem os diálogos do navegador). Resolve com o id do botão escolhido ("" = cancelar).
   function ask(titulo, texto, buttons) {
@@ -325,55 +314,12 @@ import { esc } from "../src/lib/text";
   // ---------- interface ----------
   const G =
     '<svg viewBox="0 0 48 48" width="18" height="18" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>';
-  const css = document.createElement("style");
-  css.textContent = `
-.conta { border-bottom: 1px solid var(--line); }
-.conta[hidden] { display: none; }
-.account-t { margin: 0; font-weight: 600; }
-.account-s { margin: 4px 0 12px; color: var(--muted); font-size: 14px; line-height: 1.45; }
-.gbtn { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 16px; border: 1px solid #747775; border-radius: 22px;
-  background: #fff; color: #1f1f1f; font: 500 14px/1 Roboto, Arial, sans-serif; cursor: pointer; }
-.gbtn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-.gbtn[disabled] { opacity: .6; cursor: progress; }
-.account-me { display: flex; align-items: center; gap: 12px; }
-.account-photo { width: 40px; height: 40px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; font-weight: 600; flex: none; overflow: hidden; }
-.account-photo img { width: 100%; height: 100%; object-fit: cover; }
-.account-name { font-weight: 600; overflow-wrap: anywhere; }
-.account-email { color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
-.account-drive { margin: 10px 0 0; font-size: 14px; display: flex; align-items: center; gap: 8px; color: var(--muted); }
-.account-drive::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--muted); flex: none; }
-.account-drive.ok::before { background: #2e7d4f; }
-.account-drive.alerta::before { background: #b26a00; }
-.account-sync { margin: 4px 0 0 16px; font-size: 13px; color: var(--muted); }
-.account-sync.alerta { color: light-dark(#8a5300, #e8b25c); }
-.account-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-.account-actions button { min-height: 40px; padding: 0 14px; border-radius: 20px; border: 1px solid var(--line); background: transparent; color: var(--fg); font: inherit; font-size: 14px; cursor: pointer; }
-.account-actions button.prim { background: var(--accent); border-color: var(--accent); color: var(--surface); }
-.account-error { margin: 10px 0 0; color: light-dark(#a3361b, #f0a58f); font-size: 14px; }
-.account-actions button.perigo { border-color: light-dark(#a3361b, #f0a58f); color: light-dark(#a3361b, #f0a58f); }
-.account-more { margin-top: 10px; }
-.account-more button { border: 0; background: none; padding: 6px 0; color: var(--muted); font: inherit; font-size: 13px; text-decoration: underline; cursor: pointer; min-height: 32px; }
-.account-modal { position: fixed; inset: 0; z-index: 90; background: rgba(0,0,0,.45); display: grid; place-items: center; padding: 16px; }
-.account-box { background: var(--surface); color: var(--fg); border-radius: 16px; padding: 20px; width: min(420px, 100%); box-shadow: 0 12px 40px rgba(0,0,0,.3); }
-.account-box h2 { margin: 0 0 8px; font-size: 19px; }
-.account-box p { margin: 0 0 4px; line-height: 1.5; font-size: 15px; }
-.account-suggestion { position: fixed; left: 50%; bottom: calc(16px + env(safe-area-inset-bottom)); transform: translateX(-50%); z-index: 60;
-  width: min(440px, calc(100% - 32px)); background: var(--surface); color: var(--fg); border: 1px solid var(--line); border-radius: 14px;
-  box-shadow: 0 8px 28px rgba(0,0,0,.18); padding: 14px 16px; }
-.account-suggestion[hidden] { display: none; }
-/* no celular fica acima da barra de baixo (Livros · ‹ · Ouvir · › · Aa) */
-@media (max-width: 720px) { .account-suggestion { bottom: calc(80px + env(safe-area-inset-bottom)); } }
-.account-suggestion p { margin: 0 0 10px; font-size: 15px; line-height: 1.4; }
-.account-suggestion .linha { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-.account-suggestion .nao { min-height: 44px; padding: 0 14px; border: 0; background: transparent; color: var(--accent); font: inherit; cursor: pointer; text-decoration: underline; }
-`;
-  document.head.appendChild(css);
 
   // A conta fica na parte "Você" do índice (ou logo abaixo do título, em páginas sem essa parte): AccountBox.svelte
   const slot = document.getElementById("toc-account");
   const headEl = document.getElementById("toc")?.querySelector(".shead");
-  if (slot) mount(AccountBox, { target: slot });
-  else if (headEl) mount(AccountBox, { target: headEl.parentElement, anchor: headEl.nextSibling });
+  // (YouSection.svelte already has it in the index)
+  if (!slot && headEl) mount(AccountBox, { target: headEl.parentElement, anchor: headEl.nextSibling });
   function render() {
     accountView.status = accountStatus;
     accountView.me = account ? { nome: account.nome, email: account.email, photo: account.photo } : null;

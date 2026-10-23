@@ -1,5 +1,6 @@
-// index.html: web/home.html with its __PLACEHOLDERS__ filled from the exported data
-// (counts, the Genesis 1:1 and John 1:1 sample, EPUB/PDF sizes and the "Como usar" storyboards).
+// index.html: web/home.html with the site address and the home bundle (src/home/main.ts), and home-data.json,
+// which the page reads: the counts, the Genesis 1:1 and John 1:1 sample, the EPUB/PDF sizes and the
+// "Como usar" storyboards.
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
@@ -11,7 +12,6 @@ export type Book = { code: string; chapters: { n: number }[] };
 type Lex = Record<string, { x?: string }>;
 
 const readJson = (p: string) => JSON.parse(fs.readFileSync(p, "utf8"));
-const fmt = (n: number) => n.toLocaleString("pt-BR");
 const clean = (w: string) =>
   w
     .replace(/\//g, "")
@@ -28,7 +28,7 @@ function size(file: string) {
   }
 }
 
-export async function writeHomePage(books: Book[]) {
+export async function writeHomePage(books: Book[], homeBundle: string) {
   const data = fromRoot("build/data");
   const chapter = (code: string, n: number) => readJson(path.join(data, "cap", code, `${n}.json`)) as { v: Verse[] };
   const lex: Record<string, Lex> = { H: readJson(path.join(data, "lex/H.json")), G: readJson(path.join(data, "lex/G.json")) };
@@ -47,45 +47,38 @@ export async function writeHomePage(books: Book[]) {
       }
     }
 
-  const cards = (v: { w: Word[] }, greek: boolean) =>
-    v.w
-      .map(w => {
-        const e = lex[w[1][0]]?.[w[1]] || {};
-        return `<div class="wc"><span class="o${greek ? " g" : ""}" lang="${greek ? "grc" : "he"}">${esc(clean(w[0]))}</span><span class="x">${esc(e.x || "")}</span><span class="s">${esc(w[1])}</span><span class="t">${esc(w[2])}</span></div>`;
-      })
-      .join("");
+  const sample = (ref: string, v: { w: Word[]; b?: string }, greek: boolean) => ({
+    ref,
+    greek,
+    words: v.w.map(w => ({ o: clean(w[0]), x: lex[w[1][0]]?.[w[1]]?.x || "", s: w[1], t: w[2] })),
+    blivre: v.b || ""
+  });
   const gn = chapter("GEN", 1).v.find(v => v.n === 1)!,
     jo = chapter("JHN", 1).v.find(v => v.n === 1)!;
-  const sample = `<div class="ref"><b>Gênesis 1:1</b><span>hebraico, lê-se da direita para a esquerda</span></div>
-    <div class="cards rtl">${cards(gn, false)}</div>
-    <p class="blivre"><small>BLIVRE</small>${esc(gn.b)}</p>
-    <div style="height:1px;background:var(--line)"></div>
-    <div class="ref"><b>João 1:1</b><span>grego, da esquerda para a direita</span></div>
-    <div class="cards">${cards({ w: jo.w.slice(0, 5) }, true)}</div>
-    <p class="blivre"><small>BLIVRE</small>${esc(jo.b)}</p>`;
-
+  const files = ["00-Biblia-Interlinear-completa", "00-Biblia-Interlinear-AT", "00-Biblia-Interlinear-NT", "00-Biblia-Livre"];
+  const sizes = Object.fromEntries(
+    files.flatMap(f => [
+      [`${f}.epub`, size(`build/epub/${f}.epub`)],
+      [`${f}.pdf`, size(`build/pdf/${f}.pdf`)]
+    ])
+  );
   const { storyboardSummary } = await import(pathToFileURL(fromRoot("scripts/videos/roteiros.mjs")).href);
+  const homeData = {
+    counts: { books: books.length, chapters, verses, words, entries: Object.keys(lex.H).length + Object.keys(lex.G).length },
+    sample: [sample("Gênesis 1:1", gn, false), sample("João 1:1", { w: jo.w.slice(0, 5), b: jo.b }, true)],
+    sizes,
+    booksUrl: `${APP.repo}/releases/download/livros`,
+    date: new Date().toLocaleDateString("pt-BR"),
+    storyboards: storyboardSummary()
+  };
+  fs.writeFileSync(path.join(OUT, "home-data.json"), JSON.stringify(homeData));
+  // the rest of web/home.html is the same everywhere: the site address and the bundle
   const values: Record<string, string> = {
     __DESC__: esc(APP.desc),
     __REPO__: APP.repo,
     __REPO_CURTO__: APP.repo.replace(/^https:\/\//, ""),
     __LIVROS__: `${APP.repo}/releases/download/livros`,
-    __AMOSTRA__: sample,
-    __N_LIVROS__: fmt(books.length),
-    __N_CAPS__: fmt(chapters),
-    __N_VERS__: fmt(verses),
-    __N_PALAVRAS__: fmt(words),
-    __N_VERBETES__: fmt(Object.keys(lex.H).length + Object.keys(lex.G).length),
-    __TAM_EPUB_COMPLETA__: size("build/epub/00-Biblia-Interlinear-completa.epub"),
-    __TAM_PDF_COMPLETA__: size("build/pdf/00-Biblia-Interlinear-completa.pdf"),
-    __TAM_EPUB_AT__: size("build/epub/00-Biblia-Interlinear-AT.epub"),
-    __TAM_PDF_AT__: size("build/pdf/00-Biblia-Interlinear-AT.pdf"),
-    __TAM_EPUB_NT__: size("build/epub/00-Biblia-Interlinear-NT.epub"),
-    __TAM_EPUB_BLIVRE__: size("build/epub/00-Biblia-Livre.epub"),
-    __TAM_PDF_BLIVRE__: size("build/pdf/00-Biblia-Livre.pdf"),
-    __TAM_PDF_NT__: size("build/pdf/00-Biblia-Interlinear-NT.pdf"),
-    __DATA__: new Date().toLocaleDateString("pt-BR"),
-    __ROTEIROS__: JSON.stringify(storyboardSummary()).replace(/<\//g, "<\\/")
+    __HOME_BUNDLE__: homeBundle
   };
   let html = fs.readFileSync(fromRoot("web/home.html"), "utf8");
   for (const [k, v] of Object.entries(values)) html = html.split(k).join(v);

@@ -1,13 +1,16 @@
 // ler.html: web/reader.html (a fragment) wrapped in a document, with the books list inlined as DATA
-// and the Vite bundle in place of __READER_BUNDLE__. Chapters and lexicon load on demand from dados/.
+// and the Vite bundle and its stylesheet in place of __READER_BUNDLE__ and __READER_CSS__. Chapters and lexicon load on demand from dados/.
 import fs from "node:fs";
 import path from "node:path";
 import { APP, OUT, fromRoot } from "./app";
 
-export function writeReaderPage(readerBundle: string, books: unknown) {
+export function writeReaderPage(readerBundle: string, readerCss: string, books: unknown) {
   const template = fs.readFileSync(fromRoot("web/reader.html"), "utf8");
   const data = JSON.stringify({ books, chapters: {}, lex: {}, complete: true }).replace(/<\//g, "<\\/");
-  let html = template.replace("__DATA__", () => data).replace("__READER_BUNDLE__", readerBundle);
+  let html = template
+    .replace("__DATA__", () => data)
+    .replace("__READER_BUNDLE__", readerBundle)
+    .replace("__READER_CSS__", readerCss);
   // the Google Fonts links of the template become the local fonts plus the app metadata
   // (any formatting of the two tags: Prettier breaks the long one over several lines)
   const googleFonts = /<link\s+rel="preconnect"[^>]*>\s*<link\s+rel="stylesheet"\s+href="https:\/\/fonts\.googleapis\.com[^>]*>/;

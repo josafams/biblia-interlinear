@@ -52,7 +52,7 @@ export default [
   },
   {
     // classic scripts loaded outside the bundle
-    files: ["web/google-config.js", "web/home.js"],
+    files: ["web/google-config.js"],
     languageOptions: { sourceType: "script" }
   },
   {

@@ -1,0 +1,875 @@
+/* Verse: a verse: number, ⋯, the word cards, the Bíblia Livre, highlights, the strip under it and the review points. Values come from tokens.css. */
+h1 .heb {
+  font-family: var(--font-heb);
+  font-weight: 400;
+  color: var(--accent);
+  margin-inline-start: 0.35em;
+}
+.vnote {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+.ab-t .heb {
+  font-family: var(--font-heb);
+  font-weight: 400;
+  color: var(--accent);
+  margin-inline-start: 0.3em;
+}
+/* Versículos */
+.verse {
+  display: grid;
+  gap: 12px;
+  padding-block: 18px;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: calc(var(--bar-h) + 8px);
+}
+.vhead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.vnum {
+  margin: 0;
+  font: 500 14px var(--font-mono);
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  direction: rtl;
+}
+.word {
+  direction: ltr;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 2px;
+  min-width: 64px;
+  min-height: 48px;
+  padding: 8px 8px 7px;
+  border-radius: 6px;
+  background: var(--surface);
+  border: 1px solid transparent;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: center;
+}
+.word:hover {
+  border-color: var(--line);
+}
+.word.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.word.speaking {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: inset 0 -3px 0 var(--accent);
+}
+.word .h {
+  font-family: var(--font-heb);
+  font-size: calc(24px * var(--k));
+  line-height: 1.35;
+  direction: rtl;
+}
+.word .h .pre {
+  color: var(--muted);
+}
+.word .x {
+  font-size: calc(12.5px * var(--k));
+  font-style: italic;
+  color: var(--accent);
+  line-height: 1.2;
+  max-width: 13ch;
+  overflow-wrap: anywhere;
+}
+.word .p {
+  font: 500 calc(11.5px * var(--k)) var(--font-mono);
+  color: var(--fg);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+.word .s {
+  font: 400 11px var(--font-mono);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.word .g {
+  font-size: calc(13px * var(--k));
+  line-height: 1.25;
+  max-width: 13ch;
+  overflow-wrap: anywhere;
+}
+.blivre {
+  margin: 0;
+  max-width: 68ch;
+  font-size: calc(16px * var(--k));
+}
+.blivre .tag {
+  font: 500 11px var(--font-mono);
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  margin-inline-end: 8px;
+}
+body.hide-xlit .word .x,
+body.hide-strong .word .s,
+body.hide-gloss .word .g,
+body.hide-blivre .blivre {
+  display: none;
+}
+body:not(.show-pron) .word .p {
+  display: none;
+}
+body.spacious .words {
+  gap: 12px;
+}
+body.spacious .word {
+  gap: 5px;
+  padding: 10px 10px 9px;
+}
+@media (max-width: 480px) {
+  .word {
+    min-width: 56px;
+    padding: 6px 6px 5px;
+  }
+  .word .h {
+    font-size: calc(21px * var(--k));
+  }
+  .word .g {
+    font-size: calc(12px * var(--k));
+  }
+}
+@media (prefers-contrast: more) {
+  /* Preferência do sistema por mais contraste */
+  .word {
+    border-color: var(--muted);
+  }
+  .verse {
+    border-color: var(--muted);
+  }
+  .word .h .pre,
+  .word .s {
+    color: var(--fg);
+  }
+}
+@media (forced-colors: active) {
+  /* Modo de alto contraste do Windows: cores do sistema, bordas sempre visíveis */
+  .word {
+    border: 1px solid ButtonText;
+  }
+  .word.active,
+  .word.speaking {
+    outline: 3px solid Highlight;
+    outline-offset: 1px;
+  }
+}
+body.grc .words {
+  direction: ltr;
+}
+body.grc .word .h {
+  font-family: var(--font-grc);
+  direction: ltr;
+}
+body.grc .word .h {
+  font-size: calc(21px * var(--k));
+}
+.word .g.aux {
+  font-style: italic;
+  color: var(--muted);
+}
+.word.flag {
+  box-shadow: inset 0 3px 0 var(--flag);
+}
+.word.kt .h::after {
+  content: "°";
+  color: var(--accent);
+  font-size: 0.6em;
+  vertical-align: super;
+}
+.marks {
+  margin-inline-start: auto;
+  font-size: 13px;
+}
+.marks summary {
+  cursor: pointer;
+  list-style: none;
+  font: 500 12px var(--font-mono);
+  color: var(--review-ink);
+  color: light-dark(var(--review-ink), var(--review-ink-dark));
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 10px;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+}
+.marks summary::-webkit-details-marker {
+  display: none;
+}
+.marks ul {
+  margin: 8px 0 0;
+  padding-inline-start: 18px;
+  color: var(--muted);
+  max-width: 60ch;
+}
+.marks .mk-c {
+  font: 500 11px var(--font-mono);
+  color: var(--fg);
+}
+.marks .mk-w {
+  font-family: var(--font-heb);
+}
+.vnote {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+  font-style: italic;
+}
+body.hide-orig .verse:not(.abrir) .words {
+  display: none;
+}
+body.orig-running .words {
+  gap: 0 0.3em;
+  row-gap: 4px;
+}
+body.orig-running .word {
+  display: inline-block;
+  min-width: 0;
+  min-height: 0;
+  padding: 2px 3px;
+  background: none;
+  border: 0;
+  border-radius: 4px;
+}
+body.orig-running .word .x,
+body.orig-running .word .p,
+body.orig-running .word .s,
+body.orig-running .word .g,
+body.orig-running .word .m {
+  display: none;
+}
+body.orig-running .word.active,
+body.orig-running .word.speaking {
+  background: var(--accent-soft);
+}
+body.orig-running .word .h {
+  font-size: calc(26px * var(--k));
+}
+.word .m {
+  display: none;
+  font: 400 10.5px/1.2 var(--font-mono);
+  color: var(--muted);
+  max-width: 15ch;
+  overflow-wrap: anywhere;
+}
+body.show-morf .word .m {
+  display: block;
+}
+body.hide-vnum .vnum:not(:focus-within) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+body.hide-marks .marks,
+body.hide-marks .vnote {
+  display: none;
+}
+body.blivre-par.hide-orig #verses {
+  max-width: 68ch;
+  font-size: calc(18px * var(--k));
+  line-height: 1.8;
+}
+body.blivre-par.hide-orig .verse:not(.abrir) {
+  display: inline;
+  padding: 0;
+  border: 0;
+}
+body.blivre-par.hide-orig .verse:not(.abrir) .vhead {
+  display: inline;
+}
+body.blivre-par.hide-orig .verse:not(.abrir) .vhead .marks {
+  display: none;
+}
+body.blivre-par.hide-orig .verse:not(.abrir) .vnum {
+  display: inline-block;
+  font-size: 0.6em;
+  line-height: 1;
+  vertical-align: super;
+  padding: 0.5em 0.45em;
+  margin: -0.5em -0.2em -0.5em 0;
+  cursor: pointer;
+}
+body.blivre-par.hide-orig .verse:not(.abrir) .blivre {
+  display: inline;
+  font-size: inherit;
+  max-width: none;
+}
+body.blivre-par.hide-orig .verse:not(.abrir) .blivre .tag,
+body.blivre-par.hide-orig .verse:not(.abrir) .vnote {
+  display: none;
+}
+body.blivre-par.hide-orig .verse.abrir {
+  margin-block: 12px;
+  border-block: 1px solid var(--line);
+}
+body.hide-orig .verse.speaking .blivre {
+  background: var(--accent-soft);
+  border-radius: 4px;
+}
+body.hide-orig .vnum {
+  cursor: pointer;
+}
+body.blivre-par.hide-orig .verse:not(.abrir) .vcap {
+  display: none;
+}
+/* ---------- Anotações ---------- */
+.verse[class*="mk-"] .blivre {
+  background: var(--mk);
+  color: var(--mk-ink);
+  border-radius: 4px;
+  box-shadow: 0 0 0 3px var(--mk);
+}
+.verse[class*="mk-"] .vnum {
+  background: var(--mk);
+  color: var(--mk-ink);
+  border-radius: 4px;
+  padding-inline: 4px;
+}
+mark.mk {
+  background: var(--mk);
+  color: var(--mk-ink);
+  border-radius: 3px;
+  padding: 0 1px;
+}
+.word[class*="mk-"] {
+  background: var(--mk);
+  color: var(--mk-ink);
+}
+.word[class*="mk-"] .x,
+.word[class*="mk-"] .s {
+  color: var(--mk-ink);
+  opacity: 0.85;
+}
+.word {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.vtags {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.vfav {
+  color: var(--fav);
+  font-size: 16px;
+}
+.vnota,
+.vmark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--accent);
+  cursor: pointer;
+  font: 500 12px var(--font-mono);
+  padding: 0 8px;
+}
+.vmark {
+  color: var(--muted);
+  border-color: transparent;
+  background: none;
+}
+.vmark:hover,
+.vmark:focus-visible {
+  border-color: var(--line);
+  color: var(--accent);
+}
+body.blivre-par.hide-orig .verse:not(.abrir) .vtags,
+body.blivre-par.hide-orig .verse:not(.abrir) .vmark {
+  display: none;
+}
+.word.linked {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+.vann {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  align-items: center;
+  font-size: 13.5px;
+}
+.vann[hidden] {
+  display: none;
+}
+.vann-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  min-height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--fg);
+  padding: 4px 10px;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+.vann-note svg {
+  color: var(--accent);
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+.vann-note span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.vann-note small {
+  color: var(--muted);
+}
+.vann-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.vann-tags .chip {
+  min-height: 26px;
+  font-size: 12px;
+  padding: 0 9px;
+  cursor: default;
+}
+/* Versículo: número (toque abre as ações) e ⋯; revisão automática como ponto no número e nota discreta abaixo */
+.vhead {
+  gap: 6px;
+  min-height: 44px;
+}
+.vnum {
+  position: relative;
+}
+.vnum.has-rev::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: -9px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--flag);
+}
+body.hide-marks .vnum.has-rev::after {
+  display: none;
+}
+.vmark {
+  min-width: 44px;
+  min-height: 44px;
+  margin-inline-start: auto;
+}
+.vtags {
+  margin-inline-start: auto;
+}
+.vtags:empty {
+  display: none;
+}
+.vtags:not(:empty) + .vmark {
+  margin-inline-start: 0;
+}
+.marks {
+  margin: 0;
+  font-size: 13.5px;
+}
+.marks summary {
+  font: 13px var(--font-body);
+  color: var(--muted);
+  border: 0;
+  padding: 0;
+  min-height: 32px;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+.marks ul {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+  display: grid;
+  gap: 6px;
+  color: var(--fg);
+}
+.marks li {
+  display: grid;
+  gap: 1px;
+}
+.marks .mk-c {
+  order: 2;
+  font: 400 11px var(--font-mono);
+  color: var(--muted);
+}
+/* Cartões: glosa sem quebrar no meio da palavra; hífen da glosa como separador discreto */
+.word .g {
+  max-width: 18ch;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+}
+.word .g .hy {
+  color: var(--muted);
+}
+.word.linked {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+/* Barra de cor à esquerda do versículo anotado; ★ na faixa; Desfazer */
+.verse.com-cor {
+  box-shadow: inset 4px 0 0 var(--barcor);
+  padding-inline-start: 12px;
+}
+.vann .vfav {
+  color: var(--fav-strong);
+  font-size: 18px;
+  line-height: 1;
+}
+/* Capítulos longos: o navegador só desenha os versículos perto da tela */
+body.cap-longo #verses .verse {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 320px;
+}
+/* "Minhas anotações" desligado: leitura limpa, sem cores, notas, favoritos nem etiquetas no texto */
+body.hide-ann .vann,
+body.hide-ann .vtags,
+body.hide-ann .vfav,
+body.hide-ann .vnota {
+  display: none !important;
+}
+body.hide-ann .verse[class*="mk-"] .blivre,
+body.hide-ann .verse[class*="mk-"] .vnum,
+body.hide-ann .word[class*="mk-"],
+body.hide-ann mark.mk {
+  background: none;
+  box-shadow: none;
+  color: inherit;
+}
+.blivre,
+.vnum,
+.vann-note {
+  font-family: var(--font-body);
+}
+.word .x {
+  font-family: var(--font-body);
+}
+/* Versículo: bloco com o número em Literata, "Anotar" (computador) ou ⋯ (celular); a cor pinta o bloco inteiro */
+.verse {
+  gap: 8px;
+  padding: 10px 12px 18px 16px;
+  margin: 0 -12px 6px;
+  border-radius: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.vnum {
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--accent);
+}
+.vnum .vcap {
+  font: inherit;
+  color: inherit;
+}
+.verse[class*="mk-"] {
+  background: color-mix(in srgb, var(--mk) 70%, transparent);
+  box-shadow: inset 4px 0 0 var(--mk-bar);
+}
+.verse[class*="mk-"] .blivre,
+.verse[class*="mk-"] .vnum {
+  background: none;
+  box-shadow: none;
+  color: inherit;
+  padding-inline: 0;
+}
+.verse[class*="mk-"] .vnum {
+  color: var(--accent);
+}
+.vmark {
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 10px;
+}
+.vmark .vm-pen,
+.vmark .vm-t {
+  display: none;
+}
+@media (min-width: 721px) {
+  .vmark {
+    height: 36px;
+    min-height: 36px;
+    padding: 0 12px;
+    gap: 6px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--muted);
+    font: 400 13px var(--font-ui);
+  }
+  .vmark .vm-dots {
+    display: none;
+  }
+  .vmark .vm-pen,
+  .vmark .vm-t {
+    display: inline;
+  }
+}
+/* Cartões das palavras */
+.words {
+  gap: 6px;
+}
+.word {
+  min-width: 52px;
+  padding: 7px 9px 6px;
+  gap: 1px;
+  border-radius: 10px;
+  background: var(--card);
+  border: 1px solid var(--line);
+}
+.word.flag {
+  box-shadow: none;
+  border-top: 2px solid var(--warm);
+}
+.word .g {
+  font-weight: 700;
+  white-space: nowrap;
+  max-width: none;
+}
+.word:hover {
+  border-color: var(--muted);
+}
+.word.active {
+  border-color: var(--accent);
+  background: var(--card);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+.blivre {
+  margin-top: 4px;
+  max-width: 640px;
+}
+.blivre .tag {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+/* Faixa sob o versículo: nota e etiquetas numa caixa só */
+.vann {
+  width: 100%;
+  max-width: 640px;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  gap: 6px;
+}
+.vann-note {
+  border: 0;
+  padding: 0;
+  min-height: 0;
+  background: none;
+  font-size: 14px;
+  width: 100%;
+}
+.vann-note svg {
+  color: var(--muted);
+}
+/* com a faixa sob o versículo, o ícone de nota ao lado do número é repetido (fica só no modo Bíblia) */
+body:not(.hide-orig) .vhead .vnota {
+  display: none;
+}
+.vann-tags .chip {
+  border: 0;
+  background: var(--chip);
+  color: var(--fg);
+  min-height: 24px;
+}
+.blivre {
+  font-size: calc(17px * var(--k));
+  line-height: 1.6;
+}
+.word .x {
+  font-size: calc(12px * var(--k));
+}
+.word .g,
+.word .g {
+  font-size: calc(13px * var(--k));
+}
+.word .s {
+  font-size: 11px;
+}
+body.heb {
+  font-family: var(--font-ui);
+}
+h1 .heb {
+  font-size: 20px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-inline-start: 10px;
+}
+/* Versículo no celular: margem 0 −8px, padding 10 8 14 12, raio 12 */
+.verse {
+  margin: 0 -8px;
+  padding: 10px 8px 14px 12px;
+  border-radius: 12px;
+  border-bottom: 0;
+}
+.verse + .verse {
+  margin-top: 6px;
+}
+/* Cartão: topo de 2px; linhas com as alturas do design */
+.word {
+  border-top-width: 2px;
+}
+.word .h {
+  line-height: 1.2;
+}
+.word .x {
+  line-height: 1.45;
+}
+.word .g {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.word .p,
+.word .s {
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+.word .m {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+/* Bíblia: um parágrafo em Literata 17px / 1,8; número sobrescrito Atkinson 700 12px no destaque; cor como realce do trecho */
+body.blivre-par.hide-orig #verses {
+  font-family: var(--font-body);
+  font-size: calc(17px * var(--k));
+  line-height: 1.8;
+}
+body.blivre-par.hide-orig .verse:not(.abrir) {
+  margin: 0;
+  padding: 0;
+  border-radius: 4px;
+  box-shadow: none;
+}
+body.blivre-par.hide-orig .verse:not(.abrir) .vnum {
+  font: 700 12px/1 var(--font-ui);
+  color: var(--accent);
+  padding: 4px;
+  margin: 0;
+}
+body.blivre-par.hide-orig .verse[class*="mk-"]:not(.abrir) {
+  background: color-mix(in srgb, var(--mk) 55%, transparent);
+}
+body.blivre-par.hide-orig #verses::after {
+  content: "Toque no número do versículo para marcar, anotar ou ver o interlinear dele.";
+  display: block;
+  margin-top: 10px;
+  font: 400 13px/1.45 var(--font-ui);
+  color: var(--muted);
+}
+/* Original: texto corrido em Gentium 21px / 1,9 */
+body.orig-running.hide-blivre #verses::after {
+  content: "Toque numa palavra para ver o verbete.";
+  display: block;
+  margin-top: 10px;
+  font: 400 13px/1.45 var(--font-ui);
+  color: var(--muted);
+}
+/* ================= Modo Original como no design: um texto corrido em Gentium 21px / 1,9 ================= */
+body.orig-running.hide-blivre #verses {
+  line-height: 1.9;
+}
+body.orig-running.hide-blivre .verse:not(.abrir) {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: none;
+}
+body.orig-running.hide-blivre .verse:not(.abrir) .vhead {
+  display: inline;
+}
+body.orig-running.hide-blivre .verse:not(.abrir) .vhead .vmark,
+body.orig-running.hide-blivre .verse:not(.abrir) .vhead .vtags,
+body.orig-running.hide-blivre .verse:not(.abrir) .vcap,
+body.orig-running.hide-blivre .verse:not(.abrir) .vann,
+body.orig-running.hide-blivre .verse:not(.abrir) .vnote,
+body.orig-running.hide-blivre .verse:not(.abrir) .marks {
+  display: none;
+}
+body.orig-running.hide-blivre .verse:not(.abrir) .vnum {
+  display: inline-block;
+  font: 700 12px/1 var(--font-ui);
+  color: var(--accent);
+  vertical-align: super;
+  padding: 4px;
+  margin: 0;
+  cursor: pointer;
+}
+body.orig-running.hide-blivre .verse:not(.abrir) .words {
+  display: inline;
+}
+body.orig-running .word {
+  padding: 2px 1px;
+}
+body.orig-running .word .h {
+  font-size: calc(21px * var(--k));
+  line-height: 1.9;
+}
+body.orig-running.hide-blivre .verse[class*="mk-"]:not(.abrir) {
+  background: color-mix(in srgb, var(--mk) 55%, transparent);
+}
+/* Revisão automática: no texto só o ponto quente de 8px no número; a explicação abre no Anotar */
+.verse details.marks {
+  display: none;
+}
+.vnum {
+  position: relative;
+}
+.vnum.has-rev::after {
+  width: 8px;
+  height: 8px;
+  top: 2px;
+  right: -10px;
+  background: var(--warm);
+}
+.mb-review .mk-c {
+  font: 400 12px var(--font-ui);
+  color: var(--muted);
+}
+/* o versículo nunca fica mais largo que a coluna (no celular, uma grade sem colunas crescia até o conteúdo e a página dava zoom para fora) */
+.verse {
+  grid-template-columns: minmax(0, 1fr);
+}
+.verse > * {
+  min-width: 0;
+}
+/* o cartão usa sempre a cor de texto do tema; o realce de cor (mk-) continua com a tinta própria */
+.word {
+  color: var(--fg);
+}
+.word[class*="mk-"] {
+  color: var(--mk-ink);
+}

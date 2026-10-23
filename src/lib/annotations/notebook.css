@@ -1,0 +1,97 @@
+/* The study notebook page (src/lib/annotations/notebook.ts), printed on its own: plain colors, no tokens. */
+@page {
+  size: A4;
+  margin: 16mm 15mm;
+}
+* {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+body {
+  font-family: "Literata", Georgia, "Times New Roman", serif;
+  color: #1b2220;
+  font-size: 11pt;
+  line-height: 1.5;
+  margin: 0;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 2px solid #1b2220;
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+header small {
+  font:
+    8pt "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.14em;
+  color: #5b6662;
+  display: block;
+}
+header h1 {
+  margin: 0;
+  font-size: 22pt;
+}
+header span {
+  font-size: 9pt;
+  color: #5b6662;
+}
+h2.cl {
+  font-size: 14pt;
+  margin: 14px 0 0;
+  border-bottom: 1px solid #d2d8d3;
+}
+.en {
+  padding: 8px 0;
+  border-bottom: 1px solid #e4e8e4;
+  break-inside: avoid;
+}
+.ref {
+  font:
+    600 8.5pt "IBM Plex Mono",
+    monospace;
+  color: #1d5b74;
+  letter-spacing: 0.04em;
+}
+.vt {
+  margin: 4px 0;
+}
+mark {
+  color: inherit;
+  padding: 0 1px;
+  border-radius: 2px;
+}
+.il {
+  margin: 2px 0;
+  font-size: 10pt;
+  color: #3d4744;
+}
+.il .o {
+  font-family: "Noto Serif Hebrew", "SBL Hebrew", "Gentium Book Plus", serif;
+  font-size: 13pt;
+}
+.nt {
+  margin: 4px 0;
+  padding-left: 10px;
+  border-left: 2px solid #c7cfca;
+  font-size: 10.5pt;
+  color: #2b3330;
+}
+.tg span {
+  display: inline-block;
+  font-size: 8pt;
+  background: #dbe8ec;
+  color: #1d5b74;
+  border-radius: 999px;
+  padding: 0 7px;
+  margin: 3px 4px 0 0;
+}
+footer {
+  margin-top: 14px;
+  font-size: 7.5pt;
+  color: #5b6662;
+  border-top: 1px solid #d2d8d3;
+  padding-top: 4px;
+}

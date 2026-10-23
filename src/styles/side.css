@@ -1,0 +1,79 @@
+/* Side: computer: the tabs on top of the panel beside the text. Values come from tokens.css. */
+@media (min-width: 1100px) {
+  /* Abas do painel: Verbete · Anotar · Aparência */
+  .ptabs {
+    position: fixed;
+    z-index: 41;
+    right: 0;
+    width: 400px;
+    top: calc(var(--bar-h) + env(safe-area-inset-top, 0px));
+    height: 48px;
+    display: none;
+    gap: 4px;
+    padding: 6px 12px;
+    background: var(--surface);
+    border-left: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  body.com-detail .ptabs,
+  body.com-mbar .ptabs,
+  body.com-look .ptabs {
+    display: flex;
+  }
+  .ptabs button {
+    flex: 1;
+    border: 0;
+    border-radius: 999px;
+    background: none;
+    color: var(--muted);
+    font: 500 14px var(--font-body);
+    cursor: pointer;
+  }
+  .ptabs button[aria-pressed="true"] {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 600;
+  }
+}
+@media (max-width: 1099px) {
+  /* Abas do painel do computador não aparecem no celular */
+  .ptabs {
+    display: none;
+  }
+}
+@media (min-width: 1100px) {
+  .ptabs {
+    height: 56px;
+    padding: 6px 12px;
+    gap: 3px;
+  }
+  .ptabs::before {
+    content: "";
+    position: absolute;
+    inset: 6px 12px;
+    border-radius: 12px;
+    background: var(--chip);
+    z-index: -1;
+  }
+  .ptabs {
+    isolation: isolate;
+  }
+  .ptabs button {
+    margin: 3px 0;
+    border-radius: 9px;
+    color: var(--muted);
+    font: 400 14px var(--font-ui);
+  }
+  .ptabs button:first-child {
+    margin-left: 3px;
+  }
+  .ptabs button:last-child {
+    margin-right: 3px;
+  }
+  .ptabs button[aria-pressed="true"] {
+    background: var(--surface);
+    color: var(--fg);
+    font-weight: 700;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  }
+}

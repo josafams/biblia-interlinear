@@ -1,6 +1,6 @@
 <!--
   A note in full screen (#nota): title, text (both saved by themselves a moment after typing), tags and delete
-  (pressed twice). web/annotations.js keeps the record and does the saving through the props.
+  (pressed twice). src/reader/annotations/note.ts keeps the record and does the saving through the props.
 -->
 <script lang="ts">
   import { t } from "../i18n";

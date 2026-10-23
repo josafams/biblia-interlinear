@@ -1,0 +1,443 @@
+/* Entry: the lexicon entry (Verbete): half a sheet on phones, the panel beside the text on computers. Values come from tokens.css. */
+/* Índice */
+.day-block {
+  display: grid;
+  gap: 6px;
+}
+.day {
+  font: 400 12px var(--font-mono);
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+.word .g .obj {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+/* Verbete */
+.detail {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 10;
+  max-height: 72vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 16px calc(18px + env(safe-area-inset-bottom, 0px));
+  background: var(--surface);
+  border-top: 2px solid var(--accent);
+  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.14);
+}
+.detail-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  display: grid;
+  gap: 14px;
+}
+.dtop {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--surface);
+  padding-top: 14px;
+  padding-bottom: 10px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 12px;
+  align-items: start;
+  border-bottom: 1px solid var(--line);
+}
+.dtitle {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+.dchip {
+  justify-self: start;
+  font: 500 12px var(--font-mono);
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+.dh {
+  margin: 0;
+  font-family: var(--font-heb);
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1.3;
+  direction: rtl;
+  text-align: left;
+}
+.dx {
+  font-size: 16px;
+}
+.dx em {
+  color: var(--accent);
+}
+.dx .pron b {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.plegend {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+.dclose {
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  width: 44px;
+  height: 44px;
+  color: var(--fg);
+  cursor: pointer;
+  font-size: 16px;
+}
+.dctx {
+  display: grid;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: var(--bg);
+}
+.dctx .cw {
+  font-family: var(--font-heb);
+  font-size: 22px;
+  direction: rtl;
+  text-align: left;
+}
+.dsec {
+  display: grid;
+  gap: 4px;
+}
+.dsec h3 {
+  margin: 0;
+  font: 500 12px var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.dsec p {
+  margin: 0;
+  max-width: 64ch;
+  overflow-wrap: anywhere;
+}
+.dsec .en {
+  font-size: 14px;
+  color: var(--muted);
+}
+.dmeta {
+  font: 400 13px var(--font-mono);
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.ref {
+  font: inherit;
+  color: var(--accent);
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.ref .rh {
+  font-family: var(--font-heb);
+  text-decoration: none;
+  display: inline-block;
+  margin-inline: 3px;
+}
+.detail a {
+  color: var(--accent);
+}
+.dback {
+  justify-self: start;
+  height: 44px;
+  font: 500 13px var(--font-mono);
+  color: var(--accent);
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0 14px;
+  cursor: pointer;
+}
+@media (prefers-contrast: more) {
+  .dclose,
+  .dback {
+    border-color: var(--muted);
+  }
+  .dtop {
+    border-color: var(--muted);
+  }
+  .day {
+    color: var(--fg);
+  }
+}
+@media (forced-colors: active) {
+  .dclose,
+  .dback {
+    border: 1px solid ButtonText;
+  }
+  .detail {
+    border: 2px solid CanvasText;
+  }
+}
+.dh.grc,
+.dctx .cw.grc {
+  direction: ltr;
+  font-family: var(--font-grc);
+}
+.kq {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.kq span {
+  font-family: var(--font-heb);
+  font-size: 17px;
+  color: var(--fg);
+}
+.gfn {
+  display: block;
+  font-size: 12.5px;
+  color: var(--muted);
+  font-style: italic;
+}
+.dconc {
+  justify-self: start;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  cursor: pointer;
+  margin: 4px 0 8px;
+}
+.word .g .obj {
+  font: 500 10.5px var(--font-mono);
+  color: var(--muted);
+  border-bottom: 1px dotted var(--muted);
+}
+/* Verbete: meia folha no celular; painel lateral fixo no computador, sem cobrir o texto */
+.detail {
+  max-height: 56vh;
+}
+.dtop {
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+}
+.dtitle {
+  grid-column: 2;
+}
+.dnav {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.dnav svg {
+  width: 20px;
+  height: 20px;
+}
+.dnav:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.dpos {
+  font: 400 12px var(--font-mono);
+  color: var(--muted);
+}
+.dmean p {
+  font-size: calc(17px * var(--k));
+  line-height: 1.5;
+}
+.dtr {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.dtr span {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  font-size: 14px;
+}
+.dtr span small {
+  font: 400 11px var(--font-mono);
+  color: var(--muted);
+  margin-inline-start: 4px;
+}
+.dconc {
+  justify-self: start;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 0;
+  background: var(--accent);
+  color: var(--surface);
+  font: 600 15px var(--font-body);
+  cursor: pointer;
+}
+@media (min-width: 1100px) {
+  .detail {
+    top: calc(var(--bar-h) + env(safe-area-inset-top, 0px));
+    bottom: 0;
+    left: auto;
+    right: 0;
+    width: 400px;
+    max-height: none;
+    border-top: 0;
+    border-left: 1px solid var(--line);
+    box-shadow: -6px 0 24px rgba(0, 0, 0, 0.08);
+    padding-bottom: 24px;
+  }
+  body.com-detail .detail {
+    top: calc(var(--bar-h) + 48px + env(safe-area-inset-top, 0px));
+  }
+}
+.lk-lbl {
+  display: none;
+}
+@media (max-width: 720px) {
+  .bbar #open-look .lk-lbl {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    display: inline;
+  }
+}
+/* ================= Verbete como no design (folha de 420px no celular; painel no computador) ================= */
+.detail {
+  border-top: 1px solid var(--line);
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.12);
+  padding: 0 18px calc(18px + env(safe-area-inset-bottom, 0px));
+}
+@media (max-width: 1099px) {
+  .detail {
+    height: min(420px, 60vh);
+    max-height: none;
+  }
+}
+.detail-inner {
+  gap: 12px;
+}
+.dtop {
+  padding: 8px 0 4px;
+  gap: 4px;
+}
+.dtitle {
+  text-align: center;
+  justify-items: center;
+  gap: 0;
+}
+.dh,
+.dh.grc {
+  font-size: 30px;
+  line-height: 1.15;
+  text-align: center;
+}
+.dpos {
+  font: 400 12px var(--font-ui);
+  color: var(--muted);
+}
+.dclose {
+  border: 0;
+  color: var(--muted);
+}
+.dlem {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font: 400 14px var(--font-ui);
+  color: var(--muted);
+}
+.dlem em {
+  font-family: var(--font-body);
+  color: var(--accent);
+}
+.dctx {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--bg);
+  gap: 0;
+}
+.dctx .dk {
+  font: 400 12px var(--font-ui);
+  color: var(--muted);
+}
+.dctx .dmeta {
+  font: 400 13px var(--font-ui);
+  color: var(--muted);
+}
+.dsec {
+  gap: 2px;
+}
+.dsec h3 {
+  font: 400 11px var(--font-mono);
+  letter-spacing: 0.08em;
+}
+.dmean p {
+  margin: 0;
+  font: 400 15px/1.45 var(--font-body);
+}
+.dsec p {
+  font-size: 14px;
+}
+.dtr span {
+  padding: 4px 10px;
+  border: 0;
+  background: var(--chip);
+  font: 400 13px var(--font-ui);
+}
+.dtr span small {
+  color: var(--muted);
+}
+.plegend {
+  font-size: 12px;
+  color: var(--muted);
+}
+.dconc {
+  min-height: 40px;
+  border-radius: 999px;
+  font: 400 14px var(--font-ui);
+}
+.dfoot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  font: 400 12px var(--font-ui);
+  color: var(--muted);
+}
+@media (min-width: 1100px) {
+  .detail {
+    border-radius: 0;
+    box-shadow: -6px 0 24px rgba(0, 0, 0, 0.08);
+  }
+  .dh,
+  .dh.grc {
+    font-size: 32px;
+  }
+  body.com-detail .detail {
+    top: calc(var(--bar-h) + 56px + env(safe-area-inset-top, 0px));
+  }
+}

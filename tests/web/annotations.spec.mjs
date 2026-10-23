@@ -63,7 +63,7 @@ test("marcar um trecho selecionado da Bíblia Livre", async ({ page }) => {
   await open(page);
   await page.evaluate(() => {
     const bl = document.querySelector("#v3 .blivre"),
-      t = bl.lastChild,
+      t = [...bl.childNodes].find(n => n.nodeType === 3 && n.textContent.includes("Haja luz")),
       i = t.textContent.indexOf("Haja luz");
     const r = document.createRange();
     r.setStart(t, i);

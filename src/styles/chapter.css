@@ -1,0 +1,257 @@
+/* Chapter: the chapter header, the first-opening question, section titles, the next chapter and the sources. Values come from tokens.css. */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.lede {
+  margin: 0;
+  color: var(--muted);
+  max-width: 62ch;
+}
+.kbd {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 62ch;
+}
+.qsec .lede {
+  margin: 0 0 12px;
+  font-size: 15px;
+  color: var(--muted);
+}
+.lexsec .lede {
+  font-size: 15px;
+}
+/* Seções no texto */
+.sechead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 30px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--accent);
+  scroll-margin-top: calc(var(--bar-h) + 8px);
+}
+.sechead h2 {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: calc(22px * var(--k));
+  font-weight: 600;
+  line-height: 1.2;
+}
+.slabel {
+  font: 500 12px var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.sref {
+  font: 400 12px var(--font-mono);
+  color: var(--muted);
+}
+/* Bíblia inteira: grego, navegação por livro, marcas da revisão */
+.orig {
+  font-family: var(--font-heb);
+  font-weight: 400;
+  margin-inline-start: 10px;
+  color: var(--muted);
+}
+body.grc .orig,
+.orig:lang(grc) {
+  font-family: var(--font-grc);
+}
+.ctheme {
+  margin: 0;
+  font-size: calc(18px * var(--k));
+  color: var(--accent);
+}
+.ctheme:empty {
+  display: none;
+}
+.chnav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding-block: 24px;
+}
+.welcome {
+  border: 1px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+.welcome p {
+  margin: 0;
+}
+.welcome .wopts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.welcome .wopts button {
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: var(--surface);
+  color: var(--fg);
+  font: inherit;
+  cursor: pointer;
+}
+.welcome .wopts button.later {
+  border-color: transparent;
+  background: none;
+  color: var(--muted);
+  text-decoration: underline;
+}
+body.hide-orig header .lede,
+body.hide-orig header .kbd {
+  display: none;
+}
+body.hide-theme .ctheme {
+  display: none;
+}
+body.blivre-par.hide-orig .chnav {
+  margin-top: 28px;
+}
+body.com-mbar #page {
+  padding-bottom: 220px;
+}
+.kbd {
+  display: none;
+  font-size: 12.5px;
+}
+@media (hover: hover) and (pointer: fine) and (min-width: 721px) {
+  .kbd {
+    display: block;
+  }
+}
+.kbd kbd {
+  font: 500 11.5px var(--font-mono);
+  padding: 0 4px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--surface);
+}
+.hchips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+.hchip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--fg);
+  font: 14px var(--font-body);
+  text-decoration: none;
+  cursor: pointer;
+}
+.hchip .n {
+  font: 500 12px var(--font-mono);
+  color: var(--muted);
+}
+.welcome {
+  margin-top: 10px;
+  padding: 10px 12px;
+  gap: 8px;
+}
+.welcome p {
+  font-size: 15px;
+}
+.welcome p span {
+  color: var(--muted);
+  font-size: 13.5px;
+}
+.welcome .wopts button {
+  min-height: 40px;
+  padding: 0 14px;
+}
+/* Fontes e licenças: um link no Índice e na Aparência, não o fim de cada capítulo */
+.fontes:not(.show) {
+  display: none;
+}
+.ctheme,
+.sechead {
+  font-family: var(--font-body);
+}
+/* Cabeçalho do capítulo */
+.hchip {
+  height: 34px;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--fg);
+  font: 400 15px var(--font-ui);
+}
+.ctheme {
+  font-style: italic;
+  color: var(--accent);
+}
+/* sem a linha "Interlinear grego · português" acima do título (fica para leitores de tela) */
+#eyebrow {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+body.hide-about #chip-about {
+  display: none;
+}
+#chip-about[aria-expanded="true"] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+h1 .orig {
+  font-size: 20px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-inline-start: 10px;
+}
+.ctheme {
+  font-size: 15px;
+}
+.hchip {
+  height: 36px;
+  min-height: 36px;
+}
+.hchip .n {
+  font: 400 12px var(--font-mono);
+}
+.qsec .lede {
+  display: none;
+}
+/* Fim do capítulo: cartão "Próximo capítulo"; o anterior fica como link discreto */
+.chnav {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  padding-block: 24px 8px;
+}
+/* Léxico: sem o parágrafo de introdução (continua como descrição da busca) */
+.lexsec .lede {
+  display: none;
+}
+.wrap > .chnav {
+  margin-top: 8px;
+}

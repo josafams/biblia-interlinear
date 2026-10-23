@@ -1,0 +1,21 @@
+/* The reader's styles (bundled by Vite into one file): the tokens, the base and one file per area of the screen.
+   The order is the cascade order; each area styles its own elements. */
+@import "./tokens.css";
+@import "./base.css";
+@import "./chapter.css";
+@import "./verse.css";
+@import "./bar.css";
+@import "./index.css";
+@import "./look.css";
+@import "./entry.css";
+@import "./audio.css";
+@import "./toast.css";
+@import "./lexicon.css";
+@import "./questions.css";
+@import "./about.css";
+@import "./annotate.css";
+@import "./notes.css";
+@import "./search.css";
+@import "./side.css";
+@import "./account.css";
+@import "./progress.css";
