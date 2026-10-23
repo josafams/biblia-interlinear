@@ -1,0 +1,36 @@
+/* The privacy policy (privacidade.html). Values come from home-tokens.css, as on the home page. */
+@import "./home-tokens.css";
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font:
+    16px/1.6 Georgia,
+    "Times New Roman",
+    serif;
+  padding: 32px 16px 48px;
+}
+main {
+  max-width: 64ch;
+  margin: 0 auto;
+}
+h1 {
+  font-size: 26px;
+  line-height: 1.2;
+}
+h2 {
+  font-size: 18px;
+  margin-top: 28px;
+}
+p,
+li {
+  color: var(--fg);
+}
+.muted {
+  color: var(--faint);
+  font-size: 14px;
+}
+a {
+  color: var(--accent);
+}
