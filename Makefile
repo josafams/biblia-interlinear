@@ -88,6 +88,7 @@ lint: ## Linters de todas as linguagens
 	node scripts/dev/i18n_check.mjs
 	ruff check .
 	ruff format --check .
+	mypy
 	npx markdownlint-cli2 "**/*.md"
 	shellcheck scripts/*.sh docker/*.sh
 

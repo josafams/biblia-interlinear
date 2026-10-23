@@ -31,6 +31,31 @@ max-complexity = 40   # piso atual (export.main, review.check_versification); ba
 [tool.ruff.format]
 quote-style = "double"
 
+[tool.mypy]
+# Every script is checked; the functions without annotations are typed module by module, and the modules already
+# typed in full (the core of scripts/interlinear) are checked strictly.
+python_version = "3.12"
+mypy_path = "scripts"
+files = ["scripts"]
+explicit_package_bases = true
+ignore_missing_imports = true
+warn_unused_ignores = true
+cache_dir = "build/.mypy_cache"
+
+[[tool.mypy.overrides]]
+module = [
+  "interlinear.books",
+  "interlinear.cli",
+  "interlinear.models",
+  "interlinear.paths",
+  "interlinear.rules",
+  "interlinear.sources",
+  "interlinear.text",
+  "interlinear.tsv",
+]
+disallow_untyped_defs = true
+check_untyped_defs = true
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-ra --strict-markers"

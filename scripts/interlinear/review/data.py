@@ -2,7 +2,7 @@
 
 from collections import Counter, defaultdict
 
-from interlinear.models import Word
+from interlinear.models import WORD_COLUMNS, Word
 from interlinear.text import TOKEN_PT_LETTERS, strip_marks
 from interlinear.tsv import lexicon_pt
 
@@ -16,7 +16,7 @@ class Data:
         self.verses = {}
         for b, c, v, t, ed, note in db.execute("SELECT book, chapter, verse, blivre, edition, note FROM verses"):
             self.verses[(b, c, v)] = (t or "", ed, note)
-        self.words = [Word._make(r) for r in db.execute(f"SELECT {Word.COLUMNS} FROM words")]  # noqa: S608 (fixed columns)
+        self.words = [Word._make(r) for r in db.execute(f"SELECT {WORD_COLUMNS} FROM words")]  # noqa: S608 (fixed columns)
         self.words.sort(key=lambda w: (self.order.get(w.book, 999), w.chapter, w.verse, w.pos))
         self.by_verse = defaultdict(list)
         for w in self.words:
