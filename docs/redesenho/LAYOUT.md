@@ -6,18 +6,24 @@ Medido nos dois arquivos exportados do canvas de design (`Bíblia Interlinea 1.h
 
 ## Fundamentos
 
-| Item | Valor |
+Os valores abaixo são os tokens de [`src/styles/tokens.css`](../../src/styles/tokens.css); o nome do token vem
+entre crases. Para mudar um deles no app, mude o token (as regras de `src/styles/` só usam `var(--…)`).
+
+| Item | Valor (token) |
 |---|---|
-| Fonte da interface | Atkinson Hyperlegible 15px, altura de linha 1,45, peso 400 |
-| Texto bíblico (Bíblia Livre) | Literata 17px / 1,6 no celular; 18px / 1,6 no computador; 1,8 corrido no modo Bíblia |
-| Grego / hebraico nos cartões | Gentium Book Plus 21px / 1,2 (celular), 22px (computador) |
-| Títulos | Literata 600: h1 28px (celular) / 34px (computador), h2 20px / 22px |
-| Rótulos de seção | IBM Plex Mono 11px, maiúsculas, espaçamento 0,08em, cor `--muted` |
-| Cores (tema claro) | fundo `#eceeea`, superfície `#f8f9f6`, cartão `#ffffff`, texto `#1b2220`, apagado `#4a5551`, linha `#d2d8d3`, destaque `#1d5b74`, destaque suave `#dbe8ec`, quente `#7d4a2e`, chip `#e2e7e3` |
-| Cores de marcação | amarelo `#f3e3a0`, verde `#c4e0b8`, azul `#bed6e6`, rosa `#f0c8d4`, laranja `#f4d2b0`; no versículo: fundo da cor a 55% e barra de 4px à esquerda (amarelo `#d9b93a`) |
-| Seletor (segmentos) | trilho `#e2e7e3`, padding 3px, raio 12px; opção raio 9px, 13px (celular) / 14px (computador), ativa: superfície, peso 700, sombra `0 1px 2px rgba(0,0,0,.12)` |
-| Chip de alternar | altura 40px (38 no computador), padding 0 14px, raio 999px, 14px peso 400; ligado: fundo destaque e texto claro, **sem negrito e sem ✓** |
-| Alvos de toque | 44×44px no mínimo |
+| Fonte da interface | Atkinson Hyperlegible (`--font-ui`) 15px (`--fs-15`), altura de linha 1,45 (`--lh-ui`), peso 400 |
+| Texto bíblico (Bíblia Livre) | Literata (`--font-body`) 17px / 1,6 (`--fs-17`, `--lh-text`) no celular; 18px (`--fs-18`) no computador; 1,8 corrido no modo Bíblia (`--lh-paragraph`) |
+| Grego / hebraico nos cartões | Gentium Book Plus (`--font-grc`; hebraico `--font-heb`) 21px / 1,2 (`--fs-21`, `--lh-tight`) no celular, 22px (`--fs-22`) no computador |
+| Títulos | Literata 600: h1 28px (`--fs-28`) no celular / 34px (`--fs-34`) no computador, h2 20px / 22px |
+| Rótulos de seção | IBM Plex Mono (`--font-mono`) 11px (`--fs-11`), maiúsculas, espaçamento 0,08em (`--ls-label`), cor `--muted` |
+| Cores (tema claro) | fundo `--bg` #eceeea, superfície `--surface` #f8f9f6, cartão `--card` #ffffff, texto `--fg` #1b2220, apagado `--muted` #4a5551, linha `--line` #d2d8d3, destaque `--accent` #1d5b74, destaque suave `--accent-soft` #dbe8ec, quente `--warm` #7d4a2e, chip `--chip` #e2e7e3 |
+| Cores de marcação | `--mk-amarelo`, `--mk-verde`, `--mk-azul`, `--mk-rosa`, `--mk-laranja` (no design: amarelo #f3e3a0, verde #c4e0b8, azul #bed6e6, rosa #f0c8d4, laranja #f4d2b0); no versículo: fundo da cor a 55% e barra de 4px à esquerda (`--mk-bar-*`; amarelo #d9b93a) |
+| Seletor (segmentos) | trilho `--chip`, padding 3px, raio 12px (`--r-lg`); opção raio 9px (`--r-sm`), 13px (celular) / 14px (computador), ativa: superfície, peso 700, sombra `--shadow-seg` |
+| Chip de alternar | altura 40px (`--h-control`; 38 no computador), padding 0 14px, raio 999px (`--r-pill`), 14px peso 400; ligado: fundo destaque e texto claro, **sem negrito e sem ✓** |
+| Alturas | chip 36px (`--h-chip`), controle 40px (`--h-control`), toque 44px (`--h-touch`), botão 48px (`--h-button`), bloco de ação 56px (`--h-action`), barra de cima 64px / 56px no celular (`--bar-h`) |
+| Espaços e raios | 4, 6, 8, 12, 16, 24px (`--sp-1` a `--sp-6`); raios 4, 9, 10, 12, 14, 20, 999px (`--r-xs`, `--r-sm`, `--r-md`, `--r-lg`, `--r-xl`, `--r-sheet`, `--r-pill`) |
+| Sombras | folha `--shadow-sheet`, gaveta `--shadow-drawer` |
+| Alvos de toque | 44×44px no mínimo (`--h-touch`) |
 
 ## Celular (390×844)
 
