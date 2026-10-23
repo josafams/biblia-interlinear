@@ -21,11 +21,12 @@ import unicodedata
 from collections import Counter, defaultdict
 from pathlib import Path
 
-from books import BOOKS
+from interlinear.books import BOOKS
 from interlinear.paths import DB, ROOT
 
 # words of the Bíblia Livre for the search: the same rule as the alignment (scripts/make_glosses.py)
 from interlinear.text import TOKEN_PT
+from interlinear.tsv import lexicon_pt
 from pronunciation import pron_greek, pron_hebrew
 
 OUT = os.path.join(ROOT, "build", "data")  # JSON (lido pelo EPUB, PDF e pela página)
@@ -106,12 +107,7 @@ def fmt_int(n):
 
 
 def read_lexicon_pt():
-    pt = {}
-    for fname in sorted(glob.glob(os.path.join(ROOT, "data", "lexicon_pt", "*.tsv"))):
-        with open(fname, encoding="utf8") as f:
-            for r in csv.DictReader(f, delimiter="\t"):
-                pt[r["key"]] = (r["origin"], r["meaning"])
-    return pt
+    return {k: (r["origin"], r["meaning"]) for k, r in lexicon_pt().items()}
 
 
 def read_themes(cod):

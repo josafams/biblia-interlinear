@@ -14,7 +14,7 @@ Todos rodam a partir da raiz do repositório. O caminho normal é `make data` (o
 | `check_data.py` | confere os arquivos editados à mão em `data/` (formato, colunas, referências) | pre-commit, CI em todo PR |
 | `query.py` | consulta rápida ao corpus: `books`, `chapter`, `verses`, `interlinear`, `entry` | quem escreve temas, introduções e correções |
 | `pronunciation.py` | pronúncia aproximada dos lemas (módulo; rodando sozinho, executa os testes de pronúncia) | `export.py` |
-| `books.py` | os 66 livros: códigos de cada fonte, nomes e abreviações (módulo) | os outros scripts |
+| `interlinear/` | código comum: `paths` (caminhos), `books` (os 66 livros e os capítulos), `text` (normalização), `sources` (arquivos das fontes), `tsv` (tabelas de `data/`) | os outros scripts |
 | `build_epub.py` | EPUB por livro, volumes e a Bíblia completa → `build/epub` | `build.sh`, workflow Livros |
 | `build_pdf.py` | PDF por livro, volumes e a Bíblia completa → `build/pdf` (usa `print_pdf.mjs`) | `build.sh`, workflow Livros |
 

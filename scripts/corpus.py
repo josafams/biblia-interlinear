@@ -23,7 +23,7 @@ import unicodedata
 from collections import Counter, defaultdict
 from pathlib import Path
 
-from books import BOOKS, BY_CODE, OT_BOOKS
+from interlinear.books import BOOKS, BY_CODE, OT_BOOKS
 from interlinear.paths import DB
 from interlinear.paths import SOURCES as SOURCES_DIR
 from interlinear.sources import dodson_file, morphgnt_lines, morphhb_file

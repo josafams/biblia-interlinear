@@ -28,7 +28,7 @@ from interlinear.text import CANTILLATION_AND_VERSE_END, TOKEN_PT_LETTERS, conso
 OUT = os.path.join(ROOT, "build", "review")
 
 try:
-    from books import BOOKS  # (código, OSIS morphhb, TAHOT, scrollmapper, MorphGNT, nome, abrev)
+    from interlinear.books import BOOKS  # (código, OSIS morphhb, TAHOT, scrollmapper, MorphGNT, nome, abrev)
 except Exception:  # pragma: no cover
     BOOKS = []
 

@@ -10,11 +10,12 @@ python3 scripts/query.py entry H430           # verbete do léxico e em que arqu
 python3 scripts/query.py words RUT 1           # palavras-chave do capítulo no original (substantivos, verbos, adjetivos)
 """
 
-import os
 import sqlite3
 import sys
 
 from interlinear.paths import DB
+from interlinear.tsv import lexicon_pt_files
+from interlinear.tsv import rows as tsv_rows
 
 # verbos e partículas muito comuns, que não rendem pergunta sobre a língua original
 COMMON = {"H1961", "H559", "H3068", "H430", "H3605", "H834", "H3588", "H1697", "H6213", "H935", "H5414", "H3212", "H7200", "H8085"}
@@ -60,19 +61,13 @@ def main(argv):
             print(f"{cod}\t{name}\t{test}\t{caps} capítulos\t{vs} versículos")
         return
     if argv[0] == "entry":
-        import csv
-        import glob
-
         k = argv[1].upper()
         e = db.execute("SELECT lemma, xlit, derivation_en, def_en FROM lexicon WHERE entry_key=?", (k,)).fetchone()
         print(f"{k}  {e[0]}  {e[1]}\n  inglês (Strong): {e[2]} | {e[3]}" if e else f"{k}: não existe no léxico")
-        for fname in sorted(glob.glob(os.path.join(os.path.dirname(DB), "..", "data", "lexicon_pt", "*.tsv"))):
-            with open(fname, encoding="utf8") as f:
-                for n, r in enumerate(csv.DictReader(f, delimiter="\t"), 2):
-                    if r["key"] == k:
-                        print(
-                            f"  português: {r['origin']} | {r['meaning']}\n  editar em: data/lexicon_pt/{os.path.basename(fname)}, linha {n}"
-                        )
+        for fname in lexicon_pt_files():
+            for n, r in tsv_rows(fname):
+                if r["key"] == k:
+                    print(f"  português: {r['origin']} | {r['meaning']}\n  editar em: data/lexicon_pt/{fname.name}, linha {n}")
         print(
             "  "  # noqa: S608 (consulta parametrizada)
             + "; ".join(

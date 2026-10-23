@@ -141,7 +141,7 @@ python3 scripts/query.py entry H430          # e o arquivo/linha para editar
 | `scripts/export.py` | dados do site, do EPUB e do PDF; `--previa` gera a página única de amostra |
 | `scripts/pronunciation.py` | pronúncia em português do hebraico (a partir do Strong) e do grego (a partir do acento do lema) |
 | `vite/interlinear-plugin.ts`, `build_epub.py`, `build_pdf.py`, `print_pdf.mjs` | saídas |
-| `scripts/books.py` | os 66 livros: códigos, nomes, abreviações, arquivos de origem |
+| `scripts/interlinear/` | código comum do pipeline: caminhos, livros (códigos, nomes, capítulos), normalização de texto, fontes e tabelas de `data/` |
 | `scripts/query.py` | consulta ao banco pela linha de comando |
 | `scripts/check_data.py` | confere os arquivos de `data/` (também roda no GitHub em cada pull request) |
 | `scripts/publish_web.sh` | publica `build/web` no ramo `gh-pages` |
