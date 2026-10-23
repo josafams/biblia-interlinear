@@ -160,7 +160,8 @@ python3 scripts/query.py entry H430          # e o arquivo/linha para editar
 | `android/`, `ios/` | projetos nativos do Capacitor |
 | `epub-fonts/` | Noto Serif Hebrew (SIL OFL) para o EPUB |
 | `.github/workflows/` | Android (APK e AAB), iOS (compilação de verificação) e web (manual) |
-| `docs/` | apps e publicação (`APPS.md`), licenças (`LICENCAS.md`), revisões (`REVISOES.md`), esquema das introduções (`ESQUEMA_LIVRO.md`), **guia de correção** (`CORRECOES.md`) |
+| `CLAUDE.md` | convenções do código (inglês, locale, tokens, componentes) e os comandos, para pessoas e IA |
+| `docs/` | **mapa do código** (`ARCHITECTURE.md`: para mudar X, edite Y), apps e publicação (`APPS.md`), licenças (`LICENCAS.md`), revisões (`REVISOES.md`), esquema das introduções (`ESQUEMA_LIVRO.md`), **guia de correção** (`CORRECOES.md`) |
 | `build/` | tudo que é gerado (fora do git) |
 
 ## Licenças
