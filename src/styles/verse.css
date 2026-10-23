@@ -22,7 +22,7 @@ h1 .heb {
   gap: 12px;
   padding-block: 18px;
   border-bottom: 1px solid var(--line);
-  scroll-margin-top: calc(var(--bar-h) + 8px);
+  scroll-margin-top: calc(var(--bar-h) + 8px + env(safe-area-inset-top, 0px));
   grid-template-columns: minmax(0, 1fr);
 }
 .vhead {

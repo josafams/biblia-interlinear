@@ -1,12 +1,13 @@
 /* Bar: the top bar and the bottom bar (phone), the reading progress line and the position in long chapters. Values come from tokens.css. */
-/* Barra fixa: índice à esquerda, tema e aparência à direita */
+/* Barra fixa: índice à esquerda, tema e aparência à direita. Com o app de ponta a ponta (Android 15+, iOS) ela também
+   cobre a barra de status do sistema, com o seu fundo */
 .bar {
   position: sticky;
-  top: env(safe-area-inset-top, 0px);
+  top: 0;
   z-index: 6;
   margin-inline: -16px;
-  padding: 8px 16px;
-  min-height: var(--bar-h);
+  padding: calc(8px + env(safe-area-inset-top, 0px)) 16px 8px;
+  min-height: calc(var(--bar-h) + env(safe-area-inset-top, 0px));
   display: flex;
   align-items: center;
   gap: 8px;
@@ -432,8 +433,8 @@ body.foco.barras-fora .bbar:not(:focus-within) {
     max-width: 260px;
   }
   .bar {
-    min-height: 56px;
-    padding-block: 6px;
+    min-height: calc(56px + env(safe-area-inset-top, 0px));
+    padding-block: calc(6px + env(safe-area-inset-top, 0px)) 6px;
   }
   .bar::before {
     content: "";
@@ -447,7 +448,8 @@ body.foco.barras-fora .bbar:not(:focus-within) {
   }
   /* barra de baixo: ícone em cima e o nome embaixo (Livros · Jo 2 · Ouvir · Jo 4 · Aparência) */
   .bbar {
-    height: 72px;
+    /* the 72px of the bar plus the system gesture bar under it */
+    height: calc(72px + env(safe-area-inset-bottom, 0px));
     box-sizing: border-box;
     padding: 6px 6px calc(10px + env(safe-area-inset-bottom, 0px));
   }

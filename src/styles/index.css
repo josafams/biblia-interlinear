@@ -702,6 +702,12 @@
     border: 0;
     border-top: 1px solid var(--line);
     border-radius: 20px 20px 0 0;
+    /* a sheet from the bottom does not reach the status bar: no top inset */
+    padding-top: 10px;
+  }
+  #toc.sheet .toc-x,
+  #minhas.sheet .toc-x {
+    top: 10px;
   }
 }
 @media (min-width: 721px) {

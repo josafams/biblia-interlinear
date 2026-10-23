@@ -84,7 +84,7 @@ body.spacious :is(.blivre, .lede, .kbd, .dsec p, .cg, footer p, .lrow .ls) {
   word-spacing: 0.12em;
 }
 footer {
-  scroll-margin-top: calc(var(--bar-h) + 12px);
+  scroll-margin-top: calc(var(--bar-h) + 12px + env(safe-area-inset-top, 0px));
   font-size: 13px;
   color: var(--muted);
   display: grid;
