@@ -20,10 +20,9 @@ import time
 import unicodedata
 from collections import Counter, defaultdict
 from difflib import SequenceMatcher
-from pathlib import Path
 
 from interlinear.paths import DB, ROOT
-from interlinear.paths import SOURCES as SOURCES_DIR
+from interlinear.sources import morphgnt_lines, morphhb_file
 from interlinear.text import CANTILLATION_AND_VERSE_END, TOKEN_PT_LETTERS, consonantal, strip_marks
 
 OUT = os.path.join(ROOT, "build", "review")
@@ -669,10 +668,10 @@ class Data:
 # ================================================================== A. integridade do texto-base
 def hebrew_source(osis):
     """{(cap, vers) originais: [(texto, ketiv?, qere)]} lido do morphhb."""
-    fname = os.path.join(SOURCES_DIR, f"morphhb/wlc/{osis}.xml")
-    if not os.path.exists(fname):
+    fname = morphhb_file(osis)
+    if not fname.exists():
         return None
-    x = Path(fname).read_text(encoding="utf8")
+    x = fname.read_text(encoding="utf8")
     res = {}
     for vid, body_parts in re.findall(r'<verse osisID="([^"]+)">(.*?)</verse>', x, re.S):
         _, c, v = vid.split(".")
@@ -692,14 +691,10 @@ def hebrew_source(osis):
 
 
 def greek_source(fname):
-    file_path = os.path.join(SOURCES_DIR, f"sblgnt/{fname}-morphgnt.txt")
-    if not os.path.exists(file_path):
+    lines = morphgnt_lines(fname, required=False)
+    if lines is None:
         return None
     res = defaultdict(list)
-    lines = list(Path(file_path).read_text(encoding="utf8").splitlines(keepends=True))
-    sup = os.path.join(ROOT, "data", f"greek_supplement_{fname}.txt")
-    if os.path.exists(sup):
-        lines += [ln for ln in Path(sup).read_text(encoding="utf8").splitlines(keepends=True) if ln.strip() and not ln.startswith("#")]
     for line in lines:
         p = line.rstrip("\n").split(" ")
         if len(p) >= 4:
