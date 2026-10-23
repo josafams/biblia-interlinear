@@ -53,6 +53,8 @@ export function fillVerse(vi: number) {
 
 // one observer for the lazy verses of the chapter on screen
 let observer: IntersectionObserver | null = null;
+// not reactive on purpose: only the observer reads it
+// eslint-disable-next-line svelte/prefer-svelte-reactivity
 const waiting = new Map<Element, number>();
 export function fillWhenNear(el: Element, vi: number) {
   observer ??= new IntersectionObserver(

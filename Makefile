@@ -14,7 +14,7 @@ COMPOSE := docker compose
 DEV := $(COMPOSE) run --rm dev
 
 .PHONY: help docker-build docker-clean shell serve android \
-        setup data web test test-data test-web lint format coverage videos videos-check store build \
+        setup data web dev test test-data test-unit test-web lint format coverage videos videos-check store build \
         epub pdf check-data android-apk
 
 help: ## Lista os comandos
@@ -62,6 +62,9 @@ data: ## Baixa as fontes abertas e gera corpus, glosas, revisões e o site
 
 web: ## Gera só o site (build/web); precisa do banco gerado por `make data`
 	npm run build:web
+
+dev: ## Refaz o site a cada arquivo salvo (com `make serve` em outro terminal)
+	npm run dev
 
 check-data: ## Confere os arquivos editados à mão em data/ (temas, léxico, correções, perguntas)
 	python3 scripts/check_data.py

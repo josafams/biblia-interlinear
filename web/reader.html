@@ -1,21 +1,72 @@
 <title>Bíblia Interlinear</title>
-<link rel="stylesheet" href="styles/tokens.css">
-<link rel="stylesheet" href="styles/reader.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@400;600&family=Gentium+Book+Plus:wght@400&family=Literata:opsz,wght@7..72,400;7..72,600&family=IBM+Plex+Mono:wght@400;500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="styles/tokens.css" />
+<link rel="stylesheet" href="styles/reader.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@400;600&family=Gentium+Book+Plus:wght@400&family=Literata:opsz,wght@7..72,400;7..72,600&family=IBM+Plex+Mono:wght@400;500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap"
+/>
 
 <a class="skip" href="#verses" id="skip">Pular para o texto</a>
 <nav class="bar" aria-label="Navegação">
   <div class="bar-modes wide-only" id="bar-modes" role="radiogroup" aria-label="Modo de leitura"></div>
-  <button class="ibtn icon" id="open-search" aria-controls="busca" aria-expanded="false" aria-haspopup="dialog" aria-label="Buscar na Bíblia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
-  <button class="ibtn icon avatar wide-only" id="open-account" aria-label="Conta e progresso"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></button>
+  <button
+    class="ibtn icon"
+    id="open-search"
+    aria-controls="busca"
+    aria-expanded="false"
+    aria-haspopup="dialog"
+    aria-label="Buscar na Bíblia"
+  >
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="11" cy="11" r="7" />
+      <path d="M20 20l-3.5-3.5" />
+    </svg>
+  </button>
+  <button class="ibtn icon avatar wide-only" id="open-account" aria-label="Conta e progresso">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" />
+    </svg>
+  </button>
   <div class="readbar" aria-hidden="true"><span id="readbar"></span></div>
 </nav>
 <div class="wrap" id="page" lang="pt-BR">
-
   <header>
-    <p class="kbd">No teclado: <kbd>←</kbd> <kbd>→</kbd> palavra · <kbd>↑</kbd> <kbd>↓</kbd> versículo · <kbd>Enter</kbd> abre o verbete · <kbd>Esc</kbd> fecha · <kbd>[</kbd> <kbd>]</kbd> capítulo · <kbd>/</kbd> buscar</p>
-    <button class="say ch-say" id="ch-say" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span>Ouvir o capítulo</span></button>
+    <p class="kbd">
+      No teclado: <kbd>←</kbd> <kbd>→</kbd> palavra · <kbd>↑</kbd> <kbd>↓</kbd> versículo · <kbd>Enter</kbd> abre o verbete ·
+      <kbd>Esc</kbd> fecha · <kbd>[</kbd> <kbd>]</kbd> capítulo · <kbd>/</kbd> buscar
+    </p>
+    <button class="say ch-say" id="ch-say" type="button">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M11 5L6 9H3v6h3l5 4V5z" />
+        <path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" /></svg
+      ><span>Ouvir o capítulo</span>
+    </button>
     <div class="welcome" id="welcome" hidden role="region" aria-labelledby="welcome-h">
       <p id="welcome-h"><b>Como você quer ler?</b> <span>Dá para mudar depois em Aa.</span></p>
       <div class="wopts">
@@ -28,44 +79,89 @@
   </header>
 
   <details class="about" id="sobre">
-    <summary><span class="ab-k">Sobre o livro</span><span class="ab-t" id="ab-title"></span><span class="ab-s">Resumo, pessoas principais, datas e contexto histórico</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+    <summary>
+      <span class="ab-k">Sobre o livro</span><span class="ab-t" id="ab-title"></span
+      ><span class="ab-s">Resumo, pessoas principais, datas e contexto histórico</span
+      ><svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M6 9l6 6 6-6" />
+      </svg>
+    </summary>
     <div class="ab-body" id="about-body"></div>
   </details>
 
   <main id="verses" aria-label="Texto"></main>
 
-  <section class="lexsec" id="lexico" aria-labelledby="lex-h">
-  </section>
+  <section class="lexsec" id="lexico" aria-labelledby="lex-h"></section>
 
   <footer id="fontes" class="fontes">
     <h2>Fontes e licenças</h2>
-    <p><strong>Hebraico e aramaico, com morfologia:</strong> Open Scriptures Hebrew Bible, <a href="https://github.com/openscriptures/morphhb" target="_blank" rel="noopener">github.com/openscriptures/morphhb</a> (CC BY 4.0), sobre o Westminster Leningrad Codex (domínio público). Mapa de versificação do mesmo projeto.</p>
-    <p><strong>Grego:</strong> SBL Greek New Testament (SBLGNT), © Society of Biblical Literature e Logos, licença CC BY 4.0; morfologia e lemas do MorphGNT, J. K. Tauber, <a href="https://github.com/morphgnt/sblgnt" target="_blank" rel="noopener">github.com/morphgnt/sblgnt</a> (CC BY-SA 3.0).</p>
-    <p><strong>Tradução corrida:</strong> Bíblia Livre (BLIVRE), de Diego Santos, Mario Sérgio e Marco Teles, <a href="https://sites.google.com/site/biblialivre/" target="_blank" rel="noopener">sites.google.com/site/biblialivre</a>. Antigo Testamento: revisão de 2018 (CC BY 4.0 Brasil, via corpus eBible), completada pela edição de 2017 onde faltam versículos. Novo Testamento: edição de 2017 (CC BY 3.0 Brasil, módulo CrossWire), que traduz o texto crítico. Texto reproduzido sem alterações.</p>
-    <p><strong>Léxico:</strong> dicionário de James Strong (domínio público), edição digital Open Scriptures (<a href="https://github.com/openscriptures/strongs" target="_blank" rel="noopener">CC BY-SA</a>); léxico grego de Jeffrey Dodson (domínio público). Origem e significado dos verbetes mais usados vertidos para o português neste projeto; os demais aparecem em inglês.</p>
-    <p><strong>Glosas palavra a palavra:</strong> obtidas por alinhamento estatístico entre o original e a BLIVRE (ferramenta eflomal) e completadas por regras. Glosas em itálico cinza não vieram de alinhamento direto. Não fazem parte da BLIVRE e não têm endosso de seus autores. ⚑ marca pontos apontados pela revisão automática.</p>
-    <p><strong>Introduções e temas dos capítulos:</strong> escritos para este projeto. <strong>Áudio:</strong> gerado na hora pela voz instalada no aparelho; nenhum arquivo de áudio é distribuído. <strong>Fontes tipográficas:</strong> Noto Serif Hebrew, Gentium Book Plus, Literata, IBM Plex Mono e Atkinson Hyperlegible (SIL Open Font License 1.1).</p>
+    <p>
+      <strong>Hebraico e aramaico, com morfologia:</strong> Open Scriptures Hebrew Bible,
+      <a href="https://github.com/openscriptures/morphhb" target="_blank" rel="noopener">github.com/openscriptures/morphhb</a> (CC BY 4.0),
+      sobre o Westminster Leningrad Codex (domínio público). Mapa de versificação do mesmo projeto.
+    </p>
+    <p>
+      <strong>Grego:</strong> SBL Greek New Testament (SBLGNT), © Society of Biblical Literature e Logos, licença CC BY 4.0; morfologia e
+      lemas do MorphGNT, J. K. Tauber,
+      <a href="https://github.com/morphgnt/sblgnt" target="_blank" rel="noopener">github.com/morphgnt/sblgnt</a> (CC BY-SA 3.0).
+    </p>
+    <p>
+      <strong>Tradução corrida:</strong> Bíblia Livre (BLIVRE), de Diego Santos, Mario Sérgio e Marco Teles,
+      <a href="https://sites.google.com/site/biblialivre/" target="_blank" rel="noopener">sites.google.com/site/biblialivre</a>. Antigo
+      Testamento: revisão de 2018 (CC BY 4.0 Brasil, via corpus eBible), completada pela edição de 2017 onde faltam versículos. Novo
+      Testamento: edição de 2017 (CC BY 3.0 Brasil, módulo CrossWire), que traduz o texto crítico. Texto reproduzido sem alterações.
+    </p>
+    <p>
+      <strong>Léxico:</strong> dicionário de James Strong (domínio público), edição digital Open Scriptures (<a
+        href="https://github.com/openscriptures/strongs"
+        target="_blank"
+        rel="noopener"
+        >CC BY-SA</a
+      >); léxico grego de Jeffrey Dodson (domínio público). Origem e significado dos verbetes mais usados vertidos para o português neste
+      projeto; os demais aparecem em inglês.
+    </p>
+    <p>
+      <strong>Glosas palavra a palavra:</strong> obtidas por alinhamento estatístico entre o original e a BLIVRE (ferramenta eflomal) e
+      completadas por regras. Glosas em itálico cinza não vieram de alinhamento direto. Não fazem parte da BLIVRE e não têm endosso de seus
+      autores. ⚑ marca pontos apontados pela revisão automática.
+    </p>
+    <p>
+      <strong>Introduções e temas dos capítulos:</strong> escritos para este projeto. <strong>Áudio:</strong> gerado na hora pela voz
+      instalada no aparelho; nenhum arquivo de áudio é distribuído. <strong>Fontes tipográficas:</strong> Noto Serif Hebrew, Gentium Book
+      Plus, Literata, IBM Plex Mono e Atkinson Hyperlegible (SIL Open Font License 1.1).
+    </p>
   </footer>
 </div>
 
-<nav class="bbar" id="bbar" aria-label="Capítulos e áudio">
-</nav>
+<nav class="bbar" id="bbar" aria-label="Capítulos e áudio"></nav>
 
 <div class="scrim" id="scrim" hidden></div>
 
 <aside class="sheet left" id="toc" role="dialog" aria-modal="true" aria-labelledby="toc-h" lang="pt-BR" hidden>
-  <div class="shead"><h2 id="toc-h">Índice</h2><button class="ibtn" data-close aria-label="Fechar índice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="shead">
+    <h2 id="toc-h">Índice</h2>
+    <button class="ibtn" data-close aria-label="Fechar índice">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" />
+      </svg>
+    </button>
+  </div>
   <nav class="toc-tabs" aria-label="Partes do índice">
     <a href="#toc-livros" data-tab aria-current="true">Livros</a>
     <a href="#toc-notas" data-tab id="tab-notas">Notas<span id="tab-notas-n"></span></a>
     <a href="#toc-voce" data-tab>Você</a>
   </nav>
-  <section class="sgroup" aria-labelledby="go-h" id="toc-livros">
-  </section>
-  <section class="sgroup toc-books" aria-labelledby="bk-h">
-  </section>
-  <section class="sgroup toc-chapters" aria-labelledby="ch-h">
-  </section>
+  <section class="sgroup" aria-labelledby="go-h" id="toc-livros"></section>
+  <section class="sgroup toc-books" aria-labelledby="bk-h"></section>
+  <section class="sgroup toc-chapters" aria-labelledby="ch-h"></section>
   <nav class="sgroup" aria-labelledby="toc-vh"></nav>
   <nav class="sgroup" aria-labelledby="toc-sh" id="toc-estudo">
     <h3 id="toc-sh">Neste livro</h3>
@@ -79,19 +175,34 @@
   <section class="sgroup" aria-labelledby="toc-yh" id="toc-voce">
     <h3 id="toc-yh" class="sr">Você</h3>
     <div id="toc-account"></div>
-    <button type="button" class="vc-card" id="open-progress"><b>Meu progresso</b><span id="vc-prog">Capítulos lidos, tempo de leitura, dias seguidos e o mapa dos 66 livros. Aparece depois de entrar com a conta.</span></button>
+    <button type="button" class="vc-card" id="open-progress">
+      <b>Meu progresso</b
+      ><span id="vc-prog"
+        >Capítulos lidos, tempo de leitura, dias seguidos e o mapa dos 66 livros. Aparece depois de entrar com a conta.</span
+      >
+    </button>
     <div class="vc-card vc-plans" role="group" aria-labelledby="vc-plans-h">
       <b id="vc-plans-h">Planos de leitura</b>
       <button type="button" data-vc-plano="ano">Bíblia em 1 ano<span aria-hidden="true">›</span></button>
       <button type="button" data-vc-plano="nt90">Novo Testamento em 90 dias<span aria-hidden="true">›</span></button>
     </div>
-    <p class="vc-links"><a href="index.html#como-usar" class="site-link">Como usar</a> · <a href="index.html" class="site-link">Sobre o projeto</a> · <a href="privacidade.html" class="site-link">Privacidade</a></p>
+    <p class="vc-links">
+      <a href="index.html#como-usar" class="site-link">Como usar</a> · <a href="index.html" class="site-link">Sobre o projeto</a> ·
+      <a href="privacidade.html" class="site-link">Privacidade</a>
+    </p>
     <a href="#" id="open-mine" hidden>Minhas anotações <span id="mine-n"></span></a>
   </section>
 </aside>
 
 <aside class="sheet right" id="look" role="dialog" aria-modal="true" aria-labelledby="look-h" lang="pt-BR" hidden>
-  <div class="shead"><h2 id="look-h">Aparência</h2><button class="ibtn" data-close aria-label="Fechar aparência"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="shead">
+    <h2 id="look-h">Aparência</h2>
+    <button class="ibtn" data-close aria-label="Fechar aparência">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" />
+      </svg>
+    </button>
+  </div>
   <div class="sgroup" role="group" aria-labelledby="g-mode">
     <h3 id="g-mode">Modo de leitura</h3>
     <div class="mode-grid" id="mode-grid" role="radiogroup" aria-labelledby="g-mode"></div>
@@ -100,22 +211,202 @@
   <div class="sgroup" role="group" aria-labelledby="g-what">
     <h3 id="g-what">O que mostrar</h3>
     <div class="chks chips" id="g-show">
-      <button class="chk" role="switch" id="t-xlit" data-modo data-key="t-xlit" data-default="on" data-off-class="hide-xlit" aria-checked="true"><span>Transliteração</span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-gloss" data-modo data-key="t-gloss" data-default="on" data-off-class="hide-gloss" aria-checked="true"><span>Glosa<small>glosa em português em cada cartão</small></span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-pron" data-modo data-key="pronuncia" data-default="off" data-on-class="show-pron" aria-checked="false"><span>Pronúncia<small>pronúncia em português, tônica em MAIÚSCULAS</small></span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-strong" data-modo data-key="t-strong" data-default="off" data-off-class="hide-strong" aria-checked="true"><span>Strong<small>número Strong em cada cartão</small></span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-morf" data-key="t-morf" data-default="off" data-on-class="show-morf" data-modo aria-checked="false"><span>Gramática<small>classe, pessoa, gênero, número</small></span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-blivre" data-key="t-blivre" data-default="on" data-off-class="hide-blivre" data-modo aria-checked="true"><span>Bíblia Livre<small>texto da Bíblia Livre</small></span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-vnum" data-key="t-vnum" data-default="on" data-off-class="hide-vnum" data-modo aria-checked="true"><span>Números<small>números dos versículos</small></span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-theme" data-key="t-theme" data-default="on" data-off-class="hide-theme" data-modo aria-checked="true"><span>Tema do capítulo</span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-questions" data-key="t-questions" data-default="on" data-off-class="hide-questions" data-modo aria-checked="true"><span>Perguntas<small>perguntas ao texto, no fim do capítulo, sem respostas</small></span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-marks" data-key="t-marks" data-default="on" data-off-class="hide-marks" data-modo aria-checked="true"><span>Revisão ⚑<small>pontos da revisão automática, ketiv/qere, aparato</small></span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-ann" data-key="anotacoes" data-default="on" data-off-class="hide-ann" aria-checked="true"><span>Minhas anotações<small>cores, notas, favoritos e etiquetas no texto; desligue para uma leitura limpa</small></span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-orig" data-key="t-orig" data-default="on" data-off-class="hide-orig" data-modo aria-checked="true"><span>Original<small>hebraico, aramaico ou grego</small></span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-cards" data-key="t-cards" data-default="on" data-off-class="orig-running" data-modo aria-checked="true"><span>Cartões<small>original em cartões; desligado: texto corrido, e tocar na palavra abre o verbete</small></span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-par" data-key="t-par" data-default="off" data-on-class="blivre-par" data-modo aria-checked="false"><span>Parágrafos<small>Bíblia Livre em parágrafos, quando o original está desligado</small></span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-about" data-key="t-about" data-default="on" data-off-class="hide-about" data-modo aria-checked="true"><span>Sobre o livro</span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-lexicon" data-key="t-lexicon" data-default="on" data-off-class="hide-lexicon" data-modo aria-checked="true"><span>Léxico<small>léxico do capítulo</small></span><span class="sw2" aria-hidden="true"></span></button>
+      <button
+        class="chk"
+        role="switch"
+        id="t-xlit"
+        data-modo
+        data-key="t-xlit"
+        data-default="on"
+        data-off-class="hide-xlit"
+        aria-checked="true"
+      >
+        <span>Transliteração</span><span class="sw2" aria-hidden="true"></span>
+      </button>
+      <button
+        class="chk"
+        role="switch"
+        id="t-gloss"
+        data-modo
+        data-key="t-gloss"
+        data-default="on"
+        data-off-class="hide-gloss"
+        aria-checked="true"
+      >
+        <span>Glosa<small>glosa em português em cada cartão</small></span
+        ><span class="sw2" aria-hidden="true"></span>
+      </button>
+      <button
+        class="chk"
+        role="switch"
+        id="t-pron"
+        data-modo
+        data-key="pronuncia"
+        data-default="off"
+        data-on-class="show-pron"
+        aria-checked="false"
+      >
+        <span>Pronúncia<small>pronúncia em português, tônica em MAIÚSCULAS</small></span
+        ><span class="sw2" aria-hidden="true"></span>
+      </button>
+      <button
+        class="chk"
+        role="switch"
+        id="t-strong"
+        data-modo
+        data-key="t-strong"
+        data-default="off"
+        data-off-class="hide-strong"
+        aria-checked="true"
+      >
+        <span>Strong<small>número Strong em cada cartão</small></span
+        ><span class="sw2" aria-hidden="true"></span>
+      </button>
+      <button
+        class="chk"
+        role="switch"
+        id="t-morf"
+        data-key="t-morf"
+        data-default="off"
+        data-on-class="show-morf"
+        data-modo
+        aria-checked="false"
+      >
+        <span>Gramática<small>classe, pessoa, gênero, número</small></span
+        ><span class="sw2" aria-hidden="true"></span>
+      </button>
+      <button
+        class="chk"
+        role="switch"
+        id="t-blivre"
+        data-key="t-blivre"
+        data-default="on"
+        data-off-class="hide-blivre"
+        data-modo
+        aria-checked="true"
+      >
+        <span>Bíblia Livre<small>texto da Bíblia Livre</small></span
+        ><span class="sw2" aria-hidden="true"></span>
+      </button>
+      <button
+        class="chk"
+        role="switch"
+        id="t-vnum"
+        data-key="t-vnum"
+        data-default="on"
+        data-off-class="hide-vnum"
+        data-modo
+        aria-checked="true"
+      >
+        <span>Números<small>números dos versículos</small></span
+        ><span class="sw2" aria-hidden="true"></span>
+      </button>
+      <button
+        class="chk"
+        role="switch"
+        id="t-theme"
+        data-key="t-theme"
+        data-default="on"
+        data-off-class="hide-theme"
+        data-modo
+        aria-checked="true"
+      >
+        <span>Tema do capítulo</span><span class="sw2" aria-hidden="true"></span>
+      </button>
+      <button
+        class="chk"
+        role="switch"
+        id="t-questions"
+        data-key="t-questions"
+        data-default="on"
+        data-off-class="hide-questions"
+        data-modo
+        aria-checked="true"
+      >
+        <span>Perguntas<small>perguntas ao texto, no fim do capítulo, sem respostas</small></span
+        ><span class="sw2" aria-hidden="true"></span>
+      </button>
+      <button
+        class="chk"
+        role="switch"
+        id="t-marks"
+        data-key="t-marks"
+        data-default="on"
+        data-off-class="hide-marks"
+        data-modo
+        aria-checked="true"
+      >
+        <span>Revisão ⚑<small>pontos da revisão automática, ketiv/qere, aparato</small></span
+        ><span class="sw2" aria-hidden="true"></span>
+      </button>
+      <button class="chk" role="switch" id="t-ann" data-key="anotacoes" data-default="on" data-off-class="hide-ann" aria-checked="true">
+        <span>Minhas anotações<small>cores, notas, favoritos e etiquetas no texto; desligue para uma leitura limpa</small></span
+        ><span class="sw2" aria-hidden="true"></span>
+      </button>
+      <button
+        class="chk"
+        role="switch"
+        id="t-orig"
+        data-key="t-orig"
+        data-default="on"
+        data-off-class="hide-orig"
+        data-modo
+        aria-checked="true"
+      >
+        <span>Original<small>hebraico, aramaico ou grego</small></span
+        ><span class="sw2" aria-hidden="true"></span>
+      </button>
+      <button
+        class="chk"
+        role="switch"
+        id="t-cards"
+        data-key="t-cards"
+        data-default="on"
+        data-off-class="orig-running"
+        data-modo
+        aria-checked="true"
+      >
+        <span>Cartões<small>original em cartões; desligado: texto corrido, e tocar na palavra abre o verbete</small></span
+        ><span class="sw2" aria-hidden="true"></span>
+      </button>
+      <button
+        class="chk"
+        role="switch"
+        id="t-par"
+        data-key="t-par"
+        data-default="off"
+        data-on-class="blivre-par"
+        data-modo
+        aria-checked="false"
+      >
+        <span>Parágrafos<small>Bíblia Livre em parágrafos, quando o original está desligado</small></span
+        ><span class="sw2" aria-hidden="true"></span>
+      </button>
+      <button
+        class="chk"
+        role="switch"
+        id="t-about"
+        data-key="t-about"
+        data-default="on"
+        data-off-class="hide-about"
+        data-modo
+        aria-checked="true"
+      >
+        <span>Sobre o livro</span><span class="sw2" aria-hidden="true"></span>
+      </button>
+      <button
+        class="chk"
+        role="switch"
+        id="t-lexicon"
+        data-key="t-lexicon"
+        data-default="on"
+        data-off-class="hide-lexicon"
+        data-modo
+        aria-checked="true"
+      >
+        <span>Léxico<small>léxico do capítulo</small></span
+        ><span class="sw2" aria-hidden="true"></span>
+      </button>
     </div>
   </div>
   <div class="sgroup" role="group" aria-labelledby="g-size">
@@ -126,26 +417,62 @@
       <button class="step lg" id="size-up" aria-label="Aumentar texto">A+</button>
     </div>
     <div class="chks chips">
-      <button class="chk" role="switch" id="t-easy" data-key="fonte-facil" data-default="off" data-on-class="font-easy" aria-checked="false"><span>Fonte fácil<small>Atkinson Hyperlegible no português</small></span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-space" data-key="espacamento" data-default="off" data-on-class="spacious" aria-checked="false"><span>Espaçamento amplo<small>mais espaço entre linhas, letras e palavras</small></span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-cant" data-key="cantilacao" data-default="on" data-off-class="no-cant" aria-checked="true"><span>Cantilação (hebraico)<small>sinais de cantilação; desligue para ver só consoantes e vogais</small></span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-foco" data-key="foco" data-default="off" data-on-class="foco" aria-checked="false"><span>Esconder as barras<small>ao rolar para baixo; voltam quando você rola para cima</small></span><span class="sw2" aria-hidden="true"></span></button>
-
+      <button
+        class="chk"
+        role="switch"
+        id="t-easy"
+        data-key="fonte-facil"
+        data-default="off"
+        data-on-class="font-easy"
+        aria-checked="false"
+      >
+        <span>Fonte fácil<small>Atkinson Hyperlegible no português</small></span
+        ><span class="sw2" aria-hidden="true"></span>
+      </button>
+      <button
+        class="chk"
+        role="switch"
+        id="t-space"
+        data-key="espacamento"
+        data-default="off"
+        data-on-class="spacious"
+        aria-checked="false"
+      >
+        <span>Espaçamento amplo<small>mais espaço entre linhas, letras e palavras</small></span
+        ><span class="sw2" aria-hidden="true"></span>
+      </button>
+      <button class="chk" role="switch" id="t-cant" data-key="cantilacao" data-default="on" data-off-class="no-cant" aria-checked="true">
+        <span>Cantilação (hebraico)<small>sinais de cantilação; desligue para ver só consoantes e vogais</small></span
+        ><span class="sw2" aria-hidden="true"></span>
+      </button>
+      <button class="chk" role="switch" id="t-foco" data-key="foco" data-default="off" data-on-class="foco" aria-checked="false">
+        <span>Esconder as barras<small>ao rolar para baixo; voltam quando você rola para cima</small></span
+        ><span class="sw2" aria-hidden="true"></span>
+      </button>
     </div>
   </div>
-<div class="sgroup" role="group" aria-labelledby="g-theme">
+  <div class="sgroup" role="group" aria-labelledby="g-theme">
     <h3 id="g-theme">Tema</h3>
     <div class="tgrid" id="tgrid">
-      <button class="tcard tauto" data-p="auto" aria-pressed="false"><span class="half" aria-hidden="true"></span><span>Automático<small>segue o tema do aparelho</small></span></button>
+      <button class="tcard tauto" data-p="auto" aria-pressed="false">
+        <span class="half" aria-hidden="true"></span><span>Automático<small>segue o tema do aparelho</small></span>
+      </button>
     </div>
   </div>
-<div class="sgroup" role="group" aria-labelledby="g-audio">
+  <div class="sgroup" role="group" aria-labelledby="g-audio">
     <h3 id="g-audio">Áudio</h3>
     <p class="vnote" id="voice-note">Procurando vozes…</p>
     <div class="chks chips">
-      <button class="chk" id="voice-install" hidden><span>Instalar vozes<small>abre as configurações de texto para fala do Android</small></span></button>
-      <button class="chk" role="switch" id="t-follow" data-key="acompanhar" data-default="on" aria-checked="true"><span>Realçar cada palavra<small>o versículo é lido palavra por palavra</small></span><span class="sw2" aria-hidden="true"></span></button>
-      <button class="chk" role="switch" id="t-slow" data-key="voz-lenta" data-default="off" aria-checked="false"><span>Falar mais devagar</span><span class="sw2" aria-hidden="true"></span></button>
+      <button class="chk" id="voice-install" hidden>
+        <span>Instalar vozes<small>abre as configurações de texto para fala do Android</small></span>
+      </button>
+      <button class="chk" role="switch" id="t-follow" data-key="acompanhar" data-default="on" aria-checked="true">
+        <span>Realçar cada palavra<small>o versículo é lido palavra por palavra</small></span
+        ><span class="sw2" aria-hidden="true"></span>
+      </button>
+      <button class="chk" role="switch" id="t-slow" data-key="voz-lenta" data-default="off" aria-checked="false">
+        <span>Falar mais devagar</span><span class="sw2" aria-hidden="true"></span>
+      </button>
     </div>
   </div>
   <p class="look-foot"><a href="#fontes" id="look-sources">Fontes e licenças</a></p>
@@ -153,12 +480,11 @@
 
 <div class="toast" id="toast" role="status" lang="pt-BR" hidden></div>
 
-
 <script>
-document.documentElement.lang = "pt-BR";
-// DATA: { books: [...66], chapters: { "GEN.1": {...} } (capítulos embutidos), lex: {...}, complete: bool }
-// completo = true: os capítulos e o léxico que não vieram embutidos são lidos de dados/ (site e app)
-const DATA = __DATA__;
+  document.documentElement.lang = "pt-BR";
+  // DATA: { books: [...66], chapters: { "GEN.1": {...} } (capítulos embutidos), lex: {...}, complete: bool }
+  // completo = true: os capítulos e o léxico que não vieram embutidos são lidos de dados/ (site e app)
+  const DATA = __DATA__;
 </script>
 <script src="google-config.js"></script>
 <script type="module" src="__READER_BUNDLE__"></script>
