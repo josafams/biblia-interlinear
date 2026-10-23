@@ -15,10 +15,11 @@ import os
 import re
 import sqlite3
 import sys
-import unicodedata
 from pathlib import Path
 
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+from interlinear.paths import DB, ROOT
+from interlinear.text import letters_only
+
 D = os.path.join(ROOT, "data")
 # capítulos de cada livro, na numeração das Bíblias em português
 CAPS = dict(
@@ -101,10 +102,6 @@ def tsv(fname, columns):
             continue
         out.append((n, dict(zip(lines[0], cells, strict=False))))
     return out
-
-
-def letters_only(t):
-    return "".join(c for c in unicodedata.normalize("NFD", t or "") if unicodedata.category(c)[0] == "L").lower()
 
 
 # temas dos capítulos
@@ -230,7 +227,6 @@ if os.path.exists(file_b):
             error(file_b, f"linha {ln}: status deve ser relatar, relatado ou corrigido-na-fonte")
 
 # conferências que precisam do banco
-DB = os.path.join(ROOT, "build", "biblia.sqlite")
 if os.path.exists(DB):
     db = sqlite3.connect(DB)
     for ln, m, r in corrections:

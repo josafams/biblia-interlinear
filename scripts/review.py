@@ -22,12 +22,12 @@ from collections import Counter, defaultdict
 from difflib import SequenceMatcher
 from pathlib import Path
 
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-DB = os.path.join(ROOT, "build", "biblia.sqlite")
-SOURCES_DIR = os.path.join(ROOT, "sources")
+from interlinear.paths import DB, ROOT
+from interlinear.paths import SOURCES as SOURCES_DIR
+from interlinear.text import CANTILLATION_AND_VERSE_END, TOKEN_PT_LETTERS, consonantal, strip_marks
+
 OUT = os.path.join(ROOT, "build", "review")
 
-sys.path.insert(0, os.path.dirname(__file__))
 try:
     from books import BOOKS  # (código, OSIS morphhb, TAHOT, scrollmapper, MorphGNT, nome, abrev)
 except Exception:  # pragma: no cover
@@ -40,13 +40,6 @@ LEVELS = ("erro", "aviso", "info")
 
 
 # ------------------------------------------------------------------ português
-def without_accent(s):
-    return "".join(c for c in unicodedata.normalize("NFD", s) if not unicodedata.combining(c))
-
-
-TOKEN_PT = re.compile(r"[^\W\d_]+", re.U)
-
-
 def toks(gloss):
     return [t for t in (gloss or "").lower().split("-") if t]
 
@@ -526,7 +519,7 @@ def _root(t):
     t = t.lower()
     if t in IRREG_MAP:
         return IRREG_MAP[t]
-    r = without_accent(singular(t))[:4]  # prefixo: criou/criar/criado → cri; santo/santa → sant
+    r = strip_marks(singular(t))[:4]  # prefixo: criou/criar/criado → cri; santo/santa → sant
     return r[:3] if len(r) == 4 and r[3] in "aeiou" else r
 
 
@@ -600,20 +593,12 @@ def gloss_names(g):
     return [t for t in (g or "").split("-") if t[:1].isupper() and t not in ("SENHOR", "DEUS", "Deus", "Senhor")]
 
 
-CANTILLATION = re.compile(r"[\u0591-\u05AF\u05BD\u05C0\u05C3\u05C4\u05C5]")
-
-
 def norm_form(w):
     t = unicodedata.normalize("NFD", w[TXT] or "")
     if w[LING] == "G":
         t = "".join(c for c in t if unicodedata.category(c)[0] in "LM").lower()
         return unicodedata.normalize("NFC", t)
-    return CANTILLATION.sub("", t)
-
-
-def consonantal(t):
-    t = unicodedata.normalize("NFD", t)
-    return "".join(c for c in t if unicodedata.category(c)[0] == "L").lower().replace("ς", "σ")
+    return CANTILLATION_AND_VERSE_END.sub("", t)
 
 
 # ------------------------------------------------------------------ marcas
@@ -676,7 +661,7 @@ class Data:
         s = self._tokset.get(k)
         if s is None:
             t = self.verses.get(k, ("",))[0]
-            s = {without_accent(x.lower()) for x in TOKEN_PT.findall(t)}
+            s = {strip_marks(x.lower()) for x in TOKEN_PT_LETTERS.findall(t)}
             self._tokset[k] = s
         return s
 
@@ -965,7 +950,7 @@ def check_versification(d, M, scope_books):
         for k, ws in d.by_verse.items():
             if k[0] != b:
                 continue
-            nb = len(TOKEN_PT.findall(d.verses.get(k, ("",))[0]))
+            nb = len(TOKEN_PT_LETTERS.findall(d.verses.get(k, ("",))[0]))
             if ws and nb:
                 ratios.append(nb / len(ws))
                 item_list.append((k, nb, len(ws)))
@@ -1478,7 +1463,7 @@ def check_numbers_and_divine_names(d, M, ws):
         strongs = [t for t in ts if t in STRONG_NUMBERS]
         if strongs:
             bl = d.tokset_blivre(k)
-            missing = [t for t in strongs if without_accent(t) not in bl]
+            missing = [t for t in strongs if strip_marks(t) not in bl]
             if missing:
                 M.w(w, "FAT-03", "aviso", f"número '{missing[0]}' da glosa não aparece no versículo da BLIVRE")
         if w[LING] != "G":
@@ -1790,7 +1775,7 @@ def check_names(d, M, ws, scope_books):
             if not any(t[:1].isupper() for t in w[GL].split("-")):
                 M.w(w, "FAT-01", "info", f"nome próprio com glosa em minúsculas: '{w[GL]}'")
             continue
-        missing = [x for x in ns if without_accent(x.lower()) not in bl]
+        missing = [x for x in ns if strip_marks(x.lower()) not in bl]
         if missing:
             M.w(w, "FAT-01", "aviso", f"nome '{missing[0]}' não aparece no versículo da BLIVRE")
     # FAT-02: mesmo Strong de nome próprio → mesmo nome
@@ -1828,9 +1813,9 @@ def check_names(d, M, ws, scope_books):
         if h not in dominant_by_key:
             continue
         gn, hn = dominant_by_key[w[STR]][0], dominant_by_key[h][0]
-        if without_accent(gn.lower()) == without_accent(hn.lower()):
+        if strip_marks(gn.lower()) == strip_marks(hn.lower()):
             continue
-        indecl = not re.search(r"[ςνυ]$", without_accent(w[LEMMA] or ""))  # Ἀβραάμ, Δαυίδ
+        indecl = not re.search(r"[ςνυ]$", strip_marks(w[LEMMA] or ""))  # Ἀβραάμ, Δαυίδ
         cod = "GRG-15" if indecl else "CRG-05"
         if w[STR] in ("G2424",):  # Ἰησοῦς ← Josué: diferença esperada
             continue

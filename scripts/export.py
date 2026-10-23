@@ -21,12 +21,13 @@ import unicodedata
 from collections import Counter, defaultdict
 from pathlib import Path
 
-sys.path.insert(0, os.path.dirname(__file__))
-from books import BOOKS  # noqa: E402
-from pronunciation import pron_greek, pron_hebrew  # noqa: E402
+from books import BOOKS
+from interlinear.paths import DB, ROOT
 
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-DB = os.path.join(ROOT, "build", "biblia.sqlite")
+# words of the Bíblia Livre for the search: the same rule as the alignment (scripts/make_glosses.py)
+from interlinear.text import TOKEN_PT
+from pronunciation import pron_greek, pron_hebrew
+
 OUT = os.path.join(ROOT, "build", "data")  # JSON (lido pelo EPUB, PDF e pela página)
 WEB = os.path.join(ROOT, "build", "web", "dados")  # .js carregados pelo site e pelo app
 SHORT_SOURCE = {"alinhamento": "", "manual": "m", "revisada": "m", "lexico": "l", "regra": "r", "parcial": "p", "sem": "s"}
@@ -68,8 +69,6 @@ HEB_LETTERS = [
     "Tau",
 ]
 LETTER_HEAD = re.compile(r"^\s*(" + "|".join(map(re.escape, HEB_LETTERS)) + r")\s*:\s*")
-# Palavras da BLIVRE para a busca: o mesmo critério do alinhamento (scripts/make_glosses.py)
-TOKEN_PT = re.compile(r"[^\W_]+(?:[’'][^\W_]+)?", re.U)
 
 
 def split_heading(text):

@@ -31,18 +31,13 @@ from pathlib import Path
 
 import eflomal
 
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-DB = os.path.join(ROOT, "build", "biblia.sqlite")
+from interlinear.paths import DB, ROOT
+from interlinear.text import TOKEN_PT, letters_only, norm_greek, strip_marks, without_cantillation
+
 TMP = os.path.join(ROOT, "build", "alignment")
 # Trechos da BLIVRE ligados a cada palavra pelo alinhamento: id da palavra → [(início, fim), ...] em caracteres.
 # Vão para a tabela alignment e daí para o app (ligação palavra ↔ português).
 ALIGN_SPANS = {}
-
-TOKEN_PT = re.compile(r"[^\W_]+(?:[’'][^\W_]+)?", re.U)
-
-
-def norm(s):
-    return "".join(c for c in unicodedata.normalize("NFD", s) if not unicodedata.combining(c)).lower().replace("ς", "σ")
 
 
 # ------------------------------------------------------------- unidades do original
@@ -74,7 +69,7 @@ def hebrew_units(lemma, morph):
 
 
 def greek_units(lemma, morph):
-    return [("raiz", "g_" + norm(lemma).replace(" ", "_"))]
+    return [("raiz", "g_" + norm_greek(lemma).replace(" ", "_"))]
 
 
 # ------------------------------------------------------------- simetrização
@@ -340,7 +335,7 @@ def assemble(db, testament):
 def align_corpus(item_list, name):
     os.makedirs(TMP, exist_ok=True)
     src = [" ".join(u[2] for u in it[4] if u[1] != "fora") or "_" for it in item_list]
-    trg = [" ".join(norm(tk[0]) for tk in it[3]) or "_" for it in item_list]
+    trg = [" ".join(norm_greek(tk[0]) for tk in it[3]) or "_" for it in item_list]
     fwd = os.path.join(TMP, f"{name}.fwd")
     rev = os.path.join(TMP, f"{name}.rev")
     # O eflomal é aleatório: o alinhamento fica salvo em data/alignment/ para as glosas serem estáveis.
@@ -536,12 +531,8 @@ def proper_name(language, morph, lemma):
     return bool(root) and root[-1][:2] in ("Np", "Ng")
 
 
-def without_accent(s):
-    return "".join(c for c in unicodedata.normalize("NFD", s) if not unicodedata.combining(c))
-
-
 def _initial(t):
-    t = without_accent(t).lower()
+    t = strip_marks(t).lower()
     for a, b in (("ph", "p"), ("f", "p"), ("th", "t"), ("ch", "c"), ("kh", "c"), ("k", "c"), ("q", "c"), ("y", "i"), ("j", "i"), ("h", "")):
         if t.startswith(a):
             t = b + t[len(a) :]
@@ -550,7 +541,7 @@ def _initial(t):
 
 def similar(t, target):
     """Semelhança entre um nome em português e a transliteração (com bônus se a inicial bate)."""
-    r = difflib.SequenceMatcher(None, without_accent(t).lower(), without_accent(target).lower()).ratio()
+    r = difflib.SequenceMatcher(None, strip_marks(t).lower(), strip_marks(target).lower()).ratio()
     return r + (0.3 if _initial(t) and _initial(t) == _initial(target) else 0)
 
 
@@ -565,7 +556,7 @@ def similar_name(target, verse_text):
         sorted(cands),
         key=lambda t: (
             similar(t, target),
-            difflib.SequenceMatcher(None, without_accent(target).lower(), without_accent(t).lower()).ratio(),
+            difflib.SequenceMatcher(None, strip_marks(target).lower(), strip_marks(t).lower()).ratio(),
         ),
     )
     return m if similar(m, target) >= 0.75 else None
@@ -581,7 +572,7 @@ GR_LAT = dict(
 
 
 def name_from_xlit(x):
-    x = without_accent(x or "")
+    x = strip_marks(x or "")
     if any("\u0370" <= c <= "\u03ff" for c in x):
         x = "".join(GR_LAT.get(c.lower(), c) for c in x)
     x = re.sub(r"[\u02b0-\u02ff'’`]", "", x)
@@ -1018,11 +1009,6 @@ def final_adjustments(res, counts, pref, texts, lexicon):
     return n
 
 
-def without_cantillation(heb):
-    """Tira os sinais de cantilação, o meteg e o paseq; mantém vogais e dagesh."""
-    return re.sub(r"[\u0591-\u05AF\u05BD\u05C0]", "", unicodedata.normalize("NFD", heb))
-
-
 def apply_manual(db, res, report=None):
     """Glosas revisadas à mão (Gênesis 1) por forma + morfologia, só dentro de Gn 1."""
     fname = os.path.join(ROOT, "data", "glosses_pt.tsv")
@@ -1116,12 +1102,6 @@ def main():
     apply_corrections(db)
 
 
-def _letters_only(t):
-    """Forma para comparar: sem cantilação, vogais, acentos, pontuação e barras."""
-    t = unicodedata.normalize("NFD", t or "")
-    return "".join(c for c in t if unicodedata.category(c)[0] == "L").lower()
-
-
 def apply_corrections(db):
     """Correções de glosa feitas por revisores (data/corrections/glosses.tsv), aplicadas por último.
 
@@ -1150,7 +1130,7 @@ def apply_corrections(db):
             errors += 1
             continue
         pid, verse_text = wds[i]
-        if (r.get("original") or "").strip() and _letters_only(r["original"]) != _letters_only(verse_text):
+        if (r.get("original") or "").strip() and letters_only(r["original"]) != letters_only(verse_text):
             print(f"  correções, linha {n}: em {r['ref']} posição {r['pos']} está {verse_text}, não {r['original']}; ignorada")
             errors += 1
             continue

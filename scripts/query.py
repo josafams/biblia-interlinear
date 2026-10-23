@@ -14,8 +14,7 @@ import os
 import sqlite3
 import sys
 
-DB = os.path.join(os.path.dirname(__file__), "..", "build", "biblia.sqlite")
-
+from interlinear.paths import DB
 
 # verbos e partículas muito comuns, que não rendem pergunta sobre a língua original
 COMMON = {"H1961", "H559", "H3068", "H430", "H3605", "H834", "H3588", "H1697", "H6213", "H935", "H5414", "H3212", "H7200", "H8085"}
