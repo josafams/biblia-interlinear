@@ -16,8 +16,9 @@ import { writeReaderPage } from "./site/reader-page";
 import { writeServiceWorker } from "./site/service-worker";
 import { copyStaticFiles } from "./site/static-files";
 
-// The home page script (src/home/main.ts) is a build of its own: one file per page (see vite.config.mts)
-async function buildHome(sourcemap: boolean) {
+// The home page script (src/home/main.ts) and the privacy page stylesheet are builds of their own: one file per
+// page (see vite.config.mts)
+async function buildPage(name: string, input: string, sourcemap: boolean) {
   const out = (await build({
     configFile: false,
     logLevel: "warn",
@@ -30,14 +31,18 @@ async function buildHome(sourcemap: boolean) {
       target: "es2020",
       sourcemap,
       rollupOptions: {
-        input: { home: fromRoot("src/home/main.ts") },
+        input: { [name]: fromRoot(input) },
         output: { inlineDynamicImports: true, entryFileNames: "assets/[name]-[hash].js" }
       }
     }
   })) as Rollup.RollupOutput;
-  const entry = out.output.find(c => c.type === "chunk" && c.isEntry);
-  if (!entry) throw new Error("interlinear-site: home bundle not found");
-  return entry.fileName;
+  const entry = out.output.find((c): c is Rollup.OutputChunk => c.type === "chunk" && c.isEntry);
+  // a stylesheet entry has no script: its CSS is an asset of the output
+  const css =
+    (entry && [...(entry.viteMetadata?.importedCss || [])][0]) ||
+    out.output.find(o => o.type === "asset" && o.fileName.endsWith(".css"))?.fileName;
+  if (!css) throw new Error(`interlinear-site: ${name} stylesheet not found`);
+  return { js: entry?.fileName || "", css };
 }
 
 export function interlinearSite(): Plugin {
@@ -74,8 +79,8 @@ export function interlinearSite(): Plugin {
           fs.rmSync(path.join(OUT, "assets", f));
       const books: Book[] = JSON.parse(fs.readFileSync(fromRoot("build/data/books.json"), "utf8"));
       writeReaderPage(readerBundle, readerCss, books);
-      await writeHomePage(books, await buildHome(sourcemap));
-      copyStaticFiles();
+      await writeHomePage(books, await buildPage("home", "src/home/main.ts", sourcemap));
+      copyStaticFiles((await buildPage("privacy", "src/styles/privacy.css", sourcemap)).css);
       writeManifest();
       const { files, version } = writeServiceWorker();
       console.error(`Site built in build/web (${files} files, cache ${version})`);

@@ -6,7 +6,7 @@
   },
   "overrides": [
     {
-      "files": ["src/styles/tokens.css"],
+      "files": ["src/styles/tokens.css", "src/styles/home-tokens.css"],
       "rules": {
         "color-no-hex": null
       }

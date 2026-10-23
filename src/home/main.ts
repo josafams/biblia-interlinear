@@ -1,5 +1,6 @@
 // Home page entry (index.html): the parts that come from the data (home-data.json) are Svelte components;
 // the rest of the page is plain HTML (web/home.html).
+import "../styles/home.css";
 import { mount } from "svelte";
 import BookDownloads from "./BookDownloads.svelte";
 import type { HomeData } from "./data";

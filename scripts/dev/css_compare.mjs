@@ -50,12 +50,24 @@ const STATES = {
   annotated: ["PSA.117", annotateVerse],
   annotationsHidden: ["PSA.117", async p => (await annotateVerse(p), p.evaluate(() => document.body.classList.add("hide-ann")))],
   easy: ["PSA.117", p => p.evaluate(() => document.body.classList.add("font-easy", "spacious"))],
-  dark: ["PSA.117", null]
+  dark: ["PSA.117", null],
+  home: ["page:index.html", null],
+  homeDark: ["page:index.html", null],
+  privacy: ["page:privacidade.html", null],
+  privacyDark: ["page:privacidade.html", null]
 };
+const DARK = new Set(["dark", "homeDark", "privacyDark"]);
 const only = process.argv.slice(2);
 
 async function snapshot(base, opts, ref, act, dark) {
-  const ctx = await browser.newContext({ ...opts, baseURL: base, locale: "pt-BR", serviceWorkers: "block", reducedMotion: "reduce" });
+  const ctx = await browser.newContext({
+    ...opts,
+    baseURL: base,
+    locale: "pt-BR",
+    serviceWorkers: "block",
+    reducedMotion: "reduce",
+    colorScheme: dark ? "dark" : "light"
+  });
   await ctx.addInitScript(dark => {
     localStorage.setItem("interlinear:conta-sugestao", "nao");
     if (!localStorage.getItem("interlinear:modo")) localStorage.setItem("interlinear:modo", "interlinear");
@@ -63,8 +75,14 @@ async function snapshot(base, opts, ref, act, dark) {
     if (dark) localStorage.setItem("interlinear:tema", "escuro");
   }, dark);
   const p = await ctx.newPage();
-  await p.goto(`ler.html#${ref}`);
-  await p.waitForSelector(".verse");
+  // "page:index.html" opens another page of the site (the home page waits for its data)
+  if (ref.startsWith("page:")) {
+    await p.goto(ref.slice(5));
+    if (ref.includes("index")) await p.waitForSelector("#home-numbers b");
+  } else {
+    await p.goto(`ler.html#${ref}`);
+    await p.waitForSelector(".verse");
+  }
   await p.waitForTimeout(300);
   if (act) await act(p);
   await p.waitForTimeout(500);
@@ -98,8 +116,8 @@ let diffs = 0;
 for (const [view, opts] of Object.entries(VIEWS))
   for (const [state, [ref, act]] of Object.entries(STATES)) {
     if (only.length && !only.includes(state)) continue;
-    const a = await snapshot(before.base, opts, ref, act, state === "dark");
-    const b = await snapshot(after.base, opts, ref, act, state === "dark");
+    const a = await snapshot(before.base, opts, ref, act, DARK.has(state));
+    const b = await snapshot(after.base, opts, ref, act, DARK.has(state));
     let n = 0;
     for (const k of new Set([...Object.keys(a), ...Object.keys(b)])) {
       if (a[k] === b[k]) continue;

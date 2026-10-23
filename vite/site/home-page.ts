@@ -28,7 +28,7 @@ function size(file: string) {
   }
 }
 
-export async function writeHomePage(books: Book[], homeBundle: string) {
+export async function writeHomePage(books: Book[], home: { js: string; css: string }) {
   const data = fromRoot("build/data");
   const chapter = (code: string, n: number) => readJson(path.join(data, "cap", code, `${n}.json`)) as { v: Verse[] };
   const lex: Record<string, Lex> = { H: readJson(path.join(data, "lex/H.json")), G: readJson(path.join(data, "lex/G.json")) };
@@ -78,7 +78,8 @@ export async function writeHomePage(books: Book[], homeBundle: string) {
     __REPO__: APP.repo,
     __REPO_CURTO__: APP.repo.replace(/^https:\/\//, ""),
     __LIVROS__: `${APP.repo}/releases/download/livros`,
-    __HOME_BUNDLE__: homeBundle
+    __HOME_BUNDLE__: home.js,
+    __HOME_CSS__: home.css
   };
   let html = fs.readFileSync(fromRoot("web/home.html"), "utf8");
   for (const [k, v] of Object.entries(values)) html = html.split(k).join(v);
