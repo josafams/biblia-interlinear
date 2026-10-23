@@ -12,7 +12,8 @@ ENV DEBIAN_FRONTEND=noninteractive \
     PLAYWRIGHT_BROWSERS_PATH=/ms-playwright \
     PYTHONDONTWRITEBYTECODE=1
 
-# Ferramentas do sistema (Python 3.11 do Debian; o projeto pede 3.11 ou mais novo)
+# Ferramentas do sistema. O Python é o 3.11 do Debian (bookworm); a CI usa o 3.12 e o ruff mira o 3.12
+# (pyproject.toml), então o código precisa continuar rodando nas duas versões.
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
       python3 python3-venv python3-dev build-essential \
