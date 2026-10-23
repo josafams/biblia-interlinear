@@ -9,7 +9,7 @@ Todos rodam a partir da raiz do repositório. O caminho normal é `make data` (o
 | `download_sources.sh` | baixa as fontes abertas (BLIVRE, Open Scriptures, SBLGNT/MorphGNT, Strong, Dodson) para `sources/` | uma vez por máquina e no CI; não altera nada no repositório |
 | `corpus.py` | monta `build/biblia.sqlite`: livros, versículos da BLIVRE, palavras do original com morfologia e o léxico | `make data`, CI |
 | `make_glosses.py` | alinha cada versículo do original com a BLIVRE (eflomal) e grava as glosas; aplica `data/corrections/glosses.tsv` | `make data`, CI (precisa do eflomal) |
-| `review.py` | revisões automáticas (`docs/REVISOES.md`) → `build/review/` | `make data`, CI |
+| `review.py` | revisões automáticas (`docs/REVISOES.md`) → `build/review/`; as regras ficam em `interlinear/review/checks/`, uma por grupo do catálogo | `make data`, CI |
 | `export.py` | exporta o banco e `data/` para `build/data` (JSON) e `build/web/dados` (JS do site); `--preview` monta a prévia | `vite/interlinear-plugin.ts`, `build.sh` |
 | `check_data.py` | confere os arquivos editados à mão em `data/` (formato, colunas, referências) | pre-commit, CI em todo PR |
 | `query.py` | consulta rápida ao corpus: `books`, `chapter`, `verses`, `interlinear`, `entry` | quem escreve temas, introduções e correções |

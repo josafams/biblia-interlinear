@@ -231,6 +231,8 @@ Gravidade: **E** erro · **A** aviso
 
 ## Implementação automática (scripts/review.py)
 
+As regras ficam em `scripts/interlinear/review/checks/`, um módulo por grupo deste catálogo: `text` (A), `versification` (B), `coverage` (C), `grammar_he` (D), `greek` (E), `consistency` (G), `names` (H) e `crossings` (I). As palavras e formas do português que elas comparam ficam em `scripts/interlinear/review/words.py`.
+
 `python3 scripts/review.py [LIVRO [CAP]]` lê `build/biblia.sqlite` só para leitura (e, para TXT-01/02/04 e TXG-01, os arquivos originais em `sources/`, quando existem) e grava em `build/review/`: `marks.json` (uma marca por palavra ou versículo), `summary.tsv` (erros, avisos e informativas por capítulo) e `report.md` (totais por código e por livro, com 3 exemplos de cada código). Só biblioteca padrão, sem rede e sem IA; a Bíblia inteira roda em cerca de 25 s. Os níveis seguem o catálogo, com estas regras: regra que dispara em muitas palavras por motivo de estilo da BLIVRE (e não por erro da glosa) fica como `info`; erro comprovado de dados fica como `erro`, mesmo que o catálogo diga A.
 
 | Código | O que verifica | Nível |
