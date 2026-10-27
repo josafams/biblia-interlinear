@@ -68,3 +68,13 @@ test("verbete hebraico: da direita para a esquerda", async ({ page }) => {
   await page.goto("lexico/H7225/");
   await expect(page.locator("h1 span")).toHaveAttribute("dir", "rtl");
 });
+
+test("sitemap.xml aponta para as partes, e elas têm todas as páginas", async ({ request }) => {
+  const index = await (await request.get("sitemap.xml")).text();
+  expect(index.match(/<sitemap>/g)).toHaveLength(3);
+  const count = async f => ((await (await request.get(f)).text()).match(/<url>/g) || []).length;
+  expect(await count("sitemap-paginas.xml")).toBe(3);
+  expect(await count("sitemap-biblia.xml")).toBe(1 + 66 + 1189);
+  expect(await count("sitemap-lexico.xml")).toBeGreaterThan(14000);
+  expect(await (await request.get("robots.txt")).text()).toContain("Sitemap: https://josafams.github.io/biblia-interlinear/sitemap.xml");
+});

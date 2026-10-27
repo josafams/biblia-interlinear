@@ -6,6 +6,7 @@ import { bookPage, booksPage, chapterPage, type SeoBook, type SeoVerse } from ".
 import type { Site } from "../../src/seo/document";
 import { entryPage, MAX_REFS, type SeoEntry, type SeoRef } from "../../src/seo/lexicon-pages";
 import { bookPath, booksPath, chapterPath, entryPath } from "../../src/seo/paths";
+import { robots, sitemapIndex, sitemapParts, urlSet } from "../../src/seo/sitemap";
 import { APP, OUT, fromRoot } from "./app";
 
 const readJson = (p: string) => JSON.parse(fs.readFileSync(p, "utf8"));
@@ -48,4 +49,13 @@ export function writeBiblePages(books: SeoBook[], css: string) {
     pages.push(entryPath(key));
   }
   return pages;
+}
+
+/** sitemap.xml (index), its parts and robots.txt, for the pages written above. */
+export function writeSitemaps(pages: string[]) {
+  const lastmod = new Date().toISOString().slice(0, 10);
+  const parts = sitemapParts(pages);
+  for (const [file, list] of Object.entries(parts)) fs.writeFileSync(path.join(OUT, file), urlSet(list, lastmod));
+  fs.writeFileSync(path.join(OUT, "sitemap.xml"), sitemapIndex(Object.keys(parts), lastmod));
+  fs.writeFileSync(path.join(OUT, "robots.txt"), robots());
 }
