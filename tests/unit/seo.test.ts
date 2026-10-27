@@ -1,5 +1,5 @@
+import fs from "node:fs";
 import { expect, test } from "vitest";
-import books from "../../build/data/books.json";
 import { breadcrumbs, clip, escapeHtml, headTags } from "../../src/seo/head";
 import { bookSlug, chapterPath, entryPath, toRoot } from "../../src/seo/paths";
 
@@ -7,7 +7,12 @@ test("book slugs: no accents, hyphens, and one per book", () => {
   expect(bookSlug("Gênesis")).toBe("genesis");
   expect(bookSlug("1 João")).toBe("1-joao");
   expect(bookSlug("Cânticos")).toBe("canticos");
-  const slugs = (books as { name: string }[]).map(b => bookSlug(b.name));
+  // the names of the 66 books, from the source table (build/data does not exist before the data is made)
+  const names = [...fs.readFileSync("scripts/interlinear/books.py", "utf8").matchAll(/^\s+Book\(.*"([^"]+)", "[^"]+"\),$/gm)].map(
+    m => m[1]
+  );
+  expect(names).toHaveLength(66);
+  const slugs = names.map(bookSlug);
   expect(new Set(slugs).size).toBe(66);
   for (const s of slugs) expect(s).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
 });
