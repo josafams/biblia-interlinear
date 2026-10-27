@@ -2,6 +2,7 @@
 // and the Vite bundle and its stylesheet in place of __READER_BUNDLE__ and __READER_CSS__. Chapters and lexicon load on demand from dados/.
 import fs from "node:fs";
 import path from "node:path";
+import { readerHead, readerNoscript } from "../../src/seo/site-pages";
 import { APP, OUT, fromRoot } from "./app";
 
 export function writeReaderPage(readerBundle: string, readerCss: string, books: unknown) {
@@ -10,7 +11,8 @@ export function writeReaderPage(readerBundle: string, readerCss: string, books: 
   let html = template
     .replace("__DATA__", () => data)
     .replace("__READER_BUNDLE__", readerBundle)
-    .replace("__READER_CSS__", readerCss);
+    .replace("__READER_CSS__", readerCss)
+    .replace("__NOSCRIPT__", readerNoscript());
   // the Google Fonts links of the template become the local fonts plus the app metadata (the top inset is the
   // top bar's: it covers the status bar of the system)
   // (any formatting of the two tags: Prettier breaks the long one over several lines)
@@ -18,10 +20,10 @@ export function writeReaderPage(readerBundle: string, readerCss: string, books: 
   if (!googleFonts.test(html)) throw new Error("web/reader.html: the Google Fonts links were not found");
   html = html.replace(
     googleFonts,
-    `<link rel="stylesheet" href="fonts/fonts.css">
+    () => `${readerHead()}
+<link rel="stylesheet" href="fonts/fonts.css">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="${APP.theme}">
-<meta name="description" content="${APP.desc}">
 <link rel="icon" type="image/png" href="icones/favicon-64.png">
 <link rel="apple-touch-icon" href="icones/apple-touch-icon.png">
 <style>body{margin:0}img{max-width:100%}:root{padding-bottom:env(safe-area-inset-bottom,0px)}</style>`

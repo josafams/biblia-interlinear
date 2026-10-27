@@ -1,6 +1,7 @@
 // App identity shared by the pages, the web manifest and the service worker.
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { SITE_URL } from "../../src/lib/site";
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 export const OUT = path.join(ROOT, "build/web");
@@ -12,8 +13,9 @@ export const APP = {
   desc: "A Bíblia inteira em hebraico, aramaico e grego, com transliteração, pronúncia, glosa em português, verbetes, áudio e o texto da Bíblia Livre.",
   bg: "#eceeea",
   theme: "#1d5b74",
-  repo: "https://github.com/josafams/biblia-interlinear"
+  repo: "https://github.com/josafams/biblia-interlinear",
+  /** the published site, with the final slash (canonical URLs, Open Graph, sitemap) */
+  url: SITE_URL
 };
 
-export const escapeHtml = (s: unknown) =>
-  String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c] as string);
+export { escapeHtml } from "../../src/seo/head";
