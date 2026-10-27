@@ -4,7 +4,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { bookPage, booksPage, chapterPage, type SeoBook, type SeoVerse } from "../../src/seo/bible-pages";
 import type { Site } from "../../src/seo/document";
-import { bookPath, booksPath, chapterPath } from "../../src/seo/paths";
+import { entryPage, MAX_REFS, type SeoEntry, type SeoRef } from "../../src/seo/lexicon-pages";
+import { bookPath, booksPath, chapterPath, entryPath } from "../../src/seo/paths";
 import { APP, OUT, fromRoot } from "./app";
 
 const readJson = (p: string) => JSON.parse(fs.readFileSync(p, "utf8"));
@@ -14,15 +15,16 @@ const write = (page: string, html: string) => {
   fs.writeFileSync(path.join(dir, "index.html"), html);
 };
 
-/** Writes the pages and returns their paths (for the sitemap). */
+/** Writes the pages of the Bible and of the lexicon and returns their paths (for the sitemap). */
 export function writeBiblePages(books: SeoBook[], css: string) {
   const site: Site = { css, theme: APP.theme };
   const data = fromRoot("build/data");
-  const lexicon = new Set([
-    ...Object.keys(readJson(path.join(data, "lex/H.json"))),
-    ...Object.keys(readJson(path.join(data, "lex/G.json")))
-  ]);
+  const entries: Record<string, SeoEntry> = { ...readJson(path.join(data, "lex/H.json")), ...readJson(path.join(data, "lex/G.json")) };
+  const lexicon = new Set(Object.keys(entries));
   fs.rmSync(path.join(OUT, booksPath()), { recursive: true, force: true });
+  fs.rmSync(path.join(OUT, "lexico"), { recursive: true, force: true });
+  // the first verses of each entry, in the order of the Bible
+  const refs = new Map<string, SeoRef[]>();
   const pages = [booksPath()];
   write(booksPath(), booksPage(books, site));
   for (const b of books) {
@@ -32,9 +34,18 @@ export function writeBiblePages(books: SeoBook[], css: string) {
       const f = path.join(data, "cap", b.code, `${c.n}.json`);
       if (!fs.existsSync(f)) continue; // preview build
       const verses: SeoVerse[] = readJson(f).v;
+      for (const v of verses)
+        for (const w of v.w) {
+          const list = refs.get(w[1]) || refs.set(w[1], []).get(w[1])!;
+          if (list.length < MAX_REFS && v.n > 0) list.push({ book: b.name, chapter: c.n, verse: v.n, gloss: w[2] });
+        }
       write(chapterPath(b.name, c.n), chapterPage(b, c.n, verses, lexicon, site));
       pages.push(chapterPath(b.name, c.n));
     }
+  }
+  for (const [key, entry] of Object.entries(entries)) {
+    write(entryPath(key), entryPage(key, entry, refs.get(key) || [], site));
+    pages.push(entryPath(key));
   }
   return pages;
 }

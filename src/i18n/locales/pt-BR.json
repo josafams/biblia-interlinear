@@ -1225,6 +1225,24 @@
     "chapter_nav": "Capítulo anterior e próximo",
     "all_chapters": "Todos os capítulos de {book}",
     "credit": "Texto em português: Bíblia Livre (BLIVRE). Texto original e léxico: fontes abertas listadas na página inicial.",
-    "chapter_one": "cap. {n}"
+    "chapter_one": "cap. {n}",
+    "lexicon_greek": "Léxico grego",
+    "lexicon_hebrew": "Léxico hebraico e aramaico",
+    "transliteration": "Transliteração",
+    "pronunciation": "Pronúncia",
+    "meaning": "Significado",
+    "origin": "Origem",
+    "translated_as": "Na Bíblia Livre",
+    "occurrences": "Ocorrências",
+    "where": {
+      "one": "Onde aparece ({count} vez)",
+      "other": "Onde aparece ({count} vezes)"
+    },
+    "more_refs": {
+      "one": "E mais {count} ocorrência no leitor interlinear.",
+      "other": "E mais {count} ocorrências no leitor interlinear."
+    },
+    "entry_title": "{word}, {key}: significado e ocorrências · Bíblia Interlinear",
+    "entry_description": "{word}, {key} de Strong: {meaning}"
   }
 }
