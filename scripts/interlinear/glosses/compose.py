@@ -53,15 +53,92 @@ def match_case(tok, propers):
     return tok
 
 
+def root_links(item_list, links):
+    """How often each root is linked to each Portuguese word in the whole testament (lowercase)."""
+    tc = defaultdict(Counter)
+    for (_k, _wds, _t, toks, unit), lk in zip(item_list, links, strict=False):
+        for i, j in lk:
+            if unit[i][1] == "raiz":
+                tc[unit[i][2]][toks[j][0].lower()] += 1
+    return tc, {root: sum(c.values()) for root, c in tc.items()}
+
+
+def usual(tc, totals, root, tok):
+    """Share of the links of this root that go to this Portuguese word, without counting this occurrence."""
+    total = totals.get(root, 0) - 1
+    return (tc[root][tok] - 1) / total if total > 0 else 0.0
+
+
+CLAIMED, ALIEN, MIN_SEEN = 0.2, 0.05, 3
+VERB_PT = re.compile(r"(ndo|[aeiou]r|[aei]u|ou|[aeo]ram|am|em|va|vam|ia|iam|ado|ada|ido|ida)$")
+
+
+def settle_contested(lk, unit, toks, tc, totals):
+    """A Portuguese word linked to the roots of two different words ("vez" to πάλιν and to ἐμβριμώμενος in
+    Jo 11:38): when one of them usually translates to it and the other almost never does, it stays only with the
+    first. Returns the links and the words that lost every link of their root."""
+    roots = defaultdict(dict)  # j → {word index: root token}
+    for i, j in lk:
+        wi, kind, tok = unit[i]
+        if kind == "raiz":
+            roots[j][wi] = tok
+    drop = set()
+    for j, ws in roots.items():
+        if len(ws) < 2:
+            continue
+        t = toks[j][0].lower()
+        share = {wi: usual(tc, totals, root, t) for wi, root in ws.items()}
+        if max(share.values()) >= CLAIMED:
+            # a root seen too few times elsewhere (hapax) says nothing about its translations: it keeps the word
+            drop |= {(wi, j) for wi, s in share.items() if s < ALIEN and totals.get(ws[wi], 0) > MIN_SEEN}
+    if not drop:
+        return lk, set()
+    kept = {(i, j) for i, j in lk if (unit[i][0], j) not in drop}
+    had = {unit[i][0] for i, _ in lk if unit[i][1] == "raiz"}
+    still = {unit[i][0] for i, _ in kept if unit[i][1] == "raiz"}
+    return kept, had - still
+
+
+def rescue(lk, lost, wds, unit, toks, verse_text, tc):
+    """A content word that lost its links (settle_contested) takes a Portuguese word nobody took, when it is a
+    translation seen for its root elsewhere (or shares its first 5 letters with one) or, for a verb, when it is the
+    only free verb-like word near its place in the verse. A clitic joined by a hyphen comes along (Comovendo-se)."""
+    taken = {j for _, j in lk}
+    free = [j for j in range(len(toks)) if j not in taken and toks[j][0].lower() not in STOP_PT]
+    for wi in sorted(lost):
+        r = wds[wi]
+        pos = root_pos(r.language, r.morph)
+        root_ui = next((ui for ui, (w, kind, _t) in enumerate(unit) if w == wi and kind == "raiz"), None)
+        if pos not in ("V", "N", "A") or root_ui is None:
+            continue
+        seen = [s for s in tc[unit[root_ui][2]] if len(s) >= 5]
+        place = wi / max(1, len(wds))
+        near = [j for j in free if abs(j / max(1, len(toks)) - place) <= 0.25]
+        known = [
+            j for j in free if any(toks[j][0].lower() == s or (len(toks[j][0]) >= 5 and toks[j][0][:5].lower() == s[:5]) for s in seen)
+        ]
+        verbs = [j for j in near if VERB_PT.search(toks[j][0].lower())] if pos == "V" else []
+        pick = min(known, key=lambda j: abs(j / max(1, len(toks)) - place)) if known else (verbs[0] if len(verbs) == 1 else None)
+        if pick is None:
+            continue
+        lk = lk | {(root_ui, pick)}
+        free.remove(pick)
+        nxt = pick + 1
+        if nxt < len(toks) and nxt not in taken and verse_text[toks[pick][2] : toks[nxt][1]] == "-":
+            lk = lk | {(root_ui, nxt)}
+    return lk
+
+
 def compose(item_list, links):
     """First pass: the Bíblia Livre words aligned with each word. Returns the glosses, the translations seen per
     root and, per word id, the [(start, end), ...] characters of the Bíblia Livre linked to it (the alignment
     table, which the app uses to link a word with the Portuguese)."""
     propers = proper_names(item_list)
+    tc, totals = root_links(item_list, links)
     res = []
     spans = {}
     counts = defaultdict(Counter)  # token de raiz → traduções observadas
-    for (_k, wds, _verse_text, toks, unit), lk in zip(item_list, links, strict=False):
+    for (_k, wds, verse_text, toks, unit), lk in zip(item_list, links, strict=False):
         # palavra portuguesa ligada a duas ocorrências da mesma raiz (δόξαν… δόξαν):
         # fica com a ocorrência de posição relativa mais próxima
         owners = defaultdict(list)
@@ -75,6 +152,9 @@ def compose(item_list, links):
                 for i in iis:
                     if unit[i][0] != best_match:
                         lk.discard((i, j))
+        lk, lost = settle_contested(lk, unit, toks, tc, totals)
+        if lost:
+            lk = rescue(lk, lost, wds, unit, toks, verse_text, tc)
         by_unit = defaultdict(set)
         aligned_t = defaultdict(set)
         for i, j in lk:
