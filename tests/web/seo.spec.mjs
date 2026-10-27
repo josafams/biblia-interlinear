@@ -50,3 +50,21 @@ test("o leitor sem JavaScript mostra o caminho para as páginas simples", async 
   await page.goto("ler.html");
   await expect(page.locator('noscript a[href="biblia/"]')).toBeAttached();
 });
+
+test("verbete: a palavra, o significado e os versículos onde aparece, cada um levando ao capítulo", async ({ page }) => {
+  await page.goto("lexico/G26/");
+  await expect(page.locator("h1")).toHaveText("ἀγάπη");
+  await expect(page).toHaveTitle(/ἀγάπη \(agápē\), G26/);
+  await expect(page.locator(".entry dl")).toContainText("amor");
+  await expect(page.locator(".refs li")).toHaveCount(30);
+  expect((await jsonLd(page)).map(o => o["@type"])).toEqual(["DefinedTerm", "BreadcrumbList"]);
+  const first = page.locator(".refs a").first();
+  await expect(first).toHaveAttribute("href", /^\.\.\/\.\.\/biblia\/mateus\/24\/#v12$/);
+  await first.click();
+  await expect(page.locator("#v12")).toBeVisible();
+});
+
+test("verbete hebraico: da direita para a esquerda", async ({ page }) => {
+  await page.goto("lexico/H7225/");
+  await expect(page.locator("h1 span")).toHaveAttribute("dir", "rtl");
+});
