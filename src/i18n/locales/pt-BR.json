@@ -1196,6 +1196,35 @@
     "privacy_title": "Política de privacidade · Bíblia Interlinear",
     "privacy_description": "Como a Bíblia Interlinear trata seus dados: não há servidor nem cadastro; as anotações ficam no aparelho e, se você quiser, na sua conta do Google Drive.",
     "share_line1": "Hebraico, aramaico e grego palavra por palavra",
-    "share_line2": "com a glosa em português e a Bíblia Livre"
+    "share_line2": "com a glosa em português e a Bíblia Livre",
+    "crumbs": "Onde você está",
+    "books": "Livros",
+    "reader": "Leitor",
+    "privacy": "Privacidade",
+    "sources": "Fontes e licenças",
+    "footer": "Bíblia Interlinear: projeto aberto, sem anúncios e sem cadastro.",
+    "bible": "Bíblia",
+    "open_reader": "Abrir no leitor interlinear",
+    "books_title": "Livros da Bíblia",
+    "books_page_title": "Livros da Bíblia em hebraico, aramaico e grego · Bíblia Interlinear",
+    "books_lede": "Os 66 livros, cada um com a introdução e os capítulos no original, palavra por palavra, com a glosa em português e o texto da Bíblia Livre.",
+    "books_description": "Os 66 livros da Bíblia no hebraico, aramaico e grego originais, palavra por palavra, com glosa em português, introdução de cada livro e a Bíblia Livre.",
+    "chapters_count": {
+      "one": "{count} capítulo",
+      "other": "{count} capítulos"
+    },
+    "hebrew": "hebraico",
+    "greek": "grego",
+    "book_title": "{book}: introdução e capítulos no {lang} · Bíblia Interlinear",
+    "book_description": "{book} no {lang} original, capítulo por capítulo, com a glosa em português palavra por palavra e o texto da Bíblia Livre.",
+    "structure": "Estrutura",
+    "chapter_range": "cap. {from}–{to}",
+    "chapters": "Capítulos",
+    "key_verses": "Versículos-chave",
+    "chapter_title": "{chapter} interlinear: {lang} e português · Bíblia Interlinear",
+    "chapter_nav": "Capítulo anterior e próximo",
+    "all_chapters": "Todos os capítulos de {book}",
+    "credit": "Texto em português: Bíblia Livre (BLIVRE). Texto original e léxico: fontes abertas listadas na página inicial.",
+    "chapter_one": "cap. {n}"
   }
 }

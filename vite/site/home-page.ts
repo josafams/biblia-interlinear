@@ -4,12 +4,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { homeHead } from "../../src/seo/site-pages";
+import { homeBooks, homeHead } from "../../src/seo/site-pages";
 import { APP, OUT, fromRoot } from "./app";
 
 type Word = [string, string, string];
 type Verse = { n: number; w: Word[]; b?: string };
-export type Book = { code: string; chapters: { n: number }[] };
+export type Book = { code: string; name: string; group: string; chapters: { n: number }[] };
 type Lex = Record<string, { x?: string }>;
 
 const readJson = (p: string) => JSON.parse(fs.readFileSync(p, "utf8"));
@@ -76,6 +76,7 @@ export async function writeHomePage(books: Book[], home: { js: string; css: stri
   // the rest of web/home.html is the same everywhere: the site address and the bundle
   const values: Record<string, string> = {
     __SEO_HEAD__: homeHead(APP.desc),
+    __BOOKS_LIST__: homeBooks(books),
     __REPO__: APP.repo,
     __REPO_CURTO__: APP.repo.replace(/^https:\/\//, ""),
     __LIVROS__: `${APP.repo}/releases/download/livros`,
