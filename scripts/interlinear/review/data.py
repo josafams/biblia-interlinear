@@ -29,6 +29,11 @@ class Data:
                 "SELECT entry_key, language, lemma, xlit, pron_en, derivation_en, def_en, kjv_en, gloss_en, def_pt FROM lexicon"
             )
         }
+        # the characters of the Bíblia Livre each word is linked to (alignment table of make_glosses.py)
+        self.spans = {}
+        for wid, sp in db.execute("SELECT word_id, spans FROM alignment"):
+            n = [int(x) for x in sp.split(",")]
+            self.spans[wid] = set(zip(n[::2], n[1::2], strict=False))
         self.transl = defaultdict(Counter)
         for ch, t, n in db.execute("SELECT entry_key, translation, n FROM translations"):
             self.transl[ch][t] += n

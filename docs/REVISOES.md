@@ -38,6 +38,7 @@ Gravidade: **E** erro · **A** aviso
 | COB-05 | Seções cobrem todos os versículos, sem sobreposição e sem buracos | C | R | E | seções |
 | COB-06 | Todo capítulo tem tema; todo livro tem introdução | L | R | A | temas / intros |
 | COB-07 | Nenhum texto em inglês esquecido (detector de idioma / lista de palavras) | P | R | A | léxico / glosas |
+| COB-08 | Verbo, nome ou adjetivo não fica só com o português de outra palavra do versículo | P | R | A | alinhamento |
 
 ## D. Gramática × glosa — hebraico
 
@@ -265,6 +266,7 @@ As regras ficam em `scripts/interlinear/review/checks/`, um módulo por grupo de
 | COB-03 | Verbete usado sem origem, significado ou traduções KJV | aviso |
 | COB-04 | Verbete hebraico sem pronúncia | aviso |
 | COB-07 | Palavra inglesa na glosa | aviso |
+| COB-08 | Verbo, nome ou adjetivo cujo trecho da BLIVRE está todo dentro da glosa de outra palavra do versículo (o alinhamento deu a ele a palavra da vizinha; nomes próprios não contam) | aviso |
 | GRA-01 | Conjunção ו sem conjunção na glosa | info |
 | GRA-02 | Artigo ה sem artigo/determinante na glosa (exceto particípios e nomes) | info |
 | GRA-03 | Preposições prefixadas ב ל מ (info) e כ (aviso) sem equivalente; infinitivos não contam | info / aviso |
