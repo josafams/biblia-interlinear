@@ -345,3 +345,59 @@ test("o toque longo na Bíblia Livre deixa o aparelho selecionar (não abre o ve
   await page.waitForTimeout(700);
   await expect(bar(page)).toBeHidden();
 });
+
+// ---- selections that cross verses or cover an existing highlight
+// selects from the text `from` in verse v1 to the end of `to` in verse v2, by position in the Bíblia Livre text
+// (a highlight already there splits that text in several pieces of the page)
+async function selectAcross(page, [v1, from], [v2, to]) {
+  await page.evaluate(
+    ([a, fromText, b, toText]) => {
+      const point = (v, txt, atEnd) => {
+        const bl = document.querySelector(`#v${v} .blivre`);
+        const nodes = [];
+        const walk = document.createTreeWalker(bl, NodeFilter.SHOW_TEXT);
+        for (let n = walk.nextNode(); n; n = walk.nextNode()) if (!n.parentElement.closest(".tag")) nodes.push(n);
+        const text = nodes.map(n => n.textContent).join("");
+        let off = text.indexOf(txt) + (atEnd ? txt.length : 0);
+        for (const n of nodes) {
+          if (off <= n.textContent.length) return [n, off];
+          off -= n.textContent.length;
+        }
+      };
+      const r = document.createRange();
+      r.setStart(...point(a, fromText, false));
+      r.setEnd(...point(b, toText, true));
+      getSelection().removeAllRanges();
+      getSelection().addRange(r);
+    },
+    [v1, from, v2, to]
+  );
+}
+
+test("uma seleção que pega dois versículos marca o pedaço de cada um", async ({ page }) => {
+  await open(page);
+  await selectAcross(page, [1, "a terra"], [2, "E a terra"]);
+  await expect(bar(page)).toBeVisible();
+  await expect(page.locator("#mb-ref")).toHaveText("Gênesis 1:1–2");
+  await page.click('#mbar .mb-color[data-cor="azul"]');
+  await expect(page.locator("#v1 mark.mk-azul")).toHaveText("a terra.");
+  await expect(page.locator("#v2 mark.mk-azul")).toHaveText("E a terra");
+  await page.reload();
+  await expect(page.locator("#v1 mark.mk-azul")).toHaveText("a terra.");
+  await expect(page.locator("#v2 mark.mk-azul")).toHaveText("E a terra");
+});
+
+test("marcar um trecho que pega parte de uma marcação existente: as duas aparecem, a nova por cima", async ({ page }) => {
+  await open(page);
+  await selectBlivre(page, 3, "Haja luz");
+  await page.click('#mbar .mb-color[data-cor="amarelo"]');
+  await expect(page.locator("#v3 mark.mk-amarelo")).toHaveText("Haja luz");
+  await page.click("#mb-close");
+  await selectAcross(page, [3, "Deus: Haja"], [3, "Deus: Haja"]);
+  await expect(page.locator("#mb-snippet")).toContainText("Deus: Haja");
+  await page.click('#mbar .mb-color[data-cor="verde"]');
+  await expect(page.locator("#v3 mark.mk-verde")).toHaveText("Deus: Haja");
+  await expect(page.locator("#v3 mark.mk-amarelo")).toHaveText(" luz");
+  await page.reload();
+  await expect(page.locator("#v3 mark.mk-verde")).toHaveText("Deus: Haja");
+});

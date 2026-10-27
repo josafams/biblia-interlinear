@@ -13,7 +13,8 @@ export type VerseMarks = {
   bar: string;
   /** word index of the original → color */
   words: Record<number, string>;
-  /** highlighted snippets of the Bíblia Livre, in text order and not overlapping */
+  /** highlighted snippets of the Bíblia Livre, in text order and not overlapping (where two overlap, the one
+   * changed last is on top) */
   spans: Span[];
   notes: number;
   favorite: boolean;
@@ -46,6 +47,7 @@ export function chapterMarks(
 ) {
   const out: Record<number, VerseMarks> = {};
   const slot = (n: number) => (out[n] ??= empty());
+  const snippets: Record<number, Stacked[]> = {};
   for (const m of highlights) {
     const a = m.ancora;
     const text = textOf(a.ver);
@@ -68,10 +70,10 @@ export function chapterMarks(
         i = k;
         f = k + (a.trecho || "").length;
       }
-      s.spans.push({ i, f, color: m.cor });
+      (snippets[a.ver] ??= []).push({ i, f, color: m.cor, at: m.alterado_em || m.criado_em || "" });
     }
   }
-  for (const s of Object.values(out)) s.spans.sort((x, y) => x.i - y.i);
+  for (const [ver, list] of Object.entries(snippets)) slot(+ver).spans = flatten(list);
 
   const names = Object.fromEntries(tags.map(t => [t.id, t.nome]));
   const tagSets: Record<number, Set<string>> = {};
@@ -94,6 +96,24 @@ export function chapterMarks(
     s.firstNote = text.length > 90 ? text.slice(0, 88) + "…" : text;
   }
   for (const [ver, set] of Object.entries(tagSets)) slot(+ver).tags = [...set];
+  return out;
+}
+
+type Stacked = Span & { at: string };
+
+/** Snippets that may overlap (a new one over part of an older one) as pieces that do not: each stretch of text
+ * takes the color of the snippet changed last that covers it. */
+export function flatten(spans: Stacked[]): Span[] {
+  const cuts = [...new Set(spans.flatMap(s => [s.i, s.f]))].sort((x, y) => x - y);
+  const out: Span[] = [];
+  for (let k = 0; k + 1 < cuts.length; k++) {
+    const [i, f] = [cuts[k], cuts[k + 1]];
+    const top = spans.filter(s => s.i <= i && s.f >= f).reduce<Stacked | null>((best, s) => (!best || s.at >= best.at ? s : best), null);
+    if (!top) continue;
+    const last = out[out.length - 1];
+    if (last && last.f === i && last.color === top.color) last.f = f;
+    else out.push({ i, f, color: top.color });
+  }
   return out;
 }
 

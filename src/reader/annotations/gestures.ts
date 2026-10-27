@@ -4,7 +4,7 @@ import type { Anchor } from "../../lib/annotations/verse";
 import { annotate } from "../../state/annotate.svelte";
 import { A } from "./context";
 import { openVerseNotes } from "./note";
-import { openForVerse, selection } from "./panel";
+import { openForVerse, openForVerses } from "./panel";
 
 const LONG_PRESS_MS = 550;
 const VERSE = "#verses .verse", // i18n-ignore
@@ -28,6 +28,32 @@ function blivreAnchor(sec: HTMLElement): Partial<Anchor> | null {
     trecho = r.toString();
   if (start < 0 || !trecho.trim()) return null;
   return { inicio: start, fim: start + trecho.length, trecho };
+}
+
+// where a point of a range falls in the Bíblia Livre text of a verse (without its "BLIVRE" label)
+function offsetIn(bl: Element, node: Node, offset: number) {
+  const pre = document.createRange();
+  pre.selectNodeContents(bl);
+  pre.setEnd(node, offset);
+  return pre.toString().length - (bl.querySelector(".tag")?.textContent?.length || 0);
+}
+
+/** The selected Bíblia Livre, one snippet per verse: a selection may cross verses (the end of one, the start of
+ * the next, whole verses between them). */
+function blivreParts() {
+  const sel = window.getSelection();
+  if (!sel || sel.isCollapsed || !sel.rangeCount) return [];
+  const r = sel.getRangeAt(0);
+  const out: { sec: HTMLElement; extra: Partial<Anchor> }[] = [];
+  for (const bl of document.querySelectorAll(VERSE + " .blivre")) {
+    if (!r.intersectsNode(bl)) continue;
+    const text = (bl.textContent || "").slice(bl.querySelector(".tag")?.textContent?.length || 0);
+    const i = bl.contains(r.startContainer) ? Math.max(0, offsetIn(bl, r.startContainer, r.startOffset)) : 0;
+    const f = bl.contains(r.endContainer) ? Math.max(0, offsetIn(bl, r.endContainer, r.endOffset)) : text.length;
+    const trecho = text.slice(i, f);
+    if (trecho.trim()) out.push({ sec: bl.closest<HTMLElement>(".verse")!, extra: { inicio: i, fim: f, trecho } });
+  }
+  return out;
 }
 
 function openForWord(w: HTMLElement) {
@@ -118,20 +144,20 @@ export function initGestures() {
       openForVerse(sec, "versiculo", {});
     }
   });
-  // selecting text of the Bíblia Livre opens the panel once the selection stops; moving the handles updates it
-  let selTimer: ReturnType<typeof setTimeout> | undefined;
+  // selecting text of the Bíblia Livre (in one verse or across several) opens the panel once the selection stops;
+  // moving the handles updates it
+  let selTimer: ReturnType<typeof setTimeout> | undefined,
+    shown = "";
   document.addEventListener("selectionchange", () => {
     clearTimeout(selTimer);
     selTimer = setTimeout(() => {
-      const sel = window.getSelection();
-      if (!sel || sel.isCollapsed || !sel.rangeCount || !sel.anchorNode) return;
-      const node = sel.anchorNode;
-      const sec = verseOf(node.nodeType === 1 ? node : node.parentElement);
-      const s = sec && blivreAnchor(sec);
-      if (!sec || !s) return;
-      const a = selection?.ancora;
-      if (annotate.open && a?.camada === "blivre" && a.ver === +sec.id.slice(1) && a.inicio === s.inicio && a.fim === s.fim) return;
-      openForVerse(sec, "blivre", s);
+      const parts = blivreParts();
+      if (!parts.length) return;
+      const key = parts.map(p => `${p.sec.id}:${p.extra.inicio}-${p.extra.fim}`).join(",");
+      if (annotate.open && key === shown) return;
+      shown = key;
+      if (parts.length === 1) openForVerse(parts[0].sec, "blivre", parts[0].extra);
+      else openForVerses(parts);
     }, 500);
   });
 }
