@@ -1119,6 +1119,7 @@
     "COB-03": "verbete {entry} sem {value} (nem em inglês)",
     "COB-04": "verbete {entry} sem pronúncia",
     "COB-07": "palavra em inglês na glosa: '{gloss}'",
+    "COB-08": "'{gloss}' é parte da glosa de {other} ('{other_gloss}'): o alinhamento pode ter dado a esta palavra o português da vizinha",
     "CON-01": "'{gloss}' destoa da glosa usual '{majority}' ({n_majority}/{n}) desta forma no livro",
     "CON-02": "glosa rara '{gloss}' para {s} (usual: '{top}…', {ntop}/{n})",
     "CON-04_1": "glosa fora do estilo (espaço, pontuação, hífen solto): '{gloss}'",

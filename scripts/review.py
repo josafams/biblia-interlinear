@@ -20,7 +20,7 @@ from collections import Counter
 from interlinear.cli import parser
 from interlinear.paths import DB, ROOT
 from interlinear.review.checks.consistency import check_consistency, check_style
-from interlinear.review.checks.coverage import check_coverage, check_lexicon
+from interlinear.review.checks.coverage import check_coverage, check_lexicon, check_shared_alignment
 from interlinear.review.checks.crossings import check_bridges, check_greek_strong, check_parallels, check_support
 from interlinear.review.checks.grammar_he import check_grammar_h, check_numbers_and_divine_names
 from interlinear.review.checks.greek import check_greek
@@ -56,7 +56,7 @@ def main(argv):
         ("aramaico", lambda: check_aramaic(d, M, ws)),
         ("versificação", lambda: check_versification(d, M, scope_books)),
         ("deslocamento", lambda: check_offset(d, M, scope_books)),
-        ("cobertura/léxico", lambda: check_lexicon(d, M, check_coverage(d, M, ws))),
+        ("cobertura/léxico", lambda: (check_lexicon(d, M, check_coverage(d, M, ws)), check_shared_alignment(d, M, ws))),
         ("gramática hebraica", lambda: check_grammar_h(d, M, ws)),
         ("números e nomes divinos", lambda: check_numbers_and_divine_names(d, M, ws)),
         ("grego", lambda: (check_greek(d, M, ws), check_greek_strong(d, M, ws))),

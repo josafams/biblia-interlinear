@@ -1,7 +1,10 @@
 """C. Coverage of glosses and lexicon."""
 
 import re
+from collections import defaultdict
 
+from interlinear.glosses.adjust import proper_name
+from interlinear.glosses.portuguese import root_pos
 from interlinear.review.words import ENGLISH, toks
 
 
@@ -27,6 +30,24 @@ def check_coverage(d, M, ws):
         if en:
             M.w(w, "COB-07", "aviso", "COB-07", gloss=g)
     return used
+
+
+def check_shared_alignment(d, M, ws):
+    """COB-08: a verb, noun or adjective whose Portuguese is all part of the gloss of another word of the verse
+    ("vez" for ἐμβριμώμενος beside "outra-vez" for πάλιν): the alignment probably gave it the neighbor's word."""
+    by_verse = defaultdict(list)
+    for w in ws:
+        by_verse[(w.book, w.chapter, w.verse)].append(w)
+    for vws in by_verse.values():
+        for w in vws:
+            mine = d.spans.get(w.id)
+            if not mine or w.gloss_source != "alinhamento" or root_pos(w.language, w.morph) not in ("V", "N", "A"):
+                continue
+            if proper_name(w.language, w.morph or "", w.lemma or ""):
+                continue
+            others = [o for o in vws if o.id != w.id and d.spans.get(o.id, set()) >= mine and len(d.spans[o.id]) > len(mine)]
+            if others:
+                M.w(w, "COB-08", "aviso", "COB-08", gloss=w.gloss, other=others[0].text, other_gloss=others[0].gloss)
 
 
 def check_lexicon(d, M, used):
