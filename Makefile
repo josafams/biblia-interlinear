@@ -127,6 +127,8 @@ build: ## Gera tudo: dados, site, EPUB e PDF
 android-apk: ## (no contêiner android) Copia o site para o app e compila o APK e o AAB
 	[ -f build/web/index.html ] || $(MAKE) data
 	npx cap sync android
+	# as páginas estáticas para a busca (biblia/, lexico/, sitemaps) são só do site
+	cd android/app/src/main/assets/public && rm -rf biblia lexico sitemap*.xml robots.txt
 	cd android && ./gradlew --no-daemon assembleDebug bundleRelease
 	@echo "APK: android/app/build/outputs/apk/debug/  ·  AAB: android/app/build/outputs/bundle/release/"
 endif

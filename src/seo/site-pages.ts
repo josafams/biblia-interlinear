@@ -2,7 +2,7 @@
 // Graph and structured data, from the locale.
 import { t } from "../i18n";
 import { escapeHtml, headTags, website } from "./head";
-import { booksPath } from "./paths";
+import { bookPath, booksPath } from "./paths";
 
 const name = () => t("app.name");
 
@@ -21,3 +21,17 @@ export const privacyHead = () =>
 
 /** The two lines under the name on the share image (vite/site/share-image.ts). */
 export const shareLines = () => [t("seo.share_line1"), t("seo.share_line2")];
+
+/** The books on the home page, by group, each one a link to its page (biblia/<book>/). */
+export function homeBooks(books: { name: string; group: string }[]) {
+  const groups = [...new Set(books.map(b => b.group))];
+  return `<div class="bible-books">${groups
+    .map(
+      g =>
+        `<div><h3>${escapeHtml(g)}</h3><p>${books
+          .filter(b => b.group === g)
+          .map(b => `<a href="${bookPath(b.name)}">${escapeHtml(b.name)}</a>`)
+          .join(" · ")}</p></div>`
+    )
+    .join("")}</div><p><a class="btn ghost" href="${booksPath()}">${escapeHtml(t("seo.books_title"))}</a></p>`;
+}

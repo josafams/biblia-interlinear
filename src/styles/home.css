@@ -634,3 +634,26 @@ footer nav {
   flex-wrap: wrap;
   gap: 8px 18px;
 }
+
+/* livros: links to the static pages of each book (biblia/<book>/) */
+.bible-books {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 4px 28px;
+  margin: 20px 0;
+}
+.bible-books h3 {
+  font: 500 13px var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 12px 0 4px;
+}
+.bible-books p {
+  margin: 0;
+  line-height: 1.9;
+}
+.bible-books a {
+  color: var(--fg);
+  white-space: nowrap;
+}
