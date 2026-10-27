@@ -87,10 +87,21 @@ entre crases. Para mudar um deles no app, mude o token (as regras de `src/styles
 
 ### Folha Anotar (versículo)
 
-- Abre pelo número ou pelo ⋯; o versículo sobe para o topo e fica visível acima da folha.
-- Cabeçalho: “João 3:16” Literata 700 19px; trecho entre aspas Literata 13px apagado (2 linhas); ✕ 44px.
+- Abre pelo número (nos modos com o original à vista), pelo ⋯, pelo toque longo ou ao selecionar um trecho da
+  BLIVRE; o versículo vai para o espaço entre a barra de cima e a folha (se não couber, fica o começo dele).
+- Dois tamanhos, com alça de 40×5px para arrastar ou tocar:
+  - **compacta** (abre assim): cabeçalho, cores e uma fileira de ações; sem fundo escurecido, a leitura continua
+    e tocar em outro versículo troca o alvo;
+  - **expandida** (por “Nota”, “Mais”, pela alça ou ao responder uma pergunta): soma Copiar e Interlinear numa
+    segunda fileira, NOTA, ETIQUETAS, revisão, “Apagar tudo” e “Pronto”; fundo escurecido, que volta à compacta.
+- Com o teclado aberto, a folha fica em cima dele, e o campo em foco e “Pronto” continuam à vista.
+- Cabeçalho: “João 3:16” Literata 700 19px; trecho entre aspas Literata 13px apagado (2 linhas na expandida, 1 na
+  compacta); ✕ 44px.
 - Cores: 5 círculos de 48px + “Tirar a cor” 48px com borda; escolhida: borda 3px na cor do texto.
-- Ações: grade de 4 blocos (Favoritar ☆ · Ouvir · Copiar · Interlinear αβ), 56px de altura, raio 12px, borda linha, 12px; ☆ 18px cor quente.
+- Ações: grade de 5 blocos (Favoritar ☆ · Nota · Ouvir · Compartilhar · Mais/Menos), 56px de altura, raio 12px,
+  borda linha, 12px; ☆ 18px cor quente; na expandida, Copiar e Interlinear αβ na fileira de baixo. No
+  computador não há “Nota” nem “Mais”: o painel já mostra tudo.
+- A nota em tela cheia também é folha de baixo no celular.
 - NOTA (rótulo Plex Mono 11px; “Salvo” 12px destaque à direita); campo Literata 16px / 1,5, fundo `#eceeea`, borda linha, raio 12px, padding 10px 12px, 4 linhas.
 - ETIQUETAS: etiquetas do versículo cheias (destaque) com “×”; campo “+ Adicionar etiqueta” 44px, borda tracejada, raio 999px; “Sugestões para começar” 12px apagado; sugestões `#nome` 36px, raio 999px, borda linha, 14px.
 - “Apagar tudo deste versículo” 14px quente sublinhado (só com algo salvo).

@@ -1,6 +1,6 @@
 // Anotações no aparelho: marcações com cores, notas, favoritos, etiquetas e "Minhas anotações".
 import { test, expect } from "@playwright/test";
-import { openReader } from "./helpers.mjs";
+import { expandAnnotate, openReader } from "./helpers.mjs";
 
 const open = (page, ref = "GEN.1") => openReader(page, ref);
 const bar = page => page.locator("#mbar");
@@ -22,6 +22,7 @@ test("marcar um versículo com cor fica guardado", async ({ page }) => {
 test("nota: criar, reabrir pelo ícone, editar, achar na lista e apagar", async ({ page }) => {
   await open(page);
   await page.click("#v2 .vmark");
+  await expandAnnotate(page);
   await page.click('#mbar [data-action="nota"]');
   await expect(page.locator("#nota")).toBeVisible();
   await page.fill("#note-text", "tôhû wâbôhû: rima no hebraico");
@@ -100,6 +101,7 @@ test("toque longo numa palavra do original marca só ela", async ({ page, isMobi
 
 async function etiquetar(page, verso, nome) {
   await page.click(`#v${verso} .vmark`);
+  await expandAnnotate(page);
   await page.fill("#mb-tag-name", nome);
   await page.click("#mb-new-tag");
   await expect(page.locator('#mb-tags .chip[aria-pressed="true"]').filter({ hasText: nome })).toBeVisible();
@@ -154,6 +156,7 @@ test("gerenciar etiquetas: renomear, juntar e apagar", async ({ page }) => {
 test("nota rápida no painel aparece sob o versículo e abre em tela cheia", async ({ page }) => {
   await open(page, "PSA.23");
   await page.click("#v1 .vmark");
+  await expandAnnotate(page);
   await page.fill("#mb-note", "O Senhor cuida como pastor");
   await expect(page.locator("#mb-note-status")).toHaveText("Salva.");
   await page.click("#mb-close");
@@ -163,6 +166,7 @@ test("nota rápida no painel aparece sob o versículo e abre em tela cheia", asy
   await expect(page.locator("#note-text")).toHaveValue("O Senhor cuida como pastor");
   await page.keyboard.press("Escape");
   await page.click("#v1 .vmark");
+  await expandAnnotate(page);
   await expect(page.locator("#mb-note")).toHaveValue("O Senhor cuida como pastor");
   await page.click('#mbar [data-action="nota"]');
   await expect(page.locator("#note-text")).toHaveValue("O Senhor cuida como pastor");
@@ -196,6 +200,7 @@ test("no modo Bíblia, a barra abre o interlinear do versículo", async ({ page 
   await open(page);
   await page.click('#welcome button[data-modo="biblia"]');
   await page.evaluate(() => document.querySelector("#v4 .vmark").click());
+  await expandAnnotate(page);
   await expect(page.locator('#mbar [data-action="camadas"]')).toBeVisible();
   await page.click('#mbar [data-action="camadas"]');
   await expect(page.locator('.word[data-v="3"][data-i="0"]')).toBeVisible();
@@ -213,4 +218,130 @@ test("compartilhar sem a folha do sistema copia o texto e o link da página aber
   const copied = await page.evaluate(() => navigator.clipboard.readText());
   expect(copied).toContain("(Lucas 3:12, Bíblia Livre)");
   expect(copied).toContain(`${new URL("ler.html", baseURL).href}#LUK.3.12`);
+});
+
+// ---- the sheet on phones: compact first, the verse above it, "Nota" and the keyboard
+const phoneOnly = isMobile => test.skip(!isMobile, "a folha em dois tamanhos é do celular");
+const box = (page, sel) => page.locator(sel).evaluate(el => el.getBoundingClientRect().toJSON());
+
+test("no celular a folha abre compacta e o versículo fica inteiro acima dela", async ({ page, isMobile }) => {
+  phoneOnly(isMobile);
+  await open(page, "JHN.3");
+  await page.click("#v16 .vmark");
+  await expect(bar(page)).toBeVisible();
+  await expect(page.locator("#mb-note")).toBeHidden();
+  await expect(page.locator('#mbar [data-action="copiar"]')).toBeHidden();
+  const sheet = await box(page, "#mbar");
+  expect(sheet.height).toBeLessThan(330);
+  await expect(async () => {
+    const v = await box(page, "#v16"),
+      top = await box(page, ".bar");
+    expect(v.top).toBeGreaterThanOrEqual(top.bottom - 1);
+    // a verse taller than the room shows its beginning
+    if (v.height < sheet.top - top.bottom - 24) expect(v.bottom).toBeLessThanOrEqual(sheet.top + 1);
+    else expect(v.top).toBeLessThan(top.bottom + 40);
+  }).toPass();
+  // a cor salva sem fechar; outro versículo troca o alvo
+  await page.click('#mbar .mb-color[data-cor="azul"]');
+  await expect(bar(page)).toBeVisible();
+  await page.click("#v17 .vmark");
+  await expect(page.locator("#mb-ref")).toHaveText("João 3:17");
+  await expect(page.locator("#v16.editando")).toHaveCount(0);
+});
+
+test("Nota expande a folha e põe o cursor no campo; Menos volta à compacta", async ({ page, isMobile }) => {
+  phoneOnly(isMobile);
+  await open(page, "JHN.3");
+  await page.click("#v16 .vmark");
+  await page.click('#mbar [data-action="escrever"]');
+  await expect(page.locator("#mb-note")).toBeFocused();
+  await expect(page.locator('#mbar [data-action="copiar"]')).toBeVisible();
+  await expect(page.locator("#mb-done")).toBeVisible();
+  await page.click('#mbar [data-action="mais"]');
+  await expect(page.locator("#mb-note")).toBeHidden();
+});
+
+test("com o teclado aberto a folha sobe e o campo e o Pronto continuam à vista", async ({ page, isMobile }) => {
+  phoneOnly(isMobile);
+  await open(page, "JHN.3");
+  await page.click("#v16 .vmark");
+  await page.click('#mbar [data-action="escrever"]');
+  // the keyboard as Safari on iOS reports it: only the visual viewport shrinks
+  await page.evaluate(() => {
+    const kb = 320,
+      vv = window.visualViewport;
+    Object.defineProperty(vv, "height", { configurable: true, get: () => window.innerHeight - kb });
+    vv.dispatchEvent(new Event("resize"));
+  });
+  const limit = (await page.evaluate(() => window.innerHeight)) - 320;
+  await expect(async () => {
+    expect((await box(page, "#mbar")).bottom).toBeLessThanOrEqual(limit + 1);
+    expect((await box(page, "#mb-done")).bottom).toBeLessThanOrEqual(limit + 1);
+    expect((await box(page, "#mb-note")).top).toBeGreaterThan(0);
+  }).toPass();
+});
+
+test("tocar no número do versículo abre Anotar (no modo Interlinear)", async ({ page }) => {
+  await open(page, "JHN.3");
+  await page.click("#v16 .vnum");
+  await expect(bar(page)).toBeVisible();
+  await expect(page.locator("#mb-ref")).toHaveText("João 3:16");
+});
+
+test("no celular o aviso aparece acima da folha", async ({ page, isMobile }) => {
+  phoneOnly(isMobile);
+  await open(page, "JHN.3");
+  await page.click("#v16 .vmark");
+  // any message while the sheet is open (e.g. "Link do versículo copiado")
+  await page.evaluate(() => {
+    const t = document.getElementById("toast");
+    t.textContent = "aviso";
+    t.hidden = false;
+  });
+  await expect(page.locator("#toast")).toBeVisible();
+  expect((await box(page, "#toast")).bottom).toBeLessThanOrEqual((await box(page, "#mbar")).top);
+});
+
+// ---- selecting the Bíblia Livre: the long press selects; Anotar opens once the selection stops
+async function selectBlivre(page, verse, text) {
+  await page.evaluate(
+    ([v, txt]) => {
+      const bl = document.querySelector(`#v${v} .blivre`);
+      const walk = document.createTreeWalker(bl, NodeFilter.SHOW_TEXT);
+      for (let n = walk.nextNode(); n; n = walk.nextNode()) {
+        const i = n.textContent.indexOf(txt);
+        if (i < 0) continue;
+        const r = document.createRange();
+        r.setStart(n, i);
+        r.setEnd(n, i + txt.length);
+        getSelection().removeAllRanges();
+        getSelection().addRange(r);
+        return;
+      }
+    },
+    [verse, text]
+  );
+}
+
+test("selecionar um trecho da Bíblia Livre abre Anotar com ele; mudar a seleção atualiza o trecho", async ({ page, isMobile }) => {
+  await open(page, "JHN.3");
+  await selectBlivre(page, 16, "Deus amou");
+  await expect(bar(page)).toBeVisible();
+  await expect(page.locator("#mb-snippet")).toContainText("Deus amou");
+  if (isMobile) await expect(page.locator("#mb-note")).toBeHidden(); // compacta
+  await selectBlivre(page, 16, "Deus amou ao mundo");
+  await expect(page.locator("#mb-snippet")).toContainText("Deus amou ao mundo");
+});
+
+test("o toque longo na Bíblia Livre deixa o aparelho selecionar (não abre o versículo inteiro nem cancela)", async ({ page }) => {
+  await open(page, "JHN.3");
+  const bl = page.locator("#v16 .blivre");
+  const notCancelled = await bl.evaluate(el => el.dispatchEvent(new MouseEvent("contextmenu", { bubbles: true, cancelable: true })));
+  expect(notCancelled).toBe(true);
+  await page.waitForTimeout(700);
+  await expect(bar(page)).toBeHidden();
+  // um toque simples numa palavra da BLIVRE só acende o original
+  await bl.click({ position: { x: 60, y: 10 } });
+  await page.waitForTimeout(700);
+  await expect(bar(page)).toBeHidden();
 });

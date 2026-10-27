@@ -76,7 +76,19 @@ test("annotate panel", async ({ page }) => {
   await toVerse(page, 16);
   await page.click("#v16 .vmark");
   await expect(page.locator("#mbar")).toBeVisible();
+  await page.waitForTimeout(600); // the verse scrolls to the room above the sheet
   await shot(page, "annotate");
+});
+
+test("annotate panel, full (phone)", async ({ page, isMobile }) => {
+  test.skip(!isMobile, "the full sheet is the phone's; on computers the panel always has everything");
+  await openReader(page, "JHN.3.16");
+  await toVerse(page, 16);
+  await page.click("#v16 .vmark");
+  await page.click('#mbar [data-action="mais"]');
+  await expect(page.locator("#mb-note")).toBeVisible();
+  await page.waitForTimeout(600);
+  await shot(page, "annotate-full");
 });
 
 test("lexicon entry (verbete)", async ({ page }) => {

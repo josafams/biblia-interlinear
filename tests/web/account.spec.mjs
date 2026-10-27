@@ -1,6 +1,6 @@
 // Login Google (opcional) e acesso à pasta do app no Drive — com o Google simulado (nada sai para a internet).
 import { test, expect } from "@playwright/test";
-import { openReader, openIndexTab } from "./helpers.mjs";
+import { expandAnnotate, openReader, openIndexTab } from "./helpers.mjs";
 import { simularGoogle } from "./fake-google.mjs";
 
 // o service worker serviria o google-config.js real do cache, passando por cima da simulação
@@ -134,6 +134,7 @@ test("a sugestão do Drive sai da frente quando o painel de anotar abre e volta 
   });
   await expect(page.locator("#account-suggestion")).toBeVisible();
   await page.click("#v2 .vmark");
+  await expandAnnotate(page);
   await expect(page.locator("#account-suggestion")).toBeHidden();
   await page.fill("#mb-tag-name", "criação");
   await page.click("#mb-new-tag");

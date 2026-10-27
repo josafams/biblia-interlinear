@@ -6,6 +6,8 @@ export const COLOR_IDS = ["amarelo", "verde", "azul", "rosa", "laranja"] as cons
 
 export const annotate = $state({
   open: false,
+  /** on phones: "compact" (colors and actions) or "full" (also the note, tags, review and clear) */
+  size: "compact" as "compact" | "full",
   /** "João 3:16" */
   ref: "",
   /** the quoted text, or the question being answered */
@@ -25,3 +27,6 @@ export const annotate = $state({
   noteStatus: "",
   tags: { mine: [] as Tag[], rest: [] as Tag[], any: false }
 });
+
+/** What the buttons of Anotar ask for (data-action, kept in Portuguese for tests and videos). */
+export type AnnotateAction = "fav" | "ouvir" | "copiar" | "compartilhar" | "camadas" | "nota" | "limpar" | "escrever" | "mais";

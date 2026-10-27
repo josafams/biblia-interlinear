@@ -113,7 +113,7 @@ body.blivre-par.hide-orig .chnav {
   margin-top: 28px;
 }
 body.com-mbar #page {
-  padding-bottom: 220px;
+  padding-bottom: calc(var(--mbar-h, 220px) + 24px);
 }
 .kbd {
   display: none;

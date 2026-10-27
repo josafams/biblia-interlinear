@@ -58,3 +58,10 @@ export async function signIn(page, { timeout = 20000 } = {}) {
   await expect(page.locator("#account-sync")).toContainText("Sincronizado", { timeout });
   await page.keyboard.press("Escape");
 }
+
+/** Anotar opens compact on phones: "Mais" shows the note, the tags and the rest (on computers they are always there). */
+export async function expandAnnotate(page) {
+  await expect(page.locator("#mbar")).toBeVisible();
+  const more = page.locator('#mbar [data-action="mais"]');
+  if ((await more.isVisible()) && (await more.getAttribute("aria-expanded")) !== "true") await more.click();
+}

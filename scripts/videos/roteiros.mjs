@@ -27,6 +27,14 @@ const abrirMinhas = async t => {
   await t.tocar('#toc .toc-tabs a[href="#toc-notas"]');
 };
 const fecharPainel = t => t.onKey("Escape");
+// no celular a folha Anotar abre compacta: "Nota" e "Mais" mostram a nota e as etiquetas (no computador já estão lá)
+const abrirNota = async t => {
+  if (await t.page.locator('#mbar [data-action="escrever"]').isVisible()) await t.tocar('#mbar [data-action="escrever"]');
+};
+const abrirMais = async t => {
+  const b = t.page.locator('#mbar [data-action="mais"]');
+  if ((await b.isVisible()) && (await b.getAttribute("aria-expanded")) !== "true") await t.tocar('#mbar [data-action="mais"]');
+};
 // anotações de exemplo para os vídeos que mostram a lista, o PDF e o backup
 const dadosDeExemplo = async page => {
   await page.evaluate(async () => {
@@ -536,7 +544,13 @@ export const videos = [
     desc: "Ligada ao versículo; salva sozinha.",
     inicio: "GEN.1",
     steps: [
-      { legenda: "Toque em ⋯ no versículo.", faz: t => t.tocar("#v2 .vmark") },
+      {
+        legenda: "Toque em ⋯ no versículo e em Nota.",
+        faz: async t => {
+          await t.tocar("#v2 .vmark");
+          await abrirNota(t);
+        }
+      },
       {
         legenda: "Escreva na nota: ela salva sozinha enquanto você digita.",
         faz: t => t.digitar("#mb-note", "Sem forma e vazia: tôhû wâbôhû rima no hebraico.")
@@ -573,8 +587,9 @@ export const videos = [
         }
       },
       {
-        legenda: "Nas etiquetas, crie uma nova: promessas.",
+        legenda: "Em Mais, nas etiquetas, crie uma nova: promessas.",
         faz: async t => {
+          await abrirMais(t);
           await t.digitar("#mb-tag-name", "promessas");
           await t.tocar("#mb-new-tag");
         }
