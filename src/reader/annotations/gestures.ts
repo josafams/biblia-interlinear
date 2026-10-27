@@ -39,6 +39,9 @@ function openForWord(w: HTMLElement) {
 export function initGestures() {
   document.addEventListener("click", e => {
     const target = e.target as HTMLElement;
+    // the verse number opens Anotar (in the modes without the original it opens that verse's layers: chapter.ts)
+    const num = target.closest<HTMLElement>(VERSE + " .vnum");
+    if (num && !document.body.classList.contains("hide-orig")) return openForVerse(num.closest<HTMLElement>(".verse")!, "versiculo", {});
     const b = target.closest(".vmark");
     if (b) {
       const sec = b.closest<HTMLElement>(".verse")!;
@@ -58,7 +61,8 @@ export function initGestures() {
     e => {
       const sec = verseOf(e.target);
       const target = e.target as HTMLElement;
-      if (!sec || e.button > 0 || target.closest(".say, .vmark, .vnota, details")) return;
+      // on the Bíblia Livre a long press selects text, as anywhere else on the phone: Anotar opens once it stops
+      if (!sec || e.button > 0 || target.closest(".say, .vmark, .vnota, details, .blivre")) return;
       targetEl = target.closest<HTMLElement>(".word") || sec;
       longPress = false;
       clearTimeout(timer);
@@ -101,6 +105,8 @@ export function initGestures() {
       e.preventDefault();
       return openForVerse(sec, "blivre", s);
     }
+    // the long press that starts a selection: cancelling it would also cancel the selection (Android)
+    if ((e.target as HTMLElement).closest(".blivre")) return;
     const w = (e.target as HTMLElement).closest<HTMLElement>(".word");
     if (w) {
       e.preventDefault();
@@ -112,7 +118,7 @@ export function initGestures() {
       openForVerse(sec, "versiculo", {});
     }
   });
-  // selecting text of the Bíblia Livre opens the panel (on phones, once the selection stops)
+  // selecting text of the Bíblia Livre opens the panel once the selection stops; moving the handles updates it
   let selTimer: ReturnType<typeof setTimeout> | undefined;
   document.addEventListener("selectionchange", () => {
     clearTimeout(selTimer);
@@ -121,9 +127,11 @@ export function initGestures() {
       if (!sel || sel.isCollapsed || !sel.rangeCount || !sel.anchorNode) return;
       const node = sel.anchorNode;
       const sec = verseOf(node.nodeType === 1 ? node : node.parentElement);
-      if (!sec || (annotate.open && selection?.ancora.camada === "blivre")) return;
-      const s = blivreAnchor(sec);
-      if (s) openForVerse(sec, "blivre", s);
-    }, 700);
+      const s = sec && blivreAnchor(sec);
+      if (!sec || !s) return;
+      const a = selection?.ancora;
+      if (annotate.open && a?.camada === "blivre" && a.ver === +sec.id.slice(1) && a.inicio === s.inicio && a.fim === s.fim) return;
+      openForVerse(sec, "blivre", s);
+    }, 500);
   });
 }

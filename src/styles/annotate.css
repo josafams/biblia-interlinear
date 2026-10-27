@@ -315,15 +315,10 @@
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
 .mb-color.mb-none {
-  background: var(--surface);
-  border-color: var(--line);
   border-color: var(--line);
   background: transparent;
 }
 .mb-color[aria-pressed="true"] {
-  box-shadow:
-    0 0 0 3px var(--surface),
-    0 0 0 5px var(--accent);
   box-shadow: none;
   border: 3px solid var(--fg);
 }
@@ -344,7 +339,6 @@
   justify-content: center;
 }
 .mb-actions button svg {
-  color: var(--accent);
   width: 18px;
   height: 18px;
   color: var(--fg);
@@ -354,14 +348,17 @@
 }
 .mb-actions button[aria-pressed="true"] svg {
   fill: var(--fav-fill);
-  color: var(--fav);
-  fill: var(--fav-fill);
   color: var(--warm);
 }
 .mb-ab {
   font-family: var(--font-grc);
   font-size: 16px;
   line-height: 18px;
+}
+.mb-more {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 .mb-note {
   display: flex;
@@ -553,7 +550,108 @@
 }
 @media (min-width: 1100px) {
   body.com-mbar .mbar {
-    top: calc(var(--bar-h) + 48px + env(safe-area-inset-top, 0px));
     top: calc(var(--bar-h) + 56px + env(safe-area-inset-top, 0px));
+  }
+}
+/* Phones and tablets: the sheet stands on the keyboard when there is one, and the handle drags it */
+.sheet-handle {
+  display: none;
+}
+@media (max-width: 1099px) {
+  .mbar {
+    bottom: var(--kb, 0px);
+    max-height: calc(100dvh - 56px - var(--kb, 0px));
+    transform: translateY(var(--drag, 0px));
+    transition: transform 0.2s ease;
+    touch-action: pan-y;
+  }
+  .mbar.dragging {
+    transition: none;
+  }
+  .sheet-handle {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 100%;
+    height: 22px;
+    border: 0;
+    background: none;
+    cursor: grab;
+    touch-action: none;
+  }
+  .sheet-handle::before {
+    content: "";
+    width: 40px;
+    height: 5px;
+    border-radius: var(--r-pill);
+    background: var(--line);
+  }
+  .mbar .mb-top {
+    padding-top: 0;
+  }
+}
+/* Phones: the compact sheet (colors and one row of actions) leaves the text in view; "Nota" and "Mais" open the full one */
+@media (max-width: 720px) {
+  .mb-actions {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+  .mb-actions [data-action="copiar"],
+  .mb-actions [data-action="camadas"] {
+    order: 1;
+  }
+  .mbar:not(.full) .mb-more,
+  .mbar:not(.full) .mb-foot,
+  .mbar:not(.full) [data-action="copiar"],
+  .mbar:not(.full) [data-action="camadas"] {
+    display: none;
+  }
+  .mbar:not(.full) .mb-body {
+    padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  }
+  .mbar:not(.full) .mb-head span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .mbar.full .mb-more {
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+  }
+  .mbar [data-action="mais"][aria-expanded="true"] {
+    background: var(--accent-soft);
+  }
+  .mb-scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 39;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  body.com-mbar .toast {
+    bottom: calc(var(--mbar-h, 220px) + var(--kb, 0px) + 12px);
+  }
+}
+@media (min-width: 721px) {
+  .mb-actions [data-action="escrever"],
+  .mb-actions [data-action="mais"],
+  .mb-scrim {
+    display: none;
+  }
+}
+/* Phones: the note in full screen is a bottom sheet too (on top of the keyboard), not a drawer from the side */
+@media (max-width: 720px) {
+  #nota.note-sheet {
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: var(--kb, 0px);
+    width: auto;
+    max-height: calc(100dvh - 56px - var(--kb, 0px));
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    border-radius: var(--r-sheet) var(--r-sheet) 0 0;
+    padding-top: 16px;
+  }
+  #nota.note-sheet .note-body textarea {
+    min-height: 160px;
   }
 }

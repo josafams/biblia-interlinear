@@ -7,8 +7,10 @@ import { t } from "../../i18n";
 import type { Anchor, Anchored } from "../../lib/annotations/verse";
 import { exposedPlugin, isNative } from "../../lib/native";
 import { verseLink } from "../../lib/share";
+import { keyboardInset, revealScroll } from "../../lib/sheet";
 import { annotate } from "../../state/annotate.svelte";
 import { side } from "../../state/layout.svelte";
+import { reducedMotion } from "../context";
 import { ANNOTATIONS_OPEN_PANEL, ANNOTATIONS_SPEAK } from "../events";
 import { A, EDITION, paint, toastMsg, toastUndo, verse, verseAnchor, verseEl } from "./context";
 import { openNote } from "./note";
@@ -41,8 +43,30 @@ async function shareVerse(a: Anchor) {
   }
 }
 
+// On phones and tablets the sheet covers the bottom: the verse moves to the room between the top bar and the sheet
+function revealVerse() {
+  const sec = selection && verseEl(selection.ancora.ver);
+  const mb = document.getElementById("mbar");
+  if (side.on || !sec || !mb || !annotate.open) return;
+  const bar = document.querySelector<HTMLElement>(".bar");
+  const top = bar && bar.offsetParent ? Math.max(0, bar.getBoundingClientRect().bottom) : 0;
+  const r = sec.getBoundingClientRect();
+  const y = revealScroll({ top: r.top, height: r.height }, { top, bottom: mb.getBoundingClientRect().top }, window.scrollY);
+  if (Math.abs(y - window.scrollY) > 1) window.scrollTo({ top: y, behavior: reducedMotion() ? "auto" : "smooth" });
+}
+const afterLayout = (f: () => void) => requestAnimationFrame(() => requestAnimationFrame(f));
+
+/** The size of the sheet on phones: compact (colors and actions) or full (also the note and the tags). */
+export function setSize(size: "compact" | "full", focusNote = false) {
+  annotate.size = size;
+  flushSync();
+  if (focusNote) document.getElementById("mb-note")?.focus({ preventScroll: true });
+  afterLayout(revealVerse);
+}
+
 /** Opens the panel; titulo: answering a question (the answer becomes a new note with the question as title). */
 export async function openBar(ancora: Anchor, labelText: string, trecho: string, titulo?: string) {
+  const reopening = annotate.open;
   document.dispatchEvent(new CustomEvent(ANNOTATIONS_OPEN_PANEL));
   selection = { ancora, labelText, trecho, titulo };
   // without a snippet selected, the start of the verse itself shows, as in the design
@@ -67,15 +91,16 @@ export async function openBar(ancora: Anchor, labelText: string, trecho: string,
   annotate.showLayers = document.body.classList.contains("hide-orig");
   annotate.hasRecords = await verse.hasAny(ancora);
   document.querySelectorAll(".verse.editando").forEach(v => v.classList.remove("editando"));
-  const sec = verseEl(ancora.ver);
-  sec?.classList.add("editando");
-  // on phones the sheet covers the bottom: the verse goes up to stay visible above it
-  if (sec && !side.on) sec.scrollIntoView({ block: "start" });
+  verseEl(ancora.ver)?.classList.add("editando");
+  // a new sheet opens compact (an answer to a question opens with the note); another verse keeps the size
+  if (titulo) annotate.size = "full";
+  else if (!reopening) annotate.size = "compact";
   annotate.open = true;
   flushSync();
   document.body.classList.add("com-mbar");
   const first = titulo ? document.getElementById("mb-note") : document.getElementById("mbar")!.querySelector<HTMLElement>(".mb-color");
   first!.focus({ preventScroll: true });
+  afterLayout(revealVerse);
 }
 
 async function refreshClear() {
@@ -86,7 +111,9 @@ export function closeBar() {
   if (!annotate.open) return;
   flushQuickNote();
   annotate.open = false;
+  annotate.size = "compact";
   flushSync();
+  document.documentElement.style.setProperty("--kb", "0px");
   selection = null;
   document.querySelectorAll(".verse.editando").forEach(v => v.classList.remove("editando"));
   document.body.classList.remove("com-mbar");
@@ -103,6 +130,8 @@ async function setColor(color: string) {
 async function panelAction(action: string, button: HTMLElement) {
   if (!selection) return;
   const a = selection.ancora;
+  if (action === "escrever") return setSize("full", true);
+  if (action === "mais") return setSize(annotate.size === "full" ? "compact" : "full");
   if (action === "nota") {
     const s = selection;
     await flushQuickNote();
@@ -214,6 +243,7 @@ export function initPanel() {
       onclose: () => closeBar(),
       oncolor: (color: string) => setColor(color),
       onaction: (action: string, button: HTMLElement) => panelAction(action, button),
+      onsize: (size: "compact" | "full") => setSize(size),
       ontag: (id: string) => toggleTag(id),
       onnewtag: async (name: string) => toggleTag((await verse.tagNamed(name)).id, true),
       onnote: () => noteTyped()
@@ -222,4 +252,20 @@ export function initPanel() {
   document.addEventListener("keydown", e => {
     if (e.key === "Escape" && annotate.open) closeBar();
   });
+  const root = document.documentElement;
+  // the height of the sheet: room at the end of the page (to bring the last verses above it) and the toasts over it
+  const mb = document.getElementById("mbar")!;
+  new ResizeObserver(() => root.style.setProperty("--mbar-h", `${mb.offsetHeight}px`)).observe(mb);
+  // the on-screen keyboard (Safari on iOS only shrinks the visual viewport): Anotar and the note go up above it
+  const vv = window.visualViewport;
+  if (vv) {
+    const fit = () => {
+      const kb = keyboardInset(window.innerHeight, vv.height, vv.offsetTop);
+      root.style.setProperty("--kb", `${kb}px`);
+      const f = document.activeElement as HTMLElement | null;
+      if (kb && f && f.closest("#mbar, #nota") && f.matches("textarea, input")) f.scrollIntoView({ block: "nearest" });
+    };
+    vv.addEventListener("resize", fit);
+    vv.addEventListener("scroll", fit);
+  }
 }

@@ -1,7 +1,7 @@
 // Itens da proposta de redesenho (docs/REDESENHO.md) que não têm teste em outro arquivo: barras, Índice, Aparência,
 // anotações por versículo, contagens por livro e capítulos longos — no celular e no computador.
 import { test, expect } from "@playwright/test";
-import { openReader } from "./helpers.mjs";
+import { expandAnnotate, openReader } from "./helpers.mjs";
 
 const open = (page, ref = "JHN.3") => openReader(page, ref, { hideAccountHint: true, skipWelcome: true });
 const celular = info => info.project.name === "celular";
@@ -67,6 +67,7 @@ test("Aparência em cinco grupos; “O que mostrar” em chips, sem rolar", asyn
 test("a etiqueta vale para o versículo inteiro; faixa com ★, nota e #etiqueta; barra de cor", async ({ page }) => {
   await open(page);
   await page.click("#v16 .vmark");
+  await expandAnnotate(page);
   await page.click('#mbar .mb-color[data-cor="verde"]');
   await page.fill("#mb-note", "O amor que dá");
   await expect(page.locator("#mb-note-status")).toHaveText("Salva.");
@@ -90,6 +91,7 @@ test("a etiqueta vale para o versículo inteiro; faixa com ★, nota e #etiqueta
   await expect(page.locator("#v16")).toHaveClass(/com-cor/);
   // digitar filtra as etiquetas que já existem
   await page.click("#v3 .vmark");
+  await expandAnnotate(page);
   await page.fill("#mb-tag-name", "prom");
   await expect(page.locator("#mb-tags [data-etiqueta]:visible")).toHaveText(["Promessas"]);
 });
@@ -97,6 +99,7 @@ test("a etiqueta vale para o versículo inteiro; faixa com ★, nota e #etiqueta
 test("limpar o versículo tem Desfazer", async ({ page }) => {
   await open(page);
   await page.click("#v16 .vmark");
+  await expandAnnotate(page);
   await page.click('#mbar .mb-color[data-cor="azul"]');
   await page.fill("#mb-note", "apagar e voltar");
   await expect(page.locator("#mb-note-status")).toHaveText("Salva.");
@@ -110,6 +113,7 @@ test("limpar o versículo tem Desfazer", async ({ page }) => {
 test("Minhas anotações: filtros com contagem e busca por #etiqueta", async ({ page }) => {
   await open(page);
   await page.click("#v16 .vmark");
+  await expandAnnotate(page);
   await page.fill("#mb-note", "nota");
   await expect(page.locator("#mb-note-status")).toHaveText("Salva.");
   await page.fill("#mb-tag-name", "oração");
