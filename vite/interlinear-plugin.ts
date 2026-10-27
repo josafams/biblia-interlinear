@@ -14,6 +14,7 @@ import { writeIcons } from "./site/icons";
 import { writeManifest } from "./site/manifest";
 import { writeReaderPage } from "./site/reader-page";
 import { writeServiceWorker } from "./site/service-worker";
+import { writeShareImage } from "./site/share-image";
 import { copyStaticFiles } from "./site/static-files";
 
 // The home page script (src/home/main.ts) and the privacy page stylesheet are builds of their own: one file per
@@ -70,6 +71,7 @@ export function interlinearSite(): Plugin {
       if (full) {
         writeFonts();
         await writeIcons();
+        await writeShareImage();
         // books, chapters, lexicon, concordance and search (scripts/export.py reads build/biblia.sqlite)
         execFileSync("python3", [fromRoot("scripts/export.py")], { stdio: "inherit" });
       }

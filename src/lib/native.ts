@@ -30,4 +30,4 @@ export function exposedPlugin<T = Plugin>(name: string): T | null {
 }
 
 /** The public site: in the app the home page, videos and shared links point here. */
-export const SITE_URL = "https://josafams.github.io/biblia-interlinear/";
+export { SITE_URL } from "./site";

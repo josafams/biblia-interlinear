@@ -4,7 +4,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { APP, OUT, escapeHtml as esc, fromRoot } from "./app";
+import { homeHead } from "../../src/seo/site-pages";
+import { APP, OUT, fromRoot } from "./app";
 
 type Word = [string, string, string];
 type Verse = { n: number; w: Word[]; b?: string };
@@ -74,7 +75,7 @@ export async function writeHomePage(books: Book[], home: { js: string; css: stri
   fs.writeFileSync(path.join(OUT, "home-data.json"), JSON.stringify(homeData));
   // the rest of web/home.html is the same everywhere: the site address and the bundle
   const values: Record<string, string> = {
-    __DESC__: esc(APP.desc),
+    __SEO_HEAD__: homeHead(APP.desc),
     __REPO__: APP.repo,
     __REPO_CURTO__: APP.repo.replace(/^https:\/\//, ""),
     __LIVROS__: `${APP.repo}/releases/download/livros`,

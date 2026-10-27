@@ -1,13 +1,17 @@
 // Files copied as they are: scripts outside the bundle, licenses, pages and recorded videos.
 import fs from "node:fs";
 import path from "node:path";
+import { privacyHead } from "../../src/seo/site-pages";
 import { OUT, fromRoot } from "./app";
 
 export function copyStaticFiles(privacyCss: string) {
   // google-config.js stays unhashed (tests and deploys swap it)
   fs.copyFileSync(fromRoot("web/google-config.js"), path.join(OUT, "google-config.js"));
   // the privacy policy, with the stylesheet Vite wrote for it
-  const privacy = fs.readFileSync(fromRoot("web/privacidade.html"), "utf8").replace("__PRIVACY_CSS__", privacyCss);
+  const privacy = fs
+    .readFileSync(fromRoot("web/privacidade.html"), "utf8")
+    .replace("__PRIVACY_CSS__", privacyCss)
+    .replace("__SEO_HEAD__", () => privacyHead());
   fs.writeFileSync(path.join(OUT, "privacidade.html"), privacy);
   // Google Search Console verification file (domain of the OAuth consent screen), if any
   for (const f of fs.readdirSync(fromRoot("web")).filter(f => /^google[0-9a-f]+\.html$/.test(f)))

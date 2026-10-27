@@ -1186,5 +1186,16 @@
     "TXT-05_2": "versículo(s) ausente(s): {missing}",
     "TXT-05_3": "posições das palavras repetidas ou com buraco",
     "TXT-06": "versículo de trecho aramaico sem palavras aramaicas"
+  },
+  "seo": {
+    "home_title": "Bíblia Interlinear — hebraico, aramaico e grego palavra por palavra",
+    "reader_title": "Leitor interlinear · Bíblia Interlinear",
+    "reader_description": "Leia a Bíblia em hebraico, aramaico e grego com a glosa em português palavra por palavra, transliteração, pronúncia, verbetes e a Bíblia Livre.",
+    "reader_noscript": "O leitor precisa de JavaScript. Sem ele, leia os livros e capítulos em páginas simples:",
+    "reader_noscript_link": "Livros da Bíblia",
+    "privacy_title": "Política de privacidade · Bíblia Interlinear",
+    "privacy_description": "Como a Bíblia Interlinear trata seus dados: não há servidor nem cadastro; as anotações ficam no aparelho e, se você quiser, na sua conta do Google Drive.",
+    "share_line1": "Hebraico, aramaico e grego palavra por palavra",
+    "share_line2": "com a glosa em português e a Bíblia Livre"
   }
 }
