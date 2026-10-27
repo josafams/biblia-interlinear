@@ -33,7 +33,8 @@ const SWITCHES: Record<ModeId, Switches> = {
     "t-vnum": 1,
     "t-theme": 1,
     "t-about": 1,
-    "t-lexicon": 1,
+    // reading the Portuguese text only: the list of the original words of the chapter is for the other modes
+    "t-lexicon": 0,
     "t-marks": 0,
     "t-questions": 1
   },

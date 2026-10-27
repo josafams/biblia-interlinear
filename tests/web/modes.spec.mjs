@@ -20,6 +20,8 @@ test("primeira abertura pergunta como ler; escolher Bíblia mostra só a Bíblia
   await expect(primeiraPalavra(page)).toBeHidden();
   await expect(page.locator("#v1 .blivre")).toBeVisible();
   await expect(page.locator("#eyebrow")).toHaveText(/Bíblia Livre/i);
+  // the chapter lexicon (original words) is for the other modes
+  await expect(page.locator("#lexico")).toBeHidden();
   await page.reload();
   await expect(page.locator(".verse").first()).toBeVisible();
   await expect(primeiraPalavra(page)).toBeHidden();
