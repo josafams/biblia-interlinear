@@ -15,8 +15,11 @@ import { ANNOTATIONS_OPEN_PANEL, ANNOTATIONS_SPEAK } from "../events";
 import { A, EDITION, paint, toastMsg, toastUndo, verse, verseAnchor, verseEl } from "./context";
 import { openNote } from "./note";
 
-type Selection = { ancora: Anchor; labelText: string; trecho: string; titulo?: string };
+/** more: the next verses of a Bíblia Livre selection that crosses verses (one snippet per verse) */
+type Selection = { ancora: Anchor; labelText: string; trecho: string; titulo?: string; more?: Anchor[] };
 export let selection: Selection | null = null;
+/** Every place the panel acts on: the verse, or each verse of a selection across verses. */
+const places = () => (selection ? [selection.ancora, ...(selection.more || [])] : []);
 
 const ref = (a: Anchor) => `${A.chapter?.bookName || a.livro} ${a.cap}:${a.ver}`;
 const blivreOf = (a: Anchor) => A.chapter?.verses.find(x => x.n === a.ver)?.blivre || "";
@@ -65,10 +68,10 @@ export function setSize(size: "compact" | "full", focusNote = false) {
 }
 
 /** Opens the panel; titulo: answering a question (the answer becomes a new note with the question as title). */
-export async function openBar(ancora: Anchor, labelText: string, trecho: string, titulo?: string) {
+export async function openBar(ancora: Anchor, labelText: string, trecho: string, titulo?: string, more?: Anchor[]) {
   const reopening = annotate.open;
   document.dispatchEvent(new CustomEvent(ANNOTATIONS_OPEN_PANEL));
-  selection = { ancora, labelText, trecho, titulo };
+  selection = { ancora, labelText, trecho, titulo, more };
   // without a snippet selected, the start of the verse itself shows, as in the design
   const quoted = trecho || (ancora.camada === "versiculo" ? ancora.trecho : "") || "";
   annotate.ref = labelText;
@@ -89,9 +92,9 @@ export async function openBar(ancora: Anchor, labelText: string, trecho: string,
   annotate.color = (await verse.highlightOf(ancora))?.cor || "";
   annotate.favorite = !!(await verse.favoriteOf(ancora));
   annotate.showLayers = document.body.classList.contains("hide-orig");
-  annotate.hasRecords = await verse.hasAny(ancora);
+  await refreshClear();
   document.querySelectorAll(".verse.editando").forEach(v => v.classList.remove("editando"));
-  verseEl(ancora.ver)?.classList.add("editando");
+  for (const x of places()) verseEl(x.ver)?.classList.add("editando");
   // a new sheet opens compact (an answer to a question opens with the note); another verse keeps the size
   if (titulo) annotate.size = "full";
   else if (!reopening) annotate.size = "compact";
@@ -104,7 +107,7 @@ export async function openBar(ancora: Anchor, labelText: string, trecho: string,
 }
 
 async function refreshClear() {
-  if (selection) annotate.hasRecords = await verse.hasAny(selection.ancora);
+  annotate.hasRecords = (await Promise.all(places().map(x => verse.hasAny(x)))).some(Boolean);
 }
 
 export function closeBar() {
@@ -121,7 +124,7 @@ export function closeBar() {
 
 async function setColor(color: string) {
   if (!selection) return;
-  await verse.setColor(selection.ancora, color || null);
+  for (const x of places()) await verse.setColor(x, color || null);
   await paint();
   annotate.color = color;
   refreshClear();
@@ -145,11 +148,13 @@ async function panelAction(action: string, button: HTMLElement) {
     return;
   }
   if (action === "fav") {
-    await verse.toggleFavorite(a, EDITION);
+    const s = selection,
+      on = !annotate.favorite;
+    for (const x of places()) if (!!(await verse.favoriteOf(x)) !== on) await verse.toggleFavorite(x, EDITION);
     await paint();
-    return openBar(a, selection.labelText, selection.trecho);
+    return openBar(a, s.labelText, s.trecho, undefined, s.more);
   }
-  if (action === "limpar") return clearVerse(a);
+  if (action === "limpar") return clearVerses(places());
   if (action === "copiar") {
     try {
       await navigator.clipboard.writeText(t("annotate.share_text", { text: selection.trecho || blivreOf(a), ref: ref(a) }));
@@ -169,13 +174,14 @@ async function panelAction(action: string, button: HTMLElement) {
   }
 }
 
-// Clear the verse (color, notes, favorite) with "Desfazer" for a few seconds
-async function clearVerse(a: Anchor) {
-  const gone = await verse.clear(a);
+// Clear the verses (color, notes, favorite) with "Desfazer" for a few seconds
+async function clearVerses(list: Anchor[]) {
+  const gone: Awaited<ReturnType<typeof verse.clear>>[] = [];
+  for (const a of list) gone.push(await verse.clear(a));
   closeBar();
   await paint();
-  toastUndo(t("annotate.cleared", { count: gone.count }), async () => {
-    await gone.undo();
+  toastUndo(t("annotate.cleared", { count: gone.reduce((n, g) => n + g.count, 0) }), async () => {
+    for (const g of gone) await g.undo();
     await paint();
     toastMsg(t("annotate.restored"));
   });
@@ -200,7 +206,10 @@ async function saveQuickNote() {
   if (!selection) return;
   const texto = annotate.note;
   if (!quickNote && !texto.trim()) return;
-  quickNote = await verse.saveNote(quickNote, selection.ancora, texto, selection.titulo || "");
+  // a note on a selection across verses keeps the whole range (it shows under the first verse)
+  const last = selection.more?.at(-1);
+  const a = last ? { ...selection.ancora, ver_fim: last.ver } : selection.ancora;
+  quickNote = await verse.saveNote(quickNote, a, texto, selection.titulo || "");
   annotate.noteStatus = t("annotate.saved");
   paint();
   refreshClear();
@@ -219,10 +228,26 @@ async function showTags() {
 // A tag on or off for the verse: it goes to every record of it (color, notes and favorite)
 async function toggleTag(id: string, turnOn?: boolean) {
   if (!selection) return;
-  await verse.toggleTag(selection.ancora, id, turnOn);
+  const on = turnOn ?? !(await verse.tags(selection.ancora)).includes(id);
+  for (const x of places()) await verse.toggleTag(x, id, on);
   await showTags();
   paint();
   refreshClear();
+}
+
+/** Opens the panel for a selection of the Bíblia Livre that crosses verses: one snippet per verse. */
+export function openForVerses(parts: { sec: HTMLElement; extra: Partial<Anchor> }[]) {
+  const C = A.chapter;
+  const list = parts
+    .map(({ sec, extra }) => {
+      const v = C?.verses[+sec.dataset.vi!];
+      return v && C ? ({ ...verseAnchor(C.book, C.chapter, v.n), ...extra, camada: "blivre" } as Anchor) : null;
+    })
+    .filter((x): x is Anchor => !!x);
+  if (!C || !list.length) return;
+  const [first, ...more] = list;
+  const label = more.length ? `${C.bookName} ${C.chapter}:${first.ver}–${more.at(-1)!.ver}` : `${C.bookName} ${C.chapter}:${first.ver}`;
+  openBar(first, label, list.map(x => x.trecho).join(" "), undefined, more.length ? more : undefined);
 }
 
 /** Opens the panel for a verse of the chapter on screen: the whole verse, a snippet or words of the original. */
