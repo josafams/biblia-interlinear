@@ -40,3 +40,17 @@ test("head tags: absolute canonical and image, escaped text, JSON-LD that parses
   expect(JSON.parse(ld)["@type"]).toBe("BreadcrumbList");
   expect(escapeHtml("</script>")).toBe("&lt;/script&gt;");
 });
+
+test("sitemap: absolute addresses, escaped, in parts, and robots.txt pointing to it", async () => {
+  const { robots, sitemapIndex, sitemapParts, urlSet } = await import("../../src/seo/sitemap");
+  const set = urlSet(["", "biblia/joao/3/"], "2026-10-27");
+  expect(set).toContain("<loc>https://josafams.github.io/biblia-interlinear/biblia/joao/3/</loc>");
+  expect(set).toContain("<lastmod>2026-10-27</lastmod>");
+  expect(sitemapIndex(["sitemap-biblia.xml"], "2026-10-27")).toContain(
+    "<sitemap><loc>https://josafams.github.io/biblia-interlinear/sitemap-biblia.xml</loc>"
+  );
+  const parts = sitemapParts(["biblia/", "biblia/joao/", "lexico/G26/"]);
+  expect(parts["sitemap-biblia.xml"]).toEqual(["biblia/", "biblia/joao/"]);
+  expect(parts["sitemap-lexico.xml"]).toEqual(["lexico/G26/"]);
+  expect(robots()).toContain("Sitemap: https://josafams.github.io/biblia-interlinear/sitemap.xml");
+});

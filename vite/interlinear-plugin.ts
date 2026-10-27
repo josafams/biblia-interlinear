@@ -14,7 +14,7 @@ import { writeHomePage } from "./site/home-page";
 import { writeIcons } from "./site/icons";
 import { writeManifest } from "./site/manifest";
 import { writeReaderPage } from "./site/reader-page";
-import { writeBiblePages } from "./site/seo-pages";
+import { writeBiblePages, writeSitemaps } from "./site/seo-pages";
 import { writeServiceWorker } from "./site/service-worker";
 import { writeShareImage } from "./site/share-image";
 import { copyStaticFiles } from "./site/static-files";
@@ -85,7 +85,7 @@ export function interlinearSite(): Plugin {
       writeReaderPage(readerBundle, readerCss, books);
       await writeHomePage(books, await buildPage("home", "src/home/main.ts", sourcemap));
       copyStaticFiles((await buildPage("privacy", "src/styles/privacy.css", sourcemap)).css);
-      writeBiblePages(books, (await buildPage("seo", "src/styles/seo.css", sourcemap)).css);
+      writeSitemaps(writeBiblePages(books, (await buildPage("seo", "src/styles/seo.css", sourcemap)).css));
       writeManifest();
       const { files, version } = writeServiceWorker();
       console.error(`Site built in build/web (${files} files, cache ${version})`);
