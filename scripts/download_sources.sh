@@ -35,6 +35,20 @@ if [ ! -f scrollmapper/PorBLivre.csv ]; then
   rm -rf .sm
 fi
 
+# Berean Standard Bible (domínio público desde 2023; CC0 no scrollmapper): o texto em inglês, na numeração das
+# Bíblias em inglês (a do corpus eBible segue o hebraico e perde Ml 4 e Jl 2:28-32); o arquivo do eBible, sem os
+# títulos dos Salmos, serve para separar o título do v. 1
+if [ ! -f scrollmapper/BSB.csv ]; then
+  rm -rf .sm && git clone -q --depth 1 --filter=blob:none --sparse https://github.com/scrollmapper/bible_databases.git .sm
+  git -C .sm sparse-checkout set --no-cone /formats/csv/BSB.csv
+  mkdir -p scrollmapper
+  cp .sm/formats/csv/BSB.csv scrollmapper/
+  rm -rf .sm
+fi
+if [ ! -f ebible/corpus/eng-engbsb.txt ]; then
+  git -C ebible sparse-checkout add /corpus/eng-engbsb.txt
+fi
+
 # Gênesis 1 da BLIVRE (linhas 1–31 do corpus = GEN 1:1–31 no vref) — usado pelas glosas revisadas de Gn 1
 head -31 ebible/corpus/por-porbr2018.txt > blivre-gn1.txt
 echo "Fontes prontas em sources/"

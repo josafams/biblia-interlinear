@@ -9,6 +9,7 @@
   de versificação hebraico → KJV (VerseMap.xml); títulos dos Salmos viram o versículo 0.
 - Grego: SBLGNT (CC BY 4.0) com morfologia e lemas do MorphGNT (CC BY-SA).
 - Léxicos de Strong (domínio público; edição digital Open Scriptures, CC BY-SA).
+- Berean Standard Bible (domínio público), o texto corrido do app em inglês, na tabela translated_verses.
 
 Uso: python3 scripts/corpus.py
 """
@@ -65,6 +66,28 @@ def load_blivre():
             elif t18:
                 verses[k] = (t18, "2018")
     return verses, e17, e18
+
+
+# ---------------------------------------------------------------- BSB
+def load_bsb():
+    """The Berean Standard Bible, verse by verse in the English numbering (the same as the Portuguese one but for
+    Ap 12:18, which the BSB keeps in 13:1). The scrollmapper copy is complete and has the psalm titles at the start
+    of v. 1; the eBible one has the verse without the title (and loses the verses where it follows the Hebrew
+    numbering), so it only serves to find where the title ends."""
+    code = {row[3]: row[0] for row in BOOKS}
+    full = {}
+    with open(os.path.join(SOURCES_DIR, "scrollmapper/BSB.csv"), encoding="utf8") as f:
+        for b, c, v, t in list(csv.reader(f))[1:]:
+            if t.strip():
+                full[(code[b], int(c), int(v))] = t.strip()
+    vref = Path(os.path.join(SOURCES_DIR, "ebible/metadata/vref.txt")).read_text(encoding="utf8").split("\n")
+    lines = Path(os.path.join(SOURCES_DIR, "ebible/corpus/eng-engbsb.txt")).read_text(encoding="utf8").split("\n")
+    no_titles = {}
+    for ref, txt in zip(vref, lines, strict=False):
+        if ref.startswith("PSA ") and txt.strip():
+            c, v = ref[4:].split(":")
+            no_titles[int(c), int(v)] = txt.strip()
+    return full, no_titles
 
 
 def psalm_title(t17, t18):
@@ -349,6 +372,8 @@ def main():
                           ref_orig TEXT, gloss TEXT, gloss_source TEXT, strong_source TEXT,
                           ketiv TEXT);
     CREATE INDEX ix_words ON words(book, chapter, verse, pos);
+    CREATE TABLE translated_verses(locale TEXT, book TEXT, chapter INTEGER, verse INTEGER, text TEXT,
+                              PRIMARY KEY(locale, book, chapter, verse));
     CREATE TABLE lexicon(entry_key TEXT PRIMARY KEY, language TEXT, lemma TEXT, xlit TEXT, pron_en TEXT,
                         derivation_en TEXT, def_en TEXT, kjv_en TEXT, gloss_en TEXT, def_pt TEXT);
     """)
@@ -463,6 +488,15 @@ def main():
     for b, c, v in without_blivre:
         db.execute("INSERT INTO verses VALUES (?,?,?,?,?,?)", (b, c, v, "", None, "sem-blivre"))
 
+    # BSB: the psalm title becomes v. 0 where the Hebrew numbers it apart, as with the BLIVRE
+    bsb, bsb_no_titles = load_bsb()
+    for c in range(1, 151):
+        clean, raw_text = psalm_title(bsb.get(("PSA", c, 1)), bsb_no_titles.get((c, 1)))
+        if clean and c in with_title:
+            bsb[("PSA", c, 0)] = clean
+            bsb[("PSA", c, 1)] = bsb[("PSA", c, 1)][len(raw_text) :].strip()
+    db.executemany("INSERT INTO translated_verses VALUES ('en',?,?,?,?)", [(b, c, v, t) for (b, c, v), t in bsb.items()])
+
     for k, e in strong_h.items():
         db.execute(
             "INSERT INTO lexicon VALUES (?,?,?,?,?,?,?,?,?,?)",
@@ -499,6 +533,7 @@ def main():
     print("versículos BLIVRE sem texto original:", sum(without_orig_text.values()), dict(without_orig_text.most_common(8)))
     print("versículos com original e sem BLIVRE:", len(without_blivre), without_blivre[:10])
     print("grego, Strong por:", dict(Counter(r[0] for r in db.execute("SELECT strong_source FROM words WHERE language='G'"))))
+    print("BSB:", db.execute("SELECT count(*) FROM translated_verses WHERE locale='en'").fetchone()[0], "versículos")
     print("edição 2017 usada em:", db.execute("SELECT count(*) FROM verses WHERE edition='2017'").fetchone()[0], "versículos")
 
 
