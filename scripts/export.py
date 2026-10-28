@@ -5,6 +5,7 @@ build/web/dados/
   books.json             os 66 livros: nome, abreviação, capítulos (versículos, tema), introdução
   cap/<COD>/<n>.json      um capítulo: versículos, palavras, glosas e marcas da revisão automática
   lex/H.json, lex/G.json  léxico hebraico/aramaico e grego
+  en/cap/<COD>/<n>.js     o texto corrido em inglês (BSB) de cada capítulo; en/busca/ a busca nele
 
 Cada saída tem o seu módulo em scripts/interlinear/export/ (books, chapters, lexicon, concordance, search,
 preview, site).
@@ -23,6 +24,7 @@ from interlinear.export.lexicon import build_lexicon
 from interlinear.export.preview import write_preview
 from interlinear.export.search import write_search_index
 from interlinear.export.site import write_site
+from interlinear.export.translations import write_translation
 from interlinear.paths import DB
 
 
@@ -43,6 +45,7 @@ def main(argv):
     write_site(books, chapters, lex)
     write_concordance(chapters.concordance)
     write_search_index(chapters.texts, chapters.book_index)
+    write_translation(db, "en", chapters)
 
 
 if __name__ == "__main__":

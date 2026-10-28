@@ -1,4 +1,4 @@
-"""dados/busca/<2 letters>.js: the search index of the Bíblia Livre."""
+"""dados/busca/<2 letters>.js: the search index of the Bíblia Livre (and dados/<locale>/busca/ of another language)."""
 
 import json
 import os
@@ -11,7 +11,7 @@ from interlinear.export.common import WEB, b36, compact, search_norm, split_head
 from interlinear.text import TOKEN_PT
 
 
-def write_search_index(texts, book_index):
+def write_search_index(texts, book_index, folder=None):
     """A word of the Bíblia Livre (without accents, lowercase) → the verses it shows up in. Each verse is
     book*1,000,000 + chapter*1,000 + verse, in order, written as the difference to the one before in base 36."""
     postings = defaultdict(set)
@@ -28,8 +28,9 @@ def write_search_index(texts, book_index):
             out.append(b36(x - prev))
             prev = x
         buckets[word[:2]][word] = ",".join(out)
-    os.makedirs(os.path.join(WEB, "busca"), exist_ok=True)
+    folder = folder or os.path.join(WEB, "busca")
+    os.makedirs(folder, exist_ok=True)
     for name, d in buckets.items():
         fname = "".join(ch if ch.isalnum() and ch.isascii() else f"_{ord(ch):x}" for ch in name)
-        Path(os.path.join(WEB, "busca", f"{fname}.js")).write_text(f"__busca({json.dumps(name)},{compact(d)});", encoding="utf8")
-    print(f"busca: {len(postings)} palavras em {len(buckets)} arquivos → {os.path.join(WEB, 'busca')}")
+        Path(os.path.join(folder, f"{fname}.js")).write_text(f"__busca({json.dumps(name)},{compact(d)});", encoding="utf8")
+    print(f"busca: {len(postings)} palavras em {len(buckets)} arquivos → {folder}")
