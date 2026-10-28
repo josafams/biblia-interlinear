@@ -52,7 +52,7 @@ A ordem é sempre corpus → glosas → revisão → export (o `Makefile`, o `sc
 | `src/components/` | um componente Svelte por parte da tela; recebem dados de `src/state` e avisam ações por props (`onclose`, `onpick`…) |
 | `src/state/` | o estado da tela em runes (`*.svelte.ts`): o que está aberto, o capítulo, as marcações, as preferências |
 | `src/lib/` | regras puras em TypeScript, sem DOM, com testes de unidade |
-| `src/i18n/` | `t(chave, params)` com plurais; o único idioma é `pt-BR.json` |
+| `src/i18n/` | `t(chave, params)` com plurais; `pt-BR.json` e `en.json` (`?lang=en` escolhe e salva no aparelho); `page.ts` traduz o texto fixo de `web/*.html` marcado com `data-i18n` |
 | `src/styles/` | `tokens.css`, `base.css` e um arquivo por área; `reader.css` importa todos, na ordem da cascata |
 | `src/home/` | componentes da página inicial (amostra, números, Como usar, livros) que leem `home-data.json` |
 | `src/seo/` | as páginas estáticas para a busca (livros, capítulos, verbetes), o `<head>` de todas as páginas e o sitemap |
@@ -89,10 +89,10 @@ A ordem é sempre corpus → glosas → revisão → export (o `Makefile`, o `sc
 
 | Arquivo | O que faz |
 |---|---|
-| `corpus.py` | lê as fontes e monta `build/biblia.sqlite` (livros, versículos, palavras, léxico) |
+| `corpus.py` | lê as fontes e monta `build/biblia.sqlite` (livros, versículos, palavras, léxico; a BSB em `translated_verses`) |
 | `make_glosses.py` | glosas por alinhamento com a Bíblia Livre (`interlinear/glosses/`) |
 | `review.py` | revisões automáticas (`interlinear/review/`) |
-| `export.py` | arquivos do app, do EPUB e do PDF (`interlinear/export/`) |
+| `export.py` | arquivos do app, do EPUB e do PDF (`interlinear/export/`); `dados/en/` é a camada em inglês (texto da BSB e busca) que o leitor põe sobre o capítulo |
 | `check_data.py` | confere `data/` (também no pre-commit e no CI) |
 | `query.py` | consulta rápida ao banco pela linha de comando |
 | `build_epub.py`, `build_pdf.py` | os livros para baixar |
