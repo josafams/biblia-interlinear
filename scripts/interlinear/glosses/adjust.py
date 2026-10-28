@@ -7,8 +7,7 @@ import re
 import unicodedata
 from collections import Counter, defaultdict
 
-from interlinear.glosses.fixed import PRE_H
-from interlinear.glosses.portuguese import contract
+from interlinear.glosses.languages import PT
 from interlinear.paths import ROOT
 from interlinear.rules import rare_glosses
 from interlinear.text import strip_marks, without_cantillation
@@ -36,9 +35,10 @@ def similar(t, target):
     return r + (0.3 if _initial(t) and _initial(t) == _initial(target) else 0)
 
 
-def similar_name(target, verse_text):
-    """Nome com maiúscula no versículo mais parecido com a transliteração (Thamar → Tamar)."""
-    cands = set(re.findall(r"\b[A-ZÀ-Ý][\wÀ-ÿ]+(?:-[A-ZÀ-Ý][\wÀ-ÿ]+)*", verse_text))
+def similar_name(target, verse_text, ignore=frozenset()):
+    """Nome com maiúscula no versículo mais parecido com a transliteração (Thamar → Tamar). ignore: palavras que
+    não são nomes mesmo com maiúscula (em inglês: The, He, His…)."""
+    cands = {t for t in re.findall(r"\b[A-ZÀ-Ý][\wÀ-ÿ]+(?:-[A-ZÀ-Ý][\wÀ-ÿ]+)*", verse_text) if t.lower() not in ignore}
     if not cands or not target:
         return None
     # Empate (Sansão e Samuel para Sampson): desempata pela comparação no outro sentido e, por fim, pela ordem
@@ -74,7 +74,43 @@ def name_from_xlit(x):
 RARE_GLOSSES = rare_glosses()
 
 
-def final_adjustments(res, counts, pref, texts, lexicon):
+# YHWH, Yah, Adonai: in English the translation writes LORD / Lord / GOD, not a transliteration, so the rules that look
+# for the name by its transliteration would pick another capitalized word (Josiah for Yehovah)
+DIVINE_NAMES = {"H3068", "H3069", "H3050", "H136"}
+# capitalized English words that are not names (start of a sentence, the pronouns of God in the BSB)
+NOT_NAMES_EN = frozenset(
+    [
+        "the",
+        "a",
+        "an",
+        "and",
+        "but",
+        "for",
+        "so",
+        "then",
+        "now",
+        "when",
+        "he",
+        "his",
+        "him",
+        "you",
+        "your",
+        "i",
+        "my",
+        "me",
+        "we",
+        "our",
+        "they",
+        "their",
+        "o",
+        "this",
+        "that",
+        "there",
+    ]
+)
+
+
+def final_adjustments(res, counts, pref, texts, lexicon, lang=PT):
     """Correções apontadas pela revisão automática:
     - YHWH: onde a BLIVRE diz "EU SOU", a glosa cortada "SOU" vira "EU-SOU";
     - nomes próprios trocados pelo alinhamento: usa o nome que a BLIVRE dá a essa palavra, se ele está no versículo;
@@ -92,11 +128,19 @@ def final_adjustments(res, counts, pref, texts, lexicon):
         language, morph, lemma = r.language, r.morph or "", r.lemma or ""
         verse_text = texts.get((r.book, r.chapter, r.verse), "")
         root_tok = next((t for tp, t in toks if tp == "raiz"), None)
-        if r.strong == "H3068" and gloss and re.search(r"(^|-)SOU($|-)", gloss) and re.search(r"EU[ -]SOU", verse_text):
+        is_name = proper_name(language, morph, lemma) and (lang.portuguese_rules or r.strong not in DIVINE_NAMES)
+        ignore = frozenset() if lang.portuguese_rules else NOT_NAMES_EN
+        if (
+            lang.portuguese_rules
+            and r.strong == "H3068"
+            and gloss
+            and re.search(r"(^|-)SOU($|-)", gloss)
+            and re.search(r"EU[ -]SOU", verse_text)
+        ):
             item[1] = re.sub(r"(^|-)SOU($|-)", r"\1EU-SOU\2", gloss)
             n["YHWH EU-SOU"] += 1
             continue
-        if gloss and rend and proper_name(language, morph, lemma):
+        if gloss and rend and is_name:
             # nome no começo da frase perdeu a maiúscula (hendã → Hendã)
             def fix(t):
                 return (
@@ -108,12 +152,7 @@ def final_adjustments(res, counts, pref, texts, lexicon):
             rend = "-".join(fix(t) for t in rend.split("-"))
             gloss = item[1] = "-".join(fix(t) for t in gloss.split("-"))
         capsg = [t for t in (gloss or "").split("-") if t[:1].isupper() and len(t) > 1]
-        if (
-            gloss
-            and proper_name(language, morph, lemma)
-            and len(capsg) > 1
-            and not re.search(r"(?<!\w)" + r"[- ]".join(map(re.escape, capsg)) + r"(?!\w)", verse_text)
-        ):
+        if gloss and is_name and len(capsg) > 1 and not re.search(r"(?<!\w)" + r"[- ]".join(map(re.escape, capsg)) + r"(?!\w)", verse_text):
             rend = gloss
             # dois nomes colados (Tamar-Perez): fica o mais parecido com a transliteração
             target = name_from_xlit((lexicon.get(r.strong) or {}).get("xlit") or lemma)
@@ -125,12 +164,12 @@ def final_adjustments(res, counts, pref, texts, lexicon):
             item[2] = "regra"
             n["nome próprio duplo"] += 1
             continue
-        if gloss and not rend and proper_name(language, morph, lemma):
+        if gloss and not rend and is_name:
             rend = gloss.split("-")[-1]  # glosa pelo léxico: confere o nome também
-        if rend and proper_name(language, morph, lemma):
+        if rend and is_name:
             target = name_from_xlit((lexicon.get(r.strong) or {}).get("xlit") or lemma)
             caps = [t for t in rend.split("-") if t[:1].isupper()]
-            found = similar_name(target, verse_text)
+            found = similar_name(target, verse_text, ignore)
             if caps and found and found not in caps and similar(found, target) > max(similar(t, target) for t in caps) + 0.2:
                 item[1] = "-".join(t for t in gloss.split("-") if not t[:1].isupper()) + (
                     "-" if gloss.split("-")[0][:1].islower() and len(gloss.split("-")) > 1 else ""
@@ -158,17 +197,20 @@ def final_adjustments(res, counts, pref, texts, lexicon):
                 continue
         if item[2] in ("sem", "parcial") or not item[1]:
             e = lexicon.get(r.strong) or {}
-            if proper_name(language, morph, lemma):
-                base = similar_name(name_from_xlit(e.get("xlit") or lemma), verse_text) or name_from_xlit(e.get("xlit") or lemma)
-            elif e.get("pt"):
+            if is_name:
+                base = similar_name(name_from_xlit(e.get("xlit") or lemma), verse_text, ignore) or name_from_xlit(e.get("xlit") or lemma)
+            elif lang.lexicon_meaning == "pt" and e.get("pt"):
                 base = re.split(r"[;,(]| ou ", e["pt"])[0].strip(" .")
                 base = re.sub(r"^(um|uma|o|a) ", "", base).replace(" ", "-")
             else:
                 en = re.sub(r"\[[a-z]+\]|[{}]", "", e.get("en") or "")
                 en = re.split(r"[;,(]|\. (?:Compare|See)", en)[0].strip(" .")
-                base = RARE_GLOSSES.get(en) or ("[" + (en or "?") + "]")
-            pre = [PRE_H.get(t, "") for tp, t in toks if tp == "pre"] if language != "G" else []
-            item[1] = contract("-".join([p for p in pre if p] + [base]))
+                if lang.lexicon_meaning == "en":
+                    base = en.replace(" ", "-") or "?"
+                else:
+                    base = RARE_GLOSSES.get(en) or ("[" + (en or "?") + "]")
+            pre = [lang.pre_h.get(t, "") for tp, t in toks if tp == "pre"] if language != "G" else []
+            item[1] = lang.contract("-".join([p for p in pre if p] + [base]))
             item[2] = "lexico"
             n["sem glosa → léxico"] += 1
     for item in res:  # "Boaz-Boaz" → "Boaz"

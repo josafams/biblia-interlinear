@@ -72,14 +72,3 @@ SUF_PREP = {
     "3mp": "eles",
     "3fp": "elas",
 }
-
-
-def gloss_suffix_rule(tok, morph):
-    if tok == "s_d":
-        return "para"
-    p = tok[2:]
-    segs = morph[1:].split("/")
-    root = [s for s in segs if not s.startswith("S")]
-    pos = root[-1][:1] if root else ""
-    tab = SUF_VERB if pos == "V" else SUF_PREP if pos in ("R", "T") else SUF_NOUN
-    return tab.get(p, "")

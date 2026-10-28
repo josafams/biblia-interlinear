@@ -4,20 +4,20 @@ nothing was aligned."""
 import re
 from collections import Counter, defaultdict
 
-from interlinear.glosses.fixed import ARTICLE_G, PRE_H, SUF_VERB, gloss_suffix_rule
-from interlinear.glosses.portuguese import FUNCTION_POS, STOP_PT, contract, fallback_keys, root_pos, tokens_pt
+from interlinear.glosses.languages import PT
+from interlinear.glosses.portuguese import FUNCTION_POS, fallback_keys, root_pos, tokens_pt
 from interlinear.glosses.units import greek_units, hebrew_units
 from interlinear.models import AlignedWord
 
 
-def assemble(db, testament):
+def assemble(db, testament, lang=PT):
     q = """SELECT p.id, p.book, p.chapter, p.verse, p.language, p.text, p.lemma, p.strong, p.morph
            FROM words p JOIN books l ON l.code = p.book
            WHERE l.testament = ? ORDER BY l.book_order, p.chapter, p.verse, p.pos"""
     verses = defaultdict(list)
     for r in map(AlignedWord._make, db.execute(q, (testament,))):
         verses[(r.book, r.chapter, r.verse)].append(r)
-    texts = {(b, c, v): t for b, c, v, t in db.execute("SELECT book, chapter, verse, blivre FROM verses")}
+    texts = {(b, c, v): t for b, c, v, t in db.execute(lang.texts_sql)}
     item_list = []
     for k, wds in verses.items():
         t = texts.get(k) or ""
@@ -70,7 +70,6 @@ def usual(tc, totals, root, tok):
 
 
 CLAIMED, ALIEN, MIN_SEEN = 0.2, 0.05, 3
-VERB_PT = re.compile(r"(ndo|[aeiou]r|[aei]u|ou|[aeo]ram|am|em|va|vam|ia|iam|ado|ada|ido|ida)$")
 
 
 def settle_contested(lk, unit, toks, tc, totals):
@@ -99,12 +98,12 @@ def settle_contested(lk, unit, toks, tc, totals):
     return kept, had - still
 
 
-def rescue(lk, lost, wds, unit, toks, verse_text, tc):
+def rescue(lk, lost, wds, unit, toks, verse_text, tc, lang=PT):
     """A content word that lost its links (settle_contested) takes a Portuguese word nobody took, when it is a
     translation seen for its root elsewhere (or shares its first 5 letters with one) or, for a verb, when it is the
     only free verb-like word near its place in the verse. A clitic joined by a hyphen comes along (Comovendo-se)."""
     taken = {j for _, j in lk}
-    free = [j for j in range(len(toks)) if j not in taken and toks[j][0].lower() not in STOP_PT]
+    free = [j for j in range(len(toks)) if j not in taken and toks[j][0].lower() not in lang.stop]
     for wi in sorted(lost):
         r = wds[wi]
         pos = root_pos(r.language, r.morph)
@@ -117,7 +116,7 @@ def rescue(lk, lost, wds, unit, toks, verse_text, tc):
         known = [
             j for j in free if any(toks[j][0].lower() == s or (len(toks[j][0]) >= 5 and toks[j][0][:5].lower() == s[:5]) for s in seen)
         ]
-        verbs = [j for j in near if VERB_PT.search(toks[j][0].lower())] if pos == "V" else []
+        verbs = [j for j in near if lang.verb_like.search(toks[j][0].lower())] if pos == "V" else []
         pick = min(known, key=lambda j: abs(j / max(1, len(toks)) - place)) if known else (verbs[0] if len(verbs) == 1 else None)
         if pick is None:
             continue
@@ -129,7 +128,7 @@ def rescue(lk, lost, wds, unit, toks, verse_text, tc):
     return lk
 
 
-def compose(item_list, links):
+def compose(item_list, links, lang=PT):
     """First pass: the Bíblia Livre words aligned with each word. Returns the glosses, the translations seen per
     root and, per word id, the [(start, end), ...] characters of the Bíblia Livre linked to it (the alignment
     table, which the app uses to link a word with the Portuguese)."""
@@ -154,7 +153,7 @@ def compose(item_list, links):
                         lk.discard((i, j))
         lk, lost = settle_contested(lk, unit, toks, tc, totals)
         if lost:
-            lk = rescue(lk, lost, wds, unit, toks, verse_text, tc)
+            lk = rescue(lk, lost, wds, unit, toks, verse_text, tc, lang)
         by_unit = defaultdict(set)
         aligned_t = defaultdict(set)
         for i, j in lk:
@@ -167,7 +166,7 @@ def compose(item_list, links):
         for wi, r in enumerate(wds):
             d = by_word[wi]
             # raiz de conteúdo (verbo, nome, adjetivo) ligada só a artigo/preposição: alinhamento espúrio
-            if d["raiz"] and root_pos(r.language, r.morph) in ("V", "N", "A") and all(toks[j][0].lower() in STOP_PT for j in d["raiz"]):
+            if d["raiz"] and root_pos(r.language, r.morph) in ("V", "N", "A") and all(toks[j][0].lower() in lang.stop for j in d["raiz"]):
                 d["raiz"] = set()
             js = sorted(d["raiz"] | d["pre"] | d["suf"])
             if js:
@@ -208,7 +207,7 @@ def preferred_translation(tally):
     return tally.most_common(1)[0][0] if tally else None
 
 
-def complete(res, counts):
+def complete(res, counts, lang=PT):
     """Segunda passada: palavras sem alinhamento da raiz recebem a tradução mais comum ou uma regra."""
     pref = {tok: preferred_translation(c) for tok, c in counts.items()}
     for item in res:
@@ -224,14 +223,14 @@ def complete(res, counts):
                 tot = max(1, sum(ct.values()))
                 good = [t for t in rend.split("-") if ct[t.lower()] / tot >= 0.05]
                 if good:
-                    pre = [PRE_H.get(t, "") for tp, t in toks if tp == "pre"] if language != "G" else []
-                    item[1] = contract("-".join([p for p in pre if p] + good))
+                    pre = [lang.pre_h.get(t, "") for tp, t in toks if tp == "pre"] if language != "G" else []
+                    item[1] = lang.contract("-".join([p for p in pre if p] + good))
                     item[2] = "alinhamento"
                     continue
                 source = item[2] = "rejeitado"
         if root_tok == "h853":
-            pre = [PRE_H.get(t, "") for tp, t in toks if tp == "pre"]
-            suf = [SUF_VERB.get(t[2:], "") for tp, t in toks if tp == "suf" and t.startswith("s_")]
+            pre = [lang.pre_h.get(t, "") for tp, t in toks if tp == "pre"]
+            suf = [lang.suf_verb.get(t[2:], "") for tp, t in toks if tp == "suf" and t.startswith("s_")]
             item[1] = "-".join([p for p in pre if p] + ([s for s in suf if s] or ["[obj]"]))
             item[2] = "regra"
             continue
@@ -239,8 +238,8 @@ def complete(res, counts):
             continue
         if language == "G" and morph.startswith("RA"):
             parse = morph.split("-", 1)[1] if "-" in morph else ""
-            art = ARTICLE_G.get((parse[4:5], parse[6:7], parse[5:6])) if len(parse) >= 7 else None
-            item[1], item[2] = art or "o", "regra"
+            art = lang.article_g.get((parse[4:5], parse[6:7], parse[5:6])) if len(parse) >= 7 else None
+            item[1], item[2] = art or lang.article_g[("N", "M", "S")], "regra"
             continue
         base = None
         for ch in fallback_keys(toks, language, morph):
@@ -256,8 +255,8 @@ def complete(res, counts):
         if language == "G":
             item[1], item[2] = base, "lexico"
             continue
-        pre = [PRE_H.get(t, "") for tp, t in toks if tp == "pre"]
-        suf = [gloss_suffix_rule(t, morph) for tp, t in toks if tp == "suf"]
-        pieces = [p for p in pre if p] + [base] + [s for s in suf if s]
-        item[1], item[2] = contract("-".join(pieces)), "lexico"
+        pre = [lang.pre_h.get(t, "") for tp, t in toks if tp == "pre"]
+        suf = [lang.suffix(t, morph) for tp, t in toks if tp == "suf"]
+        pieces = [p for p in pre if p] + [s for s, before in suf if s and before] + [base] + [s for s, before in suf if s and not before]
+        item[1], item[2] = lang.contract("-".join(pieces)), "lexico"
     return pref

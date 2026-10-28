@@ -8,6 +8,8 @@
    Sem alinhamento, entra a tradução mais frequente da mesma raiz (fonte "lexico"),
    ou uma regra fixa (artigo grego, partícula de objeto hebraica…).
 4. As glosas revisadas à mão (data/glosses_pt.tsv, Gênesis 1) têm prioridade.
+5. Para o app em inglês, o mesmo com a Berean Standard Bible (tabelas translated_glosses, translated_alignment e
+   translated_lexicon; alinhamento salvo em data/alignment/en-*.links.gz).
 
 Grava em build/biblia.sqlite: palavras.glosa, palavras.glosa_fonte e a tabela traducoes
 ("como a BLIVRE traduz" cada verbete).
@@ -25,29 +27,25 @@ from interlinear.glosses.adjust import apply_manual, final_adjustments, load_lex
 from interlinear.glosses.align import TMP, align_corpus
 from interlinear.glosses.compose import assemble, complete, compose
 from interlinear.glosses.corrections import apply_corrections
+from interlinear.glosses.languages import EN, PT
 from interlinear.paths import DB
 
 
-def main():
-    parser(__doc__).parse_args()
-    db = sqlite3.connect(DB)
-    db.execute("DROP TABLE IF EXISTS traducoes")
-    db.execute("DROP TABLE IF EXISTS translations")
-    db.execute("CREATE TABLE translations(entry_key TEXT, translation TEXT, n INTEGER)")
-    db.execute("DROP TABLE IF EXISTS alignment")
-    db.execute("CREATE TABLE alignment(word_id INTEGER PRIMARY KEY, spans TEXT)")
+def glosses(db, lang, store):
+    """Aligns, composes and completes the glosses of one language; store(test, res, by_key) keeps them.
+    Returns the glosses by source and, per word id, the characters of the running text linked to it."""
     spans = {}
     total = Counter()
     for test, name in (("AT", "at"), ("NT", "nt")):
-        item_list = assemble(db, test)
-        links = align_corpus(item_list, name)
-        res, counts, new_spans = compose(item_list, links)
+        item_list = assemble(db, test, lang)
+        links = align_corpus(item_list, name if lang is PT else f"{lang.code}-{name}")
+        res, counts, new_spans = compose(item_list, links, lang)
         spans.update(new_spans)
-        pref = complete(res, counts)
+        pref = complete(res, counts, lang)
         lexicon = load_lexicon(db)
-        texts = {(b, c, v): t or "" for b, c, v, t in db.execute("SELECT book, chapter, verse, blivre FROM verses")}
-        print("  ajustes:", dict(final_adjustments(res, counts, pref, texts, lexicon)))
-        if test == "AT":
+        texts = {(b, c, v): t or "" for b, c, v, t in db.execute(lang.texts_sql)}
+        print("  ajustes:", dict(final_adjustments(res, counts, pref, texts, lexicon, lang)))
+        if test == "AT" and lang is PT:
             diffs = []
             n, equal, _ = apply_manual(db, res, diffs)
             if n:
@@ -56,8 +54,7 @@ def main():
                     f.write("vers\thebraico\trevisada\tautomatica\tfonte\n")
                     for d in diffs:
                         f.write("\t".join(str(x) for x in d) + "\n")
-        db.executemany("UPDATE words SET gloss = ?, gloss_source = ? WHERE id = ?", [(g, f, pid) for pid, g, f, _, _, _ in res])
-        # "como a BLIVRE traduz": por chave de Strong (ou lema grego sem Strong)
+        # "como a BLIVRE (ou a BSB) traduz": por chave de Strong (ou lema grego sem Strong)
         by_key = defaultdict(Counter)
         tok_key = {}
         for _pid, _g, _f, toks, r, _ in res:
@@ -71,8 +68,25 @@ def main():
             if ch:
                 for t, n in c.items():
                     by_key[ch][t.lower()] += n
-        db.executemany("INSERT INTO translations VALUES (?,?,?)", [(ch, t, n) for ch, c in by_key.items() for t, n in c.most_common(12)])
+        store(res, by_key)
         total.update(f for _, _, f, _, _, _ in res)
+    return total, spans
+
+
+def main():
+    parser(__doc__).parse_args()
+    db = sqlite3.connect(DB)
+    db.execute("DROP TABLE IF EXISTS traducoes")
+    db.execute("DROP TABLE IF EXISTS translations")
+    db.execute("CREATE TABLE translations(entry_key TEXT, translation TEXT, n INTEGER)")
+    db.execute("DROP TABLE IF EXISTS alignment")
+    db.execute("CREATE TABLE alignment(word_id INTEGER PRIMARY KEY, spans TEXT)")
+
+    def store_pt(res, by_key):
+        db.executemany("UPDATE words SET gloss = ?, gloss_source = ? WHERE id = ?", [(g, f, pid) for pid, g, f, _, _, _ in res])
+        db.executemany("INSERT INTO translations VALUES (?,?,?)", [(ch, t, n) for ch, c in by_key.items() for t, n in c.most_common(12)])
+
+    total, spans = glosses(db, PT, store_pt)
     db.executemany(
         "INSERT INTO alignment VALUES (?, ?)",
         [(pid, ",".join(f"{a},{b}" for a, b in sp)) for pid, sp in spans.items() if sp],
@@ -80,6 +94,32 @@ def main():
     db.commit()
     print("glosas por fonte:", dict(total))
     apply_corrections(db)
+
+    # English (the app in English): the same with the Berean Standard Bible, in tables of their own
+    for table, cols in (
+        ("translated_glosses", "locale TEXT, word_id INTEGER, gloss TEXT, gloss_source TEXT, PRIMARY KEY(locale, word_id)"),
+        ("translated_alignment", "locale TEXT, word_id INTEGER, spans TEXT, PRIMARY KEY(locale, word_id)"),
+        ("translated_lexicon", "locale TEXT, entry_key TEXT, translation TEXT, n INTEGER"),
+    ):
+        db.execute(f"DROP TABLE IF EXISTS {table}")
+        db.execute(f"CREATE TABLE {table}({cols})")
+    if not db.execute("SELECT count(*) FROM translated_verses WHERE locale = 'en'").fetchone()[0]:
+        print("en: sem o texto da BSB no banco; glosas em inglês não feitas")
+        return
+
+    def store_en(res, by_key):
+        db.executemany("INSERT INTO translated_glosses VALUES ('en',?,?,?)", [(pid, g, f) for pid, g, f, _, _, _ in res])
+        db.executemany(
+            "INSERT INTO translated_lexicon VALUES ('en',?,?,?)", [(ch, t, n) for ch, c in by_key.items() for t, n in c.most_common(12)]
+        )
+
+    total, spans = glosses(db, EN, store_en)
+    db.executemany(
+        "INSERT INTO translated_alignment VALUES ('en', ?, ?)",
+        [(pid, ",".join(f"{a},{b}" for a, b in sp)) for pid, sp in spans.items() if sp],
+    )
+    db.commit()
+    print("en: glosas por fonte:", dict(total))
 
 
 if __name__ == "__main__":
