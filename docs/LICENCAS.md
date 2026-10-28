@@ -16,7 +16,7 @@ Tudo o que o projeto usa precisa ser aberto ou livre de direitos pagos, porque o
 | Léxico grego auxiliar (lema → Strong, glosa curta) | Jeffrey Dodson, Greek Lexicon (biblicalhumanities) | Domínio público / CC0 | — |
 | Pontos de divisão de 7 versículos (hebraico × numeração das traduções) | Conferidos com o TAHOT (STEPBible) | CC BY 4.0 | Crédito "STEP Bible" (<www.STEPBible.org>). Nenhum dado do TAHOT é distribuído |
 | Glosas palavra a palavra | Alinhamento estatístico com a BLIVRE feito neste projeto com a ferramenta **eflomal** (GPL 3) | Ferramenta usada só no processamento; nada dela é distribuído | As glosas não fazem parte da BLIVRE nem têm endosso dos autores |
-| Introduções, temas, traduções do léxico, pronúncia em português, regras de glosa | Feitos para este projeto | a definir pelo autor (sugestão: CC BY-SA 4.0, compatível com o Strong e o MorphGNT) | — |
+| Introduções, temas, traduções do léxico, pronúncia em português, regras de glosa | Feitos para este projeto | CC BY-SA 4.0 (arquivo [`LICENSE`](../LICENSE)), compatível com o Strong e o MorphGNT | — |
 | Fontes tipográficas | Noto Serif Hebrew, Gentium Book Plus, Literata, IBM Plex Mono, Atkinson Hyperlegible (via Fontsource) | SIL OFL 1.1 | Textos das licenças em `build/web/fonts/` e na página de créditos do EPUB |
 | Apps Android e iOS | Capacitor (core, android, ios, app, cli) e @capacitor-community/text-to-speech | MIT | — |
 | Áudio | Voz do aparelho de quem lê (hebraico e grego modernos) | — | Nenhum arquivo de áudio é distribuído |
