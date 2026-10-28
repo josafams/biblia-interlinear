@@ -65,8 +65,10 @@ export function markSpans(text: string, spans: [number, number][]) {
   return out + esc(text.slice(pos));
 }
 
-/** The concordance files, loaded once each. */
-export function createConcordance() {
+/** The concordance files, loaded once each. layer: the locale whose glosses it lists (dados/<layer>/conc), null
+ * for the Bíblia Livre. */
+export function createConcordance(layer: string | null = null) {
+  const folder = layer ? `dados/${layer}/conc` : "dados/conc";
   const files: Record<string, Record<string, ConcEntry>> = {};
   const load = jsonpChannel<Record<string, ConcEntry>>("__conc", (bucket, d) => {
     files[bucket] = d;
@@ -75,7 +77,7 @@ export function createConcordance() {
     async entry(key: string): Promise<ConcEntry | null> {
       const b = bucketOf(key);
       try {
-        return (files[b] || (await load(b, `dados/conc/${b}.js`)))[key] || null;
+        return (files[b] || (await load(b, `${folder}/${b}.js`)))[key] || null;
       } catch {
         return null;
       }

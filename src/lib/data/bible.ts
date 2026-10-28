@@ -5,26 +5,29 @@
 import type { BibleData, Chapter, LexEntry, RawWord, Verse, Word } from "../types";
 import { jsonpChannel } from "./jsonp";
 
-/** A chapter's running text in another language: [verse, text, note?, section title?] per verse. */
-export type TextLayer = { v: [number, string, (string | null)?, string?][] };
+/** A chapter in another language (dados/<locale>/cap): per verse the text, note, section title, the gloss and its
+ * source for each word ("g") and the links of each word to the text ("a", as in the chapter). */
+export type TextLayer = { v: { n: number; b: string; o?: string; h?: string; g?: [string, string][]; a?: number[][] }[] };
 
 /**
- * The chapter with the layer's text, note and section title in each verse. The links to the Bíblia Livre ("a")
- * go, since they point into its text.
+ * The chapter in the layer's language: text, note, section title, links and the glosses of the words come from
+ * the layer. The marks of the automatic review stay out: they are about the Portuguese glosses.
  */
 export function withLayer(ch: Chapter, layer: TextLayer): Chapter {
-  const by = new Map(layer.v.map(x => [x[0], x]));
+  const by = new Map(layer.v.map(x => [x.n, x]));
   const v = ch.v.map(verse => {
-    const [, b = "", o, h] = by.get(verse.n) ?? [];
-    const out: Verse = { ...verse, b };
+    const L = by.get(verse.n);
+    const out: Verse = { ...verse, b: L?.b ?? "" };
     delete out.a;
     delete out.o;
     delete out.h;
-    if (o) out.o = o;
-    if (h) out.h = h;
+    if (L?.o) out.o = L.o;
+    if (L?.h) out.h = L.h;
+    if (L?.a) out.a = L.a;
+    if (L?.g) out.w = verse.w.map((w, i) => (L.g![i] ? ([w[0], w[1], L.g![i][0], L.g![i][1], ...w.slice(4)] as typeof w) : w));
     return out;
   });
-  return { ...ch, v };
+  return { ...ch, v, m: [] };
 }
 
 /** layer: the locale whose running text replaces the Bíblia Livre (null keeps the Bíblia Livre). */
@@ -37,8 +40,10 @@ export function createBible(data: BibleData, layer: string | null = null) {
     raw[key] = d;
   });
   const loadLayer = jsonpChannel<TextLayer>("__txt", () => {});
-  const loadLex = jsonpChannel<Record<string, LexEntry>>("__lex", (_, d) => {
-    Object.assign(lex, d);
+  // the Portuguese files ("H") replace; the layer's ("en.H") merge into the entries already loaded
+  const loadLex = jsonpChannel<Record<string, LexEntry>>("__lex", (key, d) => {
+    if (!key.includes(".")) Object.assign(lex, d);
+    else for (const [k, e] of Object.entries(d)) lex[k] = { ...lex[k], ...e };
   });
   const lexLoading: Record<string, Promise<unknown> | null> = {};
 
@@ -48,7 +53,9 @@ export function createBible(data: BibleData, layer: string | null = null) {
     /** Loads the Hebrew ("H") or Greek ("G") lexicon once; a failed load is retried next time. */
     ensureLex(lang: "H" | "G") {
       if (!data.complete) return Promise.resolve();
-      lexLoading[lang] ??= loadLex(lang, `dados/lex/${lang}.js`).catch(e => {
+      lexLoading[lang] ??= loadLex(lang, `dados/lex/${lang}.js`)
+        .then(() => (layer ? loadLex(`${layer}.${lang}`, `dados/${layer}/lex/${lang}.js`) : null))
+        .catch(e => {
         lexLoading[lang] = null;
         throw e;
       });

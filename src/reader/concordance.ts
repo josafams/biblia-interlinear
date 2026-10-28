@@ -2,7 +2,7 @@
 // lemma shows up, filtered by translation and by book, each verse with the linked words marked.
 import { flushSync, mount } from "svelte";
 import ConcordanceSheet from "../components/ConcordanceSheet.svelte";
-import { t } from "../i18n";
+import { t, textLayer } from "../i18n";
 import {
   type ConcEntry,
   type Occurrence,
@@ -22,7 +22,7 @@ import { ANNOTATIONS_OPEN_PANEL } from "./events";
 import { initLinks } from "./links";
 
 const PAGE = 40;
-const concordance = createConcordance();
+const concordance = createConcordance(textLayer());
 let entry: ConcEntry | null = null,
   all: Occurrence[] = [],
   list: Occurrence[] = [],

@@ -66,3 +66,18 @@ test("in English the search looks in the BSB", async ({ page }) => {
   await expect(page.locator(".busca-item").first()).toContainText("John 3:16");
   await expect(page.locator(".busca-item mark").first()).toHaveText(/loved|God|world/);
 });
+
+test("in English the glosses, the entry and the chapter lexicon are in English", async ({ page }) => {
+  await page.goto("ler.html?lang=en#GEN.1");
+  await expect(page.locator('.word[data-v="0"][data-i="0"] .g')).toHaveText(/in.the.beginning/i);
+  await page.click('.word[data-v="0"][data-i="1"]');
+  const d = page.locator("#detail");
+  await expect(d).toContainText("H1254");
+  await expect(d).toContainText(/to create/i); // Strong's meaning, in English
+  await expect(d).toContainText("How the BSB translates it");
+  await expect(d).not.toContainText("(in English)");
+  await page.click("#d-close");
+  await page.fill("#lsearch", "light");
+  // Strong's meaning in English: "light" finds אוֹר (H216) and the verb (H215)
+  await expect(page.locator('#llist .lrow[data-ref="H216"]')).toBeVisible();
+});
