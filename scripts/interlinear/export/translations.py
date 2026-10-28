@@ -6,7 +6,8 @@ Portuguese files, so the words of the original are not repeated:
 - lex/H.js, lex/G.js: per entry the origin and meaning (Strong's, in English), the pronunciation and how the
   translation renders it;
 - busca/: the search index of the text; conc/: the concordance with the glosses of the locale;
-- livros.js: the project's own texts translated (data/<locale>/: chapter themes and book introductions, with the
+- livros.js (and livros.json, lex/{H,G}.json in build/data/<locale>/ for the static pages of src/seo): the
+  project's own texts translated (data/<locale>/: chapter themes and book introductions, with the
   key verses quoted from the locale's text), loaded by ler.html before the reader; the questions of each chapter go
   in its cap/ file ("q"). A book without them yet shows none: the app does not mix languages."""
 
@@ -176,10 +177,13 @@ def write_translation(db, locale, chapters, books):
         n += 1
     translated = book_texts(locale, books, texts)
     Path(os.path.join(web, "livros.js")).write_text(f"window.BOOK_TEXTS={compact(translated)};", encoding="utf8")
+    Path(os.path.join(out, "livros.json")).write_text(compact(translated), encoding="utf8")
     lex = build_lexicon(db, locale, chapters.usage)
     os.makedirs(os.path.join(web, "lex"), exist_ok=True)
+    os.makedirs(os.path.join(out, "lex"), exist_ok=True)
     for L, d in lex.items():
         Path(os.path.join(web, "lex", f"{L}.js")).write_text(f"__lex({json.dumps(f'{locale}.{L}')},{compact(d)});", encoding="utf8")
+        Path(os.path.join(out, "lex", f"{L}.json")).write_text(compact(d), encoding="utf8")
     index = {k: {v: (t, None, None) for v, t in vs.items()} for k, vs in texts.items()}
     write_search_index(index, chapters.book_index, os.path.join(web, "busca"))
     write_concordance(concordance, os.path.join(web, "conc"))

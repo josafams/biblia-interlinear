@@ -35,7 +35,7 @@ export function bookMatches(b: IndexBook, query: string) {
   return [b.name, b.abbrev].some(x => norm(x.replace(/\s+/g, "")).startsWith(query)) || norm(b.name).includes(query);
 }
 
-type LocalBook = { code: string; name: string; abbrev: string; group: string; about?: unknown; chapters: { n: number; t?: string }[] };
+type LocalBook = { code: string; name: string; abbrev?: string; group: string; about?: unknown; chapters: { n: number; t?: string }[] };
 /** The project's texts translated, per book (dados/<locale>/livros.js): chapter themes and the introduction. */
 export type BookTexts = Record<string, { t?: Record<string, string>; about?: unknown }>;
 

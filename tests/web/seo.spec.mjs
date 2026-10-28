@@ -71,10 +71,23 @@ test("verbete hebraico: da direita para a esquerda", async ({ page }) => {
 
 test("sitemap.xml aponta para as partes, e elas têm todas as páginas", async ({ request }) => {
   const index = await (await request.get("sitemap.xml")).text();
-  expect(index.match(/<sitemap>/g)).toHaveLength(3);
+  expect(index.match(/<sitemap>/g)).toHaveLength(5);
   const count = async f => ((await (await request.get(f)).text()).match(/<url>/g) || []).length;
   expect(await count("sitemap-paginas.xml")).toBe(3);
   expect(await count("sitemap-biblia.xml")).toBe(1 + 66 + 1189);
   expect(await count("sitemap-lexico.xml")).toBeGreaterThan(14000);
+  expect(await count("sitemap-bible-en.xml")).toBe(1 + 66 + 1189);
+  expect(await count("sitemap-lexicon-en.xml")).toBeGreaterThan(14000);
   expect(await (await request.get("robots.txt")).text()).toContain("Sitemap: https://josafams.github.io/biblia-interlinear/sitemap.xml");
+});
+
+test("capítulo em inglês: BSB, glosas em inglês e os dois idiomas ligados", async ({ page }) => {
+  await page.goto("en/bible/john/3/");
+  await expect(page.locator("html")).toHaveAttribute("lang", "en");
+  await expect(page.locator("h1")).toContainText("John 3");
+  await expect(page.locator("main")).toContainText("For God so loved the world");
+  await expect(page.locator('link[hreflang="pt-BR"]')).toHaveAttribute("href", /\/biblia\/joao\/3\/$/);
+  await expect(page.locator('a[href$="ler.html?lang=en#JHN.3"]').first()).toBeVisible();
+  await page.goto("biblia/joao/3/");
+  await expect(page.locator('link[hreflang="en"]')).toHaveAttribute("href", /\/en\/bible\/john\/3\/$/);
 });

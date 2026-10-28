@@ -13,6 +13,8 @@ const LAZY = [
   "videos/",
   "biblia/",
   "lexico/",
+  "en/bible/",
+  "en/lexicon/",
   "sitemap"
 ];
 

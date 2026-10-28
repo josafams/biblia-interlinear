@@ -10,6 +10,8 @@ export type PageMeta = {
   description: string;
   type?: "website" | "article" | "book";
   jsonLd?: object[];
+  /** the same page in each locale, this one included ([["pt-BR", "biblia/joao/"], ["en", "en/bible/john/"]]) */
+  alternates?: [locale: string, path: string][];
 };
 
 /** The share image (1200×630), written by vite/site/share-image.ts. */
@@ -39,6 +41,8 @@ export function headTags(m: PageMeta, siteName: string) {
     `<title>${e(m.title)}</title>`,
     `<meta name="description" content="${e(clip(m.description))}">`,
     `<link rel="canonical" href="${e(url)}">`,
+    ...(m.alternates || []).map(([lang, path]) => `<link rel="alternate" hreflang="${lang}" href="${e(absolute(path))}">`),
+    ...(m.alternates?.length ? [`<link rel="alternate" hreflang="x-default" href="${e(absolute(m.alternates[0][1]))}">`] : []),
     `<meta property="og:site_name" content="${e(siteName)}">`,
     `<meta property="og:type" content="${m.type || "website"}">`,
     `<meta property="og:locale" content="${locale}">`,
@@ -51,6 +55,16 @@ export function headTags(m: PageMeta, siteName: string) {
     `<meta name="twitter:card" content="summary_large_image">`,
     ...(m.jsonLd || []).map(jsonScript)
   ].join("\n");
+}
+
+/** The hreflang pairs of a page that also exists in another locale (Portuguese first: it is the x-default). */
+export function alternates(here: string, there?: string | false, other?: string): PageMeta["alternates"] {
+  if (!there || !other) return undefined;
+  const pairs: [string, string][] = [
+    [getLocale(), here],
+    [other, there]
+  ];
+  return pairs.sort(([a], [b]) => Number(b === "pt-BR") - Number(a === "pt-BR"));
 }
 
 // ---- structured data (schema.org)

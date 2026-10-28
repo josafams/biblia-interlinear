@@ -2,7 +2,7 @@
 // how the Bíblia Livre translates it and the first verses where it appears, each one a link to its chapter page.
 import { t } from "../i18n";
 import { document, type Site } from "./document";
-import { breadcrumbs, escapeHtml as e, termData } from "./head";
+import { alternates, breadcrumbs, escapeHtml as e, termData } from "./head";
 import { booksPath, chapterPath, entryPath, toRoot } from "./paths";
 
 /** An entry as in build/data/lex/{H,G}.json */
@@ -47,6 +47,7 @@ ${total > refs.length ? `<p class="credit">${e(t("seo.more_refs", { count: total
     type: "article" as const,
     title: t("seo.entry_title", { word: name, key }),
     description: t("seo.entry_description", { word: name, key, meaning: entry.s || entry.t || "" }),
+    alternates: alternates(path, site.alt && entryPath(key, site.alt), site.alt),
     jsonLd: [
       termData({ name: entry.l, alternate: entry.x || "", code: key, description: entry.s || "", path, set }),
       breadcrumbs([

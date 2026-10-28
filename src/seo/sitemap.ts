@@ -19,12 +19,14 @@ export const sitemapIndex = (files: string[], lastmod: string) =>
 
 export const robots = () => `User-agent: *\nAllow: /\nSitemap: ${absolute("sitemap.xml")}\n`;
 
-/** The parts of the sitemap: the site's pages, the Bible (books and chapters) and the lexicon. */
+/** The parts of the sitemap: the site's pages, the Bible (books and chapters) and the lexicon, in Portuguese and in English. */
 export function sitemapParts(pages: string[]) {
   const parts: Record<string, string[]> = {
     "sitemap-paginas.xml": ["", "ler.html", "privacidade.html"],
     "sitemap-biblia.xml": pages.filter(p => p.startsWith("biblia/")),
-    "sitemap-lexico.xml": pages.filter(p => p.startsWith("lexico/"))
+    "sitemap-lexico.xml": pages.filter(p => p.startsWith("lexico/")),
+    "sitemap-bible-en.xml": pages.filter(p => p.startsWith("en/bible/")),
+    "sitemap-lexicon-en.xml": pages.filter(p => p.startsWith("en/lexicon/"))
   };
   for (const [file, list] of Object.entries(parts)) if (list.length > MAX_URLS) throw new Error(`${file}: ${list.length} addresses`);
   return parts;

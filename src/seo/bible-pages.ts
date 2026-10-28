@@ -1,16 +1,18 @@
 // The static pages of the Bible for search engines: the list of books (biblia/), a book with its introduction and
 // chapters (biblia/joao/) and a chapter with the Bíblia Livre and the original word by word (biblia/joao/3/). Each
 // one leads to the same place in the reader (ler.html#JHN.3).
-import { t } from "../i18n";
+import { getLocale, t } from "../i18n";
 import { document, type Site } from "./document";
-import { bookData, breadcrumbs, chapterData, escapeHtml as e } from "./head";
-import { bookPath, booksPath, chapterPath, entryPath, toRoot } from "./paths";
+import { alternates, bookData, breadcrumbs, chapterData, escapeHtml as e } from "./head";
+import { bookPath, booksPath, chapterPath, entryPath, readerPath, toRoot } from "./paths";
 
 export type SeoBook = {
   code: string;
   name: string;
   nt: boolean;
   group: string;
+  /** the book's name in the other locale of the site (Site.alt), for the hreflang links */
+  alt?: string;
   chapters: { n: number; v: number; t?: string }[];
   about?: {
     title_orig?: string;
@@ -30,7 +32,7 @@ const wordLang = (b: SeoBook, w: SeoWord) => (b.nt ? "grc" : String(w[4] || "").
 const cleanWord = (w: string) => w.replace(/\//g, "").replace(/[֑-ֽ֯]/g, "");
 const gloss = (g: string) => g.replace(/-/g, " ");
 const reader = (root: string, ref: string) =>
-  `<p class="open"><a class="btn" href="${root}ler.html#${ref}">${e(t("seo.open_reader"))}</a></p>`;
+  `<p class="open"><a class="btn" href="${root}${readerPath(ref)}">${e(t("seo.open_reader"))}</a></p>`;
 
 export function booksPage(books: SeoBook[], site: Site) {
   const path = booksPath();
@@ -44,7 +46,7 @@ ${groups
         .filter(b => b.group === g)
         .map(
           b =>
-            `<li><a href="../${bookPath(b.name)}">${e(b.name)}</a> <span>${e(t("seo.chapters_count", { count: b.chapters.length }))}</span></li>`
+            `<li><a href="${toRoot(path)}${bookPath(b.name)}">${e(b.name)}</a> <span>${e(t("seo.chapters_count", { count: b.chapters.length }))}</span></li>`
         )
         .join("")}</ul></section>`
   )
@@ -53,6 +55,7 @@ ${groups
     path,
     title: t("seo.books_page_title"),
     description: t("seo.books_description"),
+    alternates: alternates(path, site.alt && booksPath(site.alt), site.alt),
     jsonLd: [breadcrumbs([[t("seo.bible"), path]])]
   };
   return document(meta, site, body);
@@ -89,6 +92,7 @@ ${keys ? `<section><h2>${e(t("seo.key_verses"))}</h2>${keys}</section>` : ""}`;
     type: "book" as const,
     title: t("seo.book_title", { book: b.name, lang }),
     description,
+    alternates: alternates(path, site.alt && b.alt && bookPath(b.alt, site.alt), site.alt),
     jsonLd: [
       bookData(b.name, path, description, original(b)),
       breadcrumbs([
@@ -109,7 +113,7 @@ export function chapterPage(b: SeoBook, n: number, verses: SeoVerse[], lexicon: 
   const info = b.chapters.find(c => c.n === n);
   const name = `${b.name} ${n}`;
   const word = (w: SeoWord) => {
-    const inner = `<b>${e(cleanWord(w[0]))}</b><i lang="pt-BR">${e(gloss(w[2]))}</i>`;
+    const inner = `<b>${e(cleanWord(w[0]))}</b><i lang="${getLocale()}">${e(gloss(w[2]))}</i>`;
     return lexicon.has(w[1]) ? `<a class="w" href="${root}${entryPath(w[1])}">${inner}</a>` : `<span class="w">${inner}</span>`;
   };
   const rtl = b.nt ? "" : ' dir="rtl"';
@@ -138,6 +142,7 @@ ${verses.map(verse).join("\n")}
     type: "article" as const,
     title: t("seo.chapter_title", { chapter: name, lang }),
     description: `${info?.t ? `${info.t}. ` : ""}${first}`,
+    alternates: alternates(path, site.alt && b.alt && chapterPath(b.alt, n, site.alt), site.alt),
     jsonLd: [
       chapterData(name, path, n, { name: b.name, path: bookPath(b.name) }, original(b)),
       breadcrumbs([

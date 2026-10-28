@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import { expect, test } from "vitest";
-import { breadcrumbs, clip, escapeHtml, headTags } from "../../src/seo/head";
-import { bookSlug, chapterPath, entryPath, toRoot } from "../../src/seo/paths";
+import { alternates, breadcrumbs, clip, escapeHtml, headTags } from "../../src/seo/head";
+import { bookSlug, chapterPath, entryPath, homePath, readerPath, toRoot } from "../../src/seo/paths";
 
 test("book slugs: no accents, hyphens, and one per book", () => {
   expect(bookSlug("Gênesis")).toBe("genesis");
@@ -22,6 +22,27 @@ test("paths and the way back to the root", () => {
   expect(entryPath("G26")).toBe("lexico/G26/");
   expect(toRoot("biblia/joao/3/")).toBe("../../../");
   expect(toRoot("")).toBe("");
+  expect(readerPath("JHN.3")).toBe("ler.html#JHN.3");
+});
+
+test("paths in English: their own folder, names in English, and the reader in English", () => {
+  expect(homePath("en")).toBe("en/");
+  expect(chapterPath("John", 3, "en")).toBe("en/bible/john/3/");
+  expect(entryPath("G26", "en")).toBe("en/lexicon/G26/");
+  expect(readerPath("JHN.3", "en")).toBe("ler.html?lang=en#JHN.3");
+  expect(toRoot("en/bible/john/3/")).toBe("../../../../");
+});
+
+test("hreflang: both versions of a page, Portuguese first and as the default", () => {
+  expect(alternates("biblia/joao/3/")).toBeUndefined();
+  const pairs = alternates("biblia/joao/3/", "en/bible/john/3/", "en")!;
+  expect(pairs).toEqual([
+    ["pt-BR", "biblia/joao/3/"],
+    ["en", "en/bible/john/3/"]
+  ]);
+  const html = headTags({ path: "biblia/joao/3/", title: "João 3", description: "", alternates: pairs }, "Bíblia Interlinear");
+  expect(html).toContain('<link rel="alternate" hreflang="en" href="https://josafams.github.io/biblia-interlinear/en/bible/john/3/">');
+  expect(html).toContain('hreflang="x-default" href="https://josafams.github.io/biblia-interlinear/biblia/joao/3/"');
 });
 
 test("descriptions are cut at a word, with an ellipsis", () => {
@@ -54,8 +75,10 @@ test("sitemap: absolute addresses, escaped, in parts, and robots.txt pointing to
   expect(sitemapIndex(["sitemap-biblia.xml"], "2026-10-27")).toContain(
     "<sitemap><loc>https://josafams.github.io/biblia-interlinear/sitemap-biblia.xml</loc>"
   );
-  const parts = sitemapParts(["biblia/", "biblia/joao/", "lexico/G26/"]);
+  const parts = sitemapParts(["biblia/", "biblia/joao/", "lexico/G26/", "en/bible/john/", "en/lexicon/G26/"]);
   expect(parts["sitemap-biblia.xml"]).toEqual(["biblia/", "biblia/joao/"]);
   expect(parts["sitemap-lexico.xml"]).toEqual(["lexico/G26/"]);
+  expect(parts["sitemap-bible-en.xml"]).toEqual(["en/bible/john/"]);
+  expect(parts["sitemap-lexicon-en.xml"]).toEqual(["en/lexicon/G26/"]);
   expect(robots()).toContain("Sitemap: https://josafams.github.io/biblia-interlinear/sitemap.xml");
 });
