@@ -3,6 +3,7 @@
 name = "biblia-interlinear"
 version = "0.1.0"
 requires-python = ">=3.12"
+license = "CC-BY-SA-4.0"
 
 [tool.ruff]
 line-length = 140

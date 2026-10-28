@@ -2,6 +2,7 @@
   "name": "liberta-bibliainterlinear",
   "version": "0.1.0",
   "private": true,
+  "license": "CC-BY-SA-4.0",
   "description": "Bíblia interlinear hebraico/aramaico/grego–português (BLIVRE): site, app Android/iOS, EPUB e PDF",
   "scripts": {
     "build": "scripts/build.sh",
