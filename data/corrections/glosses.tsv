@@ -645,3 +645,103 @@ LEV 7:32	5	תְרוּמָ֖ה	oferta-elevada	claude	תְרוּמָה “oferta e
 LEV 7:32	6	לַ/כֹּהֵ֑ן	ao-sacerdote	claude	לַכֹּהֵן “ao sacerdote”; tinha “ao-sacerdote-para”
 LEV 8:33	16	יְמַלֵּ֖א	encherá	claude	יְמַלֵּא “encherá” (encher a mão: consagrar); tinha “sereis”
 LEV 8:33	18	יֶדְ/כֶֽם	vossa-mão	claude	יֶדְכֶם “vossa mão”; tinha “sereis-consagrados”
+LEV 11:7	4	מַפְרִ֨יס	tem-casco-partido	claude	מַפְרִיס “tem o casco partido” (a BLIVRE: “tem unhas”); tinha “tem”
+LEV 11:7	6	ה֗וּא	ele	claude	הוּא “ele”; tinha “e”
+LEV 11:7	7	וְ/שֹׁסַ֥ע	e-fende	claude	וְשֹׁסַע “e fende”; tinha “é-de-unhas”
+LEV 11:7	8	שֶׁ֨סַע֙	fenda	claude	שֶׁסַע “fenda”; tinha “fendidas”
+LEV 11:7	11	גֵּרָ֣ה	ruminação	claude	גֵּרָה “ruminação”; tinha “rumina”, da palavra seguinte
+LEV 11:7	13	יִגָּ֑ר	rumina	claude	יִגָּר “rumina”; tinha “serradas”
+LEV 12:5	3	תֵלֵ֔ד	der-à-luz	claude	תֵלֵד “der à luz”; tinha “luz”
+LEV 12:5	11	תֵּשֵׁ֖ב	ficará	claude	תֵּשֵׁב “ficará, permanecerá”; tinha “purificando”
+LEV 12:5	13	דְּמֵ֥י	no-sangue-de	claude	דְּמֵי “no sangue de”; tinha “sangue”
+LEV 12:5	14	טָהֳרָֽה	purificação	claude	טָהֳרָה “purificação”; tinha “seu”
+LEV 13:31	13	וְ/שֵׂעָ֥ר	e-pelo	claude	וְשֵׂעָר “e pelo”; tinha “e-veste”
+LEV 13:31	18	הַ/כֹּהֵ֛ן	o-sacerdote	claude	הַכֹּהֵן “o sacerdote”; tinha “sacerdote-ao”
+LEV 13:46	6	יִטְמָ֖א	estará-impuro	claude	יִטְמָא “estará impuro”; tinha “estará”
+LEV 13:46	11	מִ/ח֥וּץ	fora	claude	מִחוּץ “fora”; tinha “sozinho-fora”
+LEV 13:52	20	ב֖/וֹ	nele	claude	בּוֹ “nele”; tinha “em-houver”
+LEV 13:52	21	הַ/נָּ֑גַע	a-praga	claude	הַנָּגַע “a praga”; tinha “tal-praga”
+LEV 14:4	3	וְ/לָקַ֧ח	e-tomará	claude	וְלָקַח “e tomará”; tinha “tomem”
+LEV 14:4	12	תוֹלַ֖עַת	de-carmesim	claude	תוֹלַעַת “carmesim” (שְׁנִי תוֹלַעַת: escarlate); tinha “carmesim”, da palavra anterior
+LEV 14:6	11	הַ/תּוֹלַ֖עַת	de-carmesim	claude	הַתּוֹלַעַת “carmesim” (escarlate); tinha “o-carmesim”
+LEV 14:21	14	וְ/עִשָּׂר֨וֹן	e-um-décimo	claude	וְעִשָּׂרוֹן “e um décimo”; tinha “boa”, da palavra seguinte
+LEV 14:42	8	וְ/עָפָ֥ר	e-barro	claude	וְעָפָר “e barro, pó”; tinha “tiradas-e-tomarão-barro”
+LEV 14:49	10	תוֹלַ֖עַת	de-carmesim	claude	תוֹלַעַת “carmesim” (escarlate); tinha “carmesim”, da palavra anterior
+LEV 14:51	9	הַ/תּוֹלַ֗עַת	de-carmesim	claude	הַתּוֹלַעַת “carmesim” (escarlate); tinha “o-carmesim”
+LEV 15:18	6	שִׁכְבַת	emissão	claude	שִׁכְבַת “emissão”; tinha “seminal”
+LEV 15:18	7	זָ֑רַע	de-sêmen	claude	זָרַע “sêmen”; tinha “seminal-ambos”
+LEV 16:3	7	בֶּן	filho	claude	בֶּן “filho” (בֶּן־בָּקָר: novilho); tinha “um”
+LEV 16:3	8	בָּקָ֛ר	do-gado	claude	בָּקָר “gado”; tinha “bezerro”
+LEV 16:14	1	וְ/לָקַח֙	e-tomará	claude	וְלָקַח “e tomará”; tinha “tomará-logo”
+LEV 16:14	7	פְּנֵ֥י	face	claude	פְּנֵי “face (de)”; tinha “até”
+LEV 16:14	9	קֵ֑דְמָ/ה	ao-oriente	claude	קֵדְמָה “ao oriente”; tinha “oriental-até”
+LEV 16:14	10	וְ/לִ/פְנֵ֣י	e-diante	claude	וְלִפְנֵי “e diante”; tinha “até”
+LEV 17:9	10	וְ/נִכְרַ֛ת	e-será-eliminado	claude	וְנִכְרַת “e será eliminado”; tinha “tal”
+LEV 17:9	11	הָ/אִ֥ישׁ	o-homem	claude	הָאִישׁ “o homem”; tinha “tal-homem”
+LEV 17:9	12	הַ/ה֖וּא	aquele	claude	הַהוּא “aquele”; tinha “será”
+LEV 18:20	5	תִתֵּ֥ן	darás	claude	תִתֵּן “darás”; tinha “terás”
+LEV 18:20	6	שְׁכָבְתְּ/ךָ֖	teu-leito	claude	שְׁכָבְתְּךָ “teu leito” (a BLIVRE: “ato carnal”); tinha “terás-ato”
+LEV 18:20	7	לְ/זָ֑רַע	de-sêmen	claude	לְזָרַע “de sêmen”; tinha “carnal”
+LEV 19:9	7	פְּאַ֥ת	canto	claude	פְּאַת “canto”; tinha “ceifar”
+LEV 19:9	9	לִ/קְצֹ֑ר	ao-ceifar	claude	לִקְצֹר “ao ceifar”; tinha “plantação”
+LEV 19:9	10	וְ/לֶ֥קֶט	e-as-respigas	claude	וְלֶקֶט “e as respigas”; tinha “nem-espigarás”
+LEV 19:9	11	קְצִֽירְ/ךָ֖	de-tua-colheita	claude	קְצִירְךָ “de tua colheita”; tinha “tua-terra-ceifada”
+LEV 20:12	6	מ֥וֹת	certamente	claude	מוֹת infinitivo que reforça o verbo seguinte: “certamente”; tinha “terão”
+LEV 20:12	7	יוּמְת֖וּ	serão-mortos	claude	יוּמְתוּ “serão mortos”; tinha “morrer”
+LEV 20:12	8	שְׁנֵי/הֶ֑ם	ambos	claude	שְׁנֵיהֶם “ambos”; tinha “ambos-terão”
+LEV 21:17	4	לֵ/אמֹ֑ר	dizendo	claude	לֵאמֹר “dizendo”; tinha “e-dize”
+LEV 23:7	3	מִקְרָא	convocação	claude	מִקְרָא “convocação”; tinha “tereis-santa-convocação”
+LEV 23:7	5	יִהְיֶ֣ה	será	claude	יִהְיֶה “será”; tinha “tereis”
+LEV 23:21	4	הַ/זֶּ֗ה	este	claude	הַזֶּה “este”; tinha “o-hoje”
+LEV 23:21	5	מִֽקְרָא	convocação	claude	מִקְרָא “convocação”; tinha “santa-convocação”
+LEV 23:22	9	בְּ/קֻצְרֶ֔/ךָ	ao-ceifares	claude	בְּקֻצְרֶךָ “ao ceifares”; tinha “plantação”
+LEV 23:27	5	הַ/זֶּ֜ה	este	claude	הַזֶּה “este”; tinha “o-hoje”
+LEV 23:27	9	מִֽקְרָא	convocação	claude	מִקְרָא “convocação”; tinha “tereis-santa-convocação”
+LEV 23:27	11	יִהְיֶ֣ה	será	claude	יִהְיֶה “será”; tinha “tereis”
+LEV 23:36	8	מִקְרָא	convocação	claude	מִקְרָא “convocação”; tinha “tereis-santa-convocação”
+LEV 23:36	10	יִהְיֶ֨ה	será	claude	יִהְיֶה “será”; tinha “tereis”
+LEV 24:23	14	אָ֑בֶן	com-pedras	claude	אָבֶן “com pedra”; tinha “apedrejaram”
+LEV 24:23	18	כַּֽ/אֲשֶׁ֛ר	como	claude	כַּאֲשֶׁר “como, segundo o que”; tinha “segundo-o-que”
+LEV 24:23	19	צִוָּ֥ה	ordenou	claude	צִוָּה “ordenou, mandou”; tinha “o”
+LEV 25:30	5	מְלֹ֣את	completar	claude	מְלֹאת “completar-se”; tinha “dentro”
+LEV 25:30	6	ל/וֹ֮	para-ele	claude	לוֹ “para ele”; tinha “de”
+LEV 25:30	9	וְ֠/קָם	e-ficará	claude	וְקָם “e ficará firme”; tinha “e-levantou”
+LEV 25:30	12	בָּ/עִ֜יר	na-cidade	claude	בָּעִיר “na cidade”; tinha “estiver-na-cidade”
+LEV 25:30	14	ל֣/וֹ	para-ela	claude	לוֹ “para ela” (a cidade que tem muro); tinha “a”
+LEV 25:30	15	חֹמָ֗ה	muro	claude	חֹמָה “muro”; tinha “sempre”
+LEV 25:30	16	לַ/צְּמִיתֻ֛ת	para-sempre	claude	לַצְּמִיתֻת “para sempre”; tinha “para-sempre-daquele”
+LEV 25:30	17	לַ/קֹּנֶ֥ה	ao-que-comprou	claude	לַקֹּנֶה “ao que comprou”; tinha “comprou”
+LEV 26:15	2	בְּ/חֻקֹּתַ֣/י	meus-decretos	claude	בְּחֻקֹּתַי “meus decretos”; tinha “abominardes-meus-decretos”
+NUM 2:3	2	קֵ֣דְמָ/ה	ao-oriente	claude	קֵדְמָה “ao oriente”; tinha “levante-ao-oriente”
+NUM 2:3	3	מִזְרָ֔חָ/ה	ao-nascente	claude	מִזְרָחָה “ao nascente” (a BLIVRE: “ao levante”); tinha “levante”
+NUM 3:49	6	מֵ/אֵת֙	da-parte-de	claude	מֵאֵת “da parte de”; tinha “de-parte”
+NUM 3:49	7	הָ/עֹ֣דְפִ֔ים	dos-excedentes	claude	הָעֹדְפִים “dos que sobraram”; tinha “dos-resgatados”
+NUM 4:7	14	הַ/מְּנַקִּיֹּ֔ת	as-taças	claude	הַמְּנַקִּיֹּת “as taças”; tinha “os-copos”
+NUM 4:7	16	קְשׂ֣וֹת	os-jarros	claude	קְשׂוֹת “os jarros”; tinha “copos”
+NUM 5:6	18	הַ/הִֽוא	aquela	claude	הַהִוא “aquela”; tinha “o-eliminada”
+NUM 6:3	2	וְ/שֵׁכָר֙	e-de-bebida-forte	claude	וְשֵׁכָר “e de bebida forte”; tinha “e-de-bebida”
+NUM 6:3	3	יַזִּ֔יר	se-absterá	claude	יַזִּיר “se absterá, se separará”; tinha “forte”
+NUM 6:3	17	וִ/יבֵשִׁ֖ים	e-secas	claude	וִיבֵשִׁים “e secas”; tinha “frescas-nem-secas”
+NUM 12:8	9	וּ/תְמֻנַ֥ת	e-a-forma	claude	וּתְמֻנַת “e a forma” (a BLIVRE: “a aparência”); tinha “e-verá”
+NUM 12:8	11	יַבִּ֑יט	contempla	claude	יַבִּיט “contempla, verá”; tinha “pois”
+NUM 14:17	2	יִגְדַּל	seja-engrandecida	claude	יִגְדַּל “seja engrandecida”; tinha “pois”
+NUM 15:24	3	מֵ/עֵינֵ֣י	longe-dos-olhos	claude	מֵעֵינֵי “longe dos olhos (sem o saber)”; tinha “pecado”
+NUM 15:24	4	הָ/עֵדָה֮	da-congregação	claude	הָעֵדָה “da congregação”; tinha “involuntariamente”
+NUM 15:24	6	לִ/שְׁגָגָה֒	por-erro	claude	לִשְׁגָגָה “por erro, por ignorância”; tinha “ignorância”
+NUM 15:24	10	פַּ֣ר	novilho	claude	פַּר “novilho”; tinha “oferecerá”
+NUM 15:24	11	בֶּן	filho	claude	בֶּן “filho” (בֶּן־בָּקָר: novilho); tinha “um”
+NUM 15:24	12	בָּקָר֩	do-gado	claude	בָּקָר “gado”; tinha “novilho”
+NUM 15:24	21	וּ/שְׂעִיר	e-bode	claude	וּשְׂעִיר “e bode”; tinha “e-um-bode-macho”
+NUM 15:24	22	עִזִּ֥ים	de-cabras	claude	עִזִּים “de cabras”; tinha “bode”
+NUM 15:31	4	בָּזָ֔ה	desprezou	claude	בָּזָה “desprezou” (a BLIVRE: “teve em pouco”); tinha “pouco”
+NUM 15:31	7	הֵפַ֑ר	anulou	claude	הֵפַר “anulou” (a BLIVRE: “deu por nulo”); tinha “nulo”
+NUM 15:31	8	הִכָּרֵ֧ת	certamente	claude	הִכָּרֵת infinitivo que reforça o verbo seguinte: “certamente” (a BLIVRE: “inteiramente”); tinha “será”
+NUM 15:31	9	תִּכָּרֵ֛ת	será-eliminada	claude	תִּכָּרֵת “será eliminada”; tinha “tal”
+NUM 15:31	10	הַ/נֶּ֥פֶשׁ	a-pessoa	claude	הַנֶּפֶשׁ “a pessoa”; tinha “tal-pessoa”
+NUM 15:31	11	הַ/הִ֖וא	aquela	claude	הַהִוא “aquela”; tinha “o-eliminada”
+NUM 15:31	12	עֲוֺנָ֥/ה	sua-iniquidade	claude	עֲוֺנָה “sua iniquidade”; tinha “iniquidade-será”
+NUM 20:16	4	וַ/יִּשְׁמַ֣ע	e-ouviu	claude	וַיִּשְׁמַע “e ouviu”; tinha “qual-ouviu”
+NUM 20:16	15	גְבוּלֶֽ/ךָ	teus-confins	claude	גְבוּלֶךָ “teus confins”; tinha “extremo-de-teus-confins”
+NUM 20:29	5	גָוַ֖ע	expirou	claude	גָוַע “expirou” (a BLIVRE: “era morto”); tinha “morto”
+NUM 20:29	7	וַ/יִּבְכּ֤וּ	e-choraram	claude	וַיִּבְכּוּ “e choraram” (a BLIVRE: “fizeram luto”); tinha “luto”
+NUM 20:29	9	אַהֲרֹן֙	Arão	claude	אַהֲרֹן “Arão”; tinha “luto-por”
