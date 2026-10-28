@@ -5,20 +5,45 @@ import { t } from "../../i18n";
 import { nativePlugin, platform } from "../native";
 
 export type VoiceId = "he" | "el" | "pt";
-type NativeTTS = {
+export type NativeTTS = {
   speak(o: { text: string; lang: string; rate: number; pitch: number; volume: number; category: string }): Promise<void>;
   stop(): Promise<void>;
   isLanguageSupported(o: { lang: string }): Promise<{ supported: boolean }>;
   openInstall?: () => Promise<void>;
 };
 type Voice = { codes: string[]; re: RegExp; lang: string; voice: SpeechSynthesisVoice | null; ok: boolean | null };
+/** What the engine needs from the device; tests pass fakes. */
+export type SpeechEnv = {
+  native: NativeTTS | null;
+  synth: SpeechSynthesis | null;
+  Utterance: typeof SpeechSynthesisUtterance | null;
+  wait: (ms: number) => Promise<void>;
+};
 
 export type Speech = ReturnType<typeof createSpeech>;
 
-// onVoicesChanged runs whenever the voices of the device are known or change (the first time while this runs)
-export function createSpeech(onVoicesChanged: (speech: Speech) => void) {
+const deviceEnv = (): SpeechEnv => {
   const native = nativePlugin<NativeTTS>("TextToSpeech");
   const web = !native && typeof window !== "undefined" && "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+  return {
+    native,
+    synth: web ? window.speechSynthesis : null,
+    Utterance: web ? window.SpeechSynthesisUtterance : null,
+    wait: ms => new Promise(r => setTimeout(r, ms))
+  };
+};
+
+/** The pause between two words read one by one (a text with no space), and none between verses. */
+export const WORD_GAP_MS = 120;
+// the most a text may take before the next one starts anyway (Chrome sometimes never fires onend)
+const longest = (text: string, rate: number) => 3000 + (text.length * 180) / Math.max(rate, 0.3);
+// the app's engine starts a moment after the app: a check that fails is tried again, up to about 6 s
+const RETRIES = [300, 600, 1200, 2000, 2000];
+
+// onVoicesChanged runs whenever the voices of the device are known or change (the first time while this runs)
+export function createSpeech(onVoicesChanged: (speech: Speech) => void, env: SpeechEnv = deviceEnv()) {
+  const { native, synth, Utterance, wait } = env;
+  const web = !!synth && !!Utterance;
   const voices: Record<VoiceId, Voice> = {
     he: { codes: ["he-IL", "iw-IL", "he"], re: /^(he|iw)([-_]|$)/i, lang: "he-IL", voice: null, ok: null },
     el: { codes: ["el-GR", "el"], re: /^el([-_]|$)/i, lang: "el-GR", voice: null, ok: null },
@@ -29,9 +54,10 @@ export function createSpeech(onVoicesChanged: (speech: Speech) => void) {
   const langName = (id: VoiceId) => t(`audio.language.${id}`);
   let listed = 0; // voices the browser listed (0 while it is still loading them)
   let token: object | null = null;
+  let checking: Promise<void> | null = null;
 
   function pickWebVoices() {
-    const vs = speechSynthesis.getVoices();
+    const vs = synth!.getVoices();
     listed = vs.length;
     for (const id of ids) {
       const V = voices[id];
@@ -39,23 +65,34 @@ export function createSpeech(onVoicesChanged: (speech: Speech) => void) {
     }
     onVoicesChanged(speech);
   }
-  async function checkNativeVoices() {
-    for (const id of ids) {
-      const V = voices[id];
-      V.ok = false;
+
+  /** true or false once the engine answered for one of the codes; null when it never answered (not started). */
+  async function supported(V: Voice) {
+    for (const delay of [0, ...RETRIES]) {
+      if (delay) await wait(delay);
+      let answered = false;
       for (const lang of V.codes) {
         try {
-          if ((await native!.isLanguageSupported({ lang }))?.supported) {
+          const ok = !!(await native!.isLanguageSupported({ lang }))?.supported;
+          answered = true;
+          if (ok) {
             V.lang = lang;
-            V.ok = true;
-            break;
+            return true;
           }
         } catch {
-          /* this code is not known: try the next */
+          /* the engine is not ready yet, or this code is unknown */
         }
       }
+      if (answered) return false;
     }
-    onVoicesChanged(speech);
+    return null;
+  }
+  function checkNativeVoices() {
+    checking ??= (async () => {
+      for (const id of ids) voices[id].ok = await supported(voices[id]);
+      onVoicesChanged(speech);
+    })().finally(() => (checking = null));
+    return checking;
   }
 
   function voiceLine(id: VoiceId) {
@@ -70,6 +107,62 @@ export function createSpeech(onVoicesChanged: (speech: Speech) => void) {
     return t(listed ? "audio.web.none" : "audio.web.searching", { lang });
   }
 
+  // the app: one text after the other; a refusal while the engine starts is tried once more
+  async function speakNative(texts: string[], V: Voice, id: VoiceId, o: SpeakOptions, mine: object, finish: () => void) {
+    if (V.ok !== true) await checkNativeVoices();
+    if (token !== mine) return;
+    if (V.ok === false) o.onWarning?.(t("audio.missing_native", { lang: langName(id), system }));
+    for (let i = 0; i < texts.length; i++) {
+      if (token !== mine) return;
+      o.onEach?.(i);
+      const say = () => native!.speak({ text: texts[i], lang: V.lang, rate: o.rate, pitch: 1.0, volume: 1.0, category: "playback" });
+      try {
+        await say();
+      } catch {
+        if (token !== mine) return;
+        await wait(RETRIES[1]);
+        try {
+          await say();
+        } catch {
+          break;
+        }
+      }
+    }
+    finish();
+  }
+
+  // the browser: one utterance at a time (a queue of hundreds of words runs them together in Chrome), with a
+  // short pause between single words and a time limit in case onend never comes
+  function speakWeb(texts: string[], V: Voice, o: SpeakOptions, mine: object, finish: () => void) {
+    const next = (i: number) => {
+      if (token !== mine) return;
+      if (i >= texts.length) return finish();
+      const u = new Utterance!(texts[i]);
+      u.lang = V.voice ? V.voice.lang : V.lang;
+      if (V.voice) u.voice = V.voice;
+      u.rate = o.rate;
+      let done = false;
+      const limit = setTimeout(() => end(), longest(texts[i], o.rate));
+      const end = () => {
+        if (done) return;
+        done = true;
+        clearTimeout(limit);
+        if (token !== mine) return;
+        const single = !/\s/.test(texts[i].trim());
+        if (single && i + 1 < texts.length) wait(WORD_GAP_MS).then(() => next(i + 1));
+        else next(i + 1);
+      };
+      u.onstart = () => {
+        if (token === mine) o.onEach?.(i);
+      };
+      u.onend = u.onerror = end;
+      synth!.speak(u);
+    };
+    next(0);
+  }
+
+  type SpeakOptions = { voice: VoiceId; rate: number; onEach?: (i: number) => void; onEnd: () => void; onWarning?: (text: string) => void };
+
   const speech = {
     available: !!native || web,
     unavailableText: () => t("audio.unavailable"),
@@ -82,17 +175,20 @@ export function createSpeech(onVoicesChanged: (speech: Speech) => void) {
     /** Android only: a button that opens the system screen to install voices. */
     canInstallVoices: () => !!native && platform === "android" && ids.some(id => voices[id].ok === false),
     openInstall: () => (native?.openInstall ? native.openInstall() : Promise.resolve()),
+    /** The app's voices again (after installing one in the system settings). */
+    recheck: () => (native ? checkNativeVoices() : Promise.resolve()),
 
     stop() {
       token = null;
       if (native) native.stop().catch(() => {});
-      else if (web) speechSynthesis.cancel();
+      else if (web) synth!.cancel();
     },
     /**
      * Reads the texts one after another. onEach(i) runs as text i starts; onEnd when the reading ends by itself
-     * (not when stopped or replaced). Returns a warning to show when this device may lack the voice.
+     * (not when stopped or replaced). Returns a warning to show when this device lacks the voice (in the app the
+     * check may still be running: that warning comes later, through onWarning).
      */
-    speak(texts: string[], o: { voice: VoiceId; rate: number; onEach?: (i: number) => void; onEnd: () => void }) {
+    speak(texts: string[], o: SpeakOptions) {
       speech.stop();
       const V = voices[o.voice],
         mine = {};
@@ -104,43 +200,25 @@ export function createSpeech(onVoicesChanged: (speech: Speech) => void) {
         }
       };
       if (native) {
-        (async () => {
-          for (let i = 0; i < texts.length; i++) {
-            if (token !== mine) return;
-            o.onEach?.(i);
-            try {
-              await native.speak({ text: texts[i], lang: V.lang, rate: o.rate, pitch: 1.0, volume: 1.0, category: "playback" });
-            } catch {
-              break;
-            }
-          }
-          finish();
-        })();
-        return V.ok === false ? t("audio.missing_native", { lang: langName(o.voice), system }) : null;
+        speakNative(texts, V, o.voice, o, mine, finish);
+        return null;
       }
-      texts.forEach((text, i) => {
-        const u = new SpeechSynthesisUtterance(text);
-        u.lang = V.voice ? V.voice.lang : V.lang;
-        if (V.voice) u.voice = V.voice;
-        u.rate = o.rate;
-        u.onstart = () => {
-          if (token === mine) o.onEach?.(i);
-        };
-        u.onend = u.onerror = () => {
-          if (i === texts.length - 1) finish();
-        };
-        speechSynthesis.speak(u);
-      });
-      return V.voice ? null : t("audio.missing_web", { lang: langName(o.voice) });
+      if (!V.voice) pickWebVoices();
+      speakWeb(texts, V, o, mine, finish);
+      // only when the browser already listed its voices and none is of this language
+      return V.voice || !listed ? null : t("audio.missing_web", { lang: langName(o.voice) });
     }
   };
 
   if (native) {
     onVoicesChanged(speech);
     checkNativeVoices();
+    // back from the system settings (a voice installed): check again
+    if (typeof document !== "undefined")
+      document.addEventListener("visibilitychange", () => document.visibilityState === "visible" && checkNativeVoices());
   } else if (web) {
     pickWebVoices();
-    speechSynthesis.onvoiceschanged = pickWebVoices;
+    synth!.onvoiceschanged = pickWebVoices;
   } else onVoicesChanged(speech);
   return speech;
 }

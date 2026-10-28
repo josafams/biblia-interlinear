@@ -70,7 +70,8 @@ export function speak(texts: string[], btn: HTMLElement | null, onEach?: (i: num
     onEnd() {
       setBtn(null);
       markSpeaking(null);
-    }
+    },
+    onWarning: text => toast(text)
   });
   if (warning) toast(warning);
 }
