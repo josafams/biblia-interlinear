@@ -2,6 +2,8 @@
 
 Obrigado por ajudar! Este arquivo reúne as decisões do projeto, para que o code review discuta lógica, não estilo.
 
+Quem participa segue o [código de conduta](CODE_OF_CONDUCT.md).
+
 ## Idioma
 
 | Item | Idioma |
@@ -53,6 +55,7 @@ Sem Docker, com Node (`.nvmrc`), Python (`.python-version`), `qpdf` e `poppler-u
 - Commits pequenos, cada um passando nos testes. Refatoração em commit (e PR) separado de mudança de comportamento.
 - Branch curta a partir da `main` (`feat/plano-proprio`), PR pequeno com o que muda, por quê e como testar; squash merge.
 - Correções de glosas e do léxico: veja [docs/CORRECOES.md](docs/CORRECOES.md).
+- Mudança que quem usa o app percebe entra no [CHANGELOG.md](CHANGELOG.md), em *Não lançado*.
 
 ## Segurança
 
