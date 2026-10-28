@@ -59,7 +59,7 @@ export function headTags(m: PageMeta, siteName: string) {
 
 /** The hreflang pairs of a page that also exists in another locale (Portuguese first: it is the x-default). */
 export function alternates(here: string, there?: string | false, other?: string): PageMeta["alternates"] {
-  if (!there || !other) return undefined;
+  if (there === undefined || there === false || !other) return undefined; // "" is the site root
   const pairs: [string, string][] = [
     [getLocale(), here],
     [other, there]

@@ -69,3 +69,21 @@ test("Perguntas ao texto aparece entre as funcionalidades, com o vídeo, e não 
   await expect(page.locator("#recursos .feat", { hasText: "Perguntas ao texto" }).locator('a[href="#v-27"]')).toBeVisible();
   await expect(page.locator("#recursos")).not.toContainText("Em breve");
 });
+
+test("em inglês (en/): textos, amostra da BSB, links a partir da pasta e o outro idioma", async ({ page }) => {
+  const erros = [];
+  page.on("pageerror", e => erros.push(e.message));
+  await page.goto("en/");
+  await expect(page.locator("html")).toHaveAttribute("lang", "en");
+  await expect(page.locator("h1")).toHaveText("The whole Bible, word by word.");
+  await expect(page.locator(".sample")).toContainText("In the beginning God created the heavens and the earth.");
+  await expect(page.locator(".nums b").nth(1)).toHaveText("1,189");
+  await expect(page.locator('link[hreflang="pt-BR"]')).toHaveAttribute("href", /biblia-interlinear\/$/);
+  await expect(page.locator('a[href="bible/john/"]')).toHaveText("John");
+  await page.click('footer a[hreflang="pt-BR"]');
+  await expect(page.locator("h1")).toContainText("A Bíblia inteira");
+  await page.click('footer a[hreflang="en"]');
+  await page.click("a.btn.primary >> nth=0");
+  await expect(page).toHaveURL(/ler\.html\?lang=en/);
+  expect(erros).toEqual([]);
+});

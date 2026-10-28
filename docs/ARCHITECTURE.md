@@ -14,7 +14,7 @@ Mapa do projeto para quem vai mudar alguma coisa, pessoa ou IA. As convenções 
 | o que um painel faz ao tocar num botão | o módulo de `src/reader/` que monta o componente (ver abaixo) |
 | um modo de leitura (Bíblia, Original, Interlinear, Estudo) | [`src/lib/modes.ts`](../src/lib/modes.ts) e os interruptores em [`src/lib/prefs.ts`](../src/lib/prefs.ts) |
 | uma regra pura (sem tela): referências, busca, caderno, progresso, sincronização | `src/lib/` (com teste em `tests/unit/`) |
-| a página inicial | [`web/home.html`](../web/home.html) (texto fixo) e `src/home/` (partes que vêm dos dados) |
+| a página inicial | [`web/home.html`](../web/home.html) (texto fixo, marcado com `data-i18n`) e `src/home/` (partes que vêm dos dados); a versão em inglês, `en/index.html`, sai do mesmo arquivo no build ([`vite/site/translate-html.ts`](../vite/site/translate-html.ts)) |
 | o que a busca do Google vê: títulos, descrições, as páginas estáticas de livros, capítulos e verbetes (`biblia/`, `lexico/`; em inglês, `en/bible/` e `en/lexicon/`, com a BSB e as glosas de `build/data/en`, ligadas por `hreflang`), o sitemap | `src/seo/` (moldes e metadados, com teste) e [`vite/site/seo-pages.ts`](../vite/site/seo-pages.ts) (lê `build/data` e grava); ficam fora do app e do cache offline |
 | uma regra da revisão automática | `scripts/interlinear/review/checks/` (um módulo por grupo do catálogo [`docs/REVISOES.md`](REVISOES.md)) e o texto da mensagem em `pt-BR.json`, seção `review` |
 | como uma glosa é feita | `scripts/interlinear/glosses/` |

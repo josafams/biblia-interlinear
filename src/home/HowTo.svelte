@@ -7,7 +7,7 @@
   import { t } from "../i18n";
   import { recording, type Storyboard, type Storyboards } from "./data";
 
-  let { storyboards }: { storyboards: Storyboards } = $props();
+  let { storyboards, root = "" }: { storyboards: Storyboards; root?: string } = $props();
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches; // i18n-ignore
   const phone = matchMedia("(max-width: 700px)").matches; // i18n-ignore
   const groups = $derived(storyboards.grupos.filter(g => storyboards.videos.some(v => v.grupo === g.id)));
@@ -17,7 +17,7 @@
   let time = $state(0);
   let player: HTMLElement | undefined = $state();
   const shown = $derived(storyboards.videos.filter(v => v.grupo === group));
-  const rec = $derived(current ? recording(current.id, phone) : null);
+  const rec = $derived(current ? recording(current.id, phone, root) : null);
   const step = $derived((rec?.times || []).reduce((i, s, k) => (time >= s ? k : i), -1));
 
   function pickGroup(id: string, choose = true) {
@@ -107,7 +107,7 @@
 </div>
 <div class="vids" id="howto-list">
   {#each shown as v (v.id)}
-    {@const r = recording(v.id, phone)}
+    {@const r = recording(v.id, phone, root)}
     <button class="vid" type="button" data-id={v.id} id="v-{v.id}" aria-current={current?.id === v.id} onclick={() => show(v, true)}>
       <span class="capa"
         >{#if r?.cover}<img src={r.cover} alt="" loading="lazy" />{:else}<span class="n">{v.n}</span>{/if}{#if r?.duration}<span class="dur"

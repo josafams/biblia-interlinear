@@ -15,7 +15,7 @@
         ><span class="t">{w.t}</span>
       </div>{/each}
   </div>
-  <p class="blivre"><small>BLIVRE</small>{v.blivre}</p>
+  <p class="blivre"><small>{t("home.translation_abbrev")}</small>{v.blivre}</p>
 {/each}
 
 <style>

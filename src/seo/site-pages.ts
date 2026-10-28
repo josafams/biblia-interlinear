@@ -1,13 +1,21 @@
 // The head of the pages that already existed (home, reader, privacy policy): title, description, canonical, Open
 // Graph and structured data, from the locale.
-import { t } from "../i18n";
-import { escapeHtml, headTags, website } from "./head";
-import { bookPath, booksPath } from "./paths";
+import { getLocale, LOCALE_IDS, t } from "../i18n";
+import { alternates, escapeHtml, headTags, website } from "./head";
+import { bookPath, booksPath, homePath } from "./paths";
 
 const name = () => t("app.name");
 
-export const homeHead = (description: string) =>
-  headTags({ path: "", title: t("seo.home_title"), description, jsonLd: [website(name(), description)] }, name());
+/** The home page; `other` is the home of the other locale (hreflang). */
+export const homeHead = (other?: string) => {
+  const path = homePath();
+  const description = t("seo.home_description");
+  const locale = LOCALE_IDS.find(l => l !== getLocale());
+  return headTags(
+    { path, title: t("seo.home_title"), description, jsonLd: [website(name(), description)], alternates: alternates(path, other, locale) },
+    name()
+  );
+};
 
 export const readerHead = () =>
   headTags({ path: "ler.html", title: t("seo.reader_title"), description: t("seo.reader_description") }, name());

@@ -22,7 +22,7 @@ export const robots = () => `User-agent: *\nAllow: /\nSitemap: ${absolute("sitem
 /** The parts of the sitemap: the site's pages, the Bible (books and chapters) and the lexicon, in Portuguese and in English. */
 export function sitemapParts(pages: string[]) {
   const parts: Record<string, string[]> = {
-    "sitemap-paginas.xml": ["", "ler.html", "privacidade.html"],
+    "sitemap-paginas.xml": ["", "en/", "ler.html", "privacidade.html"],
     "sitemap-biblia.xml": pages.filter(p => p.startsWith("biblia/")),
     "sitemap-lexico.xml": pages.filter(p => p.startsWith("lexico/")),
     "sitemap-bible-en.xml": pages.filter(p => p.startsWith("en/bible/")),

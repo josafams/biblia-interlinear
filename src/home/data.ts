@@ -1,5 +1,5 @@
 // home-data.json, written by vite/site/home-page.ts: the counts, the sample verses, the sizes of the book
-// files and the "Como usar" storyboards. The home page (index.html) reads it when it opens.
+// files and the "Como usar" storyboards. The home page (index.html, en/index.html) reads its own when it opens.
 export type SampleWord = { o: string; x: string; s: string; t: string };
 export type SampleVerse = { ref: string; greek: boolean; words: SampleWord[]; blivre: string };
 export type Storyboard = { id: string; n: number; grupo: string; titulo: string; desc: string; steps: string[]; ready?: boolean };
@@ -11,8 +11,10 @@ export type HomeData = {
   sizes: Record<string, string>;
   /** where the book files are downloaded from */
   booksUrl: string;
-  /** the date the site was built (pt-BR) */
+  /** the date the site was built, in the page's locale */
   date: string;
+  /** the way from the page to the site root ("" or "../"), for the video files */
+  root?: string;
   storyboards: Storyboards;
 };
 
@@ -27,8 +29,9 @@ declare global {
   }
 }
 
-/** The recording of a video for this screen (phone or computer), null when it was not recorded yet. */
-export function recording(id: string, phone: boolean): Recording | null {
+/** The recording of a video for this screen (phone or computer), null when it was not recorded yet; its files
+ * are addressed from the site root, so a page in a folder passes the way back (`root`). */
+export function recording(id: string, phone: boolean, root = ""): Recording | null {
   const all = window.__videos?.files || window.__videos?.arquivos || {};
   const r = all[id];
   if (!r) return null;
@@ -36,5 +39,6 @@ export function recording(id: string, phone: boolean): Recording | null {
     d = r.desktop || r.computador;
   const a = phone ? p || d : d || p;
   if (!a) return null;
-  return { mp4: a.mp4, vtt: a.vtt, cover: a.cover || a.capa, times: a.times || a.tempos, duration: a.duration || a.duracao };
+  const at = (f?: string) => f && root + f;
+  return { mp4: at(a.mp4), vtt: at(a.vtt), cover: at(a.cover || a.capa), times: a.times || a.tempos, duration: a.duration || a.duracao };
 }
