@@ -2067,3 +2067,99 @@ NEH 12:23	9	הַ/יָּמִ֑ים	dos-dias	claude	הַיָּמִים “dos dias
 2CH 36:20	12	מְלֹ֖ךְ	reinar	claude	מְלֹךְ “reinar”; tinha “veio”
 2CH 36:20	13	מַלְכ֥וּת	o-reino	claude	מַלְכוּת “o reino (de)”; tinha “reino”
 2CH 36:20	14	פָּרָֽס	da-Pérsia	claude	פָּרָס “da Pérsia”; tinha “persas”
+EZR 1:3	4	עַמּ֗/וֹ	seu-povo	claude	עַמּוֹ “seu povo”; tinha “povo-seu”
+EZR 1:3	6	אֱלֹהָי/ו֙	seu-Deus	claude	אֱלֹהָיו “seu Deus”; tinha “Deus-seja”
+EZR 2:1	6	הַ/גּוֹלָ֔ה	da-deportação	claude	הַגּוֹלָה “da deportação”; tinha “cativeiro-dos-transportados”
+EZR 2:1	8	הֶגְלָ֛ה	levara-cativos	claude	הֶגְלָה “levara cativos”; tinha “transportados”
+EZR 2:1	13	וַ/יָּשׁ֛וּבוּ	e-voltaram	claude	וַיָּשׁוּבוּ “e voltaram”; tinha “e-que-voltaram”
+EZR 3:4	6	וְ/עֹלַ֨ת	e-holocaustos	claude	וְעֹלַת “e holocaustos (de)”; tinha “queima”
+EZR 3:4	8	בְּ/יוֹם֙	a-dia	claude	בְּיוֹם “a dia”; tinha “diariamente”
+EZR 3:4	9	בְּ/מִסְפָּ֔ר	em-número	claude	בְּמִסְפָּר “em número”; tinha “conforme-a”
+EZR 3:4	11	דְּבַר	a-coisa	claude	דְּבַר “a coisa (de)”; tinha “exigida”
+EZR 3:4	12	י֥וֹם	cada-dia	claude	יוֹם “dia” (a coisa de cada dia em seu dia); tinha “cada”
+EZR 3:4	13	בְּ/יוֹמֽ/וֹ	em-seu-dia	claude	בְּיוֹמוֹ “em seu dia”; tinha “dia”
+EZR 3:13	1	וְ/אֵ֣ין	e-não	claude	וְאֵין “e não”; tinha “não”
+EZR 3:13	2	הָ/עָ֗ם	o-povo	claude	הָעָם “o povo”; tinha “povo”
+EZR 3:13	3	מַכִּירִים֙	distinguia	claude	מַכִּירִים “distinguiam”; tinha “conseguia”
+EZR 3:13	4	ק֚וֹל	a-voz	claude	קוֹל “a voz (de)”; tinha “vozes”
+EZR 3:13	5	תְּרוּעַ֣ת	do-júbilo	claude	תְּרוּעַת “do júbilo (de)”; tinha “alegria”
+EZR 3:13	6	הַ/שִּׂמְחָ֔ה	da-alegria	claude	הַשִּׂמְחָה “da alegria”; tinha “alegria-das”
+EZR 3:13	7	לְ/ק֖וֹל	da-voz	claude	לְקוֹל “da voz (de)”; tinha “das-vozes”
+EZR 3:13	8	בְּכִ֣י	do-choro	claude	בְּכִי “do choro (de)”; tinha “choro”
+EZR 3:13	15	וְ/הַ/קּ֥וֹל	e-o-som	claude	וְהַקּוֹל “e o som”; tinha “o-som”
+EZR 3:13	16	נִשְׁמַ֖ע	se-ouvia	claude	נִשְׁמַע “se ouvia”; tinha “ouvir”
+EZR 4:11	5	שְׁלַ֣חוּ	enviaram	claude	שְׁלַחוּ “enviaram”; tinha “carta”
+EZR 4:11	6	עֲל֔וֹ/הִי	a-ele	claude	עֲלוֹהִי “a ele”; tinha “enviaram”
+EZR 4:11	7	עַל	ao	claude	עַל “ao (para)”; tinha “sobre”
+EZR 4:11	9	מַלְכָּ֑/א	o-rei	claude	מַלְכָּא “o rei”; tinha “rei-de”
+EZR 4:11	11	אֱנָ֥שׁ	os-homens	claude	אֱנָשׁ “os homens (de)”; tinha “humano”
+EZR 4:11	12	עֲבַֽר	além	claude	עֲבַר “além (de)”; tinha “dalém”
+EZR 4:11	13	נַהֲרָ֖/ה	do-rio	claude	נַהֲרָה “do rio”; tinha “dalém-do-rio”
+EZR 4:11	14	וּ/כְעֶֽנֶת	e-agora	claude	וּכְעֶנֶת “e agora”; tinha “e-completa”
+EZR 4:12	1	יְדִ֨יעַ֙	conhecido	claude	יְדִיעַ “conhecido”; tinha “seja-conhecido”
+EZR 4:12	2	לֶהֱוֵ֣א	seja	claude	לֶהֱוֵא “seja”; tinha “conhecido”
+EZR 4:12	9	לְוָתָ֔/ךְ	ti	claude	לְוָתָךְ “junto de ti”; tinha “propriamente”
+EZR 4:12	13	קִרְיְתָ֨/א	a-cidade	claude	קִרְיְתָא “a cidade”; tinha “aquela”
+EZR 4:12	15	וּ/בִֽישְׁתָּ/א֙	e-má	claude	וּבִישְׁתָּא “e má”; tinha “e-má-estão”
+EZR 4:12	16	בָּנַ֔יִן	edificam	claude	בָּנַיִן “edificam”; tinha “restaurando”
+EZR 4:12	17	וְ/שׁוּרַיָּ֣/א	e-os-muros	claude	וְשׁוּרַיָּא “e os muros”; tinha “reparado”
+EZR 4:12	18	שַׁכְלִ֔ילוּ	acabam	claude	שַׁכְלִילוּ “acabam, restauram”; tinha “muros”
+EZR 4:12	19	וְ/אֻשַּׁיָּ֖/א	e-os-fundamentos	claude	וְאֻשַּׁיָּא “e os fundamentos”; tinha “e-seus-fundamentos”
+EZR 4:12	20	יַחִֽיטוּ	reparam	claude	יַחִיטוּ “reparam”; tinha “enfiar”
+EZR 4:13	3	לֶהֱוֵ֣א	seja	claude	לֶהֱוֵא “seja”; tinha “acontecer”
+EZR 4:13	6	הֵ֣ן	se	claude	הֵן “se”; tinha “se-aquela”
+EZR 4:13	7	קִרְיְתָ֥/א	a-cidade	claude	קִרְיְתָא “a cidade”; tinha “aquela-cidade”
+EZR 4:13	8	דָךְ֙	aquela	claude	דָךְ “aquela”; tinha “cidade”
+EZR 4:13	9	תִּתְבְּנֵ֔א	for-reconstruída	claude	תִּתְבְּנֵא “for reconstruída”; tinha “reconstruída”
+EZR 4:13	11	יִֽשְׁתַּכְלְל֑וּן	forem-acabados	claude	יִשְׁתַּכְלְלוּן “forem acabados, restaurados”; tinha “restaurados”
+EZR 4:13	13	בְל֤וֹ	impostos	claude	בְלוֹ “impostos”; tinha “taxas”
+EZR 4:13	14	וַ/הֲלָךְ֙	e-pedágio	claude	וַהֲלָךְ “e pedágio”; tinha “taxas-e-impostos”
+EZR 4:13	16	יִנְתְּנ֔וּן	darão	claude	יִנְתְּנוּן “darão, pagarão”; tinha “pagos”
+EZR 4:13	17	וְ/אַפְּתֹ֥ם	e-o-tesouro	claude	וְאַפְּתֹם “e o tesouro, a renda”; tinha “e-o-patrimônio”
+EZR 4:13	18	מַלְכִ֖ים	dos-reis	claude	מַלְכִים “dos reis”; tinha “real”
+EZR 4:13	19	תְּהַנְזִֽק	será-prejudicado	claude	תְּהַנְזִק “será prejudicado”; tinha “prejudicado”
+EZR 4:19	1	וּ/מִנִּ/י֮	e-de-mim	claude	וּמִנִּי “e de mim”; tinha “e-parte-mim”
+EZR 4:19	2	שִׂ֣ים	foi-posta	claude	שִׂים “foi posta, dada”; tinha “dei-ordem”
+EZR 4:19	3	טְעֵם֒	ordem	claude	טְעֵם “ordem, decreto”; tinha “ordem-que”
+EZR 4:19	4	וּ/בַקַּ֣רוּ	e-buscaram	claude	וּבַקַּרוּ “e buscaram”; tinha “para-se-buscasse”
+EZR 4:19	7	קִרְיְתָ֣/א	a-cidade	claude	קִרְיְתָא “a cidade”; tinha “aquela-cidade-na”
+EZR 4:19	8	דָ֔ךְ	aquela	claude	דָךְ “aquela”; tinha “cidade”
+EZR 4:19	9	מִן	desde	claude	מִן “desde”; tinha “do”
+EZR 4:19	10	יוֹמָת֙	os-dias	claude	יוֹמָת “os dias (de)”; tinha “antiguidade-se”
+EZR 4:19	11	עָֽלְמָ֔/א	antigos	claude	עָלְמָא “antigos, da antiguidade”; tinha “levantou”
+EZR 4:19	14	מִֽתְנַשְּׂאָ֑ה	se-levanta	claude	מִתְנַשְּׂאָה “se levanta”; tinha “nela”
+EZR 4:19	15	וּ/מְרַ֥ד	e-rebelião	claude	וּמְרַד “e rebelião”; tinha “e-nela-rebelião-e”
+EZR 4:19	16	וְ/אֶשְׁתַּדּ֖וּר	e-sedição	claude	וְאֶשְׁתַּדּוּר “e sedição”; tinha “nela-houve”
+EZR 4:19	17	מִתְעֲבֶד	se-fazia	claude	מִתְעֲבֶד “se fazia”; tinha “fez”
+EZR 4:20	1	וּ/מַלְכִ֣ין	e-reis	claude	וּמַלְכִין “e reis”; tinha “e-que-houve-reis”
+EZR 4:20	2	תַּקִּיפִ֗ין	poderosos	claude	תַּקִּיפִין “poderosos”; tinha “reis-poderosos”
+EZR 4:20	3	הֲווֹ֙	houve	claude	הֲווֹ “houve”; tinha “poderosos”
+EZR 4:20	4	עַל	sobre	claude	עַל “sobre”; tinha “em”
+EZR 4:20	6	וְ/שַׁ֨לִּיטִ֔ין	e-dominadores	claude	וְשַׁלִּיטִין “e dominadores”; tinha “dominaram”
+EZR 4:20	8	עֲבַ֣ר	além	claude	עֲבַר “além (de)”; tinha “região”
+EZR 4:20	9	נַהֲרָ֑/ה	do-rio	claude	נַהֲרָה “do rio”; tinha “além-do-rio”
+EZR 4:20	11	בְל֛וֹ	imposto	claude	בְלוֹ “imposto”; tinha “pagava-taxas”
+EZR 4:20	12	וַ/הֲלָ֖ךְ	e-pedágio	claude	וַהֲלָךְ “e pedágio”; tinha “taxas-e-impostos”
+EZR 4:20	13	מִתְיְהֵ֥ב	se-dava	claude	מִתְיְהֵב “se dava”; tinha “dado”
+EZR 5:6	4	שְׁלַ֞ח	enviou	claude	שְׁלַח “enviou”; tinha “carta”
+EZR 5:6	7	עֲבַֽר	além	claude	עֲבַר “além (de)”; tinha “rio”
+EZR 5:6	8	נַהֲרָ֗/ה	do-rio	claude	נַהֲרָה “do rio”; tinha “além-do”
+EZR 5:6	9	וּ/שְׁתַ֤ר	e-Setar	claude	וּשְׁתַר “e Setar” (Setar-Bozenai); tinha o nome inteiro
+EZR 5:6	10	בּוֹזְנַי֙	Bozenai	claude	בּוֹזְנַי “Bozenai” (Setar-Bozenai); tinha o nome inteiro
+EZR 5:6	14	בַּ/עֲבַ֣ר	além	claude	בַּעֲבַר “além (de)”; tinha “rio”
+EZR 5:6	15	נַהֲרָ֑/ה	do-rio	claude	נַהֲרָה “do rio”; tinha “além-do-rio”
+EZR 5:6	16	עַל	ao	claude	עַל “ao (para)”; tinha “enviaram”
+EZR 5:6	18	מַלְכָּֽ/א	o-rei	claude	מַלְכָּא “o rei”; tinha “rei”
+EZR 5:8	2	לֶהֱוֵ֣א	seja	claude	לֶהֱוֵא “seja”; tinha “acontecer”
+EZR 5:8	3	לְ/מַלְכָּ֗/א	ao-rei	claude	לְמַלְכָּא “ao rei”; tinha “do-rei-que”
+EZR 5:8	6	לִ/יה֤וּד	a-Judá	claude	לִיהוּד “a Judá”; tinha “fomos-à”
+EZR 5:8	10	רַבָּ֔/א	grande	claude	רַבָּא “grande”; tinha “grande-a”
+EZR 5:8	11	וְ/ה֤וּא	e-ela	claude	וְהוּא “e ela”; tinha “qual-é”
+EZR 5:8	12	מִתְבְּנֵא֙	é-edificada	claude	מִתְבְּנֵא “é edificada”; tinha “edificada”
+EZR 5:8	13	אֶ֣בֶן	com-pedras	claude	אֶבֶן “pedra”; tinha “pedras”
+EZR 5:8	14	גְּלָ֔ל	lavradas	claude	גְּלָל “lavradas, grandes”; tinha “grandes-pedras”
+EZR 5:8	16	מִתְּשָׂ֣ם	é-posta	claude	מִתְּשָׂם “é posta”; tinha “posta”
+EZR 5:8	18	וַ/עֲבִ֥ידְתָּ/א	e-a-obra	claude	וַעֲבִידְתָּא “e a obra”; tinha “e-a-obra-se”
+EZR 5:8	19	דָ֛ךְ	esta	claude	דָךְ “esta”; tinha “cidade”
+EZR 5:8	21	מִתְעַבְדָ֖א	se-faz	claude	מִתְעַבְדָא “se faz”; tinha “faz”
+EZR 5:8	22	וּ/מַצְלַ֥ח	e-prospera	claude	וּמַצְלַח “e prospera”; tinha “próspera”
