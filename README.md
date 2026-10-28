@@ -103,8 +103,8 @@ sources/ (morphhb, sblgnt, strongs, dodson, ebible, scrollmapper)
    │  scripts/review.py     revisões automáticas → build/review/
    │  scripts/export.py    banco + dados/ → build/data/ (JSON) e build/web/dados/ (.js)
    ├─ vite/interlinear-plugin.ts  web/reader.html → build/web (site, PWA, conteúdo dos apps)
-   ├─ scripts/build_epub.py  → build/epub (66 EPUBs)
-   └─ scripts/build_pdf.py   → build/pdf (66 PDFs, via scripts/print_pdf.mjs)
+   ├─ scripts/build_epub.py  → build/epub (66 EPUBs; --lang en → build/epub/en, com a BSB)
+   └─ scripts/build_pdf.py   → build/pdf (66 PDFs, via scripts/print_pdf.mjs; --lang en → build/pdf/en)
 ```
 
 ### Publicar

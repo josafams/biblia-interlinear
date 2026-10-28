@@ -1386,5 +1386,82 @@
     "toc_about": "Sobre o livro <span>resumo e contexto</span>",
     "toc_questions": "Perguntas ao texto <span>para pensar e conversar</span>",
     "toc_search": "Buscar na Bíblia <span>palavras, referências, Strong</span>"
+  },
+  "edition": {
+    "release": "livros",
+    "files": {
+      "complete": "00-Biblia-Interlinear-completa",
+      "ot": "00-Biblia-Interlinear-AT",
+      "nt": "00-Biblia-Interlinear-NT",
+      "text": "00-Biblia-Livre"
+    },
+    "abbrev": "BLIVRE",
+    "text_name": "Bíblia Livre",
+    "text_title": "Bíblia Livre (BLIVRE)",
+    "creator": "Bíblia Interlinear (BLIVRE)",
+    "rights": "Texto BLIVRE CC BY 4.0/3.0 Brasil; original OSHB/SBLGNT CC BY 4.0; léxico e morfologia CC BY-SA",
+    "pronunciation": "Pronúncia aproximada: sílaba tônica em MAIÚSCULAS; rr como em “carro”; h sempre aspirado; ch como em “chave”; th como no inglês “think”.",
+    "credits": "<p><b>Hebraico e aramaico, com morfologia:</b> Original work of the Open Scriptures Hebrew Bible available at https://github.com/openscriptures/morphhb (CC BY 4.0), baseado no Westminster Leningrad Codex (domínio público). Os sinais de cantilação foram omitidos nesta edição para facilitar a leitura em telas de tinta eletrônica. Onde o texto tem leitura indicada à margem (qere), é ela que aparece.</p>\n<p><b>Grego:</b> SBL Greek New Testament (SBLGNT), © 2010 Society of Biblical Literature e Logos Bible Software, licença CC BY 4.0; os sinais do aparato crítico foram retirados do texto. Morfologia e lemas: MorphGNT, J. K. Tauber (CC BY-SA 3.0).</p>\n<p><b>Tradução corrida:</b> Bíblia Livre (BLIVRE), de Diego Santos, Mario Sérgio e Marco Teles, https://sites.google.com/site/biblialivre/. Antigo Testamento: revisão de fevereiro de 2018 (CC BY 4.0 Brasil, via corpus eBible), completada pela edição de 2017 onde faltam versículos. Novo Testamento: edição de 2017 (CC BY 3.0 Brasil). Texto reproduzido sem alterações.</p>\n<p><b>Léxico:</b> dicionário de James Strong (domínio público), edição digital Open Scriptures (CC BY-SA); léxico grego de Jeffrey Dodson (domínio público). Origem e significado vertidos para o português nesta edição, que por isso é distribuída sob CC BY-SA.</p>\n<p><b>Glosas palavra a palavra:</b> obtidas por alinhamento estatístico com a BLIVRE e completadas por regras; revisão pendente. Não fazem parte da BLIVRE e não têm endosso de seus autores.</p>\n<p><b>Introdução e temas dos capítulos:</b> escritos para esta edição; datas aproximadas.</p>\n<p><b>Fonte tipográfica:</b> Noto Serif Hebrew, © 2022 The Noto Project Authors, SIL Open Font License 1.1 (texto completo abaixo).</p>\n",
+    "sources": "Fontes e licenças",
+    "contents": "Sumário",
+    "start": "Início",
+    "books": "Livros",
+    "about_title": "Sobre {name}",
+    "about_book": "Sobre o livro",
+    "about_disclaimer": "Introdução escrita para esta edição; datas aproximadas e sujeitas a revisão.",
+    "chapters": "Capítulos",
+    "chapter": "Capítulo {n}",
+    "chapter_count": "{n} cap.",
+    "superscription": "Título",
+    "notes": "Notas · {ref}",
+    "particle_no_strong": "partícula (sem número Strong)",
+    "no_strong": "sem número Strong",
+    "pronounced": "pronúncia",
+    "ketiv": "Leitura indicada à margem (qere); no texto consonantal está escrito (ketiv):",
+    "entry_link": "verbete →",
+    "no_original": "Sem correspondente no texto original usado nesta edição.",
+    "apparatus": "No SBLGNT, este trecho está só no aparato crítico; aqui aparece a leitura de Westcott-Hort, Tregelles e Nestle-Aland 28.",
+    "apparatus_short": "No SBLGNT este trecho está só no aparato crítico; leitura de Westcott-Hort, Tregelles e NA28.",
+    "tap_word": "Toque na palavra no original para abrir a nota com glosa, gramática e significado.",
+    "read_ltr": "Leia da esquerda para a direita.",
+    "read_rtl": "Leia da direita para a esquerda.",
+    "lexicon": "Léxico",
+    "lexicon_of": "Léxico de {name}",
+    "lexicon_book": "Verbetes usados em {name}, em ordem Strong.",
+    "lexicon_volume": "Verbetes usados nestes livros, em ordem Strong (hebraico e aramaico, depois grego).",
+    "in_bible": "{n}× na Bíblia",
+    "language": {
+      "greek": "grego",
+      "hebrew": "hebraico",
+      "hebrew_aramaic": "hebraico e aramaico"
+    },
+    "book_summary": "{name} em {language} com transliteração, glosa em português e nota de cada palavra (gramática e significado), seguido do texto da Bíblia Livre. Versículos são títulos navegáveis; o original está marcado com idioma e direção próprios. Sem imagens nem áudio.",
+    "volume_intro": "{subtitle} Toque na palavra no original para abrir a nota com glosa, gramática e significado; o verbete completo fica no léxico, no fim.",
+    "volume_summary": "{subtitle} Cada palavra do original com transliteração, glosa em português e nota (gramática e significado), seguida do texto da Bíblia Livre. Sumário por livro e capítulo; versículos são títulos navegáveis. Sem imagens nem áudio.",
+    "volume": {
+      "complete": "Bíblia Interlinear — Bíblia completa",
+      "complete_sub": "Os 66 livros: Antigo Testamento em hebraico e aramaico, Novo Testamento em grego, com a Bíblia Livre.",
+      "ot": "Bíblia Interlinear — Antigo Testamento",
+      "ot_sub": "Os 39 livros do Antigo Testamento em hebraico e aramaico, com a Bíblia Livre.",
+      "nt": "Bíblia Interlinear — Novo Testamento",
+      "nt_sub": "Os 27 livros do Novo Testamento em grego, com a Bíblia Livre."
+    },
+    "testament": {
+      "ot": "Antigo Testamento",
+      "nt": "Novo Testamento"
+    },
+    "text_intro": "Texto da Bíblia Livre (BLIVRE), com o tema de cada capítulo escrito pelo projeto Bíblia Interlinear. Para ver o original palavra por palavra, use a edição interlinear.",
+    "text_summary": "Texto corrido da Bíblia Livre, os 66 livros, com números de versículo e tema de cada capítulo. Sumário por livro e capítulo. Sem imagens nem áudio.",
+    "pdf": {
+      "cover_kind": "Bíblia Interlinear · {language} e português",
+      "cover_text": "Original, transliteração, número Strong e glosa de cada palavra, com o texto da Bíblia Livre (BLIVRE).",
+      "read_rtl": "Os cartões se leem da direita para a esquerda.",
+      "aux": "Glosas em itálico cinza não vieram do alinhamento direto com a BLIVRE.",
+      "credits": "Hebraico e aramaico: Open Scriptures Hebrew Bible (CC BY 4.0), sobre o Westminster Leningrad Codex. Grego: SBL Greek New Testament (CC BY 4.0) e MorphGNT (CC BY-SA 3.0). Tradução corrida: Bíblia Livre (BLIVRE), de Diego Santos, Mario Sérgio e Marco Teles, CC BY 4.0 / 3.0 Brasil, reproduzida sem alterações. Léxico: Strong (domínio público; edição Open Scriptures, CC BY-SA) e Dodson (domínio público), vertidos para o português nesta edição. Glosas por alinhamento estatístico com a BLIVRE, revisão pendente; não fazem parte da BLIVRE. Introdução e temas escritos para esta edição. Fontes tipográficas sob a SIL Open Font License 1.1. Este PDF é distribuído sob CC BY-SA.",
+      "text_cover": "Os 66 livros, com o tema de cada capítulo.",
+      "text_cover_note": "Texto da Bíblia Livre (BLIVRE). Temas: projeto Bíblia Interlinear, com fontes abertas.",
+      "text_credits": "Texto: Bíblia Livre (BLIVRE), de Diego Santos, Mario Sérgio e Marco Teles. Temas dos capítulos: projeto Bíblia Interlinear (github.com/josafams/biblia-interlinear)."
+    },
+    "particle_short": "part."
   }
 }

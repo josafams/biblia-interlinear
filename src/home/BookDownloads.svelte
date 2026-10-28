@@ -3,14 +3,15 @@
   import { t } from "../i18n";
 
   let { booksUrl, sizes }: { booksUrl: string; sizes: Record<string, string> } = $props();
+  // the files of the page's language (scripts/build_epub.py --lang), named in the locale
   const FILES = [
-    ["complete", "00-Biblia-Interlinear-completa"],
-    ["ot", "00-Biblia-Interlinear-AT"],
-    ["nt", "00-Biblia-Interlinear-NT"],
-    ["blivre", "00-Biblia-Livre"]
+    ["complete", t("edition.files.complete")],
+    ["ot", t("edition.files.ot")],
+    ["nt", t("edition.files.nt")],
+    ["blivre", t("edition.files.text")]
   ] as const;
   // the page of every book file (each book on its own)
-  const release = $derived(booksUrl.replace(/\/download\/livros$/, "/tag/livros"));
+  const release = $derived(booksUrl.replace(/\/download\/([^/]+)$/, "/tag/$1"));
 </script>
 
 <table>

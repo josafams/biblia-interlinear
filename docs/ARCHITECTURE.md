@@ -95,7 +95,7 @@ A ordem é sempre corpus → glosas → revisão → export (o `Makefile`, o `sc
 | `export.py` | arquivos do app, do EPUB e do PDF (`interlinear/export/`); `dados/en/` é a camada em inglês (texto da BSB, glosas, ligações, léxico, busca e concordância) que o leitor põe sobre os arquivos em português |
 | `check_data.py` | confere `data/` (também no pre-commit e no CI) |
 | `query.py` | consulta rápida ao banco pela linha de comando |
-| `build_epub.py`, `build_pdf.py` | os livros para baixar |
+| `build_epub.py`, `build_pdf.py` | os livros para baixar; `--lang en` faz os mesmos em inglês, com a BSB (`interlinear/export/edition.py` junta a camada `build/data/en` e tira os textos da seção `edition` do locale) |
 
 Código comum em `scripts/interlinear/`: `paths` (caminhos), `books` (os 66 livros e os capítulos), `text`
 (normalização de hebraico, grego e português), `sources` (arquivos das fontes), `tsv` e `rules` (tabelas de

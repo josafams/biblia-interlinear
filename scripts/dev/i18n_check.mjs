@@ -1,5 +1,5 @@
 // Checks the screen text of the migrated code (src/, outside src/i18n):
-//   - every t("key") / tryT("key") exists in each locale;
+//   - every t("key") / tryT("key") exists in each locale (also t("edition.…") of the Python book builders);
 //   - every locale text is used (keys under a dynamic prefix, t(`morph.${group}…`), count as used);
 //   - no screen text is written in the code: string literals that read like words in a language.
 // A line ending in `// i18n-ignore` is skipped (data or technical strings that only look like text).
@@ -53,6 +53,27 @@ for (const file of fs.readdirSync(path.join(ROOT, "web")).filter(f => f.endsWith
   const text = fs.readFileSync(path.join(ROOT, "web", file), "utf8");
   for (const m of text.matchAll(/data-i18n(?:-html|-label)?="([^"]+)"/g)) used.add(m[1]);
 }
+
+// the book files (scripts/build_epub.py, build_pdf.py) take their words from the locale too
+// (scripts/interlinear/export/edition.py): t("edition.key"), or a prefix in t(f"edition.files.{key}") / t("…" + …)
+const python = dir =>
+  fs.readdirSync(dir, { withFileTypes: true }).flatMap(e => {
+    const full = path.join(dir, e.name);
+    return e.isDirectory() ? (e.name === "__pycache__" ? [] : python(full)) : e.name.endsWith(".py") ? [full] : [];
+  });
+for (const file of python(path.join(ROOT, "scripts"))) {
+  const text = fs.readFileSync(file, "utf8");
+  for (const m of text.matchAll(/\bt\(\s*(f?)(["'])([a-z_]+(?:\.[\w-]+)*\.?)(\{|\2\s*\+|\2)/g)) {
+    if (m[4] === m[2]) used.add(m[3]);
+    else prefixes.add(m[3]);
+  }
+  for (const m of text.matchAll(/["']([a-z_]+(?:\.[\w-]+)+)["']/g)) mentioned.add(m[1]);
+}
+// the build writes pages in each locale (vite/site): its t("key") calls count too
+for (const file of walk(path.join(ROOT, "vite")).filter(f => f.endsWith(".ts")))
+  for (const m of fs.readFileSync(file, "utf8").matchAll(/\b(?:t|tryT)\(\s*(["'`])((?:(?!\1).)*)\1/g))
+    if (m[1] === "`" && m[2].includes("${")) prefixes.add(m[2].slice(0, m[2].indexOf("${")));
+    else used.add(m[2]);
 
 for (const file of files) {
   // HTML comments of .svelte files are not screen text (blanked, keeping the line numbers)

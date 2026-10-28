@@ -80,6 +80,11 @@ test("em inglês (en/): textos, amostra da BSB, links a partir da pasta e o outr
   await expect(page.locator(".nums b").nth(1)).toHaveText("1,189");
   await expect(page.locator('link[hreflang="pt-BR"]')).toHaveAttribute("href", /biblia-interlinear\/$/);
   await expect(page.locator('a[href="bible/john/"]')).toHaveText("John");
+  // the book files in English: their own release
+  await expect(page.locator("#home-books a").first()).toHaveAttribute(
+    "href",
+    /\/releases\/download\/books-en\/00-Interlinear-Bible-complete\.epub$/
+  );
   await page.click('footer a[hreflang="pt-BR"]');
   await expect(page.locator("h1")).toContainText("A Bíblia inteira");
   await page.click('footer a[hreflang="en"]');

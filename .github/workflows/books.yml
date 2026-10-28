@@ -1,4 +1,5 @@
-# Gera os livros para baixar e publica na página Releases (release "livros", sempre a última versão):
+# Gera os livros para baixar e publica na página Releases (sempre a última versão), em português (release "livros")
+# e em inglês, com a BSB (release "books-en", com os mesmos arquivos e nomes em inglês):
 #   - edição só com a Bíblia Livre (EPUB e PDF), sem o original
 #   - EPUB da Bíblia completa, do Antigo e do Novo Testamento e de cada um dos 66 livros
 #   - PDF (A4) da Bíblia completa, do AT e do NT (com marcadores por livro e capítulo) e de cada um dos 66 livros
@@ -23,6 +24,16 @@ jobs:
   books:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - lang: pt
+            release: livros
+            dir: ""
+          - lang: en
+            release: books-en
+            dir: en/
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
@@ -47,15 +58,35 @@ jobs:
           python3 scripts/review.py > /dev/null
           python3 scripts/export.py
       - name: EPUB (Bíblia completa, AT, NT e 66 livros)
-        run: python3 scripts/build_epub.py
+        run: python3 scripts/build_epub.py --lang ${{ matrix.lang }}
       - name: PDF (Bíblia completa, AT, NT e 66 livros)
-        run: python3 scripts/build_pdf.py
-      - name: Publicar na página Releases (livros)
+        run: python3 scripts/build_pdf.py --lang ${{ matrix.lang }}
+      - name: Publicar na página Releases (${{ matrix.release }})
         env:
           GH_TOKEN: ${{ github.token }}
+          RELEASE: ${{ matrix.release }}
+          FILES: ${{ matrix.dir }}
         run: |
           DATA=$(date +%d/%m/%Y)
-          NOTAS="Bíblia Interlinear (BLIVRE) para baixar — gerada em ${DATA} a partir do commit ${GITHUB_SHA::7}.
+          if [ "${{ matrix.lang }}" = en ]; then
+            TITULO="Books: EPUB and PDF in English ($(date +%Y-%m-%d))"
+            NOTAS="Bíblia Interlinear in English, with the Berean Standard Bible (BSB) — built on $(date +%Y-%m-%d) from commit ${GITHUB_SHA::7}.
+
+          **EPUB** (Kindle and other readers; each word of the original is a note with gloss, grammar and meaning):
+          - 00-Interlinear-Bible-complete.epub — the 66 books in a single file
+          - 00-Interlinear-Bible-OT.epub and 00-Interlinear-Bible-NT.epub — by testament (they open faster)
+          - one EPUB per book (01-GEN-Genesis.epub … 66-REV-Revelation.epub)
+          - 00-Berean-Standard-Bible.epub — only the BSB text, without the original (like an ordinary Bible)
+
+          **PDF** (A4, with the word cards and the BSB under each verse; bookmarks by book and chapter):
+          - 00-Interlinear-Bible-complete.pdf, 00-Interlinear-Bible-OT.pdf and 00-Interlinear-Bible-NT.pdf
+          - one PDF per book (01-GEN-Genesis.pdf … 66-REV-Revelation.pdf)
+          - 00-Berean-Standard-Bible.pdf — only the BSB text, in two columns
+
+          On the Kindle: send the EPUB with Send to Kindle (up to 200 MB from the app or website; by email, up to 50 MB)."
+          else
+            TITULO="Livros: EPUB e PDF (${DATA})"
+            NOTAS="Bíblia Interlinear (BLIVRE) para baixar — gerada em ${DATA} a partir do commit ${GITHUB_SHA::7}.
 
           **EPUB** (Kindle e outros leitores; cada palavra do original é uma nota com glosa, gramática e significado):
           - 00-Biblia-Interlinear-completa.epub — os 66 livros num arquivo só
@@ -69,11 +100,12 @@ jobs:
           - 00-Biblia-Livre.pdf — só o texto da Bíblia Livre, em duas colunas
 
           No Kindle: envie o EPUB pelo Send to Kindle (até 200 MB pelo app ou site; por e-mail, até 50 MB)."
-          if gh release view livros >/dev/null 2>&1; then
-            gh release view livros --json assets -q '.assets[].name' | while read -r a; do gh release delete-asset livros "$a" -y; done
-            gh release edit livros --title "Livros: EPUB e PDF (${DATA})" --notes "$NOTAS" --target main
-            git push --force origin "HEAD:refs/tags/livros"
-          else
-            gh release create livros --title "Livros: EPUB e PDF (${DATA})" --notes "$NOTAS" --target main
           fi
-          gh release upload livros build/epub/*.epub build/pdf/*.pdf --clobber
+          if gh release view "$RELEASE" >/dev/null 2>&1; then
+            gh release view "$RELEASE" --json assets -q '.assets[].name' | while read -r a; do gh release delete-asset "$RELEASE" "$a" -y; done
+            gh release edit "$RELEASE" --title "$TITULO" --notes "$NOTAS" --target main
+            git push --force origin "HEAD:refs/tags/$RELEASE"
+          else
+            gh release create "$RELEASE" --title "$TITULO" --notes "$NOTAS" --target main
+          fi
+          gh release upload "$RELEASE" build/epub/${FILES}*.epub build/pdf/${FILES}*.pdf --clobber

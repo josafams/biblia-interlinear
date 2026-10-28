@@ -1661,5 +1661,82 @@
     "toc_about": "About the book <span>summary and context</span>",
     "toc_questions": "Questions on the text <span>to think about and discuss</span>",
     "toc_search": "Search the Bible <span>words, references, Strong's</span>"
+  },
+  "edition": {
+    "release": "books-en",
+    "files": {
+      "complete": "00-Interlinear-Bible-complete",
+      "ot": "00-Interlinear-Bible-OT",
+      "nt": "00-Interlinear-Bible-NT",
+      "text": "00-Berean-Standard-Bible"
+    },
+    "abbrev": "BSB",
+    "text_name": "Berean Standard Bible",
+    "text_title": "Berean Standard Bible (BSB)",
+    "creator": "Bíblia Interlinear (BSB)",
+    "rights": "BSB text in the public domain; original OSHB/SBLGNT CC BY 4.0; lexicon and morphology CC BY-SA",
+    "pronunciation": "Approximate pronunciation: the stressed syllable in CAPITALS; ch as in Scottish “loch”; h always breathed.",
+    "credits": "<p><b>Hebrew and Aramaic, with morphology:</b> Original work of the Open Scriptures Hebrew Bible available at https://github.com/openscriptures/morphhb (CC BY 4.0), based on the Westminster Leningrad Codex (public domain). The cantillation marks are left out of this edition for easier reading on e-ink screens. Where the text has a reading given in the margin (qere), that is the one shown.</p>\n<p><b>Greek:</b> SBL Greek New Testament (SBLGNT), © 2010 Society of Biblical Literature and Logos Bible Software, CC BY 4.0 license; the signs of the critical apparatus were removed from the text. Morphology and lemmas: MorphGNT, J. K. Tauber (CC BY-SA 3.0).</p>\n<p><b>Running translation:</b> Berean Standard Bible (BSB), https://berean.bible/, dedicated to the public domain in 2023. Text reproduced without changes.</p>\n<p><b>Lexicon:</b> James Strong's dictionary (public domain), Open Scriptures digital edition (CC BY-SA); Jeffrey Dodson's Greek lexicon (public domain). This edition is therefore distributed under CC BY-SA.</p>\n<p><b>Word-by-word glosses:</b> obtained by statistical alignment with the BSB and completed by rules; review pending. They are not part of the BSB and are not endorsed by its publishers.</p>\n<p><b>Introduction and chapter themes:</b> written for this edition; dates are approximate.</p>\n<p><b>Typeface:</b> Noto Serif Hebrew, © 2022 The Noto Project Authors, SIL Open Font License 1.1 (full text below).</p>\n",
+    "sources": "Sources and licenses",
+    "contents": "Contents",
+    "start": "Start",
+    "books": "Books",
+    "about_title": "About {name}",
+    "about_book": "About the book",
+    "about_disclaimer": "Introduction written for this edition; dates are approximate and subject to review.",
+    "chapters": "Chapters",
+    "chapter": "Chapter {n}",
+    "chapter_count": "{n} ch.",
+    "superscription": "Title",
+    "notes": "Notes · {ref}",
+    "particle_no_strong": "particle (no Strong's number)",
+    "no_strong": "no Strong's number",
+    "pronounced": "pronounced",
+    "ketiv": "Reading given in the margin (qere); the consonantal text has (ketiv):",
+    "entry_link": "entry →",
+    "no_original": "No counterpart in the original text used in this edition.",
+    "apparatus": "In the SBLGNT this passage is only in the critical apparatus; here is the reading of Westcott-Hort, Tregelles and Nestle-Aland 28.",
+    "apparatus_short": "In the SBLGNT this passage is only in the critical apparatus; reading of Westcott-Hort, Tregelles and NA28.",
+    "tap_word": "Tap a word in the original to open the note with gloss, grammar and meaning.",
+    "read_ltr": "Read from left to right.",
+    "read_rtl": "Read from right to left.",
+    "lexicon": "Lexicon",
+    "lexicon_of": "Lexicon of {name}",
+    "lexicon_book": "Entries used in {name}, in Strong's order.",
+    "lexicon_volume": "Entries used in these books, in Strong's order (Hebrew and Aramaic, then Greek).",
+    "in_bible": "{n}× in the Bible",
+    "language": {
+      "greek": "Greek",
+      "hebrew": "Hebrew",
+      "hebrew_aramaic": "Hebrew and Aramaic"
+    },
+    "book_summary": "{name} in {language} with transliteration, English gloss and a note for each word (grammar and meaning), followed by the text of the Berean Standard Bible. Verses are navigable headings; the original is marked with its own language and direction. No images or audio.",
+    "volume_intro": "{subtitle} Tap a word in the original to open the note with gloss, grammar and meaning; the full entry is in the lexicon, at the end.",
+    "volume_summary": "{subtitle} Each word of the original with transliteration, English gloss and a note (grammar and meaning), followed by the text of the Berean Standard Bible. Contents by book and chapter; verses are navigable headings. No images or audio.",
+    "volume": {
+      "complete": "Bíblia Interlinear — Complete Bible",
+      "complete_sub": "The 66 books: Old Testament in Hebrew and Aramaic, New Testament in Greek, with the Berean Standard Bible.",
+      "ot": "Bíblia Interlinear — Old Testament",
+      "ot_sub": "The 39 books of the Old Testament in Hebrew and Aramaic, with the Berean Standard Bible.",
+      "nt": "Bíblia Interlinear — New Testament",
+      "nt_sub": "The 27 books of the New Testament in Greek, with the Berean Standard Bible."
+    },
+    "testament": {
+      "ot": "Old Testament",
+      "nt": "New Testament"
+    },
+    "text_intro": "Text of the Berean Standard Bible (BSB), with the theme of each chapter written by the Bíblia Interlinear project. To see the original word by word, use the interlinear edition.",
+    "text_summary": "Running text of the Berean Standard Bible, the 66 books, with verse numbers and the theme of each chapter. Contents by book and chapter. No images or audio.",
+    "pdf": {
+      "cover_kind": "Bíblia Interlinear · {language} and English",
+      "cover_text": "Original, transliteration, Strong's number and gloss of each word, with the text of the Berean Standard Bible (BSB).",
+      "read_rtl": "The cards read from right to left.",
+      "aux": "Glosses in gray italics did not come from the direct alignment with the BSB.",
+      "credits": "Hebrew and Aramaic: Open Scriptures Hebrew Bible (CC BY 4.0), based on the Westminster Leningrad Codex. Greek: SBL Greek New Testament (CC BY 4.0) and MorphGNT (CC BY-SA 3.0). Running translation: Berean Standard Bible (BSB), public domain, reproduced without changes. Lexicon: Strong (public domain; Open Scriptures edition, CC BY-SA) and Dodson (public domain). Glosses by statistical alignment with the BSB, review pending; they are not part of the BSB. Introduction and themes written for this edition. Typefaces under the SIL Open Font License 1.1. This PDF is distributed under CC BY-SA.",
+      "text_cover": "The 66 books, with the theme of each chapter.",
+      "text_cover_note": "Text of the Berean Standard Bible (BSB). Themes: the Bíblia Interlinear project, from open sources.",
+      "text_credits": "Text: Berean Standard Bible (BSB), public domain. Chapter themes: the Bíblia Interlinear project (github.com/josafams/biblia-interlinear)."
+    },
+    "particle_short": "part."
   }
 }

@@ -4,7 +4,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { getLocale, setLocale } from "../../src/i18n";
+import { getLocale, setLocale, t } from "../../src/i18n";
 import { localizeBooks } from "../../src/lib/books";
 import { homePath, readerPath, toRoot } from "../../src/seo/paths";
 import { homeBooks, homeHead } from "../../src/seo/site-pages";
@@ -91,11 +91,13 @@ function writeHome(
   });
   const gn = chapter("GEN", 1).find(v => v.n === 1)!,
     jo = chapter("JHN", 1).find(v => v.n === 1)!;
-  const files = ["00-Biblia-Interlinear-completa", "00-Biblia-Interlinear-AT", "00-Biblia-Interlinear-NT", "00-Biblia-Livre"];
+  // the book files of the locale (scripts/build_epub.py --lang: build/epub, or build/epub/<lang>)
+  const files = ["complete", "ot", "nt", "text"].map(k => t(`edition.files.${k}`));
+  const dir = own ? `${locale.split("-")[0]}/` : "";
   const sizes = Object.fromEntries(
     files.flatMap(f => [
-      [`${f}.epub`, size(`build/epub/${f}.epub`)],
-      [`${f}.pdf`, size(`build/pdf/${f}.pdf`)]
+      [`${f}.epub`, size(`build/epub/${dir}${f}.epub`)],
+      [`${f}.pdf`, size(`build/pdf/${dir}${f}.pdf`)]
     ])
   );
   const folder = homePath();
@@ -103,7 +105,7 @@ function writeHome(
     counts: common.counts,
     sample: [sample("GEN", gn, false), sample("JHN", { w: jo.w.slice(0, 5), b: jo.b }, true)],
     sizes,
-    booksUrl: `${APP.repo}/releases/download/livros`,
+    booksUrl: `${APP.repo}/releases/download/${t("edition.release")}`,
     date: new Date().toLocaleDateString(locale),
     root: toRoot(folder),
     storyboards: common.storyboards
@@ -118,7 +120,7 @@ function writeHome(
     __BOOKS_LIST__: homeBooks(books),
     __REPO__: APP.repo,
     __REPO_CURTO__: APP.repo.replace(/^https:\/\//, ""),
-    __LIVROS__: `${APP.repo}/releases/download/livros`,
+    __LIVROS__: `${APP.repo}/releases/download/${t("edition.release")}`,
     __READER__: toRoot(folder) + readerPath(),
     __OTHER_HOME__: homePath(other) || "index.html",
     __OTHER_LOCALE__: other,

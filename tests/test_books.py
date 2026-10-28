@@ -71,3 +71,44 @@ def test_epub_blivre_only(books):
     assert "No princípio criou Deus os céus e a terra." in gen
     assert gen.count('<h2 id="c') == 50
     assert 'epub:type="footnote"' not in gen
+
+
+def test_epub_in_english(books):
+    """--lang en: the same book with the BSB, the English glosses and lexicon and the English texts (#8)."""
+    subprocess.run([sys.executable, os.path.join(ROOT, "scripts", "build_epub.py"), "--lang", "en", "RUT"], check=True, capture_output=True)
+    z = zipfile.ZipFile(os.path.join(ROOT, "build", "epub", "en", "08-RUT-Ruth.epub"))
+    opf = z.read("OEBPS/content.opf").decode("utf8")
+    assert "<dc:language>en</dc:language>" in opf
+    assert "<dc:title>Ruth · Bíblia Interlinear</dc:title>" in opf
+    c1 = z.read("OEBPS/c1.xhtml").decode("utf8")
+    assert 'lang="en"' in c1
+    assert '<span class="tag">BSB</span> In the days when the judges ruled' in c1
+    texts = " ".join(z.read(n).decode("utf8") for n in z.namelist() if n.endswith(".xhtml"))
+    assert "Naomi" in texts
+    assert "About Ruth" in texts
+    assert "How the BSB translates it" in texts
+    for portuguese in ("Noemi", "BLIVRE", "Léxico", "pronúncia", "substantivo"):
+        assert portuguese not in texts, portuguese
+
+
+def test_epub_bsb_only(books):
+    subprocess.run(
+        [sys.executable, os.path.join(ROOT, "scripts", "build_epub.py"), "--lang", "en", "blivre"], check=True, capture_output=True
+    )
+    z = zipfile.ZipFile(os.path.join(ROOT, "build", "epub", "en", "00-Berean-Standard-Bible.epub"))
+    gen = z.read("OEBPS/GEN.xhtml").decode("utf8")
+    assert "In the beginning God created the heavens and the earth." in gen
+    assert gen.count('<h2 id="c') == 50
+    assert "<h1>Genesis</h1>" in gen
+
+
+@pytest.mark.skipif(not _has_chromium(), reason="Chromium do Playwright não disponível (defina PDF_TESTE=1 para forçar)")
+def test_pdf_in_english(books):
+    pypdf = pytest.importorskip("pypdf")
+    subprocess.run([sys.executable, os.path.join(ROOT, "scripts", "build_pdf.py"), "--lang", "en", "RUT"], check=True, capture_output=True)
+    r = pypdf.PdfReader(os.path.join(ROOT, "build", "pdf", "en", "08-RUT-Ruth.pdf"))
+    titles = [o.title for o in r.outline if not isinstance(o, list)]
+    assert titles[0] == "About the book"
+    assert len([t for t in titles if re.match(r"Ruth \d", t)]) == 4, titles
+    assert titles[-2:] == ["Lexicon", "Sources and licenses"]
+    assert r.metadata["/Author"] == "Bíblia Interlinear (BSB)"

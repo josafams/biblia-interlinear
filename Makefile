@@ -115,11 +115,11 @@ videos-check: ## Confere se os roteiros dos vídeos ainda funcionam (sem gravar)
 store: web ## Imagens da ficha da Play Store em build/store
 	node scripts/store_assets.mjs
 
-epub: ## Gera os EPUB em build/epub
-	python3 scripts/build_epub.py
+epub: ## Gera os EPUB em build/epub (BOOKS_LANG=en: em inglês, em build/epub/en)
+	python3 scripts/build_epub.py --lang $(or $(BOOKS_LANG),pt)
 
-pdf: ## Gera os PDF em build/pdf
-	python3 scripts/build_pdf.py
+pdf: ## Gera os PDF em build/pdf (BOOKS_LANG=en: em inglês, em build/pdf/en)
+	python3 scripts/build_pdf.py --lang $(or $(BOOKS_LANG),pt)
 
 build: ## Gera tudo: dados, site, EPUB e PDF
 	scripts/build.sh
