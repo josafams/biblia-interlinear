@@ -1,5 +1,10 @@
 # Bíblia Interlinear (BLIVRE)
 
+[![Testes](https://github.com/josafams/biblia-interlinear/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/josafams/biblia-interlinear/actions/workflows/tests.yml)
+[![Licença: CC BY-SA 4.0](https://img.shields.io/badge/licen%C3%A7a-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE)
+[![Site](https://img.shields.io/badge/site-josafams.github.io-blue.svg)](https://josafams.github.io/biblia-interlinear/)
+[![App Android](https://img.shields.io/badge/Android-APK-3ddc84.svg)](https://github.com/josafams/biblia-interlinear/releases/tag/app-android)
+
 A Bíblia inteira, os 66 livros, palavra por palavra: **hebraico e aramaico** no Antigo Testamento e **grego** no Novo, cada palavra com transliteração, pronúncia aproximada em português, número Strong, análise gramatical, glosa em português e verbete do léxico, e abaixo de cada versículo o texto corrido da **Bíblia Livre (BLIVRE)**.
 
 Tudo é feito com fontes abertas ou de domínio público, para poder ser distribuído livremente (veja [`docs/LICENCAS.md`](docs/LICENCAS.md)).
