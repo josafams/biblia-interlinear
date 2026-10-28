@@ -27,6 +27,9 @@ class GlossLanguage:
     texts_sql: str  # the running text of each verse: book, chapter, verse, text
     lexicon_meaning: str  # the meaning used when nothing is aligned: "pt" (data/lexicon_pt) or "en" (Strong)
     portuguese_rules: bool = False  # YHWH "EU SOU", English → Portuguese rare words
+    # מֵאָה (H3967) when nothing is aligned, by number (singular, plural, dual = 200). The most common translation
+    # would be a whole number ("seiscentos"), wrong in every verse with another one.
+    hundred: dict[str, str] = field(default_factory=lambda: {"s": "cem", "p": "centos", "d": "duzentos"})
     extra: dict = field(default_factory=dict)
 
     def suffix(self, tok, morph):
@@ -72,4 +75,5 @@ EN = GlossLanguage(
     possessive_first=True,
     texts_sql="SELECT book, chapter, verse, text FROM translated_verses WHERE locale = 'en'",
     lexicon_meaning="en",
+    hundred={"s": "hundred", "p": "hundreds", "d": "two-hundred"},
 )

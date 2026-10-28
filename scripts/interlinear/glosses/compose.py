@@ -236,6 +236,11 @@ def complete(res, counts, lang=PT):
             continue
         if source == "alinhamento":
             continue
+        if root_tok == "h3967":  # מֵאָה, "hundred": not the number of another verse (morph HAc?[spd]? = its number)
+            pre = [lang.pre_h.get(t, "") for tp, t in toks if tp == "pre"]
+            item[1] = lang.contract("-".join([p for p in pre if p] + [lang.hundred.get(morph[-2:-1], lang.hundred["s"])]))
+            item[2] = "lexico"
+            continue
         if language == "G" and morph.startswith("RA"):
             parse = morph.split("-", 1)[1] if "-" in morph else ""
             art = lang.article_g.get((parse[4:5], parse[6:7], parse[5:6])) if len(parse) >= 7 else None
