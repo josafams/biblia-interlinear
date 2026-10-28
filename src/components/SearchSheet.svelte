@@ -1,11 +1,12 @@
 <!--
   "Buscar na Bíblia" (#busca): words (all of them), a reference ("Sl 23") or a Strong number ("H430"); where to
   look (Bíblia toda, AT, NT, the book on screen), counts per book, similar words and the verses, with the words
-  marked. web/search.js runs the search into src/state/search.svelte.ts.
+  marked. src/reader/search.ts runs the search into src/state/search.svelte.ts.
 -->
 <script lang="ts">
   import { t } from "../i18n";
   import { search, type SearchItem, type SearchTop } from "../state/search.svelte";
+  import Icon from "./Icon.svelte";
 
   let {
     onclose,
@@ -52,18 +53,7 @@
 >
   <div class="shead">
     <h2 id="busca-h">{t("search.title")}</h2>
-    <button class="ibtn" data-fechar aria-label={t("search.close")} onclick={onclose}
-      ><svg
-        viewBox="0 0 24 24"
-        width="18"
-        height="18"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg
-      ></button
-    >
+    <button class="ibtn" data-fechar aria-label={t("search.close")} onclick={onclose}><Icon name="close" size={18} /></button>
   </div>
   <div class="sgroup">
     <form
