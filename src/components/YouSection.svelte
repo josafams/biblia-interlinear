@@ -1,6 +1,6 @@
 <!--
-  The Você part of the index (#toc-voce): the account, "Meu progresso", the reading plans (they need the
-  account) and the links to the site.
+  The Você part of the index (#toc-voce): the verse of the day, the account, "Meu progresso", the reading plans
+  (they need the account), the reminders (src/reader/reminders.ts mounts those two) and the links to the site.
 -->
 <script lang="ts">
   import { t } from "../i18n";
@@ -23,6 +23,7 @@
 
 <section class="sgroup" aria-labelledby="toc-yh" id="toc-voce">
   <h3 id="toc-yh" class="sr">{t("notes.you")}</h3>
+  <div id="vc-verse"></div>
   <div id="toc-account"><AccountBox /></div>
   <button type="button" class="vc-card" id="open-progress" onclick={onprogress}>
     <b>{t("you.progress_title")}</b><span id="vc-prog">{t(signedIn ? "you.progress" : "you.progress_signed_out")}</span>
@@ -33,6 +34,7 @@
       <button type="button" data-vc-plano={id} onclick={onplan}>{t(label)}<span aria-hidden="true">›</span></button>
     {/each}
   </div>
+  <div id="vc-reminders"></div>
   <p class="vc-links">
     {#each LINKS as [href, label], i (href)}{#if i}
         ·

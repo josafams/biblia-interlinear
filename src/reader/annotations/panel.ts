@@ -5,7 +5,7 @@ import { flushSync, mount } from "svelte";
 import AnnotatePanel from "../../components/AnnotatePanel.svelte";
 import { t } from "../../i18n";
 import type { Anchor, Anchored } from "../../lib/annotations/verse";
-import { exposedPlugin, isNative } from "../../lib/native";
+import { isNative } from "../../lib/native";
 import { verseLink } from "../../lib/share";
 import { keyboardInset, revealScroll } from "../../lib/sheet";
 import { annotate } from "../../state/annotate.svelte";
@@ -13,6 +13,7 @@ import { side } from "../../state/layout.svelte";
 import { reducedMotion } from "../context";
 import { ANNOTATIONS_OPEN_PANEL, ANNOTATIONS_SPEAK } from "../events";
 import { A, EDITION, paint, toastMsg, toastUndo, verse, verseAnchor, verseEl } from "./context";
+import { shareOrCopy } from "../share";
 import { openNote } from "./note";
 
 /** more: the next verses of a Bíblia Livre selection that crosses verses (one snippet per verse) */
@@ -29,21 +30,7 @@ const blivreOf = (a: Anchor) => A.chapter?.verses.find(x => x.n === a.ver)?.bliv
 async function shareVerse(a: Anchor) {
   const url = verseLink({ book: a.livro, chapter: a.cap, verse: a.ver }, { native: isNative, href: location.href });
   const text = t("annotate.share_text", { text: selection?.trecho || blivreOf(a), ref: ref(a) }).trim();
-  const share = exposedPlugin<{ share(o: object): Promise<unknown> }>("Share");
-  try {
-    if (share) return await share.share({ title: ref(a), text, url });
-    if (navigator.share) return await navigator.share({ title: ref(a), text, url });
-  } catch (err) {
-    // the person closed the share sheet (browser: AbortError; app: "Share canceled")
-    const e = err as Error;
-    if (e && (e.name === "AbortError" || /cancel/i.test(e.message || ""))) return;
-  }
-  try {
-    await navigator.clipboard.writeText(`${text}\n${url}`);
-    toastMsg(t("annotate.link_copied"));
-  } catch {
-    toastMsg(t("annotate.share_failed"));
-  }
+  await shareOrCopy(ref(a), text, url);
 }
 
 // On phones and tablets the sheet covers the bottom: the verse moves to the room between the top bar and the sheet

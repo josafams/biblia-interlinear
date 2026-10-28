@@ -1244,5 +1244,28 @@
     },
     "entry_title": "{word}, {key}: significado e ocorrências · Bíblia Interlinear",
     "entry_description": "{word}, {key} de Strong: {meaning}"
+  },
+  "reminder": {
+    "reading_title": "Hora da leitura",
+    "reading_plan": "Hoje: {chapters} · dia {day} de {days}",
+    "reading_continue": "Continue de onde parou: {where}",
+    "reading_start": "Que tal começar por Gênesis 1?",
+    "verse_title": "Versículo do dia · {ref}",
+    "verse_card": "Versículo do dia",
+    "read_in_chapter": "Ler no capítulo",
+    "share": "Compartilhar",
+    "card_title": "Lembretes",
+    "reading_switch": "Lembrete de leitura",
+    "reading_hint": "Com um plano, os capítulos do dia; sem plano, de onde você parou.",
+    "verse_switch": "Versículo do dia",
+    "verse_hint": "Um versículo da Bíblia Livre por dia.",
+    "time": "Horário",
+    "next": "Próximo: {when}",
+    "none": "Nenhum lembrete ligado.",
+    "today_at": "hoje às {time}",
+    "tomorrow_at": "amanhã às {time}",
+    "day_at": "{day} às {time}",
+    "denied": "As notificações estão bloqueadas para o app. Libere nos ajustes do sistema.",
+    "only_app": "Lembretes de leitura e o versículo do dia por notificação estão no app para Android."
   }
 }

@@ -7,8 +7,10 @@ import { openReader, openIndexTab } from "./helpers.mjs";
 test.skip(!process.env.VISUAL, "visual regression runs only with VISUAL=1");
 test.use({ serviceWorkers: "block" });
 
-// Deterministic start: Interlinear mode, light theme, no first-run question, tips or account suggestion.
+// Deterministic start: a fixed day, Interlinear mode, light theme, no first-run question, tips or account suggestion.
 test.beforeEach(async ({ page }) => {
+  // a fixed day: the verse of the day (Você) changes every day
+  await page.clock.install({ time: new Date(2026, 9, 27, 10, 0) });
   await page.addInitScript(() => {
     const set = (k, v) => localStorage.setItem("interlinear:" + k, v);
     set("modo", "interlinear");

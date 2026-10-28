@@ -828,3 +828,69 @@
   background: var(--accent);
   color: var(--surface);
 }
+/* ================= Você: versículo do dia e lembretes (src/reader/reminders.ts) ================= */
+#vc-verse:empty,
+#vc-reminders:empty {
+  display: none;
+}
+#toc-voce .vc-verse {
+  background: var(--accent-soft);
+  border-color: transparent;
+}
+#toc-voce .vc-verse-ref {
+  font-weight: 400;
+  color: var(--accent);
+}
+#toc-voce .vc-verse-text {
+  margin: 0;
+  font: 400 16px/1.6 var(--font-body);
+}
+#toc-voce .vc-verse-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+#toc-voce .vc-verse-actions button {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--accent);
+  font: 400 14px var(--font-ui);
+  cursor: pointer;
+}
+#toc-voce .vc-rem {
+  display: grid;
+  gap: 6px;
+}
+#toc-voce .vc-rem-time {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 12px;
+  font: 400 14px var(--font-ui);
+  color: var(--muted);
+}
+#toc-voce .vc-rem-time input {
+  min-height: 40px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 16px var(--font-ui);
+}
+#toc-voce .vc-rem-note {
+  font: 400 13px/1.45 var(--font-ui);
+  color: var(--muted);
+}
+#toc-voce .vc-rem-note.warn {
+  color: var(--warn);
+}
+#toc-voce .vc-rem-web {
+  margin: 0;
+  font: 400 13px/1.45 var(--font-ui);
+  color: var(--muted);
+}

@@ -84,6 +84,8 @@ O projeto não tem servidor e não recebe nada. Mas, com o login opcional, as an
 | Informações pessoais (nome, e-mail) | Não coletado: o nome e o e-mail da conta Google ficam só no aparelho, para mostrar com qual conta a pessoa entrou |
 | Localização, contatos, fotos, áudio, identificadores, dados financeiros, saúde | Não coletado |
 
+Os lembretes (lembrete de leitura e versículo do dia) são notificações locais, agendadas no próprio aparelho: não transmitem dado nenhum e não entram na Segurança dos dados. O app declara `POST_NOTIFICATIONS` (pedida só quando a pessoa liga um lembrete) e `RECEIVE_BOOT_COMPLETED` (reagendar depois de reiniciar), e retira `SCHEDULE_EXACT_ALARM`, então não há declaração de alarme exato a fazer.
+
 ## Google: tela de consentimento em produção
 
 Enquanto a tela de consentimento estiver em "Teste", só os e-mails cadastrados como testadores conseguem entrar. Para liberar para todos ([Google Cloud Console › Google Auth Platform](https://console.cloud.google.com/auth/overview)):
