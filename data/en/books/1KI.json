@@ -1,0 +1,282 @@
+{
+  "title_orig": "מְלָכִים א",
+  "title_orig_xlit": "Melakhim Alef",
+  "summary": "1 Kings begins with David's old age and the dispute over the succession, won by Solomon. Solomon's reign is presented as a time of wisdom, wealth and great works, with the building and dedication of the temple in Jerusalem, but also of marriages to foreign women and the worship of other gods. After his death the kingdom divides: Rehoboam keeps Judah, in the south, and Jeroboam founds the kingdom of Israel, in the north, with sanctuaries at Bethel and Dan. From then on the book alternates between the kings of the two kingdoms, assessing each one by faithfulness to the LORD. The final chapters revolve around the prophet Elijah and his confrontation with King Ahab and Queen Jezebel, who promoted the worship of Baal.",
+  "name": "In the Hebrew Bible, 1 and 2 Kings form a single book, Melakhim, “Kings,” which narrates the history of the monarchy from Solomon to the exile. The Septuagint divided the work in two and called it 3 and 4 Kingdoms, continuing the numbering of Samuel; the Latin Vulgate used 3 and 4 Kings, names that appear in some older Catholic Bibles in English, such as the Douay-Rheims. The division into two books passed into printed Hebrew Bibles only in the 16th century.",
+  "facts": [
+    [
+      "Position",
+      "11th book of the Bible, among the historical books; in the Hebrew Bible, the first part of Kings, the last of the Former Prophets (Nevi’im Rishonim)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "historical narrative, with prophetic accounts"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "David's succession",
+      "from": 1,
+      "to": 2,
+      "text": "Adonijah tries to take the throne, Solomon is anointed and David dies."
+    },
+    {
+      "title": "Solomon's reign",
+      "from": 3,
+      "to": 11,
+      "text": "The king's wisdom, the temple and the palace, the riches and, at the end, the idolatry and the adversaries."
+    },
+    {
+      "title": "The division and the first kings",
+      "from": 12,
+      "to": 16,
+      "text": "The kingdom splits in two; kings of Judah and Israel down to Ahab."
+    },
+    {
+      "title": "Elijah and Ahab",
+      "from": 17,
+      "to": 22,
+      "text": "The drought, Carmel, Horeb, Naboth's vineyard and Ahab's death at Ramoth-gilead."
+    }
+  ],
+  "extra": {
+    "title": "The regnal formulas",
+    "text": "Each king is introduced with a fixed pattern: the year in which he began to reign, counted by the reign of the king of the other kingdom; the length of his rule; in Judah, the king's age and his mother's name; and an assessment, he “did evil” or “did what was right in the eyes of the LORD.” At the end comes the mention of the chronicles where his other deeds would be found, the notice of his death and the name of his successor. These synchronisms are the basis of the reconstructions of the chronology of the kings."
+  },
+  "people": [
+    {
+      "name": "David",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "now old, settles the succession and leaves instructions to Solomon"
+    },
+    {
+      "name": "Bathsheba and Nathan",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "Solomon's mother and the prophet, who secure his anointing"
+    },
+    {
+      "name": "Adonijah",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "son of David who tries to make himself king"
+    },
+    {
+      "name": "Solomon",
+      "chapters": "1–11",
+      "ch": 3,
+      "note": "son of David and Bathsheba; builds the temple"
+    },
+    {
+      "name": "Hiram, king of Tyre",
+      "chapters": "5; 9–10",
+      "ch": 5,
+      "note": "supplies timber and craftsmen for Solomon's works"
+    },
+    {
+      "name": "The queen of Sheba",
+      "chapters": "10",
+      "ch": 10,
+      "note": "visits Solomon to test his wisdom"
+    },
+    {
+      "name": "Jeroboam",
+      "chapters": "11–14",
+      "ch": 12,
+      "note": "first king of Israel, the northern kingdom"
+    },
+    {
+      "name": "Rehoboam",
+      "chapters": "12; 14",
+      "ch": 12,
+      "note": "son of Solomon, king of Judah"
+    },
+    {
+      "name": "Asa",
+      "chapters": "15",
+      "ch": 15,
+      "note": "king of Judah, praised by the text"
+    },
+    {
+      "name": "Ahab and Jezebel",
+      "chapters": "16–22",
+      "ch": 21,
+      "note": "king of Israel and his Phoenician wife, who promotes the worship of Baal"
+    },
+    {
+      "name": "Elijah",
+      "chapters": "17–21",
+      "ch": 17,
+      "note": "the Tishbite prophet, from Gilead, Ahab's adversary"
+    },
+    {
+      "name": "Elisha",
+      "chapters": "19",
+      "ch": 19,
+      "note": "called by Elijah to follow him"
+    },
+    {
+      "name": "Micaiah",
+      "chapters": "22",
+      "ch": 22,
+      "note": "prophet who announces Ahab's defeat"
+    }
+  ],
+  "writing": {
+    "tradition": "The Babylonian Talmud (Bava Batra 15a) attributes the writing of Kings to the prophet Jeremiah, who lived through the fall of Jerusalem. On this reading, the work would have been composed at the beginning of the exile, in the 6th century BC; the last event narrated, the release of King Jehoiachin in Babylon (2 Kings 25:27), took place around 562 BC.",
+    "academic": "Most researchers see 1 and 2 Kings as the final part of the so-called Deuteronomistic History, which runs from Joshua to Kings and assesses Israel's past in light of Deuteronomy. Many follow the proposal of two editions: one in the reign of Josiah, c. 620 BC, which culminated in his reform, and another in the exile, around 560 BC, which added the fall of Jerusalem; others think of a single composition in the exile. The text itself cites sources now lost: the “Book of the Acts of Solomon” (1 Kings 11:41) and the chronicles of the kings of Israel and Judah (1 Kings 14:19, 29). The accounts of Elijah and Elisha seem to come from collections of prophetic stories that circulated in the Northern Kingdom."
+  },
+  "events": {
+    "intro": "1 Kings runs from the end of David's reign, around 970 BC, to the beginning of Ahaziah's reign in Israel, around 853 BC. The first points of support outside the Bible appear in this period: the campaign of Pharaoh Shishak (Sheshonq I) in Canaan, in Rehoboam's fifth year (14:25), recorded on a relief at Karnak and placed around 925 BC; and the participation of “Ahab the Israelite” in the battle of Qarqar against the Assyrian king Shalmaneser III, in 853 BC, recorded in an Assyrian inscription. From these anchors the earlier dates are calculated, such as the division of the kingdom, which most place between 931 and 922 BC. According to 6:1, the building of the temple began 480 years after the departure from Egypt, a number that serves as the basis for the traditional date of the Exodus, c. 1446 BC. The chronologies of the kings vary among authors: the numbers of 1 and 2 Kings do not always fit together, and each reconstruction resolves the differences in its own way, assuming co-regencies (father and son reigning together) and different ways of counting the first year of a reign. For this reason the same date may appear a few years apart in different works. The dates of this timeline are approximate and follow one of the most widely used reconstructions.",
+    "axis": [
+      -1010,
+      -530
+    ],
+    "timeline": [
+      {
+        "label": "David, king",
+        "from": -1010,
+        "to": -970,
+        "kind": "pessoa",
+        "note": "the last days of his reign open the book"
+      },
+      {
+        "label": "Solomon, king",
+        "from": -970,
+        "to": -931,
+        "kind": "pessoa",
+        "note": "reigns 40 years (11:42)"
+      },
+      {
+        "label": "Start of the building of the temple",
+        "from": -966,
+        "to": -966,
+        "kind": "evento",
+        "note": "Solomon's fourth year (6:1); the work lasts seven years (6:38)"
+      },
+      {
+        "label": "Division of the kingdom",
+        "from": -931,
+        "to": -931,
+        "kind": "evento",
+        "note": "other reconstructions propose c. 928 or 922 BC"
+      },
+      {
+        "label": "Jeroboam I, king of Israel",
+        "from": -931,
+        "to": -910,
+        "kind": "pessoa",
+        "note": "22 years (14:20)"
+      },
+      {
+        "label": "Rehoboam, king of Judah",
+        "from": -931,
+        "to": -913,
+        "kind": "pessoa",
+        "note": "17 years (14:21)"
+      },
+      {
+        "label": "Shishak's campaign",
+        "from": -925,
+        "to": -925,
+        "kind": "evento",
+        "note": "the pharaoh plunders Jerusalem (14:25–26)"
+      },
+      {
+        "label": "Asa, king of Judah",
+        "from": -911,
+        "to": -870,
+        "kind": "pessoa",
+        "note": "41 years (15:10)"
+      },
+      {
+        "label": "Omri, king of Israel",
+        "from": -885,
+        "to": -874,
+        "kind": "pessoa",
+        "note": "founds Samaria (16:24); Assyria comes to call Israel the “house of Omri”"
+      },
+      {
+        "label": "Ahab, king of Israel",
+        "from": -874,
+        "to": -853,
+        "kind": "pessoa",
+        "note": "22 years (16:29–30)"
+      },
+      {
+        "label": "Jehoshaphat, king of Judah",
+        "from": -872,
+        "to": -848,
+        "kind": "pessoa",
+        "note": "25 years (22:42), partly together with his father, according to many reconstructions"
+      },
+      {
+        "label": "Elijah",
+        "from": -865,
+        "to": -850,
+        "kind": "pessoa",
+        "note": "active in the reigns of Ahab and Ahaziah; approximate dates"
+      },
+      {
+        "label": "Battle of Qarqar",
+        "from": -853,
+        "to": -853,
+        "kind": "evento",
+        "note": "Ahab among the kings who face Shalmaneser III"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -586,
+        "to": -560,
+        "kind": "escrita",
+        "note": "Jeremiah, at the beginning of the exile"
+      },
+      {
+        "label": "Composition, according to scholarship",
+        "from": -620,
+        "to": -550,
+        "kind": "escrita",
+        "note": "Deuteronomistic History: Josianic edition and exilic edition"
+      }
+    ]
+  },
+  "context": "In Solomon's time, Jerusalem gains the temple and the palace, and the kingdom appears linked to the region's trade: timber from Lebanon by way of Tyre, in Phoenicia, ships setting out from Ezion-geber, on the Gulf of Aqaba, and caravans coming from Arabia, like that of the queen of Sheba. After the division, Judah keeps Jerusalem and the dynasty of David; Israel, larger and richer, has successive capitals until Omri founds Samaria. Jeroboam sets up sanctuaries at Bethel and at Dan, at the edges of his territory. In the 9th century BC Israel contends for land with the Arameans of Damascus and draws close to Phoenicia through Ahab's marriage to Jezebel, daughter of the king of Sidon, while Assyria begins to advance westward.",
+  "places": [
+    "Jerusalem: the temple and the palace",
+    "Gibeon",
+    "Shechem, Bethel and Dan",
+    "Samaria and Jezreel",
+    "Mount Carmel and Horeb",
+    "Zarephath, in Phoenicia",
+    "Ramoth-gilead",
+    "Tyre, Damascus and Ezion-geber"
+  ],
+  "themes": [
+    "temple and worship",
+    "wisdom",
+    "faithfulness and idolatry",
+    "the division of the kingdom",
+    "prophet and king",
+    "Elijah and Baal"
+  ],
+  "key_verses": [
+    {
+      "ref": "3:9"
+    },
+    {
+      "ref": "8:27"
+    },
+    {
+      "ref": "18:21"
+    },
+    {
+      "ref": "19:11–12"
+    }
+  ],
+  "note": "Dates are approximate and the chronologies of the kings vary among authors; those given here broadly follow the reconstruction of E. R. Thiele, which is widely used, and other works may differ by a few years. The verses quoted are from the Berean Standard Bible (BSB)."
+}

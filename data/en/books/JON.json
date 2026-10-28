@@ -1,0 +1,121 @@
+{
+  "title_orig": "יוֹנָה",
+  "title_orig_xlit": "Yonah",
+  "summary": "Unlike the other prophets, Jonah is almost entirely narrative. Sent to preach against Nineveh, the Assyrian capital and Israel's enemy, the prophet flees by ship, is thrown into the sea and swallowed by a great fish. After praying and being returned to land, he preaches in the city, which repents and is spared. The book ends with Jonah angry at God's mercy and with a question that goes unanswered.",
+  "name": "The book bears the name of its protagonist. Jonah, in Hebrew Yonah, means “dove.” He is identified with Jonah son of Amittai, a prophet mentioned in 2 Kings 14:25.",
+  "facts": [
+    [
+      "Position",
+      "5th of the Twelve Minor Prophets"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "prophetic narrative, with a psalm (2:2–9)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "The flight",
+      "from": 1,
+      "to": 2,
+      "text": "Jonah flees to Tarshish, the storm overtakes him, the sailors throw him into the sea and he prays from the belly of the fish."
+    },
+    {
+      "title": "The mission and the reaction",
+      "from": 3,
+      "to": 4,
+      "text": "Nineveh hears the message and repents; God spares the city, and Jonah argues with God because of it."
+    }
+  ],
+  "people": [
+    {
+      "name": "Jonah",
+      "chapters": "1–4",
+      "ch": 1,
+      "note": "prophet, son of Amittai, from Gath-hepher (2 Kings 14:25)"
+    },
+    {
+      "name": "The sailors",
+      "chapters": "1",
+      "ch": 1,
+      "note": "foreigners who fear the LORD and offer sacrifices"
+    },
+    {
+      "name": "The king of Nineveh",
+      "chapters": "3",
+      "ch": 3,
+      "note": "decrees fasting and repentance for the whole city"
+    }
+  ],
+  "writing": {
+    "tradition": "Jewish and Christian tradition see the book as an account of the mission of Jonah son of Amittai, who prophesied in the days of Jeroboam II (2 Kings 14:25), in the 8th century BC, and many attribute it to the prophet himself, around 780–750 BC. On this reading, the book narrates historical events.",
+    "academic": "The book speaks of Jonah in the third person and names no author. Many scholars date it to the Persian period, between c. 500 and 300 BC, based on features of the language and on the way Nineveh is described, as a city of the past. The genre is debated: historical account, didactic narrative, parable or prophetic satire. There is also discussion about whether the psalm of chapter 2 was composed together with the narrative or inserted later."
+  },
+  "events": {
+    "intro": "The character belongs to the 8th century BC, but the book gives no date of its own. The dates below are approximate and show Jonah's time and the two proposals for the writing.",
+    "axis": [
+      -800,
+      -280
+    ],
+    "timeline": [
+      {
+        "label": "Jeroboam II",
+        "from": -786,
+        "to": -746,
+        "kind": "pessoa",
+        "note": "king of Israel in whose days Jonah son of Amittai was active"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -780,
+        "to": -750,
+        "kind": "escrita",
+        "note": "account of Jonah's mission"
+      },
+      {
+        "label": "Nineveh, Assyrian capital",
+        "from": -705,
+        "to": -612,
+        "kind": "evento",
+        "note": "Sennacherib makes Nineveh the capital; the city falls in 612 BC"
+      },
+      {
+        "label": "Writing, according to scholarship",
+        "from": -500,
+        "to": -300,
+        "kind": "escrita",
+        "note": "Persian or early Hellenistic period"
+      }
+    ]
+  },
+  "context": "Nineveh, on the banks of the Tigris, was one of the great cities of Assyria and, from Sennacherib on, around 700 BC, became the capital of the empire that destroyed the Northern Kingdom in 722 BC. For readers in Israel, the city symbolized the enemy's cruelty, as the book of Nahum shows. Tarshish is usually placed at the far western end of the Mediterranean, perhaps in the Iberian Peninsula, the opposite direction from Nineveh. Joppa was the port on Israel's coast.",
+  "places": [
+    "Joppa",
+    "Tarshish",
+    "the sea",
+    "Nineveh"
+  ],
+  "themes": [
+    "God's mercy",
+    "repentance",
+    "God and the nations",
+    "obedience and flight",
+    "compassion"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:9"
+    },
+    {
+      "ref": "3:10"
+    },
+    {
+      "ref": "4:2"
+    }
+  ],
+  "note": "The BSB follows the numbering of English Bibles: 1:17 corresponds to 2:1 in the Hebrew text, and 2:1 to 2:2, and so on to the end of chapter 2. Dates are approximate."
+}

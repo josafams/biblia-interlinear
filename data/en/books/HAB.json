@@ -1,0 +1,124 @@
+{
+  "title_orig": "חֲבַקּוּק",
+  "title_orig_xlit": "Chavaqquq",
+  "summary": "Habakkuk is a dialogue between the prophet and God. The prophet complains of the violence and injustice in Judah; God answers that He will raise up the Chaldeans (Babylonians) as an instrument of judgment, which provokes a second complaint: how can He use a people even more violent? The answer includes the affirmation that the righteous will live by faith and a series of woes against the oppressor. The book ends with a prayer in the form of a psalm, which trusts in God even when everything is lacking.",
+  "name": "The book bears the prophet's name. The meaning of Habakkuk is uncertain: some link it to the Hebrew verb “to embrace,” others to an Akkadian word that designates a plant.",
+  "facts": [
+    [
+      "Position",
+      "8th of the Twelve Minor Prophets"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "prophecy in the form of a dialogue, with a psalm (chapter 3)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "The dialogue with God",
+      "from": 1,
+      "to": 2,
+      "text": "Two complaints of the prophet and two answers: the Chaldeans as an instrument of judgment and the vision that must be written down; then, five woes against the oppressor."
+    },
+    {
+      "title": "The prophet's prayer",
+      "from": 3,
+      "to": 3,
+      "text": "A psalm that describes God's coming as a warrior and ends with a declaration of trust."
+    }
+  ],
+  "people": [
+    {
+      "name": "Habakkuk",
+      "chapters": "1–3",
+      "ch": 1,
+      "note": "prophet; nothing is known of his life beyond the book"
+    },
+    {
+      "name": "The Chaldeans",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "the Babylonians, described as a swift and violent nation"
+    }
+  ],
+  "writing": {
+    "tradition": "The book is attributed to the prophet Habakkuk. Since it speaks of the rise of the Chaldeans as a power, it is usually placed at the end of the 7th century BC, around 609–598 BC, during the reign of Jehoiakim in Judah.",
+    "academic": "Scholars generally accept a date at the end of the 7th or beginning of the 6th century BC, linked to the rise of Babylon after the battle of Carchemish (605 BC). It is debated whether chapter 3, which has its own title and musical directions, was composed together with the rest; among the Dead Sea Scrolls, the Qumran commentary on Habakkuk covers only chapters 1 and 2, although other ancient manuscripts include chapter 3."
+  },
+  "events": {
+    "intro": "The book reflects the passage from Assyrian to Babylonian rule. The dates are approximate.",
+    "axis": [
+      -630,
+      -580
+    ],
+    "timeline": [
+      {
+        "label": "Fall of Nineveh",
+        "from": -612,
+        "to": -612,
+        "kind": "evento",
+        "note": "end of Assyrian power"
+      },
+      {
+        "label": "Jehoiakim, king of Judah",
+        "from": -609,
+        "to": -598,
+        "kind": "pessoa",
+        "note": "reign"
+      },
+      {
+        "label": "Battle of Carchemish",
+        "from": -605,
+        "to": -605,
+        "kind": "evento",
+        "note": "Nebuchadnezzar defeats Egypt; Babylon comes to dominate the region"
+      },
+      {
+        "label": "Writing, according to tradition and scholarship",
+        "from": -609,
+        "to": -598,
+        "kind": "escrita",
+        "note": "the most cited interval"
+      },
+      {
+        "label": "First capture of Jerusalem",
+        "from": -597,
+        "to": -597,
+        "kind": "evento",
+        "note": "the Babylonians deport King Jehoiachin and part of the elite"
+      }
+    ]
+  },
+  "context": "At the end of the 7th century BC, Assyria collapsed and Babylon, under Nabopolassar and then Nebuchadnezzar, took its place. Judah, which had lived through Josiah's reform, again faced internal injustice and external dependence, first on Egypt and then on Babylon. The statement of 2:4 about the righteous who live by faith was much commented on in Jewish tradition and is quoted by Paul in Romans 1:17 and Galatians 3:11, and in the Letter to the Hebrews.",
+  "places": [
+    "Judah and Jerusalem",
+    "Babylon (the Chaldeans)",
+    "Teman and Mount Paran"
+  ],
+  "themes": [
+    "the problem of evil",
+    "God's justice",
+    "faith and faithfulness",
+    "judgment of the oppressor",
+    "trust in adversity"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:2"
+    },
+    {
+      "ref": "2:4"
+    },
+    {
+      "ref": "2:14"
+    },
+    {
+      "ref": "3:17–18"
+    }
+  ],
+  "note": "Dates are approximate; the verses quoted are from the Berean Standard Bible (BSB)."
+}

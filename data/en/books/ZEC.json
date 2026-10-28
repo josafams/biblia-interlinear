@@ -1,0 +1,155 @@
+{
+  "title_orig": "זְכַרְיָה",
+  "title_orig_xlit": "Zekharyah",
+  "summary": "Zechariah was active together with Haggai, when the Jews who had returned from exile were rebuilding the temple. Chapters 1 to 8 contain eight night visions, full of symbols (horsemen, horns, a lampstand, a flying scroll), that announce the purification of the people and the return of God's presence to Jerusalem, as well as answers about fasting and promises of restoration. Chapters 9 to 14, undated, speak of a humble king who comes riding on a donkey's colt, of faithful and unfaithful shepherds and of the day when the LORD will be king over all the earth.",
+  "name": "The book bears the prophet's name. Zechariah, in Hebrew Zekharyah, means “the LORD has remembered.” It was one of the most common names in the Old Testament.",
+  "facts": [
+    [
+      "Position",
+      "11th of the Twelve Minor Prophets"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "prophecy, with visions of an apocalyptic tone"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Night visions",
+      "from": 1,
+      "to": 6,
+      "text": "A call to repentance and eight visions about the judgment of the nations, the purification of Jerusalem and its leaders; the crown of the high priest Joshua."
+    },
+    {
+      "title": "Fasting and the promises",
+      "from": 7,
+      "to": 8,
+      "text": "A question about the fasts leads to recalling the justice required and announcing days of joy for Jerusalem."
+    },
+    {
+      "title": "First oracle",
+      "from": 9,
+      "to": 11,
+      "text": "The king who comes, the people gathered and the parable of the two staffs and the bad shepherds."
+    },
+    {
+      "title": "Second oracle",
+      "from": 12,
+      "to": 14,
+      "text": "Jerusalem attacked and defended, the mourning for the one who was pierced, the fountain of cleansing and the day of the LORD."
+    }
+  ],
+  "people": [
+    {
+      "name": "Zechariah",
+      "chapters": "1–14",
+      "ch": 1,
+      "note": "prophet, son of Berechiah, son of Iddo"
+    },
+    {
+      "name": "Joshua",
+      "chapters": "3; 6",
+      "ch": 3,
+      "note": "high priest, cleansed in the vision and crowned as a sign"
+    },
+    {
+      "name": "Zerubbabel",
+      "chapters": "4",
+      "ch": 4,
+      "note": "governor of Judah, who will complete the building of the temple"
+    },
+    {
+      "name": "The angel who was speaking with me",
+      "chapters": "1–6",
+      "ch": 1,
+      "note": "interpreter of the visions"
+    }
+  ],
+  "writing": {
+    "tradition": "Tradition attributes the whole book to Zechariah son of Berechiah, a prophet contemporary with Haggai (Ezra 5:1; 6:14). The dated visions and messages run from 520 to 518 BC; chapters 9 to 14 would be by the same prophet, perhaps from a later phase of his life.",
+    "academic": "Scholars generally attribute chapters 1 to 8 to Zechariah, between 520 and 518 BC. Chapters 9 to 14 have a different style and subject matter, give no dates or the prophet's name and begin with their own titles (9:1; 12:1); many attribute them to one or more later authors, called “Second Zechariah,” and date them between the end of the Persian period and the beginning of the Hellenistic (5th to 4th centuries BC), partly because of the mention of Greece (9:13). Some argue for an older date for these chapters, and others maintain the unity of the book."
+  },
+  "events": {
+    "intro": "The dates of chapters 1 to 8 follow the reign of Darius I; chapters 9 to 14 are undated. The dates are approximate.",
+    "axis": [
+      -545,
+      -300
+    ],
+    "timeline": [
+      {
+        "label": "Decree of Cyrus and first return",
+        "from": -539,
+        "to": -538,
+        "kind": "evento",
+        "note": "the exiles receive permission to return"
+      },
+      {
+        "label": "Darius I, king of Persia",
+        "from": -522,
+        "to": -486,
+        "kind": "pessoa",
+        "note": "reign"
+      },
+      {
+        "label": "Messages of Zechariah 1–8",
+        "from": -520,
+        "to": -518,
+        "kind": "escrita",
+        "note": "from the 8th month of the 2nd year to the 9th month of the 4th year of Darius (1:1; 7:1)"
+      },
+      {
+        "label": "Rebuilding of the temple",
+        "from": -520,
+        "to": -515,
+        "kind": "evento",
+        "note": "completed in 515 BC"
+      },
+      {
+        "label": "Chapters 9–14, according to scholarship",
+        "from": -480,
+        "to": -330,
+        "kind": "escrita",
+        "note": "“Second Zechariah,” at much-debated dates"
+      },
+      {
+        "label": "Alexander the Great",
+        "from": -336,
+        "to": -323,
+        "kind": "pessoa",
+        "note": "conquers the Persian empire"
+      }
+    ]
+  },
+  "context": "Zechariah was active in the small Persian province of Judah, where a community that had returned from exile was trying to rebuild the temple and reorganize religious life, sharing leadership between the governor Zerubbabel, of the line of David, and the high priest Joshua. The visions use images that anticipate apocalyptic literature, with interpreting angels and numerical symbols. Chapters 9 to 14 were much used in the New Testament, especially in the accounts of Jesus' entry into Jerusalem and of the passion.",
+  "places": [
+    "Jerusalem and Zion",
+    "the temple",
+    "Babylon (the land of Shinar and the land of the north)",
+    "the Mount of Olives",
+    "Hadrach, Damascus, Tyre and Sidon"
+  ],
+  "themes": [
+    "rebuilding and return",
+    "purification",
+    "leadership: king and priest",
+    "faithful and unfaithful shepherds",
+    "the day of the LORD",
+    "God's universal reign"
+  ],
+  "key_verses": [
+    {
+      "ref": "8:23"
+    },
+    {
+      "ref": "9:9"
+    },
+    {
+      "ref": "14:9"
+    }
+  ],
+  "note": "Dates are approximate; the verses quoted are from the Berean Standard Bible (BSB), which follows the numbering of English Bibles: 1:18–21 corresponds to 2:1–4 in the Hebrew text, and 2:1 to 2:5, and so on to the end of chapter 2."
+}

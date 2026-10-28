@@ -1,0 +1,186 @@
+{
+  "title_orig": "אֶסְתֵּר",
+  "title_orig_xlit": "Ester",
+  "summary": "At the court of the Persian king Xerxes (Ahasuerus in Hebrew), in Susa, the young Jewish woman Esther becomes queen without revealing her origin. When Haman, the most powerful official in the kingdom, obtains a decree to exterminate the Jews of the empire, Mordecai, Esther's cousin and guardian, persuades her to risk her life and intercede with the king. In a sequence of banquets and reversals, Haman is unmasked and executed, and a new decree allows the Jews to defend themselves. The book ends by explaining the origin of the feast of Purim.",
+  "name": "The book bears the name of its protagonist. Esther was the name by which she was known at court; her Hebrew name, Hadassah (2:7), means “myrtle.” Esther is usually explained from Persian (“star”) or linked to the name of the Babylonian goddess Ishtar. In Jewish tradition, the book is called Megillat Esther, “the scroll of Esther,” read publicly at the feast of Purim.",
+  "facts": [
+    [
+      "Position",
+      "17th book of the Bible, among the historical books; in the Hebrew Bible, one of the five Scrolls (Megillot), among the Writings (Ketuvim)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "narrative"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Esther comes to the throne",
+      "from": 1,
+      "to": 2,
+      "text": "Queen Vashti is deposed, Esther is chosen, and Mordecai uncovers a conspiracy against the king."
+    },
+    {
+      "title": "The threat",
+      "from": 3,
+      "to": 4,
+      "text": "Mordecai does not bow before Haman, who obtains a decree against all the Jews; Esther decides to go to the king."
+    },
+    {
+      "title": "The reversal",
+      "from": 5,
+      "to": 7,
+      "text": "Esther's banquets, the king's sleepless night, the honoring of Mordecai and Haman's fall."
+    },
+    {
+      "title": "Deliverance and Purim",
+      "from": 8,
+      "to": 10,
+      "text": "The counter-decree, the Jews' defense, the institution of the feast and the greatness of Mordecai."
+    }
+  ],
+  "extra": {
+    "title": "A book in which God is not named",
+    "text": "The Hebrew text of Esther does not mention God even once, nor does it speak explicitly of prayer, although there is fasting (4:16) and many readers see divine action behind the coincidences of the story, as in Mordecai's question in 4:14. The Greek translation (Septuagint) has six additions, with about a hundred verses, which include prayers of Mordecai and Esther and mention God; they are part of Catholic and Orthodox Bibles as deuterocanonical text. The BSB translates the Hebrew text. The name of the feast comes from pur, “lot,” which Haman casts to choose the date of the massacre (3:7; 9:24–26)."
+  },
+  "people": [
+    {
+      "name": "Xerxes (Ahasuerus)",
+      "chapters": "1–10",
+      "ch": 1,
+      "note": "the Persian king, generally identified with Xerxes I"
+    },
+    {
+      "name": "Vashti",
+      "chapters": "1",
+      "ch": 1,
+      "note": "the queen who refuses to appear at the banquet and is deposed"
+    },
+    {
+      "name": "Esther (Hadassah)",
+      "chapters": "2–9",
+      "ch": 2,
+      "note": "young Jewish woman who becomes queen and intercedes for her people"
+    },
+    {
+      "name": "Mordecai",
+      "chapters": "2–10",
+      "ch": 2,
+      "note": "Esther's cousin and guardian, of the tribe of Benjamin"
+    },
+    {
+      "name": "Bigthan and Teresh",
+      "chapters": "2; 6",
+      "ch": 2,
+      "note": "eunuchs whose conspiracy Mordecai reports"
+    },
+    {
+      "name": "Haman",
+      "chapters": "3–9",
+      "ch": 3,
+      "note": "the Agagite, a high official who plots to destroy the Jews"
+    },
+    {
+      "name": "Hathach",
+      "chapters": "4",
+      "ch": 4,
+      "note": "eunuch who carries the messages between Esther and Mordecai"
+    },
+    {
+      "name": "Zeresh",
+      "chapters": "5–6",
+      "ch": 5,
+      "note": "Haman's wife, who suggests the gallows for Mordecai"
+    }
+  ],
+  "writing": {
+    "tradition": "The Babylonian Talmud (Bava Batra 15a) attributes the writing of Esther to the “men of the Great Assembly,” the council that tradition places after the exile. Other Jewish authors, based on 9:20 (“Mordecai recorded these events”), attribute the book to Mordecai. On this reading, it would have been written in the Persian period, shortly after the events, in the 5th century BC.",
+    "academic": "The author is anonymous. The book knows the Persian court and the city of Susa well and shows no evident Greek influence, which leads many to date it to the end of the Persian period; others prefer the beginning of the Hellenistic period. The most common proposals fall between c. 400 and 200 BC. Its historical character is debated: the queen of Xerxes known to the Greek historians was named Amestris, and certain details, such as the hundred and twenty-seven provinces, do not match what is known of Persian administration; for this reason many classify the book as a fictionalized historical narrative, while others argue that it preserves a core of facts. A cuneiform document from the time of Xerxes mentions an official named Marduka in Susa, but it is not known whether he is the same Mordecai. Esther is the only book of the Hebrew Bible of which no copy has been found among the Dead Sea Scrolls."
+  },
+  "events": {
+    "intro": "If Ahasuerus is Xerxes I (486–465 BC), as most scholars think and as the BSB translates, the book's own dates allow the events to be placed: the banquet of the third year (1:3) in 483 BC, Esther's coming to the king in the seventh year (2:16) in 479/478 BC, and Haman's casting of lots in the twelfth year (3:7) in 474 BC, with the day set for the thirteenth day of Adar of the following year. Between the third and the seventh year, Xerxes waged his campaign against Greece (480–479 BC). The Septuagint and the historian Josephus identify the king with Artaxerxes.",
+    "axis": [
+      -520,
+      -150
+    ],
+    "band": {
+      "label": "Reign of Xerxes I",
+      "from": -486,
+      "to": -465
+    },
+    "timeline": [
+      {
+        "label": "Banquet of Xerxes",
+        "from": -483,
+        "to": -483,
+        "kind": "evento",
+        "note": "third year of the reign (1:3)"
+      },
+      {
+        "label": "Xerxes' campaign against Greece",
+        "from": -480,
+        "to": -479,
+        "kind": "evento",
+        "note": "battles of Thermopylae, Salamis and Plataea"
+      },
+      {
+        "label": "Esther becomes queen",
+        "from": -479,
+        "to": -478,
+        "kind": "pessoa",
+        "note": "in the month of Tebeth of the seventh year (2:16)"
+      },
+      {
+        "label": "Haman's decree and the deliverance",
+        "from": -474,
+        "to": -473,
+        "kind": "evento",
+        "note": "lots cast in the twelfth year (3:7); the 13th of Adar (9:1)"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -470,
+        "to": -400,
+        "kind": "escrita",
+        "note": "Mordecai or the men of the Great Assembly"
+      },
+      {
+        "label": "Writing, according to scholarship",
+        "from": -400,
+        "to": -200,
+        "kind": "escrita",
+        "note": "end of the Persian period or beginning of the Hellenistic"
+      }
+    ]
+  },
+  "context": "The story takes place in the diaspora, among the Jews who did not return to Judah and lived scattered across the Persian Empire, the largest of its time, which stretched from India to Ethiopia (Cush, 1:1). Susa, in the southwest of present-day Iran, was one of the capitals of the Persian kings, and excavations there have revealed the great palace built by Darius I and used by Xerxes. The book portrays a court of banquets, decrees written in all the languages of the empire and royal couriers, and shows the vulnerability of a minority that depends on the king's favor.",
+  "places": [
+    "Susa: the citadel and the city",
+    "the king's palace and garden",
+    "the provinces of the empire, from India to Cush"
+  ],
+  "themes": [
+    "hidden providence",
+    "courage",
+    "Jewish identity in the diaspora",
+    "reversal of fortunes",
+    "fasting and solidarity",
+    "the feast of Purim"
+  ],
+  "key_verses": [
+    {
+      "ref": "4:14"
+    },
+    {
+      "ref": "4:16"
+    },
+    {
+      "ref": "9:22"
+    }
+  ],
+  "note": "Dates are approximate and depend on identifying Ahasuerus with Xerxes I. The verses quoted are from the Berean Standard Bible (BSB)."
+}

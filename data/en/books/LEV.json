@@ -1,0 +1,185 @@
+{
+  "title_orig": "וַיִּקְרָא",
+  "title_orig_xlit": "Vayikra",
+  "summary": "Leviticus gathers the instructions Moses receives in the newly erected tabernacle about how Israel can live close to a holy God. Chapters 1 to 7 describe the sacrifices and offerings; chapters 8 to 10 tell of the ordination of Aaron and his sons and the death of Nadab and Abihu. Then come the laws on clean and unclean (food, childbirth, skin disease, bodily discharges) and the annual ritual of the Day of Atonement (ch. 16). Chapters 17 to 26 extend the demand for holiness to daily life: family, sexuality, work, trade, the calendar of feasts and the possession of the land, with the sabbatical year and the Jubilee. There is almost no narrative, and the whole book takes place at the foot of Mount Sinai.",
+  "name": "In Hebrew the book is called Vayikra, “And He called,” its first word (1:1); in rabbinic tradition it is also known as Torat Kohanim, “instruction of the priests.” The name “Leviticus” comes from the Greek Leuitikon, of the Septuagint, through the Latin Leviticus, and means “relating to the Levites,” that is, to the tribe of Levi, from which the priests came.",
+  "facts": [
+    [
+      "Position",
+      "3rd book of the Torah (Pentateuch)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "ritual and ethical laws, with brief narratives"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Sacrifices and offerings",
+      "from": 1,
+      "to": 7,
+      "text": "The main kinds of offering (burnt offering, grain offering, peace offering, sin offering and guilt offering) and the instructions to the priests about each one."
+    },
+    {
+      "title": "The beginning of the priesthood",
+      "from": 8,
+      "to": 10,
+      "text": "Moses consecrates Aaron and his sons; Aaron offers the first sacrifices, and Nadab and Abihu die when they present unauthorized fire."
+    },
+    {
+      "title": "Clean and unclean",
+      "from": 11,
+      "to": 15,
+      "text": "Animals that may or may not be eaten, purification after childbirth, skin disease and mildew in clothing and houses, and bodily discharges."
+    },
+    {
+      "title": "The Day of Atonement",
+      "from": 16,
+      "to": 16,
+      "text": "The annual rite in which Aaron enters behind the veil, before the ark, and a goat is sent into the wilderness carrying the people's iniquities."
+    },
+    {
+      "title": "Laws of holiness",
+      "from": 17,
+      "to": 26,
+      "text": "Blood and the place of sacrifice, forbidden relations, everyday ethics, rules for the priests, the feasts, the sabbatical year and the Jubilee, and the blessings and punishments tied to the covenant."
+    },
+    {
+      "title": "Vows and dedications",
+      "from": 27,
+      "to": 27,
+      "text": "An appendix on the value of persons, animals and lands vowed to the LORD and on the redemption of tithes."
+    }
+  ],
+  "extra": {
+    "title": "The refrain “I am the LORD”",
+    "text": "In chapters 18 to 26, many laws end with the phrase “I am the LORD” or “I am the LORD your God,” which appears more than forty times in this section and fifteen in chapter 19 alone. The refrain works like a signature: it grounds each rule in God's authority and echoes the request that opens chapter 19, “Be holy because I, the LORD your God, am holy” (19:2). Because of this emphasis on holiness, scholars gave this part, at the end of the 19th century, the name “Holiness Code.”"
+  },
+  "people": [
+    {
+      "name": "Moses",
+      "chapters": "1–27",
+      "ch": 8,
+      "note": "receives the laws in the tabernacle and passes them on; leads the consecration of the priests"
+    },
+    {
+      "name": "Aaron",
+      "chapters": "8–10; 16",
+      "ch": 8,
+      "note": "Moses' brother and the first high priest; officiates the ritual of the Day of Atonement"
+    },
+    {
+      "name": "Nadab and Abihu",
+      "chapters": "10",
+      "ch": 10,
+      "note": "Aaron's eldest sons, killed when they offered fire that had not been commanded"
+    },
+    {
+      "name": "Eleazar and Ithamar",
+      "chapters": "10",
+      "ch": 10,
+      "note": "Aaron's other sons, who carry on the priestly service"
+    },
+    {
+      "name": "The son of Shelomith",
+      "chapters": "24",
+      "ch": 24,
+      "note": "son of an Israelite mother and an Egyptian father; stoned for blaspheming the Name"
+    }
+  ],
+  "writing": {
+    "tradition": "Like the rest of the Torah, Leviticus is attributed to Moses by Jewish and Christian traditions. The book itself presents its laws as words of the LORD to Moses, spoken in the tabernacle and on Mount Sinai (1:1; 7:38; 26:46; 27:34). On this reading, it would have been written during the wandering in the wilderness, around 1446–1406 BC, or in the 13th century BC for those who adopt the later date of the Exodus.",
+    "academic": "For most scholars, Leviticus belongs almost entirely to the priestly layer of the Pentateuch, linked to circles of priests in Jerusalem. Chapters 17 to 26 are usually treated as a collection of their own, the Holiness Code, which many consider the work of a later school that revised the priestly material. The proposed dates range from the end of the monarchy in Judah to the Persian period, and the final form is generally placed around 550–400 BC. Other researchers, drawing on parallels with Near Eastern rituals of the second millennium BC, argue that much of these practices and texts goes back to the time of the first temple or earlier."
+  },
+  "events": {
+    "intro": "Leviticus narrates almost no events: its laws are given within about a month, between the setting up of the tabernacle, on the first day of the first month of the second year (Exodus 40:17), and the census on the first day of the second month (Numbers 1:1). The date of this period depends on the position taken on the Exodus: c. 1445 BC in the traditional chronology, or some time in the 13th century BC for those who prefer the late date. The timeline shows both possibilities, the lives of Moses and Aaron in the traditional chronology and the proposals for the writing.",
+    "axis": [
+      -1600,
+      -350
+    ],
+    "band": {
+      "label": "First temple in Jerusalem",
+      "from": -960,
+      "to": -586
+    },
+    "timeline": [
+      {
+        "label": "Moses",
+        "from": -1526,
+        "to": -1406,
+        "kind": "pessoa",
+        "note": "80 years old before Pharaoh (Exodus 7:7) and 120 at his death (Deuteronomy 34:7), in the traditional chronology"
+      },
+      {
+        "label": "Aaron",
+        "from": -1529,
+        "to": -1406,
+        "kind": "pessoa",
+        "note": "83 years old before Pharaoh (Exodus 7:7) and 123 at his death (Numbers 33:39), in the traditional chronology"
+      },
+      {
+        "label": "At Sinai, early date",
+        "from": -1445,
+        "to": -1445,
+        "kind": "evento",
+        "note": "about a month between Exodus 40:17 and Numbers 1:1"
+      },
+      {
+        "label": "At Sinai, late date",
+        "from": -1270,
+        "to": -1250,
+        "kind": "evento",
+        "note": "approximate range, for those who place the Exodus in the 13th century BC"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -1446,
+        "to": -1406,
+        "kind": "escrita",
+        "note": "Moses, during the wandering in the wilderness"
+      },
+      {
+        "label": "Composition, according to scholarship",
+        "from": -700,
+        "to": -400,
+        "kind": "escrita",
+        "note": "from the end of the monarchy in Judah to the Persian period; the final form is usually placed c. 550–400 BC"
+      }
+    ]
+  },
+  "context": "Leviticus assumes Israel's camp in the wilderness, with the tabernacle at the center, and describes rites that would later be practiced in the temple in Jerusalem. Animal sacrifices, purity rules and festival calendars were common in the ancient Near East: texts from Ugarit, on the Syrian coast, and Hittite and Mesopotamian documents describe offerings and purifications with parallels in vocabulary and procedure, including rites in which an animal is sent away carrying evil with it, comparable to the goat of chapter 16. Alongside these similarities, the book ties worship and purity to a single God and to a social ethic that includes the poor, the foreigner, the deaf, the blind and the day laborer (19:9–18, 33–34).",
+  "places": [
+    "the Wilderness of Sinai, at the foot of the mountain (7:38; 25:1)",
+    "the tabernacle of the Testimony and its courtyard",
+    "the camp and the space “outside the camp”",
+    "the wilderness where the goat goes (16:21–22)",
+    "Egypt and Canaan, as customs to avoid (18:3)"
+  ],
+  "themes": [
+    "holiness",
+    "sacrifice and atonement",
+    "clean and unclean",
+    "priesthood",
+    "sacred calendar",
+    "social justice and Jubilee"
+  ],
+  "key_verses": [
+    {
+      "ref": "16:30"
+    },
+    {
+      "ref": "17:11"
+    },
+    {
+      "ref": "19:2"
+    },
+    {
+      "ref": "19:18"
+    }
+  ],
+  "note": "Dates are approximate and depend on the position taken on the Exodus. The numbering follows that of English Bibles; in the Hebrew text, 6:1–7 appears as 5:20–26 and 6:8–30 as 6:1–23. The verses quoted are from the Berean Standard Bible (BSB)."
+}

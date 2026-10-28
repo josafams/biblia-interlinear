@@ -1,0 +1,205 @@
+{
+  "title_orig": "בְּרֵאשִׁית",
+  "title_orig_xlit": "Bereshit",
+  "summary": "Genesis tells of origins: of the world, of humanity and of the people of Israel. Chapters 1 to 11 narrate the creation, the disobedience in the garden of Eden, the flood and the scattering of the peoples at Babel. From chapter 12 on, the story focuses on one family: Abraham receives from God the promise of land, descendants and blessing, and this promise passes to Isaac, to Jacob and to Jacob's twelve sons. The book ends with the family living in Egypt, which sets the stage for Exodus.",
+  "name": "The name “Genesis” comes from Greek and means “origin”; it is the title the book received in the Septuagint, the Greek translation of the Hebrew Bible. In Hebrew the book is called Bereshit, “In the beginning,” which is its first word.",
+  "facts": [
+    [
+      "Position",
+      "1st book of the Torah (Pentateuch)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "narrative"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Origins of the world and of humanity",
+      "from": 1,
+      "to": 11,
+      "text": "Creation, Eden, Cain and Abel, the genealogies, the flood, the covenant with Noah and the tower of Babel."
+    },
+    {
+      "title": "Abraham",
+      "from": 12,
+      "to": 25,
+      "text": "The call, the promise, the covenant and the birth of Isaac."
+    },
+    {
+      "title": "Isaac and Jacob",
+      "from": 25,
+      "to": 36,
+      "text": "Esau and Jacob, the blessing, Jacob's years with Laban and the new name, Israel."
+    },
+    {
+      "title": "Joseph",
+      "from": 37,
+      "to": 50,
+      "text": "Sold by his brothers, Joseph rises to governor of Egypt and is reunited with his family."
+    }
+  ],
+  "extra": {
+    "title": "The generations (toledot)",
+    "text": "The book is organized around a formula repeated about ten times: “this is the account (or the generations) of…”, in Hebrew toledot. It opens each new stage of the story, from 2:4 to 37:2."
+  },
+  "people": [
+    {
+      "name": "Adam and Eve",
+      "chapters": "2–5",
+      "ch": 2,
+      "note": "the first couple, placed in the garden of Eden"
+    },
+    {
+      "name": "Cain and Abel",
+      "chapters": "4",
+      "ch": 4,
+      "note": "sons of Adam and Eve; the first murder"
+    },
+    {
+      "name": "Noah",
+      "chapters": "5–10",
+      "ch": 6,
+      "note": "builds the ark and receives the covenant of the rainbow"
+    },
+    {
+      "name": "Abraham and Sarah",
+      "chapters": "11–25",
+      "ch": 12,
+      "note": "leave Haran for Canaan and receive the promise of descendants"
+    },
+    {
+      "name": "Lot",
+      "chapters": "11–19",
+      "ch": 13,
+      "note": "Abraham's nephew; escapes the destruction of Sodom"
+    },
+    {
+      "name": "Hagar and Ishmael",
+      "chapters": "16; 21",
+      "ch": 16,
+      "note": "Sarah's Egyptian servant and the son she bore to Abraham"
+    },
+    {
+      "name": "Isaac and Rebekah",
+      "chapters": "21–35",
+      "ch": 24,
+      "note": "the son of the promise and the wife brought from the land of Abraham's relatives"
+    },
+    {
+      "name": "Esau and Jacob",
+      "chapters": "25–36",
+      "ch": 25,
+      "note": "twin brothers; Jacob receives the name Israel"
+    },
+    {
+      "name": "Leah and Rachel",
+      "chapters": "29–35",
+      "ch": 29,
+      "note": "daughters of Laban and wives of Jacob"
+    },
+    {
+      "name": "Joseph",
+      "chapters": "30; 37–50",
+      "ch": 37,
+      "note": "sold by his brothers, he becomes governor of Egypt"
+    },
+    {
+      "name": "Judah",
+      "chapters": "29; 37–50",
+      "ch": 38,
+      "note": "son of Jacob, with a central role in chapters 38 and 43–44"
+    }
+  ],
+  "writing": {
+    "tradition": "Jewish and Christian traditions attribute the Torah to Moses. On this reading, Genesis would have been written during the wandering in the wilderness, around 1446–1406 BC, or in the 13th century BC for those who adopt a later date for the Exodus.",
+    "academic": "Most scholars understand that the book brings together oral and written traditions from different periods, edited over centuries. The final form is usually dated to the periods of the Babylonian exile and Persian rule, around 550–400 BC."
+  },
+  "events": {
+    "intro": "Chapters 1 to 11 narrate origins and give no dates that history can place. For Abraham and his descendants, a traditional chronology adds up the ages and intervals given in the text itself and places the Exodus around 1446 BC; its result is what appears on the timeline. There are no records outside the Bible that mention the patriarchs, and many historians consider these narratives impossible to date; those who place them usually point to the Middle Bronze Age, from about 2000 to 1550 BC.",
+    "axis": [
+      -2200,
+      -350
+    ],
+    "band": {
+      "label": "Middle Bronze Age",
+      "from": -2000,
+      "to": -1550
+    },
+    "timeline": [
+      {
+        "label": "Abraham",
+        "from": -2166,
+        "to": -1991,
+        "kind": "pessoa",
+        "note": "lives 175 years (25:7)"
+      },
+      {
+        "label": "Isaac",
+        "from": -2066,
+        "to": -1886,
+        "kind": "pessoa",
+        "note": "lives 180 years (35:28)"
+      },
+      {
+        "label": "Jacob",
+        "from": -2006,
+        "to": -1859,
+        "kind": "pessoa",
+        "note": "lives 147 years (47:28); goes down to Egypt around 1876 BC"
+      },
+      {
+        "label": "Joseph",
+        "from": -1915,
+        "to": -1805,
+        "kind": "pessoa",
+        "note": "lives 110 years (50:26)"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -1446,
+        "to": -1406,
+        "kind": "escrita",
+        "note": "Moses, during the wandering in the wilderness"
+      },
+      {
+        "label": "Final form, according to scholarship",
+        "from": -550,
+        "to": -400,
+        "kind": "escrita",
+        "note": "Babylonian exile and Persian period"
+      }
+    ]
+  },
+  "context": "The stories of Genesis take place in the ancient Near East, between Mesopotamia and Egypt. Abraham sets out from Ur of the Chaldeans, in southern Mesopotamia, passes through Haran and goes on to Canaan; later, Joseph brings the family to the region of Goshen, in Egypt. Scholars compare the first chapters with older Mesopotamian texts, such as the Enuma Elish, about creation, and the epics of Atrahasis and Gilgamesh, which also tell of a great flood. The similarities and the differences help us see what the biblical text affirms about God and human beings.",
+  "places": [
+    "Eden",
+    "Ur of the Chaldeans",
+    "Haran",
+    "Canaan: Shechem, Bethel, Hebron, Beersheba",
+    "Egypt: Goshen"
+  ],
+  "themes": [
+    "creation",
+    "covenant",
+    "promise and blessing",
+    "family and election",
+    "providence"
+  ],
+  "key_verses": [
+    {
+      "ref": "12:1–3"
+    },
+    {
+      "ref": "15:6"
+    },
+    {
+      "ref": "50:20"
+    }
+  ],
+  "note": "Dates vary according to the source and the way of counting; the verses quoted are from the Berean Standard Bible (BSB)."
+}

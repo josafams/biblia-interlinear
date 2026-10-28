@@ -1,0 +1,202 @@
+{
+  "title_orig": "שְׁמוּאֵל א",
+  "title_orig_xlit": "Shemuel Alef",
+  "summary": "1 Samuel narrates Israel's passage from the time of the judges to the monarchy. The book begins with the birth of Samuel, son of Hannah, and with the fall of the house of the priest Eli, when the ark of God is captured by the Philistines and later returned. Samuel leads the people as judge and prophet until the elders ask for a king; Saul is anointed, wins the first battles, but disobeys and is rejected. The second half follows David: anointed in secret, he enters Saul's court, defeats Goliath, becomes Jonathan's friend and the target of the king's jealousy, and spends years as a fugitive. The book ends with the death of Saul and his sons on Mount Gilboa.",
+  "name": "In the Hebrew Bible, 1 and 2 Samuel form a single book, called Shemuel, the name of the prophet who anoints the first two kings, although he dies before the end of the first part. The division into two comes from the Septuagint, which joined Samuel and Kings into four “Books of Kingdoms”; the Latin Vulgate called them 1 to 4 Kings, and for this reason some older Catholic Bibles in English, such as the Douay-Rheims, call 1 Samuel “1 Kings.” The division into two books passed into printed Hebrew Bibles only in the 16th century.",
+  "facts": [
+    [
+      "Position",
+      "9th book of the Bible, among the historical books; in the Hebrew Bible, the first part of Samuel, the third of the Former Prophets (Nevi’im Rishonim)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "historical narrative, with poems (2:1–10)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Samuel and the end of the house of Eli",
+      "from": 1,
+      "to": 7,
+      "text": "Samuel's birth and call, the loss and return of the ark, and the victory at Mizpah."
+    },
+    {
+      "title": "The request for a king and Saul's reign",
+      "from": 8,
+      "to": 15,
+      "text": "The people ask for a king, Saul is chosen and consolidates power, but ends up rejected after Gilgal and Amalek."
+    },
+    {
+      "title": "David at Saul's court",
+      "from": 16,
+      "to": 20,
+      "text": "David's anointing, the victory over Goliath, the friendship with Jonathan and Saul's attempts to kill him."
+    },
+    {
+      "title": "David a fugitive and the end of Saul",
+      "from": 21,
+      "to": 31,
+      "text": "David lives in the wilderness and among the Philistines and spares Saul's life twice; Saul dies at Gilboa."
+    }
+  ],
+  "extra": {
+    "title": "Two songs that frame Samuel",
+    "text": "The work of Samuel, read as a single book, is opened and closed by poems. At the beginning, Hannah's song (1 Samuel 2:1–10) celebrates a God who brings down the strong and raises up the weak and ends by speaking of the “king” and the “anointed,” even before there was a monarchy in Israel. At the end, David's song and his last words (2 Samuel 22:1–23:7) take up the same vocabulary of deliverance and kingship."
+  },
+  "people": [
+    {
+      "name": "Hannah and Elkanah",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "Samuel's parents; Hannah asks for a son at Shiloh and dedicates him to the LORD"
+    },
+    {
+      "name": "Eli",
+      "chapters": "1–4",
+      "ch": 2,
+      "note": "priest at Shiloh; his sons Hophni and Phinehas die in the battle in which the ark is captured"
+    },
+    {
+      "name": "Samuel",
+      "chapters": "1–16; 19; 25; 28",
+      "ch": 3,
+      "note": "prophet and last of the judges; anoints Saul and then David"
+    },
+    {
+      "name": "Saul",
+      "chapters": "9–31",
+      "ch": 9,
+      "note": "of the tribe of Benjamin; the first king of Israel"
+    },
+    {
+      "name": "Jonathan",
+      "chapters": "13–31",
+      "ch": 14,
+      "note": "Saul's son, a warrior and David's faithful friend"
+    },
+    {
+      "name": "David",
+      "chapters": "16–31",
+      "ch": 16,
+      "note": "the youngest son of Jesse, of Bethlehem; anointed to succeed Saul"
+    },
+    {
+      "name": "Goliath",
+      "chapters": "17",
+      "ch": 17,
+      "note": "the Philistine warrior of Gath defeated by David"
+    },
+    {
+      "name": "Michal",
+      "chapters": "18–19; 25",
+      "ch": 18,
+      "note": "Saul's daughter and David's wife; helps him escape"
+    },
+    {
+      "name": "Abigail",
+      "chapters": "25",
+      "ch": 25,
+      "note": "wife of Nabal, keeps David from taking revenge and later marries him"
+    },
+    {
+      "name": "Achish",
+      "chapters": "21; 27–29",
+      "ch": 27,
+      "note": "Philistine king of Gath, who gives David the town of Ziklag"
+    }
+  ],
+  "writing": {
+    "tradition": "The Babylonian Talmud (Bava Batra 14b–15a) attributes to Samuel the writing of the book that bears his name. Since Samuel's death is narrated in the first book (1 Samuel 25:1), the same tradition says that the work was completed by the prophets Gad and Nathan, relying on 1 Chronicles 29:29, which mentions records of Samuel, Nathan and Gad about David. On this reading, the book would have been written between the end of the 11th century and the 10th century BC, around 1020–970 BC.",
+    "academic": "Most researchers understand that Samuel brings together older narrative blocks: a story of the ark (1 Samuel 4–6; 2 Samuel 6), a story of David's rise (1 Samuel 16 to 2 Samuel 5) and the account of David's court (2 Samuel 9–20 and 1 Kings 1–2). These blocks were incorporated into the so-called Deuteronomistic History (Joshua to Kings), composed between the end of the 7th century and the exile, c. 620–550 BC. The date of the older blocks is debated: some place them close to the events, in the 10th century BC, others much later. The traditional Hebrew text of Samuel suffered losses in copying; the fragments found at Qumran and the Septuagint preserve different readings, and in some passages, such as the story of Goliath, the Septuagint is considerably shorter."
+  },
+  "events": {
+    "intro": "1 Samuel covers the end of the period of the judges and the reign of Saul, until his death, around 1010 BC. The length of Saul's reign is uncertain: in 13:1 the Hebrew text has gaps in the numbers, Acts 13:21 speaks of forty years, and many historians propose a much shorter reign. Scholarship places these events in the transition from Iron Age I to Iron Age II, when the Philistines dominated the coastal plain and the tribes lived in villages in the hill country. There is debate about the size and organization of these first kingdoms. The chronologies of the kings vary among authors: the numbers of the Hebrew text do not always fit together, and each reconstruction resolves the differences in its own way, with co-regencies and different ways of counting the first year of a reign. The dates of this timeline are approximate and follow one of the most widely used reconstructions.",
+    "axis": [
+      -1200,
+      -500
+    ],
+    "band": {
+      "label": "Iron Age I",
+      "from": -1200,
+      "to": -1000
+    },
+    "timeline": [
+      {
+        "label": "Samuel, judge and prophet",
+        "from": -1070,
+        "to": -1015,
+        "kind": "pessoa",
+        "note": "a very approximate period; the text gives no dates for Samuel"
+      },
+      {
+        "label": "Saul, king of Israel",
+        "from": -1050,
+        "to": -1010,
+        "kind": "pessoa",
+        "note": "according to the traditional count of 40 years (Acts 13:21); many propose a shorter reign"
+      },
+      {
+        "label": "David, from birth to his anointing at Hebron",
+        "from": -1040,
+        "to": -1010,
+        "kind": "pessoa",
+        "note": "he was 30 years old when he began to reign (2 Samuel 5:4)"
+      },
+      {
+        "label": "Battle of Gilboa",
+        "from": -1010,
+        "to": -1010,
+        "kind": "evento",
+        "note": "death of Saul and three of his sons (ch. 31)"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -1020,
+        "to": -970,
+        "kind": "escrita",
+        "note": "Samuel, completed by Gad and Nathan"
+      },
+      {
+        "label": "Composition, according to scholarship",
+        "from": -620,
+        "to": -550,
+        "kind": "escrita",
+        "note": "Deuteronomistic History, drawing on older sources"
+      }
+    ]
+  },
+  "context": "The events take place mainly in the central hill country of Canaan, in the territory of Benjamin and Ephraim: Shiloh, where the ark was kept; Ramah, Samuel's town; and Gibeah, Saul's base. On the coastal plain were the Philistines, organized in five cities (Gaza, Ashdod, Ashkelon, Gath and Ekron, 6:17), who according to 13:19–22 controlled metalworking. David's flight takes him south, to the lands of Judah, to the Wilderness of Ziph and to En-gedi, near the Dead Sea, and then to Ziklag, under the protection of Gath. Excavations in the Valley of Elah, such as those at Khirbet Qeiyafa, a fortified town of c. 1000 BC, feed the debate about who ruled the region at that time.",
+  "places": [
+    "Shiloh and Ramah",
+    "Mizpah, Gilgal and Gibeah",
+    "Bethlehem",
+    "the Valley of Elah",
+    "Nob, Adullam, En-gedi and the Wilderness of Ziph",
+    "Philistine cities: Ashdod, Gath, Ekron; Ziklag",
+    "Mount Gilboa and Beth-shan"
+  ],
+  "themes": [
+    "monarchy and its risks",
+    "choice and rejection",
+    "obedience",
+    "the ark of God",
+    "prophet and king",
+    "friendship and loyalty"
+  ],
+  "key_verses": [
+    {
+      "ref": "3:10"
+    },
+    {
+      "ref": "8:7"
+    },
+    {
+      "ref": "16:7"
+    }
+  ],
+  "note": "Dates are approximate and the chronologies of the kings vary among authors. In 13:1, the traditional Hebrew text does not give Saul's age when he began to reign and gives a number too short for his reign; translations fill the gap in different ways. The verses quoted are from the Berean Standard Bible (BSB)."
+}

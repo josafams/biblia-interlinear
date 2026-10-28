@@ -1,0 +1,197 @@
+{
+  "title_orig": "בְּמִדְבַּר",
+  "title_orig_xlit": "Bemidbar",
+  "summary": "Numbers follows Israel from Mount Sinai to the plains of Moab, by the Jordan, across from Jericho. It begins with the census of the tribes and the organization of the camp around the tabernacle and, after the departure from Sinai, narrates a series of complaints and rebellions along the way. When the people refuse to enter Canaan after the spies' report, the generation that came out of Egypt is condemned to wander forty years in the wilderness. The last part takes place on the plains of Moab: Balaam's oracles, a new census of the next generation, the choice of Joshua and laws for life in the land. Narratives and laws alternate throughout the book.",
+  "name": "The name “Numbers” comes from the Latin Numeri, which translates the Greek Arithmoi, the title given in the Septuagint because of the two censuses (chs. 1 and 26). In Hebrew the book is called Bemidbar, “In the wilderness,” a word that already appears in the first verse.",
+  "facts": [
+    [
+      "Position",
+      "4th book of the Torah (Pentateuch)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "narrative and law, with lists and poems"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "At Sinai",
+      "from": 1,
+      "to": 10,
+      "text": "Census, the order of the camp, the duties of the Levites, purity laws and the dedication of the tabernacle, up to the departure in 10:11."
+    },
+    {
+      "title": "On the way, through the wilderness",
+      "from": 10,
+      "to": 21,
+      "text": "Complaints, the refusal before Canaan, Korah's rebellion, the deaths of Miriam and Aaron and the first victories east of the Jordan."
+    },
+    {
+      "title": "On the plains of Moab",
+      "from": 22,
+      "to": 36,
+      "text": "Balaam, Baal of Peor, the second census, Joshua as successor, the calendar of offerings, the war against Midian and the preparation for dividing the land."
+    }
+  ],
+  "extra": {
+    "title": "Two generations, two censuses",
+    "text": "The censuses of chapters 1 and 26 frame the book. The first counts the generation that came out of Egypt; the second, taken almost forty years later, counts their children, and the text notes that of those counted at Sinai only Caleb and Joshua remained (26:64–65). Many readers see this as the key to the book: the passage from a generation that dies in the wilderness to another that is ready to enter the land."
+  },
+  "people": [
+    {
+      "name": "Moses",
+      "chapters": "1–36",
+      "ch": 1,
+      "note": "leads the people, intercedes for them and receives the laws; will not be able to enter Canaan (20:12)"
+    },
+    {
+      "name": "Aaron",
+      "chapters": "1–20",
+      "ch": 17,
+      "note": "high priest; his staff buds, and he dies on Mount Hor"
+    },
+    {
+      "name": "Miriam",
+      "chapters": "12; 20",
+      "ch": 12,
+      "note": "Moses' sister; becomes leprous for a week and dies at Kadesh"
+    },
+    {
+      "name": "Eleazar",
+      "chapters": "3–36",
+      "ch": 20,
+      "note": "Aaron's son; succeeds his father in the priesthood"
+    },
+    {
+      "name": "Joshua and Caleb",
+      "chapters": "13–14; 26–27; 32; 34",
+      "ch": 14,
+      "note": "the two spies who argue for entering Canaan; Joshua is chosen as Moses' successor"
+    },
+    {
+      "name": "Korah, Dathan and Abiram",
+      "chapters": "16",
+      "ch": 16,
+      "note": "lead a revolt against Moses and Aaron"
+    },
+    {
+      "name": "Balaam and Balak",
+      "chapters": "22–24; 31",
+      "ch": 22,
+      "note": "the diviner summoned by the king of Moab to curse Israel, who ends up blessing it"
+    },
+    {
+      "name": "Phinehas",
+      "chapters": "25; 31",
+      "ch": 25,
+      "note": "Aaron's grandson; acts violently at Baal of Peor and receives a covenant of priesthood"
+    },
+    {
+      "name": "The daughters of Zelophehad",
+      "chapters": "27; 36",
+      "ch": 27,
+      "note": "Mahlah, Noah, Hoglah, Milcah and Tirzah ask for the inheritance of their father, who had no sons"
+    }
+  ],
+  "writing": {
+    "tradition": "Like the rest of the Torah, Numbers is attributed to Moses by Jewish and Christian traditions; the book itself says that Moses recorded the stages of the journey (33:2). On this reading, it would have been written during the wandering in the wilderness, around 1446–1406 BC, or in the 13th century BC for those who adopt the later date of the Exodus.",
+    "academic": "For most scholars, Numbers combines priestly material (lists, censuses, laws of worship and purity) with non-priestly narratives, such as those of the spies and of Balaam, often with the two layers interwoven in the same episode. Some consider the book one of the latest parts of the Pentateuch, written to link the laws of Sinai to the conquest, and the final form is usually placed in the Persian period, around 500–400 BC. Some poetic passages, such as the fragment of the “Book of the Wars of the LORD” (21:14) and Balaam's oracles, are considered by many to be older than the whole."
+  },
+  "events": {
+    "intro": "Numbers claims to cover almost forty years: from the second month of the second year after the departure from Egypt (1:1) to the fortieth year, in which Aaron dies (33:38). Most of this period passes in silence; the book concentrates on the beginning and the end of the journey. The dates depend on the position taken on the Exodus: around 1446–1406 BC in the traditional chronology, or the 13th century BC for those who prefer the late date. Outside the Bible, an inscription found at Deir Alla, in Jordan, mentions a seer named Balaam son of Beor; it is much later than the setting of the book and does not confirm the account, but it shows that the figure was known in the region.",
+    "axis": [
+      -1550,
+      -350
+    ],
+    "band": {
+      "label": "Late Bronze Age",
+      "from": -1550,
+      "to": -1200
+    },
+    "timeline": [
+      {
+        "label": "Moses",
+        "from": -1526,
+        "to": -1406,
+        "kind": "pessoa",
+        "note": "120 years old at his death (Deuteronomy 34:7), in the traditional chronology"
+      },
+      {
+        "label": "Wandering in the wilderness, early date",
+        "from": -1446,
+        "to": -1406,
+        "kind": "evento",
+        "note": "the forty years (14:33–34); the departure from Sinai in 10:11 falls c. 1445 BC"
+      },
+      {
+        "label": "Death of Aaron",
+        "from": -1407,
+        "to": -1406,
+        "kind": "evento",
+        "note": "in the fortieth year, at 123 years of age (33:38–39), in the traditional chronology"
+      },
+      {
+        "label": "Wandering in the wilderness, late date",
+        "from": -1270,
+        "to": -1220,
+        "kind": "evento",
+        "note": "approximate range, for those who place the Exodus in the 13th century BC"
+      },
+      {
+        "label": "Deir Alla inscription",
+        "from": -840,
+        "to": -760,
+        "kind": "evento",
+        "note": "plaster text that speaks of Balaam son of Beor; approximate date"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -1446,
+        "to": -1406,
+        "kind": "escrita",
+        "note": "Moses, during the wandering in the wilderness"
+      },
+      {
+        "label": "Final form, according to scholarship",
+        "from": -500,
+        "to": -400,
+        "kind": "escrita",
+        "note": "Persian period, drawing on older traditions and poems"
+      }
+    ]
+  },
+  "context": "The book moves between Sinai, whose exact location is debated, the Wilderness of Paran, the oasis of Kadesh (Kadesh-barnea), in the south of Canaan, and Transjordan, where Israel goes around Edom and confronts the Amorite kings Sihon of Heshbon and Og of Bashan. The plains of Moab, on the east bank of the Jordan across from Jericho, are the setting of the final chapters. The kingdoms of Edom, Moab and Ammon, mentioned in the book, are known from outside sources mainly from the Iron Age on; the stele of Mesha, king of Moab (c. 840 BC), names places such as Nebo, Heshbon and Dibon, which also appear in Numbers.",
+  "places": [
+    "the Wilderness of Sinai",
+    "the Wilderness of Paran",
+    "Kadesh, in the Wilderness of Zin",
+    "Mount Hor",
+    "Heshbon and Bashan",
+    "the plains of Moab, by the Jordan across from Jericho",
+    "Baal of Peor and Shittim"
+  ],
+  "themes": [
+    "God's presence in the camp",
+    "grumbling and rebellion",
+    "intercession",
+    "holiness and priesthood",
+    "the promise of the land",
+    "a new generation"
+  ],
+  "key_verses": [
+    {
+      "ref": "6:24–26"
+    },
+    {
+      "ref": "21:8–9"
+    },
+    {
+      "ref": "24:17"
+    }
+  ],
+  "note": "Dates are approximate and depend on the position taken on the Exodus. The census totals (603,550 in 1:46 and 601,730 in 26:51, adult men only) are debated: some read them literally, some take them as symbolic or enlarged numbers, and some propose that the Hebrew word translated “thousand” (elef) indicated there a military unit or a clan. The numbering follows that of English Bibles; in the Hebrew text, 16:36–50 appears as 17:1–15, 17:1–13 as 17:16–28 and 29:40 as 30:1. The verses quoted are from the Berean Standard Bible (BSB)."
+}

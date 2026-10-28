@@ -1,0 +1,207 @@
+{
+  "title_orig": "דִּבְרֵי הַיָּמִים",
+  "title_orig_xlit": "Divrei ha-Yamim",
+  "summary": "1 Chronicles retells the history of Israel from the standpoint of Jerusalem and the temple. Chapters 1 to 9 are genealogies running from Adam to the community that returned from exile, with emphasis on the tribe of Judah, the family of David and the tribe of Levi. After a brief account of Saul's death (ch. 10), the book concentrates on David: his acclamation as king, the conquest of Jerusalem, the arrival of the ark in the city and the promise of a lasting dynasty. The final part deals with the preparations for the temple and the organization of priests, Levites, singers and gatekeepers, which David leaves ready for Solomon before he dies.",
+  "name": "The Hebrew title, Divrei ha-Yamim, means “the events of the days” (literally, “the words of the days”), an expression used for annals and official records. The Septuagint called the book Paraleipomena, “things left out,” understanding it as a supplement to Samuel and Kings. The name “Chronicles” comes from Jerome, who suggested calling it a “chronicle of the whole of sacred history.” In Hebrew tradition it was a single book; the division into two comes from the Septuagint and later passed into printed Hebrew editions.",
+  "facts": [
+    [
+      "Position",
+      "13th book of the Bible, among the historical books; in the Hebrew Bible, 1 and 2 Chronicles form a single book, which generally closes the Writings (Ketuvim)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "historical narrative, with long genealogies and lists"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Genealogies",
+      "from": 1,
+      "to": 9,
+      "text": "From Adam to the twelve tribes, with emphasis on Judah, the house of David and Levi, down to the inhabitants of Jerusalem after the exile."
+    },
+    {
+      "title": "David becomes king",
+      "from": 10,
+      "to": 12,
+      "text": "The death of Saul, David's anointing at Hebron, the conquest of Jerusalem and the warriors who supported him."
+    },
+    {
+      "title": "The ark in Jerusalem",
+      "from": 13,
+      "to": 16,
+      "text": "The first failed attempt, the transfer carried out by the Levites and the worship of praise before the ark."
+    },
+    {
+      "title": "The promise and the wars",
+      "from": 17,
+      "to": 21,
+      "text": "The promise of a dynasty, the victories over the neighboring peoples and the census that leads to the choice of the site of the temple."
+    },
+    {
+      "title": "Preparations for the temple",
+      "from": 22,
+      "to": 29,
+      "text": "Materials, divisions of priests and Levites, musicians, gatekeepers and officials; David's last words and Solomon's succession."
+    }
+  ],
+  "extra": {
+    "title": "A new reading of Samuel and Kings",
+    "text": "Much of the narrative takes up, sometimes word for word, passages from 2 Samuel and 1 Kings, but with its own choices: the book does not tell of David's affair with Bathsheba or of Absalom's revolt, and it adds long lists about worship. At some points the difference is theological: in 2 Samuel 24:1 it is the LORD's anger that moves David to count the people, while in 1 Chronicles 21:1 the one who incites him is Satan. The author also cites sources that have not come down to us, such as the chronicles of Samuel, Nathan and Gad (29:29)."
+  },
+  "people": [
+    {
+      "name": "Jabez",
+      "chapters": "4",
+      "ch": 4,
+      "note": "a figure in the genealogies of Judah remembered for his prayer in 4:9–10"
+    },
+    {
+      "name": "Saul",
+      "chapters": "8–10",
+      "ch": 10,
+      "note": "the first king; his death on Mount Gilboa opens the narrative"
+    },
+    {
+      "name": "David",
+      "chapters": "2–3; 10–29",
+      "ch": 11,
+      "note": "king at Hebron and in Jerusalem, the central figure of the book"
+    },
+    {
+      "name": "Joab",
+      "chapters": "11–21; 27",
+      "ch": 11,
+      "note": "commander of David's army"
+    },
+    {
+      "name": "Michal",
+      "chapters": "15",
+      "ch": 15,
+      "note": "Saul's daughter; despises David when he dances before the ark"
+    },
+    {
+      "name": "Asaph, Heman and Jeduthun",
+      "chapters": "6; 15–16; 25",
+      "ch": 25,
+      "note": "leaders of the Levite singers and musicians"
+    },
+    {
+      "name": "Nathan",
+      "chapters": "17; 29",
+      "ch": 17,
+      "note": "prophet who announces to David the promise of a house"
+    },
+    {
+      "name": "Gad",
+      "chapters": "21; 29",
+      "ch": 21,
+      "note": "seer who brings David the message after the census"
+    },
+    {
+      "name": "Ornan the Jebusite",
+      "chapters": "21",
+      "ch": 21,
+      "note": "owner of the threshing floor where David builds an altar"
+    },
+    {
+      "name": "Solomon",
+      "chapters": "3; 22–29",
+      "ch": 22,
+      "note": "son of David, chosen to build the temple"
+    }
+  ],
+  "writing": {
+    "tradition": "The Babylonian Talmud (Bava Batra 15a) attributes to Ezra the writing of the genealogies of Chronicles “down to himself” and says the work was completed by Nehemiah. On this reading, the book would have been written in Jerusalem in the 5th century BC, around 450–400 BC.",
+    "academic": "The author is anonymous and is usually called “the Chronicler”; the interest in the Levites, the singers and the gatekeepers suggests that he belonged to, or was close to, temple circles. The genealogy of 3:17–24 follows David's family for several generations after Zerubbabel, and the “darics” of 29:7 (in Hebrew, adarkonim) are generally understood as Persian coins; for this reason most scholars date the book to the end of the Persian period or the beginning of the Hellenistic period, between c. 400 and 250 BC, many around 350–300 BC. For a long time it was thought that the same author wrote Ezra and Nehemiah, since the end of 2 Chronicles and the beginning of Ezra coincide; today many researchers treat the two works as independent, and the question remains under debate."
+  },
+  "events": {
+    "intro": "Chapters 1 to 9 cover from Adam to after the exile, without dates. The narrative runs from the death of Saul to the death of David, who reigned forty years, seven at Hebron and thirty-three in Jerusalem (29:27). The most widely used chronology places David's reign around 1010–970 BC, with variations of a few years depending on the system adopted. The extent and organization of David's kingdom are debated by historians; an Aramaic inscription of the 9th century BC found at Tel Dan mentions the “house of David.” The book, however, was written centuries later, for the community of Judah under Persian rule.",
+    "axis": [
+      -1100,
+      -200
+    ],
+    "band": {
+      "label": "Persian period",
+      "from": -539,
+      "to": -332
+    },
+    "timeline": [
+      {
+        "label": "Death of Saul",
+        "from": -1010,
+        "to": -1010,
+        "kind": "evento",
+        "note": "battle of Mount Gilboa (ch. 10); approximate date"
+      },
+      {
+        "label": "David",
+        "from": -1010,
+        "to": -970,
+        "kind": "pessoa",
+        "note": "reigns seven years at Hebron and thirty-three in Jerusalem (29:27)"
+      },
+      {
+        "label": "Solomon begins to reign",
+        "from": -970,
+        "to": -970,
+        "kind": "evento",
+        "note": "anointed while David was still alive (29:22)"
+      },
+      {
+        "label": "Fall of Jerusalem and exile",
+        "from": -586,
+        "to": -538,
+        "kind": "evento",
+        "note": "background of the genealogies of ch. 9"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -450,
+        "to": -400,
+        "kind": "escrita",
+        "note": "Ezra, completed by Nehemiah"
+      },
+      {
+        "label": "Writing, according to scholarship",
+        "from": -400,
+        "to": -250,
+        "kind": "escrita",
+        "note": "the Chronicler, at the end of the Persian period or the beginning of the Hellenistic"
+      }
+    ]
+  },
+  "context": "The book was written for the small province of Judah (Yehud) under the Persian Empire, a community that had returned from exile, rebuilt the temple and lived without a king of its own. In retelling the past, the Chronicler puts at the center what gave this group its identity: the link with the tribes of Israel, the promise made to David and, above all, the temple in Jerusalem and its worship. The genealogies work as a map of the people, and the expression “all Israel” appears often as a reminder of the unity of the tribes.",
+  "places": [
+    "Jerusalem (the City of David)",
+    "Hebron",
+    "Mount Gilboa",
+    "Kiriath-jearim",
+    "the threshing floor of Ornan",
+    "Rabbah of the Ammonites"
+  ],
+  "themes": [
+    "genealogy and identity",
+    "David and his dynasty",
+    "the temple and worship",
+    "Levites and music",
+    "all Israel",
+    "seeking God"
+  ],
+  "key_verses": [
+    {
+      "ref": "17:11–14"
+    },
+    {
+      "ref": "28:9"
+    },
+    {
+      "ref": "29:14"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. The BSB follows the numbering of English Bibles: in the Hebrew text, 6:1–15 corresponds to 5:27–41, and the rest of chapter 6 has shifted numbering. The verses quoted are from the Berean Standard Bible (BSB)."
+}

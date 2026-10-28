@@ -1,0 +1,129 @@
+{
+  "title_orig": "מַלְאָכִי",
+  "title_orig_xlit": "Malakhi",
+  "summary": "Malachi addresses the community of Judah some decades after the rebuilding of the temple, when the enthusiasm had cooled. The book is organized in dialogues: God states something, the people answer with a question (“How…?”) and God explains. The accusations deal with sacrifices of defective animals, negligent priests, broken marriages, injustice and withheld tithes. The book announces a messenger who will prepare the way and ends with the promise of the sending of the prophet Elijah before the day of the LORD.",
+  "name": "Malachi, in Hebrew Malakhi, means “my messenger.” Because of 3:1 (“I will send My messenger”), some understand the word in 1:1 as a title and not a proper name; the Septuagint translates it “his messenger.”",
+  "facts": [
+    [
+      "Position",
+      "12th of the Twelve Minor Prophets; the last book of the Old Testament in Christian Bibles"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "prophecy in the form of dialogues (disputations)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "God's love and the despised worship",
+      "from": 1,
+      "to": 2,
+      "text": "God affirms His love; priests and people offer the worst; the covenant with Levi and faithfulness in marriage."
+    },
+    {
+      "title": "The coming day",
+      "from": 2,
+      "to": 4,
+      "text": "The complaint that God does not do justice, the messenger of the covenant, the tithes, the scroll of remembrance and the promise of Elijah."
+    }
+  ],
+  "extra": {
+    "title": "Six disputations",
+    "text": "The book is organized in about six disputations that follow the same pattern: a statement by God, an objection by the people introduced by “But you ask…” or “How…?”, and an answer. The format recalls a debate and gives the text a direct tone."
+  },
+  "people": [
+    {
+      "name": "Malachi",
+      "chapters": "1–4",
+      "ch": 1,
+      "note": "prophet, or “my messenger”"
+    },
+    {
+      "name": "The priests",
+      "chapters": "1–2",
+      "ch": 2,
+      "note": "accused of despising the altar and of teaching badly"
+    },
+    {
+      "name": "Elijah",
+      "chapters": "4",
+      "ch": 4,
+      "note": "ancient prophet whose return is announced before the day of the LORD"
+    }
+  ],
+  "writing": {
+    "tradition": "Tradition considers him the last of the Old Testament prophets. A Jewish tradition recorded in the Targum and the Talmud identifies Malachi with Ezra the scribe. In general, he is placed in the time of Ezra and Nehemiah, in the 5th century BC.",
+    "academic": "Scholars date the book to the Persian period, after the rebuilding of the temple (515 BC), since worship is functioning and the province has a governor (1:8). The faults denounced, such as mixed marriages and tithes not delivered, recall those Ezra and Nehemiah combat, and the most cited date is c. 500–450 BC. Many consider the final verses (4:4–6) an addition that closes the collection of the prophets."
+  },
+  "events": {
+    "intro": "Malachi gives no dates. The references to the functioning temple and to the governor place the book in the Persian period; the dates are approximate.",
+    "axis": [
+      -530,
+      -420
+    ],
+    "timeline": [
+      {
+        "label": "Rebuilding of the temple",
+        "from": -520,
+        "to": -515,
+        "kind": "evento",
+        "note": "the second temple is completed"
+      },
+      {
+        "label": "Writing, according to scholarship",
+        "from": -500,
+        "to": -450,
+        "kind": "escrita",
+        "note": "Persian period, before or near the time of Ezra and Nehemiah"
+      },
+      {
+        "label": "Ezra",
+        "from": -458,
+        "to": -440,
+        "kind": "pessoa",
+        "note": "arrival in Jerusalem c. 458 BC according to the most common dating, which is debated"
+      },
+      {
+        "label": "Nehemiah",
+        "from": -445,
+        "to": -430,
+        "kind": "pessoa",
+        "note": "governor of Judah; rebuilding of the walls"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -445,
+        "to": -430,
+        "kind": "escrita",
+        "note": "in the time of Ezra and Nehemiah"
+      }
+    ]
+  },
+  "context": "Judah was then a small province of the Persian empire, with a rebuilt but modest temple and a population facing droughts, pests and poverty. The promises of Haggai and Zechariah seemed slow in coming, and the book gives voice to this discouragement: many wondered whether it was worth serving God. In Christian Bibles, Malachi closes the Old Testament, and the figure of the messenger and of Elijah is taken up in the Gospels in relation to John the Baptist; in the Hebrew Bible, the book closes the Prophets.",
+  "places": [
+    "Jerusalem and the temple",
+    "Judah",
+    "Edom"
+  ],
+  "themes": [
+    "God's love",
+    "sincere worship",
+    "covenant and priesthood",
+    "marital faithfulness",
+    "God's justice",
+    "the day of the LORD"
+  ],
+  "key_verses": [
+    {
+      "ref": "3:6"
+    },
+    {
+      "ref": "4:5–6"
+    }
+  ],
+  "note": "The BSB follows the numbering of English Bibles, with four chapters. In the Hebrew text the book has three: chapter 4 corresponds to 3:19–24. Dates are approximate."
+}

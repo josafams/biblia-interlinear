@@ -1,0 +1,164 @@
+{
+  "title_orig": "קֹהֶלֶת",
+  "title_orig_xlit": "Qohelet",
+  "summary": "Ecclesiastes records the reflection of a sage called Qohelet, the Teacher, who presents himself as “the son of David, king in Jerusalem” and investigates what profit human beings gain from all their labor “under the sun.” He puts to the test wisdom, pleasure, great works and wealth, observes injustice and death, which comes equally to the wise and the fool, and concludes again and again that everything is “futile.” At the same time, he recommends enjoying with gladness bread, wine, work and life with the one you love, as gifts of God. The book ends with an epilogue that sums up the teaching: fear God and keep His commandments (12:13).",
+  "name": "In Hebrew, the book is called Qohelet, the name or title of the one who speaks; the word comes from a root meaning “to gather” and indicates someone who convenes an assembly or addresses it. The Septuagint translated the term as Ekklesiastes, from ekklesia, “assembly,” a form that passed into Latin and English. The BSB translates it as “the Teacher.”",
+  "facts": [
+    [
+      "Position",
+      "among the poetic and wisdom books, after Proverbs; in the Hebrew Bible, one of the five Scrolls (Megillot)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "wisdom: reflection in prose and poetry"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Opening",
+      "from": 1,
+      "to": 1,
+      "text": "The title, the motto “everything is futile” and a poem on the endless cycle of nature and of the generations (1:1–11)."
+    },
+    {
+      "title": "The king's experience",
+      "from": 1,
+      "to": 2,
+      "text": "In the role of a king, the Teacher puts to the test wisdom, pleasure, building and wealth, and runs up against death (1:12–2:26)."
+    },
+    {
+      "title": "Time, injustice and work",
+      "from": 3,
+      "to": 6,
+      "text": "The time for everything, oppression, loneliness, vows, money and possessions that bring no satisfaction (3:1–6:9)."
+    },
+    {
+      "title": "What cannot be known",
+      "from": 6,
+      "to": 11,
+      "text": "Counsels and reflections on the limits of wisdom: no one knows for sure what is good or what is to come, but life should be lived with joy (6:10–11:6)."
+    },
+    {
+      "title": "Youth, old age and conclusion",
+      "from": 11,
+      "to": 12,
+      "text": "A poem about enjoying youth before old age and death, the return of the motto and the epilogue (11:7–12:14)."
+    }
+  ],
+  "extra": {
+    "title": "“Futility” and “under the sun”",
+    "text": "The Hebrew word hevel, which the BSB translates as “futility,” literally means “vapor” or “breath” and appears 38 times in the book: it points to what is fleeting and cannot be fully grasped or understood. The expression “under the sun” appears 29 times and marks out the field of the investigation: life as it can be observed in this world. The motto “futility of futilities” opens and closes the words of the Teacher (1:2; 12:8), and in 1:1–2, 7:27 and 12:8–14 another voice speaks of him in the third person, like a frame. Ecclesiastes always calls God Elohim, “God,” and never uses the name YHWH, which the BSB renders as “the LORD.”"
+  },
+  "people": [
+    {
+      "name": "Qohelet, the Teacher",
+      "chapters": "1–12",
+      "ch": 1,
+      "note": "the main voice of the book, who reports in the first person what he saw and concluded"
+    },
+    {
+      "name": "The king, son of David",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "a role the Teacher takes on; the name is not given, but the riches and works of 2:4–9 recall Solomon"
+    },
+    {
+      "name": "The narrator of the epilogue",
+      "chapters": "1; 7; 12",
+      "ch": 12,
+      "note": "speaks of the Teacher in the third person (1:1–2; 7:27; 12:8–14) and sums up his teaching"
+    },
+    {
+      "name": "The poor wise man",
+      "chapters": "9",
+      "ch": 9,
+      "note": "delivers a small besieged city by his wisdom and is then forgotten (9:13–16)"
+    },
+    {
+      "name": "The young man",
+      "chapters": "11–12",
+      "ch": 11,
+      "note": "recipient of the final counsels (“rejoice, O young man,” 11:9; “my son,” 12:12)"
+    }
+  ],
+  "writing": {
+    "tradition": "Based on 1:1 and 1:12, Jewish and Christian traditions attributed the book to Solomon, who reigned around 970–931 BC. A rabbinic tradition says he wrote the Song of Songs in his youth, Proverbs in his mature years and Ecclesiastes in his old age. The Talmud attributes the written form of the book to Hezekiah and his companions.",
+    "academic": "Most scholars understand that the author uses the figure of Solomon as a literary device and place the work between the Persian and Hellenistic periods, around 450–200 BC; many prefer the 3rd century BC. The arguments are the language, close to the late Hebrew of the Mishnah and influenced by Aramaic, words of Persian origin (such as pardes, “park,” in 2:5) and the social setting of trade, money and administration. Fragments found at Qumran, from the mid-2nd century BC, set a limit for the date. A minority argues for older dates, based on another analysis of the language."
+  },
+  "events": {
+    "intro": "Ecclesiastes narrates no datable events: its observations hold for life in any age. The timeline shows the reign of Solomon, to whom the book alludes, the two main proposals for the period of composition and the oldest known manuscripts.",
+    "axis": [
+      -1000,
+      -50
+    ],
+    "band": {
+      "label": "Hellenistic period",
+      "from": -332,
+      "to": -63
+    },
+    "timeline": [
+      {
+        "label": "Solomon",
+        "from": -970,
+        "to": -931,
+        "kind": "pessoa",
+        "note": "reign; the “son of David, king in Jerusalem” (1:1)"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -950,
+        "to": -931,
+        "kind": "escrita",
+        "note": "Solomon, in his old age, according to a rabbinic tradition"
+      },
+      {
+        "label": "Writing, according to scholarship",
+        "from": -450,
+        "to": -200,
+        "kind": "escrita",
+        "note": "Persian or Hellenistic periods; many prefer the 3rd century BC"
+      },
+      {
+        "label": "Qumran fragments",
+        "from": -175,
+        "to": -150,
+        "kind": "evento",
+        "note": "the oldest known copies of the book, of approximate date"
+      }
+    ]
+  },
+  "context": "If the date proposed by most scholars is correct, Ecclesiastes was written when Judah was a small province of foreign empires: first the Persian, then that of the Hellenistic kings of Egypt, the Ptolemies. The book speaks of money, profit, inheritance and a chain of officials who watch over one another (5:8–9). The brevity of life and the advice to enjoy the present also appear in other ancient literatures: in the Epic of Gilgamesh, the alewife Siduri advises the hero to eat, be merry, wear clean clothes and make his wife happy, in terms similar to 9:7–9. In Judaism, there was an ancient debate about the book's place in Scripture, recorded in the Mishnah; in many communities, it is read at the Feast of Tabernacles (Sukkot).",
+  "places": [
+    "Jerusalem (1:1, 12, 16)",
+    "the house of God (5:1)",
+    "the king's gardens, parks and pools (2:4–6)",
+    "a small besieged city (9:14)"
+  ],
+  "themes": [
+    "futility (hevel)",
+    "work and profit",
+    "time and death",
+    "the limits of wisdom",
+    "joy as a gift of God",
+    "the fear of God"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:2"
+    },
+    {
+      "ref": "3:1"
+    },
+    {
+      "ref": "9:7"
+    },
+    {
+      "ref": "12:13"
+    }
+  ],
+  "note": "Dates are approximate. In the Hebrew numbering, the first verse of chapter 5 in English Bibles is counted as the last verse of chapter 4, and the other verses of chapter 5 are one number lower. The verses quoted are from the Berean Standard Bible (BSB)."
+}

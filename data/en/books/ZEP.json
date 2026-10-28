@@ -1,0 +1,134 @@
+{
+  "title_orig": "צְפַנְיָה",
+  "title_orig_xlit": "Tsefanyah",
+  "summary": "Zephaniah announces the “great day of the LORD” as a day of wrath on Judah and Jerusalem, because of idolatry, violence and the indifference of those who think God does neither good nor evil. The judgment extends to the neighboring nations and to Nineveh itself. At the end, the tone changes: God will leave a humble and lowly people who trust in Him, and He will rejoice over a restored Jerusalem.",
+  "name": "The book bears the prophet's name. Zephaniah, in Hebrew Tsefanyah, is usually understood as “the LORD has hidden” or “the LORD has protected.”",
+  "facts": [
+    [
+      "Position",
+      "9th of the Twelve Minor Prophets"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "prophecy (poetry)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "The day of the LORD on Judah",
+      "from": 1,
+      "to": 1,
+      "text": "Judgment against foreign cults and indifference in Jerusalem; the day of wrath described in strong images."
+    },
+    {
+      "title": "Call and judgment of the nations",
+      "from": 2,
+      "to": 3,
+      "text": "An invitation to seek the LORD and oracles against Philistia, Moab, Ammon, Cush and Assyria; then, against Jerusalem."
+    },
+    {
+      "title": "Restoration",
+      "from": 3,
+      "to": 3,
+      "text": "The peoples are purified, a humble remnant remains and Zion is called to sing."
+    }
+  ],
+  "people": [
+    {
+      "name": "Zephaniah",
+      "chapters": "1–3",
+      "ch": 1,
+      "note": "prophet, a descendant of a Hezekiah, perhaps the king"
+    },
+    {
+      "name": "Josiah",
+      "chapters": "1",
+      "ch": 1,
+      "note": "king of Judah in whose days the prophet was active"
+    }
+  ],
+  "writing": {
+    "tradition": "The book is attributed to Zephaniah, who prophesied in the days of Josiah, king of Judah (1:1), between 640 and 609 BC. His four-generation genealogy, back to a certain Hezekiah, is traditionally read as a sign that he descended from King Hezekiah.",
+    "academic": "Many scholars place the core of the book at the beginning of Josiah's reign, before the religious reform of 622 BC, since the practices denounced in chapter 1 are those the reform combated. Parts of the book, especially the oracles of restoration in chapter 3, are seen by many as additions from the exile or later; others attribute them to the prophet himself."
+  },
+  "events": {
+    "intro": "The title dates the prophet to the reign of Josiah. The dates are approximate.",
+    "axis": [
+      -650,
+      -500
+    ],
+    "band": {
+      "label": "Exile in Babylon",
+      "from": -586,
+      "to": -538
+    },
+    "timeline": [
+      {
+        "label": "Josiah, king of Judah",
+        "from": -640,
+        "to": -609,
+        "kind": "pessoa",
+        "note": "reign"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -640,
+        "to": -622,
+        "kind": "escrita",
+        "note": "Zephaniah, before Josiah's reform"
+      },
+      {
+        "label": "Josiah's reform",
+        "from": -622,
+        "to": -622,
+        "kind": "evento",
+        "note": "the Book of the Law is found in the temple (2 Kings 22–23)"
+      },
+      {
+        "label": "Fall of Nineveh",
+        "from": -612,
+        "to": -612,
+        "kind": "evento",
+        "note": "announced in 2:13–15"
+      },
+      {
+        "label": "Additions, according to scholarship",
+        "from": -586,
+        "to": -520,
+        "kind": "escrita",
+        "note": "part of the oracles of restoration"
+      }
+    ]
+  },
+  "context": "Josiah came to the throne as a child, after long reigns (Manasseh and Amon) in which Judah was under Assyrian rule and foreign cults were accepted in Jerusalem, such as those of Baal and of the “host of heaven.” With Assyria's decline, Josiah carried out a religious and political reform. Zephaniah reflects this setting, and his description of the day of the LORD inspired the medieval Latin hymn Dies irae.",
+  "places": [
+    "Jerusalem",
+    "Philistia: Gaza, Ashkelon, Ashdod and Ekron",
+    "Moab and Ammon",
+    "Cush",
+    "Nineveh"
+  ],
+  "themes": [
+    "the day of the LORD",
+    "idolatry and indifference",
+    "humility",
+    "the remnant",
+    "God's joy over His people"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:14"
+    },
+    {
+      "ref": "2:3"
+    },
+    {
+      "ref": "3:17"
+    }
+  ],
+  "note": "Dates are approximate; the verses quoted are from the Berean Standard Bible (BSB)."
+}

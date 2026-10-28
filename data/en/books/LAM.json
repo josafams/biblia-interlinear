@@ -1,0 +1,202 @@
+{
+  "title_orig": "אֵיכָה",
+  "title_orig_xlit": "Eikhah",
+  "summary": "Lamentations gathers five poems of mourning for the destruction of Jerusalem and the temple by the Babylonians, in 587 or 586 BC. The poems describe the siege, the famine, the death of children, humiliation before the enemies and the exile, and give a voice to the city itself, portrayed as a widow who weeps with no one to comfort her. The catastrophe is understood as the consequence of the sins of the people and their leaders, but the text does not hide the pain or the questions addressed to God. At the center of the book (3:21–33), the complaint opens into hope in the loving devotion and faithfulness of the LORD, and the last poem ends with a prayer for restoration.",
+  "name": "In Hebrew, the book is called by its first word, Eikhah, “How!”, the cry of lament that opens chapters 1, 2 and 4. Rabbinic tradition also calls it Qinot, “laments,” a meaning that passed into Greek (Threnoi) and Latin (Lamentationes), from which the English name comes.",
+  "facts": [
+    [
+      "Position",
+      "after Jeremiah, among the prophetic books; in the Hebrew Bible, one of the five Scrolls (Megillot)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "poetry of lament"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "The widowed city",
+      "from": 1,
+      "to": 1,
+      "text": "The poet describes Jerusalem abandoned, and the city itself speaks to ask the LORD to see its pain."
+    },
+    {
+      "title": "The Lord's anger",
+      "from": 2,
+      "to": 2,
+      "text": "God is described acting like an enemy: He tears down walls, palaces and the sanctuary, while children faint from hunger in the streets."
+    },
+    {
+      "title": "The man who has seen affliction",
+      "from": 3,
+      "to": 3,
+      "text": "A sufferer speaks in the first person; from complaint he passes to hope in the LORD's mercies and to a call to repentance."
+    },
+    {
+      "title": "Before and after the siege",
+      "from": 4,
+      "to": 4,
+      "text": "The contrast between past glory and present misery, the guilt of prophets and priests, the capture of the king and the announcement of punishment on Edom."
+    },
+    {
+      "title": "The community's prayer",
+      "from": 5,
+      "to": 5,
+      "text": "The people, in the first person plural, describe their humiliation and ask the LORD to restore them and renew their days."
+    }
+  ],
+  "extra": {
+    "title": "Poems in alphabetical order",
+    "text": "Chapters 1, 2 and 4 are acrostics: each has 22 verses, and each verse begins with a letter of the Hebrew alphabet, in order. Chapter 3 is a triple acrostic, with 66 verses: each letter opens three verses in a row. In chapters 2 to 4, the letters pe and ayin appear in reverse order compared with the usual alphabet. Chapter 5 is not an acrostic, but it also has 22 verses. The first four poems often use the rhythm of lament (qinah), in which the second half of the line is shorter than the first, like a voice that breaks off."
+  },
+  "people": [
+    {
+      "name": "Jerusalem, the Daughter of Zion",
+      "chapters": "1–2; 4",
+      "ch": 1,
+      "note": "the city personified as a widow and a grieving mother; speaks in the second half of chapter 1"
+    },
+    {
+      "name": "The poet",
+      "chapters": "1–2; 4",
+      "ch": 2,
+      "note": "the narrator who describes the ruin and weeps with the city (2:11)"
+    },
+    {
+      "name": "The man who has seen affliction",
+      "chapters": "3",
+      "ch": 3,
+      "note": "the sufferer of chapter 3 (in Hebrew, gever), who moves from complaint to hope"
+    },
+    {
+      "name": "Prophets and priests",
+      "chapters": "2; 4",
+      "ch": 4,
+      "note": "accused of not exposing the people's sin and of shedding the blood of the righteous (2:14; 4:13)"
+    },
+    {
+      "name": "The LORD's anointed",
+      "chapters": "4",
+      "ch": 4,
+      "note": "the king of Judah captured by the enemies (4:20), generally identified with Zedekiah"
+    },
+    {
+      "name": "The Daughter of Edom",
+      "chapters": "4",
+      "ch": 4,
+      "note": "the neighboring people who rejoiced at Jerusalem's fall and receive an announcement of punishment (4:21–22)"
+    },
+    {
+      "name": "The surviving people",
+      "chapters": "5",
+      "ch": 5,
+      "note": "the “we” of the last poem, who tell of life under foreign rule and plead for restoration"
+    }
+  ],
+  "writing": {
+    "tradition": "The Hebrew text does not give the author's name. Jewish and Christian traditions attributed the book to Jeremiah, the prophet who lived through the fall of Jerusalem: the Septuagint opens it with a sentence that presents Jeremiah weeping over the city, and the Talmud includes it among the prophet's writings. On this reading, the poems were composed soon after the destruction, around 586 BC. The link also rests on 2 Chronicles 35:25, which mentions laments of Jeremiah, there for the death of King Josiah.",
+    "academic": "Many scholars doubt Jeremiah's authorship, because of differences of style and point of view: the hope for help from another nation (4:17) and the esteem for the king (4:20), for example, contrast with the prophet's preaching. The poems are usually dated to the period of the exile, between the destruction of 587/586 BC and the rebuilding of the temple, in 520–515 BC. The vividness of the descriptions suggests witnesses close to the events, and some attribute the five poems to more than one author."
+  },
+  "events": {
+    "intro": "The poems respond to events also narrated in 2 Kings 24–25 and Jeremiah 39 and 52; the first capture of Jerusalem, in 597 BC, is also recorded in a Babylonian chronicle. The fall of the city is dated to 587 or 586 BC, depending on how the regnal years are counted, and the timeline uses ranges that cover both possibilities.",
+    "axis": [
+      -600,
+      -510
+    ],
+    "band": {
+      "label": "Exile in Babylon",
+      "from": -586,
+      "to": -538
+    },
+    "timeline": [
+      {
+        "label": "First capture of Jerusalem",
+        "from": -598,
+        "to": -597,
+        "kind": "evento",
+        "note": "Nebuchadnezzar takes King Jehoiachin and part of Judah's elite to Babylon"
+      },
+      {
+        "label": "Zedekiah",
+        "from": -597,
+        "to": -586,
+        "kind": "pessoa",
+        "note": "reign; the last king of Judah, captured while fleeing the city (2 Kings 25:4–7)"
+      },
+      {
+        "label": "Siege of Jerusalem",
+        "from": -588,
+        "to": -586,
+        "kind": "evento",
+        "note": "about a year and a half of siege and famine (2 Kings 25:1–3)"
+      },
+      {
+        "label": "Fall of Jerusalem",
+        "from": -587,
+        "to": -586,
+        "kind": "evento",
+        "note": "destruction of the city and the temple by the Babylonians"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -587,
+        "to": -580,
+        "kind": "escrita",
+        "note": "Jeremiah, in the years following the destruction"
+      },
+      {
+        "label": "Writing, according to scholarship",
+        "from": -587,
+        "to": -520,
+        "kind": "escrita",
+        "note": "during the exile, before the rebuilding of the temple; perhaps by more than one author"
+      },
+      {
+        "label": "End of the exile",
+        "from": -539,
+        "to": -538,
+        "kind": "evento",
+        "note": "Cyrus, king of Persia, takes Babylon and allows the Jews to return"
+      },
+      {
+        "label": "Rebuilding of the temple",
+        "from": -520,
+        "to": -515,
+        "kind": "evento",
+        "note": "the second temple is completed in Jerusalem"
+      }
+    ]
+  },
+  "context": "At the end of the 7th century BC, Judah passed from Egyptian to Babylonian rule. After a revolt by King Jehoiakim, Nebuchadnezzar II took Jerusalem in 597 BC and deported his son and successor, Jehoiachin; the next king, Zedekiah, rebelled again, trusting in Egypt's support. Then came the siege, the famine, the breach in the walls and, about a month later, the burning of the temple, the palace and the houses of the city (2 Kings 25:8–10), followed by a new deportation. Edom, Judah's neighbor, is remembered in other biblical texts for having rejoiced at the fall (Obadiah 1:11–14; Psalm 137:7). Laments for the destruction of cities were an ancient genre in Mesopotamia, such as the Lament for the Destruction of Ur, from the beginning of the second millennium BC. In Judaism, Lamentations is read on the fast of the 9th of Av, which recalls the destruction of the first and second temples.",
+  "places": [
+    "Jerusalem (Zion)",
+    "the temple",
+    "the cities of Judah",
+    "Edom and the land of Uz (4:21)",
+    "Egypt and Assyria (5:6)"
+  ],
+  "themes": [
+    "mourning and lament",
+    "judgment and guilt",
+    "the wrath of God",
+    "the LORD's faithfulness and mercy",
+    "hope",
+    "prayer"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:1"
+    },
+    {
+      "ref": "3:22–23"
+    },
+    {
+      "ref": "5:19"
+    }
+  ],
+  "note": "Dates are approximate; for the fall of Jerusalem, historians are divided between 587 and 586 BC. The verses quoted are from the Berean Standard Bible (BSB)."
+}

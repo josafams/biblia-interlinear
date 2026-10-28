@@ -1,0 +1,176 @@
+{
+  "title_orig": "רוּת",
+  "title_orig_xlit": "Rut",
+  "summary": "Ruth is a short narrative set “in the days when the judges ruled.” After losing her husband and her two sons in Moab, Naomi returns to Bethlehem accompanied by her Moabite daughter-in-law Ruth, who refuses to leave her. Ruth gleans grain in the field of Boaz, a relative of Naomi, and, at her mother-in-law's initiative, asks him for protection as the family's kinsman-redeemer. Boaz settles the matter before the elders, marries Ruth, and the couple's son, Obed, appears in a genealogy that ends with David.",
+  "name": "The book bears the name of its protagonist, Ruth the Moabite. The meaning of the name is uncertain; among the proposals is a connection with the Hebrew word for “friend” or “companion.”",
+  "facts": [
+    [
+      "Position",
+      "8th book of the Bible, after Judges; in the Hebrew Bible, among the Writings (Ketuvim), one of the five Scrolls (Megillot)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "short narrative, with a closing genealogy"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Loss and return",
+      "from": 1,
+      "to": 1,
+      "text": "Elimelech's family in Moab, the deaths and the return of Naomi and Ruth to Bethlehem."
+    },
+    {
+      "title": "In the field of Boaz",
+      "from": 2,
+      "to": 2,
+      "text": "Ruth gleans grain and meets the generosity of Boaz."
+    },
+    {
+      "title": "At the threshing floor",
+      "from": 3,
+      "to": 3,
+      "text": "At night, Ruth asks Boaz to take on the role of kinsman-redeemer."
+    },
+    {
+      "title": "At the city gate",
+      "from": 4,
+      "to": 4,
+      "text": "The redemption before the elders, the marriage, the birth of Obed and the genealogy down to David."
+    }
+  ],
+  "extra": {
+    "title": "The kinsman-redeemer (go’el)",
+    "text": "The plot turns on the go’el, the close relative who had the duty of protecting the family: recovering land that had been sold, redeeming relatives and keeping alive the name of the dead (Leviticus 25:25; Deuteronomy 25:5–10). In the BSB, the word appears as “kinsman-redeemer” (2:20; 3:9; 4:1). The book combines these practices in its own way, and scholars discuss how they worked in reality. Another key word is hesed, the loyal kindness that Naomi, Ruth and Boaz show one another, rendered in the BSB as “loving devotion” or “kindness” (1:8; 2:20; 3:10)."
+  },
+  "people": [
+    {
+      "name": "Naomi",
+      "chapters": "1–4",
+      "ch": 1,
+      "note": "returns to Bethlehem without husband or sons and asks to be called Mara, “bitter”"
+    },
+    {
+      "name": "Ruth",
+      "chapters": "1–4",
+      "ch": 1,
+      "note": "Moabite, widow of Mahlon; goes with her mother-in-law and marries Boaz"
+    },
+    {
+      "name": "Orpah",
+      "chapters": "1",
+      "ch": 1,
+      "note": "the other daughter-in-law, who goes back to her people"
+    },
+    {
+      "name": "Elimelech, Mahlon and Chilion",
+      "chapters": "1; 4",
+      "ch": 1,
+      "note": "Naomi's husband and sons, who die in Moab"
+    },
+    {
+      "name": "Boaz",
+      "chapters": "2–4",
+      "ch": 2,
+      "note": "wealthy relative of Elimelech in Bethlehem; redeems the inheritance and marries Ruth"
+    },
+    {
+      "name": "Obed",
+      "chapters": "4",
+      "ch": 4,
+      "note": "son of Ruth and Boaz, grandfather of David"
+    }
+  ],
+  "writing": {
+    "tradition": "The Babylonian Talmud (Bava Batra 14b) attributes the writing of Ruth to Samuel, as well as that of Judges and of the book that bears his name. On this reading, the book would have been written at the beginning of the monarchy, around 1050–1000 BC, or a little later, since the final genealogy reaches David.",
+    "academic": "There is no consensus on the date. Some scholars argue for the time of the monarchy (10th to 8th centuries BC), relying on the classical-style Hebrew and on the interest in David's family. Others prefer the period after the exile (5th and 4th centuries BC), citing some late forms of language, the explanation of a custom already old (4:7) and the welcome given to a foreign woman, which many read as a counterpoint to the measures of Ezra and Nehemiah against marriages with foreign women. The genealogy of 4:18–22 is often seen as an addition."
+  },
+  "events": {
+    "intro": "The book gives no dates, only placing the story in the time of the judges (1:1). Since Boaz is David's great-grandfather (4:17, 21–22), those who reckon by generations usually put the events in the 12th or early 11th century BC; the exact number of generations, however, is uncertain, and the timeline shows only an approximate setting. The proposals for the writing appear alongside.",
+    "axis": [
+      -1400,
+      -300
+    ],
+    "band": {
+      "label": "Iron Age I",
+      "from": -1200,
+      "to": -1000
+    },
+    "timeline": [
+      {
+        "label": "Period of the judges, traditional chronology",
+        "from": -1380,
+        "to": -1050,
+        "kind": "evento",
+        "note": "from the death of Joshua to the beginning of Saul's reign"
+      },
+      {
+        "label": "The story of Ruth, approximate setting",
+        "from": -1150,
+        "to": -1100,
+        "kind": "evento",
+        "note": "three generations before David, by the genealogy of 4:17–22"
+      },
+      {
+        "label": "David",
+        "from": -1040,
+        "to": -970,
+        "kind": "pessoa",
+        "note": "great-grandson of Ruth and Boaz; reigns c. 1010–970 BC"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -1050,
+        "to": -1000,
+        "kind": "escrita",
+        "note": "Samuel, according to the Talmud"
+      },
+      {
+        "label": "Writing, according to some scholars",
+        "from": -950,
+        "to": -700,
+        "kind": "escrita",
+        "note": "time of the monarchy"
+      },
+      {
+        "label": "Writing, according to other scholars",
+        "from": -500,
+        "to": -350,
+        "kind": "escrita",
+        "note": "Persian period"
+      }
+    ]
+  },
+  "context": "The story begins with a famine that takes a family from Bethlehem in Judah to the plains of Moab, east of the Dead Sea, and returns to Bethlehem at the beginning of the barley harvest, in spring. The book shows customs of rural life: the right of the poor to glean the grain left behind (Leviticus 19:9–10; Deuteronomy 24:19), work on the threshing floor and the settling of legal matters before the elders, at the city gate. The relationship between Israel and Moab was tense in other texts (Deuteronomy 23:3), which makes it significant that David's great-grandmother is a Moabite. In Jewish tradition, Ruth is read at the feast of Shavuot (Pentecost), which coincides with the harvest.",
+  "places": [
+    "Bethlehem in Judah",
+    "the fields of Moab",
+    "the field of Boaz",
+    "the threshing floor",
+    "the city gate"
+  ],
+  "themes": [
+    "loyalty (hesed)",
+    "redemption",
+    "the foreigner welcomed",
+    "loss and restoration",
+    "quiet providence",
+    "the family of David"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:16"
+    },
+    {
+      "ref": "2:12"
+    },
+    {
+      "ref": "4:17"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. The verses quoted are from the Berean Standard Bible (BSB)."
+}

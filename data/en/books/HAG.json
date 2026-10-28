@@ -1,0 +1,117 @@
+{
+  "title_orig": "חַגַּי",
+  "title_orig_xlit": "Chaggai",
+  "summary": "Haggai gathers four messages, all dated to the second year of the Persian king Darius, in 520 BC. The Jews who had returned from exile had built their houses, but left the temple in ruins. The prophet links the poor harvests to this neglect, and the governor Zerubbabel, the high priest Joshua and the people resume the work. Haggai announces that the glory of the new temple will be greater than that of the first and ends with a promise to Zerubbabel.",
+  "name": "The book bears the prophet's name. Haggai, in Hebrew Chaggai, comes from the word for “feast” and may mean “festive,” perhaps because he was born on a feast day.",
+  "facts": [
+    [
+      "Position",
+      "10th of the Twelve Minor Prophets"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "prophecy (dated messages, in prose)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Call to rebuild",
+      "from": 1,
+      "to": 1,
+      "text": "The house of God lies in ruins; the leaders and the people listen and begin the work."
+    },
+    {
+      "title": "Promises for the new temple",
+      "from": 2,
+      "to": 2,
+      "text": "The future glory of the temple, a lesson about clean and unclean and the promise to Zerubbabel, called a signet ring."
+    }
+  ],
+  "people": [
+    {
+      "name": "Haggai",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "prophet; also mentioned in Ezra 5:1 and 6:14"
+    },
+    {
+      "name": "Zerubbabel",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "son of Shealtiel, governor of Judah, a descendant of David"
+    },
+    {
+      "name": "Joshua",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "son of Jehozadak, high priest"
+    }
+  ],
+  "writing": {
+    "tradition": "The book is attributed to the prophet Haggai, and the messages are precisely dated between the sixth and the ninth month of the second year of Darius, from August to December 520 BC, in the modern calendar.",
+    "academic": "Scholars generally accept the book's dates. Many note that the prophet is mentioned in the third person and that the dates form an editorial frame, which suggests that the messages were gathered by a disciple or editor shortly afterward, perhaps before the completion of the temple, in 515 BC, together with Zechariah 1–8."
+  },
+  "events": {
+    "intro": "Haggai is one of the most precisely dated prophetic books. The messages cover about four months of 520 BC.",
+    "axis": [
+      -545,
+      -480
+    ],
+    "timeline": [
+      {
+        "label": "Decree of Cyrus and first return",
+        "from": -539,
+        "to": -538,
+        "kind": "evento",
+        "note": "the exiles receive permission to return to Judah"
+      },
+      {
+        "label": "Darius I, king of Persia",
+        "from": -522,
+        "to": -486,
+        "kind": "pessoa",
+        "note": "reign"
+      },
+      {
+        "label": "Haggai's messages",
+        "from": -520,
+        "to": -520,
+        "kind": "escrita",
+        "note": "from the 6th to the 9th month of the second year of Darius"
+      },
+      {
+        "label": "Rebuilding of the temple",
+        "from": -520,
+        "to": -515,
+        "kind": "evento",
+        "note": "the second temple is completed in the sixth year of Darius (Ezra 6:15)"
+      }
+    ]
+  },
+  "context": "Cyrus allowed the exiles to return after 539 BC, but the rebuilding of the temple stalled in the face of poverty, poor harvests and the opposition of the neighbors (Ezra 4). When Darius I took the throne, in 522 BC, there were revolts in several parts of the empire, which may explain the expectation in 2:6–7 and 2:21–22 that God would shake the kingdoms. Judah was then a small Persian province around Jerusalem.",
+  "places": [
+    "Jerusalem",
+    "the temple (the house of the LORD)",
+    "Judah, a Persian province"
+  ],
+  "themes": [
+    "rebuilding of the temple",
+    "priorities",
+    "God's presence",
+    "purity",
+    "messianic hope"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:4"
+    },
+    {
+      "ref": "2:9"
+    }
+  ],
+  "note": "The book's dates follow the Babylonian calendar used by the Jews; the conversion to modern months is approximate. The verses quoted are from the Berean Standard Bible (BSB)."
+}

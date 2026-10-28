@@ -1,0 +1,224 @@
+{
+  "title_orig": "יְהוֹשֻׁעַ",
+  "title_orig_xlit": "Yehoshua",
+  "summary": "Joshua tells how Israel, after the death of Moses, crosses the Jordan River and settles in Canaan, the land promised to the patriarchs. The first half of the book narrates the crossing, the capture of Jericho and Ai, the treaty with the Gibeonites and two great military campaigns, one in the south and the other in the north of the region. The second half describes the division of the land among the tribes, with lists of borders and cities, and sets apart the cities of refuge and the cities assigned to the Levites. The book ends with Joshua's farewell speeches and the renewal of the covenant at Shechem, where the people commit themselves to serve the LORD alone.",
+  "name": "The book bears the name of its main character, Joshua son of Nun. In Hebrew, Yehoshua means “the LORD saves” or “the LORD is salvation”; according to Numbers 13:16, it was Moses who gave him this name, in place of Hoshea. In the Septuagint the name appears as Iēsous, the same Greek form the New Testament uses for Jesus.",
+  "facts": [
+    [
+      "Position",
+      "6th book of the Bible, the first of the historical books; in the Hebrew Bible, it opens the Former Prophets (Nevi’im Rishonim)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "historical narrative, with lists of borders and cities"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Entering the land",
+      "from": 1,
+      "to": 5,
+      "text": "Joshua takes command, the spies are taken in by Rahab in Jericho, the people cross the Jordan on dry ground and, camped at Gilgal, practice circumcision and celebrate the Passover."
+    },
+    {
+      "title": "The conquests",
+      "from": 6,
+      "to": 12,
+      "text": "The fall of Jericho, the failure and then the victory at Ai, the treaty with Gibeon, the campaigns in the south and the north and the list of the 31 defeated kings."
+    },
+    {
+      "title": "Dividing the land",
+      "from": 13,
+      "to": 21,
+      "text": "The portions of the tribes east and west of the Jordan, Caleb's inheritance, the assembly at Shiloh, the six cities of refuge and the 48 cities of the Levites."
+    },
+    {
+      "title": "Farewells and covenant",
+      "from": 22,
+      "to": 24,
+      "text": "The eastern tribes return home and build an altar that almost causes a war; Joshua takes leave of the leaders and renews the covenant at Shechem before he dies."
+    }
+  ],
+  "extra": {
+    "title": "A new Moses and the notes “to this day”",
+    "text": "The book draws Joshua in parallel with Moses: the LORD promises to be with him “just as I was with Moses” (3:7), the waters of the Jordan part like those of the Red Sea (4:23), and the commander of the LORD's army tells him to take off his sandals, as in the scene of the burning bush (5:15; Exodus 3:5). Another frequent feature are the notes that link a monument or a place name to the events narrated with the expression “to this day”: the stones in the bed of the Jordan (4:9), the name Gilgal (5:9), the heaps of stones in the Valley of Achor and at Ai (7:26; 8:29) and the Gibeonites in the service of the altar (9:27)."
+  },
+  "people": [
+    {
+      "name": "Joshua",
+      "chapters": "1–24",
+      "ch": 1,
+      "note": "son of Nun, of the tribe of Ephraim; Moses' assistant and his successor at the head of the people"
+    },
+    {
+      "name": "Rahab",
+      "chapters": "2; 6",
+      "ch": 2,
+      "note": "a resident of Jericho who hides the two spies; she and her family are spared"
+    },
+    {
+      "name": "Achan",
+      "chapters": "7",
+      "ch": 7,
+      "note": "of the tribe of Judah; keeps objects devoted to destruction and is executed in the Valley of Achor"
+    },
+    {
+      "name": "The Gibeonites",
+      "chapters": "9–10",
+      "ch": 9,
+      "note": "inhabitants of Gibeon who obtain a treaty with Israel by pretending to come from a distant land"
+    },
+    {
+      "name": "Adoni-zedek",
+      "chapters": "10",
+      "ch": 10,
+      "note": "king of Jerusalem; leads the coalition of five Amorite kings against Gibeon"
+    },
+    {
+      "name": "Jabin",
+      "chapters": "11",
+      "ch": 11,
+      "note": "king of Hazor, at the head of the alliance of the northern kings"
+    },
+    {
+      "name": "Caleb",
+      "chapters": "14–15",
+      "ch": 14,
+      "note": "one of the twelve spies sent by Moses; at 85 years of age, he asks for and receives Hebron"
+    },
+    {
+      "name": "Eleazar",
+      "chapters": "14–24",
+      "ch": 14,
+      "note": "priest, son of Aaron; presides over the division of the land alongside Joshua"
+    },
+    {
+      "name": "The daughters of Zelophehad",
+      "chapters": "17",
+      "ch": 17,
+      "note": "Mahlah, Noah, Hoglah, Milcah and Tirzah, who receive an inheritance because their father had no sons"
+    },
+    {
+      "name": "Phinehas",
+      "chapters": "22",
+      "ch": 22,
+      "note": "son of Eleazar; heads the delegation sent to the eastern tribes because of the altar by the Jordan"
+    }
+  ],
+  "writing": {
+    "tradition": "According to the Babylonian Talmud (Bava Batra 14b–15a), Joshua wrote the book that bears his name and also the last verses of Deuteronomy; the account of his death would have been completed by Eleazar, and that of Eleazar's death by Phinehas. The text itself says that Joshua recorded the words of the covenant at Shechem “in the Book of the Law of God” (24:26). On this reading, the book was written shortly after the events, around 1400–1370 BC, or at the end of the 13th century BC for those who adopt a later date for the Exodus.",
+    "academic": "Since the studies of Martin Noth (1943), many researchers have read Joshua as part of a larger work, the so-called Deuteronomistic History, which would run from Deuteronomy to 2 Kings and interpret Israel's history in light of the law of Deuteronomy. A widespread proposal speaks of a first edition in the reign of Josiah, around 640–609 BC, and a revision during the Babylonian exile, after 562 BC. There are also those who prefer to link Joshua to the Pentateuch, as the conclusion of a Hexateuch, and those who doubt the existence of a single Deuteronomistic work. It is common to hold that the book draws on older sources, such as local traditions, lists of borders and cities and the poetry quoted from the “Book of Jashar” (10:13)."
+  },
+  "events": {
+    "intro": "The book gives no dates. A traditional chronology starts from 1 Kings 6:1, which puts the departure from Egypt 480 years before the start of the building of Solomon's temple, and arrives at the entry into Canaan around 1406 BC; those who place the Exodus in the 13th century BC put the entry around 1250–1200 BC. Archaeology makes the picture more complex: Hazor has a destruction layer from the 13th century BC, but Jericho and Ai (et-Tell) show little or no occupation in that period, and the reading of the older data is debated. Many historians relate Israel's origins to the gradual appearance of villages in the hill country from c. 1200 BC on. The oldest mention of “Israel” outside the Bible is on a stele of Pharaoh Merneptah, from c. 1208 BC.",
+    "axis": [
+      -1550,
+      -500
+    ],
+    "band": {
+      "label": "Late Bronze Age",
+      "from": -1550,
+      "to": -1200
+    },
+    "timeline": [
+      {
+        "label": "Entry into Canaan, traditional chronology",
+        "from": -1406,
+        "to": -1399,
+        "kind": "evento",
+        "note": "40 years after an Exodus dated c. 1446 BC; about seven years of campaigns (14:7–10)"
+      },
+      {
+        "label": "Joshua at the head of Israel",
+        "from": -1406,
+        "to": -1380,
+        "kind": "pessoa",
+        "note": "by the traditional chronology; dies at 110 years of age (24:29), at a merely estimated date"
+      },
+      {
+        "label": "Amarna letters",
+        "from": -1360,
+        "to": -1330,
+        "kind": "evento",
+        "note": "correspondence of the kings of Canaan with Pharaoh; complaints against groups called habiru"
+      },
+      {
+        "label": "Entry into Canaan, 13th-century dating",
+        "from": -1250,
+        "to": -1200,
+        "kind": "evento",
+        "note": "for those who place the Exodus in the time of Ramesses II"
+      },
+      {
+        "label": "Destruction of Hazor",
+        "from": -1300,
+        "to": -1200,
+        "kind": "evento",
+        "note": "burning of the Canaanite city (cf. 11:10–13); who caused it is debated"
+      },
+      {
+        "label": "Merneptah Stele",
+        "from": -1210,
+        "to": -1205,
+        "kind": "evento",
+        "note": "Egyptian inscription that names “Israel” as a people in Canaan"
+      },
+      {
+        "label": "Villages in the hill country",
+        "from": -1200,
+        "to": -1000,
+        "kind": "evento",
+        "note": "hundreds of small settlements appear, linked by many scholars to Israel's origins"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -1400,
+        "to": -1370,
+        "kind": "escrita",
+        "note": "Joshua, with the ending completed by Eleazar and Phinehas"
+      },
+      {
+        "label": "Composition, according to scholarship",
+        "from": -640,
+        "to": -550,
+        "kind": "escrita",
+        "note": "Deuteronomistic work: reign of Josiah and Babylonian exile"
+      }
+    ]
+  },
+  "context": "In the Late Bronze Age (c. 1550–1200 BC), Canaan was made up of city-states ruled by local kings, generally under Egyptian rule; the Amarna letters, from the 14th century BC, record these kings' requests to Pharaoh for help. The book's route follows the geography: the people set out from Shittim, on the plains of Moab, cross the Jordan across from Jericho, go up into the central hill country, where Ai, Bethel and Gibeon lay, pursue their enemies down the descent of Beth-horon toward the south and then face the northern kings at the waters of Merom. The text itself admits that many areas remained outside the tribes' control, such as the Philistine coast and Jerusalem (13:2–3; 15:63), a picture that reappears at the beginning of Judges. The practice of devoting to destruction (herem), the complete destruction of a city consecrated to the deity, also appears on the stele of King Mesha of Moab, from the 9th century BC, and is among the most debated points of the book for Jewish and Christian readers.",
+  "places": [
+    "Shittim, on the plains of Moab",
+    "the Jordan River and Gilgal",
+    "Jericho and Ai",
+    "Gibeon and the Valley of Aijalon",
+    "Hazor and the waters of Merom",
+    "Shiloh",
+    "Shechem, between Mounts Ebal and Gerizim",
+    "Hebron"
+  ],
+  "themes": [
+    "the land as gift and inheritance",
+    "faithfulness to the law of Moses",
+    "the LORD fights for Israel",
+    "devotion to destruction (herem)",
+    "covenant and choice",
+    "leadership and succession"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:8–9"
+    },
+    {
+      "ref": "21:45"
+    },
+    {
+      "ref": "24:14"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. The Greek text of the Septuagint differs from the Hebrew in several passages; in it, the episode of the altar on Mount Ebal (8:30–35) comes after 9:2, and in a Qumran manuscript (4QJosha) it appears right after the crossing of the Jordan. The verses quoted are from the Berean Standard Bible (BSB)."
+}

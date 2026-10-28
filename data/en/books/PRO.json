@@ -1,0 +1,197 @@
+{
+  "title_orig": "מִשְׁלֵי",
+  "title_orig_xlit": "Mishlei",
+  "summary": "Proverbs is a collection of teachings on how to live wisely in everyday life: in the family, at work, in the use of words, in dealing with money, friends and authorities. Chapters 1 to 9 gather longer speeches, in which a father instructs his son and Wisdom herself, portrayed as a woman, calls to people in the streets and squares. From chapter 10 on, short sayings predominate, almost always of two lines, that contrast the wise and the fool, the righteous and the wicked, the hard worker and the sluggard. What unites the whole is the idea that the fear of the LORD is the starting point of knowledge and wisdom (1:7; 9:10). The book ends with the words of Agur and Lemuel and with a poem in praise of the wife of noble character.",
+  "name": "The Hebrew title, Mishlei, comes from the first words of the book: “The proverbs of Solomon” (1:1). The word mashal, translated “proverb,” is broader than a popular saying and covers comparisons, maxims and teachings in poetic form. The English name comes from the Latin of the Vulgate, Liber Proverbiorum, “Book of Proverbs”; in the Septuagint, the title is Paroimiai.",
+  "facts": [
+    [
+      "Position",
+      "among the poetic and wisdom books, after Psalms; in the Hebrew Bible, among the Writings (Ketuvim)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "wisdom: instructions and sayings in poetry"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Prologue and instructions to the son",
+      "from": 1,
+      "to": 9,
+      "text": "The purpose of the book (1:1–7), a father's advice to his son and the speeches of personified Wisdom. The part ends with two rival invitations: that of Wisdom and that of the woman Folly (ch. 9)."
+    },
+    {
+      "title": "Proverbs of Solomon",
+      "from": 10,
+      "to": 22,
+      "text": "The first great collection (10:1–22:16), with 375 verses, almost all independent sayings of two lines."
+    },
+    {
+      "title": "Sayings of the wise",
+      "from": 22,
+      "to": 24,
+      "text": "Two smaller collections (22:17–24:22 and 24:23–34), with longer counsels, partly similar to an Egyptian wisdom work."
+    },
+    {
+      "title": "Collection of the men of Hezekiah",
+      "from": 25,
+      "to": 29,
+      "text": "Proverbs of Solomon “copied by the men of Hezekiah king of Judah” (25:1), with many comparisons drawn from nature and daily life."
+    },
+    {
+      "title": "Words of Agur",
+      "from": 30,
+      "to": 30,
+      "text": "Reflections on the limits of human knowledge, a short prayer and numerical sayings of the “three things… and four” kind."
+    },
+    {
+      "title": "Lemuel and the wife of noble character",
+      "from": 31,
+      "to": 31,
+      "text": "The counsel King Lemuel's mother taught him (31:1–9) and the alphabetic poem of the wife of noble character (31:10–31)."
+    }
+  ],
+  "extra": {
+    "title": "Sayings in two lines",
+    "text": "Most of the book is written in parallelism, the typical device of Hebrew poetry: the second line repeats the first in other words, contrasts with it or completes it. In chapters 10 to 15 contrast predominates, almost always marked by “but,” as in 10:1. The book closes with an acrostic: each of the 22 verses of 31:10–31 begins with a letter of the Hebrew alphabet, in order. Some scholars have also observed that the collection of 10:1–22:16 has 375 verses, the same number as the sum of the values of the letters of Solomon's name (Shelomoh) in Hebrew."
+  },
+  "people": [
+    {
+      "name": "Solomon",
+      "chapters": "1; 10; 25",
+      "ch": 1,
+      "note": "king of Israel, to whom the titles attribute the main collections"
+    },
+    {
+      "name": "The father and the son",
+      "chapters": "1–7; 23–24",
+      "ch": 1,
+      "note": "the teacher who instructs (“my son”) and the young man who must choose between two ways; the mother also teaches (1:8; 6:20)"
+    },
+    {
+      "name": "Wisdom",
+      "chapters": "1; 8–9",
+      "ch": 8,
+      "note": "personified as a woman who calls out in the squares and who was with God at creation (8:22–31)"
+    },
+    {
+      "name": "The adulteress and Folly",
+      "chapters": "2; 5–7; 9",
+      "ch": 7,
+      "note": "figures of the seduction that leads to death, in contrast with Wisdom"
+    },
+    {
+      "name": "Hezekiah",
+      "chapters": "25",
+      "ch": 25,
+      "note": "king of Judah; his men copied a collection of Solomon's proverbs"
+    },
+    {
+      "name": "Agur",
+      "chapters": "30",
+      "ch": 30,
+      "note": "son of Jakeh, author of sayings on the limits of human knowledge; not known from other sources"
+    },
+    {
+      "name": "Lemuel and his mother",
+      "chapters": "31",
+      "ch": 31,
+      "note": "a king mentioned only here; records his mother's counsel about women, wine and justice for the poor"
+    },
+    {
+      "name": "The wife of noble character",
+      "chapters": "31",
+      "ch": 31,
+      "note": "in Hebrew, eshet chayil, “woman of valor”: she cares for the house and for business and is praised for fearing the LORD"
+    }
+  ],
+  "writing": {
+    "tradition": "Following the book's own titles (1:1; 10:1; 25:1), Jewish and Christian traditions attribute most of Proverbs to Solomon, who reigned around 970–931 BC and of whom it is said that he “composed three thousand proverbs” (1 Kings 4:32). The book also acknowledges other voices: the “wise” (22:17; 24:23), Agur and Lemuel. According to the Talmud, Hezekiah and his companions gave the book its written form, in line with 25:1; some rabbinic readings identified Agur and Lemuel with Solomon himself.",
+    "academic": "Scholars see Proverbs as an anthology formed over centuries. Some of the sayings may come from the time of the monarchy, and many consider plausible the note about the men of Hezekiah (25:1), around 700 BC, as a sign of scribal activity at the court of Judah. The passage 22:17–24:22 has close parallels with the Instruction of Amenemope, an older Egyptian work. Chapters 1 to 9 are usually considered the most recent part, and the final form of the book is generally placed in the Persian or early Hellenistic period, around 500–300 BC, although some propose older dates."
+  },
+  "events": {
+    "intro": "Proverbs narrates no events: its sayings speak of everyday life and can almost never be dated. The timeline shows the kings named in the titles, according to the most widely used chronology (authors vary by a few years), the Egyptian work compared with 22:17–24:22 and the two main proposals for the composition of the book.",
+    "axis": [
+      -1350,
+      -250
+    ],
+    "band": {
+      "label": "Monarchy in Israel and Judah",
+      "from": -1030,
+      "to": -586
+    },
+    "timeline": [
+      {
+        "label": "Instruction of Amenemope",
+        "from": -1300,
+        "to": -1075,
+        "kind": "evento",
+        "note": "Egyptian wisdom work, of approximate date; parallels in 22:17–24:22"
+      },
+      {
+        "label": "Solomon",
+        "from": -970,
+        "to": -931,
+        "kind": "pessoa",
+        "note": "reign (1:1; 10:1; 25:1)"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -970,
+        "to": -686,
+        "kind": "escrita",
+        "note": "Solomon composes most of it; the compilation is completed in Hezekiah's time"
+      },
+      {
+        "label": "Hezekiah",
+        "from": -715,
+        "to": -686,
+        "kind": "pessoa",
+        "note": "reign; his men copy proverbs of Solomon (25:1)"
+      },
+      {
+        "label": "Final form, according to scholarship",
+        "from": -500,
+        "to": -300,
+        "kind": "escrita",
+        "note": "Persian and early Hellenistic periods"
+      }
+    ]
+  },
+  "context": "Proverbs belongs to a tradition of wisdom common to the whole ancient Near East. In Egypt, scribes and officials learned from “instructions” attributed to kings and high officials, such as those of Ptahhotep and Amenemope; in Mesopotamia collections of proverbs circulated and, in Aramaic, the words of the sage Ahiqar. The biblical account itself compares Solomon's wisdom to that “of all the men of the East” and “of Egypt” (1 Kings 4:30). The settings of the book are the house, the field, the market, the city gate, where cases were judged, and the king's court. The Hebrew word massa, in the titles of 30:1 and 31:1, can be read as “oracle” or “burden,” or as the name of a tribe of northern Arabia (Genesis 25:14); in that case, Agur and Lemuel would be foreign sages.",
+  "places": [
+    "Israel and Judah (1:1; 25:1)",
+    "the king's court",
+    "the city gate",
+    "squares, streets and crossroads",
+    "the house and the field",
+    "Massa, perhaps the land of Agur and Lemuel"
+  ],
+  "themes": [
+    "the fear of the LORD",
+    "wisdom and folly",
+    "the power of words",
+    "work and laziness",
+    "wealth, poverty and justice",
+    "family and education"
+  ],
+  "key_verses": [
+    {
+      "ref": "4:23"
+    },
+    {
+      "ref": "9:10"
+    },
+    {
+      "ref": "16:9"
+    },
+    {
+      "ref": "31:30"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. In the Septuagint, the collections of chapters 24 to 31 appear in a different order, and there are sayings that are not in the Hebrew text. The verses quoted are from the Berean Standard Bible (BSB)."
+}

@@ -1,0 +1,178 @@
+{
+  "title_orig": "דָּנִיֵּאל",
+  "title_orig_xlit": "Daniyyel",
+  "summary": "Daniel brings together two kinds of text. Chapters 1 to 6 tell stories of Daniel and three Jewish companions taken to Babylon, who serve at the court of foreign kings without abandoning faithfulness to their God: the refusal of the king's food, the fiery furnace, the lions' den. Chapters 7 to 12 contain visions in which successive empires appear as beasts and kings at war, until God establishes a kingdom that will have no end. The book affirms that the God of Israel rules over human kingdoms and ends with one of the most explicit references in the Hebrew Bible to the resurrection of the dead (12:2).",
+  "name": "The book bears the name of its main character. Daniel, in Hebrew Daniyyel, is usually understood as “God is my judge” or “God has judged.” At the Babylonian court he receives the name Belteshazzar (1:7).",
+  "facts": [
+    [
+      "Position",
+      "4th of the Major Prophets, after Ezekiel; in the Hebrew Bible, among the Writings (Ketuvim)"
+    ],
+    [
+      "Original language",
+      "Hebrew and Aramaic (2:4b–7:28)"
+    ],
+    [
+      "Genre",
+      "court narratives and apocalyptic literature"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Stories at the foreign court",
+      "from": 1,
+      "to": 6,
+      "text": "Daniel and his companions serve Nebuchadnezzar, Belshazzar and Darius and are put to the test for keeping their faith: dreams interpreted, the furnace and the lions' den."
+    },
+    {
+      "title": "Visions of the kingdoms and of the end",
+      "from": 7,
+      "to": 12,
+      "text": "The four beasts, the ram and the goat, the seventy weeks and the long revelation about the kings of the north and the south, which ends with the promise of resurrection."
+    }
+  ],
+  "extra": {
+    "title": "Two languages and two kinds of text",
+    "text": "From 2:4b to 7:28 the book is written in Aramaic, the international language of the empire; the rest is in Hebrew. The division of languages does not coincide with that of the subjects: chapter 1 is narrative in Hebrew and chapter 7, already a vision, is still in Aramaic, which links the two halves. The Septuagint also has passages in Greek that are not in the Hebrew-Aramaic text (the Prayer of Azariah and the Song of the Three Young Men, the story of Susanna and that of Bel and the Dragon); they are part of the book in Catholic and Orthodox Bibles and do not appear in this translation."
+  },
+  "people": [
+    {
+      "name": "Daniel (Belteshazzar)",
+      "chapters": "1–12",
+      "ch": 1,
+      "note": "a young man from Judah taken to Babylon; interpreter of dreams and recipient of the visions"
+    },
+    {
+      "name": "Hananiah, Mishael and Azariah",
+      "chapters": "1–3",
+      "ch": 3,
+      "note": "Daniel's companions, called Shadrach, Meshach and Abednego; thrown into the furnace"
+    },
+    {
+      "name": "Nebuchadnezzar",
+      "chapters": "1–4",
+      "ch": 4,
+      "note": "king of Babylon; dreams of the statue and of the great tree"
+    },
+    {
+      "name": "Belshazzar",
+      "chapters": "5; 7–8",
+      "ch": 5,
+      "note": "ruler of Babylon on the night of the writing on the wall"
+    },
+    {
+      "name": "Darius the Mede",
+      "chapters": "5:31–6; 9; 11",
+      "ch": 6,
+      "note": "king who throws Daniel into the lions' den"
+    },
+    {
+      "name": "Gabriel and Michael",
+      "chapters": "8–12",
+      "ch": 9,
+      "note": "heavenly beings who explain the visions and defend the people"
+    }
+  ],
+  "writing": {
+    "tradition": "Ancient Jewish and Christian traditions attribute the book to Daniel himself, who speaks in the first person in the visions (7–12). On this reading, it was written in the 6th century BC, at the end of the exile, around 540–530 BC. Defenders of this date point out that the book knows the Babylonian and Persian court well, that fragments of Daniel appear among the Dead Sea Scrolls a short time after the date proposed by critical scholarship and that the visions present themselves as prediction.",
+    "academic": "Most critical scholars date the final form of the book to c. 167–164 BC, during the persecution of Antiochus IV Epiphanes, who desecrated the temple in Jerusalem. It is argued that the vision of chapter 11 describes in great detail the wars between the Seleucids and the Ptolemies up to that time and becomes vague after it, and that there are inaccuracies about the Babylonian and Persian period (such as “Darius the Mede”). The stories of chapters 1 to 6 are seen as older, perhaps from the Persian or early Hellenistic periods. The question of the date remains under debate and usually also depends on assumptions about the possibility of predictive prophecy."
+  },
+  "events": {
+    "intro": "The stories are set between the first deportation from Judah, at the end of the 7th century BC, and the first years of Persian rule. The visions point to the succession of empires that culminates in the Hellenistic period; in the critical reading, chapter 11 reaches the crisis under Antiochus IV, in the 2nd century BC. The dates are approximate, and the timeline shows the two proposals for the writing.",
+    "axis": [
+      -610,
+      -160
+    ],
+    "band": {
+      "label": "Exile in Babylon",
+      "from": -586,
+      "to": -538
+    },
+    "timeline": [
+      {
+        "label": "Daniel taken to Babylon",
+        "from": -605,
+        "to": -605,
+        "kind": "evento",
+        "note": "“in the third year” of Jehoiakim (1:1), by the book's reckoning"
+      },
+      {
+        "label": "Nebuchadnezzar",
+        "from": -605,
+        "to": -562,
+        "kind": "pessoa",
+        "note": "reign"
+      },
+      {
+        "label": "Daniel",
+        "from": -605,
+        "to": -536,
+        "kind": "pessoa",
+        "note": "service at court, until the third year of Cyrus (10:1); approximate dates"
+      },
+      {
+        "label": "Fall of Babylon",
+        "from": -539,
+        "to": -539,
+        "kind": "evento",
+        "note": "Cyrus, king of Persia, takes the city; end of the Babylonian kingdom (5:30–31)"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -540,
+        "to": -530,
+        "kind": "escrita",
+        "note": "Daniel, at the end of the exile"
+      },
+      {
+        "label": "Alexander and the Hellenistic kingdoms",
+        "from": -333,
+        "to": -301,
+        "kind": "evento",
+        "note": "the “goat” and its four horns (8:21–22), according to the book's own explanation"
+      },
+      {
+        "label": "Antiochus IV Epiphanes",
+        "from": -175,
+        "to": -164,
+        "kind": "pessoa",
+        "note": "Seleucid king; desecrates the temple in 167 BC"
+      },
+      {
+        "label": "Final form, according to scholarship",
+        "from": -167,
+        "to": -164,
+        "kind": "escrita",
+        "note": "during the persecution of Antiochus IV, before the rededication of the temple"
+      }
+    ]
+  },
+  "context": "The narratives take place in Nebuchadnezzar's Babylon, the empire that destroyed Jerusalem in 587/586 BC, and in the first years of Persian rule, after Cyrus took the city in 539 BC. Babylonian sources show that the last king, Nabonidus, spent years away from the capital and left the government to his son Belshazzar, who appears in chapter 5. The visions use the symbolic language typical of Jewish apocalyptic literature (beasts, horns, numbers and angels) to speak of empires and of their end, and the book had great influence on this genre and, later, on the New Testament.",
+  "places": [
+    "Jerusalem",
+    "Babylon and the province of Babylon",
+    "the plain of Dura",
+    "Susa, by the Ulai Canal",
+    "the Tigris River"
+  ],
+  "themes": [
+    "God's sovereignty over the kingdoms",
+    "faithfulness in exile",
+    "dreams and visions",
+    "wisdom",
+    "the everlasting kingdom",
+    "resurrection"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:44"
+    },
+    {
+      "ref": "7:13–14"
+    },
+    {
+      "ref": "12:2–3"
+    }
+  ],
+  "note": "Dates vary according to the source; the verses quoted are from the Berean Standard Bible (BSB). This edition follows the numbering of English Bibles: 4:1–3 corresponds to 3:31–33 in the Aramaic text, and 5:31 corresponds to 6:1, so that chapter 6 has one verse less there."
+}

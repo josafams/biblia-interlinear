@@ -1,0 +1,254 @@
+{
+  "title_orig": "יְשַׁעְיָהוּ",
+  "title_orig_xlit": "Yeshayahu",
+  "summary": "Isaiah gathers oracles linked to the prophet Isaiah son of Amoz, who was active in Jerusalem in the second half of the 8th century BC, when Assyria dominated the region. Chapters 1 to 39 denounce Judah's social injustice and empty worship, warn the kings against alliances with foreign powers, announce judgment on the neighboring nations and end with accounts of King Hezekiah and Sennacherib's invasion. From chapter 40 on, the setting is the exile in Babylon and the return: God comforts Jerusalem, calls Cyrus, king of Persia, His anointed and presents a “servant” whose suffering brings restoration to others. The final chapters speak of a rebuilt community, open to foreigners, and end with the vision of new heavens and a new earth. Throughout the book, God is often called “the Holy One of Israel.”",
+  "name": "The Hebrew name Yeshayahu means “the LORD saves” or “salvation of the LORD.” Through the Greek form Esaias, used in the Septuagint, and the Latin Isaias, it came into English as Isaiah.",
+  "facts": [
+    [
+      "Position",
+      "1st of the Major Prophets; in the Hebrew Bible, among the Latter Prophets (Nevi’im)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "prophecy (oracles in poetry, with narrative passages)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Judah and Jerusalem before God",
+      "from": 1,
+      "to": 12,
+      "text": "Denunciations and promises about Jerusalem, the vision of the call (ch. 6) and the oracles of the time of King Ahaz, with the signs of Immanuel and of the shoot of Jesse."
+    },
+    {
+      "title": "Oracles about the nations",
+      "from": 13,
+      "to": 23,
+      "text": "Messages about Babylon, Assyria, Philistia, Moab, Damascus, Cush, Egypt, Edom, Arabia, Tyre and Jerusalem itself."
+    },
+    {
+      "title": "Judgment and feast for the whole earth",
+      "from": 24,
+      "to": 27,
+      "text": "Poems of universal scope: the devastated earth, the banquet prepared on the mountain and the defeat of Leviathan."
+    },
+    {
+      "title": "Woes and promises",
+      "from": 28,
+      "to": 35,
+      "text": "Criticism of the leaders of Ephraim and Judah and of seeking help from Egypt, followed by promises of a righteous king and of the desert that blooms."
+    },
+    {
+      "title": "Narratives about Hezekiah",
+      "from": 36,
+      "to": 39,
+      "text": "The Assyrian siege of Jerusalem, the king's illness and healing and the visit of the envoys from Babylon; the passage closely parallels 2 Kings 18–20."
+    },
+    {
+      "title": "Comfort and deliverance",
+      "from": 40,
+      "to": 55,
+      "text": "Announcement of the end of the exile, polemic against idols, the mission of Cyrus and the poems about the servant of the LORD."
+    },
+    {
+      "title": "Zion restored",
+      "from": 56,
+      "to": 66,
+      "text": "Exhortations to a community that has returned to the land, criticism of worship and injustice, the future glory of Jerusalem and the promise of new heavens and a new earth."
+    }
+  ],
+  "extra": {
+    "title": "The servant poems",
+    "text": "In 1892, the German scholar Bernhard Duhm singled out four passages of Isaiah 40–55 that speak of a “servant” of the LORD: 42:1–4, 49:1–6, 50:4–9 and 52:13–53:12. The exact limits vary among authors. The servant's identity has been debated since antiquity: the text itself calls him Israel in 49:3, and many Jewish interpreters understand him as the people or a faithful group within it; others think of the prophet himself or of a historical figure; Christian tradition, already in the New Testament (Acts 8:32–35), reads these poems as referring to Jesus."
+  },
+  "people": [
+    {
+      "name": "Isaiah",
+      "chapters": "1–39",
+      "ch": 6,
+      "note": "son of Amoz; prophet in Jerusalem, adviser to the kings of Judah"
+    },
+    {
+      "name": "Isaiah's sons",
+      "chapters": "7–8",
+      "ch": 8,
+      "note": "Shear-jashub and Maher-shalal-hash-baz, whose names work as signs"
+    },
+    {
+      "name": "Ahaz",
+      "chapters": "7",
+      "ch": 7,
+      "note": "king of Judah who, threatened by Aram and Ephraim, refuses to ask for a sign"
+    },
+    {
+      "name": "Hezekiah",
+      "chapters": "36–39",
+      "ch": 37,
+      "note": "king of Judah during the Assyrian invasion of 701 BC"
+    },
+    {
+      "name": "Sennacherib and the Rabshakeh",
+      "chapters": "36–37",
+      "ch": 36,
+      "note": "the king of Assyria and the high official who speaks before the walls of Jerusalem"
+    },
+    {
+      "name": "Shebna and Eliakim",
+      "chapters": "22; 36–37",
+      "ch": 22,
+      "note": "administrators of the royal palace"
+    },
+    {
+      "name": "Merodach-baladan",
+      "chapters": "39",
+      "ch": 39,
+      "note": "king of Babylon who sends envoys to Hezekiah"
+    },
+    {
+      "name": "Cyrus",
+      "chapters": "44–45",
+      "ch": 45,
+      "note": "Persian king called the LORD's shepherd and anointed"
+    },
+    {
+      "name": "The servant of the LORD",
+      "chapters": "42–53",
+      "ch": 53,
+      "note": "figure of the servant poems; his identity is debated"
+    }
+  ],
+  "writing": {
+    "tradition": "Jewish and Christian tradition attribute the whole book to Isaiah son of Amoz, active from about 740 to 700 BC or a little later. On this reading, chapters 40 to 66 are prophecies about a distant future, and the mention of Cyrus (44:28; 45:1), about a century and a half before him, is understood as prediction. The Talmud (Bava Batra 15a) says that Hezekiah and his companions “wrote” Isaiah, which is usually understood as gathering and editing the oracles. Ben Sira, around 180 BC, already links to Isaiah the comfort of Zion (Sirach 48:24), and the New Testament quotes passages from both halves of the book under the prophet's name. Those who defend its unity also point to vocabulary common to both parts, such as the title “the Holy One of Israel.”",
+    "academic": "Since the end of the 18th century, many scholars have understood that chapters 40 to 66 do not come from the 8th-century prophet. The main argument is the setting: these chapters speak to people already living in exile, treat the destruction of Jerusalem as past and name Cyrus. Hence the hypothesis of an anonymous prophet, conventionally called “Second Isaiah” (Deutero-Isaiah), author of chapters 40–55, around 550–539 BC, and, from Duhm (1892) on, the attribution of chapters 56–66 to one or more authors of the period after the return (“Third Isaiah”), between about 538 and 450 BC. More recent research stresses both the differences and the links between the parts and tends to see the book as the work of a tradition that gathered, expanded and edited Isaiah's message over centuries; passages of chapters 1–39, such as 13–14 and 24–27, are also usually dated after the 8th century. Conservative scholars continue to defend Isaiah's authorship of the whole book."
+  },
+  "events": {
+    "intro": "Chapters 1 to 39 are set in the reigns of Uzziah, Jotham, Ahaz and Hezekiah, when Assyria was expanding toward the Mediterranean; chapters 40 to 66 have as their background the exile in Babylon, the victory of Cyrus and the return to Jerusalem. The timeline shows these two settings and the dates proposed for the writing, according to tradition and according to scholarship. The dates are approximate.",
+    "axis": [
+      -760,
+      -420
+    ],
+    "band": {
+      "label": "Exile in Babylon",
+      "from": -586,
+      "to": -538
+    },
+    "timeline": [
+      {
+        "label": "Isaiah's ministry",
+        "from": -740,
+        "to": -700,
+        "kind": "pessoa",
+        "note": "from the year of Uzziah's death (6:1), c. 740 BC, until after 701 BC"
+      },
+      {
+        "label": "War of Aram and Ephraim against Judah",
+        "from": -734,
+        "to": -732,
+        "kind": "evento",
+        "note": "Ahaz asks Assyria for help (chs. 7–8)"
+      },
+      {
+        "label": "Fall of Samaria",
+        "from": -722,
+        "to": -720,
+        "kind": "evento",
+        "note": "end of the kingdom of Israel, c. 722/721 BC"
+      },
+      {
+        "label": "Assyria takes Ashdod",
+        "from": -711,
+        "to": -711,
+        "kind": "evento",
+        "note": "campaign of Sargon II (ch. 20)"
+      },
+      {
+        "label": "Sennacherib's campaign",
+        "from": -701,
+        "to": -701,
+        "kind": "evento",
+        "note": "cities of Judah taken and Jerusalem besieged (chs. 36–37)"
+      },
+      {
+        "label": "Destruction of Jerusalem",
+        "from": -587,
+        "to": -586,
+        "kind": "evento",
+        "note": "by Nebuchadnezzar's Babylonians"
+      },
+      {
+        "label": "Cyrus takes Babylon",
+        "from": -539,
+        "to": -539,
+        "kind": "evento",
+        "note": "soon after, the exiles can return (chs. 44–45)"
+      },
+      {
+        "label": "Rebuilding of the temple",
+        "from": -520,
+        "to": -515,
+        "kind": "evento",
+        "note": "in the reign of the Persian Darius I"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -740,
+        "to": -686,
+        "kind": "escrita",
+        "note": "Isaiah, with the oracles gathered in Hezekiah's time"
+      },
+      {
+        "label": "Chs. 40–55, according to many scholars",
+        "from": -550,
+        "to": -539,
+        "kind": "escrita",
+        "note": "end of the exile in Babylon"
+      },
+      {
+        "label": "Chs. 56–66, according to many scholars",
+        "from": -538,
+        "to": -450,
+        "kind": "escrita",
+        "note": "Persian period; dates debated"
+      }
+    ]
+  },
+  "context": "The book spans three empires. In the 8th century BC, the Assyria of Tiglath-pileser III, Sargon II and Sennacherib subjugated the kingdoms of Syria and Palestine: Damascus fell in 732, Samaria around 722, and in 701 Judah was devastated and Jerusalem besieged. Sennacherib's annals say he shut Hezekiah up in Jerusalem “like a bird in a cage,” but do not claim to have taken the city, and the reliefs of his palace in Nineveh show the conquest of Lachish. In the 6th century BC, Nebuchadnezzar's Babylon destroyed Jerusalem and deported part of the population; chapters 40 to 55 speak to these exiles, mock the Babylonian gods Bel and Nebo and announce the coming of Cyrus of Persia, who took Babylon in 539 BC and allowed the deported peoples to return, a policy recalled in the so-called Cyrus Cylinder. The last chapters reflect the life of the community under Persian rule, between rebuilding and disappointments. The Great Isaiah Scroll, found at Qumran (1QIsaᵃ) and copied around 150–100 BC, contains all 66 chapters and is one of the oldest complete biblical manuscripts known.",
+  "places": [
+    "Jerusalem (Zion)",
+    "Judah and Ephraim (northern Israel)",
+    "Damascus and Aram",
+    "Assyria: Nineveh",
+    "Babylon",
+    "Egypt and Cush",
+    "Moab, Edom, Tyre and Sidon"
+  ],
+  "themes": [
+    "God's holiness",
+    "social justice",
+    "trust in God in the face of empires",
+    "the remnant",
+    "comfort and return from exile",
+    "the servant of the LORD",
+    "the one God and the critique of idols",
+    "salvation for the nations"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:4"
+    },
+    {
+      "ref": "6:3"
+    },
+    {
+      "ref": "40:31"
+    },
+    {
+      "ref": "53:5"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. At two points the numbering of English Bibles differs from the Hebrew: 9:1 corresponds to 8:23 in the Hebrew text, and 64:1 to the second half of 63:19, so that the following verses of those chapters are shifted by one. The verses quoted are from the Berean Standard Bible (BSB)."
+}

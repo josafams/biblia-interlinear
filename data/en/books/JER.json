@@ -1,0 +1,246 @@
+{
+  "title_orig": "יִרְמְיָהוּ",
+  "title_orig_xlit": "Yirmeyahu",
+  "summary": "Jeremiah gathers the messages and the story of a prophet who was active in Jerusalem during the last four decades of the kingdom of Judah, from about 627 BC until after the destruction of the city by the Babylonians, in 587/586 BC. He denounces idolatry and injustice, attacks blind trust in the temple and insists that Judah must submit to Babylon, which makes him seen as a traitor, imprisoned and threatened with death. The book also preserves prayers in which the prophet complains to God about the weight of his mission, the accounts of his imprisonments and of the fall of Jerusalem, and the forced flight of a group of Jews, with Jeremiah, to Egypt. Amid the announcements of judgment, there are promises of return from exile and of a new covenant written on the heart (chs. 30–33). The book ends with oracles against the nations and a historical appendix on the fall of Jerusalem.",
+  "name": "The Hebrew name Yirmeyahu is generally explained as “the LORD exalts” or “the LORD establishes”; the exact meaning is debated. Through the Greek form Ieremias and the Latin Ieremias (or Hieremias), it came into English as Jeremiah.",
+  "facts": [
+    [
+      "Position",
+      "2nd of the Major Prophets; in the Hebrew Bible, among the Latter Prophets (Nevi’im)"
+    ],
+    [
+      "Original language",
+      "Hebrew; 10:11 in Aramaic"
+    ],
+    [
+      "Genre",
+      "prophecy (oracles in poetry, prose sermons and biographical narratives)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Call and warnings to Judah",
+      "from": 1,
+      "to": 25,
+      "text": "The prophet's call, denunciations of idolatry and injustice, the temple sermon, symbolic acts, Jeremiah's personal complaints and the announcement of the seventy years of Babylonian rule."
+    },
+    {
+      "title": "Conflicts with priests, prophets and kings",
+      "from": 26,
+      "to": 29,
+      "text": "Jeremiah is put on trial, confronts the prophet Hananiah over the yoke of Babylon and writes to the exiles."
+    },
+    {
+      "title": "Promises of restoration",
+      "from": 30,
+      "to": 33,
+      "text": "Poems of comfort, the new covenant and the purchase of a field at Anathoth as a sign that life will return to the land."
+    },
+    {
+      "title": "Jerusalem's last years",
+      "from": 34,
+      "to": 45,
+      "text": "The scroll burned by the king, the prophet's imprisonments, the fall of the city, the murder of the governor Gedaliah and the flight to Egypt."
+    },
+    {
+      "title": "Oracles against the nations",
+      "from": 46,
+      "to": 51,
+      "text": "Egypt, Philistia, Moab, Ammon, Edom, Damascus, Kedar, Elam and, last and at greatest length, Babylon."
+    },
+    {
+      "title": "Historical appendix",
+      "from": 52,
+      "to": 52,
+      "text": "The fall of Jerusalem and the release of King Jehoiachin in Babylon, in a text close to 2 Kings 24–25."
+    }
+  ],
+  "extra": {
+    "title": "A verse in Aramaic",
+    "text": "In the middle of a Hebrew poem against idols, Jeremiah 10:11 is in Aramaic, the international language of the time, used in the diplomacy and trade of the Near East. It is the only such verse in the book; outside it, the Hebrew Bible has Aramaic passages only in Ezra (4:8–6:18; 7:12–26), in Daniel (from 2:4 to 7:28) and two words in Genesis 31:47. The sentence seems designed to be spoken to the nations in their own language, and the text itself plays on two Aramaic terms for “earth.” Some scholars consider it an early addition to the poem and others see it as an original part of it."
+  },
+  "people": [
+    {
+      "name": "Jeremiah",
+      "chapters": "1–45",
+      "ch": 1,
+      "note": "from a priestly family of Anathoth; prophet of Judah until after the fall of Jerusalem"
+    },
+    {
+      "name": "Baruch",
+      "chapters": "32; 36; 43; 45",
+      "ch": 36,
+      "note": "son of Neriah, the scribe who writes down the words dictated by Jeremiah"
+    },
+    {
+      "name": "Josiah",
+      "chapters": "1; 3; 22",
+      "ch": 1,
+      "note": "king of Judah at the beginning of the prophet's ministry"
+    },
+    {
+      "name": "Jehoiakim",
+      "chapters": "22; 26; 36",
+      "ch": 36,
+      "note": "king who burns the scroll of the prophecies"
+    },
+    {
+      "name": "Zedekiah",
+      "chapters": "21; 27; 32–39",
+      "ch": 38,
+      "note": "last king of Judah; consults Jeremiah in secret"
+    },
+    {
+      "name": "Hananiah",
+      "chapters": "28",
+      "ch": 28,
+      "note": "prophet who announces a quick end to Babylonian rule"
+    },
+    {
+      "name": "Ebed-melech",
+      "chapters": "38–39",
+      "ch": 38,
+      "note": "Cushite official who pulls Jeremiah out of the cistern"
+    },
+    {
+      "name": "Nebuchadnezzar",
+      "chapters": "21–52",
+      "ch": 39,
+      "note": "king of Babylon who takes Jerusalem"
+    },
+    {
+      "name": "Gedaliah",
+      "chapters": "39–41",
+      "ch": 40,
+      "note": "governor of Judah appointed by the Babylonians, murdered by Ishmael"
+    }
+  ],
+  "writing": {
+    "tradition": "Tradition attributes the book to Jeremiah himself, with the help of Baruch. Chapter 36 tells that the prophet dictated his messages to the scribe in the fourth year of Jehoiakim (c. 605 BC) and that, after the king burned the scroll, he dictated another, expanded one. The Talmud (Bava Batra 15a) says Jeremiah wrote his book, as well as Kings and Lamentations. On this reading, the book was composed between c. 627 and c. 580 BC, with chapter 52 added after 562 BC, the date of Jehoiachin's release.",
+    "academic": "Scholars agree that the book contains much material linked to the prophet, especially in the poems, but describe its formation as long. They distinguish the poetic oracles, the accounts about Jeremiah, often attributed to Baruch's circle, and prose sermons in a style similar to Deuteronomy and Kings, which many attribute to editors of the exilic period. An important fact is that the book circulated in two forms: the Greek text of the Septuagint is about one-seventh shorter and places the oracles against the nations right after 25:13, in a different order; fragments found at Qumran confirm that both forms existed in Hebrew. Many understand that the Greek form reflects an older edition and that the traditional Hebrew text, followed by English Bibles, received additions down to the Persian period."
+  },
+  "events": {
+    "intro": "Jeremiah dates many of his messages by the years of the kings of Judah, which makes it possible to follow his ministry through the transition from Assyrian to Babylonian rule, until after the destruction of Jerusalem. The dates of the timeline are approximate; when the Hebrew year does not coincide with ours, they appear as ranges.",
+    "axis": [
+      -650,
+      -400
+    ],
+    "band": {
+      "label": "Babylonian Empire",
+      "from": -626,
+      "to": -539
+    },
+    "timeline": [
+      {
+        "label": "Jeremiah's ministry",
+        "from": -627,
+        "to": -582,
+        "kind": "pessoa",
+        "note": "from Josiah's 13th year (1:2) to the stay in Egypt; the end of his life is not known"
+      },
+      {
+        "label": "Josiah's reform",
+        "from": -622,
+        "to": -622,
+        "kind": "evento",
+        "note": "the Book of the Law found in the temple (2 Kings 22–23)"
+      },
+      {
+        "label": "Fall of Nineveh",
+        "from": -612,
+        "to": -612,
+        "kind": "evento",
+        "note": "Babylonians and Medes defeat Assyria"
+      },
+      {
+        "label": "Death of Josiah at Megiddo",
+        "from": -609,
+        "to": -609,
+        "kind": "evento",
+        "note": "Judah comes to depend on Egypt"
+      },
+      {
+        "label": "Battle of Carchemish",
+        "from": -605,
+        "to": -605,
+        "kind": "evento",
+        "note": "Nebuchadnezzar defeats Pharaoh Neco (46:2)"
+      },
+      {
+        "label": "The scroll dictated to Baruch",
+        "from": -605,
+        "to": -604,
+        "kind": "escrita",
+        "note": "read in the temple and burned by the king (ch. 36)"
+      },
+      {
+        "label": "First deportation",
+        "from": -597,
+        "to": -597,
+        "kind": "evento",
+        "note": "King Jehoiachin and part of the elite taken to Babylon"
+      },
+      {
+        "label": "Siege and destruction of Jerusalem",
+        "from": -588,
+        "to": -586,
+        "kind": "evento",
+        "note": "the city falls in 587 or 586 BC (ch. 39; 52)"
+      },
+      {
+        "label": "Murder of Gedaliah and flight to Egypt",
+        "from": -586,
+        "to": -582,
+        "kind": "evento",
+        "note": "the exact year is debated (chs. 41–43)"
+      },
+      {
+        "label": "Jehoiachin released in Babylon",
+        "from": -562,
+        "to": -562,
+        "kind": "evento",
+        "note": "in the first year of Evil-merodach (52:31)"
+      },
+      {
+        "label": "Final form, according to scholarship",
+        "from": -560,
+        "to": -400,
+        "kind": "escrita",
+        "note": "editions in the exile and the Persian period"
+      }
+    ]
+  },
+  "context": "Jeremiah lived through the passage from one empire to another. In Josiah's years, Assyria was collapsing; Nineveh fell in 612 BC, and Egypt tried to fill the gap, until it was defeated by the Babylonians at Carchemish, in 605 BC. From then on, Judah was caught between submission to Babylon and the hope of Egyptian help, and the kings wavered between the two sides. The Babylonian Chronicle records the capture of Jerusalem in 597 BC, and administrative tablets from Babylon mention food rations for Jehoiachin, “king of Judah.” From the Lachish letters, written on ostraca shortly before the final fall, comes a picture of the military tension of those months. After the destruction of 587/586 BC, part of the population remained in the land under the government of Gedaliah, at Mizpah, and another part went to Egypt, where the book places the prophet's last words. The horizon of Persia appears indirectly, in the announcement that Babylonian rule would come to an end.",
+  "places": [
+    "Jerusalem and the temple",
+    "Anathoth, the prophet's hometown",
+    "Mizpah",
+    "Egypt: Tahpanhes, Migdol, Memphis",
+    "Babylon",
+    "Carchemish, by the Euphrates"
+  ],
+  "themes": [
+    "covenant and unfaithfulness",
+    "false security in the temple",
+    "true and false prophets",
+    "the prophet's suffering",
+    "submission to Babylon",
+    "the new covenant",
+    "hope beyond the exile"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:5"
+    },
+    {
+      "ref": "10:11"
+    },
+    {
+      "ref": "20:9"
+    },
+    {
+      "ref": "29:7"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source; the fall of Jerusalem is dated to 587 or 586 BC, depending on how the years of the kings are counted. English Bibles follow the traditional Hebrew text, longer than that of the Septuagint. In 9:1 the English numbering corresponds to 8:23 in the Hebrew text, and the following verses of chapter 9 are shifted by one. The verses quoted are from the Berean Standard Bible (BSB)."
+}

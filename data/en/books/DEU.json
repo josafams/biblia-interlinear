@@ -1,0 +1,198 @@
+{
+  "title_orig": "דְּבָרִים",
+  "title_orig_xlit": "Devarim",
+  "summary": "Deuteronomy presents itself as the words of Moses to Israel on the plains of Moab, in the last year of the wandering, shortly before the people cross the Jordan. Moses recalls the journey from Horeb, repeats the Ten Commandments and urges the people to love and serve the LORD alone. At the center is a long code of laws on worship, justice, family, economy and war, with emphasis on the demand for a single place of worship. The book ends with blessings and curses, the renewal of the covenant, the choice of Joshua as successor, the song and blessing of Moses and the account of his death on Mount Nebo.",
+  "name": "The name “Deuteronomy” comes from Greek and means “second law.” It arose from the way the Septuagint translated the expression in 17:18, which in Hebrew speaks of a “copy of this law” the king was to make for himself. In Hebrew the book is called Devarim, “Words,” from its opening: “These are the words…”.",
+  "facts": [
+    [
+      "Position",
+      "5th book of the Torah (Pentateuch)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "speeches, laws and poems, within a narrative frame"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "First speech: memory of the journey",
+      "from": 1,
+      "to": 4,
+      "text": "From Horeb to the plains of Moab, with an appeal to faithfulness (1:1–4:43)."
+    },
+    {
+      "title": "Second speech: exhortation",
+      "from": 4,
+      "to": 11,
+      "text": "The Ten Commandments, the “Hear, O Israel” and the memory of the wilderness and of the golden calf (4:44–11:32)."
+    },
+    {
+      "title": "Second speech: the law code",
+      "from": 12,
+      "to": 26,
+      "text": "Place of worship, feasts, authorities, war, family, social justice and the firstfruits."
+    },
+    {
+      "title": "Blessings and curses",
+      "from": 27,
+      "to": 28,
+      "text": "The ceremony on Mounts Ebal and Gerizim and the consequences of obedience and disobedience."
+    },
+    {
+      "title": "Third speech: the covenant in Moab",
+      "from": 29,
+      "to": 30,
+      "text": "The renewal of the covenant and the choice between life and death."
+    },
+    {
+      "title": "The last days of Moses",
+      "from": 31,
+      "to": 34,
+      "text": "Joshua as successor, the law written and read, the song, the blessing of the tribes and the death of Moses."
+    }
+  ],
+  "extra": {
+    "title": "Speeches of Moses and ancient treaties",
+    "text": "The book is built as a series of first-person speeches, introduced by titles that work as headings: “These are the words…” (1:1), “This is the law…” (4:44), “These are the terms of the covenant…” (29:1) and “This is the blessing…” (33:1). A narrator speaks of Moses in the third person only in these frames and in the final chapters. Since the mid-20th century, scholars have observed that the sequence of the book recalls the form of the vassal treaties of the ancient Near East, in which a sovereign set the obligations of a subject king: introduction of the parties, historical review of the relationship (chs. 1–11), general and specific stipulations (chs. 12–26), instructions for keeping the document and reading it in public (31:9–13, 24–26), witnesses (heaven and earth, 30:19; 32:1) and blessings and curses (ch. 28). There are two main comparisons. One points to the Hittite treaties of the 14th and 13th centuries BC, which have a historical prologue and blessings alongside curses, and is used by some to argue for the book's antiquity. The other points to the succession treaties of Esarhaddon, king of Assyria (672 BC), whose clauses require the vassal to “love” the heir with all his heart, to denounce anyone who incites revolt and to fear curses very close to those of Deuteronomy 28 (such as the sky of bronze and the earth of iron, 28:23); a copy of these treaties was found in 2009 at Tell Tayinat, in present-day Turkey. For many, this indicates that the book adapted the Assyrian model, putting the LORD in the place of the emperor. Others think the treaty form was known in several periods and that the parallel is not enough to date the text."
+  },
+  "people": [
+    {
+      "name": "Moses",
+      "chapters": "1–34",
+      "ch": 1,
+      "note": "speaks to the people on the plains of Moab and dies on Mount Nebo, at 120 years of age"
+    },
+    {
+      "name": "Joshua",
+      "chapters": "1; 3; 31; 34",
+      "ch": 31,
+      "note": "son of Nun; receives the mission of leading Israel into the land"
+    },
+    {
+      "name": "Caleb",
+      "chapters": "1",
+      "ch": 1,
+      "note": "the only one of the Exodus generation, besides Joshua, who is promised entry into the land (1:36)"
+    },
+    {
+      "name": "Aaron",
+      "chapters": "9–10; 32",
+      "ch": 9,
+      "note": "remembered in the episode of the golden calf and in the news of his death"
+    },
+    {
+      "name": "Sihon and Og",
+      "chapters": "1–4; 29; 31",
+      "ch": 2,
+      "note": "Amorite kings of Heshbon and Bashan, defeated before the crossing of the Jordan"
+    }
+  ],
+  "writing": {
+    "tradition": "Jewish and Christian traditions attribute Deuteronomy to Moses, and the book itself says he wrote “this law” and gave it to the priests (31:9, 24). The account of his death (ch. 34) is usually attributed, in this tradition, to Joshua or to a continuator; the Talmud (Bava Batra 15a) records different opinions about the last eight verses. On this reading, the book would have been written around 1406 BC, at the end of the wandering, or in the 13th century BC for those who adopt the late date of the Exodus.",
+    "academic": "Since the 19th century, most scholars have associated the core of the book, especially the code of chapters 12 to 26, with the “Book of the Law” found in the temple in Jerusalem in the reign of Josiah (2 Kings 22–23), around 622 BC, whose reform also centralized worship in Jerusalem. Many think this core may have older roots, perhaps in traditions of the Northern Kingdom, and that the book was expanded during and after the exile, when it received the opening and closing speeches and came to serve as the introduction to the so-called Deuteronomistic History (Joshua to Kings). The final form is usually placed between c. 620 and 450 BC. Other researchers, relying above all on the comparison with the Hittite treaties, argue for a much older origin."
+  },
+  "events": {
+    "intro": "According to the book, Moses' speeches take place on the first day of the eleventh month of the fortieth year after the departure from Egypt (1:3), a few weeks before the crossing of the Jordan; by the traditional chronology, c. 1406 BC, or at the end of the 13th century BC for those who adopt the late date of the Exodus. The timeline also shows the periods of the ancient Near Eastern treaties with which the book is compared and the proposals for its writing.",
+    "axis": [
+      -1550,
+      -350
+    ],
+    "band": {
+      "label": "Neo-Assyrian Empire",
+      "from": -911,
+      "to": -609
+    },
+    "timeline": [
+      {
+        "label": "Moses",
+        "from": -1526,
+        "to": -1406,
+        "kind": "pessoa",
+        "note": "120 years old at his death (34:7), in the traditional chronology"
+      },
+      {
+        "label": "Speeches in Moab, early date",
+        "from": -1406,
+        "to": -1406,
+        "kind": "evento",
+        "note": "fortieth year, eleventh month (1:3)"
+      },
+      {
+        "label": "Hittite vassal treaties",
+        "from": -1400,
+        "to": -1200,
+        "kind": "escrita",
+        "note": "approximate period of the treaties with historical prologue, blessings and curses"
+      },
+      {
+        "label": "Speeches in Moab, late date",
+        "from": -1240,
+        "to": -1220,
+        "kind": "evento",
+        "note": "approximate range, for those who place the Exodus in the 13th century BC"
+      },
+      {
+        "label": "Succession treaties of Esarhaddon",
+        "from": -672,
+        "to": -672,
+        "kind": "escrita",
+        "note": "oath imposed on the vassals of Assyria; copy found at Tell Tayinat"
+      },
+      {
+        "label": "Josiah's reform",
+        "from": -622,
+        "to": -609,
+        "kind": "evento",
+        "note": "the “Book of the Law” found in the temple (2 Kings 22:8)"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -1406,
+        "to": -1406,
+        "kind": "escrita",
+        "note": "Moses, at the end of the wandering (in the 13th century BC, on the late date)"
+      },
+      {
+        "label": "Composition, according to scholarship",
+        "from": -650,
+        "to": -450,
+        "kind": "escrita",
+        "note": "core linked to the time of Josiah; expansions in the exile and afterward"
+      }
+    ]
+  },
+  "context": "The whole book takes place in a single place, the plains of Moab, east of the Jordan, facing the land Israel has not yet occupied. The speeches look back, to Egypt, Horeb and the forty years in the wilderness, and forward, to life in Canaan, with cities, kings, judges, harvests and a central sanctuary at “the place the LORD your God will choose.” This place is not named in the book; later tradition and most scholars identify it with Jerusalem, while some recall that Mounts Ebal and Gerizim, near Shechem, also have a prominent role (11:29; 27:4–13). The language of covenant, loyalty and curse brings the book close to the political documents of the empires of the ancient Near East.",
+  "places": [
+    "the plains of Moab, beyond the Jordan",
+    "Horeb",
+    "Kadesh-barnea",
+    "Heshbon and Bashan",
+    "Mounts Ebal and Gerizim",
+    "Mount Nebo, at the top of Pisgah",
+    "the place the LORD will choose"
+  ],
+  "themes": [
+    "covenant",
+    "love and loyalty to one God",
+    "memory and teaching across generations",
+    "one place of worship",
+    "justice and care for the fatherless, the widow and the foreigner",
+    "blessing and curse"
+  ],
+  "key_verses": [
+    {
+      "ref": "6:4"
+    },
+    {
+      "ref": "8:3"
+    },
+    {
+      "ref": "30:19"
+    }
+  ],
+  "note": "Dates are approximate and depend on the position taken on the Exodus and on the composition of the book. The numbering follows that of English Bibles; in the Hebrew text, 12:32 appears as 13:1, 22:30 as 23:1 and 29:1 as 28:69, with the rest of those chapters shifted by one verse. The verses quoted are from the Berean Standard Bible (BSB)."
+}

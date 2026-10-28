@@ -1,0 +1,244 @@
+{
+  "title_orig": "שֹׁפְטִים",
+  "title_orig_xlit": "Shofetim",
+  "summary": "Judges narrates the life of the tribes of Israel in Canaan between the death of Joshua and the rise of the monarchy. The book begins by showing that the conquest remained incomplete and presents a cycle that repeats itself: the people turn to other gods, fall into the hands of an oppressor, cry out to the LORD and receive a deliverer, until it all begins again. Into this pattern come the stories of Othniel, Ehud, Deborah and Barak, Gideon, Jephthah and Samson, besides judges mentioned in a few lines. With each turn the situation worsens, and the final chapters, marked by the phrase “there was no king in Israel,” tell episodes of idolatry, violence and a war among the tribes themselves.",
+  "name": "The Hebrew title, Shofetim, comes from the leaders the book calls judges (2:16–19). The verb shafat covers judging, but also governing and doing justice on someone's behalf; for this reason, most of these judges appear as military chiefs and deliverers raised up in times of crisis, and only Deborah is shown deciding cases (4:4–5). The English name comes from the Latin of the Vulgate, Liber Iudicum, which follows the Greek Kritai of the Septuagint.",
+  "facts": [
+    [
+      "Position",
+      "7th book of the Bible, among the historical books; in the Hebrew Bible, the second of the Former Prophets (Nevi’im Rishonim)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "historical narrative, with hero stories and an ancient poem (ch. 5)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "An unfinished conquest",
+      "from": 1,
+      "to": 3,
+      "text": "The tribes advance, but many Canaanites remain (1:1–2:5); after Joshua's death, a new generation turns away from the LORD, and the text presents the cycle that will repeat (2:6–3:6)."
+    },
+    {
+      "title": "The first deliverers",
+      "from": 3,
+      "to": 5,
+      "text": "Othniel, Ehud and Shamgar; Deborah and Barak defeat Sisera's army, and a song celebrates the victory."
+    },
+    {
+      "title": "Gideon and Abimelech",
+      "from": 6,
+      "to": 9,
+      "text": "Gideon defeats the Midianites with three hundred men and refuses the crown; his son Abimelech makes himself king in Shechem and ends up destroyed together with the city."
+    },
+    {
+      "title": "Jephthah and other judges",
+      "from": 10,
+      "to": 12,
+      "text": "Tola and Jair, the oppression of the Ammonites, Jephthah's victory and vow, the conflict with Ephraim and the judges Ibzan, Elon and Abdon."
+    },
+    {
+      "title": "Samson",
+      "from": 13,
+      "to": 16,
+      "text": "The Nazirite from the tribe of Dan faces the Philistines alone until he is betrayed by Delilah and dies bringing down the temple of Dagon, in Gaza."
+    },
+    {
+      "title": "When there was no king",
+      "from": 17,
+      "to": 21,
+      "text": "Two final episodes: Micah's shrine and the migration of the tribe of Dan; the crime at Gibeah and the war that almost wipes out the tribe of Benjamin."
+    }
+  ],
+  "extra": {
+    "title": "The cycle and the refrain",
+    "text": "The book's frame (2:11–19) describes a circular movement: Israel forsakes the LORD, is handed over to an oppressor, cries out, and God raises up a deliverer; when the deliverer dies, everything begins again, each time worse. The episodes almost always open with the remark that the Israelites did evil in the sight of the LORD (3:7; 3:12; 4:1; 6:1; 10:6; 13:1). In the final chapters the cycle gives way to a refrain: “there was no king in Israel” (17:6; 18:1; 19:1; 21:25), completed twice with the remark that everyone did as they saw fit. The major judges come from different tribes, and the episodes are told with humor and irony, as in the assassination of Eglon (ch. 3) or in the password “Shibboleth,” which the Ephraimites could not pronounce (12:6)."
+  },
+  "people": [
+    {
+      "name": "Othniel",
+      "chapters": "1; 3",
+      "ch": 3,
+      "note": "from Caleb's family; the first deliverer, against Cushan-rishathaim"
+    },
+    {
+      "name": "Ehud",
+      "chapters": "3",
+      "ch": 3,
+      "note": "left-handed Benjamite who kills Eglon, king of Moab"
+    },
+    {
+      "name": "Deborah",
+      "chapters": "4–5",
+      "ch": 4,
+      "note": "prophetess who judges Israel under a palm tree; summons Barak and sings of the victory"
+    },
+    {
+      "name": "Barak",
+      "chapters": "4–5",
+      "ch": 4,
+      "note": "from Kedesh in Naphtali; commands the battle against Sisera's army"
+    },
+    {
+      "name": "Sisera and Jael",
+      "chapters": "4–5",
+      "ch": 4,
+      "note": "the commander of Jabin's army and the wife of Heber the Kenite, who kills him in her tent"
+    },
+    {
+      "name": "Gideon (Jerubbaal)",
+      "chapters": "6–8",
+      "ch": 6,
+      "note": "of Manasseh; defeats the Midianites and refuses to be king (8:23)"
+    },
+    {
+      "name": "Abimelech",
+      "chapters": "9",
+      "ch": 9,
+      "note": "son of Gideon; kills his brothers and reigns three years in Shechem"
+    },
+    {
+      "name": "Jotham",
+      "chapters": "9",
+      "ch": 9,
+      "note": "Gideon's youngest son, the only one to escape; tells the fable of the trees that seek a king"
+    },
+    {
+      "name": "Jephthah",
+      "chapters": "11–12",
+      "ch": 11,
+      "note": "Gileadite driven out by his brothers; defeats the Ammonites and fulfills a vow that strikes his own daughter"
+    },
+    {
+      "name": "Samson",
+      "chapters": "13–16",
+      "ch": 13,
+      "note": "Nazirite from the tribe of Dan, of extraordinary strength, who fights the Philistines alone"
+    },
+    {
+      "name": "Delilah",
+      "chapters": "16",
+      "ch": 16,
+      "note": "woman from the Valley of Sorek who discovers Samson's secret and hands him over to the Philistines"
+    },
+    {
+      "name": "Micah",
+      "chapters": "17–18",
+      "ch": 17,
+      "note": "Ephraimite who sets up a shrine with images and hires a Levite as priest"
+    },
+    {
+      "name": "The Levite and his concubine",
+      "chapters": "19–20",
+      "ch": 19,
+      "note": "the violence she suffers at Gibeah sets off the war against Benjamin"
+    }
+  ],
+  "writing": {
+    "tradition": "The Babylonian Talmud (Bava Batra 14b) attributes to Samuel the writing of Judges, of Ruth and of the book that bears his name. For this reading, the phrase “there was no king in Israel” (17:6; 21:25) shows that the author already lived under the monarchy, and the note that the Jebusites remained in Jerusalem “to this day” (1:21) would indicate a date before David's conquest of the city. The book would then have been written in the time of Saul or at the beginning of David's reign, around 1050–1000 BC.",
+    "academic": "Most researchers see in Judges a collection of stories of tribal heroes, largely of northern Israelite origin, passed on orally and later gathered and framed by the pattern of unfaithfulness, oppression, outcry and deliverance (2:11–19). This frame is usually attributed to the Deuteronomistic History, composed between the end of the 7th century and the exile, c. 620–550 BC; some propose that before it there was a collection of deliverer stories in the Northern Kingdom. The Song of Deborah (ch. 5) is considered by many one of the oldest poems in the Bible. Chapters 17 to 21, which argue for the monarchy and portray Gibeah, Saul's city, badly, are often seen as additions, and the mention of the “captivity of the land” (18:30) is generally linked to the Assyrian deportations of the 8th century BC."
+  },
+  "events": {
+    "intro": "Judges covers the period between the death of Joshua and the beginning of the monarchy. The years of oppression, rest and rule given in the book add up to about 390, more than fits in the 480 years of 1 Kings 6:1 together with the wilderness, the time of Samuel and the reigns of Saul and David; for this reason, traditional chronologies assume that some judges acted at the same time, in different regions, and place the period around 1380–1050 BC. Jephthah, for his part, speaks of three hundred years of Israelite presence east of the Jordan (11:26). Scholarship usually places the setting of the book in Iron Age I (c. 1200–1000 BC), a time of small hill-country villages and of the settlement of the Philistines on the coast.",
+    "axis": [
+      -1450,
+      -500
+    ],
+    "band": {
+      "label": "Iron Age I",
+      "from": -1200,
+      "to": -1000
+    },
+    "timeline": [
+      {
+        "label": "Period of the judges, traditional chronology",
+        "from": -1380,
+        "to": -1050,
+        "kind": "evento",
+        "note": "from the death of Joshua to the beginning of Saul's reign, with judges partly contemporary"
+      },
+      {
+        "label": "Period of the judges, according to scholarship",
+        "from": -1200,
+        "to": -1025,
+        "kind": "evento",
+        "note": "tribal villages in the hill country, before the monarchy"
+      },
+      {
+        "label": "Ramesses III confronts the Sea Peoples",
+        "from": -1180,
+        "to": -1175,
+        "kind": "evento",
+        "note": "after the clash, the Philistines settle on the southern coast of Canaan"
+      },
+      {
+        "label": "Song of Deborah",
+        "from": -1150,
+        "to": -1000,
+        "kind": "escrita",
+        "note": "date proposed by many scholars for the poem of ch. 5"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -1050,
+        "to": -1000,
+        "kind": "escrita",
+        "note": "Samuel, at the beginning of the monarchy"
+      },
+      {
+        "label": "Deportations from the Northern Kingdom",
+        "from": -732,
+        "to": -722,
+        "kind": "evento",
+        "note": "Assyria carries off part of Israel's population; perhaps the “captivity of the land” of 18:30"
+      },
+      {
+        "label": "Composition, according to scholarship",
+        "from": -620,
+        "to": -550,
+        "kind": "escrita",
+        "note": "Deuteronomistic frame, over older traditions"
+      }
+    ]
+  },
+  "context": "In the period portrayed, the tribes of Israel had no central government or standing army: each lived in its own territory, and alliances formed in the face of common threats, not always without friction, as Ephraim's complaints show (8:1; 12:1). The neighbors change from one episode to another: kings of Moab and Ammon east of the Jordan, Midianite nomads who arrive with camels at harvest time (6:3–5), Canaanite cities in the valleys, with iron chariots (4:3), and, in the southwest, the Philistines, one of the Sea Peoples who settled on the coast at the beginning of the 12th century BC. The geography runs from the Valley of Jezreel and Mount Tabor, in the north, to the hill country of Ephraim, to Gilead, east of the Jordan, and to the strip between Zorah and Gaza, where Samson's story takes place. The sanctuary at Shiloh appears as the religious center of the tribes (18:31; 21:19).",
+  "places": [
+    "Bochim",
+    "Mount Tabor and the Kishon River",
+    "Ophrah and the Valley of Jezreel",
+    "Shechem",
+    "Mizpah of Gilead",
+    "Zorah, Timnah and Gaza",
+    "Laish, later called Dan",
+    "Gibeah of Benjamin",
+    "Shiloh"
+  ],
+  "themes": [
+    "unfaithfulness and repentance",
+    "deliverers raised up by God",
+    "the Spirit of the LORD",
+    "leadership and monarchy",
+    "moral and religious decline",
+    "unity and conflict among the tribes"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:10"
+    },
+    {
+      "ref": "2:16"
+    },
+    {
+      "ref": "8:23"
+    },
+    {
+      "ref": "21:25"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. In 18:30, the traditional Hebrew text writes the name of the priest Jonathan's grandfather with a suspended letter, which turns Moses into Manasseh; many scholars understand that the original form was Moses. The verses quoted are from the Berean Standard Bible (BSB)."
+}

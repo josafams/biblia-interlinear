@@ -1,0 +1,230 @@
+{
+  "title_orig": "יְחֶזְקֵאל",
+  "title_orig_xlit": "Yechezqel",
+  "summary": "Ezekiel is the book of a priest taken to Babylon in the deportation of 597 BC, who received his prophetic call among the exiles, by the Chebar River. Until the fall of Jerusalem, in 587/586 BC, his message is mainly one of judgment: in visions, symbolic acts and allegories, he shows that the city and the temple will be destroyed because of idolatry and violence, and that the glory of God leaves the sanctuary. Then come oracles against neighboring nations, especially Tyre and Egypt. After the news of the fall arrives, the tone changes to hope: God promises to be the shepherd of the people Himself, to give a new heart, to bring the dry bones to life and to gather Israel and Judah. The book ends with a long vision of a renewed temple, of a river that flows from it and gives life, and of a new division of the land.",
+  "name": "The Hebrew name Yechezqel means “God strengthens” or “God makes strong.” Through the Greek form Iezekiel, of the Septuagint, and the Latin Ezechiel, it came into English as Ezekiel.",
+  "facts": [
+    [
+      "Position",
+      "3rd of the Major Prophets; in the Hebrew Bible, among the Latter Prophets (Nevi’im)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "prophecy (visions, symbolic acts, allegories and oracles, largely in prose)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "The prophet's call",
+      "from": 1,
+      "to": 3,
+      "text": "The vision of God's glory above a chariot of living creatures and wheels, the scroll the prophet eats and the mission of watchman."
+    },
+    {
+      "title": "Judgment on Jerusalem",
+      "from": 4,
+      "to": 24,
+      "text": "Acts that enact the siege, the vision of the abominations in the temple and of the glory that departs, allegories of Israel's history and the announcement of the start of the siege."
+    },
+    {
+      "title": "Oracles against the nations",
+      "from": 25,
+      "to": 32,
+      "text": "Ammon, Moab, Edom and the Philistines, and long poems about Tyre and Egypt."
+    },
+    {
+      "title": "Israel's restoration",
+      "from": 33,
+      "to": 39,
+      "text": "After the news of the fall: the watchman, the good shepherd, the new heart, the valley of dry bones and the defeat of Gog."
+    },
+    {
+      "title": "The new temple and the new land",
+      "from": 40,
+      "to": 48,
+      "text": "A detailed vision of the temple, the return of the glory, rules for worship, the river that flows from the sanctuary and the division of the land among the tribes."
+    }
+  ],
+  "extra": {
+    "title": "The glory that leaves and returns",
+    "text": "A thread links the beginning of the book to its end. In chapters 8 to 11, the glory of the LORD gradually leaves the temple in Jerusalem and stops above the mountain east of the city, a sign that the sanctuary is handed over to destruction. In chapter 43, in the vision of the renewed temple, it returns by the same eastern way and fills the house. The last verse gives the city the name “THE LORD IS THERE” (48:35)."
+  },
+  "people": [
+    {
+      "name": "Ezekiel",
+      "chapters": "1–48",
+      "ch": 1,
+      "note": "priest, son of Buzi, deported to Babylon; called “son of man”"
+    },
+    {
+      "name": "The elders of Judah and Israel",
+      "chapters": "8; 14; 20",
+      "ch": 14,
+      "note": "leaders of the exiles who come to consult the prophet"
+    },
+    {
+      "name": "Pelatiah",
+      "chapters": "11",
+      "ch": 11,
+      "note": "one of the leaders of Jerusalem, who dies during the vision"
+    },
+    {
+      "name": "Oholah and Oholibah",
+      "chapters": "23",
+      "ch": 23,
+      "note": "two sisters who represent Samaria and Jerusalem"
+    },
+    {
+      "name": "Ezekiel's wife",
+      "chapters": "24",
+      "ch": 24,
+      "note": "her death, without public mourning, becomes a sign for the people"
+    },
+    {
+      "name": "The ruler of Tyre",
+      "chapters": "28",
+      "ch": 28,
+      "note": "a king who thinks himself a god"
+    },
+    {
+      "name": "Pharaoh",
+      "chapters": "29–32",
+      "ch": 29,
+      "note": "the king of Egypt, compared to a great monster of the waters and to a cedar"
+    },
+    {
+      "name": "Gog",
+      "chapters": "38–39",
+      "ch": 38,
+      "note": "chief of a coalition coming from the north, defeated on the mountains of Israel"
+    },
+    {
+      "name": "The prince",
+      "chapters": "44–48",
+      "ch": 45,
+      "note": "ruler of the restored community in the final vision"
+    }
+  ],
+  "writing": {
+    "tradition": "The book speaks almost always in the first person and gives dates counted from the deportation of King Jehoiachin, which tradition understands as a sign that it was written by Ezekiel himself, between c. 593 and c. 571 BC, in Babylon. The Talmud (Bava Batra 15a) says that the men of the Great Assembly “wrote” Ezekiel, which is read as the work of copying and editing. The rabbis also discussed the difference between the rules of chapters 40 to 48 and those of the Torah; according to the Talmud (Shabbat 13b), a sage named Hananiah ben Hezekiah managed to reconcile them, and the book remained in use.",
+    "academic": "Most scholars accept that the book preserves a broad core linked to Ezekiel, because of the unified style, the use of dates and the setting consistent with the exile. At the beginning of the 20th century, some authors went so far as to attribute almost everything to later writers, a position little followed today. It is debated how much comes from the prophet himself and how much from disciples who gathered and expanded his texts, especially in chapters 38–39 and 40–48. The oldest Greek text, Papyrus 967 (c. AD 200), lacks most of 36:23–38 and places chapter 37 after chapters 38–39, a sign that the book circulated in more than one form. The final form is usually dated to the end of the exile and the beginning of the Persian period, around 570–500 BC."
+  },
+  "events": {
+    "intro": "Ezekiel is the prophet who dates his messages most: about thirteen dates, almost always counted from the deportation of King Jehoiachin, in 597 BC. They run from the fifth year (1:2), around 593 BC, to the twenty-seventh (29:17), around 571 BC. The conversion to our calendar can vary by a year. The “thirtieth year” of 1:1 is understood by many as the prophet's age, but the meaning is debated.",
+    "axis": [
+      -610,
+      -490
+    ],
+    "band": {
+      "label": "Exile (counted from 597 BC)",
+      "from": -597,
+      "to": -538
+    },
+    "timeline": [
+      {
+        "label": "Ezekiel's ministry",
+        "from": -593,
+        "to": -571,
+        "kind": "pessoa",
+        "note": "from the first vision (1:2) to the latest dated oracle (29:17)"
+      },
+      {
+        "label": "Deportation of Jehoiachin",
+        "from": -597,
+        "to": -597,
+        "kind": "evento",
+        "note": "Ezekiel goes to Babylon with the king and part of the elite"
+      },
+      {
+        "label": "Start of the siege of Jerusalem",
+        "from": -588,
+        "to": -587,
+        "kind": "evento",
+        "note": "a date recorded by the prophet (24:1–2)"
+      },
+      {
+        "label": "Fall of Jerusalem",
+        "from": -587,
+        "to": -586,
+        "kind": "evento",
+        "note": "the temple is destroyed by the Babylonians"
+      },
+      {
+        "label": "The news reaches the exiles",
+        "from": -586,
+        "to": -585,
+        "kind": "evento",
+        "note": "a fugitive announces: “The city has been taken!” (33:21)"
+      },
+      {
+        "label": "Nebuchadnezzar's siege of Tyre",
+        "from": -586,
+        "to": -573,
+        "kind": "evento",
+        "note": "about thirteen years, according to Flavius Josephus; see 29:18"
+      },
+      {
+        "label": "Vision of the new temple",
+        "from": -573,
+        "to": -573,
+        "kind": "evento",
+        "note": "in the 25th year of the exile (40:1)"
+      },
+      {
+        "label": "Cyrus takes Babylon",
+        "from": -539,
+        "to": -539,
+        "kind": "evento",
+        "note": "end of Babylonian rule"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -593,
+        "to": -571,
+        "kind": "escrita",
+        "note": "Ezekiel himself, in Babylon"
+      },
+      {
+        "label": "Final form, according to scholarship",
+        "from": -570,
+        "to": -500,
+        "kind": "escrita",
+        "note": "end of the exile and beginning of the Persian period"
+      }
+    ]
+  },
+  "context": "Ezekiel lived among the deportees from Judah settled in southern Mesopotamia, at Tel-abib, by the Chebar River (or canal), probably near Nippur. The exiles could live in houses, gather and keep their elders, and tablets of the time show Jews living in villages of the region. Meanwhile, in Jerusalem, King Zedekiah wavered between loyalty to Babylon and the hope of help from Egypt, which led to the siege and destruction of the city. The oracles against Tyre and Egypt reflect Nebuchadnezzar's campaigns in the west. The vision of the temple, the rules for priests and Levites and the interest in purity show the prophet's priestly background and influenced the hopes of the community that, already under Persian rule, returned to Jerusalem and rebuilt the temple.",
+  "places": [
+    "the Chebar River and Tel-abib, in Babylonia",
+    "Jerusalem and the temple",
+    "the mountains of Israel",
+    "Tyre and Sidon",
+    "Egypt",
+    "Ammon, Moab, Edom (Mount Seir) and Philistia"
+  ],
+  "themes": [
+    "the glory and holiness of God",
+    "judgment and personal responsibility",
+    "the prophet as watchman",
+    "God as shepherd of the people",
+    "a new heart and a new spirit",
+    "temple and purity",
+    "restoration after the exile"
+  ],
+  "key_verses": [
+    {
+      "ref": "18:20"
+    },
+    {
+      "ref": "36:26"
+    },
+    {
+      "ref": "37:4–5"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source; the fall of Jerusalem is dated to 587 or 586 BC. In the numbering of English Bibles, 20:45–49 corresponds to 21:1–5 in the Hebrew text, and chapter 21 runs from 21:6 to 21:37 in the Hebrew. The verses quoted are from the Berean Standard Bible (BSB)."
+}

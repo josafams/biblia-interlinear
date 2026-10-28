@@ -1,0 +1,207 @@
+{
+  "title_orig": "תְּהִלִּים",
+  "title_orig_xlit": "Tehillim",
+  "summary": "Psalms is Israel's great collection of poems of prayer and song: 150 texts that speak to God and speak of God. There are hymns that celebrate the Creator and the King of all the earth, laments of individuals and of the people in danger, thanksgivings for deliverance, psalms about Israel's king and about Zion, meditations on the Law and reflections of wisdom. Many voices cross: the complaint of one who feels abandoned, the confession of guilt, trust, the joy of the festival and even the plea for vengeance against oppressors. The collection is divided into five books and moves, as a whole, from lament to praise, ending in a series of psalms that begin and end with “Hallelujah.”",
+  "name": "In Hebrew the book is called Tehillim, “praises,” a word from the same root as “hallelujah” (“praise Yah”). The English name comes from the Greek Psalmoi, the title used in the Septuagint: a psalmos was a song accompanied by a stringed instrument. Another Greek form, Psaltērion, the name of a stringed instrument, gave rise to “Psalter,” the traditional name of the collection.",
+  "facts": [
+    [
+      "Position",
+      "among the poetic and wisdom books, after Job; in the Hebrew Bible, among the Writings (Ketuvim), which it usually opens"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "poetry: hymns, laments, thanksgivings, prayers and wisdom psalms"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Book I",
+      "from": 1,
+      "to": 41,
+      "text": "Opens with two introductory psalms, on the two ways (1) and on the anointed king (2). Almost all the others bear David's name in the title, and individual pleas predominate. It ends with a blessing (41:13)."
+    },
+    {
+      "title": "Book II",
+      "from": 42,
+      "to": 72,
+      "text": "Begins with psalms of the sons of Korah (42–49), continues with one of Asaph (50) and another group attributed to David (51–71). It ends with a psalm for the king, a blessing and the note “the prayers of David son of Jesse are concluded” (72:18–20)."
+    },
+    {
+      "title": "Book III",
+      "from": 73,
+      "to": 89,
+      "text": "Gathers psalms of Asaph (73–83) and of the sons of Korah (84–88), with many laments over the destruction of the sanctuary and the crisis of the people. It ends with Psalm 89, which asks about the covenant with David, and a blessing (89:52)."
+    },
+    {
+      "title": "Book IV",
+      "from": 90,
+      "to": 106,
+      "text": "Opens with the prayer attributed to Moses (90) and gathers the psalms that proclaim that the LORD reigns (93–99). Psalms 105 and 106 retell Israel's history; the closing blessing is in 106:48."
+    },
+    {
+      "title": "Book V",
+      "from": 107,
+      "to": 150,
+      "text": "Includes the long psalm of the Law (119), the Songs of Ascents (120–134), a last group attributed to David (138–145) and the five “Hallelujah” psalms that close the collection (146–150)."
+    }
+  ],
+  "extra": {
+    "title": "Parallelism and acrostics",
+    "text": "The poetry of the Psalms does not rely on rhyme, but on parallelism: one line is followed by another that repeats the idea in other words (“God is our refuge and strength, an ever-present help in times of trouble,” 46:1), contrasts with it or develops it. Several psalms are acrostics, in which lines or stanzas begin with the letters of the Hebrew alphabet in order: 9–10 (incompletely), 25, 34, 37, 111, 112, 119 and 145. The most elaborate case is Psalm 119, the longest in the Bible: there are 22 stanzas, one for each letter, and the eight verses of each stanza all begin with the same letter, which adds up to 176 verses; the app shows the name of the letter at the start of each stanza (Aleph, Beth…). Other devices are refrains (42–43; 46; 107; 136) and the word Selah, of uncertain meaning, perhaps a musical direction."
+  },
+  "people": [
+    {
+      "name": "David",
+      "chapters": "3–41; 51–70; 138–145 and others",
+      "ch": 3,
+      "note": "king of Israel, named in the title of 73 psalms in the Hebrew text; several titles link the psalm to episodes of his life (3; 18; 34; 51; 52; 54; 56; 57; 59; 60; 63; 142)"
+    },
+    {
+      "name": "Asaph",
+      "chapters": "50; 73–83",
+      "ch": 73,
+      "note": "Levite musician of David's time, according to Chronicles; his name is in the title of 12 psalms, perhaps indicating a family or group of singers"
+    },
+    {
+      "name": "The sons of Korah",
+      "chapters": "42–49; 84–85; 87–88",
+      "ch": 42,
+      "note": "a group of Levite singers, descendants of Korah; 11 psalms bear their name"
+    },
+    {
+      "name": "Solomon",
+      "chapters": "72; 127",
+      "ch": 72,
+      "note": "David's son and successor; the expression in the title can mean “of Solomon” or “for Solomon”"
+    },
+    {
+      "name": "Moses",
+      "chapters": "90",
+      "ch": 90,
+      "note": "called “the man of God” in the title of the only psalm attributed to him"
+    },
+    {
+      "name": "Heman and Ethan the Ezrahites",
+      "chapters": "88–89",
+      "ch": 88,
+      "note": "wise men and musicians also mentioned in 1 Kings 4:31 and in Chronicles; each gives his name to a psalm"
+    },
+    {
+      "name": "Jeduthun",
+      "chapters": "39; 62; 77",
+      "ch": 39,
+      "note": "Levite musician, according to Chronicles; in the titles, the expression “according to Jeduthun” may indicate the author, a style or a group of singers"
+    }
+  ],
+  "writing": {
+    "tradition": "Following the titles, Jewish and Christian traditions attribute most of the Psalms to David, remembered as “the sweet psalmist of Israel” (2 Samuel 23:1) and organizer of the music of worship (1 Chronicles 16; 25). The book itself acknowledges other authors: Asaph, the sons of Korah, Solomon, Moses, Heman and Ethan. According to the Talmud, David composed the book with the contribution of ten earlier authors, among them Adam, Melchizedek, Abraham and Moses. The New Testament quotes psalms as words of David, for example Psalms 2, 16 and 110. On this reading, the collection began to be composed around 1000 BC and was completed with later psalms, such as those of the exile.",
+    "academic": "Scholars see the Psalms as a collection formed over many centuries, from smaller collections: those of David, of Asaph, of the sons of Korah, the Songs of Ascents and the “Hallelujah” psalms. Many consider the titles later additions to the poems, and the Hebrew expression translated “of David” may indicate authorship, dedication or a link with a royal collection. Some psalms may come from the time of the monarchy, such as the psalms about the king, and Psalm 29 has parallels with the Canaanite poetry of Ugarit; others presuppose the exile (137) or the return to Zion (126). In Psalms 42 to 83 the name “God” (Elohim) predominates instead of “the LORD,” a sign of a distinct edition of this block. The final form is usually placed between the 5th and 2nd centuries BC; Qumran manuscripts show that the order of Books IV and V still varied in some places in the 1st century."
+  },
+  "events": {
+    "intro": "The Psalms do not tell a story, but several titles refer to episodes in David's life, and some poems allude to events in the life of the people, such as the destruction of Jerusalem and the exile (74; 79; 137) and the return to Zion (126). The timeline shows the kings named in the titles, according to the most widely used chronology, these events, the proposals for the composition of the collection and the Qumran manuscripts. The dates are approximate.",
+    "axis": [
+      -1100,
+      100
+    ],
+    "band": {
+      "label": "First temple",
+      "from": -960,
+      "to": -586
+    },
+    "timeline": [
+      {
+        "label": "David",
+        "from": -1010,
+        "to": -970,
+        "kind": "pessoa",
+        "note": "reign; 73 psalms bear his name"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -1010,
+        "to": -931,
+        "kind": "escrita",
+        "note": "David composes most of them; other psalms are attributed to Moses, Solomon, Asaph and the sons of Korah"
+      },
+      {
+        "label": "Solomon",
+        "from": -970,
+        "to": -931,
+        "kind": "pessoa",
+        "note": "reign; builds the temple in Jerusalem (Ps 72; 127)"
+      },
+      {
+        "label": "Composition of the psalms, according to scholarship",
+        "from": -1000,
+        "to": -300,
+        "kind": "escrita",
+        "note": "poems from various periods, from the monarchy to the Persian period"
+      },
+      {
+        "label": "Destruction of Jerusalem and exile",
+        "from": -586,
+        "to": -539,
+        "kind": "evento",
+        "note": "background of psalms such as 74, 79 and 137"
+      },
+      {
+        "label": "Return from exile and second temple",
+        "from": -538,
+        "to": -515,
+        "kind": "evento",
+        "note": "the period to which Psalm 126 is usually linked"
+      },
+      {
+        "label": "Final form, according to scholarship",
+        "from": -400,
+        "to": -150,
+        "kind": "escrita",
+        "note": "gathered into five books; the final order of the last third still varied"
+      },
+      {
+        "label": "Qumran manuscripts",
+        "from": -150,
+        "to": 68,
+        "kind": "evento",
+        "note": "dozens of copies of psalms, some with a different order in Books IV and V"
+      }
+    ]
+  },
+  "context": "Much of the Psalms was born and used in the worship of the temple in Jerusalem, where, according to Chronicles, Levite singers and musicians accompanied the sacrifices and feasts. The titles keep traces of this use: mentions of the “choirmaster,” of stringed and wind instruments, of known tunes (“The Doe of the Dawn,” “The Lilies”) and of occasions such as the dedication of the house (30) and the Sabbath (92). The Songs of Ascents (120–134) are usually linked to the pilgrimages to Jerusalem, and Psalms 113 to 118, the Hallel, were sung at the great feasts. The poetry of the Psalms shares forms and images with the hymns and prayers of the ancient Near East, such as the texts of Ugarit and the Egyptian hymns to the sun, compared with Psalm 104. After the exile, the collection also came to serve personal prayer and study, and became the prayer book of the synagogue and the church.",
+  "places": [
+    "Jerusalem and Mount Zion",
+    "the temple and its courts",
+    "the Wilderness of Judah (63)",
+    "the Jordan and Mount Hermon (42:6; 133:3)",
+    "Egypt and the Red Sea (78; 106; 114)",
+    "the rivers of Babylon (137)"
+  ],
+  "themes": [
+    "praise",
+    "lament and supplication",
+    "trust",
+    "the reign of God",
+    "the king and Zion",
+    "the Law",
+    "the righteous and the wicked"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:1–2"
+    },
+    {
+      "ref": "23:1"
+    },
+    {
+      "ref": "46:1"
+    },
+    {
+      "ref": "150:6"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. In this app, the title of many psalms appears as verse 0, separate from the poem; in others, the title comes at the start of verse 1. The Hebrew Bible counts the title as verse 1 (sometimes 1–2), so the verse numbering there can be one or two higher. The Septuagint and the Vulgate join Psalms 9 and 10 and Psalms 114 and 115 and divide Psalms 116 and 147; for this reason, between Psalms 10 and 147, their numbering is usually one lower, and the Septuagint also has a Psalm 151. The verses quoted are from the Berean Standard Bible (BSB)."
+}

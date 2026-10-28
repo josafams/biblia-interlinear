@@ -1,0 +1,369 @@
+{
+  "title_orig": "מְלָכִים ב",
+  "title_orig_xlit": "Melakhim Bet",
+  "summary": "2 Kings continues the history of the two kingdoms to the end of both. Elijah is taken up to heaven and Elisha takes his place, with a series of miracles and interventions in the politics of Israel and Aram. Jehu's coup eliminates Ahab's dynasty and the worship of Baal in the north, while in Judah Queen Athaliah usurps the throne until the crowning of the boy Joash. With the advance of Assyria, Samaria falls and much of Israel's population is deported, which chapter 17 interprets as a consequence of the people's unfaithfulness. Judah survives Sennacherib's siege in the time of Hezekiah, passes through the long reign of Manasseh and the reform of Josiah, but ends up subject to Babylon: Jerusalem and the temple are destroyed and the people go into exile. The book ends with King Jehoiachin, a prisoner in Babylon, being released and received at the king's table.",
+  "name": "In the Hebrew Bible, 1 and 2 Kings form a single book, Melakhim, “Kings.” The Septuagint divided the work in two and called this second part 4 Kingdoms; the Latin Vulgate called it 4 Kings, a name also used in some older Catholic Bibles in English, such as the Douay-Rheims.",
+  "facts": [
+    [
+      "Position",
+      "12th book of the Bible, among the historical books; in the Hebrew Bible, the second part of Kings, the last of the Former Prophets (Nevi’im Rishonim)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "historical narrative, with prophetic accounts"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Elisha and the end of the house of Ahab",
+      "from": 1,
+      "to": 8,
+      "text": "Elijah is taken up to heaven; Elisha's miracles, the wars with Moab and with Aram."
+    },
+    {
+      "title": "From Jehu to the fall of Samaria",
+      "from": 9,
+      "to": 17,
+      "text": "Jehu's coup, Athaliah and Joash, the kings of the two kingdoms and the end of the kingdom of Israel."
+    },
+    {
+      "title": "Judah, from Hezekiah to Josiah",
+      "from": 18,
+      "to": 23,
+      "text": "Sennacherib's siege, the reign of Manasseh and the reform of Josiah."
+    },
+    {
+      "title": "The last kings and the exile",
+      "from": 24,
+      "to": 25,
+      "text": "Babylon dominates Judah, deports King Jehoiachin and destroys Jerusalem and the temple."
+    }
+  ],
+  "extra": {
+    "title": "The stories of Elisha",
+    "text": "Chapters 2 to 8 and 13:14–21 gather a set of short accounts about Elisha, many of them set among the “sons of the prophets,” groups that lived around a master. They are stories of miracles tied to ordinary life (the widow's oil, the pot of stew, the floating axe head), alongside interventions in wars and in the choice of kings, such as the anointing of Jehu and the announcement of Hazael as king of Aram."
+  },
+  "people": [
+    {
+      "name": "Elijah",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "announces Ahaziah's death and is taken up to heaven in a whirlwind"
+    },
+    {
+      "name": "Elisha",
+      "chapters": "2–9; 13",
+      "ch": 2,
+      "note": "Elijah's successor, a prophet in Israel for about half a century"
+    },
+    {
+      "name": "The Shunammite woman",
+      "chapters": "4; 8",
+      "ch": 4,
+      "note": "woman who gives Elisha lodging and has her son brought back to life"
+    },
+    {
+      "name": "Naaman",
+      "chapters": "5",
+      "ch": 5,
+      "note": "Aramean general healed in the Jordan River"
+    },
+    {
+      "name": "Hazael",
+      "chapters": "8–13",
+      "ch": 8,
+      "note": "seizes the throne of Damascus and presses Israel and Judah"
+    },
+    {
+      "name": "Jehu",
+      "chapters": "9–10",
+      "ch": 9,
+      "note": "commander anointed king, who wipes out the house of Ahab"
+    },
+    {
+      "name": "Athaliah",
+      "chapters": "8; 11",
+      "ch": 11,
+      "note": "daughter of the house of Ahab; the only queen to rule Judah alone"
+    },
+    {
+      "name": "Joash and Jehoiada",
+      "chapters": "11–12",
+      "ch": 11,
+      "note": "the boy king of Judah and the priest who protects and guides him"
+    },
+    {
+      "name": "Hezekiah",
+      "chapters": "18–20",
+      "ch": 18,
+      "note": "king of Judah who resists Assyria"
+    },
+    {
+      "name": "Isaiah",
+      "chapters": "19–20",
+      "ch": 19,
+      "note": "prophet who counsels Hezekiah"
+    },
+    {
+      "name": "Sennacherib",
+      "chapters": "18–19",
+      "ch": 18,
+      "note": "king of Assyria who besieges Jerusalem"
+    },
+    {
+      "name": "Manasseh",
+      "chapters": "21",
+      "ch": 21,
+      "note": "king of Judah with the longest and most criticized reign"
+    },
+    {
+      "name": "Josiah",
+      "chapters": "22–23",
+      "ch": 22,
+      "note": "king who reforms worship after the Book of the Law is found"
+    },
+    {
+      "name": "Huldah",
+      "chapters": "22",
+      "ch": 22,
+      "note": "prophetess consulted about the book found in the temple"
+    },
+    {
+      "name": "Nebuchadnezzar",
+      "chapters": "24–25",
+      "ch": 24,
+      "note": "king of Babylon who conquers Jerusalem"
+    },
+    {
+      "name": "Jehoiachin and Zedekiah",
+      "chapters": "24–25",
+      "ch": 24,
+      "note": "the last kings of Judah; one is deported, the other sees the city fall"
+    }
+  ],
+  "writing": {
+    "tradition": "The Babylonian Talmud (Bava Batra 15a) attributes the writing of Kings to the prophet Jeremiah, who lived through the fall of Jerusalem. On this reading, the work would have been composed at the beginning of the exile, in the 6th century BC; the last event narrated, the release of King Jehoiachin in Babylon (2 Kings 25:27), took place around 562 BC.",
+    "academic": "Most researchers see 1 and 2 Kings as the final part of the so-called Deuteronomistic History, which runs from Joshua to Kings and assesses Israel's past in light of Deuteronomy. Many follow the proposal of two editions: one in the reign of Josiah, c. 620 BC, which culminated in his reform, and another in the exile, around 560 BC, which added the fall of Jerusalem; others think of a single composition in the exile. The text itself cites sources now lost: the “Book of the Acts of Solomon” (1 Kings 11:41) and the chronicles of the kings of Israel and Judah (1 Kings 14:19, 29). The accounts of Elijah and Elisha seem to come from collections of prophetic stories that circulated in the Northern Kingdom."
+  },
+  "events": {
+    "intro": "2 Kings covers about three centuries, from Ahaziah's reign in Israel, around 853 BC, to Jehoiachin's release in Babylon, around 562 BC. It is the biblical book with the most points of contact with outside sources: the Black Obelisk of Shalmaneser III shows Jehu paying tribute (841 BC); the stele of Mesha, king of Moab, speaks of the rule of the house of Omri over Moab; the Assyrian annals record the fall of Samaria (722 BC) and Sennacherib's campaign against Judah (701 BC); and the Babylonian Chronicle dates the first capture of Jerusalem to March 597 BC. The destruction of the city is placed in 587 or 586 BC, depending on how the years are counted. The chronologies of the kings vary among authors: the numbers of 1 and 2 Kings do not always fit together, and each reconstruction resolves the differences in its own way, assuming co-regencies (father and son reigning together) and different ways of counting the first year of a reign. For this reason the same date may appear a few years apart in different works. The dates of this timeline are approximate and follow one of the most widely used reconstructions.",
+    "axis": [
+      -870,
+      -550
+    ],
+    "band": {
+      "label": "Assyrian rule in the Levant",
+      "from": -740,
+      "to": -612
+    },
+    "timeline": [
+      {
+        "label": "Elisha",
+        "from": -852,
+        "to": -795,
+        "kind": "pessoa",
+        "note": "from the end of Elijah to the reign of Joash of Israel (13:14–20); approximate dates"
+      },
+      {
+        "label": "Joram, king of Israel",
+        "from": -852,
+        "to": -841,
+        "kind": "pessoa",
+        "note": "12 years (3:1); last king of the house of Omri"
+      },
+      {
+        "label": "Mesha Stele",
+        "from": -840,
+        "to": -830,
+        "kind": "evento",
+        "note": "the king of Moab celebrates his release from Israel's rule (cf. 3:4–5)"
+      },
+      {
+        "label": "Jehu, king of Israel",
+        "from": -841,
+        "to": -814,
+        "kind": "pessoa",
+        "note": "28 years (10:36); pays tribute to Assyria in 841 BC"
+      },
+      {
+        "label": "Athaliah, queen of Judah",
+        "from": -841,
+        "to": -835,
+        "kind": "pessoa",
+        "note": "six years (11:3)"
+      },
+      {
+        "label": "Joash, king of Judah",
+        "from": -835,
+        "to": -796,
+        "kind": "pessoa",
+        "note": "40 years (12:1)"
+      },
+      {
+        "label": "Jeroboam II, king of Israel",
+        "from": -793,
+        "to": -753,
+        "kind": "pessoa",
+        "note": "41 years (14:23), partly together with his father; a time of prosperity in the north"
+      },
+      {
+        "label": "Azariah (Uzziah), king of Judah",
+        "from": -792,
+        "to": -740,
+        "kind": "pessoa",
+        "note": "52 years (15:2), counting co-regencies"
+      },
+      {
+        "label": "Ahaz, king of Judah",
+        "from": -735,
+        "to": -715,
+        "kind": "pessoa",
+        "note": "asks Tiglath-pileser III for help (16:7)"
+      },
+      {
+        "label": "Hoshea, last king of Israel",
+        "from": -732,
+        "to": -722,
+        "kind": "pessoa",
+        "note": "nine years (17:1)"
+      },
+      {
+        "label": "Fall of Samaria",
+        "from": -722,
+        "to": -720,
+        "kind": "evento",
+        "note": "end of the kingdom of Israel and deportations to Assyria (17:6)"
+      },
+      {
+        "label": "Hezekiah, king of Judah",
+        "from": -715,
+        "to": -686,
+        "kind": "pessoa",
+        "note": "29 years (18:2); some proposals begin the reign c. 729 BC"
+      },
+      {
+        "label": "Sennacherib's campaign",
+        "from": -701,
+        "to": -701,
+        "kind": "evento",
+        "note": "siege of Lachish and threat to Jerusalem (18–19)"
+      },
+      {
+        "label": "Manasseh, king of Judah",
+        "from": -697,
+        "to": -642,
+        "kind": "pessoa",
+        "note": "55 years (21:1), partly together with his father"
+      },
+      {
+        "label": "Josiah, king of Judah",
+        "from": -640,
+        "to": -609,
+        "kind": "pessoa",
+        "note": "31 years (22:1); dies at Megiddo before Pharaoh Neco"
+      },
+      {
+        "label": "Josiah's reform",
+        "from": -622,
+        "to": -622,
+        "kind": "evento",
+        "note": "in the king's 18th year, after the Book of the Law is found (22:3)"
+      },
+      {
+        "label": "Jehoiakim, king of Judah",
+        "from": -609,
+        "to": -598,
+        "kind": "pessoa",
+        "note": "11 years (23:36)"
+      },
+      {
+        "label": "Jehoiachin, king of Judah",
+        "from": -598,
+        "to": -597,
+        "kind": "pessoa",
+        "note": "three months (24:8); taken to Babylon"
+      },
+      {
+        "label": "First deportation",
+        "from": -597,
+        "to": -597,
+        "kind": "evento",
+        "note": "Nebuchadnezzar takes Jerusalem (24:10–16)"
+      },
+      {
+        "label": "Zedekiah, king of Judah",
+        "from": -597,
+        "to": -586,
+        "kind": "pessoa",
+        "note": "11 years (24:18)"
+      },
+      {
+        "label": "Destruction of Jerusalem and the temple",
+        "from": -587,
+        "to": -586,
+        "kind": "evento",
+        "note": "the people are taken into exile (25:8–21)"
+      },
+      {
+        "label": "Release of Jehoiachin",
+        "from": -562,
+        "to": -562,
+        "kind": "evento",
+        "note": "Evil-merodach takes him out of prison (25:27)"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -586,
+        "to": -560,
+        "kind": "escrita",
+        "note": "Jeremiah, at the beginning of the exile"
+      },
+      {
+        "label": "Composition, according to scholarship",
+        "from": -620,
+        "to": -550,
+        "kind": "escrita",
+        "note": "Deuteronomistic History: Josianic edition and exilic edition"
+      }
+    ]
+  },
+  "context": "The background of 2 Kings is the succession of empires of the ancient Near East. In the 9th century BC Israel contends for territory with the Arameans of Damascus. In the 8th century BC Assyria, from Tiglath-pileser III on, turns the small kingdoms of the Levant into vassals or provinces: Damascus falls in 732 BC and Samaria ten years later, and Assyria brings peoples from other lands into the region (17:24). Judah remains a vassal, resists Sennacherib in 701 BC and, with Assyria's weakening at the end of the 7th century BC, lives through a period of greater autonomy under Josiah. After Nineveh falls (612 BC), Egypt and Babylon contend for the region; the Babylonian victory places Judah under Nebuchadnezzar, and the revolts against him end with the destruction of Jerusalem.",
+  "places": [
+    "Samaria and Jezreel",
+    "the Jordan River and Jericho",
+    "Damascus, in Aram",
+    "Moab",
+    "Jerusalem: the temple",
+    "Lachish",
+    "Megiddo",
+    "Nineveh and Babylon",
+    "Riblah, in Hamath"
+  ],
+  "themes": [
+    "prophecy and power",
+    "faithfulness and idolatry",
+    "reform of worship",
+    "Assyria and Babylon",
+    "judgment and exile",
+    "the promise to David"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:11"
+    },
+    {
+      "ref": "17:6"
+    },
+    {
+      "ref": "23:25"
+    },
+    {
+      "ref": "25:21"
+    }
+  ],
+  "note": "Dates are approximate and the chronologies of the kings vary among authors; those given here broadly follow the reconstruction of E. R. Thiele, which is widely used, and other works may differ by a few years, especially for Hezekiah and the kings of the 8th century BC. The BSB spells Jehoiakim for the king who reigned from 609 to 598 BC and Jehoiachin for his son, deported in 597 BC. The verses quoted are from the Berean Standard Bible (BSB)."
+}

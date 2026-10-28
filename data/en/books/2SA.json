@@ -1,0 +1,218 @@
+{
+  "title_orig": "שְׁמוּאֵל ב",
+  "title_orig_xlit": "Shemuel Bet",
+  "summary": "2 Samuel is the story of David's reign. After lamenting Saul and Jonathan, David reigns over Judah at Hebron, while Ish-bosheth, Saul's son, rules the other tribes; after a war between the two houses, David is recognized as king of all Israel, conquers Jerusalem and brings the ark there. Through the prophet Nathan, he receives the promise of a lasting dynasty. The adultery with Bathsheba and the death of Uriah mark a turning point: there follow crises in his own family, such as Amnon's violence against Tamar and Absalom's revolt, which forces David to flee Jerusalem. The last chapters gather episodes, lists and poems from various periods of the reign.",
+  "name": "In the Hebrew Bible, 1 and 2 Samuel form a single book, Shemuel, which bears the name of the prophet who anointed Saul and David, although Samuel has already died when this second part begins. The division into two comes from the Septuagint, which called this book 2 Kingdoms; in the Latin Vulgate it is 2 Kings, a name also used in some older Catholic Bibles in English, such as the Douay-Rheims.",
+  "facts": [
+    [
+      "Position",
+      "10th book of the Bible, among the historical books; in the Hebrew Bible, the second part of Samuel, the third of the Former Prophets (Nevi’im Rishonim)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "historical narrative, with poems (1:19–27; 22; 23:1–7)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "David king at Hebron",
+      "from": 1,
+      "to": 4,
+      "text": "The lament for Saul and Jonathan, the reign over Judah and the war with the house of Saul."
+    },
+    {
+      "title": "David in Jerusalem",
+      "from": 5,
+      "to": 10,
+      "text": "King of all Israel, David takes Jerusalem, brings up the ark, receives Nathan's promise and defeats his neighbors."
+    },
+    {
+      "title": "Bathsheba and the crises of the reign",
+      "from": 11,
+      "to": 20,
+      "text": "David's sin, Nathan's rebuke, the tragedy of Amnon and Tamar and the revolts of Absalom and Sheba."
+    },
+    {
+      "title": "Appendices",
+      "from": 21,
+      "to": 24,
+      "text": "Episodes, lists of warriors and two poems of David, outside chronological order."
+    }
+  ],
+  "extra": {
+    "title": "The mirror-shaped appendices",
+    "text": "Chapters 21 to 24 interrupt the narrative, which continues in 1 Kings 1, and are arranged in pairs: two accounts of national calamity and how it ends (21:1–14 and 24), two lists of warriors and their exploits (21:15–22 and 23:8–39) and, at the center, two poems attributed to David (22 and 23:1–7). The poem of chapter 22 also appears, with small differences, as Psalm 18."
+  },
+  "people": [
+    {
+      "name": "David",
+      "chapters": "1–24",
+      "ch": 2,
+      "note": "king of Judah at Hebron and then of all Israel, in Jerusalem"
+    },
+    {
+      "name": "Joab",
+      "chapters": "2–24",
+      "ch": 2,
+      "note": "David's nephew and commander of the army; kills Abner and Absalom"
+    },
+    {
+      "name": "Abner",
+      "chapters": "2–3",
+      "ch": 3,
+      "note": "Saul's general who props up Ish-bosheth and later negotiates with David"
+    },
+    {
+      "name": "Ish-bosheth",
+      "chapters": "2–4",
+      "ch": 4,
+      "note": "Saul's son, king over the northern tribes for two years"
+    },
+    {
+      "name": "Michal",
+      "chapters": "3; 6",
+      "ch": 6,
+      "note": "Saul's daughter, returned to David; criticizes his dancing before the ark"
+    },
+    {
+      "name": "Nathan",
+      "chapters": "7; 12",
+      "ch": 7,
+      "note": "prophet who announces David's dynasty and later confronts him"
+    },
+    {
+      "name": "Mephibosheth",
+      "chapters": "4; 9; 16; 19",
+      "ch": 9,
+      "note": "Jonathan's son, welcomed at the king's table"
+    },
+    {
+      "name": "Bathsheba and Uriah",
+      "chapters": "11–12",
+      "ch": 11,
+      "note": "the wife of Uriah the Hittite; David takes her and has her husband killed"
+    },
+    {
+      "name": "Amnon and Tamar",
+      "chapters": "13",
+      "ch": 13,
+      "note": "children of David; Amnon violates his half-sister and is killed by Absalom"
+    },
+    {
+      "name": "Absalom",
+      "chapters": "13–19",
+      "ch": 15,
+      "note": "son of David who rebels and has himself proclaimed king at Hebron"
+    },
+    {
+      "name": "Ahithophel and Hushai",
+      "chapters": "15–17",
+      "ch": 17,
+      "note": "counselors who compete to guide Absalom"
+    },
+    {
+      "name": "Shimei",
+      "chapters": "16; 19",
+      "ch": 16,
+      "note": "Benjamite of the house of Saul who curses David during his flight"
+    }
+  ],
+  "writing": {
+    "tradition": "The Babylonian Talmud (Bava Batra 14b–15a) attributes to Samuel the writing of the book that bears his name. Since Samuel's death is narrated in the first book (1 Samuel 25:1), the same tradition says that the work was completed by the prophets Gad and Nathan, relying on 1 Chronicles 29:29, which mentions records of Samuel, Nathan and Gad about David. On this reading, this second part would have been completed in David's time or shortly afterward, in the 10th century BC, around 1000–930 BC.",
+    "academic": "For most researchers, 2 Samuel combines the end of the story of David's rise (chs. 1–5), other traditions about the reign and the account of David's court (chs. 9–20, which continues in 1 Kings 1–2), often called the “Succession Narrative” because it revolves around who will inherit the throne. This account is admired for its realism and the absence of miracles; some date it to Solomon's time, others centuries later. The appendices (chs. 21–24) gather material of diverse origins. The whole was integrated into the Deuteronomistic History, composed between the end of the 7th century and the exile, c. 620–550 BC."
+  },
+  "events": {
+    "intro": "According to 2 Samuel 5:4–5, David reigned forty years: seven and a half at Hebron and thirty-three in Jerusalem. The most widely used chronologies place this reign around 1010–970 BC, counting backward from firmer dates in the period of the kings. Outside the Bible, the oldest reference to the dynasty is the Tel Dan Stele, from the 9th century BC, which mentions the “house of David.” Researchers debate the size and wealth of David's kingdom: some think of an organized state, others of a more modest regional chiefdom, with Jerusalem still small. The chronologies of the kings vary among authors: the numbers of the Hebrew text do not always fit together, and each reconstruction resolves the differences in its own way, with co-regencies and different ways of counting the first year of a reign. The dates of this timeline are approximate and follow one of the most widely used reconstructions.",
+    "axis": [
+      -1050,
+      -500
+    ],
+    "timeline": [
+      {
+        "label": "David",
+        "from": -1040,
+        "to": -970,
+        "kind": "pessoa",
+        "note": "lives 70 years: begins to reign at 30 and reigns 40 (5:4)"
+      },
+      {
+        "label": "David king of Judah, at Hebron",
+        "from": -1010,
+        "to": -1003,
+        "kind": "evento",
+        "note": "seven years and six months (2:11; 5:5)"
+      },
+      {
+        "label": "Ish-bosheth, king over Israel",
+        "from": -1010,
+        "to": -1008,
+        "kind": "pessoa",
+        "note": "reigns two years from Mahanaim (2:8–10)"
+      },
+      {
+        "label": "David king of all Israel, in Jerusalem",
+        "from": -1003,
+        "to": -970,
+        "kind": "evento",
+        "note": "thirty-three years (5:5)"
+      },
+      {
+        "label": "Tel Dan Stele",
+        "from": -850,
+        "to": -800,
+        "kind": "evento",
+        "note": "Aramaic inscription that mentions the “house of David”"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -1000,
+        "to": -930,
+        "kind": "escrita",
+        "note": "work completed by the prophets Gad and Nathan"
+      },
+      {
+        "label": "Composition, according to scholarship",
+        "from": -620,
+        "to": -550,
+        "kind": "escrita",
+        "note": "Deuteronomistic History, drawing on older sources"
+      }
+    ]
+  },
+  "context": "David begins at Hebron, the main city of Judah, in the south of the hill country. Jerusalem, until then a Jebusite city between Judah and Benjamin, becomes the capital: because it belonged to no tribe, it served as a point of union between south and north. The campaigns of chapter 8 and chapters 10 to 12 involve the neighboring peoples: Philistines to the west; Moabites, Ammonites and Edomites east and south of the Jordan and the Dead Sea; and the Aramean kingdoms (Aram, “Syria” in some translations) to the north. In his flight from Absalom, David crosses the Jordan and takes refuge at Mahanaim, in Gilead.",
+  "places": [
+    "Hebron",
+    "Jerusalem (Zion, the City of David)",
+    "Mahanaim, in Gilead",
+    "Rabbah, capital of the Ammonites",
+    "the Mount of Olives and the Jordan valley",
+    "the threshing floor of Araunah"
+  ],
+  "themes": [
+    "covenant with David",
+    "power and responsibility",
+    "sin and consequence",
+    "family and succession",
+    "Jerusalem and the ark",
+    "loyalty and betrayal"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:27"
+    },
+    {
+      "ref": "5:4"
+    },
+    {
+      "ref": "7:16"
+    },
+    {
+      "ref": "22:2"
+    }
+  ],
+  "note": "Dates are approximate and the chronologies of the kings vary among authors. The verses quoted are from the Berean Standard Bible (BSB)."
+}

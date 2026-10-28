@@ -1,0 +1,116 @@
+{
+  "title_orig": "עֹבַדְיָה",
+  "title_orig_xlit": "Ovadyah",
+  "summary": "Obadiah, the shortest book of the Hebrew Bible, is an oracle against Edom, a neighboring people descended from Esau. Edom is accused of pride and of having taken advantage of the fall of Jerusalem, plundering and handing over fugitives. The prophet announces that the day of the LORD will come upon all the nations and that the kingdom will belong to the LORD.",
+  "name": "The book bears the prophet's name. Obadiah, in Hebrew Ovadyah, means “servant of the LORD”; it was a common name, used by several people in the Old Testament.",
+  "facts": [
+    [
+      "Position",
+      "4th of the Twelve Minor Prophets"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "prophecy (oracle against a nation)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "The fall of Edom",
+      "from": 1,
+      "to": 1,
+      "text": "Verses 1–14: Edom's pride, its announced defeat and the accusation for what it did on the day of Jerusalem's disaster."
+    },
+    {
+      "title": "The day of the LORD",
+      "from": 1,
+      "to": 1,
+      "text": "Verses 15–21: judgment on the nations and the restoration of the house of Jacob on Mount Zion."
+    }
+  ],
+  "people": [
+    {
+      "name": "Obadiah",
+      "chapters": "1",
+      "ch": 1,
+      "note": "a prophet of whom nothing more is known"
+    },
+    {
+      "name": "Edom (Esau)",
+      "chapters": "1",
+      "ch": 1,
+      "note": "people descended from Esau, Jacob's brother"
+    }
+  ],
+  "writing": {
+    "tradition": "The book is attributed to the prophet Obadiah. A tradition recorded in the Talmud identifies him with Obadiah, the steward of King Ahab's palace (1 Kings 18), in the 9th century BC. Other traditional interpreters link the text to an attack on Jerusalem in the reign of Jehoram of Judah, c. 848–841 BC, when Edom rebelled.",
+    "academic": "Most scholars relate the book to the destruction of Jerusalem by the Babylonians in 587/586 BC, when, according to other biblical texts (Psalm 137:7; Lamentations 4:21–22), the Edomites sided with the victors. The book would have been written shortly afterward, in the 6th century BC. Verses 1–9 strongly parallel Jeremiah 49:7–22, which suggests the use of a common tradition."
+  },
+  "events": {
+    "intro": "The text gives no date. The timeline shows the oldest traditional proposal and that of most scholars, which links it to the fall of Jerusalem; the dates are approximate.",
+    "axis": [
+      -870,
+      -500
+    ],
+    "band": {
+      "label": "Exile in Babylon",
+      "from": -586,
+      "to": -538
+    },
+    "timeline": [
+      {
+        "label": "Jehoram, king of Judah",
+        "from": -848,
+        "to": -841,
+        "kind": "pessoa",
+        "note": "Edom rebels against Judah (2 Kings 8:20–22)"
+      },
+      {
+        "label": "Writing, according to one tradition",
+        "from": -848,
+        "to": -841,
+        "kind": "escrita",
+        "note": "a proposal that links the book to this period"
+      },
+      {
+        "label": "Fall of Jerusalem",
+        "from": -587,
+        "to": -586,
+        "kind": "evento",
+        "note": "destruction by the Babylonians; Edom takes advantage of the defeat"
+      },
+      {
+        "label": "Writing, according to scholarship",
+        "from": -586,
+        "to": -550,
+        "kind": "escrita",
+        "note": "shortly after the destruction of Jerusalem"
+      }
+    ]
+  },
+  "context": "Edom occupied the mountainous region southeast of the Dead Sea, with cities in high, rocky places, which explains the image of the nest among the rocks (verses 3–4). The Bible describes the Edomites as descendants of Esau, Jacob's brother, and the rivalry between the two peoples runs through the whole history of Israel. In the period of the exile and afterward, Edomite groups settled in the south of Judah, in the region that would later be called Idumea.",
+  "places": [
+    "Edom (Mount Esau)",
+    "Teman",
+    "Jerusalem and Mount Zion",
+    "the Negev and the Shephelah"
+  ],
+  "themes": [
+    "pride and fall",
+    "solidarity between brothers",
+    "the day of the LORD",
+    "the kingdom of God"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:15"
+    },
+    {
+      "ref": "1:21"
+    }
+  ],
+  "note": "Dates are approximate; the verses quoted are from the Berean Standard Bible (BSB)."
+}

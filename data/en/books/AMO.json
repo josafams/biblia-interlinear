@@ -1,0 +1,146 @@
+{
+  "title_orig": "עָמוֹס",
+  "title_orig_xlit": "Amos",
+  "summary": "Amos, a herdsman from Judah, was sent to the Northern Kingdom in a time of prosperity. The book begins with oracles against the neighboring peoples and ends by pointing at Israel, accused of exploiting the poor, corrupting the courts and keeping an abundant and empty worship. A series of visions announces the end of the kingdom, and the confrontation with the priest of Bethel shows the resistance to the message. The final verses promise the restoration of the “tent of David.”",
+  "name": "The book bears the prophet's name. The meaning of Amos is uncertain; it is usually linked to the Hebrew verb meaning “to carry,” perhaps in the sense of “carried” or “upheld” by God.",
+  "facts": [
+    [
+      "Position",
+      "3rd of the Twelve Minor Prophets"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "prophecy (oracles in poetry, visions and a narrative)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Oracles against the nations",
+      "from": 1,
+      "to": 2,
+      "text": "Damascus, Gaza, Tyre, Edom, Ammon, Moab and Judah are judged, and the circle closes on Israel."
+    },
+    {
+      "title": "Words against Israel",
+      "from": 3,
+      "to": 6,
+      "text": "Being chosen brings responsibility; the luxury of Samaria, the oppression of the poor and worship without justice are denounced."
+    },
+    {
+      "title": "Visions and restoration",
+      "from": 7,
+      "to": 9,
+      "text": "Locusts, fire, plumb line, basket of fruit and the Lord beside the altar; the confrontation with Amaziah and the final promise."
+    }
+  ],
+  "extra": {
+    "title": "“For three transgressions, even four”",
+    "text": "The oracles of chapters 1 and 2 follow the same numerical formula, repeated for each people. An Israelite hearer could agree with the condemnation of the neighbors, until the formula reaches Judah and, finally, Israel itself, which receives the longest accusation."
+  },
+  "people": [
+    {
+      "name": "Amos",
+      "chapters": "1–9",
+      "ch": 1,
+      "note": "shepherd and herdsman from Tekoa, in Judah"
+    },
+    {
+      "name": "Jeroboam II",
+      "chapters": "1; 7",
+      "ch": 7,
+      "note": "king of Israel"
+    },
+    {
+      "name": "Amaziah",
+      "chapters": "7",
+      "ch": 7,
+      "note": "priest of Bethel, who orders Amos to leave the kingdom"
+    }
+  ],
+  "writing": {
+    "tradition": "Tradition attributes the book to Amos, who was active “two years before the earthquake” in the days of Uzziah, king of Judah, and of Jeroboam II, king of Israel (1:1), around 760–750 BC. He is considered one of the first prophets whose words were gathered into a book.",
+    "academic": "Scholars generally accept that most of the oracles go back to Amos in the mid-8th century BC. Many consider later additions the oracle against Judah (2:4–5), the hymnic passages (4:13; 5:8–9; 9:5–6) and the final promise (9:11–15), which presupposes the fall of the Davidic dynasty; others attribute them to the prophet. The book would have been edited in Judah, after 722 BC and again in the exile."
+  },
+  "events": {
+    "intro": "The book is set at the height of Jeroboam II's reign. The “earthquake” of 1:1 seems to have been memorable, since it is recalled in Zechariah 14:5, and archaeological traces of a strong quake in the mid-8th century BC have been identified at several sites. The dates are approximate.",
+    "axis": [
+      -800,
+      -540
+    ],
+    "timeline": [
+      {
+        "label": "Uzziah, king of Judah",
+        "from": -783,
+        "to": -742,
+        "kind": "pessoa",
+        "note": "reign, approximate dates"
+      },
+      {
+        "label": "Jeroboam II",
+        "from": -786,
+        "to": -746,
+        "kind": "pessoa",
+        "note": "king of Israel; expansion and prosperity"
+      },
+      {
+        "label": "Ministry of Amos",
+        "from": -760,
+        "to": -750,
+        "kind": "pessoa",
+        "note": "at Bethel and Samaria; approximate date"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -760,
+        "to": -750,
+        "kind": "escrita",
+        "note": "the words of Amos gathered"
+      },
+      {
+        "label": "Fall of Samaria",
+        "from": -722,
+        "to": -720,
+        "kind": "evento",
+        "note": "fulfillment of the threats against the Northern Kingdom"
+      },
+      {
+        "label": "Final edition, according to scholarship",
+        "from": -720,
+        "to": -550,
+        "kind": "escrita",
+        "note": "editions in Judah, down to the period of the exile"
+      }
+    ]
+  },
+  "context": "Under Jeroboam II, Israel recovered territories and lived through a phase of trade and wealth, while Assyria was going through a period of weakness. Excavations at Samaria revealed ivory plaques that recall the “houses of ivory” of 3:15. The wealth, however, was concentrated in an elite, and Amos denounces the selling of the poor for debts, false weights and corruption at the city gates, where trials were held. A few decades later, Assyria expanded again and destroyed the kingdom.",
+  "places": [
+    "Tekoa",
+    "Bethel",
+    "Samaria",
+    "Gilgal and Beersheba",
+    "Damascus, Gaza, Tyre, Edom, Ammon and Moab"
+  ],
+  "themes": [
+    "social justice",
+    "worship and ethics",
+    "election and responsibility",
+    "the day of the LORD",
+    "restoration"
+  ],
+  "key_verses": [
+    {
+      "ref": "5:24"
+    },
+    {
+      "ref": "7:14–15"
+    },
+    {
+      "ref": "8:11"
+    }
+  ],
+  "note": "Dates vary according to the source; the verses quoted are from the Berean Standard Bible (BSB)."
+}

@@ -1,0 +1,209 @@
+{
+  "title_orig": "נְחֶמְיָה",
+  "title_orig_xlit": "Nechemyah",
+  "summary": "Nehemiah, cupbearer to the Persian king Artaxerxes in Susa, receives news of Jerusalem's precarious situation and obtains permission to rebuild the city's walls. Despite the opposition of Sanballat, Tobiah and Geshem, the work is completed in fifty-two days. The book also narrates the public reading of the law by Ezra, the people's confession and the commitment signed by the community, the repopulation of Jerusalem and the dedication of the walls. It ends with Nehemiah's reforms in a second term as governor: the Sabbath, the tithes, the temple service and marriages with foreigners.",
+  "name": "The book bears the name of Nehemiah, who speaks in the first person in much of the text; the name means “the LORD comforts.” In Hebrew tradition, Ezra and Nehemiah formed a single book; the Septuagint includes Nehemiah in Esdras B, and the Vulgate called it 2 Esdras. The separation into two books, common in Christian Bibles, was adopted later in printed Hebrew editions.",
+  "facts": [
+    [
+      "Position",
+      "16th book of the Bible, among the historical books; in the Hebrew Bible, the second part of the book of Ezra–Nehemiah, among the Writings (Ketuvim)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "historical narrative, largely first-person memoirs, with lists"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Nehemiah's call",
+      "from": 1,
+      "to": 2,
+      "text": "The news about Jerusalem, the prayer, the request to the king and the night inspection of the walls."
+    },
+    {
+      "title": "Rebuilding the wall",
+      "from": 3,
+      "to": 7,
+      "text": "The groups of builders, the armed opposition and the intrigues, the debt crisis, the completion of the wall and the list of the returned exiles."
+    },
+    {
+      "title": "The law and the covenant",
+      "from": 8,
+      "to": 10,
+      "text": "Ezra reads the law before the people, the Feast of Tabernacles, the great confession and the written commitment."
+    },
+    {
+      "title": "Jerusalem repopulated",
+      "from": 11,
+      "to": 12,
+      "text": "The city's new residents, the lists of priests and Levites and the celebration of the dedication of the wall."
+    },
+    {
+      "title": "The final reforms",
+      "from": 13,
+      "to": 13,
+      "text": "On his return to Jerusalem, Nehemiah corrects abuses in the temple, on the Sabbath and in marriages."
+    }
+  ],
+  "extra": {
+    "title": "The memoirs of Nehemiah",
+    "text": "A large part of the book (especially 1–7 and 12:31–13:31) is written in the first person and has the tone of a personal account. In it appear short prayers in which Nehemiah asks God to remember him “with favor” (5:19; 13:14, 22, 31) or to remember the deeds of his adversaries (4:4–5; 6:14; 13:29). Many historians consider these memoirs one of the most direct sources on Judah in the Persian period."
+  },
+  "people": [
+    {
+      "name": "Nehemiah",
+      "chapters": "1–13",
+      "ch": 1,
+      "note": "the king's cupbearer and later governor of Judah"
+    },
+    {
+      "name": "Hanani",
+      "chapters": "1; 7",
+      "ch": 1,
+      "note": "Nehemiah's brother, who brings news from Jerusalem"
+    },
+    {
+      "name": "Artaxerxes",
+      "chapters": "2; 5; 13",
+      "ch": 2,
+      "note": "Persian king who authorizes the work"
+    },
+    {
+      "name": "Eliashib",
+      "chapters": "3; 12–13",
+      "ch": 3,
+      "note": "high priest; related to Tobiah (13:4)"
+    },
+    {
+      "name": "Sanballat",
+      "chapters": "2; 4; 6; 13",
+      "ch": 4,
+      "note": "leader linked to Samaria, the main opponent of the work"
+    },
+    {
+      "name": "Tobiah the Ammonite",
+      "chapters": "2; 4; 6; 13",
+      "ch": 6,
+      "note": "Sanballat's ally, with connections among the nobles of Jerusalem"
+    },
+    {
+      "name": "Geshem the Arab",
+      "chapters": "2; 6",
+      "ch": 6,
+      "note": "the third opponent"
+    },
+    {
+      "name": "Noadiah",
+      "chapters": "6",
+      "ch": 6,
+      "note": "prophetess who tried to intimidate Nehemiah (6:14)"
+    },
+    {
+      "name": "Ezra",
+      "chapters": "8; 12",
+      "ch": 8,
+      "note": "reads the law of Moses before the people"
+    }
+  ],
+  "writing": {
+    "tradition": "In Jewish tradition, Ezra and Nehemiah formed a single book, attributed to Ezra by the Babylonian Talmud (Bava Batra 15a); the first-person passages have been read as written by Nehemiah himself. On this reading, the book would date from the end of the 5th century BC, around 430–400 BC.",
+    "academic": "For most scholars, Nehemiah's memoirs are an authentic text, written by him around 430 BC, perhaps as an accounting of his work or as a votive inscription. A compiler joined them to the material about Ezra and to lists (the one in 7:6–73 repeats that of Ezra 2). The list in 12:10–11, 22 reaches the high priest Jaddua, whom the historian Josephus places in the time of Alexander the Great; for this reason the final form is usually dated c. 400–300 BC, although some identify Jaddua with an earlier priest. The chronological relationship between Ezra and Nehemiah, who appear together in 8:9 and 12:26, 36, is also debated."
+  },
+  "events": {
+    "intro": "Nehemiah receives the news about Jerusalem in the twentieth year of Artaxerxes (1:1; 2:1), which corresponds to 445/444 BC, under Artaxerxes I. The wall is completed in fifty-two days (6:15), and Nehemiah governs Judah for twelve years, until the king's thirty-second year, c. 433 BC (5:14); he then returns to the court and comes back to Jerusalem some years later (13:6–7). Aramaic papyri from Elephantine, in Egypt, dated to 407 BC, mention the sons of Sanballat, governor of Samaria, and the high priest Johanan, named in 12:22.",
+    "axis": [
+      -500,
+      -300
+    ],
+    "band": {
+      "label": "Persian period",
+      "from": -539,
+      "to": -332
+    },
+    "timeline": [
+      {
+        "label": "Ezra arrives in Jerusalem",
+        "from": -458,
+        "to": -458,
+        "kind": "pessoa",
+        "note": "most accepted date (Ezra 7:7–8); another proposal is 398 BC"
+      },
+      {
+        "label": "Nehemiah, first term",
+        "from": -445,
+        "to": -433,
+        "kind": "pessoa",
+        "note": "from the twentieth to the thirty-second year of Artaxerxes (5:14)"
+      },
+      {
+        "label": "Wall rebuilt",
+        "from": -445,
+        "to": -445,
+        "kind": "evento",
+        "note": "in fifty-two days, finished in Elul (6:15)"
+      },
+      {
+        "label": "Nehemiah's second stay",
+        "from": -430,
+        "to": -425,
+        "kind": "evento",
+        "note": "approximate date of the reforms of ch. 13"
+      },
+      {
+        "label": "Memoirs of Nehemiah",
+        "from": -430,
+        "to": -425,
+        "kind": "escrita",
+        "note": "according to most scholars"
+      },
+      {
+        "label": "Elephantine papyri",
+        "from": -407,
+        "to": -407,
+        "kind": "evento",
+        "note": "mention the sons of Sanballat and the high priest Johanan"
+      },
+      {
+        "label": "Final form, according to scholarship",
+        "from": -400,
+        "to": -300,
+        "kind": "escrita",
+        "note": "compilation of Ezra–Nehemiah"
+      }
+    ]
+  },
+  "context": "In the 5th century BC, Judah was a small province of the Persian Empire, with a sparsely populated Jerusalem still without complete walls. Susa, where Nehemiah served, was one of the capitals of the empire. Nehemiah's opponents represented regional forces: Sanballat was linked to the government of Samaria, to the north; Tobiah had connections with the region of Ammon, east of the Jordan; and Geshem led Arab groups of the south, and an inscription on a silver bowl from Egypt mentions a “Geshem, king of Kedar,” perhaps the same person. The crisis of chapter 5 shows the economic difficulties of the province, with debts, mortgages and taxes to the king.",
+  "places": [
+    "Susa",
+    "Jerusalem: walls and gates",
+    "the square before the Water Gate",
+    "Samaria",
+    "the plain of Ono",
+    "the towns of Judah and Benjamin"
+  ],
+  "themes": [
+    "rebuilding",
+    "prayer",
+    "opposition and perseverance",
+    "social justice",
+    "the law read and explained",
+    "covenant",
+    "Sabbath and purity of worship"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:17–18"
+    },
+    {
+      "ref": "6:15–16"
+    },
+    {
+      "ref": "8:10"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. The BSB follows the numbering of English Bibles: in the Hebrew text, 4:1–6 corresponds to 3:33–38 and 4:7–23 to 4:1–17; 9:38 corresponds to 10:1, and 10:1–39 to 10:2–40. The verses quoted are from the Berean Standard Bible (BSB)."
+}

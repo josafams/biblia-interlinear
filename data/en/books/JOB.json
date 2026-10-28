@@ -1,0 +1,227 @@
+{
+  "title_orig": "אִיּוֹב",
+  "title_orig_xlit": "Iyyov",
+  "summary": "Job deals with the suffering of a righteous man and the question of how it relates to God's justice. A prose prologue introduces Job, rich and upright, who in a short time loses his possessions, his children and his health, after a conversation in heaven in which the accuser questions the reason for his faithfulness. Three friends come to comfort him, and the meeting turns into a long debate in poetry: they maintain that suffering is the consequence of sin, and Job insists on his own innocence and asks to present his case before God. After the speeches of a fourth character, Elihu, the LORD Himself speaks out of a whirlwind, showing Job creation and its mysteries. Job yields, the friends are rebuked, and a prose epilogue tells of the restoration of his life.",
+  "name": "The book bears the name of its main character, Job, in Hebrew Iyyov. The origin of the name is debated: some link it to the Hebrew root meaning “to be an enemy,” and others compare it to ancient Semitic names meaning “where is the father?”. In the Septuagint the name appears as Iōb, from which come the Latin Iob and the English Job.",
+  "facts": [
+    [
+      "Position",
+      "the first of the poetic and wisdom books, after Esther; in the Hebrew Bible, among the Writings (Ketuvim)"
+    ],
+    [
+      "Original language",
+      "Hebrew, with many rare words and some Aramaic features"
+    ],
+    [
+      "Genre",
+      "wisdom: a narrative frame in prose and dialogues in poetry"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Prologue",
+      "from": 1,
+      "to": 2,
+      "text": "Job is introduced as upright and prosperous; in two scenes in heaven, the accuser questions his faithfulness, and Job loses possessions, children and health. Eliphaz, Bildad and Zophar arrive."
+    },
+    {
+      "title": "Job's lament",
+      "from": 3,
+      "to": 3,
+      "text": "After seven days of silence, Job curses the day of his birth and asks why life is given to those who suffer."
+    },
+    {
+      "title": "First cycle of dialogues",
+      "from": 4,
+      "to": 14,
+      "text": "Each friend speaks and Job answers each one: the friends argue that God rewards the righteous and punishes the wicked; Job rejects this explanation for his own case."
+    },
+    {
+      "title": "Second cycle of dialogues",
+      "from": 15,
+      "to": 21,
+      "text": "The friends insist on the fate reserved for the wicked; Job feels abandoned, but affirms that he has a witness in heaven and that he will see God."
+    },
+    {
+      "title": "Third cycle of dialogues",
+      "from": 22,
+      "to": 27,
+      "text": "Eliphaz accuses Job of concrete wrongs; Bildad says little, and Zophar does not speak again. Job describes the injustice in the world and maintains his integrity."
+    },
+    {
+      "title": "Poem of wisdom",
+      "from": 28,
+      "to": 28,
+      "text": "Human beings know how to extract metals from the depths, but cannot find the way of wisdom, which only God knows."
+    },
+    {
+      "title": "Job's final defense",
+      "from": 29,
+      "to": 31,
+      "text": "Job compares the honor of former days with his present humiliation and ends with an oath of innocence, challenging God to answer."
+    },
+    {
+      "title": "The speeches of Elihu",
+      "from": 32,
+      "to": 37,
+      "text": "A young man, not mentioned until now, criticizes Job and the friends and presents suffering as a way God warns and instructs."
+    },
+    {
+      "title": "The speeches of the LORD",
+      "from": 38,
+      "to": 42,
+      "text": "Out of a whirlwind, God questions Job about the order of the cosmos, the wild animals, Behemoth and Leviathan; Job answers twice, the second time in 42:1–6."
+    },
+    {
+      "title": "Epilogue",
+      "from": 42,
+      "to": 42,
+      "text": "God rebukes the three friends, Job intercedes for them and receives double what he had lost (42:7–17)."
+    }
+  ],
+  "extra": {
+    "title": "Prose, poetry and dialogue",
+    "text": "The book has the shape of a sandwich: the beginning and the end (1–2 and 42:7–17) are prose narrative, and the whole middle is poetry, written in parallelism, with some of the most difficult vocabulary in the Hebrew Bible. The dialogues follow a regular pattern, in which each friend speaks and Job answers, until the third cycle comes apart: Bildad's speech is short (ch. 25) and Zophar does not appear. Many scholars think part of this cycle became disordered in transmission; others see the disorder as a sign that the debate has run its course."
+  },
+  "people": [
+    {
+      "name": "Job",
+      "chapters": "1–42",
+      "ch": 1,
+      "note": "a man from the land of Uz, “blameless and upright, who feared God” (1:1), who loses everything and argues with his friends and with God"
+    },
+    {
+      "name": "Job's wife",
+      "chapters": "2",
+      "ch": 2,
+      "note": "appears only once and tells Job to curse God and die (2:9)"
+    },
+    {
+      "name": "Satan, the accuser",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "in Hebrew ha-satan, “the adversary,” with the article; questions before the LORD the motive of Job's faithfulness and does not appear again"
+    },
+    {
+      "name": "Eliphaz",
+      "chapters": "2; 4–5; 15; 22; 42",
+      "ch": 4,
+      "note": "the Temanite, the first and longest of the friends to speak; appeals to a night vision (4:12–21)"
+    },
+    {
+      "name": "Bildad",
+      "chapters": "2; 8; 18; 25",
+      "ch": 8,
+      "note": "the Shuhite; relies on the wisdom of the ancients"
+    },
+    {
+      "name": "Zophar",
+      "chapters": "2; 11; 20",
+      "ch": 11,
+      "note": "the Naamathite; the harshest of the three, speaks only twice"
+    },
+    {
+      "name": "Elihu",
+      "chapters": "32–37",
+      "ch": 32,
+      "note": "son of Barachel the Buzite; a young man who intervenes, angry with Job and with the friends"
+    },
+    {
+      "name": "Jemimah, Keziah and Keren-happuch",
+      "chapters": "42",
+      "ch": 42,
+      "note": "Job's daughters born after the restoration, who receive an inheritance along with their brothers (42:14–15)"
+    }
+  ],
+  "writing": {
+    "tradition": "The book does not say who wrote it. A tradition recorded in the Talmud attributes the book to Moses, and other rabbinic opinions place Job in very different periods, from the patriarchs to the exile; one of them even says that Job was a parable and not a historical person. Many Christian and Jewish readers have placed the story in the time of the patriarchs, because of the way of life described: wealth measured in flocks, the head of the family offering sacrifices, very long life. The prophet Ezekiel mentions Job alongside Noah and Daniel as an example of righteousness (Ezekiel 14:14, 20).",
+    "academic": "Most scholars date the composition of the book between the 6th and 4th centuries BC, around 600–400 BC, based on the language, the themes and the dialogue with other biblical texts; some propose slightly earlier or later dates. A common hypothesis is that the prose frame preserves an old story about a righteous man put to the test, on which a poet built the dialogues. Elihu's speeches, absent from the prologue and the epilogue, are seen by many as a later addition, and the poem of chapter 28 is also debated. At Qumran, Hebrew fragments of Job were found, together with an Aramaic translation (a targum), copied around the 1st century BC."
+  },
+  "events": {
+    "intro": "Job gives no dates, names of kings or events that can be placed: the story takes place at an indefinite time, in a setting that recalls the age of the patriarchs. The timeline shows the two proposals for the writing, the mention of Job in Ezekiel, the Qumran fragments and two Babylonian works on the suffering of the righteous, with which the book is often compared. All dates are approximate.",
+    "axis": [
+      -1500,
+      0
+    ],
+    "band": {
+      "label": "Exile and Persian period",
+      "from": -586,
+      "to": -332
+    },
+    "timeline": [
+      {
+        "label": "Ludlul bel nemeqi",
+        "from": -1400,
+        "to": -1150,
+        "kind": "evento",
+        "note": "Babylonian poem about a righteous man who suffers and is restored; approximate date"
+      },
+      {
+        "label": "Writing, according to one tradition",
+        "from": -1446,
+        "to": -1406,
+        "kind": "escrita",
+        "note": "Moses, according to the Talmud"
+      },
+      {
+        "label": "Babylonian Theodicy",
+        "from": -1000,
+        "to": -800,
+        "kind": "evento",
+        "note": "acrostic dialogue between a sufferer and a friend; approximate date"
+      },
+      {
+        "label": "Job cited by Ezekiel",
+        "from": -593,
+        "to": -571,
+        "kind": "evento",
+        "note": "alongside Noah and Daniel (Ezekiel 14:14, 20)"
+      },
+      {
+        "label": "Writing, according to scholarship",
+        "from": -600,
+        "to": -400,
+        "kind": "escrita",
+        "note": "most accepted range; there are earlier and later proposals"
+      },
+      {
+        "label": "Targum of Job at Qumran",
+        "from": -150,
+        "to": -1,
+        "kind": "evento",
+        "note": "Aramaic translation found in Cave 11; approximate date of the copy"
+      }
+    ]
+  },
+  "context": "The story takes place outside Israel, in the “land of Uz,” whose location is uncertain: the book of Lamentations links Uz to Edom (Lamentations 4:21), and other proposals point to northern Arabia or to the region east of the Jordan. The friends also come from places east and southeast of Canaan: Teman is a region of Edom, and the locations of Shuah and Naamah are debated. Job is not presented as an Israelite, and the name of the LORD appears mainly in the prologue, the epilogue and the divine speeches; in the dialogues names such as God and the Almighty predominate. The theme of the righteous sufferer was already known in the ancient Near East, in Babylonian works such as the Ludlul bel nemeqi and the so-called Babylonian Theodicy, and the book engages with Israel's traditional wisdom, which associated uprightness with prosperity.",
+  "places": [
+    "Uz, the land of Job",
+    "Teman, in Edom, the land of Eliphaz",
+    "Shuah and Naamah, the lands of Bildad and Zophar",
+    "heaven, where the sons of God assemble (1–2)",
+    "the ash heap where Job sits (2:8)"
+  ],
+  "themes": [
+    "the suffering of the righteous",
+    "God's justice",
+    "integrity",
+    "the limits of human wisdom",
+    "creation",
+    "friendship and comfort"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:21"
+    },
+    {
+      "ref": "19:25"
+    },
+    {
+      "ref": "28:28"
+    },
+    {
+      "ref": "42:5"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. In chapters 40 and 41, the BSB follows the numbering of English Bibles: 40:1–24 corresponds to 40:1–24 of the Hebrew, and 41:1–34 corresponds to 40:25–41:26. The Septuagint has a text of Job considerably shorter than the Hebrew and adds an ending about Job's origin. The verses quoted are from the Berean Standard Bible (BSB)."
+}

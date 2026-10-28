@@ -1,0 +1,118 @@
+{
+  "title_orig": "נַחוּם",
+  "title_orig_xlit": "Nachum",
+  "summary": "Nahum announces the fall of Nineveh, capital of Assyria, the empire that dominated the Near East for more than a century and oppressed Israel and Judah. The book begins with a poem about the LORD, slow to anger, but who does not leave the guilty unpunished, and then describes, in vivid images, the attack on the city and its ruin. For Judah, the news is proclaimed as good news of peace.",
+  "name": "The book bears the prophet's name. Nahum, in Hebrew Nachum, means “comfort” or “consolation.” He is called “the Elkoshite” (1:1), from a place called Elkosh whose location is unknown.",
+  "facts": [
+    [
+      "Position",
+      "7th of the Twelve Minor Prophets"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "prophecy (oracle against a nation, in poetry)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "The God who judges",
+      "from": 1,
+      "to": 1,
+      "text": "A poem about the LORD's power, followed by the announcement of deliverance for Judah."
+    },
+    {
+      "title": "The fall of Nineveh",
+      "from": 2,
+      "to": 3,
+      "text": "The attack, the plunder and the ruin of the city; the comparison with Thebes and the final lament with no healing."
+    }
+  ],
+  "extra": {
+    "title": "An incomplete acrostic",
+    "text": "The poem of 1:2–8 seems to follow the order of the Hebrew alphabet partially, with lines that begin with successive letters, from the first to about the middle of the alphabet. The form is lost in translation."
+  },
+  "people": [
+    {
+      "name": "Nahum",
+      "chapters": "1–3",
+      "ch": 1,
+      "note": "prophet, called “the Elkoshite”"
+    },
+    {
+      "name": "The king of Assyria",
+      "chapters": "3",
+      "ch": 3,
+      "note": "to whom the final words are addressed"
+    }
+  ],
+  "writing": {
+    "tradition": "The book is attributed to the prophet Nahum. Since he speaks of the capture of Thebes (No-amon, in Egypt) as a past event (3:8–10) and of the fall of Nineveh as future, tradition and many interpreters place the prophecy between 663 and 612 BC.",
+    "academic": "Scholars generally accept the same interval, between the destruction of Thebes by the Assyrians in 663 BC and the fall of Nineveh in 612 BC, often near its end, when Assyria's decline was visible. Some think that the book, or parts of it, was composed or re-edited soon after the fall, as a celebration. The opening poem is sometimes seen as an editor's addition."
+  },
+  "events": {
+    "intro": "The two dates that frame the book are known from Assyrian and Babylonian sources: the capture of Thebes and the fall of Nineveh.",
+    "axis": [
+      -700,
+      -600
+    ],
+    "timeline": [
+      {
+        "label": "Ashurbanipal",
+        "from": -668,
+        "to": -631,
+        "kind": "pessoa",
+        "note": "king of Assyria; reign of approximate dates"
+      },
+      {
+        "label": "Capture of Thebes (No-amon)",
+        "from": -663,
+        "to": -663,
+        "kind": "evento",
+        "note": "the Assyrians plunder the Egyptian city (3:8–10)"
+      },
+      {
+        "label": "Writing, according to tradition and scholarship",
+        "from": -663,
+        "to": -612,
+        "kind": "escrita",
+        "note": "accepted interval; many prefer near 615 BC"
+      },
+      {
+        "label": "Fall of Nineveh",
+        "from": -612,
+        "to": -612,
+        "kind": "evento",
+        "note": "Babylonians and Medes take and destroy the city"
+      }
+    ]
+  },
+  "context": "Assyria dominated the region from the 9th century BC, destroyed Samaria in 722 BC, invaded Judah in 701 BC and exacted tribute from the kings of Jerusalem for decades. Its own reliefs and annals extol deportations and cruel punishments of rebels. After the death of Ashurbanipal, the empire weakened rapidly, and in 612 BC a coalition of Babylonians and Medes took Nineveh. For the subject peoples, the news was a relief, and the book expresses that reaction.",
+  "places": [
+    "Nineveh",
+    "Thebes (No-amon, in Egypt)",
+    "Judah",
+    "Bashan, Carmel and Lebanon"
+  ],
+  "themes": [
+    "God's justice",
+    "the fall of the oppressor",
+    "God's wrath and goodness",
+    "good news of peace"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:3"
+    },
+    {
+      "ref": "1:7"
+    },
+    {
+      "ref": "1:15"
+    }
+  ],
+  "note": "The BSB follows the numbering of English Bibles: 1:15 corresponds to 2:1 in the Hebrew text, and 2:1 to 2:2, and so on to the end of chapter 2."
+}

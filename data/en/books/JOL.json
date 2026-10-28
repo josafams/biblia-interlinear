@@ -1,0 +1,122 @@
+{
+  "title_orig": "יוֹאֵל",
+  "title_orig_xlit": "Yoel",
+  "summary": "Joel starts from a concrete calamity, a plague of locusts accompanied by drought, and calls priests and people to fasting and mourning. The catastrophe becomes a sign of the “day of the LORD,” described as the invasion of an army. In response to the people's repentance, God promises to restore the harvests, pour out His Spirit on all people and judge the nations that mistreated Judah.",
+  "name": "The book bears the name of the prophet, Joel son of Pethuel (1:1). In Hebrew, Yoel joins two forms of the divine name and means “the LORD is God.”",
+  "facts": [
+    [
+      "Position",
+      "2nd of the Twelve Minor Prophets"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "prophecy (poetry)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "The plague and the lament",
+      "from": 1,
+      "to": 1,
+      "text": "Locusts and drought devastate the land; the prophet summons everyone to fasting and prayer."
+    },
+    {
+      "title": "The day of the LORD and God's answer",
+      "from": 2,
+      "to": 2,
+      "text": "The alarm in Zion, the call to return with all one's heart, the promise to restore the land and to pour out the Spirit."
+    },
+    {
+      "title": "The judgment of the nations",
+      "from": 3,
+      "to": 3,
+      "text": "The nations are gathered in the Valley of Jehoshaphat, and Judah and Jerusalem are restored."
+    }
+  ],
+  "people": [
+    {
+      "name": "Joel",
+      "chapters": "1–3",
+      "ch": 1,
+      "note": "prophet, son of Pethuel; nothing more is known of him"
+    },
+    {
+      "name": "Priests",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "ministers of the altar, called to lead the fasting and weeping"
+    }
+  ],
+  "writing": {
+    "tradition": "The book is attributed to the prophet Joel, but the title mentions no kings or dates. Its position between Hosea and Amos led many traditional interpreters to place it in the pre-exilic period; an old proposal puts it in the 9th century BC, during the minority of King Joash of Judah, since the book names no king.",
+    "academic": "Today many scholars prefer a date after the exile, between c. 500 and 350 BC: the temple is functioning, there is no king and the leaders are elders and priests, the mention of the Greeks as buyers of slaves (3:6) fits that period and the book seems to quote other prophets. Others defend a pre-exilic date. The unity between the first part (the plague) and the second (the day of the LORD) is also debated, but many read the book as a cohesive composition."
+  },
+  "events": {
+    "intro": "Joel gives no data that allow it to be dated securely, and the proposals range from the 9th to the 4th century BC. The timeline shows the two most cited positions.",
+    "axis": [
+      -850,
+      -330
+    ],
+    "timeline": [
+      {
+        "label": "Joash, king of Judah",
+        "from": -835,
+        "to": -796,
+        "kind": "pessoa",
+        "note": "reign; an old traditional proposal for the book (approximate dates)"
+      },
+      {
+        "label": "Writing, according to a traditional proposal",
+        "from": -835,
+        "to": -800,
+        "kind": "escrita",
+        "note": "the period of the priest Jehoiada, when Joash was still young"
+      },
+      {
+        "label": "Rebuilding of the temple",
+        "from": -520,
+        "to": -515,
+        "kind": "evento",
+        "note": "the second temple functions again in Jerusalem"
+      },
+      {
+        "label": "Writing, according to scholarship",
+        "from": -500,
+        "to": -350,
+        "kind": "escrita",
+        "note": "Persian period; the date preferred by many scholars"
+      }
+    ]
+  },
+  "context": "Locust plagues were a real threat in the Near East: swarms could destroy in a few days wheat, barley, vines and fig trees, and with them the temple offerings. Joel reads this crisis in the language of the “day of the LORD,” a theme that also appears in Amos, Zephaniah and other prophets. The passage about the Spirit poured out (2:28–32) is quoted in Peter's speech at Pentecost, in Acts 2.",
+  "places": [
+    "Jerusalem and Mount Zion",
+    "Judah",
+    "the Valley of Jehoshaphat",
+    "Tyre, Sidon and Philistia",
+    "Egypt and Edom"
+  ],
+  "themes": [
+    "the day of the LORD",
+    "fasting and repentance",
+    "restoration of the land",
+    "the outpouring of the Spirit",
+    "judgment of the nations"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:12"
+    },
+    {
+      "ref": "2:28–29"
+    },
+    {
+      "ref": "2:32"
+    }
+  ],
+  "note": "The BSB follows the numbering of English Bibles, with three chapters. In the Hebrew text the book has four: 2:28–32 corresponds to 3:1–5, and chapter 3 corresponds to chapter 4."
+}

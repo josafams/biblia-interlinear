@@ -1,0 +1,144 @@
+{
+  "title_orig": "מִיכָה",
+  "title_orig_xlit": "Mikhah",
+  "summary": "Micah, a prophet from the countryside of Judah, announces judgment on Samaria and Jerusalem because of the greed of the powerful, who seize fields and houses, and the corruption of leaders, priests and paid prophets. Alternating threats and promises, the book announces the ruin of Zion, but also a time when the nations will go up to the mountain of the LORD and will no longer train for war, and a ruler who will come forth from Bethlehem. The book sums up what God asks: to act justly, to love mercy and to walk humbly with God (6:8).",
+  "name": "The book bears the prophet's name. Micah is a shortened form of a name that asks “Who is like the LORD?”, a question echoed in 7:18.",
+  "facts": [
+    [
+      "Position",
+      "6th of the Twelve Minor Prophets"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "prophecy (poetry)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Judgment on the two kingdoms",
+      "from": 1,
+      "to": 3,
+      "text": "Samaria and Jerusalem are condemned; denunciation of those who steal land and of leaders, prophets and priests who act for money."
+    },
+    {
+      "title": "Hope for Zion",
+      "from": 4,
+      "to": 5,
+      "text": "The mountain of the LORD above the others, peace among the nations, the remnant gathered and the ruler coming from Bethlehem."
+    },
+    {
+      "title": "The lawsuit and trust",
+      "from": 6,
+      "to": 7,
+      "text": "God brings His people to trial and reminds them of what is good; the book ends with lament, trust and praise to the God who forgives."
+    }
+  ],
+  "people": [
+    {
+      "name": "Micah",
+      "chapters": "1–7",
+      "ch": 1,
+      "note": "prophet from Moresheth, in the countryside of Judah"
+    },
+    {
+      "name": "The leaders of Jacob",
+      "chapters": "3",
+      "ch": 3,
+      "note": "rulers, judges, priests and prophets accused of corruption"
+    }
+  ],
+  "writing": {
+    "tradition": "Tradition attributes the book to Micah of Moresheth, who prophesied in the days of Jotham, Ahaz and Hezekiah, kings of Judah (1:1), roughly between 740 and 700 BC. Jeremiah 26:18 quotes Micah 3:12 and places him in the reign of Hezekiah.",
+    "academic": "Many scholars attribute to the prophet mainly chapters 1 to 3, with their denunciations, and consider that much of chapters 4 to 7 was added in the exile or after it, since it mentions Babylon (4:10) and the return of the scattered. Others see the book as substantially from the 8th century BC. The oracle of 4:1–3 appears almost identically in Isaiah 2:2–4, and it is debated which text depends on the other or whether both use a common source."
+  },
+  "events": {
+    "intro": "Micah was active at the time when Assyria destroyed the Northern Kingdom and invaded Judah. The dates are approximate.",
+    "axis": [
+      -760,
+      -490
+    ],
+    "band": {
+      "label": "Exile in Babylon",
+      "from": -586,
+      "to": -538
+    },
+    "timeline": [
+      {
+        "label": "Jotham, Ahaz and Hezekiah",
+        "from": -750,
+        "to": -686,
+        "kind": "pessoa",
+        "note": "kings of Judah named in 1:1 (approximate dates)"
+      },
+      {
+        "label": "Micah",
+        "from": -740,
+        "to": -700,
+        "kind": "pessoa",
+        "note": "approximate ministry"
+      },
+      {
+        "label": "Fall of Samaria",
+        "from": -722,
+        "to": -720,
+        "kind": "evento",
+        "note": "announced in 1:6–7"
+      },
+      {
+        "label": "Sennacherib's campaign",
+        "from": -701,
+        "to": -701,
+        "kind": "evento",
+        "note": "cities of the Shephelah, such as Lachish, are taken; Jerusalem is besieged"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -740,
+        "to": -700,
+        "kind": "escrita",
+        "note": "Micah of Moresheth"
+      },
+      {
+        "label": "Additions, according to scholarship",
+        "from": -586,
+        "to": -500,
+        "kind": "escrita",
+        "note": "part of chapters 4–7, in the exile or shortly after"
+      }
+    ]
+  },
+  "context": "Moresheth-gath lay in the Shephelah, the foothills between the coastal plain and the mountains of Judah, an agricultural border region. Micah speaks from the point of view of the small farmers of the countryside, threatened by creditors and by powerful families of the capital. The towns named in chapter 1, such as Lachish, lay in the path of the Assyrian army, which in 701 BC devastated the region, as recorded in Sennacherib's annals and the Lachish reliefs at Nineveh.",
+  "places": [
+    "Moresheth-gath and the towns of the Shephelah",
+    "Lachish",
+    "Samaria",
+    "Jerusalem and Zion",
+    "Bethlehem Ephrathah"
+  ],
+  "themes": [
+    "social justice",
+    "corruption of the leaders",
+    "peace among the nations",
+    "the ruler from Bethlehem",
+    "God's forgiveness"
+  ],
+  "key_verses": [
+    {
+      "ref": "4:3"
+    },
+    {
+      "ref": "5:2"
+    },
+    {
+      "ref": "6:8"
+    },
+    {
+      "ref": "7:18"
+    }
+  ],
+  "note": "Dates are approximate; the verses quoted are from the Berean Standard Bible (BSB), which follows the numbering of English Bibles: 5:1 corresponds to 4:14 in the Hebrew text, and 5:2 to 5:1, and so on to the end of the chapter."
+}

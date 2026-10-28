@@ -1,0 +1,175 @@
+{
+  "title_orig": "שִׁיר הַשִּׁירִים",
+  "title_orig_xlit": "Shir ha-Shirim",
+  "summary": "The Song of Songs is a collection of love poems in which a woman and a man speak of each other and to each other, with the participation of a chorus, the “daughters of Jerusalem.” The poems celebrate desire, the beauty of the body and the joy of meeting, with images drawn from gardens, vineyards, spices, animals and landscapes of the land of Israel. There are also moments of absence and searching, such as the two night scenes in which the beloved woman looks for her beloved through the city (3:1–4; 5:2–8). The sentence “My beloved is mine and I am his” (2:16), taken up with variations in 6:3 and 7:10, sums up the mutuality of love, and the high point of the book affirms that “love is as strong as death” (8:6). God is not mentioned explicitly, but Jews and Christians have for centuries also read the book as an image of the love between God and His people.",
+  "name": "The Hebrew title, Shir ha-Shirim, “Song of Songs,” is a form of superlative, like “Holy of Holies,” and means “the most beautiful of songs.” The Septuagint and the Vulgate kept the expression (Asma Asmaton; Canticum Canticorum). In English, the book is also called the Song of Solomon or Canticles, because of the title in 1:1.",
+  "facts": [
+    [
+      "Position",
+      "among the poetic and wisdom books, after Ecclesiastes; in the Hebrew Bible, one of the five Scrolls (Megillot)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "love poetry"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Desire and first meetings",
+      "from": 1,
+      "to": 2,
+      "text": "The beloved woman longs for her beloved and speaks to the daughters of Jerusalem; the two exchange praises, until the first plea not to awaken love before its time (1:1–2:7)."
+    },
+    {
+      "title": "Spring and search",
+      "from": 2,
+      "to": 3,
+      "text": "At the end of winter, the beloved calls her to come away; at night, she searches for him through the city and finds him (2:8–3:5)."
+    },
+    {
+      "title": "The procession and the garden",
+      "from": 3,
+      "to": 5,
+      "text": "Solomon's carriage on his wedding day, the description of the beloved woman's beauty and the image of her as a locked garden (3:6–5:1)."
+    },
+    {
+      "title": "Missed and found again",
+      "from": 5,
+      "to": 6,
+      "text": "The beloved knocks at the door and goes away; she searches for him, describes him to the daughters of Jerusalem and says he has gone down to his garden (5:2–6:3)."
+    },
+    {
+      "title": "The beauty of the Shulammite",
+      "from": 6,
+      "to": 8,
+      "text": "New praises of the beloved woman, unique among all, and her invitation to go together to the countryside (6:4–8:4)."
+    },
+    {
+      "title": "As strong as death",
+      "from": 8,
+      "to": 8,
+      "text": "The affirmation of the strength of love, the words of the brothers, Solomon's vineyard and the final call (8:5–14)."
+    }
+  ],
+  "extra": {
+    "title": "Who is speaking?",
+    "text": "The Hebrew text does not indicate who speaks in each passage; the reader is guided by the masculine and feminine forms of verbs and pronouns, which Hebrew distinguishes. The speaker headings that many translations add, such as “She,” “He” and “Friends,” are additions: they help the reading, but reflect an interpretation. Some lines return as refrains and mark the rhythm of the book: the plea to the daughters of Jerusalem not to awaken love before its time (2:7; 3:5; 8:4), the formula of mutual belonging (2:16; 6:3; 7:10) and the question “Who is this…?” (3:6; 6:10; 8:5)."
+  },
+  "people": [
+    {
+      "name": "The beloved woman",
+      "chapters": "1–8",
+      "ch": 1,
+      "note": "the voice that speaks most in the book; in 6:13 she is called the Shulammite, a name that may indicate her origin (Shunem) or echo the name of Solomon"
+    },
+    {
+      "name": "The beloved",
+      "chapters": "1–8",
+      "ch": 1,
+      "note": "presented sometimes as a shepherd, sometimes as a king; praises the beloved woman's beauty and is described by her (5:10–16)"
+    },
+    {
+      "name": "The daughters of Jerusalem",
+      "chapters": "1–3; 5–6; 8",
+      "ch": 5,
+      "note": "the chorus of women with whom the beloved woman converses"
+    },
+    {
+      "name": "Solomon",
+      "chapters": "1; 3; 8",
+      "ch": 3,
+      "note": "named in the title, in the wedding procession (3:6–11) and in the vineyard at Baal-hamon (8:11–12)"
+    },
+    {
+      "name": "The beloved woman's brothers",
+      "chapters": "1; 8",
+      "ch": 8,
+      "note": "made her keeper of the vineyards (1:6) and discuss her future (8:8–9)"
+    },
+    {
+      "name": "The watchmen of the city",
+      "chapters": "3; 5",
+      "ch": 5,
+      "note": "find the beloved woman in her night searches; the second time, they beat her (5:7)"
+    }
+  ],
+  "writing": {
+    "tradition": "The title (1:1) links the book to Solomon, to whom 1 Kings 4:32 attributes a thousand and five songs, and Jewish and Christian traditions considered him the author, placing the work in the 10th century BC. A rabbinic tradition says he wrote it in his youth; the Talmud attributes the written form to Hezekiah and his companions. The Hebrew expression of the title, however, can mean “of Solomon,” “for Solomon” or “concerning Solomon.”",
+    "academic": "Many scholars see the book as an anthology of love poems, perhaps sung at wedding celebrations, gathered and edited in a later period. The language is one of the arguments: the short form of the relative pronoun, typical of late Hebrew, appears throughout the book except in the title, and there are words of Persian origin (pardes, “orchard,” in 4:13) and perhaps Greek (the “carriage” of 3:9). For this reason the final form is usually dated to the Persian or Hellenistic periods, between about 500 and 250 BC. Other researchers argue that some of the poems are older, recalling, for example, the mention of Tirzah (6:4), capital of the northern kingdom in the 10th and early 9th centuries BC."
+  },
+  "events": {
+    "intro": "The Song narrates no datable historical events. The timeline shows the reign of Solomon, named in the title, the period when Tirzah, mentioned in 6:4, was capital of the northern kingdom, and the two main proposals for the period of composition.",
+    "axis": [
+      -1000,
+      -200
+    ],
+    "band": {
+      "label": "Persian period",
+      "from": -539,
+      "to": -332
+    },
+    "timeline": [
+      {
+        "label": "Solomon",
+        "from": -970,
+        "to": -931,
+        "kind": "pessoa",
+        "note": "reign (1:1; 3:7–11; 8:11–12)"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -970,
+        "to": -950,
+        "kind": "escrita",
+        "note": "Solomon, in his youth, according to a rabbinic tradition"
+      },
+      {
+        "label": "Tirzah, capital of the northern kingdom",
+        "from": -930,
+        "to": -880,
+        "kind": "evento",
+        "note": "compared to Jerusalem in 6:4"
+      },
+      {
+        "label": "Final form, according to scholarship",
+        "from": -500,
+        "to": -250,
+        "kind": "escrita",
+        "note": "Persian or Hellenistic periods; parts may be older"
+      }
+    ]
+  },
+  "context": "The images of the Song come from the landscape of the land of Israel and its neighbors: the vineyards of En-gedi, by the Dead Sea, the plain of Sharon, the mountains of Gilead, Carmel, Lebanon and Hermon, as well as cities such as Jerusalem, Tirzah, Heshbon and Damascus. Love poetry was common in the ancient Near East: Egyptian songs of the New Kingdom (c. 1300–1100 BC) also call the lovers “brother” and “sister,” as in 4:9–12, and use gardens, perfumes and flowers as images of desire. For many centuries the allegorical reading predominated: the Targum and the Midrash saw in the book the love between God and Israel, and Rabbi Akiva called it the “holy of holies” among the Writings; Christian authors such as Origen and Bernard of Clairvaux read it as an image of the love between Christ and the Church or the soul. Among scholars today the reading of the book as poetry about human love prevails, which does not exclude the traditional religious readings. In Judaism, it is read at Passover (Pesach).",
+  "places": [
+    "Jerusalem and Zion",
+    "En-gedi",
+    "Sharon",
+    "Lebanon, Hermon and Senir",
+    "Gilead and Carmel",
+    "Tirzah, Heshbon and Damascus"
+  ],
+  "themes": [
+    "love and desire",
+    "beauty",
+    "searching and finding",
+    "mutual belonging",
+    "nature and the garden",
+    "the strength of love"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:7"
+    },
+    {
+      "ref": "2:16"
+    },
+    {
+      "ref": "8:6–7"
+    }
+  ],
+  "note": "Dates are approximate. In the Hebrew numbering, the last verse of chapter 6 in English Bibles (6:13) opens chapter 7, and the verses of that chapter are one number higher. The speaker headings found in many translations are not part of the Hebrew text. The verses quoted are from the Berean Standard Bible (BSB)."
+}

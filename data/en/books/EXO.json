@@ -1,0 +1,237 @@
+{
+  "title_orig": "שְׁמוֹת",
+  "title_orig_xlit": "Shemot",
+  "summary": "Exodus tells how Jacob's descendants, already numerous in Egypt, pass from slavery to freedom and become a people bound to God by a covenant. Chapters 1 to 15 narrate the oppression under Pharaoh, the call of Moses at the bush that burned without being consumed, the plagues on Egypt, the first Passover and the crossing of the sea. After a march through the wilderness, the people reach Mount Sinai, where they hear the Ten Commandments, receive a body of laws and commit themselves to the covenant (chs. 19–24). The last part revolves around the tabernacle, the portable sanctuary that would mark God's presence among Israel: the instructions for making it, the crisis of the golden calf and the carrying out of the work, which ends with the glory of the LORD filling the tent.",
+  "name": "In Hebrew the book is called Shemot, “Names,” a word taken from the opening sentence: “These are the names of the sons of Israel” (1:1). The title “Exodus” comes from the Septuagint, in which Exodos means “going out,” and passed into the Latin of the Vulgate; it sums up the central event of the book, the departure from Egypt.",
+  "facts": [
+    [
+      "Position",
+      "2nd book of the Torah (Pentateuch)"
+    ],
+    [
+      "Original language",
+      "Hebrew"
+    ],
+    [
+      "Genre",
+      "narrative and law"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Oppression and call",
+      "from": 1,
+      "to": 4,
+      "text": "Israel grows and is enslaved; Moses is born, raised at court, flees to Midian and is called by God at Mount Horeb."
+    },
+    {
+      "title": "The confrontation with Pharaoh",
+      "from": 5,
+      "to": 11,
+      "text": "Moses and Aaron ask for the people's release; in the face of Pharaoh's refusals, nine plagues strike Egypt and the tenth is announced."
+    },
+    {
+      "title": "Passover and deliverance",
+      "from": 12,
+      "to": 15,
+      "text": "The first Passover, the death of Egypt's firstborn, the departure, the crossing of the sea and the song of victory (15:1–21)."
+    },
+    {
+      "title": "Toward Sinai",
+      "from": 15,
+      "to": 18,
+      "text": "Thirst, hunger and conflicts in the wilderness: the waters of Marah, the manna, water from the rock, the battle against Amalek and Jethro's visit."
+    },
+    {
+      "title": "The covenant at Sinai",
+      "from": 19,
+      "to": 24,
+      "text": "God reveals Himself on the mountain, gives the Ten Commandments and the laws of the so-called Book of the Covenant (20:22–23:33), and the covenant is confirmed with blood (24:8)."
+    },
+    {
+      "title": "Instructions for the tabernacle",
+      "from": 25,
+      "to": 31,
+      "text": "On the mountain, Moses receives the pattern of the sanctuary, its furnishings and the priestly garments, as well as the rules for consecrating the priests."
+    },
+    {
+      "title": "The golden calf and the covenant renewed",
+      "from": 32,
+      "to": 34,
+      "text": "While Moses is on the mountain, the people worship a golden calf; Moses intercedes, goes up again with new tablets and the covenant is renewed."
+    },
+    {
+      "title": "The building of the tabernacle",
+      "from": 35,
+      "to": 40,
+      "text": "The people's offerings, the work of Bezalel and Oholiab and the setting up of the sanctuary, on which the cloud descends."
+    }
+  ],
+  "extra": {
+    "title": "Order given, order carried out",
+    "text": "The instructions for the tabernacle (chs. 25–31) return almost word for word in chapters 35 to 40, now as an account of what was done. The phrase “as the LORD had commanded Moses,” with small variations, is repeated throughout chapters 39 and 40 (seven times in the last one alone) and underlines that the work followed the pattern shown on the mountain (25:40). Some scholars see in this echoes of the creation account in Genesis: the work advances in stages, Moses inspects it and blesses (39:43), and the Sabbath appears between the instructions and their execution (31:12–17; 35:1–3)."
+  },
+  "people": [
+    {
+      "name": "Moses",
+      "chapters": "2–40",
+      "ch": 3,
+      "note": "a Levite raised at the Egyptian court; leads the people out of Egypt and is the mediator of the covenant at Sinai"
+    },
+    {
+      "name": "Aaron",
+      "chapters": "4–40",
+      "ch": 4,
+      "note": "Moses' older brother and his spokesman; chosen for the priesthood, he gives in to the people and makes the golden calf"
+    },
+    {
+      "name": "Pharaoh",
+      "chapters": "1–14",
+      "ch": 5,
+      "note": "the king of Egypt, never called by name; resists the command to let the people go"
+    },
+    {
+      "name": "Shiphrah and Puah",
+      "chapters": "1",
+      "ch": 1,
+      "note": "midwives of the Hebrew women who refuse to kill the newborn boys"
+    },
+    {
+      "name": "Miriam",
+      "chapters": "2; 15",
+      "ch": 15,
+      "note": "Aaron's sister, called a prophetess; leads the women in song after the crossing of the sea"
+    },
+    {
+      "name": "Jethro",
+      "chapters": "2–4; 18",
+      "ch": 18,
+      "note": "priest of Midian and Moses' father-in-law, also called Reuel (2:18); advises dividing the work of judging"
+    },
+    {
+      "name": "Zipporah",
+      "chapters": "2; 4; 18",
+      "ch": 4,
+      "note": "Moses' wife; circumcises their son during the journey to Egypt (4:24–26)"
+    },
+    {
+      "name": "Joshua",
+      "chapters": "17; 24; 32–33",
+      "ch": 17,
+      "note": "Moses' assistant; commands the battle against Amalek"
+    },
+    {
+      "name": "Bezalel and Oholiab",
+      "chapters": "31; 35–38",
+      "ch": 31,
+      "note": "craftsmen from Judah and Dan in charge of building the tabernacle"
+    }
+  ],
+  "writing": {
+    "tradition": "Jewish and Christian traditions attribute Exodus, like the whole Torah, to Moses; the book itself says he wrote certain parts (17:14; 24:4; 34:27). On this reading, the text would have been composed during the wandering in the wilderness, around 1446–1406 BC for those who follow the earlier date of the Exodus, or in the 13th century BC for those who adopt the later date.",
+    "academic": "For most scholars, Exodus brings together traditions of different origins and periods, edited over centuries. It is common to distinguish material of a priestly kind, very present in the laws of worship and the description of the tabernacle (chs. 25–31; 35–40), from narratives of other provenance; the Book of the Covenant (20:22–23:33) is usually seen as one of the oldest law collections in the Bible. The final form is generally dated to the exilic and Persian periods, around 550–400 BC. There are also researchers who argue for an ancient core, linked to the memory of Semitic groups who left Egypt."
+  },
+  "events": {
+    "intro": "The book does not give Pharaoh's name, and no known Egyptian document records Israel's departure; for this reason, the date of the Exodus is debated. One position starts from 1 Kings 6:1, which puts 480 years between the departure from Egypt and Solomon's fourth year, and arrives at around 1446 BC, during Egypt's 18th dynasty. Another, based on the name of the city of Rameses (1:11) and on archaeological data from Canaan, prefers the 13th century BC, in the reign of Ramesses II, and reads the number 480 as a symbolic sum of generations. There are also historians who see in the account the memory of smaller groups, enlarged by tradition, or who consider it impossible to date. The timeline shows the two most cited proposals; the periods of Israel in Egypt and of Moses' life follow the traditional chronology.",
+    "axis": [
+      -1900,
+      -350
+    ],
+    "band": {
+      "label": "Egyptian New Kingdom",
+      "from": -1550,
+      "to": -1070
+    },
+    "timeline": [
+      {
+        "label": "Israel in Egypt",
+        "from": -1876,
+        "to": -1446,
+        "kind": "evento",
+        "note": "430 years (12:40), in the traditional chronology"
+      },
+      {
+        "label": "Moses",
+        "from": -1526,
+        "to": -1406,
+        "kind": "pessoa",
+        "note": "80 years old when he speaks to Pharaoh (7:7) and 120 at his death (Deuteronomy 34:7), in the traditional chronology"
+      },
+      {
+        "label": "Departure from Egypt, early date",
+        "from": -1446,
+        "to": -1445,
+        "kind": "evento",
+        "note": "by the reckoning of 1 Kings 6:1; the tabernacle is set up in the second year (40:17)"
+      },
+      {
+        "label": "Ramesses II",
+        "from": -1279,
+        "to": -1213,
+        "kind": "pessoa",
+        "note": "pharaoh associated with the city of Rameses (1:11); not named in the Bible"
+      },
+      {
+        "label": "Departure from Egypt, late date",
+        "from": -1270,
+        "to": -1250,
+        "kind": "evento",
+        "note": "approximate range proposed by those who prefer the 13th century BC"
+      },
+      {
+        "label": "Merneptah Stele",
+        "from": -1208,
+        "to": -1208,
+        "kind": "evento",
+        "note": "Egyptian inscription with the oldest known mention of “Israel,” already in Canaan (approximate date)"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -1446,
+        "to": -1406,
+        "kind": "escrita",
+        "note": "Moses, during the wandering in the wilderness (in the 13th century BC, on the late date)"
+      },
+      {
+        "label": "Final form, according to scholarship",
+        "from": -550,
+        "to": -400,
+        "kind": "escrita",
+        "note": "Babylonian exile and Persian period"
+      }
+    ]
+  },
+  "context": "The first part of the book takes place in the Nile delta, in northeastern Egypt, where the region of Goshen lay and where the Israelites are forced to build the store cities of Pithom and Rameses (1:11). Egyptian documents of the New Kingdom record Semites living and working in the delta and herdsmen coming from Canaan in search of water and pasture; the name Moses recalls Egyptian names formed with the element ms, “born of,” as in Ramesses. The route of the departure is uncertain. The “Red Sea” of the text, in Hebrew yam suf (perhaps “sea of reeds”), may be one of the lakes of the Isthmus of Suez or an arm of the Red Sea itself. The location of Mount Sinai, also called Horeb, is likewise debated: tradition identifies it with Jebel Musa, in the south of the Sinai Peninsula, but there are proposals in the north of the peninsula and in northwestern Arabia, near Midian, the land of Jethro.",
+  "places": [
+    "Egypt: Goshen, Pithom and Rameses (1:11)",
+    "Midian",
+    "Horeb, the mountain of God (3:1)",
+    "the Red Sea (yam suf)",
+    "Marah and Elim (15:23–27)",
+    "the Wilderness of Sin and Rephidim",
+    "Mount Sinai"
+  ],
+  "themes": [
+    "deliverance",
+    "the name of God",
+    "covenant",
+    "law",
+    "God's presence among the people",
+    "worship and holiness"
+  ],
+  "key_verses": [
+    {
+      "ref": "3:14"
+    },
+    {
+      "ref": "19:5–6"
+    },
+    {
+      "ref": "20:2–3"
+    },
+    {
+      "ref": "34:6–7"
+    }
+  ],
+  "note": "Dates are approximate and depend on the position taken on the Exodus. The numbering follows that of English Bibles; in the Hebrew text, 8:1–4 appears as 7:26–29 and 22:1 as 21:37, which shifts the following verses of those chapters. The verses quoted are from the Berean Standard Bible (BSB)."
+}

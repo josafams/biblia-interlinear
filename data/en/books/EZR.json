@@ -1,0 +1,201 @@
+{
+  "title_orig": "עֶזְרָא",
+  "title_orig_xlit": "Ezra",
+  "summary": "Ezra tells of the return of the Jews exiled in Babylon and the rebuilding of religious life in Jerusalem. Chapters 1 to 6 run from the decree of Cyrus, in 538 BC, to the completion of the temple, in 515 BC, passing through the opposition of the neighboring peoples, which halts the work for some years. After an interval of several decades, chapters 7 to 10 narrate the arrival of Ezra, priest and scribe, with a letter from King Artaxerxes authorizing him to teach and apply the law of Moses. The book ends with the crisis of the marriages with foreign women and the decision to dissolve them.",
+  "name": "The book bears the name of Ezra, the main character of chapters 7 to 10. Ezra is a shortened form of names such as Azariah and means “help” (of God). In Hebrew tradition, Ezra and Nehemiah formed a single book; the separation appears among Christian authors such as Origen and Jerome, and printed Hebrew editions adopted it later. In the Septuagint, the book is called Esdras B, to distinguish it from another Greek book, Esdras A.",
+  "facts": [
+    [
+      "Position",
+      "15th book of the Bible, among the historical books; in the Hebrew Bible, it forms a single book with Nehemiah, among the Writings (Ketuvim)"
+    ],
+    [
+      "Original language",
+      "Hebrew, with passages in Aramaic (4:8–6:18; 7:12–26)"
+    ],
+    [
+      "Genre",
+      "historical narrative, with lists and official documents"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "The return from exile",
+      "from": 1,
+      "to": 2,
+      "text": "The decree of Cyrus, the return of the temple articles and the list of those who came back."
+    },
+    {
+      "title": "The rebuilding of the temple",
+      "from": 3,
+      "to": 6,
+      "text": "The altar and the foundations, the opposition and the halt, the resumption with Haggai and Zechariah and the dedication of the temple."
+    },
+    {
+      "title": "Ezra's mission",
+      "from": 7,
+      "to": 8,
+      "text": "Ezra's genealogy, Artaxerxes' letter and the journey from Babylon to Jerusalem."
+    },
+    {
+      "title": "The mixed marriages",
+      "from": 9,
+      "to": 10,
+      "text": "Ezra's prayer, the assembly of the people and the list of those who separated from their foreign wives."
+    }
+  ],
+  "extra": {
+    "title": "Hebrew and Aramaic",
+    "text": "Two parts of the book are in Aramaic, the language used in the administration of the Persian Empire: 4:8–6:18, which gathers the correspondence between local authorities and the Persian court and the narrative around it, and 7:12–26, Artaxerxes' letter to Ezra. The text itself notes, in 4:7, that the letter was written in Aramaic. Another mark of the book is the shift to the first person: from 7:27 to 9:15, the one speaking is Ezra himself."
+  },
+  "people": [
+    {
+      "name": "Cyrus",
+      "chapters": "1; 3–6",
+      "ch": 1,
+      "note": "Persian king who authorizes the return and the rebuilding of the temple"
+    },
+    {
+      "name": "Sheshbazzar",
+      "chapters": "1; 5",
+      "ch": 1,
+      "note": "leader who brings back the temple articles"
+    },
+    {
+      "name": "Zerubbabel and Jeshua",
+      "chapters": "2–5",
+      "ch": 3,
+      "note": "the leader from the family of David and the priest who lead the rebuilding"
+    },
+    {
+      "name": "Haggai and Zechariah",
+      "chapters": "5–6",
+      "ch": 5,
+      "note": "prophets who encourage the resumption of the work"
+    },
+    {
+      "name": "Tattenai",
+      "chapters": "5–6",
+      "ch": 5,
+      "note": "governor of the region “west of the Euphrates,” who consults the king about the work"
+    },
+    {
+      "name": "Darius",
+      "chapters": "4–6",
+      "ch": 6,
+      "note": "Persian king who confirms the decree of Cyrus"
+    },
+    {
+      "name": "Artaxerxes",
+      "chapters": "4; 7–8",
+      "ch": 7,
+      "note": "Persian king who sends Ezra to Jerusalem"
+    },
+    {
+      "name": "Ezra",
+      "chapters": "7–10",
+      "ch": 7,
+      "note": "priest and scribe skilled in the law of Moses"
+    },
+    {
+      "name": "Shecaniah",
+      "chapters": "10",
+      "ch": 10,
+      "note": "proposes the commitment to dissolve the mixed marriages"
+    }
+  ],
+  "writing": {
+    "tradition": "The Babylonian Talmud (Bava Batra 15a) attributes the book to Ezra, and the first-person passages have been read as written by him. On this reading, Ezra–Nehemiah would have been written in Jerusalem in the second half of the 5th century BC, around 440–400 BC.",
+    "academic": "Most scholars see the book as the work of a compiler who brought together diverse sources: the memoirs of Ezra, lists of people and objects and official documents in Aramaic, whose authenticity is accepted by many, at least in substance, and debated by others. The final form of Ezra–Nehemiah is usually dated c. 400–300 BC. The book was formerly attributed to the author of Chronicles; today many consider it an independent work. The date of Ezra's mission is also debated: the seventh year of Artaxerxes (7:7–8) is generally understood as 458 BC, under Artaxerxes I, but some propose 398 BC, under Artaxerxes II, which would place Ezra after Nehemiah."
+  },
+  "events": {
+    "intro": "The book covers two periods separated by about sixty years: from 538 BC, Cyrus's first year as king of Babylon, to 515 BC, the sixth year of Darius I, when the temple was completed (6:15); and Ezra's mission, which begins in the seventh year of Artaxerxes, generally placed in 458 BC. The section 4:6–23 interrupts the chronological order: it gathers complaints made in the reigns of Xerxes and Artaxerxes, later than Darius, to show how the opposition kept recurring.",
+    "axis": [
+      -600,
+      -300
+    ],
+    "band": {
+      "label": "Persian period",
+      "from": -539,
+      "to": -332
+    },
+    "timeline": [
+      {
+        "label": "Exile in Babylon",
+        "from": -597,
+        "to": -538,
+        "kind": "evento",
+        "note": "from the deportations under Nebuchadnezzar to the fall of Babylon"
+      },
+      {
+        "label": "Decree of Cyrus and first return",
+        "from": -538,
+        "to": -537,
+        "kind": "evento",
+        "note": "with Sheshbazzar; then Zerubbabel and Jeshua (chs. 1–3)"
+      },
+      {
+        "label": "Rebuilding of the temple",
+        "from": -520,
+        "to": -515,
+        "kind": "evento",
+        "note": "from the second to the sixth year of Darius I (4:24; 6:15)"
+      },
+      {
+        "label": "Complaints to Xerxes and Artaxerxes",
+        "from": -486,
+        "to": -445,
+        "kind": "evento",
+        "note": "correspondence gathered in 4:6–23"
+      },
+      {
+        "label": "Ezra arrives in Jerusalem",
+        "from": -458,
+        "to": -458,
+        "kind": "pessoa",
+        "note": "most accepted date; another proposal is 398 BC"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": -440,
+        "to": -400,
+        "kind": "escrita",
+        "note": "Ezra"
+      },
+      {
+        "label": "Final form, according to scholarship",
+        "from": -400,
+        "to": -300,
+        "kind": "escrita",
+        "note": "compilation of memoirs, lists and documents"
+      }
+    ]
+  },
+  "context": "In 539 BC, Cyrus, king of Persia, took Babylon and came to rule the whole former Babylonian empire. Persian policy generally allowed deported peoples to return and restore their sanctuaries, and the so-called Cyrus Cylinder describes measures of this kind, although it does not speak of the Jews. Judah became a small province within the satrapy the book calls “west of the Euphrates” (in Aramaic, “beyond the River”). The return was gradual and met resistance from groups who had stayed in the land or came from other regions, such as the people of Samaria (4:10). The archive found at Ecbatana (6:2) recalls that this city in Media was one of the residences of the Persian court.",
+  "places": [
+    "Babylon",
+    "Jerusalem and the temple",
+    "Samaria and the region “west of the Euphrates”",
+    "Ecbatana, in Media",
+    "the Ahava Canal"
+  ],
+  "themes": [
+    "return from exile",
+    "rebuilding of the temple",
+    "the law of Moses",
+    "identity and separation",
+    "opposition",
+    "God acts through foreign kings"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:2–3"
+    },
+    {
+      "ref": "6:15–16"
+    },
+    {
+      "ref": "7:10"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. The verses quoted are from the Berean Standard Bible (BSB)."
+}
