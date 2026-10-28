@@ -1160,3 +1160,104 @@ RUT 2:12	7	מֵ/עִ֤ם	da-parte-de	claude	מֵעִם “da parte de”; tinha 
 1SA 20:21	15	מִמְּ/ךָ֣	de-ti	claude	מִמְּךָ “de ti”; tinha “de”
 1SA 20:21	16	וָ/הֵ֗נָּה	para-cá	claude	וָהֵנָּה “e para cá”; tinha “aqui”
 1SA 20:21	17	קָחֶ֧/נּוּ	toma-as	claude	קָחֶנּוּ “toma-as”; tinha “toma”
+1SA 20:37	4	מְק֣וֹם	o-lugar	claude	מְקוֹם “o lugar (de)”; tinha “onde”
+1SA 20:37	7	יָרָ֖ה	atirara	claude	יָרָה “atirara”; tinha “flecha”
+1SA 20:37	16	מִמְּ/ךָ֥	de-ti	claude	מִמְּךָ “de ti”; tinha “de”
+1SA 20:42	8	שְׁנֵ֜י/נוּ	ambos	claude	שְׁנֵינוּ “nós dois, ambos”; tinha “ambos-juramos”
+1SA 20:42	12	לֵ/אמֹ֔ר	dizendo	claude	לֵאמֹר “dizendo”; tinha “dizendo-o”
+1SA 20:42	17	וּ/בֵ֥ין	e-entre	claude	וּבֵין “e entre”; tinha “entre”
+1SA 20:42	27	הָ/עִֽיר	à-cidade	claude	הָעִיר “à cidade”; tinha “o-cidade”
+1SA 23:18	1	וַ/יִּכְרְת֧וּ	e-fizeram	claude	וַיִּכְרְתוּ “e fizeram (aliança)”; tinha “fizeram”
+1SA 23:18	2	שְׁנֵי/הֶ֛ם	ambos	claude	שְׁנֵיהֶם “ambos”; tinha “ambos-fizeram”
+1SA 23:18	6	וַ/יֵּ֤שֶׁב	e-ficou	claude	וַיֵּשֶׁב “e ficou”; tinha “ficou”
+1SA 25:36	1	וַ/תָּבֹ֣א	e-veio	claude	וַתָּבֹא “e veio”; tinha “veio”
+1SA 25:36	6	ל/וֹ֩	para-ele	claude	לוֹ “para ele” (ele tinha); tinha “que-ele”
+1SA 25:36	19	וְ/לֹֽא	e-não	claude	וְלֹא “e não”; tinha “que-ela-não”
+1SA 25:36	26	א֥וֹר	a-luz	claude	אוֹר “a luz”; tinha “veio-dia”
+1SA 25:36	27	הַ/בֹּֽקֶר	da-manhã	claude	הַבֹּקֶר “da manhã”; tinha “o-dia-seguinte”
+1SA 26:13	4	וַ/יַּעֲמֹ֥ד	e-parou	claude	וַיַּעֲמֹד “e parou, pôs-se”; tinha “pôs-se-desviado”
+1SA 26:13	8	מֵֽ/רָחֹ֑ק	de-longe	claude	מֵרָחֹק “de longe”; tinha “havendo-distância”
+1SA 26:13	10	הַ/מָּק֖וֹם	o-espaço	claude	הַמָּקוֹם “o lugar, o espaço”; tinha “distância”
+1SA 26:21	9	אָרַ֤ע	farei-mal	claude	אָרַע “farei mal”; tinha “mal”
+1SA 26:21	12	תַּ֠חַת	porque	claude	תַּחַת “porque” (com אֲשֶׁר); tinha “debaixo”
+1SA 26:21	14	יָקְרָ֥ה	foi-preciosa	claude	יָקְרָה “foi preciosa, estimada”; tinha “minha”
+1SA 26:21	17	הַ/יּ֣וֹם	hoje	claude	הַיּוֹם “hoje”; tinha “estimada”
+1SA 26:21	18	הַ/זֶּ֑ה	este	claude	הַזֶּה “este”; tinha “hoje”
+1SA 26:21	22	הַרְבֵּ֥ה	muito	claude	הַרְבֵּה “muito”; tinha “grande”
+1SA 26:21	23	מְאֹֽד	muito	claude	מְאֹד “muito”; tinha “maneira”
+1SA 28:1	3	הָ/הֵ֔ם	aqueles	claude	הָהֵם “aqueles”; tinha “o-ficou”
+1SA 28:1	8	לַ/צָּבָ֔א	para-o-exército	claude	לַצָּבָא “para o exército, para a guerra”; tinha “lutar”
+1SA 28:1	9	לְ/הִלָּחֵ֖ם	para-guerrear	claude	לְהִלָּחֵם “para guerrear”; tinha “para-lutar-contra”
+1SA 28:1	15	יָדֹ֣עַ	saber	claude	יָדֹעַ “saber” (infinitivo que reforça: certamente saberás); tinha “sabe”
+1SA 28:1	16	תֵּדַ֗ע	saberás	claude	תֵּדַע “saberás”; tinha “certo”
+1SA 28:1	19	תֵּצֵ֣א	sairás	claude	תֵּצֵא “sairás”; tinha “sair”
+1SA 28:1	22	וַ/אֲנָשֶֽׁי/ךָ	e-teus-homens	claude	וַאֲנָשֶׁיךָ “e teus homens”; tinha “e-homens-teu”
+1SA 28:8	1	וַ/יִּתְחַפֵּ֣שׂ	e-disfarçou-se	claude	וַיִּתְחַפֵּשׂ “e disfarçou-se”; tinha “disfarçou”
+1SA 28:8	3	וַ/יִּלְבַּשׁ֙	e-vestiu	claude	וַיִּלְבַּשׁ “e vestiu”; tinha “se-vestiu”
+1SA 28:8	8	וּ/שְׁנֵ֤י	e-dois	claude	וּשְׁנֵי “e dois”; tinha “com-dois”
+1SA 28:8	13	הָ/אִשָּׁ֖ה	à-mulher	claude	הָאִשָּׁה “à mulher”; tinha “àquela-mulher”
+1SA 28:8	16	קָֽסֳמִי	adivinha	claude	קָסֳמִי “adivinha”; tinha “te-rogo”
+1SA 28:8	17	נָ֥א	peço-te	claude	נָא “peço-te, por favor”; tinha “adivinhações”
+1SA 28:8	18	לִ/י֙	para-mim	claude	לִי “para mim”; tinha “que-me”
+1SA 28:8	20	וְ/הַ֣עֲלִי	e-faze-subir	claude	וְהַעֲלִי “e faze subir”; tinha “subir”
+1SA 28:8	21	לִ֔/י	para-mim	claude	לִי “para mim”; tinha “a-eu”
+1SA 28:8	24	אֹמַ֖ר	eu-disser	claude	אֹמַר “eu disser”; tinha “eu”
+1SA 31:4	3	לְ/נֹשֵׂ֨א	ao-que-levava	claude	לְנֹשֵׂא “ao que levava”; tinha “a-seu”
+1SA 31:4	4	כֵלָ֜י/ו	suas-armas	claude	כֵלָיו “suas armas” (o escudeiro); tinha “seu-escudeiro”
+1SA 31:4	9	פֶּן	para-que-não	claude	פֶּן “para que não”; tinha “porque-não”
+1SA 31:4	12	הָ/אֵ֤לֶּה	estes	claude	הָאֵלֶּה “estes”; tinha “o-estes”
+1SA 31:4	16	וְ/לֹ֤א	e-não	claude	וְלֹא “e não”; tinha “não”
+1SA 31:4	18	נֹשֵׂ֣א	o-que-levava	claude	נֹשֵׂא “o que levava”; tinha “seu”
+1SA 31:4	19	כֵלָ֔י/ו	suas-armas	claude	כֵלָיו “suas armas” (o escudeiro); tinha “seu-escudeiro”
+1SA 31:4	21	יָרֵ֖א	temia	claude	יָרֵא “temia”; tinha “temor”
+1SA 31:4	22	מְאֹ֑ד	muito	claude	מְאֹד “muito”; tinha “grande”
+1SA 31:4	23	וַ/יִּקַּ֤ח	e-tomou	claude	וַיִּקַּח “e tomou”; tinha “então-tomou”
+2SA 1:4	1	וַ/יֹּ֨אמֶר	e-disse	claude	וַיֹּאמֶר “e disse”; tinha “disse”
+2SA 1:4	6	הַ/דָּבָ֖ר	a-coisa	claude	הַדָּבָר “a coisa”; tinha “o-palavra”
+2SA 1:4	7	הַגֶּד	declara	claude	הַגֶּד “declara, conta”; tinha “te”
+2SA 1:4	8	נָ֣א	peço-te	claude	נָא “peço-te”; tinha “rogo”
+2SA 1:4	9	לִ֑/י	para-mim	claude	לִי “para mim”; tinha “que”
+2SA 1:4	10	וַ֠/יֹּאמֶר	e-disse	claude	וַיֹּאמֶר “e disse”; tinha “digas-e-ele-respondeu”
+2SA 1:19	1	הַ/צְּבִי֙	o-esplendor	claude	הַצְּבִי “o esplendor, a glória”; tinha “pereceu-a-glória”
+2SA 1:19	5	חָלָ֑ל	ferido	claude	חָלָל “ferido, morto”; tinha “montanhas”
+2SA 2:7	1	וְ/עַתָּ֣ה	e-agora	claude	וְעַתָּה “e agora”; tinha “pois-agora”
+2SA 2:7	2	תֶּחֱזַ֣קְנָה	fortaleçam-se	claude	תֶּחֱזַקְנָה “fortaleçam-se”; tinha “esforcem”
+2SA 2:7	5	לִ/בְנֵי	filhos	claude	לִבְנֵי “filhos (de)” (filhos de valor: valentes); tinha “sede”
+2SA 2:7	6	חַ֔יִל	de-valor	claude	חַיִל “valor”; tinha “valentes”
+2SA 2:28	1	וַ/יִּתְקַ֤ע	e-tocou	claude	וַיִּתְקַע “e tocou”; tinha “então-tocou”
+2SA 2:28	3	בַּ/שּׁוֹפָ֔ר	a-trombeta	claude	בַּשּׁוֹפָר “a trombeta (de chifre)”; tinha “o-chifre”
+2SA 2:28	4	וַ/יַּֽעַמְדוּ֙	e-pararam	claude	וַיַּעַמְדוּ “e pararam”; tinha “e-puseram”
+2SA 2:28	6	הָ/עָ֔ם	o-povo	claude	הָעָם “o povo”; tinha “aquele-povo”
+2SA 2:28	8	יִרְדְּפ֥וּ	perseguiram	claude	יִרְדְּפוּ “perseguiram”; tinha “seguiu”
+2SA 2:28	10	אַחֲרֵ֣י	atrás-de	claude	אַחֲרֵי “atrás de”; tinha “depois”
+2SA 2:28	13	יָסְפ֥וּ	continuaram	claude	יָסְפוּ “continuaram”; tinha “mais”
+2SA 2:28	15	לְ/הִלָּחֵֽם	a-guerrear	claude	לְהִלָּחֵם “a guerrear”; tinha “lutou”
+2SA 4:4	10	הָיָ֡ה	era	claude	הָיָה “era”; tinha “quando”
+2SA 4:4	11	בְּ/בֹ֣א	quando-veio	claude	בְּבֹא “quando veio”; tinha “em-entrar”
+2SA 4:4	16	וַ/תִּשָּׂאֵ֤/הוּ	e-o-tomou	claude	וַתִּשָּׂאֵהוּ “e o tomou”; tinha “e-levantou-o”
+2SA 4:4	17	אֹֽמַנְתּ/וֹ֙	sua-ama	claude	אֹמַנְתּוֹ “sua ama”; tinha “ama-o”
+2SA 4:4	18	וַ/תָּנֹ֔ס	e-fugiu	claude	וַתָּנֹס “e fugiu”; tinha “tomou-e-fugiu”
+2SA 4:4	20	בְּ/חָפְזָ֥/הּ	na-pressa-dela	claude	בְּחָפְזָהּ “na pressa dela”; tinha “quando-ela-ia”
+2SA 4:4	21	לָ/נ֛וּס	de-fugir	claude	לָנוּס “de fugir”; tinha “ia-fugindo”
+2SA 4:4	22	וַ/יִּפֹּ֥ל	e-caiu	claude	וַיִּפֹּל “e caiu”; tinha “menino-caiu”
+2SA 4:4	24	וּ/שְׁמ֥/וֹ	e-seu-nome	claude	וּשְׁמוֹ “e seu nome”; tinha “nome-era”
+2SA 4:5	12	אִ֣ישׁ	Is	claude	אִישׁ “Is” (Is-Bosete); tinha o nome inteiro
+2SA 4:5	13	בֹּ֑שֶׁת	Bosete	claude	בֹּשֶׁת “Bosete” (Is-Bosete); tinha o nome inteiro
+2SA 4:5	17	מִשְׁכַּ֥ב	o-repouso	claude	מִשְׁכַּב “o repouso, o leito”; tinha “sesta”
+2SA 4:5	18	הַֽ/צָּהֳרָֽיִם	do-meio-dia	claude	הַצָּהֳרָיִם “do meio-dia”; tinha “à-sesta”
+2SA 5:11	1	וַ֠/יִּשְׁלַח	e-enviou	claude	וַיִּשְׁלַח “e enviou”; tinha “enviou”
+2SA 5:11	10	וְ/חָרָשֵׁ֣י	e-artífices	claude	וְחָרָשֵׁי “e artífices”; tinha “e-carpinteiros”
+2SA 5:11	11	עֵ֔ץ	de-madeira	claude	עֵץ “de madeira”; tinha “carpinteiros”
+2SA 5:11	12	וְ/חָֽרָשֵׁ֖י	e-artífices	claude	וְחָרָשֵׁי “e artífices”; tinha “e-pedreiros”
+2SA 5:11	13	אֶ֣בֶן	de-pedra	claude	אֶבֶן “de pedra”; tinha “pedreiros-para”
+2SA 5:11	14	קִ֑יר	de-muro	claude	קִיר “de muro”; tinha “muros”
+2SA 5:11	15	וַ/יִּבְנֽוּ	e-edificaram	claude	וַיִּבְנוּ “e edificaram”; tinha “quais-edificaram”
+2SA 6:16	1	וְ/הָיָה֙	e-foi	claude	וְהָיָה “e foi, e aconteceu”; tinha “e-quando”
+2SA 6:16	7	וּ/מִיכַ֨ל	e-Mical	claude	וּמִיכַל “e Mical”; tinha “que-Mical”
+2SA 6:16	17	מְפַזֵּ֤ז	saltando	claude	מְפַזֵּז “saltando”; tinha “saltava”
+2SA 6:16	18	וּ/מְכַרְכֵּר֙	e-dançando	claude	וּמְכַרְכֵּר “e dançando”; tinha “que-saltava”
+2SA 6:16	19	לִ/פְנֵ֣י	diante-de	claude	לִפְנֵי “diante de”; tinha “força-diante”
+2SA 8:11	2	אֹתָ֕/ם	eles	claude	אֹתָם “eles, os”; tinha “os”
+2SA 8:11	3	הִקְדִּ֛ישׁ	dedicou	claude	הִקְדִּישׁ “dedicou”; tinha “quais”
+2SA 8:11	11	הִקְדִּ֔ישׁ	dedicara	claude	הִקְדִּישׁ “dedicara”; tinha “dedicado”
+2SA 8:11	15	כִּבֵּֽשׁ	submetera	claude	כִּבֵּשׁ “submetera”; tinha “submetido”
