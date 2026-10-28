@@ -12,6 +12,7 @@ git worktree add -q "$TMP" gh-pages 2>/dev/null || git worktree add -q -B gh-pag
 if ! ls build/web/videos/*.mp4 >/dev/null 2>&1 && [ -d "$TMP/videos" ]; then KEEP="$(mktemp -d)"; cp -r "$TMP/videos" "$KEEP/"; fi
 find "$TMP" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 cp -r build/web/. "$TMP"/
+cp LICENSE "$TMP"/
 if [ -n "${KEEP:-}" ]; then rm -rf "$TMP/videos"; cp -r "$KEEP/videos" "$TMP/"; rm -rf "$KEEP"; fi
 touch "$TMP/.nojekyll"
 git -C "$TMP" add -A
