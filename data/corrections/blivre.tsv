@@ -1,9 +1,9 @@
 ref	snippet	suggestion	status	note
 PRO 1:7	principio	princípio	relatar	acento
 PRO 3:6	todas os teus caminhos	todos os teus caminhos	relatar	concordância
-LAM 1:12	 ?	?	relatar	espaço antes do sinal
+LAM 1:12	importais ?	importais?	relatar	espaço antes do sinal
 LAM 5:21	renova o nossos	renova os nossos	relatar
-DEU 6:5	E Amarás	e amarás	relatar	maiúscula no meio da frase
+DEU 6:5	E Amarás	E amarás	relatar	maiúscula no meio da frase
 DEU 6:5	com todo tua poder	com todo o teu poder	relatar
 DEU 10:12	contudo	com todo	relatar	troca de palavra
 NUM 23:19	fará?;	fará?	relatar	pontuação
@@ -18,17 +18,17 @@ JOB 42:10	eleantes	ele antes	relatar	espaço faltando
 PSA 29:3	SEHOR	SENHOR	relatar
 PSA 33:22	SENOR	SENHOR	relatar
 PSA 80:0	Samo	Salmo	relatar
-PSA 150:3	com com	com	relatar	palavra repetida
-JER 31:31	,diz	, diz	relatar	espaço depois da vírgula (também em 31:32–33)
+PSA 150:3	com com de trombeta	com som de trombeta	relatar	palavra trocada (“com” no lugar de “som”)
+JER 31:31	dias,diz	dias, diz	relatar	espaço depois da vírgula (também em 31:32–33)
 EZK 48:35	côvados .	côvados.	relatar	espaço antes do ponto
 JOL 2:13	vestes.Convertei-vos	vestes. Convertei-vos	relatar	espaço faltando
 AMO 9:11	seus brechas	suas brechas	relatar	concordância
 JON 4:11	cem e vinte mil	cento e vinte mil	relatar
 HAG 1:1	No segundo ano segundo	No segundo ano	relatar	palavra repetida
-MAL 3:1	,diz	, diz	relatar	espaço depois da vírgula
+MAL 3:1	vem,diz	vem, diz	relatar	espaço depois da vírgula
 MAL 3:10	janelas dos céu	janelas do céu	relatar	concordância
 EPH 1:3	espirituis	espirituais	relatar
-PHP 4:18	,	, 	relatar	espaço faltando depois de vírgula
+PHP 4:18	enviado,como	enviado, como	relatar	espaço faltando depois da vírgula
 1TI 5:17	presbíteros ou: anciãos	presbíteros	relatar	nota de tradução dentro do texto
 PHM 1:18	coisa,põe	coisa, põe	relatar	espaço faltando
 PHM 1:25	Cirsto	Cristo	relatar
