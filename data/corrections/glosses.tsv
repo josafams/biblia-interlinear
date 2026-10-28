@@ -114,3 +114,13 @@ GEN 31:10	14	עֲקֻדִּ֥ים	listrados	claude	עֲקֻדִּים “listrad
 GEN 31:10	15	נְקֻדִּ֖ים	pintados	claude	נְקֻדִּים “pintados”; tinha “listrados-pintados”
 GEN 31:12	11	עֲקֻדִּ֥ים	listrados	claude	עֲקֻדִּים “listrados”; tinha “pintados”, da palavra seguinte
 GEN 31:12	12	נְקֻדִּ֖ים	pintados	claude	נְקֻדִּים “pintados”; tinha “listrados-pintados”
+GEN 32:32	9	הַ/נָּשֶׁ֗ה	o-que-se-contrai	claude	הַנָּשֶׁה “o nervo/tendão (que se contrai)”; tinha “tendão-que”
+GEN 32:32	23	הַ/נָּשֶֽׁה	o-que-se-contrai	claude	הַנָּשֶׁה “o nervo/tendão (que se contrai)”; tinha “tendão-que”
+GEN 34:21	12	רַֽחֲבַת	ampla	claude	רַחֲבַת “larga, ampla”; tinha “bastante-ampla”
+GEN 34:21	13	יָדַ֖יִם	de-mãos	claude	יָדַיִם “mãos” (larga de mãos: espaçosa); tinha “ampla”, da palavra anterior
+GEN 37:8	9	תִּמְשֹׁ֖ל	dominarás	claude	תִּמְשֹׁל “dominarás”; tinha “sobre”, da palavra seguinte
+GEN 37:33	7	אֲכָלָ֑תְ/הוּ	devorou-o	claude	אֲכָלָתְהוּ “devorou-o”; tinha “devorou-foi”
+GEN 37:33	8	טָרֹ֥ף	certamente	claude	טָרֹף infinitivo absoluto que reforça o verbo seguinte: “certamente (foi despedaçado)”
+GEN 40:3	10	מְק֕וֹם	lugar	claude	מְקוֹם “lugar de”; tinha “onde”
+GEN 40:8	3	חֲל֣וֹם	sonho	claude	חֲלוֹם “sonho”; tinha “tivemos-um-sonho”
+GEN 40:8	4	חָלַ֔מְנוּ	sonhamos	claude	חָלַמְנוּ “sonhamos”; tinha “sonho”, da palavra anterior
