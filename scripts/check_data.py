@@ -57,11 +57,13 @@ def tsv(R: Report, fname, columns):
     return out
 
 
-def check_themes(R: Report, data: Path):
+def check_themes(R: Report, data: Path, required: bool = True):
+    """required=False (data/en): a book not translated yet has no file."""
     for code, n in CHAPTERS.items():
         fname = data / "themes" / f"{code}.tsv"
         if not fname.exists():
-            R.error(fname, "arquivo faltando")
+            if required:
+                R.error(fname, "arquivo faltando")
             continue
         lines = tsv(R, fname, ["chapter", "theme"])
         caps = [int(r["chapter"]) if r["chapter"].isdigit() else -1 for _, r in lines]
@@ -73,15 +75,18 @@ def check_themes(R: Report, data: Path):
                 R.error(fname, f"linha {ln}: tema vazio, com ponto final ou longo demais: {t!r}")
 
 
-def check_intros(R: Report, data: Path):
-    """The introductions (data/books/<BOOK>.json); returns them by book for the checks against the text."""
+def check_intros(R: Report, data: Path, required: bool = True):
+    """The introductions (data/books/<BOOK>.json); returns them by book for the checks against the text.
+    required=False (data/en): a book not translated yet has no file, and the key verses need only the reference
+    (the text comes from the translation)."""
     intros = {}
     for code in CHAPTERS:
         fname = data / "books" / f"{code}.json"
         try:
             A = json.loads(fname.read_text(encoding="utf8"))
         except FileNotFoundError:
-            R.error(fname, "arquivo faltando")
+            if required:
+                R.error(fname, "arquivo faltando")
             continue
         except json.JSONDecodeError as e:
             R.error(fname, f"JSON inválido: {e}")
@@ -287,8 +292,17 @@ def check_all(data: Path = DATA, db_path: Path = DB) -> Report:
     corrections = check_gloss_corrections(R, data)
     errata = check_errata(R, data)
     check_rules(R, data)
+    # the project's texts translated for the app in English (#8): the same rules, book by book
+    en = data / "en"
+    en_intros, en_questions = {}, {}
+    if en.exists():
+        check_themes(R, en, required=False)
+        en_intros = check_intros(R, en, required=False)
+        en_questions = check_questions(R, en)
     if os.path.exists(db_path):
-        check_against_text(R, sqlite3.connect(db_path), data, intros, questions, corrections, errata)
+        db = sqlite3.connect(db_path)
+        check_against_text(R, db, data, intros, questions, corrections, errata)
+        check_against_text(R, db, en, en_intros, en_questions, [], [])
     else:
         R.warns.append("build/biblia.sqlite não existe: conferências contra o texto foram puladas")
     return R

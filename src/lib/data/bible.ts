@@ -7,11 +7,16 @@ import { jsonpChannel } from "./jsonp";
 
 /** A chapter in another language (dados/<locale>/cap): per verse the text, note, section title, the gloss and its
  * source for each word ("g") and the links of each word to the text ("a", as in the chapter). */
-export type TextLayer = { v: { n: number; b: string; o?: string; h?: string; g?: [string, string][]; a?: number[][] }[] };
+export type TextLayer = {
+  v: { n: number; b: string; o?: string; h?: string; g?: [string, string][]; a?: number[][] }[];
+  /** the questions of the chapter in the layer's language (none while not translated) */
+  q?: unknown[];
+};
 
 /**
  * The chapter in the layer's language: text, note, section title, links and the glosses of the words come from
- * the layer. The marks of the automatic review stay out: they are about the Portuguese glosses.
+ * the layer, and so do the questions. The marks of the automatic review stay out: they are about the Portuguese
+ * glosses.
  */
 export function withLayer(ch: Chapter, layer: TextLayer): Chapter {
   const by = new Map(layer.v.map(x => [x.n, x]));
@@ -27,7 +32,7 @@ export function withLayer(ch: Chapter, layer: TextLayer): Chapter {
     if (L?.g) out.w = verse.w.map((w, i) => (L.g![i] ? ([w[0], w[1], L.g![i][0], L.g![i][1], ...w.slice(4)] as typeof w) : w));
     return out;
   });
-  return { ...ch, v, m: [] };
+  return { ...ch, v, m: [], q: layer.q ?? [] };
 }
 
 /** layer: the locale whose running text replaces the Bíblia Livre (null keeps the Bíblia Livre). */

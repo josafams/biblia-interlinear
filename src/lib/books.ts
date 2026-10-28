@@ -36,21 +36,32 @@ export function bookMatches(b: IndexBook, query: string) {
 }
 
 type LocalBook = { code: string; name: string; abbrev: string; group: string; about?: unknown; chapters: { n: number; t?: string }[] };
+/** The project's texts translated, per book (dados/<locale>/livros.js): chapter themes and the introduction. */
+export type BookTexts = Record<string, { t?: Record<string, string>; about?: unknown }>;
 
 /**
  * The books in the locale: name, abbreviation and group from the locale file (the data has them in Portuguese).
- * Where the project's own texts are not translated yet, the chapter themes and the introduction are left out,
+ * The chapter themes and the introduction come from the translated texts; a book not translated yet has none,
  * so a page in English does not mix in Portuguese. Changes the objects in place and returns them.
  */
-export function localizeBooks<B extends LocalBook>(books: B[]): B[] {
+export function localizeBooks<B extends LocalBook>(books: B[], texts: BookTexts = globalThis.BOOK_TEXTS ?? {}): B[] {
   for (const b of books) {
     b.name = tryT(`books.${b.code}.name`) ?? b.name;
     b.abbrev = tryT(`books.${b.code}.abbrev`) ?? b.abbrev;
     b.group = tryT(`book_groups.${b.group}`) ?? b.group;
     if (!hasProjectTexts()) {
-      delete b.about;
-      for (const c of b.chapters) delete c.t;
+      const own = texts[b.code];
+      if (own?.about) b.about = own.about;
+      else delete b.about;
+      for (const c of b.chapters) {
+        if (own?.t?.[c.n]) c.t = own.t[c.n];
+        else delete c.t;
+      }
     }
   }
   return books;
+}
+
+declare global {
+  var BOOK_TEXTS: BookTexts | undefined;
 }

@@ -5,17 +5,24 @@ Portuguese files, so the words of the original are not repeated:
   a: links word ↔ text}; the notes use the same codes as the Bíblia Livre ("aparato", "sem-original", "sem-blivre");
 - lex/H.js, lex/G.js: per entry the origin and meaning (Strong's, in English), the pronunciation and how the
   translation renders it;
-- busca/: the search index of the text; conc/: the concordance with the glosses of the locale."""
+- busca/: the search index of the text; conc/: the concordance with the glosses of the locale;
+- livros.js: the project's own texts translated (data/<locale>/: chapter themes and book introductions, with the
+  key verses quoted from the locale's text), loaded by ler.html before the reader; the questions of each chapter go
+  in its cap/ file ("q"). A book without them yet shows none: the app does not mix languages."""
 
 import json
 import os
+import re
 from collections import defaultdict
 from pathlib import Path
 
+from interlinear.export.books import with_counts
 from interlinear.export.chapters import SHORT_SOURCE
 from interlinear.export.common import HEB_LETTERS, OUT, WEB, compact, split_heading
 from interlinear.export.concordance import write_concordance
+from interlinear.export.inputs import read_questions, read_themes
 from interlinear.export.search import write_search_index
+from interlinear.paths import ROOT
 from pronunciation import pron_greek, pron_hebrew_en
 
 # the Hebrew letters of the acrostics (split_heading) as English Bibles write them
@@ -90,9 +97,39 @@ def build_lexicon(db, locale, usage):
     return lex
 
 
-def write_translation(db, locale, chapters):
-    """Every layer of the locale: chapters, lexicon, search and concordance."""
+def quote(texts, code, ref):
+    """The text of a key verse ("1:16" or "3:14–16") in the locale."""
+    m = re.match(r"^(\d+):(\d+)(?:[–-](\d+))?$", ref)
+    if not m:
+        return ""
+    c, a, b = int(m[1]), int(m[2]), int(m[3] or m[2])
+    return " ".join(t for v, t in sorted(texts[(code, c)].items()) if a <= v <= b and t)
+
+
+def book_texts(locale, books, texts):
+    """{book: {"t": {chapter: theme}, "about": introduction}} of the books translated in data/<locale>/."""
+    folder = os.path.join(ROOT, "data", locale)
+    out = {}
+    for b in books:
+        code, d = b["code"], {}
+        themes = read_themes(code, folder)
+        if themes:
+            d["t"] = themes
+        fname = os.path.join(folder, "books", f"{code}.json")
+        if os.path.exists(fname):
+            about = with_counts(json.loads(Path(fname).read_text(encoding="utf8")), b["chapters"], ("Chapters", "Verses"), "{:,}".format)
+            for k in about.get("key_verses", []):
+                k["text"] = quote(texts, code, k["ref"])
+            d["about"] = about
+        if d:
+            out[code] = d
+    return out
+
+
+def write_translation(db, locale, chapters, books):
+    """Every layer of the locale: chapters, lexicon, search, concordance and the project's texts."""
     texts = translation_texts(db, locale)
+    questions = read_questions(os.path.join(ROOT, "data", locale))
     glosses = {
         pid: (g or "", SHORT_SOURCE.get(f, ""))
         for pid, g, f in db.execute("SELECT word_id, gloss, gloss_source FROM translated_glosses WHERE locale=?", (locale,))
@@ -128,12 +165,17 @@ def write_translation(db, locale, chapters):
                 if links:
                     item["a"] = links
             verses.append(item)
-        layer = compact({"v": verses})
+        d = {"v": verses}
+        if questions.get((b, c)):
+            d["q"] = questions[(b, c)]
+        layer = compact(d)
         os.makedirs(os.path.join(web, "cap", b), exist_ok=True)
         os.makedirs(os.path.join(out, "cap", b), exist_ok=True)
         Path(os.path.join(out, "cap", b, f"{c}.json")).write_text(layer, encoding="utf8")
         Path(os.path.join(web, "cap", b, f"{c}.js")).write_text(f"__txt({json.dumps(f'{locale}.{b}.{c}')},{layer});", encoding="utf8")
         n += 1
+    translated = book_texts(locale, books, texts)
+    Path(os.path.join(web, "livros.js")).write_text(f"window.BOOK_TEXTS={compact(translated)};", encoding="utf8")
     lex = build_lexicon(db, locale, chapters.usage)
     os.makedirs(os.path.join(web, "lex"), exist_ok=True)
     for L, d in lex.items():
@@ -141,4 +183,7 @@ def write_translation(db, locale, chapters):
     index = {k: {v: (t, None, None) for v, t in vs.items()} for k, vs in texts.items()}
     write_search_index(index, chapters.book_index, os.path.join(web, "busca"))
     write_concordance(concordance, os.path.join(web, "conc"))
-    print(f"{locale}: {n} capítulos, léxico H {len(lex['H'])} + G {len(lex['G'])} → {web}")
+    print(
+        f"{locale}: {n} capítulos, léxico H {len(lex['H'])} + G {len(lex['G'])}, textos do projeto em {len(translated)} livros, "
+        f"perguntas em {len(questions)} capítulos → {web}"
+    )

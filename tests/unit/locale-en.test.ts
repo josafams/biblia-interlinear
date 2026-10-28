@@ -42,6 +42,26 @@ test("in English the books have English names, and the Portuguese themes and int
   expect(t("index.new_testament")).toBe("New Testament");
 });
 
+test("in English a translated book takes its themes and introduction; the others stay without them", () => {
+  setLocale("en");
+  const book = (code: string) => ({
+    code,
+    name: "",
+    abbrev: "",
+    group: "",
+    about: { pt: true },
+    chapters: [
+      { n: 1, t: "tema" },
+      { n: 2, t: "tema" }
+    ]
+  });
+  const [jhn, rut] = localizeBooks([book("JHN"), book("RUT")], { JHN: { t: { "1": "The Word" }, about: { en: true } } });
+  expect(jhn.about).toEqual({ en: true });
+  expect(jhn.chapters).toEqual([{ n: 1, t: "The Word" }, { n: 2 }]);
+  expect(rut.about).toBeUndefined();
+  expect(rut.chapters).toEqual([{ n: 1 }, { n: 2 }]);
+});
+
 test("in Portuguese the books stay as in the data", () => {
   const book = { code: "JHN", name: "João", abbrev: "Jo", group: "Evangelhos e Atos", about: {}, chapters: [{ n: 1, t: "O Verbo" }] };
   expect(localizeBooks([structuredClone(book)])).toEqual([book]);

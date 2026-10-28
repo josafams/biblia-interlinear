@@ -16,18 +16,22 @@ def read_lexicon_pt():
     return {k: (r["origin"], r["meaning"]) for k, r in lexicon_pt().items()}
 
 
-def read_themes(code):
-    fname = os.path.join(ROOT, "data", "themes", f"{code}.tsv")
+DATA_DIR = os.path.join(ROOT, "data")
+
+
+def read_themes(code, folder=DATA_DIR):
+    """{chapter: theme} of data/themes/<BOOK>.tsv (or of another folder with the same files: data/en)."""
+    fname = os.path.join(folder, "themes", f"{code}.tsv")
     if not os.path.exists(fname):
         return {}
     with open(fname, encoding="utf8") as f:
         return {int(r["chapter"]): r["theme"] for r in csv.DictReader(f, delimiter="\t")}
 
 
-def read_questions():
+def read_questions(folder=DATA_DIR):
     """Perguntas ao texto (data/questions/<BOOK>.tsv): {(book, chapter): [[kind, question, verses, strong], ...]}."""
     out = defaultdict(list)
-    for fname in sorted(glob.glob(os.path.join(ROOT, "data", "questions", "*.tsv"))):
+    for fname in sorted(glob.glob(os.path.join(folder, "questions", "*.tsv"))):
         code = os.path.basename(fname)[:-4]
         with open(fname, encoding="utf8") as f:
             for r in csv.DictReader(f, delimiter="\t"):

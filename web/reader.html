@@ -137,6 +137,14 @@
   // DATA: { books: [...66], chapters: { "GEN.1": {...} } (capítulos embutidos), lex: {...}, complete: bool }
   // completo = true: os capítulos e o léxico que não vieram embutidos são lidos de dados/ (site e app)
   const DATA = __DATA__;
+  // in English (?lang=en, or the choice saved on the device), the project's texts translated so far (introductions,
+  // chapter themes) load before the reader: window.BOOK_TEXTS, from dados/en/livros.js (src/lib/books.ts)
+  try {
+    const asked = new URLSearchParams(location.search).get("lang");
+    if ((asked || localStorage.getItem("interlinear:idioma")) === "en") document.write('<script src="dados/en/livros.js"><\/script>');
+  } catch (e) {
+    /* no storage: Portuguese */
+  }
 </script>
 <script src="google-config.js"></script>
 <script type="module" src="__READER_BUNDLE__"></script>

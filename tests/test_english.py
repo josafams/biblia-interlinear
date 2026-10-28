@@ -93,3 +93,10 @@ def test_search_index_in_english():
     text = "".join(f.read_text(encoding="utf8") for f in files)
     assert '"beginning":' in text
     assert '"shepherd":' in text
+
+
+def test_translated_texts_of_the_books():
+    text = (WEB_EN / "livros.js").read_text(encoding="utf8")
+    texts = json.loads(text[text.index("=") + 1 : text.rindex(";")])
+    assert texts["GEN"]["t"]["1"] == "The creation"
+    assert sum(len(b.get("t", {})) for b in texts.values()) == 1189

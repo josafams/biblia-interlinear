@@ -45,7 +45,7 @@ def main(argv):
     write_site(books, chapters, lex)
     write_concordance(chapters.concordance)
     write_search_index(chapters.texts, chapters.book_index)
-    write_translation(db, "en", chapters)
+    write_translation(db, "en", chapters, books)
 
 
 if __name__ == "__main__":

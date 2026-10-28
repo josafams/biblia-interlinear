@@ -94,3 +94,10 @@ test("in English the glosses, the entry and the chapter lexicon are in English",
   // Strong's meaning in English: "light" finds אוֹר (H216) and the verb (H215)
   await expect(page.locator('#llist .lrow[data-ref="H216"]')).toBeVisible();
 });
+
+test("in English the chapter themes are the translated ones (data/en/themes)", async ({ page }) => {
+  await page.goto("ler.html?lang=en#GEN.1");
+  await expect(page.locator("#ctheme")).toHaveText("The creation");
+  await page.goto("ler.html#JHN.3");
+  await expect(page.locator("#ctheme")).toHaveText("Nicodemus and the new birth");
+});
