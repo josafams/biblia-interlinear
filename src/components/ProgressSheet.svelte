@@ -1,13 +1,15 @@
 <!--
   "Meu progresso" (#progresso): with the account, how much of the Bible was read, the reading time per day,
   streaks, the 66 books, a reading plan and one book in detail; without it, an invitation to sign in.
-  The buttons call web/progress.js through the props; ids and data attributes stay for tests and videos.
+  The buttons call src/reader/progress.ts through the props; ids and data attributes stay for tests and videos.
 -->
 <script lang="ts">
   import { formatNumber, t } from "../i18n";
-  import { duration } from "../lib/progress/stats";
   import type { ChartTab } from "../lib/progress/view";
   import { progressView as p } from "../state/progress.svelte";
+  import ProgressBook from "./ProgressBook.svelte";
+  import ProgressChart from "./ProgressChart.svelte";
+  import ProgressPlan from "./ProgressPlan.svelte";
 
   let {
     onclose,
@@ -34,26 +36,8 @@
     onpause: () => void;
     onreset: () => void;
   } = $props();
-  const TABS: ChartTab[] = ["semana", "mes", "ano"];
   const LEGEND = ["none", "half", "more", "done"] as const;
   const fmt = (n: number) => formatNumber(n);
-  // the chart: 520 × 160, bars from the base line up to the longest day
-  const W = 520,
-    H = 160,
-    BASE = 136,
-    TOP = 12;
-  const y = (s: number) => BASE - (s / (p.chart?.max || 60)) * (BASE - TOP);
-  const chartLabel = $derived(
-    p.chart
-      ? t("progress.chart_label", {
-          days: p.chart.bars
-            .map(b => `${b.label || ""} ${duration(b.seconds)}`)
-            .filter(Boolean)
-            .join(", "),
-          average: duration(p.chart.average)
-        })
-      : ""
-  );
   function keydown(e: KeyboardEvent) {
     if (e.key === "Escape") {
       e.stopPropagation();
@@ -97,55 +81,8 @@
         </p>{/if}
     </div>
   {:else if p.book && p.detail}
-    {@const b = p.book}
-    {@const d = p.detail}
-    {@render header(b.name)}
-    <div><button class="pg-back" id="pg-back" onclick={onback}>{t("progress.back")}</button></div>
-    <section class="pg-sec" aria-label={t("progress.book_summary")}>
-      <div class="pg-big"><b>{d.read}</b><span>{t("progress.of_chapters", { total: d.total })}</span></div>
-      <div class="pg-bar"><i style:width="{((d.read / d.total) * 100).toFixed(1)}%"></i></div>
-      <p class="pg-sub">
-        {d.remaining
-          ? t("progress.remaining", { count: d.remaining }) + (d.forecastDays ? t("progress.forecast", { count: d.forecastDays }) : "")
-          : t("progress.book_done")}
-      </p>
-    </section>
-    <section class="pg-sec" aria-labelledby="pg-chaptersh">
-      <h3 id="pg-chaptersh">{t("index.chapters")}</h3>
-      <p class="pg-sub">{t("progress.chapters_hint")}</p>
-      <div class="pg-chapters">
-        {#each d.chapters as c (c.n)}
-          <button
-            class="pg-chapter"
-            class:anot={c.notes}
-            class:lendo={c.reading}
-            data-cap={c.n}
-            aria-pressed={c.read}
-            aria-label={t("progress.chapter_label", { n: c.n }) +
-              (c.read ? t("progress.chapter_read") : "") +
-              (c.notes ? t("progress.chapter_notes") : "")}
-            onclick={() => onchapter(c.n, !c.read)}>{c.n}</button
-          >
-        {/each}
-      </div>
-    </section>
-    <section class="pg-sec" aria-label={t("progress.book_numbers")}>
-      <div class="pg-tiles">
-        <div class="pg-tile"><b>{d.time}</b><span>{t("progress.book_time")}</span></div>
-        <div class="pg-tile">
-          <b>{d.reread ? d.reread.label : "—"}</b><span
-            >{d.reread ? t("progress.most_reread", { count: d.reread.times }) : t("progress.most_reread_none")}</span
-          >
-        </div>
-        <div class="pg-tile"><b>{d.first}</b><span>{t("progress.first_read")}</span></div>
-        <div class="pg-tile"><b>{d.last}</b><span>{t("progress.last_read")}</span></div>
-      </div>
-    </section>
-    <div class="pg-btns">
-      <button class="prim" data-ir="{b.code}.{d.next}" onclick={() => ongo(b.code, d.next)}
-        >{t("progress.read_next", { ref: `${b.abbrev} ${d.next}` })}</button
-      >
-    </div>
+    {@render header(p.book.name)}
+    <ProgressBook {ongo} {onback} {onchapter} />
   {:else if p.overview}
     {@const o = p.overview}
     {@render header(t("progress.title"))}
@@ -180,36 +117,7 @@
         <div class="pg-tile"><b>{fmt(o.entries)}</b><span>{t("progress.entries")}</span></div>
       </div>
     </section>
-    <section class="pg-sec" aria-labelledby="pg-time">
-      <h3 id="pg-time">{t("progress.time_per_day")}</h3>
-      <div class="pg-tabs" role="group" aria-label={t("progress.period")}>
-        {#each TABS as k (k)}<button class="chip" data-active-tab={k} aria-pressed={p.tab === k} onclick={() => ontab(k)}
-            >{t(`progress.tabs.${k}`)}</button
-          >{/each}
-      </div>
-      {#if p.chart}
-        {@const bw = W / p.chart.bars.length}
-        <div class="pg-chart">
-          <svg viewBox="0 0 {W} {H}" role="img" aria-label={chartLabel}>
-            {#each p.chart.bars as b, i (i)}
-              <rect
-                class="bar"
-                x={(i * bw + bw * 0.18).toFixed(1)}
-                y={y(b.seconds).toFixed(1)}
-                width={(bw * 0.64).toFixed(1)}
-                height={(BASE - y(b.seconds)).toFixed(1)}
-                rx="2"><title>{b.label} {duration(b.seconds)}</title></rect
-              >
-              <text x={(i * bw + bw / 2).toFixed(1)} y={H - 6} text-anchor="middle">{b.label}</text>
-            {/each}
-            <line class="media" x1="0" x2={W} y1={y(p.chart.average).toFixed(1)} y2={y(p.chart.average).toFixed(1)} />
-            <text x={W - 2} y={Math.max(10, y(p.chart.average) - 4).toFixed(1)} text-anchor="end"
-              >{t("progress.average", { time: duration(p.chart.average) })}</text
-            >
-          </svg>
-        </div>
-      {/if}
-    </section>
+    <ProgressChart {ontab} />
     <section class="pg-sec" aria-labelledby="pg-map">
       <h3 id="pg-map">{t("progress.books_map")}</h3>
       <div class="pg-map">
@@ -227,42 +135,7 @@
         {#each LEGEND as k, i (k)}<span><i class="pg-legend-{i}"></i>{t(`progress.legend.${k}`)}</span>{/each}
       </div>
     </section>
-    <section class="pg-sec" aria-labelledby="pg-plan">
-      {#if p.plan}
-        {@const s = p.plan}
-        <h3 id="pg-plan">{t("progress.plan_of", { plan: s.name })}</h3>
-        <p class="pg-sub">
-          {t("progress.plan_day", { day: s.dia, days: s.D, done: s.doneText, total: s.totalText })} ·
-          <span class="pg-status {s.tipo}">{s.texto}</span>
-        </p>
-        {#if s.done < s.N}
-          <p class="pg-sub">{t("progress.today")}</p>
-          <div class="pg-day">
-            {#each s.today as c (c.id)}
-              <button data-ir={c.id} class={c.read ? "feito" : ""} onclick={() => ongo(c.id.split(".")[0], +c.id.split(".")[1])}
-                >{c.label}</button
-              >
-            {:else}
-              <span class="pg-sub">{t("progress.nothing_today")}</span>
-            {/each}
-          </div>
-        {/if}
-        <div class="pg-btns">
-          <button id="pg-readjust" onclick={onreschedule}>{t("progress.reschedule")}</button><button id="pg-finish" onclick={onfinish}
-            >{t("progress.finish_plan")}</button
-          >
-        </div>
-      {:else}
-        <h3 id="pg-plan">{t("progress.plan_title")}</h3>
-        <p class="pg-sub">{t("progress.plan_pitch")}</p>
-        <div class="pg-btns">
-          <button data-plano="ano" onclick={() => onplan("ano")}>{t("progress.plans.ano")}</button><button
-            data-plano="nt90"
-            onclick={() => onplan("nt90")}>{t("progress.plans.nt90")}</button
-          >
-        </div>
-      {/if}
-    </section>
+    <ProgressPlan {ongo} {onplan} {onreschedule} {onfinish} />
     <section class="pg-sec" aria-labelledby="pg-study">
       <h3 id="pg-study">{t("progress.study")}</h3>
       <p class="pg-sub">
