@@ -1,16 +1,22 @@
-"""dados/<locale>/cap/<BOOK>/<n>.js and dados/<locale>/busca/: the running text of another language (the Berean
-Standard Bible for English), as a layer the app puts over the chapter: the words of the original stay in cap/.
+"""dados/<locale>/: the app in another language (English, with the Berean Standard Bible) as layers over the
+Portuguese files, so the words of the original are not repeated:
 
-Each verse of the layer is [verse, text] plus, when there is one, the note ("aparato", "sem-original" or
-"sem-blivre", the same codes as the Bíblia Livre) and the title of the section (the Hebrew letters of Psalm 119)."""
+- cap/<BOOK>/<n>.js: per verse {n, b: text, o: note, h: section title, g: [[gloss, source], ...] per word,
+  a: links word ↔ text}; the notes use the same codes as the Bíblia Livre ("aparato", "sem-original", "sem-blivre");
+- lex/H.js, lex/G.js: per entry the origin and meaning (Strong's, in English), the pronunciation and how the
+  translation renders it;
+- busca/: the search index of the text; conc/: the concordance with the glosses of the locale."""
 
 import json
 import os
 from collections import defaultdict
 from pathlib import Path
 
+from interlinear.export.chapters import SHORT_SOURCE
 from interlinear.export.common import HEB_LETTERS, OUT, WEB, compact, split_heading
+from interlinear.export.concordance import write_concordance
 from interlinear.export.search import write_search_index
+from pronunciation import pron_greek, pron_hebrew_en
 
 # the Hebrew letters of the acrostics (split_heading) as English Bibles write them
 HEB_LETTERS_EN = dict(
@@ -54,23 +60,73 @@ def translation_texts(db, locale):
     return texts
 
 
+def build_lexicon(db, locale, usage):
+    """The entries in the locale: Strong's origin and meaning (in English), the pronunciation and the translations."""
+    translates = defaultdict(list)
+    for ch, t, n in db.execute(
+        "SELECT entry_key, translation, n FROM translated_lexicon WHERE locale=? ORDER BY entry_key, n DESC", (locale,)
+    ):
+        if len(translates[ch]) < 8:
+            translates[ch].append(f"{t} ({n})")
+    lex = {"H": {}, "G": {}}
+    for entry_key, language, lemma, pron_en, deriv, definition, gloss_en in db.execute(
+        "SELECT entry_key, language, lemma, pron_en, derivation_en, def_en, gloss_en FROM lexicon"
+    ):
+        pron = pron_hebrew_en(pron_en) if language == "H" else pron_greek(lemma or "", "en")
+        lex[language][entry_key] = {
+            "o": (deriv or "").strip(" ;"),
+            "s": (definition or "").strip(" ;") or gloss_en or "",
+            "p": pron,
+            "t": "; ".join(translates.get(entry_key, [])),
+        }
+    for entry_key in usage:
+        if entry_key and entry_key.startswith("G:"):
+            lex["G"][entry_key] = {
+                "o": "",
+                "s": "no entry in Strong's dictionary",
+                "p": pron_greek(entry_key[2:], "en"),
+                "t": "; ".join(translates.get(entry_key, [])),
+            }
+    return lex
+
+
 def write_translation(db, locale, chapters):
-    """The layer of every chapter and the search index of the locale's text."""
+    """Every layer of the locale: chapters, lexicon, search and concordance."""
     texts = translation_texts(db, locale)
+    glosses = {
+        pid: (g or "", SHORT_SOURCE.get(f, ""))
+        for pid, g, f in db.execute("SELECT word_id, gloss, gloss_source FROM translated_glosses WHERE locale=?", (locale,))
+    }
+    align = {
+        pid: [int(x) for x in s.split(",")]
+        for pid, s in db.execute("SELECT word_id, spans FROM translated_alignment WHERE locale=?", (locale,))
+    }
     web, out = os.path.join(WEB, locale), os.path.join(OUT, locale)
+    concordance = defaultdict(list)
     n = 0
     for b, c in sorted(chapters.texts):
         verses = []
         for v in sorted(set(chapters.texts[(b, c)]) | set(chapters.words[(b, c)]) | set(texts[(b, c)])):
             text = texts[(b, c)].get(v, "")
-            has_original = bool(chapters.words[(b, c)].get(v))
-            note = "aparato" if (b, c, v) in APPARATUS else "sem-original" if not has_original else None if text else "sem-blivre"
+            words = chapters.words[(b, c)].get(v, [])
+            note = "aparato" if (b, c, v) in APPARATUS else "sem-original" if not words else None if text else "sem-blivre"
             heading = split_heading(chapters.texts[(b, c)].get(v, ("",))[0])[0]
-            item = [v, text]
-            if note or heading:
-                item.append(note)
+            item = {"n": v, "b": text}
+            if note:
+                item["o"] = note
             if heading:
-                item.append(HEB_LETTERS_EN[heading])
+                item["h"] = HEB_LETTERS_EN[heading]
+            if words:
+                item["g"] = [list(glosses.get(pid, ("", ""))) for pid, _ in words]
+                links = []
+                for i, (pid, w) in enumerate(words):
+                    spans = align.get(pid, [])
+                    if spans:
+                        links.append([i, *spans])
+                    if w[1]:
+                        concordance[w[1]].append((chapters.book_index[b], c, v, i, glosses.get(pid, ("",))[0]))
+                if links:
+                    item["a"] = links
             verses.append(item)
         layer = compact({"v": verses})
         os.makedirs(os.path.join(web, "cap", b), exist_ok=True)
@@ -78,6 +134,11 @@ def write_translation(db, locale, chapters):
         Path(os.path.join(out, "cap", b, f"{c}.json")).write_text(layer, encoding="utf8")
         Path(os.path.join(web, "cap", b, f"{c}.js")).write_text(f"__txt({json.dumps(f'{locale}.{b}.{c}')},{layer});", encoding="utf8")
         n += 1
+    lex = build_lexicon(db, locale, chapters.usage)
+    os.makedirs(os.path.join(web, "lex"), exist_ok=True)
+    for L, d in lex.items():
+        Path(os.path.join(web, "lex", f"{L}.js")).write_text(f"__lex({json.dumps(f'{locale}.{L}')},{compact(d)});", encoding="utf8")
     index = {k: {v: (t, None, None) for v, t in vs.items()} for k, vs in texts.items()}
     write_search_index(index, chapters.book_index, os.path.join(web, "busca"))
-    print(f"{locale}: {n} capítulos → {web}")
+    write_concordance(concordance, os.path.join(web, "conc"))
+    print(f"{locale}: {n} capítulos, léxico H {len(lex['H'])} + G {len(lex['G'])} → {web}")

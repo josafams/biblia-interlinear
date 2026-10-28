@@ -15,7 +15,7 @@ def conc_bucket(key):
     return f"{m.group(1)}{int(m.group(2)) // 100}" if m else f"{(key or 'G')[0]}x"
 
 
-def write_concordance(concordance):
+def write_concordance(concordance, folder=None):
     """Each Strong key with the glosses used ("g") and the occurrences ("o"), five numbers per occurrence: book
     (position 0–65), chapter, verse, word in the verse and index of the gloss in "g"."""
     buckets = defaultdict(dict)
@@ -24,7 +24,8 @@ def write_concordance(concordance):
         gi = {g: i for i, g in enumerate(glosses)}
         flat = [x for b, c, v, i, g in occ for x in (b, c, v, i, gi[g])]
         buckets[conc_bucket(key)][key] = {"g": glosses, "o": flat}
-    os.makedirs(os.path.join(WEB, "conc"), exist_ok=True)
+    folder = folder or os.path.join(WEB, "conc")
+    os.makedirs(folder, exist_ok=True)
     for name, d in buckets.items():
-        Path(os.path.join(WEB, "conc", f"{name}.js")).write_text(f"__conc({json.dumps(name)},{compact(d)});", encoding="utf8")
-    print(f"concordância: {len(concordance)} chaves em {len(buckets)} arquivos → {os.path.join(WEB, 'conc')}")
+        Path(os.path.join(folder, f"{name}.js")).write_text(f"__conc({json.dumps(name)},{compact(d)});", encoding="utf8")
+    print(f"concordância: {len(concordance)} chaves em {len(buckets)} arquivos → {folder}")
