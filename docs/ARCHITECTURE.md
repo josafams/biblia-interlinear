@@ -90,9 +90,9 @@ A ordem é sempre corpus → glosas → revisão → export (o `Makefile`, o `sc
 | Arquivo | O que faz |
 |---|---|
 | `corpus.py` | lê as fontes e monta `build/biblia.sqlite` (livros, versículos, palavras, léxico; a BSB em `translated_verses`) |
-| `make_glosses.py` | glosas por alinhamento com a Bíblia Livre (`interlinear/glosses/`) |
+| `make_glosses.py` | glosas por alinhamento com a Bíblia Livre e, para o app em inglês, com a BSB (`interlinear/glosses/`; o que muda entre os idiomas fica em `glosses/languages.py`) |
 | `review.py` | revisões automáticas (`interlinear/review/`) |
-| `export.py` | arquivos do app, do EPUB e do PDF (`interlinear/export/`); `dados/en/` é a camada em inglês (texto da BSB e busca) que o leitor põe sobre o capítulo |
+| `export.py` | arquivos do app, do EPUB e do PDF (`interlinear/export/`); `dados/en/` é a camada em inglês (texto da BSB, glosas, ligações, léxico, busca e concordância) que o leitor põe sobre os arquivos em português |
 | `check_data.py` | confere `data/` (também no pre-commit e no CI) |
 | `query.py` | consulta rápida ao banco pela linha de comando |
 | `build_epub.py`, `build_pdf.py` | os livros para baixar |
