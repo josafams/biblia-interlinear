@@ -16,7 +16,7 @@ jobs:
   secrets:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
           fetch-depth: 0
       - name: gitleaks
@@ -28,24 +28,24 @@ jobs:
     runs-on: ubuntu-latest
     container: semgrep/semgrep
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
       # relatório por enquanto: vira bloqueante (--error) depois da triagem dos achados atuais
       - run: semgrep scan --config p/default --config p/owasp-top-ten --exclude build/ --exclude node_modules
 
   dependencies:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/dependency-review-action@v4
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+      - uses: actions/dependency-review-action@2031cfc080254a8a887f58cffee85186f0e49e48 # v4.9.0
         if: github.event_name == 'pull_request'
         with:
           fail-on-severity: high
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version-file: .nvmrc
       - name: npm audit (só o que vai para o app)
         run: npm audit --audit-level=high --omit=dev
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version-file: .python-version
       - name: pip-audit
@@ -63,10 +63,10 @@ jobs:
           - language: python
           - language: java-kotlin
     steps:
-      - uses: actions/checkout@v5
-      - uses: github/codeql-action/init@v3
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+      - uses: github/codeql-action/init@4bfa242aa49c5f7c6770b98670d354a7dfac05f8 # v3.39.1
         with:
           languages: ${{ matrix.language }}
           queries: security-extended
           build-mode: none
-      - uses: github/codeql-action/analyze@v3
+      - uses: github/codeql-action/analyze@4bfa242aa49c5f7c6770b98670d354a7dfac05f8 # v3.39.1
