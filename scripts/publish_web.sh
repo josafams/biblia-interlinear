@@ -16,7 +16,14 @@ cp LICENSE "$TMP"/
 if [ -n "${KEEP:-}" ]; then rm -rf "$TMP/videos"; cp -r "$KEEP/videos" "$TMP/"; rm -rf "$KEEP"; fi
 touch "$TMP/.nojekyll"
 git -C "$TMP" add -A
-git -C "$TMP" commit -q -m "$MSG" || echo "Nada mudou no site."
-git -C "$TMP" push origin gh-pages
+if git -C "$TMP" diff --cached --quiet; then
+  echo "Nada mudou no site."
+else
+  # um commit só, sem histórico: o ramo não cresce a cada publicação
+  BASE="$(git -C "$TMP" rev-parse HEAD)"
+  NEW="$(git -C "$TMP" commit-tree "$(git -C "$TMP" write-tree)" -m "$MSG")"
+  git -C "$TMP" push --force-with-lease=gh-pages:"$BASE" origin "$NEW":refs/heads/gh-pages
+  git -C "$TMP" reset -q --hard "$NEW"
+fi
 git worktree remove --force "$TMP"
 echo "Site enviado para o ramo gh-pages."

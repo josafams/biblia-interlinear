@@ -57,8 +57,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -q -m "Site: ${GITHUB_SHA::7} ($(git -C .. log -1 --format=%s | cut -c1-60))" || { echo "Nada mudou no site."; exit 0; }
-          git push origin HEAD:gh-pages
+          git diff --cached --quiet && { echo "Nada mudou no site."; exit 0; }
+          # um commit só, sem histórico: o ramo não cresce a cada publicação; o lease recusa o envio se os
+          # Vídeos publicaram no meio
+          BASE="$(git rev-parse HEAD)"
+          NEW="$(git commit-tree "$(git write-tree)" -m "Site: ${GITHUB_SHA::7} ($(git -C .. log -1 --format=%s | cut -c1-60))")"
+          git push --force-with-lease=gh-pages:"$BASE" origin "$NEW":refs/heads/gh-pages
       - name: Pedir ao GitHub Pages que publique (envios do github-actions[bot] não disparam a publicação)
         env:
           GH_TOKEN: ${{ github.token }}

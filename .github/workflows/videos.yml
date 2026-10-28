@@ -44,8 +44,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A videos
-          git commit -m "Vídeos Como usar: gravados de novo (${GITHUB_SHA::7})" || { echo "Nada mudou."; exit 0; }
-          git push origin HEAD:gh-pages
+          git diff --cached --quiet && { echo "Nada mudou."; exit 0; }
+          # um commit só, sem histórico (como no workflow Site); o lease recusa o envio se o Site publicou no meio
+          BASE="$(git rev-parse HEAD)"
+          NEW="$(git commit-tree "$(git write-tree)" -m "Vídeos Como usar: gravados de novo (${GITHUB_SHA::7})")"
+          git push --force-with-lease=gh-pages:"$BASE" origin "$NEW":refs/heads/gh-pages
       - name: Pedir ao GitHub Pages que publique (envios do github-actions[bot] não disparam a publicação)
         env:
           GH_TOKEN: ${{ github.token }}
