@@ -568,7 +568,8 @@
       "one": "{count} note on this verse",
       "other": "{count} notes on this verse"
     },
-    "favorite": "Favorite"
+    "favorite": "Favorite",
+    "version_tag": "BSB"
   },
   "word": {
     "pronunciation": "{xlit}, pronounced {pron}",

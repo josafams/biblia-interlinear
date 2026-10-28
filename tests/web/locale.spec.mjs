@@ -1,4 +1,5 @@
 // The app in English (#8): ?lang=en picks the locale and saves it; Aparência shows the picker; back to Portuguese.
+// The running text is the Berean Standard Bible (dados/en/cap over the chapter), and the search looks in it.
 import { test, expect } from "@playwright/test";
 
 const titulo = page => page.locator("#h1");
@@ -45,4 +46,23 @@ test("without a chosen language the picker does not show (the English version is
   await page.click("#open-look");
   await expect(page.locator("#look")).toBeVisible();
   await expect(page.locator("#lang-pick")).toHaveCount(0);
+});
+
+test("in English the running text is the Berean Standard Bible", async ({ page }) => {
+  await page.goto("ler.html?lang=en#JHN.3");
+  const v16 = page.locator("#v16 .blivre");
+  await expect(v16).toContainText("For God so loved the world that He gave His one and only Son");
+  await expect(v16.locator(".tag")).toHaveText("BSB");
+  // Psalm 119: the sections keep their Hebrew letters, in English
+  await page.goto("ler.html#PSA.119");
+  await expect(page.locator(".verse").first()).toContainText("Blessed are those whose way is blameless");
+});
+
+test("in English the search looks in the BSB", async ({ page }) => {
+  await page.goto("ler.html?lang=en#GEN.1");
+  await expect(page.locator(".verse").first()).toBeVisible();
+  await page.click("#open-search");
+  await page.fill("#busca-q", "God so loved world");
+  await expect(page.locator(".busca-item").first()).toContainText("John 3:16");
+  await expect(page.locator(".busca-item mark").first()).toHaveText(/loved|God|world/);
 });

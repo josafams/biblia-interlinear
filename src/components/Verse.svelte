@@ -99,7 +99,7 @@
   {/if}
   {#if v.note}<p class="vnote">{v.note}</p>{/if}
   <p class="blivre">
-    <span class="tag">BLIVRE</span>{#each pieces as p, k (k)}{#if p.color}<mark class="mk mk-{p.color}">{p.text}</mark
+    <span class="tag">{t("verse.version_tag")}</span>{#each pieces as p, k (k)}{#if p.color}<mark class="mk mk-{p.color}">{p.text}</mark
         >{:else}{p.text}{/if}{/each}
   </p>
   <div class="vann" hidden={!strip}>

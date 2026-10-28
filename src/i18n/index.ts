@@ -35,6 +35,8 @@ if (chosen && typeof document !== "undefined") document.documentElement.lang = l
 export const localeChosen = () => chosen !== null;
 /** Whether the project's own texts (chapter themes, book introductions, questions) exist in the locale. */
 export const hasProjectTexts = () => locale === TEXTS_LOCALE;
+/** The data folder of the locale's running text over the Bíblia Livre (dados/<it>/), or null in Portuguese. */
+export const textLayer = () => (locale === TEXTS_LOCALE ? null : locale);
 /** Saves the locale for this device and reloads the page in it. */
 export function chooseLocale(next: string) {
   if (!LOCALES[next]) throw new Error(`i18n: unknown locale ${next}`);

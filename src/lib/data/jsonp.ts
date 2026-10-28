@@ -1,11 +1,12 @@
 // The data files in dados/ are scripts that call a global (`__cap("GEN.1", {...})`), so they load with a <script>
 // tag over http://, in the Android/iOS app and from the disk alike. A channel owns one of those globals.
-export type ChannelName = "__cap" | "__lex" | "__conc" | "__busca";
+export type ChannelName = "__cap" | "__txt" | "__lex" | "__conc" | "__busca";
 
 type Callback<T> = (key: string, data: T) => void;
 declare global {
   interface Window {
     __cap?: Callback<unknown>;
+    __txt?: Callback<unknown>;
     __lex?: Callback<unknown>;
     __conc?: Callback<unknown>;
     __busca?: Callback<unknown>;

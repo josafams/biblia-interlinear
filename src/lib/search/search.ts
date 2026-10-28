@@ -1,4 +1,4 @@
-// Search in the whole Bible (Bíblia Livre text): a word index in dados/busca/<first 2 letters>.js, loaded as
+// Search in the whole Bible (the running text): a word index in dados/busca/<first 2 letters>.js, loaded as
 // needed. A verse id is book index × 1 000 000 + chapter × 1000 + verse. Several words find the verses with all.
 import { jsonpChannel } from "../data/jsonp";
 import { esc } from "../text";
@@ -61,8 +61,10 @@ export function highlight(text: string, terms: string[]) {
   return out + esc(text.slice(pos));
 }
 
-/** The index files, loaded once each; a missing file means no word starts like that. */
-export function createSearchIndex() {
+/** The index files, loaded once each; a missing file means no word starts like that. layer: the locale whose
+ * running text is searched (dados/<layer>/busca), null for the Bíblia Livre. */
+export function createSearchIndex(layer: string | null = null) {
+  const folder = layer ? `dados/${layer}/busca` : "dados/busca";
   const index: Record<string, Record<string, string>> = {};
   const load = jsonpChannel<Record<string, string>>("__busca", (prefix, d) => {
     index[prefix] = d;
@@ -70,7 +72,7 @@ export function createSearchIndex() {
   const prefixOf = (w: string) => [...w].slice(0, 2).join("");
   const fileOf = (p: string) => [...p].map(ch => (/[a-z0-9]/i.test(ch) ? ch : "_" + ch.codePointAt(0)!.toString(16))).join("");
   const entries = (p: string): Promise<Record<string, string>> =>
-    index[p] ? Promise.resolve(index[p]) : load(p, `dados/busca/${fileOf(p)}.js`).catch(() => (index[p] = {}));
+    index[p] ? Promise.resolve(index[p]) : load(p, `${folder}/${fileOf(p)}.js`).catch(() => (index[p] = {}));
   return {
     async idsOf(term: string) {
       const d = await entries(prefixOf(term));

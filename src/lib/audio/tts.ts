@@ -1,7 +1,7 @@
 // Text to speech: the system voice engine in the app (Capacitor TextToSpeech plugin), the Web Speech API in
 // the browser. One reading at a time; a new one (or stop) silences the previous. The screen parts (which button
 // is on, which word is highlighted) stay with the caller, through onEach and onEnd.
-import { t } from "../../i18n";
+import { t, textLayer } from "../../i18n";
 import { nativePlugin, platform } from "../native";
 
 export type VoiceId = "he" | "el" | "pt";
@@ -47,7 +47,11 @@ export function createSpeech(onVoicesChanged: (speech: Speech) => void, env: Spe
   const voices: Record<VoiceId, Voice> = {
     he: { codes: ["he-IL", "iw-IL", "he"], re: /^(he|iw)([-_]|$)/i, lang: "he-IL", voice: null, ok: null },
     el: { codes: ["el-GR", "el"], re: /^el([-_]|$)/i, lang: "el-GR", voice: null, ok: null },
-    pt: { codes: ["pt-BR", "pt"], re: /^pt([-_]|$)/i, lang: "pt-BR", voice: null, ok: null }
+    // "pt" is the voice of the running text: Portuguese for the Bíblia Livre, English for the BSB
+    pt:
+      textLayer() === "en"
+        ? { codes: ["en-US", "en-GB", "en"], re: /^en([-_]|$)/i, lang: "en-US", voice: null, ok: null }
+        : { codes: ["pt-BR", "pt"], re: /^pt([-_]|$)/i, lang: "pt-BR", voice: null, ok: null }
   };
   const ids = Object.keys(voices) as VoiceId[];
   const system = t(platform === "ios" ? "audio.system.ios" : "audio.system.android");

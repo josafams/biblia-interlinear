@@ -568,7 +568,8 @@
       "one": "{count} nota neste versículo",
       "other": "{count} notas neste versículo"
     },
-    "favorite": "Favorito"
+    "favorite": "Favorito",
+    "version_tag": "BLIVRE"
   },
   "word": {
     "pronunciation": "{xlit}, pronúncia {pron}",

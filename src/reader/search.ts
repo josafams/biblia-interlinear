@@ -3,7 +3,7 @@
 // pages and the shortcuts to references ("Jo 3:16") and Strong numbers ("G25", "H430").
 import { flushSync, mount } from "svelte";
 import SearchSheet from "../components/SearchSheet.svelte";
-import { t } from "../i18n";
+import { textLayer, t } from "../i18n";
 import { createSearchIndex, highlight, intersect, perBook, searchTerms, strongQuery, verseOf } from "../lib/search/search";
 import { type SearchItem, type SearchTop, search } from "../state/search.svelte";
 import { BOOKS, R, bible } from "./context";
@@ -12,7 +12,7 @@ import { ANNOTATIONS_OPEN_PANEL } from "./events";
 import { parseRef, resolveRef } from "./toc";
 
 const PAGE = 30;
-const index = createSearchIndex();
+const index = createSearchIndex(textLayer());
 let list: number[] = [],
   terms: string[] = [],
   focusBack: Element | null = null,
