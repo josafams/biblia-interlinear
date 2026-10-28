@@ -84,3 +84,13 @@ MRK 12:5	4	κἀκεῖνον	e-aquele	claude	κἀκεῖνον “e aquele”
 MRK 16:11	1	κἀκεῖνοι	e-eles	claude	κἀκεῖνοι “e eles”
 LUK 22:12	1	κἀκεῖνος	e-ele	claude	κἀκεῖνος “e ele”
 MAT 25:19	1	μετὰ	depois-de	claude	μετά com acusativo (μετὰ δὲ πολὺν χρόνον): “depois de”
+GEN 8:1	9	כָּל	todos	claude	כָּל “todos”; o alinhamento tinha dado “domésticos”, da palavra seguinte
+GEN 8:1	10	הַ/בְּהֵמָ֔ה	os-domésticos	claude	הַבְּהֵמָה “os animais domésticos”; o “que” é a palavra seguinte (אֲשֶׁר)
+GEN 10:9	3	גִבֹּֽר	vigoroso	claude	גִּבֹּר “valente, vigoroso”; “caçador” é a palavra seguinte
+GEN 10:9	4	צַ֖יִד	caçador	claude	צַיִד “caça, caçador”; tinha “vigoroso”, da palavra anterior
+GEN 10:9	11	גִּבּ֥וֹר	vigoroso	claude	גִּבּוֹר “valente, vigoroso”; “caçador” é a palavra seguinte
+GEN 10:9	12	צַ֖יִד	caçador	claude	צַיִד “caça, caçador”; tinha “vigoroso”, da palavra anterior
+GEN 15:17	3	בָּ֔אָה	se-pôs	claude	בָּאָה “veio, se pôs” (o sol se pôs); tinha “já”, da palavra seguinte
+GEN 15:17	4	וַ/עֲלָטָ֖ה	e-escuridão	claude	וַעֲלָטָה “e escuridão”; tinha “e-já”
+GEN 18:6	11	סֹ֔לֶת	boa-farinha	claude	סֹלֶת “flor de farinha”; “amassa” é a palavra seguinte
+GEN 23:6	19	מִ/קְּבֹ֥ר	de-sepultar	claude	מִקְּבֹר “de sepultar”; tinha “falecida”, da palavra seguinte
