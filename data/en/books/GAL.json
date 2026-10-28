@@ -1,0 +1,187 @@
+{
+  "title_orig": "Πρὸς Γαλάτας",
+  "title_orig_xlit": "Pros Galatas",
+  "summary": "Galatians is a letter written under tension. After Paul had passed through the region, teachers arrived in the churches of Galatia who demanded that non-Jewish Christians be circumcised and keep the Law of Moses, and Paul reacts without the thanksgiving with which he usually opens his letters: he is amazed that the Galatians have so quickly turned to “a different gospel” (1:6). In the first two chapters he tells his own story to show that his gospel did not come from men, including the agreement with the leaders in Jerusalem and the confrontation with Cephas in Antioch. In chapters 3 and 4 he argues from the story of Abraham and from the Scriptures that righteousness comes by faith, and that the Law had a provisional role. The final part speaks of freedom in Christ, which must not become a pretext for the flesh, and of life led by the Spirit.",
+  "name": "The title Pros Galatas, “To the Galatians,” comes from the greeting: the letter is addressed “to the churches of Galatia” (1:2), and not to a single city. The name of the region recalls the Galatians, Celtic peoples (the same ones the Romans called Gauls) who settled in central Asia Minor in the 3rd century BC.",
+  "facts": [
+    [
+      "Position",
+      "9th book of the New Testament; 4th of Paul's letters, in canonical order"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "circular letter to several churches, polemical in tone"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Opening and rebuke",
+      "from": 1,
+      "to": 1,
+      "text": "Paul affirms that he is an apostle not by human choice and, instead of giving thanks, rebukes the Galatians for listening to those who pervert the gospel (1:1–10)."
+    },
+    {
+      "title": "Paul's story",
+      "from": 1,
+      "to": 2,
+      "text": "The former persecutor receives the revelation of Christ, goes to Jerusalem only years later, obtains from the leaders there the recognition of his mission among the Gentiles and confronts Cephas in Antioch over table fellowship with non-Jews (1:11–2:21)."
+    },
+    {
+      "title": "Faith, Abraham and the Law",
+      "from": 3,
+      "to": 4,
+      "text": "The Galatians received the Spirit by faith; Abraham believed and was counted righteous; the Law came later, as a guardian until Christ; now all are sons and heirs, not slaves. The comparison between Hagar and Sarah closes the argument."
+    },
+    {
+      "title": "Freedom and life in the Spirit",
+      "from": 5,
+      "to": 6,
+      "text": "Whoever lets himself be circumcised to be justified returns to the yoke; freedom is lived out in love, and the works of the flesh are contrasted with the fruit of the Spirit. Practical counsel and a closing written in his own hand (6:11–18)."
+    }
+  ],
+  "extra": {
+    "title": "A letter without thanksgiving",
+    "text": "Almost all of Paul's letters begin with a thanksgiving for the recipients. Galatians goes straight from the greeting to the rebuke, a sign of the climate in which it was written. The same tone appears in the outburst “O foolish Galatians!” (3:1) and at the end, when Paul takes the pen from the secretary and draws attention to the size of the letters he writes with his own hand (6:11)."
+  },
+  "people": [
+    {
+      "name": "Paul",
+      "chapters": "1–2; 4–6",
+      "ch": 1,
+      "note": "defends the divine origin of his call and the gospel he preached to the Galatians; recalls that he arrived in the region ill (4:13)"
+    },
+    {
+      "name": "Cephas (Peter)",
+      "chapters": "1–2",
+      "ch": 2,
+      "note": "Paul visits him for fifteen days in Jerusalem; later rebukes him in Antioch for withdrawing from the Gentiles' table"
+    },
+    {
+      "name": "James, the Lord's brother",
+      "chapters": "1–2",
+      "ch": 2,
+      "note": "one of the three considered “pillars” of the church in Jerusalem, alongside Cephas and John (2:9)"
+    },
+    {
+      "name": "Barnabas",
+      "chapters": "2",
+      "ch": 2,
+      "note": "Paul's companion on the trip to Jerusalem; in Antioch, he follows Peter in the conduct that is criticized"
+    },
+    {
+      "name": "Titus",
+      "chapters": "2",
+      "ch": 2,
+      "note": "a Greek Christian taken to Jerusalem, where he was not compelled to be circumcised"
+    },
+    {
+      "name": "Abraham",
+      "chapters": "3–4",
+      "ch": 3,
+      "note": "the one who believed and was counted righteous; those who have faith are called his sons"
+    },
+    {
+      "name": "Hagar and Sarah",
+      "chapters": "4",
+      "ch": 4,
+      "note": "the slave woman and the free woman, read as figures of two covenants (4:21–31)"
+    }
+  ],
+  "writing": {
+    "tradition": "Paul's authorship was never questioned by the early Church. The letter does not say where it was written, and tradition pointed to various places; an ancient scribal note mentions Rome, but most interpreters link it to the Ephesus period, on the third journey.",
+    "academic": "Galatians is among the seven letters that practically all scholars attribute to Paul, alongside Romans, 1 and 2 Corinthians, Philippians, 1 Thessalonians and Philemon. The debate is about the recipients and the date. On the “North Galatian” hypothesis, the letter goes to the regions of the ancient Galatians, around Ancyra (today Ankara), which Paul would have visited on the second journey (Acts 16:6), and would date from c. 53–56. On the “South Galatian” hypothesis, it goes to the churches of the Roman province founded on the first journey (Pisidian Antioch, Iconium, Lystra and Derbe, Acts 13–14) and may be older, c. 48–51; some place it even before the Jerusalem meeting of Acts 15, which would make it one of Paul's first letters. It is also debated whether the visit of 2:1–10 corresponds to Acts 15 or to Acts 11:30."
+  },
+  "events": {
+    "intro": "In the letter Paul gives some indications of time (three years after his conversion, a visit to Jerusalem; fourteen years later, another, 1:18; 2:1) that are usually combined with the account of Acts. The dates are approximate and vary according to the hypothesis adopted about the recipients.",
+    "axis": [
+      30,
+      60
+    ],
+    "band": {
+      "label": "Reign of Claudius",
+      "from": 41,
+      "to": 54
+    },
+    "timeline": [
+      {
+        "label": "Conversion of Paul",
+        "from": 33,
+        "to": 36,
+        "kind": "evento",
+        "note": "approximate date (1:15–16; Acts 9)"
+      },
+      {
+        "label": "First visit to Jerusalem",
+        "from": 35,
+        "to": 38,
+        "kind": "evento",
+        "note": "fifteen days with Cephas, three years later (1:18)"
+      },
+      {
+        "label": "First missionary journey",
+        "from": 46,
+        "to": 48,
+        "kind": "evento",
+        "note": "churches in the south of the province of Galatia (Acts 13–14)"
+      },
+      {
+        "label": "Agreement in Jerusalem",
+        "from": 48,
+        "to": 49,
+        "kind": "evento",
+        "note": "fourteen years later (2:1–10); many identify it with Acts 15"
+      },
+      {
+        "label": "Conflict in Antioch",
+        "from": 49,
+        "to": 50,
+        "kind": "evento",
+        "note": "Paul rebukes Cephas (2:11–14); approximate date"
+      },
+      {
+        "label": "Writing of the letter",
+        "from": 48,
+        "to": 56,
+        "kind": "escrita",
+        "note": "a wide range: c. 48–51 on the southern hypothesis; c. 53–56 on the northern"
+      }
+    ]
+  },
+  "context": "Galatia lay on the central plateau of Asia Minor, in present-day Turkey. From c. 278–277 BC, Celtic groups coming from Europe went there and gave the region its name. In 25 BC, with the death of King Amyntas, the territory became a Roman province, extended southward to include cities such as Pisidian Antioch, Iconium, Lystra and Derbe; so “Galatia” could indicate both the land of the ancient Galatians and the whole province. In the churches, made up largely of non-Jews, the question was whether, to be part of God's people, they would need to adopt circumcision, the calendar and the rules of the Law, a subject that divided the first Christians and also appears in Acts 15.",
+  "places": [
+    "Galatia",
+    "Jerusalem",
+    "Antioch in Syria",
+    "Arabia",
+    "Damascus",
+    "Syria and Cilicia"
+  ],
+  "themes": [
+    "the gospel and Paul's authority",
+    "justification by faith",
+    "the Law and circumcision",
+    "Abraham and the promise",
+    "sons and heirs",
+    "freedom",
+    "flesh and Spirit"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:20"
+    },
+    {
+      "ref": "3:28"
+    },
+    {
+      "ref": "5:1"
+    },
+    {
+      "ref": "5:22–23"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source and the hypothesis about the recipients. The verses quoted are from the Berean Standard Bible (BSB)."
+}

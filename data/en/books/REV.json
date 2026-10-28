@@ -1,0 +1,232 @@
+{
+  "title_orig": "Ἀποκάλυψις Ἰωάννου",
+  "title_orig_xlit": "Apokalypsis Ioannou",
+  "summary": "Revelation reports the visions that a Christian named John received on the island of Patmos and that he sends to seven churches of the province of Asia. It begins with a vision of the risen Christ and with seven messages, one for each church, which praise, rebuke and call to faithfulness. Then the gaze turns to God's throne in heaven, where the Lamb who was slain receives the sealed scroll; there follow series of seven seals, seven trumpets and seven bowls, interspersed with visions of the woman and the dragon, the two beasts and the fall of Babylon, the great city that oppresses the peoples. The book ends with the final defeat of evil, the judgment and the vision of a new heaven, a new earth and the new Jerusalem, where God dwells with His people and there is no more death or mourning.",
+  "name": "The first word of the book in Greek is apokalypsis, “revelation,” literally the act of removing a veil (1:1). From it comes the title “Apocalypse,” or “Revelation of John,” which appears in various forms in the manuscripts. Because of the book, the word came to designate a literary genre and, in everyday language, the idea of catastrophe, a meaning the text does not have.",
+  "facts": [
+    [
+      "Position",
+      "27th and last book of the New Testament and of the Bible"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "apocalypse and prophecy, within a letter frame"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Prologue and opening vision",
+      "from": 1,
+      "to": 1,
+      "text": "Title, greeting to the seven churches and the vision of “one like a son of man” among seven lampstands, who tells John to write."
+    },
+    {
+      "title": "Messages to the seven churches",
+      "from": 2,
+      "to": 3,
+      "text": "Ephesus, Smyrna, Pergamum, Thyatira, Sardis, Philadelphia and Laodicea receive praise, censure and promises “to the one who overcomes.”"
+    },
+    {
+      "title": "The throne and the Lamb",
+      "from": 4,
+      "to": 5,
+      "text": "Heavenly worship around the throne; only the Lamb who was slain is worthy to open the scroll sealed with seven seals."
+    },
+    {
+      "title": "The seven seals",
+      "from": 6,
+      "to": 8,
+      "text": "The horsemen, the martyrs, the cosmic signs; a pause shows the 144,000 sealed and an innumerable multitude; the seventh seal brings silence in heaven (6:1–8:5)."
+    },
+    {
+      "title": "The seven trumpets",
+      "from": 8,
+      "to": 11,
+      "text": "Calamities on the earth, the sea and the heavens; the angel with the little scroll, the two witnesses and the seventh trumpet announcing the kingdom of God (8:6–11:19)."
+    },
+    {
+      "title": "The conflict with the dragon",
+      "from": 12,
+      "to": 14,
+      "text": "The woman, the child and the dragon; the beast that rises from the sea and the one that rises from the earth; the Lamb on Mount Zion, the angels' proclamations and the harvests of the earth."
+    },
+    {
+      "title": "The seven bowls",
+      "from": 15,
+      "to": 16,
+      "text": "The victors sing beside the sea of glass; seven angels pour out the bowls of wrath; the kings gather at the place called Armageddon."
+    },
+    {
+      "title": "The fall of Babylon",
+      "from": 17,
+      "to": 19,
+      "text": "The great prostitute seated on the beast, the fall of the city, the lament of the kings and merchants and the praise in heaven (17:1–19:10)."
+    },
+    {
+      "title": "Victory and judgment",
+      "from": 19,
+      "to": 20,
+      "text": "The rider called Faithful and True defeats the beast; Satan is bound for a thousand years, released and defeated; the dead are judged before the great white throne (19:11–20:15)."
+    },
+    {
+      "title": "The new creation",
+      "from": 21,
+      "to": 22,
+      "text": "A new heaven and a new earth; the new Jerusalem comes down out of heaven; the river and the tree of life (21:1–22:5)."
+    },
+    {
+      "title": "Epilogue",
+      "from": 22,
+      "to": 22,
+      "text": "Warnings, the promise “Yes, I am coming soon” and the church's answer: “Come, Lord Jesus!” (22:6–21)."
+    }
+  ],
+  "extra": {
+    "title": "Symbols, numbers and ways of reading",
+    "text": "Revelation speaks in images, many drawn from Ezekiel, Daniel, Zechariah and Isaiah: a Lamb with seven horns and seven eyes, living creatures full of eyes, a woman clothed with the sun, beasts with heads and horns. The numbers carry symbolic weight: seven (fullness) organizes the book; twelve and its multiples, such as the 144,000, recall the people of God; three and a half years (“forty-two months,” “1,260 days”) indicate a limited time of trial. The number of the beast, 666 (13:18), appears as 616 in some manuscripts; many explain it by the numerical value of the letters of a name, and the most cited proposal is “Nero Caesar” written in Hebrew letters, which gives 666 or 616 depending on the spelling. Throughout history, the book has been read in different ways: as referring to events of the 1st century (preterist reading), as a map of the history of the Church (historicist), as an announcement of events at the end of time (futurist) or as a symbolic portrait of the ongoing struggle between good and evil (idealist); many interpreters combine these readings."
+  },
+  "people": [
+    {
+      "name": "John",
+      "chapters": "1; 22",
+      "ch": 1,
+      "note": "a servant of Jesus Christ and brother of the readers, who was on Patmos “because of the word of God” (1:9)"
+    },
+    {
+      "name": "Jesus Christ, the Lamb",
+      "chapters": "1; 5; 19",
+      "ch": 5,
+      "note": "appears as the glorious Son of Man, the Lamb who was slain and the rider Faithful and True"
+    },
+    {
+      "name": "The elders and the four living creatures",
+      "chapters": "4–5",
+      "ch": 4,
+      "note": "twenty-four elders and four living creatures who worship before the throne"
+    },
+    {
+      "name": "The two witnesses",
+      "chapters": "11",
+      "ch": 11,
+      "note": "prophesy, are killed by the beast and rise after three and a half days"
+    },
+    {
+      "name": "The woman, the child and the dragon",
+      "chapters": "12",
+      "ch": 12,
+      "note": "the dragon, “that ancient serpent,” pursues the woman who gave birth to a son; Michael and his angels defeat him in heaven"
+    },
+    {
+      "name": "The two beasts",
+      "chapters": "13",
+      "ch": 13,
+      "note": "one rises from the sea and receives power from the dragon; the other rises from the earth and leads the peoples to worship it"
+    },
+    {
+      "name": "The great prostitute, Babylon",
+      "chapters": "17–18",
+      "ch": 17,
+      "note": "a city that rules over the kings of the earth and is drunk with the blood of the saints"
+    }
+  ],
+  "writing": {
+    "tradition": "The author calls himself John (1:1, 4, 9; 22:8) and presents himself as a prophet, without saying he is an apostle. From Justin, in the 2nd century, tradition identified him with the apostle John son of Zebedee, who would have lived in Ephesus. As to the date, Irenaeus, around 180, wrote that the vision was seen “toward the end of Domitian's reign,” that is, c. 95, and this was the predominant position in the early Church; some ancient writings, however, link John's exile to the time of Nero. In the East, the book was slow to be accepted: Dionysius of Alexandria, in the 3rd century, observed that the Greek and the style differ greatly from the Gospel of John and attributed the book to another John, and several Greek- and Syriac-speaking churches included it in the canon only late.",
+    "academic": "Many scholars think the author is a Christian prophet named John, known to the churches of Asia, distinct from the author of the Gospel, based on the differences of language and thought; others keep the link with the apostle or with the Johannine circle. On the date, there are two main positions. One follows Irenaeus and places the book at the end of Domitian's reign, c. 95, pointing to the emphasis on emperor worship in Asia and the use of “Babylon” for Rome, common after 70. The other places it at the end of the 60s, soon after Nero's persecution or during the crisis of 68–69, based on the list of kings in 17:9–11, the mention of the temple in 11:1–2 and the possible allusion to Nero in the number of the beast. Both positions have weighty defenders, and some accept that the book was composed in stages."
+  },
+  "events": {
+    "intro": "Revelation does not narrate history directly, but its images engage with the situation of the churches of Asia under the Roman Empire. The timeline shows the two periods proposed for the writing, without deciding between them. The dates are approximate.",
+    "axis": [
+      50,
+      110
+    ],
+    "timeline": [
+      {
+        "label": "Reign of Nero",
+        "from": 54,
+        "to": 68,
+        "kind": "evento",
+        "note": "emperor from 54 to 68"
+      },
+      {
+        "label": "Fire of Rome and persecution of Christians",
+        "from": 64,
+        "to": 64,
+        "kind": "evento",
+        "note": "Christians in Rome are killed on Nero's orders"
+      },
+      {
+        "label": "Jewish war and destruction of the temple",
+        "from": 66,
+        "to": 70,
+        "kind": "evento",
+        "note": "Jerusalem and the temple are destroyed in 70"
+      },
+      {
+        "label": "Year of the four emperors",
+        "from": 68,
+        "to": 69,
+        "kind": "evento",
+        "note": "after Nero's death, Galba, Otho, Vitellius and Vespasian contend for power"
+      },
+      {
+        "label": "Writing, according to the earlier dating",
+        "from": 64,
+        "to": 70,
+        "kind": "escrita",
+        "note": "a proposal linking the book to Nero's time or soon after"
+      },
+      {
+        "label": "Reign of Domitian",
+        "from": 81,
+        "to": 96,
+        "kind": "evento",
+        "note": "emperor from 81 to 96"
+      },
+      {
+        "label": "Writing, according to Irenaeus",
+        "from": 90,
+        "to": 96,
+        "kind": "escrita",
+        "note": "“toward the end of Domitian's reign,” c. 95"
+      }
+    ]
+  },
+  "context": "The seven churches were in cities of the Roman province of Asia, in the west of present-day Turkey, linked by roads: Ephesus, Smyrna, Pergamum, Thyatira, Sardis, Philadelphia and Laodicea. They were prosperous cities, with temples dedicated to Rome and to the emperors, trade guilds with religious banquets and old Jewish communities. The messages to the churches show varied problems: pressure to eat meat offered to idols, conflicts with local synagogues, a martyr named Antipas in Pergamum (2:13), but also complacency and wealth, as in Laodicea. Patmos, where John was, is a small island in the Aegean Sea, southwest of Ephesus. The critique of Babylon, seated on seven hills (17:9) and enriched by the trade of the peoples (18), is generally understood as a critique of Rome.",
+  "places": [
+    "Patmos",
+    "Ephesus, Smyrna, Pergamum, Thyatira, Sardis, Philadelphia and Laodicea",
+    "Mount Zion",
+    "the Euphrates River",
+    "Armageddon",
+    "“Babylon”",
+    "the new Jerusalem"
+  ],
+  "themes": [
+    "God's sovereignty",
+    "the victorious Lamb",
+    "faithfulness and witness",
+    "judgment on evil",
+    "the power of empire",
+    "worship and adoration",
+    "new creation"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:9"
+    },
+    {
+      "ref": "11:15"
+    },
+    {
+      "ref": "21:3–4"
+    },
+    {
+      "ref": "22:20"
+    }
+  ],
+  "note": "The date of Revelation (the time of Nero or of Domitian) and the identity of the author remain under discussion; both positions are presented without taking sides, and the dates are approximate. The sentence “And the dragon stood on the shore of the sea” is numbered 12:18 in some Bibles and is part of 13:1 in others; the BSB places it at the end of 12:17. The verses quoted are from the Berean Standard Bible (BSB)."
+}

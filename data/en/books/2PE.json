@@ -1,0 +1,150 @@
+{
+  "title_orig": "Πέτρου Βʹ",
+  "title_orig_xlit": "Petrou B",
+  "summary": "2 Peter has the form of a testament: the apostle, knowing that his death is near (1:14), leaves a last reminder to the faithful. He asks them to grow in a chain of virtues that runs from faith to love, recalls that the message about Christ is not based on myths but on the testimony of those who saw His glory on the mountain, and on the word of the prophets. He harshly denounces false teachers who exploit the community and live without restraint, and answers those who mocked the delay of the Lord's coming: for God, a thousand years are like a day, and the delay is patience to give time for repentance.",
+  "name": "The title “Second of Peter” (Petrou B) distinguishes it from 1 Peter, to which the letter itself refers: “this is now my second letter” (3:1).",
+  "facts": [
+    [
+      "Position",
+      "22nd book of the New Testament; 3rd of the General (or Catholic) Epistles"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "letter in the form of a testament"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Growing and remembering",
+      "from": 1,
+      "to": 1,
+      "text": "God has given everything for a life of godliness; faith must be accompanied by virtue, knowledge, self-control, perseverance, godliness, brotherly kindness and love; Peter recalls the transfiguration and the divine origin of prophecy."
+    },
+    {
+      "title": "The false teachers",
+      "from": 2,
+      "to": 2,
+      "text": "As there were false prophets, there will be false teachers; the examples of the angels who sinned, the flood and Sodom show that God judges the ungodly and rescues the righteous, like Noah and Lot."
+    },
+    {
+      "title": "The promise of His coming",
+      "from": 3,
+      "to": 3,
+      "text": "The scoffers ask about the promised coming; God is not slow, but patient; the day of the Lord will come like a thief, and new heavens and a new earth are awaited; Paul's letters are mentioned as hard to understand."
+    }
+  ],
+  "extra": {
+    "title": "Kinship with Jude",
+    "text": "Much of chapter 2 corresponds closely to the letter of Jude: the angels who sinned, Sodom and Gomorrah, Balaam, the waterless springs and the darkness reserved for the ungodly. The similarities are too great to be chance. Most scholars think 2 Peter used Jude, omitting the references to books outside the Hebrew canon, such as 1 Enoch; others propose the opposite or a common source."
+  },
+  "people": [
+    {
+      "name": "Simon Peter",
+      "chapters": "1; 3",
+      "ch": 1,
+      "note": "speaks as one about to die and as an eyewitness of the transfiguration (1:14–18)"
+    },
+    {
+      "name": "Noah",
+      "chapters": "2",
+      "ch": 2,
+      "note": "“a preacher of righteousness,” preserved in the flood (2:5)"
+    },
+    {
+      "name": "Lot",
+      "chapters": "2",
+      "ch": 2,
+      "note": "a righteous man distressed by what he saw in Sodom, who was rescued (2:7–8)"
+    },
+    {
+      "name": "Balaam",
+      "chapters": "2",
+      "ch": 2,
+      "note": "a prophet who loved the wages of wickedness and was rebuked by a donkey (2:15–16)"
+    },
+    {
+      "name": "Paul",
+      "chapters": "3",
+      "ch": 3,
+      "note": "called “our beloved brother”; his letters are mentioned alongside “the rest of the Scriptures” (3:15–16)"
+    }
+  ],
+  "writing": {
+    "tradition": "The letter presents itself as Simon Peter's, written shortly before his death, which tradition places in Rome between 64 and 68. Its acceptance, however, was the slowest among the books of the New Testament: Origen, in the 3rd century, mentions that some doubted it, and Eusebius, in the 4th century, places it among the disputed books, although read by many. Jerome records that many doubted it because of the difference in style from 1 Peter and explains this difference by the use of different secretaries. From the end of the 4th century, the letter is part of the canon lists in East and West.",
+    "academic": "Most scholars consider 2 Peter a writing in Peter's name, in the testament genre common at the time, and place it between c. 80 and 125, which would make it one of the last books of the New Testament. The arguments are the Greek, quite different from 1 Peter, the probable use of Jude, the reference to Paul's letters already collected and read as Scripture (3:15–16) and the mention of the death of “our fathers” (3:4) as a thing of the past. A minority defends that the letter is Peter's, perhaps with another secretary, written in the 60s, and explains the differences of style by the subject and the collaborators."
+  },
+  "events": {
+    "intro": "The letter refers to events of Peter's life and to the expectation of Christ's coming. The dates are approximate; that of the writing varies a great deal according to the position on authorship.",
+    "axis": [
+      25,
+      130
+    ],
+    "timeline": [
+      {
+        "label": "Transfiguration of Jesus",
+        "from": 29,
+        "to": 33,
+        "kind": "evento",
+        "note": "approximate date; recalled in 1:16–18"
+      },
+      {
+        "label": "Letters of Paul",
+        "from": 50,
+        "to": 62,
+        "kind": "escrita",
+        "note": "c. 50–62 for the most accepted letters; later they circulate as a collection"
+      },
+      {
+        "label": "Death of Peter in Rome",
+        "from": 64,
+        "to": 68,
+        "kind": "evento",
+        "note": "according to tradition, in Nero's persecution"
+      },
+      {
+        "label": "Writing, if by Peter",
+        "from": 64,
+        "to": 68,
+        "kind": "escrita",
+        "note": "traditional position and that of a minority of scholars"
+      },
+      {
+        "label": "Writing, if in Peter's name",
+        "from": 80,
+        "to": 125,
+        "kind": "escrita",
+        "note": "position of most scholars"
+      }
+    ]
+  },
+  "context": "The letter indicates neither recipients nor place. Because of the mention of an earlier letter (3:1), the same communities as 1 Peter, in Asia Minor, come to mind, but this is not certain. The problem is internal: teachers who promise freedom, live dissolutely, seek profit and mock the waiting for the Lord's coming, since “our fathers fell asleep” and everything continues as before (3:4). The answer uses resources of the Greek world (it speaks of virtue and of becoming “partakers of the divine nature,” 1:4) and of the Jewish tradition about judgment and the destruction of the world by fire.",
+  "places": [
+    "the holy mountain of the transfiguration",
+    "Sodom and Gomorrah"
+  ],
+  "themes": [
+    "growth in virtue",
+    "apostolic testimony",
+    "prophecy and Scripture",
+    "false teachers",
+    "the day of the Lord",
+    "God's patience",
+    "new heavens and a new earth"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:16"
+    },
+    {
+      "ref": "1:20–21"
+    },
+    {
+      "ref": "3:8–9"
+    }
+  ],
+  "note": "Authorship and date are debated; the dates of the timeline are approximate. The verses quoted are from the Berean Standard Bible (BSB)."
+}

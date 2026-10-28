@@ -1,0 +1,142 @@
+{
+  "title_orig": "Πρὸς Τίτον",
+  "title_orig_xlit": "Pros Titon",
+  "summary": "Titus is a brief letter to a co-worker left in Crete to organize the churches and appoint elders “in every town” (1:5). It describes the qualifications required of these leaders and asks for firmness against “rebellious” teachers, especially those of the circumcision group, interested in myths and purity rules. It then directs what to teach each group (older men, younger men, women, slaves) and grounds this behavior in the grace of God, which has appeared and trains us for a sober and upright life. It ends with the reminder that salvation comes from God's mercy, not from works, and with travel instructions.",
+  "name": "The title Pros Titon, “To Titus,” comes from the recipient, called “my true child in our common faith” (1:4). With 1 and 2 Timothy, it forms the group of the “Pastoral Epistles.”",
+  "facts": [
+    [
+      "Position",
+      "17th book of the New Testament; 12th of the Pauline letters, in canonical order"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "letter of instructions to a co-worker (pastoral letter)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Leaders and opponents",
+      "from": 1,
+      "to": 1,
+      "text": "A long greeting; Titus must appoint blameless elders and silence those who teach for dishonest gain, with an unflattering quotation about the Cretans (1:12)."
+    },
+    {
+      "title": "Teaching for each group",
+      "from": 2,
+      "to": 2,
+      "text": "Counsel to older men, older women, young people and slaves, grounded in the grace of God that has appeared and in the hope of Christ's coming."
+    },
+    {
+      "title": "Public life and salvation",
+      "from": 3,
+      "to": 3,
+      "text": "Respect for the authorities and gentleness toward all, because God saved by mercy, through “the washing of new birth”; avoiding disputes; requests about Artemas, Tychicus, Zenas and Apollos."
+    }
+  ],
+  "people": [
+    {
+      "name": "Paul",
+      "chapters": "1; 3",
+      "ch": 1,
+      "note": "sender; intends to spend the winter in Nicopolis (3:12)"
+    },
+    {
+      "name": "Titus",
+      "chapters": "1–3",
+      "ch": 1,
+      "note": "Paul's Greek co-worker, who was not compelled to be circumcised (Galatians 2:3) and was his envoy to Corinth (2 Corinthians 7–8)"
+    },
+    {
+      "name": "Artemas and Tychicus",
+      "chapters": "3",
+      "ch": 3,
+      "note": "one of them will replace Titus in Crete (3:12)"
+    },
+    {
+      "name": "Zenas and Apollos",
+      "chapters": "3",
+      "ch": 3,
+      "note": "Zenas is a lawyer; Titus must help them on their journey (3:13)"
+    }
+  ],
+  "writing": {
+    "tradition": "Tradition received the letter as Paul's. Since Acts mentions Crete only in passing, on Paul's voyage as a prisoner to Rome (Acts 27:7–13), tradition places it in the same period as 1 Timothy: after a release from the first Roman imprisonment, when Paul would have worked in Crete and planned to spend the winter in Nicopolis, c. 62–64.",
+    "academic": "Like 1 and 2 Timothy, Titus is considered by most critical scholars the work of a disciple who wrote in Paul's name, generally between c. 90 and 120, for the same reasons: its own vocabulary and style, the emphasis on “sound doctrine” and on the organization of leaders, and an itinerary that appears neither in the undisputed letters nor in Acts. Those who defend Paul's authorship place the letter after Acts, in the final phase of his life, and explain the differences by the subject and the use of a secretary. It is noted that, in Titus 1:5–7, the terms elder and overseer (literally “supervisor”) seem to designate the same office, as in Acts 20:17, 28, which some take as a sign of a still little hierarchical organization."
+  },
+  "events": {
+    "intro": "No episode of the letter can be dated with certainty. The timeline presents the traditional position and that of many scholars; the dates are approximate.",
+    "axis": [
+      45,
+      125
+    ],
+    "band": {
+      "label": "Reign of Nero",
+      "from": 54,
+      "to": 68
+    },
+    "timeline": [
+      {
+        "label": "Titus in Jerusalem with Paul",
+        "from": 48,
+        "to": 49,
+        "kind": "pessoa",
+        "note": "Galatians 2:1–3; approximate date"
+      },
+      {
+        "label": "Titus sent to Corinth",
+        "from": 55,
+        "to": 56,
+        "kind": "pessoa",
+        "note": "2 Corinthians 7–8"
+      },
+      {
+        "label": "Paul passes Crete as a prisoner",
+        "from": 59,
+        "to": 60,
+        "kind": "evento",
+        "note": "on the way to Rome (Acts 27:7–13)"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": 62,
+        "to": 64,
+        "kind": "escrita",
+        "note": "after a supposed release of Paul"
+      },
+      {
+        "label": "Writing, according to many scholars",
+        "from": 90,
+        "to": 120,
+        "kind": "escrita",
+        "note": "by a disciple of Paul"
+      }
+    ]
+  },
+  "context": "Crete, a large island south of the Aegean Sea, was conquered by Rome in 67 BC and later joined in a single province with Cyrenaica, in North Africa, and had cities with Jewish communities (Acts 2:11 mentions Cretans in Jerusalem at Pentecost). The Greeks repeated an old saying that the Cretans were liars; the line quoted in 1:12 has been attributed since antiquity to Epimenides, a Cretan poet and sage of the 6th century BC. Nicopolis, where Paul intends to spend the winter, is probably the city in Epirus, on the western coast of Greece, founded by Octavian after the battle of Actium (31 BC).",
+  "places": [
+    "Crete",
+    "Nicopolis"
+  ],
+  "themes": [
+    "sound doctrine",
+    "elders and overseers",
+    "false teachers",
+    "the conduct of each group",
+    "the grace that trains",
+    "salvation by mercy",
+    "good works"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:11–13"
+    },
+    {
+      "ref": "3:4–5"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source and the position on authorship. The verses quoted are from the Berean Standard Bible (BSB)."
+}

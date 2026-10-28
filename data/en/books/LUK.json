@@ -1,0 +1,277 @@
+{
+  "title_orig": "Κατὰ Λουκᾶν",
+  "title_orig_xlit": "Kata Loukan",
+  "summary": "Luke is the first part of a two-volume work that continues in the Acts of the Apostles, both dedicated to a certain Theophilus. The author says he has investigated everything carefully in order to write an orderly account (1:1–4) and places the story of Jesus within the framework of the Roman Empire, with mentions of emperors, governors and high priests. The book tells side by side the births of John the Baptist and of Jesus, follows the ministry in Galilee and devotes a long section to the journey to Jerusalem (9:51–19:27), where parables that only Luke records are concentrated, such as the Good Samaritan and the Prodigal Son. The poor, women, foreigners and those considered sinners are given prominence, as are prayer, joy and the work of the Holy Spirit. The gospel begins and ends in the temple in Jerusalem, after the appearances of the Risen One and the farewell at Bethany.",
+  "name": "The title “According to Luke” (Kata Loukan) was given to the work when the gospels began to circulate together and already appears in the oldest papyri that preserve titles. The author does not give his name, but addresses the book to “most excellent Theophilus” (1:3). Luke (Loukas) is the Greek form of a Latin name; Paul mentions a Luke among his co-workers and calls him “the beloved physician” (Colossians 4:14; see also Philemon 24 and 2 Timothy 4:11).",
+  "facts": [
+    [
+      "Position",
+      "3rd book of the New Testament and the third of the four Gospels; first part of the work Luke–Acts"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "gospel: an orderly account of the life and teachings of Jesus, opened with a prologue in the manner of Greek historians"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Prologue and childhood",
+      "from": 1,
+      "to": 2,
+      "text": "The dedication to Theophilus (1:1–4); the announcements and births of John and of Jesus, narrated in parallel, the songs of Mary, Zechariah and Simeon, and Jesus at twelve years old in the temple."
+    },
+    {
+      "title": "Preparation",
+      "from": 3,
+      "to": 4,
+      "text": "John's preaching, the baptism, Jesus' genealogy back to Adam, the temptation and the reading of Isaiah in the synagogue at Nazareth (4:16–30), which announces the program of the ministry."
+    },
+    {
+      "title": "Ministry in Galilee",
+      "from": 4,
+      "to": 9,
+      "text": "Healings and calls, the Sermon on the Plain (6:20–49), the forgiven woman, the women who accompany Jesus, the mission of the Twelve, Peter's confession and the transfiguration (to 9:50)."
+    },
+    {
+      "title": "The journey to Jerusalem",
+      "from": 9,
+      "to": 19,
+      "text": "From 9:51 on, Jesus resolves to go up to Jerusalem; in this long section are most of Luke's own parables, teachings on prayer, wealth and discipleship and encounters such as that with Zacchaeus (to 19:27)."
+    },
+    {
+      "title": "In Jerusalem",
+      "from": 19,
+      "to": 21,
+      "text": "The entry into the city, the weeping over Jerusalem, the cleansing of the temple, the debates with the leaders and the discourse on the destruction of the city and the coming of the Son of Man."
+    },
+    {
+      "title": "The passion",
+      "from": 22,
+      "to": 23,
+      "text": "The Last Supper, the prayer on the Mount of Olives, the arrest, the hearings before the Council, Pilate and Herod, the crucifixion and the burial."
+    },
+    {
+      "title": "Resurrection and farewell",
+      "from": 24,
+      "to": 24,
+      "text": "The empty tomb, the encounter on the road to Emmaus, the appearance to the eleven in Jerusalem and the farewell at Bethany, which prepares the beginning of Acts."
+    }
+  ],
+  "extra": {
+    "title": "What only Luke tells",
+    "text": "A considerable part of the gospel has no parallel in Matthew or Mark. Only Luke narrates, for example, the birth of John the Baptist, the visit of the shepherds, the boy Jesus in the temple, the son of the widow of Nain (7:11–17), the encounter with Zacchaeus (19:1–10) and the road to Emmaus (24:13–35), and only he has parables such as the Good Samaritan (10:25–37), the Prodigal Son (15:11–32) and the rich man and Lazarus (16:19–31). The first two chapters also preserve three songs that entered Christian prayer under Latin names: Mary's Magnificat (1:46–55), Zechariah's Benedictus (1:68–79) and Simeon's Nunc dimittis (2:29–32)."
+  },
+  "people": [
+    {
+      "name": "Theophilus",
+      "chapters": "1",
+      "ch": 1,
+      "note": "recipient of the work; perhaps a patron of high standing, perhaps a symbolic name, since it means “friend of God”"
+    },
+    {
+      "name": "Zechariah and Elizabeth",
+      "chapters": "1",
+      "ch": 1,
+      "note": "an elderly couple of priestly family; parents of John the Baptist"
+    },
+    {
+      "name": "Mary",
+      "chapters": "1–2; 8",
+      "ch": 1,
+      "note": "receives the announcement of the angel Gabriel, visits Elizabeth and treasures in her heart what happens to her son (2:19, 51)"
+    },
+    {
+      "name": "Joseph",
+      "chapters": "1–2",
+      "ch": 2,
+      "note": "of the house of David; goes with Mary from Nazareth to Bethlehem because of the census"
+    },
+    {
+      "name": "Simeon and Anna",
+      "chapters": "2",
+      "ch": 2,
+      "note": "a righteous man and an elderly prophetess who recognize the child in the temple"
+    },
+    {
+      "name": "John the Baptist",
+      "chapters": "1; 3; 7",
+      "ch": 3,
+      "note": "son of Zechariah; preaches repentance at the Jordan and baptizes Jesus"
+    },
+    {
+      "name": "Jesus",
+      "chapters": "1–24",
+      "ch": 2,
+      "note": "born in Bethlehem and raised in Nazareth; presented as Savior, Christ and Lord (2:11)"
+    },
+    {
+      "name": "Simon Peter",
+      "chapters": "4–24",
+      "ch": 5,
+      "note": "fisherman called after the great catch; denies Jesus in the high priest's courtyard and receives an appearance of the Risen One (24:34)"
+    },
+    {
+      "name": "Mary Magdalene, Joanna and Susanna",
+      "chapters": "8; 23–24",
+      "ch": 8,
+      "note": "women who follow Jesus and support Him out of their means; they are at the tomb on the morning of the resurrection"
+    },
+    {
+      "name": "Martha and Mary",
+      "chapters": "10",
+      "ch": 10,
+      "note": "sisters who welcome Jesus into their home"
+    },
+    {
+      "name": "Zacchaeus",
+      "chapters": "19",
+      "ch": 19,
+      "note": "chief tax collector of Jericho, who welcomes Jesus and gives away his goods"
+    },
+    {
+      "name": "Herod Antipas",
+      "chapters": "3; 9; 13; 23",
+      "ch": 23,
+      "note": "tetrarch of Galilee; wants to see Jesus and questions Him during the trial"
+    },
+    {
+      "name": "Pilate",
+      "chapters": "3; 13; 23",
+      "ch": 23,
+      "note": "Roman governor of Judea; declares he finds no guilt in Jesus, but hands Him over to be crucified"
+    },
+    {
+      "name": "Cleopas",
+      "chapters": "24",
+      "ch": 24,
+      "note": "one of the two disciples who meet the Risen One on the road to Emmaus"
+    }
+  ],
+  "writing": {
+    "tradition": "From the end of the 2nd century, with Irenaeus and the so-called Muratorian Canon, tradition attributes the third gospel and Acts to Luke, physician and traveling companion of Paul. He would have been a Christian of Gentile origin, since Colossians 4:10–14 mentions him apart from Paul's Jewish co-workers, and an ancient prologue says he was a native of Antioch in Syria. In the passages of Acts narrated in the first person plural (“we”), tradition sees the author himself alongside the apostle. Those who follow this reading usually date the gospel shortly before Acts, which ends with Paul under arrest in Rome around 62, that is, in the early 60s.",
+    "academic": "There is broad consensus that the same author wrote Luke and Acts, because of the style, the common dedication to Theophilus and the mention in Acts 1:1 of the “first book.” He is an educated writer, who moves through several registers of Greek. On the Synoptic Problem, the most accepted hypothesis is that he used Mark and the sayings collection Q, as well as material of his own; others think he also knew Matthew. As to the author, some researchers accept Luke, Paul's companion, and some see in him a Christian of a later generation, pointing to differences between the Paul of Acts and the Paul of the letters. The most cited date is c. 80–90, because the text seems to presuppose the siege and destruction of Jerusalem (19:43–44; 21:20–24); some argue for the 60s, and a minority places Luke–Acts in the early 2nd century."
+  },
+  "events": {
+    "intro": "Luke is the evangelist who most ties the narrative to dates of Roman history. He places the announcement to Zechariah “in the time of Herod king of Judea” (1:5), associates the birth of Jesus with a census ordered by Caesar Augustus while Quirinius was governor of Syria (2:1–2) and dates the beginning of John's preaching “in the fifteenth year of the reign of Tiberius Caesar” (3:1), around 28/29. The census of Quirinius recorded by the historian Flavius Josephus is from AD 6, about ten years after Herod's death; the difference is explained in various ways, such as an earlier registration, another translation of 2:2 or an inaccuracy of the author. Jesus' ministry is usually placed between c. 27/28 and 30/33, and the crucifixion in 30 or 33.",
+    "axis": [
+      -40,
+      100
+    ],
+    "band": {
+      "label": "Reign of Tiberius",
+      "from": 14,
+      "to": 37
+    },
+    "timeline": [
+      {
+        "label": "Herod the Great",
+        "from": -37,
+        "to": -4,
+        "kind": "pessoa",
+        "note": "king of Judea when John and Jesus are born (1:5)"
+      },
+      {
+        "label": "Caesar Augustus",
+        "from": -27,
+        "to": 14,
+        "kind": "pessoa",
+        "note": "emperor who orders the census (2:1)"
+      },
+      {
+        "label": "Birth of Jesus",
+        "from": -6,
+        "to": -4,
+        "kind": "evento",
+        "note": "in Bethlehem; approximate date, still under Herod"
+      },
+      {
+        "label": "Census of Quirinius",
+        "from": 6,
+        "to": 6,
+        "kind": "evento",
+        "note": "census of Judea reported by Josephus; compare 2:2"
+      },
+      {
+        "label": "Preaching of John the Baptist",
+        "from": 28,
+        "to": 29,
+        "kind": "evento",
+        "note": "“in the fifteenth year of the reign of Tiberius” (3:1)"
+      },
+      {
+        "label": "Ministry of Jesus",
+        "from": 27,
+        "to": 33,
+        "kind": "evento",
+        "note": "c. 27/28 to 30/33, depending on the chronology adopted"
+      },
+      {
+        "label": "Crucifixion",
+        "from": 30,
+        "to": 33,
+        "kind": "evento",
+        "note": "in Jerusalem, under Pilate; the most defended dates are 30 and 33"
+      },
+      {
+        "label": "Destruction of Jerusalem",
+        "from": 70,
+        "to": 70,
+        "kind": "evento",
+        "note": "the Roman army surrounds and takes the city (cf. 21:20)"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": 59,
+        "to": 63,
+        "kind": "escrita",
+        "note": "Luke, Paul's companion, shortly before Acts"
+      },
+      {
+        "label": "Writing, according to most researchers",
+        "from": 80,
+        "to": 90,
+        "kind": "escrita",
+        "note": "after Mark and the destruction of Jerusalem"
+      }
+    ]
+  },
+  "context": "Luke writes for readers of the Greco-Roman world and presents the story of Jesus as part of the history of the Empire: he mentions Augustus and Tiberius, the governors Quirinius and Pilate, the tetrarchs of Herod's family and the high priests Annas and Caiaphas (2:1–2; 3:1–2). The prologue (1:1–4) follows the conventions of Greek historians and technical writers, and the dedication to Theophilus recalls the custom of offering a work to a patron. The author knows the Septuagint well, and the first two chapters imitate the style of the narratives of the Hebrew Bible. The action moves from Galilee to Jerusalem, where the book begins and ends, and prepares the expansion narrated in Acts, with the message carried “to all nations, beginning at Jerusalem” (24:47).",
+  "places": [
+    "Jerusalem and the temple",
+    "Nazareth",
+    "Bethlehem",
+    "Galilee: Capernaum, Nain and the Lake of Gennesaret",
+    "Samaria",
+    "Jericho",
+    "Emmaus",
+    "Bethany"
+  ],
+  "themes": [
+    "salvation for all",
+    "poor and rich",
+    "mercy and forgiveness",
+    "prayer",
+    "the Holy Spirit",
+    "joy and praise",
+    "women among Jesus' followers"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:10–11"
+    },
+    {
+      "ref": "4:18–19"
+    },
+    {
+      "ref": "15:7"
+    },
+    {
+      "ref": "19:10"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. Verses 17:36 and 23:17 appear in later manuscripts, but not in the oldest, in the SBLGNT Greek text used in the app or in the main text of the BSB, which mentions them only in a footnote; so they appear here without text. Verses 22:43–44 (the angel and the sweat like drops of blood) and the words “Father, forgive them” in 23:34 are also missing in some important ancient manuscripts; the SBLGNT and the BSB keep them, noting the doubt. In 10:1 and 10:17, the BSB, like the SBLGNT, speaks of seventy-two sent out, and other manuscripts and translations of seventy. The verses quoted are from the Berean Standard Bible (BSB)."
+}

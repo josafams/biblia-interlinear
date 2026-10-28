@@ -1,0 +1,193 @@
+{
+  "title_orig": "Πρὸς Κορινθίους Βʹ",
+  "title_orig_xlit": "Pros Korinthious B",
+  "summary": "2 Corinthians is the most personal of Paul's letters. After 1 Corinthians, the relationship with the church deteriorated: there was a painful visit, an offense against Paul and a letter written “with many tears” (2:4). In chapters 1 to 7, relieved by the good news brought by Titus, Paul explains the changes in his plans and reflects on the ministry of the new covenant, carried by frail people (“treasure in jars of clay,” 4:7) and devoted to reconciliation with God. Chapters 8 and 9 ask the Corinthians to complete the collection for the poor in Jerusalem. In chapters 10 to 13, the tone changes: Paul confronts rival preachers, whom he ironically calls “super-apostles” (12:11), and defends himself by speaking not of successes but of sufferings and weaknesses.",
+  "name": "The title “Second to the Corinthians” (Pros Korinthious B) distinguishes this one from the other letter to the same church and was given when Paul's letters were gathered. Despite the number, the text shows that Paul wrote to the Corinthians at least four times: a letter before 1 Corinthians (1 Corinthians 5:9), 1 Corinthians itself, the letter “with many tears” (2:4; 7:8) and this one.",
+  "facts": [
+    [
+      "Position",
+      "8th book of the New Testament; 3rd of Paul's letters, in canonical order"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "letter, with a strong personal and defensive tone"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Comfort and change of plans",
+      "from": 1,
+      "to": 2,
+      "text": "Paul gives thanks for God's comfort in the danger he went through in Asia, explains why he did not return to Corinth as he had promised and asks forgiveness for the one who offended him."
+    },
+    {
+      "title": "Paul's ministry",
+      "from": 2,
+      "to": 7,
+      "text": "The new covenant, of the Spirit, compared with that of Moses; the message carried in frail bodies; hope in the face of death; the appeal for reconciliation; and the joy at the news from Titus (2:14–7:16)."
+    },
+    {
+      "title": "The collection for Jerusalem",
+      "from": 8,
+      "to": 9,
+      "text": "The example of the poor churches of Macedonia, the sending of Titus and other brothers to Corinth and the invitation to give generously and cheerfully."
+    },
+    {
+      "title": "Defense against the rivals",
+      "from": 10,
+      "to": 13,
+      "text": "Paul answers those who found him strong in his letters and weak in person, speaks “as a fool” of his own credentials and sufferings and announces the third visit."
+    }
+  ],
+  "extra": {
+    "title": "The “fool's” speech",
+    "text": "In 11:1–12:13, Paul enters the game of his opponents, who boasted of credentials, and says he is forced to speak “as a fool.” But the list of merits turns into a list of sufferings: floggings, imprisonments, three shipwrecks, dangers of every kind and the escape from Damascus let down in a basket through the wall (11:23–33). When he speaks of an extraordinary experience, that of a man caught up “to the third heaven” fourteen years before, he speaks of himself in the third person (12:2–4) and then moves to the “thorn in the flesh” and the answer he received: “My grace is sufficient for you” (12:7–9)."
+  },
+  "people": [
+    {
+      "name": "Paul",
+      "chapters": "1–2; 10–13",
+      "ch": 11,
+      "note": "defends his way of acting and his apostleship before a church divided in its view of him"
+    },
+    {
+      "name": "Titus",
+      "chapters": "2; 7–8; 12",
+      "ch": 7,
+      "note": "Paul's co-worker; carries news to and from Corinth and is sent to complete the collection"
+    },
+    {
+      "name": "Timothy",
+      "chapters": "1",
+      "ch": 1,
+      "note": "appears with Paul as a sender (1:1) and preached in Corinth with him and Silvanus (1:19)"
+    },
+    {
+      "name": "Silvanus",
+      "chapters": "1",
+      "ch": 1,
+      "note": "the Silas of Acts, Paul's companion in founding the church (1:19)"
+    },
+    {
+      "name": "The offender",
+      "chapters": "2; 7",
+      "ch": 2,
+      "note": "an unidentified member of the church who caused Paul grief; after being rebuked, he is to be forgiven (2:5–11)"
+    },
+    {
+      "name": "The “super-apostles”",
+      "chapters": "10–12",
+      "ch": 11,
+      "note": "preachers of Jewish origin (11:22) who sought the church's allegiance and disparaged Paul"
+    },
+    {
+      "name": "Aretas",
+      "chapters": "11",
+      "ch": 11,
+      "note": "Aretas IV, king of the Nabateans; a governor under him tried to seize Paul in Damascus (11:32)"
+    }
+  ],
+  "writing": {
+    "tradition": "Tradition has always attributed the letter to Paul, written with Timothy (1:1). From the text itself, Paul is in Macedonia, after leaving Ephesus and passing through Troas (2:12–13; 7:5), and is preparing to go to Corinth for the third time (12:14; 13:1). This leads to c. 55–56, shortly before the winter spent in Greece, when he would write Romans.",
+    "academic": "Paul's authorship is accepted by practically all scholars; the discussion is about the unity of the text. The abrupt change of tone in chapter 10 leads many to see in chapters 10–13 a separate letter: for some, part of the letter “with many tears,” earlier than chapters 1–9; for others, a later letter, written when the crisis returned. It is also debated whether chapters 8 and 9, both about the collection, were separate notes, and whether 6:14–7:1, which interrupts the thread of the text, came from another context. Other scholars argue that the letter was always a single one and explain the changes by new news or by rhetorical strategy. The proposed dates generally fall between 55 and 57."
+  },
+  "events": {
+    "intro": "The letter allows part of Paul's relations with Corinth to be reconstructed between the founding of the church and his last visit, although the order of some events is debated. Two details help to place Paul's life: the escape from Damascus at the time of the Nabatean king Aretas IV, who died around the year 40 (11:32–33), and the vision he places “fourteen years ago” (12:2). The chronology is the same as the one used for Acts; the dates are approximate.",
+    "axis": [
+      30,
+      60
+    ],
+    "band": {
+      "label": "Paul in Ephesus",
+      "from": 53,
+      "to": 56
+    },
+    "timeline": [
+      {
+        "label": "Escape from Damascus",
+        "from": 36,
+        "to": 37,
+        "kind": "evento",
+        "note": "under a governor of King Aretas IV (11:32–33; Acts 9:23–25)"
+      },
+      {
+        "label": "The vision of the “third heaven”",
+        "from": 41,
+        "to": 42,
+        "kind": "evento",
+        "note": "date calculated from the “fourteen years” of 12:2"
+      },
+      {
+        "label": "Founding of the church in Corinth",
+        "from": 50,
+        "to": 52,
+        "kind": "evento",
+        "note": "Paul, Silvanus and Timothy (1:19; Acts 18)"
+      },
+      {
+        "label": "Writing of 1 Corinthians",
+        "from": 54,
+        "to": 55,
+        "kind": "escrita",
+        "note": "in Ephesus"
+      },
+      {
+        "label": "Painful visit and the letter “with tears”",
+        "from": 55,
+        "to": 55,
+        "kind": "evento",
+        "note": "deduced from 2:1–4 and 13:2; dates and order debated"
+      },
+      {
+        "label": "Writing of 2 Corinthians",
+        "from": 55,
+        "to": 56,
+        "kind": "escrita",
+        "note": "in Macedonia, after the meeting with Titus (7:5–7)"
+      },
+      {
+        "label": "Third visit to Corinth",
+        "from": 56,
+        "to": 57,
+        "kind": "evento",
+        "note": "three months in Greece (Acts 20:2–3)"
+      }
+    ]
+  },
+  "context": "Corinth, a Roman colony and the capital of Achaia, valued good oratory, appearance and the patronage of influential people. It is in this setting that the criticisms of Paul are understood: they said his letters were “weighty and forceful,” but his physical presence was unimpressive and his speaking “of no account” (10:10). The rivals arrived with letters of recommendation (3:1), accepted support from the church and presented themselves as “Hebrews” and “servants of Christ” (11:22–23); Paul, by contrast, had refused to be supported by the Corinthians and had lived on the help of the churches of Macedonia (11:7–9). The collection for the poor Christians of Jerusalem, which takes up chapters 8 and 9, was for Paul a concrete sign of the unity between the churches of Gentile origin and the Jewish community from which the movement had come.",
+  "places": [
+    "Corinth and Achaia",
+    "Ephesus and the province of Asia",
+    "Troas",
+    "Macedonia",
+    "Jerusalem and Judea",
+    "Damascus"
+  ],
+  "themes": [
+    "comfort in suffering",
+    "strength in weakness",
+    "the new covenant",
+    "reconciliation",
+    "generosity",
+    "true apostleship"
+  ],
+  "key_verses": [
+    {
+      "ref": "4:7"
+    },
+    {
+      "ref": "5:17"
+    },
+    {
+      "ref": "9:7"
+    },
+    {
+      "ref": "12:9"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. The BSB divides the end of chapter 13 into three verses (13:12–14), and the Greek text into two (13:12–13); the app matches them up. The verses quoted are from the Berean Standard Bible (BSB)."
+}

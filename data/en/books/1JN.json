@@ -1,0 +1,158 @@
+{
+  "title_orig": "Ἰωάννου Αʹ",
+  "title_orig_xlit": "Ioannou A",
+  "summary": "1 John is a writing of exhortation to communities shaken by the departure of a group that had begun to teach differently about Jesus (2:19). The author, who speaks as a witness of what he heard, saw and touched (1:1), offers criteria for recognizing true fellowship with God: walking in the light, acknowledging one's own sin, keeping the commandments, confessing that Jesus Christ has come in the flesh and, above all, loving the brothers. Two statements sum up the book: “God is light” (1:5) and “God is love” (4:8). The declared purpose is to give assurance to those who believe: “so that you may know that you have eternal life” (5:13).",
+  "name": "The title “First of John” (Ioannou A) was given by tradition, which attributed this writing and the two following letters to the apostle John. The text gives neither the author's name nor the recipients'.",
+  "facts": [
+    [
+      "Position",
+      "23rd book of the New Testament; 4th of the General (or Catholic) Epistles"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "exhortation in letter form, with no greeting or farewell"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Prologue: the Word of life",
+      "from": 1,
+      "to": 1,
+      "text": "The author proclaims what he heard, saw and touched, so that the readers may have fellowship with him, with the Father and with the Son (1:1–4)."
+    },
+    {
+      "title": "Walking in the light",
+      "from": 1,
+      "to": 2,
+      "text": "God is light; whoever confesses sin is forgiven; knowing God is keeping His commandments; not loving the world; those who went out are “antichrists” (1:5–2:27)."
+    },
+    {
+      "title": "Children of God",
+      "from": 2,
+      "to": 4,
+      "text": "We are children of God and will be like Him; whoever is of God practices righteousness and loves in deed and truth, unlike Cain; the spirits must be tested (2:28–4:6)."
+    },
+    {
+      "title": "God is love",
+      "from": 4,
+      "to": 5,
+      "text": "Love comes from God and was shown in the sending of the Son; whoever loves God loves his brother; the faith that overcomes the world and the testimony of the Spirit, the water and the blood (4:7–5:12)."
+    },
+    {
+      "title": "Conclusion",
+      "from": 5,
+      "to": 5,
+      "text": "The assurance of eternal life, prayer for brothers who sin and the final warning: “keep yourselves from idols” (5:13–21)."
+    }
+  ],
+  "extra": {
+    "title": "Pairs of opposites",
+    "text": "The text moves in a spiral, returning to the same themes with small variations, and thinks in pairs: light and darkness, truth and falsehood, love and hate, life and death, children of God and children of the devil, the Spirit of truth and the spirit of deception. The vocabulary is very close to the Gospel of John (“beginning,” “Word,” “life,” “remain,” “know”), and the prologue recalls the opening of the Gospel."
+  },
+  "people": [
+    {
+      "name": "The author (“we”)",
+      "chapters": "1",
+      "ch": 1,
+      "note": "speaks as a witness and calls the readers “little children”"
+    },
+    {
+      "name": "Jesus Christ",
+      "chapters": "1–5",
+      "ch": 2,
+      "note": "the Son who came in the flesh, the Righteous One, advocate with the Father and atoning sacrifice for sins"
+    },
+    {
+      "name": "Those who went out",
+      "chapters": "2; 4",
+      "ch": 2,
+      "note": "a group that left the community and denied that Jesus is the Christ come in the flesh; called antichrists and false prophets"
+    },
+    {
+      "name": "Cain",
+      "chapters": "3",
+      "ch": 3,
+      "note": "an example of one who hates his brother (3:12)"
+    }
+  ],
+  "writing": {
+    "tradition": "From the end of the 2nd century (Irenaeus, the Muratorian Canon), the letter has been attributed to the apostle John son of Zebedee, author also of the Gospel. According to tradition, he lived to an advanced age in Ephesus, in the province of Asia, and wrote there, in the 90s. The letter was already known in the first half of the 2nd century: Polycarp, bishop of Smyrna, uses a sentence very similar to 4:2–3.",
+    "academic": "Scholars generally agree that 1 John comes from the same milieu as the Gospel of John, often called the Johannine community or school, but debate whether the author is the same as the Gospel's, the apostle, the “elder” of 2 and 3 John (perhaps the “John the Elder” mentioned by Papias) or another member of the group. The most proposed date is c. 90–110, shortly after the Gospel, whose message the letter seems to defend against interpretations that separated the divine Christ from the human Jesus. The link with Ephesus comes from tradition; the text mentions no place."
+  },
+  "events": {
+    "intro": "The letter reflects a division within a community at the end of the 1st century. The dates are approximate.",
+    "axis": [
+      25,
+      140
+    ],
+    "timeline": [
+      {
+        "label": "Ministry, death and resurrection of Jesus",
+        "from": 28,
+        "to": 33,
+        "kind": "evento",
+        "note": "the author speaks as a witness of what was seen and touched"
+      },
+      {
+        "label": "Destruction of the temple in Jerusalem",
+        "from": 70,
+        "to": 70,
+        "kind": "evento",
+        "note": "according to tradition, John was already living in Asia"
+      },
+      {
+        "label": "Gospel of John",
+        "from": 85,
+        "to": 100,
+        "kind": "escrita",
+        "note": "approximate date"
+      },
+      {
+        "label": "Writing of the letter",
+        "from": 90,
+        "to": 110,
+        "kind": "escrita",
+        "note": "approximate date"
+      },
+      {
+        "label": "Polycarp's letter to the Philippians",
+        "from": 110,
+        "to": 135,
+        "kind": "escrita",
+        "note": "date debated; echoes 1 John 4:2–3"
+      }
+    ]
+  },
+  "context": "The letter has no greeting or recipients, but presupposes a network of churches that know the author and the preaching about Jesus. The crisis comes from within: a group has gone out (2:19), and the author insists that Jesus Christ “has come in the flesh” (4:2), that love is proved by goods given to a brother in need (3:17) and that sin cannot be denied (1:8). Many relate the opponents to currents that would later be called Docetist (for which the Son of God only seemed human) or to ideas associated with Cerinthus, but the letter gives no names, and the identification is uncertain.",
+  "places": [
+    "Ephesus and the province of Asia (by tradition)"
+  ],
+  "themes": [
+    "fellowship with God",
+    "light and darkness",
+    "sin and forgiveness",
+    "love for one's brother",
+    "the truth about Jesus",
+    "assurance of eternal life",
+    "remaining in God"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:5"
+    },
+    {
+      "ref": "1:8–9"
+    },
+    {
+      "ref": "4:7–8"
+    },
+    {
+      "ref": "4:19"
+    }
+  ],
+  "note": "In 5:7–8, some older Bibles, such as the King James Version, have an addition about “the Father, the Word and the Holy Ghost” in heaven (the so-called Johannine Comma). It is not in the ancient Greek manuscripts and entered the text from Latin manuscripts; the BSB and the SBLGNT do not include it. Dates are approximate. The verses quoted are from the Berean Standard Bible (BSB)."
+}

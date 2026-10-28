@@ -1,0 +1,121 @@
+{
+  "title_orig": "Ἰωάννου Βʹ",
+  "title_orig_xlit": "Ioannou B",
+  "summary": "2 John is a note from “the elder” to a “chosen lady” and her children. He rejoices because some of them are walking in the truth, recalls the old commandment to love one another and warns against deceivers who do not acknowledge that Jesus Christ has come in the flesh: they must not be received into the house. It ends with the hope of a visit.",
+  "name": "The title “Second of John” (Ioannou B) follows the traditional attribution to the apostle John; in the text, the author identifies himself only as “the elder” (1:1).",
+  "facts": [
+    [
+      "Position",
+      "24th book of the New Testament; 5th of the General (or Catholic) Epistles"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "brief letter"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Greeting",
+      "from": 1,
+      "to": 1,
+      "text": "The elder greets the chosen lady and her children, “whom I love in the truth” (1:1–3)."
+    },
+    {
+      "title": "Walking in love",
+      "from": 1,
+      "to": 1,
+      "text": "Joy over those who walk in the truth and the request that they love one another, keeping the commandments (1:4–6)."
+    },
+    {
+      "title": "Beware of deceivers",
+      "from": 1,
+      "to": 1,
+      "text": "Whoever does not confess the coming of Jesus Christ in the flesh must not be received or greeted (1:7–11)."
+    },
+    {
+      "title": "Farewell",
+      "from": 1,
+      "to": 1,
+      "text": "The elder prefers to speak “face to face” and sends greetings from the children of the chosen sister (1:12–13)."
+    }
+  ],
+  "people": [
+    {
+      "name": "The elder",
+      "chapters": "1",
+      "ch": 1,
+      "note": "an author who introduces himself by his title, as in 3 John"
+    },
+    {
+      "name": "The chosen lady and her children",
+      "chapters": "1",
+      "ch": 1,
+      "note": "probably a local church and its members, in figurative language; some think of an actual woman"
+    },
+    {
+      "name": "The chosen sister",
+      "chapters": "1",
+      "ch": 1,
+      "note": "probably the church from which the elder writes (1:13)"
+    }
+  ],
+  "writing": {
+    "tradition": "Tradition attributes the letter to the apostle John, who in his old age would have identified himself as “the elder,” and places it in Ephesus, at the end of the 1st century. Its acceptance was slower than that of 1 John: Eusebius, in the 4th century, mentions it among the books disputed by some.",
+    "academic": "Scholars link 2 John to the same milieu as 1 John, with almost identical vocabulary and concerns, and many attribute it to the same author who wrote 3 John. It is debated whether this elder is the apostle, a leader known as “John the Elder” (mentioned by Papias) or someone else. The most proposed date is c. 90–110."
+  },
+  "events": {
+    "intro": "The three letters of John come from the same period and milieu. The dates are approximate.",
+    "axis": [
+      60,
+      130
+    ],
+    "timeline": [
+      {
+        "label": "Gospel of John",
+        "from": 85,
+        "to": 100,
+        "kind": "escrita",
+        "note": "approximate date"
+      },
+      {
+        "label": "Writing of the letters of John",
+        "from": 90,
+        "to": 110,
+        "kind": "escrita",
+        "note": "approximate date"
+      },
+      {
+        "label": "Papias writes about the elders",
+        "from": 110,
+        "to": 130,
+        "kind": "escrita",
+        "note": "date debated; mentions a “John the Elder”"
+      }
+    ]
+  },
+  "context": "Traveling preachers depended on the hospitality of the churches, which met in houses. For this reason, refusing to receive someone was the practical way of not supporting their message. The elder applies this measure to those who deny that Jesus Christ has come in the flesh, the same question that appears in 1 John.",
+  "places": [
+    "the community of the chosen lady (unidentified)",
+    "Ephesus and the province of Asia (by tradition)"
+  ],
+  "themes": [
+    "truth",
+    "mutual love",
+    "the commandment from the beginning",
+    "Jesus Christ come in the flesh",
+    "hospitality and discernment"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:5–6"
+    },
+    {
+      "ref": "1:7"
+    }
+  ],
+  "note": "Approximate dates. The verses quoted are from the Berean Standard Bible (BSB)."
+}

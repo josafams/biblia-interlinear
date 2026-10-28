@@ -1,0 +1,166 @@
+{
+  "title_orig": "Πρὸς Φιλιππησίους",
+  "title_orig_xlit": "Pros Philippesious",
+  "summary": "Philippians is the letter of Paul most marked by affection. In prison and not knowing whether he will be released or condemned, he thanks the church in Philippi for the help it sent him through Epaphroditus and tells how his imprisonment has served to spread the gospel. He asks for unity and humility, presenting the example of Christ, who “emptied Himself” and was obedient to death on a cross (2:5–11). In chapter 3 he changes tone to warn against those who insist on circumcision and recalls his own story: everything he had counted as gain came to be worth little compared with knowing Christ. Joy, even in the midst of imprisonment, runs through the whole letter.",
+  "name": "The title Pros Philippesious, “To the Philippians,” comes from the greeting to the saints “at Philippi” (1:1); in 4:15, Paul calls the readers “Philippians.” The city bore the name of Philip II of Macedon, father of Alexander the Great, who refounded it in the 4th century BC.",
+  "facts": [
+    [
+      "Position",
+      "11th book of the New Testament; 6th of Paul's letters, in canonical order"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "letter of friendship and thanks, written in prison"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Gratitude and news from prison",
+      "from": 1,
+      "to": 1,
+      "text": "Paul gives thanks for the Philippians' partnership, tells that his chains have become known and that others preach more boldly, and weighs departing to be with Christ against remaining with them."
+    },
+    {
+      "title": "Unity and the example of Christ",
+      "from": 1,
+      "to": 2,
+      "text": "A call to live in a manner worthy of the gospel and with the same mind as Christ, who humbled Himself and was exalted; plans to send Timothy and the return of Epaphroditus, who was near death (1:27–2:30)."
+    },
+    {
+      "title": "Warning and the goal",
+      "from": 3,
+      "to": 3,
+      "text": "Against those who put confidence in the flesh, Paul lists his own credentials and says he counts them as loss; he has not yet reached the end, but presses on toward the goal, as a citizen of heaven."
+    },
+    {
+      "title": "Counsel and thanks",
+      "from": 4,
+      "to": 4,
+      "text": "A plea for reconciliation between Euodia and Syntyche, an invitation to joy and prayer, and a careful thank-you for the gift received, with greetings from “the household of Caesar.”"
+    }
+  ],
+  "extra": {
+    "title": "The hymn of 2:6–11",
+    "text": "Verses 2:6–11 have their own rhythm and describe a movement in two parts: Christ descends, from the form of God to the form of a servant and to death on a cross, and God exalts Him, so that every knee should bow and every tongue confess that He is Lord, an echo of Isaiah 45:23. Many scholars think Paul is quoting a hymn or poem already used by the churches; others attribute it to Paul himself. In either case, it is one of the oldest texts about who Christ is and one of the most discussed in the New Testament."
+  },
+  "people": [
+    {
+      "name": "Paul",
+      "chapters": "1–4",
+      "ch": 1,
+      "note": "in prison, awaits the outcome of the trial; recalls that he was a Pharisee and a persecutor of the Church (3:5–6)"
+    },
+    {
+      "name": "Timothy",
+      "chapters": "1–2",
+      "ch": 2,
+      "note": "co-author of the greeting; Paul intends to send him soon, since “as a child with his father he has served with me to advance the gospel” (2:22)"
+    },
+    {
+      "name": "Epaphroditus",
+      "chapters": "2; 4",
+      "ch": 2,
+      "note": "sent by the Philippians with the help for Paul; fell seriously ill and returns home, probably carrying the letter"
+    },
+    {
+      "name": "Euodia and Syntyche",
+      "chapters": "4",
+      "ch": 4,
+      "note": "two women who contended for the gospel alongside Paul, whom he asks to agree with each other (4:2–3)"
+    },
+    {
+      "name": "Clement",
+      "chapters": "4",
+      "ch": 4,
+      "note": "a fellow worker mentioned with the others whose names “are in the book of life” (4:3)"
+    }
+  ],
+  "writing": {
+    "tradition": "Paul's authorship was never questioned in the early Church; around 110–135, Polycarp of Smyrna, writing to the Philippians themselves, recalls that Paul had written to them. The reference to the palace guard (1:13) and to “the household of Caesar” (4:22) led tradition to place the letter in Paul's imprisonment in Rome, c. 60–62.",
+    "academic": "Philippians is among the seven letters that practically all scholars attribute to Paul, alongside Romans, 1 and 2 Corinthians, Galatians, 1 Thessalonians and Philemon. The place and date of the imprisonment are debated: Rome (c. 60–62) remains the most common proposal, but many prefer Ephesus (c. 54–55), whose distance from Philippi would make simpler the several journeys the letter assumes; Caesarea (c. 57–59) is also defended. The praetorium and “Caesar's household” may indicate guards and imperial officials in the provinces as well. Another discussion is unity: the abrupt change of tone in 3:1–2 led some to see the letter as a combination of two or three letters to the Philippians, while others read it as a single text."
+  },
+  "events": {
+    "intro": "The church in Philippi was the first Paul founded in Europe, on the second journey, and kept a close relationship with him, sending help more than once (4:15–16). The date of the letter depends on where Paul was imprisoned; the dates are approximate.",
+    "axis": [
+      45,
+      70
+    ],
+    "band": {
+      "label": "Reign of Nero",
+      "from": 54,
+      "to": 68
+    },
+    "timeline": [
+      {
+        "label": "Founding of the church in Philippi",
+        "from": 49,
+        "to": 50,
+        "kind": "evento",
+        "note": "Lydia and the jailer; Paul and Silas imprisoned and released (Acts 16)"
+      },
+      {
+        "label": "Help sent to Thessalonica",
+        "from": 50,
+        "to": 50,
+        "kind": "evento",
+        "note": "“again and again” (4:16); approximate date"
+      },
+      {
+        "label": "Writing, if in Ephesus",
+        "from": 54,
+        "to": 55,
+        "kind": "escrita",
+        "note": "hypothesis of many scholars"
+      },
+      {
+        "label": "Imprisonment in Caesarea",
+        "from": 57,
+        "to": 59,
+        "kind": "evento",
+        "note": "Acts 23–26; another place proposed for the letter"
+      },
+      {
+        "label": "Writing, if in Rome",
+        "from": 60,
+        "to": 62,
+        "kind": "escrita",
+        "note": "the traditional position, still widely followed"
+      }
+    ]
+  },
+  "context": "Philippi lay in eastern Macedonia, on the Via Egnatia, the Roman road that linked the Adriatic Sea to Byzantium. Near it, in 42 BC, Antony and Octavian defeated Brutus and Cassius, the assassins of Julius Caesar, and the city was made a Roman colony, receiving war veterans; after 31 BC it received new colonists. Its inhabitants had the privileges of Roman citizens, and Latin was used in the administration, which gives weight to the phrase “our citizenship is in heaven” (3:20). According to Acts 16, the Jewish community was small, gathered at a place of prayer by the river, and the church was born in the house of Lydia, a dealer in purple cloth from Thyatira.",
+  "places": [
+    "Philippi",
+    "Macedonia",
+    "Thessalonica",
+    "the palace guard and “the household of Caesar”"
+  ],
+  "themes": [
+    "joy",
+    "partnership in the gospel",
+    "the example of Christ",
+    "humility and unity",
+    "life and death",
+    "confidence in the flesh",
+    "contentment"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:21"
+    },
+    {
+      "ref": "2:5–8"
+    },
+    {
+      "ref": "3:13–14"
+    },
+    {
+      "ref": "4:6–7"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source and the place adopted for Paul's imprisonment. The verses quoted are from the Berean Standard Bible (BSB)."
+}

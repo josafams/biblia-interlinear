@@ -1,0 +1,168 @@
+{
+  "title_orig": "Πέτρου Αʹ",
+  "title_orig_xlit": "Petrou A",
+  "summary": "1 Peter is a letter of encouragement to Christians scattered through the provinces of northern and central Asia Minor, called “exiles” (1:1). They suffered suspicion, slander and hostility for having left the customs of the society in which they lived. The letter reminds them that they have been born again to a living hope, that they form the people of God (“a royal priesthood, a holy nation,” 2:9) and that unjust suffering, endured while doing good, unites them to Christ, who also suffered. It gives guidance for life in society and at home, for the elders who care for the communities and for watchfulness against the adversary.",
+  "name": "The title “First of Peter” (Petrou A) was given when the General Epistles were gathered, to distinguish it from 2 Peter. The name Peter comes from the Greek Petros, “rock,” a translation of the Aramaic Kepha (Cephas), the nickname Jesus gave to Simon.",
+  "facts": [
+    [
+      "Position",
+      "21st book of the New Testament; 2nd of the General (or Catholic) Epistles"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "circular letter of exhortation"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "A people born again",
+      "from": 1,
+      "to": 2,
+      "text": "Praise for the living hope, joy amid trials, a call to holiness and love, and the image of the living stones that form a spiritual house (1:1–2:10)."
+    },
+    {
+      "title": "Conduct among outsiders",
+      "from": 2,
+      "to": 3,
+      "text": "Living so that accusers may see good deeds: respect for the authorities, counsel to household slaves, to wives and to husbands, and the example of Christ who suffered without retaliating (2:11–3:12)."
+    },
+    {
+      "title": "Suffering for doing good",
+      "from": 3,
+      "to": 4,
+      "text": "Being ready to give a reason for the hope with gentleness; Christ suffered for the unrighteous; whoever suffers “as a Christian” should not be ashamed (3:13–4:19)."
+    },
+    {
+      "title": "Elders and farewell",
+      "from": 5,
+      "to": 5,
+      "text": "The elders must shepherd without greed or domineering; all must be humble and watchful; greetings from Silvanus, from Mark and from the church “in Babylon.”"
+    }
+  ],
+  "extra": {
+    "title": "Christ and the spirits in prison",
+    "text": "One of the most difficult passages of the New Testament is in 3:18–20 (and perhaps in 4:6): Christ, put to death in the flesh and made alive in the spirit, “went and preached to the spirits in prison,” linked to the days of Noah. There are several ancient and modern readings: a proclamation to the dead between death and resurrection, the preaching made through Noah to his generation, or an announcement of victory to rebellious spiritual beings, in light of Jewish traditions about the angels of Genesis 6. The line of the Creed about Christ's descent to the realm of the dead was often associated with this text."
+  },
+  "people": [
+    {
+      "name": "Peter",
+      "chapters": "1; 5",
+      "ch": 1,
+      "note": "presents himself as an apostle and as a “fellow elder” and witness of Christ's sufferings (5:1)"
+    },
+    {
+      "name": "Silvanus",
+      "chapters": "5",
+      "ch": 5,
+      "note": "through him the letter was written or sent (5:12); possibly the Silas who was Paul's companion"
+    },
+    {
+      "name": "Mark",
+      "chapters": "5",
+      "ch": 5,
+      "note": "called by Peter “my son” (5:13); tradition links him to the Gospel of Mark"
+    },
+    {
+      "name": "Sarah",
+      "chapters": "3",
+      "ch": 3,
+      "note": "remembered as an example for wives (3:6)"
+    },
+    {
+      "name": "Noah",
+      "chapters": "3",
+      "ch": 3,
+      "note": "in his days, a few people were saved through water, a figure of baptism (3:20–21)"
+    }
+  ],
+  "writing": {
+    "tradition": "The letter presents itself as Peter's, and the early Church accepted it without difficulty: it seems to be known by Polycarp, at the beginning of the 2nd century, and is attributed to Peter by Irenaeus, at the end of that century. The “Babylon” from which it is written (5:13) is understood as a figurative name for Rome, where, according to tradition, Peter lived in his last years and died in Nero's persecution. For this reason the letter is placed in the early 60s, before the apostle's death, c. 64–68.",
+    "academic": "Scholars are divided. For many, the letter was written in Peter's name by someone of the circle linked to him in Rome, perhaps between 70 and 95: the Greek is careful and close to literary style, the quotations follow the Septuagint, there are points of contact with Paul's letters, and the use of “Babylon” for Rome is more common after the destruction of Jerusalem in 70. For others, the letter is Peter's, who would have used Silvanus as secretary or drafter (5:12), which would explain the quality of the Greek, and is earlier than 68. There is greater consensus that the sufferings described are social and local hostility, not an official imperial persecution throughout the region."
+  },
+  "events": {
+    "intro": "The letter narrates no events. The timeline places the recipients and the two positions on the date. The dates are approximate.",
+    "axis": [
+      25,
+      115
+    ],
+    "band": {
+      "label": "Reign of Nero",
+      "from": 54,
+      "to": 68
+    },
+    "timeline": [
+      {
+        "label": "Death and resurrection of Jesus",
+        "from": 30,
+        "to": 33,
+        "kind": "evento",
+        "note": "approximate date"
+      },
+      {
+        "label": "Peter in the Jerusalem church and on journeys",
+        "from": 33,
+        "to": 50,
+        "kind": "pessoa",
+        "note": "Acts 1–12; 15; Galatians 2"
+      },
+      {
+        "label": "Fire of Rome and Nero's persecution",
+        "from": 64,
+        "to": 64,
+        "kind": "evento",
+        "note": "according to tradition, Peter dies in Rome between 64 and 68"
+      },
+      {
+        "label": "Writing, if by Peter",
+        "from": 60,
+        "to": 68,
+        "kind": "escrita",
+        "note": "traditional position and that of some scholars"
+      },
+      {
+        "label": "Writing, if in Peter's name",
+        "from": 70,
+        "to": 95,
+        "kind": "escrita",
+        "note": "position of other scholars"
+      },
+      {
+        "label": "Pliny writes to Trajan about the Christians of Bithynia",
+        "from": 110,
+        "to": 112,
+        "kind": "evento",
+        "note": "c. 111–112; shows Christians being denounced in one of the letter's regions"
+      }
+    ]
+  },
+  "context": "Pontus, Galatia, Cappadocia, Asia and Bithynia were Roman provinces covering much of present-day Turkey; the order in which they appear may follow the route of whoever carried the letter. The recipients seem to be, in large part, of non-Jewish origin, since the letter recalls the life they led before, doing “what the pagans choose to do” (4:3). By leaving the cults, the festivals and certain habits of the city, they came to be seen as strange and suspect, and were spoken against “as evildoers” (2:12). The letter calls them foreigners and exiles, applying to them titles of Israel, and guides them within the structures of the ancient household: masters and slaves, husbands and wives.",
+  "places": [
+    "Pontus, Galatia, Cappadocia, Asia and Bithynia",
+    "“Babylon” (probably Rome)"
+  ],
+  "themes": [
+    "living hope",
+    "suffering and glory",
+    "holiness",
+    "the people of God",
+    "conduct among outsiders",
+    "the example of Christ",
+    "humility and watchfulness"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:3"
+    },
+    {
+      "ref": "2:9"
+    },
+    {
+      "ref": "5:7"
+    }
+  ],
+  "note": "Authorship and date are debated; the dates of the timeline are approximate. The verses quoted are from the Berean Standard Bible (BSB)."
+}

@@ -1,0 +1,236 @@
+{
+  "title_orig": "Κατὰ Μᾶρκον",
+  "title_orig_xlit": "Kata Markon",
+  "summary": "Mark is the shortest of the gospels and tells the story of Jesus at a fast pace, marked by the repetition of “immediately” (in Greek, euthys). It does not narrate the birth: it begins with the preaching of John the Baptist and the baptism of Jesus and follows His ministry in Galilee, with healings, exorcisms, parables and conflicts with the religious leaders. At the center of the book, Peter recognizes Jesus as the Christ (8:29), and from then on Jesus announces three times that He will be handed over, killed and raised, while the disciples struggle to understand. The last week in Jerusalem takes up more than a third of the text (chs. 11–16). In the oldest manuscripts, the book ends at 16:8, with the women fleeing the empty tomb, seized with fear.",
+  "name": "The title “According to Mark” (Kata Markon) was given to the work when the gospels began to circulate together; the text itself does not say who wrote it. Mark (Marcus) was a very common Latin name, and tradition identifies him with John Mark, of Jerusalem, companion of Barnabas and Paul in Acts. The word “gospel” (euangelion, “good news”) appears already in the first sentence (1:1), and many scholars think it was from this use that it came to designate books like this one.",
+  "facts": [
+    [
+      "Position",
+      "2nd book of the New Testament and the second of the four Gospels"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "gospel: a brief and lively account of the activity, death and resurrection of Jesus"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Beginning in Galilee",
+      "from": 1,
+      "to": 3,
+      "text": "John the Baptist, the baptism and the temptation; the call of the first disciples, healings in Capernaum, the first conflicts with the Pharisees and the choice of the Twelve."
+    },
+    {
+      "title": "Parables and miracles",
+      "from": 4,
+      "to": 5,
+      "text": "Parables about the seed and the Kingdom, the calming of the storm, the demon-possessed man of Gerasa, the woman who touches Jesus' cloak and Jairus's daughter."
+    },
+    {
+      "title": "Mission and misunderstanding",
+      "from": 6,
+      "to": 8,
+      "text": "The rejection at Nazareth, the sending of the Twelve, the death of John the Baptist, two feedings of the crowds and journeys to regions of Gentile majority, while the disciples are slow to understand (to 8:26)."
+    },
+    {
+      "title": "On the way",
+      "from": 8,
+      "to": 10,
+      "text": "Peter's confession at Caesarea Philippi opens the central part: three announcements of the passion, the transfiguration and teachings on serving, up to the healing of blind Bartimaeus at Jericho."
+    },
+    {
+      "title": "In Jerusalem",
+      "from": 11,
+      "to": 13,
+      "text": "The entry into the city, the fruitless fig tree, the cleansing of the temple, the debates with the leaders and the discourse on the destruction of the temple and the end."
+    },
+    {
+      "title": "Passion and empty tomb",
+      "from": 14,
+      "to": 16,
+      "text": "The anointing at Bethany, the Last Supper, the arrest, the trials, the crucifixion, the burial and the announcement of the resurrection to the women; then follows the longer ending (16:9–20)."
+    }
+  ],
+  "extra": {
+    "title": "The ending of Mark",
+    "text": "In the two oldest complete manuscripts of the New Testament, Sinaiticus and Vaticanus, both from the 4th century, Mark ends at 16:8: the women find the empty tomb, hear that Jesus has risen and flee without saying anything to anyone, “because they were afraid.” Most of the other manuscripts have a longer ending (16:9–20), with appearances of Jesus, the sending of the disciples and the ascension; some have a short ending, of one or two sentences, and others combine the two. The longer ending was already known in the 2nd century, since Irenaeus quotes it, and was read in the churches over the centuries; but most scholars consider it a later addition, because of the differences in vocabulary and style and because it summarizes episodes narrated in other gospels. Some think the author meant to end at 16:8, some suppose the original ending was lost and some defend the authenticity of the longer ending. The BSB includes 16:9–20 with a note on the manuscripts, and the SBLGNT Greek text prints it in double brackets."
+  },
+  "people": [
+    {
+      "name": "Jesus",
+      "chapters": "1–16",
+      "ch": 1,
+      "note": "the Nazarene who proclaims the coming of the Kingdom of God; called Son by the voice from heaven at the baptism (1:11) and, before the cross, by the Roman centurion (15:39)"
+    },
+    {
+      "name": "John the Baptist",
+      "chapters": "1; 6",
+      "ch": 1,
+      "note": "preaches in the wilderness a baptism of repentance and baptizes Jesus in the Jordan; beheaded by order of Herod"
+    },
+    {
+      "name": "Simon Peter",
+      "chapters": "1–16",
+      "ch": 8,
+      "note": "fisherman called among the first; confesses Jesus as the Christ and later denies Him in the high priest's courtyard; is remembered by name in 16:7"
+    },
+    {
+      "name": "James and John",
+      "chapters": "1; 3; 9–10; 14",
+      "ch": 10,
+      "note": "sons of Zebedee, called Boanerges, “Sons of Thunder”; ask for the first places in glory (10:35–45)"
+    },
+    {
+      "name": "The Twelve",
+      "chapters": "3; 6; 14",
+      "ch": 3,
+      "note": "chosen to be with Jesus and to be sent out to preach; in the account, they often do not understand their master"
+    },
+    {
+      "name": "Herod Antipas and Herodias",
+      "chapters": "6",
+      "ch": 6,
+      "note": "the ruler of Galilee, called “king,” and the woman who asks for the head of John the Baptist"
+    },
+    {
+      "name": "Jairus",
+      "chapters": "5",
+      "ch": 5,
+      "note": "synagogue leader who pleads with Jesus for his dying daughter"
+    },
+    {
+      "name": "Bartimaeus",
+      "chapters": "10",
+      "ch": 10,
+      "note": "blind beggar of Jericho; after being healed, follows Jesus along the road"
+    },
+    {
+      "name": "Judas Iscariot",
+      "chapters": "3; 14",
+      "ch": 14,
+      "note": "one of the Twelve; betrays Jesus in Gethsemane with a kiss"
+    },
+    {
+      "name": "Pilate",
+      "chapters": "15",
+      "ch": 15,
+      "note": "Roman governor who questions Jesus as “King of the Jews” and hands Him over to be crucified"
+    },
+    {
+      "name": "Joseph of Arimathea",
+      "chapters": "15",
+      "ch": 15,
+      "note": "member of the Council who asks for the body of Jesus and buries it"
+    },
+    {
+      "name": "Mary Magdalene, Mary and Salome",
+      "chapters": "15–16",
+      "ch": 16,
+      "note": "watch the crucifixion from a distance, see where Jesus is buried and find the empty tomb"
+    }
+  ],
+  "writing": {
+    "tradition": "The book does not give the author's name. Papias of Hierapolis, at the beginning of the 2nd century, quoted by Eusebius, records what he had heard from an “elder”: Mark, who had been Peter's interpreter, wrote down carefully, though not in order, what he remembered of the Lord's words and deeds as Peter taught them. Irenaeus, Clement of Alexandria and other ancient writers repeat this link with Peter and place the work in Rome: for some, while the apostle was still alive; for others, soon after his death, in the 60s. This Mark is usually identified with the John Mark of Acts (12:12, 25) and with the “Mark” mentioned in 1 Peter 5:13.",
+    "academic": "Since the 19th century, most scholars have considered Mark the oldest of the gospels and one of the sources of Matthew and Luke, the so-called Markan priority: it is the shortest, has the simplest Greek, and almost all of its content reappears in the other two, often with polished wording. The most defended dates revolve around 65–75, near the Jewish war against Rome; chapter 13, with the warning “let the reader understand” (13:14), is read by some as reflecting the years before the destruction of the temple and by others as later than it. Rome remains the most cited place, but some propose Syria or Galilee. The link with Peter is accepted by some researchers and seen by others as a way of giving authority to the text; a minority, following the Griesbach hypothesis, considers Mark a summary of Matthew and Luke."
+  },
+  "events": {
+    "intro": "Mark begins with Jesus already an adult and gives no years; the dates of His life are calculated from other texts and historical references. The public ministry is usually placed between c. AD 27/28 and 30/33, and the crucifixion, under Pilate, in 30 or 33. Since the book is generally dated near the Jewish war against Rome, the timeline highlights that period, together with Nero's persecution and the two main proposals for the writing.",
+    "axis": [
+      -10,
+      100
+    ],
+    "band": {
+      "label": "Jewish war against Rome",
+      "from": 66,
+      "to": 73
+    },
+    "timeline": [
+      {
+        "label": "Herod Antipas",
+        "from": -4,
+        "to": 39,
+        "kind": "pessoa",
+        "note": "rules Galilee; has John the Baptist beheaded (6:14–29)"
+      },
+      {
+        "label": "Ministry of Jesus",
+        "from": 27,
+        "to": 33,
+        "kind": "evento",
+        "note": "c. 27/28 to 30/33, depending on the chronology adopted"
+      },
+      {
+        "label": "Crucifixion",
+        "from": 30,
+        "to": 33,
+        "kind": "evento",
+        "note": "in Jerusalem, under Pilate; the most defended dates are 30 and 33"
+      },
+      {
+        "label": "Nero's persecution in Rome",
+        "from": 64,
+        "to": 68,
+        "kind": "evento",
+        "note": "after the fire of Rome, in 64; tradition places Peter's death in this period"
+      },
+      {
+        "label": "Destruction of Jerusalem",
+        "from": 70,
+        "to": 70,
+        "kind": "evento",
+        "note": "the Roman army takes the city and burns the temple (cf. 13:1–2)"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": 60,
+        "to": 68,
+        "kind": "escrita",
+        "note": "Mark, Peter's interpreter, in Rome"
+      },
+      {
+        "label": "Writing, according to most researchers",
+        "from": 65,
+        "to": 75,
+        "kind": "escrita",
+        "note": "the first gospel, near the war and the fall of the temple"
+      }
+    ]
+  },
+  "context": "Mark seems to write for readers unfamiliar with Jewish customs and with Aramaic: he explains the purity rules of the Pharisees (7:3–4) and translates expressions such as “Talitha koum” (5:41), “Ephphatha” (7:34) and “Abba” (14:36). He also uses several Latin words transcribed into Greek, linked to the army, coins and administration, such as “legion” and “centurion.” The action concentrates on Galilee and around its sea, with visits to lands of Gentile majority, such as the region of Tyre and Sidon and the Decapolis, before the going up to Jerusalem. If the book was written in Rome, as tradition says, its first readers had vivid memories of Nero's persecution and were receiving news of the war in Judea, which would help explain the insistence on suffering and on the disciples' faithfulness.",
+  "places": [
+    "the wilderness of Judea and the Jordan River",
+    "Galilee: Capernaum, Nazareth and the Sea of Galilee",
+    "the region of the Gerasenes and the Decapolis",
+    "the region of Tyre and Sidon",
+    "Caesarea Philippi",
+    "Jericho",
+    "Jerusalem: the temple, Bethany, Gethsemane and Golgotha"
+  ],
+  "themes": [
+    "the Kingdom of God",
+    "the messianic secret",
+    "the suffering Son of Man",
+    "faith and the disciples' misunderstanding",
+    "following on the way of the cross",
+    "Jesus' authority"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:15"
+    },
+    {
+      "ref": "8:29"
+    },
+    {
+      "ref": "10:45"
+    },
+    {
+      "ref": "15:39"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. In 1:1, the words “the Son of God” are missing in some ancient manuscripts; the BSB includes them, and the SBLGNT omits them. Verses 7:16, 9:44, 9:46, 11:26 and 15:28 appear in later manuscripts, but not in the oldest, in the SBLGNT or in the main text of the BSB, which mentions them only in a footnote; so they appear here without text. On 16:9–20, see “The ending of Mark.” The verses quoted are from the Berean Standard Bible (BSB)."
+}

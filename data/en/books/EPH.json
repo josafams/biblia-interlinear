@@ -1,0 +1,156 @@
+{
+  "title_orig": "Πρὸς Ἐφεσίους",
+  "title_orig_xlit": "Pros Ephesious",
+  "summary": "Ephesians is less an answer to concrete problems than a broad reflection on what God has done in Christ and on the Church. The first half, in a tone of praise and prayer, speaks of God's plan to bring all things together in Christ, of salvation “by grace… through faith” (2:8) and of the union of Jews and Gentiles in one people, without “the dividing wall” (2:14). The second half draws the consequences: the unity of the body of Christ, the diversity of gifts, the abandonment of the old life, relationships within the household and the image of the “armor of God” for facing spiritual forces. Many expressions and themes coincide with those of Colossians.",
+  "name": "The title Pros Ephesious, “To the Ephesians,” was given when Paul's letters began to circulate as a collection, and rests on the greeting to “the saints in Ephesus” (1:1). But the words “in Ephesus” are missing in some of the oldest manuscripts, and around 140 Marcion knew the letter as addressed to the Laodiceans; for this reason many think it was, from the beginning, a circular letter for several churches of Asia.",
+  "facts": [
+    [
+      "Position",
+      "10th book of the New Testament; 5th of the Pauline letters, in canonical order"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "letter, general in character, in a tone of praise and exhortation"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Greeting and praise",
+      "from": 1,
+      "to": 1,
+      "text": "A long blessing (in the Greek, a single sentence, 1:3–14) celebrates election, redemption and the seal of the Spirit, followed by a prayer that the readers may understand the power of God shown in Christ."
+    },
+    {
+      "title": "From dead to one people",
+      "from": 2,
+      "to": 2,
+      "text": "Those who were dead in their sins receive life by grace; Gentiles once far off are brought near, and Jews and Gentiles form one new humanity."
+    },
+    {
+      "title": "The mystery and Paul's mission",
+      "from": 3,
+      "to": 3,
+      "text": "Paul, a prisoner, presents himself as a servant of the “mystery”: the Gentiles are fellow heirs. It ends with a prayer and a doxology."
+    },
+    {
+      "title": "Unity and new life",
+      "from": 4,
+      "to": 5,
+      "text": "One body and one Spirit, gifts given to build up the Church; putting off the “old self,” walking in love and as children of light (4:1–5:20)."
+    },
+    {
+      "title": "The household and the battle",
+      "from": 5,
+      "to": 6,
+      "text": "Duties of wives and husbands, children and fathers, slaves and masters, with marriage compared to the union of Christ and the Church; the armor of God; Tychicus will bring news (5:21–6:24)."
+    }
+  ],
+  "extra": {
+    "title": "Long sentences and the language of praise",
+    "text": "The style of Ephesians stands out even in translation: very long periods, piling up of synonyms and chains of expressions such as “in Christ” and “in the heavenly realms.” Several passages sound like prayer or hymn (1:3–14; 3:14–21), and some scholars see traces of language used in baptism or worship. This style, different from that of Paul's more polemical letters, is one of the central points in the debate about authorship."
+  },
+  "people": [
+    {
+      "name": "Paul",
+      "chapters": "1; 3–4; 6",
+      "ch": 3,
+      "note": "writes as “the prisoner of Christ Jesus” on behalf of the Gentiles (3:1; 4:1) and asks for prayer to proclaim the gospel boldly (6:19–20)"
+    },
+    {
+      "name": "Tychicus",
+      "chapters": "6",
+      "ch": 6,
+      "note": "“the beloved brother and faithful servant,” charged with carrying the letter and giving news of Paul (6:21–22); appears in almost the same words in Colossians 4:7"
+    }
+  ],
+  "writing": {
+    "tradition": "Tradition has always read Ephesians as a letter of Paul, and 2nd-century authors such as Irenaeus quote it under his name. As one of the “prison letters,” together with Philippians, Colossians and Philemon, it was associated with Paul's two years of imprisonment in Rome (Acts 28:30), c. 60–62, and would have been carried by Tychicus together with Colossians.",
+    "academic": "Ephesians falls outside the group of seven letters that practically all scholars attribute to Paul (Romans, 1 and 2 Corinthians, Galatians, Philippians, 1 Thessalonians and Philemon). The others, among them Ephesians, are called by many “deutero-Pauline” or “disputed.” A large part of scholarship considers Ephesians the work of a disciple who wrote in Paul's name, c. 80–100, relying on the different vocabulary and style, on the view of the Church as a universal reality, on the emphasis on a salvation already present (2:5–6) and on its dependence on Colossians, whose structure and phrases it seems to take up. Other scholars defend Paul's authorship, explaining the differences by the general and liturgical character of the letter, by the use of a secretary or by a later phase of his thought; in that case, the date would be c. 60–62, and some propose another imprisonment, in Caesarea or Ephesus. Writing in the name of a teacher was a known practice in antiquity, and how to assess it is also a matter of debate."
+  },
+  "events": {
+    "intro": "The letter mentions no datable events besides Paul's imprisonment. The timeline shows the two positions: the traditional one, which places it during the imprisonment in Rome, and that of many scholars, who place it a few decades later. The dates are approximate.",
+    "axis": [
+      45,
+      100
+    ],
+    "band": {
+      "label": "Reign of Nero",
+      "from": 54,
+      "to": 68
+    },
+    "timeline": [
+      {
+        "label": "Paul in Ephesus",
+        "from": 53,
+        "to": 56,
+        "kind": "evento",
+        "note": "about three years of work in the city (Acts 19; 20:31)"
+      },
+      {
+        "label": "Paul a prisoner in Rome",
+        "from": 60,
+        "to": 62,
+        "kind": "evento",
+        "note": "two years in a rented house (Acts 28:30)"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": 60,
+        "to": 62,
+        "kind": "escrita",
+        "note": "in Rome, sent by Tychicus together with Colossians"
+      },
+      {
+        "label": "Death of Paul, according to tradition",
+        "from": 64,
+        "to": 67,
+        "kind": "pessoa",
+        "note": "in Rome, under Nero; date uncertain"
+      },
+      {
+        "label": "Writing, according to many scholars",
+        "from": 80,
+        "to": 100,
+        "kind": "escrita",
+        "note": "by a disciple of Paul, probably in Asia Minor"
+      }
+    ]
+  },
+  "context": "Ephesus was the main city of the Roman province of Asia, a great port on the coast of present-day Turkey, with a population estimated at more than a hundred thousand. It was famous for the temple of Artemis, one of the wonders of the ancient world, and had an established Jewish community. According to Acts, Paul spent about three years there, and from the city the gospel reached other places in the region, such as Colossae, Laodicea and Hierapolis. The letter, however, gives almost no local information: it names no people of the church, speaks to the readers as one who has only “heard” of their faith (1:15) and deals with general themes, which strengthens the idea of a text intended for several communities, made up largely of non-Jews.",
+  "places": [
+    "Ephesus",
+    "the province of Asia",
+    "Laodicea",
+    "Colossae",
+    "Rome"
+  ],
+  "themes": [
+    "God's plan in Christ",
+    "grace and faith",
+    "Jews and Gentiles in one people",
+    "the Church as the body of Christ",
+    "unity and gifts",
+    "the new life",
+    "relationships in the household",
+    "the spiritual battle"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:8–10"
+    },
+    {
+      "ref": "2:14"
+    },
+    {
+      "ref": "4:4–6"
+    },
+    {
+      "ref": "6:11"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. In 1:1, the words “in Ephesus” are missing in some ancient manuscripts; the SBLGNT, the Greek text used in the app, prints them in brackets, indicating doubt, and the BSB keeps them. The verses quoted are from the Berean Standard Bible (BSB)."
+}

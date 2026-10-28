@@ -1,0 +1,279 @@
+{
+  "title_orig": "Πράξεις Ἀποστόλων",
+  "title_orig_xlit": "Praxeis Apostolon",
+  "summary": "The Acts of the Apostles continues the Gospel of Luke and narrates about thirty years of the Christian movement, from Jesus' departure in Jerusalem to the arrival of Paul, a prisoner, in Rome. The plan appears right at the beginning: the disciples would be witnesses “in Jerusalem, and in all Judea and Samaria, and to the ends of the earth” (1:8). The first part follows the community in Jerusalem, led by Peter, with Pentecost, the death of Stephen and the welcome of the first non-Jews, such as the centurion Cornelius. From chapter 13 on, the focus shifts to Paul and his journeys through Asia Minor and Greece, up to his arrest in Jerusalem, the trials before Roman authorities and the sea voyage to Rome. Throughout the book, the Holy Spirit drives the expansion, and speeches by Peter, Stephen and Paul present the message to different audiences.",
+  "name": "The title “Acts of the Apostles” (Praxeis Apostolon) is not part of the text and was already in circulation at the end of the 2nd century; praxeis, “acts” or “deeds,” was the name of a kind of ancient account of the actions of notable figures. In practice, the book deals mainly with two apostles, Peter and Paul, and Paul is called an apostle only in 14:4 and 14:14, together with Barnabas. The author again addresses Theophilus and calls the gospel “the first book” (1:1).",
+  "facts": [
+    [
+      "Position",
+      "5th book of the New Testament, right after the Gospels; second part of the work Luke–Acts"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "historical narrative, in the mold of ancient historiography, with many speeches"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Jerusalem",
+      "from": 1,
+      "to": 7,
+      "text": "The ascension, the choice of Matthias, Pentecost and Peter's speech, the life of the community, the conflicts with the temple authorities, the choice of the Seven and the death of Stephen."
+    },
+    {
+      "title": "Judea, Samaria and the first Gentiles",
+      "from": 8,
+      "to": 12,
+      "text": "With the scattering, Philip preaches in Samaria and baptizes an Ethiopian; Saul is converted on the road to Damascus; Peter baptizes Cornelius; in Antioch a church with many Gentiles arises, where the disciples are first called Christians (11:26)."
+    },
+    {
+      "title": "First journey and the Jerusalem council",
+      "from": 13,
+      "to": 15,
+      "text": "Barnabas and Saul set out from Antioch for Cyprus and southern Asia Minor; back again, the demand to circumcise the Gentiles is debated by the apostles and elders in Jerusalem (ch. 15)."
+    },
+    {
+      "title": "Second and third journeys",
+      "from": 15,
+      "to": 21,
+      "text": "Paul takes the message to Macedonia and Greece (Philippi, Thessalonica, Athens and Corinth), spends about three years in Ephesus, says farewell to the elders at Miletus and goes up to Jerusalem (15:36–21:16)."
+    },
+    {
+      "title": "Paul a prisoner",
+      "from": 21,
+      "to": 26,
+      "text": "Arrested in the temple, Paul defends himself before the people, the Council, the governors Felix and Festus and King Agrippa, and appeals to Caesar."
+    },
+    {
+      "title": "The voyage to Rome",
+      "from": 27,
+      "to": 28,
+      "text": "The crossing, the shipwreck at Malta and the arrival in Rome, where Paul spends two years in a rented house, preaching “with all boldness and without hindrance” (28:31)."
+    }
+  ],
+  "extra": {
+    "title": "The “we” passages and the speeches",
+    "text": "In four passages, the narrative suddenly shifts from the third person to the first person plural, as in “we got ready to leave for Macedonia” (16:10–17; 20:5–15; 21:1–18; 27:1–28:16). Tradition sees in this the author himself traveling with Paul; other scholars think he drew on the diary of a traveling companion or used a literary device typical of sea-voyage accounts. Another mark of the book are the speeches, which take up nearly a third of the text: Peter's at Pentecost (2:14–40), Stephen's (7:2–53) and Paul's at the Areopagus in Athens (17:22–31) are among the best known. In the manner of ancient historians, they sum up the message addressed to each audience: Jews of Judea, Jews of the Diaspora and pagans."
+  },
+  "people": [
+    {
+      "name": "Peter",
+      "chapters": "1–12; 15",
+      "ch": 2,
+      "note": "spokesman of the apostles in Jerusalem; preaches at Pentecost, is arrested by the authorities and baptizes Cornelius and his household"
+    },
+    {
+      "name": "John",
+      "chapters": "3–4; 8",
+      "ch": 3,
+      "note": "accompanies Peter in the temple, before the Council and in Samaria"
+    },
+    {
+      "name": "Stephen",
+      "chapters": "6–7",
+      "ch": 7,
+      "note": "one of the Seven chosen to serve at tables; stoned to death after a long speech"
+    },
+    {
+      "name": "Philip",
+      "chapters": "6; 8; 21",
+      "ch": 8,
+      "note": "another of the Seven; preaches in Samaria, baptizes the Ethiopian eunuch and later lives in Caesarea"
+    },
+    {
+      "name": "Saul (Paul)",
+      "chapters": "7–28",
+      "ch": 9,
+      "note": "Pharisee from Tarsus who persecutes the Christians, is converted on the road to Damascus and becomes the main missionary among the Gentiles"
+    },
+    {
+      "name": "Barnabas",
+      "chapters": "4; 9; 11–15",
+      "ch": 13,
+      "note": "Levite from Cyprus; introduces Saul to the apostles and accompanies him on the first journey"
+    },
+    {
+      "name": "Cornelius",
+      "chapters": "10–11",
+      "ch": 10,
+      "note": "Roman centurion in Caesarea, a God-fearer; with his household, receives the Spirit and baptism"
+    },
+    {
+      "name": "Herod Agrippa I",
+      "chapters": "12",
+      "ch": 12,
+      "note": "the “King Herod” who has James, John's brother, killed and Peter arrested; dies in Caesarea"
+    },
+    {
+      "name": "James",
+      "chapters": "12; 15; 21",
+      "ch": 15,
+      "note": "leader of the church in Jerusalem, identified with the “Lord's brother” of Galatians 1:19"
+    },
+    {
+      "name": "Silas and Timothy",
+      "chapters": "15–20",
+      "ch": 16,
+      "note": "Paul's companions on the second journey"
+    },
+    {
+      "name": "Lydia",
+      "chapters": "16",
+      "ch": 16,
+      "note": "dealer in purple cloth from Thyatira; welcomes Paul in Philippi"
+    },
+    {
+      "name": "Aquila and Priscilla",
+      "chapters": "18",
+      "ch": 18,
+      "note": "Jewish couple expelled from Rome; work with Paul in Corinth and instruct Apollos in Ephesus"
+    },
+    {
+      "name": "Felix, Festus and Agrippa",
+      "chapters": "23–26",
+      "ch": 24,
+      "note": "the Roman governors of Judea and King Agrippa II, before whom Paul defends himself in Caesarea"
+    }
+  ],
+  "writing": {
+    "tradition": "From the end of the 2nd century, with Irenaeus, the so-called Muratorian Canon and Clement of Alexandria, tradition attributes Acts to Luke, the physician and companion of Paul, author also of the third gospel. The passages narrated in “we” would be the author's own memories. Since the book ends with Paul two years in Rome, without telling the outcome of the trial or his death, many who follow this reading date the work around 62, when the final events would still be under way.",
+    "academic": "That Luke and Acts have the same author is practically a consensus. Most scholars date Acts after the gospel, c. 80–90, and understand the open ending as a literary choice: the message reaches Rome, and the program of 1:8 is fulfilled. Some researchers keep the date of c. 62, and a minority proposes c. 100–130, pointing to possible contacts with the works of Flavius Josephus. The historical value of the book is also debated: many details about cities, titles of officials and sea routes are confirmed by inscriptions and other sources, such as the proconsul Gallio in Corinth (18:12); on the other hand, there are differences from Paul's letters, for example in the number of visits to Jerusalem and in the account of the meeting of chapter 15 compared with Galatians 2. The speeches are usually seen as compositions of the author, as was common in ancient historiography, perhaps based on earlier traditions."
+  },
+  "events": {
+    "intro": "Acts gives no years, but mentions people known from other sources, which makes it possible to build an approximate chronology. The key piece is Gallio, proconsul of Achaia, before whom Paul appears in Corinth (18:12): an inscription found at Delphi places his term c. 51–52. Other points of support are the death of Herod Agrippa I, in 44 (ch. 12), the expulsion of the Jews from Rome by Claudius, c. 49 (18:2), and the change of governors of Judea, from Felix to Festus, c. 59/60 (24:27). The dates of Paul's journeys vary by a few years among authors.",
+    "axis": [
+      25,
+      100
+    ],
+    "band": {
+      "label": "Reign of Claudius",
+      "from": 41,
+      "to": 54
+    },
+    "timeline": [
+      {
+        "label": "Pentecost and the church in Jerusalem",
+        "from": 30,
+        "to": 33,
+        "kind": "evento",
+        "note": "shortly after the crucifixion, in 30 or 33 (chs. 1–5)"
+      },
+      {
+        "label": "Death of Stephen and conversion of Paul",
+        "from": 33,
+        "to": 36,
+        "kind": "evento",
+        "note": "approximate dates (chs. 7–9)"
+      },
+      {
+        "label": "Herod Agrippa I",
+        "from": 41,
+        "to": 44,
+        "kind": "pessoa",
+        "note": "king of Judea; dies in Caesarea in 44 (12:20–23)"
+      },
+      {
+        "label": "Paul's first journey",
+        "from": 46,
+        "to": 48,
+        "kind": "evento",
+        "note": "Cyprus and southern Asia Minor (chs. 13–14)"
+      },
+      {
+        "label": "Jerusalem council",
+        "from": 48,
+        "to": 50,
+        "kind": "evento",
+        "note": "c. 48/49 (ch. 15)"
+      },
+      {
+        "label": "Paul's second journey",
+        "from": 49,
+        "to": 52,
+        "kind": "evento",
+        "note": "Macedonia and Greece; in Corinth, before Gallio (15:36–18:22)"
+      },
+      {
+        "label": "Gallio, proconsul of Achaia",
+        "from": 51,
+        "to": 52,
+        "kind": "pessoa",
+        "note": "date fixed by an inscription at Delphi (18:12)"
+      },
+      {
+        "label": "Paul's third journey",
+        "from": 53,
+        "to": 57,
+        "kind": "evento",
+        "note": "about three years in Ephesus (18:23–21:16)"
+      },
+      {
+        "label": "Imprisonment in Jerusalem and Caesarea",
+        "from": 57,
+        "to": 59,
+        "kind": "evento",
+        "note": "two years under the governor Felix (24:27)"
+      },
+      {
+        "label": "Voyage and imprisonment in Rome",
+        "from": 59,
+        "to": 62,
+        "kind": "evento",
+        "note": "shipwreck at Malta; two years in a rented house (28:30)"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": 62,
+        "to": 63,
+        "kind": "escrita",
+        "note": "Luke, right after the final events"
+      },
+      {
+        "label": "Writing, according to most researchers",
+        "from": 80,
+        "to": 90,
+        "kind": "escrita",
+        "note": "after the Gospel of Luke"
+      }
+    ]
+  },
+  "context": "Acts takes place in the eastern Mediterranean under the Roman Empire, at a time of patrolled roads and busy sea routes, which made journeys like Paul's possible. The Jewish communities scattered through the cities, with their synagogues and their non-Jewish sympathizers, the “God-fearers,” were the first point of contact for the preaching. The book shows the Christians before very different bodies: the Council and the high priests in Jerusalem, magistrates of the Roman colony of Philippi, Epicurean and Stoic philosophers in Athens, the city assembly of Ephesus, governors and kings in Caesarea. Paul appears as a Jew from Tarsus and a Roman citizen by birth (22:25–28), which weighs in his trial and in his appeal to Caesar. A recurring motif is that the Roman authorities find in the Christians no crime deserving death (18:14–15; 26:31–32).",
+  "places": [
+    "Jerusalem",
+    "Samaria",
+    "Damascus",
+    "Antioch in Syria",
+    "Cyprus and Asia Minor: Pisidian Antioch, Iconium, Lystra and Derbe",
+    "Macedonia: Philippi, Thessalonica and Berea",
+    "Greece: Athens and Corinth",
+    "Ephesus and Miletus",
+    "Caesarea",
+    "Malta",
+    "Rome"
+  ],
+  "themes": [
+    "the Holy Spirit",
+    "witness to the ends of the earth",
+    "Jews and Gentiles",
+    "the word that grows",
+    "the resurrection of Jesus",
+    "persecution and courage",
+    "the life of the community"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:8"
+    },
+    {
+      "ref": "2:42"
+    },
+    {
+      "ref": "10:34–35"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. Verses 8:37, 15:34, 24:7 and 28:29 appear in later manuscripts, but not in the oldest, in the SBLGNT Greek text used in the app or in the main text of the BSB, which mentions them only in a footnote; so they appear here without text. Acts also circulated in a longer textual form, called “Western” and known above all from Codex Bezae, from around the year 400, with about 8 to 10% more text; the SBLGNT follows the shorter form. The verses quoted are from the Berean Standard Bible (BSB)."
+}

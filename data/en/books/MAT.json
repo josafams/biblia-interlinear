@@ -1,0 +1,271 @@
+{
+  "title_orig": "Κατὰ Ματθαῖον",
+  "title_orig_xlit": "Kata Matthaion",
+  "summary": "Matthew narrates the life of Jesus of Nazareth, from the genealogy and the birth in Bethlehem to the death in Jerusalem, the resurrection and the sending of the disciples to all nations. The book insists that Jesus is the Messiah awaited by Israel, “the son of David, the son of Abraham” (1:1), and shows again and again that His actions fulfill what the prophets had said. Much of the gospel is taken up by teachings, gathered into five long discourses, the first of which is the Sermon on the Mount (chs. 5–7). Prominent are the proclamation of the “kingdom of heaven,” the debates with Pharisees and scribes about the interpretation of the Law and the life of the community of disciples, which only this gospel calls a “church” (16:18; 18:17).",
+  "name": "“Gospel” translates the Greek euangelion, “good news,” a word Christians came to use for the proclamation about Jesus and, later, for the books that tell His story. The title “According to Matthew” (Kata Matthaion) is not part of the text: it was given when the four gospels began to circulate together and was already known at the end of the 2nd century. It links the work to Matthew, the tax collector called by Jesus (9:9; 10:3); in the Greek text used in the app, the name appears with the spelling Maththaios (Μαθθαῖος).",
+  "facts": [
+    [
+      "Position",
+      "1st book of the New Testament and the first of the four Gospels"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "gospel: an account of the life, teaching, death and resurrection of Jesus, close to ancient biographies"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Jesus' origin and childhood",
+      "from": 1,
+      "to": 2,
+      "text": "The genealogy from Abraham to Jesus, the birth in Bethlehem, the visit of the Magi, the flight to Egypt and the move to Nazareth."
+    },
+    {
+      "title": "Preparation",
+      "from": 3,
+      "to": 4,
+      "text": "The preaching of John the Baptist, the baptism of Jesus, the temptation in the wilderness and the call of the first disciples by the Sea of Galilee."
+    },
+    {
+      "title": "The Sermon on the Mount",
+      "from": 5,
+      "to": 7,
+      "text": "First discourse: the Beatitudes, Jesus and the Law, almsgiving, prayer and fasting done in secret, and the comparison between those who build on the rock and those who build on the sand."
+    },
+    {
+      "title": "Miracles and mission",
+      "from": 8,
+      "to": 10,
+      "text": "A series of healings and other miracles, the call of Matthew and the second discourse, with the instructions to the Twelve sent out to the towns of Israel."
+    },
+    {
+      "title": "Opposition and parables",
+      "from": 11,
+      "to": 13,
+      "text": "John the Baptist's question, the arguments about the Sabbath and the charge that Jesus acted by the power of Beelzebul; in the third discourse, the parables of the Kingdom."
+    },
+    {
+      "title": "Jesus forms His disciples",
+      "from": 14,
+      "to": 18,
+      "text": "The feedings of the crowds, Peter's confession, the first announcements of the passion, the transfiguration and the fourth discourse, on life together in the community."
+    },
+    {
+      "title": "Toward Jerusalem and debates in the temple",
+      "from": 19,
+      "to": 23,
+      "text": "Teachings on the way to Judea, the entry into Jerusalem, the cleansing of the temple, parables of judgment and the controversies with the leaders, which end in the woes against the scribes and Pharisees."
+    },
+    {
+      "title": "The discourse on the end",
+      "from": 24,
+      "to": 25,
+      "text": "Fifth discourse, on the Mount of Olives: the destruction of the temple, the coming of the Son of Man and parables about keeping watch and giving account."
+    },
+    {
+      "title": "Passion and resurrection",
+      "from": 26,
+      "to": 28,
+      "text": "The anointing at Bethany, the Last Supper, the arrest in Gethsemane, the trials, the crucifixion, the empty tomb and the final sending of the disciples."
+    }
+  ],
+  "extra": {
+    "title": "Five discourses and the fulfillment of the Scriptures",
+    "text": "Matthew gathers Jesus' teachings into five great blocks (chs. 5–7, 10, 13, 18 and 24–25), and each one ends with a similar formula: “When Jesus had finished saying these things…” (7:28; 11:1; 13:53; 19:1; 26:1). Some scholars relate the number to the five books of Moses; others see in it only a device of organization. Another striking feature are the quotations introduced by “to fulfill what was spoken through the prophet,” about ten in all, which link episodes of Jesus' life to texts of Israel's Scriptures. The book also opens and closes with the same idea: the child will be called Immanuel, “God with us” (1:23), and the Risen One promises to be with the disciples “always” (28:20)."
+  },
+  "people": [
+    {
+      "name": "Jesus",
+      "chapters": "1–28",
+      "ch": 1,
+      "note": "born in Bethlehem and raised in Nazareth; the book presents Him as Messiah, son of David and Son of God"
+    },
+    {
+      "name": "Joseph and Mary",
+      "chapters": "1–2",
+      "ch": 1,
+      "note": "Joseph, a descendant of David, receives in dreams the instructions about the child; Mary is the mother of Jesus"
+    },
+    {
+      "name": "Herod the Great",
+      "chapters": "2",
+      "ch": 2,
+      "note": "king of Judea; on learning of the birth, orders the killing of the boys of Bethlehem"
+    },
+    {
+      "name": "John the Baptist",
+      "chapters": "3; 11; 14",
+      "ch": 3,
+      "note": "prophet who preaches in the wilderness of Judea and baptizes Jesus; executed by order of Herod Antipas"
+    },
+    {
+      "name": "Simon Peter",
+      "chapters": "4–26",
+      "ch": 16,
+      "note": "fisherman from Galilee and spokesman of the Twelve; recognizes Jesus as the Christ and later denies Him three times"
+    },
+    {
+      "name": "Matthew",
+      "chapters": "9–10",
+      "ch": 9,
+      "note": "tax collector called by Jesus; tradition holds him to be the author of the book"
+    },
+    {
+      "name": "The Twelve",
+      "chapters": "10; 26–28",
+      "ch": 10,
+      "note": "the disciples chosen and sent on mission; at the end, the eleven are sent to all nations"
+    },
+    {
+      "name": "Herod Antipas",
+      "chapters": "14",
+      "ch": 14,
+      "note": "tetrarch of Galilee, son of Herod the Great; has John beheaded"
+    },
+    {
+      "name": "Pharisees, Sadducees and scribes",
+      "chapters": "9–23",
+      "ch": 23,
+      "note": "Jewish groups and teachers with whom Jesus debates the Law, the Sabbath, purity and the resurrection"
+    },
+    {
+      "name": "Judas Iscariot",
+      "chapters": "10; 26–27",
+      "ch": 26,
+      "note": "one of the Twelve; betrays Jesus to the chief priests for thirty pieces of silver"
+    },
+    {
+      "name": "Caiaphas",
+      "chapters": "26",
+      "ch": 26,
+      "note": "high priest in whose house Jesus is questioned"
+    },
+    {
+      "name": "Pilate",
+      "chapters": "27",
+      "ch": 27,
+      "note": "Roman governor of Judea, who hands Jesus over to be crucified"
+    },
+    {
+      "name": "Mary Magdalene",
+      "chapters": "27–28",
+      "ch": 28,
+      "note": "witnesses the crucifixion and the burial and is among the first to find the empty tomb"
+    }
+  ],
+  "writing": {
+    "tradition": "Since the 2nd century, Christian tradition has attributed this gospel to the apostle Matthew, the tax collector of 9:9. Papias of Hierapolis, quoted by Eusebius, says that Matthew put together the sayings (logia) of Jesus “in the Hebrew dialect” and that each one translated them as best he could; Irenaeus, around 180, adds that Matthew wrote among the Hebrews, in their language, while Peter and Paul were preaching in Rome. For this reason the early Church considered it the first gospel to be written, and this is the place it holds in the New Testament. Those who follow this reading usually date it before the destruction of Jerusalem, in 70, between the 50s and the 60s.",
+    "academic": "The text that has come down to us was written in Greek and does not bear the marks of a translation; Papias's expression may refer to another work, to a version in Hebrew or Aramaic, or to a Jewish style of writing. To explain the similarities between Matthew, Mark and Luke (the so-called Synoptic Problem), most scholars adopt the hypothesis that Mark came first and was used by Matthew and Luke, who would also have used a collection of Jesus' sayings now lost, called Q. On this view, the author would be a Christian of Jewish origin, deeply versed in the Scriptures, and many consider him anonymous; the most cited date is c. 80–90, after the destruction of the temple, to which some see an allusion in 22:7, and Antioch in Syria is the most suggested place of origin. There are also those who do without the Q source, those who argue that Matthew was the first gospel and those who maintain apostolic authorship, with a date before 70."
+  },
+  "events": {
+    "intro": "The gospels give no years, and the dates of Jesus' life are calculated from historical references. Matthew places the birth “in the days of King Herod” (2:1), who died around 4 BC; hence the approximate date of 6 to 4 BC. The public ministry is usually placed between c. AD 27/28 and 30/33, and the crucifixion, under Pilate's governorship, in 30 or 33. The timeline also shows the destruction of the temple, in 70, a point of reference for dating the book, and the two main proposals for its writing.",
+    "axis": [
+      -40,
+      100
+    ],
+    "band": {
+      "label": "Pilate's governorship of Judea",
+      "from": 26,
+      "to": 36
+    },
+    "timeline": [
+      {
+        "label": "Herod the Great",
+        "from": -37,
+        "to": -4,
+        "kind": "pessoa",
+        "note": "reign over Judea; Jesus is born in his last years (2:1)"
+      },
+      {
+        "label": "Birth of Jesus",
+        "from": -6,
+        "to": -4,
+        "kind": "evento",
+        "note": "in Bethlehem of Judea; approximate date"
+      },
+      {
+        "label": "Archelaus",
+        "from": -4,
+        "to": 6,
+        "kind": "pessoa",
+        "note": "rules Judea; for this reason Joseph takes the family to Galilee (2:22)"
+      },
+      {
+        "label": "Herod Antipas",
+        "from": -4,
+        "to": 39,
+        "kind": "pessoa",
+        "note": "tetrarch of Galilee; has John the Baptist killed (14:1–12)"
+      },
+      {
+        "label": "Ministry of Jesus",
+        "from": 27,
+        "to": 33,
+        "kind": "evento",
+        "note": "c. 27/28 to 30/33, depending on the chronology adopted"
+      },
+      {
+        "label": "Crucifixion",
+        "from": 30,
+        "to": 33,
+        "kind": "evento",
+        "note": "in Jerusalem, under Pilate; the most defended dates are 30 and 33"
+      },
+      {
+        "label": "Destruction of Jerusalem",
+        "from": 70,
+        "to": 70,
+        "kind": "evento",
+        "note": "the Roman army takes the city and burns the temple"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": 50,
+        "to": 66,
+        "kind": "escrita",
+        "note": "the apostle Matthew, before the war against Rome"
+      },
+      {
+        "label": "Writing, according to most researchers",
+        "from": 80,
+        "to": 90,
+        "kind": "escrita",
+        "note": "after Mark and the destruction of the temple"
+      }
+    ]
+  },
+  "context": "The story takes place in the land of Israel at the beginning of the 1st century, under Roman rule. Galilee was ruled by Herod Antipas, and Judea, from the year 6, by Roman prefects such as Pilate, who left the administration of the temple in Jerusalem to the high priests. In the Judaism of this period, groups with different readings of the Law lived side by side, such as Pharisees and Sadducees, and hopes for a Messiah of David's line were alive. For most scholars, the gospel was written after 70 for communities of Christians largely of Jewish origin, at a time when Judaism, without the temple, was reorganizing around the synagogues and the teachers of the Law; this would help explain the harshness of the debates with the Pharisees and expressions such as “their synagogues” (4:23; 10:17), alongside the final opening to all peoples (28:19).",
+  "places": [
+    "Bethlehem of Judea",
+    "Egypt",
+    "Nazareth",
+    "Galilee: Capernaum and the Sea of Galilee",
+    "Caesarea Philippi",
+    "Jericho",
+    "Jerusalem: the temple, the Mount of Olives, Gethsemane and Golgotha"
+  ],
+  "themes": [
+    "the kingdom of heaven",
+    "fulfillment of the Scriptures",
+    "Jesus, Messiah and son of David",
+    "the Law and righteousness",
+    "discipleship and the church",
+    "mission to all nations"
+  ],
+  "key_verses": [
+    {
+      "ref": "5:17"
+    },
+    {
+      "ref": "16:15–16"
+    },
+    {
+      "ref": "28:18–20"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. The count of years from the birth of Christ was calculated in the 6th century with a small error; that is why Jesus' birth falls a few years “before Christ.” Verses 17:21, 18:11 and 23:14 appear in many later manuscripts, but not in the oldest, in the SBLGNT Greek text used in the app or in the main text of the BSB, which mentions them only in a footnote; so they appear here without text. The verses quoted are from the Berean Standard Bible (BSB)."
+}

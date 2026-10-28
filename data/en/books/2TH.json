@@ -1,0 +1,128 @@
+{
+  "title_orig": "Πρὸς Θεσσαλονικεῖς Βʹ",
+  "title_orig_xlit": "Pros Thessalonikeis B",
+  "summary": "2 Thessalonians is a short letter, with the same heading as 1 Thessalonians, addressed to a church that was still suffering persecution. The first chapter encourages it with the certainty that God will do justice when the Lord Jesus is revealed. The second corrects an idea that was frightening the readers, that the day of the Lord had already come, perhaps supported by a letter attributed to the missionaries themselves (2:2): before that day, the text says, the rebellion and the “man of lawlessness” will come, now held back by something or someone who “restrains” him. The last chapter deals with those who had stopped working and were living “idly.”",
+  "name": "The title Pros Thessalonikeis B, “Second to the Thessalonians,” comes from the greeting “to the church of the Thessalonians” (1:1), the same as in the first letter; the number indicates the order it was given in the collection, not necessarily the order in which it was written.",
+  "facts": [
+    [
+      "Position",
+      "14th book of the New Testament; 9th of the Pauline letters, in canonical order"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "letter of encouragement and correction, with an apocalyptic passage"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Comfort in persecution",
+      "from": 1,
+      "to": 1,
+      "text": "Thanksgiving for the faith that grows amid afflictions and the announcement of God's just judgment when the Lord Jesus appears with His angels."
+    },
+    {
+      "title": "The day has not yet come",
+      "from": 2,
+      "to": 2,
+      "text": "Before the day the rebellion and the “man of lawlessness,” who sets himself up in the temple of God, will come; for now, something restrains him. The readers must hold to the traditions received by word or by letter."
+    },
+    {
+      "title": "Work and discipline",
+      "from": 3,
+      "to": 3,
+      "text": "A request for prayer, an order that the idle should work and that those who do not obey be avoided, and a greeting written in Paul's own hand, presented as a mark in every letter (3:17)."
+    }
+  ],
+  "people": [
+    {
+      "name": "Paul, Silvanus and Timothy",
+      "chapters": "1; 3",
+      "ch": 1,
+      "note": "the senders, as in 1 Thessalonians; the final greeting is signed by Paul (3:17)"
+    },
+    {
+      "name": "The man of lawlessness",
+      "chapters": "2",
+      "ch": 2,
+      "note": "a figure who opposes everything called God and will be destroyed by the Lord; also called “the son of destruction” (2:3–8)"
+    }
+  ],
+  "writing": {
+    "tradition": "The early Church received the letter as Paul's, and it seems to echo in Polycarp, in the early 2nd century, and is quoted by Irenaeus, c. 180. Because of its similarity to 1 Thessalonians and its same senders, it was placed shortly after it, still in Corinth, c. 50–51, when the church was still persecuted and the questions about the end continued.",
+    "academic": "2 Thessalonians is among the disputed letters, outside the group of seven that practically all scholars attribute to Paul, and scholarship is quite divided. Those who think of another author, writing in Paul's name perhaps at the end of the 1st century, observe that the structure and many phrases closely follow 1 Thessalonians, but the tone is more formal; that the first letter says the day will come “like a thief in the night” (1 Thessalonians 5:2), while this one describes signs that precede it; and that the warning against false letters (2:2) and the emphasis on the signature (3:17) would make sense at a time when letters in Paul's name were already circulating. Those who defend Paul's authorship answer that the closeness to the first letter is explained by their having been written a short time apart, to the same church, and that the expectation of an imminent end and the announcement of signs coexist in other Jewish and Christian apocalyptic texts. Some also propose that this letter was written before 1 Thessalonians."
+  },
+  "events": {
+    "intro": "If the letter is by Paul, it is among the oldest in the New Testament, written months after the first; if it is later, its most likely date falls at the end of the 1st century. The timeline shows both positions; the dates are approximate.",
+    "axis": [
+      45,
+      100
+    ],
+    "timeline": [
+      {
+        "label": "Founding of the church in Thessalonica",
+        "from": 50,
+        "to": 50,
+        "kind": "evento",
+        "note": "on Paul's second journey (Acts 17:1–10)"
+      },
+      {
+        "label": "Writing of 1 Thessalonians",
+        "from": 50,
+        "to": 51,
+        "kind": "escrita",
+        "note": "in Corinth"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": 51,
+        "to": 52,
+        "kind": "escrita",
+        "note": "in Corinth, shortly after the first letter"
+      },
+      {
+        "label": "Destruction of the temple in Jerusalem",
+        "from": 70,
+        "to": 70,
+        "kind": "evento",
+        "note": "some read 2:4 in light of this event; others, of earlier crises"
+      },
+      {
+        "label": "Writing, according to those who consider it later",
+        "from": 80,
+        "to": 100,
+        "kind": "escrita",
+        "note": "by a continuator of Paul"
+      }
+    ]
+  },
+  "context": "The setting is that of the church of Thessalonica, capital of the province of Macedonia, made up largely of non-Jews and treated with hostility by their own countrymen. The passage about the “man of lawlessness” uses images from the Jewish apocalyptic tradition, such as that of the ruler who exalts himself against God in the book of Daniel (Daniel 11:36), and many also recall the attempt of the emperor Caligula, in 40, to place his statue in the temple in Jerusalem. What or who “restrains” him (2:6–7) has never been identified with certainty: already in antiquity people thought of the Roman Empire, and other proposals include the preaching of the gospel, an angel or God's own plan. The problem of those who did not work may be linked to the expectation of an imminent end or simply to dependence on patrons and on the help of the brothers.",
+  "places": [
+    "Thessalonica",
+    "Macedonia",
+    "the temple of God"
+  ],
+  "themes": [
+    "perseverance in persecution",
+    "God's just judgment",
+    "the day of the Lord",
+    "the man of lawlessness",
+    "the traditions received",
+    "work and idleness"
+  ],
+  "key_verses": [
+    {
+      "ref": "2:1–3"
+    },
+    {
+      "ref": "2:15"
+    },
+    {
+      "ref": "3:10"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. In 2:2, the Greek verb is usually understood as “has already come” or “is already present,” as in the BSB; some translations render it “is at hand.” The verses quoted are from the Berean Standard Bible (BSB)."
+}

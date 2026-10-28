@@ -1,0 +1,169 @@
+{
+  "title_orig": "Ἰακώβου",
+  "title_orig_xlit": "Iakobou",
+  "summary": "James is a set of practical teachings addressed to “the twelve tribes of the Dispersion” (1:1). In short sentences and images drawn from everyday life (the mirror, the horse's bit, the ship's rudder, the flower that withers, the farmer who waits for the rain), it deals with trials, controlling the tongue, favoritism toward the rich, the exploitation of workers, arrogance in making plans and prayer. The best-known passage states that faith without deeds is dead (2:14–26). There is almost no doctrinal exposition: the interest is in a faith that shows itself in conduct and in care for the poor.",
+  "name": "In the Greek manuscripts, the title is simply “of James” (Iakobou), sometimes with “letter.” The name Iakobos is the Greek form of Jacob; in English, “James” comes, through the Late Latin Iacomus and Old French, from Iacobus. In the canon, the letter opens the group of the seven General, or Catholic, Epistles (of James, Peter, John and Jude), so called because they are not addressed to a particular church or person.",
+  "facts": [
+    [
+      "Position",
+      "20th book of the New Testament; 1st of the General (or Catholic) Epistles"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "letter of exhortation, close to wisdom literature"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Trials and the word",
+      "from": 1,
+      "to": 1,
+      "text": "Trials produce perseverance; wisdom is asked of God; temptation is born of one's own desire; the word must be done and not merely heard."
+    },
+    {
+      "title": "Favoritism and faith with deeds",
+      "from": 2,
+      "to": 2,
+      "text": "Honoring the rich and despising the poor goes against the law of love; a faith that does not act, like that of someone who merely wishes the needy well, is dead; Abraham and Rahab are the examples."
+    },
+    {
+      "title": "The tongue and wisdom",
+      "from": 3,
+      "to": 4,
+      "text": "The tongue, small like a bit or a rudder, can set everything on fire; the wisdom from above is peaceable, while envy and ambition breed quarrels; whoever wants to be a friend of the world opposes God (3:1–4:10)."
+    },
+    {
+      "title": "Judgments, plans and riches",
+      "from": 4,
+      "to": 5,
+      "text": "Not speaking against a brother, not making plans as if tomorrow were guaranteed; a denunciation of the rich who withhold the workers' wages (4:11–5:6)."
+    },
+    {
+      "title": "Patience and prayer",
+      "from": 5,
+      "to": 5,
+      "text": "Waiting for the coming of the Lord as the farmer waits for the harvest, not swearing oaths, praying for the sick, confessing faults to one another and bringing back the one who has strayed (5:7–20)."
+    }
+  ],
+  "extra": {
+    "title": "Wisdom in short sentences",
+    "text": "James has some fifty imperatives in a little over a hundred verses and moves from one subject to another without long transitions, in the manner of the wisdom books, such as Proverbs and Sirach. Many of its sentences recall sayings of Jesus that appear in the Sermon on the Mount in Matthew (the blessedness of the poor, asking and receiving, not swearing oaths, 5:12), although almost never as a quotation. The name of Jesus appears only twice (1:1; 2:1)."
+  },
+  "people": [
+    {
+      "name": "James",
+      "chapters": "1",
+      "ch": 1,
+      "note": "introduces himself only as “a servant of God and of the Lord Jesus Christ”"
+    },
+    {
+      "name": "Abraham",
+      "chapters": "2",
+      "ch": 2,
+      "note": "his faith “was working with his actions” when he offered Isaac (2:21–23)"
+    },
+    {
+      "name": "Rahab",
+      "chapters": "2",
+      "ch": 2,
+      "note": "welcomed Israel's messengers in Jericho; another example of a faith that acts (2:25)"
+    },
+    {
+      "name": "Job",
+      "chapters": "5",
+      "ch": 5,
+      "note": "remembered for his perseverance in suffering (5:11)"
+    },
+    {
+      "name": "Elijah",
+      "chapters": "5",
+      "ch": 5,
+      "note": "“a man just like us,” an example of the power of prayer (5:17–18)"
+    }
+  ],
+  "writing": {
+    "tradition": "Tradition identifies the author with James, the brother of the Lord (Mark 6:3; Galatians 1:19), who led the church in Jerusalem (Acts 15; 21:18) and, according to the historian Josephus, was killed in 62. In that case, the letter would be earlier than 62; some place it in the 40s, which would make it one of the first Christian writings, and others near the end of James's life. The letter was slow to be accepted by all the churches: Eusebius, in the 4th century, still lists it among the books disputed by some, although read publicly in most churches.",
+    "academic": "Scholars are divided. Many hold that the letter comes from James, the brother of Jesus, or from his circle, pointing to its Jewish tone, its closeness to the sayings of Jesus and the absence of questions from later periods. Many others consider it written in James's name, perhaps between 70 and 100, noting the careful Greek, hardly expected of a Galilean (although the use of secretaries and the bilingualism of the region make the argument debatable), and the apparent response to a reading of Paul on faith and works. It is also debated whether 2:14–26 argues against Paul, against a distorted reading of Paul or against neither. At the Reformation, Luther called it an “epistle of straw” compared with other books, but kept it in his Bible."
+  },
+  "events": {
+    "intro": "The letter mentions no events. The timeline shows what is known of James, the brother of the Lord, and the two date ranges most proposed for the writing. The dates are approximate.",
+    "axis": [
+      25,
+      105
+    ],
+    "timeline": [
+      {
+        "label": "Death and resurrection of Jesus",
+        "from": 30,
+        "to": 33,
+        "kind": "evento",
+        "note": "James would be among the witnesses of the resurrection (1 Corinthians 15:7)"
+      },
+      {
+        "label": "James at the head of the church in Jerusalem",
+        "from": 40,
+        "to": 62,
+        "kind": "pessoa",
+        "note": "approximate date (Galatians 2:9; Acts 15; 21)"
+      },
+      {
+        "label": "Jerusalem meeting",
+        "from": 48,
+        "to": 50,
+        "kind": "evento",
+        "note": "c. 49; James speaks at the meeting about the Gentiles (Acts 15)"
+      },
+      {
+        "label": "Death of James",
+        "from": 62,
+        "to": 62,
+        "kind": "evento",
+        "note": "stoned in Jerusalem, according to Josephus"
+      },
+      {
+        "label": "Writing, if by James",
+        "from": 45,
+        "to": 62,
+        "kind": "escrita",
+        "note": "traditional position and that of some scholars"
+      },
+      {
+        "label": "Writing, if in James's name",
+        "from": 70,
+        "to": 100,
+        "kind": "escrita",
+        "note": "position of other scholars"
+      }
+    ]
+  },
+  "context": "The recipients are called “the twelve tribes of the Dispersion,” an expression that recalls the Jews scattered outside the land of Israel and that here may designate Christians of Jewish origin or, figuratively, the whole church. They meet in an “assembly” (2:2; in Greek, synagōgē), live among merchants who travel to do business (4:13) and landowners who fail to pay those who mow their fields (5:4). The poor are the majority and suffer from courts and creditors (2:6). The picture fits the agricultural and commercial life of the eastern Mediterranean in the 1st century, without indicating a city.",
+  "places": [
+    "the Dispersion (the communities outside the land of Israel)",
+    "Jerusalem, where James led the church"
+  ],
+  "themes": [
+    "trial and perseverance",
+    "faith and deeds",
+    "the use of the tongue",
+    "rich and poor",
+    "wisdom from above",
+    "humility",
+    "prayer"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:22"
+    },
+    {
+      "ref": "1:27"
+    },
+    {
+      "ref": "2:26"
+    }
+  ],
+  "note": "The authorship and date of the letter are debated; the dates of the timeline are approximate. The verses quoted are from the Berean Standard Bible (BSB)."
+}

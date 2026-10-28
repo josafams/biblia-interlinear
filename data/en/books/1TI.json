@@ -1,0 +1,165 @@
+{
+  "title_orig": "Πρὸς Τιμόθεον Αʹ",
+  "title_orig_xlit": "Pros Timotheon A",
+  "summary": "1 Timothy is a letter of instructions to a co-worker charged with caring for the church in Ephesus while Paul goes on to Macedonia (1:3). It begins and ends with warnings against teachers who teach “false doctrine,” linked to genealogies, arguments about the Law and the prohibition of marriage and of certain foods. In between, it deals with the organization of the community: public prayer, the conduct of men and women in worship, the qualifications required of overseers and deacons, the care of widows, the pay and discipline of elders, the situation of slaves and the danger of love of money. It also contains personal advice to the young Timothy.",
+  "name": "The title Pros Timotheon A, “First to Timothy,” comes from the recipient, called “my true child in the faith” (1:2); the number distinguishes it from the second letter to him. Since the 18th century, 1 and 2 Timothy and Titus have been called the “Pastoral Epistles,” because they deal with the care of the churches and their leaders.",
+  "facts": [
+    [
+      "Position",
+      "15th book of the New Testament; 10th of the Pauline letters, in canonical order"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "letter of instructions to a co-worker (pastoral letter)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Against false doctrine",
+      "from": 1,
+      "to": 1,
+      "text": "Timothy must restrain those who get lost in myths and genealogies; Paul recalls that he was a blasphemer and persecutor and received mercy, and mentions Hymenaeus and Alexander as examples of shipwreck in the faith."
+    },
+    {
+      "title": "Order in worship and leaders",
+      "from": 2,
+      "to": 3,
+      "text": "Prayers for all, including rulers; instructions to men and women; qualifications of overseers and deacons; the church as “the pillar and foundation of the truth,” and a short hymn to Christ (3:16)."
+    },
+    {
+      "title": "False teachings and Timothy's conduct",
+      "from": 4,
+      "to": 4,
+      "text": "Against those who forbid marriage and foods created by God; Timothy must be an example, devote himself to reading and teaching and not neglect the gift he received."
+    },
+    {
+      "title": "Groups in the church",
+      "from": 5,
+      "to": 6,
+      "text": "How to treat older and younger people, the support and enrollment of widows, the honor and correction of elders, the duty of slaves (5:1–6:2)."
+    },
+    {
+      "title": "Wealth and final charge",
+      "from": 6,
+      "to": 6,
+      "text": "The love of money as a root of evils, counsel to the rich and the final appeal: fight the good fight of the faith and guard what has been entrusted (6:3–21)."
+    }
+  ],
+  "extra": {
+    "title": "“A trustworthy saying”",
+    "text": "The Pastoral Epistles use five times the Greek formula pistos ho logos (in the BSB, “this is a trustworthy saying”) to introduce or confirm a brief sentence, which seems to have circulated in the churches as a summary of the faith or a known rule: in 1 Timothy 1:15, 3:1 and 4:9, in 2 Timothy 2:11 and in Titus 3:8. The formula does not appear in Paul's other letters."
+  },
+  "people": [
+    {
+      "name": "Paul",
+      "chapters": "1–6",
+      "ch": 1,
+      "note": "presents himself as a former persecutor who received mercy, “of whom I am the worst” (1:15)"
+    },
+    {
+      "name": "Timothy",
+      "chapters": "1–6",
+      "ch": 4,
+      "note": "young co-worker left in Ephesus; must be an example despite his youth (4:12) and take care of his health (5:23)"
+    },
+    {
+      "name": "Hymenaeus and Alexander",
+      "chapters": "1",
+      "ch": 1,
+      "note": "two who “shipwrecked” their faith and were handed over to Satan to be taught not to blaspheme (1:19–20)"
+    }
+  ],
+  "writing": {
+    "tradition": "The letter was received as Paul's and is quoted under his name by Irenaeus, c. 180; Polycarp, at the beginning of the 2nd century, already seems to know it. Since the journey of 1:3 does not fit well into Acts, the ancient tradition, recorded by Eusebius in the 4th century, supposed that Paul was released after his first imprisonment in Rome, returned to the East (Ephesus, Macedonia, Crete) and only later was arrested again and killed. In this framework, 1 Timothy would date from c. 62–64.",
+    "academic": "The three Pastoral Epistles are, among the thirteen that bear Paul's name, the most disputed, and most critical scholars, since the 19th century, consider them written by a disciple in Paul's name, generally between c. 90 and 120. The arguments are the vocabulary and style, very different from those of the undisputed letters; a more settled organization of the churches, with overseers, elders, deacons and an enrolled group of widows; the emphasis on “sound doctrine” and on the “deposit” to be guarded; and the difficulty of fitting the journeys into what is known of Paul's life. It is also noted that Marcion, c. 140, did not include them in his collection, which can be explained in more than one way. An important minority defends Paul's authorship: the differences would come from the kind of letter, the subject, a late phase of the apostle's life or the use of a secretary with freedom in drafting, and the release after the first Roman imprisonment would be plausible. Others propose an intermediate position, with authentic fragments incorporated by a later author."
+  },
+  "events": {
+    "intro": "The situation described (Paul going to Macedonia and Timothy left in Ephesus) does not clearly correspond to any moment narrated in Acts. For this reason the dating depends on the position on authorship. The dates are approximate.",
+    "axis": [
+      45,
+      125
+    ],
+    "band": {
+      "label": "Reign of Nero",
+      "from": 54,
+      "to": 68
+    },
+    "timeline": [
+      {
+        "label": "Timothy joins Paul",
+        "from": 49,
+        "to": 50,
+        "kind": "pessoa",
+        "note": "at Lystra, on the second journey (Acts 16:1–3)"
+      },
+      {
+        "label": "Paul in Ephesus",
+        "from": 53,
+        "to": 56,
+        "kind": "evento",
+        "note": "about three years (Acts 19)"
+      },
+      {
+        "label": "Paul a prisoner in Rome",
+        "from": 60,
+        "to": 62,
+        "kind": "evento",
+        "note": "end of the account in Acts"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": 62,
+        "to": 64,
+        "kind": "escrita",
+        "note": "after a supposed release of Paul"
+      },
+      {
+        "label": "Death of Paul, according to tradition",
+        "from": 64,
+        "to": 67,
+        "kind": "pessoa",
+        "note": "in Rome, under Nero; date uncertain"
+      },
+      {
+        "label": "Writing, according to many scholars",
+        "from": 90,
+        "to": 120,
+        "kind": "escrita",
+        "note": "by a disciple of Paul, perhaps in Asia Minor"
+      }
+    ]
+  },
+  "context": "Ephesus, capital of the province of Asia, was one of the main centers of early Christianity; Paul worked there for about three years, and later the city was also associated with the tradition of John. The churches met in houses, and the household (with husband, wife, children and slaves) serves as a model for describing the church as “God's household” (3:15). The teachings combated are not described in detail: there is talk of “myths” and “endless genealogies” (1:4), of teachers of the Law, of the prohibition of marriage and of foods and of a “knowledge” (in Greek, gnōsis) falsely so called (6:20). Some see in this early forms of Gnostic currents, others speculative Jewish-Christian currents; the text does not allow a secure identification.",
+  "places": [
+    "Ephesus",
+    "Macedonia"
+  ],
+  "themes": [
+    "sound doctrine",
+    "false teachers",
+    "prayer and worship",
+    "overseers, deacons and elders",
+    "widows",
+    "wealth and contentment",
+    "the leader's example"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:15"
+    },
+    {
+      "ref": "2:5"
+    },
+    {
+      "ref": "4:12"
+    },
+    {
+      "ref": "6:10"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source and the position on authorship. The verses quoted are from the Berean Standard Bible (BSB)."
+}

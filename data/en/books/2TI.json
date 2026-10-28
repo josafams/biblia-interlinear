@@ -1,0 +1,187 @@
+{
+  "title_orig": "Πρὸς Τιμόθεον Βʹ",
+  "title_orig_xlit": "Pros Timotheon B",
+  "summary": "2 Timothy has the form of a farewell letter. Paul appears imprisoned in Rome, abandoned by many and sure that death is approaching: “I am already being poured out like a drink offering” (4:6). He writes to Timothy, whom he calls “my beloved child,” to encourage him not to be ashamed of the gospel, to endure hardship like a soldier, to pass the teaching on to faithful people and to remain in the Scriptures he has known since childhood, at a time of deceiving teachers. The last chapter, with the review of his own life and a series of requests and news about co-workers, is one of the most personal passages attributed to Paul.",
+  "name": "The title Pros Timotheon B, “Second to Timothy,” comes from the recipient, called “my beloved child” (1:2); the number distinguishes it from the first letter to him. With 1 Timothy and Titus, it forms the group of the “Pastoral Epistles.”",
+  "facts": [
+    [
+      "Position",
+      "16th book of the New Testament; 11th of the Pauline letters, in canonical order"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "personal letter of exhortation, in a farewell tone (pastoral letter)"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Not being ashamed",
+      "from": 1,
+      "to": 1,
+      "text": "Paul recalls Timothy's faith, inherited from his grandmother Lois and his mother Eunice, asks him to fan into flame the gift of God and not to be ashamed of the prisoner; he contrasts those who deserted him in Asia with Onesiphorus, who searched for him in Rome."
+    },
+    {
+      "title": "Steadfastness in service",
+      "from": 2,
+      "to": 2,
+      "text": "Images of the soldier, the athlete and the farmer; a saying about dying and living with Christ; avoiding useless quarrels, like those of Hymenaeus and Philetus, and correcting with gentleness."
+    },
+    {
+      "title": "Difficult times and the Scriptures",
+      "from": 3,
+      "to": 3,
+      "text": "A portrait of the wicked in the last days; Paul's example in persecutions; the Scriptures, inspired by God and useful for teaching and correction."
+    },
+    {
+      "title": "Final charge and news",
+      "from": 4,
+      "to": 4,
+      "text": "“Preach the word”; Paul sees his own life coming to an end; asks Timothy to come before winter, to bring Mark, the cloak and the parchments, and tells how he was left alone at his first defense."
+    }
+  ],
+  "people": [
+    {
+      "name": "Paul",
+      "chapters": "1–4",
+      "ch": 4,
+      "note": "imprisoned and awaiting death, reviews his life: “I have fought the good fight, I have finished the race, I have kept the faith” (4:7)"
+    },
+    {
+      "name": "Timothy",
+      "chapters": "1–4",
+      "ch": 1,
+      "note": "recipient; son of a Jewish mother and a Greek father (Acts 16:1), formed in the Scriptures since childhood (3:15)"
+    },
+    {
+      "name": "Lois and Eunice",
+      "chapters": "1",
+      "ch": 1,
+      "note": "Timothy's grandmother and mother, remembered for their sincere faith (1:5)"
+    },
+    {
+      "name": "Onesiphorus",
+      "chapters": "1; 4",
+      "ch": 1,
+      "note": "searched for Paul in Rome and was not ashamed of his chains (1:16–17)"
+    },
+    {
+      "name": "Hymenaeus and Philetus",
+      "chapters": "2",
+      "ch": 2,
+      "note": "said that the resurrection had already taken place (2:17–18)"
+    },
+    {
+      "name": "Luke, Mark, Demas and Tychicus",
+      "chapters": "4",
+      "ch": 4,
+      "note": "“Only Luke is with me”; Mark should come; Demas has gone to Thessalonica; Tychicus was sent to Ephesus (4:10–12)"
+    },
+    {
+      "name": "Alexander the coppersmith",
+      "chapters": "4",
+      "ch": 4,
+      "note": "strongly opposed Paul's message (4:14–15)"
+    },
+    {
+      "name": "Prisca and Aquila",
+      "chapters": "4",
+      "ch": 4,
+      "note": "Paul's old fellow workers, greeted at the end (4:19)"
+    }
+  ],
+  "writing": {
+    "tradition": "Tradition considers 2 Timothy Paul's last letter, written in Rome during a second imprisonment, shortly before his death under Nero, c. 64–67. Eusebius, in the 4th century, already understood the “first defense” of 4:16 as a sign that Paul had been released once and later arrested again.",
+    "academic": "With 1 Timothy and Titus, 2 Timothy forms the group of the Pastoral Epistles, which most critical scholars attribute to a disciple of Paul writing in his name between c. 90 and 120, because of their own vocabulary and style, their concern for the faithful transmission of teaching and the difficulty of fitting the letters into Paul's life. 2 Timothy, however, is often treated separately: it is the most personal of the three, full of names, requests and concrete details, such as the cloak left in Troas (4:13). For this reason some researchers who doubt 1 Timothy and Titus accept that 2 Timothy is by Paul or preserves authentic notes of his, especially in chapter 4; others see these details as a device to bring the figure of the apostle to life; and a minority defends Paul's authorship of all three letters."
+  },
+  "events": {
+    "intro": "The letter presupposes Paul imprisoned in Rome, already after a first hearing, and awaiting condemnation. If it is his, it is from the last years of Nero; if it is by a disciple, it is some decades later. The dates are approximate.",
+    "axis": [
+      45,
+      125
+    ],
+    "band": {
+      "label": "Reign of Nero",
+      "from": 54,
+      "to": 68
+    },
+    "timeline": [
+      {
+        "label": "Timothy joins Paul",
+        "from": 49,
+        "to": 50,
+        "kind": "pessoa",
+        "note": "at Lystra, on the second journey (Acts 16:1–3)"
+      },
+      {
+        "label": "Paul a prisoner in Rome",
+        "from": 60,
+        "to": 62,
+        "kind": "evento",
+        "note": "end of the account in Acts"
+      },
+      {
+        "label": "Fire of Rome and Nero's persecution",
+        "from": 64,
+        "to": 64,
+        "kind": "evento",
+        "note": "Tacitus describes the punishment of Christians in the city"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": 64,
+        "to": 67,
+        "kind": "escrita",
+        "note": "in Rome, shortly before Paul's death"
+      },
+      {
+        "label": "Death of Paul, according to tradition",
+        "from": 64,
+        "to": 67,
+        "kind": "pessoa",
+        "note": "beheaded in Rome, according to later authors; date uncertain"
+      },
+      {
+        "label": "Writing, according to many scholars",
+        "from": 90,
+        "to": 120,
+        "kind": "escrita",
+        "note": "by a disciple of Paul"
+      }
+    ]
+  },
+  "context": "The letter places Paul in Rome (1:17), imprisoned in chains and without the relative freedom of the rented house described at the end of Acts. The Christians of the city had suffered Nero's violence after the fire of 64, and ancient tradition, from Clement of Rome (c. 96) on, speaks of the deaths of Peter and Paul in the capital. Timothy, for his part, seems to be in Asia, probably in Ephesus, in a region where many had deserted Paul (1:15). The text reflects a generation of transition: the founders are disappearing, and the concern is that the teaching received pass to “faithful men who will be qualified to teach others as well” (2:2).",
+  "places": [
+    "Rome",
+    "Ephesus and the province of Asia",
+    "Troas",
+    "Thessalonica, Galatia and Dalmatia",
+    "Corinth and Miletus"
+  ],
+  "themes": [
+    "not being ashamed of the gospel",
+    "suffering and perseverance",
+    "passing on the teaching",
+    "the Scriptures",
+    "false teachers",
+    "Paul's farewell"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:8"
+    },
+    {
+      "ref": "2:15"
+    },
+    {
+      "ref": "3:16–17"
+    },
+    {
+      "ref": "4:7–8"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source and the position on authorship. The verses quoted are from the Berean Standard Bible (BSB)."
+}

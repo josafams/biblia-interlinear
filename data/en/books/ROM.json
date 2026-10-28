@@ -1,0 +1,212 @@
+{
+  "title_orig": "Πρὸς Ῥωμαίους",
+  "title_orig_xlit": "Pros Rhomaious",
+  "summary": "Romans is Paul's longest letter and his most systematic. Written to a church he did not yet know, it presents his gospel as “the power of God for salvation to everyone who believes, first to the Jew, then to the Greek” (1:16). Chapters 1 to 8 develop the argument: Jews and non-Jews are equally under sin, God makes righteous those who believe, as He did with Abraham, and gives a new life, led by the Spirit. Chapters 9 to 11 face the question of Israel's place, since most of Paul's people had not accepted Jesus as Messiah. The final part deals with life in community, the relationship with the authorities and living together among those who think differently about food and holy days, and ends with Paul's travel plans and a long list of greetings.",
+  "name": "The title Pros Rhomaious, “To the Romans,” was given when Paul's letters began to circulate as a collection; in the text, Paul addresses “all in Rome” (1:7). The letter opens the collection not because it is the oldest, but because it is the longest: in the canon, the letters to churches come before the letters to individuals, and within each group the order follows, in general, the length, from longest to shortest.",
+  "facts": [
+    [
+      "Position",
+      "6th book of the New Testament; 1st of Paul's letters, in canonical order"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "letter, with a long theological exposition"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Opening and theme",
+      "from": 1,
+      "to": 1,
+      "text": "Paul introduces himself, speaks of his long-held desire to visit Rome and announces the subject: in the gospel the righteousness of God is revealed, received by faith (1:1–17)."
+    },
+    {
+      "title": "All under sin",
+      "from": 1,
+      "to": 3,
+      "text": "The peoples exchanged the Creator for idols, and those who judge others do the same; Jews and Greeks stand equally before God's judgment (1:18–3:20)."
+    },
+    {
+      "title": "Justified by faith",
+      "from": 3,
+      "to": 5,
+      "text": "God freely makes righteous those who believe in Jesus; Abraham is the example, and Christ undoes what began with Adam (3:21–5:21)."
+    },
+    {
+      "title": "New life",
+      "from": 6,
+      "to": 8,
+      "text": "United with Christ through baptism, those who believe die to sin; the Law is good, but does not set free, and the one who sets free is the Spirit, who makes them children of God and sustains them in hope."
+    },
+    {
+      "title": "Israel in God's plan",
+      "from": 9,
+      "to": 11,
+      "text": "The refusal of much of Israel does not cancel the promises: there is a remnant, the Gentiles have been grafted into the olive tree, and Paul hopes that “all Israel” will be saved."
+    },
+    {
+      "title": "The life of the community",
+      "from": 12,
+      "to": 15,
+      "text": "Worship as the offering of one's whole life, the gifts, love without hypocrisy, the authorities and the duty to welcome those with different convictions (12:1–15:13)."
+    },
+    {
+      "title": "Plans and greetings",
+      "from": 15,
+      "to": 16,
+      "text": "Paul explains his work among the Gentiles, the trip to Jerusalem with the collection and the plan to go on to Spain, and sends greetings to dozens of people (15:14–16:27)."
+    }
+  ],
+  "extra": {
+    "title": "Dialogue with an imaginary opponent",
+    "text": "In several passages, Paul argues in the style of the diatribe, common among the teachers of philosophy of the time: he gives voice to an imaginary interlocutor, raises objections and answers them. Hence the recurring questions (“What then shall we say?”) followed by the emphatic denial “Certainly not!” (3:5–6; 6:1–2; 6:15; 7:7; 9:14). Romans is also the letter of Paul with the most explicit quotations of Israel's Scriptures, above all from Isaiah, the Psalms and Deuteronomy."
+  },
+  "people": [
+    {
+      "name": "Paul",
+      "chapters": "1; 15",
+      "ch": 1,
+      "note": "writes to a church he did not found, asking its support to take the gospel as far as Spain"
+    },
+    {
+      "name": "Abraham",
+      "chapters": "4",
+      "ch": 4,
+      "note": "example of one who was counted righteous for having believed, even before being circumcised"
+    },
+    {
+      "name": "Adam",
+      "chapters": "5",
+      "ch": 5,
+      "note": "set in parallel with Christ: through one man sin entered, through another came justification"
+    },
+    {
+      "name": "Phoebe",
+      "chapters": "16",
+      "ch": 16,
+      "note": "servant (in Greek, diakonos) of the church in Cenchrea, the port of Corinth; commended to the Romans, she probably carried the letter"
+    },
+    {
+      "name": "Prisca and Aquila",
+      "chapters": "16",
+      "ch": 16,
+      "note": "a couple of Paul's fellow workers, back in Rome; a church meets in their house"
+    },
+    {
+      "name": "Andronicus and Junia",
+      "chapters": "16",
+      "ch": 16,
+      "note": "Paul's kinsmen and fellow prisoners, “outstanding among the apostles” (16:7)"
+    },
+    {
+      "name": "Timothy, Tertius, Gaius and Erastus",
+      "chapters": "16",
+      "ch": 16,
+      "note": "send greetings from Corinth: Tertius is the one who wrote the letter (16:22), Gaius is Paul's host and Erastus is the city treasurer"
+    }
+  ],
+  "writing": {
+    "tradition": "The early Church never doubted that Romans was by Paul. The letter itself indicates the occasion: Paul is about to take to Jerusalem the collection of the churches of Macedonia and Achaia (15:25–26), commends Phoebe, of Cenchrea (16:1), and sends greetings from Gaius and Erastus, linked to Corinth (16:23). For this reason it is understood that he wrote in Corinth, during the three months Acts places in Greece (Acts 20:2–3), around 56–57. Tertius, who identifies himself as the one who wrote the letter (16:22), would be the secretary to whom Paul dictated it.",
+    "academic": "Romans is among the seven letters that practically all scholars attribute to Paul, alongside 1 and 2 Corinthians, Galatians, Philippians, 1 Thessalonians and Philemon. The proposed dates generally fall between 55 and 58. The debates are about other points. Chapter 16, with more than twenty names in a church Paul had not visited, led some to think of a note originally sent to Ephesus, a hypothesis less followed today. The final doxology (16:25–27) appears in different positions in the manuscripts. And the purpose of the letter is debated: to present Paul's gospel to a church he did not found, to prepare the mission to Spain, to ask for prayers for the delivery of the collection in Jerusalem or to deal with life together between Christians of Jewish and Gentile origin; probably a little of each."
+  },
+  "events": {
+    "intro": "The letter gives no dates, but fits into the itinerary of Acts: Paul writes it shortly before taking the collection to Jerusalem, where he would be arrested, and only reaches Rome some years later, as a prisoner. The chronology is the same as the one used for Acts; the dates are approximate and vary by a few years among authors.",
+    "axis": [
+      30,
+      70
+    ],
+    "band": {
+      "label": "Reign of Nero",
+      "from": 54,
+      "to": 68
+    },
+    "timeline": [
+      {
+        "label": "Conversion of Paul",
+        "from": 33,
+        "to": 36,
+        "kind": "evento",
+        "note": "approximate date (Acts 9)"
+      },
+      {
+        "label": "Claudius expels Jews from Rome",
+        "from": 49,
+        "to": 49,
+        "kind": "evento",
+        "note": "c. 49; Aquila and Priscilla go to Corinth (Acts 18:2)"
+      },
+      {
+        "label": "Paul's third journey",
+        "from": 53,
+        "to": 57,
+        "kind": "evento",
+        "note": "about three years in Ephesus; then Macedonia and Greece"
+      },
+      {
+        "label": "Writing of the letter",
+        "from": 56,
+        "to": 57,
+        "kind": "escrita",
+        "note": "in Corinth, before the journey with the collection to Jerusalem"
+      },
+      {
+        "label": "Imprisonment in Jerusalem and Caesarea",
+        "from": 57,
+        "to": 59,
+        "kind": "evento",
+        "note": "Acts 21–26"
+      },
+      {
+        "label": "Paul a prisoner in Rome",
+        "from": 60,
+        "to": 62,
+        "kind": "evento",
+        "note": "two years in a rented house (Acts 28:30)"
+      },
+      {
+        "label": "Fire of Rome and Nero's persecution",
+        "from": 64,
+        "to": 64,
+        "kind": "evento",
+        "note": "according to tradition, Peter and Paul die in Rome at this time"
+      }
+    ]
+  },
+  "context": "Rome was the capital of the empire and the largest city of the Mediterranean, with a population estimated between a few hundred thousand and a million inhabitants. It had a large Jewish community, with several synagogues, and it was in this setting that faith in Jesus arrived early, brought by travelers and not by a known apostle; Paul did not found this church (15:20–22). The historian Suetonius tells that the emperor Claudius expelled from the city the Jews who were in constant tumult “at the instigation of Chrestus,” a report many link to disputes about Christ and place around 49. With the return of those expelled, after Claudius's death in 54, the churches of the city, which met in houses (16:5), may have come to have a majority of non-Jewish origin, a possible background for the counsel about the “strong” and the “weak” (chs. 14–15).",
+  "places": [
+    "Rome",
+    "Corinth and the port of Cenchrea",
+    "Macedonia and Achaia",
+    "Jerusalem",
+    "Illyricum",
+    "Spain"
+  ],
+  "themes": [
+    "the righteousness of God",
+    "faith and justification",
+    "sin and grace",
+    "the Law",
+    "life in the Spirit",
+    "Israel and the Gentiles",
+    "life in community"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:16–17"
+    },
+    {
+      "ref": "3:23–24"
+    },
+    {
+      "ref": "8:38–39"
+    },
+    {
+      "ref": "12:1–2"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. The final doxology (16:25–27) appears in different places in the manuscripts (after 14:23, after 15:33 or at the end of the letter) and is missing in some; the SBLGNT, the Greek text used in the app, leaves it out of the text, so these verses appear without the Greek original, while the BSB keeps them at the end of the letter. The verses quoted are from the Berean Standard Bible (BSB)."
+}

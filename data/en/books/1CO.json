@@ -1,0 +1,210 @@
+{
+  "title_orig": "Πρὸς Κορινθίους Αʹ",
+  "title_orig_xlit": "Pros Korinthious A",
+  "summary": "In 1 Corinthians, Paul writes from Ephesus to a church he himself had founded and that was going through many problems at once. Some said “I follow Paul,” others “I follow Apollos” or “I follow Cephas” (1:12); there was a case of incestuous union, lawsuits between brothers in the courts, doubts about marriage and about eating meat offered to idols, disorder at the Lord's Supper and disputes over spiritual gifts. Paul deals with each question from the standpoint of the cross of Christ, which contradicts the wisdom and prestige valued by the city, and of love, which puts the good of the other above one's own freedom. Chapter 13, on love, is among Paul's best-known texts, and chapter 15 is his longest exposition on the resurrection of Jesus and of the dead.",
+  "name": "The title “First to the Corinthians” (Pros Korinthious A) was given when Paul's letters were gathered, to distinguish this one from the other letter to the same church, which comes right after it in the canon. The number indicates the order in the collection, which coincides with the order in which the two were written. The letter itself shows that there was at least one earlier letter from Paul to the Corinthians, now lost (5:9).",
+  "facts": [
+    [
+      "Position",
+      "7th book of the New Testament; 2nd of Paul's letters, in canonical order"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "letter, with answers to the problems and questions of a church"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Divisions and the wisdom of the cross",
+      "from": 1,
+      "to": 4,
+      "text": "Paul combats the factions formed around leaders: the cross is “foolishness” to the world and the power of God to those who believe, and the apostles are only servants."
+    },
+    {
+      "title": "Problems of conduct",
+      "from": 5,
+      "to": 6,
+      "text": "A man living with his father's wife, brothers suing each other in pagan courts and the use of the body with prostitutes."
+    },
+    {
+      "title": "Marriage and celibacy",
+      "from": 7,
+      "to": 7,
+      "text": "Answers to the questions in the Corinthians' letter about married life, separation, virgins and widows."
+    },
+    {
+      "title": "Meat offered to idols",
+      "from": 8,
+      "to": 10,
+      "text": "The knowledge that idols are nothing does not authorize wounding a brother's conscience; Paul gives his own example of one who gives up rights and recalls the history of Israel in the wilderness."
+    },
+    {
+      "title": "The community's worship",
+      "from": 11,
+      "to": 14,
+      "text": "Head covering when praying and prophesying, the Lord's Supper, the gifts of the Spirit, love as the more excellent way and order between prophecy and tongues."
+    },
+    {
+      "title": "The resurrection",
+      "from": 15,
+      "to": 15,
+      "text": "The tradition received about the death and the appearances of Christ and the answer to those who denied the resurrection of the dead."
+    },
+    {
+      "title": "Collection and farewell",
+      "from": 16,
+      "to": 16,
+      "text": "The collection for the Christians in Jerusalem, travel plans, recommendations and greetings."
+    }
+  ],
+  "extra": {
+    "title": "“Now about…”: the church's questions",
+    "text": "The Corinthians had written to Paul (7:1), and the letter answers point by point. Each new subject begins with the same Greek formula, peri de, “now about…”: the matters you wrote about (7:1), virgins (7:25), food sacrificed to idols (8:1), spiritual gifts (12:1), the collection (16:1) and Apollos (16:12). Other subjects, such as the divisions and the Supper, Paul knew of from reports that reached him (1:11; 11:18). At the end, he writes the greeting in his own hand (16:21) and preserves an Aramaic invocation of the first communities, marana tha, which the BSB translates as “Come, O Lord!” (16:22)."
+  },
+  "people": [
+    {
+      "name": "Paul",
+      "chapters": "1–4; 9; 15–16",
+      "ch": 9,
+      "note": "founder of the church; defends his way of exercising the apostleship, working with his own hands"
+    },
+    {
+      "name": "Sosthenes",
+      "chapters": "1",
+      "ch": 1,
+      "note": "“our brother,” who appears with Paul as a sender (1:1)"
+    },
+    {
+      "name": "Apollos",
+      "chapters": "1; 3–4; 16",
+      "ch": 3,
+      "note": "preacher who worked in Corinth after Paul: “I planted the seed and Apollos watered it” (3:6)"
+    },
+    {
+      "name": "Cephas (Peter)",
+      "chapters": "1; 3; 9; 15",
+      "ch": 15,
+      "note": "one of the names used by the factions; the first in the list of appearances of the Risen One (15:5)"
+    },
+    {
+      "name": "Chloe",
+      "chapters": "1",
+      "ch": 1,
+      "note": "people from her household tell Paul of the quarrels in the church (1:11)"
+    },
+    {
+      "name": "Timothy",
+      "chapters": "4; 16",
+      "ch": 4,
+      "note": "sent by Paul to remind the Corinthians of his teachings (4:17; 16:10)"
+    },
+    {
+      "name": "Stephanas, Fortunatus and Achaicus",
+      "chapters": "1; 16",
+      "ch": 16,
+      "note": "members of the church in Corinth who visit Paul in Ephesus; the household of Stephanas was the first to believe in Achaia"
+    },
+    {
+      "name": "Aquila and Priscilla",
+      "chapters": "16",
+      "ch": 16,
+      "note": "the couple who had worked with Paul in Corinth; now in Ephesus, they send greetings with the church that meets at their house"
+    }
+  ],
+  "writing": {
+    "tradition": "Paul's authorship is affirmed very early: around 96, Clement of Rome, writing precisely to the Corinthians, reminds them of the letter that “the blessed Paul” had sent them about the factions. Paul writes from Ephesus, where he intends to stay until Pentecost (16:8), near the end of the long stay in the city described in Acts 19, which leads to c. 54–55.",
+    "academic": "1 Corinthians is one of the seven letters that practically all scholars attribute to Paul, and the most common dating falls between 53 and 56, in Ephesus. Most read the text as a single letter, although some researchers have proposed that it combines two or more smaller letters. A debated passage is 14:34–35, on women keeping silent in the church: in some manuscripts it appears after 14:40, and some scholars consider it an early addition, while others keep it as Paul's and read it in light of the local situation. The correspondence with Corinth was larger than the two preserved letters: besides the earlier letter mentioned in 5:9, 2 Corinthians speaks of a letter written “with many tears” (2 Corinthians 2:4)."
+  },
+  "events": {
+    "intro": "Paul arrived in Corinth on the second journey and stayed there a year and a half (Acts 18:11), part of that time during the term of the proconsul Gallio, dated c. 51–52 by an inscription at Delphi. Some years later, already in Ephesus, he receives news and a letter from the church and answers with 1 Corinthians. The chronology is the same as the one used for Acts, with a variation of a few years among authors.",
+    "axis": [
+      45,
+      60
+    ],
+    "band": {
+      "label": "Paul in Ephesus",
+      "from": 53,
+      "to": 56
+    },
+    "timeline": [
+      {
+        "label": "Founding of the church in Corinth",
+        "from": 50,
+        "to": 52,
+        "kind": "evento",
+        "note": "a year and a half of Paul's work, with Aquila, Priscilla, Silas and Timothy (Acts 18)"
+      },
+      {
+        "label": "Gallio, proconsul of Achaia",
+        "from": 51,
+        "to": 52,
+        "kind": "pessoa",
+        "note": "before him Paul is accused by the Jews of the city (Acts 18:12)"
+      },
+      {
+        "label": "Apollos in Corinth",
+        "from": 52,
+        "to": 53,
+        "kind": "pessoa",
+        "note": "arrives in Achaia after Paul's departure (Acts 18:27–19:1); approximate date"
+      },
+      {
+        "label": "Earlier letter, now lost",
+        "from": 53,
+        "to": 54,
+        "kind": "escrita",
+        "note": "mentioned in 5:9; date uncertain"
+      },
+      {
+        "label": "Writing of 1 Corinthians",
+        "from": 54,
+        "to": 55,
+        "kind": "escrita",
+        "note": "in Ephesus, before Pentecost (16:8)"
+      },
+      {
+        "label": "Paul in Macedonia and Greece",
+        "from": 56,
+        "to": 57,
+        "kind": "evento",
+        "note": "three months in Greece, probably in Corinth (Acts 20:1–3)"
+      }
+    ]
+  },
+  "context": "Corinth lay on the isthmus that joins the Peloponnese to the rest of Greece, between two ports: Lechaeum, facing west, and Cenchrea, facing east. The old Greek city had been destroyed by the Romans in 146 BC and refounded by Julius Caesar in 44 BC as a Roman colony, populated by freedmen, veterans and merchants; in Paul's time it was the capital of the province of Achaia, rich, cosmopolitan and very attentive to social standing. The Isthmian Games were held there, which may lie behind the images of the race and the crown in 9:24–27. The church brought together people of different social levels (“not many of you were wise by human standards; not many were powerful,” 1:26, but there were householders able to host the community), and this mixture helps explain conflicts such as that at the Supper, in which “one remains hungry, another gets drunk” (11:21).",
+  "places": [
+    "Corinth",
+    "Ephesus",
+    "Achaia and Macedonia",
+    "Galatia",
+    "Jerusalem"
+  ],
+  "themes": [
+    "the unity of the church",
+    "the cross and wisdom",
+    "the body and sexual ethics",
+    "freedom and conscience",
+    "the Lord's Supper",
+    "gifts of the Spirit and love",
+    "the resurrection"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:18"
+    },
+    {
+      "ref": "12:27"
+    },
+    {
+      "ref": "13:4–7"
+    },
+    {
+      "ref": "15:3–4"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. Some older translations reproduce at the end of 16:24 an ancient scribal note according to which the letter was written at Philippi; that note is not part of the Greek text, and the letter itself points to Ephesus (16:8). The verses quoted are from the Berean Standard Bible (BSB)."
+}

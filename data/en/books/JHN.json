@@ -1,0 +1,249 @@
+{
+  "title_orig": "Κατὰ Ἰωάννην",
+  "title_orig_xlit": "Kata Ioannen",
+  "summary": "John tells the story of Jesus in a way quite different from the other three gospels. It opens with a poetic prologue about the Word (in Greek, Logos), who was with God from the beginning and “became flesh” (1:14). The first half of the book is organized around signs, such as water turned into wine at Cana and the raising of Lazarus, followed by long dialogues and discourses in which Jesus speaks of Himself with images introduced by “I am.” The second half concentrates on the last night with the disciples, with the foot washing and the farewell discourses (chs. 13–17), and then on the passion and the resurrection. The book itself states its purpose: that its readers may believe that Jesus is the Christ, the Son of God, and have life in His name (20:31).",
+  "name": "The title “According to John” (Kata Ioannen) was given to the book when the gospels began to circulate together and already appears, in the form “Gospel according to John,” in a papyrus from around the year 200 (P66). The text does not give the author's name, but the last chapter links it to “the disciple whom Jesus loved,” who “testifies to these things and who has written them down” (21:20, 24). Tradition identified this disciple with John son of Zebedee, one of the Twelve.",
+  "facts": [
+    [
+      "Position",
+      "4th book of the New Testament and the last of the four Gospels"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "gospel: a narrative of Jesus' signs and discourses, with strong theological reflection"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Prologue and first disciples",
+      "from": 1,
+      "to": 1,
+      "text": "The hymn to the Word (1:1–18), the testimony of John the Baptist, who points to Jesus as the Lamb of God, and the call of Andrew, Peter, Philip and Nathanael."
+    },
+    {
+      "title": "Signs and discourses",
+      "from": 2,
+      "to": 12,
+      "text": "Signs and dialogues in Cana, Jerusalem, Samaria and Galilee, across several Jewish feasts; opposition grows until the raising of Lazarus and the decision to kill Jesus, and the part ends with the announcement: “The hour has come” (12:23)."
+    },
+    {
+      "title": "The farewell",
+      "from": 13,
+      "to": 17,
+      "text": "At the Last Supper, Jesus washes the disciples' feet, announces the betrayal and the denial, gives the commandment of love, promises the Advocate and prays for His own (ch. 17)."
+    },
+    {
+      "title": "Passion and death",
+      "from": 18,
+      "to": 19,
+      "text": "The arrest in the garden beyond the Kidron, the hearings before Annas and Pilate, the crucifixion and the burial by Joseph of Arimathea and Nicodemus."
+    },
+    {
+      "title": "Resurrection",
+      "from": 20,
+      "to": 20,
+      "text": "Mary Magdalene at the tomb, the appearances to the disciples and to Thomas and the book's first conclusion (20:30–31)."
+    },
+    {
+      "title": "Epilogue",
+      "from": 21,
+      "to": 21,
+      "text": "The appearance by the Sea of Tiberias, Jesus' dialogue with Peter and the final note about the beloved disciple and his testimony."
+    }
+  ],
+  "extra": {
+    "title": "John and the Synoptics",
+    "text": "Matthew, Mark and Luke are called Synoptics because, read side by side, they show the same overall view; John follows another path, and most of his content has no parallel in the other three. In John, Jesus goes up to Jerusalem several times and passes through at least three Passovers (2:13; 6:4; 11:55); the cleansing of the temple comes at the beginning (ch. 2), not in the last week; there are no exorcisms or parables in the style of the Synoptics; and, instead of short sayings, there are long discourses. Jesus speaks of Himself with seven images introduced by “I am”: the bread of life (6:35), the light of the world (8:12), the gate (10:9), the good shepherd (10:11), the resurrection and the life (11:25), the way, the truth and the life (14:6) and the true vine (15:1)."
+  },
+  "people": [
+    {
+      "name": "Jesus",
+      "chapters": "1–21",
+      "ch": 1,
+      "note": "the Word who became flesh; called Lamb of God, Son of God, King of Israel and, by Thomas, “My Lord and my God” (20:28)"
+    },
+    {
+      "name": "John the Baptist",
+      "chapters": "1; 3; 5; 10",
+      "ch": 1,
+      "note": "a witness who points to Jesus as the Lamb of God (1:29) and says Jesus must increase and he must decrease (3:30)"
+    },
+    {
+      "name": "Simon Peter",
+      "chapters": "1; 6; 13; 18; 20–21",
+      "ch": 21,
+      "note": "denies Jesus three times and, by the Sea of Tiberias, is questioned three times about his love"
+    },
+    {
+      "name": "The mother of Jesus",
+      "chapters": "2; 19",
+      "ch": 2,
+      "note": "never called by name in John; she is at the wedding in Cana and by the cross"
+    },
+    {
+      "name": "Nicodemus",
+      "chapters": "3; 7; 19",
+      "ch": 3,
+      "note": "Pharisee and leader of the Jews who seeks Jesus by night and later helps bury Him"
+    },
+    {
+      "name": "The Samaritan woman",
+      "chapters": "4",
+      "ch": 4,
+      "note": "talks with Jesus by Jacob's well and leads her people to know Him"
+    },
+    {
+      "name": "Martha, Mary and Lazarus",
+      "chapters": "11–12",
+      "ch": 11,
+      "note": "siblings from Bethany, friends of Jesus; Lazarus is called out of the tomb"
+    },
+    {
+      "name": "The beloved disciple",
+      "chapters": "13; 19–21",
+      "ch": 13,
+      "note": "an unnamed disciple, close to Jesus at the supper, by the cross and at the tomb; the book presents him as its witness"
+    },
+    {
+      "name": "Thomas",
+      "chapters": "11; 14; 20–21",
+      "ch": 20,
+      "note": "called Didymus; doubts the resurrection until he sees Jesus"
+    },
+    {
+      "name": "Judas Iscariot",
+      "chapters": "6; 12–13; 18",
+      "ch": 13,
+      "note": "one of the Twelve; leaves the supper to betray Jesus"
+    },
+    {
+      "name": "Annas and Caiaphas",
+      "chapters": "11; 18",
+      "ch": 18,
+      "note": "the former high priest and his son-in-law, high priest “that year”"
+    },
+    {
+      "name": "Pilate",
+      "chapters": "18–19",
+      "ch": 18,
+      "note": "Roman governor; talks with Jesus about kingship and truth and hands Him over to be crucified"
+    },
+    {
+      "name": "Mary Magdalene",
+      "chapters": "19–20",
+      "ch": 20,
+      "note": "stands by the cross and is the first to see the Risen One, in the garden"
+    }
+  ],
+  "writing": {
+    "tradition": "The book presents itself as the testimony of “the disciple whom Jesus loved” (21:20–24). From the end of the 2nd century, with Irenaeus, tradition identifies this disciple with the apostle John son of Zebedee and holds that he wrote the gospel in Ephesus, in his old age, after the other three; Irenaeus says he heard memories of him from Polycarp, a disciple of John. Clement of Alexandria called it a “spiritual gospel,” written to complete the others. On this reading, the work is dated to the end of the 1st century, around 90–100; some defenders of apostolic authorship propose dates before 70.",
+    "academic": "Johannine authorship is a much-debated question. The Greek of the book is simple, but with its own theological vocabulary, and many scholars see signs of more than one stage of composition: in 14:31, Jesus says “let us go on from here,” but the discourse continues to chapter 17, and chapter 21 seems to have been added after the conclusion of 20:30–31. A frequent hypothesis is that the book arose from the tradition linked to the beloved disciple and was written and revised in the circle of his followers, the so-called Johannine community. The beloved disciple is identified by some with John son of Zebedee; by others, with the “elder John” mentioned by Papias or with another disciple from Jerusalem. The most accepted date is c. 90–100, and papyrus P52, with verses of chapter 18, is usually dated to the first half of the 2nd century, although some propose later dates. It is also debated whether the author knew the Synoptics or used independent traditions."
+  },
+  "events": {
+    "intro": "John gives no years, but mentions several Jewish feasts, among them three Passovers (2:13; 6:4; 11:55), which suggests a ministry of two to three years. The remark that the temple had been under construction for forty-six years (2:20) points to c. 27/28, since Herod's rebuilding began around 20/19 BC. John places the crucifixion on the day of Preparation for the Passover (19:14), which, combined with astronomical calculations of the Jewish calendar, favors the dates 30 or 33. All dates are approximate.",
+    "axis": [
+      -25,
+      150
+    ],
+    "band": {
+      "label": "Temple rebuilt by Herod",
+      "from": -20,
+      "to": 70
+    },
+    "timeline": [
+      {
+        "label": "Caiaphas",
+        "from": 18,
+        "to": 36,
+        "kind": "pessoa",
+        "note": "high priest; his father-in-law Annas had been before him (18:13)"
+      },
+      {
+        "label": "Pilate",
+        "from": 26,
+        "to": 36,
+        "kind": "pessoa",
+        "note": "Roman governor of Judea (18–19)"
+      },
+      {
+        "label": "Ministry of Jesus",
+        "from": 27,
+        "to": 33,
+        "kind": "evento",
+        "note": "c. 27/28 to 30/33; in John, at least three Passovers"
+      },
+      {
+        "label": "Crucifixion",
+        "from": 30,
+        "to": 33,
+        "kind": "evento",
+        "note": "on the day of Preparation for the Passover (19:14); the most defended dates are 30 and 33"
+      },
+      {
+        "label": "Destruction of Jerusalem",
+        "from": 70,
+        "to": 70,
+        "kind": "evento",
+        "note": "the Roman army burns the temple"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": 90,
+        "to": 100,
+        "kind": "escrita",
+        "note": "the apostle John, in Ephesus, at the end of his life"
+      },
+      {
+        "label": "Final form, according to most researchers",
+        "from": 90,
+        "to": 110,
+        "kind": "escrita",
+        "note": "perhaps after more than one stage of composition"
+      },
+      {
+        "label": "Papyrus P52",
+        "from": 100,
+        "to": 150,
+        "kind": "evento",
+        "note": "fragment with 18:31–33, 37–38; paleographic date debated"
+      }
+    ]
+  },
+  "context": "Much of the narrative takes place in Judea and Jerusalem, around the temple and the Jewish feasts: Passover, the Feast of Tabernacles (ch. 7) and the Feast of Dedication, in winter (10:22). The author knows the city closely and mentions places such as the Pool of Bethesda, with its five covered colonnades (5:2), whose remains have been found by archaeologists, and the Pool of Siloam (9:7). The book often calls Jesus' opponents “the Jews” and speaks of the risk of being put out of the synagogue (9:22; 16:2); many scholars read this as reflecting conflicts between the author's community and Jewish leaders at the end of the 1st century, and not as a reference to the Jewish people as a whole, to whom Jesus Himself and His disciples belong. Tradition links the gospel to Ephesus, a Greek city of Asia Minor where philosophical ideas about the Logos circulated, a term the prologue uses in its own sense and that also echoes the first words of Genesis.",
+  "places": [
+    "Bethany beyond the Jordan (in other manuscripts, Bethabara)",
+    "Cana in Galilee",
+    "Samaria: Sychar and Jacob's well",
+    "Capernaum and the Sea of Tiberias",
+    "Bethany, the village of Lazarus",
+    "Jerusalem: the temple, the Pools of Bethesda and Siloam, the garden beyond the Kidron, Gabbatha and Golgotha"
+  ],
+  "themes": [
+    "the Word who became flesh",
+    "believing and having life",
+    "signs and glory",
+    "light and darkness",
+    "truth and testimony",
+    "love for one another",
+    "the Spirit, the Advocate"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:1"
+    },
+    {
+      "ref": "1:14"
+    },
+    {
+      "ref": "3:16"
+    },
+    {
+      "ref": "20:31"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. The passage of the woman caught in adultery (7:53–8:11) is not in the oldest known manuscripts, and in later manuscripts it appears in different places, sometimes after Luke 21:38; most scholars consider it an addition to the text of John, although many see in it an ancient tradition about Jesus. The BSB includes it with a note, and the SBLGNT does not, so these verses have no Greek original in the app. The end of 5:3 and 5:4, about the angel who stirred the water of the pool, are not in the SBLGNT or in the main text of the BSB. The verses quoted are from the Berean Standard Bible (BSB)."
+}

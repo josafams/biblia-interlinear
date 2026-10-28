@@ -1,0 +1,184 @@
+{
+  "title_orig": "Πρὸς Κολοσσαεῖς",
+  "title_orig_xlit": "Pros Kolossaeis",
+  "summary": "Colossians is addressed to a church Paul neither founded nor visited, formed through the work of Epaphras. The center of the letter is the person of Christ, presented in a hymnic passage as “the image of the invisible God,” through whom all things were created and reconciled (1:15–20). From this comes the warning against a teaching the readers were hearing, made up of “philosophy,” rules about food and holy days, “the worship of angels” and visions (2:8–23): for the author, none of this adds to what one already has in Christ. The second part speaks of the new life, of relationships within the household and ends with a long list of news and greetings.",
+  "name": "The title Pros Kolossaeis, “To the Colossians,” comes from the greeting to the saints “at Colossae” (1:2). Colossae was a small city of Phrygia, in Asia Minor.",
+  "facts": [
+    [
+      "Position",
+      "12th book of the New Testament; 7th of the Pauline letters, in canonical order"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "letter, with an exposition about Christ and a warning against a rival teaching"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Gratitude and prayer",
+      "from": 1,
+      "to": 1,
+      "text": "Thanksgiving for the faith of the Colossians, who learned the gospel from Epaphras, and a prayer that they may grow in the knowledge of God's will (1:1–14)."
+    },
+    {
+      "title": "Christ and Paul's mission",
+      "from": 1,
+      "to": 2,
+      "text": "Christ, firstborn over creation and from the dead, reconciles all things; Paul rejoices to suffer for the Church and struggles for those who do not know him personally (1:15–2:5)."
+    },
+    {
+      "title": "Against the rival teaching",
+      "from": 2,
+      "to": 2,
+      "text": "In Christ all the fullness dwells; the readers were circumcised in Him and buried with Him in baptism; rules about eating, festivals and the worship of angels are “a shadow of the things to come” (2:6–23)."
+    },
+    {
+      "title": "The new life",
+      "from": 3,
+      "to": 4,
+      "text": "Seeking the things above, putting off the old life and putting on compassion and love; duties of wives and husbands, children and fathers, slaves and masters; persevering in prayer (3:1–4:6)."
+    },
+    {
+      "title": "News and greetings",
+      "from": 4,
+      "to": 4,
+      "text": "Tychicus and Onesimus will bring news; greetings from Aristarchus, Mark, Epaphras, Luke and Demas; an exchange of letters with Laodicea and a signature in Paul's own hand (4:7–18)."
+    }
+  ],
+  "extra": {
+    "title": "The letter to Laodicea",
+    "text": "In 4:16, the Colossians are told to have the letter read also in Laodicea and to read “the one from Laodicea.” That other letter has not been preserved, or it is not known which it is: some identify it with Ephesians, which would have been a circular letter. A short text called the “Epistle to the Laodiceans,” in Latin, circulated in the Middle Ages, but is generally considered a later composition, made of sentences taken from other letters of Paul."
+  },
+  "people": [
+    {
+      "name": "Paul and Timothy",
+      "chapters": "1; 4",
+      "ch": 1,
+      "note": "the senders; Paul writes in prison and signs the final greeting with his own hand (4:18)"
+    },
+    {
+      "name": "Epaphras",
+      "chapters": "1; 4",
+      "ch": 1,
+      "note": "a Colossian who proclaimed the gospel in the city and worked also in Laodicea and Hierapolis (1:7; 4:12–13)"
+    },
+    {
+      "name": "Tychicus",
+      "chapters": "4",
+      "ch": 4,
+      "note": "carrier of the letter, charged with giving news of Paul (4:7–8)"
+    },
+    {
+      "name": "Onesimus",
+      "chapters": "4",
+      "ch": 4,
+      "note": "“one of you” (4:9); the same name as the slave for whom Paul intercedes in Philemon"
+    },
+    {
+      "name": "Aristarchus, Mark and Jesus Justus",
+      "chapters": "4",
+      "ch": 4,
+      "note": "fellow workers of Jewish origin; Aristarchus is in prison with Paul and Mark is Barnabas's cousin (4:10–11)"
+    },
+    {
+      "name": "Luke and Demas",
+      "chapters": "4",
+      "ch": 4,
+      "note": "Luke is called “the beloved physician” (4:14); both also appear in Philemon 24"
+    },
+    {
+      "name": "Nympha and Archippus",
+      "chapters": "4",
+      "ch": 4,
+      "note": "a church meets in Nympha's house; Archippus must complete the ministry he received (4:15–17)"
+    }
+  ],
+  "writing": {
+    "tradition": "Tradition has always received Colossians as a letter of Paul, and it is quoted under his name by 2nd-century authors such as Irenaeus. Written in prison and with almost the same names as Philemon, it was placed together with Ephesians and Philemon in Paul's two years of imprisonment in Rome, c. 60–62.",
+    "academic": "Colossians is not among the seven letters that practically all scholars attribute to Paul (Romans, 1 and 2 Corinthians, Galatians, Philippians, 1 Thessalonians and Philemon), and scholarship is divided. Many consider it written by a disciple of Paul, perhaps shortly after his death, c. 70–90, based on the style, heavier than that of the undisputed letters, and on ideas such as the Church understood as a body whose head is Christ and the resurrection with Christ described as already having taken place (2:12; 3:1). Others, in considerable number, maintain Paul's authorship, pointing to the close link with Philemon and the personal news of chapter 4; in that case, the letter would come from the imprisonment in Rome (c. 60–62) or in Ephesus (c. 54–55). Some also propose that Timothy, named as co-author, drafted the text in Paul's lifetime. The relationship with Ephesians is also studied: many think Ephesians used Colossians."
+  },
+  "events": {
+    "intro": "The letter gives no dates. The timeline shows the traditional position and that of many scholars, as well as the earthquake that, according to the historian Tacitus, struck Laodicea around 60. The dates are approximate.",
+    "axis": [
+      45,
+      95
+    ],
+    "band": {
+      "label": "Reign of Nero",
+      "from": 54,
+      "to": 68
+    },
+    "timeline": [
+      {
+        "label": "Paul in Ephesus",
+        "from": 53,
+        "to": 56,
+        "kind": "evento",
+        "note": "at this time Epaphras would have taken the gospel to the Lycus valley"
+      },
+      {
+        "label": "Writing, if in Ephesus",
+        "from": 54,
+        "to": 55,
+        "kind": "escrita",
+        "note": "a proposal of some of those who defend Paul's authorship"
+      },
+      {
+        "label": "Earthquake at Laodicea",
+        "from": 60,
+        "to": 61,
+        "kind": "evento",
+        "note": "according to Tacitus; neighboring Colossae was probably also hit"
+      },
+      {
+        "label": "Writing, according to tradition",
+        "from": 60,
+        "to": 62,
+        "kind": "escrita",
+        "note": "in prison in Rome, together with Philemon and Ephesians"
+      },
+      {
+        "label": "Writing, according to many scholars",
+        "from": 70,
+        "to": 90,
+        "kind": "escrita",
+        "note": "by a disciple of Paul"
+      }
+    ]
+  },
+  "context": "Colossae lay in the valley of the Lycus River, in Phrygia, about 200 km east of Ephesus, a few kilometers from Laodicea and Hierapolis, larger and more prosperous cities. It had been a center of the wool trade, but by the 1st century it had lost importance. The region had a Jewish population since, around 200 BC, according to the historian Josephus, the Seleucid king Antiochus III settled Jewish families in Lydia and Phrygia. The teaching combated in the letter is hard to reconstruct: it mixes Jewish elements, such as Sabbaths, New Moons and food rules, with ascetic practices, visions and the veneration of angels, and scholars propose everything from forms of Jewish mysticism to influences of local religions or of popular philosophy.",
+  "places": [
+    "Colossae",
+    "Laodicea",
+    "Hierapolis",
+    "the Lycus valley, in Phrygia"
+  ],
+  "themes": [
+    "the supremacy of Christ",
+    "fullness in Christ",
+    "reconciliation",
+    "against rules and visions",
+    "baptism and new life",
+    "relationships in the household",
+    "prayer"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:15–17"
+    },
+    {
+      "ref": "2:9"
+    },
+    {
+      "ref": "3:1–2"
+    },
+    {
+      "ref": "3:17"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source. The verses quoted are from the Berean Standard Bible (BSB)."
+}

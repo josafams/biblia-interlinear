@@ -1,0 +1,127 @@
+{
+  "title_orig": "Ἰωάννου Γʹ",
+  "title_orig_xlit": "Ioannou G",
+  "summary": "3 John is a personal note from “the elder” to his beloved Gaius, praised for welcoming brothers who traveled to proclaim the gospel. The elder criticizes Diotrephes, who wants to rule the church, does not receive the envoys and expels those who welcome them, and recommends Demetrius. It is the shortest book of the Bible in number of words in the original Greek.",
+  "name": "The title “Third of John” (Ioannou G; the letter gamma stands for 3) follows the traditional attribution to the apostle John; in the text, the author identifies himself only as “the elder” (1:1).",
+  "facts": [
+    [
+      "Position",
+      "25th book of the New Testament; 6th of the General (or Catholic) Epistles"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "brief personal letter"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Greeting",
+      "from": 1,
+      "to": 1,
+      "text": "Wishes for good health and joy at knowing that Gaius walks in the truth (1:1–4)."
+    },
+    {
+      "title": "Gaius's hospitality",
+      "from": 1,
+      "to": 1,
+      "text": "Gaius welcomes the traveling brothers; supporting them is to be a fellow worker for the truth (1:5–8)."
+    },
+    {
+      "title": "Diotrephes and Demetrius",
+      "from": 1,
+      "to": 1,
+      "text": "Diotrephes rejects the elder and the envoys; Demetrius is well spoken of by everyone (1:9–12)."
+    },
+    {
+      "title": "Farewell",
+      "from": 1,
+      "to": 1,
+      "text": "The elder hopes to see Gaius soon and sends greetings from the friends (1:13–14)."
+    }
+  ],
+  "people": [
+    {
+      "name": "The elder",
+      "chapters": "1",
+      "ch": 1,
+      "note": "an author who introduces himself by his title, as in 2 John"
+    },
+    {
+      "name": "Gaius",
+      "chapters": "1",
+      "ch": 1,
+      "note": "recipient, known for welcoming the missionaries; a very common name, with no certain link to other men named Gaius in the New Testament"
+    },
+    {
+      "name": "Diotrephes",
+      "chapters": "1",
+      "ch": 1,
+      "note": "a local leader who “loves to be first” and does not receive the elder or the envoys (1:9–10)"
+    },
+    {
+      "name": "Demetrius",
+      "chapters": "1",
+      "ch": 1,
+      "note": "recommended by the elder; perhaps the bearer of the letter (1:12)"
+    }
+  ],
+  "writing": {
+    "tradition": "Tradition attributes the letter to the apostle John, “the elder,” who would have written from Ephesus at the end of the 1st century. Like 2 John, it was accepted more slowly than 1 John, and Eusebius mentions it among the books disputed by some.",
+    "academic": "Scholars generally attribute 2 and 3 John to the same author, called “the elder,” linked to the milieu of 1 John and the Gospel of John. It is debated whether he is the apostle, “John the Elder” (mentioned by Papias) or another leader. The most proposed date is c. 90–110. The conflict with Diotrephes is read in various ways: a dispute over authority, a doctrinal disagreement or tension between a local leadership that was establishing itself and the authority of an elder from outside."
+  },
+  "events": {
+    "intro": "The three letters of John come from the same period and milieu. The dates are approximate.",
+    "axis": [
+      60,
+      130
+    ],
+    "timeline": [
+      {
+        "label": "Gospel of John",
+        "from": 85,
+        "to": 100,
+        "kind": "escrita",
+        "note": "approximate date"
+      },
+      {
+        "label": "Writing of the letters of John",
+        "from": 90,
+        "to": 110,
+        "kind": "escrita",
+        "note": "approximate date"
+      },
+      {
+        "label": "Papias writes about the elders",
+        "from": 110,
+        "to": 130,
+        "kind": "escrita",
+        "note": "date debated; mentions a “John the Elder”"
+      }
+    ]
+  },
+  "context": "In the 1st century, missionaries traveled from city to city and depended on Christian families to lodge them and help them on their way, “accepting nothing from the pagans” (1:7). The letter shows a network of churches in contact through letters and envoys, and a moment when the authority of a leader from outside could be refused by a local leader.",
+  "places": [
+    "the church of Gaius (unidentified)",
+    "Ephesus and the province of Asia (by tradition)"
+  ],
+  "themes": [
+    "truth",
+    "hospitality",
+    "support for missionaries",
+    "authority in the church",
+    "imitating what is good"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:4"
+    },
+    {
+      "ref": "1:11"
+    }
+  ],
+  "note": "Approximate dates. Some editions divide the last verse in two (14 and 15), as the BSB does; the Greek text used in the app has 14 verses. The verses quoted are from the Berean Standard Bible (BSB)."
+}

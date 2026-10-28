@@ -1,0 +1,146 @@
+{
+  "title_orig": "Πρὸς Φιλήμονα",
+  "title_orig_xlit": "Pros Philemona",
+  "summary": "Philemon is the shortest of Paul's letters, a note of a single chapter. In prison, Paul writes to Philemon, a Christian in whose house a church meets, about Onesimus, his slave, who became a Christian while with Paul. Without giving orders, although he says he could, Paul asks Philemon to receive him “no longer as a slave” but “as a beloved brother” (1:16), offers to pay for any loss and hints that he expects even more than he asks. The letter is a living example of the art of persuasion in antiquity and an important text in discussions about the Christian faith and slavery.",
+  "name": "The title Pros Philemona, “To Philemon,” comes from the main recipient, called “our beloved fellow worker” (1:1). Despite the personal tone, the greeting also includes Apphia, Archippus and the church that meets in the house, so that the request would be heard by the whole community.",
+  "facts": [
+    [
+      "Position",
+      "18th book of the New Testament; 13th and last of Paul's letters, in canonical order"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "personal letter of recommendation and request"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "Greeting and gratitude",
+      "from": 1,
+      "to": 1,
+      "text": "Paul and Timothy greet Philemon, Apphia, Archippus and the church in the house; Paul gives thanks for Philemon's love and faith, which has refreshed the saints (1:1–7)."
+    },
+    {
+      "title": "The request for Onesimus",
+      "from": 1,
+      "to": 1,
+      "text": "Paul appeals instead of ordering; Onesimus, formerly “useless,” is now useful; may Philemon receive him as he would receive Paul himself, who takes on any debt (1:8–21)."
+    },
+    {
+      "title": "Plans and greetings",
+      "from": 1,
+      "to": 1,
+      "text": "Paul asks them to prepare a guest room for him, since he hopes to be released, and sends greetings from Epaphras, Mark, Aristarchus, Demas and Luke (1:22–25)."
+    }
+  ],
+  "extra": {
+    "title": "A play on words",
+    "text": "The name Onesimus, common among slaves, means “useful” or “profitable” in Greek. Paul plays on this when he says that the one who was formerly “useless” is now “useful both to you and to me” (1:11), using the Greek words achrēstos and euchrēstos, which, according to many interpreters, also echoed in sound the title Christos. Further on, when he asks “let me have some benefit from you” (1:20), he uses a verb from the same root as the name."
+  },
+  "people": [
+    {
+      "name": "Paul",
+      "chapters": "1",
+      "ch": 1,
+      "note": "“a prisoner of Christ Jesus” (1:1); writes in his own hand the promise to pay (1:19)"
+    },
+    {
+      "name": "Philemon",
+      "chapters": "1",
+      "ch": 1,
+      "note": "a well-to-do Christian, Paul's fellow worker, in whose house a church meets; the owner of Onesimus"
+    },
+    {
+      "name": "Onesimus",
+      "chapters": "1",
+      "ch": 1,
+      "note": "Philemon's slave, whom Paul calls “my child,” whom he fathered in his chains (1:10)"
+    },
+    {
+      "name": "Apphia and Archippus",
+      "chapters": "1",
+      "ch": 1,
+      "note": "greeted with Philemon; many think Apphia was his wife and Archippus, perhaps, his son; Archippus also appears in Colossians 4:17"
+    },
+    {
+      "name": "Epaphras, Mark, Aristarchus, Demas and Luke",
+      "chapters": "1",
+      "ch": 1,
+      "note": "Paul's companions who send greetings; the same names appear in Colossians 4:10–14"
+    }
+  ],
+  "writing": {
+    "tradition": "Paul's authorship was never disputed; the letter was already part of Marcion's collection, c. 140, and appears in the Muratorian Fragment. Because of the link with Colossians (Onesimus, Archippus and the same companions), tradition placed it in Paul's imprisonment in Rome, c. 60–62, sent together with Colossians.",
+    "academic": "Philemon is among the seven letters that practically all scholars attribute to Paul, alongside Romans, 1 and 2 Corinthians, Galatians, Philippians and 1 Thessalonians. The debated point is the place of imprisonment: Rome (c. 60–62) or Ephesus (c. 54–55), the latter closer to Colossae, which would make easier Onesimus's journey to Paul and the request for lodging in verse 22; Caesarea has also been proposed. Onesimus's situation is also debated: the traditional reading sees him as a runaway slave, perhaps after causing his master some loss; others think he sought Paul out as a friend of his master to intercede in a disagreement, a practice known in Roman law; others still, that he was sent by the church itself to serve Paul. And what exactly Paul is asking for is debated: forgiveness, Onesimus's return to help him or his freedom."
+  },
+  "events": {
+    "intro": "The letter gives no dates, and the date depends on the place of Paul's imprisonment. The dates are approximate.",
+    "axis": [
+      45,
+      115
+    ],
+    "band": {
+      "label": "Reign of Nero",
+      "from": 54,
+      "to": 68
+    },
+    "timeline": [
+      {
+        "label": "Paul in Ephesus",
+        "from": 53,
+        "to": 56,
+        "kind": "evento",
+        "note": "at this time the gospel reaches Colossae, through Epaphras"
+      },
+      {
+        "label": "Writing, if in Ephesus",
+        "from": 54,
+        "to": 55,
+        "kind": "escrita",
+        "note": "hypothesis of many scholars"
+      },
+      {
+        "label": "Writing, if in Rome",
+        "from": 60,
+        "to": 62,
+        "kind": "escrita",
+        "note": "traditional position, together with Colossians"
+      },
+      {
+        "label": "Ignatius mentions a bishop Onesimus in Ephesus",
+        "from": 107,
+        "to": 110,
+        "kind": "pessoa",
+        "note": "some identify him with the Onesimus of the letter, a hypothesis without confirmation"
+      }
+    ]
+  },
+  "context": "Slavery was a structural part of Roman society: slaves worked in houses, workshops and fields, could hold positions of trust and sometimes obtained their freedom, but legally belonged to their owners, who could severely punish runaways. The churches gathered, in the same houses, masters and slaves. From the letter to the Colossians, which mentions Onesimus as “one of you” (Colossians 4:9) and Archippus, it is understood that Philemon lived in Colossae, in the Lycus valley, in Asia Minor. A letter of the Roman writer Pliny the Younger, from the early 2nd century, interceding with a friend for a repentant freedman, is often read alongside Philemon as an example of the same kind of request.",
+  "places": [
+    "Colossae",
+    "the place of Paul's imprisonment (Rome or Ephesus)"
+  ],
+  "themes": [
+    "reconciliation",
+    "brotherhood in Christ",
+    "slavery",
+    "persuasion and freedom",
+    "fellowship and hospitality"
+  ],
+  "key_verses": [
+    {
+      "ref": "1:8–9"
+    },
+    {
+      "ref": "1:10–11"
+    },
+    {
+      "ref": "1:15–16"
+    }
+  ],
+  "note": "Dates are approximate and vary according to the source and the place adopted for Paul's imprisonment. The verses quoted are from the Berean Standard Bible (BSB)."
+}

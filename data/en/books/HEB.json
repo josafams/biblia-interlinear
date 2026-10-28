@@ -1,0 +1,181 @@
+{
+  "title_orig": "Πρὸς Ἑβραίους",
+  "title_orig_xlit": "Pros Hebraious",
+  "summary": "Hebrews is a long appeal to Christians tempted to lose heart and abandon the faith. The author argues that God, after speaking in many ways through the prophets, has spoken definitively through the Son, superior to the angels and to Moses. The center of the book presents Jesus as high priest “in the order of Melchizedek,” who entered the heavenly sanctuary with His own blood and offered a single sacrifice, inaugurating the new covenant announced by Jeremiah. Between the parts of the exposition come serious warnings and encouragement, and chapter 11 runs through the history of Israel recalling those who lived by faith. The book ends with practical counsel and greetings, like a letter.",
+  "name": "The title “To the Hebrews” (Pros Hebraious) is not part of the text; it already appears in the oldest manuscripts, from the end of the 2nd century, and reflects the impression that the recipients were Christians of Jewish origin, because of the central place the book gives to the priesthood, the sacrifices and the Scriptures of Israel. The author himself calls what he wrote a “word of exhortation” (13:22).",
+  "facts": [
+    [
+      "Position",
+      "19th book of the New Testament; comes right after Paul's letters and before the General Epistles"
+    ],
+    [
+      "Original language",
+      "Greek"
+    ],
+    [
+      "Genre",
+      "written sermon (exhortation), with a letter ending"
+    ]
+  ],
+  "structure": [
+    {
+      "title": "The Son, God's final word",
+      "from": 1,
+      "to": 4,
+      "text": "The Son is greater than the angels and than Moses; those who have heard the message are called not to harden their hearts, like the wilderness generation, and to enter God's rest (1:1–4:13)."
+    },
+    {
+      "title": "The high priest",
+      "from": 4,
+      "to": 7,
+      "text": "Jesus is the high priest who sympathizes with human weaknesses; after an appeal to maturity, the author compares Him to Melchizedek, a priest without genealogy and forever (4:14–7:28)."
+    },
+    {
+      "title": "New covenant and single sacrifice",
+      "from": 8,
+      "to": 10,
+      "text": "The earthly sanctuary was a copy and shadow; Christ entered the heavenly sanctuary and, with a single offering, does what the repeated sacrifices could not do (8:1–10:18)."
+    },
+    {
+      "title": "Persevering in faith",
+      "from": 10,
+      "to": 12,
+      "text": "A call to draw near to God with confidence, a warning against falling away, the gallery of those who lived by faith, the race with eyes fixed on Jesus and the contrast between Sinai and Mount Zion (10:19–12:29)."
+    },
+    {
+      "title": "Final exhortations",
+      "from": 13,
+      "to": 13,
+      "text": "Brotherly love, hospitality, care for prisoners, faithfulness in marriage, respect for leaders, a request for prayer and greetings."
+    }
+  ],
+  "extra": {
+    "title": "A sermon in the form of a letter",
+    "text": "Hebrews does not begin as a letter: there is no sender's name or greeting, and only the last chapter has the personal tone of letters. The body of the text alternates exposition and appeal, like a sermon, and the warnings return at intervals (2:1–4; 3:7–4:13; 5:11–6:12; 10:26–31; 12:14–29). The argument rests on comparisons: the Son and the angels, Jesus and Moses, the priesthood of Aaron and that of Melchizedek, the first and the new covenant, and the word “better” appears many times. The Greek is the most polished in the New Testament, and the quotations follow the Greek translation of the Scriptures (the Septuagint), with emphasis on Psalms 2, 95 and 110 and on Jeremiah 31, quoted at length in 8:8–12."
+  },
+  "people": [
+    {
+      "name": "Jesus, the Son",
+      "chapters": "1–2; 4–10; 12",
+      "ch": 1,
+      "note": "presented as Son, brother of human beings, high priest and mediator of a new covenant"
+    },
+    {
+      "name": "Moses",
+      "chapters": "3; 11",
+      "ch": 3,
+      "note": "a faithful servant in God's house, compared with the Son; also remembered among the examples of faith"
+    },
+    {
+      "name": "Melchizedek",
+      "chapters": "5–7",
+      "ch": 7,
+      "note": "king of Salem and priest who blessed Abraham (Genesis 14); a model of Christ's priesthood"
+    },
+    {
+      "name": "Abraham",
+      "chapters": "6–7; 11",
+      "ch": 11,
+      "note": "received the promise with an oath, gave a tenth to Melchizedek and set out without knowing where he was going"
+    },
+    {
+      "name": "Witnesses of faith",
+      "chapters": "11",
+      "ch": 11,
+      "note": "Abel, Enoch, Noah, Sarah, Isaac, Jacob, Joseph, Rahab, the judges, David, the prophets and others"
+    },
+    {
+      "name": "Timothy",
+      "chapters": "13",
+      "ch": 13,
+      "note": "the author announces that he has been released and hopes to visit the recipients with him (13:23)"
+    }
+  ],
+  "writing": {
+    "tradition": "The book does not say who wrote it, and the early Church was divided. In the East, especially in Alexandria, it was received among Paul's letters; Clement of Alexandria thought Paul had written it in Hebrew and Luke had translated it, and Origen, noting that the style is not Paul's, judged that the ideas were his and the composition another's, concluding that only God knows who wrote it. In the West, Pauline authorship was slow to be accepted; Tertullian attributed it to Barnabas. From the 4th and 5th centuries on, the attribution to Paul prevailed and held for a long time.",
+    "academic": "Today most scholars, from various traditions, consider that Paul is not the author: the vocabulary, the style and the way of arguing are different, and the author says he received the message from those who heard the Lord (2:3). Barnabas, Apollos, Silas, Luke, Priscilla and others have been proposed, without any name prevailing. The date is also debated. The book is quoted (or at least known) in the letter of Clement of Rome, from c. 96, which sets a limit. Many place it before 70, because it speaks of worship as something still being practiced and does not mention the destruction of the temple; others observe that the author describes the tabernacle of the wilderness, not the temple, and prefer the 80s or 90s. The recipients are generally seen as Christians of Jewish origin, perhaps in Rome or Italy (13:24), but this too is debated."
+  },
+  "events": {
+    "intro": "Hebrews does not narrate a story, but it was written for a community that already had a history: it received the message from witnesses, went through a time of persecution, with imprisonments and loss of property (10:32–34), and was now in danger of losing heart. The dates are approximate; that of the writing is the most debated.",
+    "axis": [
+      25,
+      100
+    ],
+    "timeline": [
+      {
+        "label": "Death and resurrection of Jesus",
+        "from": 30,
+        "to": 33,
+        "kind": "evento",
+        "note": "approximate date"
+      },
+      {
+        "label": "Expulsion of Jews from Rome by Claudius",
+        "from": 49,
+        "to": 49,
+        "kind": "evento",
+        "note": "c. 49; some relate it to 10:32–34, if the recipients were in Rome"
+      },
+      {
+        "label": "Nero's persecution in Rome",
+        "from": 64,
+        "to": 64,
+        "kind": "evento",
+        "note": "after the fire of the city"
+      },
+      {
+        "label": "Destruction of the temple in Jerusalem",
+        "from": 70,
+        "to": 70,
+        "kind": "evento",
+        "note": "the book does not mention it, which weighs in the debate about the date"
+      },
+      {
+        "label": "Writing of the book",
+        "from": 60,
+        "to": 95,
+        "kind": "escrita",
+        "note": "a wide range: before 70 for some, in the 80s–90s for others"
+      },
+      {
+        "label": "Letter of Clement of Rome",
+        "from": 95,
+        "to": 97,
+        "kind": "escrita",
+        "note": "c. 96; uses expressions from Hebrews, which shows the book was already circulating"
+      }
+    ]
+  },
+  "context": "The author writes to a community that knew the Scriptures of Israel well in the Greek version and had been in the faith for some time, to the point of needing to be teachers (5:12). It had suffered insults, imprisonments and confiscation of property, but without reaching martyrdom (12:4), and some were giving up meeting together (10:25). The argument about the priesthood and the sacrifices assumes readers for whom Israel's worship carried great weight, but the book always speaks of the tabernacle described in Exodus and Leviticus, not of Herod's temple. The greeting “those from Italy send you greetings” (13:24) may indicate that the author was in Italy or that he was writing to it, together with Italians living abroad.",
+  "places": [
+    "the tabernacle of the wilderness and the heavenly sanctuary",
+    "Salem",
+    "Mount Sinai and Mount Zion",
+    "Egypt and the wilderness",
+    "Italy"
+  ],
+  "themes": [
+    "the superiority of the Son",
+    "the high priesthood of Christ",
+    "the new covenant",
+    "sacrifice and purification",
+    "faith and perseverance",
+    "warning against falling away",
+    "God's rest"
+  ],
+  "key_verses": [
+    {
+      "ref": "4:12"
+    },
+    {
+      "ref": "4:15–16"
+    },
+    {
+      "ref": "11:1"
+    },
+    {
+      "ref": "12:1–2"
+    }
+  ],
+  "note": "The authorship, date and recipients of Hebrews are uncertain; the dates of the timeline are approximate and the positions presented are the most discussed, without claiming to resolve the question. The verses quoted are from the Berean Standard Bible (BSB)."
+}
