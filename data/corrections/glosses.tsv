@@ -845,3 +845,103 @@ DEU 28:38	8	יַחְסְלֶ֖/נּוּ	consumirá-o	claude	יַחְסְלֶנּ
 DEU 28:38	9	הָ/אַרְבֶּֽה	o-gafanhoto	claude	הָאַרְבֶּה “o gafanhoto”; tinha “os-gafanhotos-o-consumirão”
 DEU 28:40	10	יִשַּׁ֖ל	cairá	claude	יִשַּׁל “cairá”; tinha “azeitona”
 DEU 28:40	11	זֵיתֶֽ/ךָ	tua-azeitona	claude	זֵיתֶךָ “tua azeitona”; tinha “tua-azeitona-cairá”
+DEU 31:6	6	תַּעַרְצ֖וּ	vos-aterrorizeis	claude	תַּעַרְצוּ “vos aterrorizeis” (a BLIVRE: “tenhais medo”); tinha “medo”
+DEU 31:6	14	לֹ֥א	não	claude	לֹא “não”; tinha “não-nem”
+JOS 1:4	2	וְ/הַ/לְּבָנ֨וֹן	e-o-Líbano	claude	וְהַלְּבָנוֹן “e o Líbano”; tinha “e-este-Líbano”
+JOS 1:4	3	הַ/זֶּ֜ה	este	claude	הַזֶּה “este”; tinha “o-hoje”
+JOS 1:4	15	מְב֣וֹא	do-pôr	claude	מְבוֹא “a entrada, o pôr (do sol): o ocidente”; tinha “ocidente”
+JOS 1:4	16	הַ/שָּׁ֑מֶשׁ	do-sol	claude	הַשָּׁמֶשׁ “do sol”; tinha “do-ocidente”
+JOS 1:17	1	כְּ/כֹ֤ל	conforme-tudo	claude	כְּכֹל “conforme tudo”; tinha “todas”
+JOS 1:17	10	יִֽהְיֶ֞ה	seja	claude	יִהְיֶה “seja”; tinha “será”
+JOS 2:7	2	רָדְפ֤וּ	perseguiram	claude	רָדְפוּ “perseguiram” (a BLIVRE: “foram atrás”); tinha “atrás”
+JOS 2:7	3	אַֽחֲרֵי/הֶם֙	atrás-deles	claude	אַחֲרֵיהֶם “atrás deles”; tinha “atrás-eles”
+JOS 2:7	13	הָ/רֹדְפִ֖ים	os-perseguidores	claude	הָרֹדְפִים “os que perseguiam”; tinha “os-que-atrás”
+JOS 2:7	14	אַחֲרֵי/הֶֽם	atrás-deles	claude	אַחֲרֵיהֶם “atrás deles”; tinha “atrás-eles”
+JOS 2:20	4	דְּבָרֵ֣/נוּ	nosso-negócio	claude	דְּבָרֵנוּ “nosso negócio, nosso assunto”; tinha “nosso-negócio-nós”
+JOS 2:20	7	נְקִיִּ֔ם	desobrigados	claude	נְקִיִּם “livres, desobrigados”; tinha “seremos-desobrigados”
+JOS 2:20	8	מִ/שְּׁבֻעָתֵ֖/ךְ	de-teu-juramento	claude	מִשְּׁבֻעָתֵךְ “de teu juramento”; tinha “desobrigados-deste-teu-juramento”
+JOS 4:18	2	כַּ/עֲל֨וֹת	ao-subirem	claude	כַּעֲלוֹת “ao subirem”; tinha “subiram”
+JOS 4:18	10	נִתְּק֗וּ	se-ergueram	claude	נִתְּקוּ “se desprenderam, se ergueram”; tinha “arrancados”
+JOS 4:18	21	כִ/תְמוֹל	como-antes	claude	כִתְמוֹל “como antes” (como ontem); tinha “correndo-como”
+JOS 5:14	3	כִּ֛י	mas	claude	כִּי “mas”; tinha “porque”
+JOS 5:14	10	וַ/יִּפֹּל֩	e-caiu	claude	וַיִּפֹּל “e caiu, prostrou-se”; tinha “então-prostrando”
+JOS 5:14	19	אֲדֹנִ֖/י	meu-senhor	claude	אֲדֹנִי “meu senhor”; tinha “diz-meu-Senhor”
+JOS 6:18	6	פֶּֽן	para-que-não	claude	פֶּן “para que não”; tinha “não”
+JOS 6:18	7	תַּחֲרִ֖ימוּ	consagreis-ao-anátema	claude	תַּחֲרִימוּ “consagreis ao anátema” (a BLIVRE: “toqueis”)
+JOS 6:18	8	וּ/לְקַחְתֶּ֣ם	e-tomeis	claude	וּלְקַחְתֶּם “e tomeis”; tinha “nem-tomeis”
+JOS 8:3	14	הַ/חַ֔יִל	valentes	claude	הַחַיִל “do valor” (homens valentes); tinha “fortes-os”
+JOS 8:3	15	וַ/יִּשְׁלָחֵ֖/ם	e-os-enviou	claude	וַיִּשְׁלָחֵם “e os enviou”; tinha “quais-enviou”
+JOS 9:7	11	אֶֽכְרָת	faremos	claude	אֶכְרָת “cortarei, farei (aliança)”; tinha “poderemos”
+JOS 9:7	12	לְ/ךָ֥	contigo	claude	לְךָ “contigo”; tinha “para-cortar-ti”
+JOS 9:7	13	בְרִֽית	aliança	claude	בְרִית “aliança”; tinha “convosco”
+JOS 10:37	3	לְ/פִי	a-fio	claude	לְפִי “a fio (de)”; tinha “para-fio”
+JOS 10:37	12	הַ/נֶּ֤פֶשׁ	pessoa	claude	הַנֶּפֶשׁ “pessoa, ser vivo”; tinha “vivo”
+JOS 10:37	17	שָׂרִ֔יד	sobrevivente	claude	שָׂרִיד “sobrevivente” (a BLIVRE: “sem restar nada”); tinha “nada”
+JOS 10:37	18	כְּ/כֹ֥ל	conforme-tudo	claude	כְּכֹל “conforme tudo”; tinha “nada-como”
+JOS 10:37	22	וַ/יַּחֲרֵ֣ם	e-destruiu	claude	וַיַּחֲרֵם “e destruiu (por anátema)”; tinha “assim-a-destruíram”
+JOS 12:1	13	מִזְרְחָ֣/ה	ao-nascer	claude	מִזְרְחָה “ao nascer (do sol)”; tinha “oriente”
+JOS 12:1	14	הַ/שָּׁ֑מֶשׁ	do-sol	claude	הַשָּׁמֶשׁ “do sol”; tinha “ao-oriente”
+JOS 17:1	2	הַ/גּוֹרָל֙	a-sorte	claude	הַגּוֹרָל “a sorte, a porção”; tinha “também-porção”
+JOS 17:1	15	ה֤וּא	ele	claude	הוּא “ele”; tinha “qual”
+JOS 17:1	19	וַֽ/יְהִי	e-houve	claude	וַיְהִי “e houve, e teve”; tinha “teve”
+JOS 17:1	20	ל֖/וֹ	para-ele	claude	לוֹ “para ele”; tinha “teve-a”
+JOS 17:10	2	לְ/אֶפְרַ֗יִם	para-Efraim	claude	לְאֶפְרַיִם “para Efraim”; tinha “Efraim-ao”
+JOS 17:10	4	לִ/מְנַשֶּׁ֔ה	para-Manassés	claude	לִמְנַשֶּׁה “para Manassés”; tinha “Manassés-ao”
+JOS 17:10	5	וַ/יְהִ֥י	e-foi	claude	וַיְהִי “e foi”; tinha “e-aconteceu”
+JOS 17:10	9	יִפְגְּע֣וּ/ן	encontram-se	claude	יִפְגְּעוּן “encontram-se, tocam”; tinha “parte”
+JOS 17:10	10	מִ/צָּפ֔וֹן	do-norte	claude	מִצָּפוֹן “do norte”; tinha “parte-do-norte”
+JOS 19:12	3	קֵ֚דְמָ/ה	ao-oriente	claude	קֵדְמָה “ao oriente”; tinha “até-oriente”
+JOS 19:12	4	מִזְרַ֣ח	ao-nascer	claude	מִזְרַח “ao nascer (do sol)”; tinha “oriente”
+JOS 19:12	5	הַ/שֶּׁ֔מֶשׁ	do-sol	claude	הַשֶּׁמֶשׁ “do sol”; tinha “o-oriente”
+JOS 19:12	8	כִּסְלֹ֖ת	Quislote	claude	כִּסְלֹת “Quislote” (Quislote-Tabor); tinha o nome inteiro
+JOS 19:12	9	תָּבֹ֑ר	Tabor	claude	תָּבֹר “Tabor” (Quislote-Tabor); tinha o nome inteiro
+JOS 19:13	1	וּ/מִ/שָּׁ֤ם	e-dali	claude	וּמִשָּׁם “e dali”; tinha “e-passando-dali”
+JOS 19:13	2	עָבַר֙	passa	claude	עָבַר “passa”; tinha “passando”
+JOS 19:13	3	קֵ֣דְמָ/ה	ao-oriente	claude	קֵדְמָה “ao oriente”; tinha “até-o-lado”
+JOS 19:13	4	מִזְרָ֔חָ/ה	ao-nascente	claude	מִזְרָחָה “ao nascente”; tinha “oriental-a”
+JOS 19:13	5	גִּתָּ֥/ה	Gate	claude	גִּתָּה “a Gate” (Gate-Hefer); tinha o nome inteiro
+JOS 19:13	6	חֵ֖פֶר	Hefer	claude	חֵפֶר “Hefer” (Gate-Hefer); tinha o nome inteiro
+JOS 19:13	7	עִתָּ֣ה	Ete	claude	עִתָּה “a Ete” (Ete-Cazim); tinha o nome inteiro
+JOS 19:13	8	קָצִ֑ין	Cazim	claude	קָצִין “Cazim” (Ete-Cazim); tinha o nome inteiro
+JOS 19:27	2	מִזְרַ֣ח	ao-nascer	claude	מִזְרַח “ao nascer (do sol)”; tinha “oriente”
+JOS 19:27	3	הַ/שֶּׁמֶשׁ֮	do-sol	claude	הַשֶּׁמֶשׁ “do sol”; tinha “do-oriente-a”
+JOS 19:27	4	בֵּ֣ית	Bete	claude	בֵּית “Bete” (Bete-Dagom); tinha o nome inteiro
+JOS 19:27	5	דָּגֹן֒	Dagom	claude	דָּגֹן “Dagom” (Bete-Dagom); tinha o nome inteiro
+JOS 19:27	9	יִפְתַּח	Iftá	claude	יִפְתַּח “Iftá” (Iftá-El); tinha o nome inteiro
+JOS 19:27	10	אֵ֥ל	El	claude	אֵל “El” (Iftá-El); tinha o nome inteiro
+JOS 19:27	11	צָפ֛וֹנָ/ה	ao-norte	claude	צָפוֹנָה “ao norte”; tinha “norte-a”
+JOS 19:27	13	הָעֵ֖מֶק	Emeque	claude	הָעֵמֶק “Emeque” (Bete-Emeque); tinha o nome inteiro
+JOS 19:51	4	נִחֲל֣וּ	repartiram	claude	נִחֲלוּ “repartiram em herança”; tinha “propriedades”
+JOS 19:51	12	לְ/מַטּוֹת֩	às-tribos	claude	לְמַטּוֹת “às tribos”; tinha “tribos”
+JOS 20:5	2	יִרְדֹּ֜ף	perseguir	claude	יִרְדֹּף “perseguir”; tinha “perseguirá”
+JOS 20:5	4	הַ/דָּם֙	do-sangue	claude	הַדָּם “do sangue” (o vingador do sangue; a BLIVRE: “do morto”)
+JOS 20:5	5	אַֽחֲרָ֔י/ו	atrás-dele	claude	אַחֲרָיו “atrás dele”; tinha “seguir”
+JOS 20:5	12	בִ/בְלִי	sem	claude	בִּבְלִי “sem”; tinha “por-acidente”
+JOS 20:5	13	דַ֨עַת֙	saber	claude	דַעַת “conhecimento” (sem saber: por acidente); tinha “acidente”
+JOS 20:5	18	שֹׂנֵ֥א	odiava	claude	שֹׂנֵא “odiava”; tinha “teve”
+JOS 20:5	21	מִ/תְּמ֥וֹל	desde-ontem	claude	מִתְּמוֹל “desde ontem”; tinha “antes”
+JOS 20:5	22	שִׁלְשֽׁוֹם	anteontem	claude	שִׁלְשׁוֹם “anteontem”; tinha “antes-inimizade”
+JDG 1:25	7	הָ/עִ֖יר	a-cidade	claude	הָעִיר “a cidade”; tinha “o-cidade”
+JDG 1:25	15	שִׁלֵּֽחוּ	deixaram-ir	claude	שִׁלֵּחוּ “deixaram ir”; tinha “sua”
+JDG 1:28	3	חָזַ֣ק	se-fortaleceu	claude	חָזַק “se fortaleceu” (a BLIVRE: “tomou forças”); tinha “tomou”
+JDG 1:28	5	וַ/יָּ֥שֶׂם	e-pôs	claude	וַיָּשֶׂם “e pôs, e fez”; tinha “tomou-forças-fez”
+JDG 1:28	9	וְ/הוֹרֵ֖ישׁ	e-expulsar	claude	וְהוֹרֵשׁ “e expulsar” (infinitivo que reforça: não os expulsou de todo); tinha “e-posse”
+JDG 2:14	1	וַ/יִּֽחַר	e-se-acendeu	claude	וַיִּחַר “e se acendeu”; tinha “acendeu”
+JDG 2:14	2	אַ֤ף	a-ira	claude	אַף “a ira” (a BLIVRE: “a fúria”); tinha “se”
+JDG 3:28	4	אַחֲרַ֔/י	após-mim	claude	אַחֲרַי “após mim”; tinha “depois-mim”
+JDG 3:28	21	נָתְנ֥וּ	deixaram	claude	נָתְנוּ “deixaram, permitiram”; tinha “deram”
+JDG 3:28	23	לַ/עֲבֹֽר	passar	claude	לַעֲבֹר “passar”; tinha “passar-a”
+JDG 5:17	4	שָׁכֵ֔ן	habitou	claude	שָׁכֵן “habitou, ficou” (a BLIVRE: “se restou”)
+JDG 5:17	7	יָג֖וּר	ficou	claude	יָגוּר “ficou, morou”; tinha “se”
+JDG 5:17	10	יָשַׁב֙	habitou	claude	יָשַׁב “habitou, ficou”; tinha “esteve”
+JDG 5:17	13	וְ/עַ֥ל	e-junto-a	claude	וְעַל “e junto a”; tinha “e-ficou-em”
+JDG 5:17	15	יִשְׁכּֽוֹן	habita	claude	יִשְׁכּוֹן “habita, ficou”; tinha “portos”
+JDG 6:27	20	מֵ/עֲשׂ֥וֹת	de-fazer	claude	מֵעֲשׂוֹת “de fazer”; tinha “da-o-fez”
+JDG 6:27	22	וַ/יַּ֥עַשׂ	e-fez	claude	וַיַּעַשׂ “e fez”; tinha “fazê”
+JDG 7:13	6	לְ/רֵעֵ֖/הוּ	a-seu-companheiro	claude	לְרֵעֵהוּ “a seu companheiro”; tinha “a-seu-companheiro-um”
+JDG 7:13	7	חֲל֑וֹם	sonho	claude	חֲלוֹם “sonho”; tinha “um-sonho”
+JDG 7:13	10	חֲל֣וֹם	sonho	claude	חֲלוֹם “sonho”; tinha “sonhei-um”
+JDG 7:13	11	חָלַ֗מְתִּי	sonhei	claude	חָלַמְתִּי “sonhei”; tinha “sonho”
+JDG 7:13	13	צְלִ֜יל	um-bolo	claude	צְלִיל “um bolo, um pão redondo”; tinha “via”
+JDG 7:13	17	בְּ/מַחֲנֵ֣ה	no-acampamento	claude	בְּמַחֲנֵה “no acampamento”; tinha “até-o-acampamento”
+JDG 7:23	1	וַ/יִּצָּעֵ֧ק	e-foram-convocados	claude	וַיִּצָּעֵק “e foram convocados”; tinha “e-juntando”
