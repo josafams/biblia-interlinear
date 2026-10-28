@@ -323,6 +323,11 @@ _CONS_PT = {
     "φ": "f",
     "χ": "rr",
 }
+# the same sounds spelled for English readers (the app in English)
+_VOWEL_EN = {"α": "a", "ε": "e", "η": "ay", "ι": "i", "ο": "o", "υ": "u", "ω": "o"}
+_DIPHTHONGS_EN = {"αι": "ai", "ει": "ay", "οι": "oy", "υι": "wee", "αυ": "ow", "ευ": "yoo", "ηυ": "ayoo", "ου": "oo", "ωυ": "oo"}
+_CONS_EN = _CONS_PT | {"χ": "kh"}
+_SPELLING = {"pt": (_VOWEL_PT, _DIPHTHONGS, _CONS_PT), "en": (_VOWEL_EN, _DIPHTHONGS_EN, _CONS_EN)}
 _PLOSIVES = set("πβφτδθκγχ")
 _LIQUIDS = set("λρ")
 _VARIANTS = {"ς": "σ", "ϲ": "σ", "ϐ": "β", "ϑ": "θ", "ϕ": "φ", "ϰ": "κ", "ϱ": "ρ", "ϖ": "π"}
@@ -370,20 +375,21 @@ def _letters_g(word):
     return letters
 
 
-def _phonemes_g(letters):
+def _phonemes_g(letters, spelling="pt"):
     """Agrupa as letras em vogais/ditongos e consoantes simples.
     Cada item: [tipo, texto_pt, tônica, áspero, letra_grega]."""
+    vowels, diphthongs, consonants = _SPELLING[spelling]
     item_list, i, n = [], 0, len(letters)
     while i < n:
         b, marks = letters[i]
         if b in _VOWELS_G:
             pair = b + letters[i + 1][0] if i + 1 < n else ""
-            if pair in _DIPHTHONGS and _DIAERESIS not in letters[i + 1][1] and not marks & {_ACUTE, _GRAVE, _CIRC, _PSILE, _DASIA}:
+            if pair in diphthongs and _DIAERESIS not in letters[i + 1][1] and not marks & {_ACUTE, _GRAVE, _CIRC, _PSILE, _DASIA}:
                 m2 = marks | letters[i + 1][1]
-                item_list.append(["V", _DIPHTHONGS[pair], bool(m2 & set(_ACCENTS)), _DASIA in m2, pair])
+                item_list.append(["V", diphthongs[pair], bool(m2 & set(_ACCENTS)), _DASIA in m2, pair])
                 i += 2
                 continue
-            item_list.append(["V", _VOWEL_PT[b], bool(marks & set(_ACCENTS)), _DASIA in marks, b])
+            item_list.append(["V", vowels[b], bool(marks & set(_ACCENTS)), _DASIA in marks, b])
         elif b == "ξ":
             item_list += [["C", "k", False, False, "κ"], ["C", "s", False, False, "σ"]]
         elif b == "ψ":
@@ -391,7 +397,7 @@ def _phonemes_g(letters):
         elif b == "ϛ":
             item_list += [["C", "s", False, False, "σ"], ["C", "t", False, False, "τ"]]
         else:
-            item_list.append(["C", _CONS_PT[b], False, False, b])
+            item_list.append(["C", consonants[b], False, False, b])
         i += 1
     # γ nasal antes de γ, κ, ξ (κ+σ), χ
     for k in range(len(item_list) - 1):
@@ -399,7 +405,7 @@ def _phonemes_g(letters):
             item_list[k][1] = "n"
     # χ antes de consoante (ou no fim) → k
     for k, it in enumerate(item_list):
-        if it[4] == "χ" and it[1] == "rr" and (k + 1 >= len(item_list) or item_list[k + 1][0] == "C"):
+        if it[4] == "χ" and it[1] in ("rr", "kh") and (k + 1 >= len(item_list) or item_list[k + 1][0] == "C"):
             it[1] = "k"
     return item_list
 
@@ -428,14 +434,14 @@ def _syllables_g(item_list):
     return syllables
 
 
-def _word_g(word):
+def _word_g(word, spelling="pt"):
     letters = _letters_g(word)
     if not letters:
         return ""
     if not any(b in _VOWELS_G for b, _ in letters):
         # numeral ou sigla sem vogal: lê pelos nomes das letras
-        return " ".join(pron_greek(_NAMES[b]) for b, _ in letters if b in _NAMES)
-    syllables = _syllables_g(_phonemes_g(letters))
+        return " ".join(pron_greek(_NAMES[b], spelling) for b, _ in letters if b in _NAMES)
+    syllables = _syllables_g(_phonemes_g(letters, spelling))
     stressed = next((k for k, s in enumerate(syllables) if any(it[2] for it in s)), None)
     result = []
     for k, syllable in enumerate(syllables):
@@ -444,18 +450,29 @@ def _word_g(word):
             if it[0] == "V" and it[3]:
                 txt += "h"  # espírito áspero
             txt += it[1]
-        txt = re.sub(r"g(?=[eiêé])", "gu", txt)
+        if spelling == "pt":
+            txt = re.sub(r"g(?=[eiêé])", "gu", txt)
         result.append(txt.upper() if k == stressed else txt)
     return "-".join(result)
 
 
-def pron_greek(lemma):
-    """Lema grego acentuado → pronúncia aproximada à portuguesa, com a tônica
-    em maiúsculas (λόγος → "LO-gos", Ἰησοῦς → "i-ê-SUS")."""
+def pron_greek(lemma, spelling="pt"):
+    """Lema grego acentuado → pronúncia aproximada à portuguesa (ou, com spelling="en", para quem lê inglês), com a
+    tônica em maiúsculas (λόγος → "LO-gos", Ἰησοῦς → "i-ê-SUS"; em inglês "i-ay-SOOS")."""
     if not lemma:
         return ""
     verse_text = re.sub(r"[()\[\]\-’'ʼ᾽`]", "", lemma)  # οὕτω(ς) → οὕτως
-    return " ".join(x for x in (_word_g(w) for w in verse_text.split()) if x)
+    return " ".join(x for x in (_word_g(w, spelling) for w in verse_text.split()) if x)
+
+
+def pron_hebrew_en(pron_strong):
+    """The pronunciation of Strong's dictionary (in English) with the stress, marked by an apostrophe, in capitals:
+    "el-o-heem'" → "el-o-HEEM", "eh'-rets" → "EH-rets"."""
+    out = []
+    for word in (pron_strong or "").split():
+        sylls = word.split("-")
+        out.append("-".join(s.rstrip("'’").upper() if s.endswith(("'", "’")) else s for s in sylls))
+    return " ".join(out)
 
 
 # ===========================================================================
