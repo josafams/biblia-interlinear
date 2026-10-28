@@ -14,9 +14,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  videos:
+  # as duas línguas gravam ao mesmo tempo, cada uma na sua máquina; a publicação junta as duas
+  record:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 60
+    strategy:
+      matrix:
+        lang: [pt, en]
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
       - name: Site publicado (gh-pages) em build/web
@@ -33,17 +37,37 @@ jobs:
         run: |
           npx playwright install --with-deps chromium
           sudo apt-get install -y ffmpeg
-      - name: Gravar
-        run: node scripts/videos/gravar.mjs
-      - name: Gravar em inglês (o app com ?lang=en, em build/videos/en)
-        run: node scripts/videos/gravar.mjs --lang en
+      - name: Gravar (${{ matrix.lang }}; em inglês, o app com ?lang=en, em build/videos/en)
+        run: node scripts/videos/gravar.mjs --lang ${{ matrix.lang }}
+      - uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
+        with:
+          name: videos-${{ matrix.lang }}
+          # the folder itself, so the English ones keep their en/ (build/videos/en)
+          path: build/videos
+          if-no-files-found: error
+          retention-days: 1
+
+  publish:
+    needs: record
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Site publicado (gh-pages) em build/web
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          ref: gh-pages
+          path: build/web
+      - name: Os vídeos das duas línguas
+        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
+        with:
+          pattern: videos-*
+          path: build/videos
+          merge-multiple: true
       - name: Publicar em gh-pages
         run: |
+          ls build/videos build/videos/en
           rm -rf build/web/videos
-          mkdir -p build/web/videos
-          cp build/videos/*.mp4 build/videos/*.vtt build/videos/*.jpg build/videos/videos.js build/web/videos/
-          mkdir -p build/web/videos/en
-          cp build/videos/en/*.mp4 build/videos/en/*.vtt build/videos/en/*.jpg build/videos/en/videos.js build/web/videos/en/
+          cp -r build/videos build/web/videos
           cd build/web
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
