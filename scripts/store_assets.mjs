@@ -3,6 +3,7 @@
 //   feature.png      imagem de destaque (1024×500)
 //   icon-512.png     ícone (cópia de build/web/icones/icone-512.png)
 // Uso: npm run build:web && node scripts/store_assets.mjs
+//      node scripts/store_assets.mjs --lang en   → the same in English (the app with ?lang=en), in build/store/en
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -11,7 +12,22 @@ import { serveStatic } from "./lib/static-server.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const WEB = path.join(ROOT, "build", "web");
-const OUT = path.join(ROOT, "build", "store");
+const LANG = process.argv.includes("--lang") ? process.argv[process.argv.indexOf("--lang") + 1] : "pt";
+// the words of the feature image in each language (the store listing itself is in docs/LOJAS.md)
+const TEXT = {
+  pt: {
+    locale: "pt-BR",
+    subtitle: "Hebraico, aramaico e grego palavra por palavra, com a Bíblia Livre",
+    glosses: ["no-princípio", "criou", "Deus"]
+  },
+  en: {
+    locale: "en",
+    subtitle: "Hebrew, Aramaic and Greek word by word, with the Berean Standard Bible",
+    glosses: ["in-the-beginning", "created", "God"]
+  }
+}[LANG];
+if (!TEXT) throw new Error(`--lang ${LANG}: pt or en`);
+const OUT = path.join(ROOT, "build", "store", LANG === "pt" ? "" : LANG);
 if (!fs.existsSync(path.join(WEB, "ler.html"))) throw new Error("build/web não existe: rode npm run build:web antes");
 fs.mkdirSync(OUT, { recursive: true });
 
@@ -19,7 +35,7 @@ const exe = process.env.CHROMIUM_PATH || (fs.existsSync("/opt/pw-browsers/chromi
 const browser = await chromium.launch(exe ? { executablePath: exe } : {});
 // the reader is an ES module bundle: serve build/web over http (file:// cannot load modules)
 const server = await serveStatic(WEB);
-const reader = server.base + "ler.html";
+const reader = server.base + (LANG === "pt" ? "ler.html" : `ler.html?lang=${LANG}`);
 
 // Cada cena: modo de leitura, capítulo e o que fazer antes da foto
 const scenes = [
@@ -34,7 +50,7 @@ const scenes = [
     wait: "#detail"
   },
   { name: "phone-4", mode: "biblia", ref: "PSA.23", verse: 1 },
-  { name: "phone-5", mode: "paralelo", ref: "ROM.8", verse: 28, theme: "noite" },
+  { name: "phone-5", mode: "original", ref: "ROM.8", verse: 28, theme: "noite" },
   {
     name: "phone-6",
     mode: "interlinear",
@@ -54,7 +70,7 @@ for (const s of scenes) {
     deviceScaleFactor: 3,
     isMobile: true,
     hasTouch: true,
-    locale: "pt-BR",
+    locale: TEXT.locale,
     colorScheme: s.theme ? "dark" : "light"
   });
   await ctx.addInitScript(
@@ -95,7 +111,7 @@ for (const s of scenes) {
 // Imagem de destaque: título, subtítulo e uma linha interlinear de Gênesis 1:1
 const page = await browser.newPage({ viewport: { width: 1024, height: 500 } });
 const icon = fs.readFileSync(path.join(ROOT, "web", "icones", "icone.svg"), "utf8");
-await page.setContent(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+await page.setContent(`<!doctype html><html lang="${TEXT.locale}"><head><meta charset="utf-8">
 <link rel="stylesheet" href="${pathToFileURL(path.join(WEB, "fonts", "fonts.css")).href}">
 <style>
   body { margin: 0; width: 1024px; height: 500px; background: #1d5b74; color: #f8f9f6; display: flex; align-items: center;
@@ -110,11 +126,11 @@ await page.setContent(`<!doctype html><html lang="pt-BR"><head><meta charset="ut
   .w span { font-size: 18px; color: #dbe8ec; }
 </style></head><body>
 <div class="icon">${icon}</div>
-<div><h1>Bíblia Interlinear</h1><p>Hebraico, aramaico e grego palavra por palavra, com a Bíblia Livre</p>
+<div><h1>Bíblia Interlinear</h1><p>${TEXT.subtitle}</p>
 <div class="row">
-  <div class="w"><b>בְּרֵאשִׁ֖ית</b><span>no-princípio</span></div>
-  <div class="w"><b>בָּרָ֣א</b><span>criou</span></div>
-  <div class="w"><b>אֱלֹהִ֑ים</b><span>Deus</span></div>
+  <div class="w"><b>בְּרֵאשִׁ֖ית</b><span>${TEXT.glosses[0]}</span></div>
+  <div class="w"><b>בָּרָ֣א</b><span>${TEXT.glosses[1]}</span></div>
+  <div class="w"><b>אֱלֹהִ֑ים</b><span>${TEXT.glosses[2]}</span></div>
 </div></div></body></html>`);
 await page.evaluate(() => document.fonts.ready);
 await page.screenshot({ path: path.join(OUT, "feature.png") });

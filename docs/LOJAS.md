@@ -8,7 +8,7 @@ Tudo o que a Play Store pede, pronto para copiar, e os passos que só o dono da 
 - [ ] Chave de upload criada e cadastrada nos segredos do GitHub (ver [APPS.md](APPS.md#pelo-github-sem-instalar-nada)); o AAB da release **app-android** sai assinado.
 - [ ] Tela de consentimento OAuth do Google em **produção** (abaixo).
 - [ ] Cliente OAuth **Android** com o SHA-1 da chave de assinatura do Google Play (abaixo) — sem isso, o login com Google não funciona no app baixado da loja.
-- [ ] Imagens da ficha: `make store` gera tudo em `build/store/`.
+- [ ] Imagens da ficha: `make store` gera tudo em `build/store/` (e as da ficha em inglês em `build/store/en/`).
 - [ ] Teste fechado com 12 testadores por 14 dias (contas pessoais criadas depois de 13/11/2023).
 
 ## Ficha da loja
@@ -57,6 +57,49 @@ LIVRE E SEM ANÚNCIOS
 Sem anúncios, sem cadastro e sem coleta de dados pelo projeto. Funciona sem internet. O texto original vem de fontes abertas (Westminster Leningrad Codex pelo Open Scriptures, SBL Greek New Testament com a morfologia do MorphGNT, dicionário de Strong) e a tradução é a Bíblia Livre, de licença livre. O código e os dados estão no GitHub.
 
 As glosas e o léxico em português são do projeto, gerados por alinhamento com a Bíblia Livre e em revisão contínua; correções são bem-vindas pelo GitHub.
+```
+
+### Em inglês (Play Console › Ficha principal › Gerenciar traduções › inglês)
+
+O app tem as duas línguas (o seletor fica em Aparência); a ficha em inglês leva as imagens de `node scripts/store_assets.mjs --lang en` (em `build/store/en/`) e o site `…/biblia-interlinear/en/`.
+
+| Campo | Valor |
+| --- | --- |
+| Nome do app (até 30) | Bíblia Interlinear |
+| Descrição curta (até 80) | Hebrew, Aramaic and Greek word by word, with the Berean Standard Bible |
+| Site | <https://josafams.github.io/biblia-interlinear/en/> |
+| Imagens | `build/store/en/` (as mesmas medidas da ficha em português) |
+
+```text
+The whole Bible, all 66 books, word by word in the original: Hebrew and Aramaic in the Old Testament and Greek in the New. Each word comes with its transliteration, an approximate pronunciation, the Strong's number, the grammatical analysis and an English gloss, and under each verse is the running text of the Berean Standard Bible (BSB).
+
+READING MODES
+• Bible: only the BSB, in paragraphs, to read like an ordinary Bible
+• Original: the running Hebrew or Greek
+• Original and BSB, side by side
+• Interlinear: each word with its gloss
+• Study: with pronunciation and grammatical analysis
+• Custom: you choose what shows
+
+STUDY
+• Tap a word to open its entry: origin, meaning, pronunciation, grammatical analysis and how the BSB translates that word elsewhere
+• "About the book": summary, authorship, date, people, timeline and key verses for all 66 books
+• A theme for each chapter and the chapter's lexicon
+• Questions on the text at the end of each chapter, to think about or discuss in a group
+• Listen to the verse or the word read aloud
+
+NOTES
+• Highlight verses, passages or words with five colors
+• Notes, bookmarks and tags, with search and filters
+• A study notebook in PDF with everything you wrote
+
+GOOGLE ACCOUNT (OPTIONAL)
+If you want, signing in with Google keeps your notes in a private app folder in your own Google Drive and syncs them between phone and computer. With the account, "My progress" shows the chapters read, reading time, streaks and plans like "Bible in a year". Without signing in, everything works and stays on the device.
+
+FREE AND WITHOUT ADS
+No ads, no sign-up and no data collected by the project. Works offline. The original text comes from open sources (the Westminster Leningrad Codex from Open Scriptures, the SBL Greek New Testament with the MorphGNT morphology, Strong's dictionary) and the translation is the Berean Standard Bible, in the public domain. The code and the data are on GitHub.
+
+The English glosses are the project's, made by alignment with the BSB and under continuous review; corrections are welcome on GitHub. The app is also in Portuguese, with the Bíblia Livre.
 ```
 
 ## Conteúdo do app (Play Console › Política › Conteúdo do app)

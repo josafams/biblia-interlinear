@@ -112,8 +112,9 @@ videos: ## Grava os vídeos "Como usar" em build/videos (ex.: make videos ONLY=2
 videos-check: ## Confere se os roteiros dos vídeos ainda funcionam (sem gravar)
 	node scripts/videos/gravar.mjs --verificar
 
-store: web ## Imagens da ficha da Play Store em build/store
+store: web ## Imagens da ficha da Play Store em build/store (e em inglês, em build/store/en)
 	node scripts/store_assets.mjs
+	node scripts/store_assets.mjs --lang en
 
 epub: ## Gera os EPUB em build/epub (BOOKS_LANG=en: em inglês, em build/epub/en)
 	python3 scripts/build_epub.py --lang $(or $(BOOKS_LANG),pt)
