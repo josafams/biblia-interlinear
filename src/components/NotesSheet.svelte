@@ -5,9 +5,12 @@
 -->
 <script lang="ts">
   import { t } from "../i18n";
-  import type { Item, Kind } from "../lib/annotations/list";
+  import type { Item } from "../lib/annotations/list";
   import { annotated } from "../state/annotations.svelte";
   import { notes } from "../state/notes.svelte";
+  import Icon from "./Icon.svelte";
+  import NotesFilters from "./NotesFilters.svelte";
+  import NotesList from "./NotesList.svelte";
 
   type MenuAction = "select" | "export" | "download" | "import" | "manage";
   let {
@@ -30,12 +33,10 @@
     ontab: (tab: "livros" | "voce") => void;
   } = $props();
   let more: HTMLDetailsElement | undefined = $state();
-  const KINDS: ("" | Kind)[] = ["", "notas", "marcacoes", "favoritos"];
   const menu = (a: MenuAction) => {
     if (more) more.open = false;
     onmenu(a);
   };
-  const short = (s: string) => (s.length > 160 ? s.slice(0, 158) + "…" : s);
   const total = $derived(
     notes.selecting && notes.selected.length
       ? t("notes.selected", { count: notes.selected.length })
@@ -48,9 +49,6 @@
       e.stopPropagation();
       onclose();
     }
-  }
-  function toggle(id: string) {
-    notes.selected = notes.selected.includes(id) ? notes.selected.filter(x => x !== id) : [...notes.selected, id];
   }
 </script>
 
@@ -67,18 +65,7 @@
   tabindex="-1"
   onkeydown={keydown}
 >
-  <button class="ibtn toc-x" data-fechar aria-label={t("annotate.close")} onclick={onclose}
-    ><svg
-      viewBox="0 0 24 24"
-      width="18"
-      height="18"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg
-    ></button
-  >
+  <button class="ibtn toc-x" data-fechar aria-label={t("annotate.close")} onclick={onclose}><Icon name="close" size={18} /></button>
   <nav class="mn-tabs" aria-label={t("notes.index_parts")}>
     <a
       href="#toc-livros"
@@ -124,32 +111,7 @@
         </div>
       </details>
     </div>
-    <div class="mn-filters" role="group" aria-label={t("notes.kind")}>
-      {#each KINDS as k (k)}
-        <button
-          class="chip"
-          data-tipo={k}
-          aria-pressed={notes.filter.tipo === k}
-          onclick={() => {
-            notes.filter.tipo = k;
-            onchange();
-          }}>{t(`notes.kinds.${k || "all"}`)} <small>{notes.counts[k]}</small></button
-        >
-      {/each}
-    </div>
-    <div class="mn-tagchips" id="mn-tags" role="group" aria-label={t("notes.by_tag")}>
-      {#each notes.tags as tag (tag.id)}
-        <button
-          class="chip"
-          data-tagf={tag.id}
-          aria-pressed={notes.filter.tag === tag.id}
-          onclick={() => {
-            notes.filter.tag = notes.filter.tag === tag.id ? "" : tag.id;
-            onchange();
-          }}>{tag.nome} <small>{tag.count}</small></button
-        >
-      {/each}
-    </div>
+    <NotesFilters {onchange} />
     <div class="mn-actions">
       <button class="mn-new" id="mn-new" onclick={onnew}>{t("notes.new_free")}</button>
       <span id="mn-total" aria-live="polite"
@@ -182,38 +144,6 @@
       />
     </div>
     <div class="mn-manage" id="mn-tagmgr" hidden></div>
-    <div id="mn-items">
-      {#each notes.groups as g, gi (gi)}
-        {#if g.title}<h3 class="mn-group">{g.title}</h3>{/if}
-        {#each g.verses as v (v.key)}
-          <div class="mn-verse">
-            <span class="mn-ref">{v.ref}</span>
-            {#each v.items as x (x.id)}
-              <button
-                class="mn-item"
-                class:sel={notes.selecting}
-                data-tipo={x.tipo}
-                data-id={x.id}
-                role={notes.selecting ? "checkbox" : undefined}
-                aria-checked={notes.selecting ? notes.selected.includes(x.id) : undefined}
-                onclick={() => (notes.selecting ? toggle(x.id) : onitem(x))}
-              >
-                <span class="mn-line"
-                  >{#if x.color}<span class="mn-color mk-{x.color}">{x.label}</span>{:else}<span class="mn-kind">{x.label}</span
-                    >{/if}{#if x.title}
-                    <b class="mn-title">{x.title}</b>{/if}<span class="sr"> · {x.ref}</span></span
-                >
-                {#if x.text}<span class="mn-txt">{short(x.text)}</span>{/if}
-                {#if x.tagNames.length}<span class="mn-tags"
-                    >{#each x.tagNames as n, k (k)}<span class="chip">{n}</span>{/each}</span
-                  >{/if}
-              </button>
-            {/each}
-          </div>
-        {/each}
-      {:else}
-        <p class="mn-empty">{t(notes.any ? "notes.nothing_found" : "notes.empty")}</p>
-      {/each}
-    </div>
+    <NotesList {onitem} />
   </div>
 </aside>
