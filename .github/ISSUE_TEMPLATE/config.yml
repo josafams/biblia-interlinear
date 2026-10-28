@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Relatar uma falha de segurança
+    url: https://github.com/josafams/biblia-interlinear/security/advisories/new
+    about: Falhas de segurança vão por relato privado, não por issue pública.
