@@ -8,6 +8,13 @@ on:
     paths: ["data/**", "scripts/check_data.py"]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: check-data-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   check-data:
     runs-on: ubuntu-latest

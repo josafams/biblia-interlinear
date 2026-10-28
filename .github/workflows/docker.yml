@@ -8,6 +8,13 @@ on:
     paths: ["docker/**", "compose.yaml", "Makefile", "package-lock.json", "requirements-dev.txt", ".github/workflows/docker.yml"]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: docker-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   docker:
     runs-on: ubuntu-latest
