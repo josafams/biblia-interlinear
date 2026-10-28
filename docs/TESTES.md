@@ -55,14 +55,20 @@ ação (tocar, digitar, rolar…). `scripts/videos/gravar.mjs` executa os roteir
 (celular 390×844 e computador 1280×800), gerando MP4 (H.264), legendas WebVTT e capa em `build/videos`.
 A página inicial mostra a lista de vídeos (dos roteiros) e toca os que já foram gravados.
 
+Em inglês, os mesmos roteiros rodam no app com `?lang=en`: as legendas, os títulos e o que cada passo digita ou
+procura na tela vêm de `scripts/videos/roteiros-en.mjs` (uma legenda por passo, na mesma ordem), e a gravação vai
+para `build/videos/en`, que a página `en/` toca. Um vídeo que só existe em português leva `langs: ["pt"]`.
+
 ```bash
 node scripts/videos/gravar.mjs --verificar   # só executa os roteiros (rápido; também roda nos testes)
 node scripts/videos/gravar.mjs               # grava todos (precisa do ffmpeg)
 node scripts/videos/gravar.mjs 05 12         # grava só esses
+node scripts/videos/gravar.mjs --lang en     # em inglês (também com --verificar)
 npm run build:web                   # copia build/videos para o site
 ```
 
 No GitHub, o workflow **Vídeos** grava de novo depois de cada publicação do site (workflow **Site**) e publica em `gh-pages/videos`.
 Ao mudar a tela, ajuste o roteiro do vídeo correspondente; se um passo não funcionar mais, os testes avisam.
 
-Para um vídeo de uma função nova: acrescente os passos ao item com `pronto: false` em `roteiros.mjs` e tire o `pronto: false`.
+Para um vídeo de uma função nova: acrescente os passos ao item com `pronto: false` em `roteiros.mjs` e tire o `pronto: false`;
+as legendas em inglês vão em `roteiros-en.mjs`.

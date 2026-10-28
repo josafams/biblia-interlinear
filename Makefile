@@ -109,8 +109,9 @@ coverage: ## Cobertura do Python: o pipeline de dados e os testes
 videos: ## Grava os vídeos "Como usar" em build/videos (ex.: make videos ONLY=27)
 	node scripts/videos/gravar.mjs $(ONLY)
 
-videos-check: ## Confere se os roteiros dos vídeos ainda funcionam (sem gravar)
+videos-check: ## Confere se os roteiros dos vídeos ainda funcionam, em português e em inglês (sem gravar)
 	node scripts/videos/gravar.mjs --verificar
+	node scripts/videos/gravar.mjs --verificar --lang en
 
 store: web ## Imagens da ficha da Play Store em build/store (e em inglês, em build/store/en)
 	node scripts/store_assets.mjs

@@ -80,6 +80,9 @@ test("em inglês (en/): textos, amostra da BSB, links a partir da pasta e o outr
   await expect(page.locator(".nums b").nth(1)).toHaveText("1,189");
   await expect(page.locator('link[hreflang="pt-BR"]')).toHaveAttribute("href", /biblia-interlinear\/$/);
   await expect(page.locator('a[href="bible/john/"]')).toHaveText("John");
+  // "How to use" in English: the groups, the titles and the steps of roteiros-en.mjs
+  await expect(page.locator("#howto-tabs")).toContainText("Read and navigate");
+  await expect(page.locator("#home-howto")).toContainText("Open a book and a chapter");
   // the book files in English: their own release
   await expect(page.locator("#home-books a").first()).toHaveAttribute(
     "href",

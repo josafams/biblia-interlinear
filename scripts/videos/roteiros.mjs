@@ -2,6 +2,17 @@
 // e a ação que o Playwright executa. scripts/videos/gravar.mjs grava; vite/site/home-page.ts lê só
 // os títulos e as legendas para montar a seção "Como usar" da página inicial.
 // `pronto: false` = a função ainda não existe; o vídeo aparece na lista como "quando a função sair".
+// `langs: ["pt"]` = a video only in those languages.
+// In English (useLanguage("en"), #8) the captions come from roteiros-en.mjs, and what a step types or looks for on
+// the screen goes through L().
+import { TYPED, groups as groupsEn, videos as videosEn } from "./roteiros-en.mjs";
+
+let language = "pt";
+/** The language of the recording: "pt" or "en" (the app opens with ?lang=en). */
+export function useLanguage(lang) {
+  language = lang;
+}
+const L = text => (language === "pt" ? text : (TYPED[text] ?? text));
 
 export const grupos = [
   { id: "ler", nome: "Ler e navegar" },
@@ -37,30 +48,40 @@ const abrirMais = async t => {
 };
 // anotações de exemplo para os vídeos que mostram a lista, o PDF e o backup
 const dadosDeExemplo = async page => {
-  await page.evaluate(async () => {
+  const T = Object.fromEntries(
+    [
+      "promessas",
+      "Tohu e bohu",
+      "Sem forma e vazia: rima no hebraico.",
+      "E disse Deus: Haja luz; e houve luz.",
+      "Salmo de Davi: O SENHOR é meu pastor, nada me faltará.",
+      "Todas as coisas contribuem para o bem."
+    ].map(k => [k, L(k)])
+  );
+  await page.evaluate(async T => {
     const A = window.Annotations,
       id = () => crypto.randomUUID();
     const anc = (livro, cap, ver, trecho) => ({ livro, cap, ver, ver_fim: ver, camada: "versiculo", trecho });
-    const tag = await A.save("etiquetas", { id: id(), nome: "promessas" });
+    const tag = await A.save("etiquetas", { id: id(), nome: T["promessas"] });
     await A.save("notas", {
       id: id(),
       cap: "GEN.1",
       ancora: anc("GEN", 1, 2),
-      titulo: "Tohu e bohu",
-      texto: "Sem forma e vazia: rima no hebraico.",
+      titulo: T["Tohu e bohu"],
+      texto: T["Sem forma e vazia: rima no hebraico."],
       etiquetas: []
     });
     await A.save("marcacoes", {
       id: id(),
       cap: "GEN.1",
-      ancora: anc("GEN", 1, 3, "E disse Deus: Haja luz; e houve luz."),
+      ancora: anc("GEN", 1, 3, T["E disse Deus: Haja luz; e houve luz."]),
       cor: "amarelo",
       etiquetas: []
     });
     await A.save("marcacoes", {
       id: id(),
       cap: "PSA.23",
-      ancora: anc("PSA", 23, 1, "Salmo de Davi: O SENHOR é meu pastor, nada me faltará."),
+      ancora: anc("PSA", 23, 1, T["Salmo de Davi: O SENHOR é meu pastor, nada me faltará."]),
       cor: "verde",
       etiquetas: [tag.id]
     });
@@ -70,10 +91,10 @@ const dadosDeExemplo = async page => {
       cap: "ROM.8",
       ancora: anc("ROM", 8, 28),
       titulo: "",
-      texto: "Todas as coisas contribuem para o bem.",
+      texto: T["Todas as coisas contribuem para o bem."],
       etiquetas: [tag.id]
     });
-  });
+  }, T);
 };
 
 // conta já ligada antes do corte do vídeo (para os vídeos que começam conectados)
@@ -83,7 +104,7 @@ async function entrarNaConta(t) {
   await p.click("#open-toc");
   await p.click('#toc .toc-tabs a[href="#toc-voce"]');
   await p.click("#account-signin");
-  await p.locator("#account-sync", { hasText: "Sincronizado" }).waitFor();
+  await p.locator("#account-sync", { hasText: L("Sincronizado") }).waitFor();
   await p.keyboard.press("Escape");
   await p.evaluate(() => window.scrollTo(0, 0));
 }
@@ -125,8 +146,8 @@ function notaDeOutroAparelho(t) {
     id: "nota-do-computador",
     cap: "GEN.1",
     ancora: { livro: "GEN", cap: 1, ver: 1, ver_fim: 1, camada: "versiculo" },
-    titulo: "No princípio",
-    texto: "Bereshit: “no princípio”. A Bíblia começa com Deus, não com explicações.",
+    titulo: L("No princípio"),
+    texto: L("Bereshit: “no princípio”. A Bíblia começa com Deus, não com explicações."),
     etiquetas: [],
     criado_em: currentTime,
     alterado_em: currentTime,
@@ -171,13 +192,13 @@ export const videos = [
     inicio: "GEN.1",
     steps: [
       { legenda: "Toque em Livros.", faz: abrirIndice },
-      { legenda: "Na busca de Livros, digite livro, capítulo e versículo: jo 3:16.", faz: t => t.digitar("#go-in", "jo 3:16") },
+      { legenda: "Na busca de Livros, digite livro, capítulo e versículo: jo 3:16.", faz: t => t.digitar("#go-in", L("jo 3:16")) },
       { legenda: "Toque em Ir: o versículo abre destacado.", faz: t => t.tocar("#go-form button[type=submit]") },
       {
         legenda: "Funciona também com “sl 23”, “1:14” ou só o número do versículo.",
         faz: async t => {
           await abrirIndice(t);
-          await t.digitar("#go-in", "sl 23");
+          await t.digitar("#go-in", L("sl 23"));
           await t.tocar("#go-form button[type=submit]");
         }
       }
@@ -238,7 +259,7 @@ export const videos = [
     inicio: "GEN.1",
     steps: [
       { legenda: "No fim do capítulo fica o léxico de todas as palavras.", faz: t => t.rolarAte("#lexico") },
-      { legenda: "Busque em português, pela transliteração ou pelo número: luz.", faz: t => t.digitar("#lsearch", "luz") },
+      { legenda: "Busque em português, pela transliteração ou pelo número: luz.", faz: t => t.digitar("#lsearch", L("luz")) },
       { legenda: "Toque numa linha para abrir o verbete.", faz: t => t.tocar("#llist .lrow") }
     ]
   },
@@ -291,6 +312,8 @@ export const videos = [
     titulo: "Revisão ⚑ e ketiv/qere",
     desc: "O que a revisão automática encontrou.",
     inicio: "GEN.8",
+    // the automatic review marks the Portuguese glosses only
+    langs: ["pt"],
     steps: [
       { legenda: "O ponto no número mostra que a revisão automática encontrou algo no versículo.", faz: t => t.rolarAte(".vnum.has-rev") },
       { legenda: "Toque no ⋯ para ler a explicação.", faz: t => t.tocar(".verse:has(.vnum.has-rev) .vmark") },
@@ -517,7 +540,7 @@ export const videos = [
           await t.tocar("#mb-close");
         }
       },
-      { legenda: "Selecione um trecho da Bíblia Livre para marcar só ele.", faz: t => t.selecionar("#v3 .blivre", "Haja luz") },
+      { legenda: "Selecione um trecho da Bíblia Livre para marcar só ele.", faz: t => t.selecionar("#v3 .blivre", L("Haja luz")) },
       {
         legenda: "A barra aparece com o trecho: escolha a cor.",
         faz: async t => {
@@ -553,7 +576,7 @@ export const videos = [
       },
       {
         legenda: "Escreva na nota: ela salva sozinha enquanto você digita.",
-        faz: t => t.digitar("#mb-note", "Sem forma e vazia: tôhû wâbôhû rima no hebraico.")
+        faz: t => t.digitar("#mb-note", L("Sem forma e vazia: tôhû wâbôhû rima no hebraico."))
       },
       {
         legenda: "Feche: o começo da nota aparece embaixo do versículo.",
@@ -566,7 +589,7 @@ export const videos = [
         legenda: "Toque nela para abrir em tela cheia e pôr um título.",
         faz: async t => {
           await t.tocar("#v2 .vann-note");
-          await t.digitar("#note-title", "Tohu e bohu");
+          await t.digitar("#note-title", L("Tohu e bohu"));
         }
       }
     ]
@@ -590,7 +613,7 @@ export const videos = [
         legenda: "Em Mais, nas etiquetas, crie uma nova: promessas.",
         faz: async t => {
           await abrirMais(t);
-          await t.digitar("#mb-tag-name", "promessas");
+          await t.digitar("#mb-tag-name", L("promessas"));
           await t.tocar("#mb-new-tag");
         }
       },
@@ -618,13 +641,13 @@ export const videos = [
     steps: [
       { legenda: "Em Livros, toque na aba Notas.", faz: abrirMinhas },
       { legenda: "Tudo o que você marcou e anotou, versículo por versículo, na ordem da Bíblia.", faz: t => t.esperar(800) },
-      { legenda: "Busque por uma palavra: pastor.", faz: t => t.digitar("#mn-search", "pastor") },
+      { legenda: "Busque por uma palavra: pastor.", faz: t => t.digitar("#mn-search", L("pastor")) },
       {
         legenda: "Ou filtre por tipo e por etiqueta.",
         faz: async t => {
           await t.digitar("#mn-search", "");
-          await t.tocar('#mn-tags .chip:has-text("promessas")');
-          await t.tocar('#mn-tags .chip:has-text("promessas")');
+          await t.tocar(`#mn-tags .chip:has-text("${L("promessas")}")`);
+          await t.tocar(`#mn-tags .chip:has-text("${L("promessas")}")`);
           await t.tocar('.mn-filters .chip[data-tipo="notas"]');
         }
       },
@@ -743,7 +766,7 @@ export const videos = [
       {
         legenda: "O que você já tinha anotado neste aparelho é enviado sozinho para a conta.",
         faz: async t => {
-          await t.page.locator("#account-sync", { hasText: "Sincronizado" }).waitFor();
+          await t.page.locator("#account-sync", { hasText: L("Sincronizado") }).waitFor();
           await t.realcar("#account-sync");
         }
       },
@@ -849,7 +872,7 @@ export const videos = [
         faz: async t => {
           await t.rolarAte("#perguntas .q-note");
           await t.tocar("#perguntas .q-note");
-          await t.digitar("#mb-note", "Rute escolhe ficar com Noemi e com o povo dela.");
+          await t.digitar("#mb-note", L("Rute escolhe ficar com Noemi e com o povo dela."));
         }
       },
       {
@@ -924,10 +947,10 @@ export const videos = [
     inicio: "GEN.1",
     steps: [
       { legenda: "Toque na lupa, no topo.", faz: t => t.tocar("#open-search") },
-      { legenda: "Digite palavras: acentos e maiúsculas não importam.", faz: t => t.digitar("#busca-q", "graca paz") },
+      { legenda: "Digite palavras: acentos e maiúsculas não importam.", faz: t => t.digitar("#busca-q", L("graca paz")) },
       { legenda: "Aparecem os versículos com todas as palavras, já destacadas.", faz: t => t.realcar(".busca-item") },
       { legenda: "Filtre por testamento ou só no livro que você está lendo.", faz: t => t.tocar('.busca-scope [data-scope="nt"]') },
-      { legenda: "Uma referência vira atalho: Sl 23.", faz: t => t.digitar("#busca-q", "Sl 23") },
+      { legenda: "Uma referência vira atalho: Sl 23.", faz: t => t.digitar("#busca-q", L("Sl 23")) },
       { legenda: "Toque para ir.", faz: t => t.tocar(".busca-go") }
     ]
   },
@@ -953,11 +976,11 @@ export const videos = [
         faz: async t => {
           await t.page.evaluate(() => document.querySelector("#v16 .blivre").scrollIntoView({ block: "center" }));
           await t.esperar(500);
-          const p = await t.page.evaluate(() => {
+          const p = await t.page.evaluate(word => {
             const bl = document.querySelector("#v16 .blivre");
             const w = document.createTreeWalker(bl, NodeFilter.SHOW_TEXT);
             for (let n = w.nextNode(); n; n = w.nextNode()) {
-              const k = n.data.indexOf("Filho");
+              const k = n.data.indexOf(word);
               if (k < 0) continue;
               const r = document.createRange();
               r.setStart(n, k + 1);
@@ -966,7 +989,7 @@ export const videos = [
               return { x: b.left + b.width / 2, y: b.top + b.height / 2 };
             }
             return null;
-          });
+          }, L("Filho"));
           await t.page.mouse.click(p.x, p.y);
         }
       },
@@ -991,7 +1014,7 @@ export const videos = [
         }
       },
       { legenda: "A lista vem na ordem da Bíblia, com a palavra destacada em cada versículo.", faz: t => t.esperar(1200) },
-      { legenda: "Filtre pela tradução: amou.", faz: t => t.tocar('#conc-gl .chip:has-text("amou")') },
+      { legenda: "Filtre pela tradução: amou.", faz: t => t.tocar(`#conc-gl .chip:has-text("${L("amou")}")`) },
       { legenda: "Ou só no livro que você está lendo.", faz: t => t.tocar('.conc-scope [data-scope="livro"]') },
       { legenda: "Toque num versículo para ir até ele.", faz: t => t.tocar(".conc-item") }
     ]
@@ -1016,7 +1039,7 @@ export const videos = [
       {
         legenda: "Mude o nome no campo. Dar o nome de outra etiqueta junta as duas.",
         faz: async t => {
-          await t.digitar(".tm-name", "promessas de Deus");
+          await t.digitar(".tm-name", L("promessas de Deus"));
           await t.page.keyboard.press("Enter");
           await t.esperar(600);
         }
@@ -1067,18 +1090,23 @@ export const videos = [
   }
 ];
 
-// Só o que a página inicial precisa (sem as funções de ação).
-export function storyboardSummary() {
+/** Whether a video is made in the language. */
+export const inLanguage = (v, lang = language) => !v.langs || v.langs.includes(lang);
+
+/** The title, description and captions of a video in the language (Portuguese, or roteiros-en.mjs). */
+export function texts(v, lang = language) {
+  const own = lang === "pt" ? null : videosEn[v.id];
+  if (own && own.steps.length !== v.steps.length)
+    throw new Error(`video ${v.id}: ${own.steps.length} English captions for ${v.steps.length} steps`);
+  return { titulo: own?.titulo ?? v.titulo, desc: own?.desc ?? v.desc, steps: own?.steps ?? v.steps.map(p => p.legenda) };
+}
+
+// Só o que a página inicial precisa (sem as funções de ação), na língua da página.
+export function storyboardSummary(lang = "pt") {
   return {
-    grupos,
-    videos: videos.map(v => ({
-      id: v.id,
-      n: v.n,
-      grupo: v.grupo,
-      titulo: v.titulo,
-      desc: v.desc,
-      ready: v.ready !== false,
-      steps: v.steps.map(p => p.legenda)
-    }))
+    grupos: grupos.map(g => ({ id: g.id, nome: lang === "pt" ? g.nome : (groupsEn[g.id] ?? g.nome) })),
+    videos: videos
+      .filter(v => inLanguage(v, lang))
+      .map(v => ({ id: v.id, n: v.n, grupo: v.grupo, ...texts(v, lang), ready: v.ready !== false }))
   };
 }

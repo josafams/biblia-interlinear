@@ -110,7 +110,7 @@ Código comum em `scripts/interlinear/`: `paths` (caminhos), `books` (os 66 livr
 | testes de unidade do site | `npx vitest run` |
 | testes no navegador (celular e computador), com imagens | `VISUAL=1 npx playwright test` |
 | CSS mudou sem mudar a tela | `cp -r build/web build/web-before`, mudar, `npm run build:web`, `npm run check:css` |
-| roteiros dos vídeos | `node scripts/videos/gravar.mjs --verificar` |
+| roteiros dos vídeos | `node scripts/videos/gravar.mjs --verificar` (e `--lang en`) |
 | Python: lint, tipos, testes | `ruff check . && ruff format --check . && mypy && python3 -m pytest tests` |
 | Python: saída igual | `python3 scripts/dev/output_hash.py > build/hash-before.txt`, mudar, refazer os dados, `python3 scripts/dev/output_hash.py --compare build/hash-before.txt` |
 | dados editados à mão | `python3 scripts/check_data.py` |

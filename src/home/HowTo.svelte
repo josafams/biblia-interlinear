@@ -4,7 +4,7 @@
 -->
 <script lang="ts">
   import { onMount, untrack } from "svelte";
-  import { t } from "../i18n";
+  import { getLocale, t } from "../i18n";
   import { recording, type Storyboard, type Storyboards } from "./data";
 
   let { storyboards, root = "" }: { storyboards: Storyboards; root?: string } = $props();
@@ -82,7 +82,13 @@
             {@attach autoplay}
           >
             {#if rec.mp4}<source src={rec.mp4} type="video/mp4" />{/if}
-            {#if rec.vtt}<track kind="captions" srclang="pt" label={t("home.howto.captions")} src={rec.vtt} default />{/if}
+            {#if rec.vtt}<track
+                kind="captions"
+                srclang={getLocale().split("-")[0]}
+                label={t("home.howto.captions")}
+                src={rec.vtt}
+                default
+              />{/if}
           </video>
         {:else if rec?.cover}
           <img src={rec.cover} alt={current.titulo} style="width:100%;border-radius:12px" />

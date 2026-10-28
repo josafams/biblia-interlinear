@@ -8,21 +8,29 @@
 //   node scripts/videos/gravar.mjs                 grava todos (o site precisa estar gerado em build/web)
 //   node scripts/videos/gravar.mjs 01 05           só esses vídeos
 //   node scripts/videos/gravar.mjs --verificar     só executa os roteiros, sem gravar (rápido; usado nos testes)
+//   node scripts/videos/gravar.mjs --lang en       the app in English, with the captions of roteiros-en.mjs, into
+//                                                  build/videos/en (its own videos.js, read by en/index.html)
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { chromium, devices } from "playwright";
-import { videos } from "./roteiros.mjs";
+import { inLanguage, texts, useLanguage, videos } from "./roteiros.mjs";
 import { simularGoogle } from "../../tests/web/fake-google.mjs";
 import { serveStatic } from "../lib/static-server.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const WEB = path.join(ROOT, "build/web");
-const OUT = path.join(ROOT, "build/videos");
 const args = process.argv.slice(2);
+const LANG = args.includes("--lang") ? args[args.indexOf("--lang") + 1] : "pt";
+if (!["pt", "en"].includes(LANG)) throw new Error(`--lang ${LANG}: pt or en`);
+useLanguage(LANG);
+// in English: build/videos/en, addressed from the site root as videos/en/…
+const DIR = LANG === "pt" ? "" : `${LANG}/`;
+const OUT = path.join(ROOT, "build/videos", DIR);
+const READER = LANG === "pt" ? "ler.html" : `ler.html?lang=${LANG}`;
 const VERIFICAR = args.includes("--verificar");
-const quais = args.filter(a => !a.startsWith("--"));
+const quais = args.filter((a, i) => !a.startsWith("--") && args[i - 1] !== "--lang");
 const APARELHOS = {
   phone: { ...devices["Pixel 7"], viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 },
   desktop: { viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1 }
@@ -211,12 +219,12 @@ async function save(page, disp, dir, t0) {
   };
 }
 
-const vtt = (ts, steps, fim) =>
+const vtt = (ts, captions, fim) =>
   "WEBVTT\n\n" +
-  steps
-    .map((p, i) => {
+  captions
+    .map((caption, i) => {
       const f = s => new Date(Math.max(0, s) * 1000).toISOString().slice(11, 23);
-      return `${i + 1}\n${f(ts[i])} --> ${f(i + 1 < ts.length ? ts[i + 1] : fim)}\n${p.legenda}\n`;
+      return `${i + 1}\n${f(ts[i])} --> ${f(i + 1 < ts.length ? ts[i + 1] : fim)}\n${caption}\n`;
     })
     .join("\n");
 
@@ -244,14 +252,15 @@ function salvarIndice() {
   );
 }
 for (const v of videos) {
-  if (v.ready === false || v.manual || !v.steps.length) continue;
+  if (v.ready === false || v.manual || !v.steps.length || !inLanguage(v)) continue;
   if (quais.length && !quais.includes(v.id)) continue;
   for (const [nome, disp] of Object.entries(APARELHOS)) {
     if (v.os && v.os !== nome) continue;
-    const tmp = fs.mkdtempSync(path.join(OUT.replace(/videos$/, ""), "gravacao-"));
+    const tmp = fs.mkdtempSync(path.join(ROOT, "build", "gravacao-"));
+    const { titulo, steps: captions } = texts(v);
     const ctx = await browser.newContext({
       ...disp,
-      locale: "pt-BR",
+      locale: LANG === "pt" ? "pt-BR" : "en-US",
       colorScheme: "light",
       reducedMotion: "no-preference"
     });
@@ -272,8 +281,10 @@ for (const v of videos) {
     const tempos = [];
     try {
       // vídeos da conta: Google simulado, com uma conta fictícia (nada sai para a internet)
-      if (v.google) t.nuvem = await simularGoogle(page, { profile: { name: "Maria Souza", email: "maria.souza@exemplo.com" } });
-      await page.goto(`${BASE}ler.html#${v.inicio || "GEN.1"}`);
+      const profile =
+        LANG === "pt" ? { name: "Maria Souza", email: "maria.souza@exemplo.com" } : { name: "Mary Smith", email: "mary.smith@example.com" };
+      if (v.google) t.nuvem = await simularGoogle(page, { profile });
+      await page.goto(`${BASE}${READER}#${v.inicio || "GEN.1"}`);
       await page.locator(".verse").first().waitFor({ timeout: 15000 });
       await page.evaluate(() => document.fonts.ready);
       if (v.prepare) {
@@ -285,17 +296,17 @@ for (const v of videos) {
       if (v.before) await v.before(t); // preparação que fica fora do corte do vídeo
       await t.pausa(900);
       const inicio = (Date.now() - t0) / 1000 - 0.3;
-      for (const p of v.steps) {
+      for (const [i, p] of v.steps.entries()) {
         tempos.push((Date.now() - t0) / 1000 - inicio);
         await p.faz(t);
-        await t.pausa(Math.max(1600, p.legenda.length * 45));
+        await t.pausa(Math.max(1600, captions[i].length * 45));
       }
       const fim = (Date.now() - t0) / 1000 - inicio + 0.6;
       await t.pausa(600);
       const quadros = gravador ? await gravador.halt() : null;
       await ctx.close();
       if (VERIFICAR) {
-        console.log(`ok  ${v.id} ${nome}  ${v.titulo}`);
+        console.log(`ok  ${v.id} ${nome}  ${titulo}`);
         continue;
       }
       const listSheet = path.join(tmp, "quadros.txt");
@@ -350,21 +361,21 @@ for (const v of videos) {
         "4",
         `${base}.jpg`
       ]);
-      fs.writeFileSync(`${base}.vtt`, vtt(tempos, v.steps, fim));
+      fs.writeFileSync(`${base}.vtt`, vtt(tempos, captions, fim));
       const sec = Math.round(fim);
       indice[v.id] = indice[v.id] || {};
       indice[v.id][nome] = {
-        mp4: `videos/${v.id}-${nome}.mp4`,
-        vtt: `videos/${v.id}-${nome}.vtt`,
-        cover: `videos/${v.id}-${nome}.jpg`,
+        mp4: `videos/${DIR}${v.id}-${nome}.mp4`,
+        vtt: `videos/${DIR}${v.id}-${nome}.vtt`,
+        cover: `videos/${DIR}${v.id}-${nome}.jpg`,
         times: tempos.map(x => +x.toFixed(2)),
         duration: `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, "0")}`
       };
       salvarIndice();
-      console.log(`${v.id} ${nome}  ${sec}s  ${Math.round(fs.statSync(`${base}.mp4`).size / 1024)} KB  ${v.titulo}`);
+      console.log(`${v.id} ${nome}  ${sec}s  ${Math.round(fs.statSync(`${base}.mp4`).size / 1024)} KB  ${titulo}`);
     } catch (e) {
       falhas++;
-      console.error(`FALHOU ${v.id} ${nome} (${v.titulo}), passo ${tempos.length}: ${e.message.split("\n")[0]}`);
+      console.error(`FALHOU ${v.id} ${nome} (${titulo}), passo ${tempos.length}: ${e.message.split("\n")[0]}`);
       await ctx.close().catch(() => {});
     } finally {
       fs.rmSync(tmp, { recursive: true, force: true });

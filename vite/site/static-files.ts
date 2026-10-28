@@ -19,11 +19,13 @@ export function copyStaticFiles(privacyCss: string) {
   fs.mkdirSync(path.join(OUT, "vendor"), { recursive: true });
   fs.copyFileSync(fromRoot("node_modules/dexie/LICENSE"), path.join(OUT, "vendor/LICENSE-dexie.txt"));
 
-  // "Como usar" videos recorded by scripts/videos/gravar.mjs into build/videos, or an empty index
+  // "Como usar" videos recorded by scripts/videos/gravar.mjs into build/videos (in English, build/videos/en), or an
+  // empty index
   const videos = fromRoot("build/videos");
   if (fs.existsSync(path.join(videos, "videos.js"))) fs.cpSync(videos, path.join(OUT, "videos"), { recursive: true });
-  else {
-    fs.mkdirSync(path.join(OUT, "videos"), { recursive: true });
-    fs.writeFileSync(path.join(OUT, "videos/videos.js"), "window.__videos = { files: {} };\n");
-  }
+  for (const dir of ["videos", "videos/en"])
+    if (!fs.existsSync(path.join(OUT, dir, "videos.js"))) {
+      fs.mkdirSync(path.join(OUT, dir), { recursive: true });
+      fs.writeFileSync(path.join(OUT, dir, "videos.js"), "window.__videos = { files: {} };\n");
+    }
 }

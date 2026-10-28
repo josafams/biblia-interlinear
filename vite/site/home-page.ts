@@ -55,9 +55,9 @@ export async function writeHomePage(books: Book[], home: { js: string; css: stri
   const lex: Record<string, Lex> = { H: readJson(path.join(data, "lex/H.json")), G: readJson(path.join(data, "lex/G.json")) };
   const counts = { books: books.length, chapters, verses, words, entries: Object.keys(lex.H).length + Object.keys(lex.G).length };
   const { storyboardSummary } = await import(pathToFileURL(fromRoot("scripts/videos/roteiros.mjs")).href);
-  const storyboards = storyboardSummary();
   for (const locale of HOME_LOCALES) {
     setLocale(locale);
+    const storyboards = storyboardSummary(locale.split("-")[0]);
     writeHome(locale, structuredClone(books), { counts, lex, storyboards }, home);
   }
   setLocale("pt-BR");
@@ -124,6 +124,8 @@ function writeHome(
     __READER__: toRoot(folder) + readerPath(),
     __OTHER_HOME__: homePath(other) || "index.html",
     __OTHER_LOCALE__: other,
+    // the recorded videos of the locale (scripts/videos/gravar.mjs --lang): videos/videos.js, videos/en/videos.js
+    __VIDEOS__: `videos/${dir}videos.js`,
     __HOME_BUNDLE__: home.js,
     __HOME_CSS__: home.css
   };
