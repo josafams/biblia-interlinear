@@ -100,3 +100,10 @@ def test_translated_texts_of_the_books():
     texts = json.loads(text[text.index("=") + 1 : text.rindex(";")])
     assert texts["GEN"]["t"]["1"] == "The creation"
     assert sum(len(b.get("t", {})) for b in texts.values()) == 1189
+    # every book has its introduction, with the chapter counts and the key verses quoted from the BSB
+    assert len(texts) == 66
+    assert all("about" in b for b in texts.values())
+    ruth = texts["RUT"]["about"]
+    assert ruth["facts"][1] == ["Chapters", "4"]
+    assert ruth["key_verses"][0]["text"].startswith("But Ruth replied")
+    assert all(k["text"] for b in texts.values() for k in b["about"]["key_verses"])

@@ -16,10 +16,11 @@ test("?lang=en: the reader in English, with English book names and references", 
   await page.fill("#go-in", "ps 23");
   await page.press("#go-in", "Enter");
   await expect(titulo(page)).toContainText("Psalms 23");
-  // the Portuguese questions stay out until they are translated (John 3 has them in Portuguese)
+  // the questions on the text come from data/en/questions, never the Portuguese ones
   await page.goto("ler.html#JHN.3");
   await expect(page.locator(".verse").first()).toBeVisible();
-  await expect(page.locator('[data-testid="questions"]')).toHaveCount(0);
+  await expect(page.locator('[data-testid="questions"]')).toContainText("Nicodemus");
+  await expect(page.locator('[data-testid="questions"]')).not.toContainText("Nicodemos");
   expect(erros).toEqual([]);
 });
 
@@ -100,4 +101,12 @@ test("in English the chapter themes are the translated ones (data/en/themes)", a
   await expect(page.locator("#ctheme")).toHaveText("The creation");
   await page.goto("ler.html#JHN.3");
   await expect(page.locator("#ctheme")).toHaveText("Nicodemus and the new birth");
+});
+
+test("in English the book introduction is the translated one, with the key verses from the BSB", async ({ page }) => {
+  await page.goto("ler.html?lang=en#RUT.1");
+  await page.click("#chip-about");
+  await expect(page.locator("#about-body")).toContainText("Naomi");
+  await expect(page.locator("#about-body")).toContainText("But Ruth replied");
+  await expect(page.locator("#about-body")).not.toContainText("Noemi");
 });
