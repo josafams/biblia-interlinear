@@ -277,7 +277,8 @@ def gen_chapters(B, LEX, pre=""):
         body = [f'<section epub:type="chapter" id="c{n}">\n<h1>{h(B["name"])} {n}</h1>']
         if c.get("t"):
             body.append(f'<p class="tema">{h(c["t"])}</p>')
-        notes = [f'<section epub:type="endnotes" id="notas{n}">\n<h1>{h(t("edition.notes", ref=f"{B['name']} {n}"))}</h1>']
+        ref = f"{B['name']} {n}"
+        notes = [f'<section epub:type="endnotes" id="notas{n}">\n<h1>{h(t("edition.notes", ref=ref))}</h1>']
         for v in d["v"]:
             vn = v["n"]
             label = h(t("edition.superscription")) if vn == 0 else f"{n}:{vn}"
@@ -332,7 +333,7 @@ def gen_chapters(B, LEX, pre=""):
         body.append("</section>\n")
         notes.append("</section>\n")
         files[f"{pre}c{n}.xhtml"] = page(f"{B['name']} {n}", "\n".join(body))
-        files[f"{pre}notas{n}.xhtml"] = page(t("edition.notes", ref=f"{B['name']} {n}"), "\n".join(notes))
+        files[f"{pre}notas{n}.xhtml"] = page(t("edition.notes", ref=ref), "\n".join(notes))
         caps.append((n, c.get("t", "")))
     about_section = about_html(B)
     if about_section:

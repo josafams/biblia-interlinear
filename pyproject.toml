@@ -2,12 +2,12 @@
 [project]
 name = "biblia-interlinear"
 version = "0.1.0"
-requires-python = ">=3.12"
+requires-python = ">=3.11"
 license = "CC-BY-SA-4.0"
 
 [tool.ruff]
 line-length = 140
-target-version = "py312"
+target-version = "py311"  # the Docker image runs Debian's 3.11; CI runs 3.12
 src = ["scripts", "tests"]
 extend-exclude = ["node_modules", "build", "sources", "android", "ios"]
 
@@ -35,7 +35,7 @@ quote-style = "double"
 [tool.mypy]
 # Every script is checked; the functions without annotations are typed module by module, and the modules already
 # typed in full (the core of scripts/interlinear) are checked strictly.
-python_version = "3.12"
+python_version = "3.11"
 mypy_path = "scripts"
 files = ["scripts"]
 explicit_package_bases = true
