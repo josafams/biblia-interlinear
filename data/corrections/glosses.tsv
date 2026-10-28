@@ -2833,3 +2833,100 @@ ISA 5:28	10	נֶחְשָׁ֔בוּ	são-considerados	claude	נֶחְשָׁבוּ
 ISA 5:28	11	וְ/גַלְגִּלָּ֖י/ו	e-suas-rodas	claude	וְגַלְגִּלָּיו “e suas rodas”; tinha “e-as-rodas-de-suas-carruagens”
 ISA 5:28	12	כַּ/סּוּפָֽה	como-o-redemoinho	claude	כַּסּוּפָה “como o redemoinho”; tinha “como-redemoinhos-de-vento”
 ISA 7:7	3	אֲדֹנָ֣/י	o-Senhor	claude	אֲדֹנָי “o Senhor”; tinha “diz-o-Senhor”
+ISA 8:22	1	וְ/אֶל	e-para	claude	וְאֶל “e para”; tinha “a”
+ISA 8:22	3	יַבִּ֑יט	olhará	claude	יַבִּיט “olhará”; tinha “olhando”
+ISA 8:22	7	מְע֣וּף	sombra	claude	מְעוּף “sombra, escuridão”; tinha “angustiante”
+ISA 8:22	8	צוּקָ֔ה	de-angústia	claude	צוּקָה “de angústia”; tinha “angustiante-escuridão”
+ISA 8:22	9	וַ/אֲפֵלָ֖ה	e-para-as-trevas	claude	וַאֲפֵלָה “e para as trevas”; tinha “trevas”
+ISA 9:18	6	וָ/שַׁ֖יִת	e-espinhos	claude	וָשַׁיִת “e espinhos”; tinha “cardos-e-espinhos”
+ISA 9:18	9	בְּ/סִֽבְכֵ֣י	nos-emaranhados	claude	בְּסִבְכֵי “nos emaranhados (de)”; tinha “aos-emaranhados”
+ISA 9:18	10	הַ/יַּ֔עַר	do-bosque	claude	הַיַּעַר “do bosque”; tinha “das-árvores-da-floresta”
+ISA 9:18	11	וַ/יִּֽתְאַבְּכ֖וּ	e-se-elevarão	claude	וַיִּתְאַבְּכוּ “e se elevarão (em rolos)”; tinha “e-subirão”
+ISA 9:18	12	גֵּא֥וּת	em-colunas	claude	גֵּאוּת “em colunas, em altura”; tinha “nuvens”
+ISA 9:18	13	עָשָֽׁן	de-fumaça	claude	עָשָׁן “de fumaça”; tinha “fumaça”
+ISA 10:25	2	ע֖וֹד	ainda	claude	עוֹד “ainda”; tinha “mais”
+ISA 10:25	3	מְעַ֣ט	um-pouco	claude	מְעַט “um pouco”; tinha “breve”
+ISA 10:25	4	מִזְעָ֑ר	bem-pouco	claude	מִזְעָר “bem pouco”; tinha “completará”
+ISA 10:25	5	וְ/כָ֣לָה	e-se-acabará	claude	וְכָלָה “e se acabará”; tinha “se-completará-a”
+ISA 10:25	7	וְ/אַפִּ֖/י	e-minha-ira	claude	וְאַפִּי “e minha ira”; tinha “e-a-minha-ira”
+ISA 10:25	9	תַּבְלִיתָֽ/ם	para-a-destruição-deles	claude	תַּבְלִיתָם “para a destruição deles”; tinha “consumir”
+ISA 10:29	4	מָל֣וֹן	alojamento	claude	מָלוֹן “alojamento”; tinha “abrigaram”
+ISA 10:29	5	לָ֑/נוּ	para-nós	claude	לָנוּ “para nós”; tinha “abrigaram-em”
+ISA 10:29	6	חָֽרְדָה֙	treme	claude	חָרְדָה “treme”; tinha “tremendo”
+ISA 10:29	7	הָֽ/רָמָ֔ה	Ramá	claude	הָרָמָה “Ramá”; tinha “Ramá-está”
+ISA 10:29	10	נָֽסָה	fugiu	claude	נָסָה “fugiu”; tinha “fugindo”
+ISA 13:8	1	וְֽ/נִבְהָ֓לוּ	e-ficarão-aterrorizados	claude	וְנִבְהָלוּ “e ficarão aterrorizados”; tinha “tomados”
+ISA 13:8	2	צִירִ֤ים	pontadas	claude	צִירִים “pontadas, dores”; tinha “dores”
+ISA 13:8	3	וַֽ/חֲבָלִים֙	e-dores	claude	וַחֲבָלִים “e dores”; tinha “dores-e-sofrerão”
+ISA 13:8	4	יֹֽאחֵז֔וּ/ן	os-tomarão	claude	יֹאחֵזוּן “os tomarão”; tinha “angústias”
+ISA 13:8	5	כַּ/יּוֹלֵדָ֖ה	como-a-que-dá-à-luz	claude	כַּיּוֹלֵדָה “como a que dá à luz”; tinha “parto”
+ISA 13:8	6	יְחִיל֑וּ/ן	se-contorcerão	claude	יְחִילוּן “se contorcerão”; tinha “dores”
+ISA 13:8	9	רֵעֵ֨/הוּ֙	seu-próximo	claude	רֵעֵהוּ “seu próximo”; tinha “próximo-seus”
+ISA 13:8	10	יִתְמָ֔הוּ	olharão-pasmados	claude	יִתְמָהוּ “olharão pasmados”; tinha “rostos”
+ISA 13:8	11	פְּנֵ֥י	rostos-de	claude	פְּנֵי “rostos de”; tinha “rostos”
+ISA 13:8	13	פְּנֵי/הֶֽם	seus-rostos	claude	פְּנֵיהֶם “seus rostos”; tinha “rosto-deles”
+ISA 13:11	1	וּ/פָקַדְתִּ֤י	e-visitarei	claude	וּפָקַדְתִּי “e visitarei (punirei)”; tinha “porque-visitarei-para-punir”
+ISA 13:11	11	וְ/גַאֲוַ֥ת	e-a-altivez	claude	וְגַאֲוַת “e a altivez (de)”; tinha “e-abaterei”
+ISA 13:11	12	עָרִיצִ֖ים	dos-tiranos	claude	עָרִיצִים “dos tiranos”; tinha “abaterei”
+ISA 13:11	13	אַשְׁפִּֽיל	abaterei	claude	אַשְׁפִּיל “abaterei”; tinha “orgulho”
+ISA 13:14	3	מֻדָּ֔ח	acossada	claude	מֻדָּח “acossada”; tinha “fuga”
+ISA 13:14	5	וְ/אֵ֣ין	e-não-há	claude	וְאֵין “e não há”; tinha “que-ninguém”
+ISA 13:14	6	מְקַבֵּ֑ץ	quem-recolha	claude	מְקַבֵּץ “quem recolha”; tinha “recolhe”
+ISA 13:14	10	יִפְנ֔וּ	se-voltarão	claude	יִפְנוּ “se voltarão”; tinha “cada”
+ISA 13:14	14	יָנֽוּסוּ	fugirão	claude	יָנוּסוּ “fugirão”; tinha “fugirá”
+ISA 14:6	1	מַכֶּ֤ה	que-feria	claude	מַכֶּה “que feria”; tinha “feria”
+ISA 14:6	4	מַכַּ֖ת	com-golpe	claude	מַכַּת “com golpe”; tinha “golpes”
+ISA 14:6	6	סָרָ֑ה	cessar	claude	סָרָה “cessar”; tinha “golpes-fim”
+ISA 14:6	7	רֹדֶ֤ה	que-dominava	claude	רֹדֶה “que dominava”; tinha “senhoreava”
+ISA 14:6	8	בָ/אַף֙	com-ira	claude	בָאַף “com ira”; tinha “com-ira-dominava-as”
+ISA 14:6	10	מֻרְדָּ֖ף	com-perseguição	claude	מֻרְדָּף “com perseguição”; tinha “perseguindo”
+ISA 14:6	12	חָשָֽׂךְ	refreio	claude	חָשָׂךְ “refreio, compaixão”; tinha “compaixão”
+ISA 16:4	3	נִדָּחַ֔/י	meus-desterrados	claude	נִדָּחַי “meus desterrados”; tinha “prisioneiros”
+ISA 16:4	11	אָפֵ֤ס	deixou-de-existir	claude	אָפֵס “deixou de existir”; tinha “opressor”
+ISA 16:4	12	הַ/מֵּץ֙	o-opressor	claude	הַמֵּץ “o opressor”; tinha “fim”
+ISA 16:4	13	כָּ֣לָה	acabou	claude	כָּלָה “acabou”; tinha “fim-a”
+ISA 16:4	15	תַּ֥מּוּ	desapareceram	claude	תַּמּוּ “desapareceram”; tinha “consumidos”
+ISA 16:4	16	רֹמֵ֖ס	os-que-pisam	claude	רֹמֵס “os que pisam”; tinha “sobre”
+ISA 16:4	18	הָ/אָֽרֶץ	da-terra	claude	הָאָרֶץ “da terra”; tinha “a-terra”
+ISA 16:7	2	יְיֵלִ֥יל	uivará	claude	יְיֵלִיל “uivará”; tinha “gritará-de-lamento”
+ISA 16:7	4	לְ/מוֹאָ֖ב	por-Moabe	claude	לְמוֹאָב “por Moabe”; tinha “Moabe”
+ISA 16:7	5	כֻּלֹּ֣/ה	todo-ele	claude	כֻּלֹּה “todo ele”; tinha “todos”
+ISA 16:7	6	יְיֵלִ֑יל	uivará	claude	יְיֵלִיל “uivará”; tinha “lamento”
+ISA 16:7	7	לַ/אֲשִׁישֵׁ֧י	pelas-tortas-de-passas	claude	לַאֲשִׁישֵׁי “pelas tortas de passas (de)”; tinha “gemereis-pelos-fundamentos”
+ISA 16:7	8	קִיר	Quir	claude	קִיר “Quir” (Quir-Haresete); tinha o nome inteiro
+ISA 16:7	9	חֲרֶ֛שֶׂת	Haresete	claude	חֲרֶשֶׂת “Haresete” (Quir-Haresete); tinha o nome inteiro
+ISA 16:7	10	תֶּהְגּ֖וּ	gemereis	claude	תֶּהְגּוּ “gemereis”; tinha “Haresete”
+ISA 16:7	12	נְכָאִֽים	abatidos	claude	נְכָאִים “abatidos, feridos”; tinha “quebrados”
+ISA 16:8	4	אֻמְלָ֜ל	desfaleceram	claude	אֻמְלָל “desfaleceram”; tinha “enfraqueceram”
+ISA 16:8	10	שְׂרוּקֶּ֔י/הָ	seus-melhores-sarmentos	claude	שְׂרוּקֶּיהָ “seus melhores sarmentos”; tinha “suas-melhores”
+ISA 16:8	11	עַד	até	claude	עַד “até”; tinha “a”
+ISA 16:8	13	נָגָ֖עוּ	chegavam	claude	נָגָעוּ “chegavam”; tinha “alcançavam”
+ISA 16:8	14	תָּ֣עוּ	vagueavam	claude	תָּעוּ “vagueavam”; tinha “alcançavam-o”
+ISA 16:8	16	שְׁלֻ֣חוֹתֶ֔י/הָ	seus-rebentos	claude	שְׁלֻחוֹתֶיהָ “seus rebentos”; tinha “seus-ramos”
+ISA 16:8	17	נִטְּשׁ֖וּ	se-estendiam	claude	נִטְּשׁוּ “se estendiam”; tinha “estendiam”
+ISA 16:8	19	יָֽם	o-mar	claude	יָם “o mar”; tinha “mar”
+ISA 17:10	11	תִּטְּעִי֙	plantarás	claude	תִּטְּעִי “plantarás”; tinha “cultivarás-belas”
+ISA 17:10	12	נִטְעֵ֣י	plantas	claude	נִטְעֵי “plantas (de)”; tinha “plantas”
+ISA 17:10	13	נַעֲמָנִ֔ים	deleitosas	claude	נַעֲמָנִים “deleitosas”; tinha “belas”
+ISA 17:10	14	וּ/זְמֹ֥רַת	e-sarmento	claude	וּזְמֹרַת “e sarmento (de)”; tinha “ramos”
+ISA 17:10	15	זָ֖ר	estranho	claude	זָר “estranho”; tinha “estranhos”
+ISA 17:10	16	תִּזְרָעֶֽ/נּוּ	semearás	claude	תִּזְרָעֶנּוּ “o semearás”; tinha “semearás-o”
+ISA 18:2	7	פְּנֵי	a-face-de	claude	פְּנֵי “a face de”; tinha “rosto”
+ISA 18:2	14	מְמֻשָּׁ֣ךְ	alta	claude	מְמֻשָּׁךְ “alta, estirada”; tinha “gente-alta”
+ISA 18:2	15	וּ/מוֹרָ֔ט	e-polida	claude	וּמוֹרָט “e polida (de pele lisa)”; tinha “e-de-pele-lisa”
+ISA 18:2	21	וָ/הָ֑לְאָה	e-além	claude	וָהָלְאָה “e além”; tinha “seus-territórios”
+ISA 18:2	23	קַו	de-medida	claude	קַו “de medida (forte)”; tinha “dominadora”
+ISA 18:2	24	קָ֣ו	medida	claude	קָו “medida”; tinha “dominadora”
+ISA 18:2	25	וּ/מְבוּסָ֔ה	e-pisoteadora	claude	וּמְבוּסָה “e pisoteadora”; tinha “e-esmagadora”
+ISA 18:2	27	בָּזְא֥וּ	dividem	claude	בָּזְאוּ “dividem”; tinha “esmagadora”
+ISA 18:2	29	אַרְצֽ/וֹ	sua-terra	claude	אַרְצוֹ “sua terra”; tinha “terra”
+ISA 18:7	2	הַ/הִ֨יא	aquele	claude	הַהִיא “aquele”; tinha “será”
+ISA 18:7	3	יֽוּבַל	será-trazido	claude	יוּבַל “será trazido”; tinha “trazido”
+ISA 18:7	9	וּ/מוֹרָ֔ט	e-polido	claude	וּמוֹרָט “e polido (de pele lisa)”; tinha “e-de-pele-lisa”
+ISA 18:7	10	וּ/מֵ/עַ֥ם	e-de-um-povo	claude	וּמֵעַם “e de um povo”; tinha “e-um-povo”
+ISA 18:7	14	וָ/הָ֑לְאָה	e-além	claude	וָהָלְאָה “e além”; tinha “seus-territórios”
+ISA 18:7	16	קַו	de-medida	claude	קַו “de medida (forte)”; tinha “dominadora”
+ISA 18:7	17	קָ֣ו	medida	claude	קָו “medida”; tinha “dominadora”
+ISA 18:7	18	וּ/מְבוּסָ֗ה	e-pisoteadora	claude	וּמְבוּסָה “e pisoteadora”; tinha “e-esmagadora”
+ISA 18:7	20	בָּזְא֤וּ	dividem	claude	בָּזְאוּ “dividem”; tinha “esmagadora”
+ISA 18:7	22	אַרְצ֔/וֹ	sua-terra	claude	אַרְצוֹ “sua terra”; tinha “terra”
