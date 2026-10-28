@@ -57,7 +57,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git diff --cached --quiet && { echo "Nada mudou no site."; exit 0; }
+          # sem mudança só pula quando o ramo já é um commit sem pai (o checkout é raso: o pai se vê no objeto)
+          if git diff --cached --quiet && ! git cat-file -p HEAD | grep -q "^parent "; then echo "Nada mudou no site."; exit 0; fi
           # um commit só, sem histórico: o ramo não cresce a cada publicação; o lease recusa o envio se os
           # Vídeos publicaram no meio
           BASE="$(git rev-parse HEAD)"

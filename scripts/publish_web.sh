@@ -16,7 +16,7 @@ cp LICENSE "$TMP"/
 if [ -n "${KEEP:-}" ]; then rm -rf "$TMP/videos"; cp -r "$KEEP/videos" "$TMP/"; rm -rf "$KEEP"; fi
 touch "$TMP/.nojekyll"
 git -C "$TMP" add -A
-if git -C "$TMP" diff --cached --quiet; then
+if git -C "$TMP" diff --cached --quiet && ! git -C "$TMP" cat-file -p HEAD | grep -q "^parent "; then
   echo "Nada mudou no site."
 else
   # um commit só, sem histórico: o ramo não cresce a cada publicação
