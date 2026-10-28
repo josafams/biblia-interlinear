@@ -59,4 +59,4 @@ Sem Docker, com Node (`.nvmrc`), Python (`.python-version`), `qpdf` e `poppler-u
 - Nada de `innerHTML` com texto vindo de fora sem escapar (use a função `esc`), nada de `eval`.
 - Consultas SQL sempre parametrizadas (`?`).
 - O workflow **Segurança** roda gitleaks, Semgrep, CodeQL e auditoria de dependências em todo PR e toda semana.
-- Problema de segurança? Abra uma issue sem detalhes e peça um contato privado.
+- Problema de segurança? Não abra issue pública: siga o [SECURITY.md](SECURITY.md).

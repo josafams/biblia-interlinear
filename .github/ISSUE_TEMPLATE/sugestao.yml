@@ -1,0 +1,16 @@
+name: Sugestão
+description: Ideia de função ou melhoria
+labels: ["sugestão"]
+body:
+  - type: textarea
+    id: problema
+    attributes:
+      label: Qual necessidade isso resolve
+    validations:
+      required: true
+  - type: textarea
+    id: ideia
+    attributes:
+      label: Como você imagina
+    validations:
+      required: true

@@ -1,0 +1,43 @@
+name: Correção de texto
+description: Glosa, verbete do léxico, tema, introdução ou pergunta com erro
+labels: ["correção de texto"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por ajudar na revisão! Erros de digitação da própria Bíblia Livre são reproduzidos sem alteração
+        (veja `data/corrections/blivre.tsv`). Guia de correção: `docs/CORRECOES.md`.
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: O que está errado
+      options:
+        - Glosa de uma palavra
+        - Verbete do léxico
+        - Tema do capítulo
+        - Introdução do livro
+        - Pergunta ao texto
+        - Outro
+    validations:
+      required: true
+  - type: input
+    id: referencia
+    attributes:
+      label: Referência
+      description: Livro, capítulo e versículo (e a palavra ou o número Strong, se for o caso)
+      placeholder: "Jo 1:1, πρὸς (G4314)"
+    validations:
+      required: true
+  - type: textarea
+    id: atual
+    attributes:
+      label: Como está hoje
+    validations:
+      required: true
+  - type: textarea
+    id: sugestao
+    attributes:
+      label: Correção sugerida e por quê
+      description: Se possível, cite a fonte (léxico, gramática, outra tradução)
+    validations:
+      required: true

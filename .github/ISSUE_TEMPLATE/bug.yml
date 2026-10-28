@@ -1,0 +1,43 @@
+name: Erro no site ou no app
+description: Algo não funciona como deveria
+labels: ["bug"]
+body:
+  - type: textarea
+    id: oque
+    attributes:
+      label: O que aconteceu
+      description: E o que você esperava que acontecesse
+    validations:
+      required: true
+  - type: textarea
+    id: passos
+    attributes:
+      label: Como reproduzir
+      placeholder: |
+        1. Abrir Gn 1
+        2. Tocar em ...
+    validations:
+      required: true
+  - type: dropdown
+    id: onde
+    attributes:
+      label: Onde
+      multiple: true
+      options:
+        - Site no computador
+        - Site no celular
+        - App Android
+        - App iOS
+        - EPUB
+        - PDF
+    validations:
+      required: true
+  - type: input
+    id: aparelho
+    attributes:
+      label: Aparelho, sistema e navegador
+      placeholder: "Android 15, Chrome 141"
+  - type: textarea
+    id: extra
+    attributes:
+      label: Prints ou vídeo
