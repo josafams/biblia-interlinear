@@ -40,6 +40,19 @@ test("in Portuguese John 3 has its questions (the English test above relies on i
   await expect(page.locator('[data-testid="questions"]')).toBeVisible();
 });
 
+test("Português in Aparência works while the address still has ?lang=en", async ({ page }) => {
+  await page.goto("ler.html?lang=en#GEN.1");
+  await expect(titulo(page)).toContainText("Genesis 1");
+  await page.click("#open-look");
+  await Promise.all([page.waitForEvent("load"), page.click('#lang-pick [data-lang="pt-BR"]')]);
+  await expect(titulo(page)).toContainText("Gênesis 1");
+  expect(page.url()).not.toContain("lang=");
+  // and back to English from the picker
+  await page.click("#open-look");
+  await Promise.all([page.waitForEvent("load"), page.click('#lang-pick [data-lang="en"]')]);
+  await expect(titulo(page)).toContainText("Genesis 1");
+});
+
 test("without a chosen language the picker does not show (the English version is not announced)", async ({ page }) => {
   await page.goto("ler.html#GEN.1");
   await expect(page.locator(".verse").first()).toBeVisible();

@@ -37,11 +37,16 @@ export const localeChosen = () => chosen !== null;
 export const hasProjectTexts = () => locale === TEXTS_LOCALE;
 /** The data folder of the locale's running text over the Bíblia Livre (dados/<it>/), or null in Portuguese. */
 export const textLayer = () => (locale === TEXTS_LOCALE ? null : locale);
-/** Saves the locale for this device and reloads the page in it. */
+/** Saves the locale for this device and reloads the page in it, without the ?lang= of the address (it would pick
+ * the old locale again). */
 export function chooseLocale(next: string) {
   if (!LOCALES[next]) throw new Error(`i18n: unknown locale ${next}`);
   store.set("idioma", next);
-  location.reload();
+  const url = new URL(location.href);
+  if (url.searchParams.has("lang")) {
+    url.searchParams.delete("lang");
+    location.replace(url.href);
+  } else location.reload();
 }
 
 export const getLocale = () => locale;
