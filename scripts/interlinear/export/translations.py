@@ -68,6 +68,19 @@ def translation_texts(db, locale):
     return texts
 
 
+def close_parenthesis(origin, meaning):
+    """Strong's text is split into origin and meaning at a ";" that can sit inside a parenthesis ("from G435 and
+    (the countenance" | "from G3700); man-faced"): the rest of the parenthesis goes back to the origin."""
+    depth = origin.count("(") - origin.count(")")
+    if depth <= 0:
+        return origin, meaning
+    for i, c in enumerate(meaning):
+        depth += (c == "(") - (c == ")")
+        if depth == 0:
+            return f"{origin}; {meaning[: i + 1]}", meaning[i + 1 :].strip(" ;,")
+    return origin, meaning
+
+
 def build_lexicon(db, locale, usage):
     """The entries in the locale: Strong's origin and meaning (in English), the pronunciation and the translations."""
     translates = defaultdict(list)
@@ -81,9 +94,10 @@ def build_lexicon(db, locale, usage):
         "SELECT entry_key, language, lemma, pron_en, derivation_en, def_en, gloss_en FROM lexicon"
     ):
         pron = pron_hebrew_en(pron_en) if language == "H" else pron_greek(lemma or "", "en")
+        origin, meaning = close_parenthesis((deriv or "").strip(" ;"), (definition or "").strip(" ;"))
         lex[language][entry_key] = {
-            "o": (deriv or "").strip(" ;"),
-            "s": (definition or "").strip(" ;") or gloss_en or "",
+            "o": origin,
+            "s": meaning or gloss_en or "",
             "p": pron,
             "t": "; ".join(translates.get(entry_key, [])),
         }

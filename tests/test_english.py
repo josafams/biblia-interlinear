@@ -86,6 +86,9 @@ def test_lexicon_in_english():
     assert h["H430"]["t"].startswith("god (")  # how the BSB renders it, lowercase as in Portuguese
     g = jsonp(WEB_EN / "lex" / "G.js")
     assert g["G3056"]["p"] == "LO-gos"
+    # Strong splits origin and meaning inside a parenthesis; the parenthesis goes back to the origin
+    assert g["G444"]["o"].endswith("(the countenance; from G3700 (ὀπτάνομαι))")
+    assert g["G444"]["s"] == "man-faced, i.e. a human being"
 
 
 def test_search_index_in_english():

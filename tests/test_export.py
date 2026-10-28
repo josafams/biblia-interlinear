@@ -8,6 +8,7 @@ import pytest
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts"))
 from interlinear.export.common import b36, search_norm, split_heading  # noqa: E402
 from interlinear.export.concordance import conc_bucket  # noqa: E402
+from interlinear.export.translations import close_parenthesis  # noqa: E402
 
 
 def test_acrostic_heading_leaves_the_verse_text():
@@ -45,3 +46,12 @@ def test_concordance_bucket_by_strong_number(key, bucket):
 def test_base36_matches_javascript_parseint(n, text):
     assert b36(n) == text
     assert int(text, 36) == n
+
+
+def test_close_parenthesis():
+    assert close_parenthesis("from H1933 (in the sense of coveting", "by implication, of falling); desire") == (
+        "from H1933 (in the sense of coveting; by implication, of falling)",
+        "desire",
+    )
+    assert close_parenthesis("(Diyshon, the same as H1788", "Dishon") == ("(Diyshon, the same as H1788", "Dishon")
+    assert close_parenthesis("from G25", "love") == ("from G25", "love")
