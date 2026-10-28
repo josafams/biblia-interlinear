@@ -6,8 +6,15 @@ import fs from "node:fs";
 import path from "node:path";
 import { OUT } from "./app";
 
-// the static pages for search engines (vite/site/seo-pages.ts) are not part of the app offline
-const LAZY = ["dados/cap/", "dados/conc/", "dados/busca/", "videos/", "biblia/", "lexico/", "sitemap"];
+// the same data of another locale (dados/en/…) is cached when read too; the static pages for search engines
+// (vite/site/seo-pages.ts) are not part of the app offline
+const LAZY = [
+  ...["", "en/"].flatMap(l => [`dados/${l}cap/`, `dados/${l}conc/`, `dados/${l}busca/`]),
+  "videos/",
+  "biblia/",
+  "lexico/",
+  "sitemap"
+];
 
 function listFiles(dir: string, base = ""): string[] {
   return fs.readdirSync(dir).flatMap(f => {
