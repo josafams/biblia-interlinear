@@ -6,6 +6,25 @@ O site e a release `app-android` sempre trazem a `main`; as versões marcam pont
 
 ## [Não lançado]
 
+### Adicionado
+
+- App em inglês com a Berean Standard Bible (BSB) (#8): seletor de idioma em Aparência; glosas em inglês por
+  alinhamento com a BSB, léxico Strong em inglês, busca e concordância; introduções dos 66 livros, temas dos
+  capítulos e perguntas ao texto em inglês.
+- Página inicial em inglês (`en/`) e páginas para buscadores em inglês (`en/bible/`, `en/lexicon/`), ligadas às
+  em português por `hreflang`.
+- EPUB e PDF em inglês (release `books-en`), vídeos "How to use" e a ficha da loja em inglês.
+- Lembrete de leitura e versículo do dia, como notificações no app e um cartão em Você.
+
+### Mudado
+
+- Os vídeos "Como usar" das duas línguas são gravados em paralelo.
+
+### Corrigido
+
+- O service worker baixava de uma vez os dados em inglês; agora eles entram no cache só quando são lidos.
+- 110 verbetes do léxico em inglês tinham o significado cortado no meio de um parêntese.
+
 ## [0.1.0] - 2026-10-28
 
 Primeira versão: a Bíblia inteira (66 livros) palavra por palavra, no site, no app Android e em EPUB e PDF.
