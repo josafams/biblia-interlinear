@@ -17,7 +17,7 @@ export type HomeData = {
 };
 
 /** A recorded video (videos/videos.js); older indexes used Portuguese names. */
-export type Recording = { webm?: string; mp4?: string; vtt?: string; cover?: string; times?: number[]; duration?: string };
+export type Recording = { mp4?: string; vtt?: string; cover?: string; times?: number[]; duration?: string };
 type LegacyRecording = Recording & { capa?: string; tempos?: number[]; duracao?: string };
 type RecordedEntry = { phone?: LegacyRecording; desktop?: LegacyRecording; celular?: LegacyRecording; computador?: LegacyRecording };
 
@@ -36,5 +36,5 @@ export function recording(id: string, phone: boolean): Recording | null {
     d = r.desktop || r.computador;
   const a = phone ? p || d : d || p;
   if (!a) return null;
-  return { webm: a.webm, mp4: a.mp4, vtt: a.vtt, cover: a.cover || a.capa, times: a.times || a.tempos, duration: a.duration || a.duracao };
+  return { mp4: a.mp4, vtt: a.vtt, cover: a.cover || a.capa, times: a.times || a.tempos, duration: a.duration || a.duracao };
 }

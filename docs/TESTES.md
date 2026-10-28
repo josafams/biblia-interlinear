@@ -52,7 +52,7 @@ No GitHub: *Settings › Branches › Add rule* para `main`, marcando *Require s
 
 Cada vídeo é um roteiro em `scripts/videos/roteiros.mjs`: uma lista de passos, cada um com a legenda e a
 ação (tocar, digitar, rolar…). `scripts/videos/gravar.mjs` executa os roteiros no site e grava a tela
-(celular 390×844 e computador 1280×800), gerando MP4, WebM, legendas WebVTT e capa em `build/videos`.
+(celular 390×844 e computador 1280×800), gerando MP4 (H.264), legendas WebVTT e capa em `build/videos`.
 A página inicial mostra a lista de vídeos (dos roteiros) e toca os que já foram gravados.
 
 ```bash

@@ -81,7 +81,6 @@
             bind:currentTime={time}
             {@attach autoplay}
           >
-            {#if rec.webm}<source src={rec.webm} type="video/webm" />{/if}
             {#if rec.mp4}<source src={rec.mp4} type="video/mp4" />{/if}
             {#if rec.vtt}<track kind="captions" srclang="pt" label={t("home.howto.captions")} src={rec.vtt} default />{/if}
           </video>

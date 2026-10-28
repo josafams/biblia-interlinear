@@ -211,31 +211,6 @@ async function save(page, disp, dir, t0) {
   };
 }
 
-// WebM (VP9) além do MP4 (H.264): navegadores sem H.264 (Chromium aberto, alguns Linux) tocam o WebM.
-function webm(mp4) {
-  execFileSync("ffmpeg", [
-    "-y",
-    "-loglevel",
-    "error",
-    "-i",
-    mp4,
-    "-c:v",
-    "libvpx-vp9",
-    "-b:v",
-    "0",
-    "-crf",
-    "40",
-    "-deadline",
-    "good",
-    "-cpu-used",
-    "5",
-    "-row-mt",
-    "1",
-    "-an",
-    mp4.replace(/\.mp4$/, ".webm")
-  ]);
-}
-
 const vtt = (ts, steps, fim) =>
   "WEBVTT\n\n" +
   steps
@@ -361,7 +336,6 @@ for (const v of videos) {
         "-an",
         `${base}.mp4`
       ]);
-      webm(`${base}.mp4`);
       execFileSync("ffmpeg", [
         "-y",
         "-loglevel",
@@ -380,7 +354,6 @@ for (const v of videos) {
       const sec = Math.round(fim);
       indice[v.id] = indice[v.id] || {};
       indice[v.id][nome] = {
-        webm: `videos/${v.id}-${nome}.webm`,
         mp4: `videos/${v.id}-${nome}.mp4`,
         vtt: `videos/${v.id}-${nome}.vtt`,
         cover: `videos/${v.id}-${nome}.jpg`,
@@ -400,7 +373,6 @@ for (const v of videos) {
 }
 await browser.close();
 servidor.close();
-if (args.includes("--so-webm")) process.exit(0);
 if (!VERIFICAR) salvarIndice();
 if (falhas) {
   console.error(`${falhas} roteiro(s) falharam`);

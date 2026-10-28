@@ -39,7 +39,7 @@ jobs:
         run: |
           rm -rf build/web/videos
           mkdir -p build/web/videos
-          cp build/videos/*.mp4 build/videos/*.webm build/videos/*.vtt build/videos/*.jpg build/videos/videos.js build/web/videos/
+          cp build/videos/*.mp4 build/videos/*.vtt build/videos/*.jpg build/videos/videos.js build/web/videos/
           cd build/web
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
