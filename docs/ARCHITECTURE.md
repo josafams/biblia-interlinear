@@ -52,7 +52,7 @@ A ordem é sempre corpus → glosas → revisão → export (o `Makefile`, o `sc
 | `src/components/` | um componente Svelte por parte da tela; recebem dados de `src/state` e avisam ações por props (`onclose`, `onpick`…) |
 | `src/state/` | o estado da tela em runes (`*.svelte.ts`): o que está aberto, o capítulo, as marcações, as preferências |
 | `src/lib/` | regras puras em TypeScript, sem DOM, com testes de unidade |
-| `src/i18n/` | `t(chave, params)` com plurais; `pt-BR.json` e `en.json` (`?lang=en` escolhe e salva no aparelho); `page.ts` traduz o texto fixo de `web/*.html` marcado com `data-i18n` |
+| `src/i18n/` | `t(chave, params)` com plurais; `pt-BR.json` e `en.json` (o seletor em Aparência, ou `?lang=en` no endereço, escolhe e salva no aparelho); `page.ts` traduz o texto fixo de `web/*.html` marcado com `data-i18n` |
 | `src/styles/` | `tokens.css`, `base.css` e um arquivo por área; `reader.css` importa todos, na ordem da cascata |
 | `src/home/` | componentes da página inicial (amostra, números, Como usar, livros) que leem `home-data.json` |
 | `src/seo/` | as páginas estáticas para a busca (livros, capítulos, verbetes), o `<head>` de todas as páginas e o sitemap |

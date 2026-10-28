@@ -54,12 +54,15 @@ test("Português in Aparência works while the address still has ?lang=en", asyn
   await expect(titulo(page)).toContainText("Genesis 1");
 });
 
-test("without a chosen language the picker does not show (the English version is not announced)", async ({ page }) => {
+test("the picker shows for everyone: from Portuguese to English and back", async ({ page }) => {
   await page.goto("ler.html#GEN.1");
-  await expect(page.locator(".verse").first()).toBeVisible();
+  await expect(titulo(page)).toContainText("Gênesis 1");
   await page.click("#open-look");
-  await expect(page.locator("#look")).toBeVisible();
-  await expect(page.locator("#lang-pick")).toHaveCount(0);
+  await expect(page.locator('#lang-pick [data-lang="pt-BR"]')).toHaveAttribute("aria-pressed", "true");
+  await Promise.all([page.waitForEvent("load"), page.click('#lang-pick [data-lang="en"]')]);
+  await expect(titulo(page)).toContainText("Genesis 1");
+  await page.reload();
+  await expect(titulo(page)).toContainText("Genesis 1");
 });
 
 test("in English the running text is the Berean Standard Bible", async ({ page }) => {

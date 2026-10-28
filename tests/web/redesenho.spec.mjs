@@ -54,10 +54,10 @@ test("Ir para também filtra os livros pelo nome", async ({ page }) => {
   expect(await page.locator("#bk-list .bchip:visible").count()).toBeGreaterThan(20);
 });
 
-test("Aparência em cinco grupos; “O que mostrar” em chips, sem rolar", async ({ page }) => {
+test("Aparência em seis grupos; “O que mostrar” em chips, sem rolar", async ({ page }) => {
   await open(page);
   await page.click("#open-look");
-  await expect(page.locator("#look h3")).toHaveText(["Modo de leitura", "O que mostrar", "Texto", "Tema", "Áudio"]);
+  await expect(page.locator("#look h3")).toHaveText(["Modo de leitura", "O que mostrar", "Texto", "Tema", "Áudio", "Idioma"]);
   await expect(page.locator("#t-xlit")).toBeInViewport();
   await page.click("#t-xlit");
   await expect(page.locator("#t-xlit")).toHaveAttribute("aria-checked", "false");

@@ -13,8 +13,8 @@ export const LOCALE_IDS = Object.keys(LOCALES);
 /** The locale of the project's own texts (themes, introductions, questions); the others show them once translated (#8). */
 const TEXTS_LOCALE = "pt-BR";
 
-// ?lang=en (or pt) in the address picks the locale and saves it on the device; otherwise the saved choice, else
-// Portuguese. The English version is not announced yet, so only a chosen locale shows the picker in Aparência.
+// ?lang=en (or pt) in the address picks the locale and saves it on the device; otherwise the saved choice (the
+// picker in Aparência), else Portuguese.
 function chosenLocale(): string | null {
   try {
     const asked = new URLSearchParams(location.search).get("lang");
@@ -31,8 +31,6 @@ let locale = chosen ?? "pt-BR";
 let messages: Messages = LOCALES[locale];
 if (chosen && typeof document !== "undefined") document.documentElement.lang = locale;
 
-/** Whether this device picked a locale (the language picker shows only then). */
-export const localeChosen = () => chosen !== null;
 /** Whether the project's own texts (chapter themes, book introductions, questions) exist in the locale. */
 export const hasProjectTexts = () => locale === TEXTS_LOCALE;
 /** The data folder of the locale's running text over the Bíblia Livre (dados/<it>/), or null in Portuguese. */
