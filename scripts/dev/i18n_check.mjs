@@ -48,6 +48,12 @@ for (const file of legacy) {
   for (const m of text.matchAll(/["'`]([a-z_]+(?:\.[\w-]+)+)["'`]/g)) mentioned.add(m[1]);
 }
 
+// the fixed text of the HTML pages: data-i18n, data-i18n-html and data-i18n-label keys (src/i18n/page.ts)
+for (const file of fs.readdirSync(path.join(ROOT, "web")).filter(f => f.endsWith(".html"))) {
+  const text = fs.readFileSync(path.join(ROOT, "web", file), "utf8");
+  for (const m of text.matchAll(/data-i18n(?:-html|-label)?="([^"]+)"/g)) used.add(m[1]);
+}
+
 for (const file of files) {
   // HTML comments of .svelte files are not screen text (blanked, keeping the line numbers)
   const source = fs.readFileSync(file, "utf8").replace(/<!--[\s\S]*?-->/g, c => c.replace(/[^\n]/g, " "));

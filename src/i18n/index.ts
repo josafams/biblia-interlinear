@@ -1,14 +1,46 @@
 // Screen text: every string the user sees comes from a locale file (src/i18n/locales/<locale>.json),
 // looked up by a dotted key in English ("reader.next_chapter"). Small on purpose and with the same
 // key API as the usual libraries, so one can replace it later without touching the callers.
+import { store } from "../lib/store";
+import en from "./locales/en.json";
 import ptBR from "./locales/pt-BR.json";
 
 type Messages = { [key: string]: string | Messages };
 export type Params = Record<string, string | number>;
 
-const LOCALES: Record<string, Messages> = { "pt-BR": ptBR };
-let locale = "pt-BR";
+const LOCALES: Record<string, Messages> = { "pt-BR": ptBR, en };
+export const LOCALE_IDS = Object.keys(LOCALES);
+/** The locale of the project's own texts (themes, introductions, questions); the others show them once translated (#8). */
+const TEXTS_LOCALE = "pt-BR";
+
+// ?lang=en (or pt) in the address picks the locale and saves it on the device; otherwise the saved choice, else
+// Portuguese. The English version is not announced yet, so only a chosen locale shows the picker in Aparência.
+function chosenLocale(): string | null {
+  try {
+    const asked = new URLSearchParams(location.search).get("lang");
+    const id = asked && LOCALE_IDS.find(l => l === asked || l.split("-")[0] === asked);
+    if (id) store.set("idioma", id);
+    const saved = store.get("idioma", null);
+    return saved && LOCALES[saved] ? saved : null;
+  } catch {
+    return null; // no window (tests, build)
+  }
+}
+const chosen = chosenLocale();
+let locale = chosen ?? "pt-BR";
 let messages: Messages = LOCALES[locale];
+if (chosen && typeof document !== "undefined") document.documentElement.lang = locale;
+
+/** Whether this device picked a locale (the language picker shows only then). */
+export const localeChosen = () => chosen !== null;
+/** Whether the project's own texts (chapter themes, book introductions, questions) exist in the locale. */
+export const hasProjectTexts = () => locale === TEXTS_LOCALE;
+/** Saves the locale for this device and reloads the page in it. */
+export function chooseLocale(next: string) {
+  if (!LOCALES[next]) throw new Error(`i18n: unknown locale ${next}`);
+  store.set("idioma", next);
+  location.reload();
+}
 
 export const getLocale = () => locale;
 export function setLocale(next: string) {

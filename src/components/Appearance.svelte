@@ -4,11 +4,12 @@
   (#t-xlit…) for the tests and the "Como usar" videos.
 -->
 <script lang="ts">
-  import { t } from "../i18n";
+  import { getLocale, t } from "../i18n";
   import { type PrefDef, PREFS, SIZES, THEMES, type ThemeId } from "../lib/prefs";
   import type { ModeId } from "../lib/modes";
   import { prefs, setSize, setTheme } from "../state/prefs.svelte";
   import { speech } from "../state/speech.svelte";
+  import LanguagePicker from "./LanguagePicker.svelte";
   import ModeNote from "./ModeNote.svelte";
   import ModeSelector from "./ModeSelector.svelte";
   import SwitchChip from "./SwitchChip.svelte";
@@ -36,7 +37,16 @@
 
 <!-- the same aside[role=dialog] as the other sheets (the styles and the tests expect it) -->
 <!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
-<aside class="sheet right" id="look" data-testid="appearance" role="dialog" aria-modal="true" aria-labelledby="look-h" lang="pt-BR" hidden>
+<aside
+  class="sheet right"
+  id="look"
+  data-testid="appearance"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="look-h"
+  lang={getLocale()}
+  hidden
+>
   <div class="shead">
     <h2 id="look-h">{t("bar.look")}</h2>
     <button class="ibtn" data-close aria-label={t("look.close")}>{@render close()}</button>
@@ -110,6 +120,7 @@
       {#each group("audio") as def (def.id)}<SwitchChip {def} {ontoggle} />{/each}
     </div>
   </div>
+  <LanguagePicker />
   <p class="look-foot">
     <a
       href="#fontes"

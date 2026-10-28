@@ -1,7 +1,7 @@
 // The study notebook ("Exportar em PDF"): the chosen items of Minhas anotações grouped by verse, with the
 // Bíblia Livre text (highlights kept), the interlinear of the words highlighted in the original, the notes
 // and the tags, as a standalone HTML page to print. Built on the device, without internet.
-import { t } from "../../i18n";
+import { formatDate, getLocale, t } from "../../i18n";
 import { esc } from "../text";
 import CSS from "./notebook.css?raw";
 import type { RawWord } from "../types";
@@ -130,8 +130,8 @@ export async function buildNotebook(chosen: Item[], o: NotebookOptions, s: Noteb
 }
 
 function page(titulo: string, n: number, body: string) {
-  const date = new Date().toLocaleDateString("pt-BR");
-  return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>${esc(titulo)} · ${esc(t("notebook.doc_title"))}</title><style>${CSS}</style></head><body>
+  const date = formatDate(new Date());
+  return `<!doctype html><html lang="${getLocale()}"><head><meta charset="utf-8"><title>${esc(titulo)} · ${esc(t("notebook.doc_title"))}</title><style>${CSS}</style></head><body>
 <header><div><small>${esc(t("notebook.eyebrow"))}</small><h1>${esc(titulo)}</h1></div><span>${esc(t("notebook.count", { count: n }))} · ${date}</span></header>
 ${body || `<p>${esc(t("notebook.nothing"))}</p>`}
 <footer>${esc(t("notebook.footer"))}</footer>

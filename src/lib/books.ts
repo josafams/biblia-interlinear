@@ -1,4 +1,5 @@
 // The books of the index: grouped as in the data (Lei, Históricos…) and filtered by what is typed in "Ir para".
+import { hasProjectTexts, tryT } from "../i18n";
 import { norm } from "./text";
 
 export type IndexBook = {
@@ -32,4 +33,24 @@ export function bookQuery(typed: string) {
 export function bookMatches(b: IndexBook, query: string) {
   if (!query) return true;
   return [b.name, b.abbrev].some(x => norm(x.replace(/\s+/g, "")).startsWith(query)) || norm(b.name).includes(query);
+}
+
+type LocalBook = { code: string; name: string; abbrev: string; group: string; about?: unknown; chapters: { n: number; t?: string }[] };
+
+/**
+ * The books in the locale: name, abbreviation and group from the locale file (the data has them in Portuguese).
+ * Where the project's own texts are not translated yet, the chapter themes and the introduction are left out,
+ * so a page in English does not mix in Portuguese. Changes the objects in place and returns them.
+ */
+export function localizeBooks<B extends LocalBook>(books: B[]): B[] {
+  for (const b of books) {
+    b.name = tryT(`books.${b.code}.name`) ?? b.name;
+    b.abbrev = tryT(`books.${b.code}.abbrev`) ?? b.abbrev;
+    b.group = tryT(`book_groups.${b.group}`) ?? b.group;
+    if (!hasProjectTexts()) {
+      delete b.about;
+      for (const c of b.chapters) delete c.t;
+    }
+  }
+  return books;
 }

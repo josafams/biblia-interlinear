@@ -5,9 +5,9 @@
   href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@400;600&family=Gentium+Book+Plus:wght@400&family=Literata:opsz,wght@7..72,400;7..72,600&family=IBM+Plex+Mono:wght@400;500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap"
 />
 
-<a class="skip" href="#verses" id="skip">Pular para o texto</a>
-<nav class="bar" aria-label="Navegação">
-  <div class="bar-modes wide-only" id="bar-modes" role="radiogroup" aria-label="Modo de leitura"></div>
+<a class="skip" href="#verses" id="skip" data-i18n="page.skip">Pular para o texto</a>
+<nav class="bar" aria-label="Navegação" data-i18n-label="page.nav">
+  <div class="bar-modes wide-only" id="bar-modes" role="radiogroup" aria-label="Modo de leitura" data-i18n-label="look.mode"></div>
   <button
     class="ibtn icon"
     id="open-search"
@@ -15,6 +15,7 @@
     aria-expanded="false"
     aria-haspopup="dialog"
     aria-label="Buscar na Bíblia"
+    data-i18n-label="search.title"
   >
     <svg
       viewBox="0 0 24 24"
@@ -29,7 +30,7 @@
       <path d="M20 20l-3.5-3.5" />
     </svg>
   </button>
-  <button class="ibtn icon avatar wide-only" id="open-account" aria-label="Conta e progresso">
+  <button class="ibtn icon avatar wide-only" id="open-account" aria-label="Conta e progresso" data-i18n-label="page.account">
     <svg
       viewBox="0 0 24 24"
       fill="none"
@@ -46,7 +47,7 @@
 </nav>
 <div class="wrap" id="page" lang="pt-BR">
   <header>
-    <p class="kbd">
+    <p class="kbd" data-i18n-html="page.keys">
       No teclado: <kbd>←</kbd> <kbd>→</kbd> palavra · <kbd>↑</kbd> <kbd>↓</kbd> versículo · <kbd>Enter</kbd> abre o verbete ·
       <kbd>Esc</kbd> fecha · <kbd>[</kbd> <kbd>]</kbd> capítulo · <kbd>/</kbd> buscar
     </p>
@@ -62,34 +63,34 @@
       >
         <path d="M11 5L6 9H3v6h3l5 4V5z" />
         <path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" /></svg
-      ><span>Ouvir o capítulo</span>
+      ><span data-i18n="page.listen_chapter">Ouvir o capítulo</span>
     </button>
   </header>
 
   __NOSCRIPT__
-  <main id="verses" aria-label="Texto"></main>
+  <main id="verses" aria-label="Texto" data-i18n-label="page.text"></main>
 
   <section class="lexsec" id="lexico" aria-labelledby="lex-h"></section>
 
   <footer id="fontes" class="fontes">
-    <h2>Fontes e licenças</h2>
-    <p>
+    <h2 data-i18n="look.sources">Fontes e licenças</h2>
+    <p data-i18n-html="page.sources.hebrew">
       <strong>Hebraico e aramaico, com morfologia:</strong> Open Scriptures Hebrew Bible,
       <a href="https://github.com/openscriptures/morphhb" target="_blank" rel="noopener">github.com/openscriptures/morphhb</a> (CC BY 4.0),
       sobre o Westminster Leningrad Codex (domínio público). Mapa de versificação do mesmo projeto.
     </p>
-    <p>
+    <p data-i18n-html="page.sources.greek">
       <strong>Grego:</strong> SBL Greek New Testament (SBLGNT), © Society of Biblical Literature e Logos, licença CC BY 4.0; morfologia e
       lemas do MorphGNT, J. K. Tauber,
       <a href="https://github.com/morphgnt/sblgnt" target="_blank" rel="noopener">github.com/morphgnt/sblgnt</a> (CC BY-SA 3.0).
     </p>
-    <p>
+    <p data-i18n-html="page.sources.translation">
       <strong>Tradução corrida:</strong> Bíblia Livre (BLIVRE), de Diego Santos, Mario Sérgio e Marco Teles,
       <a href="https://sites.google.com/site/biblialivre/" target="_blank" rel="noopener">sites.google.com/site/biblialivre</a>. Antigo
       Testamento: revisão de 2018 (CC BY 4.0 Brasil, via corpus eBible), completada pela edição de 2017 onde faltam versículos. Novo
       Testamento: edição de 2017 (CC BY 3.0 Brasil, módulo CrossWire), que traduz o texto crítico. Texto reproduzido sem alterações.
     </p>
-    <p>
+    <p data-i18n-html="page.sources.lexicon">
       <strong>Léxico:</strong> dicionário de James Strong (domínio público), edição digital Open Scriptures (<a
         href="https://github.com/openscriptures/strongs"
         target="_blank"
@@ -98,12 +99,12 @@
       >); léxico grego de Jeffrey Dodson (domínio público). Origem e significado dos verbetes mais usados vertidos para o português neste
       projeto; os demais aparecem em inglês.
     </p>
-    <p>
+    <p data-i18n-html="page.sources.glosses">
       <strong>Glosas palavra a palavra:</strong> obtidas por alinhamento estatístico entre o original e a BLIVRE (ferramenta eflomal) e
       completadas por regras. Glosas em itálico cinza não vieram de alinhamento direto. Não fazem parte da BLIVRE e não têm endosso de seus
       autores. ⚑ marca pontos apontados pela revisão automática.
     </p>
-    <p>
+    <p data-i18n-html="page.sources.other">
       <strong>Introduções e temas dos capítulos:</strong> escritos para este projeto. <strong>Áudio:</strong> gerado na hora pela voz
       instalada no aparelho; nenhum arquivo de áudio é distribuído. <strong>Fontes tipográficas:</strong> Noto Serif Hebrew, Gentium Book
       Plus, Literata, IBM Plex Mono e Atkinson Hyperlegible (SIL Open Font License 1.1).
@@ -111,7 +112,7 @@
   </footer>
 </div>
 
-<nav class="bbar" id="bbar" aria-label="Capítulos e áudio"></nav>
+<nav class="bbar" id="bbar" aria-label="Capítulos e áudio" data-i18n-label="page.bottom_bar"></nav>
 
 <div class="scrim" id="scrim" hidden></div>
 
@@ -121,12 +122,12 @@
   <section class="sgroup toc-chapters" aria-labelledby="ch-h"></section>
   <nav class="sgroup" aria-labelledby="toc-vh"></nav>
   <nav class="sgroup" aria-labelledby="toc-sh" id="toc-estudo">
-    <h3 id="toc-sh">Neste livro</h3>
+    <h3 id="toc-sh" data-i18n="page.in_book">Neste livro</h3>
     <div class="toc-links">
-      <a href="#sobre" data-go>Sobre o livro <span>resumo e contexto</span></a>
-      <a href="#perguntas" data-go>Perguntas ao texto <span>para pensar e conversar</span></a>
-      <a href="#lexico" data-go>Léxico <span id="toc-lexn"></span></a>
-      <a href="#" id="toc-search">Buscar na Bíblia <span>palavras, referências, Strong</span></a>
+      <a href="#sobre" data-go data-i18n-html="page.toc_about">Sobre o livro <span>resumo e contexto</span></a>
+      <a href="#perguntas" data-go data-i18n-html="page.toc_questions">Perguntas ao texto <span>para pensar e conversar</span></a>
+      <a href="#lexico" data-go><span data-i18n="header.lexicon">Léxico</span> <span id="toc-lexn"></span></a>
+      <a href="#" id="toc-search" data-i18n-html="page.toc_search">Buscar na Bíblia <span>palavras, referências, Strong</span></a>
     </div>
   </nav>
 </aside>

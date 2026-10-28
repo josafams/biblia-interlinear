@@ -16,6 +16,7 @@ export type StoreKey =
   | "tema-claro"
   | "tema-escuro"
   | "conta-sugestao"
+  | "idioma"
   | `dica-${string}`
   | (string & {});
 

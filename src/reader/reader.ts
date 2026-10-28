@@ -3,6 +3,7 @@
 // annotations, account, sync, progress) talk to it through the window.* bridges set here.
 import { mount } from "svelte";
 import Toast from "../components/Toast.svelte";
+import { translatePage } from "../i18n/page";
 import { isNative, nativePlugin, platform } from "../lib/native";
 import { entry as entryState } from "../state/entry.svelte";
 import { ui } from "../state/ui.svelte";
@@ -67,6 +68,8 @@ function app() {
     });
 }
 
+// the fixed text of ler.html in the chosen locale, before the parts read it
+translatePage();
 initChapter();
 initWordKeys();
 initEntry();

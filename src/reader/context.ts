@@ -2,6 +2,7 @@
 // The Svelte components read src/state; this is the data behind it (the chapter as loaded, the book object).
 import type { About } from "../lib/about";
 import { type ChapterVerse, verseLabel } from "../lib/chapter/view";
+import { localizeBooks } from "../lib/books";
 import { createBible } from "../lib/data/bible";
 import type { Book, ChapterInfo } from "../lib/types";
 import { prefs as prefsState } from "../state/prefs.svelte";
@@ -13,7 +14,8 @@ export type ReaderBook = Book & { about?: About; group: string; chapters: (Chapt
 export type ReaderVerse = ChapterVerse & { links: number[][] };
 export type ReaderChapter = { verses: ReaderVerse[]; questions: Omit<Question, "lemma">[] };
 
-export const BOOKS = DATA.books;
+// in the locale (src/lib/books.ts): names in English, and no Portuguese themes while they are not translated
+export const BOOKS = localizeBooks(DATA.books);
 export const BY_CODE = Object.fromEntries(BOOKS.map(b => [b.code, b]));
 // chapters and lexicon on demand (src/lib/data/bible.ts)
 export const bible = createBible(DATA);

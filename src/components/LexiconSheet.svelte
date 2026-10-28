@@ -3,6 +3,7 @@
   text on computers (CSS). LexiconEntry is mounted inside #d-body.
 -->
 <script lang="ts">
+  import { getLocale } from "../i18n";
   import { entry } from "../state/entry.svelte";
 </script>
 
@@ -12,7 +13,7 @@
   data-testid="lexicon-sheet"
   role="dialog"
   aria-modal="false"
-  lang="pt-BR"
+  lang={getLocale()}
   aria-label={entry.view?.ariaLabel}
   hidden={!entry.open}
 >

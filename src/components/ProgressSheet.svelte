@@ -4,7 +4,7 @@
   The buttons call src/reader/progress.ts through the props; ids and data attributes stay for tests and videos.
 -->
 <script lang="ts">
-  import { formatNumber, t } from "../i18n";
+  import { formatNumber, getLocale, t } from "../i18n";
   import type { ChartTab } from "../lib/progress/view";
   import { progressView as p } from "../state/progress.svelte";
   import ProgressBook from "./ProgressBook.svelte";
@@ -67,7 +67,7 @@
   role="dialog"
   aria-modal="true"
   aria-labelledby="pg-h"
-  lang="pt-BR"
+  lang={getLocale()}
   tabindex="-1"
   onkeydown={keydown}
 >

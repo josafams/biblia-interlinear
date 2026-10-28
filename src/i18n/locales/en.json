@@ -1,0 +1,1574 @@
+{
+  "gloss": {
+    "object_marker": "obj.",
+    "object_marker_title": "direct object marker: not translated",
+    "object_marker_spoken": "object marker"
+  },
+  "morph": {
+    "aramaic_prefix": "Aramaic: ",
+    "verb": "verb",
+    "pronoun": "pronoun",
+    "suffix": "suffix",
+    "particle": "particle",
+    "person_word": "person",
+    "person": {
+      "1": "1st",
+      "2": "2nd",
+      "3": "3rd"
+    },
+    "he": {
+      "stem": {
+        "q": "qal",
+        "N": "niphal",
+        "p": "piel",
+        "P": "pual",
+        "h": "hiphil",
+        "H": "hophal",
+        "t": "hithpael",
+        "o": "polel",
+        "O": "polal",
+        "r": "hithpolel",
+        "m": "poel",
+        "M": "poal",
+        "k": "palel",
+        "K": "pulal",
+        "Q": "qal passive",
+        "l": "pilpel",
+        "L": "polpal",
+        "f": "hithpalpel",
+        "D": "nithpael",
+        "j": "pealal",
+        "i": "pilel",
+        "u": "hothpaal",
+        "c": "tiphil",
+        "v": "hishtaphel",
+        "w": "nithpael",
+        "y": "hithpoel",
+        "z": "hithpael",
+        "e": "peal",
+        "E": "peil",
+        "a": "aphel",
+        "A": "haphel"
+      },
+      "type": {
+        "p": "perfect",
+        "q": "consecutive perfect",
+        "i": "imperfect",
+        "w": "consecutive imperfect",
+        "h": "cohortative",
+        "j": "jussive",
+        "v": "imperative",
+        "r": "participle",
+        "s": "passive participle",
+        "a": "infinitive absolute",
+        "c": "infinitive construct"
+      },
+      "gender": {
+        "m": "masc.",
+        "f": "fem.",
+        "c": "common",
+        "b": "both"
+      },
+      "number": {
+        "s": "sing.",
+        "p": "plural",
+        "d": "dual"
+      },
+      "state": {
+        "c": "construct",
+        "a": "absolute",
+        "d": "determined"
+      },
+      "noun": {
+        "p": "proper noun",
+        "g": "gentilic noun",
+        "other": "noun"
+      },
+      "adjective": {
+        "c": "numeral",
+        "o": "ordinal",
+        "other": "adjective"
+      },
+      "particle": {
+        "R": "preposition",
+        "Rd": "preposition with article",
+        "C": "conjunction",
+        "Td": "article",
+        "To": "object marker",
+        "Tr": "relative",
+        "Tm": "interjection",
+        "Ti": "interrogative",
+        "Tn": "negative",
+        "D": "adverb",
+        "Sd": "directional he",
+        "Sh": "paragogic he",
+        "Sn": "paragogic nun"
+      }
+    },
+    "grc": {
+      "pos": {
+        "A": "adjective",
+        "C": "conjunction",
+        "D": "adverb",
+        "I": "interjection",
+        "N": "noun",
+        "P": "preposition",
+        "RA": "article",
+        "RD": "demonstrative pronoun",
+        "RI": "interrogative/indefinite pronoun",
+        "RP": "personal pronoun",
+        "RR": "relative pronoun",
+        "V": "verb",
+        "X": "particle"
+      },
+      "tense": {
+        "P": "present",
+        "I": "imperfect",
+        "F": "future",
+        "A": "aorist",
+        "X": "perfect",
+        "Y": "pluperfect"
+      },
+      "voice": {
+        "A": "active",
+        "M": "middle",
+        "P": "passive"
+      },
+      "mood": {
+        "I": "indicative",
+        "D": "imperative",
+        "S": "subjunctive",
+        "O": "optative",
+        "N": "infinitive",
+        "P": "participle"
+      },
+      "case": {
+        "N": "nominative",
+        "G": "genitive",
+        "D": "dative",
+        "A": "accusative",
+        "V": "vocative"
+      },
+      "number": {
+        "S": "sing.",
+        "P": "plural"
+      },
+      "gender": {
+        "M": "masc.",
+        "F": "fem.",
+        "N": "neuter"
+      },
+      "degree": {
+        "C": "comparative",
+        "S": "superlative"
+      }
+    },
+    "short": {
+      "noun": "n.",
+      "article": "art.",
+      "adjective": "adj.",
+      "preposition": "prep.",
+      "pronoun": "pron.",
+      "conjunction": "conj.",
+      "adverb": "adv.",
+      "particle": "part.",
+      "interjection": "interj.",
+      "aorist": "aor.",
+      "present": "pres.",
+      "imperfect": "impf.",
+      "future": "fut.",
+      "perfect": "perf.",
+      "pluperfect": "plupf.",
+      "nominative": "nom.",
+      "genitive": "gen.",
+      "dative": "dat.",
+      "accusative": "acc.",
+      "vocative": "voc.",
+      "qal": "qal",
+      "niphal": "niphal",
+      "piel": "piel",
+      "hiphil": "hiphil",
+      "participle": "ptc.",
+      "infinitive": "inf."
+    }
+  },
+  "refs": {
+    "chapter_words": "c|ch|chap|chapter",
+    "unknown_book": "I did not recognize the book “{word}”. Use the name or the abbreviation, like <b>Jn 3:16</b> or <b>Psalms 23</b>.",
+    "incomplete": "Type book, chapter and verse, for example <b>Jn 3:16</b>.",
+    "chapter_count": {
+      "one": "{book} has {count} chapter.",
+      "other": "{book} has {count} chapters."
+    },
+    "verse_count": {
+      "one": "{book} {ch} has {count} verse.",
+      "other": "{book} {ch} has {count} verses."
+    }
+  },
+  "modes": {
+    "biblia": {
+      "name": "Bible",
+      "description": "only the BSB, in paragraphs",
+      "spoken": "Bible",
+      "hint": "Only the Berean Standard Bible, in paragraphs. Tap a verse number to see its interlinear."
+    },
+    "original": {
+      "name": "Original",
+      "description": "only Hebrew or Greek, running text",
+      "spoken": "Original",
+      "hint": "Hebrew or Greek as running text. Tap a word to open its entry."
+    },
+    "paralelo": {
+      "name": "Original and BSB",
+      "description": "both, verse by verse",
+      "spoken": "Parallel",
+      "hint": "Original and Berean Standard Bible, verse by verse (the original as running text, without cards)."
+    },
+    "interlinear": {
+      "name": "Interlinear",
+      "description": "original, transliteration and gloss",
+      "spoken": "Interlinear",
+      "hint": "Word by word: original, transliteration and gloss, with the BSB below."
+    },
+    "estudo": {
+      "name": "Study",
+      "description": "plus Strong's, pronunciation and grammar",
+      "spoken": "Study",
+      "hint": "Everything in Interlinear plus Strong's number, pronunciation and parsing."
+    },
+    "personalizado": {
+      "name": "Custom",
+      "description": "choose each item below",
+      "spoken": "Custom",
+      "hint_from": "Customized from the {mode} mode. Tap a mode to go back to its defaults."
+    },
+    "swap_label": "Switch to the {mode} mode",
+    "eyebrow": {
+      "running": "{lang} text",
+      "interlinear": "Interlinear {lang} · English",
+      "blivre": "Berean Standard Bible",
+      "hebrew": "Hebrew",
+      "greek": "Greek"
+    }
+  },
+  "audio": {
+    "unavailable": "This browser has no text-to-speech (it happens, for example, inside some Android apps). Open the page in Chrome, Safari or Edge to listen.",
+    "system": {
+      "ios": "on the iPhone",
+      "android": "on Android"
+    },
+    "language": {
+      "he": "Hebrew",
+      "el": "Greek",
+      "pt": "English"
+    },
+    "native": {
+      "checking": "Checking the {lang} voice…",
+      "installed": "{lang} voice {system}: installed.",
+      "missing": "{lang} voice: not installed {system}."
+    },
+    "web": {
+      "voice": "{lang} voice: {voice}.",
+      "none": "No voice in {lang} on this device.",
+      "searching": "Looking for a voice in {lang}…"
+    },
+    "modern_note": "The pronunciation is that of the modern language (Israeli Hebrew; modern Greek), not the ancient reconstruction. To install voices, use the system's text-to-speech settings{where}",
+    "ios_settings": " (Settings › Accessibility › Spoken Content › Voices).",
+    "missing_native": "There is no {lang} voice installed {system}. See Appearance › Audio.",
+    "missing_web": "This device may have no voice in {lang}. See Appearance › Audio.",
+    "install_failed": "Could not open the voice settings.",
+    "pause": "Pause reading",
+    "pause_short": "Pause",
+    "listen": "Listen",
+    "reading": "Reading {ref} · {lang}",
+    "listen_from_here": "Listen from the verse on screen"
+  },
+  "annotations": {
+    "note": "Note",
+    "conflict_title": "{title} (conflict from {date})",
+    "backup": {
+      "not_a_backup": "This file is not a Bíblia Interlinear notes backup."
+    }
+  },
+  "sync": {
+    "offline": "No internet — changes wait on this device",
+    "done": "Synced at {time}",
+    "drive_full": "Your Google Drive is out of space — changes wait on this device",
+    "failed": "Could not sync right now; trying again shortly",
+    "receiving_all": "Receiving your notes…",
+    "receiving": "Receiving changes…",
+    "sending": {
+      "one": "Sending {count} change…",
+      "other": "Sending {count} changes…"
+    }
+  },
+  "progress": {
+    "duration": {
+      "under_minute": "under 1 min",
+      "minutes": "{m} min",
+      "hours": "{h} h",
+      "hours_minutes": "{h} h {m} min"
+    },
+    "plans": {
+      "ano": "Bible in 1 year",
+      "nt90": "New Testament in 90 days"
+    },
+    "plan": {
+      "done": "Plan finished!",
+      "on_track": "On track",
+      "ahead": {
+        "one": "{count} chapter ahead",
+        "other": "{count} chapters ahead"
+      },
+      "behind": {
+        "one": "{count} chapter behind",
+        "other": "{count} chapters behind"
+      }
+    },
+    "title": "My progress",
+    "invite": "Sign in with your Google account to follow how much of the Bible you have read, your reading time per day, your streak and a reading plan — added up across all your devices.",
+    "invite_private": "The numbers are only for you, on your device and in a private app folder in your Google Drive.",
+    "no_sign_in": "Sign-in is not available in this version yet.",
+    "back": "← My progress",
+    "continue": "Continue where you left off",
+    "whole_bible": "The whole Bible",
+    "read_of": "{read} of {total} chapters read",
+    "pct_read": "{pct}% read",
+    "testaments": "Old Testament: {ot} of {otTotal} · New Testament: {nt} of {ntTotal}",
+    "finished_books": {
+      "one": "{count} book finished",
+      "other": "{count} books finished"
+    },
+    "numbers": "Numbers",
+    "days": {
+      "one": "{count} day",
+      "other": "{count} days"
+    },
+    "streak": "in a row · record {record}",
+    "week": "in the last 7 days · average {average}/day",
+    "total_time": "of reading in total",
+    "entries": "entries opened",
+    "time_per_day": "Reading time per day",
+    "period": "Period",
+    "tabs": {
+      "semana": "Week",
+      "mes": "Month",
+      "ano": "Year"
+    },
+    "chart_label": "Reading time: {days}. Average {average}.",
+    "average": "average {time}",
+    "months": {
+      "jan": "Jan",
+      "fev": "Feb",
+      "mar": "Mar",
+      "abr": "Apr",
+      "mai": "May",
+      "jun": "Jun",
+      "jul": "Jul",
+      "ago": "Aug",
+      "set": "Sep",
+      "out": "Oct",
+      "nov": "Nov",
+      "dez": "Dec"
+    },
+    "weekdays": {
+      "dom": "Sun",
+      "seg": "Mon",
+      "ter": "Tue",
+      "qua": "Wed",
+      "qui": "Thu",
+      "sex": "Fri",
+      "sáb": "Sat"
+    },
+    "books_map": "The 66 books",
+    "book_title": "{book}: {read} of {total}",
+    "book_label": "{book}: {read} of {total} chapters read",
+    "legend": {
+      "none": "not started",
+      "half": "up to half",
+      "more": "more than half",
+      "done": "finished"
+    },
+    "plan_of": "Reading plan · {plan}",
+    "plan_pitch": "Optional: a pace to read the whole Bible or the New Testament, with each day's reading.",
+    "plan_day": "Day {day} of {days} · {done} of {total} chapters",
+    "today": "Today's reading:",
+    "nothing_today": "nothing for today",
+    "reschedule": "Reschedule the dates from today",
+    "finish_plan": "End the plan",
+    "study": "Study",
+    "notes": {
+      "one": "{count} note",
+      "other": "{count} notes"
+    },
+    "highlights": {
+      "one": "{count} highlight",
+      "other": "{count} highlights"
+    },
+    "favorites": {
+      "one": "{count} favorite",
+      "other": "{count} favorites"
+    },
+    "pause_time": "Pause the time count on this device",
+    "resume_time": "Count the reading time again",
+    "reset": "Reset statistics",
+    "book_summary": "Book summary",
+    "of_chapters": "of {total} chapters read",
+    "remaining": "{count} to go",
+    "forecast": {
+      "one": " · at your pace, about {count} day",
+      "other": " · at your pace, about {count} days"
+    },
+    "book_done": "Book finished",
+    "chapters_hint": "Tap to mark or unmark as read. Dot: has a note; dashed: being read.",
+    "chapter_label": "Chapter {n}",
+    "chapter_read": ", read",
+    "chapter_notes": ", with a note",
+    "book_numbers": "Book numbers",
+    "book_time": "of reading in this book",
+    "most_reread": "most reread ({count} times)",
+    "most_reread_none": "most reread chapter",
+    "first_read": "first reading",
+    "last_read": "last reading",
+    "read_next": "Read {ref}",
+    "finish_title": "End the plan?",
+    "finish_text": "The chapters you read still count in your progress.",
+    "finish_yes": "End",
+    "cancel": "Cancel",
+    "reset_title": "Reset statistics?",
+    "reset_text": "Deletes the chapters read, the reading time and the plan, on all your devices. Your notes are not affected.",
+    "reset_yes": "Reset",
+    "plan_title": "Reading plan"
+  },
+  "account": {
+    "drive_error": "Google Drive error {status}",
+    "title": "Keep in your Google Drive",
+    "pitch": "Optional. Your notes go to a private app folder in your Drive and work on all your devices. Without an account, everything stays on this device.",
+    "connecting": "Connecting…",
+    "sign_in": "Sign in with Google",
+    "drive_ok": "Google Drive connected",
+    "devices": {
+      "one": "{count} device",
+      "other": "{count} devices"
+    },
+    "drive_checking": "Checking Google Drive…",
+    "sign_out": "Sign out",
+    "wipe_cloud": "Delete my data from Google Drive",
+    "reconnect_hint": "Tap Reconnect to save to Drive again.",
+    "reconnect": "Reconnect",
+    "google_unreachable": "Could not reach Google. Check the connection.",
+    "no_drive_short": "No Drive permission",
+    "no_drive": "To keep your notes in Drive, leave the permission “See, create and delete its own configuration data in your Google Drive” checked.",
+    "cancelled": "Sign-in cancelled.",
+    "no_account": "No account",
+    "expired": "The connection with Google expired.",
+    "app_android": "Android app",
+    "app_iphone": "iPhone app",
+    "browser": "Browser",
+    "browser_on": "{browser} on {os}",
+    "connected_as": "Signed in as {name}.",
+    "sign_out_title": "Sign out",
+    "sign_out_text": "Your {count} notes stay in your Google Drive. On this device, do you want to:",
+    "keep_here": "Keep a copy here",
+    "delete_here": "Delete from this device",
+    "cancel": "Cancel",
+    "signed_out_wiped": "You signed out and your notes were deleted from this device.",
+    "wipe_text": "This deletes the app folder in your Drive (notes and the list of devices). The notes on this device stay here, and you are signed out. Other devices still signed in may send them again.",
+    "wipe_yes": "Delete from Drive",
+    "wiped": "Your data was deleted from Google Drive. Your notes stay on this device.",
+    "signed_out": "You signed out. Your notes stay on this device.",
+    "drive_full": "Your Google Drive is out of space. Your notes stay on this device.",
+    "no_permission": "Google refused access to Drive. Try signing in again.",
+    "offline": "No connection to Google right now. Your notes stay on this device.",
+    "failed": "Something went wrong talking to Google.",
+    "suggestion_label": "Keep in Google Drive",
+    "suggestion": "Do you want to keep your notes in your Google Drive, so you do not lose them and see them on other devices?",
+    "not_now": "Not now"
+  },
+  "bar": {
+    "notes": "Notes",
+    "notes_label": "My notes",
+    "notes_label_count": {
+      "one": "My notes: {count} verse",
+      "other": "My notes: {count} verses"
+    },
+    "books": "Books",
+    "books_label": "Books and index",
+    "look": "Appearance",
+    "look_label": "Appearance and accessibility",
+    "prev_chapter": "Previous chapter: {ref}",
+    "next_chapter": "Next chapter: {ref}",
+    "first_chapter": "This is the first chapter",
+    "last_chapter": "This is the last chapter",
+    "where_title_ref": "{ch}, title",
+    "where_label": "You are in {book} {ref}. Open the index to go to another book, chapter or verse.",
+    "where_label_theme": "You are in {book} {ref}, {theme}. Open the index to go to another book, chapter or verse."
+  },
+  "you": {
+    "progress": "Chapters read, reading time, days in a row and the map of the 66 books.",
+    "progress_signed_out": "Chapters read, reading time, days in a row and the map of the 66 books. Shows up after you sign in.",
+    "progress_title": "My progress",
+    "plans": "Reading plans",
+    "plan_year": "Bible in 1 year",
+    "plan_nt90": "New Testament in 90 days",
+    "plan_needs_account": "Sign in to follow a plan.",
+    "how_to": "How to use",
+    "about_project": "About the project",
+    "privacy": "Privacy"
+  },
+  "app": {
+    "name": "Bíblia Interlinear"
+  },
+  "reader": {
+    "chapter_nav": "Previous and next chapter",
+    "not_in_preview": "This chapter is not included in this preview.",
+    "lede_greek": "Read from left to right. Each Greek word opens its entry; below each verse comes the Berean Standard Bible.",
+    "lede_hebrew": "Read from right to left. Each Hebrew word opens its entry; below each verse comes the Berean Standard Bible.",
+    "sections": "Sections of the chapter",
+    "section_prev": "Previous section",
+    "section_next": "Next section",
+    "verse_of": "v. {v} of {last}",
+    "text_of": "Text of {ref}",
+    "load_failed": "Could not load this chapter. Check the connection.",
+    "lexicon_failed": "Could not load the lexicon."
+  },
+  "questions": {
+    "title": "Questions on the text",
+    "lede": "To think about alone or discuss in a group. The answers are yours — if you like, keep yours in a note.",
+    "kind": {
+      "observation": "Observe",
+      "interpretation": "Interpret",
+      "original": "In the original",
+      "application": "Apply"
+    },
+    "go_verse": "Go to verse {v}",
+    "open_word": "Open the entry {strong}",
+    "note": "Write an answer"
+  },
+  "verse": {
+    "sr": "Verse ",
+    "review_sr": " (with points from the automatic review)",
+    "title_ref": "title",
+    "mark": "Annotate",
+    "mark_label": "Annotate or listen to {ref}",
+    "words_label": "Words of verse {ref}",
+    "words_label_rtl": "Words of verse {ref}, from right to left",
+    "section_range": "vv. {from}–{to}",
+    "review_points": {
+      "one": "1 point from the automatic review",
+      "other": "{count} points from the automatic review"
+    },
+    "technical": "technical detail: {code}",
+    "source_note": {
+      "aparato": "In the SBLGNT this passage is only in the critical apparatus (the main text ends Romans at 16:24); here it shows the reading of Westcott-Hort, Tregelles and Nestle-Aland 28.",
+      "sem-original": "This verse has no match in the original text used here (it appears in other editions).",
+      "sem-blivre": "The translation has no separate verse here; the text is in the neighboring verse."
+    },
+    "notes_label": {
+      "one": "{count} note on this verse",
+      "other": "{count} notes on this verse"
+    },
+    "favorite": "Favorite"
+  },
+  "word": {
+    "pronunciation": "{xlit}, pronounced {pron}",
+    "strong": "Strong's {strong}",
+    "no_strong": "no Strong's number",
+    "gloss_source": {
+      "l": "gloss from the most common translation (no direct alignment)",
+      "r": "gloss from a grammar rule",
+      "p": "partial gloss",
+      "s": "no gloss",
+      "m": "reviewed gloss"
+    }
+  },
+  "lexicon": {
+    "title": "Chapter lexicon",
+    "lede": {
+      "one": "The {count} lemma of {ref}, in Strong's order. Tap an entry to open it.",
+      "other": "The {count} lemmas of {ref}, in Strong's order. Tap an entry to open it."
+    },
+    "search_label": "Search the lexicon",
+    "search_placeholder": "Search: light, ʼôwr, H216, logos",
+    "found": {
+      "one": "{count} entry found",
+      "other": "{count} entries found"
+    },
+    "empty": "No entry found.",
+    "row_strong": "Strong's {strong}, ",
+    "row_label": {
+      "one": "{strong}{xlit}, pronounced {pron}: {meaning}. {count} occurrence in the chapter.",
+      "other": "{strong}{xlit}, pronounced {pron}: {meaning}. {count} occurrences in the chapter."
+    },
+    "toc_count": {
+      "one": "{count} entry",
+      "other": "{count} entries"
+    }
+  },
+  "header": {
+    "about": "About the book",
+    "about_book": "About {book}",
+    "lexicon": "Lexicon",
+    "questions": "Questions"
+  },
+  "entry": {
+    "label": "Entry {strong} {xlit}",
+    "position": "word {i} of {n} · {ref}",
+    "prev_word": "Previous word",
+    "next_word": "Next word",
+    "prev_word_rtl": "Previous word (to the right)",
+    "next_word_rtl": "Next word (to the left)",
+    "close": "Close entry",
+    "back": "← back to the previous entry",
+    "in_verse": "In this verse",
+    "object_note": "Marks the direct object; it has no English translation.",
+    "ketiv": "Reading given in the margin (<i>qere</i>). The consonantal text has (<i>ketiv</i>):",
+    "not_found": "No entry in Strong's dictionary.",
+    "meaning": "Meaning",
+    "english_note": "(in English)",
+    "translations": "How the BSB translates it",
+    "translations_note": "Count from the automatic alignment with the Berean Standard Bible.",
+    "concordance": {
+      "one": "See the {count} occurrence",
+      "other": "See the {count} occurrences"
+    },
+    "origin": "Origin",
+    "english_entry": "entry in English",
+    "new_tab": " (opens in a new tab)",
+    "no_strong": "no Strong's entry",
+    "hebrew_particle": "Hebrew particle",
+    "occurrences": {
+      "one": "{count} occurrence in the Bible",
+      "other": "{count} occurrences in the Bible"
+    },
+    "in_chapter": "{count} in {ref}",
+    "ref_label": "Open the entry {strong}, {xlit}",
+    "pronunciation_legend": "Approximate pronunciation: the stressed syllable in CAPITALS; <b>ch</b> as in Scottish “loch”; <b>h</b> always breathed."
+  },
+  "annotate": {
+    "label": "Highlight and annotate",
+    "close": "Close",
+    "colors": "Highlight color",
+    "color": {
+      "amarelo": "Yellow",
+      "verde": "Green",
+      "azul": "Blue",
+      "rosa": "Pink",
+      "laranja": "Orange"
+    },
+    "no_color": "Remove the highlight",
+    "favorite": "Add to favorites",
+    "favorite_on": "Favorite",
+    "copy": "Copy",
+    "share": "Share",
+    "layers": "Interlinear",
+    "more": "More",
+    "less": "Less",
+    "resize": "Change the size of the sheet",
+    "note": "Note",
+    "note_placeholder": "What did you notice in this verse?",
+    "answer_placeholder": "Your answer… (saved automatically)",
+    "full_screen": "Open full screen",
+    "tags": "Tags",
+    "add_tag": "Add tag",
+    "add_tag_placeholder": "+ Add tag (Enter creates it)",
+    "create_tag": "Create",
+    "your_tags": "Your tags",
+    "suggested_tags": "Suggestions to start",
+    "untag": "Remove the tag {tag}",
+    "review": "Automatic review point",
+    "clear": "Delete everything on this verse",
+    "done": "Done",
+    "question": "Question: {question}",
+    "copied": "Copied.",
+    "copy_failed": "Could not copy in this browser.",
+    "cleared": {
+      "one": "{count} item deleted from this verse.",
+      "other": "{count} items deleted from this verse."
+    },
+    "restored": "Notes restored.",
+    "other_notes": {
+      "one": "+{count} other note on this verse",
+      "other": "+{count} other notes on this verse"
+    },
+    "saved": "Saved.",
+    "suggestions": "promises|prayer|God's love|to study",
+    "share_text": "{text} ({ref}, BSB)",
+    "link_copied": "Verse link copied.",
+    "share_failed": "Could not share in this browser."
+  },
+  "note": {
+    "title": "Note",
+    "close": "Close note",
+    "free": "Free note",
+    "title_label": "Title",
+    "title_placeholder": "Title (optional)",
+    "text_label": "Note text",
+    "text_placeholder": "Write here. Saved automatically.",
+    "tags": "Tags:",
+    "new_tag": "New tag",
+    "new_tag_placeholder": "+ new tag",
+    "delete": "Delete note",
+    "delete_confirm": "Tap again to delete"
+  },
+  "tags": {
+    "manage": "Manage tags",
+    "name_label": "Name of the tag {tag}",
+    "delete": "Delete",
+    "delete_again": "Tap again",
+    "none": "No tags yet.",
+    "help": "Change the name in the field. Giving it the name of another tag merges the two.",
+    "merged": "“{from}” was merged into “{into}”."
+  },
+  "index": {
+    "books": "Books",
+    "chapters": "Chapters",
+    "testament": "Testament",
+    "old_testament": "Old Testament",
+    "new_testament": "New Testament",
+    "chapter_count": "{count} ch.",
+    "open_chapter": "Open chapter {n}{theme}",
+    "open_chapter_na": "Open chapter {n}{theme}. Not included in this preview",
+    "you_are_here": "you are here · ",
+    "verse_count": {
+      "one": "{count} verse",
+      "other": "{count} verses"
+    },
+    "not_in_preview": " · not included in this preview",
+    "title": "Index",
+    "close": "Close index"
+  },
+  "goto": {
+    "label": "Find a book or go to a reference",
+    "placeholder": "E.g.: Jn 3:16, psalms 23, Song of Songs",
+    "go": "Go",
+    "hint": "Book, chapter and verse, like <b>Jn 3:16</b>, <b>1 Sam 17</b> or <b>psalms 23</b>. Without a book, the current one is used: <b>1:14</b>, or just <b>14</b> for the verse; <b>ch 12</b> goes to the chapter.",
+    "go_to": "Go to {ref} →",
+    "verses": "Verses",
+    "verses_of": "Verses of {ref}",
+    "verse_label": "Verse {ref}",
+    "title_short": "title"
+  },
+  "notes": {
+    "index_parts": "Parts of the index",
+    "you": "You",
+    "search_label": "Search the notes",
+    "search_placeholder": "Search: light, shepherd, #prayer",
+    "more": "More options",
+    "select": "Select items",
+    "export": "Export PDF",
+    "download": "Download my data",
+    "import": "Import",
+    "kind": "Kind",
+    "kinds": {
+      "all": "All",
+      "notas": "With a note",
+      "marcacoes": "Highlighted",
+      "favoritos": "Favorites"
+    },
+    "by_tag": "Filter by tag",
+    "new_free": "+ Free note (no verse)",
+    "items": {
+      "one": "{count} item",
+      "other": "{count} items"
+    },
+    "in_verse": "{count} on this verse · ",
+    "selected": {
+      "one": "{count} selected",
+      "other": "{count} selected"
+    },
+    "see_all": "see all",
+    "order": "Order",
+    "order_bible": "Bible order",
+    "order_recent": "Most recent",
+    "nothing_found": "Nothing found with these filters.",
+    "empty": "No notes yet. Long-press a verse, select a passage or use the ⋯ button next to the number to highlight and annotate.",
+    "free_notes": "Free notes",
+    "kind_note": "note",
+    "kind_highlight": "highlight",
+    "kind_tag": "tag",
+    "kind_favorite": "favorite",
+    "backup_share_title": "My notes",
+    "backup_downloaded": "Backup file downloaded.",
+    "imported": "Imported: {added} new, {updated} updated, {same} were already here.",
+    "import_failed": "Could not read the file."
+  },
+  "look": {
+    "close": "Close appearance",
+    "mode": "Reading mode",
+    "show": "What to show",
+    "text": "Text",
+    "smaller": "Smaller text",
+    "larger": "Larger text",
+    "theme": "Theme",
+    "theme_light": "{theme} theme, light",
+    "theme_dark": "{theme} theme, dark",
+    "themes": {
+      "auto": "Automatic",
+      "auto_hint": "follows the device theme",
+      "claro": "Light",
+      "papel": "Paper",
+      "oliva": "Olive",
+      "escuro": "Dark",
+      "noite": "Night",
+      "grafite": "Graphite"
+    },
+    "preview_gloss": "light",
+    "audio": "Audio",
+    "searching_voices": "Looking for voices…",
+    "install_voices": "Install voices",
+    "install_voices_hint": "opens the Android text-to-speech settings",
+    "sources": "Sources and licenses",
+    "switch": {
+      "t-xlit": {
+        "label": "Transliteration"
+      },
+      "t-gloss": {
+        "label": "Gloss",
+        "hint": "English gloss on each card"
+      },
+      "t-pron": {
+        "label": "Pronunciation",
+        "hint": "pronunciation, stressed syllable in CAPITALS"
+      },
+      "t-strong": {
+        "label": "Strong's",
+        "hint": "Strong's number on each card"
+      },
+      "t-morf": {
+        "label": "Grammar",
+        "hint": "part of speech, person, gender, number"
+      },
+      "t-blivre": {
+        "label": "Berean Standard Bible",
+        "hint": "text of the BSB"
+      },
+      "t-vnum": {
+        "label": "Numbers",
+        "hint": "verse numbers"
+      },
+      "t-theme": {
+        "label": "Chapter theme"
+      },
+      "t-questions": {
+        "label": "Questions",
+        "hint": "questions on the text, at the end of the chapter, without answers"
+      },
+      "t-marks": {
+        "label": "Review ⚑",
+        "hint": "automatic review points, ketiv/qere, apparatus"
+      },
+      "t-ann": {
+        "label": "My notes",
+        "hint": "colors, notes, favorites and tags in the text; turn off for a clean reading"
+      },
+      "t-orig": {
+        "label": "Original",
+        "hint": "Hebrew, Aramaic or Greek"
+      },
+      "t-cards": {
+        "label": "Cards",
+        "hint": "original in cards; off: running text, and tapping a word opens its entry"
+      },
+      "t-par": {
+        "label": "Paragraphs",
+        "hint": "BSB in paragraphs, when the original is off"
+      },
+      "t-about": {
+        "label": "About the book"
+      },
+      "t-lexicon": {
+        "label": "Lexicon",
+        "hint": "chapter lexicon"
+      },
+      "t-easy": {
+        "label": "Easy font",
+        "hint": "Atkinson Hyperlegible for the translation"
+      },
+      "t-space": {
+        "label": "Wide spacing",
+        "hint": "more space between lines, letters and words"
+      },
+      "t-cant": {
+        "label": "Cantillation (Hebrew)",
+        "hint": "cantillation marks; turn off to see only consonants and vowels"
+      },
+      "t-foco": {
+        "label": "Hide the bars",
+        "hint": "when scrolling down; they come back when you scroll up"
+      },
+      "t-follow": {
+        "label": "Highlight each word",
+        "hint": "the verse is read word by word"
+      },
+      "t-slow": {
+        "label": "Speak more slowly"
+      }
+    }
+  },
+  "search": {
+    "title": "Search the Bible",
+    "close": "Close search",
+    "label": "Words, reference or Strong's number",
+    "placeholder": "love, Jn 3:16, G25",
+    "where": "Where to search",
+    "scopes": {
+      "all": "Whole Bible",
+      "at": "Old Testament",
+      "nt": "New Testament"
+    },
+    "only_in": "Only in {book}",
+    "all_of_strong": "See every occurrence of <b>{strong}</b> →",
+    "go_to_before": "Go to ",
+    "go_to_after": " →",
+    "similar": "Similar:",
+    "by_book": "Filter by book",
+    "more": "Show more",
+    "help": "Several words find the verses that have all of them. Accents and capitals do not matter. You can also type a reference (<b>Ps 23</b>) or a Strong's number (<b>H430</b>).",
+    "searching": "Searching…",
+    "found": {
+      "one": "{count} verse · OT {at} · NT {nt}.",
+      "other": "{count} verses · OT {at} · NT {nt}."
+    },
+    "found_of": {
+      "one": "{count} verse (of {all} in the whole Bible).",
+      "other": "{count} verses (of {all} in the whole Bible)."
+    },
+    "nothing_here": {
+      "one": "Nothing here; {count} verse in the whole Bible.",
+      "other": "Nothing here; {count} verses in the whole Bible."
+    },
+    "none": "No verse with “{word}”.",
+    "none_all": "No verse with all these words."
+  },
+  "concordance": {
+    "title": "Occurrences of {lemma}",
+    "by_translation": "Filter by translation",
+    "all": "All",
+    "more_translations": {
+      "one": "Show {count} more translation",
+      "other": "Show {count} more translations"
+    },
+    "where": "Where it appears",
+    "scope": "Where",
+    "unavailable": "The list of occurrences is not available on this device (it needs internet the first time).",
+    "total": {
+      "one": "{count} occurrence in the Bible.",
+      "other": "{count} occurrences in the Bible."
+    },
+    "some": "{count} of {total} occurrences."
+  },
+  "toast": {
+    "undo": "Undo"
+  },
+  "about": {
+    "subtitle": "Summary, main people, dates and historical context",
+    "year_bc": "{y} BC",
+    "year_ad": "AD {y}",
+    "circa": "c. {range}",
+    "years": "years",
+    "years_bc": "years BC",
+    "years_ad": "years AD",
+    "chapters": "chs. {from}–{to}",
+    "chapter": "ch. {n}",
+    "see_chapters": "See chapters {from} to {to} in the index",
+    "see_chapter": "See chapter {n} in the index",
+    "the_name": "The name",
+    "structure": "How the book is divided",
+    "people": "Main people",
+    "person_chapter": "{name}: see chapter {n} in the index",
+    "caps_short": "chs. ",
+    "verses_short": "v. ",
+    "written": "When it was written",
+    "tradition": "According to tradition",
+    "academic": "According to scholarship",
+    "when": "When the events take place",
+    "timeline": "Timeline, approximate dates",
+    "legend": {
+      "people": "people",
+      "events": "events",
+      "writing": "writing of the book"
+    },
+    "context": "Historical context",
+    "places": "Places",
+    "themes": "Themes",
+    "key_verses": "Key verses",
+    "disclaimer": "Introduction written for this project; dates are approximate and subject to review."
+  },
+  "welcome": {
+    "title": "How do you want to read?",
+    "hint": "You can change it later in Aa.",
+    "later": "Later"
+  },
+  "side": {
+    "label": "Panel beside the text",
+    "entry": "Entry",
+    "annotate": "Annotate"
+  },
+  "hints": {
+    "word": "Tip: tap a word of the original to see its meaning and how the BSB translates it.",
+    "verse": "Tip: tap the ⋯ next to the number (or hold the verse) to highlight, annotate, listen or share.",
+    "entry": "Tip: ‹ › in the entry go to the next word, without closing.",
+    "entry_keys": "Tip: ‹ › in the entry go to the next word (← → on the keyboard), without closing."
+  },
+  "notebook": {
+    "close": "Close",
+    "scope": "What goes in",
+    "scope_list": "What is in the list now",
+    "scope_selected": "The selected items",
+    "scope_book": "One book",
+    "book": "Book",
+    "include": "Include",
+    "include_notes": "Notes",
+    "include_highlights": "Highlights",
+    "include_favorites": "Favorites",
+    "include_text": "Text of each verse (BSB)",
+    "include_interlinear": "Interlinear of the words marked in the original",
+    "order_bible": "Bible order",
+    "order_date": "By date",
+    "generate": "Make PDF",
+    "generating": "Making…",
+    "note": "Made on the device itself, without internet. In the print window, choose “Save as PDF”.",
+    "title": "My notes",
+    "free_note": "FREE NOTE",
+    "doc_title": "Study notebook",
+    "eyebrow": "STUDY NOTEBOOK · BÍBLIA INTERLINEAR",
+    "count": {
+      "one": "{count} item",
+      "other": "{count} items"
+    },
+    "nothing": "No items with these options.",
+    "footer": "Text: Berean Standard Bible (BSB, public domain). Original: Open Scriptures Hebrew Bible and SBLGNT (CC BY 4.0). Glosses and lexicon: Bíblia Interlinear project.",
+    "file_title": "{title} - notebook"
+  },
+  "print": {
+    "android_failed": "Could not open Android printing.",
+    "unsupported": "This browser cannot print; try Chrome, Edge or Safari."
+  },
+  "home": {
+    "sample_hebrew": "Hebrew, read from right to left",
+    "sample_greek": "Greek, from left to right",
+    "numbers": {
+      "books": "books",
+      "chapters": "chapters, each with a theme",
+      "verses": "verses of the Berean Standard Bible",
+      "words": "words of the original with a gloss",
+      "entries": "lexicon entries"
+    },
+    "books": {
+      "file": "File",
+      "pdf": "PDF (A4)",
+      "download": "Download",
+      "choose": "Choose the book",
+      "complete": "Complete Bible",
+      "complete_note": "the 66 books in a single file",
+      "ot": "Old Testament",
+      "ot_note": "39 books",
+      "nt": "New Testament",
+      "nt_note": "27 books",
+      "blivre": "Only the translation",
+      "blivre_note": "without the original, like an ordinary Bible; much lighter",
+      "each": "Each book on its own",
+      "each_note": "01-GEN-Genesis … 66-REV-Revelation, open faster"
+    },
+    "howto": {
+      "groups": "Video groups",
+      "number": "Video {n} · {group}",
+      "captions": "English",
+      "not_yet": "This video will be recorded when the feature is released.",
+      "preparing": "Video in preparation. Follow the steps beside it.",
+      "soon": "When the feature comes out"
+    }
+  },
+  "study": {
+    "linked": {
+      "one": "{count} word of the original linked to this passage.",
+      "other": "{count} words of the original linked to this passage."
+    }
+  },
+  "review": {
+    "ALG-01": "verse missing from the critical text (known list); show with a note",
+    "ALG-02_1": "{name}: mark a passage with special handling",
+    "ALG-02_2": "passage with special editorial handling and no Greek text",
+    "ALG-03": "original word {r} is not in {c}:{v} (versification map)",
+    "ALN-01": "translation verse with no matching original text",
+    "ALN-02_1": "verse joins {count} original verses ({value})",
+    "ALN-02_2": "original order broken: {ref_orig} after {previous}",
+    "ALN-02_3": "{text}",
+    "ALN-03_1": "glosses match translation v. {vv} ({best}) better than their own ({own})",
+    "ALN-03_2": "translation with {nb} words for {no} in the original (expected ~{expected}): extra passage?",
+    "ALN-03_3": "translation with {nb} words for {no} in the original (expected ~{expected}): missing passage?",
+    "ALN-04_1": "the psalm title spans two Hebrew verses; the 2nd part ({original}) fell into v. 1 with {original2}",
+    "ALN-04_2": "psalm title in the translation without a title in the Hebrew",
+    "ALN-04_3": "Hebrew psalm title without a title in the translation",
+    "ALN-05_1": "original words in a verse missing from the verses table",
+    "ALN-05_2": "empty translation verse",
+    "ALN-05_3": "translation text repeats v. {value}",
+    "ARM-01_1": "Aramaic word outside the known Aramaic passages",
+    "ARM-01_2": "Gen 31:47 should have 2 Aramaic words, it has {count}",
+    "ARM-01_3": "Hebrew → Aramaic switch in Dan 2:4b out of place",
+    "ARM-01_4": "word marked as Hebrew inside an Aramaic passage",
+    "ARM-02": "language {language} × morphology {morph}",
+    "ARM-03": "emphatic state without an article in the gloss: '{gloss}'",
+    "ARM-04": "particle דִּי glossed '{gloss}'",
+    "ARM-06": "Aramaic word with entry {s} without the '(Aramaic)' mark",
+    "ARM-07": "Aramaic {s} glossed {aramaic_glosses}; the Hebrew {h} is translated {hebrew_glosses}",
+    "ARM-10": "{text}",
+    "COB-01_1": "word without a gloss",
+    "COB-01_2": "gloss only of the prefix/particle: '{gloss}'",
+    "COB-02_1": "no Strong's number (lemma {lemma})",
+    "COB-02_2": "{entry} does not exist in the lexicon",
+    "COB-02_3": "entry {entry} ({e_item}) without a definition in the translation language (def_pt)",
+    "COB-03": "entry {entry} without {value} (not even in English)",
+    "COB-04": "entry {entry} without a pronunciation",
+    "COB-07": "foreign word in the gloss: '{gloss}'",
+    "COB-08": "'{gloss}' is part of the gloss of {other} ('{other_gloss}'): the alignment may have given this word its neighbor's translation",
+    "CON-01": "'{gloss}' differs from the usual gloss '{majority}' ({n_majority}/{n}) of this form in the book",
+    "CON-02": "rare gloss '{gloss}' for {s} (usual: '{top}…', {ntop}/{n})",
+    "CON-04_1": "gloss out of style (space, punctuation, loose hyphen): '{gloss}'",
+    "CON-04_2": "repeated word in the gloss: '{gloss}'",
+    "CON-04_3": "gloss too long ({count} words): '{gloss}'",
+    "CON-04_4": "capitals in the middle of the word: '{gloss}'",
+    "CRG-02": "transliteration {lemma} glossed '{gloss}' (usual '{top}…')",
+    "CRG-05": "{lemma} glossed '{gn}' in the NT; {h} is '{hn}' in the OT",
+    "CRZ-01": "gloss '{gloss}' (source {gloss_source}) with no matching word in the verse's translation",
+    "CRZ-05_1": "{h} ↔ {gloss}: glosses with no common family ({hebrew_glosses} × {greek_glosses}); expected '{expected}'",
+    "CRZ-05_2": "{h} ↔ {gloss}: '{expected}' is not among the most common glosses",
+    "CRZ-parallel": "'{gloss}' × '{gloss2}' in {where} (same original)",
+    "FAT-01_1": "name '{missing}' does not appear in the verse's translation",
+    "FAT-01_2": "proper noun with a lowercase gloss: '{gloss}'",
+    "FAT-02": "{s} glossed '{name}'; in the rest of the Bible it is '{top}' ({ntop}/{n})",
+    "FAT-03_1": "number '{missing}' of the gloss does not appear in the verse's translation",
+    "FAT-03_2": "cardinal numeral ({strong}) without a number in the gloss: '{gloss}'",
+    "FAT-04_1": "YHWH glossed '{gloss}' (expected LORD / GOD)",
+    "FAT-04_2": "Adonai glossed '{gloss}' (expected Lord)",
+    "FAT-04_3": "Elohim glossed '{gloss}' (expected God/gods)",
+    "FAT-04_4": "Yah glossed '{gloss}'",
+    "FAT-09": "measure {strong} glossed '{gloss}' (expected {value}…)",
+    "GRA-01": "prefixed conjunction ו without a conjunction in the gloss: '{gloss}'",
+    "GRA-02": "article ה without an article in the gloss: '{gloss}'",
+    "GRA-03": "prefixed preposition {name} without an equivalent: '{gloss}'",
+    "GRA-04_1": "pronominal suffix {s_item} without a pronoun/possessive in the gloss: '{gloss}'",
+    "GRA-04_2": "suffix {s_item} but the gloss has a pronoun of another person: '{gloss}'",
+    "GRA-05": "1st pl. verb ({root}) without a 'we' form in the gloss: '{gloss}'",
+    "GRA-07": "infinitive with ל without 'to + infinitive': '{gloss}'",
+    "GRA-10": "plural noun with a singular gloss: '{gloss}'",
+    "GRA-12_1": "'[obj]' outside the particle אֵת ({strong})",
+    "GRA-12_2": "object particle אֵת glossed '{gloss}'",
+    "GRA-13": "{what}: '{gloss}'",
+    "GRG-01_1": "article with a gloss that is not an article/preposition: '{gloss}'",
+    "GRG-01_2": "plural article with a singular gloss: '{gloss}'",
+    "GRG-04": "plural noun with a singular gloss: '{gloss}'",
+    "GRG-05": "1st pl. verb without a 'we' form in the gloss: '{gloss}'",
+    "GRG-10": "{what}: '{gloss}'",
+    "GRG-11": "negation {lemma} without 'not/nor/no' in the gloss: '{gloss}'",
+    "GRG-12": "{lemma} glossed '{gloss}'",
+    "GRG-13": "{lemma} ({value}) with a gloss of another person: '{gloss}'",
+    "LEX-03_1": "{entry} cites {target}, which does not exist in the lexicon{hint}",
+    "LEX-03_2": "circular derivation: {entry} ↔ {target}",
+    "LEX-05_1": "entry {entry} without a transliteration",
+    "LEX-05_2": "transliteration of {entry} with an odd character: {e_item}",
+    "LXG-01": "{entry} outside the valid Strong's numbering",
+    "LXG-02": "lemma {lemma} linked to {strong} ({value}) by similarity",
+    "TXG-02_1": "{count} words with critical apparatus signs ({signs}) in the Greek text; e.g.: {text}",
+    "TXG-02_2": "final sigma in the middle of a word: {t}",
+    "TXG-02_3": "character outside the allowed set: {t}",
+    "TXG-02_4": "medial sigma at the end of a word: {t}",
+    "TXG-03": "{what}: '{gloss}'",
+    "TXT-01_1": "original source missing from sources/; count not checked",
+    "TXT-01_2": "{count} words in the database × {count2} in the source (original {chapter}:{verse})",
+    "TXT-01_3": "word numbering with a gap ({chapter}:{verse})",
+    "TXT-02": "consonantal text differs from the source (original {chapter}:{verse})",
+    "TXT-03_1": "{n} words not in NFC form (source order of the marks kept)",
+    "TXT-03_2": "character outside the allowed set: {t}",
+    "TXT-04": "written form (Ketiv) {text} in the text; the read form{q} is not recorded",
+    "TXT-05_1": "chapter {i} missing (numbering jumps to {c})",
+    "TXT-05_2": "missing verse(s): {missing}",
+    "TXT-05_3": "word positions repeated or with a gap",
+    "TXT-06": "verse of an Aramaic passage without Aramaic words"
+  },
+  "seo": {
+    "home_title": "Bíblia Interlinear — Hebrew, Aramaic and Greek word by word",
+    "reader_title": "Interlinear reader · Bíblia Interlinear",
+    "reader_description": "Read the Bible in Hebrew, Aramaic and Greek with the English gloss word by word, transliteration, pronunciation, lexicon entries and the Berean Standard Bible.",
+    "reader_noscript": "The reader needs JavaScript. Without it, read the books and chapters in simple pages:",
+    "reader_noscript_link": "Books of the Bible",
+    "privacy_title": "Privacy policy · Bíblia Interlinear",
+    "privacy_description": "How Bíblia Interlinear handles your data: there is no server and no sign-up; your notes stay on the device and, if you want, in your Google Drive account.",
+    "share_line1": "Hebrew, Aramaic and Greek word by word",
+    "share_line2": "with the English gloss and the Berean Standard Bible",
+    "crumbs": "Where you are",
+    "books": "Books",
+    "reader": "Reader",
+    "privacy": "Privacy",
+    "sources": "Sources and licenses",
+    "footer": "Bíblia Interlinear: an open project, without ads and without sign-up.",
+    "bible": "Bible",
+    "open_reader": "Open in the interlinear reader",
+    "books_title": "Books of the Bible",
+    "books_page_title": "Books of the Bible in Hebrew, Aramaic and Greek · Bíblia Interlinear",
+    "books_lede": "The 66 books, each with its introduction and the chapters in the original, word by word, with the English gloss and the text of the Berean Standard Bible.",
+    "books_description": "The 66 books of the Bible in the original Hebrew, Aramaic and Greek, word by word, with an English gloss, an introduction to each book and the Berean Standard Bible.",
+    "chapters_count": {
+      "one": "{count} chapter",
+      "other": "{count} chapters"
+    },
+    "hebrew": "Hebrew",
+    "greek": "Greek",
+    "book_title": "{book}: introduction and chapters in {lang} · Bíblia Interlinear",
+    "book_description": "{book} in the original {lang}, chapter by chapter, with the English gloss word by word and the text of the Berean Standard Bible.",
+    "structure": "Structure",
+    "chapter_range": "chs. {from}–{to}",
+    "chapters": "Chapters",
+    "key_verses": "Key verses",
+    "chapter_title": "{chapter} interlinear: {lang} and English · Bíblia Interlinear",
+    "chapter_nav": "Previous and next chapter",
+    "all_chapters": "All chapters of {book}",
+    "credit": "English text: Berean Standard Bible (BSB, public domain). Original text and lexicon: open sources listed on the home page.",
+    "chapter_one": "ch. {n}",
+    "lexicon_greek": "Greek lexicon",
+    "lexicon_hebrew": "Hebrew and Aramaic lexicon",
+    "transliteration": "Transliteration",
+    "pronunciation": "Pronunciation",
+    "meaning": "Meaning",
+    "origin": "Origin",
+    "translated_as": "In the BSB",
+    "occurrences": "Occurrences",
+    "where": {
+      "one": "Where it appears ({count} time)",
+      "other": "Where it appears ({count} times)"
+    },
+    "more_refs": {
+      "one": "And {count} more occurrence in the interlinear reader.",
+      "other": "And {count} more occurrences in the interlinear reader."
+    },
+    "entry_title": "{word}, {key}: meaning and occurrences · Bíblia Interlinear",
+    "entry_description": "{word}, Strong's {key}: {meaning}"
+  },
+  "reminder": {
+    "reading_title": "Time to read",
+    "reading_plan": "Today: {chapters} · day {day} of {days}",
+    "reading_continue": "Continue where you left off: {where}",
+    "reading_start": "How about starting with Genesis 1?",
+    "verse_title": "Verse of the day · {ref}",
+    "verse_card": "Verse of the day",
+    "read_in_chapter": "Read in the chapter",
+    "share": "Share",
+    "card_title": "Reminders",
+    "reading_switch": "Reading reminder",
+    "reading_hint": "With a plan, the day's chapters; without a plan, where you left off.",
+    "verse_switch": "Verse of the day",
+    "verse_hint": "One verse of the BSB a day.",
+    "time": "Time",
+    "next": "Next: {when}",
+    "none": "No reminder on.",
+    "today_at": "today at {time}",
+    "tomorrow_at": "tomorrow at {time}",
+    "day_at": "{day} at {time}",
+    "denied": "Notifications are blocked for the app. Allow them in the system settings.",
+    "only_app": "Reading reminders and the verse of the day by notification are in the Android app."
+  },
+  "books": {
+    "GEN": {
+      "name": "Genesis",
+      "abbrev": "Gen"
+    },
+    "EXO": {
+      "name": "Exodus",
+      "abbrev": "Exod"
+    },
+    "LEV": {
+      "name": "Leviticus",
+      "abbrev": "Lev"
+    },
+    "NUM": {
+      "name": "Numbers",
+      "abbrev": "Num"
+    },
+    "DEU": {
+      "name": "Deuteronomy",
+      "abbrev": "Deut"
+    },
+    "JOS": {
+      "name": "Joshua",
+      "abbrev": "Josh"
+    },
+    "JDG": {
+      "name": "Judges",
+      "abbrev": "Judg"
+    },
+    "RUT": {
+      "name": "Ruth",
+      "abbrev": "Ruth"
+    },
+    "1SA": {
+      "name": "1 Samuel",
+      "abbrev": "1Sam"
+    },
+    "2SA": {
+      "name": "2 Samuel",
+      "abbrev": "2Sam"
+    },
+    "1KI": {
+      "name": "1 Kings",
+      "abbrev": "1Kgs"
+    },
+    "2KI": {
+      "name": "2 Kings",
+      "abbrev": "2Kgs"
+    },
+    "1CH": {
+      "name": "1 Chronicles",
+      "abbrev": "1Chr"
+    },
+    "2CH": {
+      "name": "2 Chronicles",
+      "abbrev": "2Chr"
+    },
+    "EZR": {
+      "name": "Ezra",
+      "abbrev": "Ezra"
+    },
+    "NEH": {
+      "name": "Nehemiah",
+      "abbrev": "Neh"
+    },
+    "EST": {
+      "name": "Esther",
+      "abbrev": "Esth"
+    },
+    "JOB": {
+      "name": "Job",
+      "abbrev": "Job"
+    },
+    "PSA": {
+      "name": "Psalms",
+      "abbrev": "Ps"
+    },
+    "PRO": {
+      "name": "Proverbs",
+      "abbrev": "Prov"
+    },
+    "ECC": {
+      "name": "Ecclesiastes",
+      "abbrev": "Eccl"
+    },
+    "SNG": {
+      "name": "Song of Songs",
+      "abbrev": "Song"
+    },
+    "ISA": {
+      "name": "Isaiah",
+      "abbrev": "Isa"
+    },
+    "JER": {
+      "name": "Jeremiah",
+      "abbrev": "Jer"
+    },
+    "LAM": {
+      "name": "Lamentations",
+      "abbrev": "Lam"
+    },
+    "EZK": {
+      "name": "Ezekiel",
+      "abbrev": "Ezek"
+    },
+    "DAN": {
+      "name": "Daniel",
+      "abbrev": "Dan"
+    },
+    "HOS": {
+      "name": "Hosea",
+      "abbrev": "Hos"
+    },
+    "JOL": {
+      "name": "Joel",
+      "abbrev": "Joel"
+    },
+    "AMO": {
+      "name": "Amos",
+      "abbrev": "Amos"
+    },
+    "OBA": {
+      "name": "Obadiah",
+      "abbrev": "Obad"
+    },
+    "JON": {
+      "name": "Jonah",
+      "abbrev": "Jonah"
+    },
+    "MIC": {
+      "name": "Micah",
+      "abbrev": "Mic"
+    },
+    "NAM": {
+      "name": "Nahum",
+      "abbrev": "Nah"
+    },
+    "HAB": {
+      "name": "Habakkuk",
+      "abbrev": "Hab"
+    },
+    "ZEP": {
+      "name": "Zephaniah",
+      "abbrev": "Zeph"
+    },
+    "HAG": {
+      "name": "Haggai",
+      "abbrev": "Hag"
+    },
+    "ZEC": {
+      "name": "Zechariah",
+      "abbrev": "Zech"
+    },
+    "MAL": {
+      "name": "Malachi",
+      "abbrev": "Mal"
+    },
+    "MAT": {
+      "name": "Matthew",
+      "abbrev": "Matt"
+    },
+    "MRK": {
+      "name": "Mark",
+      "abbrev": "Mark"
+    },
+    "LUK": {
+      "name": "Luke",
+      "abbrev": "Luke"
+    },
+    "JHN": {
+      "name": "John",
+      "abbrev": "Jn"
+    },
+    "ACT": {
+      "name": "Acts",
+      "abbrev": "Acts"
+    },
+    "ROM": {
+      "name": "Romans",
+      "abbrev": "Rom"
+    },
+    "1CO": {
+      "name": "1 Corinthians",
+      "abbrev": "1Cor"
+    },
+    "2CO": {
+      "name": "2 Corinthians",
+      "abbrev": "2Cor"
+    },
+    "GAL": {
+      "name": "Galatians",
+      "abbrev": "Gal"
+    },
+    "EPH": {
+      "name": "Ephesians",
+      "abbrev": "Eph"
+    },
+    "PHP": {
+      "name": "Philippians",
+      "abbrev": "Phil"
+    },
+    "COL": {
+      "name": "Colossians",
+      "abbrev": "Col"
+    },
+    "1TH": {
+      "name": "1 Thessalonians",
+      "abbrev": "1Thess"
+    },
+    "2TH": {
+      "name": "2 Thessalonians",
+      "abbrev": "2Thess"
+    },
+    "1TI": {
+      "name": "1 Timothy",
+      "abbrev": "1Tim"
+    },
+    "2TI": {
+      "name": "2 Timothy",
+      "abbrev": "2Tim"
+    },
+    "TIT": {
+      "name": "Titus",
+      "abbrev": "Titus"
+    },
+    "PHM": {
+      "name": "Philemon",
+      "abbrev": "Phlm"
+    },
+    "HEB": {
+      "name": "Hebrews",
+      "abbrev": "Heb"
+    },
+    "JAS": {
+      "name": "James",
+      "abbrev": "Jas"
+    },
+    "1PE": {
+      "name": "1 Peter",
+      "abbrev": "1Pet"
+    },
+    "2PE": {
+      "name": "2 Peter",
+      "abbrev": "2Pet"
+    },
+    "1JN": {
+      "name": "1 John",
+      "abbrev": "1Jn"
+    },
+    "2JN": {
+      "name": "2 John",
+      "abbrev": "2Jn"
+    },
+    "3JN": {
+      "name": "3 John",
+      "abbrev": "3Jn"
+    },
+    "JUD": {
+      "name": "Jude",
+      "abbrev": "Jude"
+    },
+    "REV": {
+      "name": "Revelation",
+      "abbrev": "Rev"
+    }
+  },
+  "book_groups": {
+    "Pentateuco": "Pentateuch",
+    "Históricos": "Historical books",
+    "Poéticos e sapienciais": "Poetry and wisdom",
+    "Profetas": "Prophets",
+    "Evangelhos e Atos": "Gospels and Acts",
+    "Cartas de Paulo": "Letters of Paul",
+    "Outras cartas e Apocalipse": "Other letters and Revelation"
+  },
+  "language": {
+    "label": "Language",
+    "names": {
+      "pt-BR": "Português",
+      "en": "English"
+    }
+  },
+  "page": {
+    "skip": "Skip to the text",
+    "nav": "Navigation",
+    "account": "Account and progress",
+    "keys": "Keyboard: <kbd>←</kbd> <kbd>→</kbd> word · <kbd>↑</kbd> <kbd>↓</kbd> verse · <kbd>Enter</kbd> opens the entry · <kbd>Esc</kbd> closes · <kbd>[</kbd> <kbd>]</kbd> chapter · <kbd>/</kbd> search",
+    "listen_chapter": "Listen to the chapter",
+    "text": "Text",
+    "bottom_bar": "Chapters and audio",
+    "in_book": "In this book",
+    "sources": {
+      "hebrew": "<strong>Hebrew and Aramaic, with morphology:</strong> Open Scriptures Hebrew Bible, <a href=\"https://github.com/openscriptures/morphhb\" target=\"_blank\" rel=\"noopener\">github.com/openscriptures/morphhb</a> (CC BY 4.0), based on the Westminster Leningrad Codex (public domain). Versification map from the same project.",
+      "greek": "<strong>Greek:</strong> SBL Greek New Testament (SBLGNT), © Society of Biblical Literature and Logos, CC BY 4.0 license; morphology and lemmas from MorphGNT, J. K. Tauber, <a href=\"https://github.com/morphgnt/sblgnt\" target=\"_blank\" rel=\"noopener\">github.com/morphgnt/sblgnt</a> (CC BY-SA 3.0).",
+      "translation": "<strong>Running translation:</strong> Berean Standard Bible (BSB), <a href=\"https://berean.bible/\" target=\"_blank\" rel=\"noopener\">berean.bible</a>, dedicated to the public domain in 2023, via the eBible corpus. Text reproduced without changes.",
+      "lexicon": "<strong>Lexicon:</strong> James Strong's dictionary (public domain), Open Scriptures digital edition (<a href=\"https://github.com/openscriptures/strongs\" target=\"_blank\" rel=\"noopener\">CC BY-SA</a>); Jeffrey Dodson's Greek lexicon (public domain).",
+      "glosses": "<strong>Word-by-word glosses:</strong> obtained by statistical alignment between the original and the translation (the eflomal tool) and completed by rules. Glosses in gray italics did not come from a direct alignment. They are not part of the translation and are not endorsed by its authors. ⚑ marks points flagged by the automatic review.",
+      "other": "<strong>Book introductions and chapter themes:</strong> written for this project. <strong>Audio:</strong> generated on the fly by the voice installed on the device; no audio file is distributed. <strong>Typefaces:</strong> Noto Serif Hebrew, Gentium Book Plus, Literata, IBM Plex Mono and Atkinson Hyperlegible (SIL Open Font License 1.1)."
+    },
+    "toc_about": "About the book <span>summary and context</span>",
+    "toc_questions": "Questions on the text <span>to think about and discuss</span>",
+    "toc_search": "Search the Bible <span>words, references, Strong's</span>"
+  }
+}

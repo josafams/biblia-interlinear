@@ -10,7 +10,7 @@ import NextChapter from "../components/NextChapter.svelte";
 import Questions from "../components/Questions.svelte";
 import SectionMap from "../components/SectionMap.svelte";
 import TocVerses from "../components/TocVerses.svelte";
-import { t } from "../i18n";
+import { hasProjectTexts, t } from "../i18n";
 import type { ReviewMark } from "../lib/chapter/view";
 import { toWord } from "../lib/data/bible";
 import { store } from "../lib/store";
@@ -124,7 +124,8 @@ export async function openChapter(code: string, n: number, v: number | null) {
       words: x.w.map(toWord),
       marks: (raw.m || []).filter(m => m[0] === x.n)
     })),
-    questions: (raw.q || []).map(([kind, text, verses, strong]) => ({ kind, text, verses, strong }))
+    // the questions exist only in Portuguese for now (#8)
+    questions: hasProjectTexts() ? (raw.q || []).map(([kind, text, verses, strong]) => ({ kind, text, verses, strong })) : []
   };
   R.ch = CH;
   renderHeader();

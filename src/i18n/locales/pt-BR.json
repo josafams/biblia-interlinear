@@ -1267,5 +1267,33 @@
     "day_at": "{day} às {time}",
     "denied": "As notificações estão bloqueadas para o app. Libere nos ajustes do sistema.",
     "only_app": "Lembretes de leitura e o versículo do dia por notificação estão no app para Android."
+  },
+  "language": {
+    "label": "Idioma",
+    "names": {
+      "pt-BR": "Português",
+      "en": "English"
+    }
+  },
+  "page": {
+    "skip": "Pular para o texto",
+    "nav": "Navegação",
+    "account": "Conta e progresso",
+    "keys": "No teclado: <kbd>←</kbd> <kbd>→</kbd> palavra · <kbd>↑</kbd> <kbd>↓</kbd> versículo · <kbd>Enter</kbd> abre o verbete · <kbd>Esc</kbd> fecha · <kbd>[</kbd> <kbd>]</kbd> capítulo · <kbd>/</kbd> buscar",
+    "listen_chapter": "Ouvir o capítulo",
+    "text": "Texto",
+    "bottom_bar": "Capítulos e áudio",
+    "in_book": "Neste livro",
+    "sources": {
+      "hebrew": "<strong>Hebraico e aramaico, com morfologia:</strong> Open Scriptures Hebrew Bible, <a href=\"https://github.com/openscriptures/morphhb\" target=\"_blank\" rel=\"noopener\">github.com/openscriptures/morphhb</a> (CC BY 4.0), sobre o Westminster Leningrad Codex (domínio público). Mapa de versificação do mesmo projeto.",
+      "greek": "<strong>Grego:</strong> SBL Greek New Testament (SBLGNT), © Society of Biblical Literature e Logos, licença CC BY 4.0; morfologia e lemas do MorphGNT, J. K. Tauber, <a href=\"https://github.com/morphgnt/sblgnt\" target=\"_blank\" rel=\"noopener\">github.com/morphgnt/sblgnt</a> (CC BY-SA 3.0).",
+      "translation": "<strong>Tradução corrida:</strong> Bíblia Livre (BLIVRE), de Diego Santos, Mario Sérgio e Marco Teles, <a href=\"https://sites.google.com/site/biblialivre/\" target=\"_blank\" rel=\"noopener\">sites.google.com/site/biblialivre</a>. Antigo Testamento: revisão de 2018 (CC BY 4.0 Brasil, via corpus eBible), completada pela edição de 2017 onde faltam versículos. Novo Testamento: edição de 2017 (CC BY 3.0 Brasil, módulo CrossWire), que traduz o texto crítico. Texto reproduzido sem alterações.",
+      "lexicon": "<strong>Léxico:</strong> dicionário de James Strong (domínio público), edição digital Open Scriptures (<a href=\"https://github.com/openscriptures/strongs\" target=\"_blank\" rel=\"noopener\">CC BY-SA</a>); léxico grego de Jeffrey Dodson (domínio público). Origem e significado dos verbetes mais usados vertidos para o português neste projeto; os demais aparecem em inglês.",
+      "glosses": "<strong>Glosas palavra a palavra:</strong> obtidas por alinhamento estatístico entre o original e a BLIVRE (ferramenta eflomal) e completadas por regras. Glosas em itálico cinza não vieram de alinhamento direto. Não fazem parte da BLIVRE e não têm endosso de seus autores. ⚑ marca pontos apontados pela revisão automática.",
+      "other": "<strong>Introduções e temas dos capítulos:</strong> escritos para este projeto. <strong>Áudio:</strong> gerado na hora pela voz instalada no aparelho; nenhum arquivo de áudio é distribuído. <strong>Fontes tipográficas:</strong> Noto Serif Hebrew, Gentium Book Plus, Literata, IBM Plex Mono e Atkinson Hyperlegible (SIL Open Font License 1.1)."
+    },
+    "toc_about": "Sobre o livro <span>resumo e contexto</span>",
+    "toc_questions": "Perguntas ao texto <span>para pensar e conversar</span>",
+    "toc_search": "Buscar na Bíblia <span>palavras, referências, Strong</span>"
   }
 }
