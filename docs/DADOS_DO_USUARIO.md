@@ -23,7 +23,7 @@ Campos comuns dos registros sincronizados: `id`, `ancora` (`livro`, `cap`, `ver`
 
 Preferências de leitura (`modo`, `modo-base`, `tema`, `tamanho`, `posicao`…), o identificador do aparelho (`aparelho`), a conta conectada (`conta`) e avisos já vistos (`conta-sugestao`).
 
-## Google Drive (`appDataFolder`, `web/sync.js` e `web/account.js`)
+## Google Drive (`appDataFolder`, `src/reader/sync.ts` e `src/reader/account.ts`)
 
 - `lote-<aparelho>-<tempo>.json`: alterações enviadas por um aparelho.
 - `retrato-<tempo>-<aparelho>.json`: todos os registros juntos, gravado de tempos em tempos para os lotes antigos poderem ser apagados.
