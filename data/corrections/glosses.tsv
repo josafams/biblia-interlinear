@@ -23535,3 +23535,130 @@ EXO 36:22	6	אַחַ֖ת	uma	claude	אַחַת “uma”; tinha “um”
 EXO 36:22	8	אֶחָ֑ת	outra	claude	אֶחָת “uma”; tinha “outro”
 EXO 36:22	11	לְ/כֹ֖ל	para-todas	claude	לְכֹל “para todas”; tinha “todas”
 EXO 36:22	12	קַרְשֵׁ֥י	as-tábuas	claude	קַרְשֵׁי “tábuas de”; tinha “tábuas”
+EXO 36:24	1	וְ/אַרְבָּעִים֙	e-quarenta	claude	וְאַרְבָּעִים “e quarenta”; tinha “também-as-quarenta”
+EXO 36:24	3	כֶ֔סֶף	de-prata	claude	כֶסֶף “prata”; tinha “prata”
+EXO 36:24	5	תַּ֖חַת	debaixo-das	claude	תַּחַת “debaixo de”; tinha “debaixo”
+EXO 36:24	7	הַ/קְּרָשִׁ֑ים	tábuas	claude	הַקְּרָשִׁים “as tábuas”; tinha “das-tábuas”
+EXO 36:24	11	הַ/קֶּ֤רֶשׁ	da-tábua	claude	הַקֶּרֶשׁ “a tábua”; tinha “uma-tábua”
+EXO 36:24	12	הָ/אֶחָד֙	uma	claude	הָאֶחָד “o um”; tinha “o-um”
+EXO 36:24	13	לִ/שְׁתֵּ֣י	para-as-duas	claude	לִשְׁתֵּי “para dois de”; tinha “para-seus-dois”
+EXO 36:24	14	יְדֹתָ֔י/ו	espigas-dela	claude	יְדֹתָיו “suas mãos”; tinha “encaixes”
+EXO 36:24	19	הָ/אֶחָ֖ד	uma	claude	הָאֶחָד “o um”; tinha “outra”
+EXO 36:24	20	לִ/שְׁתֵּ֥י	para-as-duas	claude	לִשְׁתֵּי “para dois de”; tinha “para-seus-dois”
+EXO 36:24	21	יְדֹתָֽי/ו	espigas-dela	claude	יְדֹתָיו “suas mãos”; tinha “encaixes”
+EXO 36:26	1	וְ/אַרְבָּעִ֥ים	e-quarenta	claude	וְאַרְבָּעִים “e quarenta”; tinha “com-suas-quarenta”
+EXO 36:26	2	אַדְנֵי/הֶ֖ם	suas-bases	claude	אַדְנֵיהֶם “suas bases”; tinha “bases”
+EXO 36:26	3	כָּ֑סֶף	de-prata	claude	כָּסֶף “prata”; tinha “prata”
+EXO 36:26	7	הַ/קֶּ֣רֶשׁ	da-tábua	claude	הַקֶּרֶשׁ “a tábua”; tinha “de-tábua”
+EXO 36:26	13	הָ/אֶחָֽד	uma	claude	הָאֶחָד “o um”; tinha “outra”
+EXO 36:29	2	תוֹאֲמִם֮	duplas	claude	תוֹאֲמִם “gêmeos”; tinha “juntavam”
+EXO 36:29	3	מִ/לְּ/מַטָּה֒	desde-baixo	claude	מִלְּמַטָּה “de baixo”; tinha “por-baixo”
+EXO 36:29	4	וְ/יַחְדָּ֗ו	e-juntamente	claude	וְיַחְדָּו “e juntamente”; tinha “e-também”
+EXO 36:29	6	תַמִּים֙	completas	claude	תַמִּים “completos”; tinha “gêmeos”
+EXO 36:29	7	אֶל	até	claude	אֶל “até”; tinha “a”
+EXO 36:29	8	רֹאשׁ֔/וֹ	sua-cabeça	claude	רֹאשׁוֹ “sua cabeça”; tinha “cima”
+EXO 36:29	10	הַ/טַּבַּ֖עַת	na-argola	claude	הַטַּבַּעַת “a argola”; tinha “uma-argola”
+EXO 36:29	11	הָ/אֶחָ֑ת	uma	claude	הָאֶחָת “a uma”; tinha “o-uma”
+EXO 36:29	14	לִ/שְׁנֵי/הֶ֔ם	com-as-duas	claude	לִשְׁנֵיהֶם “com os dois deles”; tinha “à-outra-nos”
+EXO 36:29	15	לִ/שְׁנֵ֖י	para-os-dois	claude	לִשְׁנֵי “para dois de”; tinha “nos-dois”
+EXO 36:30	1	וְ/הָיוּ֙	e-eram	claude	וְהָיוּ “e eram”; tinha “eram-pois”
+EXO 36:30	9	שְׁנֵ֤י	duas	claude	שְׁנֵי “duas”; tinha “dois”
+EXO 36:30	14	הַ/קֶּ֥רֶשׁ	de-cada-tábua	claude	הַקֶּרֶשׁ “a tábua”; tinha “cada-tábua”
+EXO 36:30	15	הָ/אֶחָֽד	uma	claude	הָאֶחָד “o um”; tinha “o-um”
+EXO 36:34	6	טַבְּעֹתָ/ם֙	seus-anéis	claude	טַבְּעֹתָם “seus anéis”; tinha “anéis-delas”
+EXO 36:34	9	בָּתִּ֖ים	como-lugares	claude	בָּתִּים “casas”; tinha “passassem”
+EXO 36:34	10	לַ/בְּרִיחִ֑ם	para-as-barras	claude	לַבְּרִיחִם “para as barras”; tinha “as-barras”
+EXO 36:34	11	וַ/יְצַ֥ף	e-cobriu	claude	וַיְצַף “e cobriu”; tinha “cobriu-também”
+EXO 36:35	1	וַ/יַּ֨עַשׂ֙	e-fez	claude	וַיַּעַשׂ “e fez”; tinha “fez-assim”
+EXO 36:35	7	שָׁנִ֖י	escarlate	claude	שָׁנִי “escarlate”; tinha “fio-escarlate”
+EXO 36:35	8	וְ/שֵׁ֣שׁ	e-linho-fino	claude	וְשֵׁשׁ “e linho fino”; tinha “e-linho”
+EXO 36:35	11	חֹשֵׁ֛ב	de-artífice	claude	חֹשֵׁב “artífice”; tinha “delicada”
+EXO 36:35	14	כְּרֻבִֽים	com-querubins	claude	כְּרֻבִים “querubins”; tinha “querubins”
+EXO 36:36	1	וַ/יַּ֣עַשׂ	e-fez	claude	וַיַּעַשׂ “e fez”; tinha “fez”
+EXO 36:36	2	לָ֗/הּ	para-ele	claude	לָהּ “para ela”; tinha “para”
+EXO 36:36	5	שִׁטִּ֔ים	de-acácia	claude	שִׁטִּים “acácia”; tinha “acácia”
+EXO 36:36	14	כָֽסֶף	de-prata	claude	כָסֶף “prata”; tinha “prata”
+EXO 36:37	1	וַ/יַּ֤עַשׂ	e-fez	claude	וַיַּעַשׂ “e fez”; tinha “fez-também”
+EXO 36:37	2	מָסָךְ֙	um-reposteiro	claude	מָסָךְ “reposteiro”; tinha “véu”
+EXO 36:37	3	לְ/פֶ֣תַח	para-a-entrada	claude	לְפֶתַח “para a entrada de”; tinha “para-a-porta”
+EXO 36:37	4	הָ/אֹ֔הֶל	da-tenda	claude	הָאֹהֶל “a tenda”; tinha “do-tabernáculo”
+EXO 36:37	5	תְּכֵ֧לֶת	de-azul	claude	תְּכֵלֶת “azul”; tinha “azul”
+EXO 36:37	8	שָׁנִ֖י	escarlate	claude	שָׁנִי “escarlate”; tinha “fio-escarlate”
+EXO 36:37	9	וְ/שֵׁ֣שׁ	e-linho-fino	claude	וְשֵׁשׁ “e linho fino”; tinha “e-linho”
+EXO 36:37	12	רֹקֵֽם	de-bordador	claude	רֹקֵם “bordador”; tinha “bordador”
+EXO 37:3	1	וַ/יִּצֹ֣ק	e-fundiu	claude	וַיִּצֹק “e fundiu”; tinha “também-de-fundição”
+EXO 37:3	5	זָהָ֔ב	de-ouro	claude	זָהָב “ouro”; tinha “ouro”
+EXO 37:3	6	עַ֖ל	sobre	claude	עַל “sobre”; tinha “a”
+EXO 37:3	8	פַּעֲמֹתָ֑י/ו	seus-pés	claude	פַּעֲמֹתָיו “seus pés”; tinha “cantos”
+EXO 37:3	9	וּ/שְׁתֵּ֣י	e-dois	claude	וּשְׁתֵּי “e dois de”; tinha “dois”
+EXO 37:3	11	עַל	sobre	claude	עַל “sobre”; tinha “em”
+EXO 37:3	12	צַלְע/וֹ֙	seu-lado	claude	צַלְעוֹ “seu lado”; tinha “lado”
+EXO 37:3	13	הָֽ/אֶחָ֔ת	um	claude	הָאֶחָת “o um”; tinha “no-outro”
+EXO 37:3	14	וּ/שְׁתֵּי֙	e-dois	claude	וּשְׁתֵּי “e dois de”; tinha “dois”
+EXO 37:3	17	צַלְע֖/וֹ	seu-lado	claude	צַלְעוֹ “seu lado”; tinha “lado”
+EXO 37:8	3	מִ/קָּצָה֙	na-extremidade	claude	מִקָּצָה “da extremidade”; tinha “extremo”
+EXO 37:8	4	מִ/זֶּ֔ה	de-um-lado	claude	מִזֶּה “daqui”; tinha “outro”
+EXO 37:8	5	וּ/כְרוּב	e-um-querubim	claude	וּכְרוּב “e querubim”; tinha “querubim”
+EXO 37:8	6	אֶחָ֥ד	um	claude	אֶחָד “um”; tinha “outra”
+EXO 37:8	7	מִ/קָּצָ֖ה	na-extremidade	claude	מִקָּצָה “da extremidade”; tinha “extremo”
+EXO 37:8	8	מִ/זֶּ֑ה	do-outro-lado	claude	מִזֶּה “daqui”; tinha “ao-outro”
+EXO 37:8	10	הַ/כַּפֹּ֛רֶת	o-propiciatório	claude	הַכַּפֹּרֶת “o propiciatório”; tinha “do-propiciatório”
+EXO 37:8	14	מִ/שְּׁנֵ֥י	nas-duas	claude	מִשְּׁנֵי “dos dois de”; tinha “a-suas-duas”
+EXO 37:8	15	קְצוֹתָֽי/ו	extremidades-dele	claude	קְצוֹתָיו “suas extremidades”; tinha “extremidades”
+EXO 37:10	1	וַ/יַּ֥עַשׂ	e-fez	claude	וַיַּעַשׂ “e fez”; tinha “fez-também”
+EXO 37:10	4	עֲצֵ֣י	de-madeira	claude	עֲצֵי “madeiras de”; tinha “madeira”
+EXO 37:10	6	אַמָּתַ֤יִם	dois-côvados	claude	אַמָּתַיִם “dois côvados”; tinha “dois”
+EXO 37:10	8	וְ/אַמָּ֣ה	e-um-côvado	claude	וְאַמָּה “e côvado”; tinha “côvado”
+EXO 37:10	9	רָחְבּ֔/וֹ	sua-largura	claude	רָחְבּוֹ “sua largura”; tinha “largura-de-um”
+EXO 37:10	10	וְ/אַמָּ֥ה	e-um-côvado	claude	וְאַמָּה “e côvado”; tinha “e-de-côvado”
+EXO 37:12	1	וַ/יַּ֨עַשׂ	e-fez	claude	וַיַּעַשׂ “e fez”; tinha “fez”
+EXO 37:12	3	מִסְגֶּ֛רֶת	uma-moldura	claude	מִסְגֶּרֶת “moldura”; tinha “moldura”
+EXO 37:12	4	טֹ֖פַח	de-um-palmo	claude	טֹפַח “palmo”; tinha “mão”
+EXO 37:12	5	סָבִ֑יב	ao-redor	claude	סָבִיב “ao redor”; tinha “redor”
+EXO 37:12	6	וַ/יַּ֧עַשׂ	e-fez	claude	וַיַּעַשׂ “e fez”; tinha “fez”
+EXO 37:12	7	זֵר	uma-borda	claude	זֵר “borda de”; tinha “borda”
+EXO 37:12	8	זָהָ֛ב	de-ouro	claude	זָהָב “ouro”; tinha “ouro”
+EXO 37:12	9	לְ/מִסְגַּרְתּ֖/וֹ	para-sua-moldura	claude	לְמִסְגַּרְתּוֹ “para sua moldura”; tinha “moldura”
+EXO 37:12	10	סָבִֽיב	ao-redor	claude	סָבִיב “ao redor”; tinha “redor”
+EXO 37:14	1	לְ/עֻמַּת֙	junto	claude	לְעֻמַּת “junto a”; tinha “para-sua”
+EXO 37:14	2	הַ/מִּסְגֶּ֔רֶת	à-moldura	claude	הַמִּסְגֶּרֶת “a moldura”; tinha “da-moldura”
+EXO 37:14	3	הָי֖וּ	estavam	claude	הָיוּ “estavam”; tinha “foram”
+EXO 37:14	5	בָּתִּים֙	como-lugares	claude	בָּתִּים “casas”; tinha “metessem”
+EXO 37:14	6	לַ/בַּדִּ֔ים	para-as-varas	claude	לַבַּדִּים “para as varas”; tinha “as-varas”
+EXO 37:16	1	וַ/יַּ֜עַשׂ	e-fez	claude	וַיַּעַשׂ “e fez”; tinha “também-fez”
+EXO 37:16	10	כַּפֹּתָי/ו֙	suas-colheres	claude	כַּפֹּתָיו “suas colheres”; tinha “colheres-suas”
+EXO 37:16	12	מְנַקִּיֹּתָ֔י/ו	suas-taças	claude	מְנַקִּיֹּתָיו “suas taças”; tinha “tigelas”
+EXO 37:16	14	הַ/קְּשָׂוֺ֔ת	os-jarros	claude	הַקְּשָׂוֺת “os jarros”; tinha “o-incensários”
+EXO 37:16	15	אֲשֶׁ֥ר	com-que	claude	אֲשֶׁר “que”; tinha “que”
+EXO 37:16	16	יֻסַּ֖ךְ	se-derramaria	claude	יֻסַּךְ “será derramado”; tinha “bacias”
+EXO 37:16	17	בָּ/הֵ֑ן	com-eles	claude	בָּהֵן “com elas”; tinha “libações”
+EXO 37:16	19	טָהֽוֹר	puro	claude	טָהוֹר “puro”; tinha “fino”
+EXO 37:20	3	גְבִעִ֑ים	cálices	claude	גְבִעִים “cálices”; tinha “copos”
+EXO 37:20	4	מְשֻׁ֨קָּדִ֔ים	em-forma-de-amêndoa	claude	מְשֻׁקָּדִים “amendoados”; tinha “forma-de-amêndoas”
+EXO 37:20	5	כַּפְתֹּרֶ֖י/הָ	seus-botões	claude	כַּפְתֹּרֶיהָ “seus botões”; tinha “botões-suas”
+EXO 37:20	6	וּ/פְרָחֶֽי/הָ	e-suas-flores	claude	וּפְרָחֶיהָ “e suas flores”; tinha “e-flores”
+EXO 37:25	1	וַ/יַּ֛עַשׂ	e-fez	claude	וַיַּעַשׂ “e fez”; tinha “fez-também”
+EXO 37:25	3	מִזְבַּ֥ח	o-altar	claude	מִזְבַּח “altar de”; tinha “altar”
+EXO 37:25	5	עֲצֵ֣י	de-madeira	claude	עֲצֵי “madeiras de”; tinha “madeira”
+EXO 37:25	7	אַמָּ֣ה	um-côvado	claude	אַמָּה “côvado”; tinha “côvado”
+EXO 37:25	9	וְ/אַמָּ֨ה	e-um-côvado	claude	וְאַמָּה “e côvado”; tinha “e-outro-côvado”
+EXO 37:25	10	רָחְבּ֜/וֹ	sua-largura	claude	רָחְבּוֹ “sua largura”; tinha “sua-largura-era”
+EXO 37:25	12	וְ/אַמָּתַ֨יִם֙	e-dois-côvados	claude	וְאַמָּתַיִם “e dois côvados”; tinha “côvados”
+EXO 37:25	14	מִמֶּ֖/נּוּ	dele	claude	מִמֶּנּוּ “dele”; tinha “de”
+EXO 37:25	15	הָי֥וּ	eram	claude	הָיוּ “eram”; tinha “foram”
+EXO 37:25	16	קַרְנֹתָֽי/ו	seus-chifres	claude	קַרְנֹתָיו “seus chifres”; tinha “suas-pontas”
+EXO 37:26	6	גַּגּ֧/וֹ	seu-teto	claude	גַּגּוֹ “seu teto”; tinha “sua-mesa-suas”
+EXO 37:26	8	קִירֹתָ֛י/ו	suas-paredes	claude	קִירֹתָיו “suas paredes”; tinha “paredes”
+EXO 37:26	9	סָבִ֖יב	ao-redor	claude	סָבִיב “ao redor”; tinha “redor”
+EXO 37:26	11	קַרְנֹתָ֑י/ו	seus-chifres	claude	קַרְנֹתָיו “seus chifres”; tinha “suas-pontas”
+EXO 37:26	14	זֵ֥ר	uma-borda	claude	זֵר “borda de”; tinha “coroa”
+EXO 37:26	16	סָבִֽיב	ao-redor	claude	סָבִיב “ao redor”; tinha “redor”
+EXO 37:27	1	וּ/שְׁתֵּי֩	e-dois	claude	וּשְׁתֵּי “e dois de”; tinha “também-dois”
+EXO 37:27	6	מִ/תַּ֣חַת	debaixo	claude	מִתַּחַת “debaixo de”; tinha “de-debaixo”
+EXO 37:27	7	לְ/זֵר֗/וֹ	de-sua-borda	claude	לְזֵרוֹ “de sua borda”; tinha “da-coroa”
+EXO 37:27	9	שְׁתֵּ֣י	os-dois	claude	שְׁתֵּי “dois de”; tinha “dois”
+EXO 37:27	10	צַלְעֹתָ֔י/ו	seus-lados	claude	צַלְעֹתָיו “seus lados”; tinha “cantos”
+EXO 37:27	12	שְׁנֵ֣י	os-dois	claude	שְׁנֵי “dois de”; tinha “dois”
+EXO 37:27	13	צִדָּ֑י/ו	seus-lados	claude	צִדָּיו “seus lados”; tinha “lados”
+EXO 37:27	14	לְ/בָתִּ֣ים	como-lugares	claude	לְבָתִּים “para casas”; tinha “para-passar”
+EXO 37:27	15	לְ/בַדִּ֔ים	para-as-varas	claude	לְבַדִּים “para varas”; tinha “varas”
