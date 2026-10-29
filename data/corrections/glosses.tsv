@@ -6220,3 +6220,114 @@ GEN 30:35	3	הַ/ה֨וּא	aquele	claude	הַהוּא “aquele”; tinha “o-
 GEN 30:35	5	הַ/תְּיָשִׁ֜ים	os-bodes	claude	הַתְּיָשִׁים “os bodes”; tinha “machos-de-bode”
 GEN 30:35	17	וְ/כָל	e-todo	claude	וְכָל “e todo”; tinha “todas”
 GEN 30:35	18	ח֖וּם	escuro	claude	חוּם “escuro”; tinha “cor-escura”
+GEN 30:38	7	בְּ/שִֽׁקֲת֣וֹת	nos-cochos	claude	בְּשִׁקֲתוֹת “nos cochos”; tinha “nos-bebedouros”
+GEN 30:38	11	הַ/צֹּ֤אן	as-ovelhas	claude	הַצֹּאן “as ovelhas”; tinha “do-gado”
+GEN 30:38	15	וַ/יֵּחַ֖מְנָה	e-se-aqueciam	claude	וַיֵּחַמְנָה “e se aqueciam”; tinha “quais-se-aqueciam”
+GEN 32:19	13	הָ/עֲדָרִ֖ים	as-manadas	claude	הָעֲדָרִים “as manadas”; tinha “aquelas-manadas”
+GEN 32:19	16	הַ/זֶּה֙	este	claude	הַזֶּה “este”; tinha “o-hoje”
+GEN 33:8	3	לְ/ךָ֛	a-ti	claude	לְךָ “a ti”; tinha “a-tua”
+GEN 33:8	6	הַ/זֶּ֖ה	este	claude	הַזֶּה “este”; tinha “o-hoje”
+GEN 33:12	2	נִסְעָ֣ה	partamos	claude	נִסְעָה “partamos”; tinha “anda”
+GEN 33:12	5	לְ/נֶגְדֶּֽ/ךָ	diante-de-ti	claude	לְנֶגְדֶּךָ “diante de ti”; tinha “para-diante-ti”
+GEN 34:10	3	וְ/הָ/אָ֨רֶץ֙	e-a-terra	claude	וְהָאָרֶץ “e a terra”; tinha “porque-a-terra”
+GEN 34:10	8	וְ/הֵֽאָחֲז֖וּ	e-tomai-possessão	claude	וְהֵאָחֲזוּ “e tomai possessão”; tinha “e-tomai”
+GEN 34:21	1	הָ/אֲנָשִׁ֨ים	os-homens	claude	הָאֲנָשִׁים “os homens”; tinha “estes-homens”
+GEN 34:21	2	הָ/אֵ֜לֶּה	estes	claude	הָאֵלֶּה “estes”; tinha “o-estes”
+GEN 34:21	7	בָ/אָ֨רֶץ֙	na-terra	claude	בָאָרֶץ “na terra”; tinha “nesta-terra”
+GEN 34:21	21	בְּנֹתֵ֖י/נוּ	nossas-filhas	claude	בְּנֹתֵינוּ “nossas filhas”; tinha “daremos-as-nossas”
+GEN 35:17	2	בְ/הַקְשֹׁתָ֖/הּ	quando-tinha-dificuldade	claude	בְהַקְשֹׁתָהּ “quando ela tinha dificuldade”; tinha “quando-havia-trabalho-seu”
+GEN 35:17	3	בְּ/לִדְתָּ֑/הּ	em-seu-parto	claude	בְּלִדְתָּהּ “em seu parto”; tinha “em-parto”
+GEN 36:26	7	וּ/כְרָֽן	e-Querã	claude	וּכְרָן “e Querã”; tinha “Itrã-e”
+GEN 36:39	8	הֲדַ֔ר	Hadar	claude	הֲדַר “Hadar”; tinha “lugar”
+GEN 36:39	10	עִיר֖/וֹ	sua-cidade	claude	עִירוֹ “sua cidade”; tinha “cidade-foi”
+GEN 37:28	5	וַֽ/יִּמְשְׁכוּ֙	e-puxaram	claude	וַיִּמְשְׁכוּ “e puxaram”; tinha “tiraram”
+GEN 37:28	6	וַ/יַּֽעֲל֤וּ	e-fizeram-subir	claude	וַיַּעֲלוּ “e fizeram subir”; tinha “e-ofereceram”
+GEN 37:28	11	וַ/יִּמְכְּר֧וּ	e-venderam	claude	וַיִּמְכְּרוּ “e venderam”; tinha “venderam”
+GEN 37:28	13	יוֹסֵ֛ף	José	claude	יוֹסֵף “José”; tinha “venderam”
+GEN 38:13	1	וַ/יֻּגַּ֥ד	e-foi-anunciado	claude	וַיֻּגַּד “e foi anunciado”; tinha “e-foi-dado-aviso”
+GEN 38:13	2	לְ/תָמָ֖ר	a-Tamar	claude	לְתָמָר “a Tamar”; tinha “aviso-a-Tamar”
+GEN 38:21	7	הַ/קְּדֵשָׁ֛ה	a-prostituta	claude	הַקְּדֵשָׁה “a prostituta (cultual)”; tinha “está-a-prostituta”
+GEN 38:21	8	הִ֥וא	ela	claude	הִוא “ela”; tinha “é”
+GEN 38:21	15	בָ/זֶ֖ה	aqui	claude	בָזֶה “aqui”; tinha “em-aqui”
+GEN 38:24	2	כְּ/מִ/שְׁלֹ֣שׁ	cerca-de-três	claude	כְּמִשְׁלֹשׁ “cerca de três”; tinha “ao-de-uns-três”
+GEN 38:24	4	וַ/יֻּגַּ֨ד	e-foi-anunciado	claude	וַיֻּגַּד “e foi anunciado”; tinha “dado-aviso”
+GEN 38:24	5	לִֽ/יהוּדָ֤ה	a-Judá	claude	לִיהוּדָה “a Judá”; tinha “aviso-a-Judá”
+GEN 39:4	7	וַ/יַּפְקִדֵ֨/הוּ֙	e-o-fez-mordomo	claude	וַיַּפְקִדֵהוּ “e o pôs por encarregado”; tinha “e-ativo-encomendou-o”
+GEN 39:4	12	ל֖/וֹ	a-ele	claude	לוֹ “a ele”; tinha “que-tinha”
+GEN 41:4	6	הַ/בָּשָׂ֔ר	de-carne	claude	הַבָּשָׂר “a carne”; tinha “carne-devoravam-as”
+GEN 41:4	11	הַ/מַּרְאֶ֖ה	aparência	claude	הַמַּרְאֶה “a aparência”; tinha “muito”
+GEN 41:8	2	בַ/בֹּ֨קֶר֙	pela-manhã	claude	בַבֹּקֶר “pela manhã”; tinha “que-à-manhã”
+GEN 41:8	18	חֲלֹמ֔/וֹ	seu-sonho	claude	חֲלֹמוֹ “seu sonho”; tinha “sonhos”
+GEN 41:8	19	וְ/אֵין	e-não-havia	claude	וְאֵין “e não havia”; tinha “mas-não”
+GEN 41:8	20	פּוֹתֵ֥ר	intérprete	claude	פּוֹתֵר “intérprete”; tinha “havia-quem”
+GEN 41:43	1	וַ/יַּרְכֵּ֣ב	e-fez-subir	claude	וַיַּרְכֵּב “e fez subir”; tinha “subir”
+GEN 41:43	3	בְּ/מִרְכֶּ֤בֶת	no-carro	claude	בְּמִרְכֶּבֶת “no carro”; tinha “em-segundo-carro”
+GEN 41:55	1	וַ/תִּרְעַב֙	e-teve-fome	claude	וַתִּרְעַב “e teve fome”; tinha “fome”
+GEN 41:55	18	יֹאמַ֥ר	disser	claude	יֹאמַר “disser”; tinha “ele”
+GEN 41:55	20	תַּעֲשֽׂוּ	fazei	claude	תַּעֲשׂוּ “fareis, fazei”; tinha “disser”
+GEN 42:4	13	יִקְרָאֶ֖/נּוּ	lhe-aconteça	claude	יִקְרָאֶנּוּ “lhe aconteça”; tinha “acaso-que-lhe”
+GEN 42:22	1	וַ/יַּעַן֩	e-respondeu	claude	וַיַּעַן “e respondeu”; tinha “então”
+GEN 42:22	3	אֹתָ֜/ם	a-eles	claude	אֹתָם “a eles”; tinha “os”
+GEN 42:22	4	לֵ/אמֹ֗ר	dizendo	claude	לֵאמֹר “dizendo”; tinha “respondeu”
+GEN 42:22	6	אָמַ֨רְתִּי	falei	claude	אָמַרְתִּי “falei, disse”; tinha “dizendo”
+GEN 42:22	8	לֵ/אמֹ֛ר	dizendo	claude	לֵאמֹר “dizendo”; tinha “disse”
+GEN 42:22	14	וְ/גַם	e-também	claude	וְגַם “e também”; tinha “que-também”
+GEN 42:22	15	דָּמ֖/וֹ	seu-sangue	claude	דָּמוֹ “seu sangue”; tinha “sangue-dele”
+GEN 43:18	16	לְ/הִתְגֹּלֵ֤ל	para-se-lançar	claude	לְהִתְגֹּלֵל “para se lançar”; tinha “para-virem”
+GEN 43:18	22	לַ/עֲבָדִ֖ים	por-servos	claude	לַעֲבָדִים “por servos”; tinha “por-servos-a”
+GEN 43:21	15	בְּ/מִשְׁקָל֑/וֹ	em-seu-peso	claude	בְּמִשְׁקָלוֹ “em seu peso”; tinha “em-seu-justo-peso”
+GEN 43:21	16	וַ/נָּ֥שֶׁב	e-o-devolvemos	claude	וַנָּשֶׁב “e devolvemos”; tinha “e-voltar”
+GEN 43:27	10	הַ/עוֹדֶ֖/נּוּ	ainda-ele	claude	הַעוֹדֶנּוּ “ainda ele?”; tinha “acaso-ainda-dele”
+GEN 43:30	5	רַחֲמָי/ו֙	suas-entranhas	claude	רַחֲמָיו “suas entranhas”; tinha “entranhas-por”
+GEN 43:30	6	אֶל	por	claude	אֶל “por (causa de)”; tinha “a”
+GEN 43:30	9	לִ/בְכּ֑וֹת	chorar	claude	לִבְכּוֹת “chorar”; tinha “onde-chorar”
+GEN 43:32	7	הָ/אֹכְלִ֤ים	que-comiam	claude	הָאֹכְלִים “que comiam”; tinha “o-comiam”
+GEN 43:32	9	לְ/בַדָּ֔/ם	à-parte	claude	לְבַדָּם “à parte”; tinha “comiam”
+GEN 44:15	6	הַ/זֶּ֖ה	esta	claude	הַזֶּה “esta”; tinha “é-esta”
+GEN 44:15	12	נַחֵ֧שׁ	certamente	claude	נַחֵשׁ “certamente (inf. absoluto)”; tinha “sabe”
+GEN 44:15	13	יְנַחֵ֛שׁ	adivinha	claude	יְנַחֵשׁ “adivinha”; tinha “adivinhar”
+GEN 44:32	3	עָרַ֣ב	ficou-por-fiador	claude	עָרַב “ficou por fiador”; tinha “fiador”
+GEN 44:32	6	מֵ/עִ֥ם	da-parte-de	claude	מֵעִם “da parte de”; tinha “do-com”
+GEN 45:8	1	וְ/עַתָּ֗ה	e-agora	claude	וְעַתָּה “e agora”; tinha “assim-pois”
+GEN 45:8	7	כִּ֖י	mas	claude	כִּי “mas”; tinha “porque”
+GEN 45:8	9	וַ/יְשִׂימֵ֨/נִֽי	e-me-pôs	claude	וַיְשִׂימֵנִי “e me pôs”; tinha “que-me-pôs”
+GEN 45:14	7	וּ/בִנְיָמִ֔ן	e-Benjamim	claude	וּבִנְיָמִן “e Benjamim”; tinha “e-também-Benjamim”
+GEN 45:16	1	וְ/הַ/קֹּ֣ל	e-a-notícia	claude	וְהַקֹּל “e a voz, a notícia”; tinha “a-notícia”
+GEN 45:16	2	נִשְׁמַ֗ע	foi-ouvida	claude	נִשְׁמַע “foi ouvida”; tinha “ouviu”
+GEN 45:16	3	בֵּ֤ית	na-casa-de	claude	בֵּית “na casa de”; tinha “casa”
+GEN 45:16	12	וּ/בְ/עֵינֵ֖י	e-aos-olhos-de	claude	וּבְעֵינֵי “e aos olhos de”; tinha “e-de-seus”
+GEN 45:16	13	עֲבָדָֽי/ו	seus-servos	claude	עֲבָדָיו “seus servos”; tinha “servos”
+GEN 47:16	5	וְ/אֶתְּנָ֥ה	e-darei	claude	וְאֶתְּנָה “e darei”; tinha “darei”
+GEN 47:16	6	לָ/כֶ֖ם	a-vós	claude	לָכֶם “a vós”; tinha “por-vossos”
+GEN 47:16	7	בְּ/מִקְנֵי/כֶ֑ם	por-vossos-gados	claude	בְּמִקְנֵיכֶם “por vossos gados”; tinha “gados”
+GEN 47:18	2	הַ/שָּׁנָ֣ה	o-ano	claude	הַשָּׁנָה “o ano”; tinha “aquele-ano”
+GEN 47:18	3	הַ/הִוא֒	aquele	claude	הַהִוא “aquele”; tinha “o-eliminada”
+GEN 47:18	6	בַּ/שָּׁנָ֣ה	no-ano	claude	בַּשָּׁנָה “no ano”; tinha “ano”
+GEN 47:18	7	הַ/שֵּׁנִ֗ית	segundo	claude	הַשֵּׁנִית “o segundo”; tinha “o-segundo”
+GEN 47:18	12	מֵֽ/אֲדֹנִ֔/י	de-meu-senhor	claude	מֵאֲדֹנִי “de meu senhor”; tinha “a-nosso-senhor-que”
+GEN 47:18	17	וּ/מִקְנֵ֥ה	e-o-gado	claude	וּמִקְנֵה “e o gado”; tinha “também-gado”
+GEN 47:18	18	הַ/בְּהֵמָ֖ה	dos-animais	claude	הַבְּהֵמָה “dos animais”; tinha “o-animais”
+GEN 47:18	20	אֲדֹנִ֑/י	meu-senhor	claude	אֲדֹנִי “meu senhor”; tinha “senhor”
+GEN 47:18	24	אֲדֹנִ֔/י	meu-senhor	claude	אֲדֹנִי “meu senhor”; tinha “nosso-senhor”
+GEN 47:18	25	בִּלְתִּ֥י	a-não-ser	claude	בִּלְתִּי “a não ser”; tinha “não”
+GEN 47:18	26	אִם	senão	claude	אִם “senão”; tinha “ser”
+GEN 48:2	1	וַ/יַּגֵּ֣ד	e-foi-anunciado	claude	וַיַּגֵּד “e anunciou”; tinha “saber”
+GEN 48:2	3	וַ/יֹּ֕אמֶר	e-disse	claude	וַיֹּאמֶר “e disse”; tinha “dizendo”
+GEN 48:2	9	וַ/יִּתְחַזֵּק֙	e-se-esforçou	claude	וַיִּתְחַזֵּק “e se esforçou”; tinha “então-se-esforçou”
+GEN 48:4	4	מַפְרְ/ךָ֙	te-farei-frutificar	claude	מַפְרְךָ “te farei frutificar”; tinha “te-farei-crescer”
+GEN 48:4	11	הָ/אָ֧רֶץ	a-terra	claude	הָאָרֶץ “a terra”; tinha “esta-terra”
+GEN 48:4	12	הַ/זֹּ֛את	esta	claude	הַזֹּאת “esta”; tinha “o-esta”
+GEN 48:7	1	וַ/אֲנִ֣י	e-eu	claude	וַאֲנִי “e eu”; tinha “porque-quando-eu”
+GEN 48:7	10	בְּ/ע֥וֹד	ainda	claude	בְּעוֹד “ainda (a)”; tinha “em-ainda”
+GEN 48:7	11	כִּבְרַת	uma-distância	claude	כִּבְרַת “uma distância”; tinha “como-distância”
+GEN 48:10	8	וַ/יַּגֵּ֤שׁ	e-fez-chegar	claude	וַיַּגֵּשׁ “e fez chegar”; tinha “pois-chegar”
+GEN 48:10	11	וַ/יִּשַּׁ֥ק	e-beijou	claude	וַיִּשַּׁק “e beijou”; tinha “beijou”
+GEN 48:19	1	וַ/יְמָאֵ֣ן	e-recusou	claude	וַיְמָאֵן “e recusou”; tinha “não-quis”
+GEN 48:19	9	יִֽהְיֶה	será	claude	יִהְיֶה “será”; tinha “virá”
+GEN 48:19	10	לְּ/עָ֖ם	um-povo	claude	לְּעָם “por povo”; tinha “povo”
+GEN 48:19	11	וְ/גַם	e-também	claude	וְגַם “e também”; tinha “e-será-também”
+GEN 48:19	13	יִגְדָּ֑ל	será-grande	claude	יִגְדָּל “será grande”; tinha “acrescentado”
+GEN 49:4	4	תּוֹתַ֔ר	terás-preeminência	claude	תּוֹתַר “terás preeminência”; tinha “principal”
+GEN 49:4	11	יְצוּעִ֥/י	meu-leito	claude	יְצוּעִי “meu leito”; tinha “subindo-a-meu-estrado”
+GEN 49:5	6	מְכֵרֹתֵי/הֶֽם	suas-espadas	claude	מְכֵרֹתֵיהֶם “suas espadas”; tinha “suas-armas”
+GEN 49:11	8	בַּ/יַּ֨יִן֙	no-vinho	claude	בַּיַּיִן “no vinho”; tinha “no-veio”
