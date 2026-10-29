@@ -7401,3 +7401,104 @@ JOS 15:7	18	הַ/גְּבוּל֙	o-termo	claude	הַגְּבוּל “o termo�
 JOS 15:7	24	תֹצְאֹתָ֖י/ו	suas-saídas	claude	תֹצְאֹתָיו “suas saídas”; tinha “sai”
 JOS 15:10	1	וְ/נָסַב֩	e-rodeia	claude	וְנָסַב “e rodeia”; tinha “depois-torna”
 JOS 15:10	2	הַ/גְּב֨וּל	o-termo	claude	הַגְּבוּל “o termo”; tinha “este-termo”
+JOS 15:10	4	יָ֨מָּ/ה֙	ao-ocidente	claude	יָמָּה “ao ocidente”; tinha “até-o-ocidente”
+JOS 15:10	13	מִ/צָּפ֖וֹנָ/ה	ao-norte	claude	מִצָּפוֹנָה “ao norte”; tinha “até-o-norte”
+JOS 17:5	5	לְ/בַ֞ד	além	claude	לְבַד “além de”; tinha “porções-a-mais”
+JOS 17:5	6	מֵ/אֶ֤רֶץ	da-terra	claude	מֵאֶרֶץ “da terra de”; tinha “mais-da-terra”
+JOS 17:5	10	מֵ/עֵ֥בֶר	além	claude	מֵעֵבֶר “do outro lado de”; tinha “da-outra”
+JOS 17:5	11	לַ/יַּרְדֵּֽן	do-Jordão	claude	לַיַּרְדֵּן “do Jordão”; tinha “parte-do-Jordão”
+JOS 17:7	11	הַ/גְּבוּל֙	o-termo	claude	הַגְּבוּל “o termo”; tinha “este-termo”
+JOS 17:7	15	יֹשְׁבֵ֖י	os-moradores	claude	יֹשְׁבֵי “os moradores de”; tinha “habitam”
+JOS 17:7	16	עֵ֥ין	En-Tapua	claude	עֵין “En-(Tapua)”; tinha “Tapua”
+JOS 17:7	17	תַּפּֽוּחַ	En-Tapua	claude	תַּפּוּחַ “(En-)Tapua”; tinha “Tapua”
+JOS 17:11	1	וַ/יְהִ֨י	e-teve	claude	וַיְהִי “e houve”; tinha “teve-também”
+JOS 17:11	2	לִ/מְנַשֶּׁ֜ה	Manassés	claude	לִמְנַשֶּׁה “para Manassés”; tinha “também-Manassés”
+JOS 17:11	5	בֵּית	Bete-Seã	claude	בֵּית “Bete-(Seã)”; tinha “Bete”
+JOS 18:12	9	הַ/גְּבוּל֩	o-termo	claude	הַגְּבוּל “o termo”; tinha “aquele-termo”
+JOS 18:12	14	וְ/עָלָ֤ה	e-sobe	claude	וְעָלָה “e sobe”; tinha “sobe-depois”
+JOS 18:12	15	בָ/הָר֙	pelo-monte	claude	בָהָר “pelo monte”; tinha “depois-ao-monte”
+JOS 18:12	16	יָ֔מָּ/ה	ao-ocidente	claude	יָמָּה “ao ocidente”; tinha “até-o-ocidente”
+JOS 18:12	18	תֹּֽצְאֹתָ֔י/ו	suas-saídas	claude	תֹּצְאֹתָיו “suas saídas”; tinha “sair”
+JOS 18:12	20	בֵּ֥ית	Bete-Áven	claude	בֵּית “Bete-(Áven)”; tinha “Bete”
+JOS 19:29	2	הַ/גְּבוּל֙	o-termo	claude	הַגְּבוּל “o termo”; tinha “este-termo”
+JOS 19:29	3	הָֽ/רָמָ֔ה	a-Ramá	claude	הָרָמָה “a Ramá”; tinha “a-Hormá”
+JOS 19:29	9	הַ/גְּבוּל֙	o-termo	claude	הַגְּבוּל “o termo”; tinha “este-termo”
+JOS 19:29	12	תֹצְאֹתָ֛י/ו	suas-saídas	claude	תֹצְאֹתָיו “suas saídas”; tinha “sai”
+JOS 19:29	14	מֵ/חֶ֥בֶל	desde-a-região	claude	מֵחֶבֶל “desde a região de”; tinha “desde-o-território”
+JOS 19:33	4	מֵֽ/אֵל֜וֹן	desde-Alom	claude	מֵאֵלוֹן “desde Alom”; tinha “Alom”
+JOS 19:33	11	וַ/יְהִ֥י	e-foram	claude	וַיְהִי “e foram”; tinha “e-aconteceu”
+JOS 19:33	12	תֹצְאֹתָ֖י/ו	suas-saídas	claude	תֹצְאֹתָיו “suas saídas”; tinha “sai”
+JOS 21:4	9	מִן	dentre	claude	מִן “dentre”; tinha “que”
+JOS 21:4	17	בַּ/גּוֹרָ֔ל	por-sorte	claude	בַּגּוֹרָל “por sorte”; tinha “treze”
+JOS 21:4	18	עָרִ֖ים	cidades	claude	עָרִים “cidades”; tinha “vilas”
+JOS 21:26	2	עָרִ֥ים	cidades	claude	עָרִים “cidades”; tinha “vilas”
+JOS 21:26	4	וּ/מִגְרְשֵׁי/הֶ֑ן	e-seus-campos	claude	וּמִגְרְשֵׁיהֶן “e seus campos”; tinha “foram-com-seus-campos”
+JOS 21:26	8	הַ/נּוֹתָרִֽים	restantes	claude	הַנּוֹתָרִים “os restantes”; tinha “o-restaram”
+JOS 22:19	1	וְ/אַ֨ךְ	e-porém	claude	וְאַךְ “e porém”; tinha “e-certamente”
+JOS 22:19	12	אֲשֶׁ֤ר	onde	claude	אֲשֶׁר “onde”; tinha “qual”
+JOS 22:19	13	שָֽׁכַן	habita	claude	שָׁכַן “habita”; tinha “morará”
+JOS 22:19	17	וְ/הֵאָחֲז֖וּ	e-tomai-possessão	claude	וְהֵאָחֲזוּ “e tomai possessão”; tinha “e-tomai”
+JOS 22:19	18	בְּ/תוֹכֵ֑/נוּ	entre-nós	claude	בְּתוֹכֵנוּ “entre nós”; tinha “possessão-entre-nós”
+JOS 22:19	19	וּ/בַֽ/יהוָ֣ה	e-contra-o-SENHOR	claude	וּבַיהוָה “e contra o SENHOR”; tinha “contra-o-SENHOR”
+JOS 22:19	20	אַל	não	claude	אַל “não”; tinha “nem”
+JOS 22:19	22	וְ/אֹתָ֨/נוּ֙	e-contra-nós	claude	וְאֹתָנוּ “e a nós”; tinha “e-nos”
+JOS 22:19	25	בִּ/בְנֹֽתְ/כֶ֤ם	edificando	claude	בִּבְנֹתְכֶם “ao edificardes”; tinha “contra-edificando”
+JOS 22:19	28	מִֽ/בַּלְעֲדֵ֔י	além-do	claude	מִבַּלְעֲדֵי “além de”; tinha “diferente-do”
+JOS 22:24	3	מִ/דְּאָגָה֙	por-temor	claude	מִדְּאָגָה “por temor”; tinha “fizemos”
+JOS 22:24	4	מִ/דָּבָ֔ר	de-coisa	claude	מִדָּבָר “de (alguma) coisa”; tinha “de-palavra”
+JOS 22:24	5	עָשִׂ֥ינוּ	fizemos	claude	עָשִׂינוּ “fizemos”; tinha “temor”
+JOS 22:24	13	לֵ/אמֹ֔ר	dizendo	claude	לֵאמֹר “dizendo”; tinha “para-dizendo”
+JOS 23:5	4	יֶהְדֳּפֵ֣/ם	as-expulsará	claude	יֶהְדֳּפֵם “as expulsará”; tinha “expulsará”
+JOS 23:5	6	וְ/הוֹרִ֥ישׁ	e-desapossará	claude	וְהוֹרִישׁ “e desapossará”; tinha “e-as-lançará”
+JOS 23:5	9	וִֽ/ירִשְׁתֶּם֙	e-possuireis	claude	וִירִשְׁתֶּם “e possuireis”; tinha “e-vós-possuireis”
+JOS 23:5	11	אַרְצָ֔/ם	sua-terra	claude	אַרְצָם “sua terra”; tinha “suas-terras”
+JOS 24:7	1	וַ/יִּצְעֲק֣וּ	e-clamaram	claude	וַיִּצְעֲקוּ “e clamaram”; tinha “clamaram”
+JOS 24:7	4	וַ/יָּ֨שֶׂם	e-pôs	claude	וַיָּשֶׂם “e pôs”; tinha “ele-pôs”
+JOS 24:7	10	עָלָ֤י/ו	sobre-eles	claude	עָלָיו “sobre ele (eles)”; tinha “sobre”
+JOS 24:7	13	וַ/יְכַסֵּ֔/הוּ	e-os-cobriu	claude	וַיְכַסֵּהוּ “e os cobriu”; tinha “qual-os-cobriu”
+JOS 24:7	14	וַ/תִּרְאֶ֨ינָה֙	e-viram	claude	וַתִּרְאֶינָה “e viram”; tinha “viram”
+JOS 24:7	20	וַ/תֵּשְׁב֥וּ	e-habitastes	claude	וַתֵּשְׁבוּ “e habitastes”; tinha “depois-estivestes”
+JOS 24:8	9	וַ/יִּֽלָּחֲמ֖וּ	e-lutaram	claude	וַיִּלָּחֲמוּ “e lutaram”; tinha “quais-lutaram”
+JOS 24:8	11	וָ/אֶתֵּ֨ן	e-entreguei	claude	וָאֶתֵּן “e entreguei”; tinha “entreguei”
+JOS 24:12	4	הַ/צִּרְעָ֔ה	os-vespões	claude	הַצִּרְעָה “os vespões”; tinha “os-quais”
+JOS 24:12	5	וַ/תְּגָ֤רֶשׁ	e-expulsaram	claude	וַתְּגָרֶשׁ “e expulsou”; tinha “quais-os-expulsaram”
+JOS 24:12	7	מִ/פְּנֵי/כֶ֔ם	de-diante-de-vós	claude	מִפְּנֵיכֶם “de diante de vós”; tinha “diante-de-vós”
+JOS 24:33	1	וְ/אֶלְעָזָ֥ר	e-Eleazar	claude	וְאֶלְעָזָר “e Eleazar”; tinha “Eleazar”
+JOS 24:33	5	וַ/יִּקְבְּר֣וּ	e-o-sepultaram	claude	וַיִּקְבְּרוּ “e o sepultaram”; tinha “qual-enterraram”
+JOS 24:33	11	נִתַּן	foi-dado	claude	נִתַּן “foi dado”; tinha “dado”
+JDG 6:6	1	וַ/יִּדַּ֧ל	e-foi-empobrecido	claude	וַיִּדַּל “e foi empobrecido”; tinha “era-pois”
+JDG 6:6	3	מְאֹ֖ד	muito	claude	מְאֹד “muito”; tinha “grande”
+JDG 6:6	4	מִ/פְּנֵ֣י	por-causa	claude	מִפְּנֵי “por causa de”; tinha “maneira-empobrecido-pelos”
+JDG 6:6	5	מִדְיָ֑ן	de-Midiã	claude	מִדְיָן “Midiã”; tinha “midianitas”
+JDG 6:6	6	וַ/יִּזְעֲק֥וּ	e-clamaram	claude	וַיִּזְעֲקוּ “e clamaram”; tinha “clamaram”
+JDG 6:8	1	וַ/יִּשְׁלַ֧ח	e-enviou	claude	וַיִּשְׁלַח “e enviou”; tinha “enviou”
+JDG 6:8	8	וַ/יֹּ֨אמֶר	e-disse	claude	וַיֹּאמֶר “e disse”; tinha “qual-disse”
+JDG 6:8	16	הֶעֱלֵ֤יתִי	fiz-subir	claude	הֶעֱלֵיתִי “fiz subir”; tinha “subir”
+JDG 6:8	18	מִ/מִּצְרַ֔יִם	do-Egito	claude	מִמִּצְרַיִם “do Egito”; tinha “sair-do-Egito”
+JDG 6:29	1	וַ/יֹּֽאמְרוּ֙	e-disseram	claude	וַיֹּאמְרוּ “e disseram”; tinha “e-diziam”
+JDG 6:29	2	אִ֣ישׁ	cada-um	claude	אִישׁ “cada um”; tinha “uns”
+JDG 6:29	3	אֶל	a	claude	אֶל “a”; tinha “aos”
+JDG 6:29	4	רֵעֵ֔/הוּ	seu-próximo	claude	רֵעֵהוּ “seu próximo”; tinha “outros”
+JDG 6:29	8	הַ/זֶּ֑ה	esta	claude	הַזֶּה “esta”; tinha “o-hoje”
+JDG 6:29	9	וַֽ/יִּדְרְשׁוּ֙	e-investigaram	claude	וַיִּדְרְשׁוּ “e investigaram”; tinha “e-buscando-investigando”
+JDG 6:29	10	וַ/יְבַקְשׁ֔וּ	e-buscaram	claude	וַיְבַקְשׁוּ “e buscaram”; tinha “buscando-e”
+JDG 6:29	11	וַ/יֹּ֣אמְר֔וּ	e-disseram	claude	וַיֹּאמְרוּ “e disseram”; tinha “disseram”
+JDG 6:29	16	הַ/דָּבָ֥ר	a-coisa	claude	הַדָּבָר “a coisa”; tinha “disseram”
+JDG 6:29	17	הַ/זֶּֽה	esta	claude	הַזֶּה “esta”; tinha “o-hoje”
+JDG 6:38	3	וַ/יַּשְׁכֵּם֙	e-levantou-se-cedo	claude	וַיַּשְׁכֵּם “e levantou-se cedo”; tinha “porque-quando-se-levantou”
+JDG 6:38	4	מִֽ/מָּחֳרָ֔ת	no-dia-seguinte	claude	מִמָּחֳרָת “no dia seguinte”; tinha “de-manhã”
+JDG 6:38	5	וַ/יָּ֖זַר	e-espremeu	claude	וַיָּזַר “e espremeu”; tinha “espremendo”
+JDG 6:38	8	וַ/יִּ֤מֶץ	e-tirou	claude	וַיִּמֶץ “e tirou (espremendo)”; tinha “tirou-dele”
+JDG 6:38	11	הַ/גִּזָּ֔ה	do-velo	claude	הַגִּזָּה “do velo”; tinha “um-vaso”
+JDG 6:38	12	מְל֥וֹא	cheia	claude	מְלוֹא “cheia de”; tinha “cheio”
+JDG 6:38	13	הַ/סֵּ֖פֶל	a-taça	claude	הַסֵּפֶל “a taça”; tinha “o-taça”
+JDG 7:17	4	תִרְא֖וּ	vede	claude	תִרְאוּ “vede”; tinha “olhai”
+JDG 7:17	7	וְ/הִנֵּ֨ה	e-eis	claude	וְהִנֵּה “e eis”; tinha “como-eu-fizer-eis”
+JDG 7:17	9	בָא֙	chego	claude	בָא “chego”; tinha “chegar”
+JDG 7:17	10	בִּ/קְצֵ֣ה	à-extremidade	claude	בִּקְצֵה “à extremidade de”; tinha “ao-princípio”
+JDG 7:18	1	וְ/תָקַעְתִּי֙	e-tocarei	claude	וְתָקַעְתִּי “e tocarei”; tinha “eu-tocarei”
+JDG 7:18	8	בַּ/שּׁוֹפָר֜וֹת	as-trombetas	claude	בַּשּׁוֹפָרוֹת “as trombetas”; tinha “então-as-trombetas”
+JDG 7:18	11	סְבִיבוֹת֙	ao-redor	claude	סְבִיבוֹת “ao redor de”; tinha “redor”
+JDG 7:18	13	הַֽ/מַּחֲנֶ֔ה	o-acampamento	claude	הַמַּחֲנֶה “o acampamento”; tinha “aquele-campo”
+JDG 7:18	15	לַ/יהוָ֥ה	pelo-SENHOR	claude	לַיהוָה “pelo SENHOR”; tinha “Pelo-SENHOR”
+JDG 7:18	16	וּ/לְ/גִדְעֽוֹן	e-por-Gideão	claude	וּלְגִדְעוֹן “e por Gideão”; tinha “e-Gideão”
