@@ -11241,3 +11241,87 @@ PSA 72:16	2	פִסַּת	abundância	claude	פִסַּת “abundância de”; t
 PSA 72:16	7	יִרְעַ֣שׁ	ondulará	claude	יִרְעַשׁ “ondulará”; tinha “brotará”
 PSA 72:16	10	וְ/יָצִ֥יצוּ	e-florescerão	claude	וְיָצִיצוּ “e florescerão”; tinha “e-desde”
 PSA 72:16	11	מֵ֝/עִ֗יר	os-da-cidade	claude	מֵעִיר “os da cidade”; tinha “a-cidade”
+PSA 74:2	2	עֲדָתְ/ךָ֨	tua-congregação	claude	עֲדָתְךָ “tua congregação”; tinha “teu-povo-que-tu”
+PSA 74:2	4	קֶּ֗דֶם	desde-a-antiguidade	claude	קֶּדֶם “desde a antiguidade”; tinha “desde”
+PSA 74:2	5	גָּ֭אַלְתָּ	resgataste	claude	גָּאַלְתָּ “resgataste”; tinha “antiguidade”
+PSA 74:2	12	בּֽ/וֹ	nele	claude	בּוֹ “nele”; tinha “em”
+PSA 74:10	4	יְחָ֣רֶף	afrontará	claude	יְחָרֶף “afrontará”; tinha “adversário”
+PSA 77:2	3	אֲדֹנָ֪/י	ao-Senhor	claude	אֲדֹנָי “ao Senhor”; tinha “Senhor-minha”
+PSA 77:2	5	יָדִ֤/י	minha-mão	claude	יָדִי “minha mão”; tinha “mão”
+PSA 77:2	6	לַ֣יְלָה	de-noite	claude	לַיְלָה “de noite”; tinha “estava”
+PSA 77:2	7	נִ֭גְּרָה	se-estendia	claude	נִגְּרָה “se estendia”; tinha “continuamente”
+PSA 77:2	9	תָפ֑וּג	se-cansava	claude	תָפוּג “se cansava”; tinha “enfraquecido”
+PSA 77:2	10	מֵאֲנָ֖ה	recusava	claude	מֵאֲנָה “recusava”; tinha “deixava”
+PSA 77:2	11	הִנָּחֵ֣ם	ser-consolada	claude	הִנָּחֵם “ser consolada”; tinha “consolar”
+PSA 78:34	2	הֲרָגָ֥/ם	os-matava	claude	הֲרָגָם “os matava”; tinha “matava”
+PSA 78:34	3	וּ/דְרָשׁ֑וּ/הוּ	então-o-buscavam	claude	וּדְרָשׁוּהוּ “e o buscavam”; tinha “então-buscavam-por-ele”
+PSA 78:34	5	וְ/שִֽׁחֲרוּ	e-madrugavam-buscando	claude	וְשִׁחֲרוּ “e buscavam de madrugada”; tinha “e-buscavam”
+PSA 78:37	1	וְ֭/לִבָּ/ם	e-seu-coração	claude	וְלִבָּם “e seu coração”; tinha “porque-o-coração-deles”
+PSA 78:37	3	נָכ֣וֹן	era-firme	claude	נָכוֹן “era firme”; tinha “comprometido”
+PSA 78:37	6	נֶ֝אֶמְנ֗וּ	foram-fiéis	claude	נֶאֱמְנוּ “foram fiéis”; tinha “fiéis”
+PSA 78:37	7	בִּ/בְרִיתֽ/וֹ	a-seu-pacto	claude	בִּבְרִיתוֹ “a seu pacto”; tinha “ao-pacto-dele”
+PSA 78:39	1	וַ֭/יִּזְכֹּר	e-lembrou-se	claude	וַיִּזְכֹּר “e lembrou-se”; tinha “porque-se-lembrou”
+PSA 78:39	5	ר֥וּחַ	um-vento	claude	רוּחַ “um vento”; tinha “vento”
+PSA 78:39	6	ה֝וֹלֵ֗ךְ	que-passa	claude	הוֹלֵךְ “que passa”; tinha “vai”
+PSA 78:62	4	וּ֝/בְ/נַחֲלָת֗/וֹ	e-contra-sua-herança	claude	וּבְנַחֲלָתוֹ “e contra sua herança”; tinha “contra-sua-herança”
+PSA 78:62	5	הִתְעַבָּֽר	se-enfureceu	claude	הִתְעַבָּר “se enfureceu”; tinha “passar”
+PSA 78:65	1	וַ/יִּקַ֖ץ	e-despertou	claude	וַיִּקַץ “e despertou”; tinha “despertou”
+PSA 78:65	2	כְּ/יָשֵׁ֥ן	como-quem-dorme	claude	כְּיָשֵׁן “como quem dorme”; tinha “sono”
+PSA 78:65	4	כְּ֝/גִבּ֗וֹר	como-um-valente	claude	כְּגִבּוֹר “como um valente”; tinha “como-um-homem”
+PSA 78:65	5	מִתְרוֹנֵ֥ן	que-grita	claude	מִתְרוֹנֵן “que grita”; tinha “valente”
+PSA 78:65	6	מִ/יָּֽיִן	pelo-vinho	claude	מִיָּיִן “pelo vinho”; tinha “com-o-vinho”
+PSA 79:13	1	וַ/אֲנַ֤חְנוּ	e-nós	claude	וַאֲנַחְנוּ “e nós”; tinha “assim-nós”
+PSA 79:13	4	מַרְעִיתֶ/ךָ֮	de-teu-pasto	claude	מַרְעִיתֶךָ “de teu pasto”; tinha “teu-pasto-te”
+PSA 79:13	6	לְּ/ךָ֗	a-ti	claude	לְּךָ “a ti”; tinha “de”
+PSA 79:13	9	וָ/דֹ֑ר	e-geração	claude	וָדֹר “e geração”; tinha “em-geração”
+PSA 79:13	10	נְ֝סַפֵּ֗ר	contaremos	claude	נְסַפֵּר “contaremos”; tinha “cantaremos”
+PSA 79:13	11	תְּהִלָּתֶֽ/ךָ	teu-louvor	claude	תְּהִלָּתֶךָ “teu louvor”; tinha “louvores-a-ti”
+PSA 80:4	3	צְבָא֑וֹת	dos-Exércitos	claude	צְבָאוֹת “dos Exércitos”; tinha “exércitos”
+PSA 80:4	6	עָ֝שַׁ֗נְתָּ	fumegarás	claude	עָשַׁנְתָּ “fumegarás”; tinha “ficarás-irritado”
+PSA 81:12	1	וָֽ֭/אֲשַׁלְּחֵ/הוּ	e-os-entreguei	claude	וָאֲשַׁלְּחֵהוּ “e os entreguei”; tinha “isso-eu”
+PSA 81:12	2	בִּ/שְׁרִיר֣וּת	à-obstinação	claude	בִּשְׁרִירוּת “à obstinação de”; tinha “ao-desejo”
+PSA 81:12	3	לִבָּ֑/ם	de-seu-coração	claude	לִבָּם “de seu coração”; tinha “corações-e”
+PSA 81:12	5	בְּֽ/מוֹעֲצוֹתֵי/הֶֽם	em-seus-conselhos	claude	בְּמוֹעֲצוֹתֵיהֶם “em seus conselhos”; tinha “conforme-seus-próprios-conselhos”
+PSA 83:10	2	בְֽ/עֵין	em-En-Dor	claude	בְעֵין “em En-(Dor)”; tinha “em-Endor”
+PSA 83:10	3	דֹּ֑אר	En-Dor	claude	דֹּאר “(En-)Dor”; tinha “Endor-vieram”
+PSA 83:10	4	הָ֥יוּ	tornaram-se	claude	הָיוּ “tornaram-se”; tinha “vieram-a”
+PSA 89:2	3	ע֭וֹלָם	para-sempre	claude	עוֹלָם “para sempre”; tinha “sempre”
+PSA 89:2	5	יִבָּנֶ֑ה	será-edificada	claude	יִבָּנֶה “será edificada”; tinha “durará”
+PSA 89:2	6	שָׁמַ֓יִם	nos-céus	claude	שָׁמַיִם “nos céus”; tinha “céus”
+PSA 89:2	7	תָּכִ֖ן	firmarás	claude	תָּכִן “firmarás”; tinha “confirmaste”
+PSA 90:8	1	שַׁתָּ֣ה	puseste	claude	שַׁתָּה “puseste”; tinha “pões”
+PSA 90:8	4	עֲ֝לֻמֵ֗/נוּ	nossos-segredos	claude	עֲלֻמֵנוּ “nossos segredos”; tinha “nosso-pecado-oculto”
+PSA 90:8	5	לִ/מְא֥וֹר	à-luz	claude	לִמְאוֹר “à luz de”; tinha “perante-a-luz”
+PSA 91:16	1	אֹ֣רֶךְ	de-longura	claude	אֹרֶךְ “longura de”; tinha “longa”
+PSA 91:16	2	יָ֭מִים	de-dias	claude	יָמִים “dias”; tinha “vida”
+PSA 91:16	3	אַשְׂבִּיעֵ֑/הוּ	o-fartarei	claude	אַשְׂבִּיעֵהוּ “o fartarei”; tinha “vida”
+PSA 92:11	1	וַ/תַּבֵּ֥ט	e-verá	claude	וַתַּבֵּט “e verá”; tinha “e-meus-verão”
+PSA 92:11	2	עֵינִ֗/י	meu-olho	claude	עֵינִי “meu olho”; tinha “meus-olhos”
+PSA 92:11	3	בְּ/שׁ֫וּרָ֥/י	meus-inimigos	claude	בְּשׁוּרָי “meus inimigos (espreitadores)”; tinha “fim-dos-meus-inimigos”
+PSA 92:11	4	בַּ/קָּמִ֖ים	dos-que-se-levantam	claude	בַּקָּמִים “dos que se levantam”; tinha “levantam”
+PSA 92:11	8	אָזְנָֽ/י	meus-ouvidos	claude	אָזְנָי “meus ouvidos”; tinha “ouvidos”
+PSA 93:4	1	מִ/קֹּל֨וֹת	mais-que-as-vozes	claude	מִקֹּלוֹת “mais que as vozes de”; tinha “ruídos”
+PSA 93:4	4	אַדִּירִ֣ים	mais-que-as-poderosas	claude	אַדִּירִים “poderosas”; tinha “fortes”
+PSA 93:4	5	מִשְׁבְּרֵי	ondas	claude	מִשְׁבְּרֵי “ondas de”; tinha “ondas”
+PSA 93:4	7	אַדִּ֖יר	poderoso	claude	אַדִּיר “poderoso”; tinha “porém”
+PSA 93:4	8	בַּ/מָּר֣וֹם	nas-alturas	claude	בַּמָּרוֹם “nas alturas”; tinha “o-nas-alturas”
+PSA 100:2	6	לְ֝/פָנָ֗י/ו	diante-dele	claude	לְפָנָיו “diante dele”; tinha “perante-sua”
+PSA 100:2	7	בִּ/רְנָנָֽה	com-júbilo	claude	בִּרְנָנָה “com júbilo”; tinha “presença”
+PSA 101:3	5	דְּֽבַר	coisa	claude	דְּבַר “coisa de”; tinha “palavra”
+PSA 101:3	6	בְּלִ֫יָּ֥עַל	vil	claude	בְלִיָּעַל “vil”; tinha “maligna”
+PSA 101:3	7	עֲשֹֽׂה	o-fazer	claude	עֲשֹׂה “o fazer de”; tinha “obra”
+PSA 101:3	8	סֵטִ֥ים	dos-desviados	claude	סֵטִים “dos desviados”; tinha “maligna”
+PSA 101:3	11	יִדְבַּ֣ק	se-apegará	claude	יִדְבַּק “se apegará”; tinha “desviam”
+PSA 102:3	2	כָל֣וּ	se-consomem	claude	כָלוּ “se consomem”; tinha “os”
+PSA 102:3	6	כְּ/מוֹ	como	claude	כְּמוֹ “como”; tinha “queimado-como”
+PSA 102:3	7	קֵ֥ד	tição	claude	קֵד “tição”; tinha “n”
+PSA 102:3	8	נִחָֽרוּ	estão-queimados	claude	נִחָרוּ “estão queimados”; tinha “forno”
+PSA 104:11	1	יַ֭שְׁקוּ	dão-de-beber	claude	יַשְׁקוּ “dão de beber”; tinha “beber”
+PSA 104:11	3	חַיְת֣/וֹ	aos-animais	claude	חַיְתוֹ “aos animais de”; tinha “animais”
+PSA 104:11	4	שָׂדָ֑י	do-campo	claude	שָׂדָי “do campo”; tinha “campo”
+PSA 104:11	5	יִשְׁבְּר֖וּ	matam	claude	יִשְׁבְּרוּ “matam (quebram)”; tinha “asnos-matam”
+PSA 104:11	7	צְמָאָֽ/ם	sua-sede	claude	צְמָאָם “sua sede”; tinha “sede-com-elas”
+PSA 104:13	1	מַשְׁקֶ֣ה	o-que-rega	claude	מַשְׁקֶה “o que rega”; tinha “rega”
+PSA 104:13	3	מֵ/עֲלִיּוֹתָ֑י/ו	de-seus-aposentos-altos	claude	מֵעֲלִיּוֹתָיו “de seus aposentos altos”; tinha “desde-seus-cômodos”
+PSA 104:13	5	מַ֝עֲשֶׂ֗י/ךָ	de-tuas-obras	claude	מַעֲשֶׂיךָ “de tuas obras”; tinha “tuas-obras”
+PSA 104:13	6	תִּשְׂבַּ֥ע	se-farta	claude	תִּשְׂבַּע “se farta”; tinha “farta”
