@@ -16640,3 +16640,91 @@ JOB 42:11	26	ל֗/וֹ	a-ele	claude	לוֹ “a ele”; tinha “para-ele”
 JOB 42:11	27	אִ֚ישׁ	cada-um	claude	אִישׁ “cada um”; tinha “cada”
 JOB 42:11	28	קְשִׂיטָ֣ה	peça-de-dinheiro	claude	קְשִׂיטָה “peça de dinheiro”; tinha “dinheiro”
 JOB 42:11	30	וְ/אִ֕ישׁ	e-cada-um	claude	וְאִישׁ “e cada um”; tinha “e-homem”
+PSA 1:1	8	וּ/בְ/דֶ֣רֶךְ	e-no-caminho	claude	וּבְדֶרֶךְ “e no caminho de”; tinha “no-caminho”
+PSA 1:1	11	עָמָ֑ד	se-detém	claude	עָמָד “se detém”; tinha “fica”
+PSA 1:1	12	וּ/בְ/מוֹשַׁ֥ב	e-na-roda	claude	וּבְמוֹשַׁב “e no assento de”; tinha “escarnecedores”
+PSA 1:1	13	לֵ֝צִ֗ים	dos-escarnecedores	claude	לֵצִים “dos escarnecedores”; tinha “zombadores”
+PSA 1:1	15	יָשָֽׁב	se-senta	claude	יָשָׁב “se senta”; tinha “senta”
+PSA 1:3	1	וְֽ/הָיָ֗ה	e-será	claude	וְהָיָה “e será”; tinha “porque-ele-será”
+PSA 1:3	4	עַֽל	junto-a	claude	עַל “junto a”; tinha “sobre”
+PSA 1:3	8	פִּרְי֨/וֹ	seu-fruto	claude	פִּרְיוֹ “seu fruto”; tinha “fruto-a-seu”
+PSA 1:3	9	יִתֵּ֬ן	dá	claude	יִתֵּן “dá”; tinha “dará”
+PSA 1:3	10	בְּ/עִתּ֗/וֹ	em-seu-tempo	claude	בְּעִתּוֹ “em seu tempo”; tinha “devido-tempo”
+PSA 1:3	13	יִבּ֑וֹל	murcham	claude	יִבּוֹל “murcham”; tinha “caem”
+PSA 1:5	8	בַּ/עֲדַ֥ת	na-congregação	claude	בַּעֲדַת “na congregação de”; tinha “no-ajuntamento”
+PSA 1:5	9	צַדִּיקִֽים	dos-justos	claude	צַדִּיקִים “dos justos”; tinha “justos”
+PSA 1:6	4	דֶּ֣רֶךְ	o-caminho	claude	דֶּרֶךְ “o caminho de”; tinha “caminho”
+PSA 1:6	5	צַדִּיקִ֑ים	dos-justos	claude	צַדִּיקִים “dos justos”; tinha “justos”
+PSA 1:6	6	וְ/דֶ֖רֶךְ	e-o-caminho	claude	וְדֶרֶךְ “e o caminho de”; tinha “porém-o-caminho”
+PSA 1:6	7	רְשָׁעִ֣ים	dos-maus	claude	רְשָׁעִים “dos maus”; tinha “maus”
+PSA 2:5	5	וּֽ/בַ/חֲרוֹנ֥/וֹ	e-em-seu-furor	claude	וּבַחֲרוֹנוֹ “e em seu furor”; tinha “em-seu-furor-ele”
+PSA 2:5	6	יְבַהֲלֵֽ/מוֹ	os-assombrará	claude	יְבַהֲלֵמוֹ “os assombrará”; tinha “assombrará”
+PSA 2:7	1	אֲסַפְּרָ֗ה	declararei	claude	אֲסַפְּרָה “declararei”; tinha “eu”
+PSA 2:7	5	אָמַ֘ר	disse	claude	אָמַר “disse”; tinha “me”
+PSA 2:7	7	בְּנִ֥/י	meu-filho	claude	בְּנִי “meu filho”; tinha “filho”
+PSA 2:8	3	וְ/אֶתְּנָ֣ה	e-darei	claude	וְאֶתְּנָה “e darei”; tinha “darei”
+PSA 2:8	5	נַחֲלָתֶ֑/ךָ	tua-herança	claude	נַחֲלָתֶךָ “tua herança”; tinha “herança”
+PSA 2:8	6	וַ֝/אֲחֻזָּתְ/ךָ֗	e-tua-propriedade	claude	וַאֲחֻזָּתְךָ “e tua propriedade”; tinha “propriedade”
+PSA 2:8	7	אַפְסֵי	os-confins	claude	אַפְסֵי “os confins de”; tinha “confins”
+PSA 2:8	8	אָֽרֶץ	da-terra	claude	אָרֶץ “da terra”; tinha “terra”
+PSA 2:9	1	תְּ֭רֹעֵ/ם	as-quebrarás	claude	תְּרֹעֵם “as quebrarás”; tinha “quebrarás”
+PSA 2:9	5	יוֹצֵ֣ר	de-oleiro	claude	יוֹצֵר “de oleiro”; tinha “oleiro”
+PSA 2:9	6	תְּנַפְּצֵֽ/ם	as-despedaçarás	claude	תְּנַפְּצֵם “as despedaçarás”; tinha “despedaçarás”
+PSA 2:12	2	בַ֡ר	o-Filho	claude	בַר “o Filho”; tinha “filho”
+PSA 2:12	3	פֶּן	para-que-não	claude	פֶּן “para que não”; tinha “não”
+PSA 2:12	4	יֶאֱנַ֤ף	se-ire	claude	יֶאֱנַף “se ire”; tinha “ire”
+PSA 2:12	6	דֶ֗רֶךְ	no-caminho	claude	דֶרֶךְ “no caminho”; tinha “caminho”
+PSA 2:12	8	יִבְעַ֣ר	se-acenderá	claude	יִבְעַר “se acenderá”; tinha “acenderá”
+PSA 2:12	9	כִּ/מְעַ֣ט	em-breve	claude	כִּמְעַט “em breve (como pouco)”; tinha “breve”
+PSA 2:12	10	אַפּ֑/וֹ	sua-ira	claude	אַפּוֹ “sua ira”; tinha “ira-dele”
+PSA 2:12	13	ח֥וֹסֵי	os-que-confiam	claude	חוֹסֵי “os que se refugiam”; tinha “confiam”
+PSA 3:3	1	וְ/אַתָּ֣ה	e-tu	claude	וְאַתָּה “e tu”; tinha “porém-tu”
+PSA 3:3	4	בַּעֲדִ֑/י	em-meu-favor	claude	בַּעֲדִי “em meu favor”; tinha “por-mim”
+PSA 3:3	5	כְּ֝בוֹדִ֗/י	minha-glória	claude	כְּבוֹדִי “minha glória”; tinha “glória”
+PSA 3:3	6	וּ/מֵרִ֥ים	e-o-que-levanta	claude	וּמֵרִים “e o que levanta”; tinha “levanta”
+PSA 3:7	1	ק֘וּמָ֤/ה	levanta-te	claude	קוּמָה “levanta-te”; tinha “levanta”
+PSA 3:7	10	לֶ֑חִי	no-queixo	claude	לֶחִי “no queixo”; tinha “queixos”
+PSA 3:7	11	שִׁנֵּ֖י	os-dentes	claude	שִׁנֵּי “os dentes de”; tinha “dentes”
+PSA 3:7	12	רְשָׁעִ֣ים	dos-maus	claude	רְשָׁעִים “dos maus”; tinha “maus”
+PSA 5:1	5	הֲגִֽיגִ/י	minha-meditação	claude	הֲגִיגִי “minha meditação”; tinha “aquilo-que-estou-meditando”
+PSA 5:9	3	בְּ/פִ֡י/הוּ	em-sua-boca	claude	בְּפִיהוּ “em sua boca”; tinha “na-boca-deles-seu”
+PSA 5:9	4	נְכוֹנָה֮	retidão	claude	נְכוֹנָה “retidão (verdade)”; tinha “meras”
+PSA 5:9	5	קִרְבָּ֪/ם	seu-interior	claude	קִרְבָּם “seu interior”; tinha “interior-são”
+PSA 5:9	9	גְּרוֹנָ֑/ם	sua-garganta	claude	גְּרוֹנָם “sua garganta”; tinha “garganta-deles”
+PSA 5:9	10	לְ֝שׁוֹנָ֗/ם	com-sua-língua	claude	לְשׁוֹנָם “com sua língua”; tinha “suas-línguas-elogiam”
+PSA 5:9	11	יַחֲלִֽיקוּ/ן	lisonjeiam	claude	יַחֲלִיקוּן “lisonjeiam”; tinha “falsamente”
+PSA 5:10	4	מִֽ/מֹּעֲצ֪וֹתֵ֫י/הֶ֥ם	por-seus-conselhos	claude	מִמֹּעֲצוֹתֵיהֶם “por seus conselhos”; tinha “de-seus-próprios-conselhos-os”
+PSA 5:10	5	בְּ/רֹ֣ב	pela-abundância	claude	בְּרֹב “pela abundância de”; tinha “abundância”
+PSA 5:10	6	פִּ֭שְׁעֵי/הֶם	de-suas-transgressões	claude	פִּשְׁעֵיהֶם “de suas transgressões”; tinha “suas-transgressões”
+PSA 5:10	7	הַדִּיחֵ֑/מוֹ	expulsa-os	claude	הַדִּיחֵמוֹ “expulsa-os”; tinha “expulsa”
+PSA 5:10	9	מָ֥רוּ	se-rebelaram	claude	מָרוּ “se rebelaram”; tinha “rebelaram”
+PSA 5:12	3	תְּבָרֵ֪ךְ	abençoarás	claude	תְּבָרֵךְ “abençoarás”; tinha “abençoarás-ao”
+PSA 5:12	4	צַ֫דִּ֥יק	o-justo	claude	צַדִּיק “o justo”; tinha “justo”
+PSA 5:12	6	כַּ֝/צִּנָּ֗ה	como-com-escudo	claude	כַּצִּנָּה “como com escudo”; tinha “como-com-um-escudo”
+PSA 5:12	7	רָצ֥וֹן	de-favor	claude	רָצוֹן “de favor”; tinha “rodearás”
+PSA 5:12	8	תַּעְטְרֶֽ/נּוּ	o-rodearás	claude	תַּעְטְרֶנּוּ “o rodearás”; tinha “bondade”
+PSA 8:4	2	אֱנ֥וֹשׁ	o-homem	claude	אֱנוֹשׁ “o homem”; tinha “homem”
+PSA 8:4	5	וּ/בֶן	e-o-filho	claude	וּבֶן “e o filho de”; tinha “é-o-filho”
+PSA 8:4	6	אָ֝דָ֗ם	do-homem	claude	אָדָם “do homem”; tinha “homem”
+PSA 8:4	8	תִפְקְדֶֽ/נּוּ	o-visites	claude	תִפְקְדֶנּוּ “o visites”; tinha “visites”
+PSA 8:5	1	וַ/תְּחַסְּרֵ֣/הוּ	e-o-fizeste-menor	claude	וַתְּחַסְּרֵהוּ “e o fizeste menor”; tinha “fizeste-um”
+PSA 8:5	2	מְּ֭עַט	um-pouco	claude	מְּעַט “um pouco”; tinha “pouco-menor”
+PSA 8:5	6	תְּעַטְּרֵֽ/הוּ	o-coroaste	claude	תְּעַטְּרֵהוּ “o coroaste”; tinha “coroaste”
+PSA 8:6	1	תַּ֭מְשִׁילֵ/הוּ	o-fazes-dominar	claude	תַּמְשִׁילֵהוּ “o fazes dominar”; tinha “controle”
+PSA 10:4	1	רָשָׁ֗ע	o-perverso	claude	רָשָׁע “o perverso”; tinha “perverso”
+PSA 10:4	2	כְּ/גֹ֣בַהּ	conforme-a-altivez	claude	כְּגֹבַהּ “conforme a altivez de”; tinha “arrogância”
+PSA 10:4	3	אַ֭פּ/וֹ	de-seu-rosto	claude	אַפּוֹ “de seu rosto”; tinha “rosto-o”
+PSA 10:4	5	יִדְרֹ֑שׁ	busca	claude	יִדְרֹשׁ “busca”; tinha “importa”
+PSA 10:4	8	כָּל	em-todos	claude	כָּל “todos”; tinha “todos”
+PSA 10:8	1	יֵשֵׁ֤ב	senta-se	claude	יֵשֵׁב “senta-se”; tinha “sentam”
+PSA 10:8	2	בְּ/מַאְרַ֬ב	em-emboscada	claude	בְּמַאְרַב “em emboscada de”; tinha “ciladas”
+PSA 10:8	3	חֲצֵרִ֗ים	das-aldeias	claude	חֲצֵרִים “das aldeias”; tinha “aldeias”
+PSA 10:8	6	נָקִ֑י	o-inocente	claude	נָקִי “o inocente”; tinha “inocente”
+PSA 10:8	7	עֵ֝ינָ֗י/ו	seus-olhos	claude	עֵינָיו “seus olhos”; tinha “olhos-observam”
+PSA 10:8	8	לְֽ/חֵלְכָ֥ה	o-desamparado	claude	לְחֵלְכָה “o desamparado”; tinha “pobre”
+PSA 10:8	9	יִצְפֹּֽנוּ	espreitam	claude	יִצְפֹּנוּ “espreitam”; tinha “escondem”
+PSA 10:17	1	תַּאֲוַ֬ת	o-desejo	claude	תַּאֲוַת “o desejo de”; tinha “desejo”
+PSA 10:17	2	עֲנָוִ֣ים	dos-humildes	claude	עֲנָוִים “dos humildes”; tinha “humildes”
+PSA 10:17	5	תָּכִ֥ין	firmarás	claude	תָּכִין “firmarás”; tinha “prepararás”
+PSA 10:17	6	לִ֝בָּ֗/ם	o-coração-deles	claude	לִבָּם “o coração deles”; tinha “corações-e”
+PSA 10:17	7	תַּקְשִׁ֥יב	inclinarás	claude	תַּקְשִׁיב “inclinarás”; tinha “ouvirão”
