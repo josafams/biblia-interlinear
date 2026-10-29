@@ -11435,3 +11435,100 @@ PSA 149:8	1	לֶ/אְסֹ֣ר	para-prender	claude	לֶאְסֹר “para prender
 PSA 149:8	6	בַרְזֶֽל	de-ferro	claude	בַרְזֶל “de ferro”; tinha “ferro”
 PSA 150:3	2	בְּ/תֵ֣קַע	com-o-som	claude	בְּתֵקַע “com o som de”; tinha “em-toque-de-trombeta”
 PSA 150:3	3	שׁוֹפָ֑ר	de-trombeta	claude	שׁוֹפָר “de trombeta”; tinha “trombeta”
+PRO 1:11	3	לְכָ֪/ה	vem	claude	לְכָה “vem”; tinha “vem-vamos”
+PRO 1:11	5	נֶאֶרְבָ֥ה	espreitemos	claude	נֶאֶרְבָה “espreitemos”; tinha “espiar”
+PRO 1:11	6	לְ/דָ֑ם	por-sangue	claude	לְדָם “por sangue”; tinha “derramamento-de-sangue”
+PRO 1:11	7	נִצְפְּנָ֖ה	armemos-ciladas	claude	נִצְפְּנָה “armemos ciladas”; tinha “preparemos-uma-emboscada”
+PRO 1:13	2	ה֣וֹן	bem	claude	הוֹן “bem (riqueza)”; tinha “acharemos”
+PRO 1:13	3	יָקָ֣ר	precioso	claude	יָקָר “precioso”; tinha “espécie”
+PRO 1:13	5	נְמַלֵּ֖א	encheremos	claude	נְמַלֵּא “encheremos”; tinha “encherá”
+PRO 3:5	7	בִּֽ֝ינָתְ/ךָ֗	em-teu-entendimento	claude	בִּינָתְךָ “em teu entendimento”; tinha “teu-próprio-entendimento”
+PRO 3:12	7	וּ֝/כְ/אָ֗ב	e-como-o-pai	claude	וּכְאָב “e como o pai”; tinha “assim-como-o-pai”
+PRO 3:12	9	בֵּ֥ן	o-filho	claude	בֵּן “o filho”; tinha “filho”
+PRO 3:12	10	יִרְצֶֽה	a-quem-quer-bem	claude	יִרְצֶה “a quem quer bem”; tinha “quer”
+PRO 3:28	6	וּ/מָחָ֥ר	e-amanhã	claude	וּמָחָר “e amanhã”; tinha “depois-que-amanhã”
+PRO 3:30	8	גְמָלְ/ךָ֣	te-fez	claude	גְמָלְךָ “te fez”; tinha “fez-mal-contra-ti”
+PRO 3:31	3	בְּ/אִ֣ישׁ	do-homem	claude	בְּאִישׁ “do homem de”; tinha “homem”
+PRO 3:31	4	חָמָ֑ס	violento	claude	חָמָס “violência”; tinha “violento”
+PRO 3:31	6	תִּ֝בְחַ֗ר	escolhas	claude	תִּבְחַר “escolhas”; tinha “escolhas-seguir”
+PRO 3:31	7	בְּ/כָל	nenhum	claude	בְּכָל “nenhum (todos)”; tinha “seguir-algum”
+PRO 3:31	8	דְּרָכָֽי/ו	de-seus-caminhos	claude	דְּרָכָיו “de seus caminhos”; tinha “caminhos-dele”
+PRO 4:8	5	תְחַבְּקֶֽ/נָּה	a-abraçares	claude	תְחַבְּקֶנָּה “a abraçares”; tinha “abraçares-ela”
+PRO 4:15	1	פְּרָעֵ֥/הוּ	evita-o	claude	פְּרָעֵהוּ “evita-o”; tinha “rejeita-o”
+PRO 4:15	5	שְׂטֵ֖ה	desvia-te	claude	שְׂטֵה “desvia-te”; tinha “desvia”
+PRO 5:21	2	נֹ֨כַח	diante	claude	נֹכַח “diante de”; tinha “perante”
+PRO 5:21	3	עֵינֵ֣י	dos-olhos	claude	עֵינֵי “dos olhos de”; tinha “olhos”
+PRO 5:21	5	דַּרְכֵי	estão-os-caminhos	claude	דַּרְכֵי “os caminhos de”; tinha “caminhos”
+PRO 5:21	6	אִ֑ישׁ	do-homem	claude	אִישׁ “do homem”; tinha “homem”
+PRO 5:21	8	מַעְגְּלֹתָ֥י/ו	suas-veredas	claude	מַעְגְּלֹתָיו “suas veredas”; tinha “percursos”
+PRO 6:1	1	בְּ֭נִ/י	meu-filho	claude	בְּנִי “meu filho”; tinha “filho-meu”
+PRO 6:1	4	לְ/רֵעֶ֑/ךָ	por-teu-próximo	claude	לְרֵעֶךָ “por teu próximo”; tinha “por-próximo”
+PRO 6:1	5	תָּקַ֖עְתָּ	batiste	claude	תָּקַעְתָּ “batiste”; tinha “garantia”
+PRO 6:1	7	כַּפֶּֽי/ךָ	tuas-mãos	claude	כַּפֶּיךָ “tuas mãos”; tinha “deste”
+PRO 6:5	1	הִ֭נָּצֵל	livra-te	claude	הִנָּצֵל “livra-te”; tinha “livra”
+PRO 6:5	3	מִ/יָּ֑ד	da-mão	claude	מִיָּד “da mão (do caçador)”; tinha “do-caçador”
+PRO 6:5	4	וּ֝/כְ/צִפּ֗וֹר	e-como-a-ave	claude	וּכְצִפּוֹר “e como a ave”; tinha “como-o-pássaro”
+PRO 6:5	5	מִ/יַּ֥ד	da-mão	claude	מִיַּד “da mão de”; tinha “do-caçador”
+PRO 6:5	6	יָקֽוּשׁ	do-passarinheiro	claude	יָקוּשׁ “do passarinheiro”; tinha “aves”
+PRO 6:7	4	קָצִ֗ין	chefe	claude	קָצִין “chefe”; tinha “tendo-nem”
+PRO 6:7	5	שֹׁטֵ֥ר	oficial	claude	שֹׁטֵר “oficial”; tinha “chefe-fiscal”
+PRO 6:7	6	וּ/מֹשֵֽׁל	e-governador	claude	וּמֹשֵׁל “e governador”; tinha “nem-dominador”
+PRO 6:11	1	וּ/בָֽא	e-virá	claude	וּבָא “e virá”; tinha “virá”
+PRO 6:11	2	כִ/מְהַלֵּ֥ךְ	como-um-viajante	claude	כִמְהַלֵּךְ “como um viajante”; tinha “chegará”
+PRO 6:11	3	רֵאשֶׁ֑/ךָ	tua-pobreza	claude	רֵאשֶׁךָ “tua pobreza”; tinha “pobreza”
+PRO 6:11	4	וּ֝/מַחְסֹֽרְ/ךָ֗	e-tua-necessidade	claude	וּמַחְסֹרְךָ “e tua necessidade”; tinha “a-necessidade”
+PRO 6:30	2	יָב֣וּזוּ	desprezam	claude	יָבוּזוּ “desprezam”; tinha “despreza”
+PRO 6:30	7	נַ֝פְשׁ֗/וֹ	sua-alma	claude	נַפְשׁוֹ “sua alma”; tinha “alma”
+PRO 6:30	9	יִרְעָֽב	tem-fome	claude	יִרְעָב “tem fome”; tinha “fome”
+PRO 6:33	1	נֶֽגַע	feridas	claude	נֶגַע “feridas”; tinha “encontrará”
+PRO 6:33	5	לֹ֣א	não	claude	לֹא “não”; tinha “nunca”
+PRO 6:33	6	תִמָּחֶֽה	será-apagada	claude	תִמָּחֶה “será apagada”; tinha “apagada”
+PRO 7:7	3	אָ֘בִ֤ינָה	discerni	claude	אָבִינָה “discerni”; tinha “atenção”
+PRO 7:7	4	בַ/בָּנִ֗ים	entre-os-filhos	claude	בַבָּנִים “entre os filhos”; tinha “entre-os-um”
+PRO 7:7	5	נַ֣עַר	um-jovem	claude	נַעַר “um jovem”; tinha “jovens-rapaz”
+PRO 7:7	6	חֲסַר	falto	claude	חֲסַר “falto de”; tinha “falta”
+PRO 7:26	5	וַ֝/עֲצֻמִ֗ים	e-poderosos	claude	וַעֲצֻמִים “e poderosos”; tinha “e-são-muitíssimos”
+PRO 7:26	7	הֲרֻגֶֽי/הָ	os-que-matou	claude	הֲרֻגֶיהָ “os que matou”; tinha “ela-foram-mortos”
+PRO 8:13	1	יִֽרְאַ֣ת	o-temor	claude	יִרְאַת “o temor de”; tinha “temor”
+PRO 8:13	3	שְֽׂנֹ֫את	é-odiar	claude	שְׂנֹאת “é odiar”; tinha “odiar”
+PRO 8:13	5	גֵּ֘אָ֤ה	a-soberba	claude	גֵּאָה “a soberba”; tinha “soberba”
+PRO 8:13	7	וְ/דֶ֣רֶךְ	e-o-caminho	claude	וְדֶרֶךְ “e o caminho de”; tinha “caminho”
+PRO 8:13	10	תַהְפֻּכ֬וֹת	perversa	claude	תַהְפֻּכוֹת “perversidades”; tinha “perversa”
+PRO 8:27	2	שָׁ֭מַיִם	os-céus	claude	שָׁמַיִם “os céus”; tinha “céus”
+PRO 8:27	4	אָ֑נִי	eu-estava	claude	אָנִי “eu (estava)”; tinha “eu”
+PRO 8:27	5	בְּ/ח֥וּק/וֹ	quando-traçava	claude	בְּחוּקוֹ “quando traçava”; tinha “estava-quando-ele”
+PRO 8:27	6	ח֝֗וּג	o-círculo	claude	חוּג “o círculo”; tinha “desenhava”
+PRO 8:27	8	פְּנֵ֥י	da-face	claude	פְּנֵי “a face de”; tinha “face”
+PRO 8:27	9	תְהֽוֹם	do-abismo	claude	תְהוֹם “do abismo”; tinha “abismo”
+PRO 8:32	1	וְ/עַתָּ֣ה	e-agora	claude	וְעַתָּה “e agora”; tinha “portanto-agora”
+PRO 8:32	5	וְ֝/אַשְׁרֵ֗י	e-bem-aventurados	claude	וְאַשְׁרֵי “e bem-aventurados”; tinha “porque-bem-aventurados”
+PRO 9:15	4	הַֽ֝/מְיַשְּׁרִ֗ים	que-endireitam	claude	הַמְיַשְּׁרִים “que endireitam”; tinha “e-passam”
+PRO 10:3	2	יַרְעִ֣יב	deixa-ter-fome	claude	יַרְעִיב “deixa ter fome”; tinha “permite”
+PRO 10:3	5	צַדִּ֑יק	do-justo	claude	צַדִּיק “do justo”; tinha “justo”
+PRO 10:3	6	וְ/הַוַּ֖ת	e-a-cobiça	claude	וְהַוַּת “e a cobiça de”; tinha “porém-arruína”
+PRO 10:3	7	רְשָׁעִ֣ים	dos-ímpios	claude	רְשָׁעִים “dos ímpios”; tinha “perversos”
+PRO 10:3	8	יֶהְדֹּֽף	rechaça	claude	יֶהְדֹּף “rechaça”; tinha “interesse”
+PRO 10:13	2	נָ֭בוֹן	do-entendido	claude	נָבוֹן “do entendido”; tinha “bom”
+PRO 10:13	3	תִּמָּצֵ֣א	se-acha	claude	תִּמָּצֵא “se acha”; tinha “acha”
+PRO 10:13	5	וְ֝/שֵׁ֗בֶט	e-a-vara	claude	וְשֵׁבֶט “e a vara”; tinha “mas-uma-vara”
+PRO 10:13	6	לְ/גֵ֣ו	é-para-as-costas	claude	לְגֵו “para as costas de”; tinha “está-às-costas”
+PRO 10:13	7	חֲסַר	do-falto	claude	חֲסַר “do falto de”; tinha “tem”
+PRO 12:16	1	אֱוִ֗יל	o-tolo	claude	אֱוִיל “o tolo”; tinha “tolo”
+PRO 12:16	2	בַּ֭/יּוֹם	no-dia	claude	בַּיּוֹם “no (mesmo) dia”; tinha “no-mesmo-dia”
+PRO 12:16	3	יִוָּדַ֣ע	faz-conhecer	claude	יִוָּדַע “é conhecida”; tinha “conhecida”
+PRO 12:16	4	כַּעְס֑/וֹ	sua-ira	claude	כַּעְסוֹ “sua ira”; tinha “ira”
+PRO 12:16	5	וְ/כֹסֶ֖ה	mas-encobre	claude	וְכֹסֶה “e encobre”; tinha “prudente”
+PRO 12:16	6	קָל֣וֹן	a-afronta	claude	קָלוֹן “a afronta”; tinha “ignora”
+PRO 12:16	7	עָרֽוּם	o-prudente	claude	עָרוּם “o prudente”; tinha “insulto”
+PRO 13:3	1	נֹצֵ֣ר	o-que-guarda	claude	נֹצֵר “o que guarda”; tinha “toma”
+PRO 13:3	2	פִּ֭י/ו	sua-boca	claude	פִּיו “sua boca”; tinha “sua-boca-sua”
+PRO 13:3	3	שֹׁמֵ֣ר	guarda	claude	שֹׁמֵר “guarda”; tinha “preserva”
+PRO 13:3	4	נַפְשׁ֑/וֹ	sua-alma	claude	נַפְשׁוֹ “sua alma”; tinha “alma”
+PRO 13:3	5	פֹּשֵׂ֥ק	o-que-abre-muito	claude	פֹּשֵׂק “o que abre muito”; tinha “abre”
+PRO 13:3	6	שְׂ֝פָתָ֗י/ו	seus-lábios	claude	שְׂפָתָיו “seus lábios”; tinha “lábios-será”
+PRO 13:3	7	מְחִתָּה	terá-ruína	claude	מְחִתָּה “ruína”; tinha “arruinado”
+PRO 13:7	2	מִ֭תְעַשֵּׁר	quem-se-faz-rico	claude	מִתְעַשֵּׁר “quem se faz rico”; tinha “ricos”
+PRO 13:7	3	וְ/אֵ֣ין	e-não-tem	claude	וְאֵין “e não tem”; tinha “mesmo-nada”
+PRO 13:7	4	כֹּ֑ל	nada	claude	כֹּל “nada (tudo)”; tinha “ser”
+PRO 13:7	5	מִ֝תְרוֹשֵׁ֗שׁ	quem-se-faz-pobre	claude	מִתְרוֹשֵׁשׁ “quem se faz pobre”; tinha “pobres”
+PRO 13:7	6	וְ/ה֣וֹן	e-tem-bens	claude	וְהוֹן “e (tem) bens”; tinha “mesmo-tendo-bens”
