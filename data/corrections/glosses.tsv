@@ -7157,3 +7157,139 @@ DEU 19:9	20	וְ/יָסַפְתָּ֨	e-acrescentarás	claude	וְיָסַפְת
 DEU 19:9	26	הַ/שָּׁלֹ֥שׁ	as-três	claude	הַשָּׁלֹשׁ “as três”; tinha “destas-três”
 DEU 19:9	27	הָ/אֵֽלֶּה	estas	claude	הָאֵלֶּה “estas”; tinha “o-estes”
 DEU 21:11	5	תֹּ֑אַר	de-aparência	claude	תֹּאַר “de aparência”; tinha “aparência”
+DEU 22:15	4	וְ/אִמָּ֑/הּ	e-sua-mãe	claude	וְאִמָּהּ “e sua mãe”; tinha “e-sua-mãe-tomarão”
+DEU 22:15	7	בְּתוּלֵ֧י	os-sinais-da-virgindade	claude	בְּתוּלֵי “os sinais da virgindade de”; tinha “sinais-virgindade”
+DEU 22:15	8	הַֽ/נַּעֲרָ֛ה	da-moça	claude	הַנַּעֲרָה “da moça”; tinha “da-virgem”
+DEU 22:15	12	הַ/שָּֽׁעְרָ/ה	à-porta	claude	הַשָּׁעְרָה “à porta”; tinha “na-porta”
+DEU 22:21	1	וְ/הוֹצִ֨יאוּ	e-tirarão	claude	וְהוֹצִיאוּ “e tirarão”; tinha “então-tirarão”
+DEU 22:21	3	הַֽ/נַּעֲרָ֜ה	a-moça	claude	הַנַּעֲרָה “a moça”; tinha “a-tirarão”
+DEU 22:21	10	עִירָ֤/הּ	de-sua-cidade	claude	עִירָהּ “de sua cidade”; tinha “sua-cidade”
+DEU 22:21	11	בָּ/אֲבָנִים֙	com-pedras	claude	בָּאֲבָנִים “com pedras”; tinha “com-pedras-os”
+DEU 22:21	17	לִ/זְנ֖וֹת	prostituindo-se	claude	לִזְנוֹת “prostituindo-se”; tinha “prostituindo”
+DEU 22:21	20	וּ/בִֽעַרְתָּ֥	e-tirarás	claude	וּבִעַרְתָּ “e tirarás”; tinha “assim-tirarás”
+DEU 23:11	2	לִ/פְנֽוֹת	ao-declinar	claude	לִפְנוֹת “ao declinar”; tinha “para-hora”
+DEU 23:11	3	עֶ֖רֶב	a-tarde	claude	עֶרֶב “a tarde”; tinha “tarde”
+DEU 23:11	6	וּ/כְ/בֹ֣א	e-ao-pôr	claude	וּכְבֹא “e ao pôr”; tinha “e-quando-for-posto”
+DEU 23:11	7	הַ/שֶּׁ֔מֶשׁ	o-sol	claude	הַשֶּׁמֶשׁ “o sol”; tinha “posto-o-sol”
+DEU 23:13	1	וְ/יָתֵ֛ד	e-uma-estaca	claude	וְיָתֵד “e uma estaca”; tinha “também-uma-estaca”
+DEU 23:13	5	אֲזֵנֶ֑/ךָ	tua-ferramenta	claude	אֲזֵנֶךָ “teu equipamento”; tinha “armas”
+DEU 23:13	7	בְּ/שִׁבְתְּ/ךָ֣	quando-te-sentares	claude	בְּשִׁבְתְּךָ “quando te sentares”; tinha “em-sentávamos-te”
+DEU 23:13	9	וְ/חָפַרְתָּ֣ה	e-cavarás	claude	וְחָפַרְתָּה “e cavarás”; tinha “cavarás”
+DEU 23:13	11	וְ/שַׁבְתָּ֖	e-voltarás	claude	וְשַׁבְתָּ “e voltarás”; tinha “e-logo-ao-voltar”
+DEU 23:13	12	וְ/כִסִּ֥יתָ	e-cobrirás	claude	וְכִסִּיתָ “e cobrirás”; tinha “cobrirás”
+DEU 23:18	3	אֶתְנַ֨ן	o-pagamento	claude	אֶתְנַן “o pagamento de”; tinha “pagamento”
+DEU 23:18	5	וּ/מְחִ֣יר	nem-o-preço	claude	וּמְחִיר “e o preço de”; tinha “nem-pagamento”
+DEU 23:18	6	כֶּ֗לֶב	de-cão	claude	כֶּלֶב “de cão (prostituto)”; tinha “prostituto”
+DEU 23:18	7	בֵּ֛ית	à-casa	claude	בֵּית “à casa de”; tinha “casa”
+DEU 23:18	17	שְׁנֵי/הֶֽם	ambos	claude	שְׁנֵיהֶם “ambos”; tinha “um”
+DEU 23:20	1	לַ/נָּכְרִ֣י	ao-estrangeiro	claude	לַנָּכְרִי “ao estrangeiro”; tinha “do-estrangeiro-juros”
+DEU 23:20	2	תַשִּׁ֔יךְ	emprestarás-com-juros	claude	תַשִּׁיךְ “emprestarás com juros”; tinha “tomarás”
+DEU 23:20	3	וּ/לְ/אָחִ֖י/ךָ	mas-a-teu-irmão	claude	וּלְאָחִיךָ “e a teu irmão”; tinha “mas-de-teu-irmão”
+DEU 23:20	5	תַשִּׁ֑יךְ	emprestarás-com-juros	claude	תַשִּׁיךְ “emprestarás com juros”; tinha “tomarás”
+DEU 23:20	17	בָא	entras	claude	בָא “entras”; tinha “vem”
+DEU 23:20	18	שָׁ֖מָּ/ה	para-lá	claude	שָׁמָּה “para lá”; tinha “ali-para”
+DEU 24:1	5	וּ/בְעָלָ֑/הּ	e-a-possuir	claude	וּבְעָלָהּ “e a possuir (como marido)”; tinha “e-se-casar-com-ela”
+DEU 24:1	9	תִמְצָא	achar	claude	תִמְצָא “achar”; tinha “alcançará”
+DEU 24:1	10	חֵ֣ן	graça	claude	חֵן “graça”; tinha “lhe-agradar”
+DEU 24:1	11	בְּ/עֵינָ֗י/ו	em-seus-olhos	claude	בְּעֵינָיו “em seus olhos”; tinha “agradar-por”
+DEU 24:1	13	מָ֤צָא	achou	claude	מָצָא “achou”; tinha “achado”
+DEU 24:1	15	עֶרְוַ֣ת	nudez	claude	עֶרְוַת “nudez (indecência) de”; tinha “alguma-ofensiva”
+DEU 24:1	17	וְ/כָ֨תַב	e-escreverá	claude	וְכָתַב “e escreverá”; tinha “lhe-escreverá”
+DEU 24:4	6	שִׁ֠לְּחָ/הּ	a-despediu	claude	שִׁלְּחָהּ “a despediu”; tinha “despediu-trazê-la”
+DEU 24:4	7	לָ/שׁ֨וּב	tornar	claude	לָשׁוּב “tornar”; tinha “de-volta”
+DEU 24:4	26	אֱלֹהֶ֔י/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “Deus-te”
+DEU 24:4	28	לְ/ךָ֖	a-ti	claude	לְךָ “a ti”; tinha “por”
+DEU 24:10	2	תַשֶּׁ֥ה	emprestares	claude	תַשֶּׁה “emprestares”; tinha “deres”
+DEU 24:10	4	מַשַּׁ֣את	empréstimo	claude	מַשַּׁאת “empréstimo”; tinha “alguma-emprestada”
+DEU 24:10	5	מְא֑וּמָה	algum	claude	מְאוּמָה “algum, qualquer”; tinha “alguma-coisa”
+DEU 24:10	11	עֲבֹטֽ/וֹ	seu-penhor	claude	עֲבֹטוֹ “seu penhor”; tinha “lhe-penhor”
+DEU 24:14	2	תַעֲשֹׁ֥ק	oprimirás	claude	תַעֲשֹׁק “oprimirás”; tinha “injustiça”
+DEU 24:14	6	מֵ/אַחֶ֕י/ךָ	de-teus-irmãos	claude	מֵאַחֶיךָ “de teus irmãos”; tinha “tanto-de-teus-irmãos”
+DEU 24:19	2	תִקְצֹר֩	colheres	claude	תִקְצֹר “colheres”; tinha “colheres-plantação”
+DEU 24:19	3	קְצִֽירְ/ךָ֨	tua-colheita	claude	קְצִירְךָ “tua colheita”; tinha “colheres-tua”
+DEU 24:19	16	יְבָרֶכְ/ךָ֙	te-abençoe	claude	יְבָרֶכְךָ “te abençoe”; tinha “te-abençoe-o”
+DEU 25:5	2	יֵשְׁב֨וּ	habitarem	claude	יֵשְׁבוּ “habitarem”; tinha “habitarão”
+DEU 25:5	6	אַחַ֤ד	um	claude	אַחַד “um”; tinha “algum”
+DEU 25:5	10	ל֔/וֹ	a-ele	claude	לוֹ “a ele”; tinha “tiver-a”
+DEU 25:5	22	ל֛/וֹ	para-si	claude	לוֹ “para si”; tinha “por-sua”
+DEU 25:5	23	לְ/אִשָּׁ֖ה	por-mulher	claude	לְאִשָּׁה “por mulher”; tinha “mulher”
+DEU 25:5	24	וְ/יִבְּמָֽ/הּ	e-cumprirá-o-levirato	claude	וְיִבְּמָהּ “e cumprirá com ela o levirato”; tinha “e-fará-com-ela-parentesco”
+DEU 25:19	1	וְ/הָיָ֡ה	e-será	claude	וְהָיָה “e será”; tinha “será-pois”
+DEU 25:19	2	בְּ/הָנִ֣יחַ	quando-der-descanso	claude	בְּהָנִיחַ “quando der descanso”; tinha “em-repousar”
+DEU 25:19	12	אֱ֠לֹהֶי/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “Deus-te”
+DEU 25:19	14	לְ/ךָ֤	a-ti	claude	לְךָ “a ti”; tinha “por”
+DEU 25:19	15	נַחֲלָה֙	por-herança	claude	נַחֲלָה “herança”; tinha “herdar”
+DEU 26:15	12	הָ/אֲדָמָ֔ה	a-terra	claude	הָאֲדָמָה “a terra”; tinha “à-terra”
+DEU 26:15	20	זָבַ֥ת	que-mana	claude	זָבַת “que mana”; tinha “flui”
+DEU 28:32	13	לְ/אֵ֖ל	para-poder	claude	לְאֵל “para poder (força)”; tinha “força”
+DEU 28:39	4	וְ/יַ֤יִן	e-vinho	claude	וְיַיִן “e vinho”; tinha “vinho”
+DEU 28:39	10	תֹאכְלֶ֖/נּוּ	o-comerá	claude	תֹאכְלֶנּוּ “o comerá”; tinha “consumirá-o”
+DEU 28:39	11	הַ/תֹּלָֽעַת	o-bicho	claude	הַתֹּלָעַת “o bicho”; tinha “bicho-as-comerá”
+DEU 28:52	1	וְ/הֵצַ֨ר	e-sitiará	claude	וְהֵצַר “e sitiará”; tinha “cerco”
+DEU 28:52	6	רֶ֤דֶת	descerem	claude	רֶדֶת “descerem”; tinha “caiam”
+DEU 28:52	13	בָּ/הֵ֖ן	neles	claude	בָּהֵן “neles”; tinha “em”
+DEU 28:52	16	וְ/הֵצַ֤ר	e-sitiará	claude	וְהֵצַר “e sitiará”; tinha “cercará-pois”
+DEU 29:10	2	נִצָּבִ֤ים	estais	claude	נִצָּבִים “estais (de pé)”; tinha “estavam”
+DEU 29:10	4	כֻּלְּ/כֶ֔ם	todos-vós	claude	כֻּלְּכֶם “todos vós”; tinha “todos-estais”
+DEU 29:10	7	אֱלֹהֵי/כֶ֑ם	vosso-Deus	claude	אֱלֹהֵיכֶם “vosso Deus”; tinha “vosso-Deus-vossos”
+DEU 29:10	8	רָאשֵׁי/כֶ֣ם	vossos-chefes	claude	רָאשֵׁיכֶם “vossos chefes”; tinha “príncipes-de-vossas”
+DEU 29:10	9	שִׁבְטֵי/כֶ֗ם	vossas-tribos	claude	שִׁבְטֵיכֶם “vossas tribos”; tinha “tribos-vossos”
+DEU 29:10	10	זִקְנֵי/כֶם֙	vossos-anciãos	claude	זִקְנֵיכֶם “vossos anciãos”; tinha “anciãos”
+DEU 29:14	3	לְ/בַדְּ/כֶ֑ם	somente	claude	לְבַדְּכֶם “somente a vós”; tinha “somente-convosco”
+DEU 29:14	7	הַ/בְּרִ֣ית	o-pacto	claude	הַבְּרִית “o pacto”; tinha “este-pacto”
+DEU 29:14	10	הָ/אָלָ֖ה	o-juramento	claude	הָאָלָה “o juramento”; tinha “este-juramento”
+DEU 29:14	11	הַ/זֹּֽאת	este	claude	הַזֹּאת “este”; tinha “o-esta”
+DEU 29:19	1	וְ/הָיָ֡ה	e-será	claude	וְהָיָה “e será”; tinha “e-seja”
+DEU 29:19	2	בְּ/שָׁמְע/וֹ֩	quando-ouvir	claude	בְּשָׁמְעוֹ “quando ele ouvir”; tinha “ouvir”
+DEU 29:19	5	הָֽ/אָלָ֜ה	da-maldição	claude	הָאָלָה “da maldição”; tinha “desta-maldição”
+DEU 29:19	6	הַ/זֹּ֗את	esta	claude	הַזֹּאת “esta”; tinha “o-esta”
+DEU 29:19	7	וְ/הִתְבָּרֵ֨ךְ	e-se-abençoar	claude	וְהִתְבָּרֵךְ “e se abençoar”; tinha “ele-se-abençoe”
+DEU 29:19	14	בִּ/שְׁרִר֥וּת	na-obstinação	claude	בִּשְׁרִרוּת “na obstinação de”; tinha “ande-segundo-o-pensamento”
+DEU 29:19	18	סְפ֥וֹת	para-acabar	claude	סְפוֹת “para acabar (varrer)”; tinha “acrescentar”
+DEU 29:19	19	הָ/רָוָ֖ה	a-regada	claude	הָרָוָה “a (terra) regada”; tinha “a-embriaguez”
+DEU 29:19	21	הַ/צְּמֵאָֽה	a-sedenta	claude	הַצְּמֵאָה “a sedenta”; tinha “à-sede”
+DEU 29:24	1	וְ/אָֽמְרוּ֙	e-dirão	claude	וְאָמְרוּ “e dirão”; tinha “dirão-pois”
+DEU 29:24	9	לָ/אָ֣רֶץ	à-terra	claude	לָאָרֶץ “à terra”; tinha “a-esta-terra”
+DEU 29:24	10	הַ/זֹּ֑את	esta	claude	הַזֹּאת “esta”; tinha “o-esta”
+DEU 29:24	12	חֳרִ֛י	o-ardor	claude	חֳרִי “o ardor de”; tinha “furor”
+DEU 29:24	15	הַ/זֶּֽה	este	claude	הַזֶּה “este”; tinha “o-hoje”
+DEU 30:10	9	הַ/כְּתוּבָ֕ה	escritos	claude	הַכְּתוּבָה “escritos”; tinha “escritos-neste”
+DEU 30:10	10	בְּ/סֵ֥פֶר	no-livro	claude	בְּסֵפֶר “no livro de”; tinha “neste-livro”
+DEU 30:10	12	הַ/זֶּ֑ה	este	claude	הַזֶּה “este”; tinha “o-hoje”
+DEU 31:20	2	אֲבִיאֶ֜/נּוּ	o-introduzirei	claude	אֲבִיאֶנּוּ “o introduzirei”; tinha “lhe-introduzirei”
+DEU 31:20	7	לַ/אֲבֹתָ֗י/ו	a-seus-pais	claude	לַאֲבֹתָיו “a seus pais”; tinha “a-seus-pais-a-qual”
+DEU 31:20	8	זָבַ֤ת	que-mana	claude	זָבַת “que mana”; tinha “flui”
+DEU 31:20	14	וּ/פָנָ֞ה	e-se-voltará	claude	וּפָנָה “e se voltará”; tinha “e-voltarei”
+DEU 32:3	5	הָב֥וּ	dai	claude	הָבוּ “dai”; tinha “invocarei”
+DEU 32:3	6	גֹ֖דֶל	grandeza	claude	גֹדֶל “grandeza”; tinha “engrandecei”
+DEU 32:14	2	בָּקָ֜ר	de-vacas	claude	בָּקָר “de vacas”; tinha “vacas”
+DEU 32:14	4	צֹ֗אן	de-ovelhas	claude	צֹאן “de ovelhas”; tinha “ovelhas”
+DEU 32:14	11	וְ/עַתּוּדִ֔ים	e-bodes	claude	וְעַתּוּדִים “e bodes”; tinha “também-machos-de-bode”
+DEU 32:14	13	חֵ֖לֶב	a-gordura	claude	חֵלֶב “a gordura de”; tinha “melhor”
+DEU 32:17	4	אֱלֹ֔הַ	a-Deus	claude	אֱלֹהַ “a Deus”; tinha “Deus”
+DEU 32:17	9	מִ/קָּרֹ֣ב	de-perto	claude	מִקָּרֹב “de perto”; tinha “deuses-vindos-de-perto”
+DEU 32:17	12	שְׂעָר֖וּ/ם	temeram	claude	שְׂעָרוּם “temeram”; tinha “temido”
+DEU 32:34	3	כָּמֻ֣ס	guardado	claude	כָּמֻס “guardado”; tinha “selado”
+DEU 32:34	4	עִמָּ/דִ֑י	comigo	claude	עִמָּדִי “comigo”; tinha “comigo-mim”
+DEU 32:42	7	מִ/דַּ֤ם	do-sangue	claude	מִדַּם “do sangue de”; tinha “no-sangue”
+DEU 32:42	8	חָלָל֙	dos-mortos	claude	חָלָל “dos mortos”; tinha “mortos”
+DEU 32:42	11	פַּרְע֥וֹת	dos-líderes	claude	פַּרְעוֹת “dos líderes”; tinha “líderes”
+DEU 32:42	12	אוֹיֵֽב	do-inimigo	claude	אוֹיֵב “do inimigo”; tinha “inimigos”
+DEU 33:3	7	וְ/הֵם֙	e-eles	claude	וְהֵם “e eles”; tinha “eles-também”
+DEU 33:3	8	תֻּכּ֣וּ	se-prostraram	claude	תֻּכּוּ “se prostraram”; tinha “chegaram”
+DEU 33:3	10	יִשָּׂ֖א	recebem	claude	יִשָּׂא “recebe”; tinha “receberam”
+DEU 33:3	11	מִ/דַּבְּרֹתֶֽי/ךָ	de-tuas-palavras	claude	מִדַּבְּרֹתֶיךָ “de tuas palavras”; tinha “de-teus-ditos”
+DEU 33:7	3	וַ/יֹּאמַר֒	e-disse	claude	וַיֹּאמַר “e disse”; tinha “disse-assim”
+DEU 33:7	6	ק֣וֹל	a-voz	claude	קוֹל “a voz de”; tinha “voz”
+DEU 33:7	10	תְּבִיאֶ֑/נּוּ	o-traze	claude	תְּבִיאֶנּוּ “o trazes”; tinha “leva”
+DEU 33:7	11	יָדָי/ו֙	suas-mãos	claude	יָדָיו “suas mãos”; tinha “mãos-lhe”
+DEU 33:7	14	וְ/עֵ֥זֶר	e-ajuda	claude	וְעֵזֶר “e ajuda”; tinha “ajuda”
+DEU 33:7	15	מִ/צָּרָ֖י/ו	contra-seus-adversários	claude	מִצָּרָיו “contra seus adversários”; tinha “contra-seus-inimigos”
+DEU 33:12	10	כָּל	todo	claude	כָּל “todo”; tinha “todos”
+DEU 33:12	11	הַ/יּ֔וֹם	o-dia	claude	הַיּוֹם “o dia”; tinha “sempre”
+DEU 33:14	1	וּ/מִ/מֶּ֖גֶד	e-com-o-melhor	claude	וּמִמֶּגֶד “e com o melhor de”; tinha “com-excelentes”
+DEU 33:14	2	תְּבוּאֹ֣ת	dos-frutos	claude	תְּבוּאֹת “dos frutos de”; tinha “frutos”
+DEU 33:14	3	שָׁ֑מֶשׁ	do-sol	claude	שָׁמֶשׁ “do sol”; tinha “sol”
+DEU 33:14	4	וּ/מִ/מֶּ֖גֶד	e-com-o-melhor	claude	וּמִמֶּגֶד “e com o melhor de”; tinha “e-com-os-excelentes-produtos”
+DEU 33:14	5	גֶּ֥רֶשׁ	dos-produtos	claude	גֶּרֶשׁ “dos produtos de”; tinha “produtos-de-cada”
+DEU 33:14	6	יְרָחִֽים	das-luas	claude	יְרָחִים “das luas”; tinha “lua”
