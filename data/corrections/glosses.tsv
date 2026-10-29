@@ -15597,3 +15597,93 @@ NUM 21:26	12	הָֽ/רִאשׁ֔וֹן	anterior	claude	הָרִאשׁוֹן “a
 NUM 21:26	13	וַ/יִּקַּ֧ח	e-tomara	claude	וַיִּקַּח “e tomara”; tinha “e-tomado”
 NUM 21:26	16	אַרְצ֛/וֹ	sua-terra	claude	אַרְצוֹ “sua terra”; tinha “terra”
 NUM 21:26	17	מִ/יָּד֖/וֹ	de-sua-mão	claude	מִיָּדוֹ “de sua mão”; tinha “de-seu-poder”
+DEU 5:1	13	הַ/מִּשְׁפָּטִ֔ים	e-os-juízos	claude	הַמִּשְׁפָּטִים “os juízos”; tinha “regulamentos”
+DEU 5:1	16	דֹּבֵ֥ר	falo	claude	דֹּבֵר “falo”; tinha “pronuncio”
+DEU 5:1	19	וּ/לְמַדְתֶּ֣ם	e-aprendei-os	claude	וּלְמַדְתֶּם “e aprendereis”; tinha “e-aprendei”
+DEU 5:8	4	פֶ֨סֶל֙	escultura	claude	פֶסֶל “escultura”; tinha “escultura-imagem”
+DEU 5:8	5	כָּל	nenhuma	claude	כָּל “nenhuma (toda)”; tinha “alguma”
+DEU 5:8	6	תְּמוּנָ֔ה	semelhança	claude	תְּמוּנָה “semelhança”; tinha “nem-imagem”
+DEU 5:8	8	בַּ/שָּׁמַ֨יִם֙	nos-céus	claude	בַּשָּׁמַיִם “nos céus”; tinha “está-nos-céus”
+DEU 5:9	2	תִשְׁתַּחֲוֶ֥ה	te-inclinarás	claude	תִשְׁתַּחֲוֶה “te inclinarás”; tinha “inclinarás”
+DEU 5:9	5	תָעָבְדֵ֑/ם	as-servirás	claude	תָעָבְדֵם “as servirás”; tinha “lhes-servirás”
+DEU 5:9	7	אָנֹכִ֞י	eu	claude	אָנֹכִי “eu”; tinha “sou”
+DEU 5:9	10	אֵ֣ל	Deus	claude	אֵל “Deus”; tinha “forte”
+DEU 5:9	12	פֹּ֠קֵד	que-visito	claude	פֹּקֵד “que visito”; tinha “visito”
+DEU 5:9	13	עֲוֺ֨ן	a-maldade	claude	עֲוֺן “a maldade de”; tinha “iniquidade”
+DEU 5:9	14	אָב֧וֹת	dos-pais	claude	אָבוֹת “dos pais”; tinha “pais”
+DEU 5:9	18	שִׁלֵּשִׁ֥ים	a-terceira-geração	claude	שִׁלֵּשִׁים “a terceira geração”; tinha “terceira-geração”
+DEU 5:12	1	שָׁמ֛וֹר	guarda	claude	שָׁמוֹר “guarda”; tinha “guardarás”
+DEU 5:12	7	צִוְּ/ךָ֖	te-mandou	claude	צִוְּךָ “te mandou”; tinha “mandou”
+DEU 5:12	9	אֱלֹהֶֽי/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “Deus-te”
+DEU 5:14	1	וְ/י֨וֹם֙	e-o-dia	claude	וְיוֹם “e o dia”; tinha “e-dia”
+DEU 5:14	2	הַ/שְּׁבִיעִ֔י	sétimo	claude	הַשְּׁבִיעִי “sétimo”; tinha “no-sétimo”
+DEU 5:14	12	וּ/בִתֶּ֣/ךָ	nem-tua-filha	claude	וּבִתֶּךָ “nem tua filha”; tinha “nem-tua-filha-teu”
+DEU 5:14	13	וְ/עַבְדְּ/ךָֽ	nem-teu-servo	claude	וְעַבְדְּךָ “nem teu servo”; tinha “nem-servo-tua”
+DEU 5:14	14	וַ֠/אֲמָתֶ/ךָ	nem-tua-serva	claude	וַאֲמָתֶךָ “nem tua serva”; tinha “nem-serva-tua”
+DEU 5:14	15	וְ/שׁוֹרְ/ךָ֨	nem-teu-boi	claude	וְשׁוֹרְךָ “nem teu boi”; tinha “nem-boi”
+DEU 5:14	16	וַ/חֲמֹֽרְ/ךָ֜	nem-teu-asno	claude	וַחֲמֹרְךָ “nem teu asno”; tinha “nem-tua-asno”
+DEU 5:14	19	וְ/גֵֽרְ/ךָ֙	nem-teu-estrangeiro	claude	וְגֵרְךָ “nem teu estrangeiro”; tinha “nem-tua-peregrino”
+DEU 5:15	1	וְ/זָכַרְתָּ֗	e-lembra-te	claude	וְזָכַרְתָּ “e lembra-te”; tinha “e-lembra”
+DEU 5:15	7	וַ/יֹּצִ֨אֲ/ךָ֜	e-te-tirou	claude	וַיֹּצִאֲךָ “e te tirou”; tinha “e-tirou-te”
+DEU 5:15	9	אֱלֹהֶ֨י/ךָ֙	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “Deus-te”
+DEU 5:15	10	מִ/שָּׁ֔ם	dali	claude	מִשָּׁם “dali”; tinha “tirou-dali”
+DEU 5:15	15	עַל	por	claude	עַל “por”; tinha “sobre”
+DEU 5:15	16	כֵּ֗ן	isso	claude	כֵּן “isso”; tinha “assim”
+DEU 5:15	17	צִוְּ/ךָ֙	te-mandou	claude	צִוְּךָ “te mandou”; tinha “mandou-te”
+DEU 5:15	19	אֱלֹהֶ֔י/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “Deus-te”
+DEU 5:15	20	לַ/עֲשׂ֖וֹת	guardar	claude	לַעֲשׂוֹת “fazer (guardar)”; tinha “mandou-que-guardes”
+DEU 5:16	7	צִוְּ/ךָ֖	te-mandou	claude	צִוְּךָ “te mandou”; tinha “mandou”
+DEU 5:16	9	אֱלֹהֶ֑י/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “Deus-te”
+DEU 5:16	11	יַאֲרִיכֻ֣/ן	se-prolonguem	claude	יַאֲרִיכֻן “se prolonguem”; tinha “prolongados”
+DEU 5:16	14	יִ֣יטַב	vá-bem	claude	יִיטַב “vá bem”; tinha “bem”
+DEU 5:16	20	אֱלֹהֶ֖י/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “teu-Deus-te”
+DEU 5:20	1	וְ/לֹֽא	e-não	claude	וְלֹא “e não”; tinha “não”
+DEU 5:20	2	תַעֲנֶ֥ה	responderás	claude	תַעֲנֶה “responderás (dirás)”; tinha “testemunho”
+DEU 5:20	4	עֵ֥ד	testemunho	claude	עֵד “testemunho”; tinha “dirás”
+DEU 5:21	1	וְ/לֹ֥א	e-não	claude	וְלֹא “e não”; tinha “não”
+DEU 5:21	3	אֵ֣שֶׁת	a-mulher	claude	אֵשֶׁת “a mulher de”; tinha “mulher”
+DEU 5:21	4	רֵעֶ֑/ךָ	de-teu-próximo	claude	רֵעֶךָ “de teu próximo”; tinha “teu-próximo”
+DEU 5:21	7	בֵּ֣ית	a-casa	claude	בֵּית “a casa de”; tinha “casa”
+DEU 5:21	8	רֵעֶ֗/ךָ	de-teu-próximo	claude	רֵעֶךָ “de teu próximo”; tinha “teu-próximo”
+DEU 5:21	9	שָׂדֵ֜/הוּ	seu-campo	claude	שָׂדֵהוּ “seu campo (terra)”; tinha “sua-terra-seu”
+DEU 5:21	10	וְ/עַבְדּ֤/וֹ	nem-seu-servo	claude	וְעַבְדּוֹ “nem seu servo”; tinha “nem-servo-sua”
+DEU 5:21	11	וַ/אֲמָת/וֹ֙	nem-sua-serva	claude	וַאֲמָתוֹ “nem sua serva”; tinha “nem-serva-nem-seu”
+DEU 5:21	12	שׁוֹר֣/וֹ	seu-boi	claude	שׁוֹרוֹ “seu boi”; tinha “boi-seu”
+DEU 5:21	13	וַ/חֲמֹר֔/וֹ	nem-seu-asno	claude	וַחֲמֹרוֹ “nem seu asno”; tinha “nem-asno”
+DEU 5:21	14	וְ/כֹ֖ל	nem-nada	claude	וְכֹל “nem nada (tudo)”; tinha “nem-nenhuma”
+DEU 5:22	2	הַ/דְּבָרִ֣ים	as-palavras	claude	הַדְּבָרִים “as palavras”; tinha “estas-palavras”
+DEU 5:22	3	הָ/אֵ֡לֶּה	estas	claude	הָאֵלֶּה “estas”; tinha “o-estes”
+DEU 5:22	12	הֶֽ/עָנָ֣ן	a-nuvem	claude	הֶעָנָן “a nuvem”; tinha “da-nuvem”
+DEU 5:22	13	וְ/הָֽ/עֲרָפֶ֔ל	e-a-escuridão	claude	וְהָעֲרָפֶל “e a escuridão”; tinha “e-da-escuridão”
+DEU 5:22	14	ק֥וֹל	com-voz	claude	קוֹל “voz”; tinha “voz”
+DEU 5:22	22	אֲבָנִ֔ים	de-pedra	claude	אֲבָנִים “de pedras”; tinha “pedra”
+DEU 5:22	23	וַֽ/יִּתְּנֵ֖/ם	e-as-deu	claude	וַיִּתְּנֵם “e as deu”; tinha “quais-deu”
+DEU 5:24	3	הֶרְאָ֜/נוּ	nos-mostrou	claude	הֶרְאָנוּ “nos mostrou”; tinha “mostrou”
+DEU 5:24	5	אֱלֹהֵ֨י/נוּ֙	nosso-Deus	claude	אֱלֹהֵינוּ “nosso Deus”; tinha “Deus-nos”
+DEU 5:24	15	הַ/יּ֤וֹם	o-dia	claude	הַיּוֹם “o dia”; tinha “hoje”
+DEU 5:24	16	הַ/זֶּה֙	este	claude	הַזֶּה “este”; tinha “o-hoje”
+DEU 5:24	20	אֱלֹהִ֛ים	Deus	claude	אֱלֹהִים “Deus”; tinha “SENHOR”
+DEU 5:24	22	הָֽ/אָדָ֖ם	o-homem	claude	הָאָדָם “o homem”; tinha “ao-homem”
+DEU 5:24	23	וָ/חָֽי	e-ele-vive	claude	וָחָי “e ele vive”; tinha “e-este-vive”
+DEU 5:27	11	תְּדַבֵּ֣ר	falarás	claude	תְּדַבֵּר “falarás”; tinha “dirás”
+DEU 5:27	16	יְדַבֵּ֜ר	falar	claude	יְדַבֵּר “falar”; tinha “falará”
+DEU 5:27	20	וְ/שָׁמַ֥עְנוּ	e-ouviremos	claude	וְשָׁמַעְנוּ “e ouviremos”; tinha “e-nós-ouviremos”
+DEU 5:28	5	דִּבְרֵי/כֶ֔ם	de-vossas-palavras	claude	דִּבְרֵיכֶם “de vossas palavras”; tinha “palavras”
+DEU 5:28	6	בְּ/דַבֶּרְ/כֶ֖ם	quando-faláveis	claude	בְּדַבֶּרְכֶם “quando faláveis”; tinha “em-falar-vos”
+DEU 5:28	8	וַ/יֹּ֨אמֶר	e-disse	claude	וַיֹּאמֶר “e disse”; tinha “e-disse-o”
+DEU 5:28	14	דִּבְרֵ֜י	das-palavras	claude	דִּבְרֵי “das palavras de”; tinha “palavras”
+DEU 5:28	15	הָ/עָ֤ם	do-povo	claude	הָעָם “do povo”; tinha “deste-povo”
+DEU 5:28	16	הַ/זֶּה֙	este	claude	הַזֶּה “este”; tinha “o-hoje”
+DEU 5:28	20	הֵיטִ֖יבוּ	fizeram-bem	claude	הֵיטִיבוּ “fizeram bem”; tinha “bem”
+DEU 5:29	2	יִתֵּ֡ן	desse	claude	יִתֵּן “desse (dera)”; tinha “dera”
+DEU 5:29	3	וְ/הָיָה֩	e-fosse	claude	וְהָיָה “e fosse”; tinha “que-tivessem”
+DEU 5:29	4	לְבָבָ֨/ם	o-coração-deles	claude	לְבָבָם “o coração deles”; tinha “coração”
+DEU 5:29	6	לָ/הֶ֗ם	neles	claude	לָהֶם “neles”; tinha “que”
+DEU 5:29	7	לְ/יִרְאָ֥ה	para-temer	claude	לְיִרְאָה “para temer”; tinha “temessem”
+DEU 5:29	9	וְ/לִ/שְׁמֹ֥ר	e-guardar	claude	וְלִשְׁמֹר “e guardar”; tinha “e-guardassem”
+DEU 5:29	16	יִיטַ֥ב	lhes-vá-bem	claude	יִיטַב “vá bem”; tinha “bem”
+DEU 5:29	18	וְ/לִ/בְנֵי/הֶ֖ם	e-a-seus-filhos	claude	וְלִבְנֵיהֶם “e a seus filhos”; tinha “e-a-seus-filhos-lhes”
+DEU 5:31	13	תְּלַמְּדֵ֑/ם	lhes-ensinarás	claude	תְּלַמְּדֵם “lhes ensinarás”; tinha “ensinar”
+DEU 5:31	14	וְ/עָשׂ֣וּ	e-os-farão	claude	וְעָשׂוּ “e farão”; tinha “agora-por-obra”
+DEU 5:31	19	לָ/הֶ֖ם	a-eles	claude	לָהֶם “a eles”; tinha “lhes-para”
+DEU 5:31	20	לְ/רִשְׁתָּֽ/הּ	para-possuí-la	claude	לְרִשְׁתָּהּ “para possuí-la”; tinha “possuí-la”
