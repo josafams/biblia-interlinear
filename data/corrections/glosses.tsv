@@ -21714,3 +21714,190 @@ EXO 11:2	10	מֵ/אֵ֣ת	da-parte	claude	מֵאֵת “da parte de”; tinha �
 EXO 11:2	11	רְעוּתָ֔/הּ	de-sua-próxima	claude	רְעוּתָהּ “sua próxima”; tinha “sua-vizinha”
 EXO 11:2	13	כֶ֖סֶף	de-prata	claude	כֶסֶף “prata”; tinha “prata”
 EXO 11:2	15	זָהָֽב	de-ouro	claude	זָהָב “ouro”; tinha “ouro”
+EXO 12:6	3	לְ/מִשְׁמֶ֔רֶת	em-guarda	claude	לְמִשְׁמֶרֶת “em guarda”; tinha “guardareis”
+EXO 12:6	8	לַ/חֹ֣דֶשׁ	do-mês	claude	לַחֹדֶשׁ “do mês”; tinha “desse-mês”
+EXO 12:6	10	וְ/שָׁחֲט֣וּ	e-imolará	claude	וְשָׁחֲטוּ “e imolarão”; tinha “e-degolará”
+EXO 12:6	13	קְהַ֥ל	a-assembleia	claude	קְהַל “assembleia de”; tinha “congregação”
+EXO 12:6	14	עֲדַֽת	da-congregação	claude	עֲדַת “congregação de”; tinha “povo”
+EXO 12:6	15	יִשְׂרָאֵ֖ל	de-Israel	claude	יִשְׂרָאֵל “Israel”; tinha “Israel”
+EXO 12:6	17	הָ/עַרְבָּֽיִם	as-duas-tardes	claude	הָעַרְבָּיִם “as tardes”; tinha “ao-entardecer”
+EXO 12:8	1	וְ/אָכְל֥וּ	e-comerão	claude	וְאָכְלוּ “e comerão”; tinha “comerão”
+EXO 12:8	4	בַּ/לַּ֣יְלָה	nesta-noite	claude	בַּלַּיְלָה “na noite”; tinha “naquela-noite”
+EXO 12:8	7	אֵ֣שׁ	ao-fogo	claude	אֵשׁ “fogo”; tinha “fogo”
+EXO 12:8	9	עַל	com	claude	עַל “com”; tinha “sobre”
+EXO 12:8	11	יֹאכְלֻֽ/הוּ	a-comerão	claude	יֹאכְלֻהוּ “o comerão”; tinha “comerão”
+EXO 12:9	11	אֵ֔שׁ	ao-fogo	claude	אֵשׁ “fogo”; tinha “fogo”
+EXO 12:9	13	עַל	com	claude	עַל “com”; tinha “sobre”
+EXO 12:9	14	כְּרָעָ֖י/ו	seus-pés	claude	כְּרָעָיו “suas pernas”; tinha “pés”
+EXO 12:9	15	וְ/עַל	e-com	claude	וְעַל “e com”; tinha “e-sobre”
+EXO 12:9	16	קִרְבּֽ/וֹ	suas-entranhas	claude	קִרְבּוֹ “suas entranhas”; tinha “intestinos”
+EXO 12:10	6	וְ/הַ/נֹּתָ֥ר	e-o-que-restar	claude	וְהַנֹּתָר “e o que restar”; tinha “e-o-que-restado”
+EXO 12:10	7	מִמֶּ֛/נּוּ	dele	claude	מִמֶּנּוּ “dele”; tinha “de-nós”
+EXO 12:14	2	הַ/יּ֨וֹם	o-dia	claude	הַיּוֹם “o dia”; tinha “hoje”
+EXO 12:14	6	וְ/חַגֹּתֶ֥ם	e-o-celebrareis	claude	וְחַגֹּתֶם “e celebrareis”; tinha “celebrá”
+EXO 12:14	8	חַ֣ג	como-festa	claude	חַג “festa”; tinha “solenidade”
+EXO 12:14	10	לְ/דֹרֹ֣תֵי/כֶ֔ם	por-vossas-gerações	claude	לְדֹרֹתֵיכֶם “por vossas gerações”; tinha “vossas-gerações-por”
+EXO 12:14	11	חֻקַּ֥ת	como-estatuto	claude	חֻקַּת “estatuto de”; tinha “estatuto”
+EXO 12:14	13	תְּחָגֻּֽ/הוּ	o-celebrareis	claude	תְּחָגֻּהוּ “o celebrareis”; tinha “celebrareis”
+EXO 12:16	1	וּ/בַ/יּ֤וֹם	e-no-dia	claude	וּבַיּוֹם “e no dia”; tinha “no-dia”
+EXO 12:16	5	וּ/בַ/יּוֹם֙	e-no-dia	claude	וּבַיּוֹם “e no dia”; tinha “e-também-no-dia”
+EXO 12:16	14	יֵעָשֶׂ֣ה	se-fará	claude	יֵעָשֶׂה “será feita”; tinha “fará”
+EXO 12:16	17	אֲשֶׁ֣ר	o-que	claude	אֲשֶׁר “o que”; tinha “que”
+EXO 12:16	18	יֵאָכֵ֣ל	se-comer	claude	יֵאָכֵל “for comido”; tinha “comer”
+EXO 12:17	3	הַ/מַּצּוֹת֒	os-pães-ázimos	claude	הַמַּצּוֹת “os pães ázimos”; tinha “festa-dos-pães-ázimos”
+EXO 12:17	5	בְּ/עֶ֨צֶם֙	neste-mesmo	claude	בְּעֶצֶם “no próprio”; tinha “em-mesmo”
+EXO 12:17	6	הַ/יּ֣וֹם	dia	claude	הַיּוֹם “o dia”; tinha “este-dia”
+EXO 12:17	13	וּ/שְׁמַרְתֶּ֞ם	e-guardareis	claude	וּשְׁמַרְתֶּם “e guardareis”; tinha “portanto-guardareis”
+EXO 12:17	15	הַ/יּ֥וֹם	o-dia	claude	הַיּוֹם “o dia”; tinha “hoje”
+EXO 12:17	17	לְ/דֹרֹתֵי/כֶ֖ם	por-vossas-gerações	claude	לְדֹרֹתֵיכֶם “por vossas gerações”; tinha “em-vossas-gerações”
+EXO 12:17	18	חֻקַּ֥ת	estatuto	claude	חֻקַּת “estatuto de”; tinha “costume”
+EXO 12:22	2	אֲגֻדַּ֣ת	um-molho	claude	אֲגֻדַּת “molho de”; tinha “molho”
+EXO 12:22	3	אֵז֗וֹב	de-hissopo	claude	אֵזוֹב “hissopo”; tinha “hissopo”
+EXO 12:22	7	בַּ/סַּף֒	na-bacia	claude	בַּסַּף “na bacia”; tinha “em-uma-bacia”
+EXO 12:22	8	וְ/הִגַּעְתֶּ֤ם	e-tocai	claude	וְהִגַּעְתֶּם “e fazei tocar”; tinha “e-untai”
+EXO 12:22	10	הַ/מַּשְׁקוֹף֙	a-verga	claude	הַמַּשְׁקוֹף “a verga”; tinha “verga”
+EXO 12:22	12	שְׁתֵּ֣י	os-dois	claude	שְׁתֵּי “dois de”; tinha “dois”
+EXO 12:22	13	הַ/מְּזוּזֹ֔ת	umbrais	claude	הַמְּזוּזֹת “os umbrais”; tinha “postes”
+EXO 12:22	18	וְ/אַתֶּ֗ם	e-vós	claude	וְאַתֶּם “e vós”; tinha “vós”
+EXO 12:22	20	תֵצְא֛וּ	saireis	claude	תֵצְאוּ “saireis”; tinha “saia”
+EXO 12:22	21	אִ֥ישׁ	ninguém	claude	אִישׁ “homem”; tinha “cada”
+EXO 12:22	22	מִ/פֶּֽתַח	da-porta	claude	מִפֶּתַח “da porta de”; tinha “das-portas”
+EXO 12:23	1	וְ/עָבַ֣ר	e-passará	claude	וְעָבַר “e passará”; tinha “passará”
+EXO 12:23	3	לִ/נְגֹּ֣ף	para-ferir	claude	לִנְגֹּף “para ferir”; tinha “ferindo”
+EXO 12:23	5	מִצְרַיִם֒	o-Egito	claude	מִצְרַיִם “Egito”; tinha “egípcios”
+EXO 12:23	6	וְ/רָאָ֤ה	e-verá	claude	וְרָאָה “e verá”; tinha “e-quando-vir”
+EXO 12:23	10	הַ/מַּשְׁק֔וֹף	a-verga	claude	הַמַּשְׁקוֹף “a verga”; tinha “verga”
+EXO 12:23	12	שְׁתֵּ֣י	os-dois	claude	שְׁתֵּי “dois de”; tinha “dois”
+EXO 12:23	13	הַ/מְּזוּזֹ֑ת	umbrais	claude	הַמְּזוּזֹת “os umbrais”; tinha “postes”
+EXO 12:23	14	וּ/פָסַ֤ח	e-passará-por-cima	claude	וּפָסַח “e passará por cima”; tinha “passará”
+EXO 12:23	16	עַל	de	claude	עַל “sobre”; tinha “sobre”
+EXO 12:23	17	הַ/פֶּ֔תַח	a-porta	claude	הַפֶּתַח “a porta”; tinha “aquela-porta”
+EXO 12:23	19	יִתֵּן֙	permitirá	claude	יִתֵּן “dará”; tinha “deixará”
+EXO 12:23	20	הַ/מַּשְׁחִ֔ית	ao-destruidor	claude	הַמַּשְׁחִית “o destruidor”; tinha “o-feridor”
+EXO 12:24	3	הַ/דָּבָ֣ר	esta-palavra	claude	הַדָּבָר “a palavra”; tinha “isto”
+EXO 12:24	6	לְ/ךָ֥	para-ti	claude	לְךָ “para ti”; tinha “para-vós”
+EXO 12:24	7	וּ/לְ/בָנֶ֖י/ךָ	e-para-teus-filhos	claude	וּלְבָנֶיךָ “e para teus filhos”; tinha “e-para-vossos-filhos”
+EXO 12:25	3	תָבֹ֣אוּ	entrardes	claude	תָבֹאוּ “entrardes”; tinha “entrado”
+EXO 12:25	10	כַּ/אֲשֶׁ֣ר	como	claude	כַּאֲשֶׁר “como”; tinha “que”
+EXO 12:25	11	דִּבֵּ֑ר	falou	claude	דִּבֵּר “falou”; tinha “falado”
+EXO 12:25	12	וּ/שְׁמַרְתֶּ֖ם	e-guardareis	claude	וּשְׁמַרְתֶּם “e guardareis”; tinha “que-guardareis”
+EXO 12:25	14	הָ/עֲבֹדָ֥ה	o-serviço	claude	הָעֲבֹדָה “o serviço”; tinha “este-rito”
+EXO 12:26	3	יֹאמְר֥וּ	disserem	claude	יֹאמְרוּ “disserem”; tinha “perguntarem”
+EXO 12:26	5	בְּנֵי/כֶ֑ם	vossos-filhos	claude	בְּנֵיכֶם “vossos filhos”; tinha “filhos”
+EXO 12:26	7	הָ/עֲבֹדָ֥ה	o-serviço	claude	הָעֲבֹדָה “o serviço”; tinha “rito”
+EXO 12:26	8	הַ/זֹּ֖את	este	claude	הַזֹּאת “esta”; tinha “é-este”
+EXO 12:26	9	לָ/כֶֽם	vosso	claude	לָכֶם “para vós”; tinha “para-vós”
+EXO 12:36	6	בְּ/עֵינֵ֥י	aos-olhos	claude	בְּעֵינֵי “aos olhos de”; tinha “diante”
+EXO 12:36	7	מִצְרַ֖יִם	dos-egípcios	claude	מִצְרַיִם “Egito”; tinha “egípcios”
+EXO 12:36	8	וַ/יַּשְׁאִל֑וּ/ם	e-lhes-emprestaram	claude	וַיַּשְׁאִלוּם “e lhes fizeram pedir”; tinha “e-deram-lhes”
+EXO 12:36	9	וַֽ/יְנַצְּל֖וּ	e-despojaram	claude	וַיְנַצְּלוּ “e despojaram”; tinha “e-eles-despojaram”
+EXO 12:36	11	מִצְרָֽיִם	o-Egito	claude	מִצְרָיִם “Egito”; tinha “egípcios”
+EXO 12:37	2	בְנֵֽי	os-filhos	claude	בְנֵי “filhos de”; tinha “filhos”
+EXO 12:37	3	יִשְׂרָאֵ֛ל	de-Israel	claude	יִשְׂרָאֵל “Israel”; tinha “Israel”
+EXO 12:37	5	סֻכֹּ֑תָ/ה	para-Sucote	claude	סֻכֹּתָה “para Sucote”; tinha “Sucote”
+EXO 12:37	6	כְּ/שֵׁשׁ	cerca-de-seiscentos	claude	כְּשֵׁשׁ parte de “seiscentos”; tinha “como-seiscentos”
+EXO 12:37	9	רַגְלִ֛י	de-a-pé	claude	רַגְלִי “a pé”; tinha “pé”
+EXO 12:37	10	הַ/גְּבָרִ֖ים	os-homens	claude	הַגְּבָרִים “os homens”; tinha “homens”
+EXO 12:37	11	לְ/בַ֥ד	além	claude	לְבַד “à parte de”; tinha “a-sem”
+EXO 12:37	12	מִ/טָּֽף	das-crianças	claude	מִטָּף “de crianças”; tinha “meninos”
+EXO 12:39	1	וַ/יֹּאפ֨וּ	e-assaram	claude	וַיֹּאפוּ “e assaram”; tinha “e-cozeram”
+EXO 12:39	3	הַ/בָּצֵ֜ק	a-massa	claude	הַבָּצֵק “a massa”; tinha “da-massa”
+EXO 12:39	5	הוֹצִ֧יאוּ	trouxeram	claude	הוֹצִיאוּ “fizeram sair”; tinha “tirado”
+EXO 12:39	7	עֻגֹ֥ת	bolos	claude	עֻגֹת “bolos de”; tinha “tortas”
+EXO 12:39	8	מַצּ֖וֹת	ázimos	claude	מַצּוֹת “pães ázimos”; tinha “sem-levedura”
+EXO 12:39	11	חָמֵ֑ץ	estava-levedada	claude	חָמֵץ “levedou”; tinha “levedado”
+EXO 12:39	12	כִּֽי	pois	claude	כִּי “pois”; tinha “porque”
+EXO 12:39	13	גֹרְשׁ֣וּ	foram-expulsos	claude	גֹרְשׁוּ “foram expulsos”; tinha “expulsando”
+EXO 12:39	14	מִ/מִּצְרַ֗יִם	do-Egito	claude	מִמִּצְרַיִם “do Egito”; tinha “os-egípcios”
+EXO 12:39	15	וְ/לֹ֤א	e-não	claude	וְלֹא “e não”; tinha “não”
+EXO 12:39	16	יָֽכְלוּ֙	puderam	claude	יָכְלוּ “puderam”; tinha “podido”
+EXO 12:39	17	לְ/הִתְמַהְמֵ֔הַּ	demorar-se	claude	לְהִתְמַהְמֵהַּ “demorar-se”; tinha “deter”
+EXO 12:39	18	וְ/גַם	e-também	claude	וְגַם “e também”; tinha “se-nem-ainda”
+EXO 12:39	19	צֵדָ֖ה	provisão	claude	צֵדָה “provisão”; tinha “comida”
+EXO 12:39	21	עָשׂ֥וּ	fizeram	claude	עָשׂוּ “fizeram”; tinha “preparar”
+EXO 12:40	1	וּ/מוֹשַׁב֙	e-a-permanência	claude	וּמוֹשַׁב “e a habitação de”; tinha “e-assento”
+EXO 12:40	2	בְּנֵ֣י	dos-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+EXO 12:40	3	יִשְׂרָאֵ֔ל	de-Israel	claude	יִשְׂרָאֵל “Israel”; tinha “Israel”
+EXO 12:40	7	שְׁלֹשִׁ֣ים	quatrocentos-e-trinta	claude	שְׁלֹשִׁ֣ים parte de “quatrocentos e trinta”; tinha “trinta”
+EXO 12:40	9	וְ/אַרְבַּ֥ע	quatrocentos-e-trinta	claude	וְאַרְבַּ֥ע parte de “quatrocentos e trinta”; tinha “foi-quatrocentos-e”
+EXO 12:40	10	מֵא֖וֹת	quatrocentos-e-trinta	claude	מֵא֖וֹת parte de “quatrocentos e trinta”; tinha “quatrocentos”
+EXO 12:41	1	וַ/יְהִ֗י	e-foi	claude	וַיְהִי “e foi”; tinha “e-aconteceu”
+EXO 12:41	2	מִ/קֵּץ֙	ao-fim	claude	מִקֵּץ “ao fim de”; tinha “passados”
+EXO 12:41	3	שְׁלֹשִׁ֣ים	quatrocentos-e-trinta	claude	שְׁלֹשִׁ֣ים parte de “quatrocentos e trinta”; tinha “trinta”
+EXO 12:41	5	וְ/אַרְבַּ֥ע	quatrocentos-e-trinta	claude	וְאַרְבַּ֥ע parte de “quatrocentos e trinta”; tinha “quatrocentos-e”
+EXO 12:41	6	מֵא֖וֹת	quatrocentos-e-trinta	claude	מֵא֖וֹת parte de “quatrocentos e trinta”; tinha “quatrocentos”
+EXO 12:41	8	וַ/יְהִ֗י	e-foi	claude	וַיְהִי “e foi”; tinha “e-aconteceu”
+EXO 12:41	9	בְּ/עֶ֨צֶם֙	nesse-mesmo	claude	בְּעֶצֶם “no próprio”; tinha “no-mesmo”
+EXO 12:41	14	צִבְא֥וֹת	os-exércitos	claude	צִבְאוֹת “exércitos de”; tinha “exércitos”
+EXO 12:41	15	יְהוָ֖ה	do-SENHOR	claude	יְהוָה “SENHOR”; tinha “SENHOR”
+EXO 12:47	2	עֲדַ֥ת	a-congregação	claude	עֲדַת “congregação de”; tinha “congregação”
+EXO 12:47	3	יִשְׂרָאֵ֖ל	de-Israel	claude	יִשְׂרָאֵל “Israel”; tinha “Israel”
+EXO 12:47	4	יַעֲשׂ֥וּ	farão	claude	יַעֲשׂוּ “farão”; tinha “o-sacrificará”
+EXO 12:48	5	וְ/עָ֣שָׂה	e-fizer	claude	וְעָשָׂה “e fizer”; tinha “e-quiser-fazer”
+EXO 12:48	6	פֶסַח֮	a-páscoa	claude	פֶסַח “páscoa”; tinha “páscoa”
+EXO 12:48	8	הִמּ֧וֹל	seja-circuncidado	claude	הִמּוֹל “ser circuncidado”; tinha “circuncidado”
+EXO 12:48	11	זָכָ֗ר	macho	claude	זָכָר “macho”; tinha “homem”
+EXO 12:48	13	יִקְרַ֣ב	se-chegará	claude	יִקְרַב “se chegará”; tinha “chegará”
+EXO 12:48	14	לַ/עֲשֹׂת֔/וֹ	para-fazê-la	claude	לַעֲשֹׂתוֹ “para fazê-la”; tinha “a-fazê-la”
+EXO 12:48	22	בּֽ/וֹ	dela	claude	בּוֹ “dela”; tinha “nele”
+EXO 13:7	1	מַצּוֹת֙	pães-ázimos	claude	מַצּוֹת “pães ázimos”; tinha “levedura”
+EXO 13:7	2	יֵֽאָכֵ֔ל	se-comerão	claude	יֵאָכֵל “se comerá”; tinha “comerão”
+EXO 13:7	4	שִׁבְעַ֣ת	os-sete	claude	שִׁבְעַת “sete de”; tinha “sete”
+EXO 13:7	7	יֵרָאֶ֨ה	se-verá	claude	יֵרָאֶה “se verá”; tinha “verá”
+EXO 13:7	8	לְ/ךָ֜	contigo	claude	לְךָ “para ti”; tinha “para-ti”
+EXO 13:7	11	יֵרָאֶ֥ה	se-verá	claude	יֵרָאֶה “se verá”; tinha “comparecerá”
+EXO 13:7	12	לְ/ךָ֛	contigo	claude	לְךָ “para ti”; tinha “para-ti”
+EXO 13:7	14	בְּ/כָל	em-todo	claude	בְּכָל “em todo”; tinha “ao-todo”
+EXO 13:7	15	גְּבֻלֶֽ/ךָ	teu-território	claude	גְּבֻלֶךָ “teu território”; tinha “teu-termo”
+EXO 13:10	1	וְ/שָׁמַרְתָּ֛	e-guardarás	claude	וְשָׁמַרְתָּ “e guardarás”; tinha “portanto-tu-guardarás”
+EXO 13:10	3	הַ/חֻקָּ֥ה	o-estatuto	claude	הַחֻקָּה “o estatuto”; tinha “este-rito”
+EXO 13:10	5	לְ/מוֹעֲדָ֑/הּ	no-seu-tempo	claude	לְמוֹעֲדָהּ “no seu tempo determinado”; tinha “em-seu-tempo”
+EXO 13:10	7	יָמִֽימָ/ה	em-ano	claude	יָמִימָה “para dias”; tinha “ano”
+EXO 13:11	1	וְ/הָיָ֞ה	e-será	claude	וְהָיָה “e será”; tinha “houver”
+EXO 13:11	3	יְבִֽאֲ/ךָ֤	te-trouxer	claude	יְבִאֲךָ “te trouxer”; tinha “trará-te”
+EXO 13:11	6	אֶ֣רֶץ	à-terra	claude	אֶרֶץ “terra de”; tinha “terra”
+EXO 13:11	12	וּ/נְתָנָ֖/הּ	e-a-der	claude	וּנְתָנָהּ “e a der”; tinha “houver-dado”
+EXO 13:11	13	לָֽ/ךְ	a-ti	claude	לָךְ “a ti”; tinha “para-ti”
+EXO 13:14	3	יִשְׁאָלְ/ךָ֥	te-perguntar	claude	יִשְׁאָלְךָ “te perguntar”; tinha “perguntar-teu”
+EXO 13:14	4	בִנְ/ךָ֛	teu-filho	claude	בִנְךָ “teu filho”; tinha “filho”
+EXO 13:14	9	וְ/אָמַרְתָּ֣	e-dirás	claude	וְאָמַרְתָּ “e dirás”; tinha “e-dize”
+EXO 13:14	11	בְּ/חֹ֣זֶק	com-força	claude	בְּחֹזֶק “com força de”; tinha “com-forte”
+EXO 13:14	12	יָ֗ד	de-mão	claude	יָד “mão”; tinha “mão”
+EXO 13:14	13	הוֹצִיאָ֧/נוּ	nos-tirou	claude	הוֹצִיאָנוּ “nos tirou”; tinha “o-tirou”
+EXO 13:14	16	מִ/בֵּ֥ית	da-casa	claude	מִבֵּית “da casa de”; tinha “de-casa”
+EXO 13:14	17	עֲבָדִֽים	de-servos	claude	עֲבָדִים “servos”; tinha “servidão”
+EXO 13:17	1	וַ/יְהִ֗י	e-foi	claude	וַיְהִי “e foi”; tinha “e-aconteceu”
+EXO 13:17	2	בְּ/שַׁלַּ֣ח	quando-deixou-ir	claude	בְּשַׁלַּח “ao enviar”; tinha “deixou-ir”
+EXO 13:17	5	הָ/עָם֒	o-povo	claude	הָעָם “o povo”; tinha “ao-povo”
+EXO 13:17	6	וְ/לֹא	e-não	claude	וְלֹא “e não”; tinha “não”
+EXO 13:17	7	נָחָ֣/ם	os-conduziu	claude	נָחָם “os conduziu”; tinha “levou”
+EXO 13:17	9	דֶּ֚רֶךְ	pelo-caminho	claude	דֶּרֶךְ “caminho de”; tinha “caminho”
+EXO 13:17	10	אֶ֣רֶץ	da-terra	claude	אֶרֶץ “terra de”; tinha “terra”
+EXO 13:17	11	פְּלִשְׁתִּ֔ים	dos-filisteus	claude	פְּלִשְׁתִּים “filisteus”; tinha “filisteus”
+EXO 13:17	12	כִּ֥י	embora	claude	כִּי “porque”; tinha “que”
+EXO 13:17	13	קָר֖וֹב	perto	claude	קָרוֹב “perto”; tinha “próxima”
+EXO 13:17	14	ה֑וּא	estivesse	claude	הוּא “ele”; tinha “ele”
+EXO 13:17	18	פֶּֽן	para-que-não	claude	פֶּן “para que não”; tinha “talvez-não”
+EXO 13:17	19	יִנָּחֵ֥ם	se-arrependa	claude	יִנָּחֵם “se arrependa”; tinha “arrependa”
+EXO 13:17	21	בִּ/רְאֹתָ֥/ם	ao-verem	claude	בִּרְאֹתָם “ao verem”; tinha “quando-virem”
+EXO 13:17	23	וְ/שָׁ֥בוּ	e-voltem	claude	וְשָׁבוּ “e voltem”; tinha “e-se-voltem”
+EXO 13:17	24	מִצְרָֽיְמָ/ה	ao-Egito	claude	מִצְרָיְמָה “para o Egito”; tinha “Egito”
+EXO 14:5	1	וַ/יֻּגַּד֙	e-foi-anunciado	claude	וַיֻּגַּד “e foi anunciado”; tinha “e-foi-dado-aviso”
+EXO 14:5	2	לְ/מֶ֣לֶךְ	ao-rei	claude	לְמֶלֶךְ “ao rei de”; tinha “aviso-ao-rei”
+EXO 14:5	4	כִּ֥י	que	claude	כִּי “que”; tinha “porque”
+EXO 14:5	5	בָרַ֖ח	fugira	claude	בָרַח “fugiu”; tinha “fugia”
+EXO 14:5	7	וַ֠/יֵּהָפֵךְ	e-mudou-se	claude	וַיֵּהָפֵךְ “e foi mudado”; tinha “e-voltou”
+EXO 14:5	8	לְבַ֨ב	o-coração	claude	לְבַב “coração de”; tinha “coração”
+EXO 14:5	9	פַּרְעֹ֤ה	de-Faraó	claude	פַרְעֹה “Faraó”; tinha “Faraó”
+EXO 14:5	11	אֶל	contra	claude	אֶל “para”; tinha “a”
+EXO 14:5	14	מַה	que	claude	מַה “que”; tinha “como”
+EXO 14:5	17	כִּֽי	que	claude	כִּי “que”; tinha “porque”
+EXO 14:5	18	שִׁלַּ֥חְנוּ	deixamos-ir	claude	שִׁלַּחְנוּ “enviamos”; tinha “deixado-ir”
+EXO 14:5	21	מֵ/עָבְדֵֽ/נוּ	de-nos-servir	claude	מֵעָבְדֵנוּ “de nos servir”; tinha “que-não-nos-sirva”
+EXO 14:6	1	וַ/יֶּאְסֹ֖ר	e-aparelhou	claude	וַיֶּאְסֹר “e atrelou”; tinha “e-preparou”
+EXO 14:6	5	עַמּ֖/וֹ	seu-povo	claude	עַמּוֹ “seu povo”; tinha “povo”
+EXO 14:6	7	עִמּֽ/וֹ	consigo	claude	עִמּוֹ “com ele”; tinha “com-ele”
+EXO 14:7	7	רֶ֣כֶב	os-carros	claude	רֶכֶב “carros de”; tinha “carros”
+EXO 14:7	8	מִצְרָ֑יִם	do-Egito	claude	מִצְרָיִם “Egito”; tinha “Egito”
+EXO 14:7	9	וְ/שָׁלִשִׁ֖ם	e-oficiais	claude	וְשָׁלִשִׁם “e oficiais”; tinha “e-os-capitães”
+EXO 14:7	11	כֻּלּֽ/וֹ	todos-eles	claude	כֻּלּוֹ “todo ele”; tinha “todos-dele”
