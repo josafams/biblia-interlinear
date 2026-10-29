@@ -12226,3 +12226,98 @@ ISA 66:23	4	בְּ/חָדְשׁ֔/וֹ	em-sua-lua-nova	claude	בְּחָדְשׁ
 ISA 66:23	7	בְּ/שַׁבַּתּ֑/וֹ	em-seu-sábado	claude	בְּשַׁבַּתּוֹ “em seu sábado”; tinha “sábado-até-o”
 ISA 66:23	9	כָל	toda	claude	כָל “toda”; tinha “todos”
 ISA 66:23	10	בָּשָׂ֛ר	carne	claude	בָּשָׂר “carne”; tinha “virão”
+JER 2:11	1	הַ/הֵימִ֥יר	acaso-trocou	claude	הַהֵימִיר “acaso trocou”; tinha “alguma”
+JER 2:11	4	וְ/הֵ֖מָּה	e-eles	claude	וְהֵמָּה “e eles”; tinha “ainda-que-eles”
+JER 2:11	7	וְ/עַמִּ֛/י	e-meu-povo	claude	וְעַמִּי “e meu povo”; tinha “mas-meu-povo”
+JER 2:19	1	תְּיַסְּרֵ֣/ךְ	te-castigará	claude	תְּיַסְּרֵךְ “te castigará”; tinha “castigará”
+JER 2:19	2	רָעָתֵ֗/ךְ	tua-maldade	claude	רָעָתֵךְ “tua maldade”; tinha “maldade-te”
+JER 2:19	4	תּוֹכִחֻ֔/ךְ	te-repreenderão	claude	תּוֹכִחֻךְ “te repreenderão”; tinha “infidelidades-te-repreenderão”
+JER 2:19	5	וּ/דְעִ֤י	e-sabe	claude	וּדְעִי “e sabe”; tinha “então-conhece”
+JER 2:19	15	פַחְדָּתִ/י֙	meu-temor	claude	פַחְדָּתִי “meu temor”; tinha “tido-temor-mim”
+JER 2:19	16	אֵלַ֔יִ/ךְ	em-ti	claude	אֵלַיִךְ “em ti”; tinha “a”
+JER 2:27	14	וּ/בְ/עֵ֤ת	e-no-tempo	claude	וּבְעֵת “e no tempo de”; tinha “porém-no-tempo”
+JER 2:30	5	מוּסָ֖ר	correção	claude	מוּסָר “correção”; tinha “aceitaram-correção”
+JER 2:30	8	אָכְלָ֧ה	devorou	claude	אָכְלָה “devorou”; tinha “matou”
+JER 2:30	9	חַרְבְּ/כֶ֛ם	vossa-espada	claude	חַרְבְּכֶם “vossa espada”; tinha “espada-vossos”
+JER 2:30	10	נְבִֽיאֵי/כֶ֖ם	vossos-profetas	claude	נְבִיאֵיכֶם “vossos profetas”; tinha “profetas”
+JER 2:37	2	מֵ/אֵ֥ת	daqui	claude	מֵאֵת “de junto de”; tinha “daqui-com”
+JER 2:37	5	וְ/יָדַ֖יִ/ךְ	e-tuas-mãos	claude	וְיָדַיִךְ “e tuas mãos”; tinha “com-as-mãos-tua”
+JER 2:37	7	רֹאשֵׁ֑/ךְ	tua-cabeça	claude	רֹאשֵׁךְ “tua cabeça”; tinha “cabeça”
+JER 2:37	11	בְּ/מִבְטַחַ֔יִ/ךְ	aqueles-em-quem-confias	claude	בְּמִבְטַחַיִךְ “aqueles em quem confias”; tinha “tuas-confianças”
+JER 2:37	12	וְ/לֹ֥א	e-não	claude	וְלֹא “e não”; tinha “e-nelas-não”
+JER 2:37	13	תַצְלִ֖יחִי	prosperarás	claude	תַצְלִיחִי “prosperarás”; tinha “sucesso”
+JER 2:37	14	לָ/הֶֽם	com-eles	claude	לָהֶם “com eles”; tinha “para-eles”
+JER 3:8	7	נִֽאֲפָה֙	adulterou	claude	נִאֲפָה “adulterou”; tinha “prostituiu”
+JER 3:8	8	מְשֻׁבָ֣ה	a-infiel	claude	מְשֻׁבָה “a infiel”; tinha “infiel”
+JER 3:8	10	שִׁלַּחְתִּ֕י/הָ	a-despedi	claude	שִׁלַּחְתִּיהָ “a despedi”; tinha “eu-a”
+JER 3:8	11	וָ/אֶתֵּ֛ן	e-dei	claude	וָאֶתֵּן “e dei”; tinha “e-dado”
+JER 3:8	21	וַ/תֵּ֖לֶךְ	e-foi	claude	וַתֵּלֶךְ “e foi”; tinha “também-foi”
+JER 3:8	22	וַ/תִּ֥זֶן	e-se-prostituiu	claude	וַתִּזֶן “e se prostituiu”; tinha “se-prostituir”
+JER 3:8	24	הִֽיא	ela	claude	הִיא “ela”; tinha “é”
+JER 3:24	1	וְ/הַ/בֹּ֗שֶׁת	e-a-vergonha	claude	וְהַבֹּשֶׁת “e a vergonha”; tinha “pois-a-vergonha”
+JER 3:24	8	צֹאנָ/ם֙	suas-ovelhas	claude	צֹאנָם “suas ovelhas”; tinha “ovelhas-suas”
+JER 3:24	10	בְּקָרָ֔/ם	suas-vacas	claude	בְּקָרָם “suas vacas”; tinha “vacas-seus”
+JER 3:24	12	בְּנֵי/הֶ֖ם	seus-filhos	claude	בְּנֵיהֶם “seus filhos”; tinha “filhos-suas”
+JER 3:24	14	בְּנוֹתֵי/הֶֽם	suas-filhas	claude	בְּנוֹתֵיהֶם “suas filhas”; tinha “filhas”
+JER 4:13	3	יַעֲלֶ֗ה	sobe	claude	יַעֲלֶה “sobe”; tinha “subindo”
+JER 4:13	4	וְ/כַ/סּוּפָה֙	e-como-o-redemoinho	claude	וְכַסּוּפָה “e como o redemoinho”; tinha “como-o-redemoinho-de”
+JER 4:13	5	מַרְכְּבוֹתָ֔י/ו	seus-carros	claude	מַרְכְּבוֹתָיו “seus carros”; tinha “vento-seus”
+JER 4:13	6	קַלּ֥וּ	mais-velozes	claude	קַלּוּ “são mais velozes”; tinha “velozes”
+JER 4:13	8	סוּסָ֑י/ו	seus-cavalos	claude	סוּסָיו “seus cavalos”; tinha “cavalos”
+JER 4:16	11	וַֽ/יִּתְּנ֛וּ	e-levantam	claude	וַיִּתְּנוּ “e dão”; tinha “e-levantam-sua”
+JER 4:16	12	עַל	contra	claude	עַל “contra”; tinha “sobre”
+JER 4:16	15	קוֹלָֽ/ם	sua-voz	claude	קוֹלָם “sua voz”; tinha “voz-contra-as”
+JER 5:3	4	לֶ/אֱמוּנָה֒	a-verdade	claude	לֶאֱמוּנָה “para a verdade”; tinha “enxergam-a-verdade”
+JER 5:3	11	קַ֣חַת	receber	claude	קַחַת “receber”; tinha “aceitaram-receber”
+JER 5:7	4	לָ֔/ךְ	a-ti	claude	לָךְ “a ti”; tinha “para-perdoa-ti”
+JER 5:7	5	בָּנַ֣יִ/ךְ	teus-filhos	claude	בָּנַיִךְ “teus filhos”; tinha “filhos”
+JER 5:7	10	וָ/אַשְׂבִּ֤עַ	e-os-fartei	claude	וָאַשְׂבִּעַ “e fartei”; tinha “saciei”
+JER 5:7	12	וַ/יִּנְאָ֔פוּ	e-adulteraram	claude	וַיִּנְאָפוּ “e adulteraram”; tinha “porém-adulteraram-e”
+JER 5:7	13	וּ/בֵ֥ית	e-na-casa	claude	וּבֵית “e na casa de”; tinha “casa”
+JER 5:7	14	זוֹנָ֖ה	da-prostituta	claude	זוֹנָה “da prostituta”; tinha “prostitutas”
+JER 5:7	15	יִתְגֹּדָֽדוּ	se-ajuntam-em-bandos	claude	יִתְגֹּדָדוּ “se ajuntam em bandos”; tinha “prostitutas”
+JER 5:13	1	וְ/הַ/נְּבִיאִים֙	e-os-profetas	claude	וְהַנְּבִיאִים “e os profetas”; tinha “e-até-os-profetas”
+JER 5:13	4	וְ/הַ/דִּבֵּ֖ר	e-a-palavra	claude	וְהַדִּבֵּר “e a palavra”; tinha “pois-a-palavra”
+JER 5:24	14	שְׁבֻע֛וֹת	as-semanas	claude	שְׁבֻעוֹת “as semanas”; tinha “tempos”
+JER 5:24	15	חֻקּ֥וֹת	determinadas	claude	חֻקּוֹת “determinadas de”; tinha “estabelecidos”
+JER 5:24	16	קָצִ֖יר	da-ceifa	claude	קָצִיר “da ceifa”; tinha “ceifa”
+JER 6:15	1	הֹבִ֕ישׁוּ	envergonharam-se	claude	הֹבִישׁוּ “envergonharam-se”; tinha “eles”
+JER 6:15	3	תוֹעֵבָ֖ה	abominação	claude	תוֹעֵבָה “abominação”; tinha “envergonham”
+JER 6:15	4	עָשׂ֑וּ	fizeram	claude	עָשׂוּ “fizeram”; tinha “fazerem”
+JER 6:15	6	בּ֣וֹשׁ	de-modo-algum	claude	בּוֹשׁ “envergonhar-se”; tinha “envergonhados”
+JER 6:15	10	הַכְלִים֙	corar	claude	הַכְלִים “corar”; tinha “vergonha”
+JER 6:15	16	בְּ/עֵת	no-tempo	claude	בְּעֵת “no tempo”; tinha “tropeçarão”
+JER 6:15	17	פְּקַדְתִּ֥י/ם	em-que-os-visitar	claude	פְּקַדְתִּים “em que os visitar”; tinha “quando-eu-os”
+JER 6:15	18	יִכָּשְׁל֖וּ	tropeçarão	claude	יִכָּשְׁלוּ “tropeçarão”; tinha “visitar”
+JER 6:17	1	וַ/הֲקִמֹתִ֤י	e-levantei	claude	וַהֲקִמֹתִי “e levantei”; tinha “também-pus-vigilantes”
+JER 6:17	3	צֹפִ֔ים	vigias	claude	צֹפִים “vigias”; tinha “dissessem”
+JER 6:17	7	וַ/יֹּאמְר֖וּ	e-disseram	claude	וַיֹּאמְרוּ “e disseram”; tinha “mas-eles-disseram”
+JER 6:29	1	נָחַ֣ר	sopra	claude	נָחַר “sopra”; tinha “fole”
+JER 6:29	2	מַפֻּ֔חַ	o-fole	claude	מַפֻּחַ “o fole”; tinha “consumiu”
+JER 6:29	4	תַּ֣ם	consumiu-se	claude	תַּם “consumiu-se”; tinha “queimou”
+JER 6:29	5	עֹפָ֑רֶת	o-chumbo	claude	עֹפָרֶת “o chumbo”; tinha “chumbo”
+JER 6:29	7	צָרַ֣ף	refina	claude	צָרַף “refina”; tinha “feita”
+JER 6:29	8	צָר֔וֹף	o-refinador	claude	צָרוֹף “refinando”; tinha “fundição”
+JER 6:29	9	וְ/רָעִ֖ים	e-os-maus	claude	וְרָעִים “e os maus”; tinha “pois-os-maus”
+JER 6:29	11	נִתָּֽקוּ	foram-arrancados	claude	נִתָּקוּ “foram arrancados”; tinha “arrancados”
+JER 7:7	1	וְ/שִׁכַּנְתִּ֤י	e-vos-farei-habitar	claude	וְשִׁכַּנְתִּי “e farei habitar”; tinha “morar”
+JER 7:7	4	הַ/זֶּ֔ה	este	claude	הַזֶּה “este”; tinha “o-hoje”
+JER 7:7	10	עוֹלָ֖ם	o-sempre	claude	עוֹלָם “sempre”; tinha “tempos-antigos”
+JER 7:7	11	וְ/עַד	e-até	claude	וְעַד “e até”; tinha “antigos-para”
+JER 7:26	1	וְ/ל֤וֹא	e-não	claude	וְלוֹא “e não”; tinha “mas-eles-não”
+JER 7:26	7	אָזְנָ֑/ם	seu-ouvido	claude	אָזְנָם “seu ouvido”; tinha “ouvidos-ao-invés”
+JER 7:26	8	וַ/יַּקְשׁוּ֙	e-endureceram	claude	וַיַּקְשׁוּ “e endureceram”; tinha “invés-teimaram”
+JER 7:26	10	עָרְפָּ֔/ם	sua-cerviz	claude	עָרְפָּם “sua cerviz”; tinha “disso”
+JER 7:26	11	הֵרֵ֖עוּ	fizeram-pior	claude	הֵרֵעוּ “fizeram pior”; tinha “pior”
+JER 8:9	1	הֹבִ֣ישׁוּ	envergonharam-se	claude	הֹבִישׁוּ “envergonharam-se”; tinha “envergonhados”
+JER 8:9	3	חַ֖תּוּ	espantaram-se	claude	חַתּוּ “espantaram-se”; tinha “serão-espantados”
+JER 8:9	4	וַ/יִּלָּכֵ֑דוּ	e-foram-presos	claude	וַיִּלָּכֵדוּ “e foram presos”; tinha “e-presos”
+JER 8:9	9	וְ/חָכְמַֽת	e-sabedoria	claude	וְחָכְמַת “e sabedoria de”; tinha “sabedoria-então”
+JER 9:25	6	וּ/פָ֣קַדְתִּ֔י	e-castigarei	claude	וּפָקַדְתִּי “e castigarei”; tinha “que-castigarei”
+JER 9:25	10	בְּ/עָרְלָֽה	com-o-incircunciso	claude	בְּעָרְלָה “com o prepúcio”; tinha “e-todo-incircunciso”
+JER 10:8	1	וּ/בְ/אַחַ֖ת	e-juntamente	claude	וּבְאַחַת “e juntamente”; tinha “e-numa”
+JER 10:8	2	יִבְעֲר֣וּ	se-embrutecem	claude	יִבְעֲרוּ “se embrutecem”; tinha “tornaram-irracionais”
+JER 10:8	3	וְ/יִכְסָ֑לוּ	e-enlouquecem	claude	וְיִכְסָלוּ “e enlouquecem”; tinha “e-tolos”
+JER 10:8	4	מוּסַ֥ר	o-ensino	claude	מוּסַר “o ensino de”; tinha “ensino”
+JER 10:8	5	הֲבָלִ֖ים	vaidades	claude	הֲבָלִים “vaidades”; tinha “inútil”
+JER 10:8	7	הֽוּא	ele	claude	הוּא “ele”; tinha “é”
