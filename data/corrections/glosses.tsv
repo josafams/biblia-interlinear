@@ -5319,3 +5319,93 @@ REV 14:18	15	φωνῇ	com-voz	claude	φωνῇ “com voz” (em alta voz); tin
 REV 14:18	16	μεγάλῃ	alta	claude	μεγάλῃ “alta, grande” (em alta voz); tinha “voz”
 REV 19:17	11	φωνῇ	com-voz	claude	φωνῇ “com voz” (em alta voz); tinha “alta-voz”
 REV 19:17	12	μεγάλῃ	alta	claude	μεγάλῃ “alta, grande” (em alta voz); tinha “voz”
+ACT 15:23	1	γράψαντες	tendo-escrito	claude	γράψαντες “tendo escrito”; tinha “escreveram”
+ACT 15:23	2	διὰ	por	claude	διὰ “por (meio de)”; tinha “por-meio”
+ACT 15:23	3	χειρὸς	mão	claude	χειρὸς “mão (de)”; tinha “meio”
+ACT 15:23	11	τοῖς	aos	claude	τοῖς “aos”; tinha “os”
+ACT 15:36	10	δὴ	pois	claude	δὴ “pois, agora”; tinha “produz”
+ACT 15:36	16	πᾶσαν	toda	claude	πᾶσαν “toda”; tinha “cada”
+ACT 15:36	25	ἔχουσιν.	estão	claude	ἔχουσιν “estão (têm)”; tinha “ver”
+ACT 16:11	1	Ἀναχθέντες	tendo-navegado	claude	Ἀναχθέντες “tendo navegado”; tinha “navegado”
+ACT 16:11	4	Τρῳάδος	Trôade	claude	Τρῳάδος “Trôade”; tinha “Trôade-correndo”
+ACT 16:11	5	εὐθυδρομήσαμεν	fomos-em-linha-reta	claude	εὐθυδρομήσαμεν “fomos em linha reta”; tinha “viemos-caminho”
+ACT 16:11	7	Σαμοθρᾴκην,	Samotrácia	claude	Σαμοθρᾴκην “Samotrácia”; tinha “direto-Samotrácia”
+ACT 16:11	8	τῇ	no	claude	τῇ “no (dia)”; tinha “à”
+ACT 16:11	10	ἐπιούσῃ	seguinte	claude	ἐπιούσῃ “seguinte”; tinha “dia-seguinte”
+ACT 16:11	11	εἰς	a	claude	εἰς “a”; tinha “no-a”
+ACT 16:11	12	Νέαν	Neá	claude	Νέαν “Neá” (Neápolis); tinha “dia”
+ACT 16:11	13	Πόλιν,	polis	claude	Πόλιν “polis” (Neápolis); tinha “Neápolis”
+ACT 16:16	3	πορευομένων	indo	claude	πορευομένων “indo”; tinha “estarmos-indo”
+ACT 16:16	9	τινὰ	uma	claude	τινὰ “uma, certa”; tinha “que”
+ACT 16:16	10	ἔχουσαν	que-tinha	claude	ἔχουσαν “que tinha”; tinha “tinha”
+ACT 16:16	12	πύθωνα	de-adivinhação	claude	πύθωνα “de adivinhação (píton)”; tinha “pitonisa”
+ACT 16:16	13	ὑπαντῆσαι	veio-ao-encontro	claude	ὑπαντῆσαι “veio ao encontro”; tinha “encontro”
+ACT 16:16	14	ἡμῖν,	de-nós	claude	ἡμῖν “de nós”; tinha “nosso”
+ACT 16:16	15	ἥτις	a-qual	claude	ἥτις “a qual”; tinha “qual”
+ACT 16:16	16	ἐργασίαν	lucro	claude	ἐργασίαν “lucro”; tinha “adivinhações-trazia-lucro”
+ACT 16:16	17	πολλὴν	muito	claude	πολλὴν “muito”; tinha “grande”
+ACT 16:16	18	παρεῖχεν	dava	claude	παρεῖχεν “dava”; tinha “lucro”
+ACT 16:16	19	τοῖς	aos	claude	τοῖς “aos”; tinha “a”
+ACT 16:16	22	μαντευομένη·	adivinhando	claude	μαντευομένη “adivinhando”; tinha “adivinhar”
+ACT 17:16	3	ταῖς	nas	claude	ταῖς “nas (as)”; tinha “às”
+ACT 17:16	6	αὐτοὺς	os	claude	αὐτοὺς “os (a eles)”; tinha “lhes”
+ACT 17:16	7	τοῦ	o	claude	τοῦ “o”; tinha “os”
+ACT 17:16	9	παρωξύνετο	se-irritava	claude	παρωξύνετο “se irritava”; tinha “Atenas”
+ACT 17:16	14	αὐτῷ	nele	claude	αὐτῷ “nele”; tinha “dele”
+ACT 17:16	15	θεωροῦντος	vendo	claude	θεωροῦντος “vendo”; tinha “ao-ver”
+ACT 17:16	16	κατείδωλον	cheia-de-ídolos	claude	κατείδωλον “cheia de ídolos”; tinha “ver”
+ACT 17:16	17	οὖσαν	estar	claude	οὖσαν “estar”; tinha “idolatria”
+ACT 17:18	3	καὶ	também	claude	καὶ “também”; tinha “e”
+ACT 17:18	5	Ἐπικουρείων	epicureus	claude	Ἐπικουρείων “epicureus”; tinha “filósofos-epicureus”
+ACT 17:18	7	Στοϊκῶν	estoicos	claude	Στοϊκῶν “estoicos”; tinha “epicureus-estoicos”
+ACT 17:18	8	φιλοσόφων	filósofos	claude	φιλοσόφων “filósofos”; tinha “epicureus”
+ACT 17:18	10	αὐτῷ,	com-ele	claude	αὐτῷ “com ele”; tinha “ele”
+ACT 17:18	15	ἂν	-ia	claude	ἂν “-ia (partícula)”; tinha “que”
+ACT 17:18	18	σπερμολόγος	tagarela	claude	σπερμολόγος “tagarela”; tinha “dizer”
+ACT 17:18	22	δέ·	outros	claude	δέ “outros (e)”; tinha “e”
+ACT 17:18	23	Ξένων	de-estranhos	claude	Ξένων “de estranhos”; tinha “estranhos”
+ACT 17:18	24	δαιμονίων	deuses	claude	δαιμονίων “deuses (demônios)”; tinha “outros”
+ACT 17:18	26	καταγγελεὺς	pregador	claude	καταγγελεὺς “pregador, anunciador”; tinha “tagarela”
+ACT 17:18	34	εὐηγγελίζετο.	anunciava	claude	εὐηγγελίζετο “anunciava (o Evangelho)”; tinha “Evangelho”
+ACT 17:31	6	μέλλει	há-de	claude	μέλλει “há de”; tinha “ele”
+ACT 17:31	16	πίστιν	fé	claude	πίστιν “fé, prova”; tinha “dando-certeza”
+ACT 17:31	17	παρασχὼν	tendo-dado	claude	παρασχὼν “tendo dado”; tinha “certeza”
+ACT 17:31	19	ἀναστήσας	tendo-ressuscitado	claude	ἀναστήσας “tendo ressuscitado”; tinha “ressuscitado”
+ACT 19:36	1	ἀναντιρρήτων	incontestáveis	claude	ἀναντιρρήτων “incontestáveis”; tinha “sendo”
+ACT 19:36	5	δέον	é-necessário	claude	δέον “é necessário”; tinha “deveis”
+ACT 19:36	6	ἐστὶν	é	claude	ἐστὶν “é”; tinha “ser”
+ACT 19:36	8	κατεσταλμένους	acalmados	claude	κατεσταλμένους “acalmados”; tinha “acalmar”
+ACT 19:36	9	ὑπάρχειν	estar	claude	ὑπάρχειν “estar”; tinha “bens”
+ACT 19:36	11	μηδὲν	nada	claude	μηδὲν “nada”; tinha “nada-façais”
+ACT 19:36	12	προπετὲς	precipitado	claude	προπετὲς “precipitado”; tinha “façais”
+ACT 19:36	13	πράσσειν.	fazer	claude	πράσσειν “fazer”; tinha “precipitadamente”
+ACT 19:39	3	τι	alguma-coisa	claude	τι “alguma coisa”; tinha “que”
+ACT 19:39	4	περαιτέρω	além	claude	περαιτέρω “além, outra”; tinha “outra”
+ACT 19:39	5	ἐπιζητεῖτε,	requereis	claude	ἐπιζητεῖτε “requereis”; tinha “coisa”
+ACT 19:39	7	τῇ	na	claude	τῇ “na”; tinha “à”
+ACT 19:39	8	ἐννόμῳ	legal	claude	ἐννόμῳ “legal”; tinha “uma”
+ACT 19:39	9	ἐκκλησίᾳ	assembleia	claude	ἐκκλησίᾳ “assembleia”; tinha “reunião”
+ACT 19:39	10	ἐπιλυθήσεται.	se-resolverá	claude	ἐπιλυθήσεται “se resolverá”; tinha “legalizada”
+ACT 20:8	1	ἦσαν	havia	claude	ἦσαν “havia”; tinha “estavam”
+ACT 20:8	4	ἱκαναὶ	muitas	claude	ἱκαναὶ “muitas”; tinha “muitas-luminárias”
+ACT 20:8	6	τῷ	o	claude	τῷ “o”; tinha “ao”
+ACT 20:8	8	οὗ	onde	claude	οὗ “onde”; tinha “não”
+ACT 20:8	9	ἦμεν	estávamos	claude	ἦμεν “estávamos”; tinha “estavam”
+ACT 21:22	4	πάντως	certamente	claude	πάντως “certamente, em todo caso”; tinha “caso”
+ACT 21:22	7	ἐλήλυθας.	vieste	claude	ἐλήλυθας “vieste”; tinha “tu”
+ACT 23:15	4	ἐμφανίσατε	informai	claude	ἐμφανίσατε “informai”; tinha “saber”
+ACT 23:15	9	συνεδρίῳ	Sinédrio	claude	συνεδρίῳ “Sinédrio (o Supremo Conselho)”; tinha “Supremo-conselho”
+ACT 23:15	11	καταγάγῃ	o-traga	claude	καταγάγῃ “o traga (para baixo)”; tinha “amanhã”
+ACT 23:15	12	αὐτὸν	o	claude	αὐτὸν “o (a ele)”; tinha “ele”
+ACT 23:15	16	μέλλοντας	havendo-de	claude	μέλλοντας “havendo de”; tinha “fosse”
+ACT 23:15	19	τὰ	as-coisas	claude	τὰ “as coisas”; tinha “os”
+ACT 23:15	20	περὶ	acerca	claude	περὶ “acerca”; tinha “de”
+ACT 23:15	25	τοῦ	o	claude	τοῦ “o (de)”; tinha “que”
+ACT 23:15	29	ἐσμεν	estamos	claude	ἐσμεν “estamos, somos”; tinha “somos”
+ACT 23:15	30	τοῦ	de	claude	τοῦ “de (para)”; tinha “o”
+ACT 23:24	1	κτήνη	animais	claude	κτήνη “animais (de montaria)”; tinha “preparem”
+ACT 23:24	3	παραστῆσαι	preparar	claude	παραστῆσαι “preparar”; tinha “preparem-animais”
+ACT 23:24	5	ἐπιβιβάσαντες	tendo-montado	claude	ἐπιβιβάσαντες “tendo feito montar”; tinha “pondo-neles”
+ACT 23:24	8	διασώσωσι	levem-a-salvo	claude	διασώσωσι “levem a salvo”; tinha “levem”
+ACT 23:24	10	Φήλικα	Félix	claude	Φήλικα “Félix”; tinha “salvo”
+ACT 23:24	11	τὸν	o	claude	τὸν “o”; tinha “ao”
