@@ -27456,3 +27456,171 @@ NUM 19:19	12	וְ/כִבֶּ֧ס	e-lavará	claude	וְכִבֶּס “e lavará�
 NUM 19:19	13	בְּגָדָ֛י/ו	suas-roupas	claude	בְּגָדָיו “suas roupas”; tinha “roupas”
 NUM 19:19	14	וְ/רָחַ֥ץ	e-se-banhará	claude	וְרָחַץ “e se banhará”; tinha “se-lavará”
 NUM 19:19	15	בַּ/מַּ֖יִם	na-água	claude	בַּמַּיִם “na água”; tinha “com-água”
+NUM 20:3	1	וַ/יָּ֥רֶב	e-contendeu	claude	וַיָּרֶב “e contendeu”; tinha “e-brigou”
+NUM 20:3	5	וַ/יֹּאמְר֣וּ	e-disseram	claude	וַיֹּאמְרוּ “e disseram”; tinha “e-falaram”
+NUM 20:3	7	וְ/ל֥וּ	quem-dera	claude	וְלוּ “e quem dera”; tinha “antes-que-nós-tivéssemos”
+NUM 20:3	8	גָוַ֛עְנוּ	tivéssemos-expirado	claude	גָוַעְנוּ “expiramos”; tinha “morrido”
+NUM 20:3	9	בִּ/גְוַ֥ע	quando-expiraram	claude	בִּגְוַע “no expirar de”; tinha “quando-pereceram”
+NUM 20:10	1	וַ/יַּקְהִ֜לוּ	e-reuniram	claude	וַיַּקְהִלוּ “e reuniram”; tinha “e-juntaram”
+NUM 20:10	5	הַ/קָּהָ֖ל	a-assembleia	claude	הַקָּהָל “a assembleia”; tinha “a-congregação”
+NUM 20:10	6	אֶל	diante	claude	אֶל “para”; tinha “a”
+NUM 20:10	7	פְּנֵ֣י	da-face	claude	פְּנֵי “face de”; tinha “diante”
+NUM 20:10	10	לָ/הֶ֗ם	a-eles	claude	לָהֶם “a eles”; tinha “para-eles”
+NUM 20:10	14	הֲ/מִן	porventura-desta	claude	הֲמִן “porventura de”; tinha “acaso-da”
+NUM 20:10	16	הַ/זֶּ֔ה	esta	claude	הַזֶּה “este”; tinha “este”
+NUM 20:10	17	נוֹצִ֥יא	faremos-sair	claude	נוֹצִיא “faremos sair”; tinha “sair”
+NUM 20:15	1	וַ/יֵּרְד֤וּ	e-desceram	claude	וַיֵּרְדוּ “e desceram”; tinha “desceram”
+NUM 20:15	3	מִצְרַ֔יְמָ/ה	ao-Egito	claude	מִצְרַיְמָה “para o Egito”; tinha “Egito”
+NUM 20:15	4	וַ/נֵּ֥שֶׁב	e-habitamos	claude	וַנֵּשֶׁב “e habitamos”; tinha “e-estivemos”
+NUM 20:15	6	יָמִ֣ים	dias	claude	יָמִים “dias”; tinha “tempo”
+NUM 20:15	7	רַבִּ֑ים	muitos	claude	רַבִּים “muitos”; tinha “longo”
+NUM 20:15	8	וַ/יָּרֵ֥עוּ	e-maltrataram	claude	וַיָּרֵעוּ “e maltrataram”; tinha “maltrataram”
+NUM 20:15	9	לָ֛/נוּ	a-nós	claude	לָנוּ “a nós”; tinha “para-nós”
+NUM 20:15	10	מִצְרַ֖יִם	os-egípcios	claude	מִצְרַיִם “Egito”; tinha “egípcios”
+NUM 20:16	8	וַ/יֹּצִאֵ֖/נוּ	e-nos-tirou	claude	וַיֹּצִאֵנוּ “e nos tirou”; tinha “e-tirou-nos”
+NUM 20:16	11	אֲנַ֣חְנוּ	nós	claude	אֲנַחְנוּ “nós”; tinha “estamos”
+NUM 20:16	13	עִ֖יר	uma-cidade	claude	עִיר “cidade de”; tinha “cidade”
+NUM 20:16	14	קְצֵ֥ה	da-extremidade	claude	קְצֵה “extremidade de”; tinha “extremo”
+NUM 20:17	2	נָּ֣א	por-favor	claude	נָּא “por favor”; tinha “agora”
+NUM 20:17	6	בְּ/שָׂדֶ֣ה	por-campo	claude	בְּשָׂדֶה “por campo”; tinha “por-lavoura”
+NUM 20:17	11	בְאֵ֑ר	de-poço	claude	בְאֵר “poço”; tinha “poços”
+NUM 20:17	12	דֶּ֧רֶךְ	pelo-caminho	claude	דֶּרֶךְ “caminho de”; tinha “caminho”
+NUM 20:17	13	הַ/מֶּ֣לֶךְ	do-rei	claude	הַמֶּלֶךְ “o rei”; tinha “real”
+NUM 20:17	16	נִטֶּה֙	nos-desviaremos	claude	נִטֶּה “nos desviaremos”; tinha “apartar”
+NUM 20:17	17	יָמִ֣ין	à-direita	claude	יָמִין “direita”; tinha “direita”
+NUM 20:17	21	נַעֲבֹ֖ר	passarmos	claude	נַעֲבֹר “passemos”; tinha “passado”
+NUM 20:17	22	גְּבוּלֶֽ/ךָ	teu-território	claude	גְּבוּלֶךָ “teu território”; tinha “teu-termo”
+NUM 20:18	1	וַ/יֹּ֤אמֶר	e-disse	claude	וַיֹּאמֶר “e disse”; tinha “respondeu”
+NUM 20:18	6	בִּ֑/י	por-mim	claude	בִּי “por mim”; tinha “por-minha”
+NUM 20:18	7	פֶּן	para-que-não	claude	פֶּן “para que não”; tinha “não”
+NUM 20:18	8	בַּ/חֶ֖רֶב	com-a-espada	claude	בַּחֶרֶב “com a espada”; tinha “de-outra-maneira”
+NUM 20:18	10	לִ/קְרָאתֶֽ/ךָ	ao-teu-encontro	claude	לִקְרָאתֶךָ “ao teu encontro”; tinha “contra-ti-armado”
+NUM 20:19	1	וַ/יֹּאמְר֨וּ	e-disseram	claude	וַיֹּאמְרוּ “e disseram”; tinha “disseram”
+NUM 20:19	3	בְּנֵֽי	os-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+NUM 20:19	5	בַּֽ/מְסִלָּ֣ה	pela-estrada	claude	בַּמְסִלָּה “pela estrada”; tinha “pelo-caminho-seguido”
+NUM 20:19	6	נַעֲלֶה֒	subiremos	claude	נַעֲלֶה “subiremos”; tinha “iremos”
+NUM 20:19	11	וּ/מִקְנַ֔/י	e-meu-gado	claude	וּמִקְנַי “e meu gado”; tinha “e-meus-gados”
+NUM 20:19	12	וְ/נָתַתִּ֖י	então-darei	claude	וְנָתַתִּי “e darei”; tinha “darei”
+NUM 20:19	13	מִכְרָ֑/ם	o-seu-preço	claude	מִכְרָם “seu preço”; tinha “preço-delas”
+NUM 20:19	15	אֵין	não-há	claude	אֵין “não há”; tinha “sem”
+NUM 20:19	16	דָּבָ֖ר	nada	claude	דָּבָר “coisa”; tinha “coisa”
+NUM 20:19	17	בְּ/רַגְלַ֥/י	a-pé	claude	בְּרַגְלַי “com meus pés”; tinha “seguida”
+NUM 20:23	1	וַ/יֹּ֧אמֶר	e-disse	claude	וַיֹּאמֶר “e disse”; tinha “e-o-falou”
+NUM 20:23	7	בְּ/הֹ֣ר	em-Hor	claude	בְּהֹר “em Hor”; tinha “Hor”
+NUM 20:23	8	הָ/הָ֑ר	o-monte	claude	הָהָר “o monte”; tinha “monte”
+NUM 20:23	9	עַל	junto-ao	claude	עַל “sobre”; tinha “sobre”
+NUM 20:23	10	גְּב֥וּל	território	claude	גְּבוּל “território de”; tinha “confins”
+NUM 20:23	11	אֶֽרֶץ	da-terra	claude	אֶרֶץ “terra de”; tinha “terra”
+NUM 20:23	12	אֱד֖וֹם	de-Edom	claude	אֱדוֹם “Edom”; tinha “Edom”
+NUM 20:26	1	וְ/הַפְשֵׁ֤ט	e-despe	claude	וְהַפְשֵׁט “e despe”; tinha “e-faze-desnudar”
+NUM 20:26	6	וְ/הִלְבַּשְׁתָּ֖/ם	e-veste-as	claude	וְהִלְבַּשְׁתָּם “e as vestirás”; tinha “e-viste-delas”
+NUM 20:26	10	וְ/אַהֲרֹ֥ן	e-Arão	claude	וְאַהֲרֹן “e Arão”; tinha “porque-Arão”
+NUM 20:26	11	יֵאָסֵ֖ף	será-recolhido	claude	יֵאָסֵף “será recolhido”; tinha “reunido”
+NUM 21:3	8	וַ/יַּחֲרֵ֥ם	e-destruiu-totalmente	claude	וַיַּחֲרֵם “e destruiu totalmente”; tinha “e-destruiu”
+NUM 21:3	13	שֵׁם	o-nome	claude	שֵׁם “nome de”; tinha “nome”
+NUM 22:5	1	וַ/יִּשְׁלַ֨ח	e-enviou	claude	וַיִּשְׁלַח “e enviou”; tinha “portanto-enviou”
+NUM 22:5	7	פְּ֠תוֹרָ/ה	a-Petor	claude	פְּתוֹרָה “para Petor”; tinha “Petor”
+NUM 22:5	9	עַל	junto-ao	claude	עַל “sobre”; tinha “sobre”
+NUM 22:5	10	הַ/נָּהָ֛ר	rio	claude	הַנָּהָר “o rio”; tinha “ao-rio”
+NUM 22:5	11	אֶ֥רֶץ	na-terra	claude	אֶרֶץ “terra de”; tinha “terra”
+NUM 22:5	12	בְּנֵי	dos-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+NUM 22:5	13	עַמּ֖/וֹ	de-seu-povo	claude	עַמּוֹ “seu povo”; tinha “seu-povo”
+NUM 22:5	15	ל֑/וֹ	a-ele	claude	לוֹ “a ele”; tinha “que-o”
+NUM 22:5	18	עַ֣ם	um-povo	claude	עַם “povo”; tinha “povo”
+NUM 22:5	24	עֵ֣ין	a-face	claude	עֵין “olho, face de”; tinha “face”
+NUM 22:5	28	מִ/מֻּלִֽ/י	defronte-de-mim	claude	מִמֻּלִי “defronte de mim”; tinha “diante-de-mim”
+NUM 22:6	1	וְ/עַתָּה֩	e-agora	claude	וְעַתָּה “e agora”; tinha “pois-agora”
+NUM 22:6	2	לְכָ/ה	vem	claude	לְכָה “vem”; tinha “te”
+NUM 22:6	3	נָּ֨א	por-favor	claude	נָּא “por favor”; tinha “rogo”
+NUM 22:6	7	הָ/עָ֣ם	o-povo	claude	הָעָם “o povo”; tinha “este-povo”
+NUM 22:6	9	כִּֽי	pois	claude	כִּי “pois”; tinha “porque”
+NUM 22:6	11	הוּא֙	ele-é	claude	הוּא “ele”; tinha “que”
+NUM 22:6	12	מִמֶּ֔/נִּי	mais-que-eu	claude	מִמֶּנִּי “mais que eu”; tinha “que-eu”
+NUM 22:6	15	נַכֶּה	o-feriremos	claude	נַכֶּה “feriremos”; tinha “feri”
+NUM 22:6	16	בּ֔/וֹ	a-ele	claude	בּוֹ “nele”; tinha “nele”
+NUM 22:6	17	וַ/אֲגָרְשֶׁ֖/נּוּ	e-o-expulsarei	claude	וַאֲגָרְשֶׁנּוּ “e o expulsarei”; tinha “e-lançá-lo”
+NUM 22:6	18	מִן	de	claude	מִן “de”; tinha “da”
+NUM 22:6	19	הָ/אָ֑רֶץ	a-terra	claude	הָאָרֶץ “a terra”; tinha “terra”
+NUM 22:6	20	כִּ֣י	pois	claude	כִּי “pois”; tinha “que”
+NUM 22:6	23	אֲשֶׁר	aquele-que	claude	אֲשֶׁר “o que”; tinha “que”
+NUM 22:6	25	מְבֹרָ֔ךְ	é-bendito	claude	מְבֹרָךְ “bendito”; tinha “bendito”
+NUM 22:6	28	יוּאָֽר	é-maldito	claude	יוּאָר “será maldito”; tinha “maldito”
+NUM 22:11	2	הָ/עָם֙	o-povo	claude	הָעָם “o povo”; tinha “este-povo”
+NUM 22:11	5	וַ/יְכַ֖ס	e-cobriu	claude	וַיְכַס “e cobriu”; tinha “cobre”
+NUM 22:11	7	עֵ֣ין	a-face	claude	עֵין “olho, face de”; tinha “face”
+NUM 22:11	9	עַתָּ֗ה	agora	claude	עַתָּה “agora”; tinha “pois-agora”
+NUM 22:11	18	וְ/גֵרַשְׁתִּֽי/ו	e-o-expulsarei	claude	וְגֵרַשְׁתִּיו “e o expulsarei”; tinha “e-expulsá-lo”
+NUM 22:13	1	וַ/יָּ֤קָם	e-levantou-se	claude	וַיָּקָם “e levantou-se”; tinha “levantou”
+NUM 22:13	7	בָלָ֔ק	de-Balaque	claude	בָלָק “Balaque”; tinha “Balaque”
+NUM 22:13	8	לְכ֖וּ	ide	claude	לְכוּ “ide”; tinha “voltai”
+NUM 22:13	9	אֶֽל	para	claude	אֶל “para”; tinha “à”
+NUM 22:13	11	כִּ֚י	pois	claude	כִּי “pois”; tinha “porque”
+NUM 22:13	12	מֵאֵ֣ן	recusou	claude	מֵאֵן “recusou”; tinha “não”
+NUM 22:13	14	לְ/תִתִּ֖/י	deixar-me	claude	לְתִתִּי “dar-me”; tinha “me-quer-deixar”
+NUM 22:13	16	עִמָּ/כֶֽם	convosco	claude	עִמָּכֶם “convosco”; tinha “com-vós”
+NUM 22:23	1	וַ/תֵּ֣רֶא	e-viu	claude	וַתֵּרֶא “e viu”; tinha “viu”
+NUM 22:23	2	הָ/אָתוֹן֩	a-jumenta	claude	הָאָתוֹן “a jumenta”; tinha “jumenta”
+NUM 22:23	4	מַלְאַ֨ךְ	o-anjo	claude	מַלְאַךְ “anjo de”; tinha “anjo”
+NUM 22:23	6	נִצָּ֣ב	posto	claude	נִצָּב “posto”; tinha “estava”
+NUM 22:23	8	וְ/חַרְבּ֤/וֹ	e-sua-espada	claude	וְחַרְבּוֹ “e sua espada”; tinha “com-sua-espada”
+NUM 22:23	9	שְׁלוּפָה֙	desembainhada	claude	שְׁלוּפָה “desembainhada”; tinha “exposta”
+NUM 22:23	11	וַ/תֵּ֤ט	e-desviou-se	claude	וַתֵּט “e desviou-se”; tinha “desviou”
+NUM 22:23	13	מִן	de	claude	מִן “de”; tinha “do”
+NUM 22:23	14	הַ/דֶּ֔רֶךְ	o-caminho	claude	הַדֶּרֶךְ “o caminho”; tinha “do-caminho”
+NUM 22:23	17	וַ/יַּ֤ךְ	e-espancou	claude	וַיַּךְ “e feriu”; tinha “seguida-espancou”
+NUM 22:23	21	לְ/הַטֹּתָ֖/הּ	para-fazê-la-voltar	claude	לְהַטֹּתָהּ “para fazê-la desviar”; tinha “para-perverter-a”
+NUM 22:25	1	וַ/תֵּ֨רֶא	e-viu	claude	וַתֵּרֶא “e viu”; tinha “e-quando”
+NUM 22:25	2	הָ/אָת֜וֹן	a-jumenta	claude	הָאָתוֹן “a jumenta”; tinha “jumenta-o”
+NUM 22:25	4	מַלְאַ֣ךְ	o-anjo	claude	מַלְאַךְ “anjo de”; tinha “anjo”
+NUM 22:25	6	וַ/תִּלָּחֵץ֙	e-se-apertou	claude	וַתִּלָּחֵץ “e se apertou”; tinha “apegou”
+NUM 22:25	7	אֶל	contra	claude	אֶל “contra”; tinha “à”
+NUM 22:25	8	הַ/קִּ֔יר	o-muro	claude	הַקִּיר “o muro”; tinha “parede”
+NUM 22:25	11	רֶ֥גֶל	o-pé	claude	רֶגֶל “pé de”; tinha “pé”
+NUM 22:25	13	אֶל	contra	claude	אֶל “contra”; tinha “a”
+NUM 22:25	14	הַ/קִּ֑יר	o-muro	claude	הַקִּיר “o muro”; tinha “parede”
+NUM 22:25	15	וַ/יֹּ֖סֶף	e-tornou	claude	וַיֹּסֶף “e acrescentou”; tinha “e-ele-voltou”
+NUM 22:30	1	וַ/תֹּ֨אמֶר	e-disse	claude	וַתֹּאמֶר “e disse”; tinha “disse”
+NUM 22:30	5	הֲ/לוֹא֩	porventura-não	claude	הֲלוֹא “porventura não”; tinha “não”
+NUM 22:30	6	אָנֹכִ֨י	sou-eu	claude	אָנֹכִי “eu”; tinha “sou”
+NUM 22:30	8	אֲשֶׁר	em-que	claude	אֲשֶׁר “que”; tinha “que”
+NUM 22:30	9	רָכַ֣בְתָּ	montaste	claude	רָכַבְתָּ “montaste”; tinha “cavalgar”
+NUM 22:30	11	מֵ/עֽוֹדְ/ךָ֙	desde-que-existes	claude	מֵעוֹדְךָ “desde teu existir”; tinha “de-mais-teu”
+NUM 22:30	13	הַ/יּ֣וֹם	o-dia	claude	הַיּוֹם “o dia”; tinha “hoje”
+NUM 22:30	15	הַֽ/הַסְכֵּ֣ן	porventura-costumei	claude	הַהַסְכֵּן “porventura costumar”; tinha “costumei”
+NUM 22:30	16	הִסְכַּ֔נְתִּי	costumei	claude	הִסְכַּנְתִּי “costumei”; tinha “abrigue”
+NUM 22:30	17	לַ/עֲשׂ֥וֹת	fazer	claude	לַעֲשׂוֹת “fazer”; tinha “a-fazê”
+NUM 22:30	18	לְ/ךָ֖	a-ti	claude	לְךָ “a ti”; tinha “para-ti”
+NUM 22:30	20	וַ/יֹּ֖אמֶר	e-disse	claude	וַיֹּאמֶר “e disse”; tinha “e-ele-respondeu”
+NUM 22:41	1	וַ/יְהִ֣י	e-foi	claude	וַיְהִי “e foi”; tinha “e-aconteceu”
+NUM 22:41	2	בַ/בֹּ֔קֶר	pela-manhã	claude	בַבֹּקֶר “pela manhã”; tinha “no-dia-seguinte”
+NUM 22:41	3	וַ/יִּקַּ֤ח	e-tomou	claude	וַיִּקַּח “e tomou”; tinha “tomou”
+NUM 22:41	7	וַֽ/יַּעֲלֵ֖/הוּ	e-o-fez-subir	claude	וַיַּעֲלֵהוּ “e o fez subir”; tinha “subir”
+NUM 22:41	8	בָּמ֣וֹת	a-Bamote	claude	בָּמוֹת “altos de”; tinha “altos”
+NUM 22:41	10	וַ/יַּ֥רְא	e-viu	claude	וַיַּרְא “e viu”; tinha “viu”
+NUM 22:41	11	מִ/שָּׁ֖ם	dali	claude	מִשָּׁם “dali”; tinha “desde-ali”
+NUM 22:41	12	קְצֵ֥ה	a-extremidade	claude	קְצֵה “extremidade de”; tinha “extremidade”
+NUM 23:8	1	מָ֣ה	como	claude	מָה “como”; tinha “que”
+NUM 23:8	4	קַבֹּ֖/ה	o-amaldiçoou	claude	קַבֹּה “o amaldiçoou”; tinha “amaldiçoou”
+NUM 23:8	6	וּ/מָ֣ה	e-como	claude	וּמָה “e como”; tinha “e-por-que”
+NUM 23:9	1	כִּֽי	pois	claude	כִּי “pois”; tinha “porque”
+NUM 23:9	2	מֵ/רֹ֤אשׁ	do-alto	claude	מֵרֹאשׁ “do alto de”; tinha “do-cume”
+NUM 23:9	3	צֻרִים֙	das-rochas	claude	צֻרִים “rochas”; tinha “penhas”
+NUM 23:9	4	אֶרְאֶ֔/נּוּ	o-vejo	claude	אֶרְאֶנּוּ “o vejo”; tinha “verei”
+NUM 23:9	6	אֲשׁוּרֶ֑/נּוּ	o-contemplo	claude	אֲשׁוּרֶנּוּ “o contemplo”; tinha “olharei”
+NUM 23:9	8	עָם֙	um-povo	claude	עָם “povo”; tinha “povo”
+NUM 23:9	9	לְ/בָדָ֣ד	à-parte	claude	לְבָדָד “à parte”; tinha “que-confiante”
+NUM 23:9	11	וּ/בַ/גּוֹיִ֖ם	e-entre-as-nações	claude	וּבַגּוֹיִם “e entre as nações”; tinha “entre-as-nações”
+NUM 23:9	13	יִתְחַשָּֽׁב	se-contará	claude	יִתְחַשָּׁב “se contará”; tinha “contado”
+NUM 23:11	1	וַ/יֹּ֤אמֶר	e-disse	claude	וַיֹּאמֶר “e disse”; tinha “então-disse”
+NUM 23:11	5	מֶ֥ה	o-que	claude	מֶה “o que”; tinha “que”
+NUM 23:11	7	לִ֑/י	a-mim	claude	לִי “a mim”; tinha “para”
+NUM 23:11	8	לָ/קֹ֤ב	para-amaldiçoar	claude	לָקֹב “para amaldiçoar”; tinha “amaldiçoes”
+NUM 23:11	12	בֵּרַ֥כְתָּ	abençoaste	claude	בֵּרַכְתָּ “abençoaste”; tinha “proferiste”
+NUM 23:11	13	בָרֵֽךְ	abençoando	claude	בָרֵךְ “abençoar”; tinha “bênçãos”
+NUM 23:12	1	וַ/יַּ֖עַן	e-respondeu	claude	וַיַּעַן “e respondeu”; tinha “e-ele-respondeu”
+NUM 23:12	3	הֲ/לֹ֗א	porventura-não	claude	הֲלֹא “porventura não”; tinha “acaso-não”
+NUM 23:12	5	אֲשֶׁ֨ר	o-que	claude	אֲשֶׁר “o que”; tinha “que”
+NUM 23:12	10	אֶשְׁמֹ֖ר	terei-cuidado	claude	אֶשְׁמֹר “guardarei”; tinha “manterei”
+NUM 23:12	11	לְ/דַבֵּֽר	de-falar	claude	לְדַבֵּר “de falar”; tinha “para-dizê”
+NUM 23:18	1	וַ/יִּשָּׂ֥א	e-tomou	claude	וַיִּשָּׂא “e levantou”; tinha “então-ele-tomou”
+NUM 23:18	8	עָדַ֖/י	a-mim	claude	עָדַי “a mim”; tinha “até-mim”
