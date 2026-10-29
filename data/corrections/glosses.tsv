@@ -15687,3 +15687,84 @@ DEU 5:31	13	תְּלַמְּדֵ֑/ם	lhes-ensinarás	claude	תְּלַמְּד�
 DEU 5:31	14	וְ/עָשׂ֣וּ	e-os-farão	claude	וְעָשׂוּ “e farão”; tinha “agora-por-obra”
 DEU 5:31	19	לָ/הֶ֖ם	a-eles	claude	לָהֶם “a eles”; tinha “lhes-para”
 DEU 5:31	20	לְ/רִשְׁתָּֽ/הּ	para-possuí-la	claude	לְרִשְׁתָּהּ “para possuí-la”; tinha “possuí-la”
+DEU 10:13	1	לִ/שְׁמֹ֞ר	para-guardar	claude	לִשְׁמֹר “para guardar”; tinha “que-guardes”
+DEU 10:13	3	מִצְוֺ֤ת	os-mandamentos	claude	מִצְוֺת “os mandamentos de”; tinha “mandamentos”
+DEU 10:13	11	לְ/ט֖וֹב	para-o-bem	claude	לְטוֹב “para o bem”; tinha “bem”
+DEU 10:13	12	לָֽ/ךְ	teu	claude	לָךְ “teu (para ti)”; tinha “que”
+DEU 10:18	1	עֹשֶׂ֛ה	que-faz	claude	עֹשֶׂה “que faz”; tinha “faz”
+DEU 10:18	5	וְ/אֹהֵ֣ב	e-que-ama	claude	וְאֹהֵב “e que ama”; tinha “que-ama”
+DEU 10:18	8	ל֖/וֹ	a-ele	claude	לוֹ “a ele”; tinha “para-ele”
+DEU 20:5	1	וְ/דִבְּר֣וּ	e-falarão	claude	וְדִבְּרוּ “e falarão”; tinha “falarão”
+DEU 20:5	13	חֲנָכ֔/וֹ	a-dedicou	claude	חֲנָכוֹ “a dedicou”; tinha “dedicou”
+DEU 20:5	16	לְ/בֵית֑/וֹ	à-sua-casa	claude	לְבֵיתוֹ “à sua casa”; tinha “à-sua-casa-para”
+DEU 20:5	17	פֶּן	para-que-não	claude	פֶּן “para que não”; tinha “talvez-não”
+DEU 20:5	20	וְ/אִ֥ישׁ	e-outro-homem	claude	וְאִישׁ “e homem”; tinha “e-algum”
+DEU 20:5	22	יַחְנְכֶֽ/נּוּ	a-dedique	claude	יַחְנְכֶנּוּ “a dedique”; tinha “dedique”
+DEU 20:6	7	חִלְּל֔/וֹ	a-desfrutou	claude	חִלְּלוֹ “a desfrutou”; tinha “comum-uso-dela”
+DEU 20:6	10	לְ/בֵית֑/וֹ	à-sua-casa	claude	לְבֵיתוֹ “à sua casa”; tinha “à-sua-casa-para”
+DEU 20:6	11	פֶּן	para-que-não	claude	פֶּן “para que não”; tinha “talvez-não”
+DEU 20:6	14	וְ/אִ֥ישׁ	e-homem	claude	וְאִישׁ “e homem”; tinha “e-alguém”
+DEU 20:6	16	יְחַלְּלֶֽ/נּוּ	a-desfrute	claude	יְחַלְּלֶנּוּ “a desfrute”; tinha “desfrute”
+DEU 20:7	4	אֵרַ֤שׂ	se-desposou	claude	אֵרַשׂ “se desposou com”; tinha “desposou-com”
+DEU 20:7	7	לְקָחָ֔/הּ	a-tomou	claude	לְקָחָהּ “a tomou”; tinha “tomou”
+DEU 20:7	10	לְ/בֵית֑/וֹ	à-sua-casa	claude	לְבֵיתוֹ “à sua casa”; tinha “à-sua-casa-para”
+DEU 20:7	11	פֶּן	para-que-não	claude	פֶּן “para que não”; tinha “talvez-não”
+DEU 20:7	14	וְ/אִ֥ישׁ	e-homem	claude	וְאִישׁ “e homem”; tinha “e-algum”
+DEU 20:7	16	יִקָּחֶֽ/נָּה	a-tome	claude	יִקָּחֶנָּה “a tome”; tinha “tome”
+DEU 20:8	8	הָ/אִ֤ישׁ	o-homem	claude	הָאִישׁ “o homem”; tinha “é-homem”
+DEU 20:8	11	הַ/לֵּבָ֔ב	o-coração	claude	הַלֵּבָב “o coração”; tinha “de-coração”
+DEU 20:8	18	לְבַ֥ב	o-coração	claude	לְבַב “o coração de”; tinha “coração”
+DEU 20:8	19	אֶחָ֖י/ו	de-seus-irmãos	claude	אֶחָיו “de seus irmãos”; tinha “irmãos-seu”
+DEU 20:8	20	כִּ/לְבָבֽ/וֹ	como-seu-coração	claude	כִּלְבָבוֹ “como seu coração”; tinha “como-coração”
+DEU 20:12	3	תַשְׁלִים֙	fizer-paz	claude	תַשְׁלִים “fizer paz”; tinha “paz”
+DEU 20:12	4	עִמָּ֔/ךְ	contigo	claude	עִמָּךְ “contigo”; tinha “com-ti”
+DEU 20:12	5	וְ/עָשְׂתָ֥ה	e-fizer	claude	וְעָשְׂתָה “e fizer”; tinha “e-empreender”
+DEU 20:12	6	עִמְּ/ךָ֖	contigo	claude	עִמְּךָ “contigo”; tinha “com-ti”
+DEU 20:12	8	וְ/צַרְתָּ֖	e-cercares	claude	וְצַרְתָּ “e cercares”; tinha “e-a-cercares”
+DEU 20:16	1	רַ֗ק	somente	claude	רַק “somente”; tinha “porém”
+DEU 20:16	3	הָֽ/עַמִּים֙	dos-povos	claude	הָעַמִּים “dos povos”; tinha “destes-povos”
+DEU 20:16	4	הָ/אֵ֔לֶּה	estes	claude	הָאֵלֶּה “estes”; tinha “o-estes”
+DEU 20:16	7	אֱלֹהֶ֔י/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “teu-Deus-te”
+DEU 20:16	9	לְ/ךָ֖	te	claude	לְךָ “a ti”; tinha “por”
+DEU 20:16	10	נַחֲלָ֑ה	por-herança	claude	נַחֲלָה “herança”; tinha “herança”
+DEU 20:16	12	תְחַיֶּ֖ה	deixarás-com-vida	claude	תְחַיֶּה “deixarás com vida”; tinha “pessoa-deixarás”
+DEU 20:16	14	נְשָׁמָֽה	alma	claude	נְשָׁמָה “fôlego (alma)”; tinha “vida”
+DEU 20:17	2	הַחֲרֵ֣ם	destruindo	claude	הַחֲרֵם “destruindo por completo”; tinha “completo”
+DEU 20:17	3	תַּחֲרִימֵ֗/ם	os-destruirás	claude	תַּחֲרִימֵם “os destruirás”; tinha “destruirás”
+DEU 20:17	11	צִוְּ/ךָ֖	te-mandou	claude	צִוְּךָ “te mandou”; tinha “mandou”
+DEU 20:17	13	אֱלֹהֶֽי/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “Deus-te”
+DEU 20:19	2	תָצ֣וּר	cercares	claude	תָצוּר “cercares”; tinha “cerco”
+DEU 20:19	7	לְֽ/הִלָּחֵ֧ם	guerreando	claude	לְהִלָּחֵם “guerreando”; tinha “lutando”
+DEU 20:19	14	לִ/נְדֹּ֤חַ	lançando	claude	לִנְדֹּחַ “lançando”; tinha “metendo”
+DEU 20:19	18	מִמֶּ֣/נּוּ	dela	claude	מִמֶּנּוּ “dela”; tinha “dele”
+DEU 20:19	24	הָֽ/אָדָם֙	o-homem	claude	הָאָדָם “o homem”; tinha “não-é-homem”
+DEU 20:19	28	מִ/פָּנֶ֖י/ךָ	de-diante-de-ti	claude	מִפָּנֶיךָ “de diante de ti”; tinha “de-diante-teu”
+DEU 20:20	9	ה֔וּא	ela	claude	הוּא “ela”; tinha “ele”
+DEU 20:20	10	אֹת֥/וֹ	a	claude	אֹתוֹ “a”; tinha “o”
+DEU 20:20	12	וְ/כָרָ֑תָּ	e-cortarás	claude	וְכָרַתָּ “e cortarás”; tinha “e-o-cortarás”
+DEU 20:20	13	וּ/בָנִ֣יתָ	e-edificarás	claude	וּבָנִיתָ “e edificarás”; tinha “e-constrói”
+DEU 20:20	18	הִ֨וא	ela	claude	הִוא “ela”; tinha “é”
+DEU 20:20	23	רִדְתָּֽ/הּ	cair	claude	רִדְתָּהּ “ela cair”; tinha “subjugá-la”
+DEU 27:2	14	וַ/הֲקֵמֹתָ֤	e-levantarás	claude	וַהֲקֵמֹתָ “e levantarás”; tinha “levantar”
+DEU 27:2	18	וְ/שַׂדְתָּ֥	e-rebocarás	claude	וְשַׂדְתָּ “e rebocarás”; tinha “quais-rebocarás”
+DEU 27:2	19	אֹתָ֖/ם	as	claude	אֹתָם “as”; tinha “os”
+DEU 27:10	1	וְ/שָׁ֣מַעְתָּ֔	e-ouvirás	claude	וְשָׁמַעְתָּ “e ouvirás”; tinha “ouvirás-pois”
+DEU 27:13	3	עַל	para	claude	עַל “para”; tinha “sobre”
+DEU 27:13	5	בְּ/הַ֣ר	no-monte	claude	בְּהַר “no monte de”; tinha “pronunciar”
+DEU 34:4	3	אֵלָ֗י/ו	a-ele	claude	אֵלָיו “a ele”; tinha “lhe-o”
+DEU 34:4	13	אֶתְּנֶ֑נָּ/ה	a-darei	claude	אֶתְּנֶנָּה “a darei”; tinha “darei-eu-a”
+DEU 34:4	14	הֶרְאִיתִ֣י/ךָ	te-fiz-ver	claude	הֶרְאִיתִיךָ “te fiz ver”; tinha “ver”
+DEU 34:4	16	וְ/שָׁ֖מָּ/ה	e-para-lá	claude	וְשָׁמָּה “e para lá”; tinha “ali”
+DEU 34:7	1	וּ/מֹשֶׁ֗ה	e-Moisés	claude	וּמֹשֶׁה “e Moisés”; tinha “e-era-Moisés”
+DEU 34:7	2	בֶּן	era-filho	claude	בֶּן “filho (idade) de”; tinha “idade”
+DEU 34:7	3	מֵאָ֧ה	cento-e-vinte	claude	מֵאָה “cento e vinte”; tinha “cento”
+DEU 34:7	4	וְ/עֶשְׂרִ֛ים	cento-e-vinte	claude	וְעֶשְׂרִים “cento e vinte”; tinha “e-vinte”
+DEU 34:7	6	בְּ/מֹת֑/וֹ	quando-morreu	claude	בְּמֹתוֹ “quando morreu”; tinha “quando-morreu-seus”
+DEU 34:7	7	לֹֽא	não	claude	לֹא “não”; tinha “nunca”
+DEU 34:7	8	כָהֲתָ֥ה	se-escureceu	claude	כָהֲתָה “se escureceu”; tinha “escureceram”
+DEU 34:7	9	עֵינ֖/וֹ	seu-olho	claude	עֵינוֹ “seu olho”; tinha “olhos”
+DEU 34:7	10	וְ/לֹא	e-não	claude	וְלֹא “e não”; tinha “se-nem”
+DEU 34:7	11	נָ֥ס	fugiu	claude	נָס “fugiu (perdeu)”; tinha “perdeu”
+DEU 34:12	2	הַ/יָּ֣ד	a-mão	claude	הַיָּד “a mão”; tinha “aquela-mão”
+DEU 34:12	8	עָשָׂ֣ה	fez	claude	עָשָׂה “fez”; tinha “causou”
+DEU 34:12	10	לְ/עֵינֵ֖י	aos-olhos	claude	לְעֵינֵי “aos olhos de”; tinha “à-vista”
