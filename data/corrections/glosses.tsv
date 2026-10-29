@@ -11854,3 +11854,105 @@ ISA 28:10	5	לָ/צָ֔ו	sobre-mandamento	claude	לָצָו “sobre mandamento
 ISA 28:10	6	קַ֥ו	regra	claude	קַו “regra”; tinha “sobre”
 ISA 28:10	7	לָ/קָ֖ו	sobre-regra	claude	לָקָו “sobre regra”; tinha “regra”
 ISA 28:10	9	לָ/קָ֑ו	sobre-regra	claude	לָקָו “sobre regra”; tinha “regra-um”
+ISA 28:28	1	לֶ֣חֶם	o-grão	claude	לֶחֶם “o grão (pão)”; tinha “trigo”
+ISA 28:28	2	יוּדָ֔ק	é-esmiuçado	claude	יוּדָק “é esmiuçado”; tinha “triturado”
+ISA 28:28	6	אָד֣וֹשׁ	debulhando	claude	אָדוֹשׁ “debulhando”; tinha “ainda”
+ISA 28:28	7	יְדוּשֶׁ֑/נּוּ	o-debulhará	claude	יְדוּשֶׁנּוּ “o debulhará”; tinha “esmagado”
+ISA 28:28	8	וְ֠/הָמַם	e-o-moverá	claude	וְהָמַם “e o moverá”; tinha “e-perturbou”
+ISA 28:28	9	גִּלְגַּ֧ל	a-roda	claude	גִּלְגַּל “a roda de”; tinha “rodas”
+ISA 28:28	10	עֶגְלָת֛/וֹ	de-sua-carroça	claude	עֶגְלָתוֹ “sua carroça”; tinha “carroça-ele”
+ISA 28:28	13	יְדֻקֶּֽ/נּוּ	o-esmiuçará	claude	יְדֻקֶּנּוּ “o esmiuçará”; tinha “triturado”
+ISA 29:4	1	וְ/שָׁפַלְתְּ֙	e-serás-abatida	claude	וְשָׁפַלְתְּ “e serás abatida”; tinha “então-serás-abatida”
+ISA 29:4	2	מֵ/אֶ֣רֶץ	da-terra	claude	מֵאֶרֶץ “da terra”; tinha “ao-chão”
+ISA 29:4	5	תִּשַּׁ֣ח	será-abafada	claude	תִּשַּׁח “será abafada”; tinha “fraca”
+ISA 29:4	7	וְֽ֠/הָיָה	e-será	claude	וְהָיָה “e será”; tinha “será”
+ISA 29:4	10	קוֹלֵ֔/ךְ	tua-voz	claude	קוֹלֵךְ “tua voz”; tinha “morto”
+ISA 29:4	11	וּ/מֵ/עָפָ֖ר	e-do-pó	claude	וּמֵעָפָר “e do pó”; tinha “sussurrará-desde-o-pó”
+ISA 29:4	13	תְּצַפְצֵֽף	sussurrará	claude	תְּצַפְצֵף “sussurrará”; tinha “murmuram”
+ISA 29:7	11	וְ/כָל	e-todos	claude	וְכָל “e todos”; tinha “assim-também-como-todos”
+ISA 29:7	12	צֹבֶ֨י/הָ֙	os-que-guerreiam-contra-ela	claude	צֹבֶיהָ “os que guerreiam contra ela”; tinha “lutaram-contra-ela”
+ISA 29:7	13	וּ/מְצֹ֣דָתָ֔/הּ	e-sua-fortaleza	claude	וּמְצֹדָתָהּ “e sua fortaleza”; tinha “e-seus-muros”
+ISA 29:7	14	וְ/הַ/מְּצִיקִ֖ים	e-os-que-a-oprimem	claude	וְהַמְּצִיקִים “e os que oprimem”; tinha “e-a-oprimiram”
+ISA 29:14	6	הָֽ/עָם	o-povo	claude	הָעָם “o povo”; tinha “este-povo”
+ISA 29:14	7	הַ/זֶּ֖ה	este	claude	הַזֶּה “este”; tinha “o-hoje”
+ISA 29:14	8	הַפְלֵ֣א	maravilhosamente	claude	הַפְלֵא “maravilhosamente”; tinha “coisas-espantosas”
+ISA 29:14	9	וָ/פֶ֑לֶא	e-maravilha	claude	וָפֶלֶא “e maravilha”; tinha “espantosas-e-surpreendentes”
+ISA 29:14	10	וְ/אָֽבְדָה֙	e-perecerá	claude	וְאָבְדָה “e perecerá”; tinha “perecerá”
+ISA 29:14	12	חֲכָמָ֔י/ו	de-seus-sábios	claude	חֲכָמָיו “de seus sábios”; tinha “seus-sábios”
+ISA 29:14	14	נְבֹנָ֖י/ו	de-seus-entendidos	claude	נְבֹנָיו “de seus entendidos”; tinha “inteligentes-se”
+ISA 29:14	15	תִּסְתַּתָּֽר	se-esconderá	claude	תִּסְתַּתָּר “se esconderá”; tinha “esconderá”
+ISA 29:21	1	מַחֲטִיאֵ֤י	os-que-fazem-pecar	claude	מַחֲטִיאֵי “os que fazem pecar”; tinha “acusam”
+ISA 29:21	2	אָדָם֙	o-homem	claude	אָדָם “o homem”; tinha “homens”
+ISA 29:21	3	בְּ/דָבָ֔ר	por-uma-palavra	claude	בְּדָבָר “por uma palavra”; tinha “por-meio-de-palavras”
+ISA 29:21	4	וְ/לַ/מּוֹכִ֥יחַ	e-ao-que-repreende	claude	וְלַמּוֹכִיחַ “e ao que repreende”; tinha “contra-quem-os-repreende”
+ISA 29:21	5	בַּ/שַּׁ֖עַר	na-porta	claude	בַּשַּׁעַר “na porta”; tinha “na-porta-da”
+ISA 29:21	6	יְקֹשׁ֑וּ/ן	armam-laços	claude	יְקֹשׁוּן “armam laços”; tinha “cidade”
+ISA 29:21	7	וַ/יַּטּ֥וּ	e-desviam	claude	וַיַּטּוּ “e desviam”; tinha “ciladas”
+ISA 29:21	8	בַ/תֹּ֖הוּ	com-vaidade	claude	בַתֹּהוּ “com vaidade”; tinha “os-que-prejudicam”
+ISA 29:21	9	צַדִּֽיק	o-justo	claude	צַדִּיק “o justo”; tinha “justo”
+ISA 30:6	4	בְּ/אֶרֶץ֩	por-uma-terra	claude	בְּאֶרֶץ “por uma terra de”; tinha “entre-uma-terra”
+ISA 30:6	6	וְ/צוּקָ֜ה	e-angústia	claude	וְצוּקָה “e angústia”; tinha “selvagens”
+ISA 30:6	7	לָבִ֧יא	leoa	claude	לָבִיא “leoa”; tinha “leão”
+ISA 30:6	8	וָ/לַ֣יִשׁ	e-leão	claude	וָלַיִשׁ “e leão”; tinha “deserto”
+ISA 30:6	9	מֵ/הֶ֗ם	dela	claude	מֵהֶם “deles”; tinha “a”
+ISA 30:6	10	אֶפְעֶה֙	víbora	claude	אֶפְעֶה “víbora”; tinha “cobra”
+ISA 30:14	1	וּ֠/שְׁבָרָ/הּ	e-o-quebrará	claude	וּשְׁבָרָהּ “e a quebrará”; tinha “e-será-quebrado”
+ISA 30:14	3	נֵ֧בֶל	do-vaso	claude	נֵבֶל “do vaso de”; tinha “vaso”
+ISA 30:14	4	יוֹצְרִ֛ים	dos-oleiros	claude	יוֹצְרִים “dos oleiros”; tinha “oleiro”
+ISA 30:14	11	חֶ֔רֶשׂ	um-caco	claude	חֶרֶשׂ “um caco”; tinha “sirva”
+ISA 30:27	13	וּ/לְשׁוֹנ֖/וֹ	e-sua-língua	claude	וּלְשׁוֹנוֹ “e sua língua”; tinha “e-sua-língua-está”
+ISA 31:3	1	וּ/מִצְרַ֤יִם	e-os-egípcios	claude	וּמִצְרַיִם “e os egípcios”; tinha “Pois-os-egípcios”
+ISA 31:3	5	וְ/סוּסֵי/הֶ֥ם	e-seus-cavalos	claude	וְסוּסֵיהֶם “e seus cavalos”; tinha “cavalos-são”
+ISA 31:3	11	יָד֗/וֹ	sua-mão	claude	יָדוֹ “sua mão”; tinha “sua-mão-fará”
+ISA 31:3	13	עוֹזֵר֙	o-que-ajuda	claude	עוֹזֵר “o que ajuda”; tinha “ajuda”
+ISA 31:3	17	כֻּלָּ֥/ם	todos	claude	כֻּלָּם “todos”; tinha “todos-serão”
+ISA 32:6	9	חֹ֗נֶף	impiedade	claude	חֹנֶף “impiedade”; tinha “perversidade”
+ISA 32:6	13	תּוֹעָ֔ה	erro	claude	תּוֹעָה “erro”; tinha “enganos”
+ISA 32:6	16	רָעֵ֔ב	do-faminto	claude	רָעֵב “do faminto”; tinha “faminto”
+ISA 32:6	17	וּ/מַשְׁקֶ֥ה	e-a-bebida	claude	וּמַשְׁקֶה “e a bebida”; tinha “beber”
+ISA 32:6	18	צָמֵ֖א	do-sedento	claude	צָמֵא “do sedento”; tinha “sedento”
+ISA 32:6	19	יַחְסִֽיר	faz-faltar	claude	יַחְסִיר “faz faltar”; tinha “tenha”
+ISA 32:14	4	הֲמ֥וֹן	o-tumulto	claude	הֲמוֹן “o tumulto de”; tinha “abandonado”
+ISA 32:14	5	עִ֖יר	da-cidade	claude	עִיר “da cidade”; tinha “cidade”
+ISA 32:14	6	עֻזָּ֑ב	será-deixado	claude	עֻזָּב “será deixado”; tinha “deserta-a”
+ISA 32:14	11	מְעָרוֹת֙	cavernas	claude	מְעָרוֹת “cavernas”; tinha “esvaziadas”
+ISA 32:19	1	וּ/בָרַ֖ד	e-cairá-granizo	claude	וּבָרַד “e cairá granizo”; tinha “granizo-porém”
+ISA 32:19	2	בְּ/רֶ֣דֶת	quando-cair	claude	בְּרֶדֶת “quando cair”; tinha “derrubará”
+ISA 32:19	4	וּ/בַ/שִּׁפְלָ֖ה	e-em-baixeza	claude	וּבַשִּׁפְלָה “e em baixeza”; tinha “e-a-será”
+ISA 32:19	5	תִּשְׁפַּ֥ל	será-abatida	claude	תִּשְׁפַּל “será abatida”; tinha “abatida”
+ISA 32:19	6	הָ/עִֽיר	a-cidade	claude	הָעִיר “a cidade”; tinha “cidade”
+ISA 33:8	3	שָׁבַ֖ת	cessou	claude	שָׁבַת “cessou”; tinha “não”
+ISA 33:8	4	עֹבֵ֣ר	o-que-passa	claude	עֹבֵר “o que passa”; tinha “passe”
+ISA 33:8	5	אֹ֑רַח	pela-vereda	claude	אֹרַח “pela vereda”; tinha “caminhos”
+ISA 33:8	6	הֵפֵ֤ר	anulou	claude	הֵפֵר “anulou”; tinha “nulo”
+ISA 33:8	7	בְּרִית֙	o-pacto	claude	בְּרִית “o pacto”; tinha “pacto”
+ISA 33:8	8	מָאַ֣ס	desprezou	claude	מָאַס “desprezou”; tinha “desfeito”
+ISA 33:11	2	חֲשַׁ֖שׁ	feno	claude	חֲשַׁשׁ “feno”; tinha “palha”
+ISA 33:11	3	תֵּ֣לְדוּ	dareis-à-luz	claude	תֵּלְדוּ “dareis à luz”; tinha “gerais”
+ISA 33:11	4	קַ֑שׁ	palha	claude	קַשׁ “palha”; tinha “restos-de-cascas”
+ISA 33:14	1	פָּחֲד֤וּ	temem	claude	פָּחֲדוּ “temem”; tinha “pecadores”
+ISA 33:14	3	חַטָּאִ֔ים	os-pecadores	claude	חַטָּאִים “os pecadores”; tinha “assombrados”
+ISA 33:14	6	חֲנֵפִ֑ים	os-ímpios	claude	חֲנֵפִים “os ímpios”; tinha “perversos”
+ISA 33:14	8	יָג֣וּר	habitará	claude	יָגוּר “habitará”; tinha “dentre”
+ISA 33:14	13	יָג֥וּר	habitará	claude	יָגוּר “habitará”; tinha “dentre”
+ISA 33:21	9	יְאֹרִ֖ים	ribeiros	claude	יְאֹרִים “ribeiros”; tinha “rios”
+ISA 33:21	10	רַחֲבֵ֣י	largos	claude	רַחֲבֵי “largos de”; tinha “correntes”
+ISA 33:21	11	יָדָ֑יִם	de-mãos	claude	יָדָיִם “mãos (lados)”; tinha “mãos”
+ISA 33:21	12	בַּל	não	claude	בַּל “não”; tinha “nenhum”
+ISA 33:21	13	תֵּ֤לֶךְ	andará	claude	תֵּלֶךְ “andará”; tinha “barco”
+ISA 33:21	14	בּ/וֹ֙	por-ele	claude	בּוֹ “por ele”; tinha “a”
+ISA 33:21	15	אֳנִי	barco	claude	אֳנִי “barco”; tinha “remo”
+ISA 33:21	16	שַׁ֔יִט	de-remo	claude	שַׁיִט “de remo”; tinha “grande”
+ISA 33:21	17	וְ/צִ֥י	e-navio	claude	וְצִי “e navio”; tinha “navio”
+ISA 33:21	18	אַדִּ֖יר	poderoso	claude	אַדִּיר “poderoso”; tinha “largas”
+ISA 34:13	10	חָצִ֖יר	pátio	claude	חָצִיר “pátio”; tinha “habitação”
+ISA 34:15	2	קִנְּנָ֤ה	faz-ninho	claude	קִנְּנָה “faz ninho”; tinha “coruja”
+ISA 34:15	3	קִפּוֹז֙	a-coruja	claude	קִפּוֹז “a coruja”; tinha “ovos”
+ISA 34:15	4	וַ/תְּמַלֵּ֔ט	e-põe-ovos	claude	וַתְּמַלֵּט “e põe ovos”; tinha “fará-seu-ninho”
+ISA 34:15	5	וּ/בָקְעָ֖ה	e-choca	claude	וּבָקְעָה “e choca”; tinha “e-porá”
+ISA 34:15	6	וְ/דָגְרָ֣ה	e-ajunta	claude	וְדָגְרָה “e ajunta”; tinha “recolherá”
+ISA 34:15	7	בְ/צִלָּ֑/הּ	à-sua-sombra	claude	בְצִלָּהּ “à sua sombra”; tinha “sombra”
+ISA 34:15	8	אַךְ	também	claude	אַךְ “também”; tinha “e”
+ISA 34:15	10	נִקְבְּצ֥וּ	se-ajuntam	claude	נִקְבְּצוּ “se ajuntam”; tinha “juntaram”
+ISA 34:15	12	אִשָּׁ֥ה	cada-uma	claude	אִשָּׁה “cada uma (mulher)”; tinha “mulher”
+ISA 34:15	13	רְעוּתָֽ/הּ	com-sua-companheira	claude	רְעוּתָהּ “com sua companheira”; tinha “outros”
