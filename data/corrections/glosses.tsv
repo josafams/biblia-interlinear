@@ -10335,3 +10335,95 @@ NEH 3:5	9	בַּ/עֲבֹדַ֖ת	no-serviço	claude	בַּעֲבֹדַת “no 
 NEH 3:5	10	אֲדֹנֵי/הֶֽם	de-seus-senhores	claude	אֲדֹנֵיהֶם “de seus senhores”; tinha “seu-senhor”
 NEH 3:8	12	בֶּן	filho	claude	בֶּן “filho de”; tinha “um”
 NEH 3:8	14	וַ/יַּֽעַזְבוּ֙	e-restauraram	claude	וַיַּעַזְבוּ “e restauraram (deixaram)”; tinha “assim-restauraram-a”
+NEH 3:21	9	שֵׁנִ֑ית	segunda	claude	שֵׁנִית “segunda”; tinha “outra”
+NEH 3:21	10	מִ/פֶּ֨תַח֙	desde-a-porta	claude	מִפֶּתַח “desde a porta de”; tinha “desde-a-entrada”
+NEH 3:21	11	בֵּ֣ית	da-casa	claude	בֵּית “da casa de”; tinha “casa”
+NEH 3:21	13	וְ/עַד	e-até	claude	וְעַד “e até”; tinha “até-o-fim”
+NEH 3:21	14	תַּכְלִ֖ית	o-fim	claude	תַּכְלִית “o fim de”; tinha “perfeição”
+NEH 3:21	15	בֵּ֥ית	da-casa	claude	בֵּית “da casa de”; tinha “casa”
+NEH 4:5	3	עַל	sobre	claude	עַל “sobre”; tinha “a”
+NEH 4:5	4	עֲוֺנָ֔/ם	sua-iniquidade	claude	עֲוֺנָם “sua iniquidade”; tinha “perversidade-deles”
+NEH 4:5	5	וְ/חַטָּאתָ֖/ם	e-seu-pecado	claude	וְחַטָּאתָם “e seu pecado”; tinha “nem-o-pecado-deles”
+NEH 4:5	6	מִ/לְּ/פָנֶ֣י/ךָ	de-diante-de-ti	claude	מִלְּפָנֶיךָ “de diante de ti”; tinha “seja-riscado-diante-de-teu”
+NEH 4:5	8	תִּמָּחֶ֑ה	seja-apagado	claude	תִּמָּחֶה “seja apagado”; tinha “rosto”
+NEH 4:5	11	לְ/נֶ֥גֶד	diante	claude	לְנֶגֶד “diante de”; tinha “à-diante”
+NEH 4:9	1	וַ/נִּתְפַּלֵּ֖ל	e-oramos	claude	וַנִּתְפַּלֵּל “e oramos”; tinha “porém-nós-oramos”
+NEH 4:9	7	יוֹמָ֥ם	de-dia	claude	יוֹמָם “de dia”; tinha “dia”
+NEH 5:3	1	וְ/יֵשׁ֙	e-havia	claude	וְיֵשׁ “e havia”; tinha “também-havia”
+NEH 5:3	3	אֹמְרִ֔ים	diziam	claude	אֹמְרִים “diziam”; tinha “dizia”
+NEH 5:3	4	שְׂדֹתֵ֛י/נוּ	nossos-campos	claude	שְׂדֹתֵינוּ “nossos campos”; tinha “terras-nossas”
+NEH 5:3	5	וּ/כְרָמֵ֥י/נוּ	e-nossas-vinhas	claude	וּכְרָמֵינוּ “e nossas vinhas”; tinha “vinhas”
+NEH 5:3	8	עֹרְבִ֑ים	empenhamos	claude	עֹרְבִים “empenhamos”; tinha “penhor”
+NEH 5:3	9	וְ/נִקְחָ֥ה	e-tomemos	claude	וְנִקְחָה “e tomemos”; tinha “para-comprarmos”
+NEH 5:3	10	דָגָ֖ן	grão	claude	דָגָן “grão”; tinha “trigo”
+NEH 5:3	11	בָּ/רָעָֽב	na-fome	claude	בָּרָעָב “na fome”; tinha “durante-a-fome”
+NEH 5:18	2	הָיָ֨ה	era	claude	הָיָה “era”; tinha “veio”
+NEH 5:18	3	נַעֲשֶׂ֜ה	preparado	claude	נַעֲשֶׂה “preparado”; tinha “preparava”
+NEH 5:18	4	לְ/י֣וֹם	para-um-dia	claude	לְיוֹם “para (um) dia”; tinha “para-cada-dia”
+NEH 5:18	5	אֶחָ֗ד	um	claude	אֶחָד “um”; tinha “era”
+NEH 5:18	11	וְ/צִפֳּרִים֙	e-aves	claude	וְצִפֳּרִים “e aves”; tinha “também-aves”
+NEH 5:18	12	נַֽעֲשׂוּ	eram-preparadas	claude	נַעֲשׂוּ “eram preparadas”; tinha “preparavam”
+NEH 5:18	17	בְּ/כָל	de-todo	claude	בְּכָל “de todo”; tinha “todas”
+NEH 5:18	19	לְ/הַרְבֵּ֑ה	em-abundância	claude	לְהַרְבֵּה “em abundância”; tinha “de-muito”
+NEH 5:18	21	זֶ֗ה	isto	claude	זֶה “isto”; tinha “este”
+NEH 5:18	22	לֶ֤חֶם	o-pão	claude	לֶחֶם “o pão de”; tinha “pão”
+NEH 5:18	24	לֹ֣א	não	claude	לֹא “não”; tinha “nem”
+NEH 5:18	27	כָֽבְדָ֥ה	era-pesada	claude	כָבְדָה “era pesada”; tinha “agravou”
+NEH 5:18	30	הָ/עָ֥ם	o-povo	claude	הָעָם “o povo”; tinha “deste-povo”
+NEH 5:18	31	הַ/זֶּֽה	este	claude	הַזֶּה “este”; tinha “o-hoje”
+NEH 6:12	5	שְׁלָח֑/וֹ	o-enviara	claude	שְׁלָחוֹ “o enviara”; tinha “enviado”
+NEH 6:12	7	הַ/נְּבוּאָה֙	a-profecia	claude	הַנְּבוּאָה “a profecia”; tinha “aquela-profecia”
+NEH 6:12	10	וְ/טוֹבִיָּ֥ה	e-Tobias	claude	וְטוֹבִיָּה “e Tobias”; tinha “porque-Tobias”
+NEH 6:12	12	שְׂכָרֽ/וֹ	o-alugaram	claude	שְׂכָרוֹ “o alugaram”; tinha “lhe-subornado”
+NEH 6:17	3	הָ/הֵ֗ם	aqueles	claude	הָהֵם “aqueles”; tinha “o-ficou”
+NEH 6:17	4	מַרְבִּ֞ים	multiplicavam	claude	מַרְבִּים “multiplicavam”; tinha “muitas”
+NEH 6:17	5	חֹרֵ֤י	os-nobres	claude	חֹרֵי “os nobres de”; tinha “nobres”
+NEH 6:17	7	אִגְּרֹ֣תֵי/הֶ֔ם	suas-cartas	claude	אִגְּרֹתֵיהֶם “suas cartas”; tinha “foram-escritas”
+NEH 6:17	8	הוֹלְכ֖וֹת	que-iam	claude	הוֹלְכוֹת “que iam”; tinha “anda”
+NEH 7:4	2	רַחֲבַ֤ת	larga	claude	רַחֲבַת “larga de”; tinha “espaçosa”
+NEH 7:4	3	יָדַ֨יִם֙	de-espaço	claude	יָדַיִם “(de) espaço (mãos)”; tinha “espaçosa”
+NEH 7:4	5	וְ/הָ/עָ֥ם	e-o-povo	claude	וְהָעָם “e o povo”; tinha “porém-gente”
+NEH 7:4	7	בְּ/תוֹכָ֑/הּ	dentro-dela	claude	בְּתוֹכָהּ “dentro dela”; tinha “havia-dentro-dela”
+NEH 7:4	8	וְ/אֵ֥ין	e-não-havia	claude	וְאֵין “e não havia”; tinha “não”
+NEH 7:17	3	אַלְפַּ֕יִם	dois-mil	claude	אַלְפַּיִם “dois mil”; tinha “mil”
+NEH 7:17	4	שְׁלֹ֥שׁ	trezentos	claude	שְׁלֹשׁ “(trezentos)”; tinha “seiscentos”
+NEH 7:17	5	מֵא֖וֹת	trezentos	claude	מֵאוֹת “(trezentos)”; tinha “seiscentos-e”
+NEH 8:15	2	יַשְׁמִ֗יעוּ	fizessem-ouvir	claude	יַשְׁמִיעוּ “fizessem ouvir”; tinha “publicamente”
+NEH 8:15	3	וְ/יַעֲבִ֨ירוּ	e-fizessem-passar	claude	וְיַעֲבִירוּ “e fizessem passar”; tinha “e-passar”
+NEH 8:15	4	ק֥וֹל	pregão	claude	קוֹל “pregão (voz)”; tinha “proclamaram”
+NEH 8:15	7	וּ/בִ/ירוּשָׁלִַ֣ם	e-em-Jerusalém	claude	וּבִירוּשָׁלִַם “e em Jerusalém”; tinha “e-Jerusalém”
+NEH 8:15	11	וְ/הָבִ֨יאוּ֙	e-trazei	claude	וְהָבִיאוּ “e trazei”; tinha “trazei”
+NEH 8:15	12	עֲלֵי	ramos-de	claude	עֲלֵי “ramos de”; tinha “ramos”
+NEH 8:15	13	זַ֨יִת֙	oliveira	claude	זַיִת “oliveira”; tinha “oliveiras”
+NEH 8:15	14	וַ/עֲלֵי	e-ramos-de	claude	וַעֲלֵי “e ramos de”; tinha “e-ramos”
+NEH 8:15	15	עֵ֣ץ	árvore	claude	עֵץ “árvore de”; tinha “oliveiras”
+NEH 8:15	16	שֶׁ֔מֶן	de-azeite	claude	שֶׁמֶן “de azeite (oliveira silvestre)”; tinha “silvestres”
+NEH 8:15	17	וַ/עֲלֵ֤י	e-ramos-de	claude	וַעֲלֵי “e ramos de”; tinha “e-ramos”
+NEH 8:15	19	וַ/עֲלֵ֣י	e-ramos-de	claude	וַעֲלֵי “e ramos de”; tinha “ramos”
+NEH 8:15	21	וַ/עֲלֵ֖י	e-ramos-de	claude	וַעֲלֵי “e ramos de”; tinha “e-ramos”
+NEH 9:32	1	וְ/עַתָּ֣ה	e-agora	claude	וְעַתָּה “e agora”; tinha “agora-pois”
+NEH 9:32	2	אֱ֠לֹהֵי/נוּ	nosso-Deus	claude	אֱלֹהֵינוּ “nosso Deus”; tinha “Deus-nosso”
+NEH 9:32	7	שׁוֹמֵ֣ר	que-guardas	claude	שׁוֹמֵר “que guardas”; tinha “guardas”
+NEH 9:32	11	יִמְעַ֣ט	seja-pouco	claude	יִמְעַט “seja pouco”; tinha “consideres-pouco”
+NEH 9:32	12	לְ/פָנֶ֡י/ךָ	diante-de-ti	claude	לְפָנֶיךָ “diante de ti”; tinha “para-diante-teu”
+NEH 9:32	15	הַ/תְּלָאָ֣ה	a-aflição	claude	הַתְּלָאָה “a aflição”; tinha “a-opressão”
+NEH 9:32	17	מְ֠צָאַתְ/נוּ	nos-sobreveio	claude	מְצָאַתְנוּ “nos sobreveio”; tinha “alcançou-a-nós”
+NEH 9:32	18	לִ/מְלָכֵ֨י/נוּ	a-nossos-reis	claude	לִמְלָכֵינוּ “a nossos reis”; tinha “nossos-reis-nossos”
+NEH 9:32	19	לְ/שָׂרֵ֧י/נוּ	a-nossos-príncipes	claude	לְשָׂרֵינוּ “a nossos príncipes”; tinha “príncipes-nossos”
+NEH 9:32	20	וּ/לְ/כֹהֲנֵ֛י/נוּ	e-a-nossos-sacerdotes	claude	וּלְכֹהֲנֵינוּ “e a nossos sacerdotes”; tinha “sacerdotes-nossos”
+NEH 9:32	21	וְ/לִ/נְבִיאֵ֥/נוּ	e-a-nossos-profetas	claude	וְלִנְבִיאֵנוּ “e a nossos profetas”; tinha “profetas-nossos”
+NEH 9:32	22	וְ/לַ/אֲבֹתֵ֖י/נוּ	e-a-nossos-pais	claude	וְלַאֲבֹתֵינוּ “e a nossos pais”; tinha “pais”
+NEH 9:32	26	מַלְכֵ֣י	dos-reis	claude	מַלְכֵי “dos reis de”; tinha “reis”
+NEH 9:32	30	הַ/זֶּֽה	este	claude	הַזֶּה “este”; tinha “de-hoje”
+NEH 9:38	1	וּ/בְ/כָל	e-por-tudo	claude	וּבְכָל “e por tudo”; tinha “tudo”
+NEH 9:38	4	כֹּרְתִ֥ים	fazemos	claude	כֹּרְתִים “fazemos (cortamos)”; tinha “pacto”
+NEH 9:38	5	אֲמָנָ֖ה	uma-aliança-firme	claude	אֲמָנָה “uma aliança firme”; tinha “fiel”
+NEH 9:38	8	הֶֽ/חָת֔וּם	o-selado	claude	הֶחָתוּם “o (documento) selado”; tinha “nossos”
+NEH 9:38	9	שָׂרֵ֥י/נוּ	nossos-príncipes	claude	שָׂרֵינוּ “nossos príncipes”; tinha “príncipes-nossos”
+NEH 9:38	10	לְוִיֵּ֖/נוּ	nossos-levitas	claude	לְוִיֵּנוּ “nossos levitas”; tinha “Levitas-e-nossos”
+NEH 9:38	11	כֹּהֲנֵֽי/נוּ	nossos-sacerdotes	claude	כֹּהֲנֵינוּ “nossos sacerdotes”; tinha “sacerdotes-o”
+NEH 10:31	1	וְ/עַמֵּ֣י	e-os-povos	claude	וְעַמֵּי “e os povos de”; tinha “povos”
+NEH 10:31	3	הַֽ/מְבִיאִים֩	que-trouxerem	claude	הַמְבִיאִים “que trouxerem”; tinha “trouxessem”
+NEH 10:31	15	וּ/בְ/י֣וֹם	e-em-dia	claude	וּבְיוֹם “e em dia”; tinha “nem-em-dia”
+NEH 10:31	21	וּ/מַשָּׁ֥א	e-a-cobrança	claude	וּמַשָּׁא “e a cobrança de”; tinha “inclusive-e-cobrança”
+NEH 10:31	23	יָֽד	mão	claude	יָד “mão (dívida)”; tinha “qualquer”
