@@ -16023,3 +16023,104 @@ RUT 3:14	16	הָ/אִשָּׁ֖ה	a-mulher	claude	הָאִשָּׁה “a mulher
 1SA 27:8	14	מֵֽ/עוֹלָ֔ם	desde-a-antiguidade	claude	מֵעוֹלָם “desde a antiguidade”; tinha “de-eternidade”
 1SA 27:8	15	בּוֹאֲ/ךָ֥	indo	claude	בּוֹאֲךָ “indo tu”; tinha “vai-a”
 1SA 27:8	16	שׁ֖וּרָ/ה	para-Sur	claude	שׁוּרָה “para Sur”; tinha “Sur”
+2KI 18:1	9	מָלַ֛ךְ	reinou	claude	מָלַךְ “reinou”; tinha “começou-a-reinar”
+2KI 18:2	2	עֶשְׂרִ֨ים	vinte-e-cinco	claude	עֶשְׂרִים “vinte e cinco”; tinha “vinte”
+2KI 18:2	3	וְ/חָמֵ֤שׁ	vinte-e-cinco	claude	וְחָמֵשׁ “vinte e cinco”; tinha “e-cinco”
+2KI 18:2	5	הָיָ֣ה	era	claude	הָיָה “era”; tinha “veio”
+2KI 18:2	6	בְ/מָלְכ֔/וֹ	quando-começou-a-reinar	claude	בְמָלְכוֹ “quando começou a reinar”; tinha “quando-começou-a-reinar-era”
+2KI 18:2	7	וְ/עֶשְׂרִ֤ים	e-vinte-e-nove	claude	וְעֶשְׂרִים “e vinte e nove”; tinha “vinte”
+2KI 18:2	8	וָ/תֵ֨שַׁע֙	vinte-e-nove	claude	וָתֵשַׁע “vinte e nove”; tinha “e-nove”
+2KI 18:2	12	וְ/שֵׁ֣ם	e-o-nome	claude	וְשֵׁם “e o nome de”; tinha “nome”
+2KI 18:2	13	אִמּ֔/וֹ	de-sua-mãe	claude	אִמּוֹ “de sua mãe”; tinha “mãe-foi”
+2KI 18:4	10	הָֽ/אֲשֵׁרָ֑ה	o-bosque	claude	הָאֲשֵׁרָה “o bosque (Aserá)”; tinha “os-bosques”
+2KI 18:4	12	נְחַ֨שׁ	a-serpente	claude	נְחַשׁ “a serpente de”; tinha “serpente”
+2KI 18:4	15	עָשָׂ֣ה	fizera	claude	עָשָׂה “fizera”; tinha “feito”
+2KI 18:4	19	הַ/יָּמִ֤ים	os-dias	claude	הַיָּמִים “os dias”; tinha “então”
+2KI 18:4	20	הָ/הֵ֨מָּה֙	aqueles	claude	הָהֵמָּה “aqueles”; tinha “o-ficou”
+2KI 18:4	21	הָי֤וּ	estavam	claude	הָיוּ “estavam”; tinha “foram”
+2KI 18:4	25	ל֔/וֹ	a-ela	claude	לוֹ “a ela”; tinha “de”
+2KI 18:4	27	ל֖/וֹ	a-ela	claude	לוֹ “a ela”; tinha “para-ele”
+2KI 18:4	28	נְחֻשְׁתָּֽן	Neustã	claude	נְחֻשְׁתָּן “Neustã”; tinha “nome-Neustã”
+2KI 18:5	4	בָּטָ֑ח	confiou	claude	בָּטָח “confiou”; tinha “esperança”
+2KI 18:5	5	וְ/אַחֲרָ֞י/ו	e-depois-dele	claude	וְאַחֲרָיו “e depois dele”; tinha “depois-nem-dele”
+2KI 18:5	8	כָמֹ֗/הוּ	como-ele	claude	כָמֹהוּ “como ele”; tinha “como”
+2KI 18:5	14	לְ/פָנָֽי/ו	antes-dele	claude	לְפָנָיו “antes dele”; tinha “antes”
+2KI 18:6	1	וַ/יִּדְבַּק֙	e-se-apegou	claude	וַיִּדְבַּק “e se apegou”; tinha “e-perseguiram”
+2KI 18:6	5	מֵ/אַֽחֲרָ֑י/ו	de-após-ele	claude	מֵאַחֲרָיו “de após ele”; tinha “de-seguir-ele”
+2KI 18:6	6	וַ/יִּשְׁמֹר֙	e-guardou	claude	וַיִּשְׁמֹר “e guardou”; tinha “guardou”
+2KI 18:6	7	מִצְוֺתָ֔י/ו	seus-mandamentos	claude	מִצְוֺתָיו “seus mandamentos”; tinha “mandamentos”
+2KI 18:6	9	צִוָּ֥ה	ordenou	claude	צִוָּה “ordenou”; tinha “prescreveu”
+2KI 18:12	1	עַ֣ל	porquanto	claude	עַל “porquanto”; tinha “sobre”
+2KI 18:12	4	שָׁמְע֗וּ	ouviram	claude	שָׁמְעוּ “ouviram”; tinha “atendido”
+2KI 18:12	8	וַ/יַּעַבְרוּ֙	e-transgrediram	claude	וַיַּעַבְרוּ “e transgrediram”; tinha “antes-haviam-quebrado”
+2KI 18:12	10	בְּרִית֔/וֹ	seu-pacto	claude	בְּרִיתוֹ “seu pacto”; tinha “pacto-e”
+2KI 18:12	14	צִוָּ֔ה	mandara	claude	צִוָּה “mandara”; tinha “mandado”
+2KI 18:12	18	וְ/לֹ֥א	e-não	claude	וְלֹא “e não”; tinha “havia-nem”
+2KI 18:12	19	שָׁמְע֖וּ	ouviram	claude	שָׁמְעוּ “ouviram”; tinha “escutado”
+2KI 18:12	21	עָשֽׂוּ	fizeram	claude	עָשׂוּ “fizeram”; tinha “praticado”
+2KI 18:13	14	הַ/בְּצֻר֖וֹת	fortificadas	claude	הַבְּצֻרוֹת “fortificadas”; tinha “fortes-de”
+2KI 18:14	1	וַ/יִּשְׁלַ֣ח	e-mandou	claude	וַיִּשְׁלַח “e mandou”; tinha “mandou”
+2KI 18:14	8	לָכִ֨ישָׁ/ה	a-Laquis	claude	לָכִישָׁה “a Laquis”; tinha “Laquis”
+2KI 18:14	9	לֵ/אמֹ֤ר	dizendo	claude	לֵאמֹר “dizendo”; tinha “eu”
+2KI 18:14	11	שׁ֣וּב	retira-te	claude	שׁוּב “volta (retira-te)”; tinha “afasta-te”
+2KI 18:14	15	תִּתֵּ֥ן	puseres	claude	תִּתֵּן “puseres”; tinha “darás”
+2KI 18:14	17	אֶשָּׂ֑א	levarei	claude	אֶשָּׂא “levarei”; tinha “impuseres”
+2KI 18:14	18	וַ/יָּ֨שֶׂם	e-impôs	claude	וַיָּשֶׂם “e impôs”; tinha “e-pôs”
+2KI 18:15	1	וַ/יִּתֵּן֙	e-deu	claude	וַיִּתֵּן “e deu”; tinha “deu-portanto”
+2KI 18:15	7	בֵית	na-casa	claude	בֵית “na casa de”; tinha “casa”
+2KI 18:15	10	בֵּ֥ית	da-casa	claude	בֵּית “da casa de”; tinha “casa”
+2KI 18:15	11	הַ/מֶּֽלֶךְ	do-rei	claude	הַמֶּלֶךְ “do rei”; tinha “real”
+2KI 18:16	1	בָּ/עֵ֣ת	naquele-tempo	claude	בָּעֵת “naquele tempo”; tinha “então”
+2KI 18:16	2	הַ/הִ֗יא	aquele	claude	הַהִיא “aquele”; tinha “o-eliminada”
+2KI 18:16	3	קִצַּ֨ץ	cortou	claude	קִצַּץ “cortou”; tinha “desmontou”
+2KI 18:16	6	דַּלְת֨וֹת	as-portas	claude	דַּלְתוֹת “as portas de”; tinha “portas”
+2KI 18:16	7	הֵיכַ֤ל	do-templo	claude	הֵיכַל “do templo de”; tinha “templo”
+2KI 18:16	12	צִפָּ֔ה	cobrira	claude	צִפָּה “cobrira”; tinha “coberto”
+2KI 18:16	15	יְהוּדָ֑ה	Judá	claude	יְהוּדָה “Judá”; tinha “ouro”
+2KI 18:16	16	וַֽ/יִּתְּנֵ֖/ם	e-os-deu	claude	וַיִּתְּנֵם “e os deu”; tinha “e-deu”
+2KI 18:17	5	תַּרְתָּ֥ן	Tartã	claude	תַּרְתָּן “Tartã”; tinha “enviou”
+2KI 18:17	15	הַ/מֶּ֧לֶךְ	o-rei	claude	הַמֶּלֶךְ “o rei”; tinha “ao-rei”
+2KI 18:17	17	בְּ/חֵ֥יל	com-exército	claude	בְּחֵיל “com exército”; tinha “exército”
+2KI 18:17	19	יְרוּשָׁלִָ֑ם	a-Jerusalém	claude	יְרוּשָׁלִַם “a Jerusalém”; tinha “Jerusalém”
+2KI 18:17	23	וַ/יַּעֲל֣וּ	e-subiram	claude	וַיַּעֲלוּ “e subiram”; tinha “e-subido”
+2KI 18:17	24	וַ/יָּבֹ֗אוּ	e-vieram	claude	וַיָּבֹאוּ “e vieram”; tinha “havendo-vieram”
+2KI 18:17	28	הָֽ/עֶלְיוֹנָ֔ה	superior	claude	הָעֶלְיוֹנָה “superior”; tinha “de-acima”
+2KI 18:17	30	בִּ/מְסִלַּ֖ת	na-estrada	claude	בִּמְסִלַּת “na estrada de”; tinha “em-estrada”
+2KI 18:17	31	שְׂדֵ֥ה	do-campo	claude	שְׂדֵה “do campo de”; tinha “campo”
+2KI 18:17	32	כוֹבֵֽס	do-lavandeiro	claude	כוֹבֵס “do lavandeiro”; tinha “lavará”
+2KI 18:18	1	וַֽ/יִּקְרְאוּ֙	e-chamaram	claude	וַיִּקְרְאוּ “e chamaram”; tinha “chamaram-logo”
+2KI 18:18	10	עַל	era-sobre	claude	עַל “sobre”; tinha “sobre”
+2KI 18:18	11	הַ/בָּ֑יִת	a-casa	claude	הַבַּיִת “a casa”; tinha “era-mordomo”
+2KI 18:18	13	הַ/סֹּפֵ֔ר	o-escriba	claude	הַסֹּפֵר “o escriba”; tinha “escriba”
+2KI 18:19	17	הַ/זֶּ֖ה	esta	claude	הַזֶּה “esta”; tinha “o-hoje”
+2KI 18:19	19	בָּטָֽחְתָּ	confias	claude	בָּטָחְתָּ “confias”; tinha “estás”
+2KI 18:20	3	דְּבַר	palavra	claude	דְּבַר “palavra de”; tinha “palavras”
+2KI 18:20	6	וּ/גְבוּרָ֖ה	e-poder	claude	וּגְבוּרָה “e poder”; tinha “e-esforço”
+2KI 18:20	13	מָרַ֖דְתָּ	te-rebelaste	claude	מָרַדְתָּ “te rebelaste”; tinha “rebelaste”
+2KI 18:21	4	לְּ/ךָ֡	para-ti	claude	לְּךָ “para ti”; tinha “que-tu”
+2KI 18:21	7	הַ/קָּנֶ֨ה	da-cana	claude	הַקָּנֶה “da cana”; tinha “cana”
+2KI 18:21	9	הַ/זֶּה֙	esta	claude	הַזֶּה “esta”; tinha “o-hoje”
+2KI 18:21	13	יִסָּמֵ֥ךְ	se-apoiar	claude	יִסָּמֵךְ “se apoiar”; tinha “sustenta”
+2KI 18:21	16	וּ/בָ֥א	e-entrará	claude	וּבָא “e entrará”; tinha “entrará”
+2KI 18:21	18	וּ/נְקָבָ֑/הּ	e-a-furará	claude	וּנְקָבָהּ “e a furará”; tinha “e-blasfemar-a”
+2KI 18:21	24	הַ/בֹּטְחִ֖ים	os-que-confiam	claude	הַבֹּטְחִים “os que confiam”; tinha “confiam”
+2KI 18:22	14	בָּמֹתָ֣י/ו	seus-altos	claude	בָּמֹתָיו “seus altos”; tinha “altos”
+2KI 18:22	16	מִזְבְּחֹתָ֔י/ו	seus-altares	claude	מִזְבְּחֹתָיו “seus altares”; tinha “altares”
+2KI 18:22	21	הַ/מִּזְבֵּ֣חַ	o-altar	claude	הַמִּזְבֵּחַ “o altar”; tinha “deste-altar”
+2KI 18:22	22	הַ/זֶּ֔ה	este	claude	הַזֶּה “este”; tinha “o-hoje”
+2KI 18:23	1	וְ/עַתָּה֙	e-agora	claude	וְעַתָּה “e agora”; tinha “portanto-agora”
+2KI 18:23	2	הִתְעָ֣רֶב	dá-reféns	claude	הִתְעָרֶב “dá reféns”; tinha “reféns”
+2KI 18:23	3	נָ֔א	agora	claude	נָא “agora”; tinha “rogo”
+2KI 18:23	9	וְ/אֶתְּנָ֤ה	e-darei	claude	וְאֶתְּנָה “e darei”; tinha “e-eu”
+2KI 18:23	10	לְ/ךָ֙	a-ti	claude	לְךָ “a ti”; tinha “para-ti”
+2KI 18:23	11	אַלְפַּ֣יִם	dois-mil	claude	אַלְפַּיִם “dois mil”; tinha “mil”
+2KI 18:23	16	לְ/ךָ֖	de-tua-parte	claude	לְךָ “de tua parte”; tinha “para-ti”
+2KI 18:24	1	וְ/אֵ֣יךְ	e-como	claude	וְאֵיךְ “e como”; tinha “como-pois”
+2KI 18:24	2	תָּשִׁ֗יב	farás-voltar	claude	תָּשִׁיב “farás voltar”; tinha “virar”
+2KI 18:24	4	פְּנֵ֨י	o-rosto	claude	פְּנֵי “o rosto de”; tinha “rosto”
+2KI 18:24	5	פַחַ֥ת	de-um-capitão	claude	פַחַת “um capitão de”; tinha “capitão”
+2KI 18:24	7	עַבְדֵ֥י	dos-servos	claude	עַבְדֵי “dos servos de”; tinha “servos”
+2KI 18:24	9	הַ/קְּטַנִּ֑ים	menores	claude	הַקְּטַנִּים “menores”; tinha “o-menor”
+2KI 18:24	10	וַ/תִּבְטַ֤ח	e-confias	claude	וַתִּבְטַח “e confias”; tinha “confiantes”
+2KI 18:24	14	לְ/רֶ֖כֶב	por-carros	claude	לְרֶכֶב “por carros”; tinha “por-seus-carros”
+2KI 18:24	15	וּ/לְ/פָרָשִֽׁים	e-cavaleiros	claude	וּלְפָרָשִׁים “e cavaleiros”; tinha “e-seus-cavaleiros”
