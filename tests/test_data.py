@@ -109,6 +109,17 @@ def test_hundred_without_alignment_is_not_another_number(db):
     assert all(re.search(r"(^|-)(cem|centos|duzentos)$", g) for (g,) in rest), rest
 
 
+def test_demonstrative_with_article_without_alignment(db):
+    """הַזֶּה, הַזֹּאת, הָאֵלֶּה, הַהוּא… without an alignment: "este/esta/estes/aquele…", not "o-hoje" (the most common
+    translation of הַזֶּה, from "este dia"), "o-esta" (the article before the demonstrative) nor "o-será"."""
+    rest = db.execute(
+        "SELECT gloss FROM words WHERE strong IN ('H2088', 'H2063', 'H428', 'H1931', 'H1992', 'H2007') AND prefixes LIKE '%d%'"
+        " AND gloss_source='lexico'"
+    ).fetchall()
+    assert rest
+    assert all(re.search(r"(^|-)(n|d)?(est|aquel)(e|a|es|as)$", g) for (g,) in rest), rest
+
+
 def test_gloss_corrections_applied(db):
     """Cada linha de data/corrections/glosses.tsv tem de estar no banco com glosa_fonte = revisada."""
     import csv

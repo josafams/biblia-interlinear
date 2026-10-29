@@ -1,7 +1,7 @@
 {
  "books": {
   "1CH": {
-   "glosses": "1dfe426f747043aa",
+   "glosses": "4f39d241ccf50120",
    "words": 10749
   },
   "1CO": {
@@ -13,7 +13,7 @@
    "words": 2137
   },
   "1KI": {
-   "glosses": "747a9dc49a09cf90",
+   "glosses": "4f9a515312c260c6",
    "words": 13140
   },
   "1PE": {
@@ -21,7 +21,7 @@
    "words": 1678
   },
   "1SA": {
-   "glosses": "31e017085ade4026",
+   "glosses": "bacbb716d738f3e9",
    "words": 13262
   },
   "1TH": {
@@ -33,7 +33,7 @@
    "words": 1591
   },
   "2CH": {
-   "glosses": "fbabd7c19cb85a52",
+   "glosses": "049f4dba471239cc",
    "words": 13315
   },
   "2CO": {
@@ -45,7 +45,7 @@
    "words": 245
   },
   "2KI": {
-   "glosses": "64ba06cb1d927b34",
+   "glosses": "60a20d30d800fdde",
    "words": 12281
   },
   "2PE": {
@@ -53,7 +53,7 @@
    "words": 1098
   },
   "2SA": {
-   "glosses": "e1c2de1d3a17b6ec",
+   "glosses": "b2e9d0a2961d967d",
    "words": 11040
   },
   "2TH": {
@@ -73,7 +73,7 @@
    "words": 18412
   },
   "AMO": {
-   "glosses": "6d96f6213b3cd899",
+   "glosses": "09311df272602a02",
    "words": 2042
   },
   "COL": {
@@ -81,15 +81,15 @@
    "words": 1580
   },
   "DAN": {
-   "glosses": "f5d03a5cc5e9bf67",
+   "glosses": "a15d974d451c8161",
    "words": 5919
   },
   "DEU": {
-   "glosses": "d0b937f1fe4a8fdb",
+   "glosses": "149912939b636e4f",
    "words": 14295
   },
   "ECC": {
-   "glosses": "ed5b4e93037cdbbc",
+   "glosses": "6c30c9d4b35ab7de",
    "words": 2987
   },
   "EPH": {
@@ -97,19 +97,19 @@
    "words": 2416
   },
   "EST": {
-   "glosses": "31044ccab6c5e24b",
+   "glosses": "729362060d6d4508",
    "words": 3045
   },
   "EXO": {
-   "glosses": "56a3ee8a713036f0",
+   "glosses": "3be55f6d3c55d255",
    "words": 16714
   },
   "EZK": {
-   "glosses": "f2ab2d176fbd375e",
+   "glosses": "5dd52f31b6447a61",
    "words": 18732
   },
   "EZR": {
-   "glosses": "5e16511bbe308200",
+   "glosses": "d7dff66332f453f6",
    "words": 3754
   },
   "GAL": {
@@ -117,7 +117,7 @@
    "words": 2226
   },
   "GEN": {
-   "glosses": "d5cada3f61401867",
+   "glosses": "5856a7be4677b3e0",
    "words": 20613
   },
   "HAB": {
@@ -125,7 +125,7 @@
    "words": 671
   },
   "HAG": {
-   "glosses": "fcf6cf64afc85b41",
+   "glosses": "73e52f4075228611",
    "words": 600
   },
   "HEB": {
@@ -133,11 +133,11 @@
    "words": 4935
   },
   "HOS": {
-   "glosses": "115fec5552ffd0f5",
+   "glosses": "b0115a92115ef1df",
    "words": 2381
   },
   "ISA": {
-   "glosses": "a3acbe4d7b6c09f1",
+   "glosses": "e61fec1241719b55",
    "words": 16933
   },
   "JAS": {
@@ -145,11 +145,11 @@
    "words": 1739
   },
   "JDG": {
-   "glosses": "26c3678bd05cef78",
+   "glosses": "5b3df1d983762754",
    "words": 9884
   },
   "JER": {
-   "glosses": "cc226ff073eff67f",
+   "glosses": "6200de5913e60396",
    "words": 21837
   },
   "JHN": {
@@ -157,19 +157,19 @@
    "words": 15438
   },
   "JOB": {
-   "glosses": "009f89622d956afd",
+   "glosses": "e1e1fb7594039c37",
    "words": 8345
   },
   "JOL": {
-   "glosses": "782e080af292bbb4",
+   "glosses": "002b3a51eba7b108",
    "words": 957
   },
   "JON": {
-   "glosses": "99c4cd6351d3edbf",
+   "glosses": "4557d7239ff7c14a",
    "words": 688
   },
   "JOS": {
-   "glosses": "940068c92c5f549c",
+   "glosses": "8d76d907182e0dae",
    "words": 10051
   },
   "JUD": {
@@ -181,7 +181,7 @@
    "words": 1540
   },
   "LEV": {
-   "glosses": "09b5436023110a25",
+   "glosses": "9217685b258bbe4d",
    "words": 11950
   },
   "LUK": {
@@ -189,7 +189,7 @@
    "words": 19446
   },
   "MAL": {
-   "glosses": "a2a90c857038e7a6",
+   "glosses": "739d2d5383ef69dc",
    "words": 876
   },
   "MAT": {
@@ -197,7 +197,7 @@
    "words": 18329
   },
   "MIC": {
-   "glosses": "8d5e1bd46f2f2004",
+   "glosses": "bc76778f34f7f4af",
    "words": 1396
   },
   "MRK": {
@@ -209,15 +209,15 @@
    "words": 558
   },
   "NEH": {
-   "glosses": "7f72b2e031603f38",
+   "glosses": "f76c552eaae17360",
    "words": 5313
   },
   "NUM": {
-   "glosses": "1e8f67c57bc19c8b",
+   "glosses": "117d57da5e3cf8e6",
    "words": 16413
   },
   "OBA": {
-   "glosses": "2fe29a1890a03951",
+   "glosses": "a2c87a2dafc94064",
    "words": 291
   },
   "PHM": {
@@ -233,7 +233,7 @@
    "words": 6915
   },
   "PSA": {
-   "glosses": "49116b39b3ba5c4e",
+   "glosses": "db74a4cea976a42a",
    "words": 19589
   },
   "REV": {
@@ -245,7 +245,7 @@
    "words": 7108
   },
   "RUT": {
-   "glosses": "de017b5fc85b2229",
+   "glosses": "0af6befd81172047",
    "words": 1294
   },
   "SNG": {
@@ -257,11 +257,11 @@
    "words": 659
   },
   "ZEC": {
-   "glosses": "c35f91dfcc7b18ae",
+   "glosses": "7fb95677cc751708",
    "words": 3128
   },
   "ZEP": {
-   "glosses": "7922ed321f057fdb",
+   "glosses": "887b13f392c2d206",
    "words": 767
   }
  },

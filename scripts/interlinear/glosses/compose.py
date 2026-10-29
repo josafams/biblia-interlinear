@@ -202,6 +202,10 @@ def compose(item_list, links, lang=PT):
     return res, counts, spans
 
 
+# זֶה, זֹאת, אֵלֶּה ("this") and the pronouns הוּא, הִיא, הֵם, הֵנָּה ("he", "that" with the article)
+DEMONSTRATIVES = {"h2088": "this", "h2063": "this", "h428": "this", "h1931": "that", "h1992": "that", "h2007": "that"}
+
+
 def preferred_translation(tally):
     """Tradução mais frequente."""
     return tally.most_common(1)[0][0] if tally else None
@@ -239,6 +243,13 @@ def complete(res, counts, lang=PT):
         if root_tok == "h3967":  # מֵאָה, "hundred": not the number of another verse (morph HAc?[spd]? = its number)
             pre = [lang.pre_h.get(t, "") for tp, t in toks if tp == "pre"]
             item[1] = lang.contract("-".join([p for p in pre if p] + [lang.hundred.get(morph[-2:-1], lang.hundred["s"])]))
+            item[2] = "lexico"
+            continue
+        pre = [t for tp, t in toks if tp == "pre"]
+        if root_tok in DEMONSTRATIVES and "p_d" in pre:  # הַזֶּה: "este", not "o-hoje"
+            words = lang.this if DEMONSTRATIVES[root_tok] == "this" else lang.that
+            pieces = [lang.pre_h.get(t, "") for t in pre if t != "p_d"]
+            item[1] = lang.contract("-".join([p for p in pieces if p] + [words.get(morph[-2:], words["ms"])]))
             item[2] = "lexico"
             continue
         if language == "G" and morph.startswith("RA"):

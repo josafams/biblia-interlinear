@@ -30,6 +30,12 @@ class GlossLanguage:
     # מֵאָה (H3967) when nothing is aligned, by number (singular, plural, dual = 200). The most common translation
     # would be a whole number ("seiscentos"), wrong in every verse with another one.
     hundred: dict[str, str] = field(default_factory=lambda: {"s": "cem", "p": "centos", "d": "duzentos"})
+    # הַזֶּה "this", הַהוּא "that" (a pronoun with the article) when nothing is aligned, by gender and number. The
+    # article goes with the demonstrative, and the most common translation of הַזֶּה is "hoje" (from "este dia").
+    this: dict[str, str] = field(default_factory=lambda: {"ms": "este", "fs": "esta", "mp": "estes", "fp": "estas", "cp": "estes"})
+    that: dict[str, str] = field(
+        default_factory=lambda: {"ms": "aquele", "fs": "aquela", "mp": "aqueles", "fp": "aquelas", "cp": "aqueles"}
+    )
     extra: dict = field(default_factory=dict)
 
     def suffix(self, tok, morph):
@@ -76,4 +82,6 @@ EN = GlossLanguage(
     texts_sql="SELECT book, chapter, verse, text FROM translated_verses WHERE locale = 'en'",
     lexicon_meaning="en",
     hundred={"s": "hundred", "p": "hundreds", "d": "two-hundred"},
+    this={"ms": "this", "fs": "this", "mp": "these", "fp": "these", "cp": "these"},
+    that={"ms": "that", "fs": "that", "mp": "those", "fp": "those", "cp": "those"},
 )
