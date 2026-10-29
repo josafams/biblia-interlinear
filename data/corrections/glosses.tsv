@@ -4810,3 +4810,100 @@ DAN 12:10	8	יָבִ֖ינוּ	entenderão	claude	יָבִינוּ “entenderã
 DAN 12:10	9	כָּל	todos	claude	כָּל “todos”; tinha “nenhum”
 DAN 12:10	10	רְשָׁעִ֑ים	os-ímpios	claude	רְשָׁעִים “os ímpios”; tinha “maus”
 DAN 12:10	11	וְ/הַ/מַּשְׂכִּלִ֖ים	e-os-sábios	claude	וְהַמַּשְׂכִּלִים “e os sábios”; tinha “porém-os-sábios”
+HOS 4:3	5	וְ/אֻמְלַל֙	e-desfalecerá	claude	וְאֻמְלַל “e desfalecerá”; tinha “lamentará-e”
+HOS 4:3	7	יוֹשֵׁ֣ב	o-que-habita	claude	יוֹשֵׁב “o que habita”; tinha “morar”
+HOS 4:3	8	בָּ֔/הּ	nela	claude	בָּהּ “nela”; tinha “nela-desfalecerá”
+HOS 4:3	11	וּ/בְ/ע֣וֹף	e-com-as-aves	claude	וּבְעוֹף “e com as aves (de)”; tinha “e-as-aves”
+HOS 4:3	14	דְּגֵ֥י	os-peixes	claude	דְּגֵי “os peixes (de)”; tinha “peixes”
+HOS 4:3	16	יֵאָסֵֽפוּ	serão-tirados	claude	יֵאָסֵפוּ “serão tirados, recolhidos”; tinha “morrerão”
+HOS 5:9	2	לְ/שַׁמָּ֣ה	em-desolação	claude	לְשַׁמָּה “em desolação”; tinha “será-desolado”
+HOS 5:9	5	תּֽוֹכֵחָ֑ה	do-castigo	claude	תּוֹכֵחָה “do castigo”; tinha “castigo”
+HOS 5:9	8	הוֹדַ֖עְתִּי	fiz-saber	claude	הוֹדַעְתִּי “fiz saber”; tinha “saber”
+HOS 5:9	9	נֶאֱמָנָֽה	o-que-é-certo	claude	נֶאֱמָנָה “o que é certo”; tinha “acontecerá”
+HOS 6:9	1	וּ/כְ/חַכֵּ֨י	e-como-espreitam	claude	וּכְחַכֵּי “e como espreitam”; tinha “espera”
+HOS 6:9	2	אִ֜ישׁ	a-um-homem	claude	אִישׁ “a um homem”; tinha “homem”
+HOS 6:9	3	גְּדוּדִ֗ים	bandos	claude	גְּדוּדִים “bandos (de assaltantes)”; tinha “assim”
+HOS 6:9	4	חֶ֚בֶר	o-bando	claude	חֶבֶר “o bando (de)”; tinha “grupo”
+HOS 6:9	5	כֹּֽהֲנִ֔ים	de-sacerdotes	claude	כֹּהֲנִים “de sacerdotes”; tinha “sacerdotes”
+HOS 6:9	6	דֶּ֖רֶךְ	no-caminho	claude	דֶּרֶךְ “no caminho”; tinha “caminho”
+HOS 6:9	8	שֶׁ֑כְמָ/ה	para-Siquém	claude	שֶׁכְמָה “para Siquém”; tinha “Siquém”
+HOS 6:9	9	כִּ֥י	pois	claude	כִּי “pois”; tinha “porque”
+HOS 6:9	10	זִמָּ֖ה	infâmia	claude	זִמָּה “infâmia, abominação”; tinha “praticam”
+HOS 6:9	11	עָשֽׂוּ	fazem	claude	עָשׂוּ “fazem”; tinha “praticam-abominações”
+HOS 6:11	3	שָׁ֥ת	está-posta	claude	שָׁת “está posta”; tinha “há”
+HOS 6:11	6	בְּ/שׁוּבִ֖/י	quando-eu-fizer-voltar	claude	בְּשׁוּבִי “quando eu fizer voltar”; tinha “quando-eu-restaurar”
+HOS 6:11	7	שְׁב֥וּת	o-cativeiro	claude	שְׁבוּת “o cativeiro (de)”; tinha “restaurar”
+HOS 8:5	1	זָנַח֙	rejeitou	claude	זָנַח “rejeitou”; tinha “rejeitado”
+HOS 8:5	3	שֹֽׁמְר֔וֹן	ó-Samaria	claude	שֹׁמְרוֹן “ó Samaria”; tinha “Samaria”
+HOS 8:5	4	חָרָ֥ה	acendeu-se	claude	חָרָה “acendeu-se”; tinha “ira”
+HOS 8:5	10	יוּכְל֖וּ	poderão	claude	יוּכְלוּ “poderão”; tinha “suportarão”
+HOS 8:5	11	נִקָּיֹֽן	inocência	claude	נִקָּיֹן “inocência, pureza”; tinha “pureza”
+HOS 8:7	4	וְ/סוּפָ֣תָ/ה	e-tempestade	claude	וְסוּפָתָה “e tempestade”; tinha “vento-tempestade”
+HOS 8:7	6	קָמָ֣ה	seara	claude	קָמָה “seara”; tinha “tempestade”
+HOS 8:7	8	ל֗/וֹ	a-ela	claude	לוֹ “a ela”; tinha “a”
+HOS 8:7	9	צֶ֚מַח	espiga	claude	צֶמַח “espiga, broto”; tinha “produção”
+HOS 8:7	11	יַֽעֲשֶׂה	fará	claude	יַעֲשֶׂה “fará, dará”; tinha “dará”
+HOS 10:4	3	אָל֥וֹת	jurando	claude	אָלוֹת “jurando”; tinha “jurando-falsamente”
+HOS 10:4	5	כָּרֹ֣ת	fazendo	claude	כָּרֹת “fazendo (cortando)”; tinha “faltará”
+HOS 10:4	6	בְּרִ֑ית	aliança	claude	בְּרִית “aliança”; tinha “pactos”
+HOS 10:4	7	וּ/פָרַ֤ח	e-brota	claude	וּפָרַח “e brota”; tinha “brota”
+HOS 10:4	8	כָּ/רֹאשׁ֙	como-erva-venenosa	claude	כָּרֹאשׁ “como erva venenosa”; tinha “disputa”
+HOS 10:4	9	מִשְׁפָּ֔ט	o-juízo	claude	מִשְׁפָּט “o juízo, a disputa judicial”; tinha “erva”
+HOS 10:4	11	תַּלְמֵ֥י	os-sulcos	claude	תַּלְמֵי “os sulcos (de)”; tinha “sulcos”
+HOS 10:4	12	שָׂדָֽי	do-campo	claude	שָׂדָי “do campo”; tinha “campos”
+HOS 11:10	1	אַחֲרֵ֧י	após	claude	אַחֲרֵי “após”; tinha “depois”
+HOS 11:10	3	יֵלְכ֖וּ	andarão	claude	יֵלְכוּ “andarão”; tinha “seguirão”
+HOS 11:10	9	וְ/יֶחֶרְד֥וּ	e-acorrerão-tremendo	claude	וְיֶחֶרְדוּ “e acorrerão tremendo”; tinha “virão-tremendo”
+HOS 13:15	1	כִּ֣י	pois	claude	כִּי “pois, ainda que”; tinha “que”
+HOS 13:15	3	בֵּ֥ן	filho	claude	בֵּן “filho (o mais fértil)”; tinha “entre”
+HOS 13:15	5	יַפְרִ֑יא	frutifique	claude	יַפְרִיא “frutifique”; tinha “virá”
+HOS 13:15	6	יָב֣וֹא	virá	claude	יָבוֹא “virá”; tinha “virá-o”
+HOS 13:15	7	קָדִים֩	o-oriental	claude	קָדִים “o (vento) oriental”; tinha “oriental”
+HOS 13:15	12	וְ/יֵב֤וֹשׁ	e-secará	claude	וְיֵבוֹשׁ “e secará”; tinha “e-envergonhados”
+HOS 13:15	14	וְ/יֶחֱרַ֣ב	e-se-esgotará	claude	וְיֶחֱרַב “e se esgotará”; tinha “secará”
+HOS 13:15	15	מַעְיָנ֔/וֹ	seu-manancial	claude	מַעְיָנוֹ “seu manancial”; tinha “secará-ele”
+HOS 13:15	20	כְּלִ֥י	objeto	claude	כְּלִי “objeto, vaso”; tinha “vaso”
+HOS 14:4	1	אֶרְפָּא֙	curarei	claude	אֶרְפָּא “curarei”; tinha “eu”
+HOS 14:4	2	מְשׁ֣וּבָתָ֔/ם	sua-rebelião	claude	מְשׁוּבָתָם “sua rebelião”; tinha “rebelião-eu”
+HOS 14:4	6	שָׁ֥ב	voltou	claude	שָׁב “voltou, se afastou”; tinha “minha”
+JOL 2:16	10	שָׁדָ֑יִם	os-peitos	claude	שָׁדָיִם “os peitos”; tinha “mamam”
+JOL 2:16	13	מֵֽ/חֶדְר֔/וֹ	de-sua-câmara	claude	מֵחֶדְרוֹ “de sua câmara”; tinha “de-seu-cômodo”
+JOL 2:16	15	מֵ/חֻפָּתָֽ/הּ	de-seu-tálamo	claude	מֵחֻפָּתָהּ “de seu tálamo”; tinha “de-seu-quarto”
+JOL 2:26	2	אָכוֹל֙	comendo	claude	אָכוֹל “comendo” (infinitivo que reforça: comereis fartamente); tinha “comereis-abundantemente”
+JOL 2:26	3	וְ/שָׂב֔וֹעַ	e-fartando-vos	claude	וְשָׂבוֹעַ “e fartando-vos”; tinha “até-vos-saciar”
+JOL 2:26	11	עִמָּ/כֶ֖ם	convosco	claude	עִמָּכֶם “convosco”; tinha “com-vós”
+JOL 2:26	12	לְ/הַפְלִ֑יא	maravilhosamente	claude	לְהַפְלִיא “maravilhosamente”; tinha “maravilhas”
+JOL 2:26	13	וְ/לֹא	e-não	claude	וְלֹא “e não”; tinha “e-nunca”
+JOL 2:26	14	יֵבֹ֥שׁוּ	será-envergonhado	claude	יֵבֹשׁוּ “será envergonhado”; tinha “envergonhado”
+JOL 2:26	16	לְ/עוֹלָֽם	para-sempre	claude	לְעוֹלָם “para sempre”; tinha “será-envergonhado”
+JOL 3:4	4	לִ/י֙	a-mim	claude	לִי “a mim”; tinha “a-ver-comigo”
+JOL 3:4	10	הַ/גְּמ֗וּל	acaso-a-retribuição	claude	הַגְּמוּל “acaso a retribuição”; tinha “quereis”
+JOL 3:4	12	מְשַׁלְּמִ֣ים	estais-pagando	claude	מְשַׁלְּמִים “estais pagando”; tinha “vingar”
+JOL 3:4	13	עָלָ֔/י	a-mim	claude	עָלָי “a mim”; tinha “sobre-mim”
+JOL 3:4	15	גֹּמְלִ֤ים	retribuís	claude	גֹּמְלִים “retribuís”; tinha “quereis”
+JOL 3:4	17	עָלַ֔/י	a-mim	claude	עָלַי “a mim”; tinha “sobre-mim”
+JOL 3:4	18	קַ֣ל	depressa	claude	קַל “depressa”; tinha “apressadamente”
+JOL 3:4	19	מְהֵרָ֔ה	rapidamente	claude	מְהֵרָה “rapidamente”; tinha “vos”
+JOL 3:4	20	אָשִׁ֥יב	farei-voltar	claude	אָשִׁיב “farei voltar”; tinha “retribuirei”
+JOL 3:4	21	גְּמֻלְ/כֶ֖ם	vossa-retribuição	claude	גְּמֻלְכֶם “vossa retribuição”; tinha “pagamento”
+JOL 3:13	1	שִׁלְח֣וּ	lançai	claude	שִׁלְחוּ “lançai”; tinha “lançai-a”
+JOL 3:13	4	בָשַׁ֖ל	amadureceu	claude	בָשַׁל “amadureceu”; tinha “cozida”
+JOL 3:13	9	מָ֣לְאָה	está-cheio	claude	מָלְאָה “está cheio”; tinha “cheio”
+JOL 3:13	10	גַּ֔ת	o-lagar	claude	גַּת “o lagar”; tinha “tanques”
+JOL 3:13	12	הַ/יְקָבִ֔ים	os-tanques	claude	הַיְקָבִים “os tanques”; tinha “os-transbordam”
+AMO 2:8	3	חֲבֻלִים֙	penhoradas	claude	חֲבֻלִים “penhoradas”; tinha “penhor”
+AMO 2:8	4	יַטּ֔וּ	se-estendem	claude	יַטּוּ “se estendem, se deitam”; tinha “tomadas”
+AMO 2:8	8	וְ/יֵ֤ין	e-o-vinho	claude	וְיֵין “e o vinho (de)”; tinha “vinho-tomado”
+AMO 2:8	9	עֲנוּשִׁים֙	dos-multados	claude	עֲנוּשִׁים “dos multados”; tinha “tomado”
+AMO 2:8	11	בֵּ֖ית	na-casa	claude	בֵּית “na casa (de)”; tinha “casa”
+AMO 3:13	7	יְהוִ֖ה	DEUS	claude	יְהוִה “DEUS”; tinha “Deus”
+AMO 5:3	7	הַ/יֹּצֵ֥את	que-sai	claude	הַיֹּצֵאת “que sai”; tinha “que-enviou”
+AMO 5:3	9	תַּשְׁאִ֣יר	ficará-com	claude	תַּשְׁאִיר “ficará com”; tinha “sobrará”
+AMO 5:3	10	מֵאָ֑ה	cem	claude	מֵאָה “cem”; tinha “soldados”
+AMO 5:3	11	וְ/הַ/יּוֹצֵ֥את	e-a-que-sai	claude	וְהַיּוֹצֵאת “e a que sai”; tinha “e-a-que-enviou”
+AMO 5:3	13	תַּשְׁאִ֥יר	ficará-com	claude	תַּשְׁאִיר “ficará com”; tinha “sobrará”
+AMO 5:16	7	אֲדֹנָ֔/י	o-Senhor	claude	אֲדֹנָי “o Senhor”; tinha “Senhor”
+AMO 5:16	19	אֵ֔בֶל	o-luto	claude	אֵבֶל “o luto”; tinha “choro”
+AMO 5:16	20	וּ/מִסְפֵּ֖ד	e-pranto	claude	וּמִסְפֵּד “e pranto”; tinha “prantear-lamento”
+AMO 5:16	22	י֥וֹדְעֵי	os-que-sabem	claude	יוֹדְעֵי “os que sabem”; tinha “sabem”
+AMO 5:16	23	נֶֽהִי	lamentar	claude	נֶהִי “lamentar, lamento”; tinha “prantear”
