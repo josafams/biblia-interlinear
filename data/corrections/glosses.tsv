@@ -5732,3 +5732,99 @@ PHP 1:27	25	μιᾷ	uma	claude	μιᾷ “uma”; tinha “um”
 PHP 1:27	26	ψυχῇ	alma	claude	ψυχῇ “alma (ânimo)”; tinha “ânimo”
 PHP 1:27	27	συναθλοῦντες	combatendo-juntos	claude	συναθλοῦντες “combatendo juntos”; tinha “combatendo”
 PHP 1:27	28	τῇ	pela	claude	τῇ “pela”; tinha “à”
+PHP 2:2	5	ἵνα	para-que	claude	ἵνα “para que”; tinha “que”
+PHP 2:2	6	τὸ	o	claude	τὸ “o”; tinha “da”
+PHP 2:2	8	φρονῆτε,	penseis	claude	φρονῆτε “penseis”; tinha “mesma-maneira”
+PHP 2:2	13	σύμψυχοι,	unânimes	claude	σύμψυχοι “unânimes, unidos de alma”; tinha “unidos-ânimo”
+PHP 2:2	14	τὸ	o	claude	τὸ “o”; tinha “de”
+PHP 2:2	16	φρονοῦντες,	pensando	claude	φρονοῦντες “pensando”; tinha “pensar”
+PHP 2:13	14	ὑπὲρ	segundo	claude	ὑπὲρ “segundo, por”; tinha “por”
+PHP 2:13	15	τῆς	a	claude	τῆς “a”; tinha “da”
+PHP 2:13	16	εὐδοκίας.	boa-vontade	claude	εὐδοκίας “boa vontade”; tinha “boa”
+PHP 3:5	1	περιτομῇ	na-circuncisão	claude	περιτομῇ “na circuncisão”; tinha “oitavo”
+PHP 3:5	2	ὀκταήμερος,	de-oito-dias	claude	ὀκταήμερος “de oito dias”; tinha “oitavo-dia”
+PHP 4:2	6	τὸ	o	claude	τὸ “o”; tinha “a”
+PHP 4:2	8	φρονεῖν	pensarem	claude	φρονεῖν “pensarem”; tinha “mesma-mentalidade”
+COL 1:22	3	ἀποκατηλλάγητε	vos-reconciliou	claude	ἀποκατηλλάγητε “vos reconciliou (fostes reconciliados)”; tinha “reconciliar”
+COL 1:22	5	τῷ	o	claude	τῷ “o”; tinha “ao”
+COL 1:22	7	τῆς	da	claude	τῆς “da”; tinha “de”
+COL 1:22	11	τοῦ	a	claude	τοῦ “a”; tinha “do”
+COL 1:22	17	ἀμώμους	irrepreensíveis	claude	ἀμώμους “irrepreensíveis”; tinha “irrepreensíveis-inculpáveis”
+COL 1:22	19	ἀνεγκλήτους	inculpáveis	claude	ἀνεγκλήτους “inculpáveis”; tinha “irrepreensíveis”
+COL 2:15	1	ἀπεκδυσάμενος	tendo-despojado	claude	ἀπεκδυσάμενος “tendo despojado”; tinha “despojou”
+COL 2:15	7	ἐδειγμάτισεν	expôs-publicamente	claude	ἐδειγμάτισεν “expôs publicamente”; tinha “publicamente”
+COL 2:15	9	παρρησίᾳ,	ousadia	claude	παρρησίᾳ “ousadia, publicidade”; tinha “triunfou”
+COL 2:15	10	θριαμβεύσας	triunfando	claude	θριαμβεύσας “triunfando”; tinha “sobre”
+COL 2:15	13	αὐτῷ.	nela	claude	αὐτῷ “nela (nele)”; tinha “lhe”
+1TH 4:4	1	εἰδέναι	saber	claude	εἰδέναι “saber”; tinha “saibais”
+1TH 4:4	2	ἕκαστον	cada-um	claude	ἕκαστον “cada um”; tinha “cada”
+1TH 4:4	5	ἑαυτοῦ	seu	claude	ἑαυτοῦ “seu (de si)”; tinha “si”
+1TH 4:4	6	σκεῦος	vaso	claude	σκεῦος “vaso, instrumento”; tinha “seu-instrumento”
+1TH 4:4	7	κτᾶσθαι	possuir	claude	κτᾶσθαι “possuir”; tinha “instrumento”
+1TH 4:11	2	φιλοτιμεῖσθαι	procurar	claude	φιλοτιμεῖσθαι “procurar (com empenho)”; tinha “procurai-viver-quietos”
+1TH 4:11	3	ἡσυχάζειν	viver-quietos	claude	ἡσυχάζειν “viver quietos”; tinha “viver-trantando”
+1TH 4:11	5	πράσσειν	tratar	claude	πράσσειν “tratar, fazer”; tinha “trantando”
+1TH 4:11	6	τὰ	as-coisas	claude	τὰ “as coisas”; tinha “dos”
+1TH 4:11	9	ἐργάζεσθαι	trabalhar	claude	ἐργάζεσθαι “trabalhar”; tinha “trabalhando”
+1TH 4:11	12	ὑμῶν,	vossas	claude	ὑμῶν “vossas”; tinha “vós”
+1TH 5:23	1	Αὐτὸς	mesmo	claude	Αὐτὸς “mesmo, próprio”; tinha “ele”
+1TH 5:23	9	ὁλοτελεῖς,	completamente	claude	ὁλοτελεῖς “completamente”; tinha “santifique-em-tudo”
+1TH 5:23	11	ὁλόκληρον	inteiro	claude	ὁλόκληρον “inteiro”; tinha “todo”
+1TH 5:23	21	ἀμέμπτως	irrepreensivelmente	claude	ἀμέμπτως “irrepreensivelmente”; tinha “preservados-irrepreensíveis”
+1TH 5:23	30	τηρηθείη.	seja-guardado	claude	τηρηθείη “seja guardado”; tinha “guarda”
+2TH 1:9	1	οἵτινες	os-quais	claude	οἵτινες “os quais”; tinha “quais”
+2TH 1:9	2	δίκην	castigo	claude	δίκην “castigo, pena”; tinha “serão-punidos”
+2TH 1:9	3	τίσουσιν	pagarão	claude	τίσουσιν “pagarão”; tinha “punidos”
+2TH 1:9	12	τῆς	a	claude	τῆς “a”; tinha “da”
+1TI 3:2	1	δεῖ	é-necessário	claude	δεῖ “é necessário”; tinha “dever”
+1TI 3:2	5	ἀνεπίλημπτον	irrepreensível	claude	ἀνεπίλημπτον “irrepreensível”; tinha “mancha-repreensão”
+1TI 3:2	10	νηφάλιον,	sóbrio	claude	νηφάλιον “sóbrio”; tinha “irrepreensível”
+1TI 3:2	11	σώφρονα,	prudente	claude	σώφρονα “prudente, comedido”; tinha “comedido”
+1TI 3:2	12	κόσμιον,	decente	claude	κόσμιον “decente”; tinha “comedido-decente”
+1TI 3:2	14	διδακτικόν,	apto-para-ensinar	claude	διδακτικόν “apto para ensinar”; tinha “apto”
+2TI 2:22	1	τὰς	os	claude	τὰς “os”; tinha “dos”
+2TI 2:22	3	νεωτερικὰς	juvenis	claude	νεωτερικὰς “juvenis”; tinha “dos”
+2TI 2:22	5	φεῦγε,	foge	claude	φεῦγε “foge”; tinha “segue”
+2TI 2:22	6	δίωκε	segue	claude	δίωκε “segue”; tinha “segue-a”
+2TI 2:22	14	ἐπικαλουμένων	que-invocam	claude	ἐπικαλουμένων “que invocam”; tinha “invocam”
+TIT 1:7	1	δεῖ	é-necessário	claude	δεῖ “é necessário”; tinha “deve”
+TIT 1:7	9	οἰκονόμον,	despenseiro	claude	οἰκονόμον “despenseiro, administrador”; tinha “arrogante”
+TIT 1:7	12	μὴ	não	claude	μὴ “não”; tinha “que”
+TIT 1:7	13	ὀργίλον,	irascível	claude	ὀργίλον “irascível”; tinha “facilmente”
+TIT 1:7	15	πάροινον,	dado-ao-vinho	claude	πάροινον “dado ao vinho”; tinha “facilmente-beberrão”
+TIT 1:7	17	πλήκτην,	violento	claude	πλήκτην “violento, agressivo”; tinha “beberrão-agressivo”
+TIT 1:7	19	αἰσχροκερδῆ,	ávido-de-lucro	claude	αἰσχροκερδῆ “ávido de lucro torpe”; tinha “agressivo-ganancioso”
+TIT 1:12	12	θηρία,	feras	claude	θηρία “feras”; tinha “animais-malignos”
+TIT 2:5	1	σώφρονας,	prudentes	claude	σώφρονας “prudentes, moderadas”; tinha “serem-moderadas”
+TIT 2:5	3	οἰκουργούς,	boas-donas-de-casa	claude	οἰκουργούς “boas donas de casa”; tinha “moderadas”
+TIT 2:5	10	μὴ	não	claude	μὴ “não”; tinha “que”
+TIT 3:9	5	γενεαλογίας	genealogias	claude	γενεαλογίας “genealogias”; tinha “genealogias-discussões”
+TIT 3:9	9	μάχας	contendas	claude	μάχας “contendas”; tinha “quanto”
+TIT 3:9	10	νομικὰς	acerca-da-lei	claude	νομικὰς “acerca da lei”; tinha “Lei”
+TIT 3:9	11	περιΐστασο,	evita	claude	περιΐστασο “evita”; tinha “inúteis”
+HEB 1:5	1	Τίνι	a-qual	claude	Τίνι “a qual”; tinha “qual”
+HEB 1:5	8	μου	meu	claude	μου “meu”; tinha “eu”
+HEB 1:5	11	ἐγὼ	eu	claude	ἐγὼ “eu”; tinha “meu”
+HEB 1:5	20	εἰς	por	claude	εἰς “por (para)”; tinha “para”
+HEB 1:5	26	εἰς	por	claude	εἰς “por (para)”; tinha “para”
+HEB 2:12	11	ἐκκλησίας	da-congregação	claude	ἐκκλησίας “da congregação”; tinha “cantarei”
+HEB 2:12	13	σε·	a-ti	claude	σε “a ti”; tinha “ti”
+HEB 3:2	2	ὄντα	sendo	claude	ὄντα “sendo”; tinha “àquele”
+HEB 3:2	3	τῷ	ao	claude	τῷ “ao (que)”; tinha “o”
+HEB 3:2	4	ποιήσαντι	que-o-constituiu	claude	ποιήσαντι “que o constituiu”; tinha “que-constituiu”
+HEB 3:2	11	οἴκῳ	casa	claude	οἴκῳ “casa”; tinha “toda-casa”
+HEB 3:11	1	ὡς	assim	claude	ὡς “assim, como”; tinha “como”
+HEB 3:11	7	Εἰ	não	claude	Εἰ “não (se: hebraísmo de juramento)”; tinha “se”
+HEB 4:3	15	Εἰ	não	claude	Εἰ “não (se: hebraísmo de juramento)”; tinha “se”
+HEB 4:3	21	καίτοι	embora	claude	καίτοι “embora”; tinha “ainda”
+HEB 4:3	25	καταβολῆς	a-fundação	claude	καταβολῆς “a fundação (de)”; tinha “estivessem-terminadas”
+HEB 4:3	26	κόσμου	do-mundo	claude	κόσμου “do mundo”; tinha “mundo”
+HEB 4:3	27	γενηθέντων,	terminadas	claude	γενηθέντων “terminadas (feitas)”; tinha “aconteceu”
+HEB 5:5	6	ἑαυτὸν	a-si-mesmo	claude	ἑαυτὸν “a si mesmo”; tinha “si”
+HEB 5:5	10	ἀλλ’	mas	claude	ἀλλ’ “mas”; tinha “mas-sim”
+HEB 5:5	11	ὁ	aquele-que	claude	ὁ “aquele que”; tinha “o”
+HEB 5:5	12	λαλήσας	disse	claude	λαλήσας “disse, falou”; tinha “falado”
+HEB 5:5	13	πρὸς	a	claude	πρὸς “a”; tinha “disse”
+HEB 5:5	14	αὐτόν·	ele	claude	αὐτόν “ele”; tinha “lhe”
+HEB 5:5	16	μου	meu	claude	μου “meu”; tinha “eu”
+HEB 5:5	19	ἐγὼ	eu	claude	ἐγὼ “eu”; tinha “meu”
