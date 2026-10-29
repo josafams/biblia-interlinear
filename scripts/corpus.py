@@ -386,6 +386,18 @@ G_MANUAL = {
 }
 
 
+# Numbers the Greek Strong dictionary gets wrong in a derivation: Hebrew words cited as G (G5689 for H5689) and μέν
+# cited as G3203, a number Strong skipped (it is G3303).
+G_DERIVATION = {
+    "G25": ("G5689", "H5689"),
+    "G137": ("G5869", "H5869"),
+    "G3304": ("G3203", "G3303"),
+    "G3305": ("G3203", "G3303"),
+    "G3642": ("G6590", "G5590"),
+    "G4460": ("G7343", "H7343"),
+}
+
+
 def greek_variants(lemma):
     lemma = unicodedata.normalize("NFC", lemma)
     out = [lemma]
@@ -606,7 +618,7 @@ def main():
                 e.get("lemma"),
                 e.get("translit"),
                 None,
-                e.get("derivation"),
+                e.get("derivation", "").replace(*G_DERIVATION[k]) if k in G_DERIVATION else e.get("derivation"),
                 e.get("strongs_def"),
                 e.get("kjv_def"),
                 dodson_gloss.get(k),
