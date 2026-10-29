@@ -23865,3 +23865,108 @@ EXO 40:2	6	תָּקִ֕ים	levantarás	claude	תָּקִים “levantarás”;
 EXO 40:2	8	מִשְׁכַּ֖ן	o-tabernáculo	claude	מִשְׁכַּן “tabernáculo de”; tinha “tabernáculo”
 EXO 40:2	9	אֹ֥הֶל	da-tenda	claude	אֹהֶל “tenda de”; tinha “tabernáculo-do”
 EXO 40:2	10	מוֹעֵֽד	do-encontro	claude	מוֹעֵד “encontro”; tinha “testemunho”
+LEV 2:5	2	מִנְחָ֥ה	oferta-de-cereais	claude	מִנְחָה “oferta de cereais”; tinha “oferta”
+LEV 2:5	3	עַל	da	claude	עַל “sobre”; tinha “em”
+LEV 2:5	4	הַֽ/מַּחֲבַ֖ת	assadeira	claude	הַמַּחֲבַת “a assadeira”; tinha “panelas”
+LEV 2:5	6	סֹ֛לֶת	de-flor-de-farinha	claude	סֹלֶת “flor de farinha”; tinha “de-farinha”
+LEV 2:5	7	בְּלוּלָ֥ה	amassada	claude	בְּלוּלָה “misturada”; tinha “boa”
+LEV 2:16	1	וְ/הִקְטִ֨יר	e-queimará	claude	וְהִקְטִיר “e queimará”; tinha “fará-arder”
+LEV 2:16	4	אַזְכָּרָתָ֗/הּ	seu-memorial	claude	אַזְכָּרָתָהּ “seu memorial”; tinha “memória-oferta”
+LEV 2:16	5	מִ/גִּרְשָׂ/הּ֙	de-seu-grão-moído	claude	מִגִּרְשָׂהּ “de seu grão moído”; tinha “grão-esmigalhado”
+LEV 2:16	7	עַ֖ל	com	claude	עַל “sobre”; tinha “sobre”
+LEV 2:16	9	לְבֹנָתָ֑/הּ	seu-incenso	claude	לְבֹנָתָהּ “seu incenso”; tinha “incenso-é”
+LEV 4:2	6	נֶ֗פֶשׁ	uma-alma	claude	נֶפֶשׁ “alma”; tinha “pessoa”
+LEV 4:2	9	בִ/שְׁגָגָה֙	por-erro	claude	בִשְׁגָגָה “por erro”; tinha “por-acidente”
+LEV 4:2	10	מִ/כֹּל֙	em-qualquer-dos	claude	מִכֹּל “de todos”; tinha “algum-dos”
+LEV 4:2	12	יְהוָ֔ה	do-SENHOR	claude	יְהוָה “SENHOR”; tinha “SENHOR”
+LEV 4:2	15	תֵעָשֶׂ֑ינָה	se-devem-fazer	claude	תֵעָשֶׂינָה “serão feitas”; tinha “fazer”
+LEV 4:2	16	וְ/עָשָׂ֕ה	e-fizer	claude	וְעָשָׂה “e fizer”; tinha “e-agir”
+LEV 4:2	17	מֵ/אַחַ֖ת	algum	claude	מֵאַחַת “de uma”; tinha “contra-algum”
+LEV 4:7	6	קַ֠רְנוֹת	os-chifres	claude	קַרְנוֹת “chifres de”; tinha “pontas”
+LEV 4:7	7	מִזְבַּ֨ח	do-altar	claude	מִזְבַּח “altar de”; tinha “altar”
+LEV 4:7	8	קְטֹ֤רֶת	do-incenso	claude	קְטֹרֶת “incenso de”; tinha “incenso”
+LEV 4:7	13	בְּ/אֹ֣הֶל	na-tenda	claude	בְּאֹהֶל “na tenda de”; tinha “no-tabernáculo-do”
+LEV 4:7	14	מוֹעֵ֑ד	do-encontro	claude	מוֹעֵד “encontro”; tinha “testemunho”
+LEV 4:7	17	דַּ֣ם	o-sangue	claude	דַּם “sangue de”; tinha “sangue”
+LEV 4:7	19	יִשְׁפֹּךְ֙	derramará	claude	יִשְׁפֹּךְ “derramará”; tinha “lançará”
+LEV 4:7	21	יְסוֹד֙	a-base	claude	יְסוֹד “base de”; tinha “pé”
+LEV 4:7	22	מִזְבַּ֣ח	do-altar	claude	מִזְבַּח “altar de”; tinha “altar”
+LEV 4:7	25	פֶּ֖תַח	à-entrada	claude	פֶּתַח “entrada de”; tinha “porta”
+LEV 4:7	26	אֹ֥הֶל	da-tenda	claude	אֹהֶל “tenda de”; tinha “do-tabernáculo-do”
+LEV 4:7	27	מוֹעֵֽד	do-encontro	claude	מוֹעֵד “encontro”; tinha “testemunho”
+LEV 4:9	2	שְׁתֵּ֣י	os-dois	claude	שְׁתֵּי “dois de”; tinha “dois”
+LEV 4:9	13	עַל	acima-do	claude	עַל “sobre”; tinha “sobre”
+LEV 4:9	15	עַל	com	claude	עַל “sobre”; tinha “sobre”
+LEV 4:9	17	יְסִירֶֽ/נָּה	o-tirará	claude	יְסִירֶנָּה “o tirará”; tinha “tirará”
+LEV 4:10	1	כַּ/אֲשֶׁ֣ר	como	claude	כַּאֲשֶׁר “como”; tinha “maneira-que”
+LEV 4:10	2	יוּרַ֔ם	se-tira	claude	יוּרַם “é tirado”; tinha “tira”
+LEV 4:10	4	זֶ֣בַח	do-sacrifício	claude	זֶבַח “sacrifício de”; tinha “sacrifício”
+LEV 4:10	5	הַ/שְּׁלָמִ֑ים	das-ofertas-pacíficas	claude	הַשְּׁלָמִים “as ofertas pacíficas”; tinha “pacífico”
+LEV 4:10	6	וְ/הִקְטִירָ/ם֙	e-os-queimará	claude	וְהִקְטִירָם “e os queimará”; tinha “fará-arder”
+LEV 4:10	9	מִזְבַּ֥ח	do-altar	claude	מִזְבַּח “altar de”; tinha “altar”
+LEV 4:11	2	ע֤וֹר	o-couro	claude	עוֹר “couro de”; tinha “couro”
+LEV 4:11	6	בְּשָׂר֔/וֹ	sua-carne	claude	בְּשָׂרוֹ “sua carne”; tinha “sua-carne-com”
+LEV 4:11	7	עַל	com	claude	עַל “sobre”; tinha “sobre”
+LEV 4:11	9	וְ/עַל	e-com	claude	וְעַל “e sobre”; tinha “e-sobre”
+LEV 4:11	10	כְּרָעָ֑י/ו	suas-pernas	claude	כְּרָעָיו “suas pernas”; tinha “pernas-seus”
+LEV 4:11	11	וְ/קִרְבּ֖/וֹ	e-suas-entranhas	claude	וְקִרְבּוֹ “e suas entranhas”; tinha “e-intestinos”
+LEV 4:14	4	חָטְא֖וּ	cometeram	claude	חָטְאוּ “pecaram”; tinha “transgrediram”
+LEV 4:14	5	עָלֶ֑י/הָ	nele	claude	עָלֶיהָ “sobre ele”; tinha “sobre”
+LEV 4:14	11	לְ/חַטָּ֔את	como-oferta-pelo-pecado	claude	לְחַטָּאת “para oferta pelo pecado”; tinha “por-expiação”
+LEV 4:14	15	אֹ֥הֶל	da-tenda	claude	אֹהֶל “tenda de”; tinha “do-tabernáculo-do”
+LEV 4:14	16	מוֹעֵֽד	do-encontro	claude	מוֹעֵד “encontro”; tinha “testemunho”
+LEV 4:19	3	חֶלְבּ֖/וֹ	sua-gordura	claude	חֶלְבּוֹ “sua gordura”; tinha “gordura”
+LEV 4:19	4	יָרִ֣ים	levantará	claude	יָרִים “levantará”; tinha “tirará”
+LEV 4:19	5	מִמֶּ֑/נּוּ	dele	claude	מִמֶּנּוּ “dele”; tinha “de-nós”
+LEV 4:19	6	וְ/הִקְטִ֖יר	e-queimará	claude	וְהִקְטִיר “e queimará”; tinha “e-a-fará-arder”
+LEV 4:19	7	הַ/מִּזְבֵּֽחָ/ה	sobre-o-altar	claude	הַמִּזְבֵּחָה “para o altar”; tinha “o-altar”
+LEV 4:20	2	לַ/פָּ֔ר	com-o-novilho	claude	לַפָּר “ao novilho”; tinha “daquele-bezerro”
+LEV 4:20	5	לְ/פַ֣ר	com-o-novilho	claude	לְפַר “ao novilho de”; tinha “com-o-bezerro”
+LEV 4:20	6	הַֽ/חַטָּ֔את	da-oferta-pelo-pecado	claude	הַחַטָּאת “a oferta pelo pecado”; tinha “da-expiação”
+LEV 4:20	9	לּ֑/וֹ	com-ele	claude	לּוֹ “a ele”; tinha “para-ele”
+LEV 4:23	2	הוֹדַ֤ע	for-feito-conhecer	claude	הוֹדַע “foi feito conhecer”; tinha “conhecido”
+LEV 4:23	3	אֵלָי/ו֙	a-ele	claude	אֵלָיו “a ele”; tinha “lhe”
+LEV 4:23	4	חַטָּאת֔/וֹ	seu-pecado	claude	חַטָּאתוֹ “seu pecado”; tinha “pecado”
+LEV 4:23	6	חָטָ֖א	pecou	claude	חָטָא “pecou”; tinha “transgrediu”
+LEV 4:23	7	בָּ֑/הּ	nele	claude	בָּהּ “nele”; tinha “em”
+LEV 4:28	2	הוֹדַ֣ע	for-feito-conhecer	claude	הוֹדַע “foi feito conhecer”; tinha “conhecido”
+LEV 4:28	3	אֵלָ֔י/ו	a-ele	claude	אֵלָיו “a ele”; tinha “lhe”
+LEV 4:28	4	חַטָּאת֖/וֹ	seu-pecado	claude	חַטָּאתוֹ “seu pecado”; tinha “pecado”
+LEV 4:28	6	חָטָ֑א	pecou	claude	חָטָא “pecou”; tinha “cometeu”
+LEV 4:28	7	וְ/הֵבִ֨יא	e-trará	claude	וְהֵבִיא “e trará”; tinha “trará”
+LEV 4:28	9	שְׂעִירַ֤ת	uma-cabra	claude	שְׂעִירַת “cabra de”; tinha “uma”
+LEV 4:28	10	עִזִּים֙	de-cabras	claude	עִזִּים “cabras”; tinha “cabras-cabra”
+LEV 4:28	16	חָטָֽא	pecou	claude	חָטָא “pecou”; tinha “cometido”
+LEV 4:31	3	חֶלְבָּ֣/הּ	sua-gordura	claude	חֶלְבָּהּ “sua gordura”; tinha “gordura”
+LEV 4:31	5	כַּ/אֲשֶׁ֨ר	como	claude	כַּאֲשֶׁר “como”; tinha “maneira-que”
+LEV 4:31	6	הוּסַ֣ר	foi-tirada	claude	הוּסַר “foi tirada”; tinha “tirada”
+LEV 4:31	9	זֶ֣בַח	o-sacrifício	claude	זֶבַח “sacrifício de”; tinha “sacrifício”
+LEV 4:31	10	הַ/שְּׁלָמִים֒	das-ofertas-pacíficas	claude	הַשְּׁלָמִים “as ofertas pacíficas”; tinha “pacífico”
+LEV 4:31	11	וְ/הִקְטִ֤יר	e-queimará	claude	וְהִקְטִיר “e queimará”; tinha “fará-arder”
+LEV 4:31	13	הַ/מִּזְבֵּ֔חָ/ה	sobre-o-altar	claude	הַמִּזְבֵּחָה “para o altar”; tinha “o-altar”
+LEV 4:31	14	לְ/רֵ֥יחַ	por-aroma	claude	לְרֵיחַ “para aroma de”; tinha “em-cheiro”
+LEV 4:31	17	וְ/כִפֶּ֥ר	e-fará-expiação	claude	וְכִפֶּר “e fará expiação”; tinha “assim-fará”
+LEV 4:31	21	לֽ/וֹ	a-ele	claude	לוֹ “a ele”; tinha “para-ele”
+LEV 4:32	3	יָבִ֥יא	trouxer	claude	יָבִיא “trouxer”; tinha “trouxer-para”
+LEV 4:32	5	לְ/חַטָּ֑את	como-oferta-pelo-pecado	claude	לְחַטָּאת “para oferta pelo pecado”; tinha “pelo-pecado”
+LEV 4:32	8	יְבִיאֶֽ/נָּה	a-trará	claude	יְבִיאֶנָּה “a trará”; tinha “trará”
+LEV 4:34	1	וְ/לָקַ֨ח	e-tomará	claude	וְלָקַח “e tomará”; tinha “depois-tomará”
+LEV 4:34	4	הַֽ/חַטָּאת֙	da-oferta-pelo-pecado	claude	הַחַטָּאת “a oferta pelo pecado”; tinha “da-expiação”
+LEV 4:34	8	קַרְנֹ֖ת	os-chifres	claude	קַרְנֹת “chifres de”; tinha “pontas”
+LEV 4:34	9	מִזְבַּ֣ח	do-altar	claude	מִזְבַּח “altar de”; tinha “altar”
+LEV 4:34	13	דָּמָ֣/הּ	seu-sangue	claude	דָּמָהּ “seu sangue”; tinha “sangue”
+LEV 4:34	16	יְס֖וֹד	a-base	claude	יְסוֹד “base de”; tinha “pé”
+LEV 4:35	3	חֶלְבָּ֣/ה	sua-gordura	claude	חֶלְבָּה “sua gordura”; tinha “gordura”
+LEV 4:35	6	יוּסַ֥ר	é-tirada	claude	יוּסַר “é tirada”; tinha “tirada”
+LEV 4:35	7	חֵֽלֶב	a-gordura	claude	חֵלֶב “gordura de”; tinha “gordura”
+LEV 4:35	8	הַ/כֶּשֶׂב֮	do-cordeiro	claude	הַכֶּשֶׂב “o cordeiro”; tinha “o-cordeiro”
+LEV 4:35	10	הַ/שְּׁלָמִים֒	das-ofertas-pacíficas	claude	הַשְּׁלָמִים “as ofertas pacíficas”; tinha “pacífico”
+LEV 4:35	11	וְ/הִקְטִ֨יר	e-queimará	claude	וְהִקְטִיר “e queimará”; tinha “e-a-fará”
+LEV 4:35	14	הַ/מִּזְבֵּ֔חָ/ה	sobre-o-altar	claude	הַמִּזְבֵּחָה “para o altar”; tinha “no-altar”
+LEV 4:35	16	אִשֵּׁ֣י	as-ofertas-queimadas	claude	אִשֵּׁי “ofertas queimadas de”; tinha “oferta-acesa”
+LEV 4:35	17	יְהוָ֑ה	do-SENHOR	claude	יְהוָה “SENHOR”; tinha “SENHOR”
+LEV 4:35	18	וְ/כִפֶּ֨ר	e-fará-expiação	claude	וְכִפֶּר “e fará expiação”; tinha “e-lhe-fará”
+LEV 4:35	19	עָלָ֧י/ו	por-ele	claude	עָלָיו “sobre ele”; tinha “sobre-ele”
+LEV 4:35	21	עַל	por	claude	עַל “sobre”; tinha “sobre”
+LEV 4:35	24	חָטָ֖א	pecou	claude	חָטָא “pecou”; tinha “cometido”
+LEV 4:35	26	לֽ/וֹ	a-ele	claude	לוֹ “a ele”; tinha “para-ele”
