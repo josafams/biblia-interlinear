@@ -5202,3 +5202,120 @@ ACT 5:15	1	ὥστε	de-modo-que	claude	ὥστε “de modo que”; tinha “ma
 ACT 5:15	14	κραβάττων,	e-macas	claude	κραβάττων “e macas”; tinha “camas-macas”
 ACT 5:15	15	ἵνα	para-que	claude	ἵνα “para que”; tinha “para”
 ACT 5:15	18	κἂν	ao-menos	claude	κἂν “ao menos”; tinha “menos”
+ACT 5:36	4	τῶν	os	claude	τῶν “os”; tinha “das”
+ACT 5:36	11	ἑαυτόν,	a-si-mesmo	claude	ἑαυτόν “a si mesmo”; tinha “si”
+ACT 5:36	12	ᾧ	a-quem	claude	ᾧ “a quem”; tinha “qual”
+ACT 5:36	13	προσεκλίθη	se-juntou	claude	προσεκλίθη “se juntou”; tinha “quatrocentos”
+ACT 5:36	15	ἀριθμὸς	um-número	claude	ἀριθμὸς “um número”; tinha “ajuntaram”
+ACT 5:36	18	ὃς	o-qual	claude	ὃς “o qual”; tinha “qual”
+ACT 5:36	22	ὅσοι	quantos	claude	ὅσοι “quantos”; tinha “que”
+ACT 5:36	24	αὐτῷ	a-ele	claude	αὐτῷ “a ele”; tinha “lhe”
+ACT 5:36	27	ἐγένοντο	vieram	claude	ἐγένοντο “vieram, ficaram”; tinha “reduzidos”
+ACT 5:37	13	ἀπέστησε	arrastou	claude	ἀπέστησε “arrastou, desviou”; tinha “perverteu”
+ACT 5:37	17	κἀκεῖνος	e-aquele	claude	κἀκεῖνος “e aquele”; tinha “também”
+ACT 5:37	21	ὅσοι	quantos	claude	ὅσοι “quantos”; tinha “que”
+ACT 5:37	23	αὐτῷ	a-ele	claude	αὐτῷ “a ele”; tinha “lhe”
+ACT 5:41	2	μὲν	pois	claude	μὲν “pois, na verdade”; tinha “fato”
+ACT 5:41	5	χαίροντες	alegrando-se	claude	χαίροντες “alegrando-se”; tinha “saíram”
+ACT 5:41	9	συνεδρίου	Sinédrio	claude	συνεδρίου “Sinédrio (o Supremo Conselho)”; tinha “Supremo-conselho”
+ACT 5:41	12	ὑπὲρ	pelo	claude	ὑπὲρ “pelo, por causa do”; tinha “por-causa”
+ACT 5:41	15	ἀτιμασθῆναι·	de-ser-humilhados	claude	ἀτιμασθῆναι “de ser humilhados”; tinha “dele”
+ACT 7:19	2	κατασοφισάμενος	usando-de-astúcia	claude	κατασοφισάμενος “usando de astúcia”; tinha “usando”
+ACT 7:19	3	τὸ	a	claude	τὸ “a”; tinha “de”
+ACT 7:19	4	γένος	raça	claude	γένος “raça, parentela”; tinha “astúcia”
+ACT 7:19	6	ἐκάκωσεν	maltratou	claude	ἐκάκωσεν “maltratou”; tinha “parentela-maltratou”
+ACT 7:19	9	τοῦ	de	claude	τοῦ “de (a fim de)”; tinha “do”
+ACT 7:19	12	βρέφη	as-crianças	claude	βρέφη “as crianças”; tinha “rejeitassem-crianças”
+ACT 7:19	13	ἔκθετα	abandonadas	claude	ἔκθετα “abandonadas”; tinha “rejeitassem”
+ACT 7:19	16	τὸ	o	claude	τὸ “o (de)”; tinha “que”
+ACT 7:48	6	χειροποιήτοις	feitas-por-mãos	claude	χειροποιήτοις “feitas por mãos”; tinha “habita-templos”
+ACT 8:3	3	ἐλυμαίνετο	assolava	claude	ἐλυμαίνετο “assolava”; tinha “destruir”
+ACT 8:3	6	κατὰ	de	claude	κατὰ “de (casa em casa)”; tinha “segundo”
+ACT 8:3	10	σύρων	arrastando	claude	σύρων “arrastando”; tinha “casas-puxando”
+ACT 8:4	2	μὲν	pois	claude	μὲν “pois, na verdade”; tinha “fato”
+ACT 8:4	3	οὖν	então	claude	οὖν “então”; tinha “pois”
+ACT 8:4	6	εὐαγγελιζόμενοι	anunciando	claude	εὐαγγελιζόμενοι “anunciando”; tinha “passavam-anunciando”
+ACT 8:7	3	τῶν	dos	claude	τῶν “dos”; tinha “os”
+ACT 8:7	4	ἐχόντων	que-tinham	claude	ἐχόντων “que tinham”; tinha “tinham”
+ACT 8:31	5	γὰρ	pois	claude	γὰρ “pois”; tinha “porque”
+ACT 8:31	6	ἂν	-ia	claude	ἂν “-ia (partícula)”; tinha “eu”
+ACT 8:31	11	ὁδηγήσει	guiar	claude	ὁδηγήσει “guiar”; tinha “ensinar”
+ACT 8:31	13	παρεκάλεσέν	e-rogou	claude	παρεκάλεσέν “e rogou”; tinha “ensinar-pediu”
+ACT 8:31	17	ἀναβάντα	que-subisse	claude	ἀναβάντα “que subisse”; tinha “subisse”
+ACT 9:21	4	οἱ	os	claude	οἱ “os”; tinha “os-o”
+ACT 9:21	10	ἐστιν	é	claude	ἐστιν “é”; tinha “aquele”
+ACT 9:21	12	πορθήσας	que-assolava	claude	πορθήσας “que assolava”; tinha “tentava-destruir”
+ACT 9:21	24	ἐληλύθει	viera	claude	ἐληλύθει “viera”; tinha “veio”
+ACT 9:21	26	δεδεμένους	presos	claude	δεδεμένους “presos”; tinha “levar”
+ACT 9:21	27	αὐτοὺς	a-eles	claude	αὐτοὺς “a eles”; tinha “lhes”
+ACT 9:21	28	ἀγάγῃ	levasse	claude	ἀγάγῃ “levasse”; tinha “presos”
+ACT 9:21	29	ἐπὶ	aos	claude	ἐπὶ “aos”; tinha “sobre”
+ACT 9:21	31	ἀρχιερεῖς;	chefes-dos-sacerdotes	claude	ἀρχιερεῖς “chefes dos sacerdotes”; tinha “chefes-sacerdotes”
+ACT 10:2	3	φοβούμενος	que-temia	claude	φοβούμενος “que temia”; tinha “temente”
+ACT 10:2	8	τῷ	a	claude	τῷ “a”; tinha “ao”
+ACT 10:2	11	ποιῶν	fazendo	claude	ποιῶν “fazendo”; tinha “fazia”
+ACT 10:2	12	ἐλεημοσύνας	esmolas	claude	ἐλεημοσύνας “esmolas”; tinha “fazia-doações”
+ACT 10:2	17	δεόμενος	orando	claude	δεόμενος “orando”; tinha “orava”
+ACT 10:10	3	πρόσπεινος	faminto	claude	πρόσπεινος “faminto”; tinha “com-fome-a-mais”
+ACT 10:10	6	γεύσασθαι·	provar	claude	γεύσασθαι “provar, comer”; tinha “fome-comer”
+ACT 10:10	7	παρασκευαζόντων	preparando	claude	παρασκευαζόντων “preparando”; tinha “comer”
+ACT 10:10	10	ἐγένετο	veio	claude	ἐγένετο “veio”; tinha “preparando”
+ACT 10:16	4	ἐπὶ	por	claude	ἐπὶ “por (três vezes)”; tinha “sobre”
+ACT 10:16	7	εὐθὺς	logo	claude	εὐθὺς “logo”; tinha “recolhido”
+ACT 10:16	8	ἀνελήμφθη	foi-recebido-acima	claude	ἀνελήμφθη “foi recebido acima”; tinha “recolhido-acima”
+ACT 10:16	11	εἰς	para	claude	εἰς “para”; tinha “a”
+ACT 10:16	12	τὸν	o	claude	τὸν “o”; tinha “ao”
+ACT 10:17	1	Ὡς	enquanto	claude	Ὡς “enquanto, como”; tinha “como”
+ACT 10:17	5	διηπόρει	estava-perplexo	claude	διηπόρει “estava perplexo”; tinha “perplexo”
+ACT 10:17	9	ἂν	-ia	claude	ἂν “-ia (partícula)”; tinha “que”
+ACT 10:17	14	εἶδεν,	vira	claude	εἶδεν “vira”; tinha “visto”
+ACT 10:17	21	τοῦ	o	claude	τοῦ “o”; tinha “do”
+ACT 10:17	29	ἐπὶ	à	claude	ἐπὶ “à”; tinha “sobre”
+ACT 10:17	30	τὸν	a	claude	τὸν “a”; tinha “o”
+ACT 13:47	12	τοῦ	de	claude	τοῦ “de (para)”; tinha “que”
+ACT 13:47	13	εἶναί	seres	claude	εἶναί “seres”; tinha “tu”
+ACT 13:47	18	ἐσχάτου	o-extremo	claude	ἐσχάτου “o extremo”; tinha “extremidades”
+ACT 14:10	2	μεγάλῃ	alta	claude	μεγάλῃ “alta, grande” (em alta voz); tinha “alta”
+ACT 14:10	4	Ἀνάστηθι	levanta-te	claude	Ἀνάστηθι “levanta-te”; tinha “levanta”
+ACT 14:10	8	σου	teus	claude	σου “teus”; tinha “teu”
+ACT 14:10	9	ὀρθός·	direito	claude	ὀρθός “direito, reto”; tinha “retos”
+ACT 14:16	2	ἐν	nas	claude	ἐν “nas (em)”; tinha “em”
+ACT 14:16	3	ταῖς	as	claude	ταῖς “as”; tinha “às”
+ACT 14:16	6	εἴασεν	deixou	claude	εἴασεν “deixou”; tinha “passadas-deixou”
+ACT 14:16	7	πάντα	todos	claude	πάντα “todos”; tinha “passadas”
+ACT 14:16	10	πορεύεσθαι	andar	claude	πορεύεσθαι “andar”; tinha “andarem-próprios”
+ACT 14:16	11	ταῖς	nos	claude	ταῖς “nos (os)”; tinha “às”
+ACT 14:27	8	ὅσα	quantas-coisas	claude	ὅσα “quantas coisas”; tinha “quão-grandes”
+ACT 14:27	9	ἐποίησεν	fizera	claude	ἐποίησεν “fizera”; tinha “grandes”
+ACT 14:27	16	ἤνοιξεν	abrira	claude	ἤνοιξεν “abrira”; tinha “aberto”
+ACT 14:27	17	τοῖς	aos	claude	τοῖς “aos”; tinha “a”
+ACT 15:12	1	Ἐσίγησεν	calou-se	claude	Ἐσίγησεν “calou-se”; tinha “calaram”
+ACT 15:12	11	ἐξηγουμένων	que-contavam	claude	ἐξηγουμένων “que contavam”; tinha “contavam”
+ACT 15:12	12	ὅσα	quantos	claude	ὅσα “quantos”; tinha “quão-grandes”
+ACT 15:12	13	ἐποίησεν	fizera	claude	ἐποίησεν “fizera”; tinha “grandes”
+ACT 15:12	22	δι’	por-meio-de	claude	δι’ “por meio de”; tinha “meio”
+ACT 7:57	3	φωνῇ	com-voz	claude	φωνῇ “com voz” (em alta voz); tinha “alta-voz”
+ACT 7:57	4	μεγάλῃ	alta	claude	μεγάλῃ “alta, grande” (em alta voz); tinha “voz”
+ACT 7:60	6	φωνῇ	com-voz	claude	φωνῇ “com voz” (em alta voz); tinha “alta-voz”
+ACT 7:60	7	μεγάλῃ·	alta	claude	μεγάλῃ “alta, grande” (em alta voz); tinha “voz”
+ACT 8:7	8	φωνῇ	com-voz	claude	φωνῇ “com voz” (em alta voz); tinha “alta-voz”
+ACT 8:7	9	μεγάλῃ	alta	claude	μεγάλῃ “alta, grande” (em alta voz); tinha “voz”
+ACT 14:10	3	φωνῇ·	com-voz	claude	φωνῇ “com voz” (em alta voz); tinha “alta-voz”
+ACT 16:28	3	φωνῇ	com-voz	claude	φωνῇ “com voz” (em alta voz); tinha “alta-voz”
+ACT 16:28	4	μεγάλῃ	alta	claude	μεγάλῃ “alta, grande” (em alta voz); tinha “voz”
+REV 5:2	7	φωνῇ	com-voz	claude	φωνῇ “com voz” (em alta voz); tinha “alta-voz”
+REV 5:2	8	μεγάλῃ·	alta	claude	μεγάλῃ “alta, grande” (em alta voz); tinha “voz”
+REV 5:12	2	φωνῇ	com-voz	claude	φωνῇ “com voz” (em alta voz); tinha “alta-voz”
+REV 5:12	3	μεγάλῃ·	alta	claude	μεγάλῃ “alta, grande” (em alta voz); tinha “voz”
+REV 8:13	11	φωνῇ	com-voz	claude	φωνῇ “com voz” (em alta voz); tinha “alta-voz”
+REV 8:13	12	μεγάλῃ·	alta	claude	μεγάλῃ “alta, grande” (em alta voz); tinha “voz”
+REV 14:7	3	φωνῇ	com-voz	claude	φωνῇ “com voz” (em alta voz); tinha “alta-voz”
+REV 14:7	4	μεγάλῃ·	alta	claude	μεγάλῃ “alta, grande” (em alta voz); tinha “voz”
+REV 14:9	9	φωνῇ	com-voz	claude	φωνῇ “com voz” (em alta voz); tinha “alta-voz”
+REV 14:9	10	μεγάλῃ·	alta	claude	μεγάλῃ “alta, grande” (em alta voz); tinha “voz”
+REV 14:15	10	φωνῇ	com-voz	claude	φωνῇ “com voz” (em alta voz); tinha “alta-voz”
+REV 14:15	11	μεγάλῃ	alta	claude	μεγάλῃ “alta, grande” (em alta voz); tinha “voz”
+REV 14:18	15	φωνῇ	com-voz	claude	φωνῇ “com voz” (em alta voz); tinha “alta-voz”
+REV 14:18	16	μεγάλῃ	alta	claude	μεγάλῃ “alta, grande” (em alta voz); tinha “voz”
+REV 19:17	11	φωνῇ	com-voz	claude	φωνῇ “com voz” (em alta voz); tinha “alta-voz”
+REV 19:17	12	μεγάλῃ	alta	claude	μεγάλῃ “alta, grande” (em alta voz); tinha “voz”
