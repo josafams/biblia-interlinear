@@ -25450,3 +25450,145 @@ LEV 22:30	3	יֵאָכֵ֔ל	será-comido	claude	יֵאָכֵל “será comido�
 LEV 22:30	6	מִמֶּ֖/נּוּ	dele	claude	מִמֶּנּוּ “dele”; tinha “dele-para”
 LEV 22:30	8	בֹּ֑קֶר	a-manhã	claude	בֹּקֶר “manhã”; tinha “dia”
 LEV 22:30	9	אֲנִ֖י	eu	claude	אֲנִי “eu”; tinha “sou”
+LEV 23:3	3	תֵּעָשֶׂ֣ה	se-fará	claude	תֵּעָשֶׂה “será feita”; tinha “fará”
+LEV 23:3	4	מְלָאכָה֒	obra	claude	מְלָאכָה “obra”; tinha “trabalhará”
+LEV 23:3	7	שַׁבַּ֤ת	é-sábado	claude	שַׁבַּת “sábado de”; tinha “sábado”
+LEV 23:3	8	שַׁבָּתוֹן֙	de-repouso-solene	claude	שַׁבָּתוֹן “repouso solene”; tinha “repouso”
+LEV 23:3	9	מִקְרָא	santa-convocação	claude	מִקְרָא “convocação de”; tinha “convocação”
+LEV 23:3	17	לַֽ/יהוָ֔ה	ao-SENHOR	claude	לַיהוָה “ao SENHOR”; tinha “do-SENHOR”
+LEV 23:5	8	פֶּ֖סַח	é-a-páscoa	claude	פֶּסַח “páscoa”; tinha “páscoa”
+LEV 23:5	9	לַ/יהוָֽה	ao-SENHOR	claude	לַיהוָה “ao SENHOR”; tinha “do-SENHOR”
+LEV 23:6	3	יוֹם֙	dia	claude	יוֹם “dia”; tinha “dias”
+LEV 23:6	4	לַ/חֹ֣דֶשׁ	do-mês	claude	לַחֹדֶשׁ “do mês”; tinha “deste-mês”
+LEV 23:6	5	הַ/זֶּ֔ה	este	claude	הַזֶּה “este”; tinha “é-a”
+LEV 23:6	6	חַ֥ג	é-a-festa	claude	חַג “festa de”; tinha “solenidade”
+LEV 23:7	1	בַּ/יּוֹם֙	no-dia	claude	בַּיּוֹם “no dia”; tinha “dia”
+LEV 23:7	2	הָֽ/רִאשׁ֔וֹן	primeiro	claude	הָרִאשׁוֹן “o primeiro”; tinha “o-primeiro”
+LEV 23:7	9	עֲבֹדָ֖ה	de-trabalho	claude	עֲבֹדָה “trabalho”; tinha “servil”
+LEV 23:11	1	וְ/הֵנִ֧יף	e-moverá	claude	וְהֵנִיף “e moverá”; tinha “qual-moverá”
+LEV 23:11	3	הָ/עֹ֛מֶר	o-feixe	claude	הָעֹמֶר “o feixe”; tinha “o-ômer”
+LEV 23:11	6	לִֽ/רְצֹנְ/כֶ֑ם	para-vossa-aceitação	claude	לִרְצֹנְכֶם “para vossa aceitação”; tinha “aceitos-o”
+LEV 23:11	7	מִֽ/מָּחֳרַת֙	no-dia-seguinte	claude	מִמָּחֳרַת “desde o dia seguinte de”; tinha “dia-seguinte”
+LEV 23:11	8	הַ/שַּׁבָּ֔ת	ao-sábado	claude	הַשַּׁבָּת “o sábado”; tinha “do-sábado”
+LEV 23:11	9	יְנִיפֶ֖/נּוּ	o-moverá	claude	יְנִיפֶנּוּ “o moverá”; tinha “moverá”
+LEV 23:12	3	הֲנִֽיפְ/כֶ֖ם	vosso-mover	claude	הֲנִיפְכֶם “vosso mover”; tinha “que-oferecerdes”
+LEV 23:12	5	הָ/עֹ֑מֶר	o-feixe	claude	הָעֹמֶר “o feixe”; tinha “o-ômer”
+LEV 23:12	6	כֶּ֣בֶשׂ	um-cordeiro	claude	כֶּבֶשׂ “cordeiro”; tinha “cordeiro”
+LEV 23:12	7	תָּמִ֧ים	sem-defeito	claude	תָּמִים “sem defeito”; tinha “defeito”
+LEV 23:12	8	בֶּן	de	claude	בֶּן “filho de”; tinha “filho”
+LEV 23:12	9	שְׁנָת֛/וֹ	um-ano	claude	שְׁנָתוֹ “seu ano”; tinha “ano”
+LEV 23:12	10	לְ/עֹלָ֖ה	como-holocausto	claude	לְעֹלָה “para holocausto”; tinha “em-holocausto”
+LEV 23:21	1	וּ/קְרָאתֶ֞ם	e-proclamareis	claude	וּקְרָאתֶם “e proclamareis”; tinha “e-convocareis”
+LEV 23:21	2	בְּ/עֶ֣צֶם	nesse-mesmo	claude	בְּעֶצֶם “no próprio”; tinha “neste-mesmo”
+LEV 23:21	11	עֲבֹדָ֖ה	de-trabalho	claude	עֲבֹדָה “trabalho”; tinha “servil”
+LEV 23:21	14	חֻקַּ֥ת	é-estatuto	claude	חֻקַּת “estatuto de”; tinha “estatuto”
+LEV 23:27	1	אַ֡ךְ	somente	claude	אַךְ “somente”; tinha “porém”
+LEV 23:27	2	בֶּ/עָשׂ֣וֹר	no-décimo	claude	בֶּעָשׂוֹר “no décimo”; tinha “aos-dez”
+LEV 23:27	3	לַ/חֹדֶשׁ֩	do-mês	claude	לַחֹדֶשׁ “do mês”; tinha “deste-mês”
+LEV 23:27	8	ה֗וּא	é	claude	הוּא “ele”; tinha “ele”
+LEV 23:27	17	אִשֶּׁ֖ה	uma-oferta-queimada	claude	אִשֶּׁה “oferta queimada”; tinha “oferta-acesa”
+LEV 23:30	1	וְ/כָל	e-toda	claude	וְכָל “e toda”; tinha “e-qualquer”
+LEV 23:30	2	הַ/נֶּ֗פֶשׁ	alma	claude	הַנֶּפֶשׁ “a alma”; tinha “pessoa”
+LEV 23:30	5	כָּל	qualquer	claude	כָּל “toda”; tinha “alguma”
+LEV 23:30	7	בְּ/עֶ֖צֶם	nesse-mesmo	claude	בְּעֶצֶם “no próprio”; tinha “neste-mesmo”
+LEV 23:30	8	הַ/יּ֣וֹם	dia	claude	הַיּוֹם “o dia”; tinha “neste-dia”
+LEV 23:30	10	וְ/הַֽאֲבַדְתִּ֛י	e-farei-perecer	claude	וְהַאֲבַדְתִּי “e farei perecer”; tinha “eu-destruirei”
+LEV 23:30	12	הַ/נֶּ֥פֶשׁ	a-alma	claude	הַנֶּפֶשׁ “a alma”; tinha “a-tal-pessoa”
+LEV 23:30	14	מִ/קֶּ֥רֶב	do-meio	claude	מִקֶּרֶב “do meio de”; tinha “dentre-seu”
+LEV 23:30	15	עַמָּֽ/הּ	de-seu-povo	claude	עַמָּהּ “seu povo”; tinha “povo”
+LEV 23:34	5	לֵ/אמֹ֑ר	dizendo	claude	לֵאמֹר “dizendo”; tinha “e-dize”
+LEV 23:34	8	י֗וֹם	dia	claude	יוֹם “dia”; tinha “dias”
+LEV 23:34	9	לַ/חֹ֤דֶשׁ	do-mês	claude	לַחֹדֶשׁ “do mês”; tinha “deste-mês”
+LEV 23:34	12	חַ֧ג	é-a-festa	claude	חַג “festa de”; tinha “solenidade”
+LEV 23:34	13	הַ/סֻּכּ֛וֹת	dos-tabernáculos	claude	הַסֻּכּוֹת “as tendas”; tinha “das-cabanas”
+LEV 23:36	4	אִשֶּׁ֖ה	uma-oferta-queimada	claude	אִשֶּׁה “oferta queimada”; tinha “oferta-acesa”
+LEV 23:36	6	בַּ/יּ֣וֹם	no-dia	claude	בַּיּוֹם “no dia”; tinha “dia”
+LEV 23:36	7	הַ/שְּׁמִינִ֡י	oitavo	claude	הַשְּׁמִינִי “o oitavo”; tinha “o-oitavo”
+LEV 23:36	13	אִשֶּׁ֤ה	uma-oferta-queimada	claude	אִשֶּׁה “oferta queimada”; tinha “oferta-acesa”
+LEV 23:36	15	עֲצֶ֣רֶת	assembleia-solene	claude	עֲצֶרֶת “assembleia solene”; tinha “festa”
+LEV 23:36	19	עֲבֹדָ֖ה	de-trabalho	claude	עֲבֹדָה “trabalho”; tinha “servil”
+LEV 23:39	1	אַ֡ךְ	somente	claude	אַךְ “somente”; tinha “porém”
+LEV 23:39	7	בְּ/אָסְפְּ/כֶם֙	quando-recolherdes	claude	בְּאָסְפְּכֶם “em vosso recolher”; tinha “quando-houverdes-recolhido-o”
+LEV 23:39	9	תְּבוּאַ֣ת	o-produto	claude	תְּבוּאַת “produto de”; tinha “fruto”
+LEV 23:39	11	תָּחֹ֥גּוּ	celebrareis	claude	תָּחֹגּוּ “celebrareis”; tinha “fareis”
+LEV 23:39	13	חַג	a-festa	claude	חַג “festa de”; tinha “festa”
+LEV 23:39	14	יְהוָ֖ה	do-SENHOR	claude	יְהוָה “SENHOR”; tinha “SENHOR”
+LEV 23:39	17	בַּ/יּ֤וֹם	no-dia	claude	בַּיּוֹם “no dia”; tinha “o-dia”
+LEV 23:39	18	הָֽ/רִאשׁוֹן֙	primeiro	claude	הָרִאשׁוֹן “o primeiro”; tinha “primeiro-será”
+LEV 23:39	19	שַׁבָּת֔וֹן	repouso-solene	claude	שַׁבָּתוֹן “repouso solene”; tinha “sábado”
+LEV 23:39	20	וּ/בַ/יּ֥וֹם	e-no-dia	claude	וּבַיּוֹם “e no dia”; tinha “dia”
+LEV 23:39	21	הַ/שְּׁמִינִ֖י	oitavo	claude	הַשְּׁמִינִי “o oitavo”; tinha “o-oitavo”
+LEV 23:39	22	שַׁבָּתֽוֹן	repouso-solene	claude	שַׁבָּתוֹן “repouso solene”; tinha “sábado”
+LEV 24:8	1	בְּ/י֨וֹם	no-dia	claude	בְּיוֹם “no dia de”; tinha “cada-dia”
+LEV 24:8	2	הַ/שַּׁבָּ֜ת	do-sábado	claude	הַשַּׁבָּת “o sábado”; tinha “de-sábado”
+LEV 24:8	3	בְּ/י֣וֹם	no-dia	claude	בְּיוֹם “no dia de”; tinha “em-dia”
+LEV 24:8	4	הַ/שַּׁבָּ֗ת	do-sábado	claude	הַשַּׁבָּת “o sábado”; tinha “o-sábado”
+LEV 24:8	5	יַֽעַרְכֶ֛/נּוּ	o-arrumará	claude	יַעַרְכֶנּוּ “o arrumará”; tinha “ordem”
+LEV 24:8	6	לִ/פְנֵ֥י	diante	claude	לִפְנֵי “diante de”; tinha “em-diante”
+LEV 24:8	9	מֵ/אֵ֥ת	da-parte	claude	מֵאֵת “da parte de”; tinha “de-parte”
+LEV 24:8	10	בְּנֵֽי	dos-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+LEV 24:8	12	בְּרִ֥ית	como-aliança	claude	בְּרִית “aliança de”; tinha “pacto”
+LEV 24:10	2	בֶּן	o-filho	claude	בֶּן “filho de”; tinha “filho”
+LEV 24:10	3	אִשָּׁ֣ה	de-uma-mulher	claude	אִשָּׁה “mulher”; tinha “mulher”
+LEV 24:10	5	וְ/הוּא֙	e-ele-era	claude	וְהוּא “e ele”; tinha “qual-era”
+LEV 24:10	7	אִ֣ישׁ	de-um-homem	claude	אִישׁ “homem”; tinha “um”
+LEV 24:10	9	בְּ/ת֖וֹךְ	no-meio	claude	בְּתוֹךְ “no meio de”; tinha “saiu-entre”
+LEV 24:10	10	בְּנֵ֣י	dos-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+LEV 24:10	12	וַ/יִּנָּצוּ֙	e-brigaram	claude	וַיִּנָּצוּ “e brigaram”; tinha “brigaram”
+LEV 24:10	14	בֶּ֚ן	o-filho	claude	בֶּן “filho de”; tinha “filho”
+LEV 24:10	16	וְ/אִ֖ישׁ	e-o-homem	claude	וְאִישׁ “e homem”; tinha “e-um-homem”
+LEV 24:10	17	הַ/יִּשְׂרְאֵלִֽי	israelita	claude	הַיִּשְׂרְאֵלִי “o israelita”; tinha “de-Israel”
+LEV 24:12	1	וַ/יַּנִּיחֻ֖/הוּ	e-o-puseram	claude	וַיַּנִּיחֻהוּ “e o puseram”; tinha “e-puseram-no”
+LEV 24:12	2	בַּ/מִּשְׁמָ֑ר	sob-guarda	claude	בַּמִּשְׁמָר “sob guarda”; tinha “no-cárcere”
+LEV 24:12	3	לִ/פְרֹ֥שׁ	para-declarar	claude	לִפְרֹשׁ “para declarar”; tinha “até”
+LEV 24:12	4	לָ/הֶ֖ם	a-eles	claude	לָהֶם “a eles”; tinha “que”
+LEV 24:12	5	עַל	segundo	claude	עַל “sobre”; tinha “sobre”
+LEV 24:12	6	פִּ֥י	a-boca	claude	פִּי “boca de”; tinha “palavra”
+LEV 24:12	7	יְהוָֽה	do-SENHOR	claude	יְהוָה “SENHOR”; tinha “SENHOR”
+LEV 24:16	1	וְ/נֹקֵ֤ב	e-o-que-blasfemar	claude	וְנֹקֵב “e o que blasfema”; tinha “blasfemar”
+LEV 24:16	2	שֵׁם	o-nome	claude	שֵׁם “nome de”; tinha “nome”
+LEV 24:16	3	יְהוָה֙	do-SENHOR	claude	יְהוָה “SENHOR”; tinha “SENHOR”
+LEV 24:16	4	מ֣וֹת	morrendo	claude	מוֹת “morrer”; tinha “morto”
+LEV 24:16	5	יוּמָ֔ת	será-morto	claude	יוּמָת “será morto”; tinha “morrerá”
+LEV 24:16	6	רָג֥וֹם	apedrejando	claude	רָגוֹם “apedrejar”; tinha “apedrejará”
+LEV 24:16	7	יִרְגְּמוּ	o-apedrejarão	claude	יִרְגְּמוּ “apedrejarão”; tinha “apedrejará”
+LEV 24:16	13	בְּ/נָקְב/וֹ	ao-blasfemar	claude	בְּנָקְבוֹ “em seu blasfemar”; tinha “se-blasfemar-o”
+LEV 24:16	15	יוּמָֽת	será-morto	claude	יוּמָת “será morto”; tinha “morra”
+LEV 24:18	1	וּ/מַכֵּ֥ה	e-o-que-ferir	claude	וּמַכֵּה “e o que fere”; tinha “fere”
+LEV 24:18	2	נֶֽפֶשׁ	a-vida	claude	נֶפֶשׁ “alma de”; tinha “alma”
+LEV 24:18	3	בְּהֵמָ֖ה	de-um-animal	claude	בְּהֵמָה “animal”; tinha “animal-restituí”
+LEV 24:18	4	יְשַׁלְּמֶ֑/נָּה	a-restituirá	claude	יְשַׁלְּמֶנָּה “a restituirá”; tinha “deverá-lo”
+LEV 24:18	5	נֶ֖פֶשׁ	vida	claude	נֶפֶשׁ “alma”; tinha “animal”
+LEV 24:18	7	נָֽפֶשׁ	vida	claude	נָפֶשׁ “alma”; tinha “animal”
+LEV 24:20	10	כַּ/אֲשֶׁ֨ר	como	claude	כַּאֲשֶׁר “como”; tinha “como-que”
+LEV 24:20	11	יִתֵּ֥ן	causar	claude	יִתֵּן “der”; tinha “dará”
+LEV 24:20	12	מוּם֙	defeito	claude	מוּם “defeito”; tinha “lesão”
+LEV 24:20	13	בָּֽ/אָדָ֔ם	em-um-homem	claude	בָּאָדָם “no homem”; tinha “feito-a-outro”
+LEV 24:20	15	יִנָּ֥תֶן	será-causado	claude	יִנָּתֶן “será dado”; tinha “dará”
+LEV 25:4	2	הַ/שְּׁבִיעִ֗ת	sétimo	claude	הַשְּׁבִיעִת “o sétimo”; tinha “sétimo-a”
+LEV 25:4	3	שַׁבַּ֤ת	um-sábado	claude	שַׁבַּת “sábado de”; tinha “sábado”
+LEV 25:4	4	שַׁבָּתוֹן֙	de-repouso-solene	claude	שַׁבָּתוֹן “repouso solene”; tinha “descanso”
+LEV 25:4	5	יִהְיֶ֣ה	haverá	claude	יִהְיֶה “haverá”; tinha “terá”
+LEV 25:4	6	לָ/אָ֔רֶץ	para-a-terra	claude	לָאָרֶץ “para a terra”; tinha “terra”
+LEV 25:4	9	שָֽׂדְ/ךָ֙	teu-campo	claude	שָׂדְךָ “teu campo”; tinha “tua-terra”
+LEV 25:4	12	וְ/כַרְמְ/ךָ֖	e-tua-vinha	claude	וְכַרְמְךָ “e tua vinha”; tinha “tua-vinha”
+LEV 25:4	13	לֹ֥א	não	claude	לֹא “não”; tinha “nem”
+LEV 25:12	1	כִּ֚י	pois	claude	כִּי “pois”; tinha “porque”
+LEV 25:12	3	הִ֔וא	ele-é	claude	הִוא “ela”; tinha “é”
+LEV 25:12	6	לָ/כֶ֑ם	para-vós	claude	לָכֶם “para vós”; tinha “a-vós”
+LEV 25:12	7	מִן	do	claude	מִן “de”; tinha “da”
+LEV 25:12	8	הַ֨/שָּׂדֶ֔ה	campo	claude	הַשָּׂדֶה “o campo”; tinha “da-terra”
+LEV 25:12	11	תְּבוּאָתָֽ/הּ	seu-produto	claude	תְּבוּאָתָהּ “seu produto”; tinha “produto”
+LEV 25:14	3	מִמְכָּר֙	alguma-coisa	claude	מִמְכָּר “mercadoria”; tinha “algo”
+LEV 25:14	4	לַ/עֲמִיתֶ֔/ךָ	a-teu-próximo	claude	לַעֲמִיתֶךָ “a teu próximo”; tinha “a-vosso-próximo”
+LEV 25:14	6	קָנֹ֖ה	comprando	claude	קָנֹה “comprar”; tinha “comprardes”
+LEV 25:14	8	עֲמִיתֶ֑/ךָ	de-teu-próximo	claude	עֲמִיתֶךָ “teu próximo”; tinha “próximo”
+LEV 25:14	10	תּוֹנ֖וּ	oprimais	claude	תּוֹנוּ “oprimais”; tinha “engane”
+LEV 25:14	11	אִ֥ישׁ	um	claude	אִישׁ “homem”; tinha “ninguém”
+LEV 25:15	1	בְּ/מִסְפַּ֤ר	segundo-o-número	claude	בְּמִסְפַּר “segundo o número de”; tinha “conforme-o-número”
+LEV 25:15	6	מֵ/אֵ֣ת	da-parte	claude	מֵאֵת “da parte de”; tinha “de-parte”
+LEV 25:15	7	עֲמִיתֶ֑/ךָ	de-teu-próximo	claude	עֲמִיתֶךָ “teu próximo”; tinha “teu-próximo”
+LEV 25:15	8	בְּ/מִסְפַּ֥ר	segundo-o-número	claude	בְּמִסְפַּר “segundo o número de”; tinha “conforme-o-número”
+LEV 25:15	9	שְׁנֵֽי	dos-anos	claude	שְׁנֵי “anos de”; tinha “anos”
+LEV 25:15	10	תְבוּאֹ֖ת	de-colheitas	claude	תְבוּאֹת “colheitas”; tinha “frutos”
+LEV 25:15	11	יִמְכָּר	te-venderá	claude	יִמְכָּר “venderá”; tinha “venderá”
