@@ -26087,3 +26087,271 @@ NUM 4:9	18	אֲשֶׁ֥ר	com-que	claude	אֲשֶׁר “que”; tinha “que”
 NUM 4:9	19	יְשָׁרְתוּ	servem	claude	יְשָׁרְתוּ “servem”; tinha “serve”
 NUM 4:9	20	לָ֖/הּ	a-ele	claude	לָהּ “a ele”; tinha “para-ela”
 NUM 4:9	21	בָּ/הֶֽם	com-eles	claude	בָּהֶם “com eles”; tinha “neles”
+NUM 4:23	1	מִ/בֶּן֩	da-idade	claude	מִבֶּן “de filho de”; tinha “de-idade”
+NUM 4:23	4	וָ/מַ֗עְלָ/ה	e-acima	claude	וָמַעְלָה “e acima”; tinha “acima”
+NUM 4:23	6	בֶּן	a-idade	claude	בֶּן “filho de”; tinha “filho”
+NUM 4:23	9	תִּפְקֹ֣ד	os-contarás	claude	תִּפְקֹד “contarás”; tinha “contarás”
+NUM 4:23	12	הַ/בָּא֙	o-que-entra	claude	הַבָּא “o que entra”; tinha “os-que-entram”
+NUM 4:23	13	לִ/צְבֹ֣א	para-servir	claude	לִצְבֹא “para servir”; tinha “para-fazer”
+NUM 4:23	14	צָבָ֔א	no-serviço	claude	צָבָא “serviço”; tinha “companhia”
+NUM 4:23	17	בְּ/אֹ֥הֶל	na-tenda	claude	בְּאֹהֶל “na tenda de”; tinha “no-tabernáculo-do”
+NUM 4:23	18	מוֹעֵֽד	do-encontro	claude	מוֹעֵד “encontro”; tinha “testemunho”
+NUM 4:24	1	זֹ֣את	este-é	claude	זֹאת “esta”; tinha “este”
+NUM 4:24	2	עֲבֹדַ֔ת	o-serviço	claude	עֲבֹדַת “serviço de”; tinha “ofício”
+NUM 4:24	3	מִשְׁפְּחֹ֖ת	das-famílias	claude	מִשְׁפְּחֹת “famílias de”; tinha “famílias”
+NUM 4:24	4	הַ/גֵּרְשֻׁנִּ֑י	dos-gersonitas	claude	הַגֵּרְשֻׁנִּי “o gersonita”; tinha “de-Gérson”
+NUM 4:24	5	לַ/עֲבֹ֖ד	para-servir	claude	לַעֲבֹד “para servir”; tinha “para-ministrar”
+NUM 4:24	6	וּ/לְ/מַשָּֽׂא	e-para-carregar	claude	וּלְמַשָּׂא “e para carga”; tinha “e-para-levar”
+NUM 4:26	2	קַלְעֵ֨י	as-cortinas	claude	קַלְעֵי “cortinas de”; tinha “cortinas”
+NUM 4:26	5	מָסַ֣ךְ	o-reposteiro	claude	מָסַךְ “reposteiro de”; tinha “cortina”
+NUM 4:26	6	פֶּ֣תַח	da-entrada	claude	פֶּתַח “entrada de”; tinha “porta”
+NUM 4:26	7	שַׁ֣עַר	da-porta	claude	שַׁעַר “porta de”; tinha “porta”
+NUM 4:26	10	עַל	junto-ao	claude	עַל “sobre”; tinha “sobre”
+NUM 4:26	11	הַ/מִּשְׁכָּ֤ן	tabernáculo	claude	הַמִּשְׁכָּן “o tabernáculo”; tinha “do-tabernáculo”
+NUM 4:26	12	וְ/עַל	e-junto-ao	claude	וְעַל “e sobre”; tinha “e-sobre”
+NUM 4:26	13	הַ/מִּזְבֵּ֨חַ֙	altar	claude	הַמִּזְבֵּחַ “o altar”; tinha “do-altar”
+NUM 4:26	14	סָבִ֔יב	ao-redor	claude	סָבִיב “ao redor”; tinha “redor”
+NUM 4:26	19	כְּלֵ֖י	os-utensílios	claude	כְּלֵי “utensílios de”; tinha “instrumentos”
+NUM 4:26	20	עֲבֹדָתָ֑/ם	de-seu-serviço	claude	עֲבֹדָתָם “seu serviço”; tinha “seu-serviço”
+NUM 4:26	24	יֵעָשֶׂ֛ה	se-fizer	claude	יֵעָשֶׂה “for feito”; tinha “feito”
+NUM 4:26	26	וְ/עָבָֽדוּ	e-servirão	claude	וְעָבָדוּ “e servirão”; tinha “assim-servirão”
+NUM 4:30	1	מִ/בֶּן֩	da-idade	claude	מִבֶּן “de filho de”; tinha “idade”
+NUM 4:30	4	וָ/מַ֗עְלָ/ה	e-acima	claude	וָמַעְלָה “e acima”; tinha “acima”
+NUM 4:30	6	בֶּן	a-idade	claude	בֶּן “filho de”; tinha “filho”
+NUM 4:30	9	תִּפְקְדֵ֑/ם	os-contarás	claude	תִּפְקְדֵם “os contarás”; tinha “contarás-os”
+NUM 4:30	11	הַ/בָּא֙	o-que-entra	claude	הַבָּא “o que entra”; tinha “os-que-entram”
+NUM 4:30	12	לַ/צָּבָ֔א	no-serviço	claude	לַצָּבָא “para o serviço”; tinha “em-companhia”
+NUM 4:30	16	אֹ֥הֶל	da-tenda	claude	אֹהֶל “tenda de”; tinha “tabernáculo-do”
+NUM 4:30	17	מוֹעֵֽד	do-encontro	claude	מוֹעֵד “encontro”; tinha “testemunho”
+NUM 4:31	1	וְ/זֹאת֙	e-esta-é	claude	וְזֹאת “e esta”; tinha “e-este”
+NUM 4:31	2	מִשְׁמֶ֣רֶת	a-guarda	claude	מִשְׁמֶרֶת “guarda de”; tinha “dever”
+NUM 4:31	3	מַשָּׂאָ֔/ם	de-sua-carga	claude	מַשָּׂאָם “sua carga”; tinha “seu-cargo”
+NUM 4:31	6	בְּ/אֹ֣הֶל	na-tenda	claude	בְּאֹהֶל “na tenda de”; tinha “no-tabernáculo-do”
+NUM 4:31	7	מוֹעֵ֑ד	do-encontro	claude	מוֹעֵד “encontro”; tinha “testemunho”
+NUM 4:31	8	קַרְשֵׁי֙	as-tábuas	claude	קַרְשֵׁי “tábuas de”; tinha “tábuas”
+NUM 4:31	10	וּ/בְרִיחָ֖י/ו	e-suas-barras	claude	וּבְרִיחָיו “e suas barras”; tinha “e-suas-barras-suas”
+NUM 4:31	11	וְ/עַמּוּדָ֥י/ו	e-suas-colunas	claude	וְעַמּוּדָיו “e suas colunas”; tinha “e-colunas-suas”
+NUM 4:31	12	וַ/אֲדָנָֽי/ו	e-suas-bases	claude	וַאֲדָנָיו “e suas bases”; tinha “e-bases”
+NUM 4:32	3	סָבִ֜יב	ao-redor	claude	סָבִיב “ao redor”; tinha “redor”
+NUM 4:32	8	כְּלֵי/הֶ֔ם	seus-utensílios	claude	כְּלֵיהֶם “seus utensílios”; tinha “seus-instrumentos”
+NUM 4:32	9	וּ/לְ/כֹ֖ל	e-com-todo	claude	וּלְכֹל “e com todo”; tinha “e-todo”
+NUM 4:32	10	עֲבֹדָתָ֑/ם	seu-serviço	claude	עֲבֹדָתָם “seu serviço”; tinha “serviço”
+NUM 4:32	11	וּ/בְ/שֵׁמֹ֣ת	e-por-nomes	claude	וּבְשֵׁמֹת “e por nomes”; tinha “e-contareis-por-seus-nomes”
+NUM 4:32	12	תִּפְקְד֔וּ	contareis	claude	תִּפְקְדוּ “contareis”; tinha “visitará”
+NUM 4:32	14	כְּלֵ֖י	os-utensílios	claude	כְּלֵי “utensílios de”; tinha “vasos”
+NUM 4:32	15	מִשְׁמֶ֥רֶת	da-guarda	claude	מִשְׁמֶרֶת “guarda de”; tinha “guarda”
+NUM 4:32	16	מַשָּׂאָֽ/ם	de-sua-carga	claude	מַשָּׂאָם “sua carga”; tinha “seu-cargo”
+NUM 4:35	1	מִ/בֶּ֨ן	da-idade	claude	מִבֶּן “de filho de”; tinha “idade”
+NUM 4:35	4	וָ/מַ֔עְלָ/ה	e-acima	claude	וָמַעְלָה “e acima”; tinha “acima”
+NUM 4:35	6	בֶּן	a-idade	claude	בֶּן “filho de”; tinha “idade”
+NUM 4:35	10	הַ/בָּא֙	o-que-entra	claude	הַבָּא “o que entra”; tinha “os-que-entram”
+NUM 4:35	11	לַ/צָּבָ֔א	no-serviço	claude	לַצָּבָא “para o serviço”; tinha “em-companhia”
+NUM 4:35	12	לַ/עֲבֹדָ֖ה	para-o-serviço	claude	לַעֲבֹדָה “para o serviço”; tinha “para-ministrar”
+NUM 4:35	13	בְּ/אֹ֥הֶל	na-tenda	claude	בְּאֹהֶל “na tenda de”; tinha “no-tabernáculo-do”
+NUM 4:35	14	מוֹעֵֽד	do-encontro	claude	מוֹעֵד “encontro”; tinha “testemunho”
+NUM 4:39	1	מִ/בֶּ֨ן	da-idade	claude	מִבֶּן “de filho de”; tinha “idade”
+NUM 4:39	4	וָ/מַ֔עְלָ/ה	e-acima	claude	וָמַעְלָה “e acima”; tinha “acima”
+NUM 4:39	6	בֶּן	a-idade	claude	בֶּן “filho de”; tinha “idade”
+NUM 4:39	10	הַ/בָּא֙	o-que-entra	claude	הַבָּא “o que entra”; tinha “os-que-entram”
+NUM 4:39	11	לַ/צָּבָ֔א	no-serviço	claude	לַצָּבָא “para o serviço”; tinha “em-companhia”
+NUM 4:39	12	לַ/עֲבֹדָ֖ה	para-o-serviço	claude	לַעֲבֹדָה “para o serviço”; tinha “para-ministrar”
+NUM 4:39	13	בְּ/אֹ֥הֶל	na-tenda	claude	בְּאֹהֶל “na tenda de”; tinha “no-tabernáculo-do”
+NUM 4:39	14	מוֹעֵֽד	do-encontro	claude	מוֹעֵד “encontro”; tinha “testemunho”
+NUM 4:40	2	פְּקֻ֣דֵי/הֶ֔ם	seus-contados	claude	פְּקֻדֵיהֶם “seus contados”; tinha “contados-deles”
+NUM 4:40	4	לְ/בֵ֣ית	pela-casa	claude	לְבֵית “pela casa de”; tinha “pelas-casas”
+NUM 4:40	5	אֲבֹתָ֑/ם	de-seus-pais	claude	אֲבֹתָם “seus pais”; tinha “pais-foram”
+NUM 4:40	6	אַלְפַּ֕יִם	dois-mil-seiscentos-e-trinta	claude	אַלְפַּ֕יִם parte de “dois mil seiscentos e trinta”; tinha “mil”
+NUM 4:40	7	וְ/שֵׁ֥שׁ	dois-mil-seiscentos-e-trinta	claude	וְשֵׁ֥שׁ parte de “dois mil seiscentos e trinta”; tinha “seiscentos”
+NUM 4:40	8	מֵא֖וֹת	dois-mil-seiscentos-e-trinta	claude	מֵא֖וֹת parte de “dois mil seiscentos e trinta”; tinha “seiscentos”
+NUM 4:40	9	וּ/שְׁלֹשִֽׁים	dois-mil-seiscentos-e-trinta	claude	וּשְׁלֹשִֽׁים parte de “dois mil seiscentos e trinta”; tinha “e-trinta”
+NUM 4:43	1	מִ/בֶּ֨ן	da-idade	claude	מִבֶּן “de filho de”; tinha “idade”
+NUM 4:43	4	וָ/מַ֔עְלָ/ה	e-acima	claude	וָמַעְלָה “e acima”; tinha “acima”
+NUM 4:43	6	בֶּן	a-idade	claude	בֶּן “filho de”; tinha “filho”
+NUM 4:43	10	הַ/בָּא֙	o-que-entra	claude	הַבָּא “o que entra”; tinha “os-que-entram”
+NUM 4:43	11	לַ/צָּבָ֔א	no-serviço	claude	לַצָּבָא “para o serviço”; tinha “em-companhia”
+NUM 4:43	12	לַ/עֲבֹדָ֖ה	para-o-serviço	claude	לַעֲבֹדָה “para o serviço”; tinha “para-ministrar”
+NUM 4:43	13	בְּ/אֹ֥הֶל	na-tenda	claude	בְּאֹהֶל “na tenda de”; tinha “no-tabernáculo-do”
+NUM 4:43	14	מוֹעֵֽד	do-encontro	claude	מוֹעֵד “encontro”; tinha “testemunho”
+NUM 5:3	1	מִ/זָּכָ֤ר	desde-o-homem	claude	מִזָּכָר “desde o macho”; tinha “tanto-homens”
+NUM 5:3	3	נְקֵבָה֙	a-mulher	claude	נְקֵבָה “fêmea”; tinha “mulheres”
+NUM 5:3	5	אֶל	para	claude	אֶל “para”; tinha “a”
+NUM 5:3	8	תְּשַׁלְּח֑וּ/ם	os-lançareis	claude	תְּשַׁלְּחוּם “os enviareis”; tinha “expulsareis-para”
+NUM 5:3	9	וְ/לֹ֤א	e-não	claude	וְלֹא “e não”; tinha “para-que-não”
+NUM 5:3	10	יְטַמְּאוּ֙	contaminarão	claude	יְטַמְּאוּ “tornarão impuros”; tinha “contaminem”
+NUM 5:3	12	מַ֣חֲנֵי/הֶ֔ם	seus-acampamentos	claude	מַחֲנֵיהֶם “seus acampamentos”; tinha “acampamento-daqueles”
+NUM 5:3	13	אֲשֶׁ֥ר	no-meio-dos-quais	claude	אֲשֶׁר “que”; tinha “que”
+NUM 5:3	16	בְּ/תוֹכָֽ/ם	no-meio-deles	claude	בְּתוֹכָם “no meio deles”; tinha “entre-os”
+NUM 5:6	8	כִּ֤י	quando	claude	כִּי “quando”; tinha “que”
+NUM 5:6	10	מִ/כָּל	algum-de-todos	claude	מִכָּל “de todos”; tinha “de-todos”
+NUM 5:6	11	חַטֹּ֣את	os-pecados	claude	חַטֹּאת “pecados de”; tinha “pecados”
+NUM 5:6	12	הָֽ/אָדָ֔ם	do-homem	claude	הָאָדָם “o homem”; tinha “dos-homens”
+NUM 5:6	13	לִ/מְעֹ֥ל	cometendo-infidelidade	claude	לִמְעֹל “para cometer infidelidade”; tinha “fazendo-transgressão”
+NUM 5:6	14	מַ֖עַל	infidelidade	claude	מַעַל “infidelidade”; tinha “transgressão”
+NUM 5:6	16	וְ/אָֽשְׁמָ֖ה	e-for-culpada	claude	וְאָשְׁמָה “e for culpada”; tinha “e-transgredir”
+NUM 5:6	17	הַ/נֶּ֥פֶשׁ	a-alma	claude	הַנֶּפֶשׁ “a alma”; tinha “aquela-pessoa”
+NUM 5:7	1	וְ/הִתְוַדּ֗וּ	e-confessarão	claude	וְהִתְוַדּוּ “e confessarão”; tinha “confessarão”
+NUM 5:7	5	עָשׂוּ֒	fizeram	claude	עָשׂוּ “fizeram”; tinha “cometeram”
+NUM 5:7	6	וְ/הֵשִׁ֤יב	e-restituirá	claude	וְהֵשִׁיב “e restituirá”; tinha “e-compensarão-sua”
+NUM 5:7	8	אֲשָׁמ/וֹ֙	sua-culpa	claude	אֲשָׁמוֹ “sua culpa”; tinha “sua-ofensa”
+NUM 5:7	9	בְּ/רֹאשׁ֔/וֹ	por-inteiro	claude	בְּרֹאשׁוֹ “por sua cabeça”; tinha “inteiramente”
+NUM 5:7	11	יֹסֵ֣ף	acrescentará	claude	יֹסֵף “acrescentará”; tinha “acrescentarão”
+NUM 5:7	13	וְ/נָתַ֕ן	e-dará	claude	וְנָתַן “e dará”; tinha “e-o-darão”
+NUM 5:7	14	לַ/אֲשֶׁ֖ר	àquele-contra-quem	claude	לַאֲשֶׁר “ao que”; tinha “para-que”
+NUM 5:7	15	אָשַׁ֥ם	se-tornou-culpado	claude	אָשַׁם “se tornou culpado”; tinha “pecaram”
+NUM 5:7	16	לֽ/וֹ	a-ele	claude	לוֹ “a ele”; tinha “para-ele”
+NUM 5:10	1	וְ/אִ֥ישׁ	e-de-cada-um	claude	וְאִישׁ “e homem”; tinha “qualquer”
+NUM 5:10	3	קֳדָשָׁ֖י/ו	as-coisas-santas	claude	קֳדָשָׁיו “suas coisas santas”; tinha “santificado”
+NUM 5:10	4	ל֣/וֹ	dele	claude	לוֹ “para ele”; tinha “para-ele”
+NUM 5:10	5	יִהְי֑וּ	serão	claude	יִהְיוּ “serão”; tinha “será”
+NUM 5:10	6	אִ֛ישׁ	o-que-cada-um	claude	אִישׁ “homem”; tinha “qualquer”
+NUM 5:10	10	ל֥/וֹ	dele	claude	לוֹ “para ele”; tinha “para-ele”
+NUM 5:12	7	אִ֥ישׁ	um	claude	אִישׁ “homem”; tinha “cada”
+NUM 5:12	8	אִישׁ֙	homem	claude	אִישׁ “homem”; tinha “alguém”
+NUM 5:12	9	כִּֽי	quando	claude	כִּי “quando”; tinha “porque”
+NUM 5:12	10	תִשְׂטֶ֣ה	se-desviar	claude	תִשְׂטֶה “se desviar”; tinha “desviar”
+NUM 5:12	11	אִשְׁתּ֔/וֹ	sua-mulher	claude	אִשְׁתּוֹ “sua mulher”; tinha “mulher”
+NUM 5:12	12	וּ/מָעֲלָ֥ה	e-cometer	claude	וּמָעֲלָה “e cometer”; tinha “e-fizer”
+NUM 5:12	14	מָֽעַל	infidelidade	claude	מָעַל “infidelidade”; tinha “traição”
+NUM 5:14	1	וְ/עָבַ֨ר	e-passar	claude	וְעָבַר “e passar”; tinha “se-vier”
+NUM 5:14	3	רֽוּחַ	um-espírito	claude	רוּחַ “espírito de”; tinha “espírito”
+NUM 5:14	4	קִנְאָ֛ה	de-ciúme	claude	קִנְאָה “ciúme”; tinha “ciúme”
+NUM 5:14	7	אִשְׁתּ֖/וֹ	de-sua-mulher	claude	אִשְׁתּוֹ “sua mulher”; tinha “mulher”
+NUM 5:14	8	וְ/הִ֣וא	e-ela	claude	וְהִוא “e ela”; tinha “havendo-se-ela”
+NUM 5:14	9	נִטְמָ֑אָה	se-contaminou	claude	נִטְמָאָה “se tornou impura”; tinha “contaminado”
+NUM 5:14	11	עָבַ֨ר	passar	claude	עָבַר “passar”; tinha “vier”
+NUM 5:14	13	רֽוּחַ	um-espírito	claude	רוּחַ “espírito de”; tinha “espírito”
+NUM 5:14	15	וְ/קִנֵּ֣א	e-tiver-ciúme	claude	וְקִנֵּא “e tiver ciúme”; tinha “e-tiver-ciúmes”
+NUM 5:14	17	אִשְׁתּ֔/וֹ	de-sua-mulher	claude	אִשְׁתּוֹ “sua mulher”; tinha “sua-mulher-não”
+NUM 5:14	18	וְ/הִ֖יא	e-ela	claude	וְהִיא “e ela”; tinha “havendo-ela”
+NUM 5:14	20	נִטְמָֽאָה	se-contaminou	claude	נִטְמָאָה “se tornou impura”; tinha “contaminado”
+NUM 5:15	1	וְ/הֵבִ֨יא	então-trará	claude	וְהֵבִיא “e trará”; tinha “trará”
+NUM 5:15	9	קָרְבָּנָ/הּ֙	a-oferta-dela	claude	קָרְבָּנָהּ “sua oferta”; tinha “oferta”
+NUM 5:15	10	עָלֶ֔י/הָ	por-ela	claude	עָלֶיהָ “sobre ela”; tinha “sobre-ela”
+NUM 5:15	11	עֲשִׂירִ֥ת	a-décima-parte	claude	עֲשִׂירִת “décima parte de”; tinha “décimo”
+NUM 5:15	12	הָ/אֵיפָ֖ה	do-efa	claude	הָאֵיפָה “o efa”; tinha “um-efa”
+NUM 5:15	13	קֶ֣מַח	de-farinha	claude	קֶמַח “farinha de”; tinha “farinha”
+NUM 5:15	14	שְׂעֹרִ֑ים	de-cevada	claude	שְׂעֹרִים “cevada”; tinha “cevada”
+NUM 5:15	16	יִצֹ֨ק	derramará	claude	יִצֹק “derramará”; tinha “lançará”
+NUM 5:15	23	כִּֽי	pois	claude	כִּי “pois”; tinha “porque”
+NUM 5:15	24	מִנְחַ֤ת	oferta-de-cereais	claude	מִנְחַת “oferta de cereais de”; tinha “oferta”
+NUM 5:15	25	קְנָאֹת֙	de-ciúmes	claude	קְנָאֹת “ciúmes”; tinha “ciúme”
+NUM 5:15	26	ה֔וּא	é	claude	הוּא “ele”; tinha “ele”
+NUM 5:15	27	מִנְחַ֥ת	oferta-de-cereais	claude	מִנְחַת “oferta de cereais de”; tinha “oferta”
+NUM 5:15	28	זִכָּר֖וֹן	de-memorial	claude	זִכָּרוֹן “memorial”; tinha “recordação”
+NUM 5:15	29	מַזְכֶּ֥רֶת	que-traz-à-memória	claude	מַזְכֶּרֶת “que traz à memória”; tinha “memória”
+NUM 5:15	30	עָוֺֽן	a-iniquidade	claude	עָוֺן “iniquidade”; tinha “pecado”
+NUM 5:18	1	וְ/הֶעֱמִ֨יד	e-fará-ficar-em-pé	claude	וְהֶעֱמִיד “e fará ficar em pé”; tinha “pé”
+NUM 5:18	4	הָ/אִשָּׁה֮	a-mulher	claude	הָאִשָּׁה “a mulher”; tinha “à-mulher”
+NUM 5:18	7	וּ/פָרַע֙	e-soltará	claude	וּפָרַע “e soltará”; tinha “e-descobrirá”
+NUM 5:18	9	רֹ֣אשׁ	o-cabelo	claude	רֹאשׁ “cabeça de”; tinha “cabeça”
+NUM 5:18	13	כַּפֶּ֗י/הָ	as-palmas-dela	claude	כַּפֶּיהָ “suas palmas”; tinha “mãos-a”
+NUM 5:18	15	מִנְחַ֣ת	a-oferta-de-cereais	claude	מִנְחַת “oferta de cereais de”; tinha “oferta”
+NUM 5:18	16	הַ/זִּכָּר֔וֹן	do-memorial	claude	הַזִּכָּרוֹן “o memorial”; tinha “da-recordação”
+NUM 5:18	17	מִנְחַ֥ת	oferta-de-cereais	claude	מִנְחַת “oferta de cereais de”; tinha “oferta”
+NUM 5:18	18	קְנָאֹ֖ת	de-ciúmes	claude	קְנָאֹת “ciúmes”; tinha “ciúme”
+NUM 5:18	20	וּ/בְ/יַ֤ד	e-na-mão	claude	וּבְיַד “e na mão de”; tinha “na-mão”
+NUM 5:18	21	הַ/כֹּהֵן֙	do-sacerdote	claude	הַכֹּהֵן “o sacerdote”; tinha “o-sacerdote”
+NUM 5:18	22	יִהְי֔וּ	estarão	claude	יִהְיוּ “estarão”; tinha “terá”
+NUM 5:18	23	מֵ֥י	as-águas	claude	מֵי “águas de”; tinha “águas”
+NUM 5:20	2	כִּ֥י	se	claude	כִּי “se”; tinha “porque”
+NUM 5:20	4	תַּ֥חַת	sob	claude	תַּחַת “debaixo de”; tinha “debaixo”
+NUM 5:20	6	וְ/כִ֣י	e-se	claude	וְכִי “e se”; tinha “e-quando”
+NUM 5:20	7	נִטְמֵ֑את	te-contaminaste	claude	נִטְמֵאת “te tornaste impura”; tinha “contaminaste”
+NUM 5:20	9	אִ֥ישׁ	um-homem	claude	אִישׁ “homem”; tinha “alguém”
+NUM 5:20	12	שְׁכָבְתּ֔/וֹ	seu-leito	claude	שְׁכָבְתּוֹ “seu deitar”; tinha “tido-relação”
+NUM 5:20	13	מִֽ/בַּלְעֲדֵ֖י	além	claude	מִבַּלְעֲדֵי “além de”; tinha “fora-de-teu”
+NUM 5:21	1	וְ/הִשְׁבִּ֨יעַ	e-fará-jurar	claude	וְהִשְׁבִּיעַ “e fará jurar”; tinha “fará-jurar”
+NUM 5:21	4	הָֽ/אִשָּׁה֮	a-mulher	claude	הָאִשָּׁה “a mulher”; tinha “à-mulher”
+NUM 5:21	5	בִּ/שְׁבֻעַ֣ת	com-o-juramento	claude	בִּשְׁבֻעַת “com juramento de”; tinha “com-juramento”
+NUM 5:21	6	הָ/אָלָה֒	da-maldição	claude	הָאָלָה “a maldição”; tinha “de-maldição”
+NUM 5:21	10	יִתֵּ֨ן	faça	claude	יִתֵּן “dê”; tinha “dará”
+NUM 5:21	12	אוֹתָ֛/ךְ	a-ti	claude	אוֹתָךְ “a ti”; tinha “te”
+NUM 5:21	13	לְ/אָלָ֥ה	maldição	claude	לְאָלָה “em maldição”; tinha “em-maldição”
+NUM 5:21	14	וְ/לִ/שְׁבֻעָ֖ה	e-juramento	claude	וְלִשְׁבֻעָה “e em juramento”; tinha “e-em-conspiração”
+NUM 5:21	15	בְּ/ת֣וֹךְ	no-meio	claude	בְּתוֹךְ “no meio de”; tinha “em-meio”
+NUM 5:21	17	בְּ/תֵ֨ת	fazendo	claude	בְּתֵת “ao dar”; tinha “em-eu”
+NUM 5:21	21	נֹפֶ֔לֶת	cair	claude	נֹפֶלֶת “caindo”; tinha “caia”
+NUM 5:21	23	בִּטְנֵ֖/ךְ	teu-ventre	claude	בִּטְנֵךְ “teu ventre”; tinha “ventre”
+NUM 5:21	24	צָבָֽה	inchar	claude	צָבָה “inchado”; tinha “inche”
+NUM 6:2	11	יַפְלִא֙	fizer-voto-especial	claude	יַפְלִא “fizer coisa extraordinária”; tinha “separar”
+NUM 6:2	12	לִ/נְדֹּר֙	de-votar	claude	לִנְדֹּר “para votar”; tinha “fazendo-voto”
+NUM 6:2	13	נֶ֣דֶר	um-voto	claude	נֶדֶר “voto de”; tinha “voto”
+NUM 6:2	14	נָזִ֔יר	de-nazireu	claude	נָזִיר “nazireu”; tinha “nazireu”
+NUM 6:2	15	לְ/הַזִּ֖יר	para-se-separar	claude	לְהַזִּיר “para se separar”; tinha “para-dedicar”
+NUM 6:3	6	וְ/חֹ֥מֶץ	e-vinagre	claude	וְחֹמֶץ “e vinagre de”; tinha “nem-vinagre”
+NUM 6:3	10	וְ/כָל	e-nenhum	claude	וְכָל “e todo”; tinha “nem-algum”
+NUM 6:3	11	מִשְׁרַ֤ת	suco	claude	מִשְׁרַת “suco de”; tinha “licor”
+NUM 6:3	12	עֲנָבִים֙	de-uvas	claude	עֲנָבִים “uvas”; tinha “uvas”
+NUM 6:3	13	לֹ֣א	não	claude	לֹא “não”; tinha “nem”
+NUM 6:3	15	וַ/עֲנָבִ֛ים	e-uvas	claude	וַעֲנָבִים “e uvas”; tinha “uvas”
+NUM 6:7	2	וּ/לְ/אִמּ֗/וֹ	e-por-sua-mãe	claude	וּלְאִמּוֹ “e por sua mãe”; tinha “nem-por-sua-mãe”
+NUM 6:7	4	וּ/לְ/אַ֣חֹת֔/וֹ	e-por-sua-irmã	claude	וּלְאַחֹתוֹ “e por sua irmã”; tinha “nem-por-sua-irmã”
+NUM 6:7	6	יִטַּמָּ֥א	se-tornará-impuro	claude	יִטַּמָּא “se tornará impuro”; tinha “contaminará”
+NUM 6:7	7	לָ/הֶ֖ם	por-eles	claude	לָהֶם “por eles”; tinha “para-eles”
+NUM 6:7	8	בְּ/מֹתָ֑/ם	em-sua-morte	claude	בְּמֹתָם “em sua morte”; tinha “quando-morrerem”
+NUM 6:7	9	כִּ֛י	pois	claude	כִּי “pois”; tinha “porque”
+NUM 6:7	10	נֵ֥זֶר	a-consagração	claude	נֵזֶר “consagração de”; tinha “consagração”
+NUM 6:7	11	אֱלֹהָ֖י/ו	de-seu-Deus	claude	אֱלֹהָיו “seu Deus”; tinha “seu-Deus”
+NUM 6:9	2	יָמ֨וּת	morrer	claude	יָמוּת “morrer”; tinha “morrerá”
+NUM 6:9	3	מֵ֤ת	um-morto	claude	מֵת “morto”; tinha “morrer”
+NUM 6:9	4	עָלָי/ו֙	junto-a-ele	claude	עָלָיו “sobre ele”; tinha “sobre-ele”
+NUM 6:9	5	בְּ/פֶ֣תַע	subitamente	claude	בְּפֶתַע “subitamente”; tinha “muito-de”
+NUM 6:9	6	פִּתְאֹ֔ם	de-repente	claude	פִּתְאֹם “de repente”; tinha “repente”
+NUM 6:9	7	וְ/טִמֵּ֖א	e-contaminar	claude	וְטִמֵּא “e tornar impura”; tinha “ele-contaminará”
+NUM 6:9	8	רֹ֣אשׁ	a-cabeça	claude	רֹאשׁ “cabeça de”; tinha “cabeça”
+NUM 6:9	10	וְ/גִלַּ֤ח	então-rapará	claude	וְגִלַּח “e rapará”; tinha “rapará”
+NUM 6:9	11	רֹאשׁ/וֹ֙	sua-cabeça	claude	רֹאשׁוֹ “sua cabeça”; tinha “cabeça”
+NUM 6:9	12	בְּ/י֣וֹם	no-dia	claude	בְּיוֹם “no dia de”; tinha “dia”
+NUM 6:9	14	בַּ/יּ֥וֹם	no-dia	claude	בַּיּוֹם “no dia”; tinha “dia”
+NUM 6:9	15	הַ/שְּׁבִיעִ֖י	sétimo	claude	הַשְּׁבִיעִי “o sétimo”; tinha “sétimo-a”
+NUM 6:9	16	יְגַלְּחֶֽ/נּוּ	a-rapará	claude	יְגַלְּחֶנּוּ “a rapará”; tinha “rapará”
+NUM 6:12	4	יְמֵ֣י	os-dias	claude	יְמֵי “dias de”; tinha “dias”
+NUM 6:12	8	בֶּן	de	claude	בֶּן “filho de”; tinha “filho”
+NUM 6:12	9	שְׁנָת֖/וֹ	um-ano	claude	שְׁנָתוֹ “seu ano”; tinha “ano-em”
+NUM 6:12	10	לְ/אָשָׁ֑ם	como-oferta-pela-culpa	claude	לְאָשָׁם “como oferta pela culpa”; tinha “expiação-pela-culpa”
+NUM 6:12	13	יִפְּל֔וּ	cairão	claude	יִפְּלוּ “cairão”; tinha “anulados”
+NUM 6:12	14	כִּ֥י	pois	claude	כִּי “pois”; tinha “porque”
+NUM 6:12	15	טָמֵ֖א	foi-contaminado	claude	טָמֵא “impuro”; tinha “contaminado”
+NUM 6:14	5	כֶּבֶשׂ֩	um-cordeiro	claude	כֶּבֶשׂ “cordeiro”; tinha “cordeiro”
+NUM 6:14	6	בֶּן	de	claude	בֶּן “filho de”; tinha “filho”
+NUM 6:14	7	שְׁנָת֨/וֹ	um-ano	claude	שְׁנָתוֹ “seu ano”; tinha “ano”
+NUM 6:14	10	לְ/עֹלָ֔ה	como-holocausto	claude	לְעֹלָה “como holocausto”; tinha “em-holocausto”
+NUM 6:14	13	בַּת	de	claude	בַּת “filha de”; tinha “filha”
+NUM 6:14	14	שְׁנָתָ֛/הּ	um-ano	claude	שְׁנָתָהּ “seu ano”; tinha “ano”
+NUM 6:14	16	לְ/חַטָּ֑את	como-oferta-pelo-pecado	claude	לְחַטָּאת “como oferta pelo pecado”; tinha “em-expiação”
+NUM 6:14	20	לִ/שְׁלָמִֽים	como-oferta-pacífica	claude	לִשְׁלָמִים “como ofertas pacíficas”; tinha “por-sacrifício-pacífico”
+NUM 6:17	3	יַעֲשֶׂ֨ה	fará	claude	יַעֲשֶׂה “fará”; tinha “oferecerá”
+NUM 6:17	4	זֶ֤בַח	como-sacrifício	claude	זֶבַח “sacrifício de”; tinha “sacrifício”
+NUM 6:17	5	שְׁלָמִים֙	de-ofertas-pacíficas	claude	שְׁלָמִים “ofertas pacíficas”; tinha “pacífico”
+NUM 6:17	7	עַ֖ל	com	claude	עַל “sobre”; tinha “sobre”
+NUM 6:17	8	סַ֣ל	o-cesto	claude	סַל “cesto de”; tinha “cesto”
+NUM 6:17	10	וְ/עָשָׂה֙	e-fará	claude	וְעָשָׂה “e fará”; tinha “oferecerá-também”
+NUM 6:17	13	מִנְחָת֖/וֹ	sua-oferta-de-cereais	claude	מִנְחָתוֹ “sua oferta de cereais”; tinha “oferta”
+NUM 6:17	15	נִסְכּֽ/וֹ	e-sua-libação	claude	נִסְכּוֹ “sua libação”; tinha “libações”
+NUM 6:19	1	וְ/לָקַ֨ח	e-tomará	claude	וְלָקַח “e tomará”; tinha “depois-tomará”
+NUM 6:19	4	הַ/זְּרֹ֣עַ	a-espádua	claude	הַזְּרֹעַ “a espádua”; tinha “a-coxa”
+NUM 6:19	6	מִן	de	claude	מִן “de”; tinha “do”
+NUM 6:19	7	הָ/אַיִל֒	o-carneiro	claude	הָאַיִל “o carneiro”; tinha “do-carneiro”
+NUM 6:19	8	וְֽ/חַלַּ֨ת	e-um-bolo	claude	וְחַלַּת “e bolo de”; tinha “e-uma-torta”
+NUM 6:19	9	מַצָּ֤ה	ázimo	claude	מַצָּה “pão ázimo”; tinha “sem-levedura”
+NUM 6:19	11	מִן	de	claude	מִן “de”; tinha “do”
+NUM 6:19	12	הַ/סַּ֔ל	o-cesto	claude	הַסַּל “o cesto”; tinha “do-cesto”
+NUM 6:19	13	וּ/רְקִ֥יק	e-uma-obreia	claude	וּרְקִיק “e obreia de”; tinha “e-uma-massa”
+NUM 6:19	14	מַצָּ֖ה	ázima	claude	מַצָּה “pão ázimo”; tinha “sem-levedura”
+NUM 6:19	16	וְ/נָתַן֙	e-porá	claude	וְנָתַן “e porá”; tinha “e-as-porá”
+NUM 6:19	18	כַּפֵּ֣י	as-palmas	claude	כַּפֵּי “palmas de”; tinha “mãos”
+NUM 6:19	21	הִֽתְגַּלְּח֥/וֹ	de-ter-rapado	claude	הִתְגַּלְּחוֹ “seu rapar-se”; tinha “estragado-seu”
+NUM 6:19	23	נִזְרֽ/וֹ	seu-nazireado	claude	נִזְרוֹ “seu nazireado”; tinha “nazireado”
+NUM 6:21	2	תּוֹרַ֣ת	a-lei	claude	תּוֹרַת “lei de”; tinha “lei”
+NUM 6:21	9	נִזְר֔/וֹ	seu-nazireado	claude	נִזְרוֹ “seu nazireado”; tinha “seu-nazireado-a”
+NUM 6:21	10	מִ/לְּ/בַ֖ד	além	claude	מִלְּבַד “à parte de”; tinha “a-mais-do”
+NUM 6:21	15	נִדְר/וֹ֙	seu-voto	claude	נִדְרוֹ “seu voto”; tinha “voto”
+NUM 6:21	17	יִדֹּ֔ר	fizer-voto	claude	יִדֹּר “fizer voto”; tinha “fizer”
+NUM 6:21	20	עַ֖ל	segundo	claude	עַל “sobre”; tinha “sobre”
+NUM 6:21	21	תּוֹרַ֥ת	a-lei	claude	תּוֹרַת “lei de”; tinha “lei”
+NUM 6:23	5	בָּנָ֣י/ו	seus-filhos	claude	בָּנָיו “seus filhos”; tinha “filhos-e”
+NUM 6:23	6	לֵ/אמֹ֔ר	dizendo	claude	לֵאמֹר “dizendo”; tinha “dize”
+NUM 6:23	10	בְּנֵ֣י	os-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+NUM 6:23	13	לָ/הֶֽם	a-eles	claude	לָהֶם “a eles”; tinha “para-eles”
+NUM 6:27	5	בְּנֵ֣י	os-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+NUM 6:27	8	אֲבָרֲכֵֽ/ם	os-abençoarei	claude	אֲבָרֲכֵם “os abençoarei”; tinha “abençoarei”
