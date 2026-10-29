@@ -11648,3 +11648,109 @@ SNG 5:6	9	בְ/דַבְּר֔/וֹ	em-seu-falar	claude	בְדַבְּרוֹ “e
 SNG 5:6	10	בִּקַּשְׁתִּ֨י/הוּ֙	busquei-o	claude	בִּקַּשְׁתִּיהוּ “busquei-o”; tinha “busquei”
 SNG 5:6	12	מְצָאתִ֔י/הוּ	achei-o	claude	מְצָאתִיהוּ “achei-o”; tinha “achei-eu-o”
 SNG 5:6	13	קְרָאתִ֖י/ו	chamei-o	claude	קְרָאתִיו “chamei-o”; tinha “chamei-ele”
+ISA 1:7	5	אֵ֑שׁ	a-fogo	claude	אֵשׁ “fogo”; tinha “queimadas”
+ISA 1:7	9	אֹכְלִ֣ים	devoram	claude	אֹכְלִים “devoram”; tinha “devastaram”
+ISA 2:8	1	וַ/תִּמָּלֵ֥א	e-está-cheia	claude	וַתִּמָּלֵא “e está cheia”; tinha “também-está-cheia”
+ISA 2:8	2	אַרְצ֖/וֹ	sua-terra	claude	אַרְצוֹ “sua terra”; tinha “terra”
+ISA 2:8	4	לְ/מַעֲשֵׂ֤ה	à-obra	claude	לְמַעֲשֵׂה “à obra de”; tinha “perante-as-obras”
+ISA 2:8	5	יָדָי/ו֙	de-suas-mãos	claude	יָדָיו “suas mãos”; tinha “mãos”
+ISA 2:8	6	יִֽשְׁתַּחֲו֔וּ	se-prostram	claude	יִשְׁתַּחֲווּ “se prostram”; tinha “perante”
+ISA 3:6	2	יִתְפֹּ֨שׂ	pegar	claude	יִתְפֹּשׂ “pegar”; tinha “preso”
+ISA 3:6	4	בְּ/אָחִי/ו֙	de-seu-irmão	claude	בְּאָחִיו “de seu irmão”; tinha “tomará-seu-irmão”
+ISA 3:6	7	שִׂמְלָ֣ה	tens-roupa	claude	שִׂמְלָה “roupa”; tinha “dirá”
+ISA 3:6	8	לְ/כָ֔ה	vem	claude	לְכָה “vem”; tinha “para-ti”
+ISA 3:6	12	וְ/הַ/מַּכְשֵׁלָ֥ה	e-a-ruína	claude	וְהַמַּכְשֵׁלָה “e a ruína”; tinha “e-estejam-estas”
+ISA 3:6	13	הַ/זֹּ֖את	esta	claude	הַזֹּאת “esta”; tinha “o-esta”
+ISA 3:9	1	הַכָּרַ֤ת	a-aparência	claude	הַכָּרַת “a aparência de”; tinha “aparência”
+ISA 3:9	3	עָ֣נְתָה	testemunha	claude	עָנְתָה “testemunha”; tinha “testemunho”
+ISA 3:9	5	וְ/חַטָּאתָ֛/ם	e-seu-pecado	claude	וְחַטָּאתָם “e seu pecado”; tinha “seus-pecados”
+ISA 3:9	7	הִגִּ֖ידוּ	anunciam	claude	הִגִּידוּ “anunciam”; tinha “abertamente”
+ISA 3:14	7	וְ/שָׂרָ֑י/ו	e-seus-príncipes	claude	וְשָׂרָיו “e seus príncipes”; tinha “e-contra-seus-líderes”
+ISA 3:14	8	וְ/אַתֶּם֙	e-vós	claude	וְאַתֶּם “e vós”; tinha “pois-vós”
+ISA 4:1	1	וְ/הֶחֱזִיקוּ֩	e-agarrarão	claude	וְהֶחֱזִיקוּ “e agarrarão”; tinha “e-ampararás”
+ISA 4:1	4	בְּ/אִ֣ישׁ	um-homem	claude	בְּאִישׁ “de um homem”; tinha “tomarão-mesmo-homem”
+ISA 4:1	7	הַ/הוּא֙	aquele	claude	הַהוּא “aquele”; tinha “o-será”
+ISA 4:1	12	נִלְבָּ֑שׁ	vestiremos	claude	נִלְבָּשׁ “vestiremos”; tinha “queremos”
+ISA 4:1	17	אֱסֹ֖ף	tira	claude	אֱסֹף “tira (recolhe)”; tinha “livra”
+ISA 4:2	2	הַ/ה֗וּא	aquele	claude	הַהוּא “aquele”; tinha “o-será”
+ISA 4:2	6	לִ/צְבִ֖י	por-beleza	claude	לִצְבִי “por beleza”; tinha “será-belo”
+ISA 4:2	7	וּ/לְ/כָב֑וֹד	e-por-glória	claude	וּלְכָבוֹד “e por glória”; tinha “e-glorioso”
+ISA 4:2	12	לִ/פְלֵיטַ֖ת	para-os-que-escaparem	claude	לִפְלֵיטַת “para os escapados de”; tinha “escaparem”
+ISA 4:6	1	וְ/סֻכָּ֛ה	e-tenda	claude	וְסֻכָּה “e tenda”; tinha “tenda”
+ISA 4:6	6	וּ/לְ/מַחְסֶה֙	e-por-refúgio	claude	וּלְמַחְסֶה “e por refúgio”; tinha “e-para-refúgio-abrigo”
+ISA 4:6	7	וּ/לְ/מִסְתּ֔וֹר	e-por-esconderijo	claude	וּלְמִסְתּוֹר “e por esconderijo”; tinha “e-para-refúgio”
+ISA 4:6	8	מִ/זֶּ֖רֶם	contra-a-tempestade	claude	מִזֶּרֶם “contra a tempestade”; tinha “a-tempestade”
+ISA 5:2	3	וַ/יִּטָּעֵ֨/הוּ֙	e-a-plantou	claude	וַיִּטָּעֵהוּ “e a plantou”; tinha “e-a-plantou-de-excelentes”
+ISA 5:2	4	שֹׂרֵ֔ק	de-vides-escolhidas	claude	שֹׂרֵק “vide escolhida”; tinha “excelentes-videiras”
+ISA 5:2	9	יֶ֖קֶב	lagar	claude	יֶקֶב “lagar”; tinha “uvas”
+ISA 5:2	10	חָצֵ֣ב	cavou	claude	חָצֵב “cavou”; tinha “fundou”
+ISA 5:2	11	בּ֑/וֹ	nela	claude	בּוֹ “nela”; tinha “nela-uma”
+ISA 5:2	13	לַ/עֲשׂ֥וֹת	que-desse	claude	לַעֲשׂוֹת “que desse”; tinha “deu”
+ISA 5:2	14	עֲנָבִ֖ים	uvas	claude	עֲנָבִים “uvas”; tinha “uvas-boas”
+ISA 5:2	15	וַ/יַּ֥עַשׂ	e-deu	claude	וַיַּעַשׂ “e deu”; tinha “porém-uvas”
+ISA 5:2	16	בְּאֻשִֽׁים	uvas-bravas	claude	בְּאֻשִׁים “uvas bravas”; tinha “imprestáveis”
+ISA 5:5	1	וְ/עַתָּה֙	e-agora	claude	וְעַתָּה “e agora”; tinha “isso-agora”
+ISA 5:5	2	אוֹדִֽיעָה	farei-saber	claude	אוֹדִיעָה “farei saber”; tinha “saber”
+ISA 5:5	13	לְ/בָעֵ֔ר	para-ser-consumida	claude	לְבָעֵר “para ser consumida”; tinha “de-pastagem”
+ISA 5:5	17	לְ/מִרְמָֽס	para-ser-pisada	claude	לְמִרְמָס “para ser pisada”; tinha “seja-pisada”
+ISA 5:7	10	שַׁעֲשׁוּעָ֑י/ו	de-suas-delícias	claude	שַׁעֲשׁוּעָיו “de suas delícias”; tinha “suas-agradáveis”
+ISA 5:7	11	וַ/יְקַ֤ו	e-esperava	claude	וַיְקַו “e esperava”; tinha “porém-ele-esperava”
+ISA 5:7	14	מִשְׂפָּ֔ח	opressão	claude	מִשְׂפָּח “opressão”; tinha “opressão-esperava”
+ISA 5:7	15	לִ/צְדָקָ֖ה	justiça	claude	לִצְדָקָה “justiça”; tinha “ele-justiça”
+ISA 5:9	8	לְ/שַׁמָּ֣ה	em-desolação	claude	לְשַׁמָּה “em desolação”; tinha “se-tornarão”
+ISA 5:25	13	וַ/תְּהִ֧י	e-foram	claude	וַתְּהִי “e foram”; tinha “e-foi”
+ISA 5:25	14	נִבְלָתָ֛/ם	seus-cadáveres	claude	נִבְלָתָם “seus cadáveres”; tinha “cadáveres-foram”
+ISA 5:25	18	בְּ/כָל	com-todo	claude	בְּכָל “com todo”; tinha “com-tudo”
+ISA 5:25	21	שָׁ֣ב	retrocedeu	claude	שָׁב “retrocedeu”; tinha “retrocedeu-sua”
+ISA 5:25	22	אַפּ֔/וֹ	sua-ira	claude	אַפּוֹ “sua ira”; tinha “ira”
+ISA 5:25	24	יָד֥/וֹ	sua-mão	claude	יָדוֹ “sua mão”; tinha “mão-está”
+ISA 6:6	7	רִצְפָּ֑ה	uma-brasa	claude	רִצְפָּה “uma brasa”; tinha “brasa-viva”
+ISA 6:6	8	בְּ/מֶ֨לְקַחַ֔יִם	com-uma-tenaz	claude	בְּמֶלְקַחַיִם “com uma tenaz”; tinha “a-qual”
+ISA 6:6	9	לָקַ֖ח	tirara	claude	לָקַח “tirara”; tinha “tirado”
+ISA 6:10	1	הַשְׁמֵן֙	engorda	claude	הַשְׁמֵן “engorda”; tinha “faze”
+ISA 6:10	4	הַ/זֶּ֔ה	este	claude	הַזֶּה “este”; tinha “o-hoje”
+ISA 6:10	6	הַכְבֵּ֖ד	faze-pesados	claude	הַכְבֵּד “faze pesados”; tinha “pesados”
+ISA 6:10	7	וְ/עֵינָ֣י/ו	e-seus-olhos	claude	וְעֵינָיו “e seus olhos”; tinha “e-olhos-dele”
+ISA 6:10	8	הָשַׁ֑ע	fecha	claude	הָשַׁע “fecha”; tinha “vejam”
+ISA 6:10	9	פֶּן	para-que-não	claude	פֶּן “para que não”; tinha “não”
+ISA 6:10	12	וּ/בְ/אָזְנָ֣י/ו	e-com-seus-ouvidos	claude	וּבְאָזְנָיו “e com seus ouvidos”; tinha “nem-com-seus-ouvidos”
+ISA 6:10	14	וּ/לְבָב֥/וֹ	e-seu-coração	claude	וּלְבָבוֹ “e seu coração”; tinha “seus-corações”
+ISA 6:10	15	יָבִ֛ין	entenda	claude	יָבִין “entenda”; tinha “encher”
+ISA 6:10	17	וְ/רָ֥פָא	e-seja-curado	claude	וְרָפָא “e seja curado”; tinha “nem-eu”
+ISA 7:23	1	וְ/הָיָה֙	e-será	claude	וְהָיָה “e será”; tinha “será-também”
+ISA 7:23	3	הַ/ה֔וּא	aquele	claude	הַהוּא “aquele”; tinha “o-será”
+ISA 7:23	8	יִֽהְיֶה	havia	claude	יִהְיֶה “havia”; tinha “antes-havia”
+ISA 7:23	12	בְּ/אֶ֣לֶף	por-mil	claude	בְּאֶלֶף “por mil”; tinha “de-dez-mil”
+ISA 7:23	14	לַ/שָּׁמִ֥יר	em-espinhos	claude	לַשָּׁמִיר “em espinhos”; tinha “tornará-lugar-para-espinhos”
+ISA 8:14	2	לְ/מִקְדָּ֑שׁ	por-santuário	claude	לְמִקְדָּשׁ “por santuário”; tinha “santuário-para”
+ISA 8:14	3	וּ/לְ/אֶ֣בֶן	e-por-pedra	claude	וּלְאֶבֶן “e por pedra de”; tinha “porém-como-pedra”
+ISA 8:14	5	וּ/לְ/צ֨וּר	e-por-rocha	claude	וּלְצוּר “e por rocha de”; tinha “e-por-pedra”
+ISA 8:19	8	הַ/יִּדְּעֹנִ֔ים	os-adivinhos	claude	הַיִּדְּעֹנִים “os adivinhos”; tinha “encantadores”
+ISA 8:19	10	וְ/הַ/מַּהְגִּ֑ים	e-que-sussurram	claude	וְהַמַּהְגִּים “e que sussurram”; tinha “sussurrando-entre-os-dentes”
+ISA 8:21	7	יִרְעַ֜ב	tiver-fome	claude	יִרְעַב “tiver fome”; tinha “fome-ficarem”
+ISA 8:21	8	וְ/הִתְקַצַּ֗ף	e-se-enfurecerá	claude	וְהִתְקַצַּף “e se enfurecerá”; tinha “e-enfurecidos”
+ISA 8:21	9	וְ/קִלֵּ֧ל	e-amaldiçoará	claude	וְקִלֵּל “e amaldiçoará”; tinha “então-amaldiçoarão”
+ISA 9:17	25	שָׁ֣ב	retrocedeu	claude	שָׁב “retrocedeu”; tinha “sua-cessará”
+ISA 9:17	26	אַפּ֔/וֹ	sua-ira	claude	אַפּוֹ “sua ira”; tinha “ira”
+ISA 9:17	28	יָד֥/וֹ	sua-mão	claude	יָדוֹ “sua mão”; tinha “mão-está”
+ISA 10:12	1	וְ/הָיָ֗ה	e-será	claude	וְהָיָה “e será”; tinha “porque-acontecerá”
+ISA 10:12	2	כִּֽי	que	claude	כִּי “que”; tinha “porque-que”
+ISA 10:12	3	יְבַצַּ֤ע	acabar	claude	יְבַצַּע “acabar”; tinha “acabasse”
+ISA 10:12	4	אֲדֹנָ/י֙	o-Senhor	claude	אֲדֹנָי “o Senhor”; tinha “Senhor-tiver-acabado”
+ISA 10:12	10	וּ/בִ/ירוּשָׁלִָ֑ם	e-em-Jerusalém	claude	וּבִירוּשָׁלִַם “e em Jerusalém”; tinha “em-Jerusalém-então”
+ISA 10:12	14	גֹ֨דֶל֙	da-arrogância	claude	גֹדֶל “da arrogância de”; tinha “arrogância”
+ISA 10:12	15	לְבַ֣ב	do-coração	claude	לְבַב “do coração de”; tinha “castigar”
+ISA 10:27	3	הַ/ה֗וּא	aquele	claude	הַהוּא “aquele”; tinha “o-será”
+ISA 10:27	4	יָס֤וּר	será-tirada	claude	יָסוּר “será tirada”; tinha “tirada”
+ISA 10:27	5	סֻבֳּל/וֹ֙	sua-carga	claude	סֻבֳּלוֹ “sua carga”; tinha “sua-carga-será”
+ISA 10:27	11	וְ/חֻבַּ֥ל	e-será-destruído	claude	וְחֻבַּל “e será destruído”; tinha “e-penhor”
+ISA 11:1	1	וְ/יָצָ֥א	e-sairá	claude	וְיָצָא “e sairá”; tinha “brotará”
+ISA 11:1	6	מִ/שָּׁרָשָׁ֥י/ו	de-suas-raízes	claude	מִשָּׁרָשָׁיו “de suas raízes”; tinha “crescerá-de-suas”
+ISA 11:1	7	יִפְרֶֽה	frutificará	claude	יִפְרֶה “frutificará”; tinha “raízes”
+ISA 11:10	3	הַ/ה֔וּא	aquele	claude	הַהוּא “aquele”; tinha “o-será”
+ISA 11:10	14	מְנֻחָת֖/וֹ	seu-repouso	claude	מְנֻחָתוֹ “seu repouso”; tinha “repouso-será”
+ISA 11:12	7	וּ/נְפֻצ֤וֹת	e-os-dispersos	claude	וּנְפֻצוֹת “e os dispersos de”; tinha “e-reunirá”
+ISA 11:12	10	מֵ/אַרְבַּ֖ע	desde-os-quatro	claude	מֵאַרְבַּע “desde os quatro”; tinha “desde-quatro”
+ISA 12:2	10	יָ֣הּ	JAH	claude	יָהּ “JAH”; tinha “DEUS”
+ISA 12:2	11	יְהוָ֔ה	o-SENHOR	claude	יְהוָה “o SENHOR”; tinha “SENHOR-DEUS”
+ISA 12:2	12	וַֽ/יְהִי	e-foi	claude	וַיְהִי “e foi”; tinha “sido”
