@@ -24568,3 +24568,149 @@ LEV 13:17	7	וְ/טִהַ֧ר	e-declarará-limpo	claude	וְטִהַר “e decl
 LEV 13:17	10	הַ/נֶּ֖גַע	o-que-tem-a-praga	claude	הַנֶּגַע “a praga”; tinha “a-chaga”
 LEV 13:19	1	וְ/הָיָ֞ה	e-houver	claude	וְהָיָה “e for”; tinha “e-suceder”
 LEV 13:19	7	בַהֶ֖רֶת	mancha-lustrosa	claude	בַהֶרֶת “mancha lustrosa”; tinha “mancha”
+LEV 13:20	1	וְ/רָאָ֣ה	e-verá	claude	וְרָאָה “e verá”; tinha “olhará”
+LEV 13:20	4	מַרְאֶ֨/הָ֙	sua-aparência	claude	מַרְאֶהָ “sua aparência”; tinha “parecer-estar-mais”
+LEV 13:20	5	שָׁפָ֣ל	é-mais-baixa	claude	שָׁפָל “baixa”; tinha “baixa”
+LEV 13:20	7	הָ/ע֔וֹר	a-pele	claude	הָעוֹר “a pele”; tinha “pele”
+LEV 13:20	8	וּ/שְׂעָרָ֖/הּ	e-seu-pelo	claude	וּשְׂעָרָהּ “e seu pelo”; tinha “e-cabelo-dela”
+LEV 13:20	9	הָפַ֣ךְ	se-tornou	claude	הָפַךְ “se tornou”; tinha “tornado”
+LEV 13:20	11	וְ/טִמְּא֧/וֹ	e-o-declarará-impuro	claude	וְטִמְּאוֹ “e o declarará impuro”; tinha “impuro-é”
+LEV 13:20	13	נֶֽגַע	praga	claude	נֶגַע “praga de”; tinha “chaga”
+LEV 13:20	17	פָּרָֽחָה	brotou	claude	פָּרָחָה “brotou”; tinha “originou”
+LEV 13:21	2	יִרְאֶ֣/נָּה	a-vir	claude	יִרְאֶנָּה “a vir”; tinha “considerar”
+LEV 13:21	7	שֵׂעָ֣ר	pelo	claude	שֵׂעָר “pelo”; tinha “veste”
+LEV 13:21	9	וּ/שְׁפָלָ֥ה	e-mais-baixa	claude	וּשְׁפָלָה “e baixa”; tinha “baixa”
+LEV 13:21	10	אֵינֶ֛/נָּה	não-for	claude	אֵינֶנָּה “ela não”; tinha “não-ela”
+LEV 13:21	14	כֵהָ֑ה	escurecida	claude	כֵהָה “escurecida”; tinha “escura”
+LEV 13:21	15	וְ/הִסְגִּיר֥/וֹ	e-o-encerrará	claude	וְהִסְגִּירוֹ “e o encerrará”; tinha “encerrará-por”
+LEV 13:21	16	הַ/כֹּהֵ֖ן	o-sacerdote	claude	הַכֹּהֵן “o sacerdote”; tinha “o-sacerdote-o”
+LEV 13:23	1	וְ/אִם	e-se	claude	וְאִם “e se”; tinha “porém-se”
+LEV 13:23	3	תַּעֲמֹ֤ד	ficar	claude	תַּעֲמֹד “ficar”; tinha “estiver”
+LEV 13:23	4	הַ/בַּהֶ֨רֶת֙	a-mancha-lustrosa	claude	הַבַּהֶרֶת “a mancha lustrosa”; tinha “a-mancha-branca”
+LEV 13:23	6	פָשָׂ֔תָה	se-espalhou	claude	פָשָׂתָה “se espalhou”; tinha “estendido”
+LEV 13:23	10	וְ/טִהֲר֖/וֹ	e-o-declarará-limpo	claude	וְטִהֲרוֹ “e o declarará limpo”; tinha “dará-por-limpo”
+LEV 13:24	4	יִהְיֶ֥ה	houver	claude	יִהְיֶה “houver”; tinha “tiver”
+LEV 13:24	8	וְֽ/הָיְתָ֞ה	e-for	claude	וְהָיְתָה “e for”; tinha “e-houver”
+LEV 13:24	9	מִֽחְיַ֣ת	o-sinal	claude	מִחְיַת “sinal de”; tinha “sarado”
+LEV 13:24	10	הַ/מִּכְוָ֗ה	da-queimadura	claude	הַמִּכְוָה “a queimadura”; tinha “do-fogo”
+LEV 13:24	11	בַּהֶ֛רֶת	mancha-lustrosa	claude	בַּהֶרֶת “mancha lustrosa”; tinha “mancha”
+LEV 13:24	12	לְבָנָ֥ה	branca	claude	לְבָנָה “branca”; tinha “esbranquiçada”
+LEV 13:25	1	וְ/רָאָ֣ה	e-verá	claude	וְרָאָה “e verá”; tinha “olhará”
+LEV 13:25	5	נֶהְפַּךְ֩	se-tornou	claude	נֶהְפַּךְ “se tornou”; tinha “tornou”
+LEV 13:25	6	שֵׂעָ֨ר	o-pelo	claude	שֵׂעָר “pelo”; tinha “veste”
+LEV 13:25	8	בַּ/בַּהֶ֗רֶת	na-mancha-lustrosa	claude	בַּבַּהֶרֶת “na mancha lustrosa”; tinha “na-mancha”
+LEV 13:25	9	וּ/מַרְאֶ֨/הָ֙	e-sua-aparência	claude	וּמַרְאֶהָ “e sua aparência”; tinha “e-parecer-mais”
+LEV 13:25	10	עָמֹ֣ק	é-mais-funda	claude	עָמֹק “funda”; tinha “estar-profunda”
+LEV 13:25	14	הִ֔וא	é	claude	הִוא “ela”; tinha “que”
+LEV 13:25	15	בַּ/מִּכְוָ֖ה	na-queimadura	claude	בַּמִּכְוָה “na queimadura”; tinha “saiu-na-queimadura”
+LEV 13:25	16	פָּרָ֑חָה	brotou	claude	פָּרָחָה “brotou”; tinha “sujeito”
+LEV 13:25	17	וְ/טִמֵּ֤א	e-declarará-impuro	claude	וְטִמֵּא “e declarará impuro”; tinha “impuro”
+LEV 13:25	20	נֶ֥גַע	praga	claude	נֶגַע “praga de”; tinha “chaga”
+LEV 13:27	1	וְ/רָאָ֥/הוּ	e-o-verá	claude	וְרָאָהוּ “e o verá”; tinha “reconhecerá”
+LEV 13:27	3	בַּ/יּ֣וֹם	no-dia	claude	בַּיּוֹם “no dia”; tinha “dia”
+LEV 13:27	6	פָּשֹׂ֤ה	espalhando	claude	פָּשֹׂה “espalhar”; tinha “ido”
+LEV 13:27	7	תִפְשֶׂה֙	se-espalhou	claude	תִפְשֶׂה “se espalhar”; tinha “estendendo”
+LEV 13:27	8	בָּ/ע֔וֹר	na-pele	claude	בָּעוֹר “na pele”; tinha “pela-pele”
+LEV 13:27	9	וְ/טִמֵּ֤א	e-declarará-impuro	claude	וְטִמֵּא “e declarará impuro”; tinha “impuro-é”
+LEV 13:27	12	נֶ֥גַע	praga	claude	נֶגַע “praga de”; tinha “chaga”
+LEV 13:28	1	וְ/אִם	e-se	claude	וְאִם “e se”; tinha “porém-se”
+LEV 13:28	2	תַּחְתֶּי/הָ֩	em-seu-lugar	claude	תַּחְתֶּיהָ “em seu lugar”; tinha “em-seu”
+LEV 13:28	3	תַעֲמֹ֨ד	ficar	claude	תַעֲמֹד “ficar”; tinha “estiver”
+LEV 13:28	4	הַ/בַּהֶ֜רֶת	a-mancha-lustrosa	claude	הַבַּהֶרֶת “a mancha lustrosa”; tinha “a-mancha”
+LEV 13:28	6	פָשְׂתָ֤ה	se-espalhou	claude	פָשְׂתָה “se espalhou”; tinha “estendido”
+LEV 13:28	9	כֵהָ֔ה	escurecida	claude	כֵהָה “escurecida”; tinha “escura”
+LEV 13:28	13	וְ/טִֽהֲר/וֹ֙	e-o-declarará-limpo	claude	וְטִהֲרוֹ “e o declarará limpo”; tinha “por-limpo”
+LEV 13:28	15	כִּֽי	pois	claude	כִּי “pois”; tinha “que”
+LEV 13:28	16	צָרֶ֥בֶת	cicatriz	claude	צָרֶבֶת “cicatriz de”; tinha “sinal”
+LEV 13:30	1	וְ/רָאָ֨ה	e-verá	claude	וְרָאָה “e verá”; tinha “olhará”
+LEV 13:30	4	הַ/נֶּ֗גַע	a-praga	claude	הַנֶּגַע “a praga”; tinha “a-chaga”
+LEV 13:30	6	מַרְאֵ֨/הוּ֙	sua-aparência	claude	מַרְאֵהוּ “sua aparência”; tinha “parecer”
+LEV 13:30	7	עָמֹ֣ק	é-mais-funda	claude	עָמֹק “funda”; tinha “profunda”
+LEV 13:30	10	וּ/ב֛/וֹ	e-nela	claude	וּבוֹ “e nele”; tinha “e-a-ele”
+LEV 13:30	11	שֵׂעָ֥ר	pelo	claude	שֵׂעָר “pelo”; tinha “fora”
+LEV 13:30	12	צָהֹ֖ב	amarelo	claude	צָהֹב “amarelo”; tinha “ruivo”
+LEV 13:30	14	וְ/טִמֵּ֨א	e-declarará-impuro	claude	וְטִמֵּא “e declarará impuro”; tinha “impuro”
+LEV 13:30	17	נֶ֣תֶק	sarna	claude	נֶתֶק “sarna”; tinha “tinha”
+LEV 13:30	22	הַ/זָּקָ֖ן	da-barba	claude	הַזָּקָן “a barba”; tinha “do-queixo”
+LEV 13:30	23	הֽוּא	é	claude	הוּא “ele”; tinha “ele”
+LEV 13:31	1	וְ/כִֽי	e-quando	claude	וְכִי “e quando”; tinha “mas-quando”
+LEV 13:31	2	יִרְאֶ֨ה	vir	claude	יִרְאֶה “vir”; tinha “verá”
+LEV 13:31	3	הַ/כֹּהֵ֜ן	o-sacerdote	claude	הַכֹּהֵן “o sacerdote”; tinha “sacerdote”
+LEV 13:31	5	נֶ֣גַע	a-praga	claude	נֶגַע “praga de”; tinha “chaga”
+LEV 13:31	6	הַ/נֶּ֗תֶק	da-sarna	claude	הַנֶּתֶק “a sarna”; tinha “da-tinha”
+LEV 13:31	9	מַרְאֵ֨/הוּ֙	sua-aparência	claude	מַרְאֵהוּ “sua aparência”; tinha “parecer”
+LEV 13:31	10	עָמֹ֣ק	mais-funda	claude	עָמֹק “funda”; tinha “profunda”
+LEV 13:31	17	וְ/הִסְגִּ֧יר	e-encerrará	claude	וְהִסְגִּיר “e encerrará”; tinha “encerrará”
+LEV 13:31	20	נֶ֥גַע	o-que-tem-a-praga	claude	נֶגַע “praga de”; tinha “chagas”
+LEV 13:31	21	הַ/נֶּ֖תֶק	da-sarna	claude	הַנֶּתֶק “a sarna”; tinha “da-tinha”
+LEV 13:34	1	וְ/רָאָה֩	e-verá	claude	וְרָאָה “e verá”; tinha “olhará”
+LEV 13:34	4	הַ/נֶּ֜תֶק	a-sarna	claude	הַנֶּתֶק “a sarna”; tinha “a-tinha”
+LEV 13:34	5	בַּ/יּ֣וֹם	no-dia	claude	בַּיּוֹם “no dia”; tinha “dia”
+LEV 13:34	6	הַ/שְּׁבִיעִ֗י	sétimo	claude	הַשְּׁבִיעִי “o sétimo”; tinha “ao-sétimo”
+LEV 13:34	9	פָשָׂ֤ה	se-espalhou	claude	פָשָׂה “se espalhou”; tinha “estendido”
+LEV 13:34	10	הַ/נֶּ֨תֶק֙	a-sarna	claude	הַנֶּתֶק “a sarna”; tinha “a-tinha”
+LEV 13:34	12	וּ/מַרְאֵ֕/הוּ	e-sua-aparência	claude	וּמַרְאֵהוּ “e sua aparência”; tinha “nem-parecer”
+LEV 13:34	13	אֵינֶ֥/נּוּ	não-é	claude	אֵינֶנּוּ “ele não”; tinha “não-ele”
+LEV 13:34	14	עָמֹ֖ק	mais-funda	claude	עָמֹק “funda”; tinha “estar-profunda”
+LEV 13:34	17	וְ/טִהַ֤ר	e-declarará-limpo	claude	וְטִהַר “e declarará limpo”; tinha “dará-por-limpo”
+LEV 13:34	19	הַ/כֹּהֵ֔ן	o-sacerdote	claude	הַכֹּהֵן “o sacerdote”; tinha “o-sacerdote-o”
+LEV 13:34	21	בְּגָדָ֖י/ו	suas-roupas	claude	בְּגָדָיו “suas roupas”; tinha “roupas”
+LEV 13:40	3	יִמָּרֵ֖ט	cair-o-cabelo	claude	יִמָּרֵט “perder o cabelo”; tinha “cabelos”
+LEV 13:40	4	רֹאשׁ֑/וֹ	de-sua-cabeça	claude	רֹאשׁוֹ “sua cabeça”; tinha “cabeça-é”
+LEV 13:40	6	ה֖וּא	é	claude	הוּא “ele”; tinha “ele”
+LEV 13:40	8	הֽוּא	é	claude	הוּא “ele”; tinha “ele”
+LEV 13:41	2	מִ/פְּאַ֣ת	do-lado	claude	מִפְּאַת “do lado de”; tinha “à-parte-de”
+LEV 13:41	3	פָּנָ֔י/ו	de-sua-face	claude	פָּנָיו “sua face”; tinha “rosto-se-lhe”
+LEV 13:41	4	יִמָּרֵ֖ט	cair-o-cabelo	claude	יִמָּרֵט “perder o cabelo”; tinha “cair-os-cabelos”
+LEV 13:41	5	רֹאשׁ֑/וֹ	de-sua-cabeça	claude	רֹאשׁוֹ “sua cabeça”; tinha “cabeça-é”
+LEV 13:41	6	גִּבֵּ֥חַ	calvo-na-frente	claude	גִּבֵּחַ “calvo na frente”; tinha “calvo”
+LEV 13:41	7	ה֖וּא	é	claude	הוּא “ele”; tinha “ele”
+LEV 13:41	9	הֽוּא	é	claude	הוּא “ele”; tinha “ele”
+LEV 13:44	1	אִישׁ	um-homem	claude	אִישׁ “homem”; tinha “homem”
+LEV 13:44	3	ה֖וּא	ele-é	claude	הוּא “ele”; tinha “é”
+LEV 13:44	5	ה֑וּא	ele-é	claude	הוּא “ele”; tinha “é”
+LEV 13:44	6	טַמֵּ֧א	declarando-impuro	claude	טַמֵּא “declarar impuro”; tinha “impuro”
+LEV 13:44	7	יְטַמְּאֶ֛/נּוּ	o-declarará-impuro	claude	יְטַמְּאֶנּוּ “o declarará impuro”; tinha “impuro-sua”
+LEV 13:44	9	בְּ/רֹאשׁ֥/וֹ	em-sua-cabeça	claude	בְּרֹאשׁוֹ “em sua cabeça”; tinha “em-cabeça-tem-sua”
+LEV 13:44	10	נִגְעֽ/וֹ	está-sua-praga	claude	נִגְעוֹ “sua praga”; tinha “chaga”
+LEV 13:45	3	בּ֣/וֹ	nele	claude	בּוֹ “nele”; tinha “em”
+LEV 13:45	4	הַ/נֶּ֗גַע	está-a-praga	claude	הַנֶּגַע “a praga”; tinha “chaga”
+LEV 13:45	7	פְרֻמִים֙	rasgadas	claude	פְרֻמִים “rasgadas”; tinha “derrotados”
+LEV 13:45	10	פָר֔וּעַ	desgrenhada	claude	פָרוּעַ “solta”; tinha “descoberta”
+LEV 13:45	12	שָׂפָ֖ם	o-bigode	claude	שָׂפָם “bigode”; tinha “lábio-superior”
+LEV 13:45	13	יַעְטֶ֑ה	cobrirá	claude	יַעְטֶה “cobrirá”; tinha “coberto”
+LEV 13:45	14	וְ/טָמֵ֥א	e-impuro	claude	וְטָמֵא “e impuro”; tinha “imundo”
+LEV 13:45	15	טָמֵ֖א	impuro	claude	טָמֵא “impuro”; tinha “imundo”
+LEV 13:46	2	יְמֵ֞י	os-dias	claude	יְמֵי “dias de”; tinha “tempo”
+LEV 13:46	7	טָמֵ֣א	impuro	claude	טָמֵא “impuro”; tinha “imundo”
+LEV 13:46	8	ה֑וּא	é	claude	הוּא “ele”; tinha “ele”
+LEV 13:52	1	וְ/שָׂרַ֨ף	e-queimará	claude	וְשָׂרַף “e queimará”; tinha “será-queimada”
+LEV 13:52	15	כָּל	todo	claude	כָּל “todo”; tinha “qualquer”
+LEV 13:52	16	כְּלִ֣י	objeto	claude	כְּלִי “objeto de”; tinha “obra”
+LEV 13:52	17	הָ/ע֔וֹר	de-pele	claude	הָעוֹר “a pele”; tinha “de-peles”
+LEV 13:52	22	כִּֽי	pois	claude	כִּי “pois”; tinha “porque”
+LEV 13:52	24	מַמְאֶ֨רֶת֙	maligna	claude	מַמְאֶרֶת “maligna”; tinha “roedora”
+LEV 13:52	27	תִּשָּׂרֵֽף	será-queimada	claude	תִּשָּׂרֵף “será queimada”; tinha “queimada”
+LEV 13:55	1	וְ/רָאָ֨ה	e-verá	claude	וְרָאָה “e verá”; tinha “olhará”
+LEV 13:55	4	הֻכַּבֵּ֣ס	ser-lavada	claude	הֻכַּבֵּס “ser lavado”; tinha “lavada”
+LEV 13:55	12	עֵינ/וֹ֙	sua-aparência	claude	עֵינוֹ “seu olho”; tinha “seu-aspecto”
+LEV 13:55	13	וְ/הַ/נֶּ֣גַע	e-a-praga	claude	וְהַנֶּגַע “e a praga”; tinha “a-praga”
+LEV 13:55	15	פָשָׂ֔ה	se-espalhou	claude	פָשָׂה “se espalhou”; tinha “estendido”
+LEV 13:55	18	בָּ/אֵ֖שׁ	no-fogo	claude	בָּאֵשׁ “no fogo”; tinha “a-ao-fogo”
+LEV 13:55	19	תִּשְׂרְפֶ֑/נּוּ	o-queimarás	claude	תִּשְׂרְפֶנּוּ “o queimarás”; tinha “queimarás”
+LEV 13:55	20	פְּחֶ֣תֶת	corrosão	claude	פְּחֶתֶת “corrosão”; tinha “corrosão-penetrante”
+LEV 13:55	22	בְּ/קָרַחְתּ֖/וֹ	no-seu-avesso	claude	בְּקָרַחְתּוֹ “na sua parte calva”; tinha “na-face”
+LEV 13:55	24	בְ/גַבַּחְתּֽ/וֹ	ou-no-seu-direito	claude	בְגַבַּחְתּוֹ “na sua parte calva da frente”; tinha “no-verso-daquela”
+LEV 13:57	2	תֵּרָאֶ֨ה	aparecer	claude	תֵּרָאֶה “aparecer”; tinha “parecer”
+LEV 13:57	3	ע֜וֹד	ainda	claude	עוֹד “ainda”; tinha “mais”
+LEV 13:57	4	בַּ֠/בֶּגֶד	na-roupa	claude	בַּבֶּגֶד “na roupa”; tinha “no-vestido”
+LEV 13:57	6	בַ/שְּׁתִ֤י	na-urdidura	claude	בַשְּׁתִי “na urdidura”; tinha “urdidura”
+LEV 13:57	8	בָ/עֵ֨רֶב֙	na-trama	claude	בָעֵרֶב “na trama”; tinha “trama”
+LEV 13:57	11	כְּלִי	objeto	claude	כְּלִי “objeto de”; tinha “coisa”
+LEV 13:57	12	ע֔וֹר	de-pele	claude	עוֹר “pele”; tinha “peles”
+LEV 13:57	13	פֹּרַ֖חַת	brotando	claude	פֹּרַחַת “brotando”; tinha “esverdeando”
+LEV 13:57	14	הִ֑וא	ela	claude	הִוא “ela”; tinha “é”
+LEV 13:57	15	בָּ/אֵ֣שׁ	no-fogo	claude	בָּאֵשׁ “no fogo”; tinha “nela-ao-fogo”
+LEV 13:57	16	תִּשְׂרְפֶ֔/נּוּ	o-queimarás	claude	תִּשְׂרְפֶנּוּ “o queimarás”; tinha “queimarás”
+LEV 13:57	18	אֲשֶׁר	aquilo-em-que	claude	אֲשֶׁר “o que”; tinha “que”
+LEV 13:57	19	בּ֖/וֹ	está	claude	בּוֹ “nele”; tinha “nele”
