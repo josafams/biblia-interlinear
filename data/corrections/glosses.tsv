@@ -22249,3 +22249,56 @@ EXO 19:12	12	כָּל	todo	claude	כָּל “todo”; tinha “qualquer”
 EXO 19:12	13	הַ/נֹּגֵ֥עַ	o-que-tocar	claude	הַנֹּגֵעַ “o que tocar”; tinha “que-tocar”
 EXO 19:12	15	מ֥וֹת	morrendo	claude	מוֹת “morrer”; tinha “certamente”
 EXO 19:12	16	יוּמָֽת	será-morto	claude	יוּמָת “será morto”; tinha “morrerá”
+EXO 19:15	9	תִּגְּשׁ֖וּ	vos-chegueis	claude	תִּגְּשׁוּ “vos chegueis”; tinha “chegueis”
+EXO 19:16	2	בַ/יּ֨וֹם	no-dia	claude	בַיּוֹם “no dia”; tinha “ao-dia”
+EXO 19:16	4	בִּֽ/הְיֹ֣ת	ao-ser	claude	בִּהְיֹת “ao ser”; tinha “quando-veio”
+EXO 19:16	6	וַ/יְהִי֩	e-houve	claude	וַיְהִי “e houve”; tinha “que-vieram”
+EXO 19:16	14	שֹׁפָ֖ר	de-trombeta	claude	שֹׁפָר “trombeta”; tinha “trombeta”
+EXO 19:16	21	בַּֽ/מַּחֲנֶֽה	no-acampamento	claude	בַּמַּחֲנֶה “no acampamento”; tinha “estava-no-acampamento”
+EXO 20:4	5	וְ/כָל	nem-qualquer	claude	וְכָל “e toda”; tinha “nem-nenhuma”
+EXO 20:4	8	בַּ/שָּׁמַ֨יִם֙	nos-céus	claude	בַּשָּׁמַיִם “nos céus”; tinha “no-céu”
+EXO 20:4	9	מִ/מַּ֔עַל	acima	claude	מִמַּעַל “de cima”; tinha “esteja-acima”
+EXO 20:4	10	וַ/אֲשֶׁ֥ר	e-que	claude	וַאֲשֶׁר “e que”; tinha “que”
+EXO 20:5	2	תִשְׁתַּחֲוֶ֥ה	te-prostrarás	claude	תִשְׁתַּחֲוֶה “te prostrarás”; tinha “inclinarás”
+EXO 20:5	5	תָעָבְדֵ֑/ם	as-servirás	claude	תָעָבְדֵם “as servirás”; tinha “honrarás”
+EXO 20:5	7	אָֽנֹכִ֞י	eu	claude	אָנֹכִי “eu”; tinha “sou”
+EXO 20:5	10	אֵ֣ל	Deus	claude	אֵל “Deus”; tinha “forte”
+EXO 20:5	12	פֹּ֠קֵד	que-visito	claude	פֹּקֵד “que visita”; tinha “visito”
+EXO 20:5	13	עֲוֺ֨ן	a-iniquidade	claude	עֲוֺן “iniquidade de”; tinha “maldade”
+EXO 20:5	14	אָבֹ֧ת	dos-pais	claude	אָבֹת “pais”; tinha “pais”
+EXO 20:5	18	שִׁלֵּשִׁ֥ים	a-terceira-geração	claude	שִׁלֵּשִׁים “terceira geração”; tinha “terceiros”
+EXO 20:5	20	רִבֵּעִ֖ים	a-quarta-geração	claude	רִבֵּעִים “quarta geração”; tinha “quartos”
+EXO 20:10	1	וְ/י֨וֹם֙	mas-o-dia	claude	וְיוֹם “e o dia”; tinha “dia”
+EXO 20:10	3	שַׁבָּ֖ת	é-sábado	claude	שַׁבָּת “sábado”; tinha “repouso”
+EXO 20:10	4	לַ/יהוָ֣ה	ao-SENHOR	claude	לַיהוָה “ao SENHOR”; tinha “para-o-SENHOR”
+EXO 20:10	7	תַעֲשֶׂ֨ה	farás	claude	תַעֲשֶׂה “farás”; tinha “faças”
+EXO 20:10	8	כָל	nenhuma	claude	כָל “toda”; tinha “alguma”
+EXO 20:10	11	וּ/בִנְ/ךָֽ֣	nem-teu-filho	claude	וּבִנְךָ “e teu filho”; tinha “nem-teu-filho-tua”
+EXO 20:10	12	וּ/בִתֶּ֗/ךָ	nem-tua-filha	claude	וּבִתֶּךָ “e tua filha”; tinha “nem-filha-nem-teu”
+EXO 20:10	13	עַבְדְּ/ךָ֤	teu-servo	claude	עַבְדְּךָ “teu servo”; tinha “servo-tua”
+EXO 20:10	14	וַ/אֲמָֽתְ/ךָ֙	nem-tua-serva	claude	וַאֲמָתְךָ “e tua serva”; tinha “nem-criada”
+EXO 20:10	15	וּ/בְהֶמְתֶּ֔/ךָ	nem-teu-animal	claude	וּבְהֶמְתֶּךָ “e teu animal”; tinha “teu-animal-teu”
+EXO 20:10	16	וְ/גֵרְ/ךָ֖	nem-teu-estrangeiro	claude	וְגֵרְךָ “e teu estrangeiro”; tinha “nem-estrangeiro”
+EXO 20:17	3	בֵּ֣ית	a-casa	claude	בֵּית “casa de”; tinha “casa”
+EXO 20:17	4	רֵעֶ֑/ךָ	de-teu-próximo	claude	רֵעֶךָ “teu próximo”; tinha “teu-próximo”
+EXO 20:17	7	אֵ֣שֶׁת	a-mulher	claude	אֵשֶׁת “mulher de”; tinha “mulher”
+EXO 20:17	8	רֵעֶ֗/ךָ	de-teu-próximo	claude	רֵעֶךָ “teu próximo”; tinha “teu-próximo”
+EXO 20:17	9	וְ/עַבְדּ֤/וֹ	nem-seu-servo	claude	וְעַבְדּוֹ “e seu servo”; tinha “seu-servo-sua”
+EXO 20:17	10	וַ/אֲמָת/וֹ֙	nem-sua-serva	claude	וַאֲמָתוֹ “e sua serva”; tinha “nem-criada”
+EXO 20:17	13	וְ/כֹ֖ל	nem-nada	claude	וְכֹל “e tudo”; tinha “nem-alguma”
+EXO 20:24	1	מִזְבַּ֣ח	um-altar	claude	מִזְבַּח “altar de”; tinha “altar”
+EXO 20:24	2	אֲדָמָה֮	de-terra	claude	אֲדָמָה “terra”; tinha “terra”
+EXO 20:24	8	עֹלֹתֶ֨י/ךָ֙	teus-holocaustos	claude	עֹלֹתֶיךָ “teus holocaustos”; tinha “teus-holocaustos-tuas”
+EXO 20:24	10	שְׁלָמֶ֔י/ךָ	tuas-ofertas-pacíficas	claude	שְׁלָמֶיךָ “tuas ofertas pacíficas”; tinha “ofertas-pacíficas-tuas”
+EXO 20:24	12	צֹֽאנְ/ךָ֖	tuas-ovelhas	claude	צֹאנְךָ “teu rebanho”; tinha “ovelhas-tuas”
+EXO 20:24	14	בְּקָרֶ֑/ךָ	e-teus-bois	claude	בְּקָרֶךָ “teu gado”; tinha “vacas”
+EXO 20:24	16	הַ/מָּקוֹם֙	lugar	claude	הַמָּקוֹם “o lugar”; tinha “lugar-onde”
+EXO 20:24	17	אֲשֶׁ֣ר	onde	claude	אֲשֶׁר “que”; tinha “que”
+EXO 20:24	18	אַזְכִּ֣יר	eu-fizer-lembrar	claude	אַזְכִּיר “fizer lembrar”; tinha “memória”
+EXO 20:25	2	מִזְבַּ֤ח	um-altar	claude	מִזְבַּח “altar de”; tinha “altar”
+EXO 20:25	3	אֲבָנִים֙	de-pedras	claude	אֲבָנִים “pedras”; tinha “pedras”
+EXO 20:25	10	כִּ֧י	pois	claude	כִּי “pois”; tinha “porque”
+EXO 20:25	11	חַרְבְּ/ךָ֛	teu-cinzel	claude	חַרְבְּךָ “tua espada”; tinha “levantares-teu”
+EXO 20:25	12	הֵנַ֥פְתָּ	levantaste	claude	הֵנַפְתָּ “moveste”; tinha “buril”
+EXO 20:25	13	עָלֶ֖י/הָ	sobre-ele	claude	עָלֶיהָ “sobre ela”; tinha “sobre”
+EXO 20:25	14	וַ/תְּחַֽלְלֶֽ/הָ	e-o-profanaste	claude	וַתְּחַלְלֶהָ “e a profanaste”; tinha “profanarás”
