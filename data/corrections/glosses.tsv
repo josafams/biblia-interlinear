@@ -24222,3 +24222,110 @@ LEV 7:24	5	יֵעָשֶׂ֖ה	se-usará	claude	יֵעָשֶׂה “será feita�
 LEV 7:24	7	מְלָאכָ֑ה	obra	claude	מְלָאכָה “obra”; tinha “outro-uso”
 LEV 7:24	8	וְ/אָכֹ֖ל	mas-comer	claude	וְאָכֹל “e comer”; tinha “e-comendo”
 LEV 7:24	10	תֹאכְלֻֽ/הוּ	a-comereis	claude	תֹאכְלֻהוּ “o comereis”; tinha “comereis”
+LEV 7:27	1	כָּל	toda	claude	כָּל “toda”; tinha “qualquer”
+LEV 7:27	2	נֶ֖פֶשׁ	alma	claude	נֶפֶשׁ “alma”; tinha “pessoa”
+LEV 7:27	5	כָּל	qualquer	claude	כָּל “todo”; tinha “algum”
+LEV 7:27	7	וְ/נִכְרְתָ֛ה	e-será-cortada	claude	וְנִכְרְתָה “e será cortada”; tinha “a-tal”
+LEV 7:27	8	הַ/נֶּ֥פֶשׁ	a-alma	claude	הַנֶּפֶשׁ “a alma”; tinha “tal-pessoa”
+LEV 8:9	1	וַ/יָּ֥שֶׂם	e-pôs	claude	וַיָּשֶׂם “e pôs”; tinha “depois-pôs”
+LEV 8:9	9	אֶל	na	claude	אֶל “para”; tinha “a”
+LEV 8:9	10	מ֣וּל	frente	claude	מוּל “frente de”; tinha “frente-dianteira”
+LEV 8:9	11	פָּנָ֗י/ו	dela	claude	פָּנָיו “sua face”; tinha “dianteira-pôs”
+LEV 8:9	13	צִ֤יץ	a-lâmina	claude	צִיץ “lâmina de”; tinha “placa”
+LEV 8:9	14	הַ/זָּהָב֙	de-ouro	claude	הַזָּהָב “o ouro”; tinha “a-de-ouro”
+LEV 8:9	15	נֵ֣זֶר	o-diadema	claude	נֵזֶר “diadema de”; tinha “coroa”
+LEV 8:9	18	צִוָּ֥ה	ordenara	claude	צִוָּה “ordenou”; tinha “o”
+LEV 8:14	1	וַ/יַּגֵּ֕שׁ	e-fez-chegar	claude	וַיַּגֵּשׁ “e fez chegar”; tinha “logo-chegar”
+LEV 8:14	3	פַּ֣ר	o-novilho	claude	פַּר “novilho de”; tinha “bezerro”
+LEV 8:14	4	הַֽ/חַטָּ֑את	da-oferta-pelo-pecado	claude	הַחַטָּאת “a oferta pelo pecado”; tinha “da-expiação”
+LEV 8:14	5	וַ/יִּסְמֹ֨ךְ	e-apoiou	claude	וַיִּסְמֹךְ “e apoiou”; tinha “puseram”
+LEV 8:14	7	וּ/בָנָי/ו֙	e-seus-filhos	claude	וּבָנָיו “e seus filhos”; tinha “e-seus-filhos-suas”
+LEV 8:14	9	יְדֵי/הֶ֔ם	suas-mãos	claude	יְדֵיהֶם “suas mãos”; tinha “mãos”
+LEV 8:14	11	רֹ֖אשׁ	a-cabeça	claude	רֹאשׁ “cabeça de”; tinha “cabeça”
+LEV 8:14	12	פַּ֥ר	do-novilho	claude	פַּר “novilho de”; tinha “bezerro”
+LEV 8:14	13	הַֽ/חַטָּֽאת	da-oferta-pelo-pecado	claude	הַחַטָּאת “a oferta pelo pecado”; tinha “da-expiação”
+LEV 8:20	3	נִתַּ֖ח	cortou-em-pedaços	claude	נִתַּח “cortou em pedaços”; tinha “cortou”
+LEV 8:20	4	לִ/נְתָחָ֑י/ו	em-seus-pedaços	claude	לִנְתָחָיו “em seus pedaços”; tinha “em-pedaços”
+LEV 8:20	5	וַ/יַּקְטֵ֤ר	e-queimou	claude	וַיַּקְטֵר “e queimou”; tinha “arder”
+LEV 8:30	1	וַ/יִּקַּ֨ח	e-tomou	claude	וַיִּקַּח “e tomou”; tinha “logo-tomou”
+LEV 8:30	5	וּ/מִן	e-do	claude	וּמִן “e de”; tinha “e-dos”
+LEV 8:30	6	הַ/דָּם֮	sangue	claude	הַדָּם “o sangue”; tinha “do-sangue”
+LEV 8:30	14	בְּגָדָ֔י/ו	suas-vestes	claude	בְּגָדָיו “suas vestes”; tinha “vestiduras”
+LEV 8:30	15	וְ/עַל	e-sobre	claude	וְעַל “e sobre”; tinha “sobre”
+LEV 8:30	18	בִּגְדֵ֥י	as-vestes	claude	בִּגְדֵי “vestes de”; tinha “vestiduras”
+LEV 8:30	19	בָנָ֖י/ו	de-seus-filhos	claude	בָנָיו “seus filhos”; tinha “seus-filhos”
+LEV 8:30	25	בְּגָדָ֔י/ו	suas-vestes	claude	בְּגָדָיו “suas vestes”; tinha “vestiduras”
+LEV 8:30	27	בָּנָ֛י/ו	seus-filhos	claude	בָּנָיו “seus filhos”; tinha “filhos”
+LEV 8:30	29	בִּגְדֵ֥י	as-vestes	claude	בִּגְדֵי “vestes de”; tinha “vestiduras”
+LEV 8:30	30	בָנָ֖י/ו	de-seus-filhos	claude	בָנָיו “seus filhos”; tinha “seus-filhos”
+LEV 8:31	7	בַּשְּׁל֣וּ	cozei	claude	בַּשְּׁלוּ “cozei”; tinha “comei”
+LEV 8:31	10	פֶּ֣תַח	à-entrada	claude	פֶּתַח “entrada de”; tinha “porta”
+LEV 8:31	11	אֹ֣הֶל	da-tenda	claude	אֹהֶל “tenda de”; tinha “do-tabernáculo-do”
+LEV 8:31	12	מוֹעֵד֒	do-encontro	claude	מוֹעֵד “encontro”; tinha “testemunho”
+LEV 8:31	13	וְ/שָׁם֙	e-ali	claude	וְשָׁם “e ali”; tinha “ali”
+LEV 8:31	22	צִוֵּ֨יתִי֙	ordenei	claude	צִוֵּיתִי “ordenei”; tinha “mandei”
+LEV 8:31	26	יֹאכְלֻֽ/הוּ	o-comerão	claude	יֹאכְלֻהוּ “o comerão”; tinha “comerão”
+LEV 8:34	1	כַּ/אֲשֶׁ֥ר	como	claude	כַּאֲשֶׁר “como”; tinha “maneira-que”
+LEV 8:34	2	עָשָׂ֖ה	se-fez	claude	עָשָׂה “fez”; tinha “fez”
+LEV 8:34	3	בַּ/יּ֣וֹם	no-dia	claude	בַּיּוֹם “no dia”; tinha “hoje”
+LEV 8:34	5	צִוָּ֧ה	ordenou	claude	צִוָּה “ordenou”; tinha “mandou”
+LEV 8:34	8	לְ/כַפֵּ֥ר	para-fazer-expiação	claude	לְכַפֵּר “para fazer expiação”; tinha “para-expiar”
+LEV 8:34	9	עֲלֵי/כֶֽם	por-vós	claude	עֲלֵיכֶם “sobre vós”; tinha “sobre-vós”
+LEV 9:11	4	הָ/ע֑וֹר	a-pele	claude	הָעוֹר “a pele”; tinha “o-couro”
+LEV 9:11	6	בָּ/אֵ֔שׁ	no-fogo	claude	בָּאֵשׁ “no fogo”; tinha “ao-fogo”
+LEV 9:12	1	וַ/יִּשְׁחַ֖ט	e-imolou	claude	וַיִּשְׁחַט “e imolou”; tinha “degolou-também”
+LEV 9:12	4	וַ֠/יַּמְצִאוּ	e-apresentaram	claude	וַיַּמְצִאוּ “e fizeram achar”; tinha “apresentaram”
+LEV 9:12	5	בְּנֵ֨י	os-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+LEV 9:12	6	אַהֲרֹ֤ן	de-Arão	claude	אַהֲרֹן “Arão”; tinha “Arão”
+LEV 9:12	7	אֵלָי/ו֙	a-ele	claude	אֵלָיו “a ele”; tinha “lhe”
+LEV 9:12	10	וַ/יִּזְרְקֵ֥/הוּ	e-o-aspergiu	claude	וַיִּזְרְקֵהוּ “e o aspergiu”; tinha “qual-espargiu-ele”
+LEV 9:12	13	סָבִֽיב	ao-redor	claude	סָבִיב “ao redor”; tinha “redor”
+LEV 9:13	4	אֵלָ֛י/ו	a-ele	claude	אֵלָיו “a ele”; tinha “lhe”
+LEV 9:13	5	לִ/נְתָחֶ֖י/הָ	em-seus-pedaços	claude	לִנְתָחֶיהָ “em seus pedaços”; tinha “em-pedaços”
+LEV 9:13	8	וַ/יַּקְטֵ֖ר	e-queimou	claude	וַיַּקְטֵר “e queimou”; tinha “queimar”
+LEV 9:15	1	וַ/יַּקְרֵ֕ב	e-ofereceu	claude	וַיַּקְרֵב “e ofereceu”; tinha “ofereceu-também”
+LEV 9:15	3	קָרְבַּ֣ן	a-oferta	claude	קָרְבַּן “oferta de”; tinha “oferta”
+LEV 9:15	7	שְׂעִ֤יר	o-bode	claude	שְׂעִיר “bode de”; tinha “bode-macho”
+LEV 9:15	8	הַֽ/חַטָּאת֙	da-oferta-pelo-pecado	claude	הַחַטָּאת “a oferta pelo pecado”; tinha “a-expiação”
+LEV 9:15	9	אֲשֶׁ֣ר	que-era	claude	אֲשֶׁר “que”; tinha “que”
+LEV 9:15	10	לָ/עָ֔ם	pelo-povo	claude	לָעָם “para o povo”; tinha “do-povo”
+LEV 9:15	11	וַ/יִּשְׁחָטֵ֥/הוּ	e-o-imolou	claude	וַיִּשְׁחָטֵהוּ “e o imolou”; tinha “e-degolou-o”
+LEV 9:15	12	וַֽ/יְחַטְּאֵ֖/הוּ	e-o-ofereceu-pelo-pecado	claude	וַיְחַטְּאֵהוּ “e o ofereceu pelo pecado”; tinha “pecado”
+LEV 9:16	4	וַֽ/יַּעֲשֶׂ֖/הָ	e-o-fez	claude	וַיַּעֲשֶׂהָ “e o fez”; tinha “e-fez”
+LEV 9:16	5	כַּ/מִּשְׁפָּֽט	segundo-a-ordenança	claude	כַּמִּשְׁפָּט “segundo a ordenança”; tinha “segundo-o-rito”
+LEV 9:18	1	וַ/יִּשְׁחַ֤ט	e-imolou	claude	וַיִּשְׁחַט “e imolou”; tinha “degolou-também”
+LEV 9:18	6	זֶ֥בַח	o-sacrifício	claude	זֶבַח “sacrifício de”; tinha “sacrifício”
+LEV 9:18	7	הַ/שְּׁלָמִ֖ים	das-ofertas-pacíficas	claude	הַשְּׁלָמִים “as ofertas pacíficas”; tinha “pacífico”
+LEV 9:18	9	לָ/עָ֑ם	pelo-povo	claude	לָעָם “para o povo”; tinha “do-povo”
+LEV 9:18	10	וַ֠/יַּמְצִאוּ	e-apresentaram	claude	וַיַּמְצִאוּ “e fizeram achar”; tinha “apresentaram”
+LEV 9:18	11	בְּנֵ֨י	os-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+LEV 9:18	12	אַהֲרֹ֤ן	de-Arão	claude	אַהֲרֹן “Arão”; tinha “Arão”
+LEV 9:18	15	אֵלָ֔י/ו	a-ele	claude	אֵלָיו “a ele”; tinha “lhe”
+LEV 9:18	16	וַ/יִּזְרְקֵ֥/הוּ	e-o-aspergiu	claude	וַיִּזְרְקֵהוּ “e o aspergiu”; tinha “qual-espargiu-ele”
+LEV 9:18	19	סָבִֽיב	ao-redor	claude	סָבִיב “ao redor”; tinha “redor”
+LEV 10:1	2	בְנֵֽי	os-filhos	claude	בְנֵי “filhos de”; tinha “filhos”
+LEV 10:1	3	אַ֠הֲרֹן	de-Arão	claude	אַהֲרֹן “Arão”; tinha “Arão”
+LEV 10:1	6	אִ֣ישׁ	cada-um	claude	אִישׁ “homem”; tinha “cada”
+LEV 10:1	11	וַ/יָּשִׂ֥ימוּ	e-puseram	claude	וַיָּשִׂימוּ “e puseram”; tinha “qual-puseram”
+LEV 10:1	12	עָלֶ֖י/הָ	sobre-ele	claude	עָלֶיהָ “sobre ele”; tinha “sobre”
+LEV 10:1	15	לִ/פְנֵ֤י	diante	claude	לִפְנֵי “diante de”; tinha “para-diante”
+LEV 10:1	20	לֹ֦א	não	claude	לֹא “não”; tinha “nunca”
+LEV 10:1	21	צִוָּ֖ה	ordenara	claude	צִוָּה “ordenou”; tinha “mandou”
+LEV 10:1	22	אֹתָֽ/ם	a-eles	claude	אֹתָם “a eles”; tinha “os”
+LEV 10:2	3	מִ/לִּ/פְנֵ֥י	de-diante	claude	מִלִּפְנֵי “de diante de”; tinha “de-para-diante”
+LEV 10:2	5	וַ/תֹּ֣אכַל	e-os-consumiu	claude	וַתֹּאכַל “e consumiu”; tinha “que-os-queimou”
+LEV 10:19	1	וַ/יְדַבֵּ֨ר	e-falou	claude	וַיְדַבֵּר “e falou”; tinha “e-respondeu”
+LEV 10:19	6	הַ֠/יּוֹם	hoje	claude	הַיּוֹם “hoje”; tinha “que-hoje”
+LEV 10:19	9	חַטָּאתָ֤/ם	sua-oferta-pelo-pecado	claude	חַטָּאתָם “sua oferta pelo pecado”; tinha “expiação”
+LEV 10:19	14	וַ/תִּקְרֶ֥אנָה	e-sucederam	claude	וַתִּקְרֶאנָה “e sucederam”; tinha “mas-aconteceram”
+LEV 10:19	15	אֹתִ֖/י	a-mim	claude	אֹתִי “a mim”; tinha “me”
+LEV 10:19	16	כָּ/אֵ֑לֶּה	coisas-como-estas	claude	כָּאֵלֶּה “como estas”; tinha “estas”
+LEV 10:19	17	וְ/אָכַ֤לְתִּי	e-se-eu-comesse	claude	וְאָכַלְתִּי “e eu comesse”; tinha “pois-se-comesse”
+LEV 10:19	18	חַטָּאת֙	a-oferta-pelo-pecado	claude	חַטָּאת “oferta pelo pecado”; tinha “expiação”
+LEV 10:19	19	הַ/יּ֔וֹם	hoje	claude	הַיּוֹם “hoje”; tinha “hoje-da”
+LEV 10:19	20	הַ/יִּיטַ֖ב	seria-bom	claude	הַיִּיטַב “seria bom”; tinha “aceito”
+LEV 10:19	21	בְּ/עֵינֵ֥י	aos-olhos	claude	בְּעֵינֵי “aos olhos de”; tinha “em-olhos”
+LEV 10:19	22	יְהוָֽה	do-SENHOR	claude	יְהוָה “SENHOR”; tinha “SENHOR”
+LEV 10:20	1	וַ/יִּשְׁמַ֣ע	e-ouviu	claude	וַיִּשְׁמַע “e ouviu”; tinha “e-quando-ouviu”
+LEV 10:20	3	וַ/יִּיטַ֖ב	e-pareceu-bem	claude	וַיִּיטַב “e foi bom”; tinha “isto-deu”
+LEV 10:20	4	בְּ/עֵינָֽי/ו	aos-seus-olhos	claude	בְּעֵינָיו “aos seus olhos”; tinha “por-satisfeito”
