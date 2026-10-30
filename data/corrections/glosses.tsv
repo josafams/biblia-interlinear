@@ -29996,3 +29996,135 @@ DEU 27:2	8	הָ/אָ֕רֶץ	a-terra	claude	הָאָרֶץ “a terra”; tinha 
 DEU 27:2	11	אֱלֹהֶ֖י/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “Deus-te”
 DEU 27:2	13	לָ֑/ךְ	a-ti	claude	לָךְ “a ti”; tinha “para-ti”
 DEU 27:10	5	וְ/עָשִׂ֤יתָ	e-farás	claude	וְעָשִׂיתָ “e farás”; tinha “e-cumprirás”
+DEU 28:7	1	יִתֵּ֨ן	fará	claude	יִתֵּן “dará”; tinha “dará”
+DEU 28:7	5	הַ/קָּמִ֣ים	que-se-levantam	claude	הַקָּמִים “os que se levantam”; tinha “o-levantam”
+DEU 28:7	6	עָלֶ֔י/ךָ	contra-ti	claude	עָלֶיךָ “contra ti”; tinha “contra”
+DEU 28:7	7	נִגָּפִ֖ים	feridos	claude	נִגָּפִים “feridos”; tinha “derrotados”
+DEU 28:7	13	וּ/בְ/שִׁבְעָ֥ה	e-por-sete	claude	וּבְשִׁבְעָה “e por sete”; tinha “por-sete”
+DEU 28:8	1	יְצַ֨ו	ordenará	claude	יְצַו “ordenará”; tinha “enviará”
+DEU 28:8	8	מִשְׁלַ֣ח	o-empreendimento	claude	מִשְׁלַח “empreendimento de”; tinha “puseres”
+DEU 28:8	9	יָדֶ֑/ךָ	de-tua-mão	claude	יָדֶךָ “tua mão”; tinha “tua-mão”
+DEU 28:8	16	לָֽ/ךְ	a-ti	claude	לָךְ “a ti”; tinha “para-ti”
+DEU 28:20	3	בְּ֠/ךָ	em-ti	claude	בְּךָ “em ti”; tinha “contra-ti”
+DEU 28:20	7	הַ/מְּהוּמָה֙	a-confusão	claude	הַמְּהוּמָה “a confusão”; tinha “confusão”
+DEU 28:20	9	הַ/מִּגְעֶ֔רֶת	a-repreensão	claude	הַמִּגְעֶרֶת “a repreensão”; tinha “oposição”
+DEU 28:20	11	מִשְׁלַ֥ח	empreendimento	claude	מִשְׁלַח “empreendimento de”; tinha “puseres”
+DEU 28:20	12	יָדְ/ךָ֖	de-tua-mão	claude	יָדְךָ “tua mão”; tinha “mão”
+DEU 28:20	16	הִשָּֽׁמֶדְ/ךָ֤	seres-destruído	claude	הִשָּׁמֶדְךָ “teu ser destruído”; tinha “sejas-destruído”
+DEU 28:20	18	אֲבָדְ/ךָ֙	pereceres	claude	אֲבָדְךָ “teu perecer”; tinha “pereças”
+DEU 28:20	19	מַהֵ֔ר	depressa	claude	מַהֵר “depressa”; tinha “logo”
+DEU 28:20	21	רֹ֥עַ	da-maldade	claude	רֹעַ “maldade de”; tinha “maldade”
+DEU 28:20	23	אֲשֶׁ֥ר	com-que	claude	אֲשֶׁר “que”; tinha “que”
+DEU 28:20	24	עֲזַבְתָּֽ/נִי	me-deixaste	claude	עֲזַבְתָּנִי “me deixaste”; tinha “me-houverdes-deixado”
+DEU 28:27	3	בִּ/שְׁחִ֤ין	com-a-úlcera	claude	בִּשְׁחִין “com a úlcera de”; tinha “da-praga”
+DEU 28:27	4	מִצְרַ֨יִם֙	do-Egito	claude	מִצְרַיִם “Egito”; tinha “Egito”
+DEU 28:30	2	תְאָרֵ֗שׂ	desposarás	claude	תְאָרֵשׂ “desposarás”; tinha “casarás-com”
+DEU 28:30	5	יִשְׁכָּבֶ֔/נָּה	a-violará	claude	יִשְׁכָּבֶנָּה “se deitará com ela”; tinha “dormirá-com-ela”
+DEU 28:30	14	תְחַלְּלֶּֽ/נּוּ	desfrutarás-dela	claude	תְחַלְּלֶנּוּ “a desfrutarás”; tinha “vindimarás”
+DEU 28:31	2	טָב֣וּחַ	degolado	claude	טָבוּחַ “degolado”; tinha “matado”
+DEU 28:31	3	לְ/עֵינֶ֗י/ךָ	aos-teus-olhos	claude	לְעֵינֶיךָ “aos teus olhos”; tinha “diante-de-teus-olhos”
+DEU 28:31	4	וְ/לֹ֣א	e-não	claude	וְלֹא “e não”; tinha “e-tu-não”
+DEU 28:31	7	חֲמֹֽרְ/ךָ֙	teu-jumento	claude	חֲמֹרְךָ “teu jumento”; tinha “teu-asno”
+DEU 28:31	8	גָּז֣וּל	roubado	claude	גָּזוּל “roubado”; tinha “arrebatado”
+DEU 28:31	13	צֹֽאנְ/ךָ֙	teu-rebanho	claude	צֹאנְךָ “teu rebanho”; tinha “ovelhas”
+DEU 28:31	16	וְ/אֵ֥ין	e-não-haverá	claude	וְאֵין “e não há”; tinha “e-não”
+DEU 28:31	18	מוֹשִֽׁיעַ	salvador	claude	מוֹשִׁיעַ “salvador”; tinha “resgate”
+DEU 28:32	4	לְ/עַ֤ם	a-um-povo	claude	לְעַם “a povo”; tinha “a-povo”
+DEU 28:32	7	רֹא֔וֹת	vendo	claude	רֹאוֹת “vendo”; tinha “verão”
+DEU 28:32	8	וְ/כָל֥וֹת	e-desfalecendo	claude	וְכָלוֹת “e desfalecendo”; tinha “e-desfalecerão”
+DEU 28:32	9	אֲלֵי/הֶ֖ם	por-eles	claude	אֲלֵיהֶם “para eles”; tinha “a-eles”
+DEU 28:32	12	וְ/אֵ֥ין	e-não-haverá	claude	וְאֵין “e não há”; tinha “e-não”
+DEU 28:32	14	יָדֶֽ/ךָ	em-tua-mão	claude	יָדֶךָ “tua mão”; tinha “tua-mão”
+DEU 28:36	3	אֹֽתְ/ךָ֗	a-ti	claude	אֹתְךָ “a ti”; tinha “te”
+DEU 28:36	7	תָּקִ֣ים	puseres	claude	תָּקִים “fizeres levantar”; tinha “posto”
+DEU 28:36	9	אֶל	para	claude	אֶל “para”; tinha “a”
+DEU 28:36	10	גּ֕וֹי	uma-nação	claude	גּוֹי “nação”; tinha “nação”
+DEU 28:36	15	וַ/אֲבֹתֶ֑י/ךָ	e-teus-pais	claude	וַאֲבֹתֶיךָ “e teus pais”; tinha “nem-teus-pais”
+DEU 28:36	19	אֲחֵרִ֖ים	outros	claude	אֲחֵרִים “outros”; tinha “alheios”
+DEU 28:36	20	עֵ֥ץ	de-madeira	claude	עֵץ “madeira”; tinha “madeira”
+DEU 28:36	21	וָ/אָֽבֶן	e-de-pedra	claude	וָאָבֶן “e pedra”; tinha “e-à-pedra”
+DEU 28:49	1	יִשָּׂ֣א	levantará	claude	יִשָּׂא “levantará”; tinha “levará”
+DEU 28:49	4	גּ֤וֹי	uma-nação	claude	גּוֹי “nação”; tinha “nação”
+DEU 28:49	6	מִ/קְצֵ֣ה	da-extremidade	claude	מִקְצֵה “da extremidade de”; tinha “do-extremo”
+DEU 28:49	8	כַּ/אֲשֶׁ֥ר	como	claude	כַּאֲשֶׁר “como”; tinha “que-como”
+DEU 28:49	9	יִדְאֶ֖ה	voa	claude	יִדְאֶה “voa”; tinha “voe”
+DEU 28:49	10	הַ/נָּ֑שֶׁר	a-águia	claude	הַנָּשֶׁר “a águia”; tinha “água”
+DEU 28:49	12	אֲשֶׁ֥ר	cuja	claude	אֲשֶׁר “que”; tinha “que”
+DEU 28:49	15	לְשֹׁנֽ/וֹ	sua-língua	claude	לְשֹׁנוֹ “sua língua”; tinha “língua”
+DEU 28:56	2	בְ/ךָ֜	em-ti	claude	בְךָ “em ti”; tinha “entre-vós”
+DEU 28:56	5	לֹא	não	claude	לֹא “não”; tinha “nunca”
+DEU 28:56	6	נִסְּתָ֤ה	tentou	claude	נִסְּתָה “tentou”; tinha “provou”
+DEU 28:56	7	כַף	a-planta	claude	כַף “palma de”; tinha “planta”
+DEU 28:56	8	רַגְלָ/הּ֙	de-seu-pé	claude	רַגְלָהּ “seu pé”; tinha “pé-a”
+DEU 28:56	9	הַצֵּ֣ג	pôr	claude	הַצֵּג “pôr”; tinha “sentar”
+DEU 28:56	12	מֵ/הִתְעַנֵּ֖ג	por-delicadeza	claude	מֵהִתְעַנֵּג “por se deleitar”; tinha “de-ternura”
+DEU 28:56	13	וּ/מֵ/רֹ֑ךְ	e-por-ternura	claude	וּמֵרֹךְ “e por ternura”; tinha “e-delicadeza”
+DEU 28:56	14	תֵּרַ֤ע	será-maligno	claude	תֵּרַע “será mau”; tinha “maligno”
+DEU 28:56	15	עֵינָ/הּ֙	seu-olho	claude	עֵינָהּ “seu olho”; tinha “olho-será-para”
+DEU 28:56	16	בְּ/אִ֣ישׁ	contra-o-marido	claude	בְּאִישׁ “contra o homem de”; tinha “com-o-marido”
+DEU 28:56	17	חֵיקָ֔/הּ	de-seu-seio	claude	חֵיקָהּ “seu seio”; tinha “seio”
+DEU 28:56	18	וּ/בִ/בְנָ֖/הּ	e-contra-seu-filho	claude	וּבִבְנָהּ “e contra seu filho”; tinha “e-para-com-seu-filho”
+DEU 28:56	19	וּ/בְ/בִתָּֽ/הּ	e-contra-sua-filha	claude	וּבְבִתָּהּ “e contra sua filha”; tinha “e-para-com-sua-filha”
+DEU 28:57	1	וּֽ/בְ/שִׁלְיָתָ֞/הּ	e-contra-sua-placenta	claude	וּבְשִׁלְיָתָהּ “e contra sua placenta”; tinha “e-para-com-sua-criança”
+DEU 28:57	5	וּ/בְ/בָנֶ֨י/הָ֙	e-contra-seus-filhos	claude	וּבְבָנֶיהָ “e contra seus filhos”; tinha “e-para-com-seus-filhos”
+DEU 28:57	7	תֵּלֵ֔ד	der-à-luz	claude	תֵּלֵד “der à luz”; tinha “luz”
+DEU 28:57	9	תֹאכְלֵ֥/ם	os-comerá	claude	תֹאכְלֵם “os comerá”; tinha “comerá”
+DEU 28:57	10	בְּ/חֹֽסֶר	na-falta	claude	בְּחֹסֶר “na falta de”; tinha “a-falta”
+DEU 28:57	12	בַּ/סָּ֑תֶר	em-segredo	claude	בַּסָּתֶר “no segredo”; tinha “ocultamente”
+DEU 28:57	14	וּ/בְ/מָצ֔וֹק	e-no-aperto	claude	וּבְמָצוֹק “e no aperto”; tinha “e-em-apuros”
+DEU 28:57	16	יָצִ֥יק	te-apertará	claude	יָצִיק “apertará”; tinha “oprimirá”
+DEU 28:57	17	לְ/ךָ֛	a-ti	claude	לְךָ “a ti”; tinha “para-ti”
+DEU 28:57	18	אֹיִבְ/ךָ֖	teu-inimigo	claude	אֹיִבְךָ “teu inimigo”; tinha “inimigo-te”
+DEU 28:57	19	בִּ/שְׁעָרֶֽי/ךָ	em-tuas-portas	claude	בִּשְׁעָרֶיךָ “em tuas portas”; tinha “em-tuas-cidades”
+DEU 28:61	5	מַכָּ֔ה	ferida	claude	מַכָּה “ferida”; tinha “praga”
+DEU 28:61	10	הַ/תּוֹרָ֣ה	da-lei	claude	הַתּוֹרָה “a lei”; tinha “desta-lei”
+DEU 28:61	12	יַעְלֵ֤/ם	as-fará-subir	claude	יַעְלֵם “as fará subir”; tinha “enviará”
+DEU 28:61	16	הִשָּׁמְדָֽ/ךְ	seres-destruído	claude	הִשָּׁמְדָךְ “teu ser destruído”; tinha “tu-sejas-destruído”
+DEU 28:68	1	וֶֽ/הֱשִֽׁיבְ/ךָ֨	e-te-fará-voltar	claude	וֶהֱשִׁיבְךָ “e te fará voltar”; tinha “te-fará-voltar”
+DEU 28:68	3	מִצְרַיִם֮	ao-Egito	claude	מִצְרַיִם “Egito”; tinha “Egito”
+DEU 28:68	6	אֲשֶׁ֣ר	do-qual	claude	אֲשֶׁר “que”; tinha “qual”
+DEU 28:68	7	אָמַ֣רְתִּֽי	eu-disse	claude	אָמַרְתִּי “eu disse”; tinha “disse”
+DEU 28:68	8	לְ/ךָ֔	a-ti	claude	לְךָ “a ti”; tinha “para-ti”
+DEU 28:68	9	לֹא	não	claude	לֹא “não”; tinha “nunca”
+DEU 28:68	10	תֹסִ֥יף	continuarás	claude	תֹסִיף “continuarás”; tinha “mais”
+DEU 28:68	12	לִ/רְאֹתָ֑/הּ	a-vê-lo	claude	לִרְאֹתָהּ “a vê-la”; tinha “voltareis”
+DEU 28:68	13	וְ/הִתְמַכַּרְתֶּ֨ם	e-vos-vendereis	claude	וְהִתְמַכַּרְתֶּם “e vos vendereis”; tinha “vendidos”
+DEU 28:68	15	לְ/אֹיְבֶ֛י/ךָ	a-teus-inimigos	claude	לְאֹיְבֶיךָ “a teus inimigos”; tinha “a-vossos-inimigos”
+DEU 28:68	18	וְ/אֵ֥ין	e-não-haverá	claude	וְאֵין “e não há”; tinha “e-não”
+DEU 28:68	19	קֹנֶֽה	comprador	claude	קֹנֶה “comprador”; tinha “compre”
+DEU 29:4	1	וְ/לֹֽא	e-não	claude	וְלֹא “e não”; tinha “não”
+DEU 29:4	6	לָ/דַ֔עַת	para-conhecer	claude	לָדַעַת “para conhecer”; tinha “para-entender”
+DEU 29:4	7	וְ/עֵינַ֥יִם	e-olhos	claude	וְעֵינַיִם “e olhos”; tinha “nem-olhos”
+DEU 29:4	9	וְ/אָזְנַ֣יִם	e-ouvidos	claude	וְאָזְנַיִם “e ouvidos”; tinha “nem-ouvidos”
+DEU 29:4	13	הַ/זֶּֽה	este	claude	הַזֶּה “o este”; tinha “de-hoje”
+DEU 29:5	1	וָ/אוֹלֵ֥ךְ	e-fiz-andar	claude	וָאוֹלֵךְ “e fiz andar”; tinha “trouxe”
+DEU 29:5	7	בָל֤וּ	se-gastaram	claude	בָלוּ “se gastaram”; tinha “envelhecido”
+DEU 29:5	9	מֵ/עֲלֵי/כֶ֔ם	de-sobre-vós	claude	מֵעֲלֵיכֶם “de sobre vós”; tinha “sobre-vós”
+DEU 29:5	10	וְ/נַֽעַלְ/ךָ֥	e-tua-sandália	claude	וְנַעַלְךָ “e tua sandália”; tinha “nem-teu-sapato”
+DEU 29:5	12	בָלְתָ֖ה	se-gastou	claude	בָלְתָה “se gastou”; tinha “envelheceu”
+DEU 29:5	13	מֵ/עַ֥ל	de-sobre	claude	מֵעַל “de sobre”; tinha “sobre”
+DEU 29:9	1	וּ/שְׁמַרְתֶּ֗ם	e-guardareis	claude	וּשְׁמַרְתֶּם “e guardareis”; tinha “guardareis-pois”
+DEU 29:9	3	דִּבְרֵי֙	as-palavras	claude	דִּבְרֵי “palavras de”; tinha “palavras”
+DEU 29:9	4	הַ/בְּרִ֣ית	do-pacto	claude	הַבְּרִית “o pacto”; tinha “deste-pacto”
+DEU 29:9	6	וַ/עֲשִׂיתֶ֖ם	e-fareis	claude	וַעֲשִׂיתֶם “e fareis”; tinha “e-poreis”
+DEU 29:9	7	אֹתָ֑/ם	a-elas	claude	אֹתָם “elas”; tinha “os”
+DEU 29:9	8	לְמַ֣עַן	para-que	claude	לְמַעַן “para que”; tinha “para”
+DEU 29:12	1	לְ/עָבְרְ/ךָ֗	para-passares	claude	לְעָבְרְךָ “para teu passar”; tinha “para-que-entres”
+DEU 29:12	5	וּ/בְ/אָלָת֑/וֹ	e-em-sua-imprecação	claude	וּבְאָלָתוֹ “e em sua imprecação”; tinha “e-em-seu-juramento”
+DEU 29:12	9	כֹּרֵ֥ת	corta	claude	כֹּרֵת “cortando”; tinha “estabelece”
+DEU 29:12	10	עִמְּ/ךָ֖	contigo	claude	עִמְּךָ “contigo”; tinha “com-ti”
+DEU 29:13	2	הָקִֽים	estabelecer	claude	הָקִים “estabelecer”; tinha “confirmar”
+DEU 29:13	5	ל֜/וֹ	para-ele	claude	לוֹ “para ele”; tinha “por-seu”
+DEU 29:13	6	לְ/עָ֗ם	por-povo	claude	לְעָם “por povo”; tinha “povo”
+DEU 29:13	7	וְ/ה֤וּא	e-ele	claude	וְהוּא “e ele”; tinha “e-que-ele”
+DEU 29:13	11	כַּ/אֲשֶׁ֖ר	como	claude	כַּאֲשֶׁר “como”; tinha “maneira-que”
+DEU 29:13	12	דִּבֶּר	falou	claude	דִּבֶּר “falou”; tinha “disse”
+DEU 29:13	13	לָ֑/ךְ	a-ti	claude	לָךְ “a ti”; tinha “para-ti”
+DEU 29:13	14	וְ/כַ/אֲשֶׁ֤ר	e-como	claude	וְכַאֲשֶׁר “e como”; tinha “e-como-ele”
+DEU 29:13	17	לְ/אַבְרָהָ֥ם	a-Abraão	claude	לְאַבְרָהָם “a Abraão”; tinha “Abraão”
+DEU 29:13	18	לְ/יִצְחָ֖ק	a-Isaque	claude	לְיִצְחָק “a Isaque”; tinha “Isaque”
+DEU 29:13	19	וּֽ/לְ/יַעֲקֹֽב	e-a-Jacó	claude	וּלְיַעֲקֹב “e a Jacó”; tinha “e-Jacó”
+DEU 29:21	1	וְ/הִבְדִּיל֤/וֹ	e-o-separará	claude	וְהִבְדִּילוֹ “e o separará”; tinha “separará”
+DEU 29:21	5	שִׁבְטֵ֣י	as-tribos	claude	שִׁבְטֵי “tribos de”; tinha “tribos”
+DEU 29:21	8	אָל֣וֹת	as-imprecações	claude	אָלוֹת “imprecações de”; tinha “maldições”
+DEU 29:21	11	בְּ/סֵ֥פֶר	no-livro	claude	בְּסֵפֶר “no livro de”; tinha “neste-livro”
