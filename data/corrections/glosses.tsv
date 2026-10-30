@@ -46786,3 +46786,254 @@ NEH 11:14	4	מֵאָ֖ה	cento-e-vinte-e-oito	claude	מֵאָ֖ה parte de “ce
 NEH 11:14	5	עֶשְׂרִ֣ים	cento-e-vinte-e-oito	claude	עֶשְׂרִ֣ים parte de “cento e vinte e oito”; tinha “vinte”
 NEH 11:14	6	וּ/שְׁמֹנָ֑ה	e-cento-e-vinte-e-oito	claude	וּשְׁמֹנָ֑ה parte de “cento e vinte e oito”; tinha “e-oito”
 NEH 11:14	11	הַ/גְּדוֹלִֽים	Gedolim	claude	הַגְּדוֹלִֽים “Gedolim”; tinha “de-Gedolim”
+NEH 11:23	2	מִצְוַ֥ת	o-mandamento-de	claude	מִצְוַ֥ת “o mandamento de”; tinha “mandamento”
+NEH 11:23	3	הַ/מֶּ֖לֶךְ	o-rei	claude	הַמֶּ֖לֶךְ “o rei”; tinha “do-rei”
+NEH 11:23	7	הַ/מְשֹׁרְרִ֖ים	os-cantores	claude	הַמְשֹׁרְרִ֖ים “os cantores”; tinha “dos-cantores”
+NEH 11:23	8	דְּבַר	a-porção-de	claude	דְּבַר “a porção de”; tinha “palavra”
+NEH 11:23	9	י֥וֹם	dia	claude	י֥וֹם “dia”; tinha “cada”
+NEH 11:23	10	בְּ/יוֹמֽ/וֹ	em-seu-dia	claude	בְּיוֹמֽוֹ “em seu dia”; tinha “dia”
+NEH 11:25	1	וְ/אֶל	e-quanto-a	claude	וְאֶל “e quanto a”; tinha “e-a”
+NEH 11:25	2	הַ/חֲצֵרִ֖ים	as-aldeias	claude	הַחֲצֵרִ֖ים “as aldeias”; tinha “às-aldeias”
+NEH 11:25	3	בִּ/שְׂדֹתָ֑/ם	em-seus-campos	claude	בִּשְׂדֹתָ֑ם “em seus campos”; tinha “em-suas-terras”
+NEH 11:25	4	מִ/בְּנֵ֣י	dos-filhos-de	claude	מִבְּנֵ֣י “dos filhos de”; tinha “alguns-dos-filhos”
+NEH 11:25	9	וּ/בְנֹתֶ֔י/הָ	e-suas-aldeias	claude	וּבְנֹתֶ֔יהָ “e suas aldeias”; tinha “aldeias-circunvizinhas”
+NEH 11:25	11	וּ/בְנֹתֶ֔י/הָ	e-suas-aldeias	claude	וּבְנֹתֶ֔יהָ “e suas aldeias”; tinha “e-suas-aldeias-circunvizinhas”
+NEH 11:27	1	וּ/בַ/חֲצַ֥ר	e-em-Hazar-Sual	claude	וּבַחֲצַ֥ר “e em Hazar Sual”; tinha “Hazar”
+NEH 11:27	2	שׁוּעָ֛ל	Hazar-Sual	claude	שׁוּעָ֛ל “Hazar Sual”; tinha “Sual”
+NEH 11:27	3	וּ/בִ/בְאֵ֥ר	e-em-Berseba	claude	וּבִבְאֵ֥ר “e em Berseba”; tinha “Berseba-em”
+NEH 11:27	5	וּ/בְנֹתֶֽי/הָ	e-suas-aldeias	claude	וּבְנֹתֶֽיהָ “e suas aldeias”; tinha “aldeias-circunvizinhas”
+NEH 11:30	3	וְ/חַצְרֵי/הֶ֔ם	e-suas-aldeias	claude	וְחַצְרֵיהֶ֔ם “e suas aldeias”; tinha “e-em-suas-aldeias”
+NEH 11:30	8	וַ/יַּחֲנ֥וּ	e-acamparam	claude	וַיַּחֲנ֥וּ “e acamparam”; tinha “e-habitaram”
+NEH 11:30	12	גֵּֽיא	o-vale-de	claude	גֵּֽיא “o vale de”; tinha “vale”
+NEH 11:31	5	וְ/עַיָּ֔ה	e-Aia	claude	וְעַיָּ֔ה “e Aia”; tinha “Aia”
+NEH 12:27	2	חוֹמַ֣ת	os-muros-de	claude	חוֹמַ֣ת “os muros de”; tinha “muros”
+NEH 12:27	8	מְק֣וֹמֹתָ֔/ם	seus-lugares	claude	מְק֣וֹמֹתָ֔ם “seus lugares”; tinha “lugares”
+NEH 12:27	11	לַ/עֲשֹׂ֨ת	para-fazer	claude	לַעֲשֹׂ֨ת “para fazer”; tinha “a-fim-de-fazerem”
+NEH 12:27	13	וְ/שִׂמְחָה֙	e-alegria	claude	וְשִׂמְחָה֙ “e alegria”; tinha “com-alegrias”
+NEH 12:27	14	וּ/בְ/תוֹד֣וֹת	e-com-ações-de-graças	claude	וּבְתוֹד֣וֹת “e com ações de graças”; tinha “de-graças”
+NEH 12:45	1	וַֽ/יִּשְׁמְר֞וּ	e-guardavam	claude	וַֽיִּשְׁמְר֞וּ “e guardavam”; tinha “e-faziam”
+NEH 12:45	2	מִשְׁמֶ֤רֶת	a-guarda-de	claude	מִשְׁמֶ֤רֶת “a guarda de”; tinha “guarda”
+NEH 12:45	4	וּ/מִשְׁמֶ֣רֶת	e-a-guarda-de	claude	וּמִשְׁמֶ֣רֶת “e a guarda de”; tinha “e-a-guarda”
+NEH 12:45	5	הַֽ/טָּהֳרָ֔ה	a-purificação	claude	הַֽטָּהֳרָ֔ה “a purificação”; tinha “da-purificação”
+NEH 12:45	6	וְ/הַ/מְשֹׁרְרִ֖ים	e-os-cantores	claude	וְהַמְשֹׁרְרִ֖ים “e os cantores”; tinha “também-os-cantores”
+NEH 12:45	8	כְּ/מִצְוַ֥ת	conforme-o-mandamento-de	claude	כְּמִצְוַ֥ת “conforme o mandamento de”; tinha “conforme-o-mandamento”
+NEH 13:9	1	וָ/אֹ֣מְרָ֔/ה	e-disse	claude	וָאֹ֣מְרָ֔ה “e disse”; tinha “e-mandei”
+NEH 13:9	2	וַֽ/יְטַהֲר֖וּ	e-purificaram	claude	וַֽיְטַהֲר֖וּ “e purificaram”; tinha “purificar”
+NEH 13:9	4	וָ/אָשִׁ֣יבָ/ה	e-tornei-a-pôr	claude	וָאָשִׁ֣יבָה “e tornei a pôr”; tinha “e-trouxe”
+NEH 13:9	6	כְּלֵי֙	os-utensílios-de	claude	כְּלֵי֙ “os utensílios de”; tinha “utensílios”
+NEH 13:9	7	בֵּ֣ית	a-casa-de	claude	בֵּ֣ית “a casa de”; tinha “casa”
+NEH 13:9	9	אֶת	[obj]	claude	אֶת “[obj]”; tinha “com”
+NEH 13:9	10	הַ/מִּנְחָ֖ה	a-oferta-de-cereais	claude	הַמִּנְחָ֖ה “a oferta de cereais”; tinha “as-ofertas-de-alimento”
+NEH 13:10	1	וָ/אֵ֣דְעָ֔/ה	e-soube	claude	וָאֵ֣דְעָ֔ה “e soube”; tinha “também-entendi”
+NEH 13:10	3	מְנָי֥וֹת	as-porções-de	claude	מְנָי֥וֹת “as porções de”; tinha “porções”
+NEH 13:10	4	הַ/לְוִיִּ֖ם	os-levitas	claude	הַלְוִיִּ֖ם “os levitas”; tinha “dos-Levitas”
+NEH 13:10	6	נִתָּ֑נָה	foram-dadas	claude	נִתָּ֑נָה “foram dadas”; tinha “dadas”
+NEH 13:10	7	וַ/יִּבְרְח֧וּ	e-fugiram	claude	וַיִּבְרְח֧וּ “e fugiram”; tinha “fugido”
+NEH 13:10	10	הַ/לְוִיִּ֥ם	os-levitas	claude	הַלְוִיִּ֥ם “os levitas”; tinha “que-os-Levitas”
+NEH 13:10	11	וְ/הַ/מְשֹׁרְרִ֖ים	e-os-cantores	claude	וְהַמְשֹׁרְרִ֖ים “e os cantores”; tinha “e-cantores”
+NEH 13:10	12	עֹשֵׂ֥י	que-faziam	claude	עֹשֵׂ֥י “que faziam”; tinha “faziam”
+NEH 13:10	13	הַ/מְּלָאכָֽה	a-obra	claude	הַמְּלָאכָֽה “a obra”; tinha “o-serviço”
+NEH 13:13	1	וָ/אוֹצְרָ֣/ה	e-pus-por-tesoureiros	claude	וָאוֹצְרָ֣ה “e pus por tesoureiros”; tinha “tesoureiros”
+NEH 13:13	3	א֠וֹצָרוֹת	os-depósitos	claude	א֠וֹצָרוֹת “os depósitos”; tinha “depósitos”
+NEH 13:13	5	הַ/כֹּהֵ֜ן	o-sacerdote	claude	הַכֹּהֵ֜ן “o sacerdote”; tinha “ao-sacerdote”
+NEH 13:13	6	וְ/צָד֣וֹק	e-Zadoque	claude	וְצָד֣וֹק “e Zadoque”; tinha “Zadoque”
+NEH 13:13	7	הַ/סּוֹפֵ֗ר	o-escriba	claude	הַסּוֹפֵ֗ר “o escriba”; tinha “ao-escriba”
+NEH 13:13	8	וּ/פְדָיָה֙	e-Pedaías	claude	וּפְדָיָה֙ “e Pedaías”; tinha “Pedaías”
+NEH 13:13	9	מִן	dentre	claude	מִן “dentre”; tinha “dos”
+NEH 13:13	10	הַ/לְוִיִּ֔ם	os-levitas	claude	הַלְוִיִּ֔ם “os levitas”; tinha “Levitas-a”
+NEH 13:13	12	יָדָ֔/ם	seu-lado	claude	יָדָ֔ם “seu lado”; tinha “mão-deles”
+NEH 13:13	22	לַ/חֲלֹ֥ק	repartir	claude	לַחֲלֹ֥ק “repartir”; tinha “de-distribuírem”
+NEH 13:14	1	זָכְרָ/ה	lembra-te	claude	זָכְרָה “lembra te”; tinha “lembra”
+NEH 13:14	2	לִּ֥/י	de-mim	claude	לִּ֥י “de mim”; tinha “por-meu”
+NEH 13:14	3	אֱלֹהַ֖/י	meu-Deus	claude	אֱלֹהַ֖י “meu Deus”; tinha “Deus”
+NEH 13:14	4	עַל	por	claude	עַל “por”; tinha “sobre”
+NEH 13:14	7	תֶּ֣מַח	apagues	claude	תֶּ֣מַח “apagues”; tinha “risques”
+NEH 13:19	1	וַ/יְהִ֡י	e-aconteceu	claude	וַיְהִ֡י “e aconteceu”; tinha “sucedeu-pois”
+NEH 13:19	2	כַּ/אֲשֶׁ֣ר	quando	claude	כַּאֲשֶׁ֣ר “quando”; tinha “que-quando”
+NEH 13:19	3	צָֽלֲלוּ֩	escureciam	claude	צָֽלֲלוּ֩ “escureciam”; tinha “escurecendo”
+NEH 13:19	4	שַׁעֲרֵ֨י	as-portas-de	claude	שַׁעֲרֵ֨י “as portas de”; tinha “portas”
+NEH 13:19	6	לִ/פְנֵ֣י	antes-de	claude	לִפְנֵ֣י “antes de”; tinha “antes”
+NEH 13:19	7	הַ/שַּׁבָּ֗ת	o-sábado	claude	הַשַּׁבָּ֗ת “o sábado”; tinha “do-sábado”
+NEH 13:19	8	וָ/אֹֽמְרָ/ה֙	e-disse	claude	וָאֹֽמְרָה֙ “e disse”; tinha “disse-eu”
+NEH 13:19	9	וַ/יִּסָּגְר֣וּ	e-fecharam-se	claude	וַיִּסָּגְר֣וּ “e fecharam se”; tinha “fechassem”
+NEH 13:19	11	וָ/אֹ֣מְרָ֔/ה	e-disse	claude	וָאֹ֣מְרָ֔ה “e disse”; tinha “e-mandei”
+NEH 13:19	14	יִפְתָּח֔וּ/ם	as-abrissem	claude	יִפְתָּח֔וּם “as abrissem”; tinha “abrissem”
+NEH 13:19	16	אַחַ֣ר	depois-de	claude	אַחַ֣ר “depois de”; tinha “depois”
+NEH 13:19	17	הַ/שַּׁבָּ֑ת	o-sábado	claude	הַשַּׁבָּ֑ת “o sábado”; tinha “do-sábado”
+NEH 13:19	18	וּ/מִ/נְּעָרַ֗/י	e-de-meus-servos	claude	וּמִנְּעָרַ֗י “e de meus servos”; tinha “alguns-de-meus-servos”
+NEH 13:19	21	הַ/שְּׁעָרִ֔ים	as-portas	claude	הַשְּׁעָרִ֔ים “as portas”; tinha “às-portas”
+NEH 13:21	1	וָ/אָעִ֣ידָ/ה	e-adverti	claude	וָאָעִ֣ידָה “e adverti”; tinha “adverti”
+NEH 13:21	2	בָ/הֶ֗ם	contra-eles	claude	בָהֶ֗ם “contra eles”; tinha “por”
+NEH 13:21	3	וָ/אֹמְרָ֤/ה	e-disse	claude	וָאֹמְרָ֤ה “e disse”; tinha “dizendo”
+NEH 13:21	4	אֲלֵי/הֶם֙	a-eles	claude	אֲלֵיהֶם֙ “a eles”; tinha “a”
+NEH 13:21	5	מַדּ֜וּעַ	por-que	claude	מַדּ֜וּעַ “por que”; tinha “por”
+NEH 13:21	7	לֵנִים֙	pernoitais	claude	לֵנִים֙ “pernoitais”; tinha “passais-noite”
+NEH 13:21	8	נֶ֣גֶד	diante-de	claude	נֶ֣גֶד “diante de”; tinha “diante”
+NEH 13:21	11	תִּשְׁנ֕וּ	repetirdes	claude	תִּשְׁנ֕וּ “repetirdes”; tinha “fizerdes”
+NEH 13:21	12	יָ֖ד	a-mão	claude	יָ֖ד “a mão”; tinha “violência”
+NEH 13:21	13	אֶשְׁלַ֣ח	lançarei	claude	אֶשְׁלַ֣ח “lançarei”; tinha “agirei”
+NEH 13:21	16	הָ/עֵ֣ת	o-tempo	claude	הָעֵ֣ת “o tempo”; tinha “então”
+NEH 13:22	1	וָ/אֹמְרָ֣/ה	e-disse	claude	וָאֹמְרָ֣ה “e disse”; tinha “também-disse”
+NEH 13:22	4	יִֽהְי֤וּ	estivessem	claude	יִֽהְי֤וּ “estivessem”; tinha “serão”
+NEH 13:22	5	מִֽטַּהֲרִים֙	purificados	claude	מִֽטַּהֲרִים֙ “purificados”; tinha “purificassem”
+NEH 13:22	7	שֹׁמְרִ֣ים	guardando	claude	שֹׁמְרִ֣ים “guardando”; tinha “guardar”
+NEH 13:22	11	י֣וֹם	o-dia-de	claude	י֣וֹם “o dia de”; tinha “dia”
+NEH 13:22	12	הַ/שַּׁבָּ֑ת	o-sábado	claude	הַשַּׁבָּ֑ת “o sábado”; tinha “de-sábado”
+NEH 13:22	14	זֹאת֙	isto	claude	זֹאת֙ “isto”; tinha “nisto”
+NEH 13:22	15	זָכְרָ/ה	lembra-te	claude	זָכְרָה “lembra te”; tinha “lembra”
+NEH 13:22	16	לִּ֣/י	de-mim	claude	לִּ֣י “de mim”; tinha “de”
+NEH 13:22	17	אֱלֹהַ֔/י	meu-Deus	claude	אֱלֹהַ֔י “meu Deus”; tinha “Deus”
+NEH 13:22	18	וְ/ח֥וּסָ/ה	e-tem-compaixão	claude	וְח֥וּסָה “e tem compaixão”; tinha “e-perdoa”
+NEH 13:22	19	עָלַ֖/י	de-mim	claude	עָלַ֖י “de mim”; tinha “sobre-mim”
+NEH 13:24	2	חֲצִי֙	a-metade	claude	חֲצִי֙ “a metade”; tinha “metade”
+NEH 13:24	9	וְ/כִ/לְשׁ֖וֹן	e-segundo-a-língua-de	claude	וְכִלְשׁ֖וֹן “e segundo a língua de”; tinha “mas-sim-a-língua”
+NEH 13:24	11	וָ/עָֽם	e-povo	claude	וָעָֽם “e povo”; tinha “outros-povos”
+NEH 13:25	1	וָ/אָרִ֤יב	e-contendi	claude	וָאָרִ֤יב “e contendi”; tinha “repreendi”
+NEH 13:25	3	וָ/אֲקַֽלְלֵ֔/ם	e-os-amaldiçoei	claude	וָאֲקַֽלְלֵ֔ם “e os amaldiçoei”; tinha “e-amaldiçoei”
+NEH 13:25	4	וָ/אַכֶּ֥ה	e-feri	claude	וָאַכֶּ֥ה “e feri”; tinha “e-espanquei”
+NEH 13:25	5	מֵ/הֶ֛ם	deles	claude	מֵהֶ֛ם “deles”; tinha “alguns-deles”
+NEH 13:25	7	וָֽ/אֶמְרְטֵ֑/ם	e-os-depilei	claude	וָֽאֶמְרְטֵ֑ם “e os depilei”; tinha “e-arranquei-lhes”
+NEH 13:25	8	וָ/אַשְׁבִּיעֵ֣/ם	e-os-fiz-jurar	claude	וָאַשְׁבִּיעֵ֣ם “e os fiz jurar”; tinha “jurar”
+NEH 13:25	18	וְ/לָ/כֶֽם	e-para-vós	claude	וְלָכֶֽם “e para vós”; tinha “nem-para-vós”
+NEH 13:27	1	וְ/לָ/כֶ֣ם	e-de-vós	claude	וְלָכֶ֣ם “e de vós”; tinha “de-vós”
+NEH 13:27	2	הֲ/נִשְׁמַ֗ע	ouviremos	claude	הֲנִשְׁמַ֗ע “ouviremos”; tinha “aceitaríamos-ouvir”
+NEH 13:27	3	לַ/עֲשֹׂת֙	fazer	claude	לַעֲשֹׂת֙ “fazer”; tinha “para-fazerdes”
+NEH 13:27	6	הָ/רָעָ֤ה	o-mal	claude	הָרָעָ֤ה “o mal”; tinha “este-mal”
+NEH 13:27	7	הַ/גְּדוֹלָה֙	o-grande	claude	הַגְּדוֹלָה֙ “o grande”; tinha “tão-grande”
+NEH 13:27	11	לְ/הֹשִׁ֖יב	tomando	claude	לְהֹשִׁ֖יב “tomando”; tinha “casando”
+NEH 13:28	1	וּ/מִ/בְּנֵ֨י	e-dos-filhos-de	claude	וּמִבְּנֵ֨י “e dos filhos de”; tinha “e-um-dos-filhos”
+NEH 13:28	5	הַ/כֹּהֵ֣ן	o-sacerdote	claude	הַכֹּהֵ֣ן “o sacerdote”; tinha “o-sumo-sacerdote”
+NEH 13:28	6	הַ/גָּד֔וֹל	grande	claude	הַגָּד֔וֹל “grande”; tinha “era”
+NEH 13:28	10	וָ/אַבְרִיחֵ֖/הוּ	e-o-afugentei	claude	וָאַבְרִיחֵ֖הוּ “e o afugentei”; tinha “afugentei”
+EST 1:3	2	שָׁלוֹשׁ֙	três	claude	שָׁלוֹשׁ֙ “três”; tinha “terceiro”
+EST 1:3	3	לְ/מָלְכ֔/וֹ	de-seu-reinar	claude	לְמָלְכ֔וֹ “de seu reinar”; tinha “de-seu-reinado-ele”
+EST 1:3	7	שָׂרָ֖י/ו	seus-príncipes	claude	שָׂרָ֖יו “seus príncipes”; tinha “príncipes”
+EST 1:3	8	וַ/עֲבָדָ֑י/ו	e-seus-servos	claude	וַעֲבָדָ֑יו “e seus servos”; tinha “servos”
+EST 1:3	9	חֵ֣יל	o-exército-de	claude	חֵ֣יל “o exército de”; tinha “exército”
+EST 1:3	15	לְ/פָנָֽי/ו	diante-dele	claude	לְפָנָֽיו “diante dele”; tinha “diante”
+EST 1:4	1	בְּ/הַרְאֹת֗/וֹ	ao-mostrar-ele	claude	בְּהַרְאֹת֗וֹ “ao mostrar ele”; tinha “para-mostrar”
+EST 1:4	3	עֹ֨שֶׁר֙	a-riqueza-de	claude	עֹ֨שֶׁר֙ “a riqueza de”; tinha “riquezas”
+EST 1:4	4	כְּב֣וֹד	a-glória-de	claude	כְּב֣וֹד “a glória de”; tinha “glória”
+EST 1:4	7	יְקָ֔ר	a-honra-de	claude	יְקָ֔ר “a honra de”; tinha “esplendor”
+EST 1:4	8	תִּפְאֶ֖רֶת	o-esplendor-de	claude	תִּפְאֶ֖רֶת “o esplendor de”; tinha “majestosa”
+EST 1:4	9	גְּדוּלָּת֑/וֹ	sua-grandeza	claude	גְּדוּלָּת֑וֹ “sua grandeza”; tinha “grandeza-por”
+EST 1:4	12	שְׁמוֹנִ֥ים	cento-e-oitenta	claude	שְׁמוֹנִ֥ים parte de “cento e oitenta”; tinha “oitenta”
+EST 1:4	13	וּ/מְאַ֖ת	e-cento-e-oitenta	claude	וּמְאַ֖ת parte de “cento e oitenta”; tinha “cento-e”
+EST 1:5	1	וּ/בִ/מְל֣וֹאת	e-ao-se-completarem	claude	וּבִמְל֣וֹאת “e ao se completarem”; tinha “e-acabados”
+EST 1:5	2	הַ/יָּמִ֣ים	os-dias	claude	הַיָּמִ֣ים “os dias”; tinha “aqueles-dias”
+EST 1:5	5	הַ/מֶּ֡לֶךְ	o-rei	claude	הַמֶּ֡לֶךְ “o rei”; tinha “rei”
+EST 1:5	9	בְּ/שׁוּשַׁ֨ן	em-Susã	claude	בְּשׁוּשַׁ֨ן “em Susã”; tinha “na-fortaleza”
+EST 1:5	10	הַ/בִּירָ֜ה	a-fortaleza	claude	הַבִּירָ֜ה “a fortaleza”; tinha “Susã”
+EST 1:5	11	לְ/מִ/גָּ֧דוֹל	desde-o-maior	claude	לְמִגָּ֧דוֹל “desde o maior”; tinha “de-desde-o-maior”
+EST 1:5	14	מִשְׁתֶּ֖ה	um-banquete	claude	מִשְׁתֶּ֖ה “um banquete”; tinha “durante”
+EST 1:5	18	גִּנַּ֥ת	do-jardim-de	claude	גִּנַּ֥ת “do jardim de”; tinha “jardim”
+EST 1:5	19	בִּיתַ֖ן	o-palácio-de	claude	בִּיתַ֖ן “o palácio de”; tinha “palácio”
+EST 1:5	20	הַ/מֶּֽלֶךְ	o-rei	claude	הַמֶּֽלֶךְ “o rei”; tinha “do-real”
+EST 1:6	12	שֵׁ֑שׁ	linho-fino	claude	שֵׁ֑שׁ “linho fino”; tinha “mármore”
+EST 1:6	19	וָ/שֵׁ֖שׁ	e-linho-fino	claude	וָשֵׁ֖שׁ “e linho fino”; tinha “mármore”
+EST 1:7	1	וְ/הַשְׁקוֹת֙	e-dava-se-de-beber	claude	וְהַשְׁקוֹת֙ “e dava se de beber”; tinha “beber”
+EST 1:7	2	בִּ/כְלֵ֣י	em-vasos-de	claude	בִּכְלֵ֣י “em vasos de”; tinha “em-taças”
+EST 1:7	4	וְ/כֵלִ֖ים	e-os-vasos	claude	וְכֵלִ֖ים “e os vasos”; tinha “e-as-taças”
+EST 1:7	7	וְ/יֵ֥ין	e-vinho-de	claude	וְיֵ֥ין “e vinho de”; tinha “vinho”
+EST 1:7	8	מַלְכ֛וּת	realeza	claude	מַלְכ֛וּת “realeza”; tinha “real”
+EST 1:7	10	כְּ/יַ֥ד	conforme-a-mão-de	claude	כְּיַ֥ד “conforme a mão de”; tinha “conforme-a-generosidade”
+EST 1:7	11	הַ/מֶּֽלֶךְ	o-rei	claude	הַמֶּֽלֶךְ “o rei”; tinha “do-rei”
+EST 1:8	1	וְ/הַ/שְּׁתִיָּ֥ה	e-a-bebida	claude	וְהַשְּׁתִיָּ֥ה “e a bebida”; tinha “e-de-acordo”
+EST 1:8	2	כַ/דָּ֖ת	conforme-a-lei	claude	כַדָּ֖ת “conforme a lei”; tinha “a-lei”
+EST 1:8	3	אֵ֣ין	não-havia	claude	אֵ֣ין “não havia”; tinha “sem”
+EST 1:8	4	אֹנֵ֑ס	quem-forçasse	claude	אֹנֵ֑ס “quem forçasse”; tinha “restrições”
+EST 1:8	7	יִסַּ֣ד	ordenara	claude	יִסַּ֣ד “ordenara”; tinha “alicerce”
+EST 1:8	11	רַ֣ב	os-oficiais-de	claude	רַ֣ב “os oficiais de”; tinha “oficiais”
+EST 1:8	13	לַ/עֲשׂ֖וֹת	para-fazer	claude	לַעֲשׂ֖וֹת “para fazer”; tinha “que-fizessem”
+EST 1:8	14	כִּ/רְצ֥וֹן	segundo-a-vontade-de	claude	כִּרְצ֥וֹן “segundo a vontade de”; tinha “conforme-a-vontade”
+EST 1:8	16	וָ/אִֽישׁ	e-cada	claude	וָאִֽישׁ “e cada”; tinha “um”
+EST 1:10	3	כְּ/ט֥וֹב	quando-estava-alegre	claude	כְּט֥וֹב “quando estava alegre”; tinha “como-alegrando”
+EST 1:10	4	לֵב	o-coração-de	claude	לֵב “o coração de”; tinha “coração”
+EST 1:10	5	הַ/מֶּ֖לֶךְ	o-rei	claude	הַמֶּ֖לֶךְ “o rei”; tinha “do-rei”
+EST 1:10	6	בַּ/יָּ֑יִן	do-vinho	claude	בַּיָּ֑יִן “do vinho”; tinha “estava-alegre-do-vinho”
+EST 1:10	7	אָמַ֡ר	disse	claude	אָמַ֡ר “disse”; tinha “mandou”
+EST 1:10	12	וַ/אֲבַגְתָא֙	e-Abagta	claude	וַאֲבַגְתָא֙ “e Abagta”; tinha “Abagta”
+EST 1:10	18	אֶת	[obj]	claude	אֶת “[obj]”; tinha “com”
+EST 1:10	19	פְּנֵ֖י	a-face-de	claude	פְּנֵ֖י “a face de”; tinha “diante”
+EST 1:10	20	הַ/מֶּ֥לֶךְ	o-rei	claude	הַמֶּ֥לֶךְ “o rei”; tinha “do-rei”
+EST 1:17	3	דְבַר	o-feito-de	claude	דְבַר “o feito de”; tinha “palavra”
+EST 1:17	8	לְ/הַבְז֥וֹת	para-desprezarem	claude	לְהַבְז֥וֹת “para desprezarem”; tinha “que-desprezarão”
+EST 1:17	10	בְּ/עֵינֵי/הֶ֑ן	a-seus-olhos	claude	בְּעֵינֵיהֶ֑ן “a seus olhos”; tinha “em-seus-olhos-lhes”
+EST 1:17	11	בְּ/אָמְרָ֗/ם	ao-dizerem	claude	בְּאָמְרָ֗ם “ao dizerem”; tinha “dito”
+EST 1:17	14	אָמַ֞ר	disse	claude	אָמַ֞ר “disse”; tinha “mandou”
+EST 1:19	2	עַל	ao	claude	עַל “ao”; tinha “sobre”
+EST 1:19	3	הַ/מֶּ֣לֶךְ	rei	claude	הַמֶּ֣לֶךְ “rei”; tinha “do-rei”
+EST 1:19	4	ט֗וֹב	parecer-bem	claude	ט֗וֹב “parecer bem”; tinha “seja”
+EST 1:19	6	דְבַר	uma-palavra-de	claude	דְבַר “uma palavra de”; tinha “mandamento”
+EST 1:19	7	מַלְכוּת֙	realeza	claude	מַלְכוּת֙ “realeza”; tinha “real”
+EST 1:19	8	מִ/לְּ/פָנָ֔י/ו	de-diante-dele	claude	מִלְּפָנָ֔יו “de diante dele”; tinha “de-para-diante-dele”
+EST 1:19	9	וְ/יִכָּתֵ֛ב	e-escreva-se	claude	וְיִכָּתֵ֛ב “e escreva se”; tinha “e-escreva”
+EST 1:19	10	בְּ/דָתֵ֥י	nas-leis-de	claude	בְּדָתֵ֥י “nas leis de”; tinha “nas-leis”
+EST 1:19	14	יַעֲב֑וֹר	passe	claude	יַעֲב֑וֹר “passe”; tinha “revogar”
+EST 1:19	22	וּ/מַלְכוּתָ/הּ֙	e-sua-realeza	claude	וּמַלְכוּתָהּ֙ “e sua realeza”; tinha “e-o-reino-dela”
+EST 1:19	23	יִתֵּ֣ן	dê	claude	יִתֵּ֣ן “dê”; tinha “dado”
+EST 1:19	25	לִ/רְעוּתָ֖/הּ	a-sua-companheira	claude	לִרְעוּתָ֖הּ “a sua companheira”; tinha “a-outra”
+EST 1:19	26	הַ/טּוֹבָ֥ה	a-melhor	claude	הַטּוֹבָ֥ה “a melhor”; tinha “que-seja-melhor”
+EST 1:20	1	וְ/נִשְׁמַע֩	e-será-ouvido	claude	וְנִשְׁמַע֩ “e será ouvido”; tinha “e-quando”
+EST 1:20	2	פִּתְגָ֨ם	o-decreto-de	claude	פִּתְגָ֨ם “o decreto de”; tinha “mandamento”
+EST 1:20	5	יַעֲשֶׂה֙	fizer	claude	יַעֲשֶׂה֙ “fizer”; tinha “ouvido”
+EST 1:20	8	כִּ֥י	pois	claude	כִּ֥י “pois”; tinha “que”
+EST 1:20	10	הִ֑יא	ele	claude	הִ֑יא “ele”; tinha “é”
+EST 1:22	1	וַ/יִּשְׁלַ֤ח	e-enviou	claude	וַיִּשְׁלַ֤ח “e enviou”; tinha “então-enviou”
+EST 1:22	5	מְדִינ֣וֹת	as-províncias-de	claude	מְדִינ֣וֹת “as províncias de”; tinha “províncias”
+EST 1:22	6	הַ/מֶּ֔לֶךְ	o-rei	claude	הַמֶּ֔לֶךְ “o rei”; tinha “do-rei”
+EST 1:22	8	מְדִינָ֤ה	província	claude	מְדִינָ֤ה “província”; tinha “cada”
+EST 1:22	9	וּ/מְדִינָה֙	e-província	claude	וּמְדִינָה֙ “e província”; tinha “província”
+EST 1:22	12	עַ֥ם	povo	claude	עַ֥ם “povo”; tinha “cada”
+EST 1:22	13	וָ/עָ֖ם	e-povo	claude	וָעָ֖ם “e povo”; tinha “povo”
+EST 1:22	15	לִ/הְי֤וֹת	que-fosse	claude	לִהְי֤וֹת “que fosse”; tinha “para-ser”
+EST 1:22	22	עַמּֽ/וֹ	seu-povo	claude	עַמּֽוֹ “seu povo”; tinha “povo”
+EST 2:3	1	וְ/יַפְקֵ֨ד	e-nomeie	claude	וְיַפְקֵ֨ד “e nomeie”; tinha “e-contados”
+EST 2:3	3	פְּקִידִים֮	oficiais	claude	פְּקִידִים֮ “oficiais”; tinha “ponha”
+EST 2:3	6	מַלְכוּת/וֹ֒	seu-reino	claude	מַלְכוּתוֹ֒ “seu reino”; tinha “seu-reino-para”
+EST 2:3	7	וְ/יִקְבְּצ֣וּ	e-ajuntem	claude	וְיִקְבְּצ֣וּ “e ajuntem”; tinha “que-juntem”
+EST 2:3	10	נַעֲרָֽה	moça	claude	נַעֲרָֽה “moça”; tinha “moças”
+EST 2:3	11	בְ֠תוּלָה	virgem	claude	בְ֠תוּלָה “virgem”; tinha “virgens”
+EST 2:3	12	טוֹבַ֨ת	boa-de	claude	טוֹבַ֨ת “boa de”; tinha “boa”
+EST 2:3	15	שׁוּשַׁ֤ן	em-Susã	claude	שׁוּשַׁ֤ן “em Susã”; tinha “fortaleza”
+EST 2:3	16	הַ/בִּירָה֙	a-fortaleza	claude	הַבִּירָה֙ “a fortaleza”; tinha “de-Susã”
+EST 2:3	18	בֵּ֣ית	a-casa-de	claude	בֵּ֣ית “a casa de”; tinha “casa”
+EST 2:3	19	הַ/נָּשִׁ֔ים	as-mulheres	claude	הַנָּשִׁ֔ים “as mulheres”; tinha “das-mulheres”
+EST 2:3	20	אֶל	à	claude	אֶל “à”; tinha “ao”
+EST 2:3	21	יַ֥ד	mão-de	claude	יַ֥ד “mão de”; tinha “cuidado”
+EST 2:3	23	סְרִ֥יס	eunuco-de	claude	סְרִ֥יס “eunuco de”; tinha “eunuco”
+EST 2:3	25	שֹׁמֵ֣ר	guarda-de	claude	שֹׁמֵ֣ר “guarda de”; tinha “vigilante”
+EST 2:3	27	וְ/נָת֖וֹן	e-sejam-dados	claude	וְנָת֖וֹן “e sejam dados”; tinha “dado”
+EST 2:5	3	הָיָ֖ה	havia	claude	הָיָ֖ה “havia”; tinha “veio”
+EST 2:5	4	בְּ/שׁוּשַׁ֣ן	em-Susã	claude	בְּשׁוּשַׁ֣ן “em Susã”; tinha “na-fortaleza”
+EST 2:5	5	הַ/בִּירָ֑ה	a-fortaleza	claude	הַבִּירָ֑ה “a fortaleza”; tinha “de-Susã”
+EST 2:5	6	וּ/שְׁמ֣/וֹ	e-seu-nome	claude	וּשְׁמ֣וֹ “e seu nome”; tinha “cujo-nome-era”
+EST 2:5	14	אִ֥ישׁ	homem	claude	אִ֥ישׁ “homem”; tinha “linhagem”
+EST 2:5	15	יְמִינִֽי	benjamita	claude	יְמִינִֽי “benjamita”; tinha “Benjamim”
+EST 2:8	1	וַ/יְהִ֗י	e-aconteceu	claude	וַיְהִ֗י “e aconteceu”; tinha “sucedeu-pois-que”
+EST 2:8	2	בְּ/הִשָּׁמַ֤ע	ao-ser-ouvida	claude	בְּהִשָּׁמַ֤ע “ao ser ouvida”; tinha “quando”
+EST 2:8	3	דְּבַר	a-palavra-de	claude	דְּבַר “a palavra de”; tinha “mandamento”
+EST 2:8	5	וְ/דָת֔/וֹ	e-sua-lei	claude	וְדָת֔וֹ “e sua lei”; tinha “e-seu-lei”
+EST 2:8	6	וּֽ/בְ/הִקָּבֵ֞ץ	e-ao-serem-reunidas	claude	וּֽבְהִקָּבֵ֞ץ “e ao serem reunidas”; tinha “e-sendo-reunidas”
+EST 2:8	10	שׁוּשַׁ֥ן	em-Susã	claude	שׁוּשַׁ֥ן “em Susã”; tinha “fortaleza”
+EST 2:8	11	הַ/בִּירָ֖ה	a-fortaleza	claude	הַבִּירָ֖ה “a fortaleza”; tinha “de-Susã”
+EST 2:8	12	אֶל	à	claude	אֶל “à”; tinha “ao”
+EST 2:8	13	יַ֣ד	mão-de	claude	יַ֣ד “mão de”; tinha “cuidado”
+EST 2:8	15	וַ/תִּלָּקַ֤ח	e-foi-levada	claude	וַתִּלָּקַ֤ח “e foi levada”; tinha “também-levaram”
+EST 2:8	17	אֶל	à	claude	אֶל “à”; tinha “a”
+EST 2:8	18	בֵּ֣ית	casa-de	claude	בֵּ֣ית “casa de”; tinha “casa”
+EST 2:8	20	אֶל	à	claude	אֶל “à”; tinha “ao”
+EST 2:8	21	יַ֥ד	mão-de	claude	יַ֥ד “mão de”; tinha “cuidado”
+EST 2:8	23	שֹׁמֵ֥ר	guarda-de	claude	שֹׁמֵ֥ר “guarda de”; tinha “vigilante”
+EST 2:9	17	הָ/רְאֻי֥וֹת	as-adequadas	claude	הָרְאֻי֥וֹת “as adequadas”; tinha “escolhidas”
+EST 2:10	5	עַמָּ֖/הּ	seu-povo	claude	עַמָּ֖הּ “seu povo”; tinha “povo”
+EST 2:10	10	צִוָּ֥ה	ordenara	claude	צִוָּ֥ה “ordenara”; tinha “mandado”
+EST 2:11	6	לִ/פְנֵ֖י	diante-de	claude	לִפְנֵ֖י “diante de”; tinha “para-diante”
+EST 2:11	7	חֲצַ֣ר	o-pátio-de	claude	חֲצַ֣ר “o pátio de”; tinha “pátio”
+EST 2:11	8	בֵּית	a-casa-de	claude	בֵּית “a casa de”; tinha “casa”
+EST 2:11	12	שְׁל֣וֹם	o-bem-estar-de	claude	שְׁל֣וֹם “o bem estar de”; tinha “como”
+EST 2:11	15	יֵּעָשֶׂ֖ה	se-fazia	claude	יֵּעָשֶׂ֖ה “se fazia”; tinha “acontecendo-com”
+EST 2:13	1	וּ/בָ/זֶ֕ה	e-assim	claude	וּבָזֶ֕ה “e assim”; tinha “e-em-este”
+EST 2:13	9	תֹּאמַ֜ר	dissesse	claude	תֹּאמַ֜ר “dissesse”; tinha “ela”
+EST 2:13	10	יִנָּ֤תֵֽן	era-dado	claude	יִנָּ֤תֵֽן “era dado”; tinha “pedia”
+EST 2:13	13	עִמָּ֔/הּ	consigo	claude	עִמָּ֔הּ “consigo”; tinha “com”
