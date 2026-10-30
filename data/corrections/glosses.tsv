@@ -28268,3 +28268,233 @@ NUM 33:55	6	הָ/אָרֶץ֮	da-terra	claude	הָאָרֶץ “a terra”; tinh
 NUM 33:55	8	וְ/הָיָה֙	e-será	claude	וְהָיָה “e será”; tinha “sucederá”
 NUM 33:55	9	אֲשֶׁ֣ר	que-os-que	claude	אֲשֶׁר “o que”; tinha “que”
 NUM 33:55	22	יֹשְׁבִ֥ים	habitais	claude	יֹשְׁבִים “habitando”; tinha “habitardes”
+NUM 34:3	3	פְּאַת	o-lado	claude	פְּאַת “lado de”; tinha “lado”
+NUM 34:3	4	נֶ֛גֶב	do-sul	claude	נֶגֶב “sul”; tinha “sul”
+NUM 34:3	7	עַל	junto-a	claude	עַל “sobre”; tinha “sobre”
+NUM 34:3	8	יְדֵ֣י	os-lados	claude	יְדֵי “mãos de”; tinha “termos”
+NUM 34:3	12	גְּב֣וּל	o-limite	claude	גְּבוּל “limite de”; tinha “termo”
+NUM 34:3	14	מִ/קְצֵ֥ה	desde-a-extremidade	claude	מִקְצֵה “desde a extremidade de”; tinha “ao-extremo”
+NUM 34:3	15	יָם	do-mar	claude	יָם “mar de”; tinha “mar”
+NUM 34:3	16	הַ/מֶּ֖לַח	do-sal	claude	הַמֶּלַח “o sal”; tinha “salgado”
+NUM 34:3	17	קֵֽדְמָ/ה	para-o-oriente	claude	קֵדְמָה “para o oriente”; tinha “até-o-oriente”
+NUM 34:15	1	שְׁנֵ֥י	as-duas	claude	שְׁנֵי “dois de”; tinha “duas”
+NUM 34:15	4	הַ/מַּטֶּ֑ה	da-tribo	claude	הַמַּטֶּה “a tribo”; tinha “o-vara”
+NUM 34:15	7	מֵ/עֵ֛בֶר	do-lado	claude	מֵעֵבֶר “do lado de”; tinha “desta-parte”
+NUM 34:15	10	קֵ֥דְמָ/ה	para-o-oriente	claude	קֵדְמָה “para o oriente”; tinha “oriente-ao”
+NUM 34:15	11	מִזְרָֽחָ/ה	para-o-nascente	claude	מִזְרָחָה “para o nascente”; tinha “oriente”
+NUM 34:18	1	וְ/נָשִׂ֥יא	e-príncipe	claude	וְנָשִׂיא “e príncipe”; tinha “tomareis-também”
+NUM 34:18	5	מִ/מַּטֶּ֑ה	de-cada-tribo	claude	מִמַּטֶּה “de tribo”; tinha “tribo”
+NUM 34:18	7	לִ/נְחֹ֥ל	para-repartir	claude	לִנְחֹל “para herdar”; tinha “dar-a-possessão”
+NUM 34:18	9	הָ/אָֽרֶץ	a-terra	claude	הָאָרֶץ “a terra”; tinha “da-terra”
+NUM 35:3	1	וְ/הָי֧וּ	e-serão	claude	וְהָיוּ “e serão”; tinha “e-terão”
+NUM 35:3	3	לָ/הֶ֖ם	para-eles	claude	לָהֶם “para eles”; tinha “para”
+NUM 35:3	5	וּ/מִגְרְשֵׁי/הֶ֗ם	e-seus-arredores	claude	וּמִגְרְשֵׁיהֶם “e seus arredores”; tinha “e-os-campos-delas”
+NUM 35:3	8	וְ/לִ/רְכֻשָׁ֔/ם	e-para-seus-bens	claude	וְלִרְכֻשָׁם “e para seus bens”; tinha “e-para-seus-gados”
+NUM 35:5	1	וּ/מַדֹּתֶ֞ם	e-medireis	claude	וּמַדֹּתֶם “e medireis”; tinha “logo-medireis”
+NUM 35:5	5	פְּאַת	o-lado	claude	פְּאַת “lado de”; tinha “parte”
+NUM 35:5	6	קֵ֣דְמָ/ה	do-oriente	claude	קֵדְמָה “oriente”; tinha “oriente”
+NUM 35:5	7	אַלְפַּ֪יִם	dois-mil	claude	אַלְפַּיִם “dois mil”; tinha “mil”
+NUM 35:5	10	פְּאַת	o-lado	claude	פְּאַת “lado de”; tinha “parte”
+NUM 35:5	11	נֶגֶב֩	do-sul	claude	נֶגֶב “sul”; tinha “sul”
+NUM 35:5	12	אַלְפַּ֨יִם	dois-mil	claude	אַלְפַּיִם “dois mil”; tinha “mil”
+NUM 35:5	15	פְּאַת	o-lado	claude	פְּאַת “lado de”; tinha “parte”
+NUM 35:5	16	יָ֣ם	do-ocidente	claude	יָם “mar”; tinha “ocidente”
+NUM 35:5	17	אַלְפַּ֣יִם	dois-mil	claude	אַלְפַּיִם “dois mil”; tinha “mil”
+NUM 35:5	20	פְּאַ֥ת	o-lado	claude	פְּאַת “lado de”; tinha “parte”
+NUM 35:5	21	צָפ֛וֹן	do-norte	claude	צָפוֹן “norte”; tinha “norte”
+NUM 35:5	22	אַלְפַּ֥יִם	dois-mil	claude	אַלְפַּיִם “dois mil”; tinha “mil”
+NUM 35:5	25	בַּ/תָּ֑וֶךְ	no-meio	claude	בַּתָּוֶךְ “no meio”; tinha “em-meio”
+NUM 35:5	27	יִהְיֶ֣ה	será	claude	יִהְיֶה “será”; tinha “terão”
+NUM 35:5	29	מִגְרְשֵׁ֖י	os-arredores	claude	מִגְרְשֵׁי “arredores de”; tinha “campos”
+NUM 35:8	3	תִּתְּנוּ֙	dareis	claude	תִּתְּנוּ “dareis”; tinha “deres”
+NUM 35:8	4	מֵ/אֲחֻזַּ֣ת	da-possessão	claude	מֵאֲחֻזַּת “da possessão de”; tinha “da-herança”
+NUM 35:8	5	בְּנֵי	dos-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+NUM 35:8	7	מֵ/אֵ֤ת	do	claude	מֵאֵת “de com”; tinha “de-parte”
+NUM 35:8	8	הָ/רַב֙	numeroso	claude	הָרַב “o muito”; tinha “que-muito”
+NUM 35:8	9	תַּרְבּ֔וּ	aumentareis	claude	תַּרְבּוּ “aumentareis”; tinha “tomareis-muito”
+NUM 35:8	10	וּ/מֵ/אֵ֥ת	e-do	claude	וּמֵאֵת “e de com”; tinha “e-de-[obj]”
+NUM 35:8	11	הַ/מְעַ֖ט	pequeno	claude	הַמְעַט “o pouco”; tinha “que-pouco”
+NUM 35:8	12	תַּמְעִ֑יטוּ	diminuireis	claude	תַּמְעִיטוּ “diminuireis”; tinha “tomareis-pouco”
+NUM 35:8	14	כְּ/פִ֤י	segundo	claude	כְּפִי “segundo a boca de”; tinha “segundo-a”
+NUM 35:8	15	נַחֲלָת/וֹ֙	sua-herança	claude	נַחֲלָתוֹ “sua herança”; tinha “possessão”
+NUM 35:8	17	יִנְחָ֔לוּ	herdarem	claude	יִנְחָלוּ “herdarão”; tinha “herdará”
+NUM 35:11	1	וְ/הִקְרִיתֶ֤ם	e-escolhereis	claude	וְהִקְרִיתֶם “e fareis encontrar”; tinha “assinalareis”
+NUM 35:11	5	מִקְלָ֖ט	de-refúgio	claude	מִקְלָט “refúgio”; tinha “refúgio”
+NUM 35:11	7	לָ/כֶ֑ם	para-vós	claude	לָכֶם “para vós”; tinha “para”
+NUM 35:11	8	וְ/נָ֥ס	e-fugirá	claude	וְנָס “e fugirá”; tinha “fuja”
+NUM 35:11	9	שָׁ֨מָּ/ה֙	para-lá	claude	שָׁמָּה “para lá”; tinha “onde”
+NUM 35:11	11	מַכֵּה	que-ferir	claude	מַכֵּה “ferindo”; tinha “ferir”
+NUM 35:11	12	נֶ֖פֶשׁ	alma	claude	נֶפֶשׁ “alma”; tinha “morte”
+NUM 35:11	13	בִּ/שְׁגָגָֽה	por-erro	claude	בִּשְׁגָגָה “por erro”; tinha “por-acidente”
+NUM 35:16	3	בַרְזֶ֧ל	de-ferro	claude	בַרְזֶל “ferro”; tinha “ferro”
+NUM 35:16	4	הִכָּ֛ה/וּ	o-ferir	claude	הִכָּהוּ “o feriu”; tinha “ferir”
+NUM 35:16	7	ה֑וּא	ele-é	claude	הוּא “ele”; tinha “é”
+NUM 35:16	9	יוּמַ֖ת	será-morto	claude	יוּמַת “será morto”; tinha “morrerá”
+NUM 35:17	3	יָד֩	de-mão	claude	יָד “mão”; tinha “mão”
+NUM 35:17	5	יָמ֨וּת	se-morra	claude	יָמוּת “morre”; tinha “morrer”
+NUM 35:17	6	בָּ֥/הּ	com-ela	claude	בָּהּ “com ela”; tinha “nela”
+NUM 35:17	7	הִכָּ֛ה/וּ	o-ferir	claude	הִכָּהוּ “o feriu”; tinha “ferir”
+NUM 35:17	10	ה֑וּא	ele-é	claude	הוּא “ele”; tinha “é”
+NUM 35:17	12	יוּמַ֖ת	será-morto	claude	יוּמַת “será morto”; tinha “morrerá”
+NUM 35:18	1	א֡וֹ	ou	claude	אוֹ “ou”; tinha “e”
+NUM 35:18	3	עֵֽץ	de-madeira	claude	עֵץ “madeira de”; tinha “madeira”
+NUM 35:18	4	יָד֩	de-mão	claude	יָד “mão”; tinha “mão”
+NUM 35:18	6	יָמ֨וּת	se-morra	claude	יָמוּת “morre”; tinha “morrer”
+NUM 35:18	7	בּ֥/וֹ	com-ele	claude	בּוֹ “com ele”; tinha “nele”
+NUM 35:18	8	הִכָּ֛ה/וּ	o-ferir	claude	הִכָּהוּ “o feriu”; tinha “ferir”
+NUM 35:18	11	ה֑וּא	ele-é	claude	הוּא “ele”; tinha “é”
+NUM 35:18	13	יוּמַ֖ת	será-morto	claude	יוּמַת “será morto”; tinha “morrerá”
+NUM 35:19	1	גֹּאֵ֣ל	o-vingador	claude	גֹּאֵל “resgatador de”; tinha “parente”
+NUM 35:19	2	הַ/דָּ֔ם	do-sangue	claude	הַדָּם “o sangue”; tinha “do-morto”
+NUM 35:19	6	הָ/רֹצֵ֑חַ	o-homicida	claude	הָרֹצֵחַ “o homicida”; tinha “ao-homicida”
+NUM 35:19	7	בְּ/פִגְע/וֹ	quando-o-encontrar	claude	בְּפִגְעוֹ “em seu encontrar”; tinha “quando-o-encontrar-ele”
+NUM 35:19	8	ב֖/וֹ	a-ele	claude	בוֹ “nele”; tinha “nele”
+NUM 35:19	10	יְמִיתֶֽ/נּוּ	o-matará	claude	יְמִיתֶנּוּ “o matará”; tinha “matará”
+NUM 35:20	3	יֶהְדָּפֶ֑/נּוּ	o-empurrar	claude	יֶהְדָּפֶנּוּ “o empurrar”; tinha “empurrou”
+NUM 35:20	5	הִשְׁלִ֥יךְ	lançar	claude	הִשְׁלִיךְ “lançou”; tinha “lançou”
+NUM 35:20	7	בִּ/צְדִיָּ֖ה	com-intenção	claude	בִּצְדִיָּה “com espreita”; tinha “por-ciladas”
+NUM 35:20	8	וַ/יָּמֹֽת	e-morrer	claude	וַיָּמֹת “e morre”; tinha “e-morre”
+NUM 35:21	3	הִכָּ֤ה/וּ	o-ferir	claude	הִכָּהוּ “o feriu”; tinha “feriu-sua”
+NUM 35:21	4	בְ/יָד/וֹ֙	com-sua-mão	claude	בְיָדוֹ “com sua mão”; tinha “com-mão”
+NUM 35:21	5	וַ/יָּמֹ֔ת	e-morrer	claude	וַיָּמֹת “e morreu”; tinha “e-morreu”
+NUM 35:21	7	יוּמַ֥ת	será-morto	claude	יוּמַת “será morto”; tinha “morrerá”
+NUM 35:21	8	הַ/מַּכֶּ֖ה	o-que-feriu	claude	הַמַּכֶּה “o que fere”; tinha “é”
+NUM 35:21	10	ה֑וּא	ele-é	claude	הוּא “ele”; tinha “é”
+NUM 35:21	11	גֹּאֵ֣ל	o-vingador	claude	גֹּאֵל “resgatador de”; tinha “parente”
+NUM 35:21	12	הַ/דָּ֗ם	do-sangue	claude	הַדָּם “o sangue”; tinha “do-morto”
+NUM 35:21	15	הָ/רֹצֵ֖חַ	o-homicida	claude	הָרֹצֵחַ “o homicida”; tinha “ao-homicida”
+NUM 35:22	2	בְּ/פֶ֥תַע	de-repente	claude	בְּפֶתַע “de repente”; tinha “casualmente”
+NUM 35:22	3	בְּ/לֹא	sem	claude	בְּלֹא “em não”; tinha “em-sem”
+NUM 35:22	4	אֵיבָ֖ה	inimizade	claude	אֵיבָה “inimizade”; tinha “inimizades”
+NUM 35:22	5	הֲדָפ֑/וֹ	o-empurrar	claude	הֲדָפוֹ “o empurrou”; tinha “empurrou”
+NUM 35:22	7	הִשְׁלִ֥יךְ	lançar	claude	הִשְׁלִיךְ “lançou”; tinha “lançou”
+NUM 35:22	11	בְּ/לֹ֥א	sem	claude	בְּלֹא “em não”; tinha “em-sem”
+NUM 35:22	12	צְדִיָּֽה	intenção	claude	צְדִיָּה “espreita”; tinha “intenções”
+NUM 35:23	2	בְ/כָל	com-qualquer	claude	בְכָל “com qualquer”; tinha “alguma”
+NUM 35:23	5	יָמ֥וּת	se-morra	claude	יָמוּת “morre”; tinha “morrer”
+NUM 35:23	6	בָּ/הּ֙	com-ela	claude	בָּהּ “com ela”; tinha “nela”
+NUM 35:23	7	בְּ/לֹ֣א	sem	claude	בְּלֹא “em não”; tinha “em-sem”
+NUM 35:23	8	רְא֔וֹת	ver	claude	רְאוֹת “ver”; tinha “vê”
+NUM 35:23	9	וַ/יַּפֵּ֥ל	e-fizer-cair	claude	וַיַּפֵּל “e fez cair”; tinha “cair”
+NUM 35:23	14	אוֹיֵ֣ב	era-inimigo	claude	אוֹיֵב “inimigo”; tinha “inimigo”
+NUM 35:23	15	ל֔/וֹ	dele	claude	לוֹ “para ele”; tinha “para-ele”
+NUM 35:23	16	וְ/לֹ֥א	e-não	claude	וְלֹא “e não”; tinha “nem”
+NUM 35:27	1	וּ/מָצָ֤א	e-o-achar	claude	וּמָצָא “e achar”; tinha “achar”
+NUM 35:27	3	גֹּאֵ֣ל	o-vingador	claude	גֹּאֵל “resgatador de”; tinha “parente”
+NUM 35:27	4	הַ/דָּ֔ם	do-sangue	claude	הַדָּם “o sangue”; tinha “do-morto”
+NUM 35:27	5	מִ/ח֕וּץ	fora	claude	מִחוּץ “de fora”; tinha “fora-do”
+NUM 35:27	7	עִ֣יר	da-cidade	claude	עִיר “cidade de”; tinha “cidade”
+NUM 35:27	8	מִקְלָט֑/וֹ	de-seu-refúgio	claude	מִקְלָטוֹ “seu refúgio”; tinha “sua-acolhida”
+NUM 35:27	9	וְ/רָצַ֞ח	e-matar	claude	וְרָצַח “e matar”; tinha “e-homicida”
+NUM 35:27	10	גֹּאֵ֤ל	o-vingador	claude	גֹּאֵל “resgatador de”; tinha “parente”
+NUM 35:27	11	הַ/דָּם֙	do-sangue	claude	הַדָּם “o sangue”; tinha “do-morto”
+NUM 35:27	13	הָ֣/רֹצֵ֔חַ	o-homicida	claude	הָרֹצֵחַ “o homicida”; tinha “ao-homicida-matar”
+NUM 35:27	14	אֵ֥ין	não-há	claude	אֵין “não há”; tinha “não”
+NUM 35:27	16	דָּֽם	culpa-de-sangue	claude	דָּם “sangue”; tinha “culpará”
+NUM 35:28	2	בְ/עִ֤יר	na-cidade	claude	בְעִיר “na cidade de”; tinha “em-sua-cidade”
+NUM 35:28	3	מִקְלָט/וֹ֙	de-seu-refúgio	claude	מִקְלָטוֹ “seu refúgio”; tinha “refúgio-deverá-aquele”
+NUM 35:28	4	יֵשֵׁ֔ב	habitará	claude	יֵשֵׁב “habitará”; tinha “habitar”
+NUM 35:28	6	מ֖וֹת	a-morte	claude	מוֹת “morte de”; tinha “morra”
+NUM 35:28	7	הַ/כֹּהֵ֣ן	do-sacerdote	claude	הַכֹּהֵן “o sacerdote”; tinha “o-sumo”
+NUM 35:28	8	הַ/גָּדֹ֑ל	o-grande	claude	הַגָּדֹל “o grande”; tinha “sacerdote”
+NUM 35:28	10	מוֹת֙	da-morte	claude	מוֹת “morte de”; tinha “morrer”
+NUM 35:28	11	הַ/כֹּהֵ֣ן	do-sacerdote	claude	הַכֹּהֵן “o sacerdote”; tinha “o-sumo-sacerdote”
+NUM 35:28	16	אֶ֖רֶץ	a-terra	claude	אֶרֶץ “terra de”; tinha “terra”
+NUM 35:28	17	אֲחֻזָּתֽ/וֹ	de-sua-possessão	claude	אֲחֻזָּתוֹ “sua possessão”; tinha “sua-possessão”
+NUM 35:30	1	כָּל	todo	claude	כָּל “todo”; tinha “qualquer”
+NUM 35:30	2	מַ֨כֵּה	o-que-ferir	claude	מַכֵּה “ferindo”; tinha “ferir”
+NUM 35:30	3	נֶ֔פֶשׁ	alma	claude	נֶפֶשׁ “alma”; tinha “alguém”
+NUM 35:30	4	לְ/פִ֣י	pela-boca	claude	לְפִי “pela boca de”; tinha “por-dito”
+NUM 35:30	5	עֵדִ֔ים	de-testemunhas	claude	עֵדִים “testemunhas”; tinha “testemunhas”
+NUM 35:30	6	יִרְצַ֖ח	matará	claude	יִרְצַח “matará”; tinha “morrerá”
+NUM 35:30	9	וְ/עֵ֣ד	e-testemunha	claude	וְעֵד “e testemunha”; tinha “testemunha”
+NUM 35:30	10	אֶחָ֔ד	uma	claude	אֶחָד “um”; tinha “só”
+NUM 35:30	12	יַעֲנֶ֥ה	responderá	claude	יַעֲנֶה “responderá”; tinha “fé”
+NUM 35:30	13	בְ/נֶ֖פֶשׁ	contra-alma	claude	בְנֶפֶשׁ “contra alma”; tinha “contra-alguma-pessoa”
+NUM 35:30	14	לָ/מֽוּת	para-morrer	claude	לָמוּת “para morrer”; tinha “para-que-morra”
+NUM 35:31	3	כֹ֨פֶר֙	resgate	claude	כֹפֶר “resgate”; tinha “preço”
+NUM 35:31	5	רֹצֵ֔חַ	de-homicida	claude	רֹצֵחַ “homicida”; tinha “homicida”
+NUM 35:31	8	רָשָׁ֖ע	culpado	claude	רָשָׁע “ímpio”; tinha “condenado”
+NUM 35:31	9	לָ/מ֑וּת	para-morrer	claude	לָמוּת “para morrer”; tinha “a-morte”
+NUM 35:31	10	כִּי	pois	claude	כִּי “pois”; tinha “porque”
+NUM 35:31	11	מ֖וֹת	certamente	claude	מוֹת “morrer”; tinha “inevitavelmente”
+NUM 35:31	12	יוּמָֽת	será-morto	claude	יוּמָת “será morto”; tinha “morrerá”
+NUM 35:32	3	כֹ֔פֶר	resgate	claude	כֹפֶר “resgate”; tinha “preço”
+NUM 35:32	4	לָ/נ֖וּס	para-o-que-fugiu	claude	לָנוּס “para fugir”; tinha “que-fugiu”
+NUM 35:32	5	אֶל	para	claude	אֶל “para”; tinha “à”
+NUM 35:32	6	עִ֣יר	a-cidade	claude	עִיר “cidade de”; tinha “cidade”
+NUM 35:32	7	מִקְלָט֑/וֹ	de-seu-refúgio	claude	מִקְלָטוֹ “seu refúgio”; tinha “refúgio”
+NUM 35:32	9	לָ/שֶׁ֣בֶת	a-habitar	claude	לָשֶׁבֶת “para habitar”; tinha “a-viver”
+NUM 35:32	10	בָּ/אָ֔רֶץ	na-terra	claude	בָּאָרֶץ “na terra”; tinha “em-sua-terra”
+NUM 35:32	12	מ֖וֹת	a-morte	claude	מוֹת “morte de”; tinha “morra”
+NUM 35:33	2	תַחֲנִ֣יפוּ	profanareis	claude	תַחֲנִיפוּ “profanareis”; tinha “contaminareis”
+NUM 35:33	5	אֲשֶׁ֤ר	em-que	claude	אֲשֶׁר “que”; tinha “que”
+NUM 35:33	8	כִּ֣י	pois	claude	כִּי “pois”; tinha “porque”
+NUM 35:33	9	הַ/דָּ֔ם	o-sangue	claude	הַדָּם “o sangue”; tinha “este-sangue”
+NUM 35:33	11	יַחֲנִ֖יף	profana	claude	יַחֲנִיף “profana”; tinha “profanará”
+NUM 35:33	14	וְ/לָ/אָ֣רֶץ	e-para-a-terra	claude	וְלָאָרֶץ “e para a terra”; tinha “e-a-terra”
+NUM 35:33	16	יְכֻפַּ֗ר	se-fará-expiação	claude	יְכֻפַּר “se fará expiação”; tinha “expiada”
+NUM 35:33	17	לַ/דָּם֙	pelo-sangue	claude	לַדָּם “pelo sangue”; tinha “será-do-sangue”
+NUM 35:33	19	שֻׁפַּךְ	foi-derramado	claude	שֻׁפַּךְ “foi derramado”; tinha “derramado”
+NUM 35:33	20	בָּ֔/הּ	nela	claude	בָּהּ “nela”; tinha “nela-a”
+NUM 35:33	21	כִּי	senão	claude	כִּי “pois”; tinha “porque”
+NUM 35:33	22	אִ֖ם	somente	claude	אִם “se”; tinha “ser”
+NUM 35:33	24	שֹׁפְכֽ/וֹ	do-que-o-derramou	claude	שֹׁפְכוֹ “o que o derramou”; tinha “derramou”
+NUM 35:34	1	וְ/לֹ֧א	e-não	claude	וְלֹא “e não”; tinha “não-pois”
+NUM 35:34	2	תְטַמֵּ֣א	tornareis-impura	claude	תְטַמֵּא “tornarás impura”; tinha “contamineis”
+NUM 35:34	7	יֹשְׁבִ֣ים	habitando	claude	יֹשְׁבִים “habitando”; tinha “habitais”
+NUM 35:34	8	בָּ֔/הּ	nela	claude	בָּהּ “nela”; tinha “em”
+NUM 35:34	9	אֲשֶׁ֥ר	que	claude	אֲשֶׁר “que”; tinha “qual”
+NUM 35:34	12	בְּ/תוֹכָ֑/הּ	em-seu-meio	claude	בְּתוֹכָהּ “em seu meio”; tinha “meio”
+NUM 35:34	13	כִּ֚י	pois	claude	כִּי “pois”; tinha “porque”
+NUM 35:34	17	בְּ/ת֖וֹךְ	no-meio	claude	בְּתוֹךְ “no meio de”; tinha “em-meio”
+NUM 35:34	18	בְּנֵ֥י	dos-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+NUM 35:34	19	יִשְׂרָאֵֽל	de-Israel	claude	יִשְׂרָאֵל “Israel”; tinha “Israel”
+NUM 36:2	3	אֲדֹנִ/י֙	a-meu-senhor	claude	אֲדֹנִי “meu senhor”; tinha “SENHOR”
+NUM 36:2	4	צִוָּ֣ה	ordenou	claude	צִוָּה “ordenou”; tinha “mandou”
+NUM 36:2	5	יְהוָ֔ה	o-SENHOR	claude	יְהוָה “SENHOR”; tinha “senhor”
+NUM 36:2	6	לָ/תֵ֨ת	dar	claude	לָתֵת “dar”; tinha “por-desse”
+NUM 36:2	9	בְּ/נַחֲלָ֛ה	em-herança	claude	בְּנַחֲלָה “em herança”; tinha “possessão”
+NUM 36:2	10	בְּ/גוֹרָ֖ל	por-sorte	claude	בְּגוֹרָל “por sorte”; tinha “sorte”
+NUM 36:2	11	לִ/בְנֵ֣י	aos-filhos	claude	לִבְנֵי “aos filhos de”; tinha “filhos”
+NUM 36:2	13	וַֽ/אדֹנִ/י֙	e-meu-senhor	claude	וַאדֹנִי “e meu senhor”; tinha “meu-senhor”
+NUM 36:2	14	צֻוָּ֣ה	foi-ordenado	claude	צֻוָּה “foi ordenado”; tinha “mandou”
+NUM 36:2	15	בַֽ/יהוָ֔ה	pelo-SENHOR	claude	בַיהוָה “pelo SENHOR”; tinha “SENHOR-a”
+NUM 36:2	18	נַחֲלַ֛ת	a-herança	claude	נַחֲלַת “herança de”; tinha “possessão”
+NUM 36:2	19	צְלָפְחָ֥ד	de-Zelofeade	claude	צְלָפְחָד “Zelofeade”; tinha “Zelofeade”
+NUM 36:3	2	לְ/אֶחָ֞ד	a-um	claude	לְאֶחָד “a um”; tinha “se-casarem”
+NUM 36:3	3	מִ/בְּנֵ֨י	dos-filhos	claude	מִבְּנֵי “dos filhos de”; tinha “alguns-dos-filhos”
+NUM 36:3	4	שִׁבְטֵ֥י	das-tribos	claude	שִׁבְטֵי “tribos de”; tinha “tribos”
+NUM 36:3	5	בְנֵֽי	dos-filhos	claude	בְנֵי “filhos de”; tinha “filhos”
+NUM 36:3	7	לְ/נָשִׁים֒	por-mulheres	claude	לְנָשִׁים “por mulheres”; tinha “unidas”
+NUM 36:3	8	וְ/נִגְרְעָ֤ה	então-será-tirada	claude	וְנִגְרְעָה “e será tirada”; tinha “removida”
+NUM 36:3	9	נַחֲלָתָ/ן֙	sua-herança	claude	נַחֲלָתָן “herança delas”; tinha “herança-delas”
+NUM 36:3	10	מִ/נַּחֲלַ֣ת	da-herança	claude	מִנַּחֲלַת “da herança de”; tinha “tirada-da-herança”
+NUM 36:3	14	נַחֲלַ֣ת	a-herança	claude	נַחֲלַת “herança de”; tinha “herança”
+NUM 36:3	19	וּ/מִ/גֹּרַ֥ל	e-da-sorte	claude	וּמִגֹּרַל “e da sorte de”; tinha “da-porção”
+NUM 36:3	21	יִגָּרֵֽעַ	será-tirada	claude	יִגָּרֵעַ “será tirada”; tinha “seremos-impedidos”
+NUM 36:6	2	הַ/דָּבָ֞ר	a-palavra	claude	הַדָּבָר “a palavra”; tinha “o-palavra”
+NUM 36:6	4	צִוָּ֣ה	ordenou	claude	צִוָּה “ordenou”; tinha “mandou”
+NUM 36:6	6	לִ/בְנ֤וֹת	às-filhas	claude	לִבְנוֹת “às filhas de”; tinha “acerca-das-filhas”
+NUM 36:6	9	לַ/טּ֥וֹב	ao-bom	claude	לַטּוֹב “ao bom”; tinha “casem”
+NUM 36:6	10	בְּ/עֵינֵי/הֶ֖ם	aos-olhos-delas	claude	בְּעֵינֵיהֶם “aos olhos deles”; tinha “em-olhos-deles”
+NUM 36:6	12	לְ/נָשִׁ֑ים	por-mulheres	claude	לְנָשִׁים “por mulheres”; tinha “lhes-satisfizer”
+NUM 36:6	13	אַ֗ךְ	somente	claude	אַךְ “somente”; tinha “porém”
+NUM 36:6	15	מַטֵּ֥ה	da-tribo	claude	מַטֵּה “tribo de”; tinha “tribo”
+NUM 36:6	18	לְ/נָשִֽׁים	por-mulheres	claude	לְנָשִׁים “por mulheres”; tinha “casarão”
+NUM 36:8	1	וְ/כָל	e-toda	claude	וְכָל “e toda”; tinha “e-qualquer”
+NUM 36:8	3	יֹרֶ֣שֶׁת	que-possuir	claude	יֹרֶשֶׁת “possuindo”; tinha “possuir”
+NUM 36:8	6	בְּנֵ֣י	dos-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+NUM 36:8	8	לְ/אֶחָ֗ד	a-um	claude	לְאֶחָד “a um”; tinha “com-algum”
+NUM 36:8	10	מַטֵּ֥ה	da-tribo	claude	מַטֵּה “tribo de”; tinha “tribo”
+NUM 36:8	13	לְ/אִשָּׁ֑ה	por-mulher	claude	לְאִשָּׁה “por mulher”; tinha “casará”
+NUM 36:8	14	לְמַ֗עַן	para-que	claude	לְמַעַן “para que”; tinha “para”
+NUM 36:8	16	בְּנֵ֣י	os-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+NUM 36:8	19	נַחֲלַ֥ת	a-herança	claude	נַחֲלַת “herança de”; tinha “herança”
+NUM 36:12	1	מִֽ/מִּשְׁפְּחֹ֛ת	das-famílias	claude	מִמִּשְׁפְּחֹת “das famílias de”; tinha “da-família”
+NUM 36:12	2	בְּנֵֽי	dos-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+NUM 36:12	7	לְ/נָשִׁ֑ים	por-mulheres	claude	לְנָשִׁים “por mulheres”; tinha “mulheres”
+NUM 36:12	9	נַחֲלָתָ֔/ן	sua-herança	claude	נַחֲלָתָן “herança delas”; tinha “herança-delas”
+NUM 36:12	10	עַל	junto-à	claude	עַל “sobre”; tinha “sobre”
+NUM 36:12	12	מִשְׁפַּ֥חַת	da-família	claude	מִשְׁפַּחַת “família de”; tinha “família”
+NUM 36:12	13	אֲבִי/הֶֽן	de-seu-pai	claude	אֲבִיהֶן “pai delas”; tinha “pai”
