@@ -48548,3 +48548,255 @@ PSA 31:2	8	לְֽ/צוּר	por-rocha	claude	לְֽצוּר “por rocha”; tinh
 PSA 31:2	9	מָ֭עוֹז	forte	claude	מָ֭עוֹז “forte”; tinha “firme”
 PSA 31:2	10	לְ/בֵ֥ית	por-casa-de	claude	לְבֵ֥ית “por casa de”; tinha “por-casa”
 PSA 31:2	11	מְצוּד֗וֹת	fortalezas	claude	מְצוּד֗וֹת “fortalezas”; tinha “fortíssima”
+PSA 31:9	1	חָנֵּ֥/נִי	tem-misericórdia-de-mim	claude	חָנֵּ֥נִי “tem misericórdia de mim”; tinha “misericórdia-de-mim”
+PSA 31:9	4	צַ֫ר	angústia	claude	צַ֫ר “angústia”; tinha “estou-angustiado”
+PSA 31:9	5	לִ֥/י	há-para-mim	claude	לִ֥י “há para mim”; tinha “para-mim”
+PSA 31:9	6	עָשְׁשָׁ֖ה	consumiu-se	claude	עָשְׁשָׁ֖ה “consumiu se”; tinha “consumidos”
+PSA 31:9	7	בְ/כַ֥עַס	de-desgosto	claude	בְכַ֥עַס “de desgosto”; tinha “pelo-sofrimento”
+PSA 31:9	8	עֵינִ֗/י	meu-olho	claude	עֵינִ֗י “meu olho”; tinha “olhos-minha”
+PSA 31:9	9	נַפְשִׁ֥/י	minha-alma	claude	נַפְשִׁ֥י “minha alma”; tinha “alma-meu”
+PSA 31:9	10	וּ/בִטְנִֽ/י	e-meu-ventre	claude	וּבִטְנִֽי “e meu ventre”; tinha “e-ventre”
+PSA 31:10	8	בַּ/עֲוֺנִ֣/י	por-minha-iniquidade	claude	בַּעֲוֺנִ֣י “por minha iniquidade”; tinha “por-maldade”
+PSA 31:19	2	רַֽב	grande	claude	רַֽב “grande”; tinha “grade”
+PSA 31:19	6	לִּֽ/ירֵ֫אֶ֥י/ךָ	para-os-que-te-temem	claude	לִּֽירֵ֫אֶ֥יךָ “para os que te temem”; tinha “para-aqueles”
+PSA 31:19	7	פָּ֭עַלְתָּ	fizeste	claude	פָּ֭עַלְתָּ “fizeste”; tinha “trabalhaste”
+PSA 31:19	10	נֶ֝֗גֶד	diante-de	claude	נֶ֝֗גֶד “diante de”; tinha “presença”
+PSA 31:19	11	בְּנֵ֣י	os-filhos-de	claude	בְּנֵ֣י “os filhos de”; tinha “filhos”
+PSA 31:20	5	אִ֥ישׁ	o-homem	claude	אִ֥ישׁ “o homem”; tinha “homens”
+PSA 31:23	5	חֲסִ֫ידָ֥י/ו	seus-santos	claude	חֲסִ֫ידָ֥יו “seus santos”; tinha “santos-dele”
+PSA 31:23	6	אֱ֭מוּנִים	os-fiéis	claude	אֱ֭מוּנִים “os fiéis”; tinha “fiéis”
+PSA 31:23	12	עֹשֵׂ֥ה	o-que-pratica	claude	עֹשֵׂ֥ה “o que pratica”; tinha “usa”
+PSA 33:2	4	בְּ/נֵ֥בֶל	com-alaúde-de	claude	בְּנֵ֥בֶל “com alaúde de”; tinha “com-alaúde-e-instrumento”
+PSA 33:2	5	עָ֝שׂ֗וֹר	dez-cordas	claude	עָ֝שׂ֗וֹר “dez cordas”; tinha “dez”
+PSA 33:6	1	בִּ/דְבַ֣ר	pela-palavra-de	claude	בִּדְבַ֣ר “pela palavra de”; tinha “pala-palavra”
+PSA 33:6	4	נַעֲשׂ֑וּ	foram-feitos	claude	נַעֲשׂ֑וּ “foram feitos”; tinha “feito”
+PSA 33:6	6	פִּ֝֗י/ו	sua-boca	claude	פִּ֝֗יו “sua boca”; tinha “boca”
+PSA 33:15	1	הַ/יֹּצֵ֣ר	o-que-forma	claude	הַיֹּצֵ֣ר “o que forma”; tinha “forma”
+PSA 33:15	2	יַ֣חַד	juntamente	claude	יַ֣חַד “juntamente”; tinha “todos”
+PSA 33:15	3	לִבָּ֑/ם	seu-coração	claude	לִבָּ֑ם “seu coração”; tinha “coração”
+PSA 33:15	4	הַ֝/מֵּבִ֗ין	o-que-atenta	claude	הַ֝מֵּבִ֗ין “o que atenta”; tinha “avalia”
+PSA 33:15	7	מַעֲשֵׂי/הֶֽם	suas-obras	claude	מַעֲשֵׂיהֶֽם “suas obras”; tinha “obras-deles”
+PSA 33:17	1	שֶׁ֣קֶר	enganoso	claude	שֶׁ֣קֶר “enganoso”; tinha “mentira”
+PSA 33:17	3	לִ/תְשׁוּעָ֑ה	para-salvação	claude	לִתְשׁוּעָ֑ה “para salvação”; tinha “é-falho”
+PSA 33:17	4	וּ/בְ/רֹ֥ב	e-com-a-grandeza-de	claude	וּבְרֹ֥ב “e com a grandeza de”; tinha “é-como-segurança-com-sua-grande”
+PSA 33:17	5	חֵ֝יל֗/וֹ	sua-força	claude	חֵ֝יל֗וֹ “sua força”; tinha “força”
+PSA 35:6	2	דַרְכָּ֗/ם	seu-caminho	claude	דַרְכָּ֗ם “seu caminho”; tinha “caminho-deles”
+PSA 35:6	7	רֹדְפָֽ/ם	os-persiga	claude	רֹדְפָֽם “os persiga”; tinha “persiga”
+PSA 35:7	5	שַׁ֣חַת	a-cova-de	claude	שַׁ֣חַת “a cova de”; tinha “cova”
+PSA 35:7	6	רִשְׁתָּ֑/ם	sua-rede	claude	רִשְׁתָּ֑ם “sua rede”; tinha “rede”
+PSA 35:12	1	יְשַׁלְּמ֣וּ/נִי	retribuem-me	claude	יְשַׁלְּמ֣וּנִי “retribuem me”; tinha “retribuem”
+PSA 35:12	3	תַּ֥חַת	em-lugar-de	claude	תַּ֥חַת “em lugar de”; tinha “debaixo”
+PSA 35:12	5	שְׁכ֣וֹל	desamparo	claude	שְׁכ֣וֹל “desamparo”; tinha “desolando”
+PSA 35:14	1	כְּ/רֵֽעַ	como-amigo	claude	כְּרֵֽעַ “como amigo”; tinha “amigo”
+PSA 35:14	2	כְּ/אָ֣ח	como-irmão	claude	כְּאָ֣ח “como irmão”; tinha “irmão”
+PSA 35:14	3	לִ֭/י	meu	claude	לִ֭י “meu”; tinha “para-mim”
+PSA 35:14	5	כַּ/אֲבֶל	como-o-que-pranteia	claude	כַּאֲבֶל “como o que pranteia”; tinha “encurvado-como”
+PSA 35:14	7	קֹדֵ֥ר	enlutado	claude	קֹדֵ֥ר “enlutado”; tinha “luto”
+PSA 35:14	8	שַׁחֽוֹתִי	me-curvava	claude	שַׁחֽוֹתִי “me curvava”; tinha “assistentes”
+PSA 35:16	1	בְּ֭/חַנְפֵי	com-os-ímpios	claude	בְּ֭חַנְפֵי “com os ímpios”; tinha “entre-os-fingidos”
+PSA 35:16	2	לַעֲגֵ֣י	zombadores-de	claude	לַעֲגֵ֣י “zombadores de”; tinha “zombadores”
+PSA 35:16	3	מָע֑וֹג	bolo	claude	מָע֑וֹג “bolo”; tinha “festas”
+PSA 35:16	4	חָרֹ֖ק	rangendo	claude	חָרֹ֖ק “rangendo”; tinha “range”
+PSA 35:16	5	עָלַ֣/י	contra-mim	claude	עָלַ֣י “contra mim”; tinha “por”
+PSA 35:16	6	שִׁנֵּֽי/מוֹ	seus-dentes	claude	שִׁנֵּֽימוֹ “seus dentes”; tinha “rangiam-seus-dentes”
+PSA 35:19	3	לִ֣/י	de-mim	claude	לִ֣י “de mim”; tinha “para-mim”
+PSA 35:19	4	אֹיְבַ֣/י	meus-inimigos	claude	אֹיְבַ֣י “meus inimigos”; tinha “inimigos”
+PSA 35:19	5	שֶׁ֑קֶר	sem-razão	claude	שֶׁ֑קֶר “sem razão”; tinha “mau”
+PSA 35:19	6	שֹׂנְאַ֥/י	os-que-me-odeiam	claude	שֹׂנְאַ֥י “os que me odeiam”; tinha “me-odeiam”
+PSA 35:19	8	יִקְרְצוּ	pisquem	claude	יִקְרְצוּ “pisquem”; tinha “aquele”
+PSA 35:19	9	עָֽיִן	o-olho	claude	עָֽיִן “o olho”; tinha “olhos”
+PSA 35:22	1	רָאִ֣יתָה	viste	claude	רָאִ֣יתָה “viste”; tinha “visto”
+PSA 35:22	5	אֲ֝דֹנָ֗/י	Senhor	claude	אֲ֝דֹנָ֗י “Senhor”; tinha “SENHOR”
+PSA 35:25	3	בְ֭/לִבָּ/ם	em-seu-coração	claude	בְ֭לִבָּם “em seu coração”; tinha “em-seus-corações-vencemos”
+PSA 35:25	4	הֶאָ֣ח	ahá	claude	הֶאָ֣ח “ahá”; tinha “ahá-vencemos”
+PSA 35:25	5	נַפְשֵׁ֑/נוּ	nossa-alma	claude	נַפְשֵׁ֑נוּ “nossa alma”; tinha “alma-nossa”
+PSA 35:25	8	בִּֽלַּעֲנֽוּ/הוּ	o-devoramos	claude	בִּֽלַּעֲנֽוּהוּ “o devoramos”; tinha “devoramos”
+PSA 36:3	3	אָ֣וֶן	maldade	claude	אָ֣וֶן “maldade”; tinha “malícia”
+PSA 37:7	3	וְ/הִתְח֪וֹלֵ֫ל	e-espera-ansioso	claude	וְהִתְח֪וֹלֵ֫ל “e espera ansioso”; tinha “e-espera”
+PSA 37:7	4	ל֥/וֹ	por-ele	claude	ל֥וֹ “por ele”; tinha “para-ele”
+PSA 37:7	7	בְּ/מַצְלִ֣יחַ	com-o-que-prospera	claude	בְּמַצְלִ֣יחַ “com o que prospera”; tinha “prospera”
+PSA 37:7	8	דַּרְכּ֑/וֹ	em-seu-caminho	claude	דַּרְכּ֑וֹ “em seu caminho”; tinha “caminho”
+PSA 37:7	10	עֹשֶׂ֥ה	que-faz	claude	עֹשֶׂ֥ה “que faz”; tinha “faz”
+PSA 37:7	11	מְזִמּֽוֹת	maquinações	claude	מְזִמּֽוֹת “maquinações”; tinha “planeja”
+PSA 37:31	1	תּוֹרַ֣ת	a-lei-de	claude	תּוֹרַ֣ת “a lei de”; tinha “lei”
+PSA 37:31	3	בְּ/לִבּ֑/וֹ	em-seu-coração	claude	בְּלִבּ֑וֹ “em seu coração”; tinha “em-seu-coração-seus”
+PSA 37:31	5	תִמְעַ֣ד	vacilarão	claude	תִמְעַ֣ד “vacilarão”; tinha “abalados”
+PSA 37:31	6	אֲשֻׁרָי/ו	seus-passos	claude	אֲשֻׁרָיו “seus passos”; tinha “passos”
+PSA 37:33	3	יַעַזְבֶ֣/נּוּ	o-deixará	claude	יַעַזְבֶ֣נּוּ “o deixará”; tinha “deixa-suas”
+PSA 37:33	4	בְ/יָד֑/וֹ	em-sua-mão	claude	בְיָד֑וֹ “em sua mão”; tinha “em-mãos”
+PSA 37:33	5	וְ/לֹ֥א	e-não	claude	וְלֹ֥א “e não”; tinha “nem-também”
+PSA 37:33	6	יַ֝רְשִׁיעֶ֗/נּוּ	o-condenará	claude	יַ֝רְשִׁיעֶ֗נּוּ “o condenará”; tinha “condenará”
+PSA 37:40	1	וַֽ/יַּעְזְרֵ֥/ם	e-os-socorrerá	claude	וַֽיַּעְזְרֵ֥ם “e os socorrerá”; tinha “os-socorrerá”
+PSA 37:40	3	וַֽ/יְפַ֫לְּטֵ֥/ם	e-os-livrará	claude	וַֽיְפַ֫לְּטֵ֥ם “e os livrará”; tinha “e-os-livrará-ele-os”
+PSA 37:40	4	יְפַלְּטֵ֣/ם	os-livrará	claude	יְפַלְּטֵ֣ם “os livrará”; tinha “livrará”
+PSA 38:4	3	עָבְר֣וּ	passaram	claude	עָבְר֣וּ “passaram”; tinha “ultrapassam”
+PSA 38:4	5	כְּ/מַשָּׂ֥א	como-fardo	claude	כְּמַשָּׂ֥א “como fardo”; tinha “como-carga”
+PSA 38:4	7	יִכְבְּד֥וּ	pesam	claude	יִכְבְּד֥וּ “pesam”; tinha “demais”
+PSA 38:5	1	הִבְאִ֣ישׁוּ	cheiram-mal	claude	הִבְאִ֣ישׁוּ “cheiram mal”; tinha “fedem”
+PSA 38:5	2	נָ֭מַקּוּ	apodrecem	claude	נָ֭מַקּוּ “apodrecem”; tinha “fedem”
+PSA 38:5	4	מִ֝/פְּנֵ֗י	por-causa-de	claude	מִ֝פְּנֵ֗י “por causa de”; tinha “de-diante”
+PSA 38:5	5	אִוַּלְתִּֽ/י	minha-loucura	claude	אִוַּלְתִּֽי “minha loucura”; tinha “tolo”
+PSA 38:9	1	אֲֽדֹנָ/י	Senhor	claude	אֲֽדֹנָי “Senhor”; tinha “SENHOR”
+PSA 38:9	4	תַּאֲוָתִ֑/י	meu-desejo	claude	תַּאֲוָתִ֑י “meu desejo”; tinha “meu-sofrimento”
+PSA 38:10	2	סְ֭חַרְחַר	palpita	claude	סְ֭חַרְחַר “palpita”; tinha “palpitações”
+PSA 38:10	3	עֲזָבַ֣/נִי	me-deixou	claude	עֲזָבַ֣נִי “me deixou”; tinha “deixou”
+PSA 38:10	4	כֹחִ֑/י	minha-força	claude	כֹחִ֑י “minha força”; tinha “força-me”
+PSA 38:12	2	מְבַקְשֵׁ֬י	os-que-procuram	claude	מְבַקְשֵׁ֬י “os que procuram”; tinha “procuram”
+PSA 38:12	4	וְ/דֹרְשֵׁ֣י	e-os-que-buscam	claude	וְדֹרְשֵׁ֣י “e os que buscam”; tinha “procuram”
+PSA 38:12	7	הַוּ֑וֹת	calamidades	claude	הַוּ֑וֹת “calamidades”; tinha “insultos”
+PSA 38:14	1	וָ/אֱהִ֗י	e-sou	claude	וָאֱהִ֗י “e sou”; tinha “e-eu-estou”
+PSA 38:14	6	וְ/אֵ֥ין	e-não-há	claude	וְאֵ֥ין “e não há”; tinha “não”
+PSA 38:14	7	בְּ֝/פִ֗י/ו	em-sua-boca	claude	בְּ֝פִ֗יו “em sua boca”; tinha “boca”
+PSA 38:17	3	לְ/צֶ֣לַע	para-cair	claude	לְצֶ֣לַע “para cair”; tinha “manco”
+PSA 38:17	4	נָכ֑וֹן	estou-pronto	claude	נָכ֑וֹן “estou pronto”; tinha “prestes”
+PSA 38:22	1	ח֥וּשָׁ/ה	apressa-te	claude	ח֥וּשָׁה “apressa te”; tinha “apressa”
+PSA 38:22	3	אֲ֝דֹנָ֗/י	Senhor	claude	אֲ֝דֹנָ֗י “Senhor”; tinha “SENHOR”
+PSA 38:22	4	תְּשׁוּעָתִֽ/י	minha-salvação	claude	תְּשׁוּעָתִֽי “minha salvação”; tinha “salvação-minha”
+PSA 39:3	1	חַם	esquentou-se	claude	חַם “esquentou se”; tinha “esquenta”
+PSA 39:3	3	בְּ/קִרְבִּ֗/י	dentro-de-mim	claude	בְּקִרְבִּ֗י “dentro de mim”; tinha “se-esquentou-dentro-de-mim”
+PSA 39:3	5	תִבְעַר	ardeu	claude	תִבְעַר “ardeu”; tinha “acendeu”
+PSA 39:3	7	דִּ֝בַּ֗רְתִּי	falei	claude	דִּ֝בַּ֗רְתִּי “falei”; tinha “disse”
+PSA 39:11	2	עַל	por	claude	עַל “por”; tinha “sobre”
+PSA 39:11	4	יִסַּ֬רְתָּ	corriges	claude	יִסַּ֬רְתָּ “corriges”; tinha “castigares”
+PSA 39:11	5	אִ֗ישׁ	o-homem	claude	אִ֗ישׁ “o homem”; tinha “alguém”
+PSA 39:11	6	וַ/תֶּ֣מֶס	e-desfazes	claude	וַתֶּ֣מֶס “e desfazes”; tinha “logo-tu-desfaz”
+PSA 39:11	8	חֲמוּד֑/וֹ	o-que-ele-deseja	claude	חֲמוּד֑וֹ “o que ele deseja”; tinha “lhe-agrada”
+PSA 40:13	5	לְ/עֶזְרָ֥תִ/י	a-meu-socorro	claude	לְעֶזְרָ֥תִי “a meu socorro”; tinha “ao-meu-socorro”
+PSA 40:15	7	הֶ֘אָ֥ח	ah	claude	הֶ֘אָ֥ח “ah”; tinha “ha”
+PSA 40:15	8	הֶאָֽח	ah	claude	הֶאָֽח “ah”; tinha “ha”
+PSA 41:1	2	מַשְׂכִּ֣יל	o-que-atenta	claude	מַשְׂכִּ֣יל “o que atenta”; tinha “atenção”
+PSA 41:1	4	דָּ֑ל	o-pobre	claude	דָּ֑ל “o pobre”; tinha “miserável”
+PSA 41:1	5	בְּ/י֥וֹם	no-dia-de	claude	בְּי֥וֹם “no dia de”; tinha “no-dia”
+PSA 41:1	7	יְֽמַלְּטֵ֥/הוּ	o-livrará	claude	יְֽמַלְּטֵ֥הוּ “o livrará”; tinha “livrará”
+PSA 41:2	2	יִשְׁמְרֵ֣/הוּ	o-guardará	claude	יִשְׁמְרֵ֣הוּ “o guardará”; tinha “guardará”
+PSA 41:2	3	וִֽ֭/יחַיֵּ/הוּ	e-o-conservará-vivo	claude	וִֽ֭יחַיֵּהוּ “e o conservará vivo”; tinha “e-o-manterá-vivo-ele”
+PSA 41:2	4	וְ/אֻשַּׁ֣ר	e-será-feliz	claude	וְאֻשַּׁ֣ר “e será feliz”; tinha “será-bem-aventurado”
+PSA 41:2	6	וְ/אַֽל	e-não	claude	וְאַֽל “e não”; tinha “e-tu-não”
+PSA 41:2	7	תִּ֝תְּנֵ֗/הוּ	o-entregarás	claude	תִּ֝תְּנֵ֗הוּ “o entregarás”; tinha “entregarás”
+PSA 41:2	8	בְּ/נֶ֣פֶשׁ	à-vontade-de	claude	בְּנֶ֣פֶשׁ “à vontade de”; tinha “à-vontade”
+PSA 41:3	2	יִ֭סְעָדֶ/נּוּ	o-sustentará	claude	יִ֭סְעָדֶנּוּ “o sustentará”; tinha “sustentará”
+PSA 41:8	1	דְּֽבַר	uma-coisa-de	claude	דְּֽבַר “uma coisa de”; tinha “doença”
+PSA 41:8	3	יָצ֣וּק	está-derramada	claude	יָצ֣וּק “está derramada”; tinha “posta-sobre”
+PSA 41:8	4	בּ֑/וֹ	nele	claude	בּ֑וֹ “nele”; tinha “sobre-ele”
+PSA 41:8	5	וַ/אֲשֶׁ֥ר	e-o-que	claude	וַאֲשֶׁ֥ר “e o que”; tinha “e-que”
+PSA 41:8	6	שָׁ֝כַ֗ב	se-deitou	claude	שָׁ֝כַ֗ב “se deitou”; tinha “deitado”
+PSA 41:8	8	יוֹסִ֥יף	tornará	claude	יוֹסִ֥יף “tornará”; tinha “mais”
+PSA 41:8	9	לָ/קֽוּם	a-levantar-se	claude	לָקֽוּם “a levantar se”; tinha “se-levantará”
+PSA 41:9	3	שְׁלוֹמִ֨/י	de-minha-paz	claude	שְׁלוֹמִ֨י “de minha paz”; tinha “que-era-meu-amigo”
+PSA 41:9	5	בָּטַ֣חְתִּי	confiava	claude	בָּטַ֣חְתִּי “confiava”; tinha “íntimo”
+PSA 41:9	6	ב֭/וֹ	nele	claude	ב֭וֹ “nele”; tinha “em”
+PSA 41:9	7	אוֹכֵ֣ל	que-comia	claude	אוֹכֵ֣ל “que comia”; tinha “comia”
+PSA 41:9	9	הִגְדִּ֖יל	engrandeceu	claude	הִגְדִּ֖יל “engrandeceu”; tinha “grandemente”
+PSA 41:9	11	עָקֵֽב	o-calcanhar	claude	עָקֵֽב “o calcanhar”; tinha “calcanhar”
+PSA 41:10	3	חָנֵּ֥/נִי	tem-misericórdia-de-mim	claude	חָנֵּ֥נִי “tem misericórdia de mim”; tinha “piedade-de-mim”
+PSA 41:10	5	וַֽ/אֲשַׁלְּמָ֥ה	e-retribuirei	claude	וַֽאֲשַׁלְּמָ֥ה “e retribuirei”; tinha “pagamento”
+PSA 41:10	6	לָ/הֶֽם	a-eles	claude	לָהֶֽם “a eles”; tinha “que-merecem”
+PSA 41:12	2	בְּ֭/תֻמִּ/י	em-minha-integridade	claude	בְּ֭תֻמִּי “em minha integridade”; tinha “sinceridade”
+PSA 41:12	3	תָּמַ֣כְתָּ	me-sustentas	claude	תָּמַ֣כְתָּ “me sustentas”; tinha “sustentas”
+PSA 41:12	4	בִּ֑/י	a-mim	claude	בִּ֑י “a mim”; tinha “em-minha”
+PSA 44:15	7	כִּסָּֽתְ/נִי	me-cobre	claude	כִּסָּֽתְנִי “me cobre”; tinha “cobre”
+PSA 44:20	2	שָׁ֭כַחְנוּ	esquecemos	claude	שָׁ֭כַחְנוּ “esquecemos”; tinha “esquecido”
+PSA 44:20	3	שֵׁ֣ם	o-nome-de	claude	שֵׁ֣ם “o nome de”; tinha “nome”
+PSA 44:20	5	וַ/נִּפְרֹ֥שׂ	e-estendemos	claude	וַנִּפְרֹ֥שׂ “e estendemos”; tinha “e-estendido”
+PSA 44:20	7	לְ/אֵ֣ל	a-deus	claude	לְאֵ֣ל “a deus”; tinha “deus”
+PSA 44:22	1	כִּֽי	pois	claude	כִּֽי “pois”; tinha “porque”
+PSA 44:22	2	עָ֭לֶי/ךָ	por-tua-causa	claude	עָ֭לֶיךָ “por tua causa”; tinha “por”
+PSA 44:22	3	הֹרַ֣גְנוּ	somos-mortos	claude	הֹרַ֣גְנוּ “somos mortos”; tinha “mortos”
+PSA 44:22	6	נֶ֝חְשַׁ֗בְנוּ	somos-considerados	claude	נֶ֝חְשַׁ֗בְנוּ “somos considerados”; tinha “considerados”
+PSA 44:22	8	טִבְחָֽה	de-matança	claude	טִבְחָֽה “de matança”; tinha “matadouro”
+PSA 45:3	7	וַ/הֲדָרֶֽ/ךָ	e-teu-esplendor	claude	וַהֲדָרֶֽךָ “e teu esplendor”; tinha “e-tua-honra”
+PSA 47:7	7	מַשְׂכִּֽיל	um-salmo-instrutivo	claude	מַשְׂכִּֽיל “um salmo instrutivo”; tinha “entendimento”
+PSA 49:2	1	גַּם	tanto	claude	גַּם “tanto”; tinha “também”
+PSA 49:2	2	בְּנֵ֣י	filhos-de	claude	בְּנֵ֣י “filhos de”; tinha “filhos”
+PSA 49:2	3	אָ֭דָם	homem	claude	אָ֭דָם “homem”; tinha “homens”
+PSA 49:2	4	גַּם	como	claude	גַּם “como”; tinha “também”
+PSA 49:2	5	בְּנֵי	filhos-de	claude	בְּנֵי “filhos de”; tinha “filhos”
+PSA 49:2	6	אִ֑ישׁ	varão	claude	אִ֑ישׁ “varão”; tinha “cada”
+PSA 49:2	8	עָשִׁ֥יר	o-rico	claude	עָשִׁ֥יר “o rico”; tinha “ricos”
+PSA 49:2	9	וְ/אֶבְיֽוֹן	e-o-necessitado	claude	וְאֶבְיֽוֹן “e o necessitado”; tinha “os-pobres”
+PSA 49:7	1	אָ֗ח	o-irmão	claude	אָ֗ח “o irmão”; tinha “irmão”
+PSA 49:7	3	פָדֹ֣ה	de-modo-algum	claude	פָדֹ֣ה “de modo algum”; tinha “livrar”
+PSA 49:7	4	יִפְדֶּ֣ה	resgatará	claude	יִפְדֶּ֣ה “resgatará”; tinha “resgatarás”
+PSA 49:7	5	אִ֑ישׁ	o-homem	claude	אִ֑ישׁ “o homem”; tinha “ninguém”
+PSA 49:7	7	יִתֵּ֖ן	dará	claude	יִתֵּ֖ן “dará”; tinha “pagar”
+PSA 49:9	1	וִֽ/יחִי	e-viva	claude	וִֽיחִי “e viva”; tinha “para-viver”
+PSA 49:9	2	ע֥וֹד	ainda	claude	ע֥וֹד “ainda”; tinha “mais”
+PSA 49:9	3	לָ/נֶ֑צַח	para-sempre	claude	לָנֶ֑צַח “para sempre”; tinha “eternamente”
+PSA 49:10	7	וָ/בַ֣עַר	e-o-estúpido	claude	וָבַ֣עַר “e o estúpido”; tinha “e-o-bruto-igualmente”
+PSA 49:11	1	קִרְבָּ֤/ם	seu-íntimo	claude	קִרְבָּ֤ם “seu íntimo”; tinha “interior”
+PSA 49:11	2	בָּתֵּ֨י/מוֹ	suas-casas	claude	בָּתֵּ֨ימוֹ “suas casas”; tinha “casas-serão”
+PSA 49:11	3	לְֽ/עוֹלָ֗ם	para-sempre	claude	לְֽעוֹלָ֗ם “para sempre”; tinha “perpétuas”
+PSA 49:11	4	מִ֭שְׁכְּנֹתָ/ם	suas-moradas	claude	מִ֭שְׁכְּנֹתָם “suas moradas”; tinha “suas-moradas-durarão”
+PSA 49:11	5	לְ/דֹ֣ר	de-geração	claude	לְדֹ֣ר “de geração”; tinha “para-geração”
+PSA 49:11	6	וָ/דֹ֑ר	e-geração	claude	וָדֹ֑ר “e geração”; tinha “geração-em-geração”
+PSA 49:11	7	קָֽרְא֥וּ	chamaram	claude	קָֽרְא֥וּ “chamaram”; tinha “dão”
+PSA 49:11	8	בִ֝/שְׁמוֹתָ֗/ם	por-seus-nomes	claude	בִ֝שְׁמוֹתָ֗ם “por seus nomes”; tinha “seus-próprios-nomes”
+PSA 49:13	2	דַ֭רְכָּ/ם	seu-caminho	claude	דַ֭רְכָּם “seu caminho”; tinha “caminho”
+PSA 49:13	3	כֵּ֣סֶל	loucura	claude	כֵּ֣סֶל “loucura”; tinha “tolos”
+PSA 49:13	5	וְ/אַחֲרֵי/הֶ֓ם	e-os-que-os-seguem	claude	וְאַחֲרֵיהֶ֓ם “e os que os seguem”; tinha “e-depois-eles”
+PSA 49:13	6	בְּ/פִי/הֶ֖ם	seu-dizer	claude	בְּפִיהֶ֖ם “seu dizer”; tinha “suas-palavras”
+PSA 49:13	7	יִרְצ֣וּ	aprovam	claude	יִרְצ֣וּ “aprovam”; tinha “agradam”
+PSA 49:15	5	מִֽ/יַּד	da-mão-de	claude	מִֽיַּד “da mão de”; tinha “da-violência”
+PSA 49:15	6	שְׁא֑וֹל	o-Xeol	claude	שְׁא֑וֹל “o Xeol”; tinha “mundo”
+PSA 49:18	1	כִּֽי	pois	claude	כִּֽי “pois”; tinha “porque”
+PSA 49:18	2	נַ֭פְשׁ/וֹ	sua-alma	claude	נַ֭פְשׁוֹ “sua alma”; tinha “pronunciado-a-si”
+PSA 49:18	3	בְּ/חַיָּ֣י/ו	em-sua-vida	claude	בְּחַיָּ֣יו “em sua vida”; tinha “em-vida”
+PSA 49:18	4	יְבָרֵ֑ךְ	bendizia	claude	יְבָרֵ֑ךְ “bendizia”; tinha “bênção”
+PSA 49:18	7	תֵיטִ֥יב	fazes-bem	claude	תֵיטִ֥יב “fazes bem”; tinha “bem”
+PSA 49:20	2	בִּ֭/יקָר	em-honra	claude	בִּ֭יקָר “em honra”; tinha “honra”
+PSA 49:20	4	יָבִ֑ין	entende	claude	יָבִ֑ין “entende”; tinha “entendimento”
+PSA 49:20	6	כַּ/בְּהֵמ֣וֹת	como-os-animais	claude	כַּבְּהֵמ֣וֹת “como os animais”; tinha “aos-animais”
+PSA 50:5	3	חֲסִידָ֑/י	meus-santos	claude	חֲסִידָ֑י “meus santos”; tinha “santos-que”
+PSA 50:5	4	כֹּרְתֵ֖י	os-que-fizeram	claude	כֹּרְתֵ֖י “os que fizeram”; tinha “que-confirmam”
+PSA 50:5	6	עֲלֵי	com	claude	עֲלֵי “com”; tinha “por”
+PSA 50:8	4	אוֹכִיחֶ֑/ךָ	te-repreenderei	claude	אוֹכִיחֶ֑ךָ “te repreenderei”; tinha “repreenderei”
+PSA 50:8	5	וְ/עוֹלֹתֶ֖י/ךָ	e-teus-holocaustos	claude	וְעוֹלֹתֶ֖יךָ “e teus holocaustos”; tinha “porque-teus-holocaustos”
+PSA 50:10	4	חַיְת/וֹ	animal-de	claude	חַיְתוֹ “animal de”; tinha “animal”
+PSA 50:10	5	יָ֑עַר	floresta	claude	יָ֑עַר “floresta”; tinha “matas”
+PSA 50:10	6	בְּ֝הֵמ֗וֹת	os-animais	claude	בְּ֝הֵמ֗וֹת “os animais”; tinha “animais”
+PSA 50:10	7	בְּ/הַרְרֵי	sobre-os-montes-de	claude	בְּהַרְרֵי “sobre os montes de”; tinha “montanhas”
+PSA 50:10	8	אָֽלֶף	milhar	claude	אָֽלֶף “milhar”; tinha “milhares”
+PSA 50:12	2	אֶ֭רְעַב	tivesse-fome	claude	אֶ֭רְעַב “tivesse fome”; tinha “fome”
+PSA 50:12	9	וּ/מְלֹאָֽ/הּ	e-sua-plenitude	claude	וּמְלֹאָֽהּ “e sua plenitude”; tinha “e-tudo”
+PSA 50:21	2	עָשִׂ֨יתָ	fizeste	claude	עָשִׂ֨יתָ “fizeste”; tinha “coisas”
+PSA 50:21	3	וְֽ/הֶחֱרַ֗שְׁתִּי	e-calei-me	claude	וְֽהֶחֱרַ֗שְׁתִּי “e calei me”; tinha “calado”
+PSA 50:21	5	הֱֽיוֹת	que-eu-fosse	claude	הֱֽיוֹת “que eu fosse”; tinha “haja”
+PSA 50:21	7	כָמ֑וֹ/ךָ	como-tu	claude	כָמ֑וֹךָ “como tu”; tinha “como”
+PSA 50:21	8	אוֹכִיחֲ/ךָ֖	te-repreenderei	claude	אוֹכִיחֲךָ֖ “te repreenderei”; tinha “condenarei-mostrarei-teus”
+PSA 50:21	9	וְ/אֶֽעֶרְכָ֣ה	e-as-porei-em-ordem	claude	וְאֶֽעֶרְכָ֣ה “e as porei em ordem”; tinha “males”
+PSA 50:23	1	זֹבֵ֥חַ	o-que-oferece	claude	זֹבֵ֥חַ “o que oferece”; tinha “oferece”
+PSA 50:23	2	תּוֹדָ֗ה	ação-de-graças	claude	תּוֹדָ֗ה “ação de graças”; tinha “louvor”
+PSA 50:23	4	וְ/שָׂ֥ם	e-o-que-põe	claude	וְשָׂ֥ם “e o que põe”; tinha “cuida”
+PSA 50:23	7	בְּ/יֵ֣שַׁע	a-salvação-de	claude	בְּיֵ֣שַׁע “a salvação de”; tinha “a-salvação”
+PSA 51:2	1	הֶ֭רֶב	muito	claude	הֶ֭רֶב “muito”; tinha “aumentai”
+PSA 51:2	4	וּֽ/מֵ/חַטָּאתִ֥/י	e-de-meu-pecado	claude	וּֽמֵחַטָּאתִ֥י “e de meu pecado”; tinha “e-me-de-meu-pecado”
+PSA 51:2	5	טַהֲרֵֽ/נִי	purifica-me	claude	טַהֲרֵֽנִי “purifica me”; tinha “purifica”
+PSA 51:5	5	יֶֽחֱמַ֥תְ/נִי	me-concebeu	claude	יֶֽחֱמַ֥תְנִי “me concebeu”; tinha “concebeu”
+PSA 51:5	6	אִמִּֽ/י	minha-mãe	claude	אִמִּֽי “minha mãe”; tinha “mãe-me”
+PSA 51:12	2	לִּ֭/י	a-mim	claude	לִּ֭י “a mim”; tinha “a”
+PSA 51:12	5	וְ/ר֖וּחַ	e-com-espírito	claude	וְר֖וּחַ “e com espírito”; tinha “espírito”
+PSA 51:12	6	נְדִיבָ֣ה	voluntário	claude	נְדִיבָ֣ה “voluntário”; tinha “boa”
+PSA 51:12	7	תִסְמְכֵֽ/נִי	sustenta-me	claude	תִסְמְכֵֽנִי “sustenta me”; tinha “vontade”
+PSA 51:15	1	אֲ֭דֹנָ/י	Senhor	claude	אֲ֭דֹנָי “Senhor”; tinha “Senhor-os-meus”
+PSA 51:15	2	שְׂפָתַ֣/י	meus-lábios	claude	שְׂפָתַ֣י “meus lábios”; tinha “lábios”
+PSA 51:15	6	תְּהִלָּתֶֽ/ךָ	teu-louvor	claude	תְּהִלָּתֶֽךָ “teu louvor”; tinha “louvor-a-ti”
+PSA 52:2	1	הַ֭וּוֹת	ruínas	claude	הַ֭וּוֹת “ruínas”; tinha “maldades”
+PSA 52:2	6	עֹשֵׂ֥ה	que-faz	claude	עֹשֵׂ֥ה “que faz”; tinha “que-gera”
+PSA 52:2	7	רְמִיָּֽה	engano	claude	רְמִיָּֽה “engano”; tinha “falsidades”
+PSA 53:1	6	הִֽ֝שְׁחִ֗יתוּ	corromperam-se	claude	הִֽ֝שְׁחִ֗יתוּ “corromperam se”; tinha “corrompem”
+PSA 53:1	7	וְ/הִֽתְעִ֥יבוּ	e-cometeram-abominação	claude	וְהִֽתְעִ֥יבוּ “e cometeram abominação”; tinha “e-cometem-abominável”
+PSA 53:1	8	עָ֝֗וֶל	iniquidade	claude	עָ֝֗וֶל “iniquidade”; tinha “perversidade”
+PSA 53:1	9	אֵ֣ין	não-há	claude	אֵ֣ין “não há”; tinha “ninguém”
+PSA 53:1	10	עֹֽשֵׂה	quem-faça	claude	עֹֽשֵׂה “quem faça”; tinha “faça”
+PSA 53:3	5	אֵ֤ין	não-há	claude	אֵ֤ין “não há”; tinha “ninguém”
+PSA 53:3	6	עֹֽשֵׂה	quem-faça	claude	עֹֽשֵׂה “quem faça”; tinha “faça”
+PSA 53:3	8	אֵ֝֗ין	não-há	claude	אֵ֝֗ין “não há”; tinha “nem”
+PSA 53:5	2	פָּֽחֲדוּ	temeram	claude	פָּֽחֲדוּ “temeram”; tinha “terão-grande”
+PSA 53:5	3	פַחַד֮	com-temor	claude	פַחַד֮ “com temor”; tinha “medo”
+PSA 53:5	6	פָ֥חַד	temor	claude	פָ֥חַד “temor”; tinha “medo”
+PSA 53:5	10	עַצְמ֣וֹת	os-ossos-de	claude	עַצְמ֣וֹת “os ossos de”; tinha “ossos”
+PSA 53:5	12	הֱ֝בִשֹׁ֗תָה	os-envergonhaste	claude	הֱ֝בִשֹׁ֗תָה “os envergonhaste”; tinha “humilhaste”
+PSA 55:6	1	וָ/אֹמַ֗ר	e-disse	claude	וָאֹמַ֗ר “e disse”; tinha “então-eu-digo”
+PSA 55:6	3	יִתֶּן	desse	claude	יִתֶּן “desse”; tinha “ah”
+PSA 55:6	4	לִּ֣/י	a-mim	claude	לִּ֣י “a mim”; tinha “para-mim”
+PSA 55:6	5	אֵ֭בֶר	asa	claude	אֵ֭בֶר “asa”; tinha “asas”
