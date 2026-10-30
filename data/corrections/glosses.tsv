@@ -48041,3 +48041,256 @@ JOB 33:14	7	יְשׁוּרֶֽ/נָּה	o-percebe	claude	יְשׁוּרֶֽנּ�
 JOB 33:20	1	וְ/זִֽהֲמַ֣תּ/וּ	e-faz-abominar	claude	וְזִֽהֲמַ֣תּוּ “e faz abominar”; tinha “modo-que-sua-detesta”
 JOB 33:20	2	חַיָּת֣/וֹ	sua-vida	claude	חַיָּת֣וֹ “sua vida”; tinha “vida”
 JOB 33:20	4	וְ֝/נַפְשׁ֗/וֹ	e-sua-alma	claude	וְ֝נַפְשׁ֗וֹ “e sua alma”; tinha “e-sua-alma-a”
+JOB 33:21	1	יִ֣כֶל	consome-se	claude	יִ֣כֶל “consome se”; tinha “desaparece”
+JOB 33:21	2	בְּשָׂר֣/וֹ	sua-carne	claude	בְּשָׂר֣וֹ “sua carne”; tinha “carne”
+JOB 33:21	4	וְ/שֻׁפּ֥וּ	e-se-descobrem	claude	וְשֻׁפּ֥וּ “e se descobrem”; tinha “e-seus”
+JOB 33:21	7	רֻאּֽוּ	eram-vistos	claude	רֻאּֽוּ “eram vistos”; tinha “viam”
+JOB 33:28	2	נַ֭פְשׁ/וֹ	sua-alma	claude	נַ֭פְשׁוֹ “sua alma”; tinha “alma-para”
+JOB 33:28	3	מֵ/עֲבֹ֣ר	de-passar	claude	מֵעֲבֹ֣ר “de passar”; tinha “não-passasse”
+JOB 33:28	5	וְ֝/חַיָּת/וֹ	e-sua-vida	claude	וְ֝חַיָּתוֹ “e sua vida”; tinha “vida”
+JOB 34:13	6	שָׂ֝֗ם	pôs	claude	שָׂ֝֗ם “pôs”; tinha “dispôs”
+JOB 35:2	4	אָ֝מַ֗רְתָּ	disseste	claude	אָ֝מַ֗רְתָּ “disseste”; tinha “dizeres”
+JOB 35:4	2	אֲשִֽׁיבְ/ךָ֣	te-responderei	claude	אֲשִֽׁיבְךָ֣ “te responderei”; tinha “desviarei-te”
+JOB 35:4	3	מִלִּ֑ין	palavras	claude	מִלִּ֑ין “palavras”; tinha “reposta”
+JOB 35:8	1	לְ/אִישׁ	ao-homem	claude	לְאִישׁ “ao homem”; tinha “a-outro-homem”
+JOB 35:8	2	כָּמ֥וֹ/ךָ	como-tu	claude	כָּמ֥וֹךָ “como tu”; tinha “como”
+JOB 35:8	3	רִשְׁעֶ֑/ךָ	tua-perversidade	claude	רִשְׁעֶ֑ךָ “tua perversidade”; tinha “perversidade”
+JOB 35:8	4	וּ/לְ/בֶן	e-ao-filho-de	claude	וּלְבֶן “e ao filho de”; tinha “filho”
+JOB 35:13	2	שָׁ֭וְא	a-vaidade	claude	שָׁ֭וְא “a vaidade”; tinha “Deus”
+JOB 35:13	5	אֵ֑ל	Deus	claude	אֵ֑ל “Deus”; tinha “súplica”
+JOB 35:13	8	יְשׁוּרֶֽ/נָּה	a-atenderá	claude	יְשׁוּרֶֽנָּה “a atenderá”; tinha “atenção-a-ela”
+JOB 36:7	2	יִגְרַ֥ע	retira	claude	יִגְרַ֥ע “retira”; tinha “tira”
+JOB 36:7	3	מִ/צַּדִּ֗יק	do-justo	claude	מִצַּדִּ֗יק “do justo”; tinha “seus-do-justo”
+JOB 36:7	4	עֵ֫ינָ֥י/ו	seus-olhos	claude	עֵ֫ינָ֥יו “seus olhos”; tinha “olhos”
+JOB 36:7	5	וְ/אֶת	e-com	claude	וְאֶת “e com”; tinha “com”
+JOB 36:7	8	וַ/יֹּשִׁיבֵ֥/ם	e-os-assenta	claude	וַיֹּשִׁיבֵ֥ם “e os assenta”; tinha “sentar-os”
+JOB 36:7	10	וַ/יִּגְבָּֽהוּ	e-são-exaltados	claude	וַיִּגְבָּֽהוּ “e são exaltados”; tinha “assim-são”
+JOB 36:9	1	וַ/יַּגֵּ֣ד	e-declara	claude	וַיַּגֵּ֣ד “e declara”; tinha “saber”
+JOB 36:9	2	לָ/הֶ֣ם	a-eles	claude	לָהֶ֣ם “a eles”; tinha “para-eles”
+JOB 36:9	3	פָּעֳלָ֑/ם	sua-obra	claude	פָּעֳלָ֑ם “sua obra”; tinha “obras”
+JOB 36:9	4	וּ֝/פִשְׁעֵי/הֶ֗ם	e-suas-transgressões	claude	וּ֝פִשְׁעֵיהֶ֗ם “e suas transgressões”; tinha “e-transgressões-das-quais”
+JOB 36:9	5	כִּ֣י	que	claude	כִּ֣י “que”; tinha “porque”
+JOB 36:9	6	יִתְגַּבָּֽרוּ	se-engrandeceram	claude	יִתְגַּבָּֽרוּ “se engrandeceram”; tinha “orgulharam”
+JOB 36:12	7	כִּ/בְלִי	sem	claude	כִּבְלִי “sem”; tinha “morrerão-sem”
+JOB 36:13	1	וְֽ/חַנְפֵי	e-os-ímpios-de	claude	וְֽחַנְפֵי “e os ímpios de”; tinha “e-os-hipócritas”
+JOB 36:13	3	יָשִׂ֣ימוּ	guardam	claude	יָשִׂ֣ימוּ “guardam”; tinha “acumulam-a”
+JOB 36:13	8	אֲסָרָֽ/ם	os-prende	claude	אֲסָרָֽם “os prende”; tinha “amarrar”
+JOB 36:16	1	וְ/אַ֤ף	e-também	claude	וְאַ֤ף “e também”; tinha “assim-também”
+JOB 36:16	2	הֲסִיתְ/ךָ֨	te-atrairia	claude	הֲסִיתְךָ֨ “te atrairia”; tinha “pode-te-desviar”
+JOB 36:16	4	צָ֗ר	o-aperto	claude	צָ֗ר “o aperto”; tinha “angústia”
+JOB 36:16	5	רַ֭חַב	para-largueza	claude	רַ֭חַב “para largueza”; tinha “amplo”
+JOB 36:16	7	מוּצָ֣ק	aperto	claude	מוּצָ֣ק “aperto”; tinha “haveria-aperto”
+JOB 36:16	8	תַּחְתֶּ֑י/הָ	debaixo-dela	claude	תַּחְתֶּ֑יהָ “debaixo dela”; tinha “lugar”
+JOB 36:16	9	וְ/נַ֥חַת	e-o-descanso-de	claude	וְנַ֥חַת “e o descanso de”; tinha “conforto”
+JOB 36:16	12	דָֽשֶׁן	gordura	claude	דָֽשֶׁן “gordura”; tinha “melhores”
+JOB 36:18	2	חֵ֭מָה	o-furor	claude	חֵ֭מָה “o furor”; tinha “furor”
+JOB 36:18	3	פֶּן	para-que-não	claude	פֶּן “para que não”; tinha “não”
+JOB 36:18	4	יְסִֽיתְ/ךָ֣	te-incite	claude	יְסִֽיתְךָ֣ “te incite”; tinha “sejas-seduzido”
+JOB 36:18	5	בְ/סָ֑פֶק	com-zombaria	claude	בְסָ֑פֶק “com zombaria”; tinha “pela-riqueza”
+JOB 36:18	6	וְ/רָב	e-grandeza-de	claude	וְרָב “e grandeza de”; tinha “grande”
+JOB 36:18	7	כֹּ֝֗פֶר	resgate	claude	כֹּ֝֗פֶר “resgate”; tinha “suborno”
+JOB 36:18	9	יַטֶּֽ/ךָּ	te-desvie	claude	יַטֶּֽךָּ “te desvie”; tinha “desviar”
+JOB 36:21	1	הִ֭שָּׁמֶר	guarda-te	claude	הִ֭שָּׁמֶר “guarda te”; tinha “guarda”
+JOB 36:21	9	בָּחַ֥רְתָּ	escolheste	claude	בָּחַ֥רְתָּ “escolheste”; tinha “testado”
+JOB 36:23	2	פָקַ֣ד	lhe-prescreveu	claude	פָקַ֣ד “lhe prescreveu”; tinha “indica”
+JOB 36:23	4	דַּרְכּ֑/וֹ	seu-caminho	claude	דַּרְכּ֑וֹ “seu caminho”; tinha “caminho”
+JOB 36:23	5	וּ/מִֽי	e-quem	claude	וּמִֽי “e quem”; tinha “quem-poderá”
+JOB 36:23	6	אָ֝מַ֗ר	disse	claude	אָ֝מַ֗ר “disse”; tinha “dizer”
+JOB 36:31	2	בָ֭/ם	por-eles	claude	בָ֭ם “por eles”; tinha “por-estas-coisas”
+JOB 36:32	4	א֑וֹר	a-luz	claude	א֑וֹר “a luz”; tinha “relâmpago”
+JOB 37:3	4	יִשְׁרֵ֑/הוּ	o-solta	claude	יִשְׁרֵ֑הוּ “o solta”; tinha “envia-por”
+JOB 37:13	1	אִם	seja	claude	אִם “seja”; tinha “ou”
+JOB 37:13	7	יַמְצִאֵֽ/הוּ	o-faz-chegar	claude	יַמְצִאֵֽהוּ “o faz chegar”; tinha “vir”
+JOB 37:17	1	אֲשֶׁר	tu-cujas	claude	אֲשֶׁר “tu cujas”; tinha “que”
+JOB 37:17	2	בְּגָדֶ֥י/ךָ	tuas-vestes	claude	בְּגָדֶ֥יךָ “tuas vestes”; tinha “vestes”
+JOB 37:17	3	חַמִּ֑ים	são-quentes	claude	חַמִּ֑ים “são quentes”; tinha “aquecem”
+JOB 37:17	4	בְּ/הַשְׁקִ֥ט	quando-se-aquieta	claude	בְּהַשְׁקִ֥ט “quando se aquieta”; tinha “aquieta”
+JOB 37:17	6	מִ/דָּרֽוֹם	pelo-vento-sul	claude	מִדָּרֽוֹם “pelo vento sul”; tinha “causa-do-vento-sul”
+JOB 37:19	1	ה֭וֹדִיעֵ/נוּ	faze-nos-saber	claude	ה֭וֹדִיעֵנוּ “faze nos saber”; tinha “ensina-nos”
+JOB 37:19	3	נֹּ֣אמַר	diremos	claude	נֹּ֣אמַר “diremos”; tinha “dizer”
+JOB 37:19	4	ל֑/וֹ	a-ele	claude	ל֑וֹ “a ele”; tinha “a”
+JOB 37:19	6	נַ֝עֲרֹ֗ךְ	ordenaremos	claude	נַ֝עֲרֹ֗ךְ “ordenaremos”; tinha “propor”
+JOB 37:19	7	מִ/פְּנֵי	por-causa-de	claude	מִפְּנֵי “por causa de”; tinha “por-causa”
+JOB 37:19	8	חֹֽשֶׁךְ	as-trevas	claude	חֹֽשֶׁךְ “as trevas”; tinha “nossas-trevas”
+JOB 37:20	1	הַֽ/יְסֻפַּר	acaso-será-contado	claude	הַֽיְסֻפַּר “acaso será contado”; tinha “contado”
+JOB 37:20	4	אֲדַבֵּ֑ר	falo	claude	אֲדַבֵּ֑ר “falo”; tinha “falar”
+JOB 37:20	5	אִֽם	ou	claude	אִֽם “ou”; tinha “se”
+JOB 37:20	6	אָ֥מַר	diria	claude	אָ֥מַר “diria”; tinha “acaso-falaria”
+JOB 37:20	7	אִ֝֗ישׁ	um-homem	claude	אִ֝֗ישׁ “um homem”; tinha “alguém”
+JOB 37:20	8	כִּ֣י	que	claude	כִּ֣י “que”; tinha “porque”
+JOB 37:20	9	יְבֻלָּֽע	seja-devorado	claude	יְבֻלָּֽע “seja devorado”; tinha “devorado”
+JOB 37:21	3	רָ֤אוּ	veem	claude	רָ֤אוּ “veem”; tinha “olhar”
+JOB 37:21	4	א֗וֹר	a-luz	claude	א֗וֹר “a luz”; tinha “sol”
+JOB 37:21	5	בָּהִ֣יר	brilhante	claude	בָּהִ֣יר “brilhante”; tinha “brilha”
+JOB 37:21	6	ה֭וּא	ela	claude	ה֭וּא “ela”; tinha “ele”
+JOB 37:21	9	עָ֝בְרָ֗ה	passou	claude	עָ֝בְרָ֗ה “passou”; tinha “passa”
+JOB 37:22	2	זָהָ֣ב	ouro	claude	זָהָ֣ב “ouro”; tinha “dourado”
+JOB 37:22	3	יֶֽאֱתֶ֑ה	vem	claude	יֶֽאֱתֶ֑ה “vem”; tinha “esplendor”
+JOB 37:23	3	מְ֭צָאנֻ/הוּ	o-achamos	claude	מְ֭צָאנֻהוּ “o achamos”; tinha “alcançar”
+JOB 37:23	6	וּ/מִשְׁפָּ֥ט	e-juízo	claude	וּמִשְׁפָּ֥ט “e juízo”; tinha “juízo”
+JOB 37:24	2	יְרֵא֣וּ/הוּ	o-temem	claude	יְרֵא֣וּהוּ “o temem”; tinha “temem-ele”
+JOB 37:24	3	אֲנָשִׁ֑ים	os-homens	claude	אֲנָשִׁ֑ים “os homens”; tinha “pessoas”
+JOB 37:24	5	יִ֝רְאֶ֗ה	vê	claude	יִ֝רְאֶ֗ה “vê”; tinha “atenção”
+JOB 37:24	6	כָּל	a-todos	claude	כָּל “a todos”; tinha “acham”
+JOB 37:24	7	חַכְמֵי	os-sábios-de	claude	חַכְמֵי “os sábios de”; tinha “sábios”
+JOB 38:6	9	פִּנָּתָֽ/הּ	sua-esquina	claude	פִּנָּתָֽהּ “sua esquina”; tinha “angular”
+JOB 38:8	1	וַ/יָּ֣סֶךְ	e-quem-encerrou	claude	וַיָּ֣סֶךְ “e quem encerrou”; tinha “ou-quem-encerrou”
+JOB 38:8	3	יָ֑ם	o-mar	claude	יָ֑ם “o mar”; tinha “mar”
+JOB 38:8	4	בְּ֝/גִיח֗/וֹ	quando-irrompeu	claude	בְּ֝גִיח֗וֹ “quando irrompeu”; tinha “quando-transbordou”
+JOB 38:8	6	יֵצֵֽא	saiu	claude	יֵצֵֽא “saiu”; tinha “saindo”
+JOB 38:10	1	וָ/אֶשְׁבֹּ֣ר	e-tracei	claude	וָאֶשְׁבֹּ֣ר “e tracei”; tinha “quando-eu-passei”
+JOB 38:10	3	חֻקִּ֑/י	meu-limite	claude	חֻקִּ֑י “meu limite”; tinha “meu-decreto”
+JOB 38:10	4	וָֽ֝/אָשִׂ֗ים	e-pus	claude	וָֽ֝אָשִׂ֗ים “e pus”; tinha “e-lhe-pus”
+JOB 38:10	5	בְּרִ֣יחַ	ferrolho	claude	בְּרִ֣יחַ “ferrolho”; tinha “ferrolhos”
+JOB 38:10	6	וּ/דְלָתָֽיִם	e-portas	claude	וּדְלָתָֽיִם “e portas”; tinha “portas-e”
+JOB 38:20	1	כִּ֣י	para-que	claude	כִּ֣י “para que”; tinha “porque”
+JOB 38:20	2	תִ֭קָּחֶ/נּוּ	o-leves	claude	תִ֭קָּחֶנּוּ “o leves”; tinha “tragas-seus”
+JOB 38:20	4	גְּבוּל֑/וֹ	seu-limite	claude	גְּבוּל֑וֹ “seu limite”; tinha “limites”
+JOB 38:20	5	וְ/כִֽי	e-para-que	claude	וְכִֽי “e para que”; tinha “e-quando”
+JOB 38:20	7	נְתִיב֥וֹת	as-veredas-de	claude	נְתִיב֥וֹת “as veredas de”; tinha “caminhos”
+JOB 38:32	1	הֲ/תֹצִ֣יא	acaso-farás-sair	claude	הֲתֹצִ֣יא “acaso farás sair”; tinha “podes-tu-trazer”
+JOB 38:32	4	וְ֝/עַ֗יִשׁ	e-a-Ursa	claude	וְ֝עַ֗יִשׁ “e a Ursa”; tinha “Ursa”
+JOB 38:32	6	בָּנֶ֥י/הָ	seus-filhos	claude	בָּנֶ֥יהָ “seus filhos”; tinha “filhos”
+JOB 38:32	7	תַנְחֵֽ/ם	os-guiarás	claude	תַנְחֵֽם “os guiarás”; tinha “guiar”
+JOB 38:33	2	חֻקּ֣וֹת	as-leis-de	claude	חֻקּ֣וֹת “as leis de”; tinha “ordenanças”
+JOB 38:33	3	שָׁמָ֑יִם	os-céus	claude	שָׁמָ֑יִם “os céus”; tinha “céus”
+JOB 38:33	5	תָּשִׂ֖ים	porás	claude	תָּשִׂ֖ים “porás”; tinha “podes”
+JOB 38:33	6	מִשְׁטָר֣/וֹ	seu-domínio	claude	מִשְׁטָר֣וֹ “seu domínio”; tinha “domínio-deles”
+JOB 38:33	7	בָ/אָֽרֶץ	na-terra	claude	בָאָֽרֶץ “na terra”; tinha “sobre-a-terra”
+JOB 38:35	1	הַֽ/תְשַׁלַּ֣ח	acaso-enviarás	claude	הַֽתְשַׁלַּ֣ח “acaso enviarás”; tinha “mandar”
+JOB 38:35	3	וְ/יֵלֵ֑כוּ	e-irão	claude	וְיֵלֵ֑כוּ “e irão”; tinha “para-que-saiam”
+JOB 39:6	1	אֲשֶׁר	o-qual	claude	אֲשֶׁר “o qual”; tinha “qual”
+JOB 39:6	3	עֲרָבָ֣ה	o-deserto	claude	עֲרָבָ֣ה “o deserto”; tinha “terra”
+JOB 39:6	4	בֵית֑/וֹ	sua-casa	claude	בֵית֑וֹ “sua casa”; tinha “casa”
+JOB 39:10	2	רֵ֭ים	o-boi-selvagem	claude	רֵ֭ים “o boi selvagem”; tinha “boi-selvagem”
+JOB 39:10	3	בְּ/תֶ֣לֶם	no-sulco	claude	בְּתֶ֣לֶם “no sulco”; tinha “com-sua-corda”
+JOB 39:10	4	עֲבֹת֑/וֹ	com-sua-corda	claude	עֲבֹת֑וֹ “com sua corda”; tinha “arado”
+JOB 39:10	7	עֲמָקִ֣ים	os-vales	claude	עֲמָקִ֣ים “os vales”; tinha “campos”
+JOB 39:15	3	רֶ֣גֶל	o-pé	claude	רֶ֣גֶל “o pé”; tinha “pés”
+JOB 39:15	4	תְּזוּרֶ֑/הָ	os-pisa	claude	תְּזוּרֶ֑הָ “os pisa”; tinha “pisar”
+JOB 39:15	7	תְּדוּשֶֽׁ/הָ	os-esmaga	claude	תְּדוּשֶֽׁהָ “os esmaga”; tinha “esmagar”
+JOB 39:18	1	כָּ֭/עֵת	quando	claude	כָּ֭עֵת “quando”; tinha “quando-se-levanta”
+JOB 39:18	2	בַּ/מָּר֣וֹם	ao-alto	claude	בַּמָּר֣וֹם “ao alto”; tinha “no-alto”
+JOB 39:18	3	תַּמְרִ֑יא	se-levanta	claude	תַּמְרִ֑יא “se levanta”; tinha “correr”
+JOB 39:20	1	הְֽ֭/תַרְעִישֶׁ/נּוּ	acaso-o-fazes-saltar	claude	הְֽ֭תַרְעִישֶׁנּוּ “acaso o fazes saltar”; tinha “o-espantar”
+JOB 39:20	3	ה֖וֹד	a-glória-de	claude	ה֖וֹד “a glória de”; tinha “sopro”
+JOB 39:20	4	נַחְר֣/וֹ	seu-resfolegar	claude	נַחְר֣וֹ “seu resfolegar”; tinha “narinas”
+JOB 40:17	1	יַחְפֹּ֣ץ	move	claude	יַחְפֹּ֣ץ “move”; tinha “torna”
+JOB 40:17	2	זְנָב֣/וֹ	sua-cauda	claude	זְנָב֣וֹ “sua cauda”; tinha “cauda-dura”
+JOB 40:20	2	ב֭וּל	o-produto-de	claude	ב֭וּל “o produto de”; tinha “produzem”
+JOB 40:20	4	יִשְׂאוּ	trazem	claude	יִשְׂאוּ “trazem”; tinha “pasto”
+JOB 40:20	5	ל֑/וֹ	a-ele	claude	ל֑וֹ “a ele”; tinha “por”
+JOB 40:20	6	וְֽ/כָל	e-todos	claude	וְֽכָל “e todos”; tinha “isso-todos”
+JOB 40:22	1	יְסֻכֻּ֣/הוּ	o-cobrem	claude	יְסֻכֻּ֣הוּ “o cobrem”; tinha “árvores”
+JOB 40:22	2	צֶאֱלִ֣ים	os-lótus	claude	צֶאֱלִ֣ים “os lótus”; tinha “sombrias”
+JOB 40:22	3	צִֽלֲל֑/וֹ	com-sua-sombra	claude	צִֽלֲל֑וֹ “com sua sombra”; tinha “sua-sombra”
+JOB 40:24	1	בְּ/עֵינָ֥י/ו	diante-de-seus-olhos	claude	בְּעֵינָ֥יו “diante de seus olhos”; tinha “seus-olhos”
+JOB 40:24	2	יִקָּחֶ֑/נּוּ	o-tomará	claude	יִקָּחֶ֑נּוּ “o tomará”; tinha “capturá-lo”
+JOB 41:4	1	הֲ/יִכְרֹ֣ת	acaso-fará	claude	הֲיִכְרֹ֣ת “acaso fará”; tinha “acaso-farás”
+JOB 41:4	4	תִּ֝קָּחֶ֗/נּוּ	o-tomarás	claude	תִּ֝קָּחֶ֗נּוּ “o tomarás”; tinha “tomes”
+JOB 41:9	2	תֹּחַלְתּ֥/וֹ	sua-esperança	claude	תֹּחַלְתּ֥וֹ “sua esperança”; tinha “esperança”
+JOB 41:9	3	נִכְזָ֑בָה	é-enganosa	claude	נִכְזָ֑בָה “é enganosa”; tinha “vencê-falhará”
+JOB 41:9	6	מַרְאָ֣י/ו	sua-vista	claude	מַרְאָ֣יו “sua vista”; tinha “vê-lo”
+JOB 41:9	7	יֻטָֽל	é-derrubado	claude	יֻטָֽל “é derrubado”; tinha “derrubado”
+JOB 41:10	1	לֹֽא	ninguém	claude	לֹֽא “ninguém”; tinha “não”
+JOB 41:10	2	אַ֭כְזָר	tão-feroz	claude	אַ֭כְזָר “tão feroz”; tinha “ousado”
+JOB 41:10	4	יְעוּרֶ֑/נּוּ	o-desperte	claude	יְעוּרֶ֑נּוּ “o desperte”; tinha “desperte”
+JOB 41:10	5	וּ/מִ֥י	e-quem	claude	וּמִ֥י “e quem”; tinha “quem-pois”
+JOB 41:10	7	לְ/פָנַ֥/י	diante-de-mim	claude	לְפָנַ֥י “diante de mim”; tinha “para-diante-meu”
+JOB 41:10	8	יִתְיַצָּֽב	se-porá	claude	יִתְיַצָּֽב “se porá”; tinha “opor”
+JOB 41:13	3	פְּנֵ֣י	a-face-de	claude	פְּנֵ֣י “a face de”; tinha “rosto”
+JOB 41:13	4	לְבוּשׁ֑/וֹ	sua-veste	claude	לְבוּשׁ֑וֹ “sua veste”; tinha “vestimenta”
+JOB 41:13	5	בְּ/כֶ֥פֶל	em-dobra-de	claude	בְּכֶ֥פֶל “em dobra de”; tinha “superficial”
+JOB 41:13	6	רִ֝סְנ֗/וֹ	seu-freio	claude	רִ֝סְנ֗וֹ “seu freio”; tinha “penetrar-sua-couraça”
+JOB 41:13	8	יָבֽוֹא	entrará	claude	יָבֽוֹא “entrará”; tinha “dupla”
+JOB 41:20	4	כְּ/ד֖וּד	como-panela	claude	כְּד֖וּד “como panela”; tinha “panela”
+JOB 41:20	6	וְ/אַגְמֹֽן	e-junco	claude	וְאַגְמֹֽן “e junco”; tinha “caldeirão”
+JOB 41:23	2	בְשָׂר֣/וֹ	sua-carne	claude	בְשָׂר֣וֹ “sua carne”; tinha “carne”
+JOB 41:23	3	דָבֵ֑קוּ	aderem	claude	דָבֵ֑קוּ “aderem”; tinha “está”
+JOB 41:23	4	יָצ֥וּק	fundido	claude	יָצ֥וּק “fundido”; tinha “firme”
+JOB 41:25	1	מִ֭/שֵּׂת/וֹ	de-seu-levantar	claude	מִ֭שֵּׂתוֹ “de seu levantar”; tinha “quando-ele-se”
+JOB 41:25	2	יָג֣וּרוּ	temem	claude	יָג֣וּרוּ “temem”; tinha “fortes”
+JOB 41:25	3	אֵלִ֑ים	os-poderosos	claude	אֵלִ֑ים “os poderosos”; tinha “tremem”
+JOB 41:25	4	מִ֝/שְּׁבָרִ֗ים	pelos-quebrantos	claude	מִ֝שְּׁבָרִ֗ים “pelos quebrantos”; tinha “abalos-se”
+JOB 41:25	5	יִתְחַטָּֽאוּ	se-purificam	claude	יִתְחַטָּֽאוּ “se purificam”; tinha “recuam”
+JOB 41:26	1	מַשִּׂיגֵ֣/הוּ	quem-o-alcança-com	claude	מַשִּׂיגֵ֣הוּ “quem o alcança com”; tinha “alguém-lhe”
+JOB 41:26	4	תָק֑וּם	subsiste	claude	תָק֑וּם “subsiste”; tinha “poderá”
+JOB 41:26	5	חֲנִ֖ית	lança	claude	חֲנִ֖ית “lança”; tinha “prevalecer”
+JOB 41:26	6	מַסָּ֣ע	dardo	claude	מַסָּ֣ע “dardo”; tinha “arremessar”
+JOB 41:26	7	וְ/שִׁרְיָֽה	e-flecha	claude	וְשִׁרְיָֽה “e flecha”; tinha “nem-dardo”
+JOB 41:28	2	יַבְרִיחֶ֥/נּוּ	o-faz-fugir	claude	יַבְרִיחֶ֥נּוּ “o faz fugir”; tinha “fugir”
+JOB 41:28	3	בֶן	o-filho-de	claude	בֶן “o filho de”; tinha “filho”
+JOB 41:28	4	קָ֑שֶׁת	o-arco	claude	קָ֑שֶׁת “o arco”; tinha “flecha”
+JOB 41:28	5	לְ֝/קַ֗שׁ	em-palha	claude	לְ֝קַ֗שׁ “em palha”; tinha “sobras”
+JOB 41:28	6	נֶהְפְּכוּ	se-tornam	claude	נֶהְפְּכוּ “se tornam”; tinha “se-converterá”
+JOB 41:28	7	ל֥/וֹ	para-ele	claude	ל֥וֹ “para ele”; tinha “para”
+JOB 41:28	8	אַבְנֵי	as-pedras-de	claude	אַבְנֵי “as pedras de”; tinha “pedras”
+JOB 41:33	3	עָפָ֥ר	o-pó	claude	עָפָ֥ר “o pó”; tinha “terra”
+JOB 41:33	4	מָשְׁל֑/וֹ	seu-semelhante	claude	מָשְׁל֑וֹ “seu semelhante”; tinha “comparar”
+JOB 41:33	5	הֶ֝/עָשׂ֗וּ	o-feito	claude	הֶ֝עָשׂ֗וּ “o feito”; tinha “foi-feito”
+JOB 41:33	6	לִ/בְלִי	para-sem	claude	לִבְלִי “para sem”; tinha “para-não”
+JOB 41:33	7	חָֽת	medo	claude	חָֽת “medo”; tinha “temer”
+PSA 1:1	7	רְשָׁ֫עִ֥ים	os-perversos	claude	רְשָׁ֫עִ֥ים “os perversos”; tinha “maus”
+PSA 1:5	5	רְ֭שָׁעִים	os-perversos	claude	רְ֭שָׁעִים “os perversos”; tinha “maus”
+PSA 4:4	1	רִגְז֗וּ	perturbai-vos	claude	רִגְז֗וּ “perturbai vos”; tinha “estiverdes-perturbados”
+PSA 4:4	2	וְֽ/אַל	e-não	claude	וְֽאַל “e não”; tinha “perturbados-não”
+PSA 4:4	4	אִמְר֣וּ	falai	claude	אִמְר֣וּ “falai”; tinha “meditai”
+PSA 4:4	7	מִשְׁכַּבְ/כֶ֗ם	vosso-leito	claude	מִשְׁכַּבְכֶ֗ם “vosso leito”; tinha “vossa-cama”
+PSA 4:4	8	וְ/דֹ֣מּוּ	e-calai-vos	claude	וְדֹ֣מּוּ “e calai vos”; tinha “e-fazei-silêncio”
+PSA 4:7	4	מֵ/עֵ֬ת	mais-que-no-tempo-em-que	claude	מֵעֵ֬ת “mais que no tempo em que”; tinha “quando”
+PSA 4:7	5	דְּגָנָ֖/ם	seu-trigo	claude	דְּגָנָ֖ם “seu trigo”; tinha “trigo”
+PSA 4:7	6	וְ/תִֽירוֹשָׁ֣/ם	e-seu-vinho	claude	וְתִֽירוֹשָׁ֣ם “e seu vinho”; tinha “e-o-vinho-deles”
+PSA 4:7	7	רָֽבּוּ	se-multiplicaram	claude	רָֽבּוּ “se multiplicaram”; tinha “multiplicaram”
+PSA 7:9	1	יִגְמָר	acabe	claude	יִגְמָר “acabe”; tinha “fim”
+PSA 7:9	2	נָ֬א	por-favor	claude	נָ֬א “por favor”; tinha “agora”
+PSA 7:9	3	רַ֨ע	a-maldade-de	claude	רַ֨ע “a maldade de”; tinha “maldade”
+PSA 7:9	4	רְשָׁעִים֮	os-perversos	claude	רְשָׁעִים֮ “os perversos”; tinha “maus”
+PSA 7:9	5	וּ/תְכוֹנֵ֪ן	e-estabelece	claude	וּתְכוֹנֵ֪ן “e estabelece”; tinha “mas-firma”
+PSA 7:9	6	צַ֫דִּ֥יק	o-justo	claude	צַ֫דִּ֥יק “o justo”; tinha “justo”
+PSA 7:9	7	וּ/בֹחֵ֣ן	e-que-provas	claude	וּבֹחֵ֣ן “e que provas”; tinha “que-provas”
+PSA 7:9	9	וּ/כְלָי֗וֹת	e-os-rins	claude	וּכְלָי֗וֹת “e os rins”; tinha “e-os-sentimentos”
+PSA 7:12	1	אִם	se	claude	אִם “se”; tinha “que”
+PSA 7:12	3	יָ֭שׁוּב	se-converter	claude	יָ֭שׁוּב “se converter”; tinha “voltará”
+PSA 7:12	4	חַרְבּ֣/וֹ	sua-espada	claude	חַרְבּ֣וֹ “sua espada”; tinha “espada”
+PSA 7:12	5	יִלְט֑וֹשׁ	afiará	claude	יִלְט֑וֹשׁ “afiará”; tinha “arrepende”
+PSA 7:12	6	קַשְׁתּ֥/וֹ	seu-arco	claude	קַשְׁתּ֥וֹ “seu arco”; tinha “arco”
+PSA 7:12	8	וַֽ/יְכוֹנְנֶֽ/הָ	e-o-preparou	claude	וַֽיְכוֹנְנֶֽהָ “e o preparou”; tinha “e-preparou-seu”
+PSA 8:5	3	מֵ/אֱלֹהִ֑ים	que-Deus	claude	מֵאֱלֹהִ֑ים “que Deus”; tinha “que-os-anjos”
+PSA 9:4	3	מִשְׁפָּטִ֣/י	meu-juízo	claude	מִשְׁפָּטִ֣י “meu juízo”; tinha “conforme-meu-direito”
+PSA 9:4	4	וְ/דִינִ֑/י	e-minha-causa	claude	וְדִינִ֑י “e minha causa”; tinha “direito-e-minha-causa”
+PSA 9:4	6	לְ֝/כִסֵּ֗א	no-trono	claude	לְ֝כִסֵּ֗א “no trono”; tinha “no-teu-tribunal”
+PSA 9:4	7	שׁוֹפֵ֥ט	juiz-de	claude	שׁוֹפֵ֥ט “juiz de”; tinha “julgaste”
+PSA 9:6	1	הָֽ/אוֹיֵ֨ב	o-inimigo	claude	הָֽאוֹיֵ֨ב “o inimigo”; tinha “ao-inimigo”
+PSA 9:6	2	תַּ֥מּוּ	acabaram-se	claude	תַּ֥מּוּ “acabaram se”; tinha “acabaram”
+PSA 9:6	3	חֳרָב֗וֹת	em-ruínas	claude	חֳרָב֗וֹת “em ruínas”; tinha “destruições”
+PSA 9:6	5	וְ/עָרִ֥ים	e-cidades	claude	וְעָרִ֥ים “e cidades”; tinha “cidades”
+PSA 9:6	6	נָתַ֑שְׁתָּ	arrancaste	claude	נָתַ֑שְׁתָּ “arrancaste”; tinha “já”
+PSA 9:6	8	זִכְרָ֣/ם	sua-memória	claude	זִכְרָ֣ם “sua memória”; tinha “memória-com”
+PSA 9:16	5	בְּ/פֹ֣עַל	na-obra-de	claude	בְּפֹ֣עַל “na obra de”; tinha “pelas-obras”
+PSA 9:16	6	כַּ֭פָּי/ו	suas-mãos	claude	כַּ֭פָּיו “suas mãos”; tinha “mãos”
+PSA 9:16	7	נוֹקֵ֣שׁ	foi-enlaçado	claude	נוֹקֵ֣שׁ “foi enlaçado”; tinha “Higaiom”
+PSA 9:16	9	הִגָּי֥וֹן	Higaiom	claude	הִגָּי֥וֹן “Higaiom”; tinha “enlaçado”
+PSA 9:18	9	לָ/עַֽד	para-sempre	claude	לָעַֽד “para sempre”; tinha “eternamente”
+PSA 9:20	1	שִׁ֘יתָ֤/ה	põe	claude	שִׁ֘יתָ֤ה “põe”; tinha “põe-neles”
+PSA 9:20	3	מוֹרָ֗ה	temor	claude	מוֹרָ֗ה “temor”; tinha “medo”
+PSA 9:20	4	לָ֫/הֶ֥ם	a-eles	claude	לָ֫הֶ֥ם “a eles”; tinha “para-eles”
+PSA 9:20	7	אֱנ֖וֹשׁ	homens	claude	אֱנ֖וֹשׁ “homens”; tinha “meros”
+PSA 12:6	1	אִֽמֲר֣וֹת	as-palavras-de	claude	אִֽמֲר֣וֹת “as palavras de”; tinha “palavras”
+PSA 12:6	7	בַּ/עֲלִ֣יל	em-cadinho	claude	בַּעֲלִ֣יל “em cadinho”; tinha “em-forno”
+PSA 12:6	8	לָ/אָ֑רֶץ	de-terra	claude	לָאָ֑רֶץ “de terra”; tinha “de-barro”
+PSA 12:7	3	תִּשְׁמְרֵ֑/ם	os-guardarás	claude	תִּשְׁמְרֵ֑ם “os guardarás”; tinha “guardarás”
+PSA 12:7	4	תִּצְּרֶ֓/נּוּ	o-preservarás	claude	תִּצְּרֶ֓נּוּ “o preservarás”; tinha “guarda-o”
+PSA 12:7	6	הַ/דּ֖וֹר	a-geração	claude	הַדּ֖וֹר “a geração”; tinha “desta-geração”
+PSA 12:7	7	ז֣וּ	esta	claude	ז֣וּ “esta”; tinha “livrarás”
+PSA 12:8	1	סָבִ֗יב	ao-redor	claude	סָבִ֗יב “ao redor”; tinha “redor”
+PSA 12:8	2	רְשָׁעִ֥ים	os-perversos	claude	רְשָׁעִ֥ים “os perversos”; tinha “maus”
+PSA 12:8	4	כְּ/רֻ֥ם	quando-se-exalta	claude	כְּרֻ֥ם “quando se exalta”; tinha “exaltados”
+PSA 12:8	5	זֻ֝לּ֗וּת	a-vileza	claude	זֻ֝לּ֗וּת “a vileza”; tinha “vis”
+PSA 12:8	6	לִ/בְנֵ֥י	entre-os-filhos-de	claude	לִבְנֵ֥י “entre os filhos de”; tinha “dos-filhos”
+PSA 14:1	11	אֵ֣ין	ninguém	claude	אֵ֣ין “ninguém”; tinha “não”
+PSA 14:3	5	אֵ֤ין	ninguém	claude	אֵ֤ין “ninguém”; tinha “não”
+PSA 16:4	2	עַצְּבוֹתָ/ם֮	suas-dores	claude	עַצְּבוֹתָם֮ “suas dores”; tinha “dores”
+PSA 16:4	3	אַחֵ֪ר	outro	claude	אַחֵ֪ר “outro”; tinha “outros”
+PSA 16:4	4	מָ֫הָ֥רוּ	se-apressam	claude	מָ֫הָ֥רוּ “se apressam”; tinha “apressam”
+PSA 16:4	6	אַסִּ֣יךְ	derramarei	claude	אַסִּ֣יךְ “derramarei”; tinha “oferecerei”
+PSA 16:4	8	מִ/דָּ֑ם	de-sangue	claude	מִדָּ֑ם “de sangue”; tinha “de-derramamento-de-sangue”
