@@ -29107,3 +29107,158 @@ DEU 9:28	19	לַ/הֲמִתָ֥/ם	para-os-matar	claude	לַהֲמִתָם “pa
 DEU 10:18	3	יָת֖וֹם	ao-órfão	claude	יָתוֹם “órfão”; tinha “órfão”
 DEU 10:18	6	גֵּ֔ר	o-estrangeiro	claude	גֵּר “estrangeiro”; tinha “estrangeiro”
 DEU 10:18	7	לָ֥/תֶת	para-dar	claude	לָתֶת “para dar”; tinha “dando”
+DEU 11:1	1	וְ/אָ֣הַבְתָּ֔	e-amarás	claude	וְאָהַבְתָּ “e amarás”; tinha “amarás-pois”
+DEU 11:1	6	מִשְׁמַרְתּ֗/וֹ	sua-guarda	claude	מִשְׁמַרְתּוֹ “sua guarda”; tinha “sua-ordenança-seus”
+DEU 11:1	7	וְ/חֻקֹּתָ֧י/ו	e-seus-estatutos	claude	וְחֻקֹּתָיו “e seus estatutos”; tinha “e-estatutos”
+DEU 11:1	8	וּ/מִשְׁפָּטָ֛י/ו	e-seus-juízos	claude	וּמִשְׁפָּטָיו “e seus juízos”; tinha “e-seus-regulamentos”
+DEU 11:2	1	וִֽ/ידַעְתֶּם֮	e-conhecei	claude	וִידַעְתֶּם “e conhecereis”; tinha “e-compreendei”
+DEU 11:2	3	כִּ֣י	pois	claude	כִּי “pois”; tinha “porque”
+DEU 11:2	9	יָדְעוּ֙	conheceram	claude	יָדְעוּ “conheceram”; tinha “souberam”
+DEU 11:2	11	לֹא	não	claude	לֹא “não”; tinha “nem”
+DEU 11:2	14	מוּסַ֖ר	a-disciplina	claude	מוּסַר “disciplina de”; tinha “castigo”
+DEU 11:2	15	יְהוָ֣ה	do-SENHOR	claude	יְהוָה “SENHOR”; tinha “SENHOR”
+DEU 11:2	18	גָּדְל֕/וֹ	sua-grandeza	claude	גָּדְלוֹ “sua grandeza”; tinha “grandeza-sua”
+DEU 11:2	20	יָד/וֹ֙	sua-mão	claude	יָדוֹ “sua mão”; tinha “mão”
+DEU 11:6	3	לְ/דָתָ֣ן	a-Datã	claude	לְדָתָן “a Datã”; tinha “com-Datã”
+DEU 11:6	4	וְ/לַ/אֲבִירָ֗ם	e-a-Abirão	claude	וְלַאֲבִירָם “e a Abirão”; tinha “e-Abirão”
+DEU 11:6	6	אֱלִיאָב֮	de-Eliabe	claude	אֱלִיאָב “Eliabe”; tinha “Eliabe”
+DEU 11:6	8	רְאוּבֵן֒	de-Rúben	claude	רְאוּבֵן “Rúben”; tinha “Rúben”
+DEU 11:6	9	אֲשֶׁ֨ר	como	claude	אֲשֶׁר “que”; tinha “que”
+DEU 11:6	14	וַ/תִּבְלָעֵ֥/ם	e-os-tragou	claude	וַתִּבְלָעֵם “e os tragou”; tinha “e-tragou”
+DEU 11:6	21	הַ/יְקוּם֙	o-ser-vivente	claude	הַיְקוּם “o ser vivente”; tinha “a-riqueza”
+DEU 11:6	23	בְּ/רַגְלֵי/הֶ֔ם	os-seguia	claude	בְּרַגְלֵיהֶם “em seus pés”; tinha “em-pé”
+DEU 11:6	24	בְּ/קֶ֖רֶב	no-meio	claude	בְּקֶרֶב “no meio de”; tinha “em-meio”
+DEU 11:6	25	כָּל	de-todo	claude	כָּל “todo”; tinha “todo”
+DEU 11:8	1	וּ/שְׁמַרְתֶּם֙	e-guardareis	claude	וּשְׁמַרְתֶּם “e guardareis”; tinha “guardai-pois”
+DEU 11:8	3	כָּל	todo	claude	כָּל “todo”; tinha “todos”
+DEU 11:8	4	הַ/מִּצְוָ֔ה	o-mandamento	claude	הַמִּצְוָה “o mandamento”; tinha “os-mandamentos”
+DEU 11:8	7	מְצַוְּ/ךָ֖	te-ordeno	claude	מְצַוְּךָ “te ordenando”; tinha “vos-prescrevo”
+DEU 11:8	9	לְמַ֣עַן	para-que	claude	לְמַעַן “para que”; tinha “para”
+DEU 11:8	10	תֶּחֶזְק֗וּ	sejais-fortes	claude	תֶּחֶזְקוּ “sejais fortes”; tinha “que-sejais-esforçados”
+DEU 11:8	17	עֹבְרִ֥ים	passando	claude	עֹבְרִים “passando”; tinha “passais”
+DEU 11:8	18	שָׁ֖מָּ/ה	para-lá	claude	שָׁמָּה “para lá”; tinha “ali-para”
+DEU 11:16	1	הִשָּֽׁמְר֣וּ	guardai-vos	claude	הִשָּׁמְרוּ “guardai-vos”; tinha “guardai”
+DEU 11:16	2	לָ/כֶ֔ם	a-vós	claude	לָכֶם “a vós”; tinha “para-vós”
+DEU 11:16	3	פֶּ֥ן	para-que-não	claude	פֶּן “para que não”; tinha “não”
+DEU 11:16	4	יִפְתֶּ֖ה	se-engane	claude	יִפְתֶּה “se engane”; tinha “engane”
+DEU 11:16	5	לְבַבְ/כֶ֑ם	vosso-coração	claude	לְבַבְכֶם “vosso coração”; tinha “coração”
+DEU 11:16	6	וְ/סַרְתֶּ֗ם	e-vos-desvieis	claude	וְסַרְתֶּם “e vos desvieis”; tinha “e-desvieis”
+DEU 11:16	9	אֲחֵרִ֔ים	outros	claude	אֲחֵרִים “outros”; tinha “alheios”
+DEU 11:16	10	וְ/הִשְׁתַּחֲוִיתֶ֖ם	e-vos-prostreis	claude	וְהִשְׁתַּחֲוִיתֶם “e vos prostreis”; tinha “e-vos-inclineis”
+DEU 11:19	2	אֹתָ֛/ם	a-elas	claude	אֹתָם “elas”; tinha “os”
+DEU 11:19	6	בָּ֑/ם	delas	claude	בָּם “nelas”; tinha “neles”
+DEU 11:19	7	בְּ/שִׁבְתְּ/ךָ֤	em-teu-sentar	claude	בְּשִׁבְתְּךָ “em teu sentar”; tinha “sentado-tua”
+DEU 11:19	8	בְּ/בֵיתֶ֨/ךָ֙	em-tua-casa	claude	בְּבֵיתֶךָ “em tua casa”; tinha “em-casa”
+DEU 11:19	9	וּ/בְ/לֶכְתְּ/ךָ֣	e-em-teu-andar	claude	וּבְלֶכְתְּךָ “e em teu andar”; tinha “ou-andando”
+DEU 11:19	10	בַ/דֶּ֔רֶךְ	no-caminho	claude	בַדֶּרֶךְ “no caminho”; tinha “pelo-caminho”
+DEU 11:19	11	וּֽ/בְ/שָׁכְבְּ/ךָ֖	e-em-teu-deitar	claude	וּבְשָׁכְבְּךָ “e em teu deitar”; tinha “quando-te-deites”
+DEU 11:19	12	וּ/בְ/קוּמֶֽ/ךָ	e-em-teu-levantar	claude	וּבְקוּמֶךָ “e em teu levantar”; tinha “e-quando-te-levantes”
+DEU 11:25	2	יִתְיַצֵּ֥ב	se-manterá-de-pé	claude	יִתְיַצֵּב “se manterá de pé”; tinha “resistirá”
+DEU 11:25	3	אִ֖ישׁ	homem	claude	אִישׁ “homem”; tinha “cada”
+DEU 11:25	5	פַּחְדְּ/כֶ֨ם	o-pavor-de-vós	claude	פַּחְדְּכֶם “vosso pavor”; tinha “medo”
+DEU 11:25	6	וּ/מֽוֹרַאֲ/כֶ֜ם	e-o-temor-de-vós	claude	וּמוֹרַאֲכֶם “e vosso temor”; tinha “e-temor-de-vós”
+DEU 11:25	11	פְּנֵ֤י	a-face	claude	פְּנֵי “face de”; tinha “face”
+DEU 11:25	12	כָל	de-toda	claude	כָל “toda”; tinha “toda”
+DEU 11:25	18	דִּבֶּ֥ר	falou	claude	דִּבֶּר “falou”; tinha “disse”
+DEU 11:25	19	לָ/כֶֽם	a-vós	claude	לָכֶם “a vós”; tinha “para-vós”
+DEU 11:26	1	רְאֵ֗ה	vede	claude	רְאֵה “vê”; tinha “eis”
+DEU 11:26	6	בְּרָכָ֖ה	a-bênção	claude	בְּרָכָה “bênção”; tinha “bênção”
+DEU 11:29	2	כִּ֤י	quando	claude	כִּי “quando”; tinha “que”
+DEU 11:29	3	יְבִֽיאֲ/ךָ֙	te-introduzir	claude	יְבִיאֲךָ “te introduzir”; tinha “quando”
+DEU 11:29	5	אֱלֹהֶ֔י/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “Deus-te-introduzir”
+DEU 11:29	6	אֶל	na	claude	אֶל “para”; tinha “a”
+DEU 11:29	8	אֲשֶׁר	para-a-qual	claude	אֲשֶׁר “que”; tinha “qual”
+DEU 11:29	10	בָא	entrando	claude	בָא “entrando”; tinha “vem”
+DEU 11:29	11	שָׁ֖מָּ/ה	lá	claude	שָׁמָּה “para lá”; tinha “ali-para”
+DEU 11:29	13	וְ/נָתַתָּ֤ה	então-porás	claude	וְנָתַתָּה “e darás”; tinha “porás”
+DEU 11:29	17	הַ֣ר	o-monte	claude	הַר “monte de”; tinha “monte”
+DEU 11:29	22	הַ֥ר	o-monte	claude	הַר “monte de”; tinha “monte”
+DEU 11:32	1	וּ/שְׁמַרְתֶּ֣ם	e-guardareis	claude	וּשְׁמַרְתֶּם “e guardareis”; tinha “cuidareis-pois”
+DEU 11:32	2	לַ/עֲשׂ֔וֹת	para-fazer	claude	לַעֲשׂוֹת “para fazer”; tinha “pôr-por-obra”
+DEU 11:32	7	הַ/מִּשְׁפָּטִ֑ים	os-juízos	claude	הַמִּשְׁפָּטִים “os juízos”; tinha “direitos”
+DEU 11:32	10	נֹתֵ֥ן	ponho	claude	נֹתֵן “dando”; tinha “apresento”
+DEU 12:2	1	אַבֵּ֣ד	destruindo	claude	אַבֵּד “destruir”; tinha “destruireis”
+DEU 12:2	2	תְּ֠אַבְּדוּ/ן	destruireis	claude	תְּאַבְּדוּן “destruireis”; tinha “inteiramente”
+DEU 12:2	6	אֲשֶׁ֧ר	em-que	claude	אֲשֶׁר “que”; tinha “que”
+DEU 12:2	8	שָׁ֣ם	ali	claude	שָׁם “ali”; tinha “onde”
+DEU 12:2	12	יֹרְשִׁ֥ים	desapossando	claude	יֹרְשִׁים “desapossando”; tinha “herdardes”
+DEU 12:2	13	אֹתָ֖/ם	a-elas	claude	אֹתָם “elas”; tinha “os”
+DEU 12:2	15	אֱלֹהֵי/הֶ֑ם	seus-deuses	claude	אֱלֹהֵיהֶם “seus deuses”; tinha “deuses”
+DEU 12:2	24	רַעֲנָן	verde	claude	רַעֲנָן “verdejante”; tinha “espessa”
+DEU 12:7	8	מִשְׁלַ֣ח	empreendimento	claude	מִשְׁלַח “empreendimento de”; tinha “obra”
+DEU 12:7	11	וּ/בָתֵּי/כֶ֑ם	e-vossas-casas	claude	וּבָתֵּיכֶם “e vossas casas”; tinha “e-vossas-famílias”
+DEU 12:7	12	אֲשֶׁ֥ר	em-que	claude	אֲשֶׁר “que”; tinha “que”
+DEU 12:7	13	בֵּֽרַכְ/ךָ֖	te-abençoou	claude	בֵּרַכְךָ “te abençoou”; tinha “abençoado”
+DEU 12:7	15	אֱלֹהֶֽי/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “Deus-te”
+DEU 12:9	1	כִּ֥י	pois	claude	כִּי “pois”; tinha “porque”
+DEU 12:9	6	אֶל	para	claude	אֶל “para”; tinha “ao”
+DEU 12:9	8	וְ/אֶל	e-para	claude	וְאֶל “e para”; tinha “e-à”
+DEU 12:9	12	אֱלֹהֶ֖י/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “vosso-Deus”
+DEU 12:9	14	לָֽ/ךְ	a-ti	claude	לָךְ “a ti”; tinha “para-ti”
+DEU 12:11	2	הַ/מָּק֗וֹם	o-lugar	claude	הַמָּקוֹם “o lugar”; tinha “ao-lugar”
+DEU 12:11	11	שָׁ֣מָּ/ה	para-lá	claude	שָׁמָּה “para lá”; tinha “ali-levareis”
+DEU 12:11	12	תָבִ֔יאוּ	trareis	claude	תָבִיאוּ “trareis”; tinha “trazer”
+DEU 12:11	14	כָּל	tudo	claude	כָּל “tudo”; tinha “todas”
+DEU 12:11	15	אֲשֶׁ֥ר	o-que	claude	אֲשֶׁר “o que”; tinha “que”
+DEU 12:11	17	מְצַוֶּ֣ה	ordeno	claude	מְצַוֶּה “ordenando”; tinha “mando”
+DEU 12:11	19	עוֹלֹתֵי/כֶ֣ם	vossos-holocaustos	claude	עוֹלֹתֵיכֶם “vossos holocaustos”; tinha “holocaustos-vossos”
+DEU 12:11	20	וְ/זִבְחֵי/כֶ֗ם	e-vossos-sacrifícios	claude	וְזִבְחֵיכֶם “e vossos sacrifícios”; tinha “e-sacrifícios-vossos”
+DEU 12:11	21	מַעְשְׂרֹֽתֵי/כֶם֙	vossos-dízimos	claude	מַעְשְׂרֹתֵיכֶם “vossos dízimos”; tinha “dízimos”
+DEU 12:11	22	וּ/תְרֻמַ֣ת	e-a-oferta-elevada	claude	וּתְרֻמַת “e oferta elevada de”; tinha “e-as-ofertas-elevadas”
+DEU 12:11	23	יֶדְ/כֶ֔ם	de-vossa-mão	claude	יֶדְכֶם “vossa mão”; tinha “vossas-mãos”
+DEU 12:11	25	מִבְחַ֣ר	o-escolhido	claude	מִבְחַר “escolhido de”; tinha “escolhido”
+DEU 12:11	26	נִדְרֵי/כֶ֔ם	de-vossos-votos	claude	נִדְרֵיכֶם “vossos votos”; tinha “vossos-votos”
+DEU 12:11	28	תִּדְּר֖וּ	votardes	claude	תִּדְּרוּ “votardes”; tinha “prometido”
+DEU 12:15	1	רַק֩	somente	claude	רַק “somente”; tinha “contudo”
+DEU 12:15	2	בְּ/כָל	segundo-todo	claude	בְּכָל “em todo”; tinha “poderás”
+DEU 12:15	3	אַוַּ֨ת	o-desejo	claude	אַוַּת “desejo de”; tinha “desejo”
+DEU 12:15	5	תִּזְבַּ֣ח	abaterás	claude	תִּזְבַּח “sacrificarás”; tinha “matar”
+DEU 12:15	6	וְ/אָכַלְתָּ֣	e-comerás	claude	וְאָכַלְתָּ “e comerás”; tinha “e-comer”
+DEU 12:15	8	כְּ/בִרְכַּ֨ת	segundo-a-bênção	claude	כְּבִרְכַּת “segundo a bênção de”; tinha “bênção”
+DEU 12:15	9	יְהוָ֧ה	do-SENHOR	claude	יְהוָה “SENHOR”; tinha “SENHOR”
+DEU 12:15	12	נָֽתַן	deu	claude	נָתַן “deu”; tinha “dado”
+DEU 12:15	13	לְ/ךָ֖	a-ti	claude	לְךָ “a ti”; tinha “para-ti”
+DEU 12:15	14	בְּ/כָל	em-todas	claude	בְּכָל “em todas”; tinha “todas”
+DEU 12:15	15	שְׁעָרֶ֑י/ךָ	tuas-portas	claude	שְׁעָרֶיךָ “tuas portas”; tinha “tuas-povoações”
+DEU 12:15	18	יֹאכְלֶ֔/נּוּ	a-comerão	claude	יֹאכְלֶנּוּ “o comerão”; tinha “comerá”
+DEU 12:15	19	כַּ/צְּבִ֖י	como-a-gazela	claude	כַּצְּבִי “como a gazela”; tinha “como-a-de-corço”
+DEU 12:15	20	וְ/כָ/אַיָּֽל	e-como-o-cervo	claude	וְכָאַיָּל “e como o cervo”; tinha “ou-de-cervo”
+DEU 12:16	2	הַ/דָּ֖ם	o-sangue	claude	הַדָּם “o sangue”; tinha “que-sangue”
+DEU 12:16	7	תִּשְׁפְּכֶ֖/נּוּ	o-derramarás	claude	תִּשְׁפְּכֶנּוּ “o derramarás”; tinha “derramareis”
+DEU 12:18	1	כִּ֡י	mas	claude	כִּי “pois”; tinha “porque”
+DEU 12:18	2	אִם	antes	claude	אִם “se”; tinha “se”
+DEU 12:18	6	תֹּאכְלֶ֗/נּוּ	o-comerás	claude	תֹּאכְלֶנּוּ “o comerás”; tinha “comerás”
+DEU 12:18	20	בִּ/שְׁעָרֶ֑י/ךָ	em-tuas-portas	claude	בִּשְׁעָרֶיךָ “em tuas portas”; tinha “em-tuas-povoações”
+DEU 12:18	26	מִשְׁלַ֥ח	empreendimento	claude	מִשְׁלַח “empreendimento de”; tinha “obra”
+DEU 12:18	27	יָדֶֽ/ךָ	de-tua-mão	claude	יָדֶךָ “tua mão”; tinha “tuas-mãos”
+DEU 12:19	1	הִשָּׁ֣מֶר	guarda-te	claude	הִשָּׁמֶר “guarda-te”; tinha “cuidado”
+DEU 12:19	2	לְ/ךָ֔	a-ti	claude	לְךָ “a ti”; tinha “de”
+DEU 12:19	3	פֶּֽן	para-que-não	claude	פֶּן “para que não”; tinha “não”
+DEU 12:19	4	תַּעֲזֹ֖ב	desampares	claude	תַּעֲזֹב “desampares”; tinha “desamparar”
+DEU 12:19	6	הַ/לֵּוִ֑י	o-levita	claude	הַלֵּוִי “o levita”; tinha “ao-levita”
+DEU 12:19	10	אַדְמָתֶֽ/ךָ	teu-solo	claude	אַדְמָתֶךָ “teu solo”; tinha “tua-terra”
+DEU 12:22	1	אַ֗ךְ	somente	claude	אַךְ “somente”; tinha “certamente”
+DEU 12:22	2	כַּ/אֲשֶׁ֨ר	como	claude	כַּאֲשֶׁר “como”; tinha “mesmo-que”
+DEU 12:22	3	יֵאָכֵ֤ל	se-come	claude	יֵאָכֵל “se come”; tinha “come”
+DEU 12:22	5	הַ/צְּבִי֙	a-gazela	claude	הַצְּבִי “a gazela”; tinha “o-corço”
+DEU 12:22	9	תֹּאכְלֶ֑/נּוּ	o-comerás	claude	תֹּאכְלֶנּוּ “o comerás”; tinha “comerás”
+DEU 12:22	12	יַחְדָּ֖ו	juntamente	claude	יַחְדָּו “juntamente”; tinha “também”
+DEU 12:22	13	יֹאכְלֶֽ/נּוּ	o-comerão	claude	יֹאכְלֶנּוּ “o comerão”; tinha “comerão-delas”
+DEU 12:24	2	תֹּאכְלֶ֑/נּוּ	o-comerás	claude	תֹּאכְלֶנּוּ “o comerás”; tinha “comerás”
+DEU 12:24	3	עַל	sobre	claude	עַל “sobre”; tinha “em”
+DEU 12:24	4	הָ/אָ֥רֶץ	a-terra	claude	הָאָרֶץ “a terra”; tinha “terra”
+DEU 12:24	5	תִּשְׁפְּכֶ֖/נּוּ	o-derramarás	claude	תִּשְׁפְּכֶנּוּ “o derramarás”; tinha “derramarás”
+DEU 12:26	1	רַ֧ק	somente	claude	רַק “somente”; tinha “porém”
+DEU 12:26	2	קָֽדָשֶׁ֛י/ךָ	tuas-coisas-santas	claude	קָדָשֶׁיךָ “tuas coisas santas”; tinha “coisas-tiveres”
+DEU 12:26	5	לְ/ךָ֖	a-ti	claude	לְךָ “a ti”; tinha “para-ti”
+DEU 12:26	6	וּ/נְדָרֶ֑י/ךָ	e-teus-votos	claude	וּנְדָרֶיךָ “e teus votos”; tinha “consagradas-e-teus-votos”
+DEU 12:26	9	אֶל	para	claude	אֶל “para”; tinha “ao”
+DEU 12:26	10	הַ/מָּק֖וֹם	o-lugar	claude	הַמָּקוֹם “o lugar”; tinha “lugar”
+DEU 12:26	12	יִבְחַ֥ר	escolher	claude	יִבְחַר “escolher”; tinha “escolhido”
+DEU 12:27	1	וְ/עָשִׂ֤יתָ	e-farás	claude	וְעָשִׂיתָ “e farás”; tinha “e-oferecerás”
+DEU 12:27	6	מִזְבַּ֖ח	o-altar	claude	מִזְבַּח “altar de”; tinha “altar”
+DEU 12:27	7	יְהוָ֣ה	do-SENHOR	claude	יְהוָה “SENHOR”; tinha “SENHOR”
+DEU 12:27	10	זְבָחֶ֗י/ךָ	de-teus-sacrifícios	claude	זְבָחֶיךָ “teus sacrifícios”; tinha “teus-sacrifícios”
+DEU 12:27	11	יִשָּׁפֵךְ֙	será-derramado	claude	יִשָּׁפֵךְ “será derramado”; tinha “derramado”
+DEU 12:27	13	מִזְבַּח֙	o-altar	claude	מִזְבַּח “altar de”; tinha “altar”
+DEU 12:27	14	יְהוָ֣ה	do-SENHOR	claude	יְהוָה “SENHOR”; tinha “SENHOR”
