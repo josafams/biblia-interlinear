@@ -28892,3 +28892,163 @@ DEU 6:25	6	לַ/עֲשׂ֜וֹת	para-fazer	claude	לַעֲשׂוֹת “para fa
 DEU 6:25	8	כָּל	todo	claude	כָּל “todo”; tinha “todos”
 DEU 6:25	9	הַ/מִּצְוָ֣ה	o-mandamento	claude	הַמִּצְוָה “o mandamento”; tinha “estes-mandamentos”
 DEU 6:25	15	צִוָּֽ/נוּ	nos-ordenou	claude	צִוָּנוּ “nos ordenou”; tinha “nos-mandou”
+DEU 7:1	2	יְבִֽיאֲ/ךָ֙	te-introduzir	claude	יְבִיאֲךָ “te introduzir”; tinha “trará-te”
+DEU 7:1	4	אֱלֹהֶ֔י/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “Deus-te”
+DEU 7:1	5	אֶל	na	claude	אֶל “para”; tinha “a”
+DEU 7:1	6	הָ/אָ֕רֶץ	terra	claude	הָאָרֶץ “a terra”; tinha “terra-na”
+DEU 7:1	7	אֲשֶׁר	para-a-qual	claude	אֲשֶׁר “que”; tinha “qual”
+DEU 7:1	9	בָא	entrando	claude	בָא “entrando”; tinha “entrar”
+DEU 7:1	10	שָׁ֖מָּ/ה	lá	claude	שָׁמָּה “para lá”; tinha “ali-para”
+DEU 7:1	12	וְ/נָשַׁ֣ל	e-expulsar	claude	וְנָשַׁל “e expulsar”; tinha “e-houver-expulsado”
+DEU 7:1	16	הַֽ/חִתִּי֩	o-heteu	claude	הַחִתִּי “o heteu”; tinha “aos-heteus”
+DEU 7:1	17	וְ/הַ/גִּרְגָּשִׁ֨י	e-o-girgaseu	claude	וְהַגִּרְגָּשִׁי “e o girgaseu”; tinha “aos-gergeseus”
+DEU 7:1	18	וְ/הָ/אֱמֹרִ֜י	e-o-amorreu	claude	וְהָאֱמֹרִי “e o amorreu”; tinha “e-aos-amorreus”
+DEU 7:1	19	וְ/הַ/כְּנַעֲנִ֣י	e-o-cananeu	claude	וְהַכְּנַעֲנִי “e o cananeu”; tinha “e-aos-cananeus”
+DEU 7:1	20	וְ/הַ/פְּרִזִּ֗י	e-o-perizeu	claude	וְהַפְּרִזִּי “e o perizeu”; tinha “e-aos-perizeus”
+DEU 7:1	21	וְ/הַֽ/חִוִּי֙	e-o-heveu	claude	וְהַחִוִּי “e o heveu”; tinha “e-aos-heveus”
+DEU 7:1	22	וְ/הַ/יְבוּסִ֔י	e-o-jebuseu	claude	וְהַיְבוּסִי “e o jebuseu”; tinha “e-aos-jebuseus”
+DEU 7:1	25	רַבִּ֥ים	numerosas	claude	רַבִּים “muitas”; tinha “maiores-mais”
+DEU 7:1	26	וַ/עֲצוּמִ֖ים	e-poderosas	claude	וַעֲצוּמִים “e poderosas”; tinha “e-fortes”
+DEU 7:1	27	מִמֶּֽ/ךָּ	mais-que-tu	claude	מִמֶּךָּ “mais que tu”; tinha “que-tu”
+DEU 7:2	1	וּ/נְתָנָ֞/ם	e-as-entregar	claude	וּנְתָנָם “e as entregar”; tinha “e-porá-os”
+DEU 7:2	5	וְ/הִכִּיתָ֑/ם	e-as-ferires	claude	וְהִכִּיתָם “e as ferires”; tinha “e-as-ferires-por”
+DEU 7:2	6	הַחֲרֵ֤ם	destruindo	claude	הַחֲרֵם “destruir totalmente”; tinha “completo”
+DEU 7:2	7	תַּחֲרִים֙	destruirás-totalmente	claude	תַּחֲרִים “destruirás totalmente”; tinha “destruirás”
+DEU 7:2	8	אֹתָ֔/ם	a-elas	claude	אֹתָם “elas”; tinha “os”
+DEU 7:2	11	לָ/הֶ֛ם	com-elas	claude	לָהֶם “para eles”; tinha “para-eles”
+DEU 7:2	13	וְ/לֹ֥א	e-não	claude	וְלֹא “e não”; tinha “nem”
+DEU 7:2	14	תְחָנֵּֽ/ם	terás-piedade-delas	claude	תְחָנֵּם “terás piedade delas”; tinha “pouparás”
+DEU 7:5	4	תַעֲשׂוּ֙	fareis	claude	תַעֲשׂוּ “fareis”; tinha “fazer”
+DEU 7:5	5	לָ/הֶ֔ם	a-eles	claude	לָהֶם “para eles”; tinha “para-eles”
+DEU 7:5	7	תִּתֹּ֔צוּ	derrubareis	claude	תִּתֹּצוּ “derrubareis”; tinha “destruireis”
+DEU 7:5	14	בָּ/אֵֽשׁ	no-fogo	claude	בָּאֵשׁ “no fogo”; tinha “a-fogo”
+DEU 7:8	1	כִּי֩	mas	claude	כִּי “pois”; tinha “porque”
+DEU 7:8	2	מֵֽ/אַהֲבַ֨ת	por-amar	claude	מֵאַהֲבַת “do amor de”; tinha “amou”
+DEU 7:8	5	וּ/מִ/שָּׁמְר֤/וּ	e-por-guardar	claude	וּמִשָּׁמְרוֹ “e por seu guardar”; tinha “e-quis-guardar”
+DEU 7:8	10	לַ/אֲבֹ֣תֵי/כֶ֔ם	a-vossos-pais	claude	לַאֲבֹתֵיכֶם “a vossos pais”; tinha “a-pais-vos”
+DEU 7:8	16	וַֽ/יִּפְדְּ/ךָ֙	e-te-resgatou	claude	וַיִּפְדְּךָ “e te resgatou”; tinha “e-vos-resgatou”
+DEU 7:8	17	מִ/בֵּ֣ית	da-casa	claude	מִבֵּית “da casa de”; tinha “de-casa”
+DEU 7:8	18	עֲבָדִ֔ים	de-servos	claude	עֲבָדִים “servos”; tinha “servos”
+DEU 7:8	20	פַּרְעֹ֥ה	de-Faraó	claude	פַּרְעֹה “Faraó”; tinha “Faraó”
+DEU 7:8	22	מִצְרָֽיִם	do-Egito	claude	מִצְרָיִם “Egito”; tinha “Egito”
+DEU 7:10	2	לְ/שֹׂנְאָ֛י/ו	aos-que-o-odeiam	claude	לְשֹׂנְאָיו “aos que o odeiam”; tinha “aborrece”
+DEU 7:10	3	אֶל	em	claude	אֶל “para”; tinha “ao”
+DEU 7:10	4	פָּנָ֖י/ו	sua-face	claude	פָּנָיו “sua face”; tinha “face”
+DEU 7:10	5	לְ/הַאֲבִיד֑/וֹ	para-o-destruir	claude	לְהַאֲבִידוֹ “para o destruir”; tinha “destruindo-o”
+DEU 7:10	6	לֹ֤א	não	claude	לֹא “não”; tinha “nem”
+DEU 7:10	7	יְאַחֵר֙	tardará	claude	יְאַחֵר “tardará”; tinha “dilatará”
+DEU 7:10	8	לְ/שֹׂ֣נְא֔/וֹ	ao-que-o-odeia	claude	לְשֹׂנְאוֹ “ao que o odeia”; tinha “ao-que-lhe-odeia”
+DEU 7:10	9	אֶל	em	claude	אֶל “para”; tinha “a”
+DEU 7:10	10	פָּנָ֖י/ו	sua-face	claude	פָּנָיו “sua face”; tinha “face-lhe”
+DEU 7:10	12	לֽ/וֹ	a-ele	claude	לוֹ “a ele”; tinha “para-ele”
+DEU 7:15	7	מַדְוֵי֩	as-doenças	claude	מַדְוֵי “doenças de”; tinha “pragas”
+DEU 7:15	8	מִצְרַ֨יִם	do-Egito	claude	מִצְרַיִם “Egito”; tinha “Egito”
+DEU 7:15	9	הָ/רָעִ֜ים	más	claude	הָרָעִים “as más”; tinha “as-más”
+DEU 7:15	11	יָדַ֗עְתָּ	conheceste	claude	יָדַעְתָּ “conheceste”; tinha “sabes”
+DEU 7:15	13	יְשִׂימָ/ם֙	as-porá	claude	יְשִׂימָם “as porá”; tinha “porá”
+DEU 7:15	14	בָּ֔/ךְ	em-ti	claude	בָּךְ “em ti”; tinha “sobre-ti”
+DEU 7:15	15	וּ/נְתָנָ֖/ם	e-as-dará	claude	וּנְתָנָם “e as dará”; tinha “antes-as-porá”
+DEU 7:15	16	בְּ/כָל	em-todos	claude	בְּכָל “em todos”; tinha “sobre-todos”
+DEU 7:15	17	שֹׂנְאֶֽי/ךָ	os-que-te-odeiam	claude	שֹׂנְאֶיךָ “os que te odeiam”; tinha “que-te-odiarem”
+DEU 7:16	1	וְ/אָכַלְתָּ֣	e-devorarás	claude	וְאָכַלְתָּ “e comerás”; tinha “e-consumirás”
+DEU 7:16	9	לָ֔/ךְ	a-ti	claude	לָךְ “a ti”; tinha “para-ti”
+DEU 7:16	11	תָחֹ֥ס	terá-piedade	claude	תָחֹס “terá piedade”; tinha “perdoará”
+DEU 7:16	18	כִּֽי	pois	claude	כִּי “pois”; tinha “que”
+DEU 7:16	19	מוֹקֵ֥שׁ	laço	claude	מוֹקֵשׁ “laço”; tinha “tropeço”
+DEU 7:16	20	ה֖וּא	isso-será	claude	הוּא “ele”; tinha “será”
+DEU 7:16	21	לָֽ/ךְ	a-ti	claude	לָךְ “a ti”; tinha “para-ti”
+DEU 7:18	2	תִירָ֖א	temas	claude	תִירָא “temas”; tinha “tenhas”
+DEU 7:18	3	מֵ/הֶ֑ם	deles	claude	מֵהֶם “deles”; tinha “medo-deles”
+DEU 7:18	4	זָכֹ֣ר	lembrando	claude	זָכֹר “lembrar”; tinha “lembra”
+DEU 7:18	5	תִּזְכֹּ֗ר	te-lembrarás	claude	תִּזְכֹּר “te lembrarás”; tinha “te-bem”
+DEU 7:18	7	אֲשֶׁר	do-que	claude	אֲשֶׁר “o que”; tinha “que”
+DEU 7:18	11	לְ/פַרְעֹ֖ה	a-Faraó	claude	לְפַרְעֹה “a Faraó”; tinha “com-Faraó”
+DEU 7:18	12	וּ/לְ/כָל	e-a-todo	claude	וּלְכָל “e a todo”; tinha “e-com-todo”
+DEU 7:18	13	מִצְרָֽיִם	o-Egito	claude	מִצְרָיִם “Egito”; tinha “Egito”
+DEU 7:19	1	הַ/מַּסֹּ֨ת	as-provas	claude	הַמַּסֹּת “as provas”; tinha “das-provas”
+DEU 7:19	6	וְ/הָ/אֹתֹ֤ת	e-os-sinais	claude	וְהָאֹתֹת “e os sinais”; tinha “e-dos-sinais”
+DEU 7:19	7	וְ/הַ/מֹּֽפְתִים֙	e-os-prodígios	claude	וְהַמֹּפְתִים “e os prodígios”; tinha “e-milagres”
+DEU 7:19	8	וְ/הַ/יָּ֤ד	e-a-mão	claude	וְהַיָּד “e a mão”; tinha “e-da-mão”
+DEU 7:19	10	וְ/הַ/זְּרֹ֣עַ	e-o-braço	claude	וְהַזְּרֹעַ “e o braço”; tinha “e-braço”
+DEU 7:19	13	הוֹצִֽאֲ/ךָ֖	te-tirou	claude	הוֹצִאֲךָ “te tirou”; tinha “tirou”
+DEU 7:19	15	אֱלֹהֶ֑י/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “Deus-te”
+DEU 7:19	20	לְ/כָל	a-todos	claude	לְכָל “a todos”; tinha “com-todos”
+DEU 7:19	22	אֲשֶׁר	dos-quais	claude	אֲשֶׁר “que”; tinha “que”
+DEU 7:19	24	יָרֵ֖א	temes	claude	יָרֵא “temendo”; tinha “temerdes”
+DEU 7:19	25	מִ/פְּנֵי/הֶֽם	diante-deles	claude	מִפְּנֵיהֶם “de diante deles”; tinha “de-presença”
+DEU 7:23	1	וּ/נְתָנָ֛/ם	e-as-entregará	claude	וּנְתָנָם “e as entregará”; tinha “e-porá-os”
+DEU 7:23	5	וְ/הָמָ/ם֙	e-as-confundirá	claude	וְהָמָם “e as confundirá”; tinha “quebrantará-com”
+DEU 7:23	6	מְהוּמָ֣ה	com-confusão	claude	מְהוּמָה “confusão”; tinha “destroço”
+DEU 7:23	9	הִשָּׁמְדָֽ/ם	serem-destruídas	claude	הִשָּׁמְדָם “serem destruídas”; tinha “destruídos”
+DEU 7:25	1	פְּסִילֵ֥י	as-imagens-esculpidas	claude	פְּסִילֵי “imagens esculpidas de”; tinha “esculturas”
+DEU 7:25	3	תִּשְׂרְפ֣וּ/ן	queimareis	claude	תִּשְׂרְפוּן “queimareis”; tinha “queimarás”
+DEU 7:25	8	וְ/זָהָ֤ב	e-ouro	claude	וְזָהָב “e ouro”; tinha “nem-ouro”
+DEU 7:25	10	וְ/לָקַחְתָּ֣	e-tomá-lo	claude	וְלָקַחְתָּ “e tomarás”; tinha “para-tomá”
+DEU 7:25	11	לָ֔/ךְ	para-ti	claude	לָךְ “para ti”; tinha “para”
+DEU 7:25	12	פֶּ֚ן	para-que-não	claude	פֶּן “para que não”; tinha “não”
+DEU 7:25	13	תִּוָּקֵ֣שׁ	te-enlaces	claude	תִּוָּקֵשׁ “te enlaces”; tinha “tropeces”
+DEU 7:25	16	תוֹעֲבַ֛ת	é-abominação	claude	תוֹעֲבַת “abominação de”; tinha “abominação”
+DEU 7:25	17	יְהוָ֥ה	do-SENHOR	claude	יְהוָה “SENHOR”; tinha “SENHOR”
+DEU 7:26	2	תָבִ֤יא	trarás	claude	תָבִיא “trarás”; tinha “meterás”
+DEU 7:26	4	אֶל	para	claude	אֶל “para”; tinha “a”
+DEU 7:26	6	וְ/הָיִ֥יתָ	e-serás	claude	וְהָיִיתָ “e serás”; tinha “que-não-sejas”
+DEU 7:26	8	כָּמֹ֑/הוּ	como-ela	claude	כָּמֹהוּ “como ele”; tinha “como-isso-por”
+DEU 7:26	9	שַׁקֵּ֧ץ	detestando	claude	שַׁקֵּץ “detestar”; tinha “torneis”
+DEU 7:26	10	תְּשַׁקְּצֶ֛/נּוּ	a-detestarás	claude	תְּשַׁקְּצֶנּוּ “o detestarás”; tinha “o-aborrecerás”
+DEU 7:26	11	וְ/תַעֵ֥ב	e-abominando	claude	וְתַעֵב “e abominar”; tinha “e-abominável”
+DEU 7:26	12	תְּֽתַעֲבֶ֖/נּוּ	a-abominarás	claude	תְּתַעֲבֶנּוּ “o abominarás”; tinha “abominarás”
+DEU 7:26	13	כִּי	pois	claude	כִּי “pois”; tinha “porque”
+DEU 7:26	15	הֽוּא	é	claude	הוּא “ele”; tinha “ele”
+DEU 8:1	2	הַ/מִּצְוָ֗ה	o-mandamento	claude	הַמִּצְוָה “o mandamento”; tinha “mandamento”
+DEU 8:1	5	מְצַוְּ/ךָ֛	te-ordeno	claude	מְצַוְּךָ “te ordenando”; tinha “ordeno”
+DEU 8:1	7	תִּשְׁמְר֣וּ/ן	guardareis	claude	תִּשְׁמְרוּן “guardareis”; tinha “cuidareis”
+DEU 8:1	8	לַ/עֲשׂ֑וֹת	para-fazer	claude	לַעֲשׂוֹת “para fazer”; tinha “pôr-por-obra”
+DEU 8:1	9	לְמַ֨עַן	para-que	claude	לְמַעַן “para que”; tinha “para”
+DEU 8:1	10	תִּֽחְי֜וּ/ן	vivais	claude	תִּחְיוּן “vivais”; tinha “vivais-sejais”
+DEU 8:1	11	וּ/רְבִיתֶ֗ם	e-vos-multipliqueis	claude	וּרְבִיתֶם “e vos multipliqueis”; tinha “e-multiplicados”
+DEU 8:1	16	אֲשֶׁר	que	claude	אֲשֶׁר “que”; tinha “qual”
+DEU 8:2	1	וְ/זָכַרְתָּ֣	e-lembrarás	claude	וְזָכַרְתָּ “e lembrarás”; tinha “e-te-lembrarás”
+DEU 8:2	6	הֹלִֽיכֲ/ךָ֜	te-fez-andar	claude	הֹלִיכֲךָ “te fez andar”; tinha “te-trouxe”
+DEU 8:2	14	עַנֹּֽתְ/ךָ֜	te-humilhar	claude	עַנֹּתְךָ “te humilhar”; tinha “afligir-te”
+DEU 8:2	15	לְ/נַסֹּֽתְ/ךָ֗	para-te-provar	claude	לְנַסֹּתְךָ “para te provar”; tinha “para-provar-te”
+DEU 8:2	19	בִּֽ/לְבָבְ/ךָ֛	havia-em-teu-coração	claude	בִּלְבָבְךָ “em teu coração”; tinha “em-teu-coração”
+DEU 8:2	20	הֲ/תִשְׁמֹ֥ר	se-guardarias	claude	הֲתִשְׁמֹר “porventura guardarás”; tinha “havias-de-guardar”
+DEU 8:3	1	וַֽ/יְעַנְּ/ךָ֮	e-te-humilhou	claude	וַיְעַנְּךָ “e te humilhou”; tinha “e-te-afligiu”
+DEU 8:3	2	וַ/יַּרְעִבֶ/ךָ֒	e-te-fez-ter-fome	claude	וַיַּרְעִבֶךָ “e te fez ter fome”; tinha “fome”
+DEU 8:3	3	וַ/יַּֽאֲכִֽלְ/ךָ֤	e-te-alimentou	claude	וַיַּאֲכִלְךָ “e te fez comer”; tinha “comida”
+DEU 8:3	5	הַ/מָּן֙	o-maná	claude	הַמָּן “o maná”; tinha “sustentou-com-maná”
+DEU 8:3	8	יָדַ֔עְתָּ	conhecias	claude	יָדַעְתָּ “conheceste”; tinha “conhecias-tu”
+DEU 8:3	9	וְ/לֹ֥א	e-não	claude	וְלֹא “e não”; tinha “nem”
+DEU 8:3	10	יָדְע֖וּ/ן	conheciam	claude	יָדְעוּן “conheciam”; tinha “conhecem”
+DEU 8:3	13	הוֹדִֽעֲ/ךָ֗	te-fazer-saber	claude	הוֹדִעֲךָ “te fazer saber”; tinha “te-saber”
+DEU 8:3	16	עַל	de	claude	עַל “sobre”; tinha “sobre”
+DEU 8:3	17	הַ/לֶּ֤חֶם	o-pão	claude	הַלֶּחֶם “o pão”; tinha “pão”
+DEU 8:3	18	לְ/בַדּ/וֹ֙	só	claude	לְבַדּוֹ “a sós ele”; tinha “de-só”
+DEU 8:3	21	כִּ֛י	mas	claude	כִּי “pois”; tinha “porque”
+DEU 8:3	22	עַל	de	claude	עַל “sobre”; tinha “sobre”
+DEU 8:3	24	מוֹצָ֥א	o-que-sai	claude	מוֹצָא “saída de”; tinha “sai”
+DEU 8:3	25	פִֽי	da-boca	claude	פִי “boca de”; tinha “boca”
+DEU 8:3	26	יְהוָ֖ה	do-SENHOR	claude	יְהוָה “SENHOR”; tinha “SENHOR”
+DEU 8:7	1	כִּ֚י	pois	claude	כִּי “pois”; tinha “porque”
+DEU 8:7	3	אֱלֹהֶ֔י/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “teu-Deus-te”
+DEU 8:7	4	מְבִֽיאֲ/ךָ֖	te-introduz	claude	מְבִיאֲךָ “te fazendo entrar”; tinha “introduz”
+DEU 8:7	5	אֶל	em	claude	אֶל “para”; tinha “a”
+DEU 8:7	6	אֶ֣רֶץ	uma-terra	claude	אֶרֶץ “terra”; tinha “terra”
+DEU 8:7	9	נַ֣חֲלֵי	de-ribeiros	claude	נַחֲלֵי “ribeiros de”; tinha “ribeiros”
+DEU 8:7	10	מָ֔יִם	de-águas	claude	מָיִם “águas”; tinha “águas”
+DEU 8:7	12	וּ/תְהֹמֹ֔ת	e-abismos	claude	וּתְהֹמֹת “e abismos”; tinha “mananciais”
+DEU 8:7	13	יֹצְאִ֥ים	que-saem	claude	יֹצְאִים “saindo”; tinha “brotam”
+DEU 8:7	14	בַּ/בִּקְעָ֖ה	no-vale	claude	בַּבִּקְעָה “no vale”; tinha “por-planícies”
+DEU 8:7	15	וּ/בָ/הָֽר	e-no-monte	claude	וּבָהָר “e no monte”; tinha “e-montes”
+DEU 8:9	2	אֲשֶׁ֨ר	em-que	claude	אֲשֶׁר “que”; tinha “qual”
+DEU 8:9	4	בְ/מִסְכֵּנֻת֙	com-escassez	claude	בְמִסְכֵּנֻת “com escassez”; tinha “escassez”
+DEU 8:9	6	בָּ֣/הּ	nela	claude	בָּהּ “nela”; tinha “com”
+DEU 8:9	10	כֹּ֖ל	coisa-alguma	claude	כֹּל “tudo”; tinha “nada”
+DEU 8:9	13	אֲשֶׁ֣ר	cujas	claude	אֲשֶׁר “que”; tinha “que”
+DEU 8:9	14	אֲבָנֶ֣י/הָ	pedras	claude	אֲבָנֶיהָ “suas pedras”; tinha “suas-pedras”
+DEU 8:17	1	וְ/אָמַרְתָּ֖	e-dirás	claude	וְאָמַרְתָּ “e dirás”; tinha “e-digas”
+DEU 8:17	4	וְ/עֹ֣צֶם	e-o-vigor	claude	וְעֹצֶם “e vigor de”; tinha “e-a-força”
+DEU 8:17	5	יָדִ֔/י	de-minha-mão	claude	יָדִי “minha mão”; tinha “mão-me”
+DEU 8:17	6	עָ֥שָׂה	fez	claude	עָשָׂה “fez”; tinha “trouxeram”
+DEU 8:17	7	לִ֖/י	para-mim	claude	לִי “para mim”; tinha “de-minha”
+DEU 8:17	9	הַ/חַ֥יִל	a-riqueza	claude	הַחַיִל “a riqueza”; tinha “esta-riqueza”
