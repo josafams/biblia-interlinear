@@ -33668,3 +33668,201 @@ JDG 21:24	7	אִ֥ישׁ	cada-um	claude	אִישׁ “homem”; tinha “cada”
 JDG 21:24	10	וַ/יֵּצְא֣וּ	e-saíram	claude	וַיֵּצְאוּ “e saíram”; tinha “saindo”
 JDG 21:24	12	אִ֖ישׁ	cada-um	claude	אִישׁ “homem”; tinha “cada”
 JDG 21:24	13	לְ/נַחֲלָתֽ/וֹ	para-sua-herança	claude	לְנַחֲלָתוֹ “para sua herança”; tinha “à-sua-propriedade”
+RUT 1:2	1	וְ/שֵׁ֣ם	e-o-nome	claude	וְשֵׁם “e nome de”; tinha “nome”
+RUT 1:2	2	הָ/אִ֣ישׁ	do-homem	claude	הָאִישׁ “o homem”; tinha “daquele-homem”
+RUT 1:2	4	וְ/שֵׁם֩	e-o-nome	claude	וְשֵׁם “e nome de”; tinha “e-nome”
+RUT 1:2	5	אִשְׁתּ֨/וֹ	de-sua-mulher	claude	אִשְׁתּוֹ “sua mulher”; tinha “sua-mulher”
+RUT 1:2	7	וְ/שֵׁ֥ם	e-o-nome	claude	וְשֵׁם “e nome de”; tinha “e-os-nomes”
+RUT 1:2	8	שְׁנֵֽי	dos-dois	claude	שְׁנֵי “dois de”; tinha “dois”
+RUT 1:2	9	בָנָ֣י/ו	seus-filhos	claude	בָנָיו “seus filhos”; tinha “filhos”
+RUT 1:2	14	לֶ֖חֶם	Belém	claude	לֶחֶם “Leém”; tinha “Belém-de”
+RUT 1:2	16	וַ/יָּבֹ֥אוּ	e-vieram	claude	וַיָּבֹאוּ “e vieram”; tinha “chegaram-pois”
+RUT 1:2	17	שְׂדֵי	aos-campos	claude	שְׂדֵי “campos de”; tinha “campos”
+RUT 1:2	19	וַ/יִּֽהְיוּ	e-ficaram	claude	וַיִּהְיוּ “e foram”; tinha “e-assentaram”
+RUT 1:3	4	נָעֳמִ֑י	de-Noemi	claude	נָעֳמִי “Noemi”; tinha “Noemi”
+RUT 1:3	7	וּ/שְׁנֵ֥י	e-seus-dois	claude	וּשְׁנֵי “e dois de”; tinha “com-seus-dois”
+RUT 1:4	1	וַ/יִּשְׂא֣וּ	e-tomaram	claude	וַיִּשְׂאוּ “e tomaram”; tinha “quais-tomaram”
+RUT 1:4	4	מֹֽאֲבִיּ֔וֹת	moabitas	claude	מֹאֲבִיּוֹת “moabitas”; tinha “Moabe”
+RUT 1:4	5	שֵׁ֤ם	o-nome	claude	שֵׁם “nome de”; tinha “nome”
+RUT 1:4	6	הָֽ/אַחַת֙	de-uma	claude	הָאַחַת “a uma”; tinha “da-uma”
+RUT 1:4	9	הַ/שֵּׁנִ֖ית	da-segunda	claude	הַשֵּׁנִית “a segunda”; tinha “da-outra”
+RUT 1:4	13	כְּ/עֶ֥שֶׂר	cerca-de-dez	claude	כְּעֶשֶׂר “cerca de dez”; tinha “uns-dez”
+RUT 1:5	3	שְׁנֵי/הֶ֖ם	ambos	claude	שְׁנֵיהֶם “ambos eles”; tinha “dois”
+RUT 1:5	6	וַ/תִּשָּׁאֵר֙	e-ficou	claude	וַתִּשָּׁאֵר “e ficou”; tinha “restando-assim”
+RUT 1:5	8	מִ/שְּׁנֵ֥י	sem-seus-dois	claude	מִשְּׁנֵי “dos dois de”; tinha “desamparada-de-seus-dois”
+RUT 1:5	9	יְלָדֶ֖י/הָ	meninos	claude	יְלָדֶיהָ “seus meninos”; tinha “filhos”
+RUT 1:8	3	לִ/שְׁתֵּ֣י	às-duas	claude	לִשְׁתֵּי “às duas de”; tinha “a-suas-duas”
+RUT 1:8	4	כַלֹּתֶ֔י/הָ	suas-noras	claude	כַלֹּתֶיהָ “suas noras”; tinha “noras”
+RUT 1:8	5	לֵ֣כְנָה	ide	claude	לֵכְנָה “ide”; tinha “andai”
+RUT 1:8	7	אִשָּׁ֖ה	cada-uma	claude	אִשָּׁה “mulher”; tinha “uma”
+RUT 1:8	8	לְ/בֵ֣ית	para-a-casa	claude	לְבֵית “para a casa de”; tinha “à-casa”
+RUT 1:8	12	עִמָּ/כֶם֙	convosco	claude	עִמָּכֶם “convosco”; tinha “com-vós”
+RUT 1:9	1	יִתֵּ֤ן	dê	claude	יִתֵּן “dê”; tinha “dará”
+RUT 1:9	3	לָ/כֶ֔ם	a-vós	claude	לָכֶם “a vós”; tinha “para-vós”
+RUT 1:9	4	וּ/מְצֶ֣אןָ	e-acheis	claude	וּמְצֶאןָ “e acheis”; tinha “que-acheis”
+RUT 1:9	6	אִשָּׁ֖ה	cada-uma	claude	אִשָּׁה “mulher”; tinha “uma”
+RUT 1:9	7	בֵּ֣ית	na-casa	claude	בֵּית “casa de”; tinha “casa”
+RUT 1:9	8	אִישָׁ֑/הּ	de-seu-marido	claude	אִישָׁהּ “seu marido”; tinha “seu-marido”
+RUT 1:9	9	וַ/תִּשַּׁ֣ק	e-beijou	claude	וַתִּשַּׁק “e beijou”; tinha “beijou”
+RUT 1:9	10	לָ/הֶ֔ן	a-elas	claude	לָהֶן “a elas”; tinha “para-elas”
+RUT 1:9	11	וַ/תִּשֶּׂ֥אנָה	e-levantaram	claude	וַתִּשֶּׂאנָה “e levantaram”; tinha “grito”
+RUT 1:9	12	קוֹלָ֖/ן	sua-voz	claude	קוֹלָן “sua voz”; tinha “voz”
+RUT 1:13	1	הֲ/לָהֵ֣ן	porventura-por-isso	claude	הֲלָהֵן “porventura por isso”; tinha “teríeis”
+RUT 1:13	2	תְּשַׂבֵּ֗רְנָה	esperaríeis	claude	תְּשַׂבֵּרְנָה “esperaríeis”; tinha “esperá”
+RUT 1:13	5	יִגְדָּ֔לוּ	crescessem	claude	יִגְדָּלוּ “crescessem”; tinha “grandes”
+RUT 1:13	6	הֲ/לָהֵן֙	porventura-por-isso	claude	הֲלָהֵן “porventura por isso”; tinha “ficaríeis”
+RUT 1:13	7	תֵּֽעָגֵ֔נָה	vos-reteríeis	claude	תֵּעָגֵנָה “vos reteríeis”; tinha “vós”
+RUT 1:13	8	לְ/בִלְתִּ֖י	para-não	claude	לְבִלְתִּי “para não”; tinha “sem”
+RUT 1:13	9	הֱי֣וֹת	ser	claude	הֱיוֹת “ser”; tinha “se-casar”
+RUT 1:13	10	לְ/אִ֑ישׁ	de-homem	claude	לְאִישׁ “de homem”; tinha “para-homem”
+RUT 1:13	12	בְּנֹתַ֗/י	minhas-filhas	claude	בְּנֹתַי “minhas filhas”; tinha “filhas-minhas”
+RUT 1:13	13	כִּֽי	pois	claude	כִּי “pois”; tinha “que”
+RUT 1:13	14	מַר	amargo	claude	מַר “amargo”; tinha “amargura”
+RUT 1:13	15	לִ֤/י	é-para-mim	claude	לִי “para mim”; tinha “para-mim”
+RUT 1:13	17	מִ/כֶּ֔ם	mais-que-a-vós	claude	מִכֶּם “mais que vós”; tinha “que-vós”
+RUT 1:13	21	יַד	a-mão	claude	יַד “mão de”; tinha “mão”
+RUT 1:13	22	יְהוָֽה	do-SENHOR	claude	יְהוָה “SENHOR”; tinha “SENHOR”
+RUT 1:14	1	וַ/תִּשֶּׂ֣נָה	e-levantaram	claude	וַתִּשֶּׂנָה “e levantaram”; tinha “mas-elas-levantando”
+RUT 1:14	2	קוֹלָ֔/ן	sua-voz	claude	קוֹלָן “sua voz”; tinha “voz”
+RUT 1:14	3	וַ/תִּבְכֶּ֖ינָה	e-choraram	claude	וַתִּבְכֶּינָה “e choraram”; tinha “choraram”
+RUT 1:14	4	ע֑וֹד	outra-vez	claude	עוֹד “ainda”; tinha “mais”
+RUT 1:14	7	לַ/חֲמוֹתָ֔/הּ	a-sua-sogra	claude	לַחֲמוֹתָהּ “a sua sogra”; tinha “à-sua-sogra”
+RUT 1:14	8	וְ/ר֖וּת	e-Rute	claude	וְרוּת “e Rute”; tinha “Rute”
+RUT 1:14	9	דָּ֥בְקָה	se-apegou	claude	דָּבְקָה “se apegou”; tinha “se-grudaram”
+RUT 1:14	10	בָּֽ/הּ	a-ela	claude	בָּהּ “nela”; tinha “com-ela”
+RUT 1:16	1	וַ/תֹּ֤אמֶר	e-disse	claude	וַתֹּאמֶר “e disse”; tinha “e-respondeu”
+RUT 1:16	4	תִּפְגְּעִי	insistas	claude	תִּפְגְּעִי “insistas”; tinha “rogues”
+RUT 1:16	5	בִ֔/י	comigo	claude	בִי “em mim”; tinha “em-mim”
+RUT 1:16	6	לְ/עָזְבֵ֖/ךְ	para-te-deixar	claude	לְעָזְבֵךְ “para te deixar”; tinha “que-te-deixe”
+RUT 1:16	7	לָ/שׁ֣וּב	para-voltar	claude	לָשׁוּב “para voltar”; tinha “e-que-me-aparte”
+RUT 1:16	8	מֵ/אַחֲרָ֑יִ/ךְ	de-após-ti	claude	מֵאַחֲרָיִךְ “de após ti”; tinha “de-seguir-ti”
+RUT 1:16	9	כִּ֠י	pois	claude	כִּי “pois”; tinha “porque”
+RUT 1:16	10	אֶל	para	claude	אֶל “para”; tinha “a”
+RUT 1:16	11	אֲשֶׁ֨ר	onde	claude	אֲשֶׁר “que”; tinha “que”
+RUT 1:16	14	וּ/בַ/אֲשֶׁ֤ר	e-onde	claude	וּבַאֲשֶׁר “e onde”; tinha “e-em-onde”
+RUT 1:16	15	תָּלִ֨ינִי֙	pernoitares	claude	תָּלִינִי “pernoitares”; tinha “viveres”
+RUT 1:16	16	אָלִ֔ין	pernoitarei	claude	אָלִין “pernoitarei”; tinha “viverei”
+RUT 1:16	19	וֵ/אלֹהַ֖יִ/ךְ	e-teu-Deus	claude	וֵאלֹהַיִךְ “e teu Deus”; tinha “Deus”
+RUT 1:16	20	אֱלֹהָֽ/י	meu-Deus	claude	אֱלֹהָי “meu Deus”; tinha “Deus-meu”
+RUT 1:19	1	וַ/תֵּלַ֣כְנָה	e-foram	claude	וַתֵּלַכְנָה “e foram”; tinha “andaram-pois”
+RUT 1:19	2	שְׁתֵּי/הֶ֔ם	ambas	claude	שְׁתֵּיהֶם “ambas elas”; tinha “elas-duas”
+RUT 1:19	4	בֹּאָ֖/נָה	chegarem	claude	בֹּאָנָה “seu chegar”; tinha “chegaram”
+RUT 1:19	7	וַ/יְהִ֗י	e-foi	claude	וַיְהִי “e foi”; tinha “e-aconteceu”
+RUT 1:19	8	כְּ/בֹאָ֨/נָה֙	quando-chegaram	claude	כְּבֹאָנָה “quando seu chegar”; tinha “que-entrando”
+RUT 1:19	11	וַ/תֵּהֹ֤ם	e-se-alvoroçou	claude	וַתֵּהֹם “e se alvoroçou”; tinha “se-comoveu”
+RUT 1:19	14	עֲלֵי/הֶ֔ן	por-causa-delas	claude	עֲלֵיהֶן “sobre elas”; tinha “por”
+RUT 1:19	16	הֲ/זֹ֥את	porventura-esta-é	claude	הֲזֹאת “porventura esta”; tinha “não-é-esta”
+RUT 1:20	1	וַ/תֹּ֣אמֶר	e-disse	claude	וַתֹּאמֶר “e disse”; tinha “e-ela”
+RUT 1:20	5	לִ֖/י	a-mim	claude	לִי “a mim”; tinha “para-mim”
+RUT 1:20	8	לִ/י֙	a-mim	claude	לִי “a mim”; tinha “para-mim”
+RUT 1:20	10	כִּי	pois	claude	כִּי “pois”; tinha “porque”
+RUT 1:20	11	הֵמַ֥ר	amargurou	claude	הֵמַר “amargurou”; tinha “amargura”
+RUT 1:20	13	לִ֖/י	a-mim	claude	לִי “a mim”; tinha “em”
+RUT 1:20	14	מְאֹֽד	muito	claude	מְאֹד “muito”; tinha “grande”
+RUT 2:2	1	וַ/תֹּאמֶר֩	e-disse	claude	וַתֹּאמֶר “e disse”; tinha “disse”
+RUT 2:2	6	אֵֽלְכָה	que-eu-vá	claude	אֵלְכָה “irei”; tinha “ir”
+RUT 2:2	7	נָּ֤א	por-favor	claude	נָּא “por favor”; tinha “rogo”
+RUT 2:2	10	בַ/שִׁבֳּלִ֔ים	entre-as-espigas	claude	בַשִּׁבֳּלִים “nas espigas”; tinha “espigas”
+RUT 2:2	12	אֲשֶׁ֥ר	daquele-que	claude	אֲשֶׁר “que”; tinha “que”
+RUT 2:2	15	בְּ/עֵינָ֑י/ו	aos-seus-olhos	claude	בְּעֵינָיו “aos seus olhos”; tinha “olhos”
+RUT 2:2	16	וַ/תֹּ֥אמֶר	e-disse	claude	וַתֹּאמֶר “e disse”; tinha “e-ela-lhe-respondeu”
+RUT 2:2	17	לָ֖/הּ	a-ela	claude	לָהּ “a ela”; tinha “para-ela”
+RUT 2:2	19	בִתִּֽ/י	minha-filha	claude	בִתִּי “minha filha”; tinha “filha-minha”
+RUT 2:3	1	וַ/תֵּ֤לֶךְ	e-foi	claude	וַתֵּלֶךְ “e foi”; tinha “foi-pois”
+RUT 2:3	2	וַ/תָּבוֹא֙	e-chegou	claude	וַתָּבוֹא “e chegou”; tinha “e-chegando”
+RUT 2:3	3	וַ/תְּלַקֵּ֣ט	e-respigou	claude	וַתְּלַקֵּט “e respigou”; tinha “tirou-espigas”
+RUT 2:3	7	וַ/יִּ֣קֶר	e-sucedeu	claude	וַיִּקֶר “e sucedeu”; tinha “e-aconteceu”
+RUT 2:3	8	מִקְרֶ֔/הָ	por-acaso	claude	מִקְרֶהָ “seu acaso”; tinha “porventura”
+RUT 2:3	12	אֲשֶׁ֖ר	que	claude	אֲשֶׁר “que”; tinha “qual”
+RUT 2:3	13	מִ/מִּשְׁפַּ֥חַת	era-da-família	claude	מִמִּשְׁפַּחַת “da família de”; tinha “da-parentela”
+RUT 2:3	14	אֱלִימֶֽלֶךְ	de-Elimeleque	claude	אֱלִימֶלֶךְ “Elimeleque”; tinha “Elimeleque”
+RUT 2:9	1	עֵינַ֜יִ/ךְ	teus-olhos	claude	עֵינַיִךְ “teus olhos”; tinha “olha”
+RUT 2:9	2	בַּ/שָּׂדֶ֤ה	estejam-no-campo	claude	בַּשָּׂדֶה “no campo”; tinha “o-campo”
+RUT 2:9	4	יִקְצֹרוּ/ן֙	segarem	claude	יִקְצֹרוּן “segarem”; tinha “colherem”
+RUT 2:9	5	וְ/הָלַ֣כְתִּ	e-irás	claude	וְהָלַכְתִּ “e irás”; tinha “e-ir”
+RUT 2:9	6	אַחֲרֵי/הֶ֔ן	atrás-delas	claude	אַחֲרֵיהֶן “atrás delas”; tinha “depois-elas”
+RUT 2:9	7	הֲ/ל֥וֹא	porventura-não	claude	הֲלוֹא “porventura não”; tinha “acaso-não”
+RUT 2:9	8	צִוִּ֛יתִי	ordenei	claude	צִוִּיתִי “ordenei”; tinha “mandei”
+RUT 2:9	10	הַ/נְּעָרִ֖ים	os-moços	claude	הַנְּעָרִים “os moços”; tinha “aos-moços”
+RUT 2:9	13	וְ/צָמִ֗ת	e-tiveres-sede	claude	וְצָמִת “e tiveres sede”; tinha “e-se-tiveres-sede”
+RUT 2:9	14	וְ/הָלַכְתְּ֙	e-irás	claude	וְהָלַכְתְּ “e irás”; tinha “vai”
+RUT 2:9	17	וְ/שָׁתִ֕ית	e-beberás	claude	וְשָׁתִית “e beberás”; tinha “e-bebe”
+RUT 2:9	18	מֵ/אֲשֶׁ֥ר	do-que	claude	מֵאֲשֶׁר “do que”; tinha “da-que”
+RUT 2:9	19	יִשְׁאֲב֖וּ/ן	tirarem	claude	יִשְׁאֲבוּן “tirarem”; tinha “água”
+RUT 2:10	1	וַ/תִּפֹּל֙	e-caiu	claude	וַתִּפֹּל “e caiu”; tinha “então-baixando”
+RUT 2:10	3	פָּנֶ֔י/הָ	seu-rosto	claude	פָּנֶיהָ “seu rosto”; tinha “rosto”
+RUT 2:10	4	וַ/תִּשְׁתַּ֖חוּ	e-prostrou-se	claude	וַתִּשְׁתַּחוּ “e prostrou-se”; tinha “inclinou”
+RUT 2:10	5	אָ֑רְצָ/ה	em-terra	claude	אָרְצָה “para a terra”; tinha “terra”
+RUT 2:10	7	אֵלָ֗י/ו	a-ele	claude	אֵלָיו “a ele”; tinha “lhe”
+RUT 2:10	8	מַדּוּעַ֩	por-que	claude	מַדּוּעַ “por que”; tinha “por”
+RUT 2:10	11	בְּ/עֵינֶ֨י/ךָ֙	aos-teus-olhos	claude	בְּעֵינֶיךָ “aos teus olhos”; tinha “em-teus-olhos”
+RUT 2:10	12	לְ/הַכִּירֵ֔/נִי	para-me-reconheceres	claude	לְהַכִּירֵנִי “para me reconhecer”; tinha “para-que-tu-me-reconheças”
+RUT 2:10	13	וְ/אָּנֹכִ֖י	e-eu	claude	וְאָנֹכִי “e eu”; tinha “sendo-eu”
+RUT 2:11	1	וַ/יַּ֤עַן	e-respondeu	claude	וַיַּעַן “e respondeu”; tinha “e-respondendo”
+RUT 2:11	3	וַ/יֹּ֣אמֶר	e-disse	claude	וַיֹּאמֶר “e disse”; tinha “disse”
+RUT 2:11	4	לָ֔/הּ	a-ela	claude	לָהּ “a ela”; tinha “por”
+RUT 2:11	5	הֻגֵּ֨ד	sendo-declarado	claude	הֻגֵּד “ser declarado”; tinha “declara”
+RUT 2:11	6	הֻגַּ֜ד	foi-declarado	claude	הֻגַּד “foi declarado”; tinha “declarou”
+RUT 2:11	7	לִ֗/י	a-mim	claude	לִי “a mim”; tinha “para-mim”
+RUT 2:11	9	אֲשֶׁר	o-que	claude	אֲשֶׁר “o que”; tinha “que”
+RUT 2:11	14	מ֣וֹת	da-morte	claude	מוֹת “morte de”; tinha “morte”
+RUT 2:11	15	אִישֵׁ֑/ךְ	de-teu-marido	claude	אִישֵׁךְ “teu marido”; tinha “teu-marido”
+RUT 2:11	16	וַ/תַּֽעַזְבִ֞י	e-deixaste	claude	וַתַּעַזְבִי “e deixaste”; tinha “e-que-deixando”
+RUT 2:11	20	מֽוֹלַדְתֵּ֔/ךְ	de-teu-nascimento	claude	מוֹלַדְתֵּךְ “teu nascimento”; tinha “onde-nasceste”
+RUT 2:11	21	וַ/תֵּ֣לְכִ֔י	e-vieste	claude	וַתֵּלְכִי “e foste”; tinha “vieste”
+RUT 2:11	23	עַ֕ם	um-povo	claude	עַם “povo”; tinha “povo”
+RUT 2:11	27	תְּמ֥וֹל	ontem	claude	תְּמוֹל “ontem”; tinha “antes”
+RUT 2:11	28	שִׁלְשֽׁוֹם	e-anteontem	claude	שִׁלְשׁוֹם “anteontem”; tinha “antes”
+RUT 2:15	1	וַ/תָּ֖קָם	e-levantou-se	claude	וַתָּקָם “e levantou-se”; tinha “levantou-se-logo”
+RUT 2:15	2	לְ/לַקֵּ֑ט	para-respigar	claude	לְלַקֵּט “para respigar”; tinha “para-tirar-espigas”
+RUT 2:15	3	וַ/יְצַו֩	e-ordenou	claude	וַיְצַו “e ordenou”; tinha “e-mandou”
+RUT 2:15	11	תְּלַקֵּ֖ט	respigue	claude	תְּלַקֵּט “respigará”; tinha “espigas”
+RUT 2:15	13	תַכְלִימֽוּ/הָ	a-envergonheis	claude	תַכְלִימוּהָ “a envergonheis”; tinha “envergonheis”
+RUT 2:16	2	שֹׁל	tirando	claude	שֹׁל “tirar”; tinha “lançareis”
+RUT 2:16	3	תָּשֹׁ֥לּוּ	tirareis	claude	תָּשֹׁלּוּ “tirareis”; tinha “propósito”
+RUT 2:16	4	לָ֖/הּ	para-ela	claude	לָהּ “para ela”; tinha “de”
+RUT 2:16	5	מִן	de	claude	מִן “de”; tinha “dos”
+RUT 2:16	6	הַ/צְּבָתִ֑ים	os-molhos	claude	הַצְּבָתִים “os molhos”; tinha “feixes”
+RUT 2:16	7	וַ/עֲזַבְתֶּ֥ם	e-deixareis	claude	וַעֲזַבְתֶּם “e deixareis”; tinha “e-a-deixareis”
+RUT 2:16	8	וְ/לִקְּטָ֖ה	e-ela-respigará	claude	וְלִקְּטָה “e respigará”; tinha “que-colha”
+RUT 2:16	11	בָֽ/הּ	a-ela	claude	בָהּ “nela”; tinha “nela”
+RUT 2:18	1	וַ/תִּשָּׂא֙	e-o-levantou	claude	וַתִּשָּׂא “e levantou”; tinha “e-tomou”
+RUT 2:18	2	וַ/תָּב֣וֹא	e-entrou	claude	וַתָּבוֹא “e entrou”; tinha “e-veio”
+RUT 2:18	3	הָ/עִ֔יר	na-cidade	claude	הָעִיר “a cidade”; tinha “à-cidade”
+RUT 2:18	4	וַ/תֵּ֥רֶא	e-viu	claude	וַתֵּרֶא “e viu”; tinha “viu”
+RUT 2:18	5	חֲמוֹתָ֖/הּ	sua-sogra	claude	חֲמוֹתָהּ “sua sogra”; tinha “sogra”
+RUT 2:18	7	אֲשֶׁר	o-que	claude	אֲשֶׁר “o que”; tinha “que”
+RUT 2:18	8	לִקֵּ֑טָה	respigara	claude	לִקֵּטָה “respigou”; tinha “colhido”
+RUT 2:18	9	וַ/תּוֹצֵא֙	e-tirou	claude	וַתּוֹצֵא “e tirou”; tinha “tirou”
+RUT 2:18	11	לָ֔/הּ	a-ela	claude	לָהּ “a ela”; tinha “que-lhe”
+RUT 2:18	13	אֲשֶׁר	o-que	claude	אֲשֶׁר “o que”; tinha “que”
+RUT 2:18	14	הוֹתִ֖רָה	lhe-sobrara	claude	הוֹתִרָה “sobrou”; tinha “sobrado”
+RUT 2:18	15	מִ/שָּׂבְעָֽ/הּ	depois-de-se-fartar	claude	מִשָּׂבְעָהּ “de sua fartura”; tinha “deu-lhe”
+RUT 2:19	2	לָ֨/הּ	a-ela	claude	לָהּ “a ela”; tinha “para-ela”
+RUT 2:19	3	חֲמוֹתָ֜/הּ	sua-sogra	claude	חֲמוֹתָהּ “sua sogra”; tinha “sogra”
+RUT 2:19	5	לִקַּ֤טְתְּ	respigaste	claude	לִקַּטְתְּ “respigaste”; tinha “espigas”
+RUT 2:19	10	מַכִּירֵ֖/ךְ	o-que-te-reconheceu	claude	מַכִּירֵךְ “o que te reconhece”; tinha “te-reconheceu”
+RUT 2:19	12	וַ/תַּגֵּ֣ד	e-declarou	claude	וַתַּגֵּד “e declarou”; tinha “e-ela-declarou”
+RUT 2:19	13	לַ/חֲמוֹתָ֗/הּ	a-sua-sogra	claude	לַחֲמוֹתָהּ “a sua sogra”; tinha “à-sua-sogra”
+RUT 2:19	15	אֲשֶׁר	com-quem	claude	אֲשֶׁר “que”; tinha “que”
+RUT 2:19	16	עָשְׂתָה֙	trabalhara	claude	עָשְׂתָה “fez”; tinha “acontecido”
+RUT 2:19	17	עִמּ֔/וֹ	com-ele	claude	עִמּוֹ “com ele”; tinha “com-aquele”
+RUT 2:19	19	שֵׁ֤ם	o-nome	claude	שֵׁם “nome de”; tinha “nome”
+RUT 2:19	21	אֲשֶׁ֨ר	com-quem	claude	אֲשֶׁר “que”; tinha “que”
+RUT 2:19	22	עָשִׂ֧יתִי	trabalhei	claude	עָשִׂיתִי “fiz”; tinha “fiz”
+RUT 2:19	23	עִמּ֛/וֹ	com-ele	claude	עִמּוֹ “com ele”; tinha “com”
+RUT 2:19	25	בֹּֽעַז	é-Boaz	claude	בֹּעַז “Boaz”; tinha “trabalhei-Boaz”
+RUT 2:20	3	לְ/כַלָּתָ֗/הּ	a-sua-nora	claude	לְכַלָּתָהּ “a sua nora”; tinha “à-sua-nora”
+RUT 2:20	6	לַ/יהוָ֔ה	seja-do-SENHOR	claude	לַיהוָה “ao SENHOR”; tinha “do-SENHOR”
+RUT 2:20	9	עָזַ֣ב	deixou	claude	עָזַב “deixou”; tinha “recusou”
+RUT 2:20	10	חַסְדּ֔/וֹ	sua-bondade	claude	חַסְדּוֹ “sua bondade”; tinha “benevolência-que-teve”
+RUT 2:20	11	אֶת	para-com	claude	אֶת “com”; tinha “com”
+RUT 2:20	12	הַ/חַיִּ֖ים	os-vivos	claude	הַחַיִּים “os vivos”; tinha “aos-vivos”
+RUT 2:20	13	וְ/אֶת	e-para-com	claude	וְאֶת “e com”; tinha “com”
+RUT 2:20	14	הַ/מֵּתִ֑ים	os-mortos	claude	הַמֵּתִים “os mortos”; tinha “os-finados”
+RUT 2:20	15	וַ/תֹּ֧אמֶר	e-disse	claude	וַתֹּאמֶר “e disse”; tinha “disse”
+RUT 2:20	16	לָ֣/הּ	a-ela	claude	לָהּ “a ela”; tinha “para-ela”
+RUT 2:20	19	לָ֨/נוּ֙	é-nosso	claude	לָנוּ “para nós”; tinha “para-nós”
+RUT 2:20	20	הָ/אִ֔ישׁ	o-homem	claude	הָאִישׁ “o homem”; tinha “aquele-homem”
+RUT 2:20	21	מִֽ/גֹּאֲלֵ֖/נוּ	de-nossos-resgatadores	claude	מִגֹּאֲלֵנוּ “de nossos resgatadores”; tinha “de-nossos-remidores”
+RUT 2:20	22	הֽוּא	ele-é	claude	הוּא “ele”; tinha “é”
