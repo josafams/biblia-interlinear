@@ -30128,3 +30128,168 @@ DEU 29:21	1	וְ/הִבְדִּיל֤/וֹ	e-o-separará	claude	וְהִבְדִ
 DEU 29:21	5	שִׁבְטֵ֣י	as-tribos	claude	שִׁבְטֵי “tribos de”; tinha “tribos”
 DEU 29:21	8	אָל֣וֹת	as-imprecações	claude	אָלוֹת “imprecações de”; tinha “maldições”
 DEU 29:21	11	בְּ/סֵ֥פֶר	no-livro	claude	בְּסֵפֶר “no livro de”; tinha “neste-livro”
+DEU 29:22	3	הָֽ/אַחֲר֗וֹן	seguinte	claude	הָאַחֲרוֹן “o posterior”; tinha “vindoura”
+DEU 29:22	6	יָק֨וּמוּ֙	se-levantarão	claude	יָקוּמוּ “se levantarão”; tinha “levantarão”
+DEU 29:22	7	מֵ/אַ֣חֲרֵי/כֶ֔ם	depois-de-vós	claude	מֵאַחֲרֵיכֶם “depois de vós”; tinha “virão-depois-de-vós”
+DEU 29:22	8	וְ/הַ֨/נָּכְרִ֔י	e-o-estranho	claude	וְהַנָּכְרִי “e o estranho”; tinha “e-o-estrangeiro”
+DEU 29:22	11	מֵ/אֶ֣רֶץ	de-terra	claude	מֵאֶרֶץ “de terra”; tinha “de-terras”
+DEU 29:22	12	רְחוֹקָ֑ה	distante	claude	רְחוֹקָה “distante”; tinha “distantes”
+DEU 29:22	13	וְ֠/רָאוּ	e-virem	claude	וְרָאוּ “e verão”; tinha “quando-virem”
+DEU 29:22	15	מַכּ֞וֹת	as-pragas	claude	מַכּוֹת “pragas de”; tinha “pragas”
+DEU 29:22	16	הָ/אָ֤רֶץ	daquela-terra	claude	הָאָרֶץ “a terra”; tinha “desta-terra”
+DEU 29:22	21	חִלָּ֥ה	fez-adoecer	claude	חִלָּה “fez adoecer”; tinha “enfermar”
+DEU 29:22	23	בָּֽ/הּ	nela	claude	בָּהּ “nela”; tinha “a”
+DEU 29:26	4	אֲחֵרִ֔ים	outros	claude	אֲחֵרִים “outros”; tinha “alheios”
+DEU 29:26	5	וַ/יִּֽשְׁתַּחֲוּ֖וּ	e-se-prostraram	claude	וַיִּשְׁתַּחֲוּוּ “e se prostraram”; tinha “e-inclinaram”
+DEU 29:26	10	יְדָע֔וּ/ם	os-conheciam	claude	יְדָעוּם “os conheciam”; tinha “conheciam”
+DEU 29:26	12	חָלַ֖ק	repartira	claude	חָלַק “repartiu”; tinha “coisa”
+DEU 29:26	13	לָ/הֶֽם	a-eles	claude	לָהֶם “a eles”; tinha “para-eles”
+DEU 29:28	1	וַ/יִּתְּשֵׁ֤/ם	e-os-arrancou	claude	וַיִּתְּשֵׁם “e os arrancou”; tinha “os-desarraigou”
+DEU 29:28	4	אַדְמָתָ֔/ם	seu-solo	claude	אַדְמָתָם “seu solo”; tinha “terra”
+DEU 29:28	9	וַ/יַּשְׁלִכֵ֛/ם	e-os-lançou	claude	וַיַּשְׁלִכֵם “e os lançou”; tinha “e-os-expulsou”
+DEU 29:28	10	אֶל	para	claude	אֶל “para”; tinha “a”
+DEU 29:28	11	אֶ֥רֶץ	uma-terra	claude	אֶרֶץ “terra”; tinha “terra”
+DEU 29:28	13	כַּ/יּ֥וֹם	como-o-dia	claude	כַּיּוֹם “como o dia”; tinha “como-hoje”
+DEU 29:28	14	הַ/זֶּֽה	de-hoje	claude	הַזֶּה “o este”; tinha “este”
+DEU 30:4	2	יִהְיֶ֥ה	estiverem	claude	יִהְיֶה “for”; tinha “sido”
+DEU 30:4	3	נִֽדַּחֲ/ךָ֖	teus-desterrados	claude	נִדַּחֲךָ “teus desterrados”; tinha “lançado”
+DEU 30:4	4	בִּ/קְצֵ֣ה	na-extremidade	claude	בִּקְצֵה “na extremidade de”; tinha “a-extremidade”
+DEU 30:4	7	יְקַבֶּצְ/ךָ֙	te-ajuntará	claude	יְקַבֶּצְךָ “te ajuntará”; tinha “te-recolherá”
+DEU 30:5	1	וֶ/הֱבִֽיאֲ/ךָ֞	e-te-trará	claude	וֶהֱבִיאֲךָ “e te trará”; tinha “e-te-fará-voltar”
+DEU 30:5	4	אֶל	para	claude	אֶל “para”; tinha “à”
+DEU 30:5	5	הָ/אָ֛רֶץ	a-terra	claude	הָאָרֶץ “a terra”; tinha “terra”
+DEU 30:5	7	יָרְשׁ֥וּ	possuíram	claude	יָרְשׁוּ “possuíram”; tinha “herdaram”
+DEU 30:5	10	וְ/הֵיטִֽבְ/ךָ֥	e-te-fará-bem	claude	וְהֵיטִבְךָ “e te fará bem”; tinha “bem-te”
+DEU 30:5	11	וְ/הִרְבְּ/ךָ֖	e-te-multiplicará	claude	וְהִרְבְּךָ “e te multiplicará”; tinha “e-multiplicará”
+DEU 30:5	12	מֵ/אֲבֹתֶֽי/ךָ	mais-que-teus-pais	claude	מֵאֲבֹתֶיךָ “mais que teus pais”; tinha “teus-pais”
+DEU 30:6	3	אֱלֹהֶ֛י/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “teu-Deus-teu”
+DEU 30:6	5	לְבָבְ/ךָ֖	teu-coração	claude	לְבָבְךָ “teu coração”; tinha “coração”
+DEU 30:6	7	לְבַ֣ב	o-coração	claude	לְבַב “coração de”; tinha “coração”
+DEU 30:6	8	זַרְעֶ֑/ךָ	de-tua-descendência	claude	זַרְעֶךָ “tua descendência”; tinha “tua-descendência”
+DEU 30:6	9	לְ/אַהֲבָ֞ה	para-amares	claude	לְאַהֲבָה “para amar”; tinha “para-que-ames”
+DEU 30:6	17	לְמַ֥עַן	por-causa	claude	לְמַעַן “por causa de”; tinha “fim”
+DEU 30:6	18	חַיֶּֽי/ךָ	de-tua-vida	claude	חַיֶּיךָ “tua vida”; tinha “tu-vivas”
+DEU 30:9	1	וְ/הוֹתִֽירְ/ךָ֩	e-te-fará-abundar	claude	וְהוֹתִירְךָ “e te fará abundar”; tinha “e-te-fará”
+DEU 30:9	3	אֱלֹהֶ֜י/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “teu-Deus-abundar”
+DEU 30:9	6	יָדֶ֗/ךָ	de-tua-mão	claude	יָדֶךָ “tua mão”; tinha “tuas-mãos”
+DEU 30:9	8	בִטְנְ/ךָ֜	de-teu-ventre	claude	בִטְנְךָ “teu ventre”; tinha “teu-ventre”
+DEU 30:9	9	וּ/בִ/פְרִ֧י	e-no-fruto	claude	וּבִפְרִי “e no fruto de”; tinha “no-fruto”
+DEU 30:9	10	בְהֶמְתְּ/ךָ֛	de-teu-gado	claude	בְהֶמְתְּךָ “teu gado”; tinha “teu-animal”
+DEU 30:9	12	אַדְמָתְ/ךָ֖	de-teu-solo	claude	אַדְמָתְךָ “teu solo”; tinha “tua-terra”
+DEU 30:9	14	כִּ֣י	pois	claude	כִּי “pois”; tinha “porque”
+DEU 30:9	20	כַּ/אֲשֶׁר	como	claude	כַּאֲשֶׁר “como”; tinha “maneira-que”
+DEU 30:9	21	שָׂ֖שׂ	se-alegrou	claude	שָׂשׂ “se alegrou”; tinha “alegrou”
+DEU 30:12	2	בַ/שָּׁמַ֖יִם	nos-céus	claude	בַשָּׁמַיִם “nos céus”; tinha “no-céu”
+DEU 30:12	3	הִ֑וא	ela-está	claude	הִוא “ela”; tinha “é”
+DEU 30:12	4	לֵ/אמֹ֗ר	para-dizer	claude	לֵאמֹר “dizendo”; tinha “para-que-digas”
+DEU 30:12	8	הַ/שָּׁמַ֨יְמָ/ה֙	aos-céus	claude	הַשָּׁמַיְמָה “para os céus”; tinha “ao-céu”
+DEU 30:12	9	וְ/יִקָּחֶ֣/הָ	e-a-tomará	claude	וְיִקָּחֶהָ “e a tomará”; tinha “e-traga-a”
+DEU 30:12	11	וְ/יַשְׁמִעֵ֥/נוּ	e-nos-fará-ouvir	claude	וְיַשְׁמִעֵנוּ “e nos fará ouvir”; tinha “e-apresentará-para-nós”
+DEU 30:12	12	אֹתָ֖/הּ	a-ela	claude	אֹתָהּ “ela”; tinha “a”
+DEU 30:12	13	וְ/נַעֲשֶֽׂ/נָּה	e-a-cumpriremos	claude	וְנַעֲשֶׂנָּה “e a faremos”; tinha “e-façamo-a”
+DEU 30:16	1	אֲשֶׁ֨ר	pois	claude	אֲשֶׁר “que”; tinha “que”
+DEU 30:16	3	מְצַוְּ/ךָ֮	te-ordeno	claude	מְצַוְּךָ “te ordenando”; tinha “te-mando”
+DEU 30:16	5	לְ/אַהֲבָ֞ה	amar	claude	לְאַהֲבָה “para amar”; tinha “que-ames-ao”
+DEU 30:16	9	לָ/לֶ֣כֶת	andar	claude	לָלֶכֶת “para andar”; tinha “que-andes”
+DEU 30:16	11	וְ/לִ/שְׁמֹ֛ר	e-guardar	claude	וְלִשְׁמֹר “e para guardar”; tinha “e-guardes”
+DEU 30:16	14	וּ/מִשְׁפָּטָ֑י/ו	e-seus-juízos	claude	וּמִשְׁפָּטָיו “e seus juízos”; tinha “e-seus-regulamentos”
+DEU 30:16	15	וְ/חָיִ֣יתָ	e-viverás	claude	וְחָיִיתָ “e viverás”; tinha “para-que-vivas”
+DEU 30:16	16	וְ/רָבִ֔יתָ	e-te-multiplicarás	claude	וְרָבִיתָ “e te multiplicarás”; tinha “e-sejas-multiplicado”
+DEU 30:16	17	וּ/בֵֽרַכְ/ךָ֙	e-te-abençoará	claude	וּבֵרַכְךָ “e te abençoará”; tinha “abençoe”
+DEU 30:16	19	אֱלֹהֶ֔י/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “Deus-te”
+DEU 30:16	21	אֲשֶׁר	para-a-qual	claude	אֲשֶׁר “que”; tinha “qual”
+DEU 30:16	23	בָא	entrando	claude	בָא “entrando”; tinha “vem”
+DEU 30:16	24	שָׁ֖מָּ/ה	lá	claude	שָׁמָּה “para lá”; tinha “ali-para”
+DEU 30:19	1	הַעִידֹ֨תִי	tomo-por-testemunhas	claude	הַעִידֹתִי “tomo por testemunhas”; tinha “testemunhas”
+DEU 30:19	5	הַ/שָּׁמַ֣יִם	os-céus	claude	הַשָּׁמַיִם “os céus”; tinha “aos-céus”
+DEU 30:19	8	הַ/חַיִּ֤ים	a-vida	claude	הַחַיִּים “a vida”; tinha “vida”
+DEU 30:19	11	לְ/פָנֶ֔י/ךָ	diante-de-ti	claude	לְפָנֶיךָ “diante de ti”; tinha “diante-de-vós”
+DEU 30:19	14	וּ/בָֽחַרְתָּ֙	e-escolherás	claude	וּבָחַרְתָּ “e escolherás”; tinha “escolhe-pois”
+DEU 31:2	3	בֶּן	filho	claude	בֶּן “filho de”; tinha “idade”
+DEU 31:2	7	אָנֹכִי֙	sou-eu	claude	אָנֹכִי “eu”; tinha “sou”
+DEU 31:2	8	הַ/יּ֔וֹם	hoje	claude	הַיּוֹם “o dia”; tinha “hoje-dia”
+DEU 31:2	13	וְ/לָ/ב֑וֹא	e-entrar	claude	וְלָבוֹא “e para entrar”; tinha “nem-entrar”
+DEU 31:2	14	וַֽ/יהוָה֙	e-o-SENHOR	claude	וַיהוָה “e o SENHOR”; tinha “disto-o-SENHOR”
+DEU 31:2	15	אָמַ֣ר	disse	claude	אָמַר “disse”; tinha “me-disse”
+DEU 31:2	20	הַ/יַּרְדֵּ֥ן	o-Jordão	claude	הַיַּרְדֵּן “o Jordão”; tinha “este-Jordão”
+DEU 31:4	3	לָ/הֶ֔ם	a-eles	claude	לָהֶם “a eles”; tinha “para-eles”
+DEU 31:4	6	לְ/סִיח֥וֹן	a-Seom	claude	לְסִיחוֹן “a Seom”; tinha “com-Seom”
+DEU 31:4	7	וּ/לְ/ע֛וֹג	e-a-Ogue	claude	וּלְעוֹג “e a Ogue”; tinha “e-com-Ogue”
+DEU 31:4	9	הָ/אֱמֹרִ֖י	do-amorreu	claude	הָאֱמֹרִי “o amorreu”; tinha “dos-amorreus”
+DEU 31:4	10	וּ/לְ/אַרְצָ֑/ם	e-a-sua-terra	claude	וּלְאַרְצָם “e à terra deles”; tinha “e-com-sua-terra”
+DEU 31:4	13	אֹתָֽ/ם	a-eles	claude	אֹתָם “eles”; tinha “os”
+DEU 31:7	5	אֵלָ֜י/ו	a-ele	claude	אֵלָיו “a ele”; tinha “lhe”
+DEU 31:7	6	לְ/עֵינֵ֣י	aos-olhos	claude	לְעֵינֵי “aos olhos de”; tinha “à-vista”
+DEU 31:7	7	כָל	de-todo	claude	כָל “todo”; tinha “todo”
+DEU 31:7	9	חֲזַ֣ק	sê-forte	claude	חֲזַק “sê forte”; tinha “esforça”
+DEU 31:7	10	וֶ/אֱמָץ֒	e-corajoso	claude	וֶאֱמָץ “e sê corajoso”; tinha “e-anima”
+DEU 31:7	11	כִּ֣י	pois	claude	כִּי “pois”; tinha “porque”
+DEU 31:7	15	הָ/עָ֣ם	o-povo	claude	הָעָם “o povo”; tinha “este-povo”
+DEU 31:7	17	אֶל	para	claude	אֶל “para”; tinha “à”
+DEU 31:7	18	הָ/אָ֕רֶץ	a-terra	claude	הָאָרֶץ “a terra”; tinha “terra”
+DEU 31:7	22	לַ/אֲבֹתָ֖/ם	a-seus-pais	claude	לַאֲבֹתָם “a seus pais”; tinha “a-seus-pais-que-lhes”
+DEU 31:7	23	לָ/תֵ֣ת	dar	claude	לָתֵת “para dar”; tinha “de-dar”
+DEU 31:7	24	לָ/הֶ֑ם	a-eles	claude	לָהֶם “a eles”; tinha “para-eles”
+DEU 31:7	26	תַּנְחִילֶ֥/נָּה	a-farás-herdar	claude	תַּנְחִילֶנָּה “a farás herdar”; tinha “herdar”
+DEU 31:7	27	אוֹתָֽ/ם	a-eles	claude	אוֹתָם “eles”; tinha “os”
+DEU 31:9	4	הַ/תּוֹרָ֣ה	a-lei	claude	הַתּוֹרָה “a lei”; tinha “esta-lei”
+DEU 31:9	6	וַֽ/יִּתְּנָ֗/הּ	e-a-deu	claude	וַיִּתְּנָהּ “e a deu”; tinha “e-deu”
+DEU 31:9	7	אֶל	para	claude	אֶל “para”; tinha “a”
+DEU 31:9	8	הַ/כֹּהֲנִים֙	os-sacerdotes	claude	הַכֹּהֲנִים “os sacerdotes”; tinha “aos-sacerdotes”
+DEU 31:9	10	לֵוִ֔י	de-Levi	claude	לֵוִי “Levi”; tinha “Levi”
+DEU 31:9	13	אֲר֖וֹן	a-arca	claude	אֲרוֹן “arca de”; tinha “arca”
+DEU 31:9	14	בְּרִ֣ית	do-pacto	claude	בְּרִית “pacto de”; tinha “pacto”
+DEU 31:9	15	יְהוָ֑ה	do-SENHOR	claude	יְהוָה “SENHOR”; tinha “SENHOR”
+DEU 31:9	16	וְ/אֶל	e-para	claude	וְאֶל “e para”; tinha “e-a”
+DEU 31:9	18	זִקְנֵ֖י	os-anciãos	claude	זִקְנֵי “anciãos de”; tinha “anciãos”
+DEU 31:9	19	יִשְׂרָאֵֽל	de-Israel	claude	יִשְׂרָאֵל “Israel”; tinha “Israel”
+DEU 31:11	4	לֵ/רָאוֹת֙	para-aparecer	claude	לֵרָאוֹת “para aparecer”; tinha “a-apresentar-se”
+DEU 31:11	6	פְּנֵי֙	diante-da-face	claude	פְּנֵי “face de”; tinha “diante”
+DEU 31:11	14	הַ/תּוֹרָ֥ה	a-lei	claude	הַתּוֹרָה “a lei”; tinha “esta-lei”
+DEU 31:11	19	בְּ/אָזְנֵי/הֶֽם	aos-seus-ouvidos	claude	בְּאָזְנֵיהֶם “em seus ouvidos”; tinha “aos-ouvidos-deles”
+DEU 31:17	1	וְ/חָרָ֣ה	e-se-acenderá	claude	וְחָרָה “e se acenderá”; tinha “se-acenderá”
+DEU 31:17	10	וְ/הָיָ֣ה	e-ele-será	claude	וְהָיָה “e será”; tinha “e-serão”
+DEU 31:17	11	לֶֽ/אֱכֹ֔ל	para-ser-devorado	claude	לֶאֱכֹל “para comer”; tinha “consumidos”
+DEU 31:17	19	הֲ/לֹ֗א	porventura-não	claude	הֲלֹא “porventura não”; tinha “não”
+DEU 31:17	20	עַ֣ל	por	claude	עַל “sobre”; tinha “sobre”
+DEU 31:17	21	כִּֽי	que	claude	כִּי “que”; tinha “porque”
+DEU 31:17	22	אֵ֤ין	não-está	claude	אֵין “não há”; tinha “não”
+DEU 31:17	24	בְּ/קִרְבִּ֔/י	no-meio-de-mim	claude	בְּקִרְבִּי “no meio de mim”; tinha “em-meio”
+DEU 31:17	25	מְצָא֖וּ/נִי	me-acharam	claude	מְצָאוּנִי “me acharam”; tinha “acharam”
+DEU 31:17	26	הָ/רָע֥וֹת	os-males	claude	הָרָעוֹת “os males”; tinha “estes-males”
+DEU 31:19	1	וְ/עַתָּ֗ה	e-agora	claude	וְעַתָּה “e agora”; tinha “agora-pois”
+DEU 31:19	5	הַ/שִּׁירָ֣ה	o-cântico	claude	הַשִּׁירָה “o cântico”; tinha “este-cântico”
+DEU 31:19	7	וְ/לַמְּדָ֥/הּ	e-ensina-o	claude	וְלַמְּדָהּ “e ensina-o”; tinha “e-ensina”
+DEU 31:19	9	בְּנֵי	aos-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+DEU 31:19	11	שִׂימָ֣/הּ	põe-o	claude	שִׂימָהּ “põe-o”; tinha “põe”
+DEU 31:19	12	בְּ/פִי/הֶ֑ם	em-sua-boca	claude	בְּפִיהֶם “em sua boca”; tinha “em-boca-deles”
+DEU 31:19	13	לְמַ֨עַן	para-que	claude	לְמַעַן “para que”; tinha “para”
+DEU 31:19	14	תִּהְיֶה	seja	claude	תִּהְיֶה “seja”; tinha “será”
+DEU 31:19	16	הַ/שִּׁירָ֥ה	o-cântico	claude	הַשִּׁירָה “o cântico”; tinha “este-cântico”
+DEU 31:21	3	תִמְצֶ֨אןָ	o-acharem	claude	תִמְצֶאןָ “acharem”; tinha “achar”
+DEU 31:21	4	אֹת֜/וֹ	a-ele	claude	אֹתוֹ “ele”; tinha “o”
+DEU 31:21	5	רָע֣וֹת	males	claude	רָעוֹת “males”; tinha “vierem-males”
+DEU 31:21	9	הַ/שִּׁירָ֨ה	o-cântico	claude	הַשִּׁירָה “o cântico”; tinha “este-cântico”
+DEU 31:21	11	לְ/פָנָי/ו֙	diante-dele	claude	לְפָנָיו “diante dele”; tinha “em-sua-face”
+DEU 31:21	15	תִשָּׁכַ֖ח	será-esquecido	claude	תִשָּׁכַח “será esquecido”; tinha “cairá”
+DEU 31:21	17	זַרְע֑/וֹ	de-sua-descendência	claude	זַרְעוֹ “sua descendência”; tinha “sua-linhagem”
+DEU 31:21	18	כִּ֧י	pois	claude	כִּי “pois”; tinha “porque”
+DEU 31:21	21	יִצְר֗/וֹ	seu-intento	claude	יִצְרוֹ “seu intento”; tinha “seu-intento-e-o”
+DEU 31:21	22	אֲשֶׁ֨ר	o-que	claude	אֲשֶׁר “o que”; tinha “que”
+DEU 31:21	27	אֲבִיאֶ֔/נּוּ	o-introduza	claude	אֲבִיאֶנּוּ “o introduza”; tinha “trarei-o”
+DEU 31:21	28	אֶל	na	claude	אֶל “para”; tinha “a”
+DEU 31:21	29	הָ/אָ֖רֶץ	terra	claude	הָאָרֶץ “a terra”; tinha “na-terra”
+DEU 31:22	4	הַ/שִּׁירָ֥ה	o-cântico	claude	הַשִּׁירָה “o cântico”; tinha “este-cântico”
+DEU 31:22	6	בַּ/יּ֣וֹם	naquele-dia	claude	בַּיּוֹם “no dia”; tinha “dia”
+DEU 31:22	7	הַ/ה֑וּא	aquele	claude	הַהוּא “aquele”; tinha “e”
+DEU 31:22	8	וַֽ/יְלַמְּדָ֖/הּ	e-o-ensinou	claude	וַיְלַמְּדָהּ “e o ensinou”; tinha “e-ensinou”
+DEU 31:22	10	בְּנֵ֥י	aos-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+DEU 31:27	1	כִּ֣י	pois	claude	כִּי “pois”; tinha “porque”
+DEU 31:27	5	מֶרְיְ/ךָ֔	tua-rebelião	claude	מֶרְיְךָ “tua rebelião”; tinha “tua-rebelião-tua”
+DEU 31:27	7	עָרְפְּ/ךָ֖	tua-cerviz	claude	עָרְפְּךָ “tua cerviz”; tinha “cerviz”
+DEU 31:27	9	הֵ֣ן	eis-que	claude	הֵן “eis”; tinha “eis”
+DEU 31:27	10	בְּ/עוֹדֶ/נִּי֩	ainda-eu	claude	בְּעוֹדֶנִּי “em ainda eu”; tinha “que-ainda-eu”
+DEU 31:27	11	חַ֨י	vivo	claude	חַי “vivo”; tinha “vivendo”
+DEU 31:27	12	עִמָּ/כֶ֜ם	convosco	claude	עִמָּכֶם “convosco”; tinha “com-vós”
+DEU 31:27	18	וְ/אַ֖ף	e-quanto-mais	claude	וְאַף “e também”; tinha “e-quanto”
+DEU 31:27	21	מוֹתִֽ/י	de-minha-morte	claude	מוֹתִי “minha morte”; tinha “eu-morrer”
