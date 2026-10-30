@@ -29378,3 +29378,114 @@ DEU 14:27	5	תַֽעַזְבֶ֑/נּוּ	o-desampararás	claude	תַעַזְב�
 DEU 14:27	6	כִּ֣י	pois	claude	כִּי “pois”; tinha “porque”
 DEU 14:27	7	אֵ֥ין	não-há	claude	אֵין “não há”; tinha “não”
 DEU 14:27	10	וְ/נַחֲלָ֖ה	e-herança	claude	וְנַחֲלָה “e herança”; tinha “nem-herança”
+DEU 15:2	2	דְּבַ֣ר	a-palavra	claude	דְּבַר “palavra de”; tinha “é-a-maneira”
+DEU 15:2	4	שָׁמ֗וֹט	remitirá	claude	שָׁמוֹט “remitir”; tinha “perdoará”
+DEU 15:2	6	בַּ֨עַל֙	dono	claude	בַּעַל “dono de”; tinha “marido”
+DEU 15:2	7	מַשֵּׁ֣ה	de-empréstimo	claude	מַשֵּׁה “empréstimo de”; tinha “empréstimo”
+DEU 15:2	10	יַשֶּׁ֖ה	emprestou	claude	יַשֶּׁה “emprestar”; tinha “obrigou”
+DEU 15:2	13	יִגֹּ֤שׂ	cobrará	claude	יִגֹּשׂ “cobrará”; tinha “exigirá”
+DEU 15:2	18	כִּֽי	pois	claude	כִּי “pois”; tinha “porque”
+DEU 15:2	19	קָרָ֥א	foi-proclamada	claude	קָרָא “proclamou”; tinha “chamou”
+DEU 15:2	20	שְׁמִטָּ֖ה	a-remissão	claude	שְׁמִטָּה “remissão”; tinha “remissão”
+DEU 15:2	21	לַֽ/יהוָֽה	ao-SENHOR	claude	לַיהוָה “ao SENHOR”; tinha “do-SENHOR”
+DEU 15:4	1	אֶ֕פֶס	contudo	claude	אֶפֶס “fim”; tinha “não”
+DEU 15:4	7	כִּֽי	pois	claude	כִּי “pois”; tinha “porque”
+DEU 15:4	8	בָרֵ֤ךְ	abençoando	claude	בָרֵךְ “abençoar”; tinha “abençoará”
+DEU 15:4	9	יְבָֽרֶכְ/ךָ֙	te-abençoará	claude	יְבָרֶכְךָ “te abençoará”; tinha “abençoe-te”
+DEU 15:4	14	אֱלֹהֶ֔י/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “teu-Deus-te”
+DEU 15:4	16	לְ/ךָ֥	a-ti	claude	לְךָ “a ti”; tinha “por”
+DEU 15:4	17	נַחֲלָ֖ה	por-herança	claude	נַחֲלָה “herança”; tinha “herança”
+DEU 15:4	18	לְ/רִשְׁתָּֽ/הּ	para-possuí-la	claude	לְרִשְׁתָּהּ “para possuí-la”; tinha “possuas”
+DEU 15:10	1	נָת֤וֹן	dando	claude	נָתוֹן “dar”; tinha “efeito”
+DEU 15:10	3	ל֔/וֹ	a-ele	claude	לוֹ “a ele”; tinha “para-ele”
+DEU 15:10	5	יֵרַ֥ע	se-entristeça	claude	יֵרַע “seja mau”; tinha “maligno”
+DEU 15:10	7	בְּ/תִתְּ/ךָ֣	em-teu-dar	claude	בְּתִתְּךָ “em teu dar”; tinha “quando-lhe-deres-que”
+DEU 15:10	8	ל֑/וֹ	a-ele	claude	לוֹ “a ele”; tinha “por-ele”
+DEU 15:10	9	כִּ֞י	pois	claude	כִּי “pois”; tinha “porque”
+DEU 15:10	10	בִּ/גְלַ֣ל	por-causa	claude	בִּגְלַל “por causa de”; tinha “em-causa”
+DEU 15:10	11	הַ/דָּבָ֣ר	da-coisa	claude	הַדָּבָר “a coisa”; tinha “o-palavra”
+DEU 15:10	15	אֱלֹהֶ֔י/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “Deus”
+DEU 15:10	19	מִשְׁלַ֥ח	empreendimento	claude	מִשְׁלַח “empreendimento de”; tinha “puseres”
+DEU 15:10	20	יָדֶֽ/ךָ	de-tua-mão	claude	יָדֶךָ “tua mão”; tinha “mão”
+DEU 15:13	4	מֵֽ/עִמָּ֑/ךְ	de-contigo	claude	מֵעִמָּךְ “de contigo”; tinha “de-presença-ti”
+DEU 15:13	6	תְשַׁלְּחֶ֖/נּוּ	o-despedirás	claude	תְשַׁלְּחֶנּוּ “o despedirás”; tinha “enviarás”
+DEU 15:14	1	הַעֲנֵ֤יק	carregando	claude	הַעֲנֵיק “carregar”; tinha “abastecerás-generosamente”
+DEU 15:14	2	תַּעֲנִיק֙	carregarás	claude	תַּעֲנִיק “carregarás”; tinha “abastecerás-generosamente”
+DEU 15:14	3	ל֔/וֹ	a-ele	claude	לוֹ “a ele”; tinha “para-ele”
+DEU 15:14	4	מִ/צֹּ֣אנְ/ךָ֔	de-teu-rebanho	claude	מִצֹּאנְךָ “de teu rebanho”; tinha “de-tuas-ovelhas”
+DEU 15:14	5	וּ/מִֽ/גָּרְנְ/ךָ֖	e-de-tua-eira	claude	וּמִגָּרְנְךָ “e de tua eira”; tinha “de-tua-eira”
+DEU 15:14	6	וּ/מִ/יִּקְבֶ֑/ךָ	e-de-teu-lagar	claude	וּמִיִּקְבֶךָ “e de teu lagar”; tinha “prensa-uvas”
+DEU 15:14	7	אֲשֶׁ֧ר	do-que	claude	אֲשֶׁר “o que”; tinha “que”
+DEU 15:14	8	בֵּרַכְ/ךָ֛	te-abençoou	claude	בֵּרַכְךָ “te abençoou”; tinha “abençoado”
+DEU 15:14	10	אֱלֹהֶ֖י/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “Deus-teu”
+DEU 15:14	12	לֽ/וֹ	a-ele	claude	לוֹ “a ele”; tinha “em”
+DEU 15:15	1	וְ/זָכַרְתָּ֗	e-lembrarás	claude	וְזָכַרְתָּ “e lembrarás”; tinha “e-te-lembrarás”
+DEU 15:15	7	וַֽ/יִּפְדְּ/ךָ֖	e-te-resgatou	claude	וַיִּפְדְּךָ “e te resgatou”; tinha “resgatou”
+DEU 15:15	9	אֱלֹהֶ֑י/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “Deus-te”
+DEU 15:15	10	עַל	por	claude	עַל “sobre”; tinha “sobre”
+DEU 15:15	11	כֵּ֞ן	isso	claude	כֵּן “assim”; tinha “portanto”
+DEU 15:15	13	מְצַוְּ/ךָ֛	te-ordeno	claude	מְצַוְּךָ “te ordenando”; tinha “te-mando”
+DEU 15:15	15	הַ/דָּבָ֥ר	a-coisa	claude	הַדָּבָר “a coisa”; tinha “isto”
+DEU 15:15	16	הַ/זֶּ֖ה	esta	claude	הַזֶּה “o este”; tinha “este”
+DEU 15:18	2	יִקְשֶׁ֣ה	seja-duro	claude	יִקְשֶׁה “seja duro”; tinha “duro”
+DEU 15:18	3	בְ/עֵינֶ֗/ךָ	aos-teus-olhos	claude	בְעֵינֶךָ “aos teus olhos”; tinha “te-pareça-quando”
+DEU 15:18	4	בְּ/שַׁלֵּֽחֲ/ךָ֙	em-teu-despedir	claude	בְּשַׁלֵּחֲךָ “em teu despedir”; tinha “enviares”
+DEU 15:18	5	אֹת֤/וֹ	a-ele	claude	אֹתוֹ “ele”; tinha “o”
+DEU 15:18	7	מֵֽ/עִמָּ֔/ךְ	de-contigo	claude	מֵעִמָּךְ “de contigo”; tinha “de-presença-ti”
+DEU 15:18	8	כִּ֗י	pois	claude	כִּי “pois”; tinha “que”
+DEU 15:18	9	מִשְׁנֶה֙	o-dobro	claude	מִשְׁנֶה “o dobro de”; tinha “dobrado”
+DEU 15:18	10	שְׂכַ֣ר	do-salário	claude	שְׂכַר “salário de”; tinha “salário”
+DEU 15:18	11	שָׂכִ֔יר	de-assalariado	claude	שָׂכִיר “assalariado”; tinha “assalariado”
+DEU 15:18	15	וּ/בֵֽרַכְ/ךָ֙	e-te-abençoará	claude	וּבֵרַכְךָ “e te abençoará”; tinha “abençoará”
+DEU 15:18	17	אֱלֹהֶ֔י/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “Deus-te”
+DEU 15:20	4	תֹאכֲלֶ֨/נּוּ֙	o-comerás	claude	תֹאכֲלֶנּוּ “o comerás”; tinha “comerás”
+DEU 15:20	12	וּ/בֵיתֶֽ/ךָ	e-tua-casa	claude	וּבֵיתֶךָ “e tua casa”; tinha “e-tua-família”
+DEU 15:21	1	וְ/כִֽי	e-se	claude	וְכִי “e se”; tinha “e-quando”
+DEU 15:21	4	מ֗וּם	defeito	claude	מוּם “defeito”; tinha “mácula”
+DEU 15:21	9	מ֣וּם	defeito	claude	מוּם “defeito”; tinha “falta”
+DEU 15:21	10	רָ֑ע	mau	claude	רָע “mau”; tinha “má”
+DEU 15:21	12	תִזְבָּחֶ֔/נּוּ	o-sacrificarás	claude	תִזְבָּחֶנּוּ “o sacrificarás”; tinha “sacrificarás”
+DEU 15:22	1	בִּ/שְׁעָרֶ֖י/ךָ	em-tuas-portas	claude	בִּשְׁעָרֶיךָ “em tuas portas”; tinha “em-tuas-povoações”
+DEU 15:22	2	תֹּאכֲלֶ֑/נּוּ	o-comerás	claude	תֹּאכֲלֶנּוּ “o comerás”; tinha “comerás”
+DEU 15:22	4	וְ/הַ/טָּהוֹר֙	e-o-limpo	claude	וְהַטָּהוֹר “e o limpo”; tinha “mesmo-que-o-limpo”
+DEU 15:22	6	כַּ/צְּבִ֖י	como-a-gazela	claude	כַּצְּבִי “como a gazela”; tinha “como-de-um-corço”
+DEU 15:22	7	וְ/כָ/אַיָּֽל	e-como-o-cervo	claude	וְכָאַיָּל “e como o cervo”; tinha “ou-de-um-cervo”
+DEU 15:23	5	תֹאכֵ֑ל	comerás	claude	תֹאכֵל “comerás”; tinha “comas”
+DEU 15:23	8	תִּשְׁפְּכֶ֖/נּוּ	o-derramarás	claude	תִּשְׁפְּכֶנּוּ “o derramarás”; tinha “derramarás”
+DEU 16:10	2	חַ֤ג	a-festa	claude	חַג “festa de”; tinha “solenidade”
+DEU 16:10	3	שָׁבֻעוֹת֙	das-semanas	claude	שָׁבֻעוֹת “semanas”; tinha “semanas”
+DEU 16:10	6	מִסַּ֛ת	segundo-a-medida	claude	מִסַּת “medida de”; tinha “suficiência”
+DEU 16:10	7	נִדְבַ֥ת	da-oferta-voluntária	claude	נִדְבַת “oferta voluntária de”; tinha “voluntária”
+DEU 16:10	8	יָדְ/ךָ֖	de-tua-mão	claude	יָדְךָ “tua mão”; tinha “tua-mão”
+DEU 16:10	12	יְבָרֶכְ/ךָ֖	te-abençoar	claude	יְבָרֶכְךָ “te abençoar”; tinha “abençoado”
+DEU 16:10	14	אֱלֹהֶֽי/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “Deus-te”
+DEU 16:12	1	וְ/זָ֣כַרְתָּ֔	e-lembrarás	claude	וְזָכַרְתָּ “e lembrarás”; tinha “e-lembra”
+DEU 16:12	6	וְ/שָׁמַרְתָּ֣	e-guardarás	claude	וְשָׁמַרְתָּ “e guardarás”; tinha “portanto-guardarás”
+DEU 16:12	7	וְ/עָשִׂ֔יתָ	e-farás	claude	וְעָשִׂיתָ “e farás”; tinha “e-cumprirás”
+DEU 16:12	9	הַֽ/חֻקִּ֖ים	os-estatutos	claude	הַחֻקִּים “os estatutos”; tinha “estes-estatutos”
+DEU 16:13	1	חַ֧ג	a-festa	claude	חַג “festa de”; tinha “solenidade”
+DEU 16:13	2	הַ/סֻּכֹּ֛ת	das-tendas	claude	הַסֻּכֹּת “as tendas”; tinha “das-cabanas”
+DEU 16:13	4	לְ/ךָ֖	para-ti	claude	לְךָ “para ti”; tinha “por”
+DEU 16:13	7	בְּ/אָ֨סְפְּ/ךָ֔	em-teu-recolher	claude	בְּאָסְפְּךָ “em teu recolher”; tinha “colheita-tua”
+DEU 16:13	8	מִֽ/גָּרְנְ/ךָ֖	de-tua-eira	claude	מִגָּרְנְךָ “de tua eira”; tinha “de-eira”
+DEU 16:13	9	וּ/מִ/יִּקְבֶֽ/ךָ	e-de-teu-lagar	claude	וּמִיִּקְבֶךָ “e de teu lagar”; tinha “e-de-tua-prensa-de-uvas”
+DEU 16:16	3	בַּ/שָּׁנָ֡ה	no-ano	claude	בַּשָּׁנָה “no ano”; tinha “cada-ano”
+DEU 16:16	4	יֵרָאֶ֨ה	aparecerá	claude	יֵרָאֶה “aparecerá”; tinha “comparecerá”
+DEU 16:16	6	זְכוּרְ/ךָ֜	teu-macho	claude	זְכוּרְךָ “teu macho”; tinha “homem-teu”
+DEU 16:16	8	פְּנֵ֣י	a-face	claude	פְּנֵי “face de”; tinha “diante”
+DEU 16:16	14	בְּ/חַ֧ג	na-festa	claude	בְּחַג “na festa de”; tinha “na-solenidade”
+DEU 16:16	16	וּ/בְ/חַ֥ג	e-na-festa	claude	וּבְחַג “e na festa de”; tinha “e-na-solenidade”
+DEU 16:16	18	וּ/בְ/חַ֣ג	e-na-festa	claude	וּבְחַג “e na festa de”; tinha “e-na-solenidade”
+DEU 16:16	19	הַ/סֻּכּ֑וֹת	das-tendas	claude	הַסֻּכּוֹת “as tendas”; tinha “das-cabanas”
+DEU 16:16	21	יֵרָאֶ֛ה	aparecerá	claude	יֵרָאֶה “aparecerá”; tinha “comparecerá”
+DEU 16:16	23	פְּנֵ֥י	a-face	claude	פְּנֵי “face de”; tinha “diante”
+DEU 16:16	24	יְהוָ֖ה	do-SENHOR	claude	יְהוָה “SENHOR”; tinha “SENHOR”
+DEU 16:18	6	שְׁעָרֶ֔י/ךָ	tuas-portas	claude	שְׁעָרֶיךָ “tuas portas”; tinha “tuas-cidades”
+DEU 16:18	9	אֱלֹהֶ֛י/ךָ	teu-Deus	claude	אֱלֹהֶיךָ “teu Deus”; tinha “Deus-te”
+DEU 16:18	10	נֹתֵ֥ן	dá	claude	נֹתֵן “dando”; tinha “dará”
+DEU 16:18	11	לְ/ךָ֖	a-ti	claude	לְךָ “a ti”; tinha “em”
+DEU 16:18	12	לִ/שְׁבָטֶ֑י/ךָ	segundo-tuas-tribos	claude	לִשְׁבָטֶיךָ “segundo tuas tribos”; tinha “tuas-tribos”
+DEU 16:18	13	וְ/שָׁפְט֥וּ	e-julgarão	claude	וְשָׁפְטוּ “e julgarão”; tinha “quais-julgarão”
+DEU 16:18	15	הָ/עָ֖ם	o-povo	claude	הָעָם “o povo”; tinha “ao-povo”
+DEU 16:18	16	מִשְׁפַּט	com-juízo	claude	מִשְׁפַּט “juízo de”; tinha “juízo”
+DEU 16:18	17	צֶֽדֶק	de-justiça	claude	צֶדֶק “justiça”; tinha “justo”
