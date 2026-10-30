@@ -30293,3 +30293,160 @@ DEU 31:27	11	חַ֨י	vivo	claude	חַי “vivo”; tinha “vivendo”
 DEU 31:27	12	עִמָּ/כֶ֜ם	convosco	claude	עִמָּכֶם “convosco”; tinha “com-vós”
 DEU 31:27	18	וְ/אַ֖ף	e-quanto-mais	claude	וְאַף “e também”; tinha “e-quanto”
 DEU 31:27	21	מוֹתִֽ/י	de-minha-morte	claude	מוֹתִי “minha morte”; tinha “eu-morrer”
+DEU 32:2	7	כִּ/שְׂעִירִ֣ם	como-chuviscos	claude	כִּשְׂעִירִם “como chuviscos”; tinha “como-o-chuvisco”
+DEU 32:2	10	וְ/כִ/רְבִיבִ֖ים	e-como-aguaceiros	claude	וְכִרְבִיבִים “e como aguaceiros”; tinha “e-como-as-gotas”
+DEU 32:5	1	שִׁחֵ֥ת	corrompeu-se	claude	שִׁחֵת “corrompeu”; tinha “corromperam”
+DEU 32:5	2	ל֛/וֹ	contra-ele	claude	לוֹ “a ele”; tinha “para-ele”
+DEU 32:5	4	בָּנָ֣י/ו	seus-filhos	claude	בָּנָיו “seus filhos”; tinha “filhos”
+DEU 32:5	5	מוּמָ֑/ם	sua-mancha	claude	מוּמָם “sua mancha”; tinha “falha-é-deles”
+DEU 32:6	1	הֲ	porventura	claude	הֲ “porventura”; tinha “pagais”
+DEU 32:6	3	תִּגְמְלוּ	pagais	claude	תִּגְמְלוּ “pagais”; tinha “ó”
+DEU 32:6	8	חָכָ֑ם	sábio	claude	חָכָם “sábio”; tinha “insensato”
+DEU 32:6	9	הֲ/לוֹא	porventura-não	claude	הֲלוֹא “porventura não”; tinha “não”
+DEU 32:6	10	הוּא֙	é-ele	claude	הוּא “ele”; tinha “ele”
+DEU 32:6	11	אָבִ֣י/ךָ	teu-pai	claude	אָבִיךָ “teu pai”; tinha “teu-pai-que-te”
+DEU 32:6	12	קָּנֶ֔/ךָ	que-te-adquiriu	claude	קָּנֶךָ “o que te adquiriu”; tinha “adquiriu-te”
+DEU 32:6	14	עָֽשְׂ/ךָ֖	te-fez	claude	עָשְׂךָ “te fez”; tinha “fez”
+DEU 32:7	1	זְכֹר֙	lembra-te	claude	זְכֹר “lembra”; tinha “lembra”
+DEU 32:7	2	יְמ֣וֹת	dos-dias	claude	יְמוֹת “dias de”; tinha “tempos”
+DEU 32:7	3	עוֹלָ֔ם	da-antiguidade	claude	עוֹלָם “antiguidade”; tinha “antigos”
+DEU 32:7	5	שְׁנ֣וֹת	os-anos	claude	שְׁנוֹת “anos de”; tinha “anos”
+DEU 32:7	10	וְ/יַגֵּ֔דְ/ךָ	e-te-anunciará	claude	וְיַגֵּדְךָ “e te anunciará”; tinha “que-ele-te”
+DEU 32:7	11	זְקֵנֶ֖י/ךָ	a-teus-anciãos	claude	זְקֵנֶיךָ “teus anciãos”; tinha “teus-anciãos”
+DEU 32:7	12	וְ/יֹ֥אמְרוּ	e-dirão	claude	וְיֹאמְרוּ “e dirão”; tinha “dirão”
+DEU 32:7	13	לָֽ/ךְ	a-ti	claude	לָךְ “a ti”; tinha “para-ti”
+DEU 32:11	1	כְּ/נֶ֨שֶׁר֙	como-a-águia	claude	כְּנֶשֶׁר “como a águia”; tinha “como-a-água”
+DEU 32:11	3	קִנּ֔/וֹ	seu-ninho	claude	קִנּוֹ “seu ninho”; tinha “ninho-dele”
+DEU 32:11	5	גּוֹזָלָ֖י/ו	seus-filhotes	claude	גּוֹזָלָיו “seus filhotes”; tinha “ninhada-paira-seus”
+DEU 32:11	6	יְרַחֵ֑ף	paira	claude	יְרַחֵף “paira”; tinha “passarinhos”
+DEU 32:11	9	יִקָּחֵ֔/הוּ	o-toma	claude	יִקָּחֵהוּ “o toma”; tinha “toma”
+DEU 32:11	10	יִשָּׂאֵ֖/הוּ	o-leva	claude	יִשָּׂאֵהוּ “o leva”; tinha “leva”
+DEU 32:12	3	יַנְחֶ֑/נּוּ	o-guiou	claude	יַנְחֶנּוּ “o guiou”; tinha “guiou”
+DEU 32:12	4	וְ/אֵ֥ין	e-não-havia	claude	וְאֵין “e não há”; tinha “e-não”
+DEU 32:13	1	יַרְכִּבֵ֨/הוּ֙	o-fez-cavalgar	claude	יַרְכִּבֵהוּ “o fez cavalgar”; tinha “cavalgar”
+DEU 32:13	3	בָּ֣מֳתֵי	os-altos	claude	בָּמֳתֵי “altos de”; tinha “altos”
+DEU 32:13	4	אָ֔רֶץ	da-terra	claude	אָרֶץ “terra”; tinha “terra”
+DEU 32:13	6	תְּנוּבֹ֣ת	o-produto	claude	תְּנוּבֹת “produto de”; tinha “frutos”
+DEU 32:13	7	שָׂדָ֑י	do-campo	claude	שָׂדָי “campo”; tinha “campo”
+DEU 32:13	8	וַ/יֵּנִקֵ֤/הֽוּ	e-o-fez-sugar	claude	וַיֵּנִקֵהוּ “e o fez sugar”; tinha “sugar”
+DEU 32:13	12	מֵ/חַלְמִ֥ישׁ	da-pederneira	claude	מֵחַלְמִישׁ “da pederneira de”; tinha “da-dura”
+DEU 32:13	13	צֽוּר	da-rocha	claude	צוּר “rocha”; tinha “pederneira”
+DEU 32:17	5	אֱלֹהִ֖ים	a-deuses	claude	אֱלֹהִים “deuses”; tinha “deuses”
+DEU 32:17	7	יְדָע֑וּ/ם	os-conheciam	claude	יְדָעוּם “os conheciam”; tinha “conheciam”
+DEU 32:21	3	בְ/לֹא	com-não	claude	בְלֹא “com não”; tinha “não”
+DEU 32:21	5	כִּעֲס֖וּ/נִי	me-provocaram-à-ira	claude	כִּעֲסוּנִי “me provocaram à ira”; tinha “provocaram-me-à-ira”
+DEU 32:21	7	וַ/אֲנִי֙	e-eu	claude	וַאֲנִי “e eu”; tinha “eu-também”
+DEU 32:21	8	אַקְנִיאֵ֣/ם	os-provocarei-a-ciúmes	claude	אַקְנִיאֵם “os provocarei a ciúmes”; tinha “provocarei-os-ciúmes”
+DEU 32:21	9	בְּ/לֹא	com-não	claude	בְּלֹא “com não”; tinha “não”
+DEU 32:21	11	בְּ/ג֥וֹי	com-nação	claude	בְּגוֹי “com nação”; tinha “com-uma-nação”
+DEU 32:21	13	אַכְעִיסֵֽ/ם	os-provocarei-à-ira	claude	אַכְעִיסֵם “os provocarei à ira”; tinha “ira”
+DEU 32:26	1	אָמַ֖רְתִּי	eu-disse	claude	אָמַרְתִּי “eu disse”; tinha “disse”
+DEU 32:26	2	אַפְאֵי/הֶ֑ם	os-espalharei	claude	אַפְאֵיהֶם “os espalharei”; tinha “mundo-faria”
+DEU 32:26	3	אַשְׁבִּ֥יתָה	farei-cessar	claude	אַשְׁבִּיתָה “farei cessar”; tinha “cessar”
+DEU 32:26	5	זִכְרָֽ/ם	sua-memória	claude	זִכְרָם “sua memória”; tinha “memória-deles”
+DEU 32:30	2	יִרְדֹּ֤ף	perseguiria	claude	יִרְדֹּף “perseguirá”; tinha “perseguir”
+DEU 32:30	6	יָנִ֣יסוּ	fariam-fugir	claude	יָנִיסוּ “farão fugir”; tinha “fugir”
+DEU 32:30	10	כִּי	que	claude	כִּי “que”; tinha “porque”
+DEU 32:30	11	צוּרָ֣/ם	sua-Rocha	claude	צוּרָם “sua Rocha”; tinha “rocha-os”
+DEU 32:30	12	מְכָרָ֔/ם	os-vendera	claude	מְכָרָם “os vendeu”; tinha “vendido”
+DEU 32:30	14	הִסְגִּירָֽ/ם	os-entregara	claude	הִסְגִּירָם “os entregou”; tinha “entregue”
+DEU 32:31	1	כִּ֛י	pois	claude	כִּי “pois”; tinha “que”
+DEU 32:31	3	כְ/צוּרֵ֖/נוּ	como-nossa-Rocha	claude	כְצוּרֵנוּ “como nossa Rocha”; tinha “como-rocha-nosso”
+DEU 32:31	4	צוּרָ֑/ם	a-rocha-deles	claude	צוּרָם “a rocha deles”; tinha “rocha”
+DEU 32:35	1	לִ֤/י	minha-é	claude	לִי “para mim”; tinha “para-mim”
+DEU 32:35	3	וְ/שִׁלֵּ֔ם	e-a-retribuição	claude	וְשִׁלֵּם “e retribuição”; tinha “e-o-pagamento”
+DEU 32:35	4	לְ/עֵ֖ת	no-tempo	claude	לְעֵת “ao tempo”; tinha “ao-tempo”
+DEU 32:35	7	כִּ֤י	pois	claude	כִּי “pois”; tinha “porque”
+DEU 32:35	8	קָרוֹב֙	está-próximo	claude	קָרוֹב “próximo”; tinha “próximo”
+DEU 32:35	9	י֣וֹם	o-dia	claude	יוֹם “dia de”; tinha “dia”
+DEU 32:35	10	אֵידָ֔/ם	de-sua-calamidade	claude	אֵידָם “sua calamidade”; tinha “aflição”
+DEU 32:35	11	וְ/חָ֖שׁ	e-se-apressa	claude	וְחָשׁ “e se apressa”; tinha “apressa”
+DEU 32:35	12	עֲתִדֹ֥ת	o-preparado	claude	עֲתִדֹת “coisas preparadas”; tinha “preparado”
+DEU 32:36	1	כִּֽי	pois	claude	כִּי “pois”; tinha “porque”
+DEU 32:36	5	וְ/עַל	e-sobre	claude	וְעַל “e sobre”; tinha “e-por”
+DEU 32:36	7	יִתְנֶחָ֑ם	se-compadecerá	claude	יִתְנֶחָם “se compadecerá”; tinha “arrependerá”
+DEU 32:36	11	אָ֣זְלַת	se-foi	claude	אָזְלַת “se foi”; tinha “pereceu”
+DEU 32:36	12	יָ֔ד	a-força	claude	יָד “mão”; tinha “força-e”
+DEU 32:36	13	וְ/אֶ֖פֶס	e-não-há	claude	וְאֶפֶס “e fim”; tinha “que-não”
+DEU 32:36	14	עָצ֥וּר	preso	claude	עָצוּר “retido”; tinha “prisioneiro”
+DEU 32:36	15	וְ/עָזֽוּב	nem-solto	claude	וְעָזוּב “e deixado”; tinha “nem-livre”
+DEU 32:37	5	חָסָ֥יוּ	se-refugiavam	claude	חָסָיוּ “se refugiaram”; tinha “refugiavam”
+DEU 32:37	6	בֽ/וֹ	nela	claude	בוֹ “nele”; tinha “em”
+DEU 32:43	3	עַמּ֔/וֹ	seu-povo	claude	עַמּוֹ “seu povo”; tinha “povo-dele”
+DEU 32:43	4	כִּ֥י	pois	claude	כִּי “pois”; tinha “porque”
+DEU 32:43	5	דַם	o-sangue	claude	דַם “sangue de”; tinha “sangue”
+DEU 32:43	6	עֲבָדָ֖י/ו	de-seus-servos	claude	עֲבָדָיו “seus servos”; tinha “servos”
+DEU 32:43	8	וְ/נָקָם֙	e-vingança	claude	וְנָקָם “e vingança”; tinha “vingança”
+DEU 32:43	9	יָשִׁ֣יב	fará-voltar	claude	יָשִׁיב “fará voltar”; tinha “devolverá”
+DEU 32:43	10	לְ/צָרָ֔י/ו	a-seus-adversários	claude	לְצָרָיו “a seus adversários”; tinha “sobre-os-seus-inimigos”
+DEU 32:43	12	אַדְמָת֖/וֹ	a-sua-terra	claude	אַדְמָתוֹ “sua terra”; tinha “terra-pelo-seu”
+DEU 32:43	13	עַמּֽ/וֹ	e-a-seu-povo	claude	עַמּוֹ “seu povo”; tinha “povo”
+DEU 32:44	3	וַ/יְדַבֵּ֛ר	e-falou	claude	וַיְדַבֵּר “e falou”; tinha “e-recitou”
+DEU 32:44	6	דִּבְרֵ֥י	as-palavras	claude	דִּבְרֵי “palavras de”; tinha “palavras”
+DEU 32:44	7	הַ/שִּׁירָֽה	do-cântico	claude	הַשִּׁירָה “o cântico”; tinha “deste-cântico”
+DEU 32:44	12	וְ/הוֹשֵׁ֥עַ	e-Oseias	claude	וְהוֹשֵׁעַ “e Oseias”; tinha “e-Josué”
+DEU 32:44	14	נֽוּן	de-Num	claude	נוּן “Num”; tinha “Num”
+DEU 32:45	3	לְ/דַבֵּ֛ר	de-falar	claude	לְדַבֵּר “de falar”; tinha “de-recitar”
+DEU 32:45	6	הַ/דְּבָרִ֥ים	as-palavras	claude	הַדְּבָרִים “as palavras”; tinha “estas-palavras”
+DEU 32:45	8	אֶל	para	claude	אֶל “para”; tinha “a”
+DEU 32:46	9	מֵעִ֥יד	testifico	claude	מֵעִיד “testificando”; tinha “testemunhas”
+DEU 32:46	10	בָּ/כֶ֖ם	contra-vós	claude	בָּכֶם “contra vós”; tinha “em-vós”
+DEU 32:46	11	הַ/יּ֑וֹם	hoje	claude	הַיּוֹם “o dia”; tinha “declaro-hoje”
+DEU 32:46	12	אֲשֶׁ֤ר	para-que	claude	אֲשֶׁר “que”; tinha “que”
+DEU 32:46	13	תְּצַוֻּ/ם֙	as-ordeneis	claude	תְּצַוֻּם “as ordeneis”; tinha “mandeis”
+DEU 32:46	15	בְּנֵי/כֶ֔ם	a-vossos-filhos	claude	בְּנֵיכֶם “vossos filhos”; tinha “vossos-filhos”
+DEU 32:46	16	לִ/שְׁמֹ֣ר	para-guardarem	claude	לִשְׁמֹר “para guardar”; tinha “e-cuidem”
+DEU 32:46	17	לַ/עֲשׂ֔וֹת	para-fazer	claude	לַעֲשׂוֹת “para fazer”; tinha “de-praticar”
+DEU 32:46	20	דִּבְרֵ֖י	as-palavras	claude	דִּבְרֵי “palavras de”; tinha “palavras”
+DEU 32:46	21	הַ/תּוֹרָ֥ה	da-lei	claude	הַתּוֹרָה “a lei”; tinha “desta-lei”
+DEU 32:48	3	אֶל	para	claude	אֶל “para”; tinha “a”
+DEU 32:48	5	בְּ/עֶ֛צֶם	no-mesmo	claude	בְּעֶצֶם “no osso de”; tinha “mesmo”
+DEU 32:48	6	הַ/יּ֥וֹם	dia	claude	הַיּוֹם “o dia”; tinha “aquele-dia”
+DEU 33:1	3	אֲשֶׁ֨ר	com-que	claude	אֲשֶׁר “que”; tinha “qual”
+DEU 33:1	6	אִ֥ישׁ	o-homem	claude	אִישׁ “homem de”; tinha “homem”
+DEU 33:1	9	בְּנֵ֣י	os-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+DEU 33:1	12	מוֹתֽ/וֹ	de-sua-morte	claude	מוֹתוֹ “sua morte”; tinha “morresse”
+DEU 33:6	5	וִ/יהִ֥י	e-sejam	claude	וִיהִי “e seja”; tinha “sejam”
+DEU 33:6	6	מְתָ֖י/ו	seus-homens	claude	מְתָיו “seus homens”; tinha “homens-em”
+DEU 33:6	7	מִסְפָּֽר	poucos-em-número	claude	מִסְפָּר “número”; tinha “número”
+DEU 33:8	5	לְ/אִ֣ישׁ	do-homem	claude	לְאִישׁ “do homem”; tinha “homem”
+DEU 33:8	6	חֲסִידֶ֑/ךָ	teu-piedoso	claude	חֲסִידֶךָ “teu piedoso”; tinha “teu-bom”
+DEU 33:8	7	אֲשֶׁ֤ר	a-quem	claude	אֲשֶׁר “que”; tinha “qual”
+DEU 33:8	8	נִסִּית/וֹ֙	provaste	claude	נִסִּיתוֹ “o provaste”; tinha “tentaste”
+DEU 33:8	10	תְּרִיבֵ֖/הוּ	com-quem-contendeste	claude	תְּרִיבֵהוּ “contendeste com ele”; tinha “lhe-fizeste-brigar”
+DEU 33:8	11	עַל	junto-às	claude	עַל “sobre”; tinha “sobre”
+DEU 33:8	13	מְרִיבָֽה	de-Meribá	claude	מְרִיבָה “Meribá”; tinha “briga”
+DEU 33:9	4	לֹ֣א	não	claude	לֹא “não”; tinha “nunca”
+DEU 33:9	5	רְאִיתִ֔י/ו	o-vi	claude	רְאִיתִיו “o vi”; tinha “vi”
+DEU 33:9	8	לֹ֣א	não	claude	לֹא “não”; tinha “nem”
+DEU 33:9	9	הִכִּ֔יר	reconheceu	claude	הִכִּיר “reconheceu”; tinha “conheceu”
+DEU 33:9	12	לֹ֣א	não	claude	לֹא “não”; tinha “nem”
+DEU 33:9	14	כִּ֤י	pois	claude	כִּי “pois”; tinha “porque”
+DEU 33:9	15	שָֽׁמְרוּ֙	guardaram	claude	שָׁמְרוּ “guardaram”; tinha “guardarão”
+DEU 33:9	16	אִמְרָתֶ֔/ךָ	tua-palavra	claude	אִמְרָתֶךָ “tua palavra”; tinha “tuas-palavras”
+DEU 33:9	17	וּ/בְרִֽיתְ/ךָ֖	e-teu-pacto	claude	וּבְרִיתְךָ “e teu pacto”; tinha “teu-pacto”
+DEU 33:9	18	יִנְצֹֽרוּ	observaram	claude	יִנְצֹרוּ “observarão”; tinha “observarão”
+DEU 33:11	3	חֵיל֔/וֹ	sua-força	claude	חֵילוֹ “sua força”; tinha “fizerem”
+DEU 33:11	4	וּ/פֹ֥עַל	e-a-obra	claude	וּפֹעַל “e obra de”; tinha “e-recebe”
+DEU 33:11	6	תִּרְצֶ֑ה	aceita	claude	תִּרְצֶה “aceitarás”; tinha “agrado”
+DEU 33:11	9	קָמָ֛י/ו	dos-que-se-levantam-contra-ele	claude	קָמָיו “os que se levantam contra ele”; tinha “seus-inimigos”
+DEU 33:11	10	וּ/מְשַׂנְאָ֖י/ו	e-dos-que-o-odeiam	claude	וּמְשַׂנְאָיו “e os que o odeiam”; tinha “e-dos-que-lhe-odiarem”
+DEU 33:11	11	מִן	para-que-não	claude	מִן “de”; tinha “de”
+DEU 33:11	12	יְקוּמֽוּ/ן	se-levantem	claude	יְקוּמוּן “se levantem”; tinha “levantem”
+DEU 33:17	1	בְּכ֨וֹר	o-primogênito	claude	בְּכוֹר “primogênito de”; tinha “primogênito”
+DEU 33:17	2	שׁוֹר֜/וֹ	de-seu-touro	claude	שׁוֹרוֹ “seu touro”; tinha “touro”
+DEU 33:17	3	הָדָ֣ר	majestade	claude	הָדָר “majestade”; tinha “preeminente”
+DEU 33:17	4	ל֗/וֹ	tem	claude	לוֹ “para ele”; tinha “para-ele”
+DEU 33:17	5	וְ/קַרְנֵ֤י	e-chifres	claude	וְקַרְנֵי “e chifres de”; tinha “pontas”
+DEU 33:17	6	רְאֵם֙	de-boi-selvagem	claude	רְאֵם “boi selvagem”; tinha “boi-selvagem”
+DEU 33:17	7	קַרְנָ֔י/ו	são-seus-chifres	claude	קַרְנָיו “seus chifres”; tinha “suas-chifres”
+DEU 33:17	12	אַפְסֵי	até-os-confins	claude	אַפְסֵי “confins de”; tinha “confins”
+DEU 33:17	13	אָ֑רֶץ	da-terra	claude	אָרֶץ “terra”; tinha “terra”
+DEU 33:17	15	רִבְב֣וֹת	as-miríades	claude	רִבְבוֹת “miríades de”; tinha “milhares”
+DEU 33:17	16	אֶפְרַ֔יִם	de-Efraim	claude	אֶפְרַיִם “Efraim”; tinha “Efraim”
+DEU 33:17	18	אַלְפֵ֥י	os-milhares	claude	אַלְפֵי “milhares de”; tinha “milhares”
+DEU 33:17	19	מְנַשֶּֽׁה	de-Manassés	claude	מְנַשֶּׁה “Manassés”; tinha “Manassés”
+DEU 33:25	1	בַּרְזֶ֥ל	de-ferro	claude	בַּרְזֶל “ferro”; tinha “ferro”
+DEU 33:25	3	מִנְעָלֶ֑י/ךָ	serão-teus-ferrolhos	claude	מִנְעָלֶיךָ “teus ferrolhos”; tinha “teu-calçado-tua”
+DEU 33:25	4	וּ/כְ/יָמֶ֖י/ךָ	e-como-teus-dias	claude	וּכְיָמֶיךָ “e como teus dias”; tinha “como-os-teus-dias”
+DEU 33:25	5	דָּבְאֶֽ/ךָ	tua-força	claude	דָּבְאֶךָ “tua força”; tinha “força”
