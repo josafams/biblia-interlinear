@@ -27908,3 +27908,69 @@ NUM 28:17	1	וּ/בַ/חֲמִשָּׁ֨ה	e-no-dia-quinze	claude	וּבַחֲמ
 NUM 28:17	2	עָשָׂ֥ר	no-dia-quinze	claude	עָשָׂ֥ר parte de “no dia quinze”; tinha “quinze”
 NUM 28:17	4	לַ/חֹ֥דֶשׁ	do-mês	claude	לַחֹדֶשׁ “do mês”; tinha “deste-mês”
 NUM 28:17	10	יֵאָכֵֽל	se-comerão	claude	יֵאָכֵל “será comido”; tinha “comerão”
+NUM 29:2	3	לְ/רֵ֤יחַ	por-aroma	claude	לְרֵיחַ “por aroma de”; tinha “por-cheiro”
+NUM 29:2	6	פַּ֧ר	um-bezerro	claude	פַּר “bezerro”; tinha “bezerro”
+NUM 29:2	8	בָּקָ֛ר	de-gado	claude	בָּקָר “gado”; tinha “vacas”
+NUM 29:2	14	שָׁנָ֛ה	de-um-ano	claude	שָׁנָה “ano”; tinha “ano”
+NUM 29:8	4	רֵ֣יחַ	aroma	claude	רֵיחַ “aroma de”; tinha “cheiro”
+NUM 29:8	8	בָּקָ֛ר	de-gado	claude	בָּקָר “gado”; tinha “vacas”
+NUM 29:8	14	שָׁנָה֙	de-um-ano	claude	שָׁנָה “ano”; tinha “ano”
+NUM 29:12	2	עָשָׂ֨ר	no-dia-quinze	claude	עָשָׂ֨ר parte de “no dia quinze”; tinha “quinze”
+NUM 29:13	4	רֵ֤יחַ	de-aroma	claude	רֵיחַ “aroma de”; tinha “cheiro”
+NUM 29:13	9	בָקָ֛ר	de-gado	claude	בָקָר “gado”; tinha “vacas”
+NUM 29:13	11	עָשָׂ֖ר	treze	claude	עָשָׂ֖ר parte de “treze”; tinha “catorze”
+NUM 29:13	15	בְּנֵֽי	filhos	claude	בְּנֵי “filhos de”; tinha “um”
+NUM 29:13	16	שָׁנָ֛ה	de-um-ano	claude	שָׁנָה “ano”; tinha “ano”
+NUM 29:13	18	עָשָׂ֖ר	catorze	claude	עָשָׂ֖ר parte de “catorze”; tinha “sem”
+NUM 29:13	19	תְּמִימִ֥ם	sem-defeito	claude	תְּמִימִם “íntegros”; tinha “defeito”
+NUM 29:14	1	וּ/מִנְחָתָ֔/ם	e-sua-oferta-de-cereais	claude	וּמִנְחָתָם “e sua oferta de cereais”; tinha “e-as-ofertas-de-cereais-deles”
+NUM 29:14	2	סֹ֖לֶת	farinha-fina	claude	סֹלֶת “farinha fina”; tinha “farinha”
+NUM 29:14	3	בְּלוּלָ֣ה	amassada	claude	בְּלוּלָה “amassada”; tinha “boa-amassada”
+NUM 29:14	6	עֶשְׂרֹנִ֜ים	décimos	claude	עֶשְׂרֹנִים “décimos”; tinha “décimos-efa”
+NUM 29:14	8	הָֽ/אֶחָ֗ד	o-um	claude	הָאֶחָד “o um”; tinha “cada-um”
+NUM 29:14	9	לִ/שְׁלֹשָׁ֤ה	para-os-treze	claude	לִשְׁלֹשָׁ֤ה parte de “para os treze”; tinha “dos-treze”
+NUM 29:14	14	לָ/אַ֣יִל	para-o-carneiro	claude	לָאַיִל “para o carneiro”; tinha “com-cada”
+NUM 29:14	15	הָֽ/אֶחָ֔ד	o-um	claude	הָאֶחָד “o um”; tinha “um”
+NUM 29:14	16	לִ/שְׁנֵ֖י	para-os-dois	claude	לִשְׁנֵי “para os dois de”; tinha “dos-dois”
+NUM 29:15	1	וְ/עִשָּׂרׄוֹן֙	e-um-décimo	claude	וְעִשָּׂרוֹן “e décimo”; tinha “e-boa”
+NUM 29:15	2	עִשָּׂר֔וֹן	um-décimo	claude	עִשָּׂרוֹן “décimo”; tinha “cada”
+NUM 29:15	4	הָ/אֶחָ֑ד	o-um	claude	הָאֶחָד “o um”; tinha “um”
+NUM 29:15	5	לְ/אַרְבָּעָ֥ה	para-os-catorze	claude	לְאַרְבָּעָ֥ה parte de “para os catorze”; tinha “dos-catorze”
+NUM 29:16	2	עִזִּ֥ים	das-cabras	claude	עִזִּים “cabras”; tinha “bode-macho”
+NUM 29:16	4	חַטָּ֑את	como-oferta-pelo-pecado	claude	חַטָּאת “oferta pelo pecado”; tinha “expiação”
+NUM 29:16	8	מִנְחָתָ֖/הּ	sua-oferta-de-cereais	claude	מִנְחָתָהּ “sua oferta de cereais”; tinha “oferta-cereais-sua”
+NUM 29:16	9	וְ/נִסְכָּֽ/הּ	e-sua-libação	claude	וְנִסְכָּהּ “e sua libação”; tinha “e-libação”
+NUM 29:19	2	עִזִּ֥ים	das-cabras	claude	עִזִּים “cabras”; tinha “bode-macho”
+NUM 29:19	4	חַטָּ֑את	como-oferta-pelo-pecado	claude	חַטָּאת “oferta pelo pecado”; tinha “expiação”
+NUM 29:19	8	וּ/מִנְחָתָ֖/הּ	e-sua-oferta-de-cereais	claude	וּמִנְחָתָהּ “e sua oferta de cereais”; tinha “e-sua-oferta-de-cereais-sua”
+NUM 29:19	9	וְ/נִסְכֵּי/הֶֽם	e-suas-libações	claude	וְנִסְכֵּיהֶם “e suas libações”; tinha “e-libação”
+NUM 29:20	5	עָשָׂ֖ר	onze	claude	עָשָׂ֖ר parte de “onze”; tinha “catorze”
+NUM 29:20	10	שָׁנָ֛ה	de-um-ano	claude	שָׁנָה “ano”; tinha “ano”
+NUM 29:20	12	עָשָׂ֖ר	catorze	claude	עָשָׂ֖ר parte de “catorze”; tinha “sem”
+NUM 29:20	13	תְּמִימִֽם	sem-defeito	claude	תְּמִימִם “íntegros”; tinha “defeito”
+NUM 29:25	2	עִזִּ֥ים	das-cabras	claude	עִזִּים “cabras”; tinha “bode-macho”
+NUM 29:25	4	חַטָּ֑את	como-oferta-pelo-pecado	claude	חַטָּאת “oferta pelo pecado”; tinha “expiação”
+NUM 29:25	8	מִנְחָתָ֖/הּ	sua-oferta-de-cereais	claude	מִנְחָתָהּ “sua oferta de cereais”; tinha “oferta-cereais”
+NUM 29:28	1	וּ/שְׂעִ֥יר	e-um-bode	claude	וּשְׂעִיר “e bode”; tinha “e-bode-macho”
+NUM 29:28	2	חַטָּ֖את	como-oferta-pelo-pecado	claude	חַטָּאת “oferta pelo pecado”; tinha “expiação”
+NUM 29:28	4	מִ/לְּ/בַד֙	além	claude	מִלְּבַד “além de”; tinha “por-além”
+NUM 29:28	7	וּ/מִנְחָתָ֖/הּ	e-sua-oferta-de-cereais	claude	וּמִנְחָתָהּ “e sua oferta de cereais”; tinha “oferta-de-cereais”
+NUM 29:34	1	וּ/שְׂעִ֥יר	e-um-bode	claude	וּשְׂעִיר “e bode”; tinha “e-bode-macho”
+NUM 29:34	2	חַטָּ֖את	como-oferta-pelo-pecado	claude	חַטָּאת “oferta pelo pecado”; tinha “expiação”
+NUM 29:34	4	מִ/לְּ/בַד֙	além	claude	מִלְּבַד “além de”; tinha “por-além”
+NUM 29:34	7	מִנְחָתָ֖/הּ	sua-oferta-de-cereais	claude	מִנְחָתָהּ “sua oferta de cereais”; tinha “oferta-cereais”
+NUM 29:36	3	אִשֵּׁ֨ה	oferta-queimada	claude	אִשֵּׁה “oferta queimada de”; tinha “oferta”
+NUM 29:36	4	רֵ֤יחַ	de-aroma	claude	רֵיחַ “aroma de”; tinha “cheiro”
+NUM 29:36	7	פַּ֥ר	um-bezerro	claude	פַּר “bezerro”; tinha “novilho”
+NUM 29:36	12	בְּנֵי	filhos	claude	בְּנֵי “filhos de”; tinha “de-um”
+NUM 29:36	13	שָׁנָ֛ה	de-um-ano	claude	שָׁנָה “ano”; tinha “ano”
+NUM 29:37	1	מִנְחָתָ֣/ם	sua-oferta-de-cereais	claude	מִנְחָתָם “sua oferta de cereais”; tinha “suas-ofertas”
+NUM 29:37	3	לַ/פָּ֨ר	para-o-bezerro	claude	לַפָּר “para o bezerro”; tinha “com-o-novilho”
+NUM 29:37	4	לָ/אַ֧יִל	para-o-carneiro	claude	לָאַיִל “para o carneiro”; tinha “com-o-carneiro”
+NUM 29:37	5	וְ/לַ/כְּבָשִׂ֛ים	e-para-os-cordeiros	claude	וְלַכְּבָשִׂים “e para os cordeiros”; tinha “e-com-os-cordeiros”
+NUM 29:37	7	כַּ/מִּשְׁפָּֽט	conforme-a-ordenança	claude	כַּמִּשְׁפָּט “conforme o juízo”; tinha “conforme-a-lei”
+NUM 29:38	1	וּ/שְׂעִ֥יר	e-um-bode	claude	וּשְׂעִיר “e bode”; tinha “e-bode-macho”
+NUM 29:38	2	חַטָּ֖את	como-oferta-pelo-pecado	claude	חַטָּאת “oferta pelo pecado”; tinha “expiação”
+NUM 29:38	4	מִ/לְּ/בַד֙	além	claude	מִלְּבַד “além de”; tinha “por-além”
+NUM 29:38	7	וּ/מִנְחָתָ֖/הּ	e-sua-oferta-de-cereais	claude	וּמִנְחָתָהּ “e sua oferta de cereais”; tinha “com-sua-oferta”
+NUM 29:38	8	וְ/נִסְכָּֽ/הּ	e-sua-libação	claude	וְנִסְכָּהּ “e sua libação”; tinha “e-libação”
