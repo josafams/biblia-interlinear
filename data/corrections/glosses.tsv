@@ -31324,3 +31324,195 @@ JOS 14:15	2	חֶבְר֤וֹן	de-Hebrom	claude	חֶבְרוֹן “Hebrom”; t
 JOS 14:15	4	קִרְיַ֣ת	era-Quiriate-Arba	claude	קִרְיַת “Quiriate de”; tinha “Quiriate-Arba”
 JOS 14:15	5	אַרְבַּ֔ע	Quiriate-Arba	claude	אַרְבַּע “Arba”; tinha “Arba”
 JOS 14:15	9	ה֑וּא	era-ele	claude	הוּא “ele”; tinha “ele”
+JOS 15:13	1	וּ/לְ/כָלֵ֣ב	e-a-Calebe	claude	וּלְכָלֵב “e a Calebe”; tinha “a-Calebe”
+JOS 15:13	3	יְפֻנֶּ֗ה	de-Jefoné	claude	יְפֻנֶּה “Jefoné”; tinha “Jefoné”
+JOS 15:13	6	בְּ/ת֣וֹךְ	no-meio	claude	בְּתוֹךְ “no meio de”; tinha “em-meio”
+JOS 15:13	7	בְּנֵֽי	dos-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+JOS 15:13	9	אֶל	segundo	claude	אֶל “para”; tinha “a”
+JOS 15:13	10	פִּ֥י	a-ordem	claude	פִּי “boca de”; tinha “mandamento”
+JOS 15:13	11	יְהוָ֖ה	do-SENHOR	claude	יְהוָה “SENHOR”; tinha “SENHOR”
+JOS 15:13	15	אַרְבַּ֛ע	Quiriate-Arba	claude	אַרְבַּע “Arba”; tinha “Arba”
+JOS 15:13	17	הָ/עֲנָ֖ק	do-Anaque	claude	הָעֲנָק “o Anaque”; tinha “de-Anaque”
+JOS 15:13	18	הִ֥יא	que-é	claude	הִיא “ela”; tinha “é”
+JOS 15:17	4	קְנַ֖ז	de-Quenaz	claude	קְנַז “Quenaz”; tinha “Quenaz”
+JOS 15:17	6	כָלֵ֑ב	de-Calebe	claude	כָלֵב “Calebe”; tinha “Calebe”
+JOS 15:17	7	וַ/יִּתֶּן	e-deu	claude	וַיִּתֶּן “e deu”; tinha “e-ele-lhe-deu”
+JOS 15:17	8	ל֛/וֹ	a-ele	claude	לוֹ “a ele”; tinha “por”
+JOS 15:17	12	לְ/אִשָּֽׁה	por-mulher	claude	לְאִשָּׁה “por mulher”; tinha “mulher-a”
+JOS 15:18	1	וַ/יְהִ֣י	e-foi	claude	וַיְהִי “e foi”; tinha “e-aconteceu”
+JOS 15:18	2	בְּ/בוֹאָ֗/הּ	quando-ela-veio	claude	בְּבוֹאָהּ “em seu vir”; tinha “quando-a”
+JOS 15:18	3	וַ/תְּסִיתֵ֨/הוּ֙	que-ela-o-persuadiu	claude	וַתְּסִיתֵהוּ “e o incitou”; tinha “ele-a-persuadiu”
+JOS 15:18	4	לִ/שְׁא֤וֹל	a-pedir	claude	לִשְׁאוֹל “para pedir”; tinha “que-pedisse”
+JOS 15:18	5	מֵֽ/אֵת	de	claude	מֵאֵת “de com”; tinha “de-parte”
+JOS 15:18	6	אָבִ֨י/הָ֙	seu-pai	claude	אָבִיהָ “seu pai”; tinha “pai”
+JOS 15:18	7	שָׂדֶ֔ה	um-campo	claude	שָׂדֶה “campo”; tinha “terras”
+JOS 15:18	8	וַ/תִּצְנַ֖ח	e-desceu	claude	וַתִּצְנַח “e desceu”; tinha “então-desceu”
+JOS 15:18	9	מֵ/עַ֣ל	de-cima	claude	מֵעַל “de sobre”; tinha “de-sobre”
+JOS 15:18	10	הַ/חֲמ֑וֹר	do-jumento	claude	הַחֲמוֹר “o jumento”; tinha “asno”
+JOS 15:18	11	וַ/יֹּֽאמֶר	e-disse	claude	וַיֹּאמֶר “e disse”; tinha “disse”
+JOS 15:18	12	לָ֥/הּ	a-ela	claude	לָהּ “a ela”; tinha “para-ela”
+JOS 15:18	15	לָּֽ/ךְ	tens	claude	לָּךְ “para ti”; tinha “para-ti”
+JOS 15:28	1	וַ/חֲצַ֥ר	e-Hazar-Sual	claude	וַחֲצַר “e Hazar”; tinha “e-Hazar”
+JOS 15:28	2	שׁוּעָ֛ל	Hazar-Sual	claude	שׁוּעָל “Sual”; tinha “Sual”
+JOS 15:28	3	וּ/בְאֵ֥ר	e-Berseba	claude	וּבְאֵר “e Beer”; tinha “Berseba”
+JOS 15:36	8	וְ/חַצְרֵי/הֶֽן	e-suas-aldeias	claude	וְחַצְרֵיהֶן “e suas aldeias”; tinha “com-suas-aldeias”
+JOS 15:45	2	וּ/בְנֹתֶ֖י/הָ	e-suas-filhas	claude	וּבְנֹתֶיהָ “e suas filhas”; tinha “com-suas-vilas-suas”
+JOS 15:45	3	וַ/חֲצֵרֶֽי/הָ	e-suas-aldeias	claude	וַחֲצֵרֶיהָ “e suas aldeias”; tinha “e-aldeias”
+JOS 15:46	1	מֵ/עֶקְר֖וֹן	desde-Ecrom	claude	מֵעֶקְרוֹן “desde Ecrom”; tinha “Desde-Ecrom”
+JOS 15:46	2	וָ/יָ֑מָּ/ה	e-para-o-mar	claude	וָיָמָּה “e para o mar”; tinha “até-o-mar”
+JOS 15:46	5	עַל	junto-ao	claude	עַל “sobre”; tinha “sobre”
+JOS 15:46	6	יַ֥ד	lado	claude	יַד “mão de”; tinha “costa”
+JOS 15:46	7	אַשְׁדּ֖וֹד	de-Asdode	claude	אַשְׁדּוֹד “Asdode”; tinha “Asdode”
+JOS 15:46	8	וְ/חַצְרֵי/הֶֽן	e-suas-aldeias	claude	וְחַצְרֵיהֶן “e suas aldeias”; tinha “com-suas-aldeias”
+JOS 15:47	2	בְּנוֹתֶ֣י/הָ	suas-filhas	claude	בְּנוֹתֶיהָ “suas filhas”; tinha “suas-vilas”
+JOS 15:47	5	בְּנוֹתֶ֥י/הָ	suas-filhas	claude	בְּנוֹתֶיהָ “suas filhas”; tinha “suas-vilas”
+JOS 15:47	8	נַ֣חַל	o-ribeiro	claude	נַחַל “ribeiro de”; tinha “rio”
+JOS 15:47	9	מִצְרָ֑יִם	do-Egito	claude	מִצְרָיִם “Egito”; tinha “Egito”
+JOS 15:47	11	הַ/גָּד֖וֹל	o-grande	claude	הַגָּדוֹל “o grande”; tinha “grande”
+JOS 15:47	12	וּ/גְבֽוּל	e-seu-limite	claude	וּגְבוּל “e limite”; tinha “com-seus-termos”
+JOS 15:54	3	אַרְבַּ֛ע	Quiriate-Arba	claude	אַרְבַּע “Arba”; tinha “Arba”
+JOS 15:54	4	הִ֥יא	que-é	claude	הִיא “ela”; tinha “é”
+JOS 15:54	9	וְ/חַצְרֵי/הֶֽן	e-suas-aldeias	claude	וְחַצְרֵיהֶן “e suas aldeias”; tinha “com-suas-aldeias”
+JOS 17:2	1	וַ֠/יְהִי	e-houve-sorte	claude	וַיְהִי “e foi”; tinha “também-porção”
+JOS 17:2	2	לִ/בְנֵ֨י	para-os-filhos	claude	לִבְנֵי “para os filhos de”; tinha “outros-filhos”
+JOS 17:2	4	הַ/נּוֹתָרִים֮	restantes	claude	הַנּוֹתָרִים “os restantes”; tinha “o-restaram”
+JOS 17:2	5	לְ/מִשְׁפְּחֹתָ/ם֒	segundo-suas-famílias	claude	לְמִשְׁפְּחֹתָם “segundo suas famílias”; tinha “conforme-suas-famílias-os”
+JOS 17:2	6	לִ/בְנֵ֨י	para-os-filhos	claude	לִבְנֵי “para os filhos de”; tinha “filhos”
+JOS 17:2	8	וְ/לִ/בְנֵי	e-para-os-filhos	claude	וְלִבְנֵי “e para os filhos de”; tinha “e-os-filhos”
+JOS 17:2	10	וְ/לִ/בְנֵ֤י	e-para-os-filhos	claude	וְלִבְנֵי “e para os filhos de”; tinha “e-os-filhos”
+JOS 17:2	12	וְ/לִ/בְנֵי	e-para-os-filhos	claude	וְלִבְנֵי “e para os filhos de”; tinha “e-os-filhos”
+JOS 17:2	14	וְ/לִ/בְנֵי	e-para-os-filhos	claude	וְלִבְנֵי “e para os filhos de”; tinha “e-os-filhos”
+JOS 17:2	16	וְ/לִ/בְנֵ֣י	e-para-os-filhos	claude	וְלִבְנֵי “e para os filhos de”; tinha “e-os-filhos”
+JOS 17:2	19	בְּנֵ֨י	os-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+JOS 17:2	23	הַ/זְּכָרִ֖ים	os-machos	claude	הַזְּכָרִים “os machos”; tinha “homens”
+JOS 17:13	1	וַֽ/יְהִ֗י	e-foi	claude	וַיְהִי “e foi”; tinha “e-aconteceu”
+JOS 17:13	3	חָֽזְקוּ֙	se-fortaleceram	claude	חָזְקוּ “se fortaleceram”; tinha “forte”
+JOS 17:13	4	בְּנֵ֣י	os-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+JOS 17:13	6	וַ/יִּתְּנ֥וּ	e-puseram	claude	וַיִּתְּנוּ “e deram”; tinha “fizeram”
+JOS 17:13	8	הַֽ/כְּנַעֲנִ֖י	o-cananeu	claude	הַכְּנַעֲנִי “o cananeu”; tinha “cananeus”
+JOS 17:13	9	לָ/מַ֑ס	a-trabalho-forçado	claude	לָמַס “a trabalho forçado”; tinha “tributários-aos”
+JOS 17:13	10	וְ/הוֹרֵ֖שׁ	e-desapossando	claude	וְהוֹרֵשׁ “e desapossar”; tinha “e-posse”
+JOS 17:13	12	הוֹרִישֽׁ/וֹ	o-desapossaram	claude	הוֹרִישׁוֹ “o desapossaram”; tinha “expulsaram”
+JOS 17:14	1	וַֽ/יְדַבְּרוּ֙	e-falaram	claude	וַיְדַבְּרוּ “e falaram”; tinha “falaram”
+JOS 17:14	2	בְּנֵ֣י	os-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+JOS 17:14	7	מַדּוּעַ֩	por-que	claude	מַדּוּעַ “por que”; tinha “por”
+JOS 17:14	9	לִּ֜/י	a-mim	claude	לִּי “a mim”; tinha “me-por”
+JOS 17:14	10	נַחֲלָ֗ה	por-herança	claude	נַחֲלָה “herança”; tinha “herança”
+JOS 17:14	11	גּוֹרָ֤ל	sorte	claude	גּוֹרָל “sorte”; tinha “porção”
+JOS 17:14	12	אֶחָד֙	uma	claude	אֶחָד “um”; tinha “só”
+JOS 17:14	13	וְ/חֶ֣בֶל	e-porção	claude	וְחֶבֶל “e porção”; tinha “parte”
+JOS 17:14	14	אֶחָ֔ד	uma	claude	אֶחָד “um”; tinha “só”
+JOS 17:14	15	וַֽ/אֲנִ֣י	e-eu	claude	וַאֲנִי “e eu”; tinha “sendo-eu”
+JOS 17:14	16	עַם	sou-povo	claude	עַם “povo”; tinha “povo”
+JOS 17:14	17	רָ֔ב	numeroso	claude	רָב “muito”; tinha “grande”
+JOS 17:14	18	עַ֥ד	visto	claude	עַד “até”; tinha “até”
+JOS 17:16	1	וַ/יֹּֽאמְרוּ֙	e-disseram	claude	וַיֹּאמְרוּ “e disseram”; tinha “disseram”
+JOS 17:16	2	בְּנֵ֣י	os-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+JOS 17:16	7	הָ/הָ֑ר	a-montanha	claude	הָהָר “o monte”; tinha “este-monte”
+JOS 17:16	8	וְ/רֶ֣כֶב	e-carros	claude	וְרֶכֶב “e carro de”; tinha “carros”
+JOS 17:16	9	בַּרְזֶ֗ל	de-ferro	claude	בַּרְזֶל “ferro”; tinha “ferro”
+JOS 17:16	10	בְּ/כָל	há-em-todos	claude	בְּכָל “em todos”; tinha “todos”
+JOS 17:16	13	בְּ/אֶֽרֶץ	na-terra	claude	בְּאֶרֶץ “na terra de”; tinha “a-terra”
+JOS 17:16	14	הָ/עֵ֔מֶק	do-vale	claude	הָעֵמֶק “o vale”; tinha “da-campina”
+JOS 17:16	15	לַֽ/אֲשֶׁ֤ר	aos-que	claude	לַאֲשֶׁר “aos que”; tinha “que”
+JOS 17:16	17	שְׁאָן֙	Seã	claude	שְׁאָן “Seã”; tinha “Bete-Seã”
+JOS 17:16	18	וּ/בְנוֹתֶ֔י/הָ	e-suas-filhas	claude	וּבְנוֹתֶיהָ “e suas filhas”; tinha “e-em-suas-aldeias”
+JOS 17:16	19	וְ/לַֽ/אֲשֶׁ֖ר	e-aos-que	claude	וְלַאֲשֶׁר “e aos que”; tinha “e-os-que”
+JOS 17:17	1	וַ/יֹּ֤אמֶר	e-disse	claude	וַיֹּאמֶר “e disse”; tinha “então-respondeu”
+JOS 17:17	3	אֶל	para	claude	אֶל “para”; tinha “à”
+JOS 17:17	4	בֵּ֣ית	a-casa	claude	בֵּית “casa de”; tinha “casa”
+JOS 17:17	5	יוֹסֵ֔ף	de-José	claude	יוֹסֵף “José”; tinha “José”
+JOS 17:17	7	וְ/לִ/מְנַשֶּׁ֖ה	e-a-Manassés	claude	וְלִמְנַשֶּׁה “e a Manassés”; tinha “e-Manassés”
+JOS 17:17	10	רַ֣ב	numeroso	claude	רַב “muito”; tinha “grande”
+JOS 17:17	12	וְ/כֹ֤חַ	e-força	claude	וְכֹחַ “e força”; tinha “força”
+JOS 17:17	14	לָ֔/ךְ	tens	claude	לָךְ “para ti”; tinha “para-ti”
+JOS 17:17	16	יִהְיֶ֥ה	haverá	claude	יִהְיֶה “será”; tinha “será”
+JOS 17:17	18	גּוֹרָ֥ל	sorte	claude	גּוֹרָל “sorte”; tinha “porção”
+JOS 17:17	19	אֶחָֽד	uma	claude	אֶחָד “um”; tinha “só”
+JOS 17:18	1	כִּ֣י	mas	claude	כִּי “pois”; tinha “porque”
+JOS 17:18	2	הַ֤ר	a-montanha	claude	הַר “monte”; tinha “monte”
+JOS 17:18	4	לָּ/ךְ֙	tua	claude	לָּךְ “para ti”; tinha “para-ti”
+JOS 17:18	5	כִּֽי	pois	claude	כִּי “pois”; tinha “porque”
+JOS 17:18	7	ה֔וּא	ela-é	claude	הוּא “ele”; tinha “e”
+JOS 17:18	8	וּ/בֵ֣רֵאת֔/וֹ	e-o-desbravarás	claude	וּבֵרֵאתוֹ “e o desbravarás”; tinha “cortarás”
+JOS 17:18	10	לְ/ךָ֖	tuas	claude	לְךָ “para ti”; tinha “para-ti”
+JOS 17:18	11	תֹּֽצְאֹתָ֑י/ו	suas-saídas	claude	תֹּצְאֹתָיו “suas saídas”; tinha “seus-termos”
+JOS 17:18	12	כִּֽי	pois	claude	כִּי “pois”; tinha “porque”
+JOS 17:18	13	תוֹרִ֣ישׁ	desapossarás	claude	תוֹרִישׁ “desapossarás”; tinha “expulsarás”
+JOS 17:18	15	הַֽ/כְּנַעֲנִ֗י	o-cananeu	claude	הַכְּנַעֲנִי “o cananeu”; tinha “aos-cananeus”
+JOS 17:18	16	כִּ֣י	ainda-que	claude	כִּי “ainda que”; tinha “que”
+JOS 17:18	18	בַּרְזֶל֙	de-ferro	claude	בַּרְזֶל “ferro”; tinha “ferro”
+JOS 17:18	19	ל֔/וֹ	tenha	claude	לוֹ “para ele”; tinha “para-ele”
+JOS 17:18	20	כִּ֥י	ainda-que	claude	כִּי “ainda que”; tinha “porque”
+JOS 17:18	21	חָזָ֖ק	forte	claude	חָזָק “forte”; tinha “fortes”
+JOS 17:18	22	הֽוּא	seja	claude	הוּא “ele”; tinha “ele”
+JOS 18:1	1	וַ/יִּקָּ֨הֲל֜וּ	e-se-reuniu	claude	וַיִּקָּהֲלוּ “e se reuniram”; tinha “juntou”
+JOS 18:1	3	עֲדַ֤ת	a-congregação	claude	עֲדַת “congregação de”; tinha “congregação”
+JOS 18:1	4	בְּנֵֽי	dos-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+JOS 18:1	6	שִׁלֹ֔ה	em-Siló	claude	שִׁלֹה “Siló”; tinha “Siló”
+JOS 18:1	7	וַ/יַּשְׁכִּ֥ינוּ	e-fizeram-habitar	claude	וַיַּשְׁכִּינוּ “e fizeram habitar”; tinha “e-assentaram”
+JOS 18:1	10	אֹ֣הֶל	a-tenda	claude	אֹהֶל “tenda de”; tinha “tabernáculo-do”
+JOS 18:1	11	מוֹעֵ֑ד	do-encontro	claude	מוֹעֵד “encontro”; tinha “testemunho”
+JOS 18:1	12	וְ/הָ/אָ֥רֶץ	e-a-terra	claude	וְהָאָרֶץ “e a terra”; tinha “depois-que-a-terra”
+JOS 18:1	13	נִכְבְּשָׁ֖ה	estava-sujeita	claude	נִכְבְּשָׁה “foi sujeitada”; tinha “sujeita”
+JOS 18:1	14	לִ/פְנֵי/הֶֽם	diante-deles	claude	לִפְנֵיהֶם “diante deles”; tinha “para-diante-deles”
+JOS 18:2	1	וַ/יִּוָּֽתְרוּ֙	e-restaram	claude	וַיִּוָּתְרוּ “e restaram”; tinha “mas-haviam-restado”
+JOS 18:2	2	בִּ/בְנֵ֣י	entre-os-filhos	claude	בִּבְנֵי “entre os filhos de”; tinha “nos-filhos”
+JOS 18:2	6	חָלְק֖וּ	repartiram	claude	חָלְקוּ “repartiram”; tinha “repartido”
+JOS 18:2	8	נַֽחֲלָתָ֑/ם	sua-herança	claude	נַחֲלָתָם “sua herança”; tinha “sua-possessão”
+JOS 18:4	1	הָב֥וּ	dai	claude	הָבוּ “dai”; tinha “assinalai”
+JOS 18:4	2	לָ/כֶ֛ם	de-vós	claude	לָכֶם “para vós”; tinha “para-vós”
+JOS 18:4	5	לַ/שָּׁ֑בֶט	por-tribo	claude	לַשָּׁבֶט “por tribo”; tinha “cada-tribo”
+JOS 18:4	6	וְ/אֶשְׁלָחֵ֗/ם	e-os-enviarei	claude	וְאֶשְׁלָחֵם “e os enviarei”; tinha “envie-e-que-eles”
+JOS 18:4	7	וְ/יָקֻ֜מוּ	e-se-levantarão	claude	וְיָקֻמוּ “e se levantarão”; tinha “se-levantem”
+JOS 18:4	8	וְ/יִֽתְהַלְּכ֥וּ	e-percorrerão	claude	וְיִתְהַלְּכוּ “e percorrerão”; tinha “e-percorram”
+JOS 18:4	9	בָ/אָ֛רֶץ	na-terra	claude	בָאָרֶץ “na terra”; tinha “a-terra”
+JOS 18:4	10	וְ/יִכְתְּב֥וּ	e-a-descreverão	claude	וְיִכְתְּבוּ “e escreverão”; tinha “e-a-descrevam”
+JOS 18:4	11	אוֹתָ֛/הּ	a-ela	claude	אוֹתָהּ “ela”; tinha “a”
+JOS 18:4	12	לְ/פִ֥י	segundo	claude	לְפִי “segundo a boca de”; tinha “conforme”
+JOS 18:4	13	נַֽחֲלָתָ֖/ם	sua-herança	claude	נַחֲלָתָם “sua herança”; tinha “suas-propriedades”
+JOS 18:4	14	וְ/יָבֹ֥אוּ	e-virão	claude	וְיָבֹאוּ “e virão”; tinha “e-venham”
+JOS 18:10	1	וַ/יַּשְׁלֵךְ֩	e-lançou	claude	וַיַּשְׁלֵךְ “e lançou”; tinha “lançou”
+JOS 18:10	2	לָ/הֶ֨ם	a-eles	claude	לָהֶם “a eles”; tinha “para-eles”
+JOS 18:10	4	גּוֹרָ֛ל	sorte	claude	גּוֹרָל “sorte”; tinha “sortes”
+JOS 18:10	6	לִ/פְנֵ֣י	diante	claude	לִפְנֵי “diante de”; tinha “diante-do”
+JOS 18:10	15	כְּ/מַחְלְקֹתָֽ/ם	conforme-suas-divisões	claude	כְּמַחְלְקֹתָם “conforme suas divisões”; tinha “por-suas-porções”
+JOS 18:11	1	וַ/יַּ֗עַל	e-subiu	claude	וַיַּעַל “e subiu”; tinha “e-tirou”
+JOS 18:11	2	גּוֹרַ֛ל	a-sorte	claude	גּוֹרַל “sorte de”; tinha “sorte”
+JOS 18:11	3	מַטֵּ֥ה	da-tribo	claude	מַטֵּה “tribo de”; tinha “tribo”
+JOS 18:11	4	בְנֵֽי	dos-filhos	claude	בְנֵי “filhos de”; tinha “filhos”
+JOS 18:11	8	גְּב֣וּל	o-limite	claude	גְּבוּל “limite de”; tinha “termo”
+JOS 18:11	9	גּֽוֹרָלָ֔/ם	de-sua-sorte	claude	גּוֹרָלָם “sua sorte”; tinha “porção”
+JOS 18:11	11	בְּנֵ֣י	os-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+JOS 18:11	13	וּ/בֵ֖ין	e-entre	claude	וּבֵין “e entre”; tinha “e-os”
+JOS 18:11	14	בְּנֵ֥י	os-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+JOS 18:14	1	וְ/תָאַ֣ר	e-se-estendia	claude	וְתָאַר “e se estendia”; tinha “e-torna”
+JOS 18:14	2	הַ/גְּבוּל֩	o-limite	claude	הַגְּבוּל “o limite”; tinha “este-termo”
+JOS 18:14	3	וְ/נָסַ֨ב	e-virava	claude	וְנָסַב “e virava”; tinha “e-dá-volta”
+JOS 18:14	4	לִ/פְאַת	para-o-lado	claude	לִפְאַת “para o lado de”; tinha “ao-lado”
+JOS 18:14	5	יָ֜ם	do-ocidente	claude	יָם “mar”; tinha “mar”
+JOS 18:14	6	נֶ֗גְבָּ/ה	para-o-sul	claude	נֶגְבָּה “para o sul”; tinha “sul-até”
+JOS 18:14	7	מִן	desde	claude	מִן “de”; tinha “de”
+JOS 18:14	10	עַל	está	claude	עַל “sobre”; tinha “sobre”
+JOS 18:14	11	פְּנֵ֥י	defronte	claude	פְּנֵי “face de”; tinha “diante”
+JOS 18:14	12	בֵית	de-Bete	claude	בֵית “Bete”; tinha “Bete-Horom”
+JOS 18:14	13	חֹרוֹן֮	Horom	claude	חֹרוֹן “Horom”; tinha “Bete-Horom”
+JOS 18:14	14	נֶגְבָּ/ה֒	para-o-sul	claude	נֶגְבָּה “para o sul”; tinha “sul”
+JOS 18:14	15	וְ/הָי֣וּ	e-eram	claude	וְהָיוּ “e eram”; tinha “e-serão”
+JOS 18:14	16	תֹֽצְאֹתָ֗י/ו	suas-saídas	claude	תֹצְאֹתָיו “suas saídas”; tinha “sair”
+JOS 18:14	17	אֶל	para	claude	אֶל “para”; tinha “a”
+JOS 18:14	18	קִרְיַת	Quiriate	claude	קִרְיַת “Quiriate de”; tinha “Quriate-Baal”
+JOS 18:14	19	בַּ֨עַל֙	Baal	claude	בַּעַל “Baal”; tinha “Quriate-Baal”
+JOS 18:14	20	הִ֚יא	que-é	claude	הִיא “ela”; tinha “é”
+JOS 18:14	21	קִרְיַ֣ת	Quiriate	claude	קִרְיַת “Quiriate de”; tinha “Quriate-Jearim”
+JOS 18:14	22	יְעָרִ֔ים	Jearim	claude	יְעָרִים “Jearim”; tinha “Quriate-Jearim”
+JOS 18:14	24	בְּנֵ֣י	dos-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+JOS 18:14	26	זֹ֖את	este-é	claude	זֹאת “esta”; tinha “este”
+JOS 18:14	27	פְּאַת	o-lado	claude	פְּאַת “lado de”; tinha “lado”
+JOS 18:14	28	יָֽם	do-ocidente	claude	יָם “mar”; tinha “ocidente”
+JOS 18:28	3	וְ/הַ/יְבוּסִ֨י	e-o-jebuseu	claude	וְהַיְבוּסִי “e o jebuseu”; tinha “Jebus”
+JOS 18:28	4	הִ֤יא	que-é	claude	הִיא “ela”; tinha “é”
+JOS 18:28	11	וְ/חַצְרֵי/הֶ֑ן	e-suas-aldeias	claude	וְחַצְרֵיהֶן “e suas aldeias”; tinha “com-suas-aldeias”
+JOS 18:28	13	נַֽחֲלַ֥ת	a-herança	claude	נַחֲלַת “herança de”; tinha “herança”
+JOS 18:28	14	בְּנֵֽי	dos-filhos	claude	בְּנֵי “filhos de”; tinha “filhos”
+JOS 18:28	16	לְ/מִשְׁפְּחֹתָֽ/ם	segundo-suas-famílias	claude	לְמִשְׁפְּחֹתָם “segundo suas famílias”; tinha “conforme-suas-famílias”
