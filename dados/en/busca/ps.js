@@ -1,0 +1,1 @@
+__busca("ps",{"psalm":"apv7c,rs,rs,rs,1jk,rs,2bc,rs,1jl,333,rs,rs,rs,rt,rs,3uw,rr,rs,3uw,1jk,rs,rs,rs,4mo,rs,rs,rt,rr,8hk,rs,rs,rs,rt,rr,rs,3ux,1jj,rs,rs,1jl,rr,1jl,rr,rs,rs,1jl,rr,334,4mp,1jk,rs,5ef,rt,rs,mdk,rr,rt,1jk,1jk,et0ao,2,16vz3","psalmist":"5de6x","psalms":"of79m,336,16dg0,2z93z,16tnx"});

@@ -1,0 +1,1 @@
+__busca("ak",{"akan":"rsr,74g9j","akkub":"759lc,4mh,16ptt,3,ljgo,qq,2bo,ry","akeldama":"plnsr","akrabbim":"1t11w,16gjr,l4tt"});

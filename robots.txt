@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://josafams.github.io/biblia-interlinear/sitemap.xml

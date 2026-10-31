@@ -1,0 +1,1 @@
+__busca("ny",{"nympha":"trrcf"});

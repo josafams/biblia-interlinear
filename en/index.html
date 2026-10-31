@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Bíblia Interlinear — Hebrew, Aramaic and Greek word by word</title>
+<meta name="description" content="The whole Bible in Hebrew, Aramaic and Greek, with transliteration, pronunciation, English gloss, lexicon entries, audio and the text of the Berean…">
+<link rel="canonical" href="https://josafams.github.io/biblia-interlinear/en/">
+<link rel="alternate" hreflang="pt-BR" href="https://josafams.github.io/biblia-interlinear/">
+<link rel="alternate" hreflang="en" href="https://josafams.github.io/biblia-interlinear/en/">
+<link rel="alternate" hreflang="x-default" href="https://josafams.github.io/biblia-interlinear/">
+<meta property="og:site_name" content="Bíblia Interlinear">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en">
+<meta property="og:title" content="Bíblia Interlinear — Hebrew, Aramaic and Greek word by word">
+<meta property="og:description" content="The whole Bible in Hebrew, Aramaic and Greek, with transliteration, pronunciation, English gloss, lexicon entries, audio and the text of the Berean Standard Bible.">
+<meta property="og:url" content="https://josafams.github.io/biblia-interlinear/en/">
+<meta property="og:image" content="https://josafams.github.io/biblia-interlinear/icones/compartilhar.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Bíblia Interlinear","description":"The whole Bible in Hebrew, Aramaic and Greek, with transliteration, pronunciation, English gloss, lexicon entries, audio and the text of the Berean Standard Bible.","url":"https://josafams.github.io/biblia-interlinear/","inLanguage":"en"}</script>
+    <script>
+      /* No app (Android/iOS) e no site instalado, abre direto o leitor. Links antigos com referência
+   (index.html#JHN.3.16) vão para o mesmo versículo em ler.html. */
+      (function () {
+        var nativo =
+          !!(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform()) ||
+          location.protocol === "capacitor:";
+        var hash = location.hash.slice(1);
+        if (nativo || /^[1-3A-Z]{3}\.\d+/.test(decodeURIComponent(hash))) location.replace("../ler.html?lang=en" + location.hash);
+        try {
+          var t = localStorage.getItem("interlinear:tema");
+          if (t === "escuro" || t === "noite" || t === "grafite") document.documentElement.setAttribute("data-theme", "dark");
+          else if (t && t !== "auto") document.documentElement.setAttribute("data-theme", "light");
+        } catch (e) {}
+      })();
+    </script>
+    <meta name="theme-color" content="#1d5b74" />
+    <link rel="stylesheet" href="../fonts/fonts.css" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+    <link rel="icon" type="image/png" href="../icones/favicon-64.png" />
+    <link rel="apple-touch-icon" href="../icones/apple-touch-icon.png" />
+    <link rel="stylesheet" href="../assets/home-HG9qCmu-.css" />
+  </head>
+  <body data-locale="en">
+    <a class="skip" href="#principal" data-i18n="home.page.skip">Skip to content</a>
+    <header class="top">
+      <nav class="wrap" aria-label="Main" data-i18n-label="home.page.nav">
+        <a class="brand" href="#topo"><span aria-hidden="true">א</span><b>Bíblia Interlinear</b></a>
+        <a class="l" href="#recursos" data-i18n="home.page.nav_features">Features</a>
+        <a class="l" href="#como-usar" data-i18n="home.page.nav_how_to">How to use</a>
+        <a class="l" href="#baixar" data-i18n="home.page.nav_download">Download</a>
+        <a class="l" href="#como" data-i18n="home.page.nav_how_made">How it is made</a>
+        <a class="l" href="https://github.com/josafams/biblia-interlinear">GitHub</a>
+        <a class="l" href="../index.html" hreflang="pt-BR" lang="pt-BR" data-i18n="home.page.other_language"
+          >Português</a
+        >
+        <a class="btn primary" href="../ler.html?lang=en" style="min-height: 44px; padding: 0 18px; font-size: 15px" data-i18n="home.page.open"
+          >Open the Bible</a
+        >
+      </nav>
+    </header>
+
+    <main id="principal">
+      <section id="topo" class="wrap hero">
+        <div>
+          <p class="kick" data-i18n="home.page.hero_kick">Hebrew · Aramaic · Greek · English</p>
+          <h1 data-i18n="home.page.hero_title">The whole Bible, word by word.</h1>
+          <p class="lede" style="font-size: 19px" data-i18n="home.page.hero_lede">The 66 books in the original, each word with transliteration, pronunciation, Strong's number and an English gloss, and under each verse the text of the Berean Standard Bible. Free, open and without ads — in the browser, on the phone, in EPUB and in PDF.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center">
+            <a class="btn primary" href="../ler.html?lang=en" data-i18n="home.page.open">Open the Bible</a>
+          </div>
+          <p class="note" data-i18n-html="home.page.hero_note">No account needed. Works offline once opened. Prefer an app, EPUB or PDF? <a href="#baixar">See how to download</a>.</p>
+        </div>
+        <figure class="sample" id="home-sample" aria-label="Example: Genesis 1:1 and John 1:1" data-i18n-label="home.page.sample"></figure>
+      </section>
+
+      <section class="nums" aria-label="The project in numbers" data-i18n-label="home.page.numbers">
+        <div class="wrap" id="home-numbers"></div>
+      </section>
+
+      <section id="recursos" class="wrap block" aria-labelledby="h-features">
+        <p class="kick" data-i18n="home.page.nav_features">Features</p>
+        <h2 class="h2" id="h-features" data-i18n="home.page.features_title">Made for close reading</h2>
+        <div class="grid">
+          <div class="feat">
+            <h3 data-i18n="home.page.f_cards">Word-by-word cards</h3>
+            <p data-i18n="home.page.f_cards_text">Original word, transliteration, pronunciation, Strong's number and gloss. Each layer turns on and off.</p>
+            <a class="como" href="#v-04" data-i18n="home.page.see_how">See how to use it</a>
+          </div>
+          <div class="feat">
+            <h3 data-i18n="home.page.f_entries">Lexicon entries</h3>
+            <p data-i18n="home.page.f_entries_text">Tap a word: origin, meaning, grammatical analysis and how the Berean Standard Bible translates that word elsewhere.</p>
+            <a class="como" href="#v-05" data-i18n="home.page.see_how">See how to use it</a>
+          </div>
+          <div class="feat">
+            <h3 data-i18n="home.page.f_goto">Go to any verse</h3>
+            <p data-i18n-html="home.page.f_goto_text">Type <b>Jn 3:16</b>, <b>ps 23</b> or just <b>1:14</b>. In the index, one tap on a chapter opens it.</p>
+            <a class="como" href="#v-02" data-i18n="home.page.see_how">See how to use it</a>
+          </div>
+          <div class="feat">
+            <h3 data-i18n="home.page.f_about">About the book</h3>
+            <p data-i18n="home.page.f_about_text">Summary, people, timeline, places and context for each of the 66 books, and a theme for each chapter.</p>
+            <a class="como" href="#v-07" data-i18n="home.page.see_how">See how to use it</a>
+          </div>
+          <div class="feat">
+            <h3 data-i18n="home.page.f_listen">Listen to the original</h3>
+            <p data-i18n="home.page.f_listen_text">The verse is read in Hebrew or Greek by the device's voice, highlighting each word; it can speak more slowly.</p>
+            <a class="como" href="#v-08" data-i18n="home.page.see_how">See how to use it</a>
+          </div>
+          <div class="feat">
+            <h3 data-i18n="home.page.f_modes">Reading modes</h3>
+            <p data-i18n="home.page.f_modes_text">Read only the Berean Standard Bible, like an ordinary Bible, only the original, both side by side, the interlinear or the study mode — or build your own.</p>
+            <a class="como" href="#v-15" data-i18n="home.page.see_how">See how to use it</a>
+          </div>
+          <div class="feat">
+            <h3 data-i18n="home.page.f_mark">Highlight and take notes</h3>
+            <p data-i18n="home.page.f_mark_text">Colors on verses, passages or words of the original, notes, bookmarks and tags — all kept on your device, without an account.</p>
+            <a class="como" href="#v-18" data-i18n="home.page.see_how">See how to use it</a>
+          </div>
+          <div class="feat">
+            <h3 data-i18n="home.page.f_notebook">PDF notebook and backup</h3>
+            <p data-i18n="home.page.f_notebook_text">Export your notes and highlights as a study notebook in PDF, with the text and the interlinear. Download everything in one file and import it on another device.</p>
+            <a class="como" href="#v-22" data-i18n="home.page.see_how">See how to use it</a>
+          </div>
+          <div class="feat">
+            <h3 data-i18n="home.page.f_sync">Sync with Google Drive</h3>
+            <p data-i18n="home.page.f_sync_text">Optional: sign in with Google and your notes and reading mode follow you on the phone and the computer. They stay in a private app folder in your Drive — the project has no server and does not see your data.</p>
+            <a class="como" href="#v-24" data-i18n="home.page.see_how">See how to use it</a>
+          </div>
+          <div class="feat">
+            <h3 data-i18n="home.page.f_progress">My progress</h3>
+            <p data-i18n="home.page.f_progress_text">With the account connected: how much of the Bible you have read, reading time per day, streaks, the map of the 66 books and plans like the Bible in a year — added up across all devices.</p>
+            <a class="como" href="#v-31" data-i18n="home.page.see_how">See how to use it</a>
+          </div>
+          <div class="feat">
+            <h3 data-i18n="home.page.f_questions">Questions on the text</h3>
+            <p data-i18n="home.page.f_questions_text">At the end of the chapter, questions to think about or discuss in a group — observe, interpret, look at the original and apply — with no ready-made answers. Your answer becomes a note.</p>
+            <a class="como" href="#v-27" data-i18n="home.page.see_how">See how to use it</a>
+          </div>
+          <div class="feat">
+            <h3 data-i18n="home.page.f_access">Accessible and offline</h3>
+            <p data-i18n="home.page.f_access_text">Six color themes, text size, an easy-reading font, screen reader and keyboard. Once opened, it works offline.</p>
+            <a class="como" href="#v-11" data-i18n="home.page.see_how">See how to use it</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="como-usar" class="wrap block" aria-labelledby="h-how-to-use">
+        <p class="kick" data-i18n="home.page.nav_how_to">How to use</p>
+        <h2 class="h2" id="h-how-to-use" data-i18n="home.page.howto_title">See each feature in under 30 seconds</h2>
+        <p class="lede" data-i18n="home.page.howto_lede">Short videos, without sound, with captions and the written steps. Recorded from the app itself and remade automatically when something changes.</p>
+        <div id="home-howto"></div>
+        <noscript
+          ><p data-i18n="home.page.howto_noscript">Turn on JavaScript to see the videos. The steps of each feature are in the repository's documentation.</p></noscript
+        >
+      </section>
+
+      <section id="livros" class="wrap block" aria-labelledby="h-books">
+        <p class="kick" data-i18n="home.page.books_kick">Books</p>
+        <h2 class="h2" id="h-books" data-i18n="home.page.books_title">The 66 books, each with its own page</h2>
+        <p class="lede" data-i18n="home.page.books_lede">The introduction of each book and the chapters in the original, word by word, with the Berean Standard Bible alongside.</p>
+        <div class="bible-books"><div><h3>Pentateuch</h3><p><a href="bible/genesis/">Genesis</a> · <a href="bible/exodus/">Exodus</a> · <a href="bible/leviticus/">Leviticus</a> · <a href="bible/numbers/">Numbers</a> · <a href="bible/deuteronomy/">Deuteronomy</a></p></div><div><h3>Historical books</h3><p><a href="bible/joshua/">Joshua</a> · <a href="bible/judges/">Judges</a> · <a href="bible/ruth/">Ruth</a> · <a href="bible/1-samuel/">1 Samuel</a> · <a href="bible/2-samuel/">2 Samuel</a> · <a href="bible/1-kings/">1 Kings</a> · <a href="bible/2-kings/">2 Kings</a> · <a href="bible/1-chronicles/">1 Chronicles</a> · <a href="bible/2-chronicles/">2 Chronicles</a> · <a href="bible/ezra/">Ezra</a> · <a href="bible/nehemiah/">Nehemiah</a> · <a href="bible/esther/">Esther</a></p></div><div><h3>Poetry and wisdom</h3><p><a href="bible/job/">Job</a> · <a href="bible/psalms/">Psalms</a> · <a href="bible/proverbs/">Proverbs</a> · <a href="bible/ecclesiastes/">Ecclesiastes</a> · <a href="bible/song-of-songs/">Song of Songs</a></p></div><div><h3>Prophets</h3><p><a href="bible/isaiah/">Isaiah</a> · <a href="bible/jeremiah/">Jeremiah</a> · <a href="bible/lamentations/">Lamentations</a> · <a href="bible/ezekiel/">Ezekiel</a> · <a href="bible/daniel/">Daniel</a> · <a href="bible/hosea/">Hosea</a> · <a href="bible/joel/">Joel</a> · <a href="bible/amos/">Amos</a> · <a href="bible/obadiah/">Obadiah</a> · <a href="bible/jonah/">Jonah</a> · <a href="bible/micah/">Micah</a> · <a href="bible/nahum/">Nahum</a> · <a href="bible/habakkuk/">Habakkuk</a> · <a href="bible/zephaniah/">Zephaniah</a> · <a href="bible/haggai/">Haggai</a> · <a href="bible/zechariah/">Zechariah</a> · <a href="bible/malachi/">Malachi</a></p></div><div><h3>Gospels and Acts</h3><p><a href="bible/matthew/">Matthew</a> · <a href="bible/mark/">Mark</a> · <a href="bible/luke/">Luke</a> · <a href="bible/john/">John</a> · <a href="bible/acts/">Acts</a></p></div><div><h3>Letters of Paul</h3><p><a href="bible/romans/">Romans</a> · <a href="bible/1-corinthians/">1 Corinthians</a> · <a href="bible/2-corinthians/">2 Corinthians</a> · <a href="bible/galatians/">Galatians</a> · <a href="bible/ephesians/">Ephesians</a> · <a href="bible/philippians/">Philippians</a> · <a href="bible/colossians/">Colossians</a> · <a href="bible/1-thessalonians/">1 Thessalonians</a> · <a href="bible/2-thessalonians/">2 Thessalonians</a> · <a href="bible/1-timothy/">1 Timothy</a> · <a href="bible/2-timothy/">2 Timothy</a> · <a href="bible/titus/">Titus</a> · <a href="bible/philemon/">Philemon</a></p></div><div><h3>Other letters and Revelation</h3><p><a href="bible/hebrews/">Hebrews</a> · <a href="bible/james/">James</a> · <a href="bible/1-peter/">1 Peter</a> · <a href="bible/2-peter/">2 Peter</a> · <a href="bible/1-john/">1 John</a> · <a href="bible/2-john/">2 John</a> · <a href="bible/3-john/">3 John</a> · <a href="bible/jude/">Jude</a> · <a href="bible/revelation/">Revelation</a></p></div></div><p><a class="btn ghost" href="bible/">Books of the Bible</a></p>
+      </section>
+
+      <section id="baixar" class="wrap block" aria-labelledby="h-download">
+        <p class="kick" data-i18n="home.page.download_kick">Where to read</p>
+        <h2 class="h2" id="h-download" data-i18n="home.page.download_title">In the browser, on the phone, in EPUB or in PDF</h2>
+        <h3 style="margin: 4px 0 0; font-size: 20px; font-weight: 600" data-i18n="home.page.apps">Apps</h3>
+        <div class="grid">
+          <a class="dl" href="../ler.html?lang=en"
+            ><b data-i18n="home.page.site">Website</b
+            ><span data-i18n="home.page.site_text"
+              >Opens in any browser and can be installed on the home screen of the phone or the computer (browser menu › Install or Add to home screen). Once opened, it works offline.</span
+            ><i data-i18n="home.page.site_action">Open the Bible →</i></a
+          >
+          <a class="dl" href="https://github.com/josafams/biblia-interlinear/releases/tag/app-android"
+            ><b data-i18n="home.page.android">Android</b
+            ><span data-i18n="home.page.android_text"
+              >An app with the whole Bible inside, no internet needed to read. Download the APK on the phone and install it (allow installing from unknown sources). On the Play Store: coming soon.</span
+            ><i data-i18n="home.page.android_action">Download the APK (latest version) →</i>
+          </a>
+          <a class="dl" href="https://github.com/josafams/biblia-interlinear/tree/main/ios"
+            ><b data-i18n="home.page.ios">iPhone and iPad</b
+            ><span data-i18n="home.page.ios_text"
+              >The iOS app project is ready in the repository and goes to the App Store when the Apple developer account is active. Meanwhile, install the website on the home screen from Safari (Share › Add to Home Screen).</span
+            ><i data-i18n="home.page.ios_action">See the iOS project →</i></a
+          >
+        </div>
+        <h3 style="margin: 12px 0 0; font-size: 20px; font-weight: 600" data-i18n="home.page.files_title">Books to download: EPUB and PDF</h3>
+        <p class="lede" style="font-size: 15.5px" data-i18n-html="home.page.files_text">They are on the repository's <b>Releases</b> page and GitHub builds them again with each correction to the data, so the links always bring the latest version. In the EPUB, each word of the original is a note that opens on tap (it works on the Kindle). The PDF is A4, with the word cards, the Berean Standard Bible under each verse and bookmarks by book and chapter.</p>
+        <div class="tbl" id="home-books"></div>
+        <p style="margin: 0; font-size: 13.5px; color: var(--faint)" data-i18n="home.page.kindle">On the Kindle: send the EPUB with Send to Kindle (up to 200 MB from the app or website; by email, up to 50 MB — use the OT, the NT or one book).</p>
+        <a class="repo" href="https://github.com/josafams/biblia-interlinear">
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#7cc0d8"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" />
+          </svg>
+          <span style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px"
+            ><b data-i18n="home.page.repo_title">Open source on GitHub</b
+            ><span data-i18n="home.page.repo_text"
+              >github.com/josafams/biblia-interlinear — data (glosses, lexicon, themes, corrections), scripts that build everything from the open sources, the Android and iOS app, the workflows that publish the website and the books, and the documentation.</span
+            >
+          </span>
+          <i data-i18n="home.page.repo_action">See the repository →</i>
+        </a>
+      </section>
+
+      <section id="como" class="wrap block" aria-labelledby="h-howto">
+        <div style="display: flex; flex-wrap: wrap; gap: 40px">
+          <div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+            <p class="kick" data-i18n="home.page.nav_how_made">How it is made</p>
+            <h2 class="h2" id="h-howto" data-i18n="home.page.made_title">Only open sources, from start to finish</h2>
+            <p class="lede" style="font-size: 16px" data-i18n="home.page.made_lede">Everything can be copied and redistributed. The glosses are the project's and are not part of the Berean Standard Bible.</p>
+            <p class="lede" style="font-size: 15px" data-i18n-html="home.page.made_limits"><b style="color: var(--fg)">Limitations:</b> the glosses come from automatic alignment and are sometimes misplaced; themes and introductions still await human review. The ⚑ sign on a verse shows what the automatic review found.</p>
+          </div>
+          <ol class="steps" style="flex: 2 1 460px; min-width: 0">
+            <li>
+              <span class="n">1</span>
+              <div>
+                <b data-i18n="home.page.step1">Original texts</b>
+                <p data-i18n="home.page.step1_text">Hebrew and Aramaic from the Westminster Leningrad Codex (Open Scriptures) and Greek from the SBL Greek New Testament with the morphology of MorphGNT.</p>
+              </div>
+            </li>
+            <li>
+              <span class="n">2</span>
+              <div>
+                <b data-i18n="home.page.step2">Berean Standard Bible</b>
+                <p data-i18n="home.page.step2_text">The running text in English, verse by verse, with the numbering of English Bibles.</p>
+              </div>
+            </li>
+            <li>
+              <span class="n">3</span>
+              <div>
+                <b data-i18n="home.page.step3">Glosses by alignment</b>
+                <p data-i18n="home.page.step3_text">Each word of the original is linked to the part of the Berean Standard Bible that translates it (eflomal), completed by rules and by review.</p>
+              </div>
+            </li>
+            <li>
+              <span class="n">4</span>
+              <div>
+                <b data-i18n="home.page.step4">Lexicon and introductions</b>
+                <p data-i18n="home.page.step4_text">Strong's dictionary, the introduction of each book and the theme of each chapter.</p>
+              </div>
+            </li>
+            <li>
+              <span class="n">5</span>
+              <div>
+                <b data-i18n="home.page.step5">Automatic reviews and tests</b>
+                <p data-i18n="home.page.step5_text">Checks on the data and tests of the website with each change, before publishing the website, the app, the EPUBs and the PDFs.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="contribuir" class="wrap block">
+        <div class="cta">
+          <div style="flex: 1 1 380px; min-width: 0">
+            <h2 data-i18n="home.page.fix_title">Found a wrong gloss?</h2>
+            <p data-i18n="home.page.fix_text">Anyone can suggest corrections to glosses, lexicon entries and introductions. The guide explains the way, from the file to the pull request.</p>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px">
+            <a href="https://github.com/josafams/biblia-interlinear/blob/main/docs/CORRECOES.md" data-i18n="home.page.fix_guide">Corrections guide</a>
+            <a class="o" href="https://github.com/josafams/biblia-interlinear/issues" data-i18n="home.page.fix_report">Report a problem</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <p data-i18n-html="home.page.credits">Hebrew: Open Scriptures Hebrew Bible (CC BY 4.0). Greek: SBLGNT (CC BY 4.0) and MorphGNT. Translation: Berean Standard Bible (public domain). Lexicon: Strong (public domain). Typefaces under the SIL Open Font License. Built on <span id="home-date"></span>.</p>
+        <nav aria-label="Footer" data-i18n-label="home.page.footer">
+          <a href="https://github.com/josafams/biblia-interlinear/blob/main/docs/LICENCAS.md" data-i18n="home.page.licenses">Licenses</a
+          ><a href="../privacidade.html?lang=en" data-i18n="home.page.privacy">Privacy</a>
+          <a href="https://github.com/josafams/biblia-interlinear" data-i18n="home.page.code">Code on GitHub</a>
+          <a href="../index.html" hreflang="pt-BR" lang="pt-BR" data-i18n="home.page.other_language">Português</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="../videos/en/videos.js" onerror="void 0"></script>
+    <script type="module" src="../assets/home-x5ZxlicN.js"></script>
+  </body>
+</html>

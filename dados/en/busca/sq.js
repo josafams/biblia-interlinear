@@ -1,0 +1,1 @@
+__busca("sq",{"square":"enu,llrz,s7,1j6,5f3,r4,s0,1rqrb,16zu7,2,3,1scco,l4tf,1srrp,2be,kymr,le20,2,lcir,1jn,2,lxck,169m5,ja9,1t0a1,1rdn6,7,ii5,z,r3,1je,1,1j5,2bu","squads":"plw9w","squares":"8xo9c,2do3s,1jg,16s46,lov5,l7vy,33o,u3t,3jofm","squandered":"nxj,oefge","squeezed":"uvf,3jvez","squander":"yj86b","squandering":"of3ee","squanders":"bbuvf"});

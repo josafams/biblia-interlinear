@@ -1,0 +1,1 @@
+__busca("gh",{"ghost":"n87ey,l9g7"});

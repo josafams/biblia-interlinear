@@ -1,0 +1,1 @@
+__busca("vu",{"vulgar":"5d138","vulnerable":"wex,3,8wor5,n7vtd","vulture":"173ph,16xiv,huq44","vultures":"a4ovj,176s2,bwjh7,16ptd"});

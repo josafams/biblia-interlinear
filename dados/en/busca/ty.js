@@ -1,0 +1,1 @@
+__busca("ty",{"tyre":"2zkph,2dflq,eno,l0xu,1jw,1,1jh,1,16z25,l6ci,8,3,lgdd,lnbt,1szi4,tbf,331,2cd19,2,2,3,7,2,lh5h,1j1,ffl,16f06,1,1,3,8,rf,1,5,o,qy,a,ry,16frv,layv,le2d,1,4rn08,1,16wrm,1,333,l6c3,33k,7,letm,330,1,16wra,6xj,1,3","tyrians":"75o8k","tychicus":"pm2g4,2yv8h,16tnm,2dqf9,leu0","tyrannus":"pm1oh","types":"2e7eh","type":"2e86j","tyrant":"d4l4w,1"});

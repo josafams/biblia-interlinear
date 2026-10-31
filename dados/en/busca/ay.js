@@ -1,0 +1,1 @@
+__busca("ay",{"ayyah":"75cok"});
