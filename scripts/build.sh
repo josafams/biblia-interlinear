@@ -36,6 +36,8 @@ sheet = re.search(r'href="(assets/reader-[^"]+\.css)"', Path("build/web/ler.html
 css = Path("build/web", sheet).read_text(encoding="utf8")
 # the tag as written or as Prettier writes it (with " />")
 t = re.sub(r'<link rel="stylesheet" href="__READER_CSS__"\s*/?>', lambda _m: "<style>\n" + css + "</style>", t, count=1)
+# the noscript note is for the site (vite/site/reader-page.ts fills it); the preview needs JavaScript anyway
+t = t.replace("__NOSCRIPT__", "", 1)
 Path("build/preview.html").write_text(t.replace("__DATA__", d, 1), encoding="utf8")
 PY
 python3 scripts/build_epub.py     # build/epub: um EPUB por livro
