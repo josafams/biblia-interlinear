@@ -137,6 +137,17 @@ def test_gloss_corrections_applied(db):
         assert (gloss, source) == (r["gloss"].replace(" ", "-"), "revisada"), r["ref"]
 
 
+def test_no_warning_on_a_reviewed_word(chapters):
+    """A warning of the automatic review on a word whose gloss a person checked is not exported; errors are."""
+    bad = [
+        (d["book"], d["chapter"], m[0], m[3])
+        for d in chapters.values()
+        for m in d.get("m", [])
+        if m[1] is not None and m[2] == "a" and next(v for v in d["v"] if v["n"] == m[0])["w"][m[1]][3] == "m"
+    ]
+    assert not bad, bad[:10]
+
+
 def test_john_1_1_corrections():
     g = glosses("JHN", 1, 1)
     assert g[9] == "junto-de"

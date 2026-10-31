@@ -69,6 +69,9 @@ class Chapters:
         ms = []
         for m in self.marks.get((b, c), []):
             pos = ids.get(m.get("word_id"))
+            # a warning on a word whose gloss a person already checked has been answered; errors stay
+            if pos and m["level"] == "aviso" and self.words[(b, c)][pos[0]][pos[1]][1][3] == "m":
+                continue
             ms.append([m["verse"], pos[1] if pos else None, m["level"][0], m["code"], m["key"], m["params"]])
         d = {"book": b, "chapter": c, "v": vs, "m": ms}
         if self.questions.get((b, c)):
