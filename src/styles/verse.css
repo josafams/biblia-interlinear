@@ -737,26 +737,83 @@ h1 .heb {
   line-height: 1.45;
   color: var(--muted);
 }
-/* Bíblia: um parágrafo em Literata 17px / 1,8; número sobrescrito Atkinson 700 12px no destaque; cor como realce do trecho */
+/* Bíblia: o capítulo como numa Bíblia impressa. Literata 18px / 1,75 numa coluna de leitura, justificada com
+   hifenização; o número do capítulo grande abrindo o texto (counter "cap", posto em src/reader/chapter.ts); os
+   números dos versículos pequenos, sobrescritos e colados ao texto; nos capítulos poéticos (#verses.poetic), um
+   versículo por linha, com o número para fora da margem */
 body.blivre-par.hide-orig #verses {
-  max-width: 68ch;
-  font-size: calc(18px * var(--k));
-  line-height: 1.8;
+  max-width: 36em;
   font-family: var(--font-body);
-  font-size: calc(17px * var(--k));
-  line-height: 1.8;
+  font-size: calc(18px * var(--k));
+  line-height: 1.75;
+  hyphens: auto;
+  text-wrap: pretty;
+}
+/* justified only where the line is long enough not to open gaps between the words */
+@media (min-width: 640px) {
+  body.blivre-par.hide-orig #verses {
+    text-align: justify;
+  }
 }
 body.blivre-par.hide-orig .verse:not(.abrir) {
   margin: 0;
   padding: 0;
   border-radius: 4px;
   box-shadow: none;
+  /* the verse number never ends a line apart from its text */
+  white-space: nowrap;
+}
+body.blivre-par.hide-orig .verse:not(.abrir) .blivre {
+  white-space: normal;
 }
 body.blivre-par.hide-orig .verse:not(.abrir) .vnum {
-  font: 700 12px/1 var(--font-ui);
+  font: 600 0.6em/1 var(--font-ui);
+  letter-spacing: 0.02em;
   color: var(--accent);
-  padding: 4px;
-  margin: 0;
+  opacity: 0.85;
+  padding: 0.6em 0.2em 0.6em 0.4em;
+  margin: -0.6em 0;
+}
+body.blivre-par.hide-orig .verse:first-child:not(.abrir) .vnum {
+  float: left;
+  font-size: 0;
+  opacity: 1;
+  padding: 0;
+  margin: calc(7px * var(--k)) calc(10px * var(--k)) 0 0;
+  vertical-align: baseline;
+}
+body.blivre-par.hide-orig .verse:first-child:not(.abrir) .vnum::before {
+  content: counter(cap);
+  font: 600 calc(58px * var(--k)) / 0.86 var(--font-body);
+  letter-spacing: -0.02em;
+}
+body.blivre-par.hide-orig .verse.abrir {
+  text-align: start;
+  hyphens: manual;
+}
+body.blivre-par.hide-orig #verses.poetic {
+  text-align: start;
+  hyphens: manual;
+}
+body.blivre-par.hide-orig #verses.poetic .verse:not(.abrir) {
+  display: block;
+  position: relative;
+  padding-inline-start: 2.4em;
+  text-indent: -1em;
+  margin-bottom: 0.5em;
+}
+body.blivre-par.hide-orig #verses.poetic .verse:not(.abrir) .vnum {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 1.2em;
+  text-indent: 0;
+}
+body.blivre-par.hide-orig #verses.poetic .verse:first-child:not(.abrir) {
+  padding-inline-start: 0;
+  text-indent: 0;
+}
+body.blivre-par.hide-orig #verses.poetic .verse:first-child:not(.abrir) .vnum {
+  position: static;
 }
 body.blivre-par.hide-orig .verse[class*="mk-"]:not(.abrir) {
   background: color-mix(in srgb, var(--mk) 55%, transparent);
@@ -765,6 +822,7 @@ body.blivre-par.hide-orig #verses::after {
   content: "Toque no número do versículo para marcar, anotar ou ver o interlinear dele.";
   display: block;
   margin-top: 10px;
+  text-align: start;
   font: 400 13px/1.45 var(--font-ui);
   color: var(--muted);
 }

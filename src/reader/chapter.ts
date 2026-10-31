@@ -11,6 +11,7 @@ import Questions from "../components/Questions.svelte";
 import SectionMap from "../components/SectionMap.svelte";
 import TocVerses from "../components/TocVerses.svelte";
 import { t } from "../i18n";
+import { isPoetic } from "../lib/chapter/poetry";
 import type { ReviewMark } from "../lib/chapter/view";
 import { toWord } from "../lib/data/bible";
 import { store } from "../lib/store";
@@ -43,6 +44,10 @@ function renderHeader() {
   };
   document.body.classList.toggle("grc", R.greek);
   versesEl().setAttribute("aria-label", t("reader.text_of", { ref: `${B.name} ${R.cur}` }));
+  // the "Bíblia" mode opens the chapter with its number large (the CSS counter "cap") and sets the poetic chapters
+  // one verse per line
+  versesEl().style.counterReset = `cap ${R.cur}`;
+  versesEl().classList.toggle("poetic", isPoetic(B.code, R.cur));
   // the ‹ › of the bars (ChapterNavButton) and the shortcuts of the header (HeaderChips) read readerState
   toc.here = { book: B.code, chapter: R.cur };
   for (const dir of [-1, 1] as const) {
