@@ -311,7 +311,8 @@ export const videos = [
     grupo: "ler",
     titulo: "Revisão ⚑ e ketiv/qere",
     desc: "O que a revisão automática encontrou.",
-    inicio: "GEN.8",
+    // Job 38: a review flag that stays (an error in the Hebrew text) and words with a marginal reading (qere)
+    inicio: "JOB.38",
     // the automatic review marks the Portuguese glosses only
     langs: ["pt"],
     steps: [
