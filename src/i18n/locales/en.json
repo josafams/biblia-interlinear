@@ -644,7 +644,14 @@
     },
     "in_chapter": "{count} in {ref}",
     "ref_label": "Open the entry {strong}, {xlit}",
-    "pronunciation_legend": "Approximate pronunciation: the stressed syllable in CAPITALS; <b>ch</b> as in Scottish “loch”; <b>h</b> always breathed."
+    "pron_how": "How to say <b>{pron}</b>",
+    "pron_stress": "the syllable in CAPITALS (<b>{stressed}</b>) is stressed",
+    "pron_rule": {
+      "rr": "<b>rr</b> rolled",
+      "h": "<b>h</b> breathed",
+      "ch": "<b>ch</b> as in Scottish “loch”",
+      "th": "<b>th</b> as in “think”"
+    }
   },
   "annotate": {
     "label": "Highlight and annotate",

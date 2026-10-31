@@ -644,7 +644,14 @@
     },
     "in_chapter": "{count} em {ref}",
     "ref_label": "Abrir verbete {strong}, {xlit}",
-    "pronunciation_legend": "Pronúncia aproximada: sílaba tônica em MAIÚSCULAS; <b>rr</b> como em “carro”; <b>h</b> sempre aspirado; <b>ch</b> como em “chave”; <b>th</b> como no inglês “think”."
+    "pron_how": "Como ler <b>{pron}</b>",
+    "pron_stress": "a sílaba em MAIÚSCULAS (<b>{stressed}</b>) é a tônica",
+    "pron_rule": {
+      "rr": "<b>rr</b> como em “carro”",
+      "h": "<b>h</b> aspirado",
+      "ch": "<b>ch</b> como em “chave”",
+      "th": "<b>th</b> como no inglês “think”"
+    }
   },
   "annotate": {
     "label": "Marcar e anotar",

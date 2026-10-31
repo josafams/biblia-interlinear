@@ -4,7 +4,9 @@
   Strong number. Strong numbers in the origin open their own entries (with "← voltar").
 -->
 <script lang="ts">
-  import { t } from "../i18n";
+  import { t, tryT } from "../i18n";
+  import { pronunciationRules, stressedSyllables } from "../lib/pronunciation";
+  import { esc } from "../lib/text";
   import { entry } from "../state/entry.svelte";
 
   let {
@@ -31,6 +33,15 @@
     const r = (ev.target as HTMLElement).closest<HTMLElement>(".ref");
     if (r?.dataset.ref) onref(r.dataset.ref);
   };
+  // how to read this word's pronunciation: its stressed syllable and only the spellings it uses
+  function pronLegend(pron: string) {
+    const stressed = stressedSyllables(pron);
+    const parts = [
+      ...(stressed.length ? [t("entry.pron_stress", { stressed: esc(stressed.join(", ")) })] : []),
+      ...pronunciationRules(pron).flatMap(r => tryT(`entry.pron_rule.${r}`) ?? [])
+    ];
+    return t("entry.pron_how", { pron: esc(pron) }) + (parts.length ? ": " + parts.join("; ") : "") + ".";
+  }
 </script>
 
 {#snippet nav(dir: -1 | 1)}
@@ -56,8 +67,10 @@
 {/snippet}
 
 {#snippet legend()}
-  <!-- trusted text of the locale, with <b> -->
-  <p class="plegend">{@html t("entry.pronunciation_legend")}</p>
+  {#if e?.pron}
+    <!-- the texts of the locale, with <b>; the pronunciation goes in escaped -->
+    <p class="plegend">{@html pronLegend(e.pron)}</p>
+  {/if}
 {/snippet}
 
 {#if e}
