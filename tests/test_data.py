@@ -102,11 +102,11 @@ def test_genesis_1_hand_reviewed(db):
 
 def test_hundred_without_alignment_is_not_another_number(db):
     """מֵאָה (H3967) without an alignment: "cem/centos/duzentos" by its number, not the most common whole number
-    ("seiscentos"), wrong in Gn 5:5 (930 years). A reviewed gloss gives each word the whole number instead."""
+    ("seiscentos"), wrong in Gn 5:5 (930 years). A reviewed gloss gives each word the whole number instead, so once
+    every such verse is reviewed no lexicon gloss is left to check."""
     gloss, source = db.execute("SELECT gloss, gloss_source FROM words WHERE book='GEN' AND chapter=5 AND verse=5 AND pos=8").fetchone()
     assert (gloss, source) in (("centos", "lexico"), ("novecentos-e-trinta", "revisada"))
     rest = db.execute("SELECT gloss FROM words WHERE strong='H3967' AND gloss_source='lexico'").fetchall()
-    assert rest
     assert all(re.search(r"(^|-)(cem|centos|duzentos)$", g) for (g,) in rest), rest
 
 
